@@ -13,10 +13,6 @@ ComfyUI 翻译插件
 <img width="1600" height="180" alt="开启" src="https://github.com/user-attachments/assets/7314b8a3-770e-42d6-be8a-ee990f2fb148" />
 <img width="1600" height="180" alt="关闭" src="https://github.com/user-attachments/assets/d538f6b2-f3e9-466c-a226-97e46d5cfa3f" />
 
-页面效果图
-<img width="3828" height="1896" alt="image" src="https://github.com/user-attachments/assets/aa4e4889-33b0-4860-b973-61baf1e7f57e" />
-<img width="1899" height="1644" alt="image" src="https://github.com/user-attachments/assets/466e4509-af6a-4bb0-9e31-55b4cf7799e1" />
-<img width="1437" height="1491" alt="image" src="https://github.com/user-attachments/assets/332d471d-85b0-4aa5-8aef-e9a674bd179d" />
 
 
 汉化内容：
@@ -28,6 +24,13 @@ ComfyUI 翻译插件
 5.   插件翻译，
 6.   其它英文内容
 
+   
+页面效果图
+<img width="3828" height="1896" alt="image" src="https://github.com/user-attachments/assets/aa4e4889-33b0-4860-b973-61baf1e7f57e" />
+<img width="1899" height="1644" alt="image" src="https://github.com/user-attachments/assets/466e4509-af6a-4bb0-9e31-55b4cf7799e1" />
+<img width="1437" height="1491" alt="image" src="https://github.com/user-attachments/assets/332d471d-85b0-4aa5-8aef-e9a674bd179d" />
+
+
 
 注意事项：
 
@@ -38,7 +41,7 @@ ComfyUI 翻译插件
 安装方法:
 
 1.    点击页面中的code复制插件地址
-2.    在ComfyUI 的 `custom_nodes` 目录下打开cmd
+2.    在ComfyUI 的 `custom_nodes` 目录下打开`cmd`
 3.   输入git空格clone空格粘贴地址并回车
 `git clone https://github.com/a63976659/ComfyUI-Translation-node.git`
 4.   安装完成后， 重启 ComfyUI
