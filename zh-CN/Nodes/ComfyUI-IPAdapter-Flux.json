@@ -1,0 +1,60 @@
+{
+    "IPAdapterFluxLoader": {
+        "title": "加载IPAdapter Flux模型",
+        "inputs": {},
+        "widgets": {
+            "ipadapter": "IPAdapter",
+            "clip_vision": "CLIP视觉",
+            "provider": "设备"
+        },
+        "outputs": {
+            "ipadapterFlux": "IPAdapter Flux_Instant X"
+        }
+    },
+    "ApplyIPAdapterFlux": {
+        "title": "应用IPAdapter Flux模型",
+        "inputs": {
+            "model": "模型",
+            "ipadapter_flux": "IPAdapter Flux",
+            "image": "图像"
+        },
+        "widgets": {
+            "weight": "权重",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "IPAdapterFluxLoaderAdvanced": {
+        "title": "加载IPAdapter Flux模型（高级）",
+        "inputs": {},
+        "widgets": {
+            "ipadapter": "IPAdapter",
+            "clip_vision": "CLIP视觉",
+            "provider": "设备"
+        },
+        "outputs": {
+            "ipadapterFlux": "IPAdapter Flux_Instant X"
+        }
+    },
+    "ApplyIPAdapterFluxAdvanced": {
+        "title": "应用IPAdapter Flux模型（高级）",
+        "inputs": {
+            "model": "模型",
+            "ipadapter_flux": "IPAdapter Flux",
+            "image": "图像"
+        },
+        "widgets": {
+            "weight_start": "起始权重",
+            "weight_end": "结束权重",
+            "steps": "步数",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    }
+}

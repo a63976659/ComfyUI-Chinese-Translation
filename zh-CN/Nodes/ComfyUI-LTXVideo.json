@@ -1,0 +1,821 @@
+{
+  "Set VAE Decoder Noise": {
+    "title": "🅛🅣🅧设置VAE编码器解码器噪声",
+    "inputs": {
+      "vae": "VAE"
+    },
+    "widgets": {
+      "timestep": "时间步长",
+      "scale": "噪声强度",
+      "seed": "随机种子"
+    },
+    "outputs": {
+      "vae": "VAE"
+    }
+  },
+  "LTXVTiledVAEDecode": {
+    "title": "🅛🅣🅧分块VAE解码器",
+    "inputs": {
+      "vae": "VAE"
+    },
+    "widgets": {
+      "horizontal_tiles": "水平分块",
+      "vertical_tiles": "垂直分块",
+      "overlap": "重叠",
+      "last_frame_fix": "最后一帧固定"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "LTXVBaseSampler": {
+    "title": "🅛🅣🅧基础视频采样器",
+    "inputs": {
+      "model": "扩散模型",
+      "vae": "VAE编码器",
+      "guider": "条件引导器",
+      "sampler": "采样算法",
+      "sigmas": "噪声调度",
+      "noise": "初始噪声",
+      "optional_cond_images": "条件图像(可选)"
+    },
+    "widgets": {
+      "width": "帧宽度",
+      "height": "帧高度",
+      "num_frames": "总帧数",
+      "optional_cond_indices": "条件索引(可选)",
+      "strength": "强度滑块",
+      "crop": "裁剪参数",
+      "crf": "码率系数",
+      "blur": "模糊强度"
+    },
+    "outputs": {
+      "positive": "正向提示",
+      "negative": "负向提示",
+      "denoised_output": "降噪Latent",
+      "conditioning": "条件张量"
+    }
+  },
+  "LTXVExtendSampler": {
+    "title": "🅛🅣🅧视频扩展采样器",
+    "inputs": {
+      "model": "扩散模型",
+      "vae": "VAE编码器",
+      "latents": "初始Latent",
+      "guider": "条件引导器",
+      "sampler": "采样算法",
+      "sigmas": "噪声调度",
+      "noise": "扩展噪声",
+      "optional_guiding_latents": "引导Latent(可选)",
+      "guiding_strength": "引导强度",
+      "optional_reference_latents": "参考Latent(可选)",
+      "adain_factor": "风格迁移因子",
+      "optional_negative_index_latents": "负向Latent(可选)",
+      "optional_negative_index": "负向索引(可选)",
+      "optional_negative_index_strength": "负向强度"
+    },
+    "widgets": {
+      "num_new_frames": "新增帧数",
+      "frame_overlap": "帧重叠数",
+      "strength": "去噪强度",
+      "adain_factor": "风格迁移滑块"
+    },
+    "outputs": {
+      "positive": "正向提示",
+      "negative": "负向提示",
+      "denoised_output": "降噪Latent",
+      "conditioning": "条件张量"
+    }
+  },
+  "LTXVInContextSampler": {
+    "title": "🅛🅣🅧上下文视频采样器",
+    "inputs": {
+      "vae": "VAE编码器",
+      "guider": "条件引导器",
+      "sampler": "采样算法",
+      "sigmas": "噪声调度",
+      "noise": "初始噪声",
+      "guiding_latents": "引导Latent",
+      "optional_cond_image": "条件图像(可选)"
+    },
+    "widgets": {
+      "num_frames": "总帧数"
+    },
+    "outputs": {
+      "positive": "正向提示",
+      "negative": "负向提示",
+      "denoised_output": "降噪Latent",
+      "conditioning": "条件张量"
+    }
+  },
+  "LinearOverlapLatentTransition": {
+    "title": "Latent线性过渡",
+    "inputs": {
+      "samples1": "起始Latent",
+      "samples2": "目标Latent"
+    },
+    "widgets": {
+      "overlap": "过渡帧数",
+      "axis": "混合维度",
+      "samples": "Latent序列"
+    },
+    "outputs": {
+      "latent": "Latent"
+    }
+  },
+  "LTXVLinearOverlapLatentTransition": {
+    "title": "🅛🅣🅧 视频Latent线性过渡",
+    "inputs": {
+      "samples1": "起始Latent",
+      "samples2": "目标Latent"
+    },
+    "widgets": {
+      "overlap": "过渡帧数",
+      "axis": "混合维度",
+      "samples": "Latent序列"
+    },
+    "outputs": {
+      "latent": "Latent"
+    }
+  },
+  "LTXVFilmGrain": {
+    "title": "🅛🅣🅧 LTXV胶片颗粒生成器",
+    "inputs": {
+      "images": "图像"
+    },
+    "widgets": {
+      "grain_intensity": "颗粒强度",
+      "saturation": "色彩饱和度"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "LTXVAddGuideAdvanced": {
+    "title": "🅛🅣🅧视频 高级条件引导器",
+    "inputs": {
+      "positive": "正向提示",
+      "negative": "负向提示",
+      "vae": "VAE编码器",
+      "latent": "初始Latent",
+      "image": "参考图像"
+    },
+    "widgets": {
+      "frame_idx": "目标帧索引",
+      "strength": "引导强度",
+      "crf": "码率系数",
+      "blur_radius": "模糊半径",
+      "interpolation": "插值方法",
+      "crop": "裁剪参数"
+    },
+    "outputs": {
+      "conditioning": "增强条件",
+      "latent": "引导Latent"
+    }
+  },
+  "LTXVImgToVideoAdvanced": {
+    "title": "🅛🅣🅧LTXV图像转视频(高级)",
+    "inputs": {
+      "positive": "正向提示",
+      "negative": "负向提示",
+      "vae": "VAE编码器",
+      "image": "起始图像"
+    },
+    "widgets": {
+      "width": "视频宽度",
+      "height": "视频高度",
+      "length": "视频长度",
+      "batch_size": "批处理大小",
+      "crf": "码率系数",
+      "blur_radius": "模糊半径",
+      "interpolation": "插值方法",
+      "crop": "裁剪参数",
+      "strength": "转换强度"
+    },
+    "outputs": {
+      "conditioning": "视频条件",
+      "latent": "视频Latent"
+    }
+  },
+  "LTXVSelectLatents": {
+    "title": "🅛🅣🅧Latent选择器",
+    "inputs": {
+      "samples": "Latent序列"
+    },
+    "widgets": {
+      "start_index": "起始索引",
+      "end_index": "结束索引"
+    },
+    "outputs": {
+      "latent": "选定Latent"
+    }
+  },
+  "LTXVAddLatents": {
+    "title": "🅛🅣🅧Latent合成器",
+    "inputs": {
+      "latents1": "Latent序列1",
+      "latents2": "Latent序列2",
+      "latent1": "Latent1",
+      "latent2": "Latent2",
+      "frames1": "帧序列1",
+      "frames2": "帧序列2"
+    },
+    "widgets": {},
+    "outputs": {
+      "latent": "合成Latent"
+    }
+  },
+  "LTXVSetVideoLatentNoiseMasks": {
+    "title": "🅛🅣🅧视频噪声遮罩",
+    "inputs": {
+      "samples": "Latent序列",
+      "masks": "区域遮罩",
+      "height": "遮罩高度",
+      "width": "遮罩宽度",
+      "noise_mask": "噪声遮罩",
+      "resized_masks": "缩放遮罩",
+      "num_frames": "总帧数",
+      "M": "模糊系数"
+    },
+    "widgets": {
+      "M": "模糊调节器"
+    },
+    "outputs": {
+      "latent": "带遮罩Latent"
+    }
+  },
+  "LTXVAddLatentGuide": {
+    "title": "🅛🅣🅧 LTXV Latent引导器",
+    "inputs": {
+      "vae": "VAE",
+      "positive": "正向提示",
+      "negative": "负向提示",
+      "latent": "Latent",
+      "guiding_latent": "引导Latent"
+    },
+    "widgets": {
+      "latent_idx": "Latent索引",
+      "strength": "引导强度"
+    },
+    "outputs": {
+      "positive": "正向提示",
+      "negative": "负向提示",
+      "conditioning": "增强条件",
+      "latent": "Latent"
+    }
+  },
+  "LTXVAdainLatent": {
+    "title": "🅛🅣🅧 LTXV Latent风格迁移",
+    "inputs": {
+      "latents": "目标Latent",
+      "reference": "风格参考",
+      "factor": "影响"
+    },
+    "widgets": {
+      "factor": "影响"
+    },
+    "outputs": {
+      "latent": "风格化Latent"
+    }
+  },
+  "LTXVLatentUpsampler": {
+    "title": "🅛🅣🅧Latent超分采样",
+    "inputs": {
+      "samples": "低清Latent",
+      "upscale_model": "超分模型",
+      "vae": "VAE编码器"
+    },
+    "widgets": {},
+    "outputs": {
+      "latent": "高清Latent"
+    }
+  },
+  "LTXVLatentUpsamplerModelLoader": {
+    "title": "🅛🅣🅧超分采样模型加载器",
+    "inputs": {},
+    "widgets": {
+      "upscale_model": "超分模型",
+      "spatial_upsample": "空间上采样",
+      "temporal_upsample": "时序上采样"
+    },
+    "outputs": {
+      "upscale_model": "加载模型"
+    }
+  },
+  "LTXVPreprocessMasks": {
+    "title": "🅛🅣🅧 LTXV 遮罩预处理器",
+    "inputs": {
+      "masks": "遮罩",
+      "vae": "VAE"
+    },
+    "widgets": {
+      "invert_input_masks": "遮罩反转",
+      "ignore_first_mask": "忽略首帧",
+      "pooling_method": "池化方式",
+      "grow_mask": "遮罩扩展",
+      "tapered_corners": "边缘羽化",
+      "clamp_min": "最小值限制",
+      "clamp_max": "最大值限制"
+    },
+    "outputs": {
+      "mask": "遮罩"
+    }
+  },
+  "LTXVPromptEnhancerLoader": {
+    "title": "🅛🅣🅧 LTXV提示词增强加载器",
+    "inputs": {},
+    "widgets": {
+      "llm_name": "LLM模型",
+      "image_captioner_name": "图像描述模型",
+      "model_name": "基础模型",
+      "load_device": "加载设备",
+      "image_captioner": "图像描述器"
+    },
+    "outputs": {
+      "ltxv_prompt_enhancer": "提示词增强器",
+      "prompt_enhancer": "提示词增强器"
+    }
+  },
+  "LTXVPromptEnhancer": {
+    "title": "🅛🅣🅧 LTXV提示词增强器",
+    "inputs": {
+      "prompt_enhancer": "提示增强器",
+      "image_prompt": "图像提示"
+    },
+    "widgets": {
+      "prompt": "提示",
+      "image_captioner_name": "图像描述模型",
+      "model_name": "基础模型",
+      "load_device": "加载设备",
+      "max_resulting_tokens": "最大结果词数"
+    },
+    "outputs": {
+      "str": "字符串",
+      "string": "字符串"
+    }
+  },
+  "LTXQ8Patch": {
+    "title": "🅛🅣🅧 LTXFP8模型优化",
+    "inputs": {
+      "model": "模型",
+      "use_fp8_attention": "启用FP8注意力"
+    },
+    "widgets": {
+      "use_fp8_attention": "优化开关"
+    },
+    "outputs": {
+      "model": "模型"
+    }
+  },
+  "LTXVQ8LoraModelLoader": {
+    "title": "🅛🅣🅧 LTXVFP8 LoRA加载器",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "lora_name": "LoRA名称",
+      "strength_model": "模型强度"
+    },
+    "outputs": {
+      "model": "模型"
+    }
+  },
+  "LTXVApplySTG": {
+    "title": "🅛🅣🅧 LTXV应用 STG",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "block_indices": "模块索引"
+    },
+    "outputs": {
+      "model": "模型"
+    }
+  },
+  "STGGuiderNode": {
+    "title": "🅛🅣🅧 STG引导器 节点",
+    "inputs": {
+      "model": "模型",
+      "positive": "正向提示",
+      "negative": "负向提示"
+    },
+    "widgets": {
+      "cfg": "CFG",
+      "stg": "引导强度",
+      "rescale": "重缩放系数"
+    },
+    "outputs": {
+      "guider": "引导器"
+    }
+  },
+  "STGGuider": {
+    "title": "🅛🅣🅧 STG引导器 节点",
+    "inputs": {
+      "model": "模型",
+      "positive": "正向提示",
+      "negative": "负向提示"
+    },
+    "widgets": {
+      "cfg": "CFG",
+      "stg": "引导强度",
+      "rescale": "重缩放系数"
+    },
+    "outputs": {
+      "guider": "引导器"
+    }
+  },
+  "STGGuiderAdvanced": {
+    "title": "🅛🅣🅧 STG 高级引导器",
+    "inputs": {
+      "model": "模型",
+      "positive": "正向提示",
+      "negative": "负向提示",
+      "preset": "预设配置"
+    },
+    "widgets": {
+      "skip_steps_sigma_threshold": "跳过阈值",
+      "cfg_star_rescale": "CFG重缩放",
+      "sigmas": "噪声调度",
+      "cfg_values": "CFG曲线",
+      "stg_scale_values": "STG缩放曲线",
+      "stg_rescale_values": "STG重缩放曲线",
+      "stg_layers_indices": "STG层索引"
+    },
+    "outputs": {
+      "guider": "引导器"
+    }
+  },
+  "STGAdvancedPresets": {
+    "title": "🅛🅣🅧 STG 高级预设",
+    "inputs": {
+      "preset": "预设选择"
+    },
+    "widgets": {
+      "preset": "预设选择"
+    },
+    "outputs": {
+      "stg_advanced_preset": "预设配置",
+      "STG_ADVANCED_PRESET": "预设配置"
+    }
+  },
+  "LTXVTiledSampler": {
+    "title": "🅛🅣🅧分块视频采样器",
+    "inputs": {
+      "model": "扩散模型",
+      "vae": "VAE编码器",
+      "noise": "初始噪声",
+      "sampler": "采样算法",
+      "sigmas": "噪声调度",
+      "guider": "条件引导",
+      "latents": "初始Latent",
+      "overlap": "重叠调节器",
+      "optional_cond_images": "条件图像(可选)"
+    },
+    "widgets": {
+      "horizontal_tiles": "水平分块",
+      "vertical_tiles": "垂直分块",
+      "overlap": "块重叠",
+      "latents_cond_strength": "Latent条件强度",
+      "boost_latent_similarity": "增强相似性",
+      "crop": "裁剪参数",
+      "optional_cond_indices": "条件索引(可选)",
+      "images_cond_strengths": "图像条件强度"
+    },
+    "outputs": {
+      "denoised_output": "降噪Latent",
+      "output": "输出Latent",
+      "latent": "视频Latent"
+    }
+  },
+  "LTXVLoopingSampler": {
+    "title": "🅛🅣🅧循环视频采样器",
+    "inputs": {
+      "model": "扩散模型",
+      "vae": "VAE编码器",
+      "noise": "初始噪声",
+      "sampler": "采样算法",
+      "sigmas": "噪声调度",
+      "guider": "条件引导",
+      "latents": "初始Latent",
+      "optional_cond_image": "条件图像(可选)",
+      "optional_guiding_latents": "引导Latent(可选)",
+      "optional_positive_conditionings": "正向条件(可选)",
+      "optional_negative_index_latents": "负向Latent(可选)",
+      "optional_negative_index": "负向索引(可选)",
+      "optional_negative_index_strength": "负向强度"
+    },
+    "widgets": {
+      "use_latents_to_guide": "使用Latent引导",
+      "guiding_strength": "引导强度",
+      "temporal_tile_size": "时间分块调节器",
+      "temporal_overlap": "时间重叠",
+      "temporal_overlap_cond_strength": "时间重叠条件强度",
+      "horizontal_tiles": "水平分块",
+      "vertical_tiles": "垂直分块",
+      "spatial_overlap": "空间重叠",
+      "overlap": "帧重叠",
+      "overlap_cond_strength": "重叠条件强度",
+      "adain_factor": "风格迁移因子"
+    },
+    "outputs": {
+      "denoised_output": "降噪Latent",
+      "latent": "视频Latent"
+    }
+  },
+  "MultiPromptProvider": {
+    "title": "🅛🅣🅧多提示词融合器",
+    "inputs": {
+      "prompts": "提示词列表",
+      "clip": "CLIP"
+    },
+    "widgets": {},
+    "outputs": {
+      "conditionings": "条件",
+      "conditioning": "条件"
+    }
+  },
+  "LTXVMultiPromptProvider": {
+    "title": "🅛🅣🅧LTXV多提示词融合器",
+    "inputs": {
+      "prompts": "提示词列表",
+      "clip": "CLIP"
+    },
+    "widgets": {},
+    "outputs": {
+      "conditionings": "条件",
+      "conditioning": "条件"
+    }
+  },
+  "ImageToCPU": {
+    "title": "🅛🅣🅧显存转内存",
+    "inputs": {
+      "image": "GPU图像"
+    },
+    "widgets": {},
+    "outputs": {
+      "image": "CPU图像"
+    }
+  },
+  "LTXVPatcherVAE": {
+    "title": "🅛🅣🅧 LTXV VAE优化补丁",
+    "inputs": {
+      "vae": "VAE"
+    },
+    "widgets": {},
+    "outputs": {
+      "vae": "VAE"
+    }
+  },
+  "LTXAttentionBank": {
+    "title": "🅛🅣🅧注意力特征库",
+    "inputs": {
+      "save_steps": "保存步数",
+      "blocks": "注意力块"
+    },
+    "widgets": {
+      "save_steps": "步数选择器"
+    },
+    "outputs": {
+      "attn_bank": "注意力库",
+      "ATTN_BANK": "注意力库"
+    }
+  },
+  "LTXPrepareAttnInjections": {
+    "title": "🅛🅣🅧 注意力注入准备",
+    "inputs": {
+      "latent": "Latent",
+      "attn_bank": "注意力库",
+      "blocks": "注意力块"
+    },
+    "widgets": {
+      "query": "查询",
+      "key": "key键",
+      "value": "值",
+      "inject_steps": "注入步数"
+    },
+    "outputs": {
+      "latent": "Latent",
+      "attn_inj": "注入配置",
+      "ATTN_INJ": "注入配置"
+    }
+  },
+  "LTXAttentioOverride": {
+    "title": "🅛🅣🅧注意力重定向器",
+    "inputs": {
+      "blocks": "注意力块"
+    },
+    "widgets": {},
+    "outputs": {
+      "ltx_blocks": "重定向配置",
+      "LTX_BLOCKS": "重定向配置"
+    }
+  },
+  "LTXAttnOverride": {
+    "title": "🅛🅣🅧注意力配置",
+    "inputs": {
+      "layers": "目标层"
+    },
+    "widgets": {},
+    "outputs": {
+      "attn_override": "注意力配置",
+      "ATTN_OVERRIDE": "注意力配置"
+    }
+  },
+  "AddLatentGuide": {
+    "title": "🅛🅣🅧Latent添加引导",
+    "inputs": {
+      "model": "模型",
+      "latent": "Latent",
+      "image_latent": "图像Latent"
+    },
+    "widgets": {
+      "index": "索引",
+      "strength": "强度"
+    },
+    "outputs": {
+      "model": "模型",
+      "latent": "Latent"
+    }
+  },
+  "LTXFetaEnhance": {
+    "title": "🅛🅣🅧特征增强器",
+    "inputs": {
+      "model": "模型",
+      "feta_weight": "特征权重",
+      "attn_override": "注意力配置"
+    },
+    "widgets": {
+      "feta_weight": "权重调节器"
+    },
+    "outputs": {
+      "model": "模型"
+    }
+  },
+  "LTXFlowEditCFGGuider": {
+    "title": "🅛🅣🅧流编辑CFG引导器",
+    "inputs": {
+      "model": "扩散模型",
+      "source_pos": "源正向条件",
+      "source_neg": "源负向条件",
+      "target_pos": "目标正向条件",
+      "target_neg": "目标负向条件"
+    },
+    "widgets": {
+      "source_cfg": "源CFG强度",
+      "target_cfg": "目标CFG强度"
+    },
+    "outputs": {
+      "guider": "引导器"
+    }
+  },
+  "LTXFlowEditSampler": {
+    "title": "🅛🅣🅧流编辑采样器",
+    "inputs": {},
+    "widgets": {
+      "skip_steps": "跳过步数",
+      "refine_steps": "细化步数",
+      "seed": "随机种子"
+    },
+    "outputs": {
+      "sampler": "采样器"
+    }
+  },
+  "LTXForwardModelSamplingPred": {
+    "title": "🅛🅣🅧前向预测模型",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {},
+    "outputs": {
+      "model": "模型"
+    }
+  },
+  "LTXReverseModelSamplingPred": {
+    "title": "🅛🅣🅧反向预测模型",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {},
+    "outputs": {
+      "model": "模型"
+    }
+  },
+  "LTXPerturbedAttention": {
+    "title": "🅛🅣🅧应用扰动注意力",
+    "inputs": {
+      "model": "原始模型",
+      "attn_override": "注意力配置"
+    },
+    "widgets": {
+      "scale": "扰动强度",
+      "rescale": "重缩放系数",
+      "cfg": "CFG"
+    },
+    "outputs": {
+      "model": "模型"
+    }
+  },
+  "ModifyLTXModel": {
+    "title": "🅛🅣🅧模型修改器",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {},
+    "outputs": {
+      "model": "模型"
+    }
+  },
+  "LTXRFForwardODESampler": {
+    "title": "🅛🅣🅧 Rf-Inv 前向采样器",
+    "inputs": {
+      "attn_bank": "注意力库"
+    },
+    "widgets": {
+      "gamma": "噪声系数",
+      "start_step": "起始步",
+      "end_step": "终止步",
+      "gamma_trend": "变化趋势",
+      "seed": "随机种子",
+      "order": "求解阶数"
+    },
+    "outputs": {
+      "sampler": "采样器"
+    }
+  },
+  "LTXRFReverseODESampler": {
+    "title": "🅛🅣🅧 Rf-Inv反向采样器",
+    "inputs": {
+      "model": "扩散模型",
+      "latent_image": "Latent图像",
+      "attn_inj": "注意力注入"
+    },
+    "widgets": {
+      "eta": "噪声系数",
+      "start_step": "起始步",
+      "end_step": "终止步",
+      "eta_trend": "变化趋势",
+      "order": "求解阶数"
+    },
+    "outputs": {
+      "sampler": "采样器"
+    }
+  },
+  "FlowEditForwardSamplerNode": {
+    "title": "🅛🅣🅧流编辑前向采样",
+    "inputs": {
+      "save_steps": "保存步数",
+      "single_layers": "单层模块",
+      "double_layers": "双层模块"
+    },
+    "widgets": {
+      "save_steps": "步数选择器"
+    },
+    "outputs": {
+      "sampler": "流采样器",
+      "attn_inj": "注意力注入"
+    }
+  },
+  "FlowEdit2ReverseSamplerNode": {
+    "title": "🅛🅣🅧流编辑反向采样",
+    "inputs": {
+      "attn_inj": "注意力注入",
+      "inject_steps": "注入步数",
+      "single_layers": "单层模块",
+      "double_layers": "双层模块"
+    },
+    "widgets": {
+      "inject_steps": "步数调节器"
+    },
+    "outputs": {
+      "sampler": "流采样器"
+    }
+  },
+  "PrepareAttnBankNode": {
+    "title": "🅛🅣🅧注意力库准备",
+    "inputs": {
+      "latent": "目标Latent",
+      "attn_inj": "注意力注入"
+    },
+    "widgets": {},
+    "outputs": {
+      "latent": "准备Latent",
+      "attn_inj": "优化注入"
+    }
+  },
+  "RFSingleBlocksOverrideNode": {
+    "title": "🅛🅣🅧单层模块配置",
+    "inputs": {},
+    "widgets": {},
+    "outputs": {
+      "single_layers": "模块配置"
+    }
+  },
+  "RFDoubleBlocksOverrideNode": {
+    "title": "🅛🅣🅧双层模块配置",
+    "inputs": {},
+    "widgets": {},
+    "outputs": {
+      "double_layers": "模块配置"
+    }
+  }
+}

@@ -1,0 +1,240 @@
+{
+    "VFI FloatToInt": {
+        "title": "浮点到整数转换(视频插帧)",
+        "widgets": {
+            "float": "浮点值"
+        },
+        "outputs": {
+            "INT": "整数值"
+        },
+        "description": "这个节点就像数字翻译官，将浮点数转换为整数以便其他节点使用。\n示例：输入2.7会输出2，输入3.9会输出3"
+    },
+    "GMFSS Fortuna VFI": {
+        "title": "GMFSS Fortuna动漫处理(视频插帧)",
+        "inputs": {
+            "frames": "图像帧",
+            "optional_interpolation_states": "插值状态(可选)"
+        },
+        "widgets": {
+            "ckpt_name": "模型检查点名称",
+            "clear_cache_after_n_frames": "N帧后清除缓存",
+            "multiplier": "插值倍数"
+        },
+        "outputs": {
+            "IMAGE": "输出图像"
+        },
+        "description": "GMFSS Fortuna动漫处理专家，专门为动画和卡通视频优化，能完美处理动漫风格内容。"
+    },
+    "IFRNet VFI": {
+        "title": "IFRNet高效处理(视频插帧)",
+        "inputs": {
+            "frames": "图像帧",
+            "optional_interpolation_states": "插值状态(可选)"
+        },
+        "widgets": {
+            "ckpt_name": "模型检查点名称",
+            "clear_cache_after_n_frames": "N帧后清除缓存",
+            "multiplier": "插值倍数",
+            "scale_factor": "缩放系数"
+        },
+        "outputs": {
+            "IMAGE": "输出图像"
+        },
+        "description": "IFRNet高效处理专家，在保证质量的同时追求最快处理速度。"
+    },
+    "IFUnet VFI": {
+        "title": "IFUnet精细化处理(视频插帧)",
+        "inputs": {
+            "frames": "图像帧",
+            "optional_interpolation_states": "插值状态(可选)"
+        },
+        "widgets": {
+            "ckpt_name": "模型检查点名称",
+            "clear_cache_after_n_frames": "N帧后清除缓存",
+            "multiplier": "插值倍数",
+            "scale_factor": "缩放系数",
+            "ensemble": "集成模式(提升质量)"
+        },
+        "outputs": {
+            "IMAGE": "输出图像"
+        },
+        "description": "IFUnet精细化处理专家，注重处理的精细度和输出质量。"
+    },
+    "M2M VFI": {
+        "title": "M2M团队协作(视频插帧)",
+        "inputs": {
+            "frames": "图像帧",
+            "optional_interpolation_states": "插值状态(可选)"
+        },
+        "widgets": {
+            "ckpt_name": "模型检查点名称",
+            "clear_cache_after_n_frames": "N帧后清除缓存",
+            "multiplier": "插值倍数"
+        },
+        "outputs": {
+            "IMAGE": "输出图像"
+        },
+        "description": "M2M团队协作专家，能同时处理多帧关系，生成更自然的过渡效果。"
+    },
+    "RIFE VFI": {
+        "title": "RIFE智能动画师(视频插帧)",
+        "inputs": {
+            "frames": "图像帧",
+            "optional_interpolation_states": "插值状态(可选)"
+        },
+        "widgets": {
+            "ckpt_name": "模型检查点名称",
+            "clear_cache_after_n_frames": "N帧后清除缓存",
+            "multiplier": "插值倍数",
+            "fast_mode": "快速模式",
+            "scale_factor": "缩放系数",
+            "ensemble": "集成模式(提升质量)"
+        },
+        "outputs": {
+            "IMAGE": "输出图像"
+        },
+        "description": "RIFE智能动画师，能分析图像间运动规律并生成中间过渡帧。RIFE是目前最流行的视频插帧技术之一。\n注意：从v4.5+版本开始快速模式将失效，因为contextnet已被移除.\n缩放系数,1.0是原尺寸，0.5是缩小处理后放大"
+    },
+    "Sepconv VFI": {
+        "title": "Sepconv分工处理(视频插帧)",
+        "inputs": {
+            "frames": "图像帧",
+            "optional_interpolation_states": "插值状态(可选)"
+        },
+        "widgets": {
+            "ckpt_name": "模型检查点名称",
+            "clear_cache_after_n_frames": "N帧后清除缓存",
+            "multiplier": "插值倍数"
+        },
+        "outputs": {
+            "IMAGE": "输出图像"
+        },
+        "description": "Sepconv分工处理专家，通过分离处理不同方向运动来提高效率和质量。"
+    },
+    "AMT VFI": {
+        "title": "AMT全能型插帧(视频插帧)",
+        "inputs": {
+            "frames": "图像帧",
+            "optional_interpolation_states": "插值状态(可选)"
+        },
+        "widgets": {
+            "ckpt_name": "模型检查点名称",
+            "clear_cache_after_n_frames": "N帧后清除缓存",
+            "multiplier": "插值倍数"
+        },
+        "outputs": {
+            "IMAGE": "输出图像"
+        },
+        "description": "AMT全能型插帧专家，适应各种视频类型，特别擅长处理复杂场景。"
+    },
+    "FILM VFI": {
+        "title": "FILM大幅度运动(视频插帧)",
+        "inputs": {
+            "frames": "图像帧",
+            "optional_interpolation_states": "插值状态(可选)"
+        },
+        "widgets": {
+            "ckpt_name": "模型检查点名称",
+            "clear_cache_after_n_frames": "N帧后清除缓存",
+            "multiplier": "插值倍数"
+        },
+        "outputs": {
+            "IMAGE": "输出图像"
+        },
+        "description": "FILM是谷歌开发的视频插帧工具，擅长处理大幅度运动场景。"
+    },
+    "STMFNet VFI": {
+        "title": "STMFNet记忆大师(视频插帧)",
+        "inputs": {
+            "frames": "图像帧",
+            "optional_interpolation_states": "插值状态(可选)"
+        },
+        "widgets": {
+            "ckpt_name": "模型检查点名称",
+            "clear_cache_after_n_frames": "N帧后清除缓存",
+            "multiplier": "插值倍数",
+            "duplicate_first_last_frames": "复制首尾帧"
+        },
+        "outputs": {
+            "IMAGE": "输出图像"
+        },
+        "description": "STMFNet记忆大师，能利用多帧信息生成更准确的中间帧。\n注意：此节点至少需要4帧输入，目前仅支持2倍插值"
+    },
+    "FLAVR VFI": {
+        "title": "FLAVR运动分析(视频插帧)",
+        "inputs": {
+            "frames": "图像帧",
+            "optional_interpolation_states": "插值状态(可选)"
+        },
+        "widgets": {
+            "ckpt_name": "模型检查点名称",
+            "clear_cache_after_n_frames": "N帧后清除缓存",
+            "multiplier": "插值倍数",
+            "duplicate_first_last_frames": "复制首尾帧"
+        },
+        "outputs": {
+            "IMAGE": "输出图像"
+        },
+        "description": "FLAVR运动分析专家，擅长解析画面中的流动和变化规律。\n同样需要至少4帧输入，仅支持2倍插值\nN帧后清除缓存可避免内存不足，减少此值会降低内存占用但增加处理时间。"
+    },
+    "CAIN VFI": {
+        "title": "CAIN注意力机制(视频插帧)",
+        "inputs": {
+            "frames": "图像帧",
+            "optional_interpolation_states": "插值状态(可选)"
+        },
+        "widgets": {
+            "ckpt_name": "模型检查点名称",
+            "clear_cache_after_n_frames": "N帧后清除缓存",
+            "multiplier": "插值倍数"
+        },
+        "outputs": {
+            "IMAGE": "输出图像"
+        },
+        "description": "CAIN注意力机制专家，能聚焦画面关键部分生成更好的中间帧。\nN帧后清除缓存可避免内存不足，减少此值会降低内存占用但增加处理时间。"
+    },
+    "Make Interpolation State List": {
+        "title": "生成插值状态列表",
+        "widgets": {
+            "frame_indices": "帧索引",
+            "is_skip_list": "是否为跳过列表"
+        },
+        "outputs": {
+            "INTERPOLATION_STATES": "插值状态"
+        },
+        "description": "此节点作为调度指挥官，指示其他插帧节点哪些帧需要处理，哪些可以跳过。"
+    },
+    "KSampler Gradually Adding More Denoise (efficient)": {
+        "title": "K采样器-渐进式降噪(高效)",
+        "inputs": {
+            "model": "模型",
+            "positive": "正向条件",
+            "negative": "负向条件",
+            "latent_image": "Latent图像",
+            "optional_vae": "VAE(可选)"
+        },
+        "widgets": {
+            "seed": "随机种子",
+            "control_before_generate": "生成前控制",
+                "fixed": "固定",
+                "increment": "递增",
+                "decrement": "递减",
+                "randomize": "随机化",
+            "steps": "步数",
+            "cfg": "CFG值",
+            "sampler_name": "采样器名称",
+            "scheduler": "调度器",
+            "start_denoise": "起始降噪值",
+            "denoise_increment": "降噪增量",
+            "denoise_increment_steps": "降噪增量起始步数"
+        },
+        "outputs": {
+            "MODEL": "模型",
+            "CONDITIONING+": "正向条件",
+            "CONDITIONING-": "负向条件",
+            "LATENT": "Latent",
+            "VAE": "VAE"
+        },
+        "description": "此节点如同渐进式画家，每次迭代都比上次更清晰，最终得到从模糊到清晰的图像序列。"
+    }
+}

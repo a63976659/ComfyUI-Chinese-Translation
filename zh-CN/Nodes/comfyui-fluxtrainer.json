@@ -1,0 +1,732 @@
+{
+    "FluxTrainModelSelect": {
+        "title": "FluxTrain 模型选择",
+        "inputs": {
+            "transformer": "transformer",
+            "vae": "变分自动编码器（VAE）",
+            "clip_l": "CLIP - L",
+            "t5": "T5"
+        },
+        "widgets": {
+            "lora_path": "LoRA路径"
+        },
+        "outputs": {
+            "flux_models": "训练Flux模型"
+        }
+    },
+    "TrainDatasetGeneralConfig": {
+        "title": "训练数据集通用配置",
+        "inputs": {},
+        "widgets": {
+            "color_aug": "颜色增强",
+            "flip_aug": "翻转增强",
+            "shuffle_caption": "打乱字幕",
+            "caption_dropout_rate": "字幕丢弃率",
+            "alpha_mask": "alpha遮罩",
+            "reset_on_queue": "队列重置",
+            "caption_extension": "字幕扩展名"
+        },
+        "outputs": {
+            "dataset_general": "JSON"
+        }
+    },
+    "TrainDatasetRegularization": {
+        "title": "训练数据集正则化",
+        "inputs": {},
+        "widgets": {
+            "dataset_path": "数据集路径",
+            "class_tokens": "类别标记",
+            "num_repeats": "重复次数"
+        },
+        "outputs": {
+            "subset": "JSON"
+        }
+    },
+    "TrainDatasetAdd": {
+        "title": "添加训练数据集",
+        "inputs": {
+            "dataset_config": "数据集配置",
+            "regularization": "正则化"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "batch_size": "批次大小",
+            "dataset_path": "数据集路径",
+            "class_tokens": "类别标记",
+            "enable_bucket": "启用桶",
+            "bucket_no_upscale": "桶不放大",
+            "num_repeats": "重复次数",
+            "min_bucket_reso": "最小桶分辨率",
+            "max_bucket_reso": "最大桶分辨率"
+        },
+        "outputs": {
+            "dataset": "JSON"
+        }
+    },
+    "OptimizerConfig": {
+        "title": "优化器配置",
+        "inputs": {
+            "optimizer_type": "优化器类型",
+            "lr_scheduler": "学习率调度器"
+        },
+        "widgets": {
+            "max_grad_norm": "最大梯度范数",
+            "lr_warmup_steps": "学习率预热步数",
+            "lr_scheduler_num_cycles": "学习率调度器周期数",
+            "lr_scheduler_power": "学习率调度器幂次",
+            "min_snr_gamma": "最小信噪比伽马",
+            "extra_optimizer_args": "额外优化器参数"
+        },
+        "outputs": {
+            "optimizer_settings": "参数"
+        }
+    },
+    "OptimizerConfigAdafactor": {
+        "title": "Adafactor优化器配置",
+        "inputs": {
+            "lr_scheduler": "学习率调度器"
+        },
+        "widgets": {
+            "max_grad_norm": "最大梯度范数",
+            "lr_warmup_steps": "学习率预热步数",
+            "lr_scheduler_num_cycles": "学习率调度器周期数",
+            "lr_scheduler_power": "学习率调度器幂次",
+            "relative_step": "相对步长",
+            "scale_parameter": "缩放参数",
+            "warmup_init": "预热初始化",
+            "clip_threshold": "裁剪阈值",
+            "min_snr_gamma": "最小信噪比伽马",
+            "extra_optimizer_args": "额外优化器参数"
+        },
+        "outputs": {
+            "optimizer_settings": "参数"
+        }
+    },
+    "FluxTrainerLossConfig": {
+        "title": "Flux训练器损失配置",
+        "inputs": {
+            "loss_type": "损失类型",
+            "huber_schedule": "Huber调度"
+        },
+        "widgets": {
+            "huber_c": "Huber c",
+            "huber_scale": "Huber缩放"
+        },
+        "outputs": {
+            "loss_args": "参数"
+        }
+    },
+    "OptimizerConfigProdigy": {
+        "title": "Prodigy优化器配置",
+        "inputs": {
+            "lr_scheduler": "学习率调度器"
+        },
+        "widgets": {
+            "max_grad_norm": "最大梯度范数",
+            "lr_warmup_steps": "学习率预热步数",
+            "lr_scheduler_num_cycles": "学习率调度器循环次数",
+            "lr_scheduler_power": "学习率调度器幂值",
+            "weight_decay": "权重衰减",
+            "decouple": "解耦",
+            "use_bias_correction": "使用偏差校正",
+            "min_snr_gamma": "最小信噪比伽马值",
+            "extra_optimizer_args": "extra_optimizer_args"
+        },
+        "outputs": {
+            "optimizer_settings": "参数"
+        }
+    },
+    "TrainNetworkConfig": {
+        "title": "训练网络配置",
+        "inputs": {
+            "network_type": "网络类型",
+            "lycoris_preset": "LyCORIS预设"
+        },
+        "widgets": {
+            "factor": "因子",
+            "extra_network_args": "额外网络参数"
+        },
+        "outputs": {
+            "network_config": "网络配置"
+        }
+    },
+    "OptimizerConfigProdigyPlusScheduleFree": {
+        "title": "ProdigyPlus无调度优化器配置",
+        "inputs": {},
+        "widgets": {
+            "lr": "学习率",
+            "max_grad_norm": "最大梯度范数",
+            "prodigy_steps": "Prodigy步数",
+            "d0": "d0",
+            "d_coeff": "d系数",
+            "split_groups": "分组拆分",
+            "use_bias_correction": "使用偏差校正",
+            "min_snr_gamma": "最小信噪比伽马值",
+            "use_stableadamw": "使用StableAdamW",
+            "use_cautious": "使用谨慎模式",
+            "use_adopt": "使用ADOPT",
+            "use_grams": "使用GRAMS",
+            "stochastic_rounding": "随机舍入",
+            "extra_optimizer_args": "额外优化器参数"
+        },
+        "outputs": {
+            "optimizer_settings": "参数"
+        }
+    },
+    "InitFluxLoRATraining": {
+        "title": "初始化Flux LoRA训练",
+        "inputs": {
+            "flux_models": "Flux模型",
+            "dataset": "数据集",
+            "optimizer_settings": "优化器设置",
+            "cache_latents": "缓存潜在向量",
+            "cache_text_encoder_outputs": "缓存文本编码器输出",
+            "weighting_scheme": "加权方案",
+            "timestep_sampling": "时间步采样",
+            "model_prediction_type": "模型预测类型",
+            "gradient_dtype": "梯度数据类型",
+            "save_dtype": "保存数据类型",
+            "attention_mode": "注意力模式",
+            "resume_args": "恢复参数",
+            "train_text_encoder": "训练文本编码器",
+            "block_args": "块参数",
+            "gradient_checkpointing": "梯度检查点",
+            "loss_args": "损失参数",
+            "network_config": "网络配置"
+        },
+        "widgets": {
+            "output_name": "输出名称",
+            "output_dir": "输出目录",
+            "network_dim": "网络维度",
+            "network_alpha": "网络alpha",
+            "learning_rate": "学习率",
+            "max_train_steps": "最大训练步数",
+            "apply_t5_attn_mask": "应用T5注意力遮罩",
+            "blocks_to_swap": "要交换的块",
+            "logit_mean": "对数几率均值",
+            "logit_std": "对数几率标准差",
+            "mode_scale": "模式缩放",
+            "sigmoid_scale": "Sigmoid缩放",
+            "guidance_scale": "引导缩放",
+            "discrete_flow_shift": "离散流偏移",
+            "highvram": "高显存",
+            "fp8_base": "FP8基数",
+            "sample_prompts": "示例提示",
+            "additional_args": "额外参数",
+            "clip_l_lr": "CLIP L学习率",
+            "T5_lr": "T5学习率"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "epochs_count": "训练轮数计数",
+            "args": "Kohya参数"
+        }
+    },
+    "InitFluxTraining": {
+        "title": "初始化Flux训练",
+        "inputs": {
+            "flux_models": "Flux模型",
+            "dataset": "数据集",
+            "optimizer_settings": "优化器设置",
+            "cache_latents": "缓存潜在向量",
+            "cache_text_encoder_outputs": "缓存文本编码器输出",
+            "weighting_scheme": "加权方案",
+            "loss_type": "损失类型",
+            "timestep_sampling": "时间步采样",
+            "model_prediction_type": "模型预测类型",
+            "optimizer_fusing": "优化器融合",
+            "gradient_dtype": "梯度数据类型",
+            "save_dtype": "保存数据类型",
+            "attention_mode": "注意力模式",
+            "resume_args": "恢复参数"
+        },
+        "widgets": {
+            "output_name": "输出名称",
+            "output_dir": "输出目录",
+            "learning_rate": "学习率",
+            "max_train_steps": "最大训练步数",
+            "apply_t5_attn_mask": "应用T5注意力遮罩",
+            "t5xxl_max_token_length": "T5XXL最大令牌长度",
+            "logit_mean": "对数几率均值",
+            "logit_std": "对数几率标准差",
+            "mode_scale": "模式缩放",
+            "sigmoid_scale": "Sigmoid缩放",
+            "cpu_offload_checkpointing": "CPU卸载检查点",
+            "blocks_to_swap": "要交换的块",
+            "guidance_scale": "引导缩放",
+            "discrete_flow_shift": "离散流偏移",
+            "highvram": "高显存",
+            "fp8_base": "FP8基数",
+            "sample_prompts": "示例提示",
+            "additional_args": "额外参数"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "epochs_count": "训练轮数计数",
+            "args": "Kohya参数"
+        }
+    },
+    "InitFluxTrainingFromPreset": {
+        "title": "从预设初始化Flux训练",
+        "inputs": {
+            "flux_models": "flux模型",
+            "dataset_settings": "数据集设置",
+            "preset_args": "预设参数"
+        },
+        "widgets": {
+            "output_name": "输出名称",
+            "output_dir": "输出目录",
+            "sample_prompts": "示例提示词"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "epochs_count": "训练轮数",
+            "output_path": "输出路径",
+            "args": "KOHYA参数"
+        }
+    },
+    "FluxTrainLoop": {
+        "title": "Flux训练循环",
+        "inputs": {
+            "network_trainer": "网络训练器"
+        },
+        "widgets": {
+            "steps": "步数"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "steps": "步数"
+        }
+    },
+    "FluxTrainAndValidateLoop": {
+        "title": "Flux训练与验证循环",
+        "inputs": {
+            "network_trainer": "网络训练器",
+            "validation_settings": "验证设置"
+        },
+        "widgets": {
+            "validate_at_steps": "在步数处验证",
+            "save_at_steps": "在步数处保存"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "steps": "步数"
+        }
+    },
+    "FluxTrainSave": {
+        "title": "Flux训练保存LoRA",
+        "inputs": {
+            "network_trainer": "网络训练器"
+        },
+        "widgets": {
+            "save_state": "保存状态",
+            "copy_to_comfy_lora_folder": "复制到Comfy LoRA文件夹"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "lora_path": "LoRA路径",
+            "steps": "步数"
+        }
+    },
+    "FluxTrainSaveModel": {
+        "title": "Flux训练保存模型",
+        "inputs": {
+            "network_trainer": "网络训练器"
+        },
+        "widgets": {
+            "copy_to_comfy_model_folder": "复制到Comfy模型文件夹",
+            "end_training": "结束训练"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "model_path": "模型路径",
+            "steps": "步数"
+        }
+    },
+    "FluxTrainEnd": {
+        "title": "Flux LoRA训练结束",
+        "inputs": {
+            "network_trainer": "网络训练器"
+        },
+        "widgets": {
+            "save_state": "保存状态"
+        },
+        "outputs": {
+            "lora_name": "LoRA名称",
+            "metadata": "元数据",
+            "lora_path": "LoRA路径"
+        }
+    },
+    "FluxTrainResume": {
+        "title": "Flux训练恢复",
+        "inputs": {},
+        "widgets": {
+            "load_state_path": "加载状态路径",
+            "skip_until_initial_step": "跳过直至初始步骤"
+        },
+        "outputs": {
+            "resume_args": "参数"
+        }
+    },
+    "FluxTrainBlockSelect": {
+        "title": "Flux训练模块选择",
+        "inputs": {},
+        "widgets": {
+            "include": "包含"
+        },
+        "outputs": {
+            "block_args": "参数"
+        }
+    },
+    "FluxTrainValidationSettings": {
+        "title": "Flux训练验证设置",
+        "inputs": {},
+        "widgets": {
+            "steps": "步数",
+            "width": "宽度",
+            "height": "高度",
+            "guidance_scale": "引导尺度",
+            "seed": "种子",
+            "shift": "偏移",
+            "base_shift": "基础偏移",
+            "max_shift": "最大偏移"
+        },
+        "outputs": {
+            "validation_settings": "验证设置"
+        }
+    },
+    "FluxTrainValidate": {
+        "title": "Flux训练验证",
+        "inputs": {
+            "network_trainer": "网络训练器",
+            "validation_settings": "验证设置"
+        },
+        "widgets": {},
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "validation_images": "图像"
+        }
+    },
+    "VisualizeLoss": {
+        "title": "可视化损失",
+        "inputs": {
+            "network_trainer": "网络训练器",
+            "plot_style": "绘图风格"
+        },
+        "widgets": {
+            "window_size": "窗口大小",
+            "normalize_y": "Y轴归一化",
+            "width": "宽度",
+            "height": "高度",
+            "log_scale": "对数刻度"
+        },
+        "outputs": {
+            "plot": "图像",
+            "loss_list": "损失列表"
+        }
+    },
+    "FluxKohyaInferenceSampler": {
+        "title": "Flux Kohya推理采样器",
+        "inputs": {
+            "flux_models": "Flux模型",
+            "lora_name": "LoRA名称",
+            "lora_method": "LoRA方法"
+        },
+        "widgets": {
+            "steps": "步数",
+            "width": "宽度",
+            "height": "高度",
+            "guidance_scale": "引导尺度",
+            "seed": "种子",
+            "use_fp8": "使用FP8",
+            "apply_t5_attn_mask": "应用T5关注层遮罩",
+            "prompt": "提示词"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "UploadToHuggingFace": {
+        "title": "上传至HuggingFace",
+        "inputs": {
+            "network_trainer": "网络训练器"
+        },
+        "widgets": {
+            "source_path": "源路径",
+            "repo_id": "仓库ID",
+            "revision": "修订版本",
+            "private": "私有",
+            "token": "令牌"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "status": "状态"
+        }
+    },
+    "ExtractFluxLoRA": {
+        "title": "提取Flux LoRA",
+        "inputs": {
+            "original_model": "原始模型",
+            "finetuned_model": "微调模型",
+            "save_dtype": "保存数据类型",
+            "load_device": "加载设备",
+            "store_device": "存储设备"
+        },
+        "widgets": {
+            "output_path": "输出路径",
+            "dim": "维度",
+            "clamp_quantile": "钳位分位数",
+            "metadata": "元数据",
+            "mem_eff_safe_open": "内存高效安全打开"
+        },
+        "outputs": {
+            "output_path": "输出路径"
+        }
+    },
+    "SD3ModelSelect": {
+        "title": "SD3模型选择",
+        "inputs": {
+            "transformer": "变换器",
+            "clip_l": "CLIP - L",
+            "clip_g": "CLIP - G",
+            "t5": "T5"
+        },
+        "widgets": {
+            "lora_path": "LoRA路径"
+        },
+        "outputs": {
+            "sd3_models": "训练SD3模型"
+        }
+    },
+    "InitSD3LoRATraining": {
+        "title": "初始化SD3 LoRA训练",
+        "inputs": {
+            "sd3_models": "SD3模型",
+            "dataset": "数据集",
+            "optimizer_settings": "优化器设置",
+            "cache_latents": "缓存潜在向量",
+            "cache_text_encoder_outputs": "缓存文本编码器输出",
+            "gradient_dtype": "梯度数据类型",
+            "save_dtype": "保存数据类型",
+            "attention_mode": "注意力模式",
+            "train_text_encoder": "训练文本编码器",
+            "gradient_checkpointing": "梯度检查点",
+            "resume_args": "恢复参数",
+            "block_args": "块参数",
+            "loss_args": "损失参数"
+        },
+        "widgets": {
+            "output_name": "输出名称",
+            "output_dir": "输出目录",
+            "network_dim": "网络维度",
+            "network_alpha": "网络α值",
+            "learning_rate": "学习率",
+            "max_train_steps": "最大训练步数",
+            "training_shift ": "训练偏移",
+            "highvram": "高显存",
+            "blocks_to_swap": "要交换的块",
+            "fp8_base": "FP8基础",
+            "clip_l_lr": "CLIP - L学习率",
+            "clip_g_lr": "CLIP - G学习率",
+            "T5_lr": "T5学习率",
+            "sample_prompts": "示例提示",
+            "additional_args": "额外参数"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "epochs_count": "训练轮数",
+            "args": "KOHYA参数"
+        }
+    },
+    "SD3TrainLoop": {
+        "title": "SD3训练循环",
+        "inputs": {
+            "network_trainer": "网络训练器"
+        },
+        "widgets": {
+            "steps": "步数"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "steps": "步数"
+        }
+    },
+    "SD3TrainLoRASave": {
+        "title": "SD3训练LoRA保存",
+        "inputs": {
+            "network_trainer": "网络训练器"
+        },
+        "widgets": {
+            "save_state": "保存状态",
+            "copy_to_comfy_lora_folder": "复制到Comfy LoRA文件夹"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "lora_path": "LoRA路径",
+            "steps": "步数"
+        }
+    },
+    "SD3TrainEnd": {
+        "title": "SD3训练结束",
+        "inputs": {
+            "network_trainer": "网络训练器"
+        },
+        "widgets": {
+            "save_state": "保存状态"
+        },
+        "outputs": {
+            "lora_name": "LoRA名称",
+            "metadata": "元数据",
+            "lora_path": "LoRA路径"
+        }
+    },
+    "SD3TrainValidationSettings": {
+        "title": "SD3训练验证设置",
+        "inputs": {},
+        "widgets": {
+            "steps": "步数",
+            "width": "宽度",
+            "height": "高度",
+            "guidance_scale": "引导缩放",
+            "seed": "种子"
+        },
+        "outputs": {
+            "validation_settings": "验证设置"
+        }
+    },
+    "SD3TrainValidate": {
+        "title": "SD3训练验证",
+        "inputs": {
+            "network_trainer": "网络训练器",
+            "validation_settings": "验证设置"
+        },
+        "widgets": {},
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "validation_images": "验证图像"
+        }
+    },
+    "SDXLModelSelect": {
+        "title": "SDXL模型选择",
+        "inputs": {
+            "checkpoint": "检查点"
+        },
+        "widgets": {
+            "lora_path": "LoRA路径"
+        },
+        "outputs": {
+            "sdxl_models": "训练用SDXL模型"
+        }
+    },
+    "InitSDXLLoRATraining": {
+        "title": "初始化SDXL LoRA训练",
+        "inputs": {
+            "SDXL_models": "SDXL模型",
+            "dataset": "数据集",
+            "optimizer_settings": "优化器设置",
+            "cache_latents": "缓存潜在向量",
+            "cache_text_encoder_outputs": "缓存文本编码器输出",
+            "gradient_dtype": "梯度数据类型",
+            "save_dtype": "保存数据类型",
+            "attention_mode": "注意力模式",
+            "train_text_encoder": "训练文本编码器",
+            "gradient_checkpointing": "梯度检查点",
+            "resume_args": "恢复参数",
+            "block_args": "块参数",
+            "loss_args": "损失参数",
+            "network_config": "网络配置"
+        },
+        "widgets": {
+            "output_name": "输出名称",
+            "output_dir": "输出目录",
+            "network_dim": "网络维度",
+            "network_alpha": "网络alpha",
+            "learning_rate": "学习率",
+            "max_train_steps": "最大训练步数",
+            "highvram": "高显存",
+            "blocks_to_swap": "要交换的块",
+            "fp8_base": "fp8基础",
+            "clip_l_lr": "CLIP - L学习率",
+            "clip_g_lr": "CLIP - G学习率",
+            "sample_prompts_pos": "正样本提示词",
+            "sample_prompts_neg": "负样本提示词",
+            "additional_args": "额外参数"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "epochs_count": "训练轮数",
+            "args": "KOHYA参数"
+        }
+    },
+    "SDXLTrainLoop": {
+        "title": "SDXL训练循环",
+        "inputs": {
+            "network_trainer": "网络训练器"
+        },
+        "widgets": {
+            "steps": "步数"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "steps": "步数"
+        }
+    },
+    "SDXLTrainLoRASave": {
+        "title": "保存SDXL训练LoRA",
+        "inputs": {
+            "network_trainer": "网络训练器"
+        },
+        "widgets": {
+            "save_state": "保存状态",
+            "copy_to_comfy_lora_folder": "复制到Comfy LoRA文件夹"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "lora_path": "LoRA路径",
+            "steps": "步数"
+        }
+    },
+    "SDXLTrainEnd": {
+        "title": "SDXL训练结束",
+        "inputs": {
+            "network_trainer": "网络训练器"
+        },
+        "widgets": {
+            "save_state": "保存状态"
+        },
+        "outputs": {
+            "lora_name": "LoRA名称",
+            "metadata": "元数据",
+            "lora_path": "LoRA路径"
+        }
+    },
+    "SDXLTrainValidationSettings": {
+        "title": "SDXL训练验证设置",
+        "inputs": {
+            "sampler": "采样器"
+        },
+        "widgets": {
+            "steps": "步数",
+            "width": "宽度",
+            "height": "高度",
+            "guidance_scale": "引导缩放",
+            "seed": "种子"
+        },
+        "outputs": {
+            "validation_settings": "验证设置"
+        }
+    },
+    "SDXLTrainValidate": {
+        "title": "SDXL训练验证",
+        "inputs": {
+            "network_trainer": "网络训练器",
+            "validation_settings": "验证设置"
+        },
+        "widgets": {},
+        "outputs": {
+            "network_trainer": "网络训练器",
+            "validation_images": "图像"
+        }
+    }
+}

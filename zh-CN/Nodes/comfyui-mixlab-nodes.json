@@ -1,0 +1,1934 @@
+{
+  "AnalyzeAudio": {
+    "title": "分析音频♾️Mixlab",
+    "inputs": {
+      "json": "json"
+    },
+    "widgets": {},
+    "outputs": {
+      "result": "结果",
+      "any_type": "任意类型"
+    }
+  },
+  "TESTNODE_": {
+    "title": "测试节点♾️Mixlab",
+    "inputs": {
+      "ANY": "任意",
+      "json": "json"
+    },
+    "widgets": {},
+    "outputs": {
+      "result": "结果",
+      "any_type": "任意类型"
+    }
+  },
+  "TESTNODE_TOKEN": {
+    "title": "测试节点令牌♾️Mixlab",
+    "inputs": {
+      "text": "文本",
+      "clip": "CLIP"
+    },
+    "widgets": {},
+    "outputs": {
+      "STRING": "字符串",
+      "string": "字符串"
+    }
+  },
+  "SpeechRecognition": {
+    "title": "语音识别",
+    "inputs": {},
+    "widgets": {
+      "upload": "上传",
+      "Send to ChatGPT #": "发送至 ChatGPT #",
+      "STOP": "停止",
+      "START": "开始"
+    },
+    "outputs": {
+      "prompt": "提示词",
+      "string": "字符串"
+    }
+  },
+  "SpeechSynthesis": {
+    "title": "语音合成",
+    "inputs": {
+      "text": "文本"
+    },
+    "widgets": {},
+    "outputs": {
+      "STRING": "字符串"
+    }
+  },
+  "AudioPlay": {
+    "title": "音频播放♾️Mixlab",
+    "inputs": {
+      "audio": "音频"
+    },
+    "widgets": {
+      "Play/Pause": "播放/暂停",
+      "URL": "网址"
+    },
+    "outputs": {}
+  },
+  "ChatGPTNode": {
+    "title": "ChatGPT节点",
+    "inputs": {
+      "prompt": "提示词",
+      "system_content": "系统内容",
+      "model": "模型",
+      "seed": "种子",
+      "context_size": "上下文大小",
+      "api_url": "API地址",
+      "api_key": "API密钥",
+      "custom_model_name": "自定义模型名称",
+      "custom_api_url": "自定义API地址"
+    },
+    "widgets": {},
+    "outputs": {
+      "string": "字符串"
+    }
+  },
+  "ChatGPTOpenAI": {
+    "title": "ChatGPTOpenAI节点♾️Mixlab",
+    "inputs": {
+      "api_key": "API密钥",
+      "custom_model_name": "自定义模型名称",
+      "custom_api_url": "自定义API地址"
+    },
+    "widgets": {
+      "prompt": "提示词",
+      "system_content": "系统内容",
+      "model": "模型",
+      "seed": "种子",
+      "context_size": "上下文大小",
+      "api_url": "API地址"
+    },
+    "outputs": {
+      "text": "文本",
+      "messages": "信息",
+      "session_history": "会话历史记录",
+      "string": "字符串"
+    }
+  },
+  "SiliconflowFreeNode": {
+    "title": "硅基流动免费节点",
+    "inputs": {
+      "api_key": "API密钥",
+      "prompt": "提示词",
+      "system_content": "系统内容",
+      "model": "模型",
+      "seed": "种子",
+      "context_size": "上下文大小",
+      "max_tokens": "最大令牌数",
+      "custom_model_name": "自定义模型名称"
+    },
+    "widgets": {},
+    "outputs": {
+      "string": "字符串"
+    }
+  },
+  "SiliconflowTextToImageNode": {
+    "title": "硅基流动文本转图像节点",
+    "inputs": {
+      "api_key": "API密钥",
+      "custom_model_name": "自定义模型名称"
+    },
+    "widgets": {
+      "control_after_generate": "生成后进行控制",
+      "width": "宽度",
+      "height": "高度",
+      "model": "模型",
+      "seed": "种子"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "ShowTextForGPT": {
+    "title": "显示GPT的文本内容",
+    "inputs": {
+      "text": "文本",
+      "output_dir": "输出目录"
+    },
+    "widgets": {},
+    "outputs": {
+      "STRING": "字符串"
+    }
+  },
+  "CharacterInText": {
+    "title": "文本中的字符",
+    "inputs": {
+      "text": "文本",
+      "character": "字符"
+    },
+    "widgets": {
+      "start_index": "开始索引"
+    },
+    "outputs": {
+      "INT": "整数"
+    }
+  },
+  "TextSplitByDelimiter": {
+    "title": "文本按分隔符拆分",
+    "inputs": {},
+    "widgets": {
+      "text": "文本",
+      "delimiter": "分隔符",
+      "start_index": "开始索引",
+      "skip_every": "每隔...跳过",
+      "max_count": "最大数量"
+    },
+    "outputs": {
+      "STRING": "字符串"
+    }
+  },
+  "ClipInterrogator": {
+    "title": "图像反推提示词",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "prompt_mode": "提示词模式",
+      "image_analysis": "图像分析"
+    },
+    "outputs": {
+      "prompt": "提示词",
+      "random_samples": "随机样本",
+      "string": "字符串"
+    }
+  },
+  "EditMask": {
+    "title": "遮罩编辑",
+    "inputs": {
+      "image": "图像",
+      "image_update": "图像更新"
+    },
+    "widgets": {},
+    "outputs": {
+      "image": "图像",
+      "mask": "遮罩"
+    }
+  },
+
+  "LoadVQGAN": {
+    "title": "加载VQGAN",
+    "inputs": {},
+    "widgets": {
+      "config": "配置",
+      "model": "模型",
+      "device": "设备"
+    },
+    "outputs": {
+      "vqgan": "VQGAN"
+    }
+  },
+  "AudioToPrompt": {
+    "title": "音频转提示词",
+    "inputs": {
+      "vqgan": "VQGAN",
+      "audio": "音频"
+    },
+    "widgets": {
+      "device": "设备"
+    },
+    "outputs": {
+      "restored_audio": "恢复的音频",
+      "prompt_tokens": "提示标记"
+    }
+  },
+  "Prompt2Semantic": {
+    "title": "提示词转语义",
+    "inputs": {
+      "prompt_tokens": "提示词令牌"
+    },
+    "widgets": {
+      "text": "文本",
+      "prompt_text": "提示词文本",
+      "prompt_tokens": "提示词令牌",
+      "max_new_tokens": "最大新令牌数",
+      "top_p": "核采样参数p",
+      "repetition_penalty": "重复惩罚",
+      "temperature": "温度",
+      "seed": "种子",
+      "iterative_prompt": "迭代提示词",
+      "chunk_length": "块长度",
+      "compile": "编译",
+      "precision": "精度",
+      "device": "设备"
+    },
+    "outputs": {
+      "codes": "代码"
+    }
+  },
+  "Semantic2Audio": {
+    "title": "语义转音频",
+    "inputs": {
+      "vqgan": "VQGAN",
+      "codes": "编码"
+    },
+    "widgets": {
+      "device": "设备"
+    },
+    "outputs": {
+      "generated_audio": "生成的音频",
+      "audio": "音频"
+    }
+  },
+  "SmoothMask": {
+    "title": "遮罩平滑",
+    "inputs": {
+      "mask": "遮罩"
+    },
+    "widgets": {
+      "smoothness": "平滑度"
+    },
+    "outputs": {
+      "MASK": "遮罩"
+    }
+  },
+  "SplitLongMask": {
+    "title": "遮罩分割到列表",
+    "inputs": {
+      "long_mask": "长遮罩"
+    },
+    "widgets": {
+      "count": "数量"
+    },
+    "outputs": {
+      "MASK": "遮罩"
+    }
+  },
+  "TransparentImage": {
+    "title": "透明图像",
+    "inputs": {
+      "images": "图像",
+      "masks": "遮罩"
+    },
+    "widgets": {
+      "invert": "反转",
+      "save": "保存",
+      "filename_prefix": "文件名前缀",
+      "prompt": "提示词",
+      "extra_pnginfo": "额外PNG信息"
+    },
+    "outputs": {
+      "file_path": "文件路径",
+      "image": "图像",
+      "IMAGE": "图像",
+      "rgba": "RGBA"
+    }
+  },
+  "ImagesPrompt_": {
+    "title": "图像提示词",
+    "inputs": {
+      "image_base64": "图像Base64",
+      "text": "文本"
+    },
+    "widgets": {
+      "image_base64": "图像Base64",
+      "Upload lmages JSON": "上传图片 JSON 格式",
+      "text": "文本"
+    },
+    "outputs": {
+      "image": "图像",
+      "TEXT": "文本",
+      "text": "文本",
+      "string": "字符串"
+    }
+  },
+  "EnhanceImage": {
+    "title": "增强图像",
+    "inputs": {
+      "image": "图像",
+      "contrast": "对比度"
+    },
+    "widgets": {
+      "contrast": "对比度"
+    },
+    "outputs": {
+      "IMAGE": "图像",
+      "image": "图像"
+    }
+  },
+  "LoadImages_": {
+    "title": "加载图像(base64) ♾️Mixlab",
+    "inputs": {
+      "images": "图像"
+    },
+    "widgets": {
+      "Upload lmage": "加载图像"
+    },
+    "outputs": {
+      "IMAGE": "图像",
+      "image": "图像"
+    }
+  },
+  "LoadImagesFromPath": {
+    "title": "加载图像(路径)",
+    "inputs": {
+      "seed": "随机种"
+    },
+    "widgets": {
+      "file_path": "文件路径",
+      "white_bg": "白色背景",
+      "sort_by": "按...排序",
+      "index_variable": "索引",
+      "watcher": "监控器",
+      "result": "结果",
+      "prompt": "提示词",
+      "seed": "种子"
+    },
+    "outputs": {
+      "image list": "图像列表",
+      "prompt_for_FloatingVideo": "用于浮动视频的提示信息",
+      "MASK": "遮罩",
+      "filepaths": "文件路径"
+    }
+  },
+  "ImageCropByAlpha": {
+    "title": "图像按Alpha裁剪",
+    "inputs": {
+      "image": "图像",
+      "RGBA": "RGBA"
+    },
+    "widgets": {},
+    "outputs": {
+      "image": "图像",
+      "mask": "遮罩",
+      "width": "宽度",
+      "height": "高度",
+      "AREA_MASK": "区域遮罩"
+    }
+  },
+  "TextImage": {
+    "title": "文本图像",
+    "inputs": {},
+    "widgets": {
+      "text": "文本",
+      "font": "字体",
+      "font_size": "字体大小",
+      "spacing": "间距",
+      "line_spacing": "行间距",
+      "padding": "填充",
+      "text_color": "文本颜色",
+      "vertical": "垂直",
+      "stroke": "描边",
+      "max_characters_per_line": "每行最大字符数",
+      "fixed_width": "固定宽度"
+    },
+    "outputs": {
+      "image": "图像",
+      "mask": "遮罩"
+    }
+  },
+  "LoadImagesFromURL": {
+    "title": "加载图像(URL)",
+    "inputs": {
+      "url": "URL",
+      "seed": "种子"
+    },
+    "widgets": {},
+    "outputs": {
+      "image": "图像",
+      "mask": "遮罩",
+      "images": "图像",
+      "masks": "遮罩"
+    }
+  },
+  "SvgImage": {
+    "title": "SVG图像",
+    "inputs": {
+      "upload": "上传"
+    },
+    "widgets": {},
+    "outputs": {
+      "IMAGE": "图像",
+      "layers": "图层"
+    }
+  },
+  "3DImage": {
+    "title": "3D图像",
+    "inputs": {
+      "upload": "上传",
+      "material": "材质"
+    },
+    "widgets": {},
+    "outputs": {
+      "image": "图像",
+      "IMAGE": "图像",
+      "MASK": "遮罩",
+      "BG_IMAGE": "背景图像",
+      "MATERIAL": "材料"
+    }
+  },
+  "AreaToMask": {
+    "title": "区域到遮罩",
+    "inputs": {
+      "RGBA": "RGBA"
+    },
+    "widgets": {},
+    "outputs": {
+      "MASK": "遮罩"
+    }
+  },
+  "FaceToMask": {
+    "title": "人脸转遮罩",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {},
+    "outputs": {
+      "MASK": "遮罩"
+    }
+  },
+  "CompositeImages_": {
+    "title": "合成图像",
+    "inputs": {
+      "foreground": "前景",
+      "mask": "遮罩",
+      "background": "背景"
+    },
+    "widgets": {
+      "is_multiply_blend": "是否乘法混合",
+      "position": "位置",
+      "scale": "缩放"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    }
+  },
+  "EmptyLayer": {
+    "title": "空图层",
+    "inputs": {
+      "width": "宽度",
+      "height": "高度"
+    },
+    "widgets": {},
+    "outputs": {
+      "layer": "图层"
+    }
+  },
+  "NewLayer": {
+    "title": "新建图层",
+    "inputs": {
+      "image": "图像",
+      "mask": "遮罩",
+      "layers": "图层",
+      "canvas": "画布"
+    },
+    "widgets": {
+      "x": "x坐标",
+      "y": "y坐标",
+      "width": "宽度",
+      "height": "高度",
+      "z_index": "z索引",
+      "Set Area": "设置区域",
+      "scale_option": "缩放选项"
+    },
+    "outputs": {
+      "layer": "图层"
+    }
+  },
+  "SplitImage": {
+    "title": "拆分图像",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "num": "数量",
+      "seed": "种子",
+      "control_after_generate": "运行后操作"
+    },
+    "outputs": {
+      "grids": "栅格组",
+      "grid": "栅格",
+      "mask": "遮罩"
+    }
+  },
+  "CenterImage": {
+    "title": "居中图像",
+    "inputs": {
+      "canvas": "画布"
+    },
+    "widgets": {
+      "left": "左",
+      "top": "上",
+      "right": "右",
+      "bottom": "下"
+    },
+    "outputs": {
+      "grid": "栅格",
+      "mask": "遮罩"
+    }
+  },
+  "GridDisplayAndSave": {
+    "title": "网格显示并保存♾️Mixlab",
+    "inputs": {
+      "labels": "标签",
+      "grids": "网格",
+      "image": "图像"
+    },
+    "widgets": {
+      "filename_prefix": "文件名前缀"
+    },
+    "outputs": {}
+  },
+  "GridInput": {
+    "title": "网格输入",
+    "inputs": {
+      "grids": "网格",
+      "padding": "填充",
+      "width": "宽度",
+      "height": "高度"
+    },
+    "widgets": {
+      "padding": "填充",
+      "Add Box": "添加Box",
+      "Set Box": "设置Box",
+      "Upload JSON": "上传 JSON 数据"
+    },
+    "outputs": {
+      "grids": "网格",
+      "labels": "标签",
+      "image": "图像"
+    }
+  },
+  "GridOutput": {
+    "title": "网格输出♾️Mixlab",
+    "inputs": {
+      "grid": "网格",
+      "bg_image": "背景图像"
+    },
+    "widgets": {},
+    "outputs": {
+      "width": "宽度",
+      "height": "高度",
+      "int": "整数",
+      "mask": "遮罩"
+    }
+  },
+  "ShowLayer": {
+    "title": "显示图层",
+    "inputs": {
+      "layers": "图层"
+    },
+    "widgets": {
+      "edit": "编辑",
+      "x": "x坐标",
+      "y": "y坐标",
+      "width": "宽度",
+      "height": "高度",
+      "z_index": "z索引",
+      "scale_option": "缩放选项"
+    },
+    "outputs": {}
+  },
+  "MergeLayers": {
+    "title": "合并图层",
+    "inputs": {
+      "layers": "图层",
+      "images": "图像"
+    },
+    "widgets": {
+      "is_multiply_blend": "是否乘法混合"
+    },
+    "outputs": {
+      "IMAGE": "图像",
+      "MASK": "遮罩"
+    }
+  },
+  "GradientImage": {
+    "title": "渐变图像",
+    "inputs": {},
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "start_color_hex": "起始颜色十六进制值",
+      "end_color_hex": "结束颜色十六进制值"
+    },
+    "outputs": {
+      "IMAGE": "图像",
+      "image": "图像",
+      "MASK": "遮罩",
+      "mask": "遮罩"
+    }
+  },
+  "NoiseImage": {
+    "title": "噪波图像",
+    "inputs": {},
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "noise_level": "噪点级别",
+      "color_hex": "颜色十六进制值"
+    },
+    "outputs": {
+      "IMAGE": "图像",
+      "image": "图像"
+    }
+  },
+  "ResizeImageMixlab": {
+    "title": "图像缩放",
+    "inputs": {
+      "image": "图像",
+      "mask": "遮罩"
+    },
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "scale_option": "缩放方法",
+      "average_color": "平均颜色",
+      "fill_color": "填充颜色"
+    },
+    "outputs": {
+      "image": "图像",
+      "image list": "图像列表",
+      "average_hex": "平均色度",
+      "average_image": "平均图像",
+      "mask": "遮罩"
+    }
+  },
+  "MirroredImage": {
+    "title": "镜像翻转图像",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {},
+    "outputs": {
+      "IMAGE": "图像",
+      "image": "图像"
+    }
+  },
+  "LoadImagesToBatch": {
+    "title": "加载图片(base64)♾️Mixlab",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {},
+    "outputs": {
+      "IMAGE": "图像",
+      "image": "图像"
+    }
+  },
+  "GetImageSize_": {
+    "title": "获取图像大小",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "min_width": "最小宽度"
+    },
+    "outputs": {
+      "width": "宽度",
+      "height": "高度",
+      "min_width": "最小宽度",
+      "min_height": "最小高度",
+      "int": "整数"
+    }
+  },
+  "SaveImageAndMetadata_": {
+    "title": "保存图像输出 ♾️Mixlab",
+    "inputs": {
+      "images": "图像"
+    },
+    "widgets": {
+      "filename_prefix": "文件名前缀",
+      "metadata": "元数据",
+      "prompt": "提示词",
+      "extra_pnginfo": "额外PNG信息"
+    },
+    "outputs": {}
+  },
+  "ComparingTwoFrames_": {
+    "title": "比较两帧画面♾️Mixlab",
+    "inputs": {
+      "before_image": "前一帧图像",
+      "after_image": "后一帧图像"
+    },
+    "widgets": {},
+    "outputs": {}
+  },
+  "ImageColorTransfer": {
+    "title": "图像颜色迁移",
+    "inputs": {
+      "source": "源",
+      "target": "目标",
+      "weight": "权重"
+    },
+    "widgets": {
+      "weight": "权重"
+    },
+    "outputs": {
+      "IMAGE": "图像",
+      "image": "图像"
+    }
+  },
+  "SaveImageToLocal": {
+    "title": "保存图像到本地",
+    "inputs": {
+      "images": "图像",
+      "file_path": "文件路径",
+      "prompt": "提示词",
+      "extra_pnginfo": "额外PNG信息"
+    },
+    "widgets": {},
+    "outputs": {}
+  },
+  "ImageBatchToList_": {
+    "title": "图像批次转列表♾️Mixlab",
+    "inputs": {
+      "image_batch": "图像批次"
+    },
+    "widgets": {},
+    "outputs": {
+      "image_list": "图像",
+      "IMAGE": "图像"
+    }
+  },
+  "ImageListToBatch_": {
+    "title": "图像列表转批次♾️Mixlab",
+    "inputs": {
+      "images": "图像"
+    },
+    "widgets": {},
+    "outputs": {
+      "IMAGE": "图像"
+    }
+  },
+  "DepthViewer": {
+    "title": "深度查看器♾️Mixlab",
+    "inputs": {
+      "image": "图像",
+      "depth_map": "深度图",
+      "frames": "帧",
+      "reference_image": "参考图像"
+    },
+    "widgets": {},
+    "outputs": {
+      "frames": "帧",
+      "image": "图像"
+    }
+  },
+  "LaMaInpainting": {
+    "title": "LaMa修复",
+    "inputs": {
+      "image": "图像",
+      "mask": "遮罩"
+    },
+    "widgets": {},
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "PreviewMask_": {
+    "title": "预览遮罩♾️Mixlab",
+    "inputs": {
+      "mask": "遮罩"
+    },
+    "widgets": {},
+    "outputs": {}
+  },
+  "OutlineMask": {
+    "title": "遮罩描边",
+    "inputs": {
+      "mask": "遮罩"
+    },
+    "widgets": {
+      "outline_width": "轮廓宽度",
+      "tapered_corners": "圆角"
+    },
+    "outputs": {
+      "MASK": "遮罩"
+    }
+  },
+  "MaskListReplace": {
+    "title": "遮罩列表替换♾️Mixlab",
+    "inputs": {
+      "masks": "遮罩",
+      "mask_replace": "遮罩替换",
+      "start_index": "开始索引",
+      "end_index": "结束索引",
+      "invert": "反转"
+    },
+    "widgets": {},
+    "outputs": {
+      "MASK": "遮罩"
+    }
+  },
+  "MaskListMerge_": {
+    "title": "遮罩列表合并♾️Mixlab",
+    "inputs": {
+      "masks": "遮罩"
+    },
+    "widgets": {},
+    "outputs": {
+      "MASK": "遮罩"
+    }
+  },
+  "FeatheredMask": {
+    "title": "遮罩羽化",
+    "inputs": {
+      "mask": "遮罩",
+      "start_offset": "起始偏移",
+      "feathering_weight": "羽化权重"
+    },
+    "widgets": {
+      "start_offset": "起始偏移",
+      "feathering_weight": "羽化权重"
+    },
+    "outputs": {
+      "MASK": "遮罩"
+    }
+  },
+  "MiniCPM_VQA_Simple": {
+    "title": "迷你CPM_VQA_简易版",
+    "inputs": {
+      "images": "图像"
+    },
+    "widgets": {
+      "control_after_generate": "生成后进行控制",
+      "text": "文本",
+      "seed": "种子",
+      "extract_keywords": "提取关键词",
+      "temperature": "温度",
+      "keep_model_loaded": "保持模型加载"
+    },
+    "outputs": {
+      "result": "结果",
+      "keywords": "关键词",
+      "string": "字符串"
+    }
+  },
+  "P5Input": {
+    "title": "P5 输入 ♾️ Mixlab用于测试",
+    "inputs": {
+      "frames": "帧"
+    },
+    "widgets": {},
+    "outputs": {
+      "frames": "帧",
+      "image": "图像"
+    }
+  },
+  "PromptImage": {
+    "title": "提示词图像",
+    "inputs": {
+      "prompts": "提示词",
+      "images": "图像",
+      "save_to_image": "保存为图像"
+    },
+    "widgets": {
+      "prompts": "提示词",
+      "images": "图像",
+      "save_to_image": "保存为图像"
+    },
+    "outputs": {
+      "json_str": "json字符串",
+      "string": "字符串"
+    }
+  },
+  "PromptSimplification": {
+    "title": "提示词简化",
+    "inputs": {
+      "prompt": "提示词",
+      "length": "长度"
+    },
+    "widgets": {
+      "length": "长度"
+    },
+    "outputs": {
+      "string": "字符串",
+      "prompts": "提示词"
+    }
+  },
+  "PromptSlide": {
+    "title": "提示词滑条",
+    "inputs": {
+      "Upload Keywords": "上传关键词",
+      "weight": "权重"
+    },
+    "widgets": {
+      "Upload Keywords": "上传关键词",
+      "prompt_keyword": "提示词关键词",
+      "weight": "权重"
+    },
+    "outputs": {
+      "string": "字符串",
+      "prompt": "提示词"
+    }
+  },
+  "RandomPrompt": {
+    "title": "随机提示词",
+    "inputs": {
+      "seed": "种子"
+    },
+    "widgets": {
+      "max_count": "最大数量",
+      "mutable_prompt": "可变提示词",
+      "immutable_prompt": "不可变提示词",
+      "random_sample": "随机采样"
+    },
+    "outputs": {
+      "string": "字符串",
+      "STRING": "字符串"
+
+    }
+  },
+  "EmbeddingPrompt": {
+    "title": "Embedding嵌入提示词",
+    "inputs": {},
+    "widgets": {
+      "embedding": "Embedding嵌入",
+      "weight": "权重"
+    },
+    "outputs": {
+      "string": "字符串"
+    }
+  },
+  "GLIGENTextBoxApply_Advanced": {
+    "title": "GLIGEN文本框应用（高级）",
+    "inputs": {
+      "conditioning": "条件",
+      "clip": "CLIP",
+      "gligen_textbox_model": "GLIGEN文本框模型",
+      "grids": "网格",
+      "labels": "标签",
+      "seed": "种子"
+    },
+    "widgets": {
+      "index": "索引",
+      "max_size": "最大尺寸",
+      "random_shuffle": "随机打乱",
+      "seed": "种子"
+    },
+    "outputs": {
+      "conditioning": "条件",
+      "CONDITIONING": "条件",
+      "label": "标签",
+      "string": "字符串"
+    }
+  },
+  "JoinWithDelimiter": {
+    "title": "加入分隔符",
+    "inputs": {
+      "text_list": "文本列表"
+    },
+    "widgets": {
+      "delimiter": "分隔符"
+    },
+    "outputs": {
+      "STRING": "字符串"
+    }
+  },
+  "RembgNode_Mix": {
+    "title": "移除背景 ♾️Mixlab",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "model_name": "模型名称"
+    },
+    "outputs": {
+      "masks": "遮罩",
+      "images": "图像",
+      "RGBAs": "RGBAS"
+    }
+  },
+  "ScenedetectNode_": {
+    "title": "场景检测节点",
+    "inputs": {
+      "video": "视频",
+      "min_scene_len": "最小场景长度",
+      "adaptive_threshold": "自适应阈值",
+      "number_of_sample_frames": "采样帧数"
+    },
+    "widgets": {},
+    "outputs": {
+      "scene_video": "场景视频",
+      "scene_": "场景",
+      "int": "整数"
+    }
+  },
+  "ScreenShare": {
+    "title": "屏幕共享",
+    "inputs": {},
+    "widgets": {
+      "image_base64": "图像Base64",
+      "refresh_rate": "刷新率",
+      "prompt": "提示词",
+      "slide": "幻灯片",
+      "Stop Share": "停止分享",
+      "Stop": "停止",
+      "Set Area": "设置区域",
+      "Live Run": "实时运行",
+      "Stop Live": "停止实时",
+      "Camera": "相机",
+      "seed": "种子"
+    },
+    "outputs": {
+      "prompt": "提示词",
+      "seed (int)": "种子(整数)",
+      "current frame (image)": "当前帧(图像)",
+      "string": "字符串",
+      "denoise (float)": "降噪浮点数",
+      "int": "整数"
+    }
+  },
+  "FloatingVideo": {
+    "title": "屏幕窗口",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "Picture In Picture": "画中画"
+    },
+    "outputs": {}
+  },
+  "SenseVoiceNode": {
+    "title": "语音转文本",
+    "inputs": {
+      "audio": "音频"
+    },
+    "widgets": {
+      "device": "设备",
+      "language": "语言",
+      "num_threads": "线程数",
+      "use_int8": "使用int8",
+      "use_itn": "使用ITN"
+    },
+    "outputs": {
+      "result": "结果",
+      "total_seconds": "总秒数",
+      "text": "文本",
+      "srt": "字符串",
+      "string": "字符串",
+      "float": "浮点数"
+    }
+  },
+  "ChinesePrompt_Mix": {
+    "title": "中文提示词",
+    "inputs": {},
+    "widgets": {
+      "text": "文本",
+      "generation": "生成",
+      "control_after_generate": "运行后操作",
+      "seed": "种子"
+    },
+    "outputs": {
+      "prompt": "提示词",
+      "string": "字符串"
+    }
+  },
+  "PromptGenerate_Mix": {
+    "title": "生成提示词",
+    "inputs": {},
+    "widgets": {
+      "text": "文本",
+      "multiple": "多个",
+      "control_after_generate": "运行后操作",
+      "seed": "种子"
+    },
+    "outputs": {
+      "string": "字符串"
+    }
+  },
+  "LoadTripoSRModel_": {
+    "title": "加载TripoSR模型",
+    "inputs": {},
+    "widgets": {
+      "chunk_size": "块大小"
+    },
+    "outputs": {
+      "TRIPOSR_MODEL": "TripoSR模型",
+      "triposr_model": "TripoSR模型"
+    }
+  },
+  "TripoSRSampler_": {
+    "title": "TripoSR采样器",
+    "inputs": {
+      "model": "模型",
+      "image": "图像",
+      "mask": "遮罩"
+    },
+    "widgets": {
+      "resolution": "分辨率",
+      "threshold": "阈值",
+      "device": "设备"
+    },
+    "outputs": {
+      "MESH": "网格",
+      "mesh": "网格"
+    }
+  },
+  "SaveTripoSRMesh": {
+    "title": "保存TripoSR网格",
+    "inputs": {
+      "mesh": "网格"
+    },
+    "widgets": {
+      "filename_prefix": "文件名前缀"
+    },
+    "outputs": {}
+  },
+  "Color": {
+    "title": "颜色",
+    "inputs": {
+      "color": "颜色"
+    },
+    "widgets": {},
+    "outputs": {
+      "hex": "十六进制",
+      "int": "整数",
+      "float": "浮点数"
+    }
+  },
+  "KeyInput": {
+    "title": "API 密钥输入 ♾️Mixlab",
+    "inputs": {
+      "key": "键"
+    },
+    "widgets": {},
+    "outputs": {
+      "key": "密钥",
+      "string": "字符串"
+    }
+  },
+  "Font": {
+    "title": "字体",
+    "inputs": {
+      "font": "字体"
+    },
+    "widgets": {
+      "font": "字体"
+    },
+    "outputs": {
+      "string": "字符串",
+      "STRING": "字符串"
+    }
+  },
+  "TextToNumber": {
+    "title": "文本转数字",
+    "inputs": {
+      "seed": "种子"
+    },
+    "widgets": {
+      "text": "文本",
+      "random_number": "随机数",
+      "max_num": "最大数"
+    },
+    "outputs": {
+      "INT": "整数"
+    }
+  },
+  "FloatSlider": {
+    "title": "浮点滑块",
+    "inputs": {
+      "number": "数字",
+      "min_value": "最小值",
+      "max_value": "最大值",
+      "step": "步进"
+    },
+    "widgets": {
+      "number": "数字",
+      "min_value": "最小值",
+      "max_value": "最大值",
+      "step": "步进"
+    },
+    "outputs": {
+      "float": "浮点数",
+      "FLOAT": "浮点数"
+    }
+  },
+  "IntNumber": {
+    "title": "整数",
+    "inputs": {
+      "number": "数字",
+      "min_value": "最小值",
+      "max_value": "最大值",
+      "step": "步进"
+    },
+    "widgets": {
+      "number": "数字",
+      "min_value": "最小值",
+      "max_value": "最大值",
+      "step": "步进"
+    },
+    "outputs": {
+      "INT": "整数",
+      "int": "整数"
+    }
+  },
+  "MultiplicationNode": {
+    "title": "乘法节点",
+    "inputs": {
+      "A": "数字A"
+    },
+    "widgets": {
+      "multiply_by": "乘以",
+      "add_by": "加上"
+    },
+    "outputs": {
+      "FLOAT": "浮点数",
+      "INT": "整数"
+    }
+  },
+  "TextInput_": {
+    "title": "文本",
+    "inputs": {
+      "text": "文本"
+    },
+    "widgets": {},
+    "outputs": {
+      "STRING": "字符串",
+      "string": "字符串"
+    }
+  },
+  "IncrementingListNode": {
+    "title": "递增列表节点",
+    "inputs": {
+      "min_value": "最小值",
+      "max_value": "最大值",
+      "step": "步进",
+      "count": "数量",
+      "seed": "种子"
+    },
+    "widgets": {},
+    "outputs": {
+      "int": "整数",
+      "float": "浮点数"
+    }
+  },
+  "DynamicDelayProcessor": {
+    "title": "动态延迟处理器",
+    "inputs": {
+      "any_input": "任意输入"
+    },
+    "widgets": {
+      "delay_seconds": "延迟秒数",
+      "any_input": "任意输入",
+      "delay_by_text": "按文本延迟",
+      "words_per_seconds": "每秒字数",
+      "replace_output": "替换输出",
+      "replace_value": "替换值",
+      "text": "文本"
+    },
+    "outputs": {
+      "output": "输入",
+      "any_type": "任意类型"
+    }
+  },
+  "AppInfo": {
+    "title": "APP制作",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "name": "名称",
+      "input_ids": "输入ID",
+      "output_ids": "输出ID",
+      "image": "图像",
+      "description": "描述",
+      "version": "版本",
+      "share_prefix": "共享前缀",
+      "link": "链接",
+      "category": "类别",
+      "auto_save": "自动保存",
+      "Save & Open": "保存并打开",
+      "Download For App": "下载用于App",
+      "Canvas Mode": "画布模式",
+      "idle_animation": "空闲动画"
+    },
+    "outputs": {}
+  },
+  "CreateJsonNode": {
+    "title": "创建JSON节点",
+    "inputs": {
+      "value": "值",
+      "json_str": "JSON字符串"
+    },
+    "widgets": {
+      "key": "键",
+      "save": "保存"
+    },
+    "outputs": {
+      "json_str": "JSON字符串",
+      "string": "字符串"
+    }
+  },
+  "SwitchByIndex": {
+    "title": "按索引切换",
+    "inputs": {},
+    "widgets": {
+      "index": "索引",
+      "flat": "平"
+    },
+    "outputs": {
+      "any_type": "任意类型",
+      "Iist": "清单",
+      "count": "数量",
+      "int": "整数"
+    }
+  },
+  "ListSplit_": {
+    "title": "列表拆分♾️Mixlab",
+    "inputs": {},
+    "widgets": {
+      "chunk_size": "块大小",
+      "transition_size": "过渡大小",
+      "index": "索引"
+    },
+    "outputs": {
+      "any_type": "任意类型"
+    }
+  },
+  "LimitNumber": {
+    "title": "限制数字",
+    "inputs": {
+      "number": "数字",
+      "min_value": "最小值",
+      "max_value": "最大值"
+    },
+    "widgets": {
+      "min_value": "最小值",
+      "max_value": "最大值"
+    },
+    "outputs": {
+      "any_type": "任意类型",
+      "number": "数字"
+    }
+  },
+
+  "Seed_": {
+    "title": "随机种子",
+    "inputs": {},
+    "widgets": {
+      "seed": "随机种",
+      "control_after_generate": "运行后操作"
+    },
+    "outputs": {
+      "seed": "随机种"
+    }
+  },
+  "CkptNames_": {
+    "title": "Ckpt名称",
+    "inputs": {
+      "ckpt_names": "Ckpt名称"
+    },
+    "widgets": {},
+    "outputs": {
+      "ckpt_names": "Ckpt名称",
+      "any_type": "任意类型"
+    }
+  },
+  "LoraNames_": {
+    "title": "Lora名称",
+    "inputs": {
+      "lora_names": "Lora名称"
+    },
+    "widgets": {},
+    "outputs": {
+      "lora_names": "Lora名称",
+      "prompt": "提示词",
+      "string": "字符串"
+    }
+  },
+  "SamplerNames_": {
+    "title": "采样器名称",
+    "inputs": {
+      "sampler_names": "采样器名称"
+    },
+    "widgets": {},
+    "outputs": {
+      "sampler_names": "采样器名称"
+    }
+  },
+  "ImageListReplace": {
+    "title": "图像列表替换",
+    "inputs": {
+      "images": "图像",
+      "start_index": "开始索引",
+      "end_index": "结束索引",
+      "invert": "反转",
+      "image_replace": "图像替换",
+      "images_replace": "图像替换"
+    },
+    "widgets": {},
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "LoadVideoAndSegment": {
+    "title": "加载视频并分割",
+    "inputs": {
+      "video": "视频",
+      "video_segment_frames": "视频分割帧",
+      "transition_frames": "过渡帧",
+      "filename": "文件名",
+      "frame_load_cap": "帧加载上限",
+      "skip_first_frames": "跳过首帧"
+    },
+    "widgets": {},
+    "outputs": {
+      "scene_video": "场景视频",
+      "int": "整数"
+    }
+  },
+  "LoadAndCombinedAudio_": {
+    "title": "加载并合并音频",
+    "inputs": {
+      "audios": "音频",
+      "start_time": "开始时间",
+      "duration": "持续时间"
+    },
+    "widgets": {
+      "start_time": "开始时间",
+      "Upload Audio": "上传音频",
+      "duration": "持续时间"
+    },
+    "outputs": {
+      "audio_file_path": "音频文件路径",
+      "audio": "音频"
+    }
+  },
+
+  "VAEEncodeForInpaint_Frames": {
+    "title": "为修复帧进行VAE编码",
+    "inputs": {
+      "vae": "VAE",
+      "images": "图像",
+      "masks": "遮罩",
+      "grow_mask_by": "按...扩展遮罩"
+    },
+    "widgets": {},
+    "outputs": {
+      "latent": "潜在"
+    }
+  },
+  "scenesNode_": {
+    "title": "场景节点",
+    "inputs": {
+      "scenes_video": "场景视频",
+      "index": "索引",
+      "video": "视频",
+      "frame_load_cap": "帧加载上限",
+      "skip_first_frames": "跳过首帧"
+    },
+    "widgets": {},
+    "outputs": {
+      "image": "图像",
+      "int": "整数"
+    }
+  },
+  "LoadWhisperModel_": {
+    "title": "加载语音模型♾️Mixlab",
+    "inputs": {
+      "model_size": "模型大小",
+      "device": "设备",
+      "compute_type": "计算类型"
+    },
+    "widgets": {
+      "model_size": "模型大小",
+      "device": "设备",
+      "compute_type": "计算类型"
+    },
+    "outputs": {
+      "whisper": "Whisper"
+    }
+  },
+  "ApplyVisualStylePrompting_": {
+    "title": "应用视觉提示功能 ♾️Mixlab",
+    "inputs": {
+      "reference_image": "参考图像",
+      "model": "模型",
+      "clip": "CLIP",
+      "vae": "VAE",
+      "positive": "正面提示",
+      "negative": "负面提示"
+    },
+    "widgets": {
+      "enabled": "开启",
+      "denoise": "降噪",
+      "batch_size": "批次大小"
+    },
+    "outputs": {
+      "model": "模型",
+      "latents": "Latent",
+      "positive": "正面提示",
+      "negative": "负面提示"
+    }
+  },
+  "StyleAlignedReferenceSampler_": {
+    "title": "风格对齐参考采样器 ♾️Mixlab",
+    "inputs": {
+      "ref_latents": "参考Latent",
+      "model": "模型",
+      "clip": "CLIP",
+      "vae": "VAE",
+      "positive": "正面提示",
+      "negative": "负面提示"
+    },
+    "widgets": {
+      "enabled": "开启",
+      "denoise": "降噪",
+      "share_norm": "共享规范",
+      "share_attn": "分享关注",
+      "scale": "等级",
+      "seed": "开启",
+      "steps": "步",
+      "cfg": "CFG",
+      "control_after_generate": "生成后进行控制",
+      "scheduler": "调度器",
+      "batch_size": "批次大小"
+    },
+    "outputs": {
+      "output": "Latent",
+      "latents": "Latent",
+      "denoised_output": "降噪Latent",
+      "negative": "负面提示"
+    }
+  },
+  "StyleAlignedSampleReferenceLatents_": {
+    "title": "风格对齐样本参考Latent♾️Mixlab",
+    "inputs": {
+      "reference_image": "参考图像",
+      "model": "模型",
+      "scheduler": "调度器",
+      "vae": "VAE",
+      "positive": "正面提示",
+      "negative": "负面提示"
+    },
+    "widgets": {
+      "seed": "开启",
+      "steps": "降噪",
+      "cfg": "降噪",
+      "control_after_generate": "生成后进行控制",
+      "denoise": "降噪"
+    },
+    "outputs": {
+      "ref_latents": "参考Latent",
+      "latents": "Latent",
+      "noised_output": "降噪输出",
+      "negative": "负面提示"
+    }
+  },
+  "StyleAlignedBatchAlign_": {
+    "title": "风格对齐批量对齐 ♾️Mixlab",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "share_norm": "共享规范",
+      "share_attn": "共享注意力",
+      "scale": "等级"
+    },
+    "outputs": {
+      "MODEL": "模型"
+    }
+  },
+  "LoadVideoAndSegment_": {
+    "title": "加载视频并分段♾️Mixlab",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "video": "视频",
+      "video_segment_frames": "一段视频帧",
+      "transition_frames": "跳过帧"
+    },
+    "outputs": {
+      "scenes_video": "场景视频",
+      "scenes_count": "场景数量",
+      "frame_count": "帧数",
+      "fps": "帧率",
+      "MODEL": "模型"
+    }
+  },
+  "VideoCombine_Adv": {
+    "title": "视频合并",
+    "inputs": {
+      "image_batch": "图像批次"
+    },
+    "widgets": {
+      "frame_rate": "帧率",
+      "loop_count": "循环次数",
+      "filename_prefix": "文件名前缀",
+      "format": "格式",
+      "pingpong": "乒乓",
+      "save_mage": "保存幻灯片",
+      "metadata": "元数据"
+    },
+    "outputs": {
+      "scenes_video": "场景视频",
+      "scenes_count": "场景数量",
+      "frame_count": "帧数",
+      "fps": "帧率",
+      "MODEL": "模型"
+    }
+  },
+
+  "ScenesNode_": {
+    "title": "选择场景",
+    "inputs": {
+      "scenes_video": "场景视频"
+    },
+    "widgets": {
+      "video": "视频",
+      "index": "索引"
+    },
+    "outputs": {
+      "scenes_video": "场景视频",
+      "scenes": "场景",
+      "scene_len": "场景长度",
+      "video frames (batch)": "视频帧(批次)",
+      "count": "数量"
+    }
+  },
+  "GenerateFramesByCount": {
+    "title": "按帧数生成序列",
+    "inputs": {
+      "frames": "视频帧"
+    },
+    "widgets": {
+      "frame_count": "帧数",
+      "revert": "还原"
+    },
+    "outputs": {
+      "scenes_video": "场景视频",
+      "frames": "视频帧"
+    }
+  },
+  "CombineAudioVideo": {
+    "title": "合并音频视频",
+    "inputs": {
+      "video": "视频",
+      "audio": "音频"
+    },
+    "widgets": {
+      "frame_count": "帧数",
+      "revert": "还原"
+    },
+    "outputs": {
+      "SCENE_VIDEO": "场景视频",
+      "frames": "视频帧"
+    }
+  },
+  "SceneInfoNode": {
+    "title": "场景信息",
+    "inputs": {
+      "video": "视频",
+      "scenes": "场景"
+    },
+    "widgets": {
+      "frame_count": "帧数",
+      "index": "索引"
+    },
+    "outputs": {
+      "sample_frames": "样本帧",
+      "middle_frames": "中间帧",
+      "start_frame": "起始帧",
+      "end_frame": "结束帧",
+      "scene_video": "场景视频",
+      "frames": "视频帧"
+    }
+  },
+  "LoadVideoFromURL": {
+    "title": "加载视频(网址)",
+    "inputs": {},
+    "widgets": {
+      "url": "网址",
+      "force_rate": "强制率",
+      "force_size": "强制大小",
+      "custom_width": "自定义宽度",
+      "custom_height": "自定义高度",
+      "frame_load_cap": "帧加载上限",
+      "skip_first_frames": "跳过前几帧",
+      "select_every_nth": "每隔第 n 帧选择"
+    },
+    "outputs": {
+      "frame_count": "帧数计数",
+      "video_info": "视频信息",
+      "scene_video": "场景视频",
+      "frames": "视频帧"
+    }
+  },
+  "VideoGenKlingNode": {
+    "title": "可灵视频生成节点",
+    "inputs": {
+      "fal_key": "FAL密钥",
+      "image": "图像"
+    },
+    "widgets": {
+      "duration": "持续时间",
+      "aspect_ratio": "宽高比",
+      "mode": "模式"
+    },
+    "outputs": {
+      "STRING": "字符串"
+    }
+  },
+  "VideoGenRunwayGen3Node": {
+    "title": "RunwayGen3视频生成节点",
+    "inputs": {
+      "fal_key": "FAL密钥",
+      "image": "图像"
+    },
+    "widgets": {
+      "duration": "持续时间",
+      "aspect_ratio": "宽高比",
+      "mode": "模式"
+    },
+    "outputs": {
+      "STRING": "字符串"
+    }
+  },
+  "SimulateDevDesignDiscussions": {
+    "title": "模拟开发设计讨论♾️Mixlab播客",
+    "inputs": {
+      "api_key": "API密钥",
+      "custom_model_name": "自定义模型名称",
+      "custom_api_url": "自定义API地址"
+    },
+    "widgets": {
+      "duration": "持续时间",
+      "api_url": "API网址",
+      "mode": "模式"
+    },
+    "outputs": {
+      "text": "文本"
+    }
+  },
+  "VideoGenLumaDreamMachineNode": {
+    "title": "LumaDream梦境视频生成器",
+    "inputs": {
+      "fal_key": "FAL密钥",
+      "image": "图像"
+    },
+    "widgets": {
+      "duration": "持续时间",
+      "aspect_ratio": "宽高比",
+      "loop": "循环"
+    },
+    "outputs": {
+      "STRING": "字符串"
+    }
+  },
+  "SiliconflowLLM": {
+    "title": "LLM 硅基流动♾️Mixlab",
+    "inputs": {
+      "api_key": "API密钥",
+      "custom_model_name": "自定义模型名称"
+    },
+    "widgets": {
+      "max_tokens": "最大字数",
+      "prompt": "提示词",
+      "model": "模型",
+      "seed": "随机种",
+      "control_after_generate": "运行后操作",
+      "context_size": "上下文大小"
+    },
+    "outputs": {
+      "text": "文本",
+      "messages": "信息",
+      "session_history": "会话历史"
+    }
+  },
+  "ChatGPT": {
+    "title": "OpenAI ChatGPT",
+    "inputs": {
+      "api_key": "API密钥",
+      "custom_model_name": "自定义模型名称",
+      "custom_api_url": "自定义API地址"
+    },
+    "widgets": {
+      "max_tokens": "最大字数",
+      "api_url": "API网址",
+      "model": "模型",
+      "seed": "随机种",
+      "control_after_generate": "运行后操作",
+      "context_size": "上下文大小"
+    },
+    "outputs": {
+      "text": "文本",
+      "messages": "信息",
+      "session_history": "会话历史"
+    }
+  },
+  "JsonRepair": {
+    "title": "JSON修复",
+    "inputs": {
+      "json_string": "JSON字符串",
+      "json_string2": "JSON字符串2"
+    },
+    "widgets": {
+      "key": "密钥"
+    },
+    "outputs": {
+      "json_string": "JSON字符串",
+      "value": "值"
+    }
+  },
+  "MaskListReplace_": {
+    "title": "遮罩列表替换♾️Mixlab",
+    "inputs": {
+      "masks": "遮罩列表",
+      "mask_replace": "遮罩替换"
+    },
+    "widgets": {
+      "start_index": "起始索引",
+      "end_index": "结束索引",
+      "invert": "反转"
+    },
+    "outputs": {
+      "masks": "遮罩列表",
+      "mask": "遮罩"
+    }
+  },
+  "IncrementingListNode_": {
+    "title": "创建递增数字列表♾️Mixlab",
+    "inputs": {},
+    "widgets": {
+      "min_value": "最小值",
+      "max_value": "最大值",
+      "step": "步数",
+      "count": "数量",
+      "seed": "随机种"
+    },
+    "outputs": {
+      "int_list": "整数列表",
+      "float_list": "浮点列表"
+    }
+  },
+  "ImageListReplace_": {
+    "title": "图像列表替换♾️Mixlab",
+    "inputs": {
+      "images": "图像列表",
+      "image_replace": "图像替换",
+      "images_replace": "图像替换"
+    },
+    "widgets": {
+      "start_index": "开始索引",
+      "end_index": "结束索引",
+      "invert": "反转"
+    },
+    "outputs": {
+      "images": "图像列表",
+      "select_images": "选择图像",
+      "image": "图像"
+    }
+  },
+  "WhisperTranscribe_": {
+    "title": "语音转录♾️Mixlab",
+    "inputs": {
+      "whisper_model": "语音模型",
+      "audio": "音频"
+    },
+    "widgets": {},
+    "outputs": {
+      "any_type": "任意类型",
+      "result": "结果",
+      "total_seconds": "总秒数",
+      "srt": "字符串",
+      "text": "文本",
+      "float": "浮点数"
+    }
+  }
+}

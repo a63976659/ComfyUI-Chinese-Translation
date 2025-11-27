@@ -1,0 +1,529 @@
+{
+  "Hy3DTorchCompileSettings": {
+    "title": "Hunyuan3D Torch 编译设置",
+    "inputs": {},
+    "widgets": {
+      "backend": "后端",
+      "fullgraph": "完整图",
+      "mode": "模式",
+      "dynamic": "动态",
+      "dynamo_cache_size_limit": "Dynamo缓存限制",
+      "compile_transformer": "编译Transformer",
+      "compile_vae": "编译VAE"
+    },
+    "outputs": {
+      "torch_compile_args": "Torch 编译参数"
+    }
+  },
+  "Hy3DPostprocessMesh": {
+    "title": "Hunyuan3D 网格后处理",
+    "inputs": {
+      "trimesh": "三角网格"
+    },
+    "widgets": {
+      "remove_floaters": "移除漂浮物",
+      "remove_degenerate_faces": "移除退化面",
+      "reduce_faces": "面数精简", 
+      "max_facenum": "最大面数限制",
+      "smooth_normals": "法线平滑"
+    },
+    "outputs": {
+      "trimesh": "优化后的网格"
+    }
+  },
+  "Hy3DModelLoader": {
+    "title": "Hunyuan3D 模型加载器",
+    "inputs": {
+      "compile_args": "编译参数"
+    },
+    "widgets": {
+      "model": "模型",
+      "attention_mode": "注意力模式",
+      "cublas_ops": "CUBLAS运算"
+    },
+    "outputs": {
+      "pipeline": "管道",
+      "vae": "VAE"
+    }
+  },
+  "Hy3DVAELoader": {
+    "title": "Hunyuan3D VAE 加载器",
+    "inputs": {},
+    "widgets": {
+      "model_name": "模型名称"
+    },
+    "outputs": {
+      "vae": "VAE"
+    }
+  },
+  "DownloadAndLoadHy3DDelightModel": {
+    "title": "(下载)加载Hunyuan3D Delight模型",
+    "inputs": {
+      "compile_args": "编译参数"
+    },
+    "widgets": {
+      "model": "模型"
+    },
+    "outputs": {
+      "delight_pipe": "Delight管道"
+    }
+  },
+  "Hy3DDelightImage": {
+    "title": "Hunyuan3D Delight图像",
+    "inputs": {
+      "delight_pipe": "Delight管道",
+      "image": "图像",
+      "scheduler": "调度器"
+    },
+    "widgets": {
+      "steps": "步数",
+      "width": "宽度",
+      "height": "高度",
+      "cfg_image": "CFG图像",
+      "seed": "种子"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "DownloadAndLoadHy3DPaintModel": {
+    "title": "(下载)加载Hunyuan3D Paint模型",
+    "inputs": {
+      "model": "模型",
+      "compile_args": "编译参数"
+    },
+    "widgets": {},
+    "outputs": {
+      "delight_pipe": "Delight管道"
+    }
+  },
+  "Hy3DCameraConfig": {
+    "title": "Hunyuan3D 相机配置",
+    "inputs": {},
+    "widgets": {
+      "camera_azimuths": "相机方位角",
+      "camera_elevations": "相机仰角",
+      "view_weights": "视图权重",
+      "camera_distance": "相机距离",
+      "ortho_scale": "正交缩放"
+    },
+    "outputs": {
+      "camera_config": "相机配置"
+    }
+  },
+  "Hy3DMeshVerticeInpaintTexture": {
+    "title": "Hunyuan3D 网格顶点纹理修复",
+    "inputs": {
+      "texture": "原始纹理",
+      "mask": "修复遮罩",
+      "renderer": "渲染器"
+    },
+    "widgets": {},
+    "outputs": {
+      "texture": "纹理",
+      "mask": "遮罩",
+      "renderer": "渲染器"
+    }
+  },
+  "Hy3DMeshUVWrap": {
+    "title": "Hunyuan3D 网格UV包裹",
+    "inputs": {
+      "trimesh": "三角网格"
+    },
+    "widgets": {},
+    "outputs": {
+      "trimesh": "三角网格"
+    }
+  },
+  "Hy3DRenderMultiView": {
+    "title": "Hunyuan3D 渲染多视图",
+    "inputs": {
+      "trimesh": "三角网格",
+      "camera_config": "相机配置"
+    },
+    "widgets": {
+      "render_size": "渲染尺寸",
+      "texture_size": "纹理尺寸",
+      "normal_space": "法线空间",
+      "camera_elevs": "相机仰角",
+      "camera_azims": "相机方位角",
+      "use_abs_coor": "绝对坐标",
+      "bg_color": "背景颜色"
+    },
+    "outputs": {
+      "normal_maps": "法线贴图",
+      "position_maps": "位置地图",
+      "renderer": "渲染器",
+      "masks": "遮罩"
+    }
+  },
+  "Hy3DRenderSingleView": {
+    "title": "Hunyuan3D 渲染单视图",
+    "inputs": {
+      "trimesh": "三角网格"
+    },
+    "widgets": {
+      "render_type": "渲染类型",
+      "render_size": "渲染尺寸",
+      "camera_type": "相机类型",
+      "camera_distance": "相机距离",
+      "pan_x": "X轴平移",
+      "pan_y": "Y轴平移",
+      "ortho_scale": "正交缩放",
+      "azimuth": "方位角",
+      "elevation": "仰角",
+      "bg_color": "背景颜色"
+    },
+    "outputs": {
+      "image": "图像",
+      "mask": "遮罩"
+    }
+  },
+  "Hy3DRenderMultiViewDepth": {
+    "title": "Hunyuan3D 多视图深度渲染",
+    "inputs": {
+      "trimesh": "三角网格",
+      "camera_config": "相机配置"
+    },
+    "widgets": {
+      "render_size": "渲染尺寸",
+      "texture_size": "纹理尺寸",
+      "camera_elevs": "相机仰角",
+      "camera_azims": "相机方位角"
+    },
+    "outputs": {
+      "depth_maps": "深度地图",
+      "masks": "遮罩"
+    }
+  },
+  "Hy3DGetMeshPBRTextures": {
+    "title": "Hunyuan3D 获取网格PBR纹理",
+    "inputs": {
+      "trimesh": "三角网格"
+    },
+    "widgets": {
+      "texture": "基础纹理"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "Hy3DSetMeshPBRTextures": {
+    "title": "Hunyuan3D 设置网格PBR纹理",
+    "inputs": {
+      "trimesh": "三角网格",
+      "image": "PBR纹理图"
+    },
+    "widgets": {
+      "texture": "基础纹理"
+    },
+    "outputs": {
+      "trimesh": "带纹理的网格"
+    }
+  },
+  "Hy3DSetMeshPBRAttributes": {
+    "title": "Hunyuan3D 设置网格PBR属性",
+    "inputs": {
+      "trimesh": "三角网格"
+    },
+    "widgets": {
+      "baseColorFactor": "基础色系数",
+      "emissiveFactor": "自发光系数", 
+      "metallicFactor": "金属度系数",
+      "roughnessFactor": "粗糙度系数",
+      "doubleSided": "双面渲染"
+    },
+    "outputs": {
+      "trimesh": "带PBR属性的网格"
+    }
+  },
+  "Hy3DDiffusersSchedulerConfig": {
+    "title": "Hunyuan3D 扩散调度器",
+    "inputs": {
+      "pipeline": "管道"
+    },
+    "widgets": {
+      "scheduler": "调度器",
+      "sigmas": "Sigma值"
+    },
+    "outputs": {
+      "diffusers_scheduler": "扩散器调度器"
+    }
+  },
+  "Hy3DIMRemesh": {
+    "title": "Hunyuan3D Instant-Meshes 重拓扑",
+    "inputs": {
+      "trimesh": "三角网格"
+    },
+    "widgets": {
+      "merge_vertices": "合并顶点",
+      "vertex_count": "顶点数量",
+      "smooth_iter": "平滑迭代次数",
+      "align_to_boundaries": "对齐边界",
+      "triangulate_result": "三角化结果",
+      "max_facenum": "最大面数"
+    },
+    "outputs": {
+      "trimesh": "重拓扑网格"
+    }
+  },
+  "Hy3DBPT": {
+    "title": "Hunyuan3D 贝叶斯泊松重建",
+    "inputs": {
+      "trimesh": "三角网格"
+    },
+    "widgets": {
+      "enable_bpt": "启用BPT算法",
+      "seed": "随机种子",
+      "control_after_generate": "生成后控制",
+      "temperature": "温度系数",
+      "pc_num": "点云数量",
+      "samples": "采样次数"
+    },
+    "outputs": {
+      "trimesh": "优化后的网格"
+    }
+  },
+  "Hy3DSampleMultiView": {
+    "title": "Hunyuan3D 多视图采样",
+    "inputs": {
+      "pipeline": "管道",
+      "ref_image": "参考图像",
+      "normal_maps": "法线贴图",
+      "position_maps": "位置贴图",
+      "camera_config": "相机配置",
+      "scheduler": "调度器",
+      "samples": "样本数"
+    },
+    "widgets": {
+      "view_size": "视图尺寸",
+      "steps": "步数",
+      "seed": "种子",
+      "control after generate": "生成后控制",
+      "denoise_strength": "降噪强度"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "CV2InpaintTexture": {
+    "title": "CV2 纹理修复",
+    "inputs": {
+      "texture": "纹理",
+      "mask": "修复遮罩"
+    },
+    "widgets": {
+      "inpaint_radius": "修复半径", 
+      "inpaint_method": "修复算法"
+    },
+    "outputs": {
+      "texture": "纹理"
+    }
+  },
+  "Hy3DMeshInfo": {
+    "title": "Hunyuan3D 网格信息",
+    "inputs": {
+      "trimesh": "三角网格"
+    },
+    "widgets": {},
+    "outputs": {
+      "trimesh": "原始网格",
+      "vertices": "顶点",
+      "faces": "脸"
+    }
+  },
+  "Hy3DFastSimplifyMesh": {
+    "title": "Hunyuan3D 快速网格简化",
+    "inputs": {
+      "trimesh": "三角网格"
+    },
+    "widgets": {
+      "target_count": "目标面数",
+      "aggressiveness": "简化强度", 
+      "max_iterations": "最大迭代次数",
+      "update_rate": "更新频率",
+      "preserve_border": "保留边界",
+      "lossless": "无损模式",
+      "threshold_lossless": "无损阈值"
+    },
+    "outputs": {
+      "trimesh": "简化后的网格"
+    }
+  },
+  "Hy3DBakeFromMultiview": {
+    "title": "Hunyuan3D 多视图烘焙",
+    "inputs": {
+      "images": "图像",
+      "renderer": "渲染器",
+      "camera_config": "相机配置"
+    },
+    "widgets": {
+      "camera_config": "相机配置",
+      "views": "视图数量",
+      "camera_elevs": "相机仰角",
+      "camera_azims": "相机方位角",
+      "view_weights": "视图权重",
+      "method": "烘焙方法"
+    },
+    "outputs": {
+      "texture": "纹理",
+      "mask": "遮罩",
+      "renderer": "渲染器"
+    }
+  },
+  "Hy3DApplyTexture": {
+    "title": "Hunyuan3D 应用纹理",
+    "inputs": {
+      "texture": "纹理",
+      "renderer": "渲染器"
+    },
+    "widgets": {},
+    "outputs": {
+      "trimesh": "三角网格"
+    }
+  },
+  "Hy3DLoadMesh": {
+    "title": "Hunyuan3D 加载网格",
+    "inputs": {},
+    "widgets": {
+      "glb_path": "GLB路径"
+    },
+    "outputs": {
+      "trimesh": "三角网格"
+    }
+  },
+  "Hy3DUploadMesh": {
+    "title": "Hunyuan3D 上传网格",
+    "inputs": {},
+    "widgets": {
+      "mesh": "网格数据",
+      "choose glb file to upload": "选择要上传的GLB文件"
+    },
+    "outputs": {
+      "trimesh": "三角网格"
+    }
+  },
+  "Hy3DGenerateMesh": {
+    "title": "Hunyuan3D 生成网格",
+    "inputs": {
+      "pipeline": "管道",
+      "image": "图像",
+      "mask": "遮罩"
+    },
+    "widgets": {
+      "guidance_scale": "引导比例",
+      "steps": "步数",
+      "seed": "种子",
+      "scheduler": "调度器",
+      "force_offload": "强制卸载",
+      "front": "前视图",
+      "back": "后视图",
+      "left": "左视图",
+      "right": "右视图"
+    },
+    "outputs": {
+      "latents": "潜空间"
+    }
+  },
+  "Hy3DGenerateMeshMultiView": {
+    "title": "Hunyuan3D 多视图生成网格",
+    "inputs": {
+      "pipeline": "处理管道",
+      "front": "前视图",
+      "left": "左视图", 
+      "right": "右视图",
+      "back": "后视图"
+    },
+    "widgets": {
+      "guidance_scale": "引导比例",
+      "steps": "迭代步数",
+      "seed": "随机种子",
+      "control after generate": "生成后控制",
+      "scheduler": "调度器"
+    },
+    "outputs": {
+      "latent": "潜空间",
+      "image": "图像",
+      "mask": "遮罩"
+    }
+  },
+
+  "Hy3DVAEDecode": {
+    "title": "Hunyuan3D VAE 解码",
+    "inputs": {
+      "vae": "VAE",
+      "latents": "潜空间"
+    },
+    "widgets": {
+      "box_v": "边界框",
+      "octree_resolution": "八叉树分辨率",
+      "num_chunks": "分块数量",
+      "mc_level": "MC级别",
+      "mc_algo": "MC算法",
+      "enable_flash_vdm": "启用Flash VDM",
+      "force_offload": "强制卸载"
+    },
+    "outputs": {
+      "trimesh": "三角网格"
+    }
+  },
+  "Hy3DExportMesh": {
+    "title": "Hunyuan3D 导出网格",
+    "inputs": {
+      "trimesh": "三角网格"
+    },
+    "widgets": {
+      "filename_prefix": "文件前缀",
+      "file_format": "文件格式",
+      "save_file": "保存文件"
+    },
+    "outputs": {
+      "glb_path": "glb路径"
+    }
+  },
+  "TrimeshToMESH": {
+    "title": "三角网格转MESH格式",
+    "inputs": {
+      "trimesh": "三角网格数据"
+    },
+    "widgets": {},
+    "outputs": {
+      "mesh": "MESH格式数据"
+    }
+  },
+  "MESHToTrimesh": {
+    "title": "MESH格式转三角网格",
+    "inputs": {
+      "mesh": "MESH格式数据"
+    },
+    "widgets": {},
+    "outputs": {
+      "TRIMESH": "三角网格数据"
+    }
+  },
+  "Hy3DNvdiffrastRenderer": {
+    "title": "Hunyuan3D Nvdiffrast 渲染器",
+    "inputs": {
+      "trimesh": "三角网格"
+    },
+    "widgets": {
+      "render_type": "渲染类型",
+      "width": "输出宽度",
+      "height": "输出高度",
+      "ssaa": "超级采样抗锯齿",
+      "num_frames": "帧数",
+      "camera_distance": "相机距离",
+      "yaw": "偏航角",
+      "pitch": "俯仰角",
+      "fov": "视野范围",
+      "near": "近裁剪面",
+      "far": "远裁剪面",
+      "pan_x": "X轴平移",
+      "pan_y": "Y轴平移"
+    },
+    "outputs": {
+      "image": "图像",
+      "mask": "遮罩"
+    }
+  }
+}

@@ -1,0 +1,533 @@
+{
+    "HyVideoLoraBlockEdit": {
+        "title": "混元视频 Lora区块编辑",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "selectedblocks": "选定区块",
+            "blocks": "区块列表"
+        }
+    },
+    "HyVideoLoraSelect": {
+        "title": "混元视频 Lora选择器",
+        "inputs": {
+            "prev_lora": "前序Lora",
+            "blocks": "区块列表"
+        },
+        "widgets": {
+            "lora": "Lora模型",
+            "strength": "强度",
+            "fuse_lora": "融合Lora"
+        },
+        "outputs": {
+            "lora": "Lora模型"
+        }
+    },
+    "HyVideoBlockSwap": {
+        "title": "混元视频 区块交换",
+        "inputs": {},
+        "widgets": {
+            "double_blocks_to_swap": "双区块交换",
+            "single_blocks_to_swap": "单区块交换",
+            "offload_txt_in": "文本卸载",
+            "offload_img_in": "图像卸载"
+        },
+        "outputs": {
+            "block_swap_args": "区块交换参数"
+        }
+    },
+    "HyVideoEnhanceAVideo": {
+        "title": "混元视频 视频增强",
+        "inputs": {},
+        "widgets": {
+            "weight": "权重",
+            "single_blocks": "单区块",
+            "double_blocks": "双区块",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "feta_args": "增强参数"
+        }
+    },
+    "HyVideoCustomPromptTemplate": {
+        "title": "混元视频 自定义提示词模板",
+        "inputs": {
+            "custom_prompt_template": "自定义模板内容"
+        },
+        "widgets": {
+            "crop_start": "起始裁剪位置"
+        },
+        "outputs": {
+            "hyvid_prompt_template": "处理后的模板"
+        }
+    },
+    "HyVideoSTG": {
+        "title": "混元视频 STG控制",
+        "inputs": {},
+        "widgets": {
+            "stg_mode": "STG模式",
+            "stg_block_idx": "STG区块索引",
+            "stg_scale": "STG缩放",
+            "stg_start_percent": "STG起始百分比",
+            "stg_end_percent": "STG结束百分比"
+        },
+        "outputs": {
+            "stg_args": "STG参数"
+        }
+    },
+    "HyVideoTeaCache": {
+        "title": "混元视频 茶缓存",
+        "inputs": {},
+        "widgets": {
+            "rel_l1_thresh": "L1阈值",
+            "cache_device": "缓存设备"
+        },
+        "outputs": {
+            "teacache_args": "缓存参数"
+        }
+    },
+    "HyVideoModelLoader": {
+        "title": "混元视频 模型加载器",
+        "inputs": {
+            "compile_args": "编译参数",
+            "block_swap_args": "区块交换参数",
+            "lora": "Lora模型"
+        },
+        "widgets": {
+            "model": "模型",
+            "base_precision": "基础精度",
+            "quantization": "量化方式",
+            "load_device": "加载设备",
+            "attention_mode": "注意力模式",
+            "auto_cpu_offload": "自动CPU卸载",
+            "upcast_rope": "上转换ROPE"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "HyVideoVAELoader": {
+        "title": "混元视频 VAE加载器",
+        "inputs": {
+            "compile_args": "编译参数"
+        },
+        "widgets": {
+            "precision": "精度",
+            "model_name": "模型名称"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "HyVideoTorchCompileSettings": {
+        "title": "混元视频 Torch编译设置",
+        "inputs": {},
+        "widgets": {
+            "backend": "后端",
+            "fullgraph": "完整图",
+            "mode": "模式",
+            "dynamic": "动态模式",
+            "dynamo_cache_size_limit": "Dynamo缓存限制",
+            "compile_single_blocks": "编译单区块",
+            "compile_double_blocks": "编译双区块",
+            "compile_txt_in": "编译文本输入",
+            "compile_vector_in": "编译向量输入",
+            "compile_final_layer": "编译最终层"
+        },
+        "outputs": {
+            "torch_compile_args": "Torch编译参数"
+        }
+    },
+    "HyVideoEncode": {
+        "title": "混元视频 视频编码器",
+        "inputs": {
+            "vae": "VAE",
+            "image": "图像"
+        },
+        "widgets": {
+            "enable_vae_tiling": "启用VAE分块处理",
+            "temporal_tiling_sample_size": "时序分块采样大小",
+            "spatial_tile_sample_min_size": "空间分块最小尺寸",
+            "auto_tile_size": "自动分块尺寸",
+            "noise_aug_strength": "噪声增强强度",
+            "latent_strength": "Latent强度",
+            "latent_dist": "Latent分布"
+        },
+        "outputs": {
+            "samples": "采样"
+        }
+    },
+    "HyVideoTextImageEncode": {
+        "title": "混元视频 文本图像联合编码器(IP2V)",
+        "inputs": {
+            "text_encoders": "文本编码器",
+            "custom_prompt_template": "自定义模板",
+            "clip_l": "CLIP L",
+            "image": "主输入图像",
+            "image1": "辅助图像1",
+            "image2": "辅助图像2",
+            "hyvid_cfg": "视频配置参数",
+            "model_to_offload": "待卸载模型"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "image_token_selection_expr": "图像标记选择器",
+            "force_offload": "强制卸载模型",
+            "prompt_template": "提示词模板",
+            "clip_text_override": "CLIP文本覆盖",
+            "image_embed_interleave": "图像嵌入交织"
+        },
+        "outputs": {
+            "hyvid_embeds": "多模态嵌入数据"
+        }
+    },
+    "HyVideoTextEmbedBridge": {
+        "title": "混元视频 文本嵌入桥接",
+        "inputs": {
+            "positive": "正向提示",
+            "negative": "负向提示",
+            "hyvid_cfg": "CFG配置"
+        },
+        "outputs": {
+            "hyvid_embeds": "混元视频嵌入数据"
+        }
+    },
+    "DownloadAndLoadHyVideoTextEncoder": {
+        "title": "(下载)加载混元视频文本编码器",
+        "inputs": {},
+        "widgets": {
+            "llm_model": "大语言模型",
+            "image1": "图像1",
+            "image2": "图像2",
+            "clip_text_override": "CLIP文本覆盖",
+            "clip_model": "CLIP模型",
+            "precision": "精度",
+            "apply_final_norm": "应用最终归一化",
+            "hidden_state_skip_layer": "隐藏层跳过",
+            "quantization": "量化方式",
+            "load_device": "加载设备"
+        },
+        "outputs": {
+            "hyvid_text_encoder": "混元视频文本编码器"
+        }
+    },
+    "HyVideoTextEncode": {
+        "title": "混元视频 文本编码",
+        "inputs": {
+            "text_encoders": "文本编码器",
+            "custom_prompt_template": "自定义模板",
+            "clip_l": "CLIP层级",
+            "hyvid_cfg": "CFG配置",
+            "model_to_offload": "卸载模型"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "image": "参考图像",
+            "force_offload": "强制卸载",
+            "prompt_template": "提示模板",
+            "image_token_selection_expr": "图像标记选择器",
+            "clip_text_override": "CLIP文本覆盖",
+            "image_embed_interleave": "图像嵌入交错"
+        },
+        "outputs": {
+            "hyvid_embeds": "混元视频嵌入数据"
+        }
+    },
+    "HyVideoCFG": {
+        "title": "混元视频 CFG控制",
+        "inputs": {
+            "negative_prompt": "负向提示"
+        },
+        "widgets": {
+            "cfg": "CFG值",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比",
+            "batched_cfg": "批量CFG"
+        },
+        "outputs": {
+            "hyvid_cfg": "CFG配置"
+        }
+    },
+    "HyVideoSampler": {
+        "title": "混元视频 视频采样器",
+        "inputs": {
+            "model": "模型",
+            "hyvid_embeds": "嵌入数据",
+            "samples": "采样",
+            "image_cond_latents": "图像Latent",
+            "stg_args": "时空组参数",
+            "context_options": "上下文配置",
+            "feta_args": "增强参数",
+            "teacache_args": "缓存参数",
+            "loop_args": "循环控制参数"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "num_frames": "帧数",
+            "steps": "步数",
+            "embedded_guidance_scale": "引导比例",
+            "flow_shift": "光流位移量",
+            "seed": "随机种子",
+            "force_offload": "强制卸载",
+            "denoise_strength": "降噪强度",
+            "scheduler": "采样调度器",
+            "riflex_freq_index": "RIFLEX频率索引",
+            "i2v_mode": "图转视频模式"
+        },
+        "outputs": {
+            "samples": "采样"
+        }
+    },
+    "HyVideoDecode": {
+        "title": "混元视频 解码器",
+        "inputs": {
+            "vae": "VAE",
+            "samples": "采样"
+        },
+        "widgets": {
+            "enable_vae_tiling": "启用分块",
+            "temporal_tiling_sample_size": "时序分块尺寸",
+            "spatial_tile_sample_min_size": "空间分块最小尺寸",
+            "auto_tile_size": "自动分块",
+            "skip_latents": "跳过Latent",
+            "balance_brightness": "亮度平衡"
+        },
+        "outputs": {
+            "images": "图像"
+        }
+    },
+    "HyVideoEncodeKeyframes": {
+        "title": "混元视频 关键帧编码",
+        "inputs": {
+            "vae": "VAE",
+            "start_image": "起始图像",
+            "end_image": "结束图像"
+        },
+        "widgets": {
+            "num_frames": "帧数",
+            "enable_vae_tiling": "启用分块",
+            "temporal_tiling_sample_size": "时序分块尺寸",
+            "spatial_tile_sample_min_size": "空间分块最小尺寸",
+            "auto_tile_size": "自动分块",
+            "noise_aug_strength": "噪声增强强度",
+            "latent_strength": "Latent强度",
+            "latent_dist": "Latent分布"
+        },
+        "outputs": {
+            "samples": "采样"
+        }
+    },
+    "HyVideoLatentPreview": {
+        "title": "混元视频 Latent预览",
+        "inputs": {
+            "samples": "采样"
+        },
+        "widgets": {
+            "seed": "种子",
+            "min_val": "最小值",
+            "max_val": "最大值",
+            "r_bias": "红色偏置",
+            "g_bias": "绿色偏置",
+            "b_bias": "蓝色偏置"
+        },
+        "outputs": {
+            "images": "图像",
+            "latent_rgb_factors": "LatentRGB因素"
+        }
+    },
+    "HyVideoInverseSampler": {
+        "title": "混元视频 逆向采样器",
+        "inputs": {
+            "model": "模型",
+            "hyvid_embeds": "嵌入数据",
+            "samples": "采样",
+            "interpolation_curve": "插值曲线"
+        },
+        "widgets": {
+            "steps": "步数",
+            "embedded_guidance_scale": "引导比例",
+            "flow_shift": "流位移",
+            "seed": "种子",
+            "force_offload": "强力卸载",
+            "gamma": "伽马值",
+            "start_step": "起始步数",
+            "end_step": "结束步数",
+            "gamma_trend": "伽马趋势"
+        },
+        "outputs": {
+            "samples": "采样"
+        }
+    },
+    "HyVideoReSampler": {
+        "title": "混元视频 重采样器",
+        "inputs": {
+            "model": "模型",
+            "hyvid_embeds": "嵌入数据",
+            "samples": "采样",
+            "inversed_latents": "逆Latent",
+            "interpolation_curve": "插值曲线",
+            "feta_args": "增强参数"
+        },
+        "widgets": {
+            "steps": "步数",
+            "embedded_guidance_scale": "引导比例",
+            "flow_shift": "流位移",
+            "force_offload": "强制卸载",
+            "start_step": "起始步数",
+            "end_step": "结束步数",
+            "eta_base": "ETA基数",
+            "eta_trend": "ETA趋势"
+        },
+        "outputs": {
+            "samples": "采样"
+        }
+    },
+    "HyVideoPromptMixSampler": {
+        "title": "混元视频 提示混合采样器",
+        "inputs": {
+            "model": "模型",
+            "hyvid_embeds": "嵌入数据",
+            "hyvid_embeds_2": "嵌入数据2"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "num_frames": "帧数",
+            "steps": "步数",
+            "embedded_guidance_scale": "引导比例",
+            "flow_shift": "流位移",
+            "force_offload": "强制卸载",
+            "seed": "种子",
+            "alpha": "混合系数",
+            "interpolation_curve": "插值曲线",
+            "feta_args": "增强参数"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "HyVideoGetClosestBucketSize": {
+        "title": "混元视频 匹配桶尺寸",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "base_size": "基准尺寸",
+            "patch_size": "分块尺寸",
+            "max_ratio": "最大比例",
+            "ratios": "比例列表",
+            "buckets": "桶列表"
+        },
+        "outputs": {
+            "width": "宽度",
+            "height": "高度"
+        }
+    },
+    "HyVideoEmptyTextEmbeds": {
+        "title": "混元视频 空文本嵌入",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "hyvid_embeds": "空嵌入数据"
+        }
+    },
+    "HyVideoTextEmbedsSave": {
+        "title": "混元视频 保存文本嵌入",
+        "inputs": {
+            "hyvid_embeds": "嵌入数据"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "prompt": "提示词",
+            "extra_pnginfo": "附加信息"
+        },
+        "outputs": {
+            "output_path": "输出路径"
+        }
+    },
+    "HyVideoTextEmbedsLoad": {
+        "title": "混元视频 加载文本嵌入",
+        "inputs": {},
+        "widgets": {
+            "embeds": "嵌入数据"
+        },
+        "outputs": {
+            "hyvid_embeds": "混元视频嵌入数据"
+        }
+    },
+    "HyVideoContextOptions": {
+        "title": "混元视频 上下文配置",
+        "inputs": {},
+        "widgets": {
+            "context_schedule": "上下文计划",
+            "context_frames": "上下文帧数",
+            "context_stride": "上下文步幅",
+            "context_overlap": "上下文重叠",
+            "freenoise": "自由噪声"
+        },
+        "outputs": {
+            "context_options": "上下文选项"
+        }
+    },
+    "HyVideoI2VEncode": {
+        "title": "混元视频 图像转视频编码器",
+        "inputs": {
+            "text_encoders": "文本编码器",
+            "clip_l": "CLIP L",
+            "image": "输入图像",
+            "hyvid_cfg": "视频配置参数",
+            "model_to_offload": "待卸载模型"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "force_offload": "强制卸载模型",
+            "prompt_template": "提示词模板",
+            "custom_prompt_template": "自定义模板",
+            "image_token_selection_expr": "图像标记选择器",
+            "clip_text_override": "CLIP文本覆盖",
+            "image_embed_interleave": "图像嵌入交织"
+        },
+        "outputs": {
+            "hyvid_embeds": "视频嵌入数据"
+        }
+    },
+    "HunyuanVideoSLG": {
+        "title": "混元视频 SLG",
+        "inputs": {},
+        "widgets": {
+            "single_blocks": "单区块",
+            "double_blocks": "双区块",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "slg_args": "SLG参数"
+        }
+    },
+    "HunyuanVideoFresca": {
+        "title": "混元视频 Fresca",
+        "inputs": {},
+        "widgets": {
+            "fresca_scale_low": "Fresca低尺度",
+            "fresca_scale_high": "Fresca高尺度",
+            "fresca_freq_cutoff": "Fresca 截止频率"
+        },
+        "outputs": {
+            "fresca_args": "Fresca参数"
+        }
+    },
+    "HyVideoLoopArgs": {
+        "title": "混元视频 循环参数",
+        "inputs": {},
+        "widgets": {
+            "shift_skip": "位移跳过",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "loop_args": "循环参数"
+        }
+    }
+}

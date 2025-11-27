@@ -1,0 +1,143 @@
+{
+    "OllamaVision": {
+        "title": "Ollama 视觉",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "debug": "调试",
+            "url": "网址",
+            "model": "模型",
+            "keep_alive": "保持活跃",
+            "format": "格式",
+            "seed": "随机种"
+        },
+        "outputs": {
+             "description": "文本"
+        }
+    },
+    "OllamaGenerate": {
+        "title": "Ollama 生成",
+        "widgets": {
+            "debug": "调试",
+            "url": "网址",
+            "model": "模型",
+            "keep_alive": "保持活跃",
+            "format": "格式",
+            "filter_thinking": "过滤思考"
+        },
+        "outputs": {
+            "response": "文本"
+        }
+    },
+    "OllamaGenerateAdvance": {
+        "title": "Ollama 生成高级版",
+        "inputs": {
+            "context": "上下文"
+        },
+        "widgets": {
+            "debug": "调试",
+            "url": "网址",
+            "model": "模型",
+            "seed": "随机种",
+            "temperature": "温度",
+            "num_predict": "预测数量",
+            "keep_alive": "保持活跃",
+            "keep_context": "保持上下文",
+            "format": "格式",
+            "filter_thinking": "过滤思考"
+        },
+        "outputs": {
+            "response": "文本",
+            "context": "上下文"
+        }
+    },
+    "OllamaGenerateV2": {
+        "title": "Ollama 生成 V2",
+        "inputs": {
+            "connectivity": "连接性",
+            "options": "选项",
+            "images": "图像",
+            "context": "上下文",
+            "meta": "元数据"
+        },
+        "widgets": {
+            "filter_thinking": "过滤思考",
+            "keep_context": "保持上下文",
+            "format": "格式"
+        },
+        "outputs": {
+            "result": "结果",
+            "context": "上下文",
+            "meta": "元数据"
+        }
+    },
+    "OllamaConnectivityV2": {
+        "title": "Ollama 连接 V2",
+        "widgets": {
+            "url": "网址",
+            "model": "模型",
+            "keep_alive": "保持活跃",
+            "keep_alive_unit": "保持活跃单位"
+        },
+        "outputs": {
+            "connection": "连接"
+        }
+    },
+    "OllamaLoadContext": {
+        "title": "Ollama 加载上下文",
+        "widgets": {
+            "context_file": "上下文文件"
+        },
+        "outputs": {
+            "context": "上下文"
+        }
+    },
+    "OllamaSaveContext": {
+        "title": "Ollama 保存上下文",
+        "inputs": {
+            "context": "上下文"
+        },
+        "widgets": {
+            "filename": "文件名"
+        }
+    },
+    "OllamaOptionsV2": {
+        "title": "Ollama 选项 V2",
+        "widgets": {
+            "options": "选项",
+            "enable_mirostat": "启用 mirostat",
+            "mirostat": "mirostat",
+            "enable_mirostat_eta": "启用 mirostat eta",
+            "mirostat_eta": "mirostat eta",
+            "enable_mirostat_tau": "启用 mirostat tau",
+            "mirostat_tau": "mirostat tau",
+            "enable_num_ctx": "启用上下文数量",
+            "num_ctx": "上下文数量",
+            "enable_repeat_last_n": "启用重复最后N个",
+            "repeat_last_n": "重复最后N个",
+            "enable_repeat_penalty": "启用重复惩罚",
+            "repeat_penalty": "重复惩罚",
+            "enable_temperature": "启用温度",
+            "temperature": "温度",
+            "enable_seed": "启用随机种",
+            "seed": "随机种",
+            "enable_stop": "启用停止",
+            "stop": "停止",
+            "enable_tfs_z": "启用 tfs_z",
+            "tfs_z": "tfs_z",
+            "enable_num_predict": "启用预测数量",
+            "num_predict": "预测数量",
+            "enable_top_k": "启用 top_k",
+            "top_k": "top_k",
+            "enable_top_p": "启用 top_p",
+            "top_p": "top_p",
+            "enable_min_p": "启用 min_p",
+            "min_p": "min_p",
+            "debug": "调试"
+        },
+        "outputs": {
+            "options": "选项"
+        }
+    }
+}

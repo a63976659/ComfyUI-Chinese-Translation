@@ -1,0 +1,125 @@
+{
+  "alert_when_finished": {
+    "title": "完成后提示",
+    "inputs": {
+      "images": "图像"
+    },
+    "widgets": {
+      "sound_path": "提示音路径"
+    },
+    "outputs": {}
+  },
+  "FillDarkMask": {
+    "title": "填充深色蒙版",
+    "inputs": {
+      "masks": "蒙版"
+    },
+    "widgets": {},
+    "outputs": {
+      "MASK": "蒙版"
+    }
+  },
+  "SaveImage": {
+    "title": "保存图像",
+    "inputs": {
+      "images": "图像"
+    },
+    "widgets": {
+      "filename_prefix": "文件名前缀",
+      "output_path": "输出路径",
+      "prompt": "提示信息",
+      "extra_pnginfo": "额外PNG信息"
+    },
+    "outputs": {}
+  },
+  "InterpolateKeyFrame": {
+    "title": "关键帧插值（鼠标放在此处查看注释）",
+    "inputs": {
+      "orginalframe": "原视频",
+      "keyframe": "需要插帧视频"
+    },
+    "widgets": {
+      "select_every_nth": "每N帧选择",
+      "batch_size": "批次大小",
+      "tracking_window_size": "追踪窗口大小",
+      "minimum_patch_size": "最小补丁尺寸",
+      "num_iter": "迭代次数",
+      "guide_weight": "引导权重"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    },
+        "description": "插帧，仅使用部分帧平滑视频\n 参数含义\n每N帧选择：间隔N帧插入\n批次大小：批次大小越大，程序运行速度越快，但需要更多的显存。\n窗口大小：视频的流畅度。\n最小补丁尺寸：奇数（重要），越大越好\n迭代次数：迭代次数，次数越多越好\n引导权重：一个决定将多少运动特征应用于风格视频的参数。\n准确率：越大越好，大多数情况下1就足够了\n  时间复杂度（准确率=1）：log(窗口大小) * 最小补丁大小^2 * 迭代次数 * 视频长度 * 视频分辨率 \n"
+  },
+  "MaskListcaptoBatch": {
+    "title": "蒙版列表批量处理",
+    "inputs": {
+      "mask": "蒙版"
+    },
+    "widgets": {
+      "load_cap": "加载上限"
+    },
+    "outputs": {
+      "MASK": "蒙版"
+    }
+  },
+  "Merge_Image_List": {
+    "title": "合并图像列表",
+    "inputs": {
+      "images": "图像"
+    },
+    "widgets": {},
+    "outputs": {
+      "IMAGE": "图像"
+    }
+  },
+  "MyOpenPoseNode": {
+    "title": "OpenPose姿态识别节点",
+    "inputs": {
+      "DWPose": "DWPose动态姿态",
+      "OpenPose": "OpenPose姿态"
+    },
+    "widgets": {
+      "hex_color": "十六进制颜色",
+      "image": "图像",
+      "reserved_colors": "保留颜色"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    },
+        "description": " 因为DWPose姿态在人物转身的时候不能识别人物后背，但是在人物姿势方面比OpenPose姿态准确，而OpenPose姿态可以很好的识别后背，这个就是结合了它两的优点"
+  },
+  "reBatchImage": {
+    "title": "图像批量复处理",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "batch_size": "批次大小"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    },
+        "description": "特别为快速混合而设计，同时渲染图像（720p，24G视频内存，batch_size可调整为40），速度提高约40%。"
+  },
+  "SmoothVideo": {
+    "title": "视频平滑处理",
+    "inputs": {
+      "orginalframe": "原始帧",
+      "keyframe": "关键帧"
+    },
+    "widgets": {
+      "accuracy": "精度",
+      "window_size": "窗口大小",
+      "batch_size": "批次大小",
+      "tracking_window_size": "追踪窗口大小",
+      "minimum_patch_size": "最小补丁尺寸",
+      "num_iter": "迭代次数",
+      "guide_weight": "引导权重"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    },
+        "description": "逐帧渲染/流畅视频使用每一帧"
+  }
+}

@@ -1,0 +1,48 @@
+{
+    "PulidFluxModelLoader": {
+        "title": "加载FluxPulid模型",
+        "widgets": {
+            "pulid_file": "Pulid模型文件"
+        },
+        "outputs": {
+            "PULIDFLUX": "Pulid模型"
+        }
+    },
+    "PulidFluxEvaClipLoader": {
+        "title": "加载 Eva Clip (PuLID Flux)"
+    },
+    "PulidFluxInsightFaceLoader": {
+        "title": "加载InsightFace(PuLID Flux)",
+        "widgets": {
+            "provider": "设备"
+        },
+        "outputs": {
+            "FACEANALYSIS": "面部分析"
+        }
+    },
+    "ApplyPulidFlux": {
+        "title": "应用 PuLID Flux",
+        "inputs": {
+            "model": "模型",
+            "pulid_flux": "PuLID Flux",
+            "eva_clip": "Eva Clip",
+            "face_analysis": "面部分析",
+            "image": "图像",
+            "attn_mask": "注意力遮罩",
+            "prior_image": "先验图像"
+        },
+        "widgets": {
+            "weight": "权重",
+            "start_at": "开始于",
+            "end_at": "结束于",
+            "fusion": "融合方式",
+            "fusion_weight_max": "融合权重最大值",
+            "fusion_weight_min": "融合权重最小值",
+            "train_step": "训练步数",
+            "use_gray": "使用灰度"
+        },
+        "outputs": {
+            "MODEL": "模型"
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "DownloadAndLoadGIMMVFIModel": {
+        "title": "下载并加载GIMM-VFI模型",
+        "widgets": {
+            "model": "模型",
+            "precision": "精度",
+            "torch_compile": "Torch编译"
+        },
+        "outputs": {
+            "gimmvfi_model": "GIMM-VFI模型"
+        }
+    },
+    "GIMMVFI_interpolate": {
+        "title": "GIMM-VFI 补帧",
+        "inputs": {
+            "gimmvfi_model": "GIMM-VFI模型",
+            "images": "图片"
+        },
+        "widgets": {
+            "ds_factor": "DS因子",
+            "interpolation_factor": "补帧因子",
+            "seed": "种子",
+            "output_flows": "输出流量"
+        },
+        "outputs": {
+            "images": "图片",
+            "flow_tensors": "流动张量"
+        }
+    }
+}

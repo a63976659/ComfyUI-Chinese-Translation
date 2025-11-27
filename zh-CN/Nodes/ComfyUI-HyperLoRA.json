@@ -1,0 +1,156 @@
+{
+    "HyperLoRAConfig": {
+        "title": "HyperLora配置",
+        "inputs": {},
+        "widgets": {
+            "image_processor": "图像处理器",
+            "image_encoder": "图像编码器",
+            "resampler.dim": "重采样器.维度",
+            "resampler.dim_head": "重采样器.维度 头",
+            "resampler.heads": "重采样器.头数",
+            "resampler.depth": "重采样器.深度",
+            "resampler.ff_mult": "重采样器.ff乘法",
+            "encoder_types": "编码器类型",
+            "face_analyzer": "面部分析器",
+            "id_embed_dim": "ID 嵌入维度",
+            "num_id_tokens": "ID 令牌数量",
+            "hyper_dim": "超维度",
+            "lora_rank": "Lora等级",
+            "has_base_lora": "具有基础Lora特性"
+        },
+        "outputs": {
+            "HYPER_LORA_CONFIG": "HyperLora配置"
+        }
+    },
+    "HyperLoRALoader": {
+        "title": "HyperLora加载",
+        "inputs": {
+            "config": "配置"
+        },
+        "widgets": {
+            "model": "模型",
+            "dtype": "数据类型"
+        },
+        "outputs": {
+            "HYPER_LORA": "HyperLora"
+        }
+    },
+    "HyperLoRAIDCond": {
+        "title": "HyperLora身份条件",
+        "inputs": {
+            "hyper_lora": "HyperLora",
+            "images": "图像",
+            "face_attr": "面部属性"
+        },
+        "widgets": {
+            "grayscale": "灰度图像",
+            "remove_background": "去除背景"
+        },
+        "outputs": {
+            "ID_COND": "身份条件",
+            "IMAGE": "图像"
+        }
+    },
+    "HyperLoRABaseCond": {
+        "title": "HyperLora基础条件",
+        "inputs": {
+            "hyper_lora": "HyperLora",
+            "images": "图像",
+            "face_attr": "面部属性"
+        },
+        "widgets": {
+            "crop": "裁剪",
+            "crop_scale_LRTB": "裁剪比例LRTB",
+            "safe_crop": "安全裁剪"
+        },
+        "outputs": {
+            "BASE_COND": "基础条件",
+            "IMAGE": "图像"
+        }
+    },
+    "HyperLoRAGenerateIDLoRA": {
+        "title": "HyperLora生成身份LoRA",
+        "inputs": {
+            "hyper_lora": "HyperLora",
+            "id_cond": "身份条件"
+        },
+        "widgets": {},
+        "outputs": {
+            "LORA": "Lora"
+        }
+    },
+    "HyperLoRAGenerateBaseLoRA": {
+        "title": "HyperLora生成基础Lora",
+        "inputs": {
+            "hyper_lora": "HyperLora",
+            "base_cond": "基础条件"
+        },
+        "widgets": {},
+        "outputs": {
+            "LORA": "Lora"
+        }
+    },
+    "HyperLoRAApplyLoRA": {
+        "title": "HyperLora 应用Lora",
+        "inputs": {
+            "model": "模型",
+            "lora": "Lora"
+        },
+        "widgets": {
+            "weight": "权重"
+        },
+        "outputs": {
+            "MODEL": "模型"
+        }
+    },
+    "HyperLoRASaveLoRA": {
+        "title": "HyperLora 保存Lora",
+        "inputs": {
+            "lora": "Lora"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀"
+        },
+        "outputs": {}
+    },
+    "HyperLoRAFaceAttr": {
+        "title": "HyperLora面部属性",
+        "inputs": {
+            "hyper_lora": "HyperLora",
+            "images": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "FACE_ATTR": "面部属性"
+        }
+    },
+    "HyperLoRAUniLoader": {
+        "title": "HyperLora通用加载器",
+        "inputs": {},
+        "widgets": {
+            "image_processor": "图像处理器",
+            "image_encoder": "图像编码器",
+            "encoder_types": "编码器类型",
+            "face_analyzer": "面部分析器",
+            "model": "模型",
+            "dtype": "数据类型"
+        },
+        "outputs": {
+            "HYPER_LORA": "HyperLoRA"
+        }
+    },
+    "HyperLoRAUniGenerateIDLoRA": {
+        "title": "HyperLora通用生成ID Lora",
+        "inputs": {
+            "hyper_lora": "HyperLora",
+            "images": "图像"
+        },
+        "widgets": {
+            "grayscale": "灰度图像",
+            "remove_background": "去除背景"
+        },
+        "outputs": {
+            "LORA": "Lora"
+        }
+    }
+}

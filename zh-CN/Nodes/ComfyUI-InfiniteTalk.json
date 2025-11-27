@@ -1,0 +1,1114 @@
+{
+    "WanVideoEnhanceAVideo": {
+        "title": "Wan视频 增强-A-视频",
+        "inputs": {},
+        "widgets": {
+            "weight": "权重",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "feta_args": "增强参数"
+        }
+    },
+    "WanVideoSetBlockSwap": {
+        "title": "Wan视频设置块交换",
+        "inputs": {
+            "model": "模型",
+            "block_swap_args": "块交换参数"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Wan视频模型"
+        }
+    },
+    "WanVideoSetRadialAttention": {
+        "title": "Wan视频 设置径向注意力",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "dense_blocks": "密集块",
+            "dense_vace_blocks": "密集VACE块",
+            "dense_timesteps": "密集时间步",
+            "decay_factor": "衰减因子",
+            "dense_attention_mode": "密集注意力模式",
+            "block_size": "块大小"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "WanVideoBlockList": {
+        "title": "Wan视频 块列表",
+        "inputs": {},
+        "widgets": {
+            "blocks": "块"
+        },
+        "outputs": {
+            "block_list": "块列表"
+        }
+    },
+    "WanVideoTextEncode": {
+        "title": "Wan视频 文本编码",
+        "inputs": {
+            "t5": "T5编码器",
+            "model_to_offload": "卸载模型"
+        },
+        "widgets": {
+            "positive_prompt": "正面提示词",
+            "negative_prompt": "负面提示词",
+            "force_offload": "强制卸载",
+            "use_disk_cache": "使用磁盘缓存",
+            "device": "设备"
+        },
+        "outputs": {
+            "text_embeds": "文本嵌入组"
+        }
+    },
+    "WanVideoTextEncodeSingle": {
+        "title": "Wan视频  文本单编码",
+        "inputs": {
+            "t5": "T5模型",
+            "model_to_offload": "卸载模型"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "force_offload": "强制卸载",
+            "use_disk_cache": "使用磁盘缓存",
+            "device": "设备"
+        },
+        "outputs": {
+            "text_embeds": "文本嵌入组"
+        }
+    },
+    "WanVideoApplyNAG": {
+        "title": "Wan视频  应用NAG",
+        "inputs": {
+            "original_text_embeds": "原始文本嵌入组",
+            "nag_text_embeds": "NAG文本嵌入组"
+        },
+        "widgets": {
+            "nag_scale": "NAG缩放",
+            "nag_tau": "NAG tau",
+            "nag_alpha": "NAG alpha"
+        },
+        "outputs": {
+            "text_embeds": "文本嵌入组"
+        }
+    },
+    "WanVideoTextEmbedBridge": {
+        "title": "Wan视频 文本嵌入桥接",
+        "inputs": {
+            "positive": "正面提示词",
+            "negative": "负面提示词"
+        },
+        "widgets": {},
+        "outputs": {
+            "text_embeds": "文本嵌入组"
+        }
+    },
+    "WanVideoClipVisionEncode": {
+        "title": "Wan视频 CLIP视觉编码",
+        "inputs": {
+            "clip_vision": "CLIP视觉",
+            "image_1": "图像_1",
+            "image_2": "图像_2",
+            "negative_image": "负面图像"
+        },
+        "widgets": {
+            "strength_1": "强度_1",
+            "strength_2": "强度_2",
+            "crop": "裁剪",
+            "combine_embeds": "合并嵌入组",
+            "force_offload": "强制卸载",
+            "tiles": "平铺分块",
+            "ratio": "比例"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入组"
+        }
+    },
+    "WanVideoRealisDanceLatents": {
+        "title": "Wan视频 RealisDance真实之舞 Latent",
+        "inputs": {
+            "ref_latent": "参考 Latent",
+            "smpl_latent": "SMPL人体模型 Latent",
+            "hamer_latent": "Hame哈默风格 Latent"
+        },
+        "widgets": {
+            "pose_cond_start_percent": "姿势条件 起始百分比",
+            "pose_cond_end_percent": "姿势条件 结束百分比"
+        },
+        "outputs": {
+            "add_cond_latents": "添加条件Latent"
+        }
+    },
+    "WanVideoImageToVideoEncode": {
+        "title": "Wan视频 图像转视频编码",
+        "inputs": {
+            "vae": "VAE",
+            "clip_embeds": "CLIP嵌入组",
+            "start_image": "起始图像",
+            "end_image": "结束图像",
+            "control_embeds": "控制嵌入组",
+            "temporal_mask": "时间遮罩",
+            "extra_latents": "额外Latent",
+            "add_cond_latents": "添加条件Latent"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "num_frames": "帧数",
+            "noise_aug_strength": "噪声增强强度",
+            "start_latent_strength": "起始Latent强度",
+            "end_latent_strength": "结束Latent强度",
+            "force_offload": "强制卸载",
+            "fun_or_fl2v_model": "fun或fl2v模型",
+            "tiled_vae": "分块编码VAE"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入组"
+        }
+    },
+    "WanVideoEmptyEmbeds": {
+        "title": "Wan视频 空嵌入组",
+        "inputs": {
+            "control_embeds": "控制嵌入组",
+            "extra_latents": "额外Latent"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "num_frames": "帧数"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入组"
+        }
+    },
+    "WanVideoMiniMaxRemoverEmbeds": {
+        "title": "Wan视频 Latent尺寸去除嵌入组",
+        "inputs": {
+            "latents": "Latent",
+            "mask_latents": "遮罩Latent"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "num_frames": "帧数"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入组"
+        }
+    },
+    "WanVideoPhantomEmbeds": {
+        "title": "Wan视频 Phantom幻影嵌入组",
+        "inputs": {
+            "phantom_latent_1": "幻影Latent_1",
+            "phantom_latent_2": "幻影Latent_2",
+            "phantom_latent_3": "幻影Latent_3",
+            "phantom_latent_4": "幻影Latent_4",
+            "vace_embeds": "VACE嵌入组"
+        },
+        "widgets": {
+            "num_frames": "帧数",
+            "phantom_cfg_scale": "幻影CFG缩放",
+            "phantom_start_percent": "幻影开始百分比",
+            "phantom_end_percent": "幻影结束百分比"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入组"
+        }
+    },
+    "WanVideoControlEmbeds": {
+        "title": "Wan视频 控制嵌入组",
+        "inputs": {
+            "latents": "Latents",
+            "fun_ref_image": "Fun参考图像"
+        },
+        "widgets": {
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入组"
+        }
+    },
+    "WanVideoSLG": {
+        "title": "Wan视频 SLG",
+        "inputs": {},
+        "widgets": {
+            "blocks": "块",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "slg_args": "SLG参数"
+        }
+    },
+    "WanVideoVACEEncode": {
+        "title": "Wan视频 VACE编码",
+        "inputs": {
+            "vae": "VAE",
+            "input_frames": "输入帧",
+            "ref_images": "参考图像",
+            "input_masks": "输入遮罩",
+            "prev_vace_embeds": "先前的VACE嵌入组"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "num_frames": "帧数",
+            "strength": "强度",
+            "vace_start_percent": "VACE开始百分比",
+            "vace_end_percent": "VACE结束百分比",
+            "tiled_vae": "分块编码VAE"
+        },
+        "outputs": {
+            "vace_embeds": "VACE嵌入组"
+        }
+    },
+    "WanVideoContextOptions": {
+        "title": "Wan视频上下文选项",
+        "inputs": {
+            "reference_latent": "参考Latent"
+        },
+        "widgets": {
+            "context_schedule": "上下文调度",
+            "fuse_method": "融合方法",
+            "context_frames": "上下文帧数",
+            "context_stride": "上下文步幅",
+            "context_overlap": "上下文重叠",
+            "freenoise": "自由噪声",
+            "verbose": "详细模式"
+        },
+        "outputs": {
+            "context_options": "上下文选项"
+        }
+    },
+    "WanVideoFlowEdit": {
+        "title": "Wan视频 流编辑",
+        "inputs": {
+            "source_embeds": "源嵌入组",
+            "source_image_embeds": "源图像嵌入组"
+        },
+        "widgets": {
+            "skip_steps": "跳过步数",
+            "drift_steps": "漂移步数",
+            "drift_flow_shift": "漂移流偏移",
+            "source_cfg": "源CFG比例",
+            "drift_cfg": "漂移CFG比例"
+        },
+        "outputs": {
+            "flowedit_args": "流编辑 参数"
+        }
+    },
+    "WanVideoLoopArgs": {
+        "title": "Wan视频 循环参数",
+        "inputs": {},
+        "widgets": {
+            "shift_skip": "偏移跳过",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "loop_args": "循环参数"
+        }
+    },
+    "WanVideoExperimentalArgs": {
+        "title": "Wan视频 实验参数",
+        "inputs": {},
+        "widgets": {
+            "video_attention_split_steps": "视频注意力分割步数",
+            "cfg_zero_star": "CFG零星",
+            "use_zero_init": "使用零初始化",
+            "zero_star_steps": "零星步数",
+            "use_fresca": "使用Fresca",
+            "fresca_scale_low": "Fresca缩放下限",
+            "fresca_scale_high": "Fresca缩放上限",
+            "fresca_freq_cutoff": "Fresca频率截止值",
+            "use_tcfg": "使用时间CFG",
+            "raag_alpha": "RAAG阿尔法",
+            "bidirectional_sampling": "双向采样"
+        },
+        "outputs": {
+            "exp_args": "实验参数"
+        }
+    },
+    "WanVideoFreeInitArgs": {
+        "title": "Wan视频  自由初始化参数",
+        "inputs": {},
+        "widgets": {
+            "freeinit_num_iters": "自由初始化迭代次数",
+            "freeinit_method": "自由初始化方法",
+            "freeinit_n": "自由初始化n",
+            "freeinit_d_s": "自由初始化d_s",
+            "freeinit_d_t": "自由初始化d_t"
+        },
+        "outputs": {
+            "freeinit_args": "自由初始化参数"
+        }
+    },
+    "WanVideoSampler": {
+        "title": "Wan视频 采样器",
+        "inputs": {
+            "model": "模型",
+            "image_embeds": "图像嵌入组",
+            "text_embeds": "文本嵌入组",
+            "samples": "采样",
+            "feta_args": "增强参数",
+            "context_options": "上下文选项",
+            "cache_args": "缓存参数",
+            "flowedit_args": "流编辑参数",
+            "slg_args": "SLG参数",
+            "rope_function": "Rope函数",
+            "loop_args": "循环参数",
+            "experimental_args": "实验参数",
+            "sigmas": "调度器",
+            "unianimate_poses": "UniAnimate通用动画_姿态",
+            "fantasytalking_embeds": "FantasyTalking幻想对话_嵌入组",
+            "uni3c_embeds": "Uni3C 嵌入组",
+            "multitalk_embeds": "MultiTalk多轮对话 嵌入组",
+            "infinitetalk_embeds": "InfiniteTalk无限对话 嵌入组",
+            "freeinit_args": "自由初始化参数组"
+        },
+        "widgets": {
+            "steps": "步数",
+            "cfg": "CFG",
+            "shift": "偏移",
+            "seed": "随机种子",
+            "force_offload": "强制卸载",
+            "scheduler": "调度器",
+            "riflex_freq_index": "Riflex频率索引",
+            "denoise_strength": "降噪强度",
+            "batched_cfg": "批量CFG",
+            "start_step": "开始步数",
+            "end_step": "结束步数",
+            "rope_function": "Rope函数",
+            "add_noise_to_samples": "添加噪声到采样"
+        },
+        "outputs": {
+            "samples": "Latent",
+            "denoised_samples": "去噪Latent"
+        }
+    },
+    "WanVideoDecode": {
+        "title": "Wan视频 解码器",
+        "inputs": {
+            "vae": "VAE",
+            "samples": "采样"
+        },
+        "widgets": {
+            "enable_vae_tiling": "启用VAE分块",
+            "tile_x": "X轴分块",
+            "tile_y": "Y轴分块",
+            "tile_stride_x": "X轴步长",
+            "tile_stride_y": "Y轴步长",
+            "normalization": "标准化"
+        },
+        "outputs": {
+            "images": "图像",
+            "IMAGE": "图像"
+        }
+    },
+    "WanVideoEncode": {
+        "title": "Wan视频 编码器",
+        "inputs": {
+            "vae": "VAE",
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "enable_vae_tiling": "启用VAE分块",
+            "tile_x": "X轴分块",
+            "tile_y": "Y轴分块",
+            "tile_stride_x": "X轴步长",
+            "tile_stride_y": "Y轴步长",
+            "noise_aug_strength": "噪声增强",
+            "latent_strength": "Latent强度"
+        },
+        "outputs": {
+            "samples": "采样"
+        }
+    },
+    "WanVideoImageClipEncode": {
+        "title": "Wan视频图像CLIP编码(已弃用)",
+        "inputs": {
+            "clip_vision": "CLIP视觉模型",
+            "image": "图像",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "generation_width": "生成宽度",
+            "generation_height": "生成高度",
+            "num_frames": "帧数",
+            "force_offload": "强制卸载",
+            "noise_aug_strength": "噪声增强强度",
+            "latent_strength": "Latent强度",
+            "clip_embed_strength": "CLIP嵌入强度",
+            "adjust_resolution": "调整分辨率"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        }
+    },
+    "WanVideoBlockSwap": {
+        "title": "Wan视频块交换",
+        "inputs": {},
+        "widgets": {
+            "blocks_to_swap": "待交换块",
+            "offload_img_emb": "卸载图像嵌入",
+            "offload_txt_emb": "卸载文本嵌入",
+            "use_non_blocking": "使用非阻塞",
+            "vace_blocks_to_swap": "VACE待交换块",
+            "prefetch_blocks": "预取块",
+            "block_swap_debug": "块交换调试"
+        },
+        "outputs": {
+            "block_swap_args": "块交换参数"
+        },
+        "description": "这是一个用于 ComfyUI 原生节点的简单Wan2.1块交换节点，通过将最多 40 个块交换到 CPU 来减少 VRAM。"
+    },
+    "WanVideoVRAMManagement": {
+        "title": "Wan视频显存管理",
+        "inputs": {},
+        "widgets": {
+            "offload_percent": "卸载百分比"
+        },
+        "outputs": {
+            "vram_management_args": "显存管理参数"
+        }
+    },
+    "WanVideoTorchCompileSettings": {
+        "title": "Wan视频 Torch编译设置",
+        "inputs": {},
+        "widgets": {
+            "backend": "后端引擎",
+            "mode": "编译模式",
+            "fullgraph": "全图",
+            "dynamic": "动态编译",
+            "dynamo_cache_size_limit": "Dynamo缓存大小限制",
+            "compile_transformer_blocks_only": "仅编译Transformer块",
+            "dynamo_recompile_limit": "Dynamo重新编译限制"
+        },
+        "outputs": {
+            "torch_compile_args": "Torch编译设置"
+        }
+    },
+    "WanVideoLoraSelect": {
+        "title": "Wan视频 Lora选择",
+        "inputs": {
+            "prev_lora": "前一个Lora",
+            "blocks": "块"
+        },
+        "widgets": {
+            "lora": "Lora",
+            "strength": "强度",
+            "low_mem_load": "低内存加载",
+            "merge_loras": "合并Lora"
+        },
+        "outputs": {
+            "lora": "Lora",
+            "WanVideo_LoRA": "Wan视频 Lora"
+        }
+    },
+    "WanVideoLoraSelectMulti": {
+        "title": "Wan视频 多选Lora",
+        "inputs": {
+            "prev_lora": "前一个Lora",
+            "blocks": "块"
+        },
+        "widgets": {
+            "lora_0": "Lora_0",
+            "lora_1": "Lora_1",
+            "lora_2": "Lora_2",
+            "lora_3": "Lora_3",
+            "lora_4": "Lora_4",
+            "strength_0": "强度_0",
+            "strength_1": "强度_1",
+            "strength_2": "强度_2",
+            "strength_3": "强度_3",
+            "strength_4": "强度_4",
+            "low_mem_load": "低内存加载",
+            "merge_loras": "合并Lora"
+        },
+        "outputs": {
+            "lora": "Lora"
+        }
+    },
+    "WanVideoVACEModelSelect": {
+        "title": "Wan视频 VACE模型选择",
+        "inputs": {},
+        "widgets": {
+            "vace_model": "vace模型"
+        },
+        "outputs": {
+            "extra_model": "额外模型",
+            "vacepath": "VACE路径",
+            "vace_model": "vace模型"
+        }
+    },
+    "WanVideoLoraBlockEdit": {
+        "title": "Wan视频 Lora区块编辑",
+        "inputs": {},
+        "widgets": {
+            "layer_filter": "层过滤器"
+        },
+        "outputs": {
+            "blocks": "所选块"
+        }
+    },
+    "WanVideoModelLoader": {
+        "title": "Wan视频 模型加载器",
+        "inputs": {
+            "compile_args": "编译参数",
+            "block_swap_args": "块交换参数",
+            "lora": "Lora",
+            "vram_management_args": "显存管理参数",
+            "extra_model": "额外模型",
+            "vace_model": "VACE模型",
+            "fantasytalking_model": "FantasyTalking幻想对话模型",
+            "multitalk_model": "MultiTalk多人对话模型",
+            "fantasyportrait_model": "FantasyPortrait幻想肖像模型"
+        },
+        "widgets": {
+            "model": "模型",
+            "base_precision": "基础精度",
+            "quantization": "量化",
+            "load_device": "加载设备",
+            "attention_mode": "注意力模式"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "WanVideoVAELoader": {
+        "title": "Wan视频 VAE加载器",
+        "inputs": {
+            "compile_args": "编译参数"
+        },
+        "widgets": {
+            "model_name": "模型名称",
+            "precision": "精度"
+        },
+        "outputs": {
+            "vae": "VAE",
+            "WanVAE": "Wan视频 VAE"
+        }
+    },
+    "WanVideoTinyVAELoader": {
+        "title": "Wan视频 微型VAE加载器",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名称",
+            "precision": "精度",
+            "parallel": "并行"
+        },
+        "outputs": {
+            "vae": "VAE",
+            "WanVAE": "Wan视频 VAE"
+        }
+    },
+    "LoadWanVideoT5TextEncoder": {
+        "title": "Wan视频 加载T5文本编码器",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名称",
+            "precision": "精度",
+            "load_device": "加载设备",
+            "quantization": "量化"
+        },
+        "outputs": {
+            "wan_t5_model": "WanT5模型"
+        }
+    },
+    "LoadWanVideoClipTextEncoder": {
+        "title": "Wan视频 加载CLIP文本编码器",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名称",
+            "precision": "精度",
+            "load_device": "加载设备"
+        },
+        "outputs": {
+            "wan_clip_vision": "Wan CLIP视觉"
+        }
+    },
+    "WanVideoImageResizeToClosest": {
+        "title": "Wan视频 图像大小优化",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "generation_width": "生成宽度",
+            "generation_height": "生成高度",
+            "aspect_ratio_preservation": "宽高比保持"
+        },
+        "outputs": {
+            "image": "图像",
+            "width": "宽度",
+            "height": "高度"
+        }
+    },
+    "ExtractStartFramesForContinuations": {
+        "title": "提取视频的首帧",
+        "inputs": {
+            "input_video_frames": "输入视频帧"
+        },
+        "widgets": {
+            "num_frames": "帧数"
+        },
+        "outputs": {
+            "start_frames": "首帧"
+        }
+    },
+    "WanVideoVACEStartToEndFrame": {
+        "title": "Wan视频 VACE首尾帧",
+        "inputs": {
+            "start_image": "起始图像",
+            "end_image": "结束图像",
+            "control_images": "控制图像",
+            "inpaint_mask": "修复遮罩"
+        },
+        "widgets": {
+            "num_frames": "帧数",
+            "empty_frame_level": "空帧级别",
+            "start_index": "起始索引",
+            "end_index": "结束索引"
+        },
+        "outputs": {
+            "images": "图像",
+            "masks": "遮罩"
+        }
+    },
+    "CreateCFGScheduleFloatList": {
+        "title": "创建CFG调度浮点数列表",
+        "inputs": {},
+        "widgets": {
+            "steps": "步数",
+            "cfg_scale_start": "CFG缩放起始值",
+            "cfg_scale_end": "CFG缩放结束值",
+            "interpolation": "插值方法",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "float_list": "浮点数列表"
+        }
+    },
+    "WanVideoATITracks": {
+        "title": "Wan视频  ATI 轨迹",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "tracks": "轨迹",
+            "width": "宽度",
+            "height": "高度",
+            "temperature": "温度",
+            "topk": "前k值",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "model": "Wan视频 模型"
+        }
+    },
+    "WanVideoATITracksVisualize": {
+        "title": "Wan视频  ATI 轨迹可视化",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "tracks": "轨迹",
+            "min_radius": "最小半径",
+            "max_radius": "最大半径",
+            "max_retain": "最大保留数量"
+        },
+        "outputs": {
+            "images": "图像"
+        }
+    },
+    "WanVideoATI_comfy": {
+        "title": "Wan视频  ATI Comfy",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "tracks": "轨迹",
+            "temperature": "温度",
+            "topk": "前k值"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "WanVideoTeaCache": {
+        "title": "Wan视频 Tea茶缓存",
+        "inputs": {},
+        "widgets": {
+            "rel_l1_thresh": "相对L1阈值",
+            "start_step": "起始步数",
+            "end_step": "结束步数",
+            "use_coefficients": "使用系数",
+            "cache_device": "缓存设备",
+            "mode": "缓存模式"
+        },
+        "outputs": {
+            "cache_args": "缓存参数"
+        }
+    },
+    "WanVideoMagCache": {
+        "title": "Wan视频  Mag缓存",
+        "inputs": {},
+        "widgets": {
+            "magcache_thresh": "Mag缓存阈值",
+            "magcache_K": "Mag缓存 K值",
+            "start_step": "起始步数",
+            "end_step": "结束步数",
+            "cache_device": "缓存设备"
+        },
+        "outputs": {
+            "cache_args": "缓存参数"
+        }
+    },
+    "WanVideoEasyCache": {
+        "title": "Wan视频  简易缓存",
+        "inputs": {},
+        "widgets": {
+            "easycache_thresh": "简易缓存阈值",
+            "start_step": "起始步数",
+            "end_step": "结束步数",
+            "cache_device": "缓存设备"
+        },
+        "outputs": {
+            "cache_args": "缓存参数"
+        }
+    },
+    "WanVideoControlnetLoader": {
+        "title": "Wan视频 加载ControlNet",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "base_precision": "基础精度",
+            "quantization": "量化",
+            "load_device": "加载设备"
+        },
+        "outputs": {
+            "controlnet": "ControlNet"
+        }
+    },
+    "WanVideoControlnet": {
+        "title": "Wan视频  应用ControlNet",
+        "inputs": {
+            "model": "模型",
+            "controlnet": "ControlNet",
+            "control_images": "控制图像"
+        },
+        "widgets": {
+            "strength": "强度",
+            "control_stride": "控制步幅",
+            "control_start_percent": "控制起始百分比",
+            "control_end_percent": "控制结束百分比"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "DownloadAndLoadWav2VecModel": {
+        "title": "(下载)加载 Wav2Vec2音频模型",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "base_precision": "基础精度",
+            "load_device": "加载设备"
+        },
+        "outputs": {
+            "wav2vec_model": "Wav2Vec2音频模型"
+        }
+    },
+    "FantasyTalkingModelLoader": {
+        "title": "FantasyTalking幻想对话 模型加载器",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "base_precision": "基础精度"
+        },
+        "outputs": {
+            "model": "FantasyTalking幻想对话模型"
+        }
+    },
+    "FantasyTalkingWav2VecEmbeds": {
+        "title": "FantasyTalking幻想对话 Wav2Vec2嵌入组",
+        "inputs": {
+            "wav2vec_model": "Wav2Vec2音频模型",
+            "fantasytalking_model": "FantasyTalking幻想对话模型",
+            "audio": "音频"
+        },
+        "widgets": {
+            "num_frames": "帧数",
+            "fps": "帧率",
+            "audio_scale": "音频缩放",
+            "audio_cfg_scale": "音频CFG缩放"
+        },
+        "outputs": {
+            "fantasytalking_embeds": "FantasyTalking幻想对话_嵌入组"
+        }
+    },
+    "WanVideoFunCameraEmbeds": {
+        "title": "Wan视频 Fun相机嵌入组",
+        "inputs": {
+            "poses": "姿势"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "strength": "强度",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入组"
+        }
+    },
+    "MultiTalkModelLoader": {
+        "title": "Multi/InfiniteTalk无限多轮对话 模型加载器",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "model": "模型",
+            "base_precision": "基础精度"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "MultiTalkWav2VecEmbeds": {
+        "title": "Multi/InfiniteTalk无限多轮对话 Wav2Vec2 嵌入组",
+        "inputs": {
+            "wav2vec_model": "Wav2Vec2 模型",
+            "audio_1": "音频_1",
+            "audio_2": "音频_2",
+            "audio_3": "音频_3",
+            "audio_4": "音频_4",
+            "ref_target_masks": "参考目标遮罩"
+        },
+        "widgets": {
+            "normalize_loudness": "调整音频响度",
+            "num_frames": "帧数",
+            "fps": "帧率",
+            "audio_scale": "音频缩放",
+            "multi_audio_type": "多音频类型",
+            "audio_cfg_scale": "音频配置缩放"
+        },
+        "outputs": {
+            "multitalk_embeds": "MultiTalk多轮对话 嵌入组",
+            "audio": "音频",
+            "num_frames": "帧数"
+        }
+    },
+    "WanVideoImageToVideoMultiTalk": {
+        "title": "Wan视频 图像转视频（MultiTalk多轮对话）",
+        "inputs": {
+            "vae": "VAE",
+            "start_image": "起始图像",
+            "clip_embeds": "CLIP嵌入组"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "frame_window_size": "帧窗口大小",
+            "motion_frame": "运动帧",
+            "force_offload": "强制卸载",
+            "colormatch": "颜色匹配",
+            "tiled_vae": "分块编码VAE",
+            "output_path": "输出路径",
+            "mode": "模式"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入组",
+            "output_path": "输出路径"
+        }
+    },
+    "WanVideoReCamMasterDefaultCamera": {
+        "title": "Wan视频  重新设置 主默认相机",
+        "inputs": {
+            "latents": "Latents"
+        },
+        "widgets": {
+            "camera_type": "相机类型"
+        },
+        "outputs": {
+            "camera_poses": "相机姿态"
+        },
+        "description": "ReCamMasterDefaultCamera"
+    },
+    "WanVideoReCamMasterGenerateOrbitCamera": {
+        "title": "Wan视频  重新启动 主生成轨道摄像机",
+        "inputs": {},
+        "widgets": {
+            "num_frames": "帧数",
+            "degrees": "度数"
+        },
+        "outputs": {
+            "camera_poses": "相机姿态"
+        },
+        "description": "ReCamMasterGenerateOrbitCamera"
+    },
+    "WanVideoReCamMasterCameraEmbed": {
+        "title": "Wan视频 重新设置相机嵌入",
+        "inputs": {
+            "camera_poses": "相机姿态",
+            "latents": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "camera_embeds": "相机嵌入",
+            "camera_poses": "相机姿态"
+        },
+        "description": "ReCamMasterCameraEmbed"
+    },
+    "ReCamMasterPoseVisualizer": {
+        "title": "相机位置姿态可视化",
+        "inputs": {
+            "camera_poses": "相机姿态"
+        },
+        "widgets": {
+            "base_xval": "x值",
+            "zval": "z值",
+            "scale": "缩放",
+            "arrow_length": "箭头长度"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "ReCamMasterPoseVisualizer"
+    },
+    "WanVideoDiffusionForcingSampler": {
+        "title": "Wan视频 扩散强制采样器",
+        "inputs": {
+            "model": "模型",
+            "text_embeds": "文本嵌入组",
+            "image_embeds": "图像嵌入组",
+            "samples": "采样",
+            "prefix_samples": "前缀采样",
+            "cache_args": "缓存参数",
+            "slg_args": "SLG参数",
+            "experimental_args": "实验参数",
+            "unianimate_poses": "UniAnimate通用动画_姿态"
+        },
+        "widgets": {
+            "addnoise_condition": "添加噪声条件",
+            "fps": "帧率",
+            "steps": "步数",
+            "cfg": "CFG",
+            "shift": "偏移",
+            "seed": "种子",
+            "force_offload": "强制卸载",
+            "scheduler": "调度器",
+            "rope_function": "RoPE函数",
+            "denoise_strength": "去噪强度"
+        },
+        "outputs": {
+            "samples": "Latent"
+        }
+    },
+    "WanVideoUni3C_ControlnetLoader": {
+        "title": "Wan视频 Uni3C Controlnet加载器",
+        "inputs": {
+            "compile_args": "编译参数"
+        },
+        "widgets": {
+            "model": "模型",
+            "base_precision": "基础精度",
+            "quantization": "量化",
+            "load_device": "加载设备",
+            "attention_mode": "注意力模式",
+            "compile_args": "编译参数"
+        },
+        "outputs": {
+            "controlnet": "ControlNet",
+            "WanVideo Controlnet": "Wan视频 ControlNet"
+        }
+    },
+    "WanVideoUni3C_embeds": {
+        "title": "Wan视频 Uni3C 嵌入组",
+        "inputs": {
+            "controlnet": "ControlNet",
+            "render_latent": "渲染Latent",
+            "render_mask": "渲染遮罩"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "uni3c_embeds": "Uni3C 嵌入组"
+        }
+    },
+    "WanVideoUniAnimateDWPoseDetector": {
+        "title": "Wan视频 UniAnimate通用动画 DW姿态 检测器",
+        "inputs": {
+            "pose_images": "姿态图像",
+            "reference_pose_image": "参考姿态图像"
+        },
+        "widgets": {
+            "score_threshold": "分数阈值",
+            "stick_width": "线条宽度",
+            "draw_body": "绘制身体",
+            "body_keypoint_size": "身体关键点大小",
+            "draw_feet": "绘制脚部",
+            "draw_hands": "绘制手部",
+            "hand_keypoint_size": "手部关键点大小",
+            "colorspace": "色彩空间",
+            "handle_not_detected": "处理未检测到的情况",
+            "draw_head": "绘制头部"
+        },
+        "outputs": {
+            "poses": "姿态",
+            "reference_pose": "参考姿态"
+        }
+    },
+    "VideoFrameSample": {
+        "title": "Wan视频 参考视频采样(InfiniteTalk)",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "stride": "步幅"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
+    "ImageOrVideoUpload": {
+        "title": "Wan视频 参考图像/视频上传(InfiniteTalk)",
+        "inputs": {},
+        "widgets": {
+            "input file": "输入文件",
+            "stride": "步幅"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
+    "WanVideoUniAnimatePoseInput": {
+        "title": "Wan视频 UniAnimate通用动画 姿态输入",
+        "inputs": {
+            "pose_images": "姿态图像",
+            "reference_pose_image": "参考姿态图像"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "unianimate_poses": "UniAnimate通用动画_姿态"
+        }
+    }
+}

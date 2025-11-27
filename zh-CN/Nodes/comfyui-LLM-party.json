@@ -1,0 +1,3027 @@
+{
+    "LLM_api_loader": {
+        "title": "☁️API大语言模型加载器",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名称",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "is_ollama": "是否为Ollama"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "aisuite_loader": {
+        "title": "☁️Aisuite加载器",
+        "inputs": {
+            "provider": "设备"
+        },
+        "widgets": {
+            "provider": "设备",
+            "model_name": "模型名称",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "aws_access_key_id": "AWS访问密钥ID",
+            "aws_secret_access_key": "AWS秘密访问密钥",
+            "aws_region_name": "AWS区域名称",
+            "google_project_id": "谷歌项目ID",
+            "google_region": "谷歌区域",
+            "google_application_credentials": "谷歌应用凭据",
+            "hf_api_token": "Hugging Face API令牌"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "easy_LLM_api_loader": {
+        "title": "☁️简易API大语言模型加载器",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名称"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "LLM": {
+        "title": "☁️API LLM大语言模型通用链路",
+        "inputs": {
+            "model": "模型",
+            "system_prompt_input": "系统提示输入",
+            "user_prompt_input": "用户提示输入",
+            "tools": "工具",
+            "file_content": "文件内容",
+            "images": "图像",
+            "user_history": "用户历史记录",
+            "img_URL": "图像URL",
+            "extra_parameters": "额外参数"
+        },
+        "widgets": {
+            "system_prompt": "系统提示",
+            "user_prompt": "用户提示",
+            "temperature": "温度",
+            "is_memory": "是否启用记忆",
+            "is_tools_in_sys_prompt": "系统提示中是否包含工具",
+            "is_locked": "是否锁定",
+            "main_brain": "主智能体",
+            "max_length": "最大长度",
+            "imgbb_api_key": "ImgBB API密钥",
+            "conversation_rounds": "对话轮数",
+            "historical_record": "历史记录",
+            "is_enable": "是否启用",
+            "stream": "流式传输"
+        },
+        "outputs": {
+            "assistant_response": "助手回复",
+            "history": "历史记录",
+            "tool": "工具",
+            "image": "图像",
+            "reasoning_content": "推理内容"
+        }
+    },
+    "LLM_local_loader": {
+        "title": "🖥️本地LLM大语言模型加载器",
+        "inputs": {},
+        "widgets": {
+            "model_name_or_path": "模型名称或路径",
+            "device": "设备",
+            "dtype": "数据类型",
+            "is_locked": "是否锁定"
+        },
+        "outputs": {
+            "model": "模型",
+            "tokenizer": "分词器"
+        }
+    },
+    "easy_LLM_local_loader": {
+        "title": "🖥️简易本地大语言模型加载器",
+        "inputs": {},
+        "widgets": {
+            "model_name_or_path": "模型名称或路径",
+            "device": "设备",
+            "dtype": "数据类型",
+            "is_locked": "是否锁定"
+        },
+        "outputs": {
+            "model": "模型",
+            "tokenizer": "分词器"
+        }
+    },
+    "LLM_local": {
+        "title": "🖥️本地LLM大语言模型通用链路",
+        "inputs": {
+            "model": "模型",
+            "tokenizer": "分词器",
+            "image": "图像",
+            "system_prompt_input": "系统提示输入",
+            "user_prompt_input": "用户提示输入",
+            "tools": "工具",
+            "file_content": "文件内容",
+            "extra_parameters": "额外参数",
+            "user_history": "用户历史"
+        },
+        "widgets": {
+            "system_prompt": "系统提示",
+            "user_prompt": "用户提示",
+            "model_type": "模型类型",
+            "temperature": "温度",
+            "max_length": "最大长度",
+            "is_memory": "是否记忆",
+            "is_locked": "是否锁定",
+            "main_brain": "主脑",
+            "conversation_rounds": "对话轮数",
+            "historical_record": "历史记录",
+            "is_enable": "是否启用",
+            "is_enable_system_role": "是否启用系统角色"
+        },
+        "outputs": {
+            "assistant_response": "助手回复",
+            "history": "历史记录",
+            "tool": "工具",
+            "image": "图像"
+        }
+    },
+    "AmapWeatherTool": {
+        "title": "高德天气查询工具",
+        "inputs": {},
+        "widgets": {
+            "city_code": "城市代码",
+            "api_key": "API 密钥",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "AmapRegeoTool": {
+        "title": "高德逆地理编码工具",
+        "inputs": {
+            "radius": "半径"
+        },
+        "widgets": {
+            "location": "位置",
+            "api_key": "API 密钥",
+            "extensions": "扩展",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "GeocodeTool": {
+        "title": "高德地理编码工具",
+        "inputs": {},
+        "widgets": {
+            "address": "地址",
+            "api_key": "API 密钥",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "arxiv_tool": {
+        "title": "arXiv 工具",
+        "inputs": {},
+        "widgets": {
+            "query": "查询",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "browser_use_tool": {
+        "title": "☁️浏览器自动控制工具",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名称",
+            "provider": "设备",
+            "base_url": "基础 URL",
+            "api_key": "API 密钥",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "custom_string_format": {
+        "title": "自定义字符串格式",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "string": "字符串",
+            "string_template": "字符串模板"
+        },
+        "outputs": {
+            "format_string": "格式化字符串"
+        }
+    },
+    "url2img_tool": {
+        "title": "URL转图像工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "path2img_tool": {
+        "title": "路径转图像工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "openai_dall_e": {
+        "title": "☁️Dall - e文生图工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "prompt": "提示词",
+            "image_size": "图像大小",
+            "image_quality": "图像质量",
+            "style": "风格",
+            "base_url": "基础URL",
+            "api_key": "API密钥"
+        },
+        "outputs": {
+            "img": "图像",
+            "img_url": "图像URL"
+        }
+    },
+    "dall_e_tool": {
+        "title": "☁️Dall - e文本转图像工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "image_size": "图像大小",
+            "image_quality": "图像质量",
+            "style": "风格",
+            "base_url": "基础URL",
+            "api_key": "API密钥"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "discord_bot": {
+        "title": "启动Discord机器人",
+        "inputs": {},
+        "widgets": {
+            "token": "令牌",
+            "is_enable": "是否启用",
+            "function_name": "函数名称"
+        },
+        "outputs": {
+            "is_success": "是否成功"
+        }
+    },
+    "discord_send": {
+        "title": "发送消息到Discord",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "text": "文本",
+            "img_path": "图像路径",
+            "audio_path": "音频路径"
+        },
+        "outputs": {}
+    },
+    "discord_file_monitor": {
+        "title": "Discord文件监控节点",
+        "inputs": {},
+        "widgets": {
+            "interval": "间隔时间",
+            "is_success": "是否成功"
+        },
+        "outputs": {
+            "msg_content": "消息内容"
+        }
+    },
+    "EasyOCR_advance": {
+        "title": "💻简易OCR（高级）",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "gpu": "GPU",
+            "language_name": "语言名称",
+            "decoder": "解码器",
+            "beamWidth": "光束宽度",
+            "batch_size": "批次大小",
+            "workers": "工作线程数",
+            "allowlist": "允许列表",
+            "blocklist": "阻止列表",
+            "paragraph": "段落",
+            "min_size": "最小尺寸",
+            "contrast_ths": "对比度阈值",
+            "adjust_contrast": "调整对比度",
+            "text_threshold": "文本阈值",
+            "low_text": "低文本",
+            "link_threshold": "链接阈值",
+            "canvas_size": "画布大小",
+            "mag_ratio": "放大比例",
+            "slope_ths": "斜率阈值",
+            "ycenter_ths": "Y中心阈值",
+            "height_ths": "高度阈值",
+            "width_ths": "宽度阈值",
+            "add_margin": "添加边距",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "images": "图像",
+            "masks": "遮罩",
+            "json_str": "JSON字符串",
+            "text": "文本",
+            "language_list_help": "语言列表帮助"
+        }
+    },
+    "EasyOCR_choose": {
+        "title": "💻简易OCR",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "gpu": "GPU",
+            "is_enable": "是否启用",
+            "language_list": "语言列表"
+        },
+        "outputs": {
+            "images": "图像",
+            "masks": "遮罩",
+            "json_str": "JSON字符串",
+            "text": "文本"
+        }
+    },
+    "advance_ebd_tool": {
+        "title": "💻高级词嵌入工具",
+        "inputs": {
+            "file_content": "文件内容",
+            "ebd_model": "嵌入模型"
+        },
+        "widgets": {
+            "path": "路径",
+            "is_enable": "是否启用",
+            "k": "k值",
+            "device": "设备",
+            "chunk_size": "块大小",
+            "chunk_overlap": "块重叠",
+            "file_name": "文件名",
+            "base_path": "基础路径"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "weekday_tool": {
+        "title": "星期查询工具",
+        "inputs": {},
+        "widgets": {
+            "timezone": "时区",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "extra_parameters": {
+        "title": "额外模型参数",
+        "inputs": {},
+        "widgets": {
+            "json_out": "json输出",
+            "n": "数量",
+            "stop": "停止条件",
+            "presence_penalty": "存在惩罚",
+            "frequency_penalty": "频率惩罚",
+            "repetition_penalty": "重复惩罚",
+            "min_length": "最小长度",
+            "logprobs": "对数概率",
+            "echo": "回显",
+            "best_of": "最佳数量",
+            "user": "用户",
+            "top_p": "核采样阈值",
+            "top_k": "采样前k个",
+            "seed": "种子"
+        },
+        "outputs": {
+            "extra_parameters": "字典"
+        }
+    },
+    "FeishuDownloadAudio": {
+        "title": "飞书下载音频🐶",
+        "inputs": {},
+        "widgets": {
+            "app_id": "应用ID",
+            "app_secret": "应用密钥",
+            "message_id": "消息ID",
+            "file_key": "文件密钥",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "audio_path": "音频路径",
+            "show_help": "显示帮助"
+        }
+    },
+    "FeishuDownloadImage": {
+        "title": "飞书下载图像🐶",
+        "inputs": {},
+        "widgets": {
+            "app_id": "应用ID",
+            "app_secret": "应用密钥",
+            "message_id": "消息ID",
+            "file_key": "文件密钥",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "image_path": "图像路径",
+            "show_help": "显示帮助"
+        }
+    },
+    "FeishuGetHistory": {
+        "title": "飞书机器人读取群聊历史🐶",
+        "inputs": {},
+        "widgets": {
+            "app_id": "应用ID",
+            "app_secret": "应用密钥",
+            "chat_id": "聊天ID",
+            "mode": "模式",
+            "time_diff_sec": "时间差（秒）"
+        },
+        "outputs": {
+            "response": "响应",
+            "log_info": "日志信息",
+            "message_id": "消息ID",
+            "output_is_text": "输出是否为文本",
+            "output_is_audio": "输出是否为音频",
+            "output_is_image": "输出是否为图像",
+            "show_help": "显示帮助"
+        }
+    },
+    "FeishuSendMsg": {
+        "title": "飞书机器人发送消息🐶",
+        "inputs": {},
+        "widgets": {
+            "msg_type": "消息类型",
+            "text": "文本",
+            "app_id": "应用ID",
+            "app_secret": "应用密钥",
+            "chat_type": "聊天类型",
+            "chat_id": "聊天ID",
+            "user_id": "用户ID",
+            "open_id": "开放ID",
+            "is_enable": "是否启用",
+            "file_path": "文件路径"
+        },
+        "outputs": {
+            "file_key": "文件密钥",
+            "msg_id": "消息ID",
+            "show_help": "显示帮助"
+        }
+    },
+    "files_read_tool": {
+        "title": "本地文件读取工具",
+        "inputs": {},
+        "widgets": {
+            "folder_path": "文件夹路径",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "FilePathExists": {
+        "title": "文件路径是否存在 转换为布尔值🐶",
+        "inputs": {},
+        "widgets": {
+            "file_path": "文件路径",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "file_exists": "文件是否存在",
+            "path_hold": "路径保持"
+        }
+    },
+    "FileOnlineDelete_gitee": {
+        "title": "清理Gitee图床文件🐶",
+        "inputs": {},
+        "widgets": {
+            "repo_owner": "仓库所有者",
+            "repo_name": "仓库名称",
+            "access_token": "访问令牌",
+            "branch": "分支",
+            "file_path": "文件路径"
+        },
+        "outputs": {
+            "show_help": "显示帮助"
+        }
+    },
+    "FileOnlineStorage_gitee": {
+        "title": "上传到Gitee图床🐶",
+        "inputs": {},
+        "widgets": {
+            "repo_owner": "仓库所有者",
+            "repo_name": "仓库名称",
+            "access_token": "访问令牌",
+            "target_branch": "目标分支",
+            "file_path": "文件路径"
+        },
+        "outputs": {
+            "download_url": "下载链接",
+            "branch_name": "分支名称",
+            "file_name": "文件名",
+            "show_help": "显示帮助"
+        }
+    },
+    "fish_whisper": {
+        "title": "☁️Fish语音转文本",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "audio_path": "音频路径",
+            "api_key": "API密钥"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "fish_tts": {
+        "title": "☁️Fish文本转语音",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "input_string": "输入字符串",
+            "reference_audio_path": "参考音频路径",
+            "reference_text": "参考文本",
+            "reference_id": "参考ID",
+            "api_key": "API密钥"
+        },
+        "outputs": {
+            "audio_path": "音频路径",
+            "audio": "音频"
+        }
+    },
+    "FolderCleaner": {
+        "title": "清空文件夹🐶",
+        "inputs": {
+            "any": "任意"
+        },
+        "widgets": {
+            "folder_path": "文件夹路径",
+            "file_type": "文件类型",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "any": "任意类型"
+        }
+    },
+    "got_ocr": {
+        "title": "🖥️GOT - OCR2图像中提取字幕文本",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "model_name_or_path": "模型名称或路径",
+            "device": "设备",
+            "ocr_type": "OCR类型",
+            "is_enable": "是否启用",
+            "ocr_box": "OCR框",
+            "ocr_color": "OCR颜色",
+            "multi_crop": "多裁剪",
+            "render": "渲染",
+            "out_dir_path": "输出目录路径",
+            "dtype": "数据类型"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "gpt_sovits": {
+        "title": "🖥️GPT - SoVITS语音克隆与文本转语音（TTS）工具",
+        "inputs": {},
+        "widgets": {
+            "text": "文本",
+            "text_lang": "文本语言",
+            "ref_audio_path": "参考音频路径",
+            "prompt_text": "提示文本",
+            "prompt_lang": "提示语言",
+            "text_split_method": "文本分割方法",
+            "batch_size": "批次大小",
+            "media_type": "媒体类型",
+            "GPT_weights_path": "GPT权重路径",
+            "Sovits_weights_path": "SoVITS权重路径",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "audio": "音频",
+            "audio_path": "音频路径"
+        }
+    },
+    "html2img_function": {
+        "title": "HTML转图像",
+        "inputs": {
+            "html_str": "HTML字符串"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "img": "图像"
+        }
+    },
+    "ic_lora_persona": {
+        "title": "上下文LoRA角色",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "scene_num": "场景数量",
+            "theme": "主题"
+        },
+        "outputs": {
+            "system_prompt_input": "系统提示输入"
+        }
+    },
+    "img_hosting": {
+        "title": "图像托管",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "api_key": "API密钥",
+            "img_hosting": "图像托管服务",
+            "is_enable": "是否启用",
+            "img_hosting_url": "图像托管URL"
+        },
+        "outputs": {
+            "img_URL": "图像URL",
+            "is_help": "是否帮助"
+        }
+    },
+    "Images2Image": {
+        "title": "图像拆分器",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "image4": "图像4",
+            "image5": "图像5"
+        }
+    },
+    "LorapathLoader": {
+        "title": "从文件路径加载Lora",
+        "inputs": {
+            "model": "模型",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "lora_path": "LoRA路径",
+            "lora_name": "LoRA名称",
+            "strength_model": "模型强度",
+            "strength_clip": "CLIP强度"
+        },
+        "outputs": {
+            "MODEL": "模型",
+            "clip": "CLIP"
+        }
+    },
+    "interrupt_loop": {
+        "title": "中断循环",
+        "inputs": {
+            "any": "任意"
+        },
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "any": "任意类型"
+        }
+    },
+    "json_extractor": {
+        "title": "JSON提取器🐶",
+        "inputs": {
+            "input": "输入"
+        },
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "json_output": "JSON输出"
+        }
+    },
+    "json_parser": {
+        "title": "JSON文件解析器🐶",
+        "inputs": {},
+        "widgets": {
+            "file_path": "文件路径",
+            "key": "键",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "show_json_file": "显示JSON文件",
+            "value_by_key": "任意类型"
+        }
+    },
+    "json_get_value": {
+        "title": "从JSON获取值🐶",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "key": "键",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "any": "任意类型"
+        }
+    },
+    "LLavaLoader": {
+        "title": "🖥️VLM - GGUF加载器",
+        "inputs": {},
+        "widgets": {
+            "ckpt_path": "检查点路径",
+            "clip_path": "CLIP路径",
+            "max_ctx": "最大上下文",
+            "gpu_layers": "GPU层数",
+            "n_threads": "线程数",
+            "chat_format": "聊天格式",
+            "is_locked": "是否锁定"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "easy_LLavaLoader": {
+        "title": "🖥️简易VLM - GGUF加载器",
+        "inputs": {},
+        "widgets": {
+            "ckpt_path": "ckpt路径",
+            "clip_path": "clip路径",
+            "max_ctx": "最大上下文",
+            "gpu_layers": "GPU层数",
+            "n_threads": "线程数",
+            "is_locked": "是否锁定"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "GGUFLoader": {
+        "title": "🖥️LLM - GGUF加载器",
+        "inputs": {},
+        "widgets": {
+            "model_path": "模型路径",
+            "max_ctx": "最大上下文",
+            "gpu_layers": "GPU层数",
+            "n_threads": "线程数",
+            "is_locked": "是否锁定"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "easy_GGUFLoader": {
+        "title": "🖥️简易LLM - GGUF加载器",
+        "inputs": {},
+        "widgets": {
+            "model_path": "模型路径",
+            "max_ctx": "最大上下文",
+            "gpu_layers": "GPU层数",
+            "n_threads": "线程数",
+            "is_locked": "是否锁定"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "vlmLoader": {
+        "title": "🖥️VLM本地加载器",
+        "inputs": {},
+        "widgets": {
+            "model_name_or_path": "模型名称或路径",
+            "is_locked": "是否锁定",
+            "device": "设备",
+            "dtype": "数据类型",
+            "type": "类型"
+        },
+        "outputs": {
+            "model": "模型",
+            "tokenizer(processor)": "分词器"
+        }
+    },
+    "easy_vlmLoader": {
+        "title": "🖥️简易VLM本地加载器",
+        "inputs": {},
+        "widgets": {
+            "model_name_or_path": "模型名称或路径",
+            "device": "设备",
+            "dtype": "数据类型",
+            "is_locked": "是否锁定",
+            "type": "类型"
+        },
+        "outputs": {
+            "model": "模型",
+            "tokenizer(processor)": "分词器"
+        }
+    },
+    "load_llm_lora": {
+        "title": "🖥️加载LLM大语言模型LoRA",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "lora_path": "LoRA路径"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "easy_load_llm_lora": {
+        "title": "🖥️简易加载LLM大语言模型LoRA",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "lora_path": "LoRA路径"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "load_memo": {
+        "title": "加载JSON文件记忆",
+        "inputs": {},
+        "widgets": {
+            "system_prompt": "系统提示",
+            "history_path": "历史记录路径"
+        },
+        "outputs": {
+            "system_prompt": "系统提示",
+            "user_history": "用户历史记录",
+            "history_path": "历史记录路径"
+        }
+    },
+    "save_memo": {
+        "title": "保存JSON文件记忆",
+        "inputs": {
+            "history": "历史记录",
+            "history_path": "历史记录路径"
+        },
+        "widgets": {},
+        "outputs": {
+            "history_path": "历史记录路径"
+        }
+    },
+    "load_redis_memo": {
+        "title": "加载Redis记忆",
+        "inputs": {},
+        "widgets": {
+            "system_prompt": "系统提示",
+            "history_key": "历史记录键",
+            "redis_host": "Redis主机",
+            "redis_port": "Redis端口",
+            "clear_memo": "清除记忆"
+        },
+        "outputs": {
+            "system_prompt": "系统提示",
+            "user_history": "用户历史记录",
+            "history_key": "历史记录键"
+        }
+    },
+    "save_redis_memo": {
+        "title": "保存Redis记忆",
+        "inputs": {
+            "history": "历史记录",
+            "history_key": "历史记录键"
+        },
+        "widgets": {
+            "redis_host": "Redis主机",
+            "redis_port": "Redis端口"
+        },
+        "outputs": {
+            "history_key": "历史记录键"
+        }
+    },
+    "load_SQL_memo": {
+        "title": "加载SQL记忆",
+        "inputs": {},
+        "widgets": {
+            "system_prompt": "系统提示",
+            "history_id": "历史记录ID",
+            "database_url": "数据库URL",
+            "clear_memo": "清除记忆"
+        },
+        "outputs": {
+            "system_prompt": "系统提示",
+            "user_history": "用户历史记录",
+            "history_id": "历史记录ID"
+        }
+    },
+    "save_SQL_memo": {
+        "title": "保存SQL记忆",
+        "inputs": {
+            "history": "历史记录",
+            "history_id": "历史记录ID"
+        },
+        "widgets": {
+            "database_url": "数据库URL"
+        },
+        "outputs": {
+            "history_id": "历史记录ID"
+        }
+    },
+    "Mcp_tool": {
+        "title": "MCP工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "md_to_excel": {
+        "title": "Markdown转Excel",
+        "inputs": {
+            "md_str": "Markdown字符串"
+        },
+        "widgets": {
+            "output_file": "输出文件",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "log": "日志"
+        }
+    },
+    "Browser_display": {
+        "title": "浏览器显示",
+        "inputs": {
+            "md_or_html": "Markdown或HTML"
+        },
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "log": "日志"
+        }
+    },
+    "md_to_html": {
+        "title": "Markdown转HTML",
+        "inputs": {
+            "md_str": "Markdown字符串"
+        },
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "HTML": "HTML"
+        }
+    },
+    "graph_md_to_html": {
+        "title": "思维导图Markdown转HTML",
+        "inputs": {
+            "graph_definition": "图形定义"
+        },
+        "widgets": {
+            "mode": "模式",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "HTML": "HTML"
+        }
+    },
+    "mini_party": {
+        "title": "☁️迷你派对",
+        "inputs": {
+            "input_str": "输入字符串"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "model_name": "模型名称",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "output_str": "输出字符串"
+        }
+    },
+    "mini_translate": {
+        "title": "☁️迷你长文本翻译器",
+        "inputs": {
+            "input_str": "输入字符串"
+        },
+        "widgets": {
+            "target_language": "目标语言",
+            "tone": "语气",
+            "degree": "程度",
+            "model_name": "模型名称",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "output_str": "输出字符串"
+        }
+    },
+    "mini_error_correction": {
+        "title": "☁️迷你长文本纠错器",
+        "inputs": {
+            "input_str": "输入字符串"
+        },
+        "widgets": {
+            "model_name": "模型名称",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "input_text": "输入文本",
+            "output_text": "输出文本",
+            "error": "错误"
+        }
+    },
+    "mini_summary": {
+        "title": "☁️迷你摘要生成器",
+        "inputs": {
+            "input_str": "输入字符串"
+        },
+        "widgets": {
+            "model_name": "模型名称",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "output_text": "输出文本"
+        }
+    },
+    "mini_story": {
+        "title": "☁️迷你故事生成器",
+        "inputs": {},
+        "widgets": {
+            "theme": "主题",
+            "model_name": "模型名称",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "story": "故事",
+            "character": "角色"
+        }
+    },
+    "mini_ocr": {
+        "title": "☁️🖥️迷你高级OCR图像中提取字幕文本",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "gpu": "GPU",
+            "language_name": "语言名称",
+            "model_name": "模型名称",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "imgbb_api_key": "imgbb API密钥",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "images": "图像",
+            "masks": "遮罩",
+            "json_str": "JSON字符串",
+            "text": "文本"
+        }
+    },
+    "mini_sd_prompt": {
+        "title": "☁️迷你SD提示词生成器",
+        "inputs": {},
+        "widgets": {
+            "prompt": "提示词",
+            "model_name": "模型名称",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "is_enable": "是否启用",
+            "seed": "种子值"
+        },
+        "outputs": {
+            "positive_prompt": "正面提示词",
+            "negative_prompt": "负面提示词"
+        }
+    },
+    "mini_flux_prompt": {
+        "title": "☁️迷你 FLUX提示词生成器",
+        "inputs": {},
+        "widgets": {
+            "prompt": "提示词",
+            "model_name": "模型名称",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "is_enable": "是否启用",
+            "seed": "种子值"
+        },
+        "outputs": {
+            "flux_prompt": "FLUX提示词"
+        }
+    },
+    "mini_sd_tag": {
+        "title": "☁️迷你SD图像提示词反推器",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "model_name": "模型名称",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "imgbb_api_key": "imgbb API密钥",
+            "is_enable": "是否启用",
+            "seed": "种子值"
+        },
+        "outputs": {
+            "tags": "标签"
+        }
+    },
+    "mini_flux_tag": {
+        "title": "☁️迷你 FLUX图像提示词反推器",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "model_name": "模型名称",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "imgbb_api_key": "imgbb API密钥",
+            "is_enable": "是否启用",
+            "seed": "种子值"
+        },
+        "outputs": {
+            "tags": "标签"
+        }
+    },
+    "mini_intent_recognition": {
+        "title": "☁️迷你 意图识别器",
+        "inputs": {
+            "input_str": "输入字符串"
+        },
+        "widgets": {
+            "model_name": "模型名称",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "is_enable": "是否启用",
+            "intent1": "意图1",
+            "intent2": "意图2",
+            "intent3": "意图3",
+            "intent4": "意图4",
+            "intent5": "意图5",
+            "intent6": "意图6",
+            "intent7": "意图7",
+            "intent8": "意图8",
+            "intent9": "意图9",
+            "intent10": "意图10"
+        },
+        "outputs": {
+            "intent1": "意图1",
+            "intent2": "意图2",
+            "intent3": "意图3",
+            "intent4": "意图4",
+            "intent5": "意图5",
+            "intent6": "意图6",
+            "intent7": "意图7",
+            "intent8": "意图8",
+            "intent9": "意图9",
+            "intent10": "意图10"
+        }
+    },
+    "check_text": {
+        "title": "☁️审核文本",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "base_url": "基础URL",
+            "api_key": "API密钥"
+        },
+        "outputs": {
+            "flag": "标志",
+            "flagged_categories": "标记的类别",
+            "text": "文本"
+        }
+    },
+
+    "Image2Video_party": {
+        "title": "图像转视频🐶",
+        "inputs": {},
+        "widgets": {
+            "audio_path": "音频路径",
+            "image_path": "图像路径",
+            "subtitle": "字幕",
+            "subtitle_size": "字幕大小",
+            "font_path": "字体路径",
+            "r": "红色值",
+            "g": "绿色值",
+            "b": "蓝色值",
+            "output_path": "输出路径",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "video_path": "视频路径"
+        }
+    },
+    "Combine_Videos_party": {
+        "title": "合并视频🐶",
+        "inputs": {},
+        "widgets": {
+            "input_folder": "输入文件夹",
+            "output_folder": "输出文件夹",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "output_path": "输出路径"
+        }
+    },
+
+    "omost_json2py": {
+        "title": "omost JSON转Python",
+        "inputs": {},
+        "widgets": {
+            "omost_json": "omost json数据"
+        },
+        "outputs": {
+            "omost_py": "omost py数据"
+        }
+    },
+    "load_openai_ebd": {
+        "title": "☁️OpenAI词向量搜索",
+        "inputs": {
+            "file_content": "文件内容"
+        },
+        "widgets": {
+            "model_name": "模型名称",
+            "question": "问题",
+            "is_enable": "是否启用",
+            "k": "k值",
+            "chunk_size": "分块大小",
+            "chunk_overlap": "分块重叠量",
+            "base_path": "基础路径",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "is_ollama": "是否为ollama"
+        },
+        "outputs": {
+            "ebd_response": "词向量响应"
+        }
+    },
+    "openai_ebd_tool": {
+        "title": "☁️OpenAI嵌入数据库工具",
+        "inputs": {
+            "file_content": "文件内容"
+        },
+        "widgets": {
+            "model_name": "模型名称",
+            "is_enable": "是否启用",
+            "k": "k值",
+            "chunk_size": "分块大小",
+            "chunk_overlap": "分块重叠量",
+            "base_path": "基础路径",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "is_ollama": "是否为ollama"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "save_openai_ebd": {
+        "title": "☁️保存OpenAI嵌入数据库",
+        "inputs": {
+            "file_content": "文件内容"
+        },
+        "widgets": {
+            "model_name": "模型名称",
+            "is_enable": "是否启用",
+            "chunk_size": "分块大小",
+            "chunk_overlap": "分块重叠量",
+            "save_path": "保存路径",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "is_ollama": "是否为ollama"
+        },
+        "outputs": {}
+    },
+    "open_url_function": {
+        "title": "打开网页",
+        "inputs": {},
+        "widgets": {
+            "path_or_url": "路径或网址",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "log": "日志"
+        }
+    },
+    "open_url_tool": {
+        "title": "打开网页工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "red_book_text_persona": {
+        "title": "小红书文案角色面具📕",
+        "inputs": {
+            "must_include_tag": "必须包含的标签"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "main_body": "主体内容",
+            "text_type": "文本类型",
+            "min_length": "最小长度",
+            "desc": "描述"
+        },
+        "outputs": {
+            "system_prompt_input": "系统提示输入",
+            "user_prompt_input": "用户提示输入"
+        }
+    },
+    "RSS_loader": {
+        "title": "RSS内容聚合阅读器 加载器",
+        "inputs": {},
+        "widgets": {
+            "rss_url": "RSS网址",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "json_str": "JSON字符串"
+        }
+    },
+    "RSS_tool": {
+        "title": "RSS内容聚合阅读器 工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "savepersona": {
+        "title": "保存角色面具",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "persona_name": "角色名称"
+        },
+        "outputs": {}
+    },
+    "searxng_tool": {
+        "title": "searxng搜索工具",
+        "inputs": {},
+        "widgets": {
+            "searxng_api_url": "searxng API地址",
+            "categories": "类别",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "time_sleep": {
+        "title": "延迟模块",
+        "inputs": {
+            "any": "任意"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "sleep_time": "睡眠时间"
+        },
+        "outputs": {
+            "any": "任意类型"
+        }
+    },
+    "SpeedChange": {
+        "title": "音频变速🐶",
+        "inputs": {},
+        "widgets": {
+            "input_audio_path": "输入音频路径",
+            "output_folder_path": "输出文件夹路径",
+            "speed_factor": "速度因子",
+            "is_enable": "是否启用",
+            "suffix": "后缀"
+        },
+        "outputs": {
+            "audio": "音频",
+            "audio_path": "音频路径"
+        }
+    },
+    "sql_tool": {
+        "title": "☁️SQL数据库工具",
+        "inputs": {},
+        "widgets": {
+            "db_connection_string": "数据库连接字符串",
+            "query_str": "查询字符串",
+            "is_enable": "是否启用",
+            "model_name": "模型名称",
+            "base_url": "基础地址",
+            "api_key": "API密钥"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "srt2txt": {
+        "title": "字幕SRT转文本",
+        "inputs": {},
+        "widgets": {
+            "srt_path": "SRT文件路径"
+        },
+        "outputs": {
+            "texts": "文本",
+            "timestamps": "时间戳"
+        }
+    },
+    "txt2srt": {
+        "title": "文本转字幕SRT",
+        "inputs": {
+            "translated_texts": "翻译后的文本",
+            "timestamps": "时间戳"
+        },
+        "widgets": {
+            "output_dir_path": "输出目录路径"
+        },
+        "outputs": {}
+    },
+    "whisper_local": {
+        "title": "🖥️语音转文字本地模型",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "model_name_or_path": "模型名称或路径",
+            "is_enable": "是否启用",
+            "audio_path": "音频路径"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "svg2html": {
+        "title": "SVG转HTML",
+        "inputs": {
+            "svg_code": "SVG代码"
+        },
+        "widgets": {},
+        "outputs": {
+            "html_str": "HTML字符串"
+        }
+    },
+    "svg2img_function": {
+        "title": "SVG转图像",
+        "inputs": {
+            "svg_str": "SVG字符串"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "img": "图像"
+        }
+    },
+    "any_switcher": {
+        "title": "任意类型切换器",
+        "inputs": {
+            "any1": "任意项_1",
+            "any2": "任意项_2",
+            "any3": "任意项_3",
+            "any4": "任意项_4",
+            "any5": "任意项_5",
+            "any6": "任意项_6",
+            "any7": "任意项_7",
+            "any8": "任意项_8",
+            "any9": "任意项_9",
+            "any10": "任意项_10"
+        },
+        "widgets": {
+            "num": "编号"
+        },
+        "outputs": {
+            "which_any": "任意类型"
+        }
+    },
+    "text2json": {
+        "title": "将文本拆分为JSON🐶",
+        "inputs": {},
+        "widgets": {
+            "text": "文本",
+            "sep": "分隔符"
+        },
+        "outputs": {
+            "json_data": "JSON数据"
+        }
+    },
+    "text2parameters": {
+        "title": "文本转参数",
+        "inputs": {},
+        "widgets": {
+            "text": "文本"
+        },
+        "outputs": {
+            "json_data": "字典"
+        }
+    },
+    "URL2IMG": {
+        "title": "下载图片🐶",
+        "inputs": {},
+        "widgets": {
+            "url": "网址",
+            "file_name": "文件名",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "file_path": "文件路径",
+            "img": "图像",
+            "log": "日志"
+        }
+    },
+    "send_to_wechat_official": {
+        "title": "发送至微信公众号",
+        "inputs": {},
+        "widgets": {
+            "appid": "应用ID",
+            "secret": "密钥",
+            "title": "标题",
+            "author": "作者",
+            "content": "内容",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "log": "日志"
+        }
+    },
+    "listen_audio": {
+        "title": "☁️收听音频",
+        "inputs": {},
+        "widgets": {
+            "press_key": "按下键"
+        },
+        "outputs": {
+            "audio_path": "音频路径",
+            "audio": "音频"
+        }
+    },
+    "openai_whisper": {
+        "title": "☁️OpenAI语音转文本",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "audio_path": "音频路径",
+            "base_url": "基础网址",
+            "api_key": "API密钥"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "api_tool": {
+        "title": "API工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "url": "网址",
+            "api_key": "API密钥",
+            "description": "描述",
+            "parameters": "参数"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "api_function": {
+        "title": "API函数",
+        "inputs": {
+            "parameters": "参数"
+        },
+        "widgets": {
+            "url": "网址",
+            "api_key": "API密钥",
+            "timeout": "超时时间",
+            "request_type": "请求类型"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "parameter_function": {
+        "title": "参数字典函数",
+        "inputs": {
+            "value": "值"
+        },
+        "widgets": {
+            "key": "键"
+        },
+        "outputs": {
+            "parameter": "参数"
+        }
+    },
+    "parameter_combine": {
+        "title": "参数字典合并",
+        "inputs": {
+            "parameter1": "参数1",
+            "parameter2": "参数2",
+            "parameter3": "参数3"
+        },
+        "widgets": {},
+        "outputs": {
+            "parameters": "字典"
+        }
+    },
+    "parameter_combine_plus": {
+        "title": "超大参数字典合并",
+        "inputs": {
+            "parameter1": "参数1",
+            "parameter2": "参数2",
+            "parameter3": "参数3",
+            "parameter4": "参数4",
+            "parameter5": "参数5",
+            "parameter6": "参数6",
+            "parameter7": "参数7",
+            "parameter8": "参数8",
+            "parameter9": "参数9",
+            "parameter10": "参数10"
+        },
+        "widgets": {},
+        "outputs": {
+            "parameters": "字典"
+        }
+    },
+    "list_append": {
+        "title": "向列表追加元素",
+        "inputs": {
+            "any1": "任意项1",
+            "any2": "任意项2",
+            "any3": "任意项3"
+        },
+        "widgets": {},
+        "outputs": {
+            "list": "列表"
+        }
+    },
+    "list_append_plus": {
+        "title": "超大 向列表追加元素",
+        "inputs": {
+            "any1": "任意项1",
+            "any2": "任意项2",
+            "any3": "任意项3",
+            "any4": "任意项4",
+            "any5": "任意项5",
+            "any6": "任意项6",
+            "any7": "任意项7",
+            "any8": "任意项8",
+            "any9": "任意项9",
+            "any10": "任意项10"
+        },
+        "widgets": {},
+        "outputs": {
+            "list": "列表"
+        }
+    },
+    "list_extend": {
+        "title": "列表扩展",
+        "inputs": {
+            "list1": "列表1",
+            "list2": "列表2",
+            "list3": "列表3"
+        },
+        "widgets": {},
+        "outputs": {
+            "list": "列表"
+        }
+    },
+    "list_extend_plus": {
+        "title": "超大列表扩展",
+        "inputs": {
+            "list1": "列表1",
+            "list2": "列表2",
+            "list3": "列表3",
+            "list4": "列表4",
+            "list5": "列表5",
+            "list6": "列表6",
+            "list7": "列表7",
+            "list8": "列表8",
+            "list9": "列表9",
+            "list10": "列表10"
+        },
+        "widgets": {},
+        "outputs": {
+            "lists": "列表组"
+        }
+    },
+    "json2text": {
+        "title": "JSON转文本",
+        "inputs": {
+            "JSON": "JSON"
+        },
+        "widgets": {},
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "check_web_tool": {
+        "title": "检查网络工具",
+        "inputs": {
+            "ebd_model": "嵌入模型"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "chunk_size": "块大小",
+            "chunk_overlap": "块重叠",
+            "device": "设备",
+            "web_url": "网络地址",
+            "embedding_path": "嵌入路径",
+            "with_jina": "使用Jina",
+            "base_url": "基础地址",
+            "api_key": "API密钥"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "classify_function": {
+        "title": "分类器函数",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "response1": "响应1",
+            "response2": "响应2",
+            "response3": "响应3"
+        }
+    },
+    "classify_function_plus": {
+        "title": "超大分类器函数",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "response1": "响应1",
+            "response2": "响应2",
+            "response3": "响应3",
+            "response4": "响应4",
+            "response5": "响应5",
+            "response6": "响应6",
+            "response7": "响应7",
+            "response8": "响应8",
+            "response9": "响应9",
+            "response10": "响应10"
+        }
+    },
+    "classify_persona": {
+        "title": "分类角色面具",
+        "inputs": {
+            "file_content": "文件内容"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "text1": "文本1",
+            "text2": "文本2",
+            "text3": "文本3"
+        },
+        "outputs": {
+            "system_prompt_input": "系统提示输入"
+        }
+    },
+    "classify_persona_plus": {
+        "title": "超大 分类角色面具",
+        "inputs": {
+            "file_content": "文件内容"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "text1": "文本_1",
+            "text2": "文本_2",
+            "text3": "文本_3",
+            "text4": "文本_4",
+            "text5": "文本_5",
+            "text6": "文本_6",
+            "text7": "文本_7",
+            "text8": "文本_8",
+            "text9": "文本_9",
+            "text10": "文本_10"
+        },
+        "outputs": {
+            "system_prompt_input": "系统提示输入"
+        }
+    },
+    "clear_file": {
+        "title": "清除文件",
+        "inputs": {
+            "any": "任意"
+        },
+        "widgets": {
+            "path": "路径",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "any": "任意类型"
+        }
+    },
+    "clear_model": {
+        "title": "清除模型",
+        "inputs": {
+            "any": "任意",
+            "model": "模型",
+            "tokenizer": "分词器"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "is_ollama": "是否为Ollama"
+        },
+        "outputs": {
+            "any": "任意类型"
+        }
+    },
+    "custom_persona": {
+        "title": "自定义角色面具",
+        "inputs": {
+            "file_content": "文件内容"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "prompt": "提示词",
+            "prompt_template": "提示词模板"
+        },
+        "outputs": {
+            "system_or_user_prompt_input": "系统或用户提示输入"
+        }
+    },
+    "start_dialog": {
+        "title": "开始对话",
+        "inputs": {},
+        "widgets": {
+            "init_dialog": "初始化对话",
+            "is_reload": "是否重新加载"
+        },
+        "outputs": {
+            "user_prompt": "用户提示词",
+            "dialog_id": "对话ID"
+        }
+    },
+    "end_dialog": {
+        "title": "结束对话",
+        "inputs": {
+            "dialog_id": "对话ID",
+            "assistant_response": "助手回复"
+        },
+        "widgets": {
+            "dialog_id": "对话ID",
+            "assistant_response": "助手回复"
+        },
+        "outputs": {}
+    },
+    "start_anything": {
+        "title": "启动任意操作",
+        "inputs": {
+            "init_any": "初始化任意内容"
+        },
+        "widgets": {
+            "key": "键",
+            "is_reload": "是否重新加载"
+        },
+        "outputs": {
+            "any": "任意类型"
+        }
+    },
+    "end_anything": {
+        "title": "结束任意操作",
+        "inputs": {
+            "any": "任意内容"
+        },
+        "widgets": {
+            "key": "键"
+        },
+        "outputs": {}
+    },
+    "Dingding_tool": {
+        "title": "钉钉工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "msgtype": "消息类型",
+            "key_word": "关键词",
+            "url": "网址"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "Dingding": {
+        "title": "发送到钉钉消息",
+        "inputs": {},
+        "widgets": {
+            "content": "内容",
+            "is_enable": "是否启用",
+            "msgtype": "消息类型",
+            "key_word": "关键词",
+            "url": "网址"
+        },
+        "outputs": {}
+    },
+    "end_workflow": {
+        "title": "结束工作流",
+        "inputs": {
+            "images": "图像",
+            "text": "文本"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀"
+        },
+        "outputs": {}
+    },
+    "img2path": {
+        "title": "图片保存路径",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀"
+        },
+        "outputs": {
+            "path": "路径"
+        }
+    },
+    "load_excel": {
+        "title": "Excel迭代器",
+        "inputs": {},
+        "widgets": {
+            "path": "路径",
+            "is_enable": "是否启用",
+            "is_reload": "是否重新加载",
+            "load_all": "全部加载",
+            "iterator_mode": "迭代模式",
+            "start_row": "起始行",
+            "end_row": "结束行"
+        },
+        "outputs": {
+            "file_content": "文件内容",
+            "is_end": "是否结束"
+        }
+    },
+    "image_iterator": {
+        "title": "图像迭代器",
+        "inputs": {},
+        "widgets": {
+            "folder_path": "文件夹路径",
+            "is_enable": "是否启用",
+            "is_reload": "是否重新加载",
+            "iterator_mode": "迭代模式"
+        },
+        "outputs": {
+            "image": "图像",
+            "is_end": "是否结束",
+            "image_name": "图像名称",
+            "image_path": "图像路径"
+        }
+    },
+    "file_path_iterator": {
+        "title": "文件路径迭代器",
+        "inputs": {},
+        "widgets": {
+            "folder_path": "文件夹路径",
+            "extension": "扩展名",
+            "is_enable": "是否启用",
+            "is_reload": "是否重新加载",
+            "iterator_mode": "迭代模式"
+        },
+        "outputs": {
+            "file_path": "文件路径",
+            "is_end": "是否结束"
+        }
+    },
+    "json_iterator": {
+        "title": "JSON迭代器",
+        "inputs": {},
+        "widgets": {
+            "json_str": "JSON字符串",
+            "is_enable": "是否启用",
+            "is_reload": "是否重新加载",
+            "load_all": "全部加载",
+            "iterator_mode": "迭代模式"
+        },
+        "outputs": {
+            "file_content": "文件内容",
+            "is_end": "是否结束"
+        }
+    },
+    "feishu_tool": {
+        "title": "飞书工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "key_word": "关键词",
+            "url": "网址"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "feishu": {
+        "title": "发送到飞书消息",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "content": "内容",
+            "is_enable": "是否启用",
+            "msgtype": "消息类型",
+            "key_word": "关键词",
+            "url": "网址",
+            "feishu_app_id": "飞书应用ID",
+            "feishu_app_secret": "飞书应用密钥"
+        },
+        "outputs": {}
+    },
+    "file_combine": {
+        "title": "文件合并",
+        "inputs": {
+            "file1": "文件1",
+            "file2": "文件2",
+            "file3": "文件3"
+        },
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "files": "文件"
+        }
+    },
+    "file_combine_plus": {
+        "title": "超大文件合并",
+        "inputs": {
+            "file1": "文件1",
+            "file2": "文件2",
+            "file3": "文件3",
+            "file4": "文件4",
+            "file5": "文件5",
+            "file6": "文件6",
+            "file7": "文件7",
+            "file8": "文件8",
+            "file9": "文件9",
+            "file10": "文件10"
+        },
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "files": "文件"
+        }
+    },
+    "string_combine": {
+        "title": "合并字符串",
+        "inputs": {
+            "file1": "文件1",
+            "file2": "文件2",
+            "file3": "文件3"
+        },
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "files": "文件"
+        }
+    },
+    "string_combine_plus": {
+        "title": "超大合并字符串",
+        "inputs": {
+            "file1": "文件1",
+            "file2": "文件2",
+            "file3": "文件3",
+            "file4": "文件4",
+            "file5": "文件5",
+            "file6": "文件6",
+            "file7": "文件7",
+            "file8": "文件8",
+            "file9": "文件9",
+            "file10": "文件10"
+        },
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "files": "文件"
+        }
+    },
+    "flux_persona": {
+        "title": "Flux提示词生成器 角色面具设定",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "image_type": "图像类型",
+            "theme": "主题",
+            "style": "风格",
+            "strength": "强度"
+        },
+        "outputs": {
+            "system_prompt_input": "系统提示输入"
+        }
+    },
+    "time_tool": {
+        "title": "时间工具",
+        "inputs": {},
+        "widgets": {
+            "timezone": "时区",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "accuweather_tool": {
+        "title": "AccuWeather天气预报工具（精准）",
+        "inputs": {},
+        "widgets": {
+            "city": "城市",
+            "accuweather_key": "accuweather密钥",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "github_tool": {
+        "title": "GitHub工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "git_api_key": "git API密钥"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "CLIPTextEncode_party": {
+        "title": "CLIP文本编码器",
+        "inputs": {
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "text": "文本"
+        },
+        "outputs": {
+            "CONDITIONING": "条件"
+        }
+    },
+    "KSampler_party": {
+        "title": "KSampler采样器",
+        "inputs": {
+            "model": "模型",
+            "positive": "正面",
+            "negative": "负面",
+            "latent_image": "Latent图像"
+        },
+        "widgets": {
+            "seed": "种子",
+            "steps": "步数",
+            "cfg": "分类器自由引导尺度",
+            "sampler_name": "采样器名称",
+            "scheduler": "调度器",
+            "denoise": "去噪"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "VAEDecode_party": {
+        "title": "VAE 解码器",
+        "inputs": {
+            "samples": "样本",
+            "vae": "VAE"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
+    "interpreter_tool": {
+        "title": "解释器工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "interpreter_function": {
+        "title": "解释器函数",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "code_str": "代码字符串"
+        },
+        "outputs": {
+            "console_output": "控制台输出",
+            "defined_variables": "已定义变量",
+            "all_output": "全部输出"
+        }
+    },
+    "keyword_tool": {
+        "title": "搜索关键词工具",
+        "inputs": {
+            "file_content": "文件内容"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "k": "k值",
+            "chunk_size": "块大小",
+            "chunk_overlap": "块重叠量"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "load_keyword": {
+        "title": "加载关键词检索器",
+        "inputs": {
+            "file_content": "文件内容"
+        },
+        "widgets": {
+            "question": "问题",
+            "is_enable": "是否启用",
+            "k": "k值",
+            "chunk_size": "块大小",
+            "chunk_overlap": "块重叠量"
+        },
+        "outputs": {
+            "relative_info": "相关信息"
+        }
+    },
+    "KG_json_toolkit_developer": {
+        "title": "知识图谱JSON工具包开发者版",
+        "inputs": {},
+        "widgets": {
+            "absolute_path": "绝对路径",
+            "relative_path": "相对路径",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tools": "工具"
+        }
+    },
+    "KG_json_toolkit_user": {
+        "title": "知识图谱JSON工具包用户版",
+        "inputs": {},
+        "widgets": {
+            "absolute_path": "绝对路径",
+            "relative_path": "相对路径",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tools": "工具"
+        }
+    },
+    "KG_csv_toolkit_developer": {
+        "title": "知识图谱CSV工具包开发者版",
+        "inputs": {},
+        "widgets": {
+            "absolute_path": "绝对路径",
+            "relative_path": "相对路径",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tools": "工具"
+        }
+    },
+    "KG_csv_toolkit_user": {
+        "title": "知识图谱CSV工具包用户版",
+        "inputs": {},
+        "widgets": {
+            "absolute_path": "绝对路径",
+            "relative_path": "相对路径",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tools": "工具"
+        }
+    },
+    "KG_neo_toolkit_developer": {
+        "title": "知识图谱Neo4j工具包开发者版",
+        "inputs": {},
+        "widgets": {
+            "database_url": "数据库URL",
+            "database_name": "数据库名称",
+            "password": "密码",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tools": "工具"
+        }
+    },
+    "KG_neo_toolkit_user": {
+        "title": "知识图谱Neo4j工具包用户版",
+        "inputs": {},
+        "widgets": {
+            "database_name": "数据库名称",
+            "password": "密码",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tools": "工具"
+        }
+    },
+    "ebd_tool": {
+        "title": "🖥️词嵌入模型工具",
+        "inputs": {
+            "file_content": "文件内容",
+            "ebd_model": "词嵌入模型"
+        },
+        "widgets": {
+            "model_path": "模型路径",
+            "is_enable": "是否启用",
+            "k": "k值",
+            "device": "设备",
+            "chunk_size": "块大小",
+            "chunk_overlap": "块重叠",
+            "base_path": "基础路径"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "load_ebd": {
+        "title": "加载词嵌入模型",
+        "inputs": {},
+        "widgets": {
+            "model_path": "模型路径",
+            "is_enable": "是否启用",
+            "device": "设备"
+        },
+        "outputs": {
+            "ebd_model": "词嵌入模型模型"
+        }
+    },
+    "embeddings_function": {
+        "title": "🖥️词向量检索",
+        "inputs": {
+            "file_content": "文件内容",
+            "ebd_model": "词嵌入模型"
+        },
+        "widgets": {
+            "model_path": "模型路径",
+            "question": "问题",
+            "is_enable": "是否启用",
+            "device": "设备",
+            "k": "k值",
+            "chunk_size": "块大小",
+            "chunk_overlap": "块重叠",
+            "base_path": "基础路径"
+        },
+        "outputs": {
+            "ebd_response": "EBD响应"
+        }
+    },
+    "save_ebd_database": {
+        "title": "🖥️保存向量数据库",
+        "inputs": {
+            "file_content": "文件内容"
+        },
+        "widgets": {
+            "model_path": "模型路径",
+            "save_path": "保存路径",
+            "is_enable": "是否启用",
+            "device": "设备",
+            "chunk_size": "块大小",
+            "chunk_overlap": "块重叠"
+        },
+        "outputs": {}
+    },
+    "load_file": {
+        "title": "加载文件",
+        "inputs": {},
+        "widgets": {
+            "absolute_path": "绝对路径",
+            "relative_path": "相对路径",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "file_content": "文件内容"
+        }
+    },
+    "load_file_folder": {
+        "title": "加载文件夹",
+        "inputs": {},
+        "widgets": {
+            "folder_path": "文件夹路径",
+            "is_enable": "是否启用",
+            "related_characters": "相关字符"
+        },
+        "outputs": {
+            "file_content": "文件内容"
+        }
+    },
+    "load_url": {
+        "title": "加载网页内容",
+        "inputs": {},
+        "widgets": {
+            "url": "网址",
+            "is_enable": "是否启用",
+            "with_jina": "使用Jina"
+        },
+        "outputs": {
+            "file_content": "文件内容"
+        }
+    },
+    "start_workflow": {
+        "title": "开始工作流",
+        "inputs": {
+            "file_content": "文件内容",
+            "image_input1": "图像输入_1",
+            "image_input2": "图像输入_2"
+        },
+        "widgets": {
+            "file_path": "文件路径",
+            "img_path1": "图像路径_1",
+            "img_path2": "图像路径_2",
+            "system_prompt": "系统提示",
+            "user_prompt": "用户提示",
+            "positive_prompt": "正面提示",
+            "negative_prompt": "负面提示",
+            "model_name": "模型名称",
+            "user_history": "用户历史记录"
+        },
+        "outputs": {
+            "file_content": "文件内容",
+            "image1": "图像",
+            "image2": "图像",
+            "system_prompt": "系统提示",
+            "user_prompt": "用户提示",
+            "positive_prompt": "正面提示",
+            "negative_prompt": "负面提示",
+            "model_name": "模型名称",
+            "user_history": "用户历史记录"
+        }
+    },
+    "load_img_path": {
+        "title": "加载图像路径",
+        "inputs": {},
+        "widgets": {
+            "img_path": "图像路径"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "load_name": {
+        "title": "加载名称",
+        "inputs": {
+            "model_name": "模型名称"
+        },
+        "widgets": {
+            "model_name": "模型名称"
+        },
+        "outputs": {
+            "model_name": "模型名称"
+        }
+    },
+    "load_persona": {
+        "title": "加载角色面具",
+        "inputs": {
+            "file_content": "文件内容"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "persona_name": "角色名称"
+        },
+        "outputs": {
+            "system_prompt_input": "系统提示输入"
+        }
+    },
+    "string_logic": {
+        "title": "字符串逻辑",
+        "inputs": {},
+        "widgets": {
+            "option": "选项",
+            "stringA": "字符串A",
+            "stringB": "字符串B"
+        },
+        "outputs": {
+            "if": "如果",
+            "else": "否则",
+            "is_true": "为真",
+            "is_false": "为假"
+        }
+    },
+    "substring": {
+        "title": "提取字符串",
+        "inputs": {},
+        "widgets": {
+            "input_string": "输入字符串",
+            "start_string": "起始字符串",
+            "end_string": "结束字符串"
+        },
+        "outputs": {
+            "substring": "子字符串",
+            "remaining_string": "剩余字符串"
+        }
+    },
+    "get_string": {
+        "title": "输入字符串",
+        "inputs": {},
+        "widgets": {
+            "input_string": "输入字符串"
+        },
+        "outputs": {
+            "string": "字符串"
+        }
+    },
+    "replace_string": {
+        "title": "替换字符串",
+        "inputs": {},
+        "widgets": {
+            "input_string": "输入字符串",
+            "old_string": "旧字符串",
+            "new_string": "新字符串"
+        },
+        "outputs": {
+            "string": "字符串"
+        }
+    },
+    "Lorebook": {
+        "title": "Lorebook传说书",
+        "inputs": {},
+        "widgets": {
+            "user_prompt": "用户提示词",
+            "book_txt": "书籍文本"
+        },
+        "outputs": {
+            "user_prompt": "用户提示词"
+        }
+    },
+    "omost_decode": {
+        "title": "omost解码器",
+        "inputs": {
+            "clip": "CLIP",
+            "text": "文本"
+        },
+        "widgets": {
+            "mode": "模式",
+            "strength": "强度"
+        },
+        "outputs": {
+            "conditioning": "条件",
+            "CONDITIONING": "条件",
+            "mask": "遮罩"
+        }
+    },
+    "omost_setting": {
+        "title": "omost设置",
+        "inputs": {},
+        "widgets": {
+            "color": "颜色",
+            "locations": "位置",
+            "offsets": "偏移量",
+            "areas": "区域"
+        },
+        "outputs": {
+            "string": "字符串"
+        }
+    },
+    "google_tool": {
+        "title": "Google谷歌工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "searchType": "搜索类型",
+            "google_api_key": "谷歌API密钥",
+            "google_CSE_ID": "谷歌自定义搜索引擎ID"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "google_loader": {
+        "title": "Google谷歌搜索加载器",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "searchType": "搜索类型",
+            "keywords": "关键词",
+            "paper_num": "论文数量",
+            "google_api_key": "谷歌API密钥",
+            "google_CSE_ID": "谷歌自定义搜索引擎ID"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "bing_tool": {
+        "title": "Bing必应工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "searchType": "搜索类型",
+            "bing_api_key": "必应API密钥",
+            "custom_config_id": "自定义配置ID",
+            "is_custom_api": "是否自定义API"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "bing_loader": {
+        "title": "Bing必应搜索加载器",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "searchType": "搜索类型",
+            "keywords": "关键词",
+            "paper_num": "文章数量",
+            "bing_api_key": "必应API密钥",
+            "custom_config_id": "自定义配置ID",
+            "is_custom_api": "是否为自定义API"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "duckduckgo_tool": {
+        "title": "DuckDuckGo搜索工具",
+        "inputs": {},
+        "widgets": {
+            "searchType": "搜索类型",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "duckduckgo_loader": {
+        "title": "DuckDuckGo搜索加载器",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "searchType": "搜索类型",
+            "keywords": "关键词",
+            "paper_num": "文章数量"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "show_text_party": {
+        "title": "显示文本",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "text": "文本"
+        },
+        "outputs": {
+            "STRING": "字符串"
+        }
+    },
+    "About_us": {
+        "title": "关于我们",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "STRING": "字符串"
+        }
+    },
+    "load_int": {
+        "title": "加载整数",
+        "inputs": {},
+        "widgets": {
+            "text": "文本"
+        },
+        "outputs": {
+            "int": "整数"
+        }
+    },
+    "load_float": {
+        "title": "加载浮点数",
+        "inputs": {},
+        "widgets": {
+            "text": "文本"
+        },
+        "outputs": {
+            "float": "浮点数"
+        }
+    },
+    "load_bool": {
+        "title": "加载布尔值",
+        "inputs": {},
+        "widgets": {
+            "text": "文本"
+        },
+        "outputs": {
+            "bool": "布尔值"
+        }
+    },
+    "none2false": {
+        "title": "将无值转换为假",
+        "inputs": {
+            "any": "任意值"
+        },
+        "widgets": {},
+        "outputs": {
+            "is_not_none": "非无值"
+        }
+    },
+    "bool_logic": {
+        "title": "布尔逻辑",
+        "inputs": {},
+        "widgets": {
+            "A": "A",
+            "logic_type": "逻辑类型",
+            "B": "B"
+        },
+        "outputs": {
+            "bool": "布尔值"
+        }
+    },
+    "str2float": {
+        "title": "字符串转浮点数",
+        "inputs": {},
+        "widgets": {
+            "text": "文本"
+        },
+        "outputs": {
+            "float": "浮点数"
+        }
+    },
+    "str2int": {
+        "title": "字符串转整数",
+        "inputs": {},
+        "widgets": {
+            "text": "文本"
+        },
+        "outputs": {
+            "int": "整数"
+        }
+    },
+    "any2str": {
+        "title": "任意类型转字符串",
+        "inputs": {
+            "any": "任意值"
+        },
+        "widgets": {},
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "story_json_tool": {
+        "title": "故事JSON工具",
+        "inputs": {},
+        "widgets": {
+            "path": "路径",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tools": "工具"
+        }
+    },
+    "text_iterator": {
+        "title": "文本迭代器",
+        "inputs": {
+            "file_content": "文件内容"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "is_reload": "是否重新加载",
+            "iterator_mode": "迭代模式",
+            "chunk_size": "块大小",
+            "chunk_overlap": "块重叠"
+        },
+        "outputs": {
+            "file_content": "文件内容",
+            "is_end": "是否结束"
+        }
+    },
+    "text_writing": {
+        "title": "文本写入",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "file_path": "文件路径",
+            "mode": "模式",
+            "is_enable": "是否启用",
+            "suffix": "后缀"
+        },
+        "outputs": {
+            "file_path": "文件路径"
+        }
+    },
+    "json_writing": {
+        "title": "JSON写入",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "mode": "模式",
+            "file_path": "文件路径"
+        },
+        "outputs": {
+            "file_path": "文件路径"
+        }
+    },
+    "tool_combine": {
+        "title": "工具组合",
+        "inputs": {
+            "tool1": "工具_1",
+            "tool2": "工具_2",
+            "tool3": "工具_3"
+        },
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tools": "工具"
+        }
+    },
+    "tool_combine_plus": {
+        "title": "超大工具组合",
+        "inputs": {
+            "tool1": "工具1",
+            "tool2": "工具2",
+            "tool3": "工具3",
+            "tool4": "工具4",
+            "tool5": "工具5",
+            "tool6": "工具6",
+            "tool7": "工具7",
+            "tool8": "工具8",
+            "tool9": "工具9",
+            "tool10": "工具10"
+        },
+        "widgets": {
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "tools": "工具"
+        }
+    },
+    "translate_persona": {
+        "title": "翻译角色面具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "language_A": "语言A",
+            "language_B": "语言B",
+            "tone": "语气",
+            "degree": "程度"
+        },
+        "outputs": {
+            "system_prompt_input": "系统提示输入"
+        }
+    },
+    "openai_tts": {
+        "title": "OpenAI文本转语音",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "input_string": "输入字符串",
+            "model_name": "模型名称",
+            "voice": "语音",
+            "base_url": "基础URL",
+            "api_key": "API密钥"
+        },
+        "outputs": {
+            "audio_path": "音频路径",
+            "audio": "音频"
+        }
+    },
+    "work_wechat_tool": {
+        "title": "企业微信工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "msgtype": "消息类型",
+            "url": "网址"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "work_wechat": {
+        "title": "发送到企业微信消息",
+        "inputs": {},
+        "widgets": {
+            "content": "内容",
+            "is_enable": "是否启用",
+            "msgtype": "消息类型",
+            "url": "网址"
+        },
+        "outputs": {}
+    },
+    "wikipedia_tool": {
+        "title": "维基百科工具",
+        "inputs": {},
+        "widgets": {
+            "query": "查询",
+            "is_enable": "是否启用",
+            "chunk_size": "块大小",
+            "chunk_overlap": "块重叠",
+            "device": "设备",
+            "embedding_path": "嵌入路径"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "load_wikipedia": {
+        "title": "加载维基百科",
+        "inputs": {},
+        "widgets": {
+            "query": "查询",
+            "is_enable": "是否启用"
+        },
+        "outputs": {
+            "file_content": "文件内容"
+        }
+    },
+    "workflow_transfer": {
+        "title": "工作流中转器",
+        "inputs": {
+            "file_content": "文件内容"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "file_path": "文件路径",
+            "img_path1": "图像路径_1",
+            "img_path2": "图像路径_2",
+            "system_prompt": "系统提示",
+            "user_prompt": "用户提示",
+            "positive_prompt": "正面提示",
+            "negative_prompt": "负面提示",
+            "model_name": "模型名称",
+            "workflow_path": "工作流路径"
+        },
+        "outputs": {
+            "images": "图像",
+            "text": "文本"
+        }
+    },
+    "workflow_tool": {
+        "title": "工作流工具",
+        "inputs": {},
+        "widgets": {
+            "is_enable": "是否启用",
+            "workflow_name": "工作流名称",
+            "workflow_description": "工作流描述"
+        },
+        "outputs": {
+            "tool": "工具"
+        }
+    },
+    "workflow_transfer_v2": {
+        "title": "工作流转换V2",
+        "inputs": {
+            "file_content": "文件内容"
+        },
+        "widgets": {
+            "is_enable": "是否启用",
+            "file_content": "文件内容",
+            "file_path": "文件路径",
+            "img_path1": "图像路径_1",
+            "img_path2": "图像路径_2",
+            "system_prompt": "系统提示",
+            "user_prompt": "用户提示",
+            "positive_prompt": "正面提示",
+            "negative_prompt": "负面提示",
+            "model_name": "模型名称",
+            "workflow_path": "工作流路径",
+            "server_address": "服务器地址"
+        },
+        "outputs": {
+            "images": "图像",
+            "text": "文本"
+        }
+    }
+}

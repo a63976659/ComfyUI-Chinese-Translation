@@ -1,0 +1,103 @@
+{
+  "GPT_SOVITS_TTS": {
+    "title": "GPT-SOVITS语音合成",
+    "inputs": {
+      "renfer_audio": "参考音频",
+      "refer_srt": "参考字幕",
+      "refer_language": "参考语言",
+      "text": "合成文本",
+      "text_language": "文本语言",
+      "gpt_weight": "GPT权重",
+      "sovits_weight": "SOVITS权重",
+      "how_to_cut": "切分方式",
+      "top_k": "Top-K采样",
+      "top_p": "Top-P采样",
+      "temperature": "温度参数"
+    },
+    "widgets": {},
+    "outputs": {
+      "audio": "合成音频"
+    }
+  },
+  "GPT_SOVITS_INFER": {
+    "title": "GPT-SOVITS推理",
+    "inputs": {
+      "renfer_audio": "参考音频",
+      "refer_srt": "参考字幕",
+      "if_aliginment": "对齐开关",
+      "if_mutiple_speaker": "多说话人模式",
+      "refer_language": "参考语言",
+      "text_srt": "文本字幕",
+      "text_language": "文本语言",
+      "gpt_weight": "GPT权重",
+      "sovits_weight": "SOVITS权重",
+      "how_to_cut": "切分方式",
+      "top_k": "Top-K采样",
+      "top_p": "Top-P采样",
+      "temperature": "温度参数",
+      "audio": "输入音频",
+      "ratio": "混合比率",
+      "dur_time": "持续时间",
+      "wav_name": "音频名称",
+      "temp_folder": "临时目录"
+    },
+    "widgets": {},
+    "outputs": {
+      "audio": "输出音频"
+    }
+  },
+  "GPT_SOVITS_FT": {
+    "title": "GPT-SOVITS微调",
+    "inputs": {
+      "audio": "训练音频",
+      "srt": "训练字幕",
+      "exp_name": "实验名称",
+      "language": "训练语言",
+      "pretrained_s2G": "S2G预训练模型",
+      "pretrained_s2D": "S2D预训练模型",
+      "sovits_batch_size": "SOVITS批大小",
+      "sovits_total_epoch": "SOVITS总轮数",
+      "text_low_lr_rate": "文本学习率",
+      "sovits_save_every_epoch": "SOVITS保存间隔",
+      "if_save_latest_sovits": "保存最新SOVITS",
+      "if_save_every_sovits_weights": "保存所有SOVITS权重",
+      "pretrained_s1": "S1预训练模型",
+      "gpt_batch_size": "GPT批大小",
+      "gpt_total_epoch": "GPT总轮数",
+      "if_dpo": "DPO训练",
+      "if_save_latest_gpt": "保存最新GPT",
+      "if_save_every_gpt_weights": "保存所有GPT权重",
+      "gpt_save_every_epoch": "GPT保存间隔"
+    },
+    "widgets": {},
+    "outputs": {}
+  },
+  "PreViewAudio": {
+    "title": "音频预览",
+    "inputs": {
+      "audio": "输入音频"
+    },
+    "widgets": {},
+    "outputs": {}
+  },
+  "LoadAudio": {
+    "title": "加载音频",
+    "inputs": {
+      "audio": "音频文件"
+    },
+    "widgets": {},
+    "outputs": {
+      "audio": "音频数据"
+    }
+  },
+  "LoadSRT": {
+    "title": "加载字幕",
+    "inputs": {
+      "srt": "字幕文件"
+    },
+    "widgets": {},
+    "outputs": {
+      "srt": "字幕数据"
+    }
+  }
+}

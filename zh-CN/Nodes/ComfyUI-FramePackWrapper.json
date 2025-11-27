@@ -1,0 +1,143 @@
+{
+    "FramePackTorchCompileSettings": {
+        "title": "Torch编译设置",
+        "inputs": {},
+        "widgets": {
+            "backend": "后端",
+            "fullgraph": "全图",
+            "mode": "模式",
+            "dynamic": "动态",
+            "dynamo_cache_size_limit": "Dynamo缓存大小限制",
+            "compile_single_blocks": "编译单块",
+            "compile_double_blocks": "编译双块"
+        },
+        "outputs": {
+            "torch_compile_args": "FramePackTorch编译参数"
+        }
+    },
+    "DownloadAndLoadFramePackModel": {
+        "title": "(下载)加载FramePack模型",
+        "inputs": {
+            "compile_args": "编译参数"
+        },
+        "widgets": {
+            "model": "模型",
+            "base_precision": "基础精度",
+            "quantization": "量化",
+            "attention_mode": "注意力模式"
+        },
+        "outputs": {
+            "model": "FramePack模型"
+        }
+    },
+    "FramePackLoraSelect": {
+        "title": "选择Lora",
+        "inputs": {
+            "prev_lora": "上一个Lora"
+        },
+        "widgets": {
+            "lora": "Lora",
+            "strength": "强度",
+            "fuse_lora": "融合Lora"
+        },
+        "outputs": {
+            "lora": "FramePackLora"
+        }
+    },
+    "LoadFramePackModel": {
+        "title": "加载FramePack模型",
+        "inputs": {
+            "compile_args": "编译参数",
+            "lora": "Lora"
+        },
+        "widgets": {
+            "model": "模型",
+            "base_precision": "基础精度",
+            "quantization": "量化",
+            "load_device": "加载设备",
+            "attention_mode": "注意力模式"
+        },
+        "outputs": {
+            "model": "FramePack模型"
+        }
+    },
+    "FramePackFindNearestBucket": {
+        "title": "查找最近桶",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "base_resolution": "基础分辨率"
+        },
+        "outputs": {
+            "width": "宽度",
+            "height": "高度"
+        }
+    },
+    "FramePackSampler": {
+        "title": "FramePack采样器",
+        "inputs": {
+            "model": "模型",
+            "positive": "正面",
+            "negative": "负面",
+            "start_latent": "起始Latent",
+            "image_embeds": "图像嵌入组",
+            "end_latent": "结束Latent",
+            "end_image_embeds": "结束图像嵌入组",
+            "initial_samples": "初始采样"
+        },
+        "widgets": {
+            "steps": "步数",
+            "use_teacache": "使用tea缓存",
+            "teacache_rel_l1_thresh": "tea缓存相对L1阈值",
+            "cfg": "CFG",
+            "guidance_scale": "引导缩放",
+            "shift": "偏移",
+            "seed": "种子",
+            "latent_window_size": "Latent窗口大小",
+            "total_second_length": "总第二长度",
+            "gpu_memory_preservation": "GPU内存保留",
+            "sampler": "采样器",
+            "embed_interpolation": "嵌入组插值",
+            "start_embed_strength": "起始嵌入强度",
+            "denoise_strength": "去噪强度"
+        },
+        "outputs": {
+            "samples": "Latent"
+        }
+    },
+    "FramePackSingleFrameSampler": {
+        "title": "FramePack单帧采样器",
+        "inputs": {
+            "model": "模型",
+            "positive": "正面",
+            "negative": "负面",
+            "start_latent": "起始Latent",
+            "image_embeds": "图像嵌入组",
+            "initial_samples": "初始采样",
+            "reference_latent": "参考Latent",
+            "reference_image_embeds": "参考图像嵌入组",
+            "input_mask": "输入遮罩",
+            "reference_mask": "参考遮罩"
+        },
+        "widgets": {
+            "steps": "步数",
+            "use_teacache": "使用TeaCache",
+            "teacache_rel_l1_thresh": "TeaCache相对L1阈值",
+            "cfg": "CFG",
+            "guidance_scale": "引导缩放",
+            "shift": "偏移",
+            "seed": "种子",
+            "latent_window_size": "Latent窗口大小",
+            "gpu_memory_preservation": "GPU内存保留",
+            "sampler": "采样器",
+            "use_kisekaeichi": "使用Kisekaeichi",
+            "denoise_strength": "去噪强度",
+            "target_index": "目标索引",
+            "history_index": "历史索引"
+        },
+        "outputs": {
+            "samples": "Latent"
+        }
+    }
+}

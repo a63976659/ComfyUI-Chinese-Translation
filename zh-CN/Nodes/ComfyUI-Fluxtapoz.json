@@ -1,0 +1,382 @@
+{
+  "ConfigureModifiedFlux": {
+    "title": "配置修改Flux",
+    "inputs": {
+      "model": "模型",
+      "flow": "流"
+    },
+    "outputs": {
+      "MODEL": "模型"
+    }
+  },
+  "InFluxFlipSigmas": {
+    "title": "翻转通量Sigma值",
+    "inputs": {
+      "sigmas": "Sigma值",
+      "flow": "流"
+    },
+    "outputs": {
+      "SIGMAS": "Sigma值"
+    }
+  },
+  "FluxInverseSampler": {
+    "title": "Flux逆向采样器",
+    "inputs": {
+      "sigmas": "Sigma值",
+      "flow": "流"
+    },
+    "outputs": {
+      "SAMPLER": "采样器"
+    }
+  },
+  "FluxDeGuidance": {
+    "title": "Flux引导",
+    "inputs": {
+      "conditioning": "条件",
+      "flow": "流"
+    },
+    "widgets": {
+      "guidance": "引导强度"
+    },
+    "outputs": {
+      "CONDITIONING": "条件"
+    }
+  },
+  "PrepareAttnBank": {
+    "title": "RF-Edit 准备注意力库",
+    "inputs": {
+      "latent": "Latent",
+      "attn_inj": "注意力注入"
+    },
+    "widgets": {
+      "guidance": "引导强度"
+    },
+    "outputs": {
+      "LATENT": "Latent",
+      "ATTN_INJ": "注意力注入"
+    }
+  },
+  "FlowEditReverseSampler": {
+    "title": "RF-Edit 逆向采样器",
+    "inputs": {
+      "single_layers": "单层",
+      "double_layers": "双层",
+      "attn_inj": "注意力注入"
+    },
+    "widgets": {
+      "order": "处理顺序",
+      "inject_steps": "注入步数"
+    },
+    "outputs": {
+      "SAMPLER": "采样器"
+    }
+  },
+  "InFluxModelSamplingPred": {
+    "title": "输入Flux逆向模型预测",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "max_shift": "最大偏移量",
+      "base_shift": "基础偏移量",
+      "width": "宽度",
+      "height": "高度"
+    },
+    "outputs": {
+      "MODEL": "模型"
+    }
+  },
+  "OutFluxModelSamplingPred": {
+    "title": "输出Flux模型采样预测",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "max_shift": "最大偏移量",
+      "base_shift": "基础偏移量",
+      "width": "宽度",
+      "height": "高度",
+      "reverse_ode": "逆向ODE"
+    },
+    "outputs": {
+      "MODEL": "模型"
+    }
+  },
+  "FluxNoiseMixer": {
+    "title": "Flux噪声混合",
+    "inputs": {
+      "latent": "Latent",
+      "noise": "噪声"
+    },
+    "widgets": {
+      "mix_percent": "混合百分比",
+      "random_noise": "随机噪声",
+      "mix_type": "混合类型",
+      "random_mix_type": "随机混合类型",
+      "take_diff": "取差异值"
+    },
+    "outputs": {
+      "LATENT": "Latent"
+    }
+  },
+  "FluxForwardODESampler": {
+    "title": "Flux正向ODE采样器",
+    "inputs": {
+      "single_layers": "单层",
+      "double_layers": "双层",
+      "attn_Inj": "注意力注入"
+    },
+    "widgets": {
+      "gamma": "伽马",
+      "control_after_generate": "生成后控制",
+      "seed": "随机种子"
+    },
+    "outputs": {
+      "SAMPLER": "采样器"
+    }
+  },
+  "ApplyRegionalConds": {
+    "title": "应用Flux区域条件",
+    "inputs": {
+      "model": "模型",
+      "region_conds": "区域条件",
+      "latent": "Latent",
+      "attn_override": "注意力覆盖"
+    },
+    "widgets": {
+      "start_percent": "开始步数百分比",
+      "end_percent": "结束步数百分比",
+      "width": "宽度",
+      "height": "高度",
+      "reverse_ode": "逆向ODE"
+    },
+    "outputs": {
+      "MODEL": "模型"
+    }
+  },
+  "FlowEditForwardSampler": {
+    "title": "RF-Edit正向采样器",
+    "inputs": {
+      "single_layers": "单层",
+      "double_layers": "双层"
+    },
+    "widgets": {
+      "start_percent": "开始步数百分比",
+      "end_percent": "结束步数百分比",
+      "order": "顺序",
+      "save_steps": "保存步数"
+    },
+    "outputs": {
+      "SAMPLER": "采样器",
+      "ATTN_INJ": "注意力注入"
+    }
+  },
+  "FluxReverseODESampler": {
+    "title": "Flux逆向ODE采样器",
+    "inputs": {
+      "model": "模型",
+      "latent_image": "潜空间图像",
+      "attn_override": "注意力覆盖"
+    },
+    "widgets": {
+      "eta": "Eta值",
+      "start_step": "开始步数",
+      "end_step": "结束步数",
+      "width": "宽度",
+      "height": "高度",
+      "eta_trend": "Eta计算方式"
+    },
+    "outputs": {
+      "SAMPLER": "采样器"
+    }
+  },
+  "SEGAttention": {
+    "title": "应用FluxSEG注意力",
+    "inputs": {
+      "model": "模型",
+      "latent_image": "潜空间图像",
+      "attn_override": "注意力覆盖"
+    },
+    "widgets": {
+      "scale": "缩放比例",
+      "blur": "模糊",
+      "inf_blur": "无限模糊",
+      "width": "宽度",
+      "height": "高度",
+      "eta_trend": "Eta趋势"
+    },
+    "outputs": {
+      "MODEL": "模型"
+    }
+  },
+  "RegionalStyleModelApply": {
+    "title": "应用区域风格模型",
+    "inputs": {
+      "style_model": "风格模型",
+      "clip_vision_output": "CLIP视觉输出",
+      "conditioning": "条件"
+    },
+    "widgets": {
+      "strength": "强度"
+    },
+    "outputs": {
+      "CONDITIONING": "条件"
+    }
+  },
+  "FlowEditSampler": {
+    "title": "流 编辑采样器",
+    "widgets": {
+      "skip_steps": "跳过步数",
+      "refine_steps": "细化步数",
+      "seed": "随机种子",
+      "control_after_generate": "生成后控制"
+    },
+    "outputs": {
+      "SAMPLER": "采样器"
+    }
+  },
+  "FlowEditGuider": {
+    "title": "流 编辑 引导",
+    "inputs": {
+      "model": "模型",
+      "source_cond": "源文字引导",
+      "target_cond": "目标文字引导"
+    },
+    "outputs": {
+      "GUIDER": "引导"
+    }
+  },
+  "CreateRegionalCond": {
+    "title": "创建Flux区域条件",
+    "inputs": {
+      "mask": "遮罩",
+      "cond": "条件",
+      "prev_regions": "先前区域"
+    },
+    "outputs": {
+      "REGION_COND": "区域条件"
+    }
+  },
+  "FluxAttnOverride": {
+    "title": "Flux注意力覆盖节点",
+    "inputs": {
+      "double_blocks": "双层",
+      "single_blocks": "单层"
+    },
+    "outputs": {
+      "ATTN_OVERRIDE": "注意力覆盖",
+      "DOUBLE_LAYERS": "双层",
+      "SINGLE_LAYERS": "单层"
+    }
+  },
+  "RFDoubleBlocksOverride": {
+    "title": "RF双区块覆盖",
+    "inputs": {
+      "double_blocks": "双区块",
+      "single_blocks": "单区块"
+    },
+    "outputs": {
+      "ATTN_OVERRIDE": "注意力覆盖",
+      "DOUBLE_LAYERS": "双层",
+      "SINGLE_LAYERS": "单层"
+    }
+  },
+  "RFSingleBlocksOverride": {
+    "title": "RF单区块覆盖",
+    "inputs": {
+      "double_blocks": "双区块",
+      "single_blocks": "单区块"
+    },
+    "outputs": {
+      "ATTN_OVERRIDE": "注意力覆盖",
+      "DOUBLE_LAYERS": "双层",
+      "SINGLE_LAYERS": "单层"
+    }
+  },
+
+
+  "PAGAttention": {
+    "title": "PAG注意力节点",
+    "inputs": {
+      "model": "模型",
+      "attn_override": "注意力覆盖"
+    },
+    "widgets": {
+      "scale": "缩放",
+      "rescale": "重新缩放"
+    },
+    "outputs": {
+      "MODEL": "模型"
+    }
+  },
+
+
+  "ApplyFluxRaveAttentionNode": {
+    "title": "应用FluxRave注意力节点",
+    "inputs": {
+      "model": "模型",
+      "grid_size": "网格大小",
+      "seed": "种子",
+      "attn_override": "注意力覆盖"
+    },
+    "outputs": {
+      "model": "模型"
+    }
+  },
+
+  "FlowEditCFGGuiderNode": {
+    "title": "Flow编辑CFG引导节点",
+    "inputs": {
+      "model": "模型",
+      "source_pos": "源正面提示",
+      "source_neg": "源负面提示",
+      "target_pos": "目标正面提示",
+      "target_neg": "目标负面提示",
+      "source_cfg": "源CFG值",
+      "target_cfg": "目标CFG值"
+    },
+    "outputs": {
+      "guider": "引导器"
+    }
+  },
+  "FluxNoiseMixerNode": {
+    "title": "Flux噪声混合节点",
+    "inputs": {
+      "latent": "潜在空间",
+      "noise": "噪声",
+      "mix_percent": "混合百分比",
+      "random_noise": "随机噪声",
+      "mix_type": "混合类型",
+      "random_mix_type": "随机混合类型",
+      "take_diff": "取差异"
+    },
+    "outputs": {
+      "latent": "潜在空间"
+    }
+  },
+  "RegionalStyleModelApplyNode": {
+    "title": "区域风格模型应用节点",
+    "inputs": {
+      "style_model": "风格模型",
+      "clip_vision_output": "CLIP视觉输出",
+      "strength": "强度",
+      "conditioning": "条件"
+    },
+    "outputs": {
+      "conditioning": "条件"
+    }
+  },
+  "FlowEditForwardSamplerNode": {
+    "title": "Flow编辑正向采样节点",
+    "inputs": {
+      "save_steps": "保存步数",
+      "single_layers": "单层",
+      "double_layers": "双层",
+      "order": "顺序"
+    },
+    "outputs": {
+      "sampler": "采样器",
+      "attn_inj": "注意力注入"
+    }
+  }
+}

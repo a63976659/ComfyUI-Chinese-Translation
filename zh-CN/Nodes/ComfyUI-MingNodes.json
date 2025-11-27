@@ -1,0 +1,180 @@
+{
+    "ImitationHueNode": {
+        "title": "色调模仿",
+        "inputs": {
+            "imitation_image": "模仿图像",
+            "target_image": "目标图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "strength": "强度",
+            "skin_protection": "皮肤保护",
+            "auto_brightness": "自动亮度",
+            "brightness_range": "亮度范围",
+            "auto_contrast": "自动对比度",
+            "contrast_range": "对比度范围",
+            "auto_saturation": "自动饱和度",
+            "saturation_range": "饱和度范围",
+            "auto_tone": "自动色调",
+            "tone_strength": "色调强度"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "ConvertGrayChannelNode": {
+        "title": "灰度通道",
+        "inputs": {
+            "image": "图像"
+        },
+        "outputs": {
+            "grayscale": "灰度",
+            "blue channel": "蓝色通道",
+            "green channel": "绿色通道",
+            "red channel": "红色通道"
+        }
+    },
+    "AdjustBrightnessContrastSaturationNode": {
+        "title": "亮度 对比度 饱和度",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "brightness": "亮度",
+            "contrast": "对比度",
+            "saturation": "饱和度"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "AddWaterMarkNode": {
+        "title": "添加水印",
+        "inputs": {
+            "image": "图像",
+            "watermark": "水印",
+            "watermark_mask": "水印遮罩"
+        },
+        "widgets": {
+            "image_watermark": "图像水印",
+            "position_X": "X 轴位置",
+            "position_Y": "Y 轴位置",
+            "opacity": "不透明度",
+            "scale": "缩放比例",
+            "text": "文本",
+            "text_color": "文本颜色",
+            "fonts": "字体"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "LightShapeNode": {
+        "title": "IC- Light 灯光形状",
+        "inputs": {
+            "base_image": "基础图像"
+        },
+        "widgets": {
+            "wide": "宽度",
+            "height": "高度",
+            "shape": "形状",
+            "X_offset": "X 轴偏移",
+            "Y_offset": "Y 轴偏移",
+            "scale": "缩放",
+            "rotation": "旋转",
+            "opacity": "不透明度",
+            "blur_radius": "模糊半径",
+            "background_color": "背景颜色",
+            "shape_color": "形状颜色"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "HighlightShadowBrightnessNode": {
+        "title": "高光 阴影 亮度",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "highlight": "高光",
+            "shadow": "阴影",
+            "brightness": "亮度"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "HSLColorNode": {
+        "title": "HSL 颜色",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "red_hue": "红色_色相",
+            "red_saturation": "红色_饱和度",
+            "red_brightness": "红色_亮度",
+            "orange_hue": "橙色_色相",
+            "orange_saturation": "橙色_饱和度",
+            "orange_brightness": "橙色_亮度",
+            "yellow_hue": "黄色_色相",
+            "yellow_saturation": "黄色_饱和度",
+            "yellow_brightness": "黄色_亮度",
+            "green_hue": "绿色_色相",
+            "green_saturation": "绿色_饱和度",
+            "green_brightness": "绿色_亮度",
+            "lightGreen_hue": "浅绿色_色相",
+            "lightGreen_saturation": "浅绿色_饱和度",
+            "lightGreen_brightness": "浅绿色_亮度",
+            "blue_hue": "蓝色_色相",
+            "blue_saturation": "蓝色_饱和度",
+            "blue_brightness": "蓝色_亮度",
+            "purple_hue": "紫色_色相",
+            "purple_saturation": "紫色_饱和度",
+            "purple_brightness": "紫色_亮度",
+            "magenta_hue": "品红色_色相",
+            "magenta_saturation": "品红色_饱和度",
+            "magenta_brightness": "品红色_亮度"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "ColorBalanceNode": {
+        "title": "色彩平衡",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "adjust_type": "调整类型",
+            "cyan_red": "青_红",
+            "magenta_green": "品红_绿",
+            "yellow_blue": "黄_蓝"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "RemoveWatermarkNode": {
+        "title": "AI 去除水印",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "BaiduTranslateNode": {
+        "title": "百度翻译",
+        "widgets": {
+            "from_translate": "待翻译语言",
+            "to_translate": "目标翻译语言",
+            "baidu_appid": "百度_appid",
+            "baidu_appkey": "百度_appkey"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    }
+}

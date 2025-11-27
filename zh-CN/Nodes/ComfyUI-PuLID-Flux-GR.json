@@ -1,0 +1,64 @@
+{
+  "GRPulidFluxModelLoader": {
+    "title": "GR 加载 PuLID Flux 模型",
+    "inputs": {},
+    "widgets": {
+      "pulid_file": "PuLID模型文件"
+    },
+    "outputs": {
+      "PULIDFLUX": "PuLID Flux处理器"
+    }
+  },
+  "GRPulidFluxInsightFaceLoader": {
+    "title": "GR 加载面部分析(PuLID Flux)",
+    "inputs": {},
+    "widgets": {
+      "provider": "计算设备"
+    },
+    "outputs": {
+      "FACEANALYSIS": "面部分析器"
+    }
+  },
+  "GRPulidFluxEvaClipLoader": {
+    "title": "GR 加载 EVA-CLIP (PuLID Flux)",
+    "inputs": {},
+    "widgets": {
+      "placeholder": "预留接口"
+    },
+    "outputs": {
+      "EVA_CLIP": "EVA-CLIP模型"
+    }
+  },
+  "GRApplyPulidFlux": {
+    "title": "GR 应用 PuLID Flux",
+    "inputs": {
+      "model": "基础模型",
+      "pulid_flux": "PuLID Flux处理器",
+      "eva_clip": "EVA-CLIP模型",
+      "face_analysis": "面部分析器",
+      "image": "参考图像",
+      "attn_mask": "注意力遮罩",
+      "prior_image": "先验引导图"
+    },
+    "widgets": {
+      "weight": "影响权重",
+      "start_at": "起始层",
+      "end_at": "终止层",
+      "use_face_number": "启用面部数量",
+      "face_number": "最大面部数（最少为1）",
+      "blur": "模糊强度",
+      "face_select": "面部选择策略",
+      "fusion": "融合模式",
+      "fusion_weight_max": "最大融合权重",
+      "fusion_weight_min": "最小融合权重",
+      "train_step": "训练迭代步数",
+      "use_gray": "启用灰度模式",
+      "attn_mask": "注意力遮罩层",
+      "unique_id": "唯一标识符"
+    },
+    "outputs": {
+      "MODEL": "输出模型"
+    },
+        "description": " 最大面部数，最少为1，使用默认0会报错。\n 使用默认0会报错。\n 面部选择策略 选项设置为正常，一张合照可以从图像中选择不同的面孔。\n\n"
+  }
+}

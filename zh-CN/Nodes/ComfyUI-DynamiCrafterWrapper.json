@@ -1,0 +1,249 @@
+{
+    "DynamiCrafterModelLoader": {
+        "title": "动态制作者 模型加载器",
+        "inputs": {
+            "opt_openclippath": "CLIP路径(可选)"
+        },
+        "widgets": {
+            "ckpt_name": "模型名称",
+            "dtype": "剪枝类型"
+        },
+        "outputs": {
+            "DynCraft_model": "动态制作者模型"
+        }
+    },
+    "DownloadAndLoadDynamiCrafterModel": {
+        "title": "下载 动态制作者 模型",
+        "inputs": {
+            "opt_openclippath": "CLIP路径(可选)"
+        },
+        "widgets": {
+            "model": "模型",
+            "dtype": "剪枝类型"
+        },
+        "outputs": {
+            "DynCraft_model": "动态制作者模型"
+        }
+    },
+    "DynamiCrafterBatchInterpolation": {
+        "title": "动态制作者 批次插帧",
+        "inputs": {
+            "model": "动态制作者模型",
+            "clip_vision": "CLIP视觉",
+            "positive": "正面条件",
+            "negative": "负面条件",
+            "images": "图像"
+        },
+        "widgets": {
+            "steps": "步数",
+            "cfg": "CFG",
+            "eta": "学习率衰减系数",
+            "frames": "帧数",
+            "prompt": "提示词",
+            "seed": "随机种",
+            "control_before_generate": "运行前操作",
+            "fs": "帧率设置",
+            "keep_model_loaded": "保持模型加载",
+            "vae_dtype": "VAE剪枝",
+            "cut_near_keyframes": "移除关键帧附近帧"
+        },
+        "outputs": {
+            "images": "图像",
+            "last_image": "末尾图像"
+        },
+        "description": "一次性处理多张图片，在每两张相邻图片之间生成平滑过渡。"
+    },
+    "DynamiCrafterI2V": {
+        "title": "动态制作者 图生视频",
+        "inputs": {
+            "model": "动态制作者模型",
+            "image": "图像",
+            "image2": "图像2",
+            "mask": "遮罩",
+            "clip_vision": "CLIP视觉",
+            "positive": "正面条件",
+            "negative": "负面条件",
+            "init_noise": "初始化噪声"
+        },
+        "widgets": {
+            "steps": "步数",
+            "cfg": "CFG",
+            "eta": "学习率衰减系数",
+            "frames": "帧数",
+            "prompt": "提示词",
+            "seed": "随机种",
+            "control_before_generate": "运行前操作",
+            "fs": "帧率设置",
+            "keep_model_loaded": "保持模型加载",
+            "vae_dtype": "VAE剪枝",
+            "frame_window_size": "帧窗口尺寸",
+            "frame_window_stride": "帧窗口步长",
+            "augmentation_level": "增强程度"
+        },
+        "outputs": {
+            "images": "图像",
+            "last_image": "末尾图像"
+        }
+    },
+    "ToonCrafterInterpolation": {
+        "title": "卡通风格制作插帧",
+        "inputs": {
+            "model": "模型",
+            "images": "图像",
+            "mask": "遮罩",
+            "clip_vision": "CLIP视觉",
+            "positive": "正面条件",
+            "negative": "负面条件",
+            "controlnet": "ControlNet",
+            "optional_latents": "选择Latent"
+        },
+        "widgets": {
+            "steps": "步数",
+            "cfg": "CFG",
+            "eta": "学习率衰减系数",
+            "frames": "帧数",
+            "prompt": "提示词",
+            "seed": "随机种",
+            "control_before_generate": "运行前操作",
+            "fs": "帧率设置",
+            "keep_model_loaded": "保持模型加载",
+            "vae_dtype": "VAE剪枝",
+            "image_embed_ratio": "图像嵌入比例",
+            "ddpm_from": "扩散起始步数",
+            "augmentation_level": "增强程度"
+        },
+        "outputs": {
+            "latents": "Latent",
+            "samples": "采样"
+        },
+        "description": "扩散起始步数1000是完全扩散，数值越小越快。"
+    },
+    "OpenCLIPVisionSelect": {
+        "title": "选择CLIPVision",
+        "inputs": {
+            "clip_name": "CLIP"
+        },
+        "outputs": {
+            "OPENCLIPVISIONPATH": "CLIPVision路径"
+        }
+    },
+    "DownloadAndLoadCLIPVisionModel": {
+        "title": "加载CLIP视觉模型（下载）",
+        "inputs": {
+            "clip_name": "CLIP"
+        },
+        "widgets": {
+            "model": "模型"
+        },
+        "outputs": {
+            "clip_vision": "CLIP视觉"
+        }
+    },
+    "DownloadAndLoadCLIPModel": {
+        "title": "加载CLIP模型（下载）",
+        "inputs": {
+            "clip_name": "CLIP"
+        },
+        "widgets": {
+            "model": "模型"
+        },
+        "outputs": {
+            "clip": "CLIP"
+        }
+    },
+    "DownloadAndLoadDynamiCrafterCNModel": {
+        "title": "加载动态制作者 ControlNet模型（下载）",
+        "inputs": {
+            "clip_name": "CLIP"
+        },
+        "widgets": {
+            "model": "模型"
+        },
+        "outputs": {
+            "DynCraft_CN_model": "动态制作者 ControlNet模型"
+        }
+    },
+    "DynamiCrafterCNLoader": {
+        "title": "加载动态制作者 ControlNet模型",
+        "inputs": {
+            "clip_name": "CLIP"
+        },
+        "widgets": {
+            "ckpt_name": "模型名称"
+        },
+        "outputs": {
+            "DynCraft_CN_model": "动态制作者 ControlNet模型"
+        }
+    },
+    "ToonCrafterDecode": {
+        "title": "卡通制作解码器",
+        "inputs": {
+            "model": "模型",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "vae_dtype": "VAE类型",
+            "prune_last_frame": "是否删除最后一帧"
+        },
+        "outputs": {
+            "images": "图像"
+        }
+    },
+    "DynamiCrafterControlnetApply": {
+        "title": "应用动态制作者 ControlNet",
+        "inputs": {
+            "controlnet": "ControlNet",
+            "images": "图像"
+        },
+        "widgets": {
+            "control_scale": "控制规模",
+            "analytic_init": "解析初始化"
+        },
+        "outputs": {
+            "controlnet": "ControlNet"
+        }
+    },
+    "DynamiCrafterLoadInitNoise": {
+        "title": "动态制作者 加载初始化噪声",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "M": "噪声强度",
+            "analytic_init": "解析初始化"
+        },
+        "outputs": {
+            "width": "宽度",
+            "height": "高度",
+            "init_noise": "初始化噪声"
+        }
+    },
+    "ToonCrafterI2V": {
+        "title": "ToonCrafter图生视频",
+        "inputs": {
+            "model": "动态制作者模型",
+            "image": "图像1",
+            "image2": "图像2",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "steps": "步数",
+            "cfg": "CFG",
+            "eta": "学习率衰减系数",
+            "frames": "帧数",
+            "prompt": "提示词",
+            "seed": "随机种",
+            "control_after_generate": "运行后操作",
+            "fs": "帧率设置",
+            "keep_model_loaded": "保持模型加载",
+            "vae_dtype": "VAE剪枝",
+            "frame_window_size": "帧窗口尺寸",
+            "frame_window_stride": "帧窗口步长",
+            "num_videos": "视频数量",
+            "prune_first_las": "prune_first_las"
+        },
+        "outputs": {
+            "images": "图像"
+        }
+    }
+}
