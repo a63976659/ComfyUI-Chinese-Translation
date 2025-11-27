@@ -10,8 +10,9 @@ ComfyUI 翻译插件
 
 此项目主要是为了本人制作的汉化文件分享时更新方便。
 插件开关为彩色图表，开启效果如图。
-<img width="1600" height="180" alt="开启" src="https://github.com/user-attachments/assets/7314b8a3-770e-42d6-be8a-ee990f2fb148" />
-<img width="1600" height="180" alt="关闭" src="https://github.com/user-attachments/assets/d538f6b2-f3e9-466c-a226-97e46d5cfa3f" />
+<img width="800" height="180" alt="开启" src="https://github.com/user-attachments/assets/7314b8a3-770e-42d6-be8a-ee990f2fb148" />
+<img width="800" height="180" alt="关闭" src="https://github.com/user-attachments/assets/d538f6b2-f3e9-466c-a226-97e46d5cfa3f" />
+
 
 
 
@@ -24,11 +25,18 @@ ComfyUI 翻译插件
 5.   插件翻译，
 6.   其它英文内容
 
-   
+
+
 页面效果图
-<img width="3828" height="1896" alt="image" src="https://github.com/user-attachments/assets/aa4e4889-33b0-4860-b973-61baf1e7f57e" />
-<img width="1899" height="1644" alt="image" src="https://github.com/user-attachments/assets/466e4509-af6a-4bb0-9e31-55b4cf7799e1" />
-<img width="1437" height="1491" alt="image" src="https://github.com/user-attachments/assets/332d471d-85b0-4aa5-8aef-e9a674bd179d" />
+
+<img width="800" height="400" alt="image" src="https://github.com/user-attachments/assets/aa4e4889-33b0-4860-b973-61baf1e7f57e" />
+<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/466e4509-af6a-4bb0-9e31-55b4cf7799e1" />
+<img width="800" height="800" alt="image" src="https://github.com/user-attachments/assets/332d471d-85b0-4aa5-8aef-e9a674bd179d" />
+
+
+
+
+
 
 
 
@@ -38,6 +46,9 @@ ComfyUI 翻译插件
 2.浏览器可能不支持，推荐谷歌，360浏览器，其它未测试。
 3.其它冲突插件`ComfyUl Browser`
 
+
+
+
 安装方法:
 
 1.    点击页面中的code复制插件地址
@@ -46,11 +57,19 @@ ComfyUI 翻译插件
 `git clone https://github.com/a63976659/ComfyUI-Translation-node.git`
 4.   安装完成后， 重启 ComfyUI
 
+
+
+
 如果你觉得插件还不错可以点个收藏。
 
 我的哔哩哔哩主页：https://space.bilibili.com/2114638644
+
 我的小红书：猪的飞行梦
+
 ComfyUI交流QQ群：202018000
+
+
+
 
 
 想支持一下作者可以扫个码😀😀😀
