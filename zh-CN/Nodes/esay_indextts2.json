@@ -1,0 +1,154 @@
+{
+    "easy downloadIndexTTSAndLoadModel": {
+        "title": "IndexTTS模型加载器",
+        "description": "从指定来源下载并加载IndexTTS模型",
+        "inputs": {
+            "model": "模型",
+            "download_from": "下载来源",
+            "start": "开始"
+        },
+        "outputs": {
+            "indextts_model": "IndexTTS模型"
+        }
+    },
+    "easy indexTTSGenerate": {
+        "title": "IndexTTS语音生成",
+        "description": "基于参考音频和情感配置生成语音，支持单音色和多音色合成",
+        "inputs": {
+            "indextts_model": "IndexTTS模型",
+            "reference_audio": "参考音频(单音色)",
+            "reference_audios": "参考音频(多音色)",
+            "emotions": "情感配置"
+        },
+        "widgets": {
+            "text": "合成文本",
+            "unload_model": "合成后卸载模型",
+            "do_sample": "采样生成",
+            "temperature": "温度系数",
+            "top_p": "核采样阈值",
+            "top_k": "Top-K采样",
+            "num_beams": "波束搜索数",
+            "repetition_penalty": "重复惩罚系数",
+            "length_penalty": "长度惩罚系数",
+            "max_mel_tokens": "最大Mel tokens数",
+            "max_tokens_per_sentence": "每句最大tokens数",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "audio": "音频",
+            "seed": "随机种子",
+            "subtitle": "字幕"
+        }
+    },
+    "easy indexTTSGenerateSimple": {
+        "title": "IndexTTS语音生成(简化版)",
+        "description": "简化版语音生成节点，使用默认参数快速生成语音",
+        "inputs": {
+            "indextts_model": "IndexTTS模型",
+            "reference_audio": "参考音频(单音色)",
+            "reference_audios": "参考音频(多音色)",
+            "emotions": "情感配置"
+        },
+        "widgets": {
+            "text": "合成文本",
+            "unload_model": "合成后卸载模型",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "audio": "音频",
+            "seed": "随机种子",
+            "subtitle": "字幕"
+        }
+    },
+    "easy indexTTSEmotionVector": {
+        "title": "语音情感向量",
+        "description": "通过情感向量控制语音的情感表达",
+        "inputs": {
+            "reference_audio": "参考音频"
+        },
+        "widgets": {
+            "voice_name": "音色名称",
+            "use_random": "随机情感",
+            "Happy": "喜悦",
+            "Angry": "愤怒",
+            "Sad": "悲伤",
+            "Fear": "恐惧",
+            "Hate": "厌恶",
+            "Low": "低落",
+            "Surprise": "惊讶",
+            "Neutral": "中性"
+        },
+        "outputs": {
+            "emotions": "情感配置"
+        }
+    },
+    "easy indexTTSEmotionAudio": {
+        "title": "语音情感音频",
+        "description": "通过情感参考音频控制语音的情感表达",
+        "inputs": {
+            "reference_audio": "参考音频",
+            "emotion_ref_audio": "情感参考音频"
+        },
+        "widgets": {
+            "voice_name": "音色名称",
+            "emo_weight": "情感权重"
+        },
+        "outputs": {
+            "emotions": "情感配置"
+        }
+    },
+    "easy indexTTSEmotionText": {
+        "title": "语音情感文本描述",
+        "description": "通过文本描述控制语音的情感表达",
+        "inputs": {
+            "reference_audio": "参考音频"
+        },
+        "widgets": {
+            "voice_name": "音色名称",
+            "description": "情感描述",
+            "use_random": "随机情感"
+        },
+        "outputs": {
+            "emotions": "情感配置"
+        }
+    },
+    "easy indexTTSEmotionMerge": {
+        "title": "合并语音情感",
+        "description": "合并多个语音情感配置",
+        "inputs": {
+            "emotion1": "情感1",
+            "emotion2": "情感2",
+            "emotion3": "情感3",
+            "emotion4": "情感4",
+            "emotion5": "情感5",
+            "emotion6": "情感6",
+            "emotion7": "情感7",
+            "emotion8": "情感8",
+            "emotion9": "情感9",
+            "emotion10": "情感10"
+        },
+        "outputs": {
+            "emotions": "情感配置"
+        }
+    },
+    "easy indexTTSAudioMerge": {
+        "title": "合并语音音频",
+        "description": "合并多个语音参考音频",
+        "inputs": {
+            "audio1": "音频1",
+            "audio2": "音频2",
+            "audio3": "音频3",
+            "audio4": "音频4",
+            "audio5": "音频5",
+            "audio6": "音频6",
+            "audio7": "音频7",
+            "audio8": "音频8",
+            "audio9": "音频9",
+            "audio10": "音频10"
+        },
+        "outputs": {
+            "audios": "音频列表"
+        },
+        "备注": "汉化来自QQ网友27589544"
+    }
+}
