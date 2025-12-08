@@ -661,5 +661,48 @@
         "outputs": {
             "viseme_options": "视位选项"
         }
+    },  
+    "StepAudioEditXAudioEditorNode": {
+        "title": "🎨 Step Audio EditX 音频快速编辑器",
+        "inputs": {
+            "input_audio": "输入音频",
+            "audio_text": "音频文本",
+            "edit_type": "编辑类型",
+            "emotion": "情感",
+            "style": "风格",
+            "speed": "速度",
+            "n_edit_iterations": "编辑迭代次数",
+            "tts_engine": "文本转语音引擎"
+        },
+        "widgets": {
+            "audio_text": "音频文本",
+            "edit_type": "编辑类型",
+            "emotion": "情感",
+            "style": "风格",
+            "speed": "速度",
+            "n_edit_iterations": "编辑迭代次数"
+        },
+        "outputs": {
+            "edited_audio": "编辑后的音频",
+            "edit_info": "编辑信息"
+        },
+        "description": "Step Audio EditX 专用音频编辑节点，具有独特功能：\n- 情感编辑（14种情感）\n- 风格编辑（32种风格）\n- 速度控制（4个级别）\n- 副语言效果（10种类型）\n- 降噪和语音活动检测\n\n这不是语音转换 - 这是专门的音频操作，在保留内容的同时修改现有音频的特性。\n\n对于副语言模式：在audio_text中直接插入<tags>标签。\n示例：\"Hello <Laughter> how are you?\" - 自动生成的转录为\"Hello how are you?\""
+    },
+    "StepAudioEditXEngineNode": {
+        "title": "⚙️ Step Audio EditX 音频快速编辑X引擎",
+        "inputs": {},
+        "widgets": {
+            "model_path": "模型路径",
+            "device": "设备",
+            "torch_dtype": "Torch数据类型",
+            "quantization": "量化",
+            "temperature": "随机性",
+            "do_sample": "是否采样",
+            "max_new_tokens": "最大新增字数"
+        },
+        "outputs": {
+            "TTS_engine": "TTS引擎"
+        },
+        "description": "Step Audio EditX TTS引擎配置节点。\n提供零样本语音克隆的配置，支持情感/风格/速度编辑。"
     }
 }
