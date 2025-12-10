@@ -1,0 +1,649 @@
+{
+  "MergeImageBatches": {
+    "title": "合并图像批次",
+    "description": "合并多个图像批次为一个批次",
+    "inputs": {
+      "images": "图像",
+      "iterate": "迭代合并"
+    },
+    "widgets": {
+      "iterate": "迭代合并"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    }
+  },
+  "MergeLatentBatches": {
+    "title": "合并潜在批次",
+    "description": "合并多个潜在批次为一个批次",
+    "inputs": {
+      "latents": "潜在表示"
+    },
+    "outputs": {
+      "LATENT": "潜在表示"
+    }
+  },
+  "ImageRepeatInterleavedNode": {
+    "title": "图像重复交错",
+    "description": "重复并交错排列图像",
+    "inputs": {
+      "images": "图像",
+      "repeats": "重复次数",
+      "fps": "帧率"
+    },
+    "widgets": {
+      "repeats": "重复次数",
+      "fps": "帧率"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    }
+  },
+  "LatentRepeatInterleavedNode": {
+    "title": "潜在表示重复交错",
+    "description": "重复并交错排列潜在表示",
+    "inputs": {
+      "latents": "潜在表示",
+      "repeats": "重复次数",
+      "fps": "帧率"
+    },
+    "widgets": {
+      "repeats": "重复次数",
+      "fps": "帧率"
+    },
+    "outputs": {
+      "LATENT": "潜在表示",
+      "num_latents": "潜在数量"
+    }
+  },
+  "SimpleMathNode": {
+    "title": "简单数学运算",
+    "description": "执行基本的数学运算",
+    "inputs": {
+      "n1": "数字1",
+      "n2": "数字2",
+      "operation": "运算类型",
+      "round_up": "向上取整"
+    },
+    "widgets": {
+      "n1": "数字1",
+      "n2": "数字2",
+      "operation": "运算类型",
+      "round_up": "向上取整"
+    },
+    "outputs": {
+      "INT": "整数结果",
+      "FLOAT": "浮点数结果",
+      "STRING": "字符串结果"
+    }
+  },
+  "SliceNode": {
+    "title": "数组切片",
+    "description": "对数组进行切片操作",
+    "inputs": {
+      "array": "数组",
+      "start": "起始位置",
+      "end": "结束位置"
+    },
+    "widgets": {
+      "start": "起始位置",
+      "end": "结束位置"
+    },
+    "outputs": {
+      "array": "切片后的数组"
+    }
+  },
+  "ZipImagesNode": {
+    "title": "图像压缩",
+    "description": "将两个图像序列压缩配对",
+    "inputs": {
+      "images1": "图像序列1",
+      "images2": "图像序列2"
+    },
+    "outputs": {
+      "IMAGE": "压缩后的图像"
+    }
+  },
+  "Any2ListNode": {
+    "title": "任意转列表",
+    "description": "将任意类型转换为列表",
+    "inputs": {
+      "any": "任意输入"
+    },
+    "outputs": {
+      "*": "列表输出"
+    }
+  },
+  "List2AnyNode": {
+    "title": "列表转任意",
+    "description": "将列表转换为任意类型",
+    "inputs": {
+      "any": "列表输入"
+    },
+    "outputs": {
+      "*": "任意输出"
+    }
+  },
+  "SortImagesNode": {
+    "title": "图像排序",
+    "description": "根据指定规则对图像进行排序",
+    "inputs": {
+      "images": "图像",
+      "indices": "索引",
+      "reverse": "反向排序",
+      "sort_by": "排序依据"
+    },
+    "widgets": {
+      "reverse": "反向排序",
+      "sort_by": "排序依据"
+    },
+    "outputs": {
+      "images": "排序后的图像",
+      "indices": "排序索引"
+    }
+  },
+  "LoadPitchExtractionParams": {
+    "title": "加载音高提取参数",
+    "description": "加载音高提取的相关参数配置",
+    "inputs": {
+      "f0_method": "F0提取方法",
+      "f0_autotune": "F0自动调谐",
+      "index_rate": "索引率",
+      "resample_sr": "重采样率",
+      "rms_mix_rate": "RMS混合率",
+      "protect": "保护参数",
+      "crepe_hop_length": "CREPE跳长"
+    },
+    "widgets": {
+      "f0_method": "F0提取方法",
+      "f0_autotune": "F0自动调谐",
+      "index_rate": "索引率",
+      "resample_sr": "重采样率",
+      "rms_mix_rate": "RMS混合率",
+      "protect": "保护参数",
+      "crepe_hop_length": "CREPE跳长"
+    },
+    "outputs": {
+      "pitch_extraction_params": "音高提取参数"
+    }
+  },
+  "LoadHubertModel": {
+    "title": "加载Hubert模型",
+    "description": "加载Hubert语音特征提取模型",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "model": "模型"
+    },
+    "outputs": {
+      "hubert_model": "Hubert模型"
+    }
+  },
+  "LoadRVCModelNode": {
+    "title": "加载RVC模型",
+    "description": "加载RVC语音转换模型",
+    "inputs": {
+      "model": "模型",
+      "index": "索引文件"
+    },
+    "widgets": {
+      "model": "模型",
+      "index": "索引文件"
+    },
+    "outputs": {
+      "model": "RVC模型",
+      "model_name": "模型名称"
+    }
+  },
+  "RVCNode": {
+    "title": "语音转换器",
+    "description": "执行语音转换操作",
+    "inputs": {
+      "audio": "音频",
+      "model": "模型",
+      "hubert_model": "Hubert模型",
+      "pitch_extraction_params": "音高提取参数",
+      "f0_up_key": "F0音调调整",
+      "format": "格式",
+      "use_cache": "使用缓存"
+    },
+    "widgets": {
+      "f0_up_key": "F0音调调整",
+      "format": "格式",
+      "use_cache": "使用缓存"
+    },
+    "outputs": {
+      "VHS_AUDIO": "VHS音频",
+      "AUDIO": "音频"
+    }
+  },
+  "RVCProcessDatasetNode": {
+    "title": "处理RVC数据集",
+    "description": "预处理RVC训练数据集",
+    "inputs": {
+      "model_name": "模型名称",
+      "dataset": "数据集",
+      "hubert_model": "Hubert模型",
+      "pitch_extraction_params": "音高提取参数",
+      "sr": "采样率",
+      "n_threads": "线程数",
+      "period": "周期",
+      "overlap": "重叠率",
+      "max_volume": "最大音量",
+      "mute_ratio": "静音比例",
+      "audio_processor": "音频处理器"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "dataset": "数据集",
+      "sr": "采样率",
+      "n_threads": "线程数",
+      "period": "周期",
+      "overlap": "重叠率",
+      "max_volume": "最大音量",
+      "mute_ratio": "静音比例"
+    },
+    "outputs": {
+      "rvc_dataset_pipe": "RVC数据集管道"
+    }
+  },
+  "RVCTrainParamsNode": {
+    "title": "RVC训练参数",
+    "description": "配置RVC模型训练参数",
+    "inputs": {
+      "batch_size": "批大小",
+      "c_adv": "对抗损失权重",
+      "c_mel": "梅尔损失权重",
+      "c_kl": "KL散度权重",
+      "c_fm": "特征匹配权重",
+      "c_tefs": "TEFS损失权重",
+      "c_hd": "谐波失真权重",
+      "c_tsi": "TSI损失权重",
+      "c_gp": "梯度惩罚权重",
+      "use_multiscale": "使用多尺度",
+      "use_balancer": "使用平衡器",
+      "use_pareto": "使用帕累托",
+      "fast_mode": "快速模式",
+      "fp16_run": "FP16运行",
+      "learning_rate": "学习率"
+    },
+    "widgets": {
+      "batch_size": "批大小",
+      "c_adv": "对抗损失权重",
+      "c_mel": "梅尔损失权重",
+      "c_kl": "KL散度权重",
+      "c_fm": "特征匹配权重",
+      "c_tefs": "TEFS损失权重",
+      "c_hd": "谐波失真权重",
+      "c_tsi": "TSI损失权重",
+      "c_gp": "梯度惩罚权重",
+      "use_multiscale": "使用多尺度",
+      "use_balancer": "使用平衡器",
+      "use_pareto": "使用帕累托",
+      "fast_mode": "快速模式",
+      "fp16_run": "FP16运行",
+      "learning_rate": "学习率"
+    },
+    "outputs": {
+      "rvc_training_params": "RVC训练参数"
+    }
+  },
+  "RVCTrainModelNode": {
+    "title": "训练RVC模型",
+    "description": "训练RVC语音转换模型",
+    "inputs": {
+      "rvc_dataset_pipe": "RVC数据集管道",
+      "rvc_training_params": "RVC训练参数",
+      "gpu": "GPU",
+      "total_epoch": "总训练轮数",
+      "save_every_epoch": "每N轮保存",
+      "pretrained_G": "预训练G模型",
+      "pretrained_D": "预训练D模型",
+      "if_save_latest": "保存最新模型",
+      "if_cache_gpu": "GPU缓存",
+      "if_save_every_weights": "保存每个权重",
+      "train_index": "训练索引",
+      "retrain": "重新训练",
+      "save_best_model": "保存最佳模型",
+      "best_model_threshold": "最佳模型阈值",
+      "log_every_epoch": "日志记录频率",
+      "num_workers": "工作线程数"
+    },
+    "widgets": {
+      "gpu": "GPU",
+      "total_epoch": "总训练轮数",
+      "save_every_epoch": "每N轮保存",
+      "pretrained_G": "预训练G模型",
+      "pretrained_D": "预训练D模型",
+      "if_save_latest": "保存最新模型",
+      "if_cache_gpu": "GPU缓存",
+      "if_save_every_weights": "保存每个权重",
+      "train_index": "训练索引",
+      "retrain": "重新训练",
+      "save_best_model": "保存最佳模型",
+      "best_model_threshold": "最佳模型阈值",
+      "log_every_epoch": "日志记录频率",
+      "num_workers": "工作线程数"
+    },
+    "outputs": {
+      "model": "模型",
+      "model_name": "模型名称",
+      "hubert_model": "Hubert模型",
+      "pitch_extraction_params": "音高提取参数"
+    }
+  },
+  "RVC-Studio.LoadAudio": {
+    "title": "加载音频",
+    "description": "从文件加载音频",
+    "inputs": {
+      "audio": "音频文件",
+      "sr": "采样率"
+    },
+    "widgets": {
+      "sr": "采样率"
+    },
+    "outputs": {
+      "audio_name": "音频名称",
+      "vhs_audio": "VHS音频",
+      "audio": "音频"
+    }
+  },
+  "AudioInfoNode": {
+    "title": "音频信息",
+    "description": "获取音频的基本信息",
+    "inputs": {
+      "audio": "音频"
+    },
+    "outputs": {
+      "vhs_audio": "VHS音频",
+      "audio": "音频",
+      "seconds": "时长(秒)",
+      "sr": "采样率"
+    }
+  },
+  "DownloadAudio": {
+    "title": "YouTube音频下载器",
+    "description": "从YouTube下载音频",
+    "inputs": {
+      "url": "URL地址",
+      "sr": "采样率",
+      "song_name": "歌曲名称",
+      "format": "格式"
+    },
+    "widgets": {
+      "url": "URL地址",
+      "sr": "采样率",
+      "song_name": "歌曲名称",
+      "format": "格式"
+    },
+    "outputs": {
+      "audio_name": "音频名称",
+      "vhs_audio": "VHS音频",
+      "audio": "音频"
+    }
+  },
+  "MergeAudioNode": {
+    "title": "合并音频",
+    "description": "合并多个音频文件",
+    "inputs": {
+      "audio1": "音频1",
+      "audio2": "音频2",
+      "sr": "采样率",
+      "merge_type": "合并类型",
+      "normalize": "标准化",
+      "audio3_opt": "音频3(可选)",
+      "audio4_opt": "音频4(可选)"
+    },
+    "widgets": {
+      "sr": "采样率",
+      "merge_type": "合并类型",
+      "normalize": "标准化"
+    },
+    "outputs": {
+      "vhs_audio": "VHS音频",
+      "audio": "音频"
+    }
+  },
+  "RVC-Studio.PreviewAudio": {
+    "title": "保存音频",
+    "description": "保存音频到文件并预览",
+    "inputs": {
+      "audio": "音频",
+      "filename": "文件名",
+      "save_format": "保存格式",
+      "save_channels": "声道数",
+      "overwrite_existing": "覆盖现有文件",
+      "autoplay": "自动播放"
+    },
+    "widgets": {
+      "filename": "文件名",
+      "save_format": "保存格式",
+      "save_channels": "声道数",
+      "overwrite_existing": "覆盖现有文件",
+      "autoplay": "自动播放"
+    },
+    "outputs": {
+      "output_path": "输出路径",
+      "vhs_audio": "VHS音频",
+      "audio": "音频"
+    }
+  },
+  "ProcessAudioNode": {
+    "title": "音频处理器",
+    "description": "对音频进行各种处理操作",
+    "inputs": {
+      "normalize": "标准化",
+      "threshold_silence": "静音阈值",
+      "dynamic_threshold": "动态阈值",
+      "audio": "音频",
+      "dynamic_threshold_sample_size": "动态阈值样本大小",
+      "dynamic_threshold_multiplier": "动态阈值乘数",
+      "dynamic_threshold_fill_method": "动态阈值填充方法",
+      "dynamic_threshold_kernel_size": "动态阈值核大小",
+      "silence_threshold_db": "静音阈值(dB)",
+      "normalize_threshold_db": "标准化阈值(dB)"
+    },
+    "widgets": {
+      "normalize": "标准化",
+      "threshold_silence": "静音阈值",
+      "dynamic_threshold": "动态阈值",
+      "dynamic_threshold_sample_size": "动态阈值样本大小",
+      "dynamic_threshold_multiplier": "动态阈值乘数",
+      "dynamic_threshold_fill_method": "动态阈值填充方法",
+      "dynamic_threshold_kernel_size": "动态阈值核大小",
+      "silence_threshold_db": "静音阈值(dB)",
+      "normalize_threshold_db": "标准化阈值(dB)"
+    },
+    "outputs": {
+      "audio_processor": "音频处理器",
+      "vhs_audio": "VHS音频",
+      "audio": "音频"
+    }
+  },
+  "AudioBatchValueNode": {
+    "title": "音频RMS批量值",
+    "description": "计算音频RMS值并批量输出",
+    "inputs": {
+      "audio": "音频",
+      "num_segments": "分段数量",
+      "output_min": "输出最小值",
+      "output_max": "输出最大值",
+      "norm": "标准化方法",
+      "silence_threshold": "静音阈值",
+      "duration_list": "时长列表",
+      "print_output": "打印输出",
+      "inverse": "反转"
+    },
+    "widgets": {
+      "num_segments": "分段数量",
+      "output_min": "输出最小值",
+      "output_max": "输出最大值",
+      "norm": "标准化方法",
+      "silence_threshold": "静音阈值",
+      "print_output": "打印输出",
+      "inverse": "反转"
+    },
+    "outputs": {
+      "FLOAT": "浮点数值",
+      "INT": "整数值",
+      "num_values": "数值数量"
+    }
+  },
+  "MuseAudioFeatureExtractionNode": {
+    "title": "MuseTalk特征提取器",
+    "description": "提取音频特征用于MuseTalk",
+    "inputs": {
+      "audio": "音频",
+      "fps": "帧率"
+    },
+    "widgets": {
+      "fps": "帧率"
+    },
+    "outputs": {
+      "whisper_chunks": "Whisper分块"
+    }
+  },
+  "MuseImageFeatureExtractionNode": {
+    "title": "MuseTalk图像预处理",
+    "description": "预处理图像并提取面部坐标",
+    "inputs": {
+      "images": "图像",
+      "bbox_detector": "边界框检测器",
+      "threshold": "阈值",
+      "dilation": "膨胀",
+      "use_cache": "使用缓存"
+    },
+    "widgets": {
+      "threshold": "阈值",
+      "dilation": "膨胀",
+      "use_cache": "使用缓存"
+    },
+    "outputs": {
+      "coords": "坐标",
+      "frames_dir": "帧目录"
+    }
+  },
+  "MuseTalkNode": {
+    "title": "MuseTalk处理器",
+    "description": "处理MuseTalk生成任务",
+    "inputs": {
+      "coord_list": "坐标列表",
+      "frames_dir": "帧目录",
+      "whisper_chunks": "Whisper分块",
+      "batch_size": "批大小"
+    },
+    "widgets": {
+      "batch_size": "批大小"
+    },
+    "outputs": {
+      "images": "图像",
+      "results_dir": "结果目录"
+    }
+  },
+  "LoadWhisperModelNode": {
+    "title": "加载Whisper模型",
+    "description": "加载OpenAI Whisper语音识别模型",
+    "inputs": {
+      "model_id": "模型ID",
+      "max_new_tokens": "最大新令牌数",
+      "chunk_length_s": "分块长度(秒)",
+      "batch_size": "批次大小"
+    },
+    "widgets": {
+      "model_id": "模型ID",
+      "max_new_tokens": "最大新令牌数",
+      "chunk_length_s": "分块长度(秒)",
+      "batch_size": "批次大小"
+    },
+    "outputs": {
+      "model": "转录模型"
+    }
+  },
+  "AudioTranscriptionNode": {
+    "title": "音频转录",
+    "description": "使用Whisper模型进行音频转录",
+    "inputs": {
+      "pipeline": "转录模型",
+      "audio": "音频",
+      "save_filename": "保存文件名",
+      "overwrite_existing": "覆盖现有文件",
+      "print_output": "打印输出",
+      "use_cache": "使用缓存"
+    },
+    "widgets": {
+      "save_filename": "保存文件名",
+      "overwrite_existing": "覆盖现有文件",
+      "print_output": "打印输出",
+      "use_cache": "使用缓存"
+    },
+    "outputs": {
+      "transcription": "转录结果",
+      "audio_frames": "音频帧数"
+    }
+  },
+  "BatchedTranscriptionEncoderNode": {
+    "title": "批量CLIP转录编码(提示词)",
+    "description": "将转录文本批量编码为CLIP条件",
+    "inputs": {
+      "transcription": "转录结果",
+      "clip": "CLIP模型",
+      "loop": "循环",
+      "use_tags": "使用标签",
+      "use_sentiment": "使用情感分析",
+      "language": "语言",
+      "max_chunks": "最大分块数",
+      "max_words": "最大词数",
+      "frame_interpolation": "帧插值",
+      "prefix": "前缀",
+      "suffix": "后缀",
+      "print_output": "打印输出",
+      "weights": "权重",
+      "pad_frames": "填充帧数"
+    },
+    "widgets": {
+      "loop": "循环",
+      "use_tags": "使用标签",
+      "use_sentiment": "使用情感分析",
+      "language": "语言",
+      "max_chunks": "最大分块数",
+      "max_words": "最大词数",
+      "frame_interpolation": "帧插值",
+      "prefix": "前缀",
+      "suffix": "后缀",
+      "print_output": "打印输出",
+      "weights": "权重",
+      "pad_frames": "填充帧数"
+    },
+    "outputs": {
+      "conditioning": "条件",
+      "batch_prompt_text": "批量提示文本",
+      "duration_list": "时长列表",
+      "num_chunks": "分块数",
+      "num_frames": "帧数",
+      "prompt_text_list": "提示文本列表"
+    }
+  },
+  "UVR5Node": {
+    "title": "UVR5音频分离",
+    "description": "使用UVR5模型分离音频的主干和次干",
+    "inputs": {
+      "audio": "音频",
+      "model": "模型",
+      "use_cache": "使用缓存",
+      "agg": "分离强度",
+      "format": "格式"
+    },
+    "widgets": {
+      "model": "模型",
+      "use_cache": "使用缓存",
+      "agg": "分离强度",
+      "format": "格式"
+    },
+    "outputs": {
+      "primary_stem": "主要音频",
+      "secondary_stem": "次要音频"
+    },
+        "备注": "汉化来自QQ网友27589544"
+  }
+}
