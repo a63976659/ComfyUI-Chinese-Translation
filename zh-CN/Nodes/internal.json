@@ -1837,6 +1837,16 @@
         },
         "description": "保存输入图像到 ComfyUI 输出文件夹内。"
     },
+    "saveImage": {
+        "title": "保存图像",
+        "inputs": {
+            "images": "图像组"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀"
+        },
+        "description": "保存输入图像到 ComfyUI 输出文件夹内。"
+    },
     "PreviewImage": {
         "title": "预览图像",
         "inputs": {
@@ -2553,6 +2563,32 @@
         },
         "outputs": {
             "LATENT": "Latent"
+        }
+    },
+    "NormalizeVideoLatentStart": {
+        "title": "标准化视频Latent起始值",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {
+            "start_frame_count": "起始帧计数",
+            "reference_frame_count": "参考帧计数"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "ReplaceVideoLatentFrames": {
+        "title": "替换视频Latent帧",
+        "inputs": {
+            "destination": "目标",
+            "source": "来源"
+        },
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {
+            "latent": "Latent"
         }
     },
     "FreeU": {
@@ -4388,6 +4424,29 @@
             "VIDEO": "生成视频"
         }
     },
+    "Kandinsky5ImageToVideo": {
+        "title": "Kandinsky5图像转视频",
+        "inputs": {
+            "positive": "正向条件",
+            "negative": "负面条件",
+            "vae": "VAE编码器",
+            "clip_vision_output": "CLIP视觉输出",
+            "start_image": "起始图像",
+            "end_image": "结束图像"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "时长",
+            "batch_size": "批大小"
+        },
+        "outputs": {
+            "positive": "正向条件",
+            "negative": "负面条件",
+            "latent": "Latent",
+            "cond_latent": "条件Latent"
+        }
+    },
     "FluxProUltraImageNode": {
         "title": "Flux 1.1 [pro] 超高清图像",
         "inputs": {
@@ -5049,6 +5108,20 @@
         "outputs": {
             "IMAGE": "图像",
             "string": "字符串"
+        }
+    },
+    "KlingOmniProEditVideoNode": {
+        "title": "可灵 全景视频编辑（专业版）",
+        "inputs": {
+            "video": "视频",
+            "reference_images": "参考图像"
+        },
+        "widgets": {
+            "model_name": "模型名称",
+            "keep_original_sound": "保持原始声音"
+        },
+        "outputs": {
+            "VIDEO": "视频"
         }
     },
     "RunwayFirstLastFrameNode": {
