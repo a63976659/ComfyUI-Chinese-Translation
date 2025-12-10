@@ -2897,7 +2897,7 @@
         }
     },
     "StyleModelApplyAdvanced": {
-        "title": "高级风格模型应用",
+        "title": "高级风格模型应用(KJ)",
         "inputs": {
             "conditioning": "条件",
             "style_model": "风格模型",
@@ -3329,6 +3329,66 @@
             "model": "模型"
         },
         "description": "加载带有高级选项的 GGUF 模型，需要先安装 ComfyUI-GGUF 软件。"
+    },
+    "EndRecordCUDAMemoryHistory": {
+        "title": "结束记录 CUDA 内存历史记录(KJ)",
+        "inputs": {
+            "input": "输入"
+        },
+        "widgets": {
+            "output_path": "输出路径"
+        },
+        "outputs": {
+            "input": "输入",
+            "output_path": "输出路径"
+        },
+        "description": "记录 CUDA 内存分配的起始和结束之间的历史情况，并将其保存到一个文件中，该文件可在此处进行分析： https://docs.pytorch.org/memory_viz 或使用“可视化 CUDA 内存历史记录”节点。"
+    },
+    "VisualizeCUDAMemoryHistory": {
+        "title": "可视化 CUDA 内存历史记录(KJ)",
+        "inputs": {
+            "input": "输入"
+        },
+        "widgets": {
+            "snapshot_path": "快照路径"
+        },
+        "outputs": {
+            "input": "输入",
+            "output_path": "输出路径"
+        },
+        "description": "以可视化方式展示 CUDA 内存分配历史文件，并在浏览器中打开"
+    },
+    "StartRecordCUDAMemoryHistory": {
+        "title": "开始记录 CUDA 内存历史记录(KJ)",
+        "inputs": {
+            "input": "输入"
+        },
+        "widgets": {
+            "enabled": "开启",
+            "context": "背景",
+            "stacks": "堆",
+            "max_entries": "最大条目数"
+        },
+        "outputs": {
+            "input": "输入"
+        }
+    },
+    "NABLA_AttentionKJ": {
+        "title": "NABLA 注意力(KJ)",
+        "inputs": {
+            "model": "模型",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "window_time": "窗口时间",
+            "window_width": "窗口宽度",
+            "window_height": "窗口高度",
+            "sparsity": "稀疏度",
+            "torch_compile": "torch 编译"
+        },
+        "outputs": {
+            "model": "模型"
+        }
     },
     "HunyuanVideoEncodeKeyframesToCond": {
         "title": "混元视频 关键帧编码到条件",
