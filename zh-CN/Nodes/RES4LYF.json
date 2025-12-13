@@ -1,114 +1,123 @@
-
 {
     "ConditioningOrthoCollin": {
-        "display_name": "条件正交化",
+        "title": "条件正交化",
         "inputs": {
             "conditioning_0": "条件_0",
             "conditioning_1": "条件_1",
             "t5_strength": "T5强度",
             "clip_strength": "CLIP强度"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "CLIPTextEncodeFluxUnguided": {
-        "display_name": "CLIP文本编码Flux无引导",
+        "title": "CLIP文本编码Flux无引导",
         "inputs": {
             "clip": "CLIP",
             "clip_l": "CLIP_l",
             "t5xxl": "T5XXL"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件",
             "int": "整数"
         }
     },
     "StyleModelApplyStyle": {
-        "display_name": "风格模型应用风格",
+        "title": "风格模型应用风格",
         "inputs": {
             "conditioning": "条件",
             "style_model": "风格模型",
             "clip_vision_output": "CLIP视觉输出",
             "strength": "强度"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ConditioningZeroAndTruncate": {
-        "display_name": "条件归零与截断",
+        "title": "条件归零与截断",
         "inputs": {
             "conditioning": "条件"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ConditioningTruncate": {
-        "display_name": "条件截断",
+        "title": "条件截断",
         "inputs": {
             "conditioning": "条件"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ConditioningMultiply": {
-        "display_name": "条件乘法",
+        "title": "条件乘法",
         "inputs": {
             "conditioning": "条件",
             "multiplier": "乘数"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ConditioningAdd": {
-        "display_name": "条件加法",
+        "title": "条件加法",
         "inputs": {
             "conditioning_1": "条件_1",
             "conditioning_2": "条件_2",
             "multiplier": "乘数"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ConditioningCombine": {
-        "display_name": "条件合并",
+        "title": "条件合并",
         "inputs": {
             "conditioning_1": "条件_1",
             "conditioning_2": "条件_2"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ConditioningAverage": {
-        "display_name": "条件平均",
+        "title": "条件平均",
         "inputs": {
             "conditioning_to": "条件_到",
             "conditioning_from": "条件_从",
             "conditioning_to_strength": "条件_到_强度"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ConditioningSetTimestepRange": {
-        "display_name": "条件设置时间步范围",
+        "title": "条件设置时间步范围",
         "inputs": {
             "conditioning": "条件",
             "start": "开始",
             "end": "结束"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ConditioningAverageScheduler": {
-        "display_name": "条件平均调度器",
+        "title": "条件平均调度器",
         "inputs": {
             "conditioning_0": "条件_0",
             "conditioning_1": "条件_1",
@@ -116,74 +125,81 @@
             "conditioning_from": "条件_从",
             "conditioning_to_strength": "条件_到_强度"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "StableCascade_StageB_Conditioning64": {
-        "display_name": "Stable Cascade阶段B条件64",
+        "title": "Stable Cascade阶段B条件64",
         "inputs": {
             "conditioning": "条件",
             "stage_c": "阶段_C"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "Conditioning_Recast64": {
-        "display_name": "条件重铸64",
+        "title": "条件重铸64",
         "inputs": {
             "cond_0": "条件_0",
             "cond_1": "条件_1"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ConditioningToBase64": {
-        "display_name": "条件转Base64",
+        "title": "条件转Base64",
         "inputs": {
             "conditioning": "条件",
             "unique_id": "唯一ID",
             "extra_pnginfo": "PNG额外信息"
         },
+        "widgets": {},
         "outputs": {
             "string": "字符串"
         }
     },
     "Base64ToConditioning": {
-        "display_name": "Base64转条件",
+        "title": "Base64转条件",
         "inputs": {
             "data": "数据"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ConditioningDownsampleT5": {
-        "display_name": "条件下采样T5",
+        "title": "条件下采样T5",
         "inputs": {
             "conditioning": "条件",
             "token_limit": "Token限制"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ConditioningBatch4": {
-        "display_name": "条件批处理4",
+        "title": "条件批处理4",
         "inputs": {
             "conditioning_0": "条件_0",
             "conditioning_1": "条件_1",
             "conditioning_2": "条件_2",
             "conditioning_3": "条件_3"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ConditioningBatch8": {
-        "display_name": "条件批处理8",
+        "title": "条件批处理8",
         "inputs": {
             "conditioning_0": "条件_0",
             "conditioning_1": "条件_1",
@@ -194,23 +210,25 @@
             "conditioning_6": "条件_6",
             "conditioning_7": "条件_7"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "TemporalMaskGenerator": {
-        "display_name": "时序遮罩生成器",
+        "title": "时序遮罩生成器",
         "inputs": {
             "switch_frame": "切换帧",
             "frames": "帧数",
             "invert_mask": "反转遮罩"
         },
+        "widgets": {},
         "outputs": {
             "mask": "遮罩"
         }
     },
     "TemporalSplitAttnMask_Midframe": {
-        "display_name": "时序分割注意力遮罩_中间帧",
+        "title": "时序分割注意力遮罩_中间帧",
         "inputs": {
             "self_attn_midframe": "自注意力中间帧",
             "cross_attn_midframe": "交叉注意力中间帧",
@@ -218,34 +236,37 @@
             "cross_attn_invert": "交叉注意力反转",
             "frames": "帧数"
         },
+        "widgets": {},
         "outputs": {
             "mask": "遮罩"
         }
     },
     "TemporalSplitAttnMask": {
-        "display_name": "时序分割注意力遮罩",
+        "title": "时序分割注意力遮罩",
         "inputs": {
             "self_attn_start": "自注意力开始",
             "self_attn_stop": "自注意力停止",
             "cross_attn_start": "交叉注意力开始",
             "cross_attn_stop": "交叉注意力停止"
         },
+        "widgets": {},
         "outputs": {
             "mask": "遮罩"
         }
     },
     "TemporalCrossAttnMask": {
-        "display_name": "时序交叉注意力遮罩",
+        "title": "时序交叉注意力遮罩",
         "inputs": {
             "cross_attn_start": "交叉注意力开始",
             "cross_attn_stop": "交叉注意力停止"
         },
+        "widgets": {},
         "outputs": {
             "mask": "遮罩"
         }
     },
     "ClownRegionalConditioning_AB": {
-        "display_name": "Clown区域条件引导_AB",
+        "title": "Clown区域条件引导_AB",
         "inputs": {
             "weight": "权重",
             "region_bleed": "区域渗透",
@@ -268,12 +289,13 @@
             "mask": "遮罩",
             "unmask": "非遮罩区域"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ClownRegionalConditioning_ABC": {
-        "display_name": "Clown区域条件引导_ABC",
+        "title": "Clown区域条件引导_ABC",
         "inputs": {
             "weight": "权重",
             "region_bleed": "区域渗透",
@@ -296,12 +318,13 @@
             "end_sigma": "结束Sigma",
             "model": "模型"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ClownRegionalConditioning2": {
-        "display_name": "Clown区域条件引导2",
+        "title": "Clown区域条件引导2",
         "inputs": {
             "weight": "权重",
             "region_bleed": "区域渗透",
@@ -326,12 +349,13 @@
             "conditioning_masked": "条件_遮罩区域",
             "conditioning_unmasked": "条件_非遮罩区域"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ClownRegionalConditioning3": {
-        "display_name": "Clown区域条件引导3",
+        "title": "Clown区域条件引导3",
         "inputs": {
             "weight": "权重",
             "region_bleed": "区域渗透",
@@ -355,12 +379,13 @@
             "model": "模型",
             "conditioning_unmasked": "条件_非遮罩区域"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "ClownRegionalConditioning": {
-        "display_name": "Clown区域条件引导",
+        "title": "Clown区域条件引导",
         "inputs": {
             "spineless": "无脊椎模式",
             "edge_width": "边缘宽度",
@@ -368,12 +393,13 @@
             "conditioning": "条件",
             "mask": "遮罩"
         },
+        "widgets": {},
         "outputs": {
             "cond_regions": "条件区域组"
         }
     },
     "ClownRegionalConditionings": {
-        "display_name": "Clown区域条件引导组",
+        "title": "Clown区域条件引导组",
         "inputs": {
             "weight": "权重",
             "region_bleed": "区域渗透",
@@ -390,12 +416,13 @@
             "end_sigma": "结束Sigma",
             "model": "模型"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "CrossAttn_EraseReplace_HiDream": {
-        "display_name": "交叉注意力擦除替换_HiDream",
+        "title": "交叉注意力擦除替换_HiDream",
         "inputs": {
             "clip": "CLIP",
             "t5xxl_erase": "T5XXL擦除",
@@ -407,12 +434,13 @@
             "t5xxl_replace_token": "T5XXL替换Token",
             "llama_replace_token": "Llama替换Token"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "CrossAttn_EraseReplace_Flux": {
-        "display_name": "交叉注意力擦除替换_Flux",
+        "title": "交叉注意力擦除替换_Flux",
         "inputs": {
             "clip": "CLIP",
             "t5xxl_erase": "T5XXL擦除",
@@ -424,22 +452,24 @@
             "llama_erase_token": "Llama擦除Token",
             "llama_replace_token": "Llama替换Token"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件"
         }
     },
     "SaveImage": {
-        "display_name": "保存图像",
+        "title": "保存图像",
         "inputs": {
             "images": "图像",
             "filename_prefix": "文件名前缀",
             "prompt": "提示词",
             "extra_pnginfo": "PNG额外信息"
         },
+        "widgets": {},
         "outputs": {}
     },
     "SigmasPreview": {
-        "display_name": "Sigmas预览",
+        "title": "Sigmas预览",
         "inputs": {
             "images": "图像",
             "filename_prefix": "文件名前缀",
@@ -450,12 +480,13 @@
             "line_color": "线条颜色",
             "color": "颜色"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "VAEEncodeAdvanced": {
-        "display_name": "VAE高级编码",
+        "title": "VAE高级编码",
         "inputs": {
             "resize_to_input": "调整至输入尺寸",
             "width": "宽度",
@@ -474,6 +505,7 @@
             "multiple_of": "倍数",
             "keep_proportion": "保持比例"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent",
             "mask": "遮罩",
@@ -481,19 +513,20 @@
         }
     },
     "VAEStyleTransferLatent": {
-        "display_name": "VAE风格转移Latent",
+        "title": "VAE风格转移Latent",
         "inputs": {
             "method": "方法",
             "latent": "Latent",
             "style_ref": "风格参考",
             "vae": "VAE"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "LatentUpscaleWithVAE": {
-        "display_name": "Latent放大（使用VAE）",
+        "title": "Latent放大（使用VAE）",
         "inputs": {
             "latent": "Latent",
             "width": "宽度",
@@ -505,12 +538,13 @@
             "multiple_of": "倍数",
             "keep_proportion": "保持比例"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "SigmasSchedulePreview": {
-        "display_name": "Sigmas调度预览",
+        "title": "Sigmas调度预览",
         "inputs": {
             "images": "图像",
             "filename_prefix": "文件名前缀",
@@ -531,10 +565,11 @@
             "colors": "颜色",
             "input_params": "输入参数"
         },
+        "widgets": {},
         "outputs": {}
     },
     "ImageRepeatTileToSize": {
-        "display_name": "图像重复平铺至尺寸",
+        "title": "图像重复分块至尺寸",
         "inputs": {
             "image": "图像",
             "width": "宽度",
@@ -546,12 +581,13 @@
             "multiple_of": "倍数",
             "keep_proportion": "保持比例"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "Film_Grain": {
-        "display_name": "胶片颗粒",
+        "title": "胶片颗粒",
         "inputs": {
             "image": "图像",
             "density": "密度",
@@ -561,12 +597,13 @@
             "repeats": "重复次数",
             "img": "图像"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "Image_Grain_Add": {
-        "display_name": "图像添加噪点",
+        "title": "图像添加噪点",
         "inputs": {
             "image": "图像",
             "weight": "权重",
@@ -577,99 +614,108 @@
             "repeats": "重复次数",
             "img": "图像"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "Frequency_Separation_Hard_Light": {
-        "display_name": "频率分离_强光",
+        "title": "频率分离_强光",
         "inputs": {
             "high_pass": "高通",
             "original": "原始图像",
             "low_pass": "低通"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "Frequency_Separation_Hard_Light_LAB": {
-        "display_name": "频率分离_强光_LAB",
+        "title": "频率分离_强光_LAB",
         "inputs": {
             "high_pass": "高通",
             "original": "原始图像",
             "low_pass": "低通"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "Frame_Select": {
-        "display_name": "帧选择",
+        "title": "帧选择",
         "inputs": {
             "frames": "帧序列",
             "select": "选择帧号"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "Frames_Slice": {
-        "display_name": "帧切片",
+        "title": "帧切片",
         "inputs": {
             "frames": "帧序列",
             "start": "开始帧",
             "stop": "结束帧"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "Frames_Concat": {
-        "display_name": "帧拼接",
+        "title": "帧拼接",
         "inputs": {
             "frames_0": "帧序列_0",
             "frames_1": "帧序列_1"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "Image_Channels_LAB": {
-        "display_name": "图像通道_LAB",
+        "title": "图像通道_LAB",
         "inputs": {
             "RGB": "RGB",
             "L": "L通道",
             "A": "A通道",
             "B": "B通道"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "Frequency_Separation_Vivid_Light": {
-        "display_name": "频率分离_鲜艳光",
+        "title": "频率分离_鲜艳光",
         "inputs": {
             "high_pass": "高通",
             "original": "原始图像",
             "low_pass": "低通"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "Frequency_Separation_Linear_Light": {
-        "display_name": "频率分离_线性光",
+        "title": "频率分离_线性光",
         "inputs": {
             "high_pass": "高通",
             "original": "原始图像",
             "low_pass": "低通"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "Frequency_Separation_FFT": {
-        "display_name": "频率分离_FFT",
+        "title": "频率分离_FFT",
         "inputs": {
             "high_pass": "高通",
             "original": "原始图像",
@@ -677,63 +723,69 @@
             "cutoff": "截止频率",
             "sigma": "Sigma"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "ImageSharpenFS": {
-        "display_name": "图像锐化FS",
+        "title": "图像锐化FS",
         "inputs": {
             "images": "图像",
             "method": "方法",
             "type": "类型",
             "intensity": "强度"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "ImageMedianBlur": {
-        "display_name": "图像中值模糊",
+        "title": "图像中值模糊",
         "inputs": {
             "images": "图像",
             "size": "大小"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "ImageGaussianBlur": {
-        "display_name": "图像高斯模糊",
+        "title": "图像高斯模糊",
         "inputs": {
             "images": "图像",
             "size": "大小"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "FastSmudgeBlur": {
-        "display_name": "快速涂抹模糊",
+        "title": "快速涂抹模糊",
         "inputs": {
             "images": "图像",
             "kernel_size": "核大小"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "Image_Pair_Split": {
-        "display_name": "图像对拆分",
+        "title": "图像对拆分",
         "inputs": {
             "img_pair": "图像对"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像"
         }
     },
     "Image_Crop_Location_Exact": {
-        "display_name": "图像精确位置裁剪",
+        "title": "图像精确位置裁剪",
         "inputs": {
             "image": "图像",
             "x": "X坐标",
@@ -742,79 +794,87 @@
             "height": "高度",
             "edge": "边缘处理"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像",
             "crop_data": "裁剪数据"
         }
     },
     "Masks_Unpack4": {
-        "display_name": "遮罩解包4",
+        "title": "遮罩解包4",
         "inputs": {
             "masks": "遮罩"
         },
+        "widgets": {},
         "outputs": {
             "mask": "遮罩"
         }
     },
     "Masks_Unpack8": {
-        "display_name": "遮罩解包8",
+        "title": "遮罩解包8",
         "inputs": {
             "masks": "遮罩"
         },
+        "widgets": {},
         "outputs": {
             "mask": "遮罩"
         }
     },
     "Masks_Unpack16": {
-        "display_name": "遮罩解包16",
+        "title": "遮罩解包16",
         "inputs": {
             "masks": "遮罩"
         },
+        "widgets": {},
         "outputs": {
             "mask": "遮罩"
         }
     },
     "Image_Get_Color_Swatches": {
-        "display_name": "图像获取颜色样本",
+        "title": "图像获取颜色样本",
         "inputs": {
             "image_color_swatches": "图像颜色样本"
         },
+        "widgets": {},
         "outputs": {
             "color_swatches": "颜色样本"
         }
     },
     "Masks_From_Color_Swatches": {
-        "display_name": "从颜色样本生成遮罩",
+        "title": "从颜色样本生成遮罩",
         "inputs": {
             "image_color_mask": "图像颜色遮罩",
             "color_swatches": "颜色样本"
         },
+        "widgets": {},
         "outputs": {
             "mask": "遮罩"
         }
     },
     "Masks_From_Colors": {
-        "display_name": "从颜色生成遮罩",
+        "title": "从颜色生成遮罩",
         "inputs": {
             "image_color_swatches": "图像颜色样本",
             "image_color_mask": "图像颜色遮罩"
         },
+        "widgets": {},
         "outputs": {
             "mask": "遮罩"
         }
     },
     "MaskSketch": {
-        "display_name": "遮罩草图",
+        "title": "遮罩草图",
         "inputs": {
             "image": "图像"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像",
             "mask": "遮罩"
         }
     },
     "MaskBoundingBoxAspectRatio": {
-        "display_name": "遮罩边界框宽高比",
+        "title": "遮罩边界框宽高比",
         "inputs": {
             "padding": "填充",
             "blur": "模糊",
@@ -823,6 +883,7 @@
             "image": "图像",
             "mask": "遮罩"
         },
+        "widgets": {},
         "outputs": {
             "image": "图像",
             "mask": "遮罩",
@@ -830,7 +891,7 @@
         }
     },
     "latent_channelwise_match": {
-        "display_name": "Latent通道匹配",
+        "title": "Latent通道匹配",
         "inputs": {
             "model": "模型",
             "latent_target": "Latent目标",
@@ -839,13 +900,15 @@
             "mask_source": "遮罩源",
             "extra_options": "额外选项"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "FluxLoader": {
-        "display_name": "Flux加载器",
-        "inputs": {
+        "title": "Flux加载器",
+        "inputs": {},
+        "widgets": {
             "weight_dtype": "权重数据类型",
             "model_name": "模型名称",
             "output_vae": "输出VAE",
@@ -859,15 +922,15 @@
             "style_model_name": "风格模型名称"
         },
         "outputs": {
-            "model": "模型",
+            "MODEL": "模型",
             "clip": "CLIP",
             "vae": "VAE",
-            "clip_vision": "CLIP视觉",
-            "style_model": "风格模型"
+            "CLIP_VISION": "CLIP视觉",
+            "STYLE_MODEL": "风格模型"
         }
     },
     "SD35Loader": {
-        "display_name": "SD35加载器",
+        "title": "SD35加载器",
         "inputs": {
             "weight_dtype": "权重数据类型",
             "model_name": "模型名称",
@@ -880,6 +943,7 @@
             "clip_name2_opt": "CLIP名称2（可选）",
             "clip_name3_opt": "CLIP名称3（可选）"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型",
             "clip": "CLIP",
@@ -887,7 +951,7 @@
         }
     },
     "RES4LYFModelLoader": {
-        "display_name": "RES4LYF模型加载器",
+        "title": "RES4LYF模型加载器",
         "inputs": {
             "weight_dtype": "权重数据类型",
             "model_name": "模型名称",
@@ -902,6 +966,7 @@
             "clip_name4_opt": "CLIP名称4（可选）",
             "clip_type": "CLIP类型"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型",
             "clip": "CLIP",
@@ -909,7 +974,7 @@
         }
     },
     "LayerPatcher": {
-        "display_name": "层修补器",
+        "title": "层修补器",
         "inputs": {
             "model": "模型",
             "embedder": "嵌入器",
@@ -918,12 +983,13 @@
             "dtype": "数据类型",
             "retrojector": "反向投影器"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "TorchCompileModels": {
-        "display_name": "Torch编译模型",
+        "title": "Torch编译模型",
         "inputs": {
             "model": "模型",
             "backend": "后端",
@@ -933,12 +999,13 @@
             "dynamo_cache_size_limit": "Dynamo缓存大小限制",
             "triton_max_block_x": "Triton最大块X"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReWanPatcherAdvanced": {
-        "display_name": "ReWan修补器（高级）",
+        "title": "ReWan修补器（高级）",
         "inputs": {
             "model": "模型",
             "self_attn_blocks": "自注意力块",
@@ -949,12 +1016,13 @@
             "style_dtype": "风格数据类型",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReWanPatcher": {
-        "display_name": "ReWan修补器",
+        "title": "ReWan修补器",
         "inputs": {
             "model": "模型",
             "self_attn_blocks": "自注意力块",
@@ -965,12 +1033,13 @@
             "style_dtype": "风格数据类型",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReFluxPatcherAdvanced": {
-        "display_name": "ReFlux修补器（高级）",
+        "title": "ReFlux修补器（高级）",
         "inputs": {
             "model": "模型",
             "doublestream_blocks": "双流块",
@@ -979,34 +1048,37 @@
             "enable": "启用",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReFluxPatcher": {
-        "display_name": "ReFlux修补器",
+        "title": "ReFlux修补器",
         "inputs": {
             "model": "模型",
             "enable": "启用"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReReduxPatcher": {
-        "display_name": "ReRedux修补器",
+        "title": "ReRedux修补器",
         "inputs": {
             "style_model": "风格模型",
             "style_dtype": "风格数据类型",
             "enable": "启用",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "style_model": "风格模型"
         }
     },
     "ReChromaPatcherAdvanced": {
-        "display_name": "ReChroma修补器（高级）",
+        "title": "ReChroma修补器（高级）",
         "inputs": {
             "model": "模型",
             "doublestream_blocks": "双流块",
@@ -1015,12 +1087,13 @@
             "enable": "启用",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReChromaPatcher": {
-        "display_name": "ReChroma修补器",
+        "title": "ReChroma修补器",
         "inputs": {
             "model": "模型",
             "doublestream_blocks": "双流块",
@@ -1029,12 +1102,13 @@
             "enable": "启用",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReLTXVPatcherAdvanced": {
-        "display_name": "ReLTXV修补器（高级）",
+        "title": "ReLTXV修补器（高级）",
         "inputs": {
             "model": "模型",
             "doublestream_blocks": "双流块",
@@ -1043,12 +1117,13 @@
             "enable": "启用",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReLTXVPatcher": {
-        "display_name": "ReLTXV修补器",
+        "title": "ReLTXV修补器",
         "inputs": {
             "model": "模型",
             "doublestream_blocks": "双流块",
@@ -1057,12 +1132,13 @@
             "enable": "启用",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReSDPatcherAdvanced": {
-        "display_name": "ReSD修补器（高级）",
+        "title": "ReSD修补器（高级）",
         "inputs": {
             "model": "模型",
             "doublestream_blocks": "双流块",
@@ -1071,12 +1147,13 @@
             "enable": "启用",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReSDPatcher": {
-        "display_name": "ReSD修补器",
+        "title": "ReSD修补器",
         "inputs": {
             "model": "模型",
             "doublestream_blocks": "双流块",
@@ -1085,12 +1162,13 @@
             "enable": "启用",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReHiDreamPatcherAdvanced": {
-        "display_name": "ReHiDream修补器（高级）",
+        "title": "ReHiDream修补器（高级）",
         "inputs": {
             "model": "模型",
             "double_stream_blocks": "双流块",
@@ -1099,12 +1177,13 @@
             "enable": "启用",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReHiDreamPatcher": {
-        "display_name": "ReHiDream修补器",
+        "title": "ReHiDream修补器",
         "inputs": {
             "model": "模型",
             "double_stream_blocks": "双流块",
@@ -1113,12 +1192,13 @@
             "enable": "启用",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReSD35PatcherAdvanced": {
-        "display_name": "ReSD35修补器（高级）",
+        "title": "ReSD35修补器（高级）",
         "inputs": {
             "model": "模型",
             "joint_blocks": "联合块",
@@ -1126,12 +1206,13 @@
             "enable": "启用",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReSD35Patcher": {
-        "display_name": "ReSD35修补器",
+        "title": "ReSD35修补器",
         "inputs": {
             "model": "模型",
             "joint_blocks": "联合块",
@@ -1139,12 +1220,13 @@
             "enable": "启用",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReAuraPatcherAdvanced": {
-        "display_name": "ReAura修补器（高级）",
+        "title": "ReAura修补器（高级）",
         "inputs": {
             "model": "模型",
             "doublelayer_blocks": "双层块",
@@ -1153,12 +1235,13 @@
             "enable": "启用",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ReAuraPatcher": {
-        "display_name": "ReAura修补器",
+        "title": "ReAura修补器",
         "inputs": {
             "model": "模型",
             "doublelayer_blocks": "双层块",
@@ -1167,12 +1250,13 @@
             "enable": "启用",
             "force": "强制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "FluxOrthoCFGPatcher": {
-        "display_name": "Flux正交CFG修补器",
+        "title": "Flux正交CFG修补器",
         "inputs": {
             "model": "模型",
             "enable": "启用",
@@ -1187,12 +1271,13 @@
             "control": "控制",
             "transformer_options": "Transformer选项"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "FluxGuidanceDisable": {
-        "display_name": "Flux引导禁用",
+        "title": "Flux引导禁用",
         "inputs": {
             "model": "模型",
             "disable": "禁用",
@@ -1205,24 +1290,26 @@
             "control": "控制",
             "transformer_options": "Transformer选项"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ModelSamplingAdvanced": {
-        "display_name": "模型采样（高级）",
+        "title": "模型采样（高级）",
         "inputs": {
             "model": "模型",
             "scaling": "缩放",
             "shift": "偏移",
             "timestep": "时间步"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ModelSamplingAdvancedResolution": {
-        "display_name": "模型采样（高级分辨率）",
+        "title": "模型采样（高级分辨率）",
         "inputs": {
             "model": "模型",
             "scaling": "缩放",
@@ -1231,22 +1318,24 @@
             "latent_image": "Latent图像",
             "timestep": "时间步"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "UNetSave": {
-        "display_name": "UNet保存",
+        "title": "UNet保存",
         "inputs": {
             "model": "模型",
             "filename_prefix": "文件名前缀",
             "prompt": "提示词",
             "extra_pnginfo": "PNG额外信息"
         },
+        "widgets": {},
         "outputs": {}
     },
     "TorchCompileModelFluxAdvanced": {
-        "display_name": "Torch编译模型Flux（高级）",
+        "title": "Torch编译模型Flux（高级）",
         "inputs": {
             "model": "模型",
             "backend": "后端",
@@ -1257,12 +1346,13 @@
             "dynamic": "动态",
             "blocks_str": "块字符串"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "TorchCompileModelAura": {
-        "display_name": "Torch编译模型Aura",
+        "title": "Torch编译模型Aura",
         "inputs": {
             "model": "模型",
             "backend": "后端",
@@ -1271,12 +1361,13 @@
             "dynamic": "动态",
             "dynamo_cache_size_limit": "Dynamo缓存大小限制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "TorchCompileModelSD35": {
-        "display_name": "Torch编译模型SD35",
+        "title": "Torch编译模型SD35",
         "inputs": {
             "model": "模型",
             "backend": "后端",
@@ -1285,12 +1376,13 @@
             "dynamic": "动态",
             "dynamo_cache_size_limit": "Dynamo缓存大小限制"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "ClownpileModelWanVideo": {
-        "display_name": "Clownpile模型Wan视频",
+        "title": "Clownpile模型Wan视频",
         "inputs": {
             "model": "模型",
             "backend": "后端",
@@ -1302,24 +1394,26 @@
             "compile_transformer_blocks": "编译Transformer块",
             "force_recompile": "强制重新编译"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
     },
     "AdvancedNoise": {
-        "display_name": "高级噪声",
+        "title": "高级噪声",
         "inputs": {
             "alpha": "Alpha",
             "k": "K值",
             "noise_seed": "噪声种子",
             "noise_type": "噪声类型"
         },
+        "widgets": {},
         "outputs": {
             "noise": "噪声"
         }
     },
     "LatentNoised": {
-        "display_name": "Latent加噪",
+        "title": "Latent加噪",
         "inputs": {
             "add_noise": "添加噪声",
             "noise_is_latent": "噪声为Latent",
@@ -1333,12 +1427,13 @@
             "latent_noise": "Latent噪声",
             "mask": "遮罩"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "LatentNoiseList": {
-        "display_name": "Latent噪声列表",
+        "title": "Latent噪声列表",
         "inputs": {
             "latent": "Latent",
             "alpha": "Alpha",
@@ -1348,139 +1443,153 @@
             "alphas": "Alpha列表",
             "ks": "K值列表"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "MaskToggle": {
-        "display_name": "遮罩切换",
+        "title": "遮罩切换",
         "inputs": {
             "enable": "启用",
             "mask": "遮罩"
         },
+        "widgets": {},
         "outputs": {
             "mask": "遮罩"
         }
     },
     "latent_to_raw_x": {
-        "display_name": "Latent转原始X",
+        "title": "Latent转原始X",
         "inputs": {
             "latent": "Latent"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "TrimVideoLatent_state_info": {
-        "display_name": "修剪视频Latent状态信息",
+        "title": "修剪视频Latent状态信息",
         "inputs": {
             "samples": "样本",
             "trim_amount": "修剪量"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "LatentUpscaleBy_state_info": {
-        "display_name": "Latent放大状态信息",
+        "title": "Latent放大状态信息",
         "inputs": {
             "samples": "样本",
             "upscale_method": "放大方法",
             "scale_by": "缩放因子"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "latent_clear_state_info": {
-        "display_name": "Latent清除状态信息",
+        "title": "Latent清除状态信息",
         "inputs": {
             "latent": "Latent"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "latent_replace_state_info": {
-        "display_name": "Latent替换状态信息",
+        "title": "Latent替换状态信息",
         "inputs": {
             "latent": "Latent",
             "clear_raw_x": "清除原始X",
             "replace_end_step": "替换结束步"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "latent_display_state_info": {
-        "display_name": "Latent显示状态信息",
+        "title": "Latent显示状态信息",
         "inputs": {
             "latent": "Latent"
         },
+        "widgets": {},
         "outputs": {
             "string": "字符串"
         }
     },
     "latent_transfer_state_info": {
-        "display_name": "Latent转移状态信息",
+        "title": "Latent转移状态信息",
         "inputs": {
             "latent_to": "Latent目标",
             "latent_from": "Latent源"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "latent_mean_channels_from_to": {
-        "display_name": "Latent通道均值转移",
+        "title": "Latent通道均值转移",
         "inputs": {
             "latent_to": "Latent目标",
             "latent_from": "Latent源"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "latent_get_channel_means": {
-        "display_name": "获取Latent通道均值",
+        "title": "获取Latent通道均值",
         "inputs": {
             "latent": "Latent"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "Sigmas"
         }
     },
     "latent_to_cuda": {
-        "display_name": "Latent转CUDA",
+        "title": "Latent转CUDA",
         "inputs": {
             "latent": "Latent",
             "to_cuda": "转CUDA"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "latent_batch": {
-        "display_name": "Latent批处理",
+        "title": "Latent批处理",
         "inputs": {
             "latent": "Latent",
             "batch_size": "批大小"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "MaskFloatToBoolean": {
-        "display_name": "遮罩浮点转布尔",
+        "title": "遮罩浮点转布尔",
         "inputs": {
             "mask": "遮罩"
         },
+        "widgets": {},
         "outputs": {
             "mask": "遮罩"
         }
     },
     "MaskEdge": {
-        "display_name": "遮罩边缘",
+        "title": "遮罩边缘",
         "inputs": {
             "dilation": "膨胀",
             "mode": "模式",
@@ -1489,74 +1598,81 @@
             "mask": "遮罩",
             "blur": "模糊"
         },
+        "widgets": {},
         "outputs": {
             "mask": "遮罩"
         }
     },
     "Frame_Select_Latent_Raw": {
-        "display_name": "帧选择Latent原始",
+        "title": "帧选择Latent原始",
         "inputs": {
             "frames": "帧",
             "select": "选择"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "Frames_Slice_Latent_Raw": {
-        "display_name": "帧切片Latent原始",
+        "title": "帧切片Latent原始",
         "inputs": {
             "frames": "帧",
             "start": "开始",
             "stop": "结束"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "Frames_Concat_Latent_Raw": {
-        "display_name": "帧拼接Latent原始",
+        "title": "帧拼接Latent原始",
         "inputs": {
             "frames_0": "帧0",
             "frames_1": "帧1"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "Frame_Select_Latent": {
-        "display_name": "帧选择Latent",
+        "title": "帧选择Latent",
         "inputs": {
             "frames": "帧",
             "select": "选择"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "Frames_Slice_Latent": {
-        "display_name": "帧切片Latent",
+        "title": "帧切片Latent",
         "inputs": {
             "frames": "帧",
             "start": "开始",
             "stop": "结束"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "Frames_Concat_Latent": {
-        "display_name": "帧拼接Latent",
+        "title": "帧拼接Latent",
         "inputs": {
             "frames_0": "帧0",
             "frames_1": "帧1"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "Frames_Concat_Masks": {
-        "display_name": "帧拼接遮罩",
+        "title": "帧拼接遮罩",
         "inputs": {
             "frames_0": "帧0",
             "frames_1": "帧1",
@@ -1569,41 +1685,45 @@
             "frames_8": "帧8",
             "frames_9": "帧9"
         },
+        "widgets": {},
         "outputs": {
             "mask": "遮罩"
         }
     },
     "Frames_Masks_Uninterpolate": {
-        "display_name": "帧遮罩非插值",
+        "title": "帧遮罩非插值",
         "inputs": {
             "raw_temporal_mask": "原始时序遮罩",
             "frame_chunk_size": "帧块大小"
         },
+        "widgets": {},
         "outputs": {
             "mask": "遮罩"
         }
     },
     "Frames_Masks_ZeroOut": {
-        "display_name": "帧遮罩清零",
+        "title": "帧遮罩清零",
         "inputs": {
             "temporal_mask": "时序遮罩",
             "zero_out_frame": "清零帧"
         },
+        "widgets": {},
         "outputs": {
             "mask": "遮罩"
         }
     },
     "Frames_Latent_ReverseOrder": {
-        "display_name": "帧Latent反转顺序",
+        "title": "帧Latent反转顺序",
         "inputs": {
             "frames": "帧"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "LatentPhaseMagnitude": {
-        "display_name": "Latent相位幅度",
+        "title": "Latent相位幅度",
         "inputs": {
             "latent_0_batch": "Latent0批次",
             "latent_1_batch": "Latent1批次",
@@ -1641,12 +1761,13 @@
             "power_phase": "功率相位",
             "power_magnitude": "功率幅度"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "LatentPhaseMagnitudeMultiply": {
-        "display_name": "Latent相位幅度乘法",
+        "title": "Latent相位幅度乘法",
         "inputs": {
             "latent_0_batch": "Latent0批次",
             "phase_luminosity": "相位亮度",
@@ -1669,12 +1790,13 @@
             "magnitude_pattern_structures": "幅度图案结构列表",
             "batch_size": "批次大小"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "LatentPhaseMagnitudeOffset": {
-        "display_name": "Latent相位幅度偏移",
+        "title": "Latent相位幅度偏移",
         "inputs": {
             "latent_0_batch": "Latent0批次",
             "phase_luminosity": "相位亮度",
@@ -1697,12 +1819,13 @@
             "magnitude_pattern_structures": "幅度图案结构列表",
             "batch_size": "批次大小"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "LatentPhaseMagnitudePower": {
-        "display_name": "Latent相位幅度幂运算",
+        "title": "Latent相位幅度幂运算",
         "inputs": {
             "latent_0_batch": "Latent0批次",
             "phase_luminosity": "相位亮度",
@@ -1725,36 +1848,39 @@
             "magnitude_pattern_structures": "幅度图案结构列表",
             "batch_size": "批次大小"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "StableCascade_StageC_VAEEncode_Exact": {
-        "display_name": "Stable Cascade阶段C VAE精确编码",
+        "title": "Stable Cascade阶段C VAE精确编码",
         "inputs": {
             "image": "图像",
             "vae": "VAE",
             "width": "宽度",
             "height": "高度"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "StableCascade_StageC_VAEEncode_Exact_Tiled": {
-        "display_name": "Stable Cascade阶段C VAE精确平铺编码",
+        "title": "Stable Cascade阶段C VAE精确分块编码",
         "inputs": {
             "image": "图像",
             "vae": "VAE",
-            "tile_size": "平铺大小",
+            "tile_size": "分块大小",
             "overlap": "重叠区域"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "EmptyLatentImageCustom": {
-        "display_name": "自定义空Latent图像",
+        "title": "自定义空Latent图像",
         "inputs": {
             "width": "宽度",
             "height": "高度",
@@ -1764,23 +1890,25 @@
             "compression": "压缩率",
             "precision": "精度"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "EmptyLatentImage64": {
-        "display_name": "空Latent图像64",
+        "title": "空Latent图像64",
         "inputs": {
             "width": "宽度",
             "height": "高度",
             "batch_size": "批次大小"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "LatentNoiseBatch_perlin": {
-        "display_name": "Latent噪声批次Perlin",
+        "title": "Latent噪声批次Perlin",
         "inputs": {
             "seed": "种子",
             "width": "宽度",
@@ -1795,12 +1923,13 @@
             "persistence": "持久性",
             "x": "X轴"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "LatentNoiseBatch_gaussian_channels": {
-        "display_name": "Latent噪声批次高斯通道",
+        "title": "Latent噪声批次高斯通道",
         "inputs": {
             "latent": "Latent",
             "mean": "均值",
@@ -1818,12 +1947,13 @@
             "mean_pattern_structures": "均值图案结构列表",
             "stds": "标准差列表"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "LatentNoiseBatch_gaussian": {
-        "display_name": "Latent噪声批次高斯",
+        "title": "Latent噪声批次高斯",
         "inputs": {
             "latent": "Latent",
             "mean": "均值",
@@ -1834,12 +1964,13 @@
             "stds": "标准差列表",
             "steps_": "步骤参数"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "LatentNoiseBatch_fractal": {
-        "display_name": "Latent噪声批次分形",
+        "title": "Latent噪声批次分形",
         "inputs": {
             "latent": "Latent",
             "alpha": "Alpha",
@@ -1851,12 +1982,13 @@
             "steps_": "步骤参数",
             "sigmas_": "Sigma参数"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "LatentBatch_channels": {
-        "display_name": "Latent批次通道处理",
+        "title": "Latent批次通道处理",
         "inputs": {
             "latent": "Latent",
             "mode": "模式",
@@ -1869,12 +2001,13 @@
             "lime_purples": "青柠紫列表",
             "pattern_structures": "图案结构列表"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "LatentBatch_channels_16": {
-        "display_name": "Latent批次16通道处理",
+        "title": "Latent批次16通道处理",
         "inputs": {
             "latent": "Latent",
             "mode": "模式",
@@ -1911,94 +2044,103 @@
             "chan_15s": "通道15列表",
             "chan_16s": "通道16列表"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "latent_normalize_channels": {
-        "display_name": "Latent通道标准化",
+        "title": "Latent通道标准化",
         "inputs": {
             "latent": "Latent",
             "mode": "模式",
             "operation": "操作"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "SetImageSize": {
-        "display_name": "设置图像尺寸",
+        "title": "设置图像尺寸",
         "inputs": {
             "width": "宽度",
             "height": "高度"
         },
+        "widgets": {},
         "outputs": {
             "int": "整数"
         }
     },
     "SetImageSizeWithScale": {
-        "display_name": "设置图像尺寸（带缩放）",
+        "title": "设置图像尺寸（带缩放）",
         "inputs": {
             "width": "宽度",
             "height": "高度",
             "scale_by": "缩放因子"
         },
+        "widgets": {},
         "outputs": {
             "int": "整数"
         }
     },
     "TextBox1": {
-        "display_name": "文本框1",
+        "title": "文本框1",
         "inputs": {
             "text1": "文本1"
         },
+        "widgets": {},
         "outputs": {
             "string": "字符串"
         }
     },
     "TextBox2": {
-        "display_name": "文本框2",
+        "title": "文本框2",
         "inputs": {
             "text1": "文本1",
             "text2": "文本2"
         },
+        "widgets": {},
         "outputs": {
             "string": "字符串"
         }
     },
     "TextBox3": {
-        "display_name": "文本框3",
+        "title": "文本框3",
         "inputs": {
             "text1": "文本1",
             "text2": "文本2",
             "text3": "文本3"
         },
+        "widgets": {},
         "outputs": {
             "string": "字符串"
         }
     },
     "TextLoadFile": {
-        "display_name": "文本加载文件",
+        "title": "文本加载文件",
         "inputs": {
             "text_file": "文本文件"
         },
+        "widgets": {},
         "outputs": {
             "string": "字符串"
         }
     },
     "TextShuffle": {
-        "display_name": "文本随机重排",
+        "title": "文本随机重排",
         "inputs": {
             "text": "文本",
             "separator": "分隔符",
             "seed": "种子"
         },
+        "widgets": {},
         "outputs": {
             "string": "字符串"
         }
     },
     "TextShuffleAndTruncate": {
-        "display_name": "文本随机重排与截断",
+        "title": "文本随机重排与截断",
         "inputs": {
             "text": "文本",
             "separator": "分隔符",
@@ -2007,12 +2149,13 @@
             "seed": "种子",
             "clip": "CLIP"
         },
+        "widgets": {},
         "outputs": {
             "string": "字符串"
         }
     },
     "TextTruncateTokens": {
-        "display_name": "文本Token截断",
+        "title": "文本Token截断",
         "inputs": {
             "text": "文本",
             "truncate_words_to": "截断单词数",
@@ -2021,55 +2164,60 @@
             "truncate_t5_to": "截断T5长度",
             "clip": "CLIP"
         },
+        "widgets": {},
         "outputs": {
             "string": "字符串"
         }
     },
     "TextConcatenate": {
-        "display_name": "文本拼接",
+        "title": "文本拼接",
         "inputs": {
             "text_1": "文本1",
             "text_2": "文本2",
             "separator": "分隔符"
         },
+        "widgets": {},
         "outputs": {
             "string": "字符串"
         }
     },
     "TextBoxConcatenate": {
-        "display_name": "文本框拼接",
+        "title": "文本框拼接",
         "inputs": {
             "text": "文本",
             "text_external": "外部文本",
             "separator": "分隔符",
             "mode": "模式"
         },
+        "widgets": {},
         "outputs": {
             "string": "字符串"
         }
     },
     "SeedGenerator": {
-        "display_name": "种子生成器",
+        "title": "种子生成器",
         "inputs": {
             "seed": "种子"
         },
+        "widgets": {},
         "outputs": {
             "int": "整数"
         }
     },
     "set_precision": {
-        "display_name": "设置精度",
+        "title": "设置精度",
         "inputs": {
             "latent_image": "Latent图像",
             "precision": "精度",
             "set_default": "设为默认"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "set_precision_universal": {
-        "display_name": "设置精度（通用）",
+        "title": "设置精度（通用）",
         "inputs": {
             "precision": "精度",
             "set_default": "设为默认",
@@ -2078,6 +2226,7 @@
             "sigmas": "噪声调度表",
             "latent_image": "Latent图像"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件",
             "sigmas": "噪声调度表",
@@ -2085,27 +2234,29 @@
         }
     },
     "set_precision_advanced": {
-        "display_name": "设置精度（高级）",
+        "title": "设置精度（高级）",
         "inputs": {
             "latent_image": "Latent图像",
             "global_precision": "全局精度",
             "shark_precision": "Shark精度"
         },
+        "widgets": {},
         "outputs": {
             "latent": "Latent"
         }
     },
     "ClownSamplerSelector_Beta": {
-        "display_name": "Clown采样器选择器（Beta）",
+        "title": "Clown采样器选择器（Beta）",
         "inputs": {
             "sampler_name": "采样器名称"
         },
+        "widgets": {},
         "outputs": {
             "rk_sampler_names_beta_folders": "RK采样器Beta文件夹"
         }
     },
     "ClownOptions_SDE_Beta": {
-        "display_name": "Clown SDE选项（Beta）",
+        "title": "Clown SDE选项（Beta）",
         "inputs": {
             "noise_type_sde": "SDE噪声类型",
             "noise_type_sde_substep": "SDE子步噪声类型",
@@ -2118,12 +2269,13 @@
             "etas_substep": "子步Eta列表",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_StepSize_Beta": {
-        "display_name": "Clown步长选项（Beta）",
+        "title": "Clown步长选项（Beta）",
         "inputs": {
             "overshoot_mode": "超调模式",
             "overshoot_mode_substep": "子步超调模式",
@@ -2131,12 +2283,13 @@
             "overshoot_substep": "子步超调量",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_DetailBoost_Beta": {
-        "display_name": "Clown细节增强选项（Beta）",
+        "title": "Clown细节增强选项（Beta）",
         "inputs": {
             "weight": "权重",
             "method": "方法",
@@ -2152,12 +2305,13 @@
             "noise_boost_substep": "噪声增强子步数",
             "sampler_scaling_normalize": "采样器缩放标准化"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_SigmaScaling_Beta": {
-        "display_name": "Clown Sigma缩放选项（Beta）",
+        "title": "Clown Sigma缩放选项（Beta）",
         "inputs": {
             "s_noise": "S噪声",
             "s_noise_substep": "子步S噪声",
@@ -2170,22 +2324,24 @@
             "s_noises_substep": "子步S噪声列表",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_Momentum_Beta": {
-        "display_name": "Clown动量选项（Beta）",
+        "title": "Clown动量选项（Beta）",
         "inputs": {
             "momentum": "动量",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_ImplicitSteps_Beta": {
-        "display_name": "Clown隐式步选项（Beta）",
+        "title": "Clown隐式步选项（Beta）",
         "inputs": {
             "implicit_type": "隐式类型",
             "implicit_type_substeps": "子步隐式类型",
@@ -2193,12 +2349,13 @@
             "implicit_substeps": "隐式子步数",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_Cycles_Beta": {
-        "display_name": "Clown循环选项（Beta）",
+        "title": "Clown循环选项（Beta）",
         "inputs": {
             "cycles": "循环次数",
             "eta_decay_scale": "Eta衰减缩放",
@@ -2209,53 +2366,58 @@
             "unsample_bongmath": "非采样BongMath",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "SharkOptions_StartStep_Beta": {
-        "display_name": "Shark起始步选项（Beta）",
+        "title": "Shark起始步选项（Beta）",
         "inputs": {
             "start_at_step": "起始步数",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_Tile_Beta": {
-        "display_name": "Clown平铺选项（Beta）",
+        "title": "Clown分块选项（Beta）",
         "inputs": {
-            "tile_width": "平铺宽度",
-            "tile_height": "平铺高度",
+            "tile_width": "分块宽度",
+            "tile_height": "分块高度",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_Tile_Advanced_Beta": {
-        "display_name": "Clown高级平铺选项（Beta）",
+        "title": "Clown高级分块选项（Beta）",
         "inputs": {
-            "tile_sizes": "平铺尺寸",
+            "tile_sizes": "分块尺寸",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_ExtraOptions_Beta": {
-        "display_name": "Clown额外选项（Beta）",
+        "title": "Clown额外选项（Beta）",
         "inputs": {
             "extra_options": "额外选项",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_Automation_Beta": {
-        "display_name": "Clown自动化选项（Beta）",
+        "title": "Clown自动化选项（Beta）",
         "inputs": {
             "etas": "Eta列表",
             "etas_substep": "子步Eta列表",
@@ -2265,24 +2427,26 @@
             "frame_weights": "帧权重",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "SharkOptions_GuideCond_Beta": {
-        "display_name": "Shark引导条件选项（Beta）",
+        "title": "Shark引导条件选项（Beta）",
         "inputs": {
             "positive": "正面引导",
             "negative": "负面引导",
             "cfg": "CFG",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "SharkOptions_GuideConds_Beta": {
-        "display_name": "Shark多重引导条件选项（Beta）",
+        "title": "Shark多重引导条件选项（Beta）",
         "inputs": {
             "positive_masked": "遮罩正面引导",
             "positive_unmasked": "非遮罩正面引导",
@@ -2292,12 +2456,13 @@
             "cfg_unmasked": "非遮罩CFG",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "SharkOptions_Beta": {
-        "display_name": "Shark选项（Beta）",
+        "title": "Shark选项（Beta）",
         "inputs": {
             "noise_type_init": "初始化噪声类型",
             "s_noise_init": "初始化S噪声",
@@ -2305,23 +2470,25 @@
             "channelwise_cfg": "通道CFG",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "SharkOptions_UltraCascade_Latent_Beta": {
-        "display_name": "Shark UltraCascade Latent选项（Beta）",
+        "title": "Shark UltraCascade Latent选项（Beta）",
         "inputs": {
             "width": "宽度",
             "height": "高度",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_SwapSampler_Beta": {
-        "display_name": "Clown采样器切换选项（Beta）",
+        "title": "Clown采样器切换选项（Beta）",
         "inputs": {
             "sampler_name": "采样器名称",
             "swap_below_err": "错误阈值切换",
@@ -2329,12 +2496,13 @@
             "log_err_to_console": "错误日志输出",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_SDE_Mask_Beta": {
-        "display_name": "Clown SDE遮罩选项（Beta）",
+        "title": "Clown SDE遮罩选项（Beta）",
         "inputs": {
             "max": "最大值",
             "min": "最小值",
@@ -2342,12 +2510,13 @@
             "mask": "遮罩",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownGuide_Mean_Beta": {
-        "display_name": "Clown均值引导（Beta）",
+        "title": "Clown均值引导（Beta）",
         "inputs": {
             "weight": "权重",
             "cutoff": "截止频率",
@@ -2362,12 +2531,13 @@
             "channelwise_mode": "通道模式",
             "projection_mode": "投影模式"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据列表"
         }
     },
     "ClownGuide_Style_Beta": {
-        "display_name": "Clown风格引导（Beta）",
+        "title": "Clown风格引导（Beta）",
         "inputs": {
             "apply_to": "应用对象",
             "method": "方法",
@@ -2382,12 +2552,13 @@
             "weights": "权重列表",
             "guides": "引导数据列表"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据列表"
         }
     },
     "ClownGuide_AdaIN_MMDiT_Beta": {
-        "display_name": "Clown AdaIN MMDiT引导（Beta）",
+        "title": "Clown AdaIN MMDiT引导（Beta）",
         "inputs": {
             "weight": "权重",
             "weight_scheduler": "权重调度器",
@@ -2403,12 +2574,13 @@
             "weights": "权重列表",
             "guides": "引导数据列表"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据列表"
         }
     },
     "ClownGuide_AttnInj_MMDiT_Beta": {
-        "display_name": "Clown注意力注入MMDiT引导（Beta）",
+        "title": "Clown注意力注入MMDiT引导（Beta）",
         "inputs": {
             "weight": "权重",
             "weight_scheduler": "权重调度器",
@@ -2436,12 +2608,13 @@
             "weights": "权重列表",
             "guides": "引导数据列表"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据列表"
         }
     },
     "ClownGuide_Beta": {
-        "display_name": "Clown引导器（Beta）",
+        "title": "Clown引导器（Beta）",
         "inputs": {
             "guide_mode": "引导模式",
             "channelwise_mode": "通道模式",
@@ -2464,12 +2637,13 @@
             "weights_unmasked": "非遮罩权重列表",
             "unmask": "非遮罩区域"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据列表"
         }
     },
     "ClownGuides_Beta": {
-        "display_name": "Clown多重引导器（Beta）",
+        "title": "Clown多重引导器（Beta）",
         "inputs": {
             "guide_mode": "引导模式",
             "channelwise_mode": "通道模式",
@@ -2492,12 +2666,13 @@
             "weights_unmasked": "非遮罩权重列表",
             "unmask": "非遮罩区域"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据列表"
         }
     },
     "ClownGuidesAB_Beta": {
-        "display_name": "Clown AB引导器（Beta）",
+        "title": "Clown AB引导器（Beta）",
         "inputs": {
             "guide_mode": "引导模式",
             "channelwise_mode": "通道模式",
@@ -2520,21 +2695,23 @@
             "weights_A": "权重列表A",
             "weights_B": "权重列表B"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据列表"
         }
     },
     "ClownOptions_Combine": {
-        "display_name": "Clown选项合并器",
+        "title": "Clown选项合并器",
         "inputs": {
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_Frameweights": {
-        "display_name": "Clown帧权重选项",
+        "title": "Clown帧权重选项",
         "inputs": {
             "config_name": "配置名称",
             "dynamics": "动态参数",
@@ -2545,33 +2722,36 @@
             "custom_string": "自定义字符串",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "SharkOptions_GuiderInput": {
-        "display_name": "Shark引导器输入选项",
+        "title": "Shark引导器输入选项",
         "inputs": {
             "guider": "引导器",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "set_precision_sigmas": {
-        "display_name": "设置噪声调度表精度",
+        "title": "设置噪声调度表精度",
         "inputs": {
             "sigmas": "噪声调度表",
             "precision": "精度",
             "set_default": "设为默认"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_interpolate": {
-        "display_name": "噪声调度表插值",
+        "title": "噪声调度表插值",
         "inputs": {
             "sigmas_0": "噪声调度表0",
             "sigmas_1": "噪声调度表1",
@@ -2580,249 +2760,274 @@
             "sigma_schedule": "噪声调度方案",
             "target_steps": "目标步数"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_noise_inversion": {
-        "display_name": "噪声调度表噪声反转",
+        "title": "噪声调度表噪声反转",
         "inputs": {
             "sigmas": "噪声调度表"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_variance_floor": {
-        "display_name": "噪声调度表方差下限",
+        "title": "噪声调度表方差下限",
         "inputs": {
             "sigmas": "噪声调度表"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_from_text": {
-        "display_name": "从文本生成噪声调度表",
+        "title": "从文本生成噪声调度表",
         "inputs": {
             "text": "文本"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_concatenate": {
-        "display_name": "噪声调度表拼接",
+        "title": "噪声调度表拼接",
         "inputs": {
             "sigmas_1": "噪声调度表1",
             "sigmas_2": "噪声调度表2"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_truncate": {
-        "display_name": "噪声调度表截断",
+        "title": "噪声调度表截断",
         "inputs": {
             "sigmas": "噪声调度表",
             "sigmas_until": "截断点"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_start": {
-        "display_name": "噪声调度表起始段",
+        "title": "噪声调度表起始段",
         "inputs": {
             "sigmas": "噪声调度表",
             "sigmas_until": "截止点"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_split": {
-        "display_name": "噪声调度表分割",
+        "title": "噪声调度表分割",
         "inputs": {
             "sigmas": "噪声调度表",
             "sigmas_start": "起始点",
             "sigmas_end": "结束点"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_pad": {
-        "display_name": "噪声调度表填充",
+        "title": "噪声调度表填充",
         "inputs": {
             "sigmas": "噪声调度表",
             "value": "填充值"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_unpad": {
-        "display_name": "噪声调度表去除填充",
+        "title": "噪声调度表去除填充",
         "inputs": {
             "sigmas": "噪声调度表"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_set_floor": {
-        "display_name": "设置噪声调度表下限",
+        "title": "设置噪声调度表下限",
         "inputs": {
             "sigmas": "噪声调度表",
             "floor": "下限值",
             "new_floor": "新下限值"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_delete_below_floor": {
-        "display_name": "删除低于下限的噪声值",
+        "title": "删除低于下限的噪声值",
         "inputs": {
             "sigmas": "噪声调度表",
             "floor": "下限值"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_delete_value": {
-        "display_name": "删除指定噪声值",
+        "title": "删除指定噪声值",
         "inputs": {
             "sigmas": "噪声调度表",
             "value": "目标值"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_delete_consecutive_duplicates": {
-        "display_name": "删除连续重复噪声值",
+        "title": "删除连续重复噪声值",
         "inputs": {
             "sigmas_1": "噪声调度表1"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_cleanup": {
-        "display_name": "噪声调度表清理",
+        "title": "噪声调度表清理",
         "inputs": {
             "sigmas": "噪声调度表",
             "sigmin": "最小噪声值"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_mult": {
-        "display_name": "噪声调度表乘法",
+        "title": "噪声调度表乘法",
         "inputs": {
             "sigmas": "噪声调度表",
             "multiplier": "乘数",
             "sigmas2": "噪声调度表2"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_modulus": {
-        "display_name": "噪声调度表取模",
+        "title": "噪声调度表取模",
         "inputs": {
             "sigmas": "噪声调度表",
             "divisor": "除数"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_quotient": {
-        "display_name": "噪声调度表整除",
+        "title": "噪声调度表整除",
         "inputs": {
             "sigmas": "噪声调度表",
             "divisor": "除数"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_add": {
-        "display_name": "噪声调度表加法",
+        "title": "噪声调度表加法",
         "inputs": {
             "sigmas": "噪声调度表",
             "addend": "加数"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_power": {
-        "display_name": "噪声调度表幂运算",
+        "title": "噪声调度表幂运算",
         "inputs": {
             "sigmas": "噪声调度表",
             "power": "幂指数"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_abs": {
-        "display_name": "噪声调度表绝对值",
+        "title": "噪声调度表绝对值",
         "inputs": {
             "sigmas": "噪声调度表"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas2_mult": {
-        "display_name": "噪声调度表对位乘法",
+        "title": "噪声调度表对位乘法",
         "inputs": {
             "sigmas_1": "噪声调度表1",
             "sigmas_2": "噪声调度表2"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas2_add": {
-        "display_name": "噪声调度表对位加法",
+        "title": "噪声调度表对位加法",
         "inputs": {
             "sigmas_1": "噪声调度表1",
             "sigmas_2": "噪声调度表2"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_rescale": {
-        "display_name": "噪声调度表重缩放",
+        "title": "噪声调度表重缩放",
         "inputs": {
             "start": "起始值",
             "end": "结束值",
             "sigmas": "噪声调度表"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_count": {
-        "display_name": "统计噪声调度表长度",
+        "title": "统计噪声调度表长度",
         "inputs": {
             "sigmas": "噪声调度表"
         },
+        "widgets": {},
         "outputs": {
             "int": "整数"
         }
     },
     "sigmas_math1": {
-        "display_name": "噪声调度表一元数学运算",
+        "title": "噪声调度表一元数学运算",
         "inputs": {
             "start": "起始索引",
             "stop": "停止索引",
@@ -2838,12 +3043,13 @@
             "b": "参数B",
             "c": "参数C"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_math3": {
-        "display_name": "噪声调度表三元数学运算",
+        "title": "噪声调度表三元数学运算",
         "inputs": {
             "start": "起始索引",
             "stop": "停止索引",
@@ -2867,12 +3073,13 @@
             "max3": "最大值3",
             "min3": "最小值3"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_iteration_karras": {
-        "display_name": "Karras迭代噪声调度",
+        "title": "Karras迭代噪声调度",
         "inputs": {
             "steps_up": "上升步数",
             "steps_down": "下降步数",
@@ -2884,12 +3091,13 @@
             "momentums": "动量列表",
             "sigmas": "噪声调度表"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_iteration_polyexp": {
-        "display_name": "多项式指数迭代噪声调度",
+        "title": "多项式指数迭代噪声调度",
         "inputs": {
             "steps_up": "上升步数",
             "steps_down": "下降步数",
@@ -2901,12 +3109,13 @@
             "momentums": "动量列表",
             "sigmas": "噪声调度表"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "tan_scheduler": {
-        "display_name": "正切调度器",
+        "title": "正切调度器",
         "inputs": {
             "steps": "步数",
             "offset": "偏移量",
@@ -2916,12 +3125,13 @@
             "sgm": "SGM参数",
             "pad": "填充"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "tan_scheduler_2stage": {
-        "display_name": "两阶段正切调度器",
+        "title": "两阶段正切调度器",
         "inputs": {
             "steps": "步数",
             "midpoint": "中点",
@@ -2936,12 +3146,13 @@
             "slope": "斜率",
             "pivot": "枢轴点"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "tan_scheduler_2stage_simple": {
-        "display_name": "简化两阶段正切调度器",
+        "title": "简化两阶段正切调度器",
         "inputs": {
             "steps": "步数",
             "pivot_1": "枢轴点1",
@@ -2955,36 +3166,39 @@
             "slope": "斜率",
             "pivot": "枢轴点"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "linear_quadratic_advanced": {
-        "display_name": "高级线性-二次调度器",
+        "title": "高级线性-二次调度器",
         "inputs": {
             "model": "模型",
             "steps": "步数",
             "denoise": "降噪强度",
             "inflection_percent": "拐点百分比"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "constant_scheduler": {
-        "display_name": "常数调度器",
+        "title": "常数调度器",
         "inputs": {
             "steps": "步数",
             "value_start": "起始值",
             "value_end": "结束值",
             "cutoff_percent": "截止百分比"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "ClownScheduler": {
-        "display_name": "Clown调度器",
+        "title": "Clown调度器",
         "inputs": {
             "pad_start_value": "起始填充值",
             "start_value": "起始值",
@@ -3001,12 +3215,13 @@
             "start_step": "起始步数",
             "end_step": "结束步数"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_sigmoid": {
-        "display_name": "Sigmoid噪声调度表变换",
+        "title": "Sigmoid噪声调度表变换",
         "inputs": {
             "sigmas": "噪声调度表",
             "variant": "变体类型",
@@ -3014,12 +3229,13 @@
             "offset": "偏移量",
             "normalize_output": "标准化输出"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_easing": {
-        "display_name": "缓动函数噪声调度表变换",
+        "title": "缓动函数噪声调度表变换",
         "inputs": {
             "sigmas": "噪声调度表",
             "easing_type": "缓动类型",
@@ -3029,24 +3245,26 @@
             "strength": "强度",
             "t": "参数T"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_hyperbolic": {
-        "display_name": "双曲函数噪声调度表变换",
+        "title": "双曲函数噪声调度表变换",
         "inputs": {
             "sigmas": "噪声调度表",
             "function": "函数类型",
             "scale": "缩放因子",
             "normalize_output": "标准化输出"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_gaussian": {
-        "display_name": "高斯噪声调度表变换",
+        "title": "高斯噪声调度表变换",
         "inputs": {
             "sigmas": "噪声调度表",
             "mean": "均值",
@@ -3054,12 +3272,13 @@
             "operation": "操作类型",
             "normalize_output": "标准化输出"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_percentile": {
-        "display_name": "百分位噪声调度表映射",
+        "title": "百分位噪声调度表映射",
         "inputs": {
             "sigmas": "噪声调度表",
             "percentile_min": "最小百分位",
@@ -3068,36 +3287,39 @@
             "target_max": "目标最大值",
             "clip_outliers": "裁剪异常值"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_kernel_smooth": {
-        "display_name": "核平滑噪声调度表",
+        "title": "核平滑噪声调度表",
         "inputs": {
             "sigmas": "噪声调度表",
             "kernel": "核函数",
             "kernel_size": "核大小",
             "sigma": "平滑参数"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_quantile_norm": {
-        "display_name": "分位数标准化噪声调度表",
+        "title": "分位数标准化噪声调度表",
         "inputs": {
             "sigmas": "噪声调度表",
             "target_distribution": "目标分布",
             "num_quantiles": "分位数数量",
             "reference_sigmas": "参考噪声调度表"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_adaptive_step": {
-        "display_name": "自适应步长噪声调度表",
+        "title": "自适应步长噪声调度表",
         "inputs": {
             "sigmas": "噪声调度表",
             "adaptation_type": "适应类型",
@@ -3106,12 +3328,13 @@
             "max_step": "最大步长",
             "target_steps": "目标步数"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_chaos": {
-        "display_name": "混沌系统噪声调度表",
+        "title": "混沌系统噪声调度表",
         "inputs": {
             "sigmas": "噪声调度表",
             "system": "混沌系统",
@@ -3120,12 +3343,13 @@
             "normalize_output": "标准化输出",
             "use_as_seed": "用作种子"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_reaction_diffusion": {
-        "display_name": "反应-扩散系统噪声调度表",
+        "title": "反应-扩散系统噪声调度表",
         "inputs": {
             "sigmas": "噪声调度表",
             "system": "反应-扩散系统",
@@ -3137,12 +3361,13 @@
             "diffusion_b": "扩散系数B",
             "normalize_output": "标准化输出"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_attractor": {
-        "display_name": "吸引子系统噪声调度表",
+        "title": "吸引子系统噪声调度表",
         "inputs": {
             "sigmas": "噪声调度表",
             "attractor": "吸引子类型",
@@ -3151,22 +3376,24 @@
             "component": "分量选择",
             "normalize_output": "标准化输出"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_catmull_rom": {
-        "display_name": "Catmull-Rom样条噪声调度表",
+        "title": "Catmull-Rom样条噪声调度表",
         "inputs": {
             "sigmas": "噪声调度表",
             "tension": "张力参数"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_conway_sequence": {
-        "display_name": "康威序列噪声调度表",
+        "title": "康威序列噪声调度表",
         "inputs": {
             "steps": "步数",
             "sequence_type": "序列类型",
@@ -3174,12 +3401,13 @@
             "min_value": "最小值",
             "max_value": "最大值"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_gilbreath_sequence": {
-        "display_name": "吉尔布雷斯序列噪声调度表",
+        "title": "吉尔布雷斯序列噪声调度表",
         "inputs": {
             "steps": "步数",
             "levels": "层级数",
@@ -3187,24 +3415,26 @@
             "min_value": "最小值",
             "max_value": "最大值"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_cnf_inverse": {
-        "display_name": "CNF逆变换噪声调度表",
+        "title": "CNF逆变换噪声调度表",
         "inputs": {
             "sigmas": "噪声调度表",
             "time_steps": "时间步数",
             "flow_type": "流类型",
             "reverse": "反向"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_riemannian_flow": {
-        "display_name": "黎曼流噪声调度表",
+        "title": "黎曼流噪声调度表",
         "inputs": {
             "steps": "步数",
             "metric_type": "度量类型",
@@ -3212,12 +3442,13 @@
             "start_value": "起始值",
             "end_value": "结束值"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_langevin_dynamics": {
-        "display_name": "朗之万动力学噪声调度表",
+        "title": "朗之万动力学噪声调度表",
         "inputs": {
             "steps": "步数",
             "start_value": "起始值",
@@ -3226,12 +3457,13 @@
             "friction": "摩擦系数",
             "seed": "种子"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_persistent_homology": {
-        "display_name": "持续同调噪声调度表",
+        "title": "持续同调噪声调度表",
         "inputs": {
             "steps": "步数",
             "start_value": "起始值",
@@ -3240,12 +3472,13 @@
             "birth_density": "出生密度",
             "death_density": "死亡密度"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_normalizing_flows": {
-        "display_name": "标准化流噪声调度表",
+        "title": "标准化流噪声调度表",
         "inputs": {
             "steps": "步数",
             "start_value": "起始值",
@@ -3254,23 +3487,25 @@
             "num_transforms": "变换数量",
             "seed": "种子"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "sigmas_split_value": {
-        "display_name": "按值分割噪声调度表",
+        "title": "按值分割噪声调度表",
         "inputs": {
             "sigmas": "噪声调度表",
             "split_value": "分割值",
             "bias_split_up": "向上偏置分割"
         },
+        "widgets": {},
         "outputs": {
             "sigmas": "噪声调度表"
         }
     },
     "SharkSampler": {
-        "display_name": "Shark采样器",
+        "title": "Shark采样器",
         "inputs": {
             "noise_type_init": "初始噪声类型",
             "noise_stdev": "噪声标准差",
@@ -3286,7 +3521,7 @@
             "negative": "负向条件引导",
             "sampler": "采样算法",
             "sigmas": "噪声调度表",
-            "latent_image": "初始潜变量",
+            "latent_image": "Latent图像",
             "extra_options": "额外选项",
             "options": "选项",
             "steps_to_run": "实际运行步数",
@@ -3304,17 +3539,18 @@
             "unsampler_name": "反采样器名称",
             "unsample_steps_to_run": "反采样步数",
             "eta_decay_scale": "Eta衰减缩放",
-            "ultracascade_latent_image": "超级联潜变量",
-            "ultracascade_guide_weights": "超级联引导权重",
-            "ultracascade_latent_width": "超级联潜变量宽度",
-            "ultracascade_latent_height": "超级联潜变量高度"
+            "ultracascade_latent_image": "放大Latent图像",
+            "ultracascade_guide_weights": "放大引导权重",
+            "ultracascade_latent_width": "放大Latent宽度",
+            "ultracascade_latent_height": "放大Latent高度"
         },
+        "widgets": {},
         "outputs": {
-            "latent": "生成的潜变量"
+            "latent": "Latent"
         }
     },
     "SharkSampler_Beta": {
-        "display_name": "Shark采样器（Beta）",
+        "title": "Shark采样器（Beta）",
         "inputs": {
             "scheduler": "调度器",
             "steps": "总步数",
@@ -3328,7 +3564,7 @@
             "negative": "负向条件引导",
             "sampler": "采样算法",
             "sigmas": "噪声调度表",
-            "latent_image": "初始潜变量",
+            "latent_image": "Latent图像",
             "options": "选项",
             "denoise_alt": "备用降噪强度",
             "noise_type_init": "初始噪声类型",
@@ -3343,13 +3579,14 @@
             "sde_noise_steps": "SDE噪声步数",
             "extra_options": "额外选项"
         },
+        "widgets": {},
         "outputs": {
-            "latent": "生成的潜变量",
+            "latent": "Latent",
             "options": "选项"
         }
     },
     "SharkChainsampler_Beta": {
-        "display_name": "Shark链式采样器（Beta）",
+        "title": "Shark链式采样器（Beta）",
         "inputs": {
             "scheduler": "调度器",
             "steps": "总步数",
@@ -3363,7 +3600,7 @@
             "negative": "负向条件引导",
             "sampler": "采样算法",
             "sigmas": "噪声调度表",
-            "latent_image": "初始潜变量",
+            "latent_image": "Latent图像",
             "options": "选项",
             "denoise_alt": "备用降噪强度",
             "noise_type_init": "初始噪声类型",
@@ -3378,13 +3615,14 @@
             "sde_noise_steps": "SDE噪声步数",
             "extra_options": "额外选项"
         },
+        "widgets": {},
         "outputs": {
-            "latent": "生成的潜变量",
+            "latent": "Latent",
             "options": "选项"
         }
     },
     "ClownSamplerAdvanced_Beta": {
-        "display_name": "Clown高级采样器（Beta）",
+        "title": "Clown高级采样器（Beta）",
         "inputs": {
             "noise_type_sde": "SDE噪声类型",
             "noise_type_sde_substep": "SDE子步噪声类型",
@@ -3450,12 +3688,13 @@
             "steps_to_run": "实际运行步数",
             "sde_mask": "SDE遮罩"
         },
+        "widgets": {},
         "outputs": {
             "sampler": "采样器配置"
         }
     },
     "ClownsharKSampler_Beta": {
-        "display_name": "ClownShark采样器（Beta）",
+        "title": "ClownShark采样器（Beta）",
         "inputs": {
             "model": "模型",
             "denoise": "降噪强度",
@@ -3464,7 +3703,7 @@
             "seed": "种子",
             "positive": "正向条件引导",
             "negative": "负向条件引导",
-            "latent_image": "初始潜变量",
+            "latent_image": "Latent图像",
             "steps": "总步数",
             "steps_to_run": "实际运行步数",
             "bongmath": "Bong数学模式",
@@ -3528,13 +3767,14 @@
             "rk_swap_type": "RK交换类型",
             "sde_mask": "SDE遮罩"
         },
+        "widgets": {},
         "outputs": {
-            "latent": "生成的潜变量",
+            "latent": "Latent",
             "options": "选项"
         }
     },
     "ClownsharkChainsampler_Beta": {
-        "display_name": "ClownShark链式采样器（Beta）",
+        "title": "ClownShark链式采样器（Beta）",
         "inputs": {
             "model": "模型",
             "denoise": "降噪强度",
@@ -3543,7 +3783,7 @@
             "seed": "种子",
             "positive": "正向条件引导",
             "negative": "负向条件引导",
-            "latent_image": "初始潜变量",
+            "latent_image": "Latent图像",
             "steps": "总步数",
             "steps_to_run": "实际运行步数",
             "bongmath": "Bong数学模式",
@@ -3607,13 +3847,14 @@
             "rk_swap_type": "RK交换类型",
             "sde_mask": "SDE遮罩"
         },
+        "widgets": {},
         "outputs": {
-            "latent": "生成的潜变量",
+            "latent": "Latent",
             "options": "选项"
         }
     },
     "ClownSampler_Beta": {
-        "display_name": "Clown采样器（Beta）",
+        "title": "Clown采样器（Beta）",
         "inputs": {
             "model": "模型",
             "denoise": "降噪强度",
@@ -3622,7 +3863,7 @@
             "seed": "种子",
             "positive": "正向条件引导",
             "negative": "负向条件引导",
-            "latent_image": "初始潜变量",
+            "latent_image": "Latent图像",
             "steps": "总步数",
             "steps_to_run": "实际运行步数",
             "bongmath": "Bong数学模式",
@@ -3678,12 +3919,13 @@
             "rk_swap_type": "RK交换类型",
             "sde_mask": "SDE遮罩"
         },
+        "widgets": {},
         "outputs": {
             "sampler": "采样器配置"
         }
     },
     "BongSampler": {
-        "display_name": "Bong采样器",
+        "title": "Bong采样器",
         "inputs": {
             "model": "模型",
             "denoise": "降噪强度",
@@ -3692,7 +3934,7 @@
             "seed": "种子",
             "positive": "正向条件引导",
             "negative": "负向条件引导",
-            "latent_image": "初始潜变量",
+            "latent_image": "Latent图像",
             "steps": "总步数",
             "steps_to_run": "实际运行步数",
             "bongmath": "Bong数学模式",
@@ -3744,22 +3986,24 @@
             "rk_swap_threshold": "RK交换阈值",
             "rk_swap_type": "RK交换类型"
         },
+        "widgets": {},
         "outputs": {
-            "latent": "生成的潜变量"
+            "latent": "Latent"
         }
     },
     "ClownOptions_FlowGuide": {
-        "display_name": "Clown流程引导选项",
+        "title": "Clown流程引导选项",
         "inputs": {
             "sync_eps": "同步Epsilon",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_DenoisedSampling_Beta": {
-        "display_name": "Clown降噪采样选项（Beta）",
+        "title": "Clown降噪采样选项（Beta）",
         "inputs": {
             "cycles": "循环次数",
             "eta_decay_scale": "Eta衰减缩放",
@@ -3771,12 +4015,13 @@
             "options": "选项",
             "extra_options": "额外选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownGuide_FrequencySeparation": {
-        "display_name": "Clown频率分离引导",
+        "title": "Clown频率分离引导",
         "inputs": {
             "apply_to": "应用对象",
             "method": "分离方法",
@@ -3789,34 +4034,37 @@
             "guides": "引导数据",
             "mask": "遮罩"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据"
         }
     },
     "ClownGuide_Style_EdgeWidth": {
-        "display_name": "Clown样式-边缘宽度引导",
+        "title": "Clown风格-边缘宽度引导",
         "inputs": {
             "edge_width": "边缘宽度",
             "guides": "引导数据"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据"
         }
     },
     "ClownGuide_Style_TileSize": {
-        "display_name": "Clown样式-平铺尺寸引导",
+        "title": "Clown风格-分块尺寸引导",
         "inputs": {
             "height": "高度",
             "width": "宽度",
             "padding": "填充",
             "guides": "引导数据"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据"
         }
     },
     "ClownGuides_Sync": {
-        "display_name": "Clown同步引导器",
+        "title": "Clown同步引导器",
         "inputs": {
             "weight_masked": "遮罩权重",
             "weight_unmasked": "非遮罩权重",
@@ -3849,12 +4097,13 @@
             "cutoff_masked": "遮罩截止频率",
             "cutoff_unmasked": "非遮罩截止频率"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据"
         }
     },
     "ClownGuides_Sync_Advanced": {
-        "display_name": "Clown高级同步引导器",
+        "title": "Clown高级同步引导器",
         "inputs": {
             "weight_masked": "遮罩权重",
             "weight_unmasked": "非遮罩权重",
@@ -3944,12 +4193,13 @@
             "cutoff_masked": "遮罩截止频率",
             "cutoff_unmasked": "非遮罩截止频率"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据"
         }
     },
     "ClownGuide_StyleNorm_Advanced_HiDream": {
-        "display_name": "Clown高级样式标准化引导器（HiDream）",
+        "title": "Clown高级风格标准化引导器（HiDream）",
         "inputs": {
             "weight": "权重",
             "weight_scheduler": "权重调度器",
@@ -4013,12 +4263,13 @@
             "guides": "引导数据",
             "shared_experts": "共享专家权重"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据"
         }
     },
     "ClownStyle_Boost": {
-        "display_name": "Clown样式增强器",
+        "title": "Clown风格增强器",
         "inputs": {
             "noise_mode": "噪声模式",
             "recon_lure": "重建引导",
@@ -4026,22 +4277,23 @@
             "datashock_weight": "数据冲击权重",
             "datashock_start_step": "数据冲击起始步",
             "datashock_end_step": "数据冲击结束步",
-            "tile_h": "平铺高度",
-            "tile_w": "平铺宽度",
+            "tile_h": "分块高度",
+            "tile_w": "分块宽度",
             "guides": "引导数据"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据"
         }
     },
     "ClownStyle_MMDiT": {
-        "display_name": "Clown样式-MMDiT引导器",
+        "title": "Clown风格-MMDiT引导器",
         "inputs": {
             "mode": "模式",
             "proj_in": "投影输入权重",
             "proj_out": "投影输出权重",
-            "tile_h": "平铺高度",
-            "tile_w": "平铺宽度",
+            "tile_h": "分块高度",
+            "tile_w": "分块宽度",
             "invert_mask": "反转遮罩",
             "positive": "正向条件引导",
             "negative": "负向条件引导",
@@ -4050,12 +4302,13 @@
             "blocks": "块权重",
             "guides": "引导数据"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据"
         }
     },
     "ClownStyle_Block_MMDiT": {
-        "display_name": "Clown样式-MMDiT块引导器",
+        "title": "Clown风格-MMDiT块引导器",
         "inputs": {
             "mode": "模式",
             "apply_to": "应用对象",
@@ -4072,8 +4325,8 @@
             "ff": "前馈权重",
             "ff_gated": "门控前馈权重",
             "ff_res": "前馈残差权重",
-            "tile_h": "平铺高度",
-            "tile_w": "平铺宽度",
+            "tile_h": "分块高度",
+            "tile_w": "分块宽度",
             "invert_mask": "反转遮罩",
             "mask": "遮罩",
             "blocks": "块权重",
@@ -4082,12 +4335,13 @@
             "MoE": "MoE模块权重",
             "FF": "前馈模块权重"
         },
+        "widgets": {},
         "outputs": {
             "blocks": "块权重"
         }
     },
     "ClownStyle_Attn_MMDiT": {
-        "display_name": "Clown样式-MMDiT注意力引导器",
+        "title": "Clown风格-MMDiT注意力引导器",
         "inputs": {
             "mode": "模式",
             "apply_to": "应用对象",
@@ -4100,25 +4354,26 @@
             "q_norm": "查询标准化",
             "k_norm": "键标准化",
             "out": "输出投影权重",
-            "tile_h": "平铺高度",
-            "tile_w": "平铺宽度",
+            "tile_h": "分块高度",
+            "tile_w": "分块宽度",
             "invert_mask": "反转遮罩",
             "mask": "遮罩",
             "blocks": "块权重",
             "noise_mode": "噪声模式"
         },
+        "widgets": {},
         "outputs": {
             "blocks": "块权重"
         }
     },
     "ClownStyle_UNet": {
-        "display_name": "Clown样式-UNet引导器",
+        "title": "Clown风格-UNet引导器",
         "inputs": {
             "mode": "模式",
             "proj_in": "投影输入权重",
             "proj_out": "投影输出权重",
-            "tile_h": "平铺高度",
-            "tile_w": "平铺宽度",
+            "tile_h": "分块高度",
+            "tile_w": "分块宽度",
             "invert_mask": "反转遮罩",
             "positive": "正向条件引导",
             "negative": "负向条件引导",
@@ -4127,12 +4382,13 @@
             "blocks": "块权重",
             "guides": "引导数据"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据"
         }
     },
     "ClownStyle_Block_UNet": {
-        "display_name": "Clown样式-UNet块引导器",
+        "title": "Clown风格-UNet块引导器",
         "inputs": {
             "mode": "模式",
             "block_type": "块类型",
@@ -4141,20 +4397,21 @@
             "resample": "重采样权重",
             "res": "分辨率",
             "spatial": "空间转换器权重",
-            "tile_h": "平铺高度",
-            "tile_w": "平铺宽度",
+            "tile_h": "分块高度",
+            "tile_w": "分块宽度",
             "invert_mask": "反转遮罩",
             "mask": "遮罩",
             "blocks": "块权重",
             "noise_mode": "噪声模式",
             "apply_to": "应用对象"
         },
+        "widgets": {},
         "outputs": {
             "blocks": "块权重"
         }
     },
     "ClownStyle_Attn_UNet": {
-        "display_name": "Clown样式-UNet注意力引导器",
+        "title": "Clown风格-UNet注意力引导器",
         "inputs": {
             "mode": "模式",
             "apply_to": "应用对象",
@@ -4165,19 +4422,20 @@
             "k_proj": "键投影权重",
             "v_proj": "值投影权重",
             "out": "输出投影权重",
-            "tile_h": "平铺高度",
-            "tile_w": "平铺宽度",
+            "tile_h": "分块高度",
+            "tile_w": "分块宽度",
             "invert_mask": "反转遮罩",
             "mask": "遮罩",
             "blocks": "块权重",
             "noise_mode": "噪声模式"
         },
+        "widgets": {},
         "outputs": {
             "blocks": "块权重"
         }
     },
     "ClownStyle_ResBlock_UNet": {
-        "display_name": "Clown样式-UNet残差块引导器",
+        "title": "Clown风格-UNet残差块引导器",
         "inputs": {
             "mode": "模式",
             "block_type": "块类型",
@@ -4193,20 +4451,21 @@
             "out_silu": "输出SiLU激活",
             "out_conv": "输出卷积",
             "residual": "残差连接权重",
-            "tile_h": "平铺高度",
-            "tile_w": "平铺宽度",
+            "tile_h": "分块高度",
+            "tile_w": "分块宽度",
             "invert_mask": "反转遮罩",
             "mask": "遮罩",
             "blocks": "块权重",
             "noise_mode": "噪声模式",
             "apply_to": "应用对象"
         },
+        "widgets": {},
         "outputs": {
             "blocks": "块权重"
         }
     },
     "ClownStyle_SpatialBlock_UNet": {
-        "display_name": "Clown样式-UNet空间块引导器",
+        "title": "Clown风格-UNet空间块引导器",
         "inputs": {
             "mode": "模式",
             "block_type": "块类型",
@@ -4218,20 +4477,21 @@
             "transformer": "Transformer权重",
             "proj_out": "输出投影",
             "res": "分辨率",
-            "tile_h": "平铺高度",
-            "tile_w": "平铺宽度",
+            "tile_h": "分块高度",
+            "tile_w": "分块宽度",
             "invert_mask": "反转遮罩",
             "mask": "遮罩",
             "blocks": "块权重",
             "noise_mode": "噪声模式",
             "apply_to": "应用对象"
         },
+        "widgets": {},
         "outputs": {
             "blocks": "块权重"
         }
     },
     "ClownStyle_TransformerBlock_UNet": {
-        "display_name": "Clown样式-UNet Transformer块引导器",
+        "title": "Clown风格-UNet Transformer块引导器",
         "inputs": {
             "mode": "模式",
             "block_type": "块类型",
@@ -4246,44 +4506,47 @@
             "self_attn_res": "自注意力残差权重",
             "cross_attn_res": "交叉注意力残差权重",
             "ff_res": "前馈残差权重",
-            "tile_h": "平铺高度",
-            "tile_w": "平铺宽度",
+            "tile_h": "分块高度",
+            "tile_w": "分块宽度",
             "invert_mask": "反转遮罩",
             "mask": "遮罩",
             "blocks": "块权重",
             "noise_mode": "噪声模式",
             "apply_to": "应用对象"
         },
+        "widgets": {},
         "outputs": {
             "blocks": "块权重"
         }
     },
     "StyleModelApplyAdvanced": {
-        "display_name": "高级风格模型应用器",
+        "title": "高级风格模型应用器",
         "inputs": {
             "conditioning": "条件引导",
             "style_model": "风格模型",
             "clip_vision_output": "CLIP视觉输出",
             "strength": "强度"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件引导"
         }
     },
     "FluxRegionalPrompt": {
-        "display_name": "Flux区域提示",
+        "title": "Flux区域提示",
         "inputs": {
             "cond": "条件引导",
             "cond_regional": "区域条件引导",
             "mask": "遮罩"
         },
+        "widgets": {},
         "outputs": {
             "conditioning_regional": "区域条件引导",
             "mask": "遮罩"
         }
     },
     "FluxRegionalConditioning": {
-        "display_name": "Flux区域条件引导",
+        "title": "Flux区域条件引导",
         "inputs": {
             "mask_weight": "遮罩权重",
             "self_attn_floor": "自注意力下限",
@@ -4296,14 +4559,15 @@
             "self_attn_floors": "自注意力下限列表",
             "start_step": "起始步数",
             "end_step": "结束步数",
-            "latent": "潜变量"
+            "latent": "Latent"
         },
+        "widgets": {},
         "outputs": {
             "conditioning": "条件引导"
         }
     },
     "Legacy_ClownsharKSampler": {
-        "display_name": "旧版ClownShark采样器",
+        "title": "旧版ClownShark采样器",
         "inputs": {
             "model": "模型",
             "noise_type_init": "初始噪声类型",
@@ -4326,15 +4590,15 @@
             "positive": "正向条件引导",
             "negative": "负向条件引导",
             "sigmas": "噪声调度表",
-            "latent_image": "初始潜变量",
+            "latent_image": "Latent图像",
             "guides": "引导数据",
             "options": "选项",
-            "latent_noise": "潜变量噪声",
-            "latent_noise_match": "潜变量噪声匹配",
+            "latent_noise": "Latent噪声",
+            "latent_noise_match": "Latent噪声匹配",
             "noise_stdev": "噪声标准差",
             "noise_mean": "噪声均值",
             "noise_normalize": "噪声标准化",
-            "noise_is_latent": "噪声是否为潜变量",
+            "noise_is_latent": "噪声是否为Latent",
             "eta_var": "Eta变量",
             "d_noise": "D噪声系数",
             "s_noise": "S噪声",
@@ -4350,22 +4614,23 @@
             "exp_mode": "指数模式",
             "t_fn_formula": "时间函数公式",
             "sigma_fn_formula": "噪声函数公式",
-            "latent_guide": "潜变量引导数据",
-            "latent_guide_inv": "潜变量引导数据反转",
-            "latent_guide_weight": "潜变量引导权重",
+            "latent_guide": "Latent引导数据",
+            "latent_guide_inv": "Latent引导数据反转",
+            "latent_guide_weight": "Latent引导权重",
             "guide_mode": "引导模式",
-            "latent_guide_weights": "潜变量引导权重列表",
-            "latent_guide_mask": "潜变量引导遮罩",
+            "latent_guide_weights": "Latent引导权重列表",
+            "latent_guide_mask": "Latent引导遮罩",
             "rescale_floor": "重缩放下限",
             "sigmas_override": "覆盖噪声调度表",
             "unsampler_type": "反采样器类型"
         },
+        "widgets": {},
         "outputs": {
-            "latent": "生成的潜变量"
+            "latent": "Latent"
         }
     },
     "Legacy_SamplerRK": {
-        "display_name": "旧版RK采样器",
+        "title": "旧版RK采样器",
         "inputs": {
             "eta": "Eta",
             "eta_var": "Eta变量",
@@ -4381,50 +4646,52 @@
             "multistep": "多步模式",
             "implicit_steps": "隐式步数",
             "cfgpp": "CFG++",
-            "latent_guide_weight": "潜变量引导权重",
+            "latent_guide_weight": "Latent引导权重",
             "guide_mode": "引导模式",
             "rescale_floor": "重缩放下限",
-            "latent_guide": "潜变量引导数据",
-            "latent_guide_inv": "潜变量引导数据反转",
-            "latent_guide_mask": "潜变量引导遮罩",
-            "latent_guide_weights": "潜变量引导权重列表",
+            "latent_guide": "Latent引导数据",
+            "latent_guide_inv": "Latent引导数据反转",
+            "latent_guide_mask": "Latent引导遮罩",
+            "latent_guide_weights": "Latent引导权重列表",
             "sigmas_override": "覆盖噪声调度表",
             "t_fn_formula": "时间函数公式",
             "sigma_fn_formula": "噪声函数公式"
         },
+        "widgets": {},
         "outputs": {
             "sampler": "采样器配置"
         }
     },
     "Legacy_ClownsharKSamplerGuides": {
-        "display_name": "旧版ClownShark采样器引导",
+        "title": "旧版ClownShark采样器引导",
         "inputs": {
             "guide_mode": "引导模式",
-            "latent_guide_weight": "潜变量引导权重",
+            "latent_guide_weight": "Latent引导权重",
             "scheduler": "调度器",
             "steps": "总步数",
             "denoise": "降噪强度",
             "rescale_floor": "重缩放下限",
-            "latent_guide": "潜变量引导数据",
-            "latent_guide_inv": "潜变量引导数据反转",
-            "latent_guide_mask": "潜变量引导遮罩",
-            "latent_guide_weights": "潜变量引导权重列表",
+            "latent_guide": "Latent引导数据",
+            "latent_guide_inv": "Latent引导数据反转",
+            "latent_guide_mask": "Latent引导遮罩",
+            "latent_guide_weights": "Latent引导权重列表",
             "model": "模型",
             "t_is": "时间步向量"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据"
         }
     },
     "Legacy_SharkSampler": {
-        "display_name": "旧版Shark采样器",
+        "title": "旧版Shark采样器",
         "inputs": {
             "model": "模型",
             "add_noise": "添加噪声",
             "noise_normalize": "噪声标准化",
             "noise_stdev": "噪声标准差",
             "noise_mean": "噪声均值",
-            "noise_is_latent": "噪声是否为潜变量",
+            "noise_is_latent": "噪声是否为Latent",
             "noise_type": "噪声类型",
             "alpha": "Alpha",
             "k": "K",
@@ -4438,17 +4705,18 @@
             "positive": "正向条件引导",
             "negative": "负向条件引导",
             "sampler": "采样算法",
-            "latent_image": "初始潜变量",
+            "latent_image": "Latent图像",
             "sigmas": "噪声调度表",
-            "latent_noise": "潜变量噪声",
-            "latent_noise_match": "潜变量噪声匹配"
+            "latent_noise": "Latent噪声",
+            "latent_noise_match": "Latent噪声匹配"
         },
+        "widgets": {},
         "outputs": {
-            "latent": "生成的潜变量"
+            "latent": "Latent"
         }
     },
     "ClownSamplerAdvanced": {
-        "display_name": "Clown高级采样器",
+        "title": "Clown高级采样器",
         "inputs": {
             "noise_type_sde": "SDE噪声类型",
             "noise_type_sde_substep": "SDE子步噪声类型",
@@ -4475,13 +4743,13 @@
             "c3": "参数C3",
             "t_fn_formula": "时间函数公式",
             "sigma_fn_formula": "噪声函数公式",
-            "latent_guide": "潜变量引导数据",
-            "latent_guide_inv": "潜变量引导数据反转",
+            "latent_guide": "Latent引导数据",
+            "latent_guide_inv": "Latent引导数据反转",
             "guide_mode": "引导模式",
-            "latent_guide_weights": "潜变量引导权重列表",
-            "latent_guide_weights_inv": "潜变量引导权重反转列表",
-            "latent_guide_mask": "潜变量引导遮罩",
-            "latent_guide_mask_inv": "潜变量引导遮罩反转",
+            "latent_guide_weights": "Latent引导权重列表",
+            "latent_guide_weights_inv": "Latent引导权重反转列表",
+            "latent_guide_mask": "Latent引导遮罩",
+            "latent_guide_mask_inv": "Latent引导遮罩反转",
             "rescale_floor": "重缩放下限",
             "sigmas_override": "覆盖噪声调度表",
             "sde_noise": "SDE噪声",
@@ -4492,12 +4760,13 @@
             "regional_conditioning_weights": "区域条件引导权重",
             "frame_weights_grp": "帧权重组"
         },
+        "widgets": {},
         "outputs": {
             "sampler": "采样器配置"
         }
     },
     "ClownSampler": {
-        "display_name": "Clown采样器",
+        "title": "Clown采样器",
         "inputs": {
             "noise_type_sde": "SDE噪声类型",
             "noise_mode_sde": "SDE噪声模式",
@@ -4522,13 +4791,13 @@
             "c3": "参数C3",
             "t_fn_formula": "时间函数公式",
             "sigma_fn_formula": "噪声函数公式",
-            "latent_guide": "潜变量引导数据",
-            "latent_guide_inv": "潜变量引导数据反转",
+            "latent_guide": "Latent引导数据",
+            "latent_guide_inv": "Latent引导数据反转",
             "guide_mode": "引导模式",
-            "latent_guide_weights": "潜变量引导权重列表",
-            "latent_guide_weights_inv": "潜变量引导权重反转列表",
-            "latent_guide_mask": "潜变量引导遮罩",
-            "latent_guide_mask_inv": "潜变量引导遮罩反转",
+            "latent_guide_weights": "Latent引导权重列表",
+            "latent_guide_weights_inv": "Latent引导权重反转列表",
+            "latent_guide_mask": "Latent引导遮罩",
+            "latent_guide_mask_inv": "Latent引导遮罩反转",
             "rescale_floor": "重缩放下限",
             "sigmas_override": "覆盖噪声调度表",
             "sde_noise": "SDE噪声",
@@ -4541,12 +4810,13 @@
             "eta_substep": "Eta（子步）",
             "noise_mode_sde_substep": "SDE子步噪声模式"
         },
+        "widgets": {},
         "outputs": {
             "sampler": "采样器配置"
         }
     },
     "SharkSamplerAlpha": {
-        "display_name": "Shark采样器Alpha版",
+        "title": "Shark采样器Alpha版",
         "inputs": {
             "model": "模型",
             "noise_type_init": "初始噪声类型",
@@ -4562,11 +4832,11 @@
             "negative": "负向条件引导",
             "sampler": "采样算法",
             "sigmas": "噪声调度表",
-            "latent_image": "初始潜变量",
+            "latent_image": "Latent图像",
             "options": "选项",
             "extra_options": "额外选项",
-            "latent_noise": "潜变量噪声",
-            "latent_noise_match": "潜变量噪声匹配",
+            "latent_noise": "Latent噪声",
+            "latent_noise_match": "Latent噪声匹配",
             "noise_mean": "噪声均值",
             "noise_normalize": "噪声标准化",
             "d_noise": "D噪声系数",
@@ -4576,12 +4846,13 @@
             "sde_noise": "SDE噪声",
             "sde_noise_steps": "SDE噪声步数"
         },
+        "widgets": {},
         "outputs": {
-            "latent": "生成的潜变量"
+            "latent": "Latent"
         }
     },
     "ClownsharKSampler": {
-        "display_name": "ClownShark采样器",
+        "title": "ClownShark采样器",
         "inputs": {
             "model": "模型",
             "noise_type_init": "初始噪声类型",
@@ -4602,16 +4873,16 @@
             "positive": "正向条件引导",
             "negative": "负向条件引导",
             "sigmas": "噪声调度表",
-            "latent_image": "初始潜变量",
+            "latent_image": "Latent图像",
             "guides": "引导数据",
             "options": "选项",
             "automation": "自动化脚本",
-            "latent_noise": "潜变量噪声",
-            "latent_noise_match": "潜变量噪声匹配",
+            "latent_noise": "Latent噪声",
+            "latent_noise_match": "Latent噪声匹配",
             "noise_stdev": "噪声标准差",
             "noise_mean": "噪声均值",
             "noise_normalize": "噪声标准化",
-            "noise_is_latent": "噪声是否为潜变量",
+            "noise_is_latent": "噪声是否为Latent",
             "eta_var": "Eta变量",
             "d_noise": "D噪声系数",
             "s_noise": "S噪声",
@@ -4625,13 +4896,13 @@
             "c3": "参数C3",
             "t_fn_formula": "时间函数公式",
             "sigma_fn_formula": "噪声函数公式",
-            "latent_guide": "潜变量引导数据",
-            "latent_guide_inv": "潜变量引导数据反转",
+            "latent_guide": "Latent引导数据",
+            "latent_guide_inv": "Latent引导数据反转",
             "guide_mode": "引导模式",
-            "latent_guide_weights": "潜变量引导权重列表",
-            "latent_guide_weights_inv": "潜变量引导权重反转列表",
-            "latent_guide_mask": "潜变量引导遮罩",
-            "latent_guide_mask_inv": "潜变量引导遮罩反转",
+            "latent_guide_weights": "Latent引导权重列表",
+            "latent_guide_weights_inv": "Latent引导权重反转列表",
+            "latent_guide_mask": "Latent引导遮罩",
+            "latent_guide_mask_inv": "Latent引导遮罩反转",
             "rescale_floor": "重缩放下限",
             "sigmas_override": "覆盖噪声调度表",
             "shift": "偏移量",
@@ -4645,12 +4916,13 @@
             "regional_conditioning_weights": "区域条件引导权重",
             "frame_weights_grp": "帧权重组"
         },
+        "widgets": {},
         "outputs": {
-            "latent": "生成的潜变量"
+            "latent": "Latent"
         }
     },
     "UltraSharkSampler": {
-        "display_name": "超级Shark采样器",
+        "title": "超级Shark采样器",
         "inputs": {
             "model": "模型",
             "add_noise": "添加噪声",
@@ -4664,42 +4936,45 @@
             "negative": "负向条件引导",
             "sampler": "采样算法",
             "sigmas": "噪声调度表",
-            "latent_image": "初始潜变量",
+            "latent_image": "Latent图像",
             "guide_type": "引导类型",
             "guide_weight": "引导权重",
             "guide": "引导数据",
             "guide_weights": "引导权重列表",
-            "latent_noise": "潜变量噪声",
+            "latent_noise": "Latent噪声",
             "style": "风格条件",
             "img_style": "图像风格"
         },
+        "widgets": {},
         "outputs": {
-            "latent": "生成的潜变量"
+            "latent": "Latent"
         }
     },
     "SamplerOptions_TimestepScaling": {
-        "display_name": "采样器选项-时间步缩放",
+        "title": "采样器选项-时间步缩放",
         "inputs": {
             "sampler": "采样器配置",
             "t_fn_formula": "时间函数公式",
             "sigma_fn_formula": "噪声函数公式"
         },
+        "widgets": {},
         "outputs": {
             "sampler": "采样器配置"
         }
     },
     "SamplerOptions_GarbageCollection": {
-        "display_name": "采样器选项-垃圾回收",
+        "title": "采样器选项-垃圾回收",
         "inputs": {
             "sampler": "采样器配置",
             "garbage_collection": "垃圾回收"
         },
+        "widgets": {},
         "outputs": {
             "sampler": "采样器配置"
         }
     },
     "ClownInpaint": {
-        "display_name": "Clown局部重绘",
+        "title": "Clown局部重绘",
         "inputs": {
             "guide_weight": "引导权重",
             "guide_weight_bkg": "背景引导权重",
@@ -4711,7 +4986,7 @@
             "positive_inpaint": "局部正向条件引导",
             "positive_bkg": "背景正向条件引导",
             "negative": "负向条件引导",
-            "latent_image": "初始潜变量",
+            "latent_image": "Latent图像",
             "mask": "遮罩",
             "guide_weights": "引导权重列表",
             "guide_weights_bkg": "背景引导权重列表",
@@ -4722,15 +4997,16 @@
             "guide_mode": "引导模式",
             "guide_mask_bkg": "背景引导遮罩"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型",
             "conditioning": "条件引导",
-            "latent": "潜变量",
+            "latent": "Latent",
             "guides": "引导数据"
         }
     },
     "ClownInpaintSimple": {
-        "display_name": "Clown简单局部重绘",
+        "title": "Clown简单局部重绘",
         "inputs": {
             "guide_weight": "引导权重",
             "guide_weight_scheduler": "引导权重调度器",
@@ -4738,7 +5014,7 @@
             "model": "模型",
             "positive_inpaint": "局部正向条件引导",
             "negative": "负向条件引导",
-            "latent_image": "初始潜变量",
+            "latent_image": "Latent图像",
             "mask": "遮罩",
             "guide_weight_scheduler_bkg": "背景引导权重调度器",
             "guide_bkg_end_step": "背景引导结束步",
@@ -4753,15 +5029,16 @@
             "guide_mask_bkg": "背景引导遮罩",
             "positive_bkg": "背景正向条件引导"
         },
+        "widgets": {},
         "outputs": {
             "model": "模型",
             "conditioning": "条件引导",
-            "latent": "潜变量",
+            "latent": "Latent",
             "guides": "引导数据"
         }
     },
     "ClownsharKSamplerGuide": {
-        "display_name": "ClownShark采样器引导配置器",
+        "title": "ClownShark采样器引导配置器",
         "inputs": {
             "guide_mode": "引导模式",
             "guide_weight": "引导权重",
@@ -4779,12 +5056,13 @@
             "guide_weights_bkg": "背景引导权重列表",
             "guide_mask_bkg": "背景引导遮罩"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据"
         }
     },
     "ClownsharKSamplerGuides": {
-        "display_name": "ClownShark采样器多引导配置器",
+        "title": "ClownShark采样器多引导配置器",
         "inputs": {
             "guide_mode": "引导模式",
             "guide_weight": "引导权重",
@@ -4802,23 +5080,25 @@
             "guide_weights": "引导权重列表",
             "guide_weights_bkg": "背景引导权重列表"
         },
+        "widgets": {},
         "outputs": {
             "guides": "引导数据"
         }
     },
     "ClownsharKSamplerAutomation": {
-        "display_name": "ClownShark采样器自动化配置器",
+        "title": "ClownShark采样器自动化配置器",
         "inputs": {
             "etas": "Eta列表",
             "s_noises": "S噪声列表",
             "unsample_resample_scales": "反采样重缩放比例"
         },
+        "widgets": {},
         "outputs": {
             "automation": "自动化脚本"
         }
     },
     "ClownsharKSamplerAutomation_Advanced": {
-        "display_name": "ClownShark采样器高级自动化配置器",
+        "title": "ClownShark采样器高级自动化配置器",
         "inputs": {
             "automation": "自动化脚本",
             "etas": "Eta列表",
@@ -4828,12 +5108,13 @@
             "frame_weights": "帧权重",
             "frame_weights_bkg": "背景帧权重"
         },
+        "widgets": {},
         "outputs": {
             "automation": "自动化脚本"
         }
     },
     "ClownsharKSamplerOptions": {
-        "display_name": "ClownShark采样器选项配置器",
+        "title": "ClownShark采样器选项配置器",
         "inputs": {
             "noise_init_stdev": "初始噪声标准差",
             "noise_init_mean": "初始噪声均值",
@@ -4862,36 +5143,39 @@
             "c2s": "C2参数列表",
             "c3s": "C3参数列表"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_SDE_Noise": {
-        "display_name": "Clown SDE噪声选项",
+        "title": "Clown SDE噪声选项",
         "inputs": {
             "sde_noise_steps": "SDE噪声步数",
             "sde_noise": "SDE噪声",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "ClownOptions_FrameWeights": {
-        "display_name": "Clown帧权重选项",
+        "title": "Clown帧权重选项",
         "inputs": {
             "frame_weights": "帧权重",
             "options": "选项"
         },
+        "widgets": {},
         "outputs": {
             "options": "选项"
         }
     },
     "UltraSharkSampler_Tiled": {
-        "display_name": "超级Shark平铺采样器",
+        "title": "超级Shark分块采样器",
         "inputs": {
             "add_noise": "添加噪声",
-            "noise_is_latent": "噪声是否为潜变量",
+            "noise_is_latent": "噪声是否为Latent",
             "noise_type": "噪声类型",
             "alpha": "Alpha",
             "k": "K",
@@ -4899,26 +5183,27 @@
             "cfg": "CFG缩放系数",
             "guide_type": "引导类型",
             "guide_weight": "引导权重",
-            "tile_width": "平铺宽度",
-            "tile_height": "平铺高度",
-            "tiling_strategy": "平铺策略",
-            "max_tile_batch_size": "最大平铺批大小",
+            "tile_width": "分块宽度",
+            "tile_height": "分块高度",
+            "tiling_strategy": "分块策略",
+            "max_tile_batch_size": "最大分块批大小",
             "model": "模型",
             "positive": "正向条件引导",
             "negative": "负向条件引导",
             "sampler": "采样算法",
             "sigmas": "噪声调度表",
-            "latent_image": "初始潜变量",
+            "latent_image": "Latent图像",
             "clip_name": "CLIP模型名称",
             "strength": "强度",
             "noise_augment": "噪声增强",
-            "latent_noise": "潜变量噪声",
+            "latent_noise": "Latent噪声",
             "guide": "引导数据",
             "guide_weights": "引导权重列表",
             "image_cv": "图像控制变量"
         },
+        "widgets": {},
         "outputs": {
-            "latent": "生成的潜变量"
+            "latent": "Latent"
         }
     }
 }
