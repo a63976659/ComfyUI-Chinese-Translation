@@ -760,7 +760,7 @@
         }
     },
     "InpaintModelConditioning": {
-        "title": "内补模型条件",
+        "title": "修复模型条件",
         "inputs": {
             "positive": "正面条件",
             "negative": "负面条件",
@@ -1143,7 +1143,7 @@
         }
     },
     "VAEEncodeForInpaint": {
-        "title": "VAE内补编码器",
+        "title": "VAE修复编码器",
         "inputs": {
             "pixels": "图像",
             "vae": "VAE",
@@ -4243,6 +4243,29 @@
             "VIDEO": "生成视频"
         }
     },
+    "WanMoveTrackToVideo": {
+        "title": "Wan2.1 移动轨迹到视频",
+        "inputs": {
+            "positive": "正向条件",
+            "negative": "负面条件",
+            "vae": "VAE编码器",
+            "clip_vision_output": "CLIP视觉输出",
+            "start_image": "起始图像",
+            "tracks": "轨迹"
+        },
+        "widgets": {
+            "strength": "强度",
+            "width": "宽度",
+            "height": "高度",
+            "length": "时长",
+            "batch_size": "批大小"
+        },
+        "outputs": {
+            "positive": "正向条件",
+            "negative": "负面条件",
+            "latent": "Latent"
+        }
+    },
     "WanTextToImageApi": {
         "title": "Wan 文本转图像",
         "inputs": {
@@ -4800,6 +4823,24 @@
             "string": "字符串"
         }
     },
+    "KlingTextToVideoWithAudio": {
+        "title": "可灵 文本转视频（带音频）",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名称",
+            "mode": "模式",
+            "aspect_ratio": "宽高比",
+            "duration": "时长",
+            "auth_token": "授权令牌",
+            "generate_audio": "生成音频"
+        },
+        "outputs": {
+            "VIDEO": "视频",
+            "video_id": "视频ID",
+            "duration": "时长",
+            "string": "字符串"
+        }
+    },
     "KlingImage2VideoNode": {
         "title": "可灵 图像转视频",
         "inputs": {
@@ -4841,6 +4882,24 @@
             "task_id": "任务ID",
             "auth_token": "授权令牌",
             "model_name": "模型名称",
+            "duration": "时长"
+        },
+        "outputs": {
+            "VIDEO": "视频",
+            "video_id": "视频ID",
+            "duration": "时长",
+            "string": "字符串"
+        }
+    },
+    "KlingImageToVideoWithAudio": {
+        "title": "可灵 图像转视频（带音频）",
+        "inputs": {
+            "start_frame": "起始帧"
+        },
+        "widgets": {
+            "model_name": "模型名称",
+            "mode": "模式",
+            "generate_audio": "生成音频",
             "duration": "时长"
         },
         "outputs": {
@@ -8020,6 +8079,78 @@
             "texts": "文本",
             "latents": "Latent",
             "conditioning": "条件"
+        }
+    },
+    "WanMoveVisualizeTracks": {
+        "title": "Wan 移动轨迹可视化",
+        "inputs": {
+            "images": "图像组",
+            "tracks": "轨迹"
+        },
+        "widgets": {
+            "line_resolution": "线分辨率",
+            "circle_size": "圆大小",
+            "opacity": "不透明度",
+            "line_width": "线宽"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "images": "图像组"
+        }
+    },
+    "WanMoveConcatTrack": {
+        "title": "Wan 拼接 移动轨迹",
+        "inputs": {
+            "tracks_1": "轨迹1",
+            "tracks_2": "轨迹2"
+        },
+        "widgets": {},
+        "outputs": {
+            "TRACKS": "轨迹",
+            "tracks": "轨迹"
+        }
+    },
+    "GenerateTracks": {
+        "title": "生成 轨迹",
+        "inputs": {
+            "track_mask": "轨迹遮罩"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "start_x": "起始_x",
+            "start_y": "起始_y",
+            "end_x": "结束_x",
+            "end_y": "结束_y",
+            "num_frames": "帧数",
+            "num_tracks": "轨迹数量",
+            "track_spread": "轨迹间距",
+            "bezier": "贝塞尔曲线",
+            "mid_x": "中间 x 坐标",
+            "mid_y": "中间 y 坐标",
+            "interpolation": "插值"
+        },
+        "outputs": {
+            "TRACKS": "轨迹",
+            "track_length": "轨迹长度"
+        }
+    },
+    "ZImageFunControlnet": {
+        "title": "Z图像Fun ControlNet",
+        "inputs": {
+            "model": "模型",
+            "model_patch": "模型补丁",
+            "vae": "VAE编码器",
+            "image": "图像",
+            "inpaint_image": "修复图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "strength": "强度"
+        },
+        "outputs": {
+            "MODEL": "模型",
+            "model": "模型"
         }
     },
     "TemporalScoreRescaling": {
