@@ -1342,6 +1342,19 @@
             "LATENT": "Latent"
         }
     },
+    "LatentCutToBatch": {
+        "title": "Latent分块到批次",
+        "inputs": {
+            "samples": "采样"
+        },
+        "widgets": {
+            "dim": "维度",
+            "slice_size": "分块大小"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
     "EmptyFlux2LatentImage": {
         "title": "Flux2代 空Latent",
         "inputs": {
@@ -1350,6 +1363,21 @@
         "widgets": {
             "width": "宽度",
             "height": "高度",
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "EmptyQwenImageLayeredLatentImage": {
+        "title": "Qwen千问图像层 空Latent",
+        "inputs": {
+            "samples": "采样"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "layers": "层",
             "batch_size": "批次大小"
         },
         "outputs": {
@@ -1892,6 +1920,19 @@
     },
     "FluxKontextMultiReferenceLatentMethod": {
         "title": "FluxKontext  多参考Latent方法",
+        "inputs": {
+            "conditioning": "条件"
+        },
+        "widgets": {
+            "reference_latents_method": "参考Latent方法"
+        },
+        "outputs": {
+            "CONDITIONING": "条件",
+            "conditioning": "条件"
+        }
+    },
+    "Edit Model Reference Method": {
+        "title": "编辑模型参考Latent方法",
         "inputs": {
             "conditioning": "条件"
         },
@@ -2909,6 +2950,20 @@
             "CONDITIONING": "条件"
         }
     },
+    "CLIPTextEncodeKandinsky5": {
+        "title": "CLIP文本编码Kandinsky5",
+        "inputs": {
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "clip_l": "CLIP_L",
+            "t5xxl": "T5XXL",
+            "guidance": "引导"
+        },
+        "outputs": {
+            "CONDITIONING": "条件"
+        }
+    },
     "ModelMergeSD1": {
         "title": "模型融合(SD1)",
         "inputs": {
@@ -3857,6 +3912,22 @@
     },
     "TextEncodeQwenImageEditPlus": {
         "title": "千问图像文字编辑-强化版",
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3"
+        },
+        "widgets": {
+            "prompt": "提示词"
+        },
+        "outputs": {
+            "CONDITIONING": "条件"
+        }
+    },
+    "TextEncodeQwenImageEditPlus (Positive)": {
+        "title": "千问图像文字编辑(正向提示词)-强化版",
         "inputs": {
             "clip": "CLIP",
             "vae": "VAE",
@@ -8230,6 +8301,35 @@
         "outputs": {
             "MODEL": "模型",
             "model": "模型"
+        }
+    },
+    "ResolutionBucket": {
+        "title": "分辨率档位",
+        "inputs": {
+            "latents": "Latent",
+            "conditioning": "条件"
+        },
+        "widgets": {
+            "folder_name": "文件夹名称"
+        },
+        "outputs": {
+            "texts": "文本",
+            "latents": "Latent",
+            "conditioning": "条件"
+        }
+    },
+    "WanMoveTracksFromCoords": {
+        "title": "Wan移动轨迹生成坐标",
+        "inputs": {
+            "track_coords": "轨道坐标",
+            "track_mask": "轨道遮罩"
+        },
+        "widgets": {
+            "folder_name": "文件夹名称"
+        },
+        "outputs": {
+            "TRACKS": "轨迹",
+            "track_length": "轨迹长度"
         }
     },
     "TemporalScoreRescaling": {
