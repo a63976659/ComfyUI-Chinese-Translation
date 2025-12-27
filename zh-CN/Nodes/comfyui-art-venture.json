@@ -747,15 +747,101 @@
     },
     "AV_FaceDetailer": {
         "title": "AV 面部细节增强器",
-        "inputs": {},
-        "widgets": {},
-        "outputs": {}
+        "inputs": {
+            "image": "图像",
+            "model": "模型",
+            "positive": "正面提示词",
+            "negative": "负面提示词",
+            "bbox_detector": "边界框检测器",
+            "sam_model_opt": "SAM 模型",
+            "segm_detector_opt": "segm分割检测器",
+            "detailer_hook": "细节处理插件",
+            "scheduler_func_opt": "调度器函数"
+        },
+        "widgets": {
+            "guide_size": "引导尺寸",
+            "guide_size_for": "引导尺寸为",
+            "max_size": "最大尺寸",
+            "seed": "随机种子",
+            "cfg": "cfg引导",
+            "sampler_name": "采样器名称",
+            "scheduler": "调度器",
+            "denoise": "去噪",
+            "feather": "羽化",
+            "noise_mask": "噪声遮罩",
+            "force_inpaint": "强制修复",
+            "bbox_threshold": "边界框阈值",
+            "bbox_dilation": "边界框膨胀",
+            "bbox_crop_factor": "边界框裁剪因子",
+            "sam_detection_hint": "SAM检测提示",
+            "sam_dilation": "SAM膨胀",
+            "sam_threshold": "SAM阈值",
+            "sam_bbox_expansion": "SAM边界框扩展",
+            "sam_mask_hint_threshold": "SAM遮罩提示词强度",
+            "sam_mask_hint_use_negative": "SAM遮罩使用负面提示词",
+            "drop_size": "裁剪尺寸",
+            "refiner_ratio": "精炼比例",
+            "cycle": "循环",
+            "inpaint_model": "修复模型",
+            "noise_mask_feather": "噪声遮罩羽化",
+            "tiled_encode": "分块编码",
+            "tiled_decode": "分块解码",
+            "enabled": "启用"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "cropped_refined": "裁剪优化",
+            "cropped_enhanced_alpha": "裁剪增强alpha",
+            "cnet_images": "ControlNet图像",
+            "detailer_pipe": "说明"
+        }
     },
     "AV_FaceDetailerPipe": {
         "title": "AV 面部细节增强器节点束",
-        "inputs": {},
-        "widgets": {},
-        "outputs": {}
+        "inputs": {
+            "image": "图像",
+            "detailer_pipe": "说明",
+            "scheduler_func_opt": "调度器函数"
+        },
+        "widgets": {
+            "guide_size": "引导尺寸",
+            "guide_size_for": "引导尺寸为",
+            "max_size": "最大尺寸",
+            "seed": "随机种子",
+            "cfg": "cfg引导",
+            "sampler_name": "采样器名称",
+            "scheduler": "调度器",
+            "denoise": "去噪",
+            "feather": "羽化",
+            "noise_mask": "噪声遮罩",
+            "force_inpaint": "强制修复",
+            "bbox_threshold": "边界框阈值",
+            "bbox_dilation": "边界框膨胀",
+            "bbox_crop_factor": "边界框裁剪因子",
+            "sam_detection_hint": "SAM检测提示",
+            "sam_dilation": "SAM膨胀",
+            "sam_threshold": "SAM阈值",
+            "sam_bbox_expansion": "SAM边界框扩展",
+            "sam_mask_hint_threshold": "SAM遮罩提示词强度",
+            "sam_mask_hint_use_negative": "SAM遮罩使用负面提示词",
+            "drop_size": "裁剪尺寸",
+            "refiner_ratio": "精炼比例",
+            "cycle": "循环",
+            "inpaint_model": "修复模型",
+            "noise_mask_feather": "噪声遮罩羽化",
+            "tiled_encode": "分块编码",
+            "tiled_decode": "分块解码",
+            "enabled": "启用"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "cropped_refined": "裁剪优化",
+            "cropped_enhanced_alpha": "裁剪增强alpha",
+            "cnet_images": "ControlNet图像",
+            "detailer_pipe": "说明"
+        }
     },
     "PrepareImageAndMaskForInpaint": {
         "title": "为修复准备图像和遮罩",
@@ -949,11 +1035,34 @@
             "LLM_API": "大语言模型 API"
         }
     },
+    "AV_OpenRouterApi": {
+        "title": "AV Open Router API",
+        "inputs": {},
+        "widgets": {
+            "openrouter_api_key": "Open Router 密钥",
+            "endpoint": "端点"
+        },
+        "outputs": {
+            "LLM_API": "大语言模型 API"
+        }
+    },
     "AV_ClaudeApi": {
         "title": "AV Claude API",
         "inputs": {},
         "widgets": {
             "claude_api_key": "Claude API 密钥",
+            "endpoint": "端点",
+            "version": "版本"
+        },
+        "outputs": {
+            "llm_api": "大语言模型 API"
+        }
+    },
+    "AV_GeminiApi": {
+        "title": "AV Gemini API",
+        "inputs": {},
+        "widgets": {
+            "gemini_api_key": "Gemini API 密钥",
             "endpoint": "端点",
             "version": "版本"
         },
@@ -991,21 +1100,37 @@
         "description": "Claude 是由 Anthropic 开发的 AI 模型家族\n其强大的对话能力、可靠的安全性和超长的上下文窗口而著称\n Anthropic 非常注重 AI 安全与对齐"
     },
     "AV_LLMApiConfig": {
-        "title": "AV 大语言模型API配置",
+        "title": "AV LLM大语言模型API配置",
         "inputs": {},
         "widgets": {
             "model": "模型",
             "max_token": "最大令牌数",
-            "temperature": "温度"
+            "temperature": "温度",
+            "custom_model": "定制模型"
+        },
+        "outputs": {
+            "llm_config": "大语言模型配置"
+        }
+    },
+    "AV_NanoBananaApiConfig": {
+        "title": "AV NanoBanana纳米香蕉API配置",
+        "inputs": {},
+        "widgets": {
+            "modalities": "形式",
+            "temperature": "温度",
+            "aspect_ratio": "宽高比"
         },
         "outputs": {
             "llm_config": "大语言模型配置"
         }
     },
     "AV_LLMMessage": {
-        "title": "AV 大语言模型消息",
+        "title": "AV LLM大语言模型消息",
         "inputs": {
             "image": "图像",
+            "image_2": "图像2",
+            "image_3": "图像3",
+            "image_4": "图像4",
             "messages": "消息"
         },
         "widgets": {
@@ -1017,7 +1142,7 @@
         }
     },
     "AV_LLMChat": {
-        "title": "AV 大语言模型聊天",
+        "title": "AV LLM大语言模型聊天",
         "inputs": {
             "messages": "消息",
             "api": "API",
@@ -1027,11 +1152,13 @@
             "seed": "种子"
         },
         "outputs": {
-            "response": "响应"
+            "response": "响应",
+            "text": "文本",
+            "(optional) images": "（可选）图片"
         }
     },
     "AV_LLMCompletion": {
-        "title": "AV 大语言模型补全",
+        "title": "AV LLM大语言模型补全",
         "inputs": {
             "api": "API",
             "config": "配置"
@@ -1041,7 +1168,9 @@
             "seed": "种子"
         },
         "outputs": {
-            "response": "响应"
+            "response": "响应",
+            "text": "文本",
+            "(optional) images": "（可选）图片"
         }
     },
     "ColorBlend": {
@@ -1204,6 +1333,28 @@
             "_1/2-1_index": "_1/2-1_索引",
             "_1/2_index": "_1/2_索引",
             "end_index": "结束索引"
+        }
+    },
+    "LoadVideoFromUrl": {
+        "title": "加载视频(网址)",
+        "inputs": {
+            "meta_batch": "来源 批次"
+        },
+        "widgets": {
+            "video": "视频",
+            "frame_rate": "帧率",
+            "force_rate": "强制帧率",
+            "custom_width": "自定义宽度",
+            "custom_height": "自定义高度",
+            "frame_load_cap": "帧加载上限",
+            "skip_first_frames": "跳过首帧",
+            "select_every_nth": "隔n帧选择一次",
+            "format": "格式"
+        },
+        "outputs": {
+            "frames": "帧数",
+            "frame_count": "帧总数",
+            "has_video": "视频"
         }
     },
     "SDXLPromptStyler": {
