@@ -1,0 +1,305 @@
+{
+    "Load LLM Model Basic": {
+        "title": "LLM模型加载器（基础）",
+        "inputs": {
+            "Model": "模型"
+        },
+        "widgets": {
+            "Model": "模型",
+            "n_ctx": "上下文长度"
+        },
+        "outputs": {
+            "llm": "LLM模型"
+        }
+    },
+    "Load LLM Model Advanced": {
+        "title": "LLM模型加载器（高级）",
+        "inputs": {},
+        "widgets": {
+            "Model": "模型",
+            "n_gpu_layers": "GPU层数",
+            "split_mode": "分割模式",
+            "main_gpu": "主GPU",
+            "tensor_split": "张量分割",
+            "vocab_only": "仅词表",
+            "use_mmap": "使用内存映射",
+            "use_mlock": "使用内存锁定",
+            "seed": "随机种子",
+            "n_ctx": "上下文长度",
+            "n_batch": "批次大小",
+            "n_threads": "线程数",
+            "n_threads_batch": "批处理线程数",
+            "rope_scaling_type": "RoPE缩放类型",
+            "rope_freq_base": "RoPE频率基数",
+            "rope_freq_scale": "RoPE频率缩放",
+            "yarn_ext_factor": "YaRN扩展因子",
+            "yarn_attn_factor": "YaRN注意力因子",
+            "yarn_beta_fast": "YaRN快速beta",
+            "yarn_beta_slow": "YaRN慢速beta",
+            "yarn_orig_ctx": "YaRN原始上下文",
+            "mul_mat_q": "矩阵乘法量化",
+            "logits_all": "输出所有logits",
+            "embedding": "嵌入模式",
+            "offload_kqv": "卸载KQV",
+            "last_n_tokens_size": "最后N个token大小",
+            "lora_base": "LoRA基础模型",
+            "lora_scale": "LoRA缩放比例",
+            "lora_path": "LoRA路径",
+            "numa": "NUMA优化",
+            "chat_format": "聊天格式",
+            "verbose": "详细输出"
+        },
+        "outputs": {
+            "llm": "LLM模型"
+        }
+    },
+    "LLM_Tokenize": {
+        "title": "LLM分词",
+        "inputs": {
+            "LLM": "LLM模型"
+        },
+        "widgets": {
+            "LLM": "LLM模型",
+            "text": "文本",
+            "add_bos": "添加BOS标记",
+            "special": "特殊标记"
+        },
+        "outputs": {
+            "int": "整数"
+        }
+    },
+    "LLM_Detokenize": {
+        "title": "LLM反分词",
+        "inputs": {
+            "LLM": "LLM模型",
+            "tokens": "token序列"
+        },
+        "widgets": {
+            "LLM": "LLM模型",
+            "tokens": "token序列"
+        },
+        "outputs": {
+            "string": "字符串"
+        }
+    },
+    "LLM_Reset": {
+        "title": "LLM重置",
+        "inputs": {
+            "LLM": "LLM模型"
+        },
+        "widgets": {
+            "LLM": "LLM模型"
+        },
+        "outputs": {
+            "llm": "LLM模型"
+        }
+    },
+    "LLM_Eval": {
+        "title": "LLM评估",
+        "inputs": {
+            "LLM": "LLM模型",
+            "tokens": "token序列"
+        },
+        "widgets": {
+            "LLM": "LLM模型",
+            "tokens": "token序列"
+        },
+        "outputs": {}
+    },
+    "LLM_Sample": {
+        "title": "LLM采样",
+        "inputs": {
+            "LLM": "LLM模型"
+        },
+        "widgets": {
+            "LLM": "LLM模型",
+            "top_k": "Top-K",
+            "top_p": "Top-P",
+            "temp": "温度",
+            "repeat_penalty": "重复惩罚"
+        },
+        "outputs": {
+            "int": "整数"
+        }
+    },
+    "LLM_Generate": {
+        "title": "LLM生成",
+        "inputs": {
+            "LLM": "LLM模型"
+        },
+        "widgets": {
+            "LLM": "LLM模型",
+            "tokens": "token序列",
+            "top_k": "Top-K",
+            "top_p": "Top-P",
+            "min_p": "最小概率",
+            "typical_p": "典型概率",
+            "temp": "温度",
+            "repeat_penalty": "重复惩罚",
+            "reset": "重置",
+            "frequency_penalty": "频率惩罚",
+            "presence_penalty": "存在惩罚",
+            "tfs_z": "TFS-Z",
+            "microstat_mode": "Mirostat模式",
+            "microstat_tau": "Mirostat Tau",
+            "microstat_eta": "Mirostat Eta",
+            "penalize_nl": "惩罚换行符",
+            "logits_processor": "Logits处理器",
+            "stopping_criteria": "停止条件",
+            "grammar": "语法"
+        },
+        "outputs": {
+            "generator": "生成器"
+        }
+    },
+    "LLM_Create_Embedding": {
+        "title": "LLM创建嵌入",
+        "inputs": {
+            "LLM": "LLM模型"
+        },
+        "widgets": {
+            "LLM": "LLM模型",
+            "input_str": "输入字符串"
+        },
+        "outputs": {
+            "embedding": "嵌入向量"
+        }
+    },
+    "LLM_Embed": {
+        "title": "LLM嵌入",
+        "inputs": {
+            "LLM": "LLM模型"
+        },
+        "widgets": {
+            "input_str": "输入字符串"
+        },
+        "outputs": {
+            "float": "浮点数"
+        }
+    },
+    "LLM_Create_Completion Advanced": {
+        "title": "LLM创建补全（高级）",
+        "inputs": {
+            "LLM": "LLM模型"
+        },
+        "widgets": {
+            "LLM": "LLM模型",
+            "prompt": "提示词",
+            "suffix": "后缀",
+            "max_response_tokens": "最大响应token数",
+            "temperature": "温度",
+            "top_p": "Top-P",
+            "min_p": "最小概率",
+            "typical_p": "典型概率",
+            "echo": "回显输入",
+            "frequency_penalty": "频率惩罚",
+            "presence_penalty": "存在惩罚",
+            "repeat_penalty": "重复惩罚",
+            "top_k": "Top-K",
+            "seed": "随机种子",
+            "tfs_z": "TFS-Z",
+            "mirostat_mode": "Mirostat模式",
+            "mirostat_tau": "Mirostat Tau",
+            "mirostat_eta": "Mirostat Eta"
+        },
+        "outputs": {
+            "string": "字符串"
+        }
+    },
+    "Call LLM Basic": {
+        "title": "调用LLM（基础）",
+        "inputs": {
+            "LLM": "LLM模型"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "max_response_tokens": "最大响应token数",
+            "temperature": "温度",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "string": "字符串"
+        }
+    },
+    "Call LLM Advanced": {
+        "title": "调用LLM（高级）",
+        "inputs": {
+            "LLM": "LLM模型"
+        },
+        "widgets": {
+            "LLM": "LLM模型",
+            "prompt": "提示词",
+            "suffix": "后缀",
+            "max_response_tokens": "最大响应token数",
+            "temperature": "温度",
+            "top_p": "Top-P",
+            "min_p": "最小概率",
+            "typical_p": "典型概率",
+            "echo": "回显输入",
+            "frequency_penalty": "频率惩罚",
+            "presence_penalty": "存在惩罚",
+            "repeat_penalty": "重复惩罚",
+            "top_k": "Top-K",
+            "seed": "随机种子",
+            "tfs_z": "TFS-Z",
+            "mirostat_mode": "Mirostat模式",
+            "mirostat_tau": "Mirostat Tau",
+            "mirostat_eta": "Mirostat Eta"
+        },
+        "outputs": {
+            "string": "字符串"
+        }
+    },
+    "LLM_Save_State": {
+        "title": "LLM保存状态",
+        "inputs": {
+            "LLM": "LLM模型",
+            "input_str": "输入字符串"
+        },
+        "widgets": {
+            "LLM": "LLM模型",
+            "input_str": "输入字符串"
+        },
+        "outputs": {
+            "state": "状态"
+        }
+    },
+    "LLM_Load_State": {
+        "title": "LLM加载状态",
+        "inputs": {
+            "LLM": "LLM模型",
+            "STATE": "状态",
+            "state": "状态"
+        },
+        "widgets": {
+            "LLM": "LLM模型",
+            "STATE": "状态",
+            "state": "状态"
+        },
+        "outputs": {}
+    },
+    "LLM_Token_BOS": {
+        "title": "LLM BOS标记",
+        "inputs": {
+            "LLM": "LLM模型"
+        },
+        "widgets": {
+            "LLM": "LLM模型"
+        },
+        "outputs": {
+            "int": "整数"
+        }
+    },
+    "LLM_Token_EOS": {
+        "title": "LLM EOS标记",
+        "inputs": {
+            "LLM": "LLM模型"
+        },
+        "widgets": {
+            "LLM": "LLM模型"
+        },
+        "outputs": {
+            "int": "整数"
+        }
+    }
+}
