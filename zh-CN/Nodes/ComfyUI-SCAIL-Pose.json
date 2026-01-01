@@ -1,0 +1,60 @@
+{
+    "PoseDetectionVitPoseToDWPose": {
+        "title": "姿态检测：Vit姿态转DW姿态",
+        "inputs": {
+            "vitpose_model": "Vit姿态模型",
+            "images": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "dw_poses": "DW姿态"
+        }
+    },
+    "ConvertOpenPoseKeypointsToDWPose": {
+        "title": "转换Open姿态关键点到DW姿态",
+        "inputs": {
+            "keypoints": "姿态关键点"
+        },
+        "widgets": {
+            "max_people": "最大人数"
+        },
+        "outputs": {
+            "dw_poses": "DW姿态"
+        }
+    },
+    "RenderNLFPoses": {
+        "title": "渲染NLF姿态",
+        "inputs": {
+            "nlf_poses": "NLF姿态数据",
+            "dw_poses": "DW姿态",
+            "ref_dw_pose": "参考DW姿态"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "draw_face": "绘制面部",
+            "draw_hands": "绘制手部",
+            "render_device": "渲染设备",
+            "scale_hands": "手部缩放",
+            "render_backend": "渲染后端"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        }
+    },
+    "SaveNLFPosesAs3D": {
+        "title": "保存NLF姿态为3D动画",
+        "inputs": {
+            "nlf_poses": "NLF姿态数据"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "fps": "帧率",
+            "cylinder_radius": "圆柱体半径"
+        },
+        "outputs": {
+            "output_path": "输出路径"
+        }
+    }
+}

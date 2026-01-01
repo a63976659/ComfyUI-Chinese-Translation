@@ -1,0 +1,66 @@
+{
+    "YOLOModelLoader": {
+        "title": "加载YOLO模型",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名称"
+        },
+        "outputs": {
+            "yolo_model": "YOLO检测模型",
+            "YOLO_MODEL": "YOLO检测模型"
+        }
+    },
+    "SDPoseOODLoader": {
+        "title": "加载SD姿态模型",
+        "inputs": {},
+        "widgets": {
+            "model_type": "模型类型",
+            "unet_precision": "UNet精度",
+            "device": "设备",
+            "unload_on_finish": "完成后卸载",
+            "repo_name": "仓库名称"
+        },
+        "outputs": {
+            "sdpose_model": "SD姿态模型",
+            "SDPOSE_MODEL": "SD姿态模型"
+        }
+    },
+    "GroundingDinoModelLoader_SDPose": {
+        "title": "加载GroundingDINO模型（SD姿态）",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名称"
+        },
+        "outputs": {
+            "grounding_dino_model": "GroundingDINO模型",
+            "GROUNDING_DINO_MODEL": "GroundingDINO模型"
+        }
+    },
+    "SDPoseOODProcessor": {
+        "title": "运行SDPose姿态检测",
+        "inputs": {
+            "sdpose_model": "SD姿态模型",
+            "images": "图像",
+            "data_from_florence2": "来自Florence2的数据",
+            "grounding_dino_model": "GroundingDINO模型",
+            "yolo_model": "YOLO检测模型"
+        },
+        "widgets": {
+            "score_threshold": "得分阈值",
+            "overlay_alpha": "叠加透明度",
+            "batch_size": "批处理大小",
+            "prompt": "提示词",
+            "gd_threshold": "GD阈值",
+            "save_for_editor": "保存供编辑器使用",
+            "filename_prefix_edit": "文件名前缀编辑",
+            "keep_face": "保留面部",
+            "keep_hands": "保留手部",
+            "keep_feet": "保留脚部",
+            "scale_for_xinsr": "Xinsr缩放比例"
+        },
+        "outputs": {
+            "images": "图像",
+            "pose_keypoint": "姿态关键点"
+        }
+    }
+}
