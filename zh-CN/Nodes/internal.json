@@ -272,6 +272,18 @@
             "SIGMAS": "Sigmas"
         }
     },
+    "ManualSigmas": {
+        "title": "手动Sigmas",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "sigmas": "Sigmas"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        }
+    },
     "KSamplerSelect": {
         "title": "K采样器选择",
         "widgets": {
@@ -4846,12 +4858,8 @@
         }
     },
     "KlingTextToVideoNode": {
-        "title": "可灵 相机控制",
-        "inputs": {
-            "camera_control": "相机控制参数",
-            "prompt": "提示词",
-            "negative_prompt": "负面提示词"
-        },
+        "title": "可灵 文生视频",
+        "inputs": {},
         "widgets": {
             "cfg_scale": "CFG比例",
             "mode": "模式",
@@ -4870,7 +4878,7 @@
         }
     },
     "KlingCameraControlT2VNode": {
-        "title": "可灵 文本转视频（摄像机控制）",
+        "title": "可灵 文生视频（摄像机控制）",
         "inputs": {
             "camera_control": "相机控制参数",
             "prompt": "提示词",
@@ -5331,6 +5339,21 @@
         },
         "widgets": {
             "model_name": "模型名称",
+            "keep_original_sound": "保持原始声音"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        }
+    },
+    "KlingMotionControl": {
+        "title": "可灵 运动控制",
+        "inputs": {
+            "reference_video": "参考视频",
+            "reference_images": "参考图像"
+        },
+        "widgets": {
+            "mode": "模式",
+            "character_orientation": "角色定位",
             "keep_original_sound": "保持原始声音"
         },
         "outputs": {
@@ -7658,7 +7681,8 @@
             "context_stride": "上下文步长",
             "closed_loop": "闭环",
             "fuse_method": "融合方法",
-            "dim": "维度"
+            "dim": "维度",
+            "freenoise": "自由噪声"
         },
         "outputs": {
             "model": "模型",
@@ -7677,7 +7701,8 @@
             "context_stride": "上下文步长",
             "closed_loop": "闭环",
             "fuse_method": "融合方法",
-            "dim": "维度"
+            "dim": "维度",
+            "freenoise": "自由噪声"
         },
         "outputs": {
             "model": "模型",
