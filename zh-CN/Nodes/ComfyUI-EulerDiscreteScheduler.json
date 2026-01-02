@@ -1,0 +1,102 @@
+{
+    "ImageMetadataExtractor": {
+        "title": "加载图像元数据（Eros扩散）",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "image": "图像"
+        },
+        "outputs": {
+            "image": "图像",
+            "string": "字符串",
+            "int": "整数",
+            "positive_prompt": "正面提示词",
+            "width": "宽度",
+            "height": "高度",
+            "filename": "文件名"
+        }
+    },
+    "PatchFlashAttention": {
+        "title": "闪现注意力 补丁2",
+        "inputs": {
+            "model": "模型",
+            "enabled": "启用",
+            "softmax_scale": "Softmax缩放",
+            "causal": "因果注意力",
+            "window_size": "窗口大小",
+            "deterministic": "确定性模式",
+            "debug": "调试模式"
+        },
+        "widgets": {
+            "model": "模型",
+            "enabled": "启用",
+            "softmax_scale": "Softmax缩放",
+            "causal": "因果注意力",
+            "window_size": "窗口大小",
+            "deterministic": "确定性模式",
+            "debug": "调试模式"
+        },
+        "outputs": {
+            "model": "模型",
+            "string": "字符串"
+        }
+    },
+    "NunchakuQwenPatches": {
+        "title": "双节棍 Qwen千问补丁",
+        "inputs": {
+            "model": "模型",
+            "image": "图像"
+        },
+        "widgets": {
+            "mode": "模式"
+        },
+        "outputs": {
+            "model": "模型",
+            "image": "图像"
+        }
+    },
+    "FlowMatchEulerDiscreteScheduler (Custom)": {
+        "title": "FlowMatch Euler离散调度器（自定义）",
+        "inputs": {},
+        "widgets": {
+            "steps": "步数",
+            "start_at_step": "起始步",
+            "end_at_step": "结束步",
+            "base_image_seq_len": "基础图像序列长度",
+            "base_shift": "基础偏移量",
+            "invert_sigmas": "反转Sigmas",
+            "max_image_seq_len": "最大图像序列长度",
+            "max_shift": "最大偏移量",
+            "num_train_timesteps": "训练时间步数",
+            "shift": "偏移量",
+            "shift_terminal": "终端偏移量",
+            "stochastic_sampling": "随机采样",
+            "time_shift_type": "时间偏移类型",
+            "use_beta_sigmas": "使用Beta Sigmas",
+            "use_dynamic_shifting": "使用动态偏移",
+            "use_exponential_sigmas": "使用指数Sigmas",
+            "use_karras_sigmas": "使用Karras Sigmas",
+            "device": "设备"
+        },
+        "outputs": {
+            "sigmas": "Sigmas"
+        }
+    },
+    "VQDiffusionSchedulerNode": {
+        "title": "VQ扩散调度器节点",
+        "inputs": {
+            "steps": "步数",
+            "num_vec_classes": "向量类别数",
+            "num_train_timesteps": "训练时间步数"
+        },
+        "widgets": {
+            "steps": "步数",
+            "num_vec_classes": "向量类别数",
+            "num_train_timesteps": "训练时间步数"
+        },
+        "outputs": {
+            "sigmas": "Sigmas"
+        }
+    }
+}
