@@ -661,7 +661,7 @@
         "outputs": {
             "viseme_options": "视位选项"
         }
-    },  
+    },
     "StepAudioEditXAudioEditorNode": {
         "title": "🎨 Step Audio EditX 音频快速编辑器",
         "inputs": {
@@ -687,6 +687,23 @@
             "edit_info": "编辑信息"
         },
         "description": "Step Audio EditX 专用音频编辑节点，具有独特功能：\n- 情感编辑（14种情感）\n- 风格编辑（32种风格）\n- 速度控制（4个级别）\n- 副语言效果（10种类型）\n- 降噪和语音活动检测\n\n这不是语音转换 - 这是专门的音频操作，在保留内容的同时修改现有音频的特性。\n\n对于副语言模式：在audio_text中直接插入<tags>标签。\n示例：\"Hello <Laughter> how are you?\" - 自动生成的转录为\"Hello how are you?\""
+    },
+    "CosyVoiceEngineNode": {
+        "title": "⚙️ CosyVoice舒适语音 引擎3",
+        "inputs": {},
+        "widgets": {
+            "model_path": "模型路径",
+            "device": "设备",
+            "speed": "语速",
+            "use_fp16": "使用FP16精度",
+            "instruct_text": "指令文本",
+            "load_trt": "加载TensorRT",
+            "load_vllm": "加载vLLM"
+        },
+        "outputs": {
+            "tts_engine": "TTS引擎",
+            "TTS_engine": "TTS引擎"
+        }
     },
     "StepAudioEditXEngineNode": {
         "title": "⚙️ Step Audio EditX 音频快速编辑X引擎",
