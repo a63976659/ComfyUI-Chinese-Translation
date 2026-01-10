@@ -1410,7 +1410,8 @@
     "LTXVEmptyLatentAudio": {
         "title": "LTXV 音频 空Latent",
         "inputs": {
-            "Audio VAE": "音频 VAE"
+            "Audio VAE": "音频 VAE",
+            "audio_vae": "音频 VAE"
         },
         "widgets": {
             "frames_number": "帧数",
@@ -1474,7 +1475,8 @@
         "title": "LTXV 音频VAE 编码器",
         "inputs": {
             "audio": "音频",
-            "Audio VAE": "音频 VAE"
+            "Audio VAE": "音频 VAE",
+            "audio_vae": "音频 VAE"
         },
         "widgets": {
             "ckpt_name": "模型名称"
@@ -1487,7 +1489,8 @@
         "title": "LTXV 音频 VAE 解码器",
         "inputs": {
             "samples": "采样",
-            "Audio VAE": "音频 VAE"
+            "Audio VAE": "音频 VAE",
+            "audio_vae": "音频 VAE"
         },
         "widgets": {
             "ckpt_name": "模型名称"
@@ -8509,12 +8512,19 @@
     "ResizeImageMaskNode": {
         "title": "缩放 图像和遮罩",
         "inputs": {
-            "input": "输入"
+            "input": "输入",
+            "match": "竞赛"
         },
         "widgets": {
             "resize_type": "缩放类型",
+            "width": "宽度",
+            "height": "高度",
+            "crop": "裁剪",
+            "longer_size": "最长边",
+            "shorter_size": "最短边",
+            "megapixels": "百万像素",
             "multiplier": "乘数",
-            "scale_method": "尺度方法"
+            "scale_method": "插值方法"
         },
         "outputs": {
             "resized": "调整后大小"

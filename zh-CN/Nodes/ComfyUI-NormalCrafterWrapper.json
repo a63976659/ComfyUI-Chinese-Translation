@@ -1,0 +1,42 @@
+{
+  "DetailTransfer": {
+    "title": "细节迁移",
+    "inputs": {
+      "target": "目标图像",
+      "source": "源图像",
+      "mask": "遮罩"
+    },
+    "widgets": {
+      "mode": "模式",
+      "blur_sigma": "模糊Sigma值",
+      "blend_factor": "混合系数",
+      "target_tensor": "目标张量"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "NormalCrafterNode": {
+    "title": "法线图生成器（处理视频）",
+    "inputs": {
+      "images": "图像组",
+      "pipe_override": "输入插座"
+    },
+    "widgets": {
+      "seed": "随机种子",
+      "max_res_dimension": "最大分辨率维度",
+      "window_size": "窗口大小",
+      "time_step_size": "时间步长",
+      "decode_chunk_size": "解码块大小",
+      "offload_pipe_to_cpu_on_finish": "完成后将管道卸载到CPU",
+      "use_xformers": "使用xFormers",
+      "device_str_requested": "请求的设备字符串",
+      "dtype_str_requested": "请求的数据类型字符串",
+      "max_res_dim": "最大分辨率维度",
+      "device": "设备"
+    },
+    "outputs": {
+      "image": "法线贴图序列"
+    }
+  }
+}

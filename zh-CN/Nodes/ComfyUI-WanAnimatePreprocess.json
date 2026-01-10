@@ -1,0 +1,86 @@
+{
+  "OnnxDetectionModelLoader": {
+    "title": "ONNX检测模型加载器",
+    "inputs": {},
+    "widgets": {
+      "vitpose_model": "ViT姿态模型",
+      "yolo_model": "YOLO模型",
+      "onnx_device": "ONNX设备"
+    },
+    "outputs": {
+      "model": "模型",
+      "posemodel": "姿态模型"
+    }
+  },
+  "PoseAndFaceDetection": {
+    "title": "姿态与人脸检测",
+    "inputs": {
+      "model": "模型",
+      "images": "图像组",
+      "retarget_image": "重定向图像"
+    },
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "face_padding": "人脸填充"
+    },
+    "outputs": {
+      "pose_data": "姿态数据",
+      "face_images": "面部图像",
+      "key_frame_body_points": "关键帧身体点",
+      "bboxes": "边界框",
+      "face_bboxes": "面部边界框"
+    }
+  },
+  "DrawViTPose": {
+    "title": "绘制ViTPose姿态",
+    "inputs": {
+      "pose_data": "姿态数据"
+    },
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "retarget_padding": "重定向填充",
+      "body_stick_width": "身体关节宽度",
+      "hand_stick_width": "手部关节宽度",
+      "draw_head": "绘制头部"
+    },
+    "outputs": {
+      "pose_images": "姿态图像"
+    }
+  },
+  "PoseRetargetPromptHelper": {
+    "title": "姿态重定向提示助手",
+    "inputs": {
+      "pose_data": "姿态数据"
+    },
+    "widgets": {
+      "pose_data": "姿态数据"
+    },
+    "outputs": {
+      "prompt": "提示",
+      "retarget_prompt": "重定向提示"
+    }
+  },
+  "PoseDetectionOneToAllAnimation": {
+    "title": "姿态检测 一至多 动画",
+    "inputs": {
+      "model": "模型",
+      "images": "图像序列",
+      "ref_image": "参考图像"
+    },
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "align_to": "对齐到",
+      "draw_face_points": "绘制人脸关键点",
+      "draw_head": "绘制头部"
+    },
+    "outputs": {
+      "pose_images": "姿态图像",
+      "ref_pose_image": "参考姿态图像",
+      "ref_image": "参考图像",
+      "ref_mask": "参考遮罩"
+    }
+  }
+}

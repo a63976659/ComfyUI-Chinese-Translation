@@ -1,0 +1,29 @@
+{
+  "LoadLotusModel": {
+    "title": "加载Lotus模型",
+    "inputs": {},
+    "widgets": {
+      "model": "模型",
+      "precision": "精度"
+    },
+    "outputs": {
+      "lotus_unet": "Lotus UNet模型"
+    }
+  },
+  "LotusSampler": {
+    "title": "Lotus采样器",
+    "inputs": {
+      "lotus_unet": "Lotus UNet模型",
+      "samples": "采样"
+    },
+    "widgets": {
+      "seed": "随机种子",
+      "per_batch": "批次大小",
+      "keep_model_loaded": "保持模型加载"
+    },
+    "outputs": {
+      "latent": "Latent",
+      "samples": "采样"
+    }
+  }
+}
