@@ -1396,6 +1396,106 @@
             "LATENT": "Latent"
         }
     },
+    "LTXVSeparateAVLatent": {
+        "title": "LTXV音频视频分离Latent",
+        "inputs": {
+            "av_latent": "视频Laten"
+        },
+        "widgets": {},
+        "outputs": {
+            "video_latent": "画面Laten",
+            "audio_latent": "音频Laten"
+        }
+    },
+    "LTXVEmptyLatentAudio": {
+        "title": "LTXV 音频 空Latent",
+        "inputs": {
+            "Audio VAE": "音频 VAE"
+        },
+        "widgets": {
+            "frames_number": "帧数",
+            "frame_rate": "帧率",
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "LTXVConcatAVLatent": {
+        "title": "LTXV 合并视频Latent",
+        "inputs": {
+            "video_latent": "画面Laten",
+            "audio_latent": "音频Laten"
+        },
+        "widgets": {},
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "BatchLatentsNode": {
+        "title": "批次Latent",
+        "inputs": {
+            "latent0": "Laten0",
+            "latent1": "Laten1"
+        },
+        "widgets": {},
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "LTXVImgToVideoInplace": {
+        "title": "LTXV 图像到视频 原地",
+        "inputs": {
+            "vae": "VAE",
+            "image": "图像",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "strength": "强度",
+            "bypass": "绕过"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "LTXVAudioVAELoader": {
+        "title": "LTXV 音频VAE加载器",
+        "inputs": {
+            "Audio VAE": "音频 VAE"
+        },
+        "widgets": {
+            "ckpt_name": "模型名称"
+        },
+        "outputs": {
+            "Audio VAE": "音频 VAE"
+        }
+    },
+    "LTXVAudioVAEEncode": {
+        "title": "LTXV 音频VAE 编码器",
+        "inputs": {
+            "audio": "音频",
+            "Audio VAE": "音频 VAE"
+        },
+        "widgets": {
+            "ckpt_name": "模型名称"
+        },
+        "outputs": {
+            "Audio_Latent": "音频Laten"
+        }
+    },
+    "LTXVAudioVAEDecode": {
+        "title": "LTXV 音频 VAE 解码器",
+        "inputs": {
+            "samples": "采样",
+            "Audio VAE": "音频 VAE"
+        },
+        "widgets": {
+            "ckpt_name": "模型名称"
+        },
+        "outputs": {
+            "Audio": "音频"
+        }
+    },
     "LatentApplyOperationCFG": {
         "title": "Latent应用操作（CFG）",
         "inputs": {
@@ -4393,6 +4493,30 @@
             "IMAGE": "图像"
         }
     },
+    "WanReferenceVideoApi": {
+        "title": "Wan 参考生视频",
+        "inputs": {
+            "character1": "特征1",
+            "audio": "音频",
+            "VIDEO": "视频",
+            "video": "视频"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示词",
+            "size": "尺寸",
+            "duration": "时长(秒)",
+            "seed": "随机种子",
+            "control_after_generate": "生成后控制",
+            "generate_audio": "生成音频",
+            "prompt_extend": "扩展提示词",
+            "watermark": "水印",
+            "shot_type": "拍摄类型"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        }
+    },
     "RescaleCFG": {
         "title": "缩放CFG",
         "inputs": {
@@ -6909,7 +7033,17 @@
             "LATENT": "Latent"
         }
     },
-
+    "LTXAVTextEncoderLoader": {
+        "title": "LTXV音频Clip加载器",
+        "widgets": {
+            "text_encoder": "文本编码器",
+            "ckpt_name": "模型名称",
+            "device": "设备"
+        },
+        "outputs": {
+            "CLIP": "CLIP"
+        }
+    },
     "Load3D": {
         "title": "3D模型加载器",
         "inputs": {
@@ -8359,6 +8493,31 @@
         "outputs": {
             "TRACKS": "轨迹",
             "track_length": "轨迹长度"
+        }
+    },
+    "CustomCombo": {
+        "title": "自定义组合包",
+        "inputs": {},
+        "widgets": {
+            "choice": "选择",
+            "option0": "选项0"
+        },
+        "outputs": {
+            "STRING": "字符串"
+        }
+    },
+    "ResizeImageMaskNode": {
+        "title": "缩放 图像和遮罩",
+        "inputs": {
+            "input": "输入"
+        },
+        "widgets": {
+            "resize_type": "缩放类型",
+            "multiplier": "乘数",
+            "scale_method": "尺度方法"
+        },
+        "outputs": {
+            "resized": "调整后大小"
         }
     },
     "TemporalScoreRescaling": {

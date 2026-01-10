@@ -2282,6 +2282,51 @@
             "wanvidimage_embeds": "Wan视频图像 嵌入组"
         }
     },
+    "WanVideoSVIProEmbeds": {
+        "title": "Wan视频 SVI 专业 嵌入(KJ)",
+        "inputs": {
+            "prev_samples": "前 采样",
+            "anchor_samples": "锚 采样"
+        },
+        "widgets": {
+            "num_frames": "帧数",
+            "motion_latent_count": "运动Latent 次数"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入组",
+            "samples_slice": "采样分块"
+        }
+    },
+    "WanVideoSetAttentionModeOverride": {
+        "title": "Wan视频 注意力模式 优先级切换设置(KJ)",
+        "inputs": {
+            "model": "模型",
+            "blocks": "块"
+        },
+        "widgets": {
+            "attention_mode": "注意力模式",
+            "start_step": "开始步数",
+            "end_step": "结束步数",
+            "verbose": "啰嗦的"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "为模型的 特定步骤 和/或 区块范围 取消注意力模式设置"
+    },
+    "WanVideoUltraVicoSettings": {
+        "title": "Wan视频 UltraVico超维科 设置(KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "alpha": "alpha阿尔法 不透明度"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "设置 UltraVico 参数，但注意模式仍需设置为 sageattn_ultravico，相关文档请参考：https://github.com/thu-ml/DiT-Extrapolation"
+    },
     "WanVideoUniAnimatePoseInput": {
         "title": "Wan视频 UniAnimate通用动画 姿态输入(KJ)",
         "inputs": {

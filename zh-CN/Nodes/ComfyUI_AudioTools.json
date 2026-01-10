@@ -1,0 +1,238 @@
+{
+  "AddSubtitlesToVideo": {
+    "title": "视频添加字幕",
+    "inputs": {
+      "images": "图像组",
+      "json_text": "JSON文本",
+      "subtitle_text": "字幕文本"
+    },
+    "widgets": {
+      "language": "语言",
+      "max_words_per_line": "每行最大字数",
+      "font_path": "字体路径",
+      "font_size": "字体大小",
+      "font_color": "字体颜色",
+      "subtitle_background_color": "字幕背景颜色",
+      "y_offset": "Y轴偏移",
+      "x_offset": "X轴偏移",
+      "width": "宽度",
+      "height": "高度",
+      "fps": "帧率",
+      "max_duration_of_segment": "片段最大时长",
+      "text": "文本"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "AudioAddWatermark": {
+    "title": "音频添加水印",
+    "inputs": {
+      "audio": "音频"
+    },
+    "widgets": {
+      "add_watermark": "添加水印",
+      "key": "密匙",
+      "unload_model": "卸载模型"
+    },
+    "outputs": {
+      "audio": "音频",
+      "watermark": "水印"
+    }
+  },
+  "AdjustAudio": {
+    "title": "音频 调节",
+    "inputs": {
+      "audio": "音频"
+    },
+    "widgets": {
+      "volume_factor": "音量系数",
+      "pitch_shift": "音高偏移",
+      "speed_factor": "速度系数",
+      "normalize": "标准化",
+      "add_echo": "添加回声",
+      "gain_in": "增益输入",
+      "gain_out": "增益输出",
+      "delays": "延时",
+      "decays": "衰减"
+    },
+    "outputs": {
+      "audio": "音频"
+    }
+  },
+  "TrimAudio": {
+    "title": "音频 裁剪",
+    "inputs": {
+      "audio": "音频"
+    },
+    "widgets": {
+      "start_time": "开始时间",
+      "end_time": "结束时间"
+    },
+    "outputs": {
+      "audio": "音频"
+    }
+  },
+  "RemoveSilence": {
+    "title": "移除 静音",
+    "inputs": {
+      "audio": "音频"
+    },
+    "widgets": {
+      "min_silence_duration": "最小静音持续时间",
+      "silence_threshold": "静音阈值",
+      "buffer_around_silence": "静音周围渐变"
+    },
+    "outputs": {
+      "audio": "音频"
+    }
+  },
+  "LoadAudioMW": {
+    "title": "加载音频@MW",
+    "inputs": {},
+    "widgets": {
+      "audio": "音频",
+      "start_time_sec": "开始时间（秒）",
+      "duration_sec": "持续时间（秒）",
+      "fps": "帧率"
+    },
+    "outputs": {
+      "AUDIO": "音频",
+      "frame_count": "帧数"
+    }
+  },
+  "AudioConcatenate": {
+    "title": "音频拼接",
+    "inputs": {
+      "audio_a": "音频A",
+      "audio_b": "音频B"
+    },
+    "widgets": {},
+    "outputs": {
+      "audio": "音频"
+    }
+  },
+  "MusicSeparation": {
+    "title": "音乐分离",
+    "inputs": {
+      "audio": "音频"
+    },
+    "widgets": {
+      "audio": "音频"
+    },
+    "outputs": {
+      "dialog": "对话",
+      "effect": "效果",
+      "music": "音乐"
+    }
+  },
+  "SpeechSeparation": {
+    "title": "语音分离",
+    "inputs": {
+      "audio": "音频"
+    },
+    "widgets": {
+      "audio": "音频"
+    },
+    "outputs": {
+      "audio_1": "音频_1",
+      "audio_2": "音频_2",
+      "audio_3": "音频_3"
+    }
+  },
+  "MergeAudioMW": {
+    "title": "音频合并",
+    "inputs": {
+      "audio_1": "音频1",
+      "audio_2": "音频2"
+    },
+    "widgets": {
+      "audio_1": "音频1",
+      "audio_2": "音频2"
+    },
+    "outputs": {
+      "merged_audio": "合并音频"
+    }
+  },
+  "ClearVoiceRun": {
+    "title": "清晰语音@MW",
+    "inputs": {
+      "audio": "音频"
+    },
+    "widgets": {
+      "unload_model": "卸载模型"
+    },
+    "outputs": {
+      "audio": "音频"
+    }
+  },
+  "MinimalPauseNode": {
+    "title": "暂停节点@MW",
+    "inputs": {
+      "any": "任意"
+    },
+    "widgets": {
+      "Continue": "继续",
+      "unique_id": "唯一标识符",
+      "prompt": "提示词",
+      "extra_pnginfo": "额外PNG信息"
+    },
+    "outputs": {
+      "any": "任意",
+      "any_type": "任意类型"
+    }
+  },
+  "MultiLinePromptAT": {
+    "title": "多行提示词",
+    "inputs": {
+      "any": "任意"
+    },
+    "widgets": {
+      "prompt": "提示词"
+    },
+    "outputs": {
+      "any": "任意",
+      "prompt": "提示词"
+    }
+  },
+  "StringEditNode": {
+    "title": "字符串编辑",
+    "inputs": {
+      "text": "文本"
+    },
+    "widgets": {
+      "prompt": "提示词",
+      "split_tag": "分隔标签",
+      "form_right": "右侧形式"
+    },
+    "outputs": {
+      "text": "文本",
+      "split_1": "拆分1",
+      "split_2": "拆分2",
+      "edited_text": "编辑后文本",
+      "merged_text": "合并后文本"
+    }
+  },
+  "AudioRecorderAT": {
+    "title": "MW 音频录音器",
+    "inputs": {},
+    "widgets": {
+      "record_sec": "录制时长（秒）",
+      "sample_rate": "采样率",
+      "n_fft": "FFT点数",
+      "sensitivity": "灵敏度",
+      "smooth": "平滑度",
+      "seed": "随机种子",
+      "enable": "启用",
+      "y": "Y参数",
+      "spec": "频谱",
+      "noise_clip": "噪声剪辑",
+      "noise_profile": "噪声配置文件",
+      "mask": "掩码",
+      "kernel_size": "内核大小"
+    },
+    "outputs": {
+      "audio": "音频"
+    }
+  }
+}
