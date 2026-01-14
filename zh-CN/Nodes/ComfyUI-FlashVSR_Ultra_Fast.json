@@ -1,0 +1,59 @@
+{
+  "FlashVSRInitPipe": {
+    "title": "FlashVSR初始化管道",
+    "inputs": {},
+    "widgets": {
+      "model": "模型",
+      "mode": "模式",
+      "alt_vae": "备用VAE",
+      "force_offload": "强制卸载",
+      "precision": "精度",
+      "device": "设备",
+      "attention_mode": "注意力模式"
+    },
+    "outputs": {
+      "pipe": "管道"
+    }
+  },
+  "FlashVSRNodeAdv": {
+    "title": "FlashVSR超快速放大（高级）",
+    "inputs": {
+      "pipe": "管道",
+      "frames": "序列图像"
+    },
+    "widgets": {
+      "scale": "缩放比例",
+      "color_fix": "颜色修正",
+      "tiled_vae": "分块VAE",
+      "tiled_dit": "分块DIT",
+      "tile_size": "块大小",
+      "tile_overlap": "块重叠",
+      "unload_dit": "卸载DIT",
+      "sparse_ratio": "稀疏比例",
+      "kv_ratio": "KV比例",
+      "local_range": "局部范围",
+      "seed": "随机种子"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "FlashVSRNode": {
+    "title": "FlashVSR超快速放大",
+    "inputs": {
+      "frames": "序列图像"
+    },
+    "widgets": {
+      "model": "模型",
+      "mode": "模式",
+      "scale": "缩放比例",
+      "tiled_vae": "分块VAE",
+      "tiled_dit": "分块DIT",
+      "unload_dit": "卸载DIT",
+      "seed": "随机种子"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  }
+}

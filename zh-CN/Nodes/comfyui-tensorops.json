@@ -1,0 +1,409 @@
+{
+  "BackgroundSelect": {
+    "title": "背景选择",
+    "inputs": {
+      "mask": "蒙版"
+    },
+    "widgets": {},
+    "outputs": {
+      "mask": "蒙版"
+    }
+  },
+  "ChannelSelector": {
+    "title": "通道选择器",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "channel": "通道"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "FaceSwap": {
+    "title": "人脸替换",
+    "inputs": {
+      "image": "图像",
+      "face": "人脸",
+      "image_bbox": "图像边界框",
+      "face_bbox": "人脸边界框"
+    },
+    "widgets": {
+      "prompt": "提示词",
+      "steps": "步数",
+      "face_guidance": "人脸引导强度"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "FalDiffusion": {
+    "title": "Fal扩散模型",
+    "inputs": {},
+    "widgets": {
+      "prompt": "提示词",
+      "steps": "步数"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "FalDifferentialDiffusion": {
+    "title": "Fal差异扩散",
+    "inputs": {
+      "foreground_image": "前景图像",
+      "depth_image": "深度图像"
+    },
+    "widgets": {
+      "foreground_prompt": "前景提示词",
+      "background_prompt": "背景提示词",
+      "strength": "强度",
+      "steps": "步数"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "FetchJsonFromSurreal": {
+    "title": "从Surreal超现实数据库 获取JSON",
+    "inputs": {},
+    "widgets": {
+      "database": "数据库",
+      "id": "ID",
+      "key": "密匙"
+    },
+    "outputs": {
+      "json": "JSON"
+    }
+  },
+  "DownloadAndLoadFlorence2Model": {
+    "title": "下载并加载Florence2模型",
+    "inputs": {
+      "model": "模型",
+      "precision": "精度",
+      "attention": "注意力机制"
+    },
+    "widgets": {
+      "model": "模型",
+      "precision": "精度",
+      "attention": "注意力机制"
+    },
+    "outputs": {
+      "fl2model": "Florence2模型"
+    }
+  },
+  "Florence2Run": {
+    "title": "Florence2运行",
+    "inputs": {
+      "image": "图像",
+      "florence2_model": "Florence2模型",
+      "text_input": "文本输入",
+      "task": "任务",
+      "fill_mask": "填充蒙版",
+      "keep_model_loaded": "保持模型加载",
+      "max_new_tokens": "最大新标记数",
+      "num_beams": "束搜索数",
+      "do_sample": "启用采样",
+      "output_mask_select": "输出蒙版选择"
+    },
+    "widgets": {
+      "image": "图像",
+      "florence2_model": "Florence2模型",
+      "text_input": "文本输入",
+      "task": "任务",
+      "fill_mask": "填充蒙版",
+      "keep_model_loaded": "保持模型加载",
+      "max_new_tokens": "最大新标记数",
+      "num_beams": "束搜索数",
+      "do_sample": "启用采样",
+      "output_mask_select": "输出蒙版选择"
+    },
+    "outputs": {
+      "image": "图像",
+      "mask": "蒙版",
+      "string": "字符串",
+      "json": "JSON"
+    }
+  },
+  "ForegroundMask": {
+    "title": "前景蒙版",
+    "inputs": {
+      "image": "图像",
+      "json_data": "JSON数据"
+    },
+    "widgets": {},
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "GetLayerMask": {
+    "title": "获取图层蒙版",
+    "inputs": {
+      "image": "图像",
+      "json_data": "JSON数据"
+    },
+    "widgets": {},
+    "outputs": {
+      "mask": "蒙版",
+      "json": "JSON"
+    }
+  },
+  "MaskImage": {
+    "title": "蒙版图像",
+    "inputs": {
+      "image": "图像",
+      "mask": "蒙版"
+    },
+    "widgets": {},
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "SaveToRedis": {
+    "title": "保存到Redis数据库",
+    "inputs": {
+      "data": "数据"
+    },
+    "widgets": {
+      "key": "密匙"
+    },
+    "outputs": {}
+  },
+  "FetchFromRedis": {
+    "title": "从Redis数据库获取",
+    "inputs": {},
+    "widgets": {
+      "key": "密匙"
+    },
+    "outputs": {
+      "json": "JSON"
+    }
+  },
+  "SendImageToRedis": {
+    "title": "发送图像到Redis",
+    "inputs": {
+      "key": "密匙",
+      "images": "图像序列"
+    },
+    "widgets": {
+      "key": "密匙",
+      "images": "图像序列"
+    },
+    "outputs": {}
+  },
+  "DownloadAndLoadSAM2Model": {
+    "title": "下载并加载SAM2模型",
+    "inputs": {
+      "model": "模型",
+      "segmentor": "分割器",
+      "device": "设备",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model": "模型",
+      "segmentor": "分割器",
+      "device": "设备",
+      "precision": "精度"
+    },
+    "outputs": {
+      "sam2model": "SAM2模型"
+    }
+  },
+  "Florence2toCoordinates": {
+    "title": "Florence2转坐标",
+    "inputs": {
+      "data": "数据",
+      "index": "索引",
+      "batch": "批次"
+    },
+    "widgets": {
+      "data": "数据",
+      "index": "索引",
+      "batch": "批次"
+    },
+    "outputs": {
+      "string": "字符串",
+      "bbox": "边界框"
+    }
+  },
+  "Sam2Segmentation": {
+    "title": "SAM2分割",
+    "inputs": {
+      "sam2_model": "SAM2模型",
+      "image": "图像",
+      "keep_model_loaded": "保持模型加载",
+      "coordinates_positive": "正坐标点",
+      "coordinates_negative": "负坐标点",
+      "bboxes": "边界框集合",
+      "individual_objects": "独立对象",
+      "mask": "蒙版"
+    },
+    "widgets": {
+      "sam2_model": "SAM2模型",
+      "image": "图像",
+      "keep_model_loaded": "保持模型加载",
+      "coordinates_positive": "正坐标点",
+      "coordinates_negative": "负坐标点",
+      "bboxes": "边界框集合",
+      "individual_objects": "独立对象",
+      "mask": "蒙版"
+    },
+    "outputs": {
+      "mask": "蒙版"
+    }
+  },
+  "Sam2VideoSegmentationAddPoints": {
+    "title": "SAM2视频分割添加点",
+    "inputs": {
+      "sam2_model": "SAM2模型",
+      "coordinates_positive": "正坐标点",
+      "frame_index": "帧索引",
+      "object_index": "对象索引",
+      "image": "图像",
+      "coordinates_negative": "负坐标点",
+      "prev_inference_state": "前次推理状态"
+    },
+    "widgets": {
+      "sam2_model": "SAM2模型",
+      "coordinates_positive": "正坐标点",
+      "frame_index": "帧索引",
+      "object_index": "对象索引",
+      "image": "图像",
+      "coordinates_negative": "负坐标点",
+      "prev_inference_state": "前次推理状态"
+    },
+    "outputs": {
+      "sam2model": "SAM2模型",
+      "sam2inferencestate": "SAM2推理状态"
+    }
+  },
+  "Sam2VideoSegmentation": {
+    "title": "SAM2视频分割",
+    "inputs": {
+      "sam2_model": "SAM2模型",
+      "inference_state": "推理状态",
+      "keep_model_loaded": "保持模型加载"
+    },
+    "widgets": {
+      "sam2_model": "SAM2模型",
+      "inference_state": "推理状态",
+      "keep_model_loaded": "保持模型加载"
+    },
+    "outputs": {
+      "mask": "蒙版"
+    }
+  },
+  "Sam2AutoSegmentation": {
+    "title": "SAM2自动分割",
+    "inputs": {
+      "sam2_model": "SAM2模型",
+      "image": "图像",
+      "points_per_side": "每边点数",
+      "points_per_batch": "每批点数",
+      "pred_iou_thresh": "预测IoU阈值",
+      "stability_score_thresh": "稳定性分数阈值",
+      "stability_score_offset": "稳定性分数偏移",
+      "mask_threshold": "蒙版阈值",
+      "crop_n_layers": "裁剪层数",
+      "box_nms_thresh": "框NMS阈值",
+      "crop_nms_thresh": "裁剪NMS阈值",
+      "crop_overlap_ratio": "裁剪重叠比例",
+      "crop_n_points_downscale_factor": "裁剪点下采样因子",
+      "min_mask_region_area": "最小蒙版区域面积",
+      "use_m2m": "使用M2M",
+      "keep_model_loaded": "保持模型加载"
+    },
+    "widgets": {
+      "sam2_model": "SAM2模型",
+      "image": "图像",
+      "points_per_side": "每边点数",
+      "points_per_batch": "每批点数",
+      "pred_iou_thresh": "预测IoU阈值",
+      "stability_score_thresh": "稳定性分数阈值",
+      "stability_score_offset": "稳定性分数偏移",
+      "mask_threshold": "蒙版阈值",
+      "crop_n_layers": "裁剪层数",
+      "box_nms_thresh": "框NMS阈值",
+      "crop_nms_thresh": "裁剪NMS阈值",
+      "crop_overlap_ratio": "裁剪重叠比例",
+      "crop_n_points_downscale_factor": "裁剪点下采样因子",
+      "min_mask_region_area": "最小蒙版区域面积",
+      "use_m2m": "使用M2M",
+      "keep_model_loaded": "保持模型加载"
+    },
+    "outputs": {
+      "mask": "蒙版",
+      "image": "图像",
+      "bbox": "边界框"
+    }
+  },
+  "SaveJsonToSurreal": {
+    "title": "保存JSON到Surreal超现实数据库 ",
+    "inputs": {
+      "json": "JSON"
+    },
+    "widgets": {
+      "database": "数据库",
+      "id": "ID",
+      "key": "密匙"
+    },
+    "outputs": {}
+  },
+  "SaveTextToSurreal": {
+    "title": "保存文本到Surreal超现实数据库",
+    "inputs": {
+      "text": "文本"
+    },
+    "widgets": {
+      "database": "数据库",
+      "id": "ID",
+      "key": "密匙"
+    },
+    "outputs": {}
+  },
+  "SaveImageToS3": {
+    "title": "保存图像到S3",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "database": "数据库",
+      "key": "密匙"
+    },
+    "outputs": {}
+  },
+  "SeparateMask": {
+    "title": "分离蒙版",
+    "inputs": {
+      "image": "图像",
+      "mask": "蒙版",
+      "bboxes": "边界框集合"
+    },
+    "widgets": {},
+    "outputs": {
+      "mask": "蒙版",
+      "image": "图像"
+    }
+  },
+  "SendImageOnWebSocket": {
+    "title": "通过网页接口发送图像",
+    "inputs": {
+      "images": "图像组"
+    },
+    "widgets": {
+      "event": "事件"
+    },
+    "outputs": {}
+  },
+  "SendJsonOnWebSocket": {
+    "title": "通过网页接口发送JSON",
+    "inputs": {
+      "json": "JSON"
+    },
+    "widgets": {
+      "event": "事件"
+    },
+    "outputs": {}
+  }
+}
