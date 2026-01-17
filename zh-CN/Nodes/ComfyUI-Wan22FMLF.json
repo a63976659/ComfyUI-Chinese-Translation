@@ -1,0 +1,189 @@
+{
+  "WanFourFrameReferenceUltimate": {
+    "title": "Wan四帧参考（终极版）",
+    "inputs": {
+      "positive": "正向提示词",
+      "negative": "负向提示词",
+      "vae": "VAE模型",
+      "frame_1_image": "帧1图像",
+      "frame_2_image": "帧2图像",
+      "frame_3_image": "帧3图像",
+      "frame_4_image": "帧4图像",
+      "clip_vision_frame_1": "CLIP视觉帧1",
+      "clip_vision_frame_2": "CLIP视觉帧2",
+      "clip_vision_frame_3": "CLIP视觉帧3",
+      "clip_vision_frame_4": "CLIP视觉帧4"
+    },
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "length": "视频长度",
+      "batch_size": "批次大小",
+      "mode": "模式",
+      "frame_2_ratio": "帧2比率",
+      "frame_2_strength_high": "帧2高噪声强度",
+      "frame_2_strength_low": "帧2低噪声强度",
+      "enable_frame_2": "启用帧2",
+      "frame_3_ratio": "帧3比率",
+      "frame_3_strength_high": "帧3高噪声强度",
+      "frame_3_strength_low": "帧3低噪声强度",
+      "enable_frame_3": "启用帧3",
+      "structural_repulsion_boost": "结构排斥增强"
+    },
+    "outputs": {
+      "positive_high": "正向提示词-高",
+      "positive_low": "正向提示词-低",
+      "negative": "负向提示词",
+      "latent": "Latent"
+    }
+  },
+  "WanAdvancedI2V": {
+    "title": "Wan图转视频(高级)",
+    "inputs": {
+      "positive": "正向提示词",
+      "negative": "负向提示词",
+      "vae": "VAE模型",
+      "start_image": "起始图像",
+      "middle_image": "中间图像",
+      "end_image": "结束图像",
+      "motion_frames": "运动帧数",
+      "clip_vision_start_image": "CLIP视觉起始图像",
+      "clip_vision_middle_image": "CLIP视觉中间图像",
+      "clip_vision_end_image": "CLIP视觉结束图像",
+      "prev_latent": "前次Latent"
+    },
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "length": "视频长度",
+      "batch_size": "批次大小",
+      "mode": "模式",
+      "middle_frame_ratio": "中间帧比率",
+      "video_frame_offset": "视频帧偏移",
+      "long_video_mode": "长视频模式",
+      "continue_frames_count": "连续帧数",
+      "high_noise_start_strength": "起始高噪声强度",
+      "high_noise_mid_strength": "中间高噪声强度",
+      "low_noise_start_strength": "起始低噪声强度",
+      "low_noise_mid_strength": "中间低噪声强度",
+      "low_noise_end_strength": "结束低噪声强度",
+      "structural_repulsion_boost": "结构排斥增强",
+      "enable_middle_frame": "启用中间帧",
+      "ratio": "比率",
+      "total_frames": "总帧数"
+    },
+    "outputs": {
+      "positive_high": "正向提示词-高",
+      "positive_low": "正向提示词-低",
+      "negative": "负向提示词",
+      "latent": "Latent",
+      "trim_latent": "修剪Latent",
+      "trim_image": "修剪图像",
+      "next_offset": "下一个偏移量"
+    }
+  },
+  "WanFirstMiddleLastFrameToVideo": {
+    "title": "Wan首中尾帧转视频",
+    "inputs": {
+      "positive": "正向提示词",
+      "negative": "负向提示词",
+      "vae": "VAE模型",
+      "start_image": "起始图像",
+      "middle_image": "中间图像",
+      "end_image": "结束图像",
+      "clip_vision_start_image": "CLIP视觉起始图像",
+      "clip_vision_middle_image": "CLIP视觉中间图像",
+      "clip_vision_end_image": "CLIP视觉结束图像"
+    },
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "length": "视频长度",
+      "batch_size": "批次大小",
+      "mode": "模式",
+      "middle_frame_ratio": "中间帧比率",
+      "high_noise_mid_strength": "中间高噪声强度",
+      "low_noise_start_strength": "起始低噪声强度",
+      "low_noise_mid_strength": "中间低噪声强度",
+      "low_noise_end_strength": "结束低噪声强度",
+      "structural_repulsion_boost": "结构排斥增强",
+      "ratio": "比率",
+      "total_frames": "总帧数"
+    },
+    "outputs": {
+      "positive_high": "正向提示词-高",
+      "positive_low": "正向提示词-低",
+      "negative": "负向提示词",
+      "latent": "Latent"
+    }
+  },
+  "WanAdvancedExtractLastFrames": {
+    "title": "Wan提取最后几帧Latent",
+    "inputs": {
+      "samples": "采样"
+    },
+    "widgets": {
+      "num_frames": "帧数"
+    },
+    "outputs": {
+      "last_frames": "尾帧"
+    }
+  },
+  "WanAdvancedExtractLastImages": {
+    "title": "Wan提取最后的图像",
+    "inputs": {
+      "images": "图像组"
+    },
+    "widgets": {
+      "num_frames": "帧数"
+    },
+    "outputs": {
+      "last_images": "最后图像组"
+    }
+  },
+  "WanMultiImageLoader": {
+    "title": "Wan多图像加载器",
+    "inputs": {
+      "images": "图像组"
+    },
+    "widgets": {
+      "index": "索引"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "WanMultiFrameRefToVideo": {
+    "title": "Wan多帧参考转视频",
+    "inputs": {
+      "positive": "正向提示词",
+      "negative": "负向提示词",
+      "vae": "VAE模型",
+      "ref_images": "参考图像",
+      "clip_vision_output": "CLIP视觉输出"
+    },
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "length": "视频长度",
+      "batch_size": "批次大小",
+      "mode": "模式",
+      "ref_positions": "参考位置",
+      "ref_strength_high": "参考高噪声强度",
+      "ref_strength_low": "参考低噪声强度",
+      "end_frame_strength_high": "结束帧高噪声强度",
+      "end_frame_strength_low": "结束帧低噪声强度",
+      "structural_repulsion_boost": "结构排斥增强",
+      "images": "图像序列",
+      "device": "设备",
+      "pos_str": "位置字符串",
+      "n_imgs": "图像数量"
+    },
+    "outputs": {
+      "positive_high": "正向提示词-高",
+      "positive_low": "正向提示词-低",
+      "negative": "负向提示词",
+      "latent": "Latent"
+    }
+  }
+}
