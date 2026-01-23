@@ -1,482 +1,564 @@
 {
-    "Lerp": {
-        "title": "线性",
-        "widgets": {
-            "num_Images": "图像数量",
-            "strength": "强度",
-            "current_frame": "当前帧"
-        },
-        "outputs": {
-            "FLOAT": "浮点",
-            "INT": "整数"
-        }
+  "Lerp": {
+    "title": "线性",
+    "widgets": {
+      "num_Images": "图像数量",
+      "strength": "强度",
+      "current_frame": "当前帧"
     },
-    "SinWave": {
-        "title": "正弦波",
-        "widgets": {
-            "phase": "相位角",
-            "amplitude": "振幅",
-            "x_translation": "X偏移",
-            "y_translation": "Y偏移",
-            "current_frame": "当前帧"
-        },
-        "outputs": {
-            "FLOAT": "浮点",
-            "INT": "整数"
-        }
-    },
-    "InvSinWave": {
-        "title": "反正弦波",
-        "widgets": {
-            "phase": "相位角",
-            "amplitude": "振幅",
-            "x_translation": "X偏移",
-            "y_translation": "Y偏移",
-            "current_frame": "当前帧"
-        },
-        "outputs": {
-            "FLOAT": "浮点",
-            "INT": "整数"
-        }
-    },
-    "CosWave": {
-        "title": "余弦波",
-        "widgets": {
-            "phase": "相位角",
-            "amplitude": "振幅",
-            "x_translation": "X偏移",
-            "y_translation": "Y偏移",
-            "current_frame": "当前帧"
-        },
-        "outputs": {
-            "FLOAT": "浮点",
-            "INT": "整数"
-        }
-    },
-    "InvCosWave": {
-        "title": "反余弦波",
-        "widgets": {
-            "phase": "相位角",
-            "amplitude": "振幅",
-            "x_translation": "X偏移",
-            "y_translation": "Y偏移",
-            "current_frame": "当前帧"
-        },
-        "outputs": {
-            "FLOAT": "浮点",
-            "INT": "整数"
-        }
-    },
-    "SquareWave": {
-        "title": "方波",
-        "widgets": {
-            "phase": "相位角",
-            "amplitude": "振幅",
-            "x_translation": "X偏移",
-            "y_translation": "Y偏移",
-            "current_frame": "当前帧"
-        },
-        "outputs": {
-            "FLOAT": "浮点",
-            "INT": "整数"
-        }
-    },
-    "SawtoothWave": {
-        "title": "锯齿波",
-        "widgets": {
-            "phase": "相位角",
-            "step_increment": "步进",
-            "x_translation": "X偏移",
-            "start_value": "起始值",
-            "current_frame": "当前帧"
-        },
-        "outputs": {
-            "FLOAT": "浮点",
-            "INT": "整数"
-        }
-    },
-    "TriangleWave": {
-        "title": "三角波",
-        "widgets": {
-            "phase": "相位角",
-            "amplitude": "振幅",
-            "x_translation": "X偏移",
-            "y_translation": "Y偏移",
-            "current_frame": "当前帧"
-        },
-        "outputs": {
-            "FLOAT": "浮点",
-            "INT": "整数"
-        }
-    },
-    "AbsCosWave": {
-        "title": "绝对余弦波",
-        "widgets": {
-            "phase": "相位角",
-            "amplitude": "振幅",
-            "x_translation": "X偏移",
-            "max_value": "最大值",
-            "current_frame": "当前帧"
-        },
-        "outputs": {
-            "FLOAT": "浮点",
-            "INT": "整数"
-        }
-    },
-    "AbsSinWave": {
-        "title": "绝对正弦波",
-        "widgets": {
-            "phase": "相位角",
-            "amplitude": "振幅",
-            "x_translation": "X偏移",
-            "max_value": "最大值",
-            "current_frame": "当前帧"
-        },
-        "outputs": {
-            "FLOAT": "浮点",
-            "INT": "整数"
-        }
-    },
-
-
-
-    "PromptSchedule": {
-        "title": "提示词调度",
-        "inputs": {
-            "clip": "CLIP"
-        },
-        "widgets": {
-            "text": "文本",
-            "max_frames": "最大帧数",
-            "print_output": "输出至控制台",
-            "current_frame": "当前帧",
-            "pre_text": "预置文本",
-            "app_text": "附加文本",
-            "pw_a": "提示词权重A(pw_a)",
-            "pw_b": "提示词权重B(pw_b)",
-            "pw_c": "提示词权重C(pw_c)",
-            "pw_d": "提示词权重D(pw_d)"
-        },
-        "outputs": {
-            "CONDITIONING": "条件"
-        }
-    },
-    "ValueSchedule": {
-        "title": "值调度",
-        "widgets": {
-            "text": "文本",
-            "max_frames": "最大帧数",
-            "current_frame": "当前帧"
-        },
-        "outputs": {
-            "FLOAT": "浮点",
-            "INT": "整数"
-        }
-    },
-    "StringSchedule": {
-        "title": "字符串调度",
-        "inputs": {
-            "clip": "CLIP"
-        },
-        "widgets": {
-            "text": "文本",
-            "max_frames": "最大帧数",
-            "current_frame": "当前帧",
-            "pre_text": "预置文本",
-            "app_text": "附加文本",
-            "pw_a": "提示词权重A(pw_a)",
-            "pw_b": "提示词权重B(pw_b)",
-            "pw_c": "提示词权重C(pw_c)",
-            "pw_d": "提示词权重D(pw_d)"
-        },
-        "outputs": {
-            "STRING": "字符串"
-        }
-    },
-    "PromptScheduleNodeFlow": {
-        "title": "提示词调度流",
-        "widgets": {
-            "text": "文本",
-            "num_frames": "帧数",
-            "in_text": "预置文本",
-            "max_frames": "最大帧数"
-        },
-        "outputs": {
-            "INT": "整数",
-            "STRING": "字符串"
-        }
-    },
-    "PromptScheduleNodeFlowEnd": {
-        "title": "提示词调度流结尾",
-        "inputs": {
-            "clip": "CLIP"
-        },
-        "widgets": {
-            "text": "文本",
-            "max_frames": "最大帧数",
-            "current_frame": "当前帧",
-            "pre_text": "预置文本",
-            "app_text": "附加文本",
-            "pw_a": "提示词权重A(pw_a)",
-            "pw_b": "提示词权重B(pw_b)",
-            "pw_c": "提示词权重C(pw_c)",
-            "pw_d": "提示词权重D(pw_d)"
-        },
-        "outputs": {
-            "CONDITIONING": "条件"
-        }
-    },
-    "PromptScheduleEncodeSDXL": {
-        "title": "提示词调度编码(SDXL)",
-        "inputs": {
-            "clip": "CLIP"
-        },
-        "widgets": {
-            "width": "宽度",
-            "height": "高度",
-            "crop_w": "裁剪宽度",
-            "crop_h": "裁剪高度",
-            "target_width": "目标宽度",
-            "target_height": "目标高度",
-            "text_g": "G文本",
-            "text_l": "L文本",
-            "max_frames": "最大帧数",
-            "current_frame": "当前帧",
-            "pre_text_G": "预置G文本",
-            "app_text_G": "附加G文本",
-            "pre_text_L": "预置L文本",
-            "app_text_L": "附加L文本",
-            "pw_a": "提示词权重A(pw_a)",
-            "pw_b": "提示词权重B(pw_b)",
-            "pw_c": "提示词权重C(pw_c)",
-            "pw_d": "提示词权重D(pw_d)"
-        },
-        "outputs": {
-            "CONDITIONING": "条件"
-        }
-    },
-
-
-
-    "BatchPromptSchedule": {
-        "title": "提示词调度(批次)",
-        "inputs": {
-            "clip": "CLIP"
-        },
-        "widgets": {
-            "text": "文本",
-            "max_frames": "最大帧数",
-            "pre_text": "预置文本",
-            "app_text": "附加文本",
-            "pw_a": "提示词权重A(pw_a)",
-            "pw_b": "提示词权重B(pw_b)",
-            "pw_c": "提示词权重C(pw_c)",
-            "pw_d": "提示词权重D(pw_d)"
-        },
-        "outputs": {
-            "CONDITIONING": "条件"
-        }
-    },
-    "BatchValueSchedule": {
-        "title": "值调度(批次)",
-        "widgets": {
-            "text": "文本",
-            "max_frames": "最大帧数"
-        },
-        "outputs": {
-            "FLOAT": "浮点",
-            "INT": "整数"
-        }
-    },
-    "BatchPromptScheduleEncodeSDXL": {
-        "title": "提示词调度编码(批次SDXL)",
-        "inputs": {
-            "clip": "CLIP"
-        },
-        "widgets": {
-            "width": "宽度",
-            "height": "高度",
-            "crop_w": "裁剪宽度",
-            "crop_h": "裁剪高度",
-            "target_width": "目标宽度",
-            "target_height": "目标高度",
-            "text_g": "G文本",
-            "text_l": "L文本",
-            "max_frames": "最大帧数",
-            "print_output": "输出至控制台",
-            "pre_text_G": "预置G文本",
-            "app_text_G": "附加G文本",
-            "pre_text_L": "预置L文本",
-            "app_text_L": "附加L文本",
-            "pw_a": "提示词权重A(pw_a)",
-            "pw_b": "提示词权重B(pw_b)",
-            "pw_c": "提示词权重C(pw_c)",
-            "pw_d": "提示词权重D(pw_d)"
-        },
-        "outputs": {
-            "CONDITIONING": "条件"
-        }
-    },
-    "BatchStringSchedule": {
-        "title": "字符串调度(批次)",
-        "widgets": {
-            "text": "文本",
-            "max_frames": "最大帧数",
-            "print_output": "输出至控制台",
-            "pre_text": "预置文本",
-            "app_text": "附加文本",
-            "pw_a": "提示词权重A(pw_a)",
-            "pw_b": "提示词权重B(pw_b)",
-            "pw_c": "提示词权重C(pw_c)",
-            "pw_d": "提示词权重D(pw_d)"
-        },
-        "outputs": {
-            "STRING": "字符串"
-        }
-    },
-    "BatchValueScheduleLatentInput": {
-        "title": "Latent值调度(批次)",
-        "inputs": {
-            "num_latents": "Latent"
-        },
-        "widgets": {
-            "text": "文本"
-        },
-        "outputs": {
-            "FLOAT": "浮点",
-            "INT": "整数",
-            "LATENT": "Latent"
-        }
-    },
-    "BatchPromptScheduleSDXLLatentInput": {
-        "title": "提示词调度(批次SDXL)",
-        "inputs": {
-            "clip": "CLIP",
-            "num_latents": "Latent"
-        },
-        "widgets": {
-            "width": "宽度",
-            "height": "高度",
-            "crop_w": "裁剪宽度",
-            "crop_h": "裁剪高度",
-            "target_width": "目标宽度",
-            "target_height": "目标高度",
-            "text_g": "G文本",
-            "text_l": "L文本",
-            "max_frames": "最大帧数",
-            "pre_text_G": "预置G文本",
-            "app_text_G": "附加G文本",
-            "pre_text_L": "预置L文本",
-            "app_text_L": "附加L文本",
-            "pw_a": "提示词权重A(pw_a)",
-            "pw_b": "提示词权重B(pw_b)",
-            "pw_c": "提示词权重C(pw_c)",
-            "pw_d": "提示词权重D(pw_d)"
-        },
-        "outputs": {
-            "CONDITIONING": "条件",
-            "LATENT": "Latent"
-        }
-    },
-    "BatchPromptScheduleLatentInput": {
-        "title": "Latent提示词调度(批次)",
-        "inputs": {
-            "clip": "CLIP",
-            "num_latents": "Latent"
-        },
-        "widgets": {
-            "text": "文本",
-            "max_frames": "最大帧数",
-            "print_output": "输出至控制台",
-            "pre_text": "预置文本",
-            "app_text": "附加文本",
-            "start_frame": "起始帧",
-            "pw_a": "提示词权重A(pw_a)",
-            "pw_b": "提示词权重B(pw_b)",
-            "pw_c": "提示词权重C(pw_c)",
-            "pw_d": "提示词权重D(pw_d)"
-        },
-        "outputs": {
-            "CONDITIONING": "条件",
-            "LATENT": "Latent"
-        }
-    },
-
-
-
-    "StringConcatenate": {
-        "title": "字符串连锁",
-        "widgets": {
-            "text": "文本_A",
-            "text_b": "文本_B",
-            "text_c": "文本_C",
-            "text_d": "文本_D",
-            "text_e": "文本_E",
-            "text_f": "文本_F",
-            "text_g": "文本_G",
-            "frame_b": "帧_B",
-            "frame_c": "帧_C",
-            "frame_d": "帧_D",
-            "frame_e": "帧_E",
-            "frame_f": "帧_F",
-            "frame_g": "帧_G"
-        },
-        "outputs": {
-            "STRING": "字符串"
-        }
-    },
-    "Init FizzFrame": {
-        "title": "初始化Fizz帧",
-        "inputs": {
-            "previous_frame": "上一帧",
-            "clip": "CLIP"
-        },
-        "widgets": {
-            "frame": "帧",
-            "positive_text": "正面文本",
-            "negative_text": "负面文本",
-            "general_positive": "通用正面",
-            "general_negative": "通用负面"
-        },
-        "outputs": {
-            "FIZZFRAME": "Fizz帧",
-            "CONDITIONING": "条件"
-        }
-    },
-    "FizzFrame": {
-        "title": "Fizz帧",
-        "inputs": {
-            "previous_frame": "上一帧"
-        },
-        "widgets": {
-            "frame": "帧",
-            "positive_text": "正面文本",
-            "negative_text": "负面文本"
-        },
-        "outputs": {
-            "FIZZFRAME": "Fizz帧",
-            "CONDITIONING": "条件"
-        }
-    },
-    "FizzFrameConcatenate": {
-        "title": "Fizz帧连锁",
-        "inputs": {
-            "frame": "帧"
-        },
-        "outputs": {
-            "STRING": "字符串"
-        }
-    },
-
-    "CalculateLatentInterpFrameNumber": {
-        "title": "计算Latent帧插值",
-        "widgets": {
-            "current_frame": "当前帧",
-            "max_frames": "最大帧数",
-            "num_latent_inputs": "Latent数量"
-        },
-        "outputs": {
-            "INT": "整数"
-        }
+    "outputs": {
+      "FLOAT": "浮点",
+      "INT": "整数"
     }
+  },
+  "SinWave": {
+    "title": "正弦波",
+    "widgets": {
+      "phase": "相位角",
+      "amplitude": "振幅",
+      "x_translation": "X偏移",
+      "y_translation": "Y偏移",
+      "current_frame": "当前帧"
+    },
+    "outputs": {
+      "FLOAT": "浮点",
+      "INT": "整数"
+    }
+  },
+  "InvSinWave": {
+    "title": "反正弦波",
+    "widgets": {
+      "phase": "相位角",
+      "amplitude": "振幅",
+      "x_translation": "X偏移",
+      "y_translation": "Y偏移",
+      "current_frame": "当前帧"
+    },
+    "outputs": {
+      "FLOAT": "浮点",
+      "INT": "整数"
+    }
+  },
+  "CosWave": {
+    "title": "余弦波",
+    "widgets": {
+      "phase": "相位角",
+      "amplitude": "振幅",
+      "x_translation": "X偏移",
+      "y_translation": "Y偏移",
+      "current_frame": "当前帧"
+    },
+    "outputs": {
+      "FLOAT": "浮点",
+      "INT": "整数"
+    }
+  },
+  "InvCosWave": {
+    "title": "反余弦波",
+    "widgets": {
+      "phase": "相位角",
+      "amplitude": "振幅",
+      "x_translation": "X偏移",
+      "y_translation": "Y偏移",
+      "current_frame": "当前帧"
+    },
+    "outputs": {
+      "FLOAT": "浮点",
+      "INT": "整数"
+    }
+  },
+  "SquareWave": {
+    "title": "方波",
+    "widgets": {
+      "phase": "相位角",
+      "amplitude": "振幅",
+      "x_translation": "X偏移",
+      "y_translation": "Y偏移",
+      "current_frame": "当前帧"
+    },
+    "outputs": {
+      "FLOAT": "浮点",
+      "INT": "整数"
+    }
+  },
+  "SawtoothWave": {
+    "title": "锯齿波",
+    "widgets": {
+      "phase": "相位角",
+      "step_increment": "步进",
+      "x_translation": "X偏移",
+      "start_value": "起始值",
+      "current_frame": "当前帧"
+    },
+    "outputs": {
+      "FLOAT": "浮点",
+      "INT": "整数"
+    }
+  },
+  "TriangleWave": {
+    "title": "三角波",
+    "widgets": {
+      "phase": "相位角",
+      "amplitude": "振幅",
+      "x_translation": "X偏移",
+      "y_translation": "Y偏移",
+      "current_frame": "当前帧"
+    },
+    "outputs": {
+      "FLOAT": "浮点",
+      "INT": "整数"
+    }
+  },
+  "AbsCosWave": {
+    "title": "绝对余弦波",
+    "widgets": {
+      "phase": "相位角",
+      "amplitude": "振幅",
+      "x_translation": "X偏移",
+      "max_value": "最大值",
+      "current_frame": "当前帧"
+    },
+    "outputs": {
+      "FLOAT": "浮点",
+      "INT": "整数"
+    }
+  },
+  "AbsSinWave": {
+    "title": "绝对正弦波",
+    "widgets": {
+      "phase": "相位角",
+      "amplitude": "振幅",
+      "x_translation": "X偏移",
+      "max_value": "最大值",
+      "current_frame": "当前帧"
+    },
+    "outputs": {
+      "FLOAT": "浮点",
+      "INT": "整数"
+    }
+  },
+  "PromptSchedule": {
+    "title": "提示词调度",
+    "inputs": {
+      "clip": "CLIP",
+      "current_frame": "当前帧",
+      "pre_text": "前缀文本",
+      "app_text": "后缀文本",
+      "pw_a": "提示词权重A(pw_a)",
+      "pw_b": "提示词权重B(pw_b)",
+      "pw_c": "提示词权重C(pw_c)",
+      "pw_d": "提示词权重D(pw_d)"
+    },
+    "widgets": {
+      "text": "文本",
+      "max_frames": "最大帧数",
+      "print_output": "输出至控制台"
+    },
+    "outputs": {
+      "CONDITIONING": "条件",
+      "POS": "正向提示词",
+      "NEG": "负面提示词"
+    }
+  },
+  "ValueSchedule": {
+    "title": "值调度",
+    "inputs": {
+      "current_frame": "当前帧"
+    },
+    "widgets": {
+      "text": "文本",
+      "max_frames": "最大帧数",
+      "print_output": "打印输出"
+    },
+    "outputs": {
+      "FLOAT": "浮点",
+      "INT": "整数"
+    }
+  },
+  "StringSchedule": {
+    "title": "字符串调度",
+    "inputs": {
+      "pre_text": "前缀文本",
+      "app_text": "后缀文本",
+      "pw_a": "提示词权重A(pw_a)",
+      "pw_b": "提示词权重B(pw_b)",
+      "pw_c": "提示词权重C(pw_c)",
+      "pw_d": "提示词权重D(pw_d)",
+      "clip": "CLIP"
+    },
+    "widgets": {
+      "current_frame": "当前帧",
+      "max_frames": "最大帧数",
+      "print_output": "输出至控制台"
+    },
+    "outputs": {
+      "CONDITIONING": "条件",
+      "POS": "正向提示词",
+      "NEG": "负面提示词"
+    }
+  },
+  "PromptScheduleNodeFlow": {
+    "title": "提示词调度流",
+    "widgets": {
+      "text": "文本",
+      "num_frames": "帧数",
+      "in_text": "预置文本",
+      "max_frames": "最大帧数"
+    },
+    "outputs": {
+      "INT": "整数",
+      "STRING": "字符串"
+    }
+  },
+  "PromptScheduleNodeFlowEnd": {
+    "title": "提示词调度流结尾",
+    "inputs": {
+      "clip": "CLIP",
+      "current_frame": "当前帧",
+      "pre_text": "前缀文本",
+      "app_text": "后缀文本",
+      "pw_a": "提示词权重A(pw_a)",
+      "pw_b": "提示词权重B(pw_b)",
+      "pw_c": "提示词权重C(pw_c)",
+      "pw_d": "提示词权重D(pw_d)"
+    },
+    "widgets": {
+      "text": "文本",
+      "max_frames": "最大帧数",
+      "current_frame": "当前帧",
+      "print_output": "输出至控制台"
+    },
+    "outputs": {
+      "CONDITIONING": "条件",
+      "POS": "正向提示词",
+      "NEG": "负面提示词"
+    }
+  },
+  "PromptScheduleEncodeSDXL": {
+    "title": "提示词调度编码(SDXL)",
+    "inputs": {
+      "clip": "CLIP",
+      "pre_text_G": "预置G文本",
+      "app_text_G": "附加G文本",
+      "pre_text_L": "预置L文本",
+      "app_text_L": "附加L文本",
+      "pw_a": "提示词权重A(pw_a)",
+      "pw_b": "提示词权重B(pw_b)",
+      "pw_c": "提示词权重C(pw_c)",
+      "pw_d": "提示词权重D(pw_d)"
+    },
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "crop_w": "裁剪宽度",
+      "crop_h": "裁剪高度",
+      "target_width": "目标宽度",
+      "target_height": "目标高度",
+      "text_g": "G文本",
+      "text_l": "L文本",
+      "max_frames": "最大帧数",
+      "current_frame": "当前帧",
+      "print_output": "输出至控制台"
+    },
+    "outputs": {
+      "CONDITIONING": "条件",
+      "POS": "正向提示词",
+      "NEG": "负面提示词"
+    }
+  },
+  "BatchPromptSchedule": {
+    "title": "提示词调度(批次)",
+    "inputs": {
+      "clip": "CLIP",
+      "pre_text": "前缀文本",
+      "app_text": "后缀文本",
+      "pw_a": "提示词权重A(pw_a)",
+      "pw_b": "提示词权重B(pw_b)",
+      "pw_c": "提示词权重C(pw_c)",
+      "pw_d": "提示词权重D(pw_d)"
+    },
+    "widgets": {
+      "max_frames": "最大帧数",
+      "print_output": "打印输出",
+      "start_frame": "起始帧",
+      "end_frame": "结束帧"
+    },
+    "outputs": {
+      "CONDITIONING": "条件",
+      "POS": "正向提示词",
+      "NEG": "负面提示词"
+    }
+  },
+  "BatchValueSchedule": {
+    "title": "值调度(批次)",
+    "widgets": {
+      "text": "文本",
+      "print_output": "打印输出",
+      "max_frames": "最大帧数"
+    },
+    "outputs": {
+      "FLOAT": "浮点",
+      "INT": "整数"
+    }
+  },
+  "BatchPromptScheduleEncodeSDXL": {
+    "title": "提示词调度编码(批次SDXL)",
+    "inputs": {
+      "clip": "CLIP",
+      "pre_text_G": "预置G文本",
+      "app_text_G": "附加G文本",
+      "pre_text_L": "预置L文本",
+      "app_text_L": "附加L文本",
+      "pw_a": "提示词权重A(pw_a)",
+      "pw_b": "提示词权重B(pw_b)",
+      "pw_c": "提示词权重C(pw_c)",
+      "pw_d": "提示词权重D(pw_d)"
+    },
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "crop_w": "裁剪宽度",
+      "crop_h": "裁剪高度",
+      "target_width": "目标宽度",
+      "target_height": "目标高度",
+      "text_g": "G文本",
+      "text_l": "L文本",
+      "max_frames": "最大帧数",
+      "start_frame": "起始帧",
+      "end_frame": "结束帧",
+      "print_output": "输出至控制台"
+    },
+    "outputs": {
+      "CONDITIONING": "条件",
+      "POS": "正向提示词",
+      "NEG": "负面提示词"
+    }
+  },
+  "BatchStringSchedule": {
+    "title": "字符串调度(批次)",
+    "inputs": {
+      "pre_text": "前缀文本",
+      "app_text": "后缀文本",
+      "pw_a": "提示词权重A(pw_a)",
+      "pw_b": "提示词权重B(pw_b)",
+      "pw_c": "提示词权重C(pw_c)",
+      "pw_d": "提示词权重D(pw_d)",
+      "clip": "CLIP"
+    },
+    "widgets": {
+      "text": "文本",
+      "max_frames": "最大帧数",
+      "print_output": "输出至控制台"
+    },
+    "outputs": {
+      "CONDITIONING": "条件",
+      "POS": "正向提示词",
+      "NEG": "负面提示词"
+    }
+  },
+  "BatchValueScheduleLatentInput": {
+    "title": "Latent值调度(批次)",
+    "inputs": {
+      "num_latents": "Latent"
+    },
+    "widgets": {
+      "print_output": "输出至控制台",
+      "text": "文本"
+    },
+    "outputs": {
+      "FLOAT": "浮点",
+      "INT": "整数",
+      "LATENT": "Latent"
+    }
+  },
+  "BatchPromptScheduleSDXLLatentInput": {
+    "title": "提示词调度(批次SDXL)",
+    "inputs": {
+      "clip": "CLIP",
+      "num_latents": "Latent",
+      "pre_text_G": "预置G文本",
+      "app_text_G": "附加G文本",
+      "pre_text_L": "预置L文本",
+      "app_text_L": "附加L文本",
+      "pw_a": "提示词权重A(pw_a)",
+      "pw_b": "提示词权重B(pw_b)",
+      "pw_c": "提示词权重C(pw_c)",
+      "pw_d": "提示词权重D(pw_d)"
+    },
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "crop_w": "裁剪宽度",
+      "crop_h": "裁剪高度",
+      "target_width": "目标宽度",
+      "target_height": "目标高度",
+      "text_g": "G文本",
+      "text_l": "L文本",
+      "max_frames": "最大帧数",
+      "start_frame": "起始帧",
+      "end_frame": "结束帧",
+      "print_output": "输出至控制台"
+    },
+    "outputs": {
+      "INPUT_LATENTS": "输入Latent",
+      "LATENT": "Latent",
+      "POS": "正向提示词",
+      "NEG": "负面提示词"
+    }
+  },
+  "BatchPromptScheduleLatentInput": {
+    "title": "Latent提示词调度(批次)",
+    "inputs": {
+      "clip": "CLIP",
+      "num_latents": "Latent",
+      "pre_text": "前缀文本",
+      "app_text": "后缀文本",
+      "pw_a": "提示词权重A(pw_a)",
+      "pw_b": "提示词权重B(pw_b)",
+      "pw_c": "提示词权重C(pw_c)",
+      "pw_d": "提示词权重D(pw_d)"
+    },
+    "widgets": {
+      "text": "文本",
+      "max_frames": "最大帧数",
+      "print_output": "输出至控制台",
+      "start_frame": "起始帧",
+      "end_frame": "结束帧"
+    },
+    "outputs": {
+      "INPUT_LATENTS": "输入Latent",
+      "LATENT": "Latent",
+      "POS": "正向提示词",
+      "NEG": "负面提示词"
+    }
+  },
+  "StringConcatenate": {
+    "title": "字符串连锁",
+    "widgets": {
+      "text": "文本_A",
+      "text_b": "文本_B",
+      "text_c": "文本_C",
+      "text_d": "文本_D",
+      "text_e": "文本_E",
+      "text_f": "文本_F",
+      "text_g": "文本_G",
+      "frame_b": "帧_B",
+      "frame_c": "帧_C",
+      "frame_d": "帧_D",
+      "frame_e": "帧_E",
+      "frame_f": "帧_F",
+      "frame_g": "帧_G"
+    },
+    "outputs": {
+      "STRING": "字符串"
+    }
+  },
+  "Init FizzFrame": {
+    "title": "初始化Fizz帧",
+    "inputs": {
+      "previous_frame": "上一帧",
+      "clip": "CLIP"
+    },
+    "widgets": {
+      "frame": "帧",
+      "positive_text": "正面文本",
+      "negative_text": "负面文本",
+      "general_positive": "通用正面",
+      "general_negative": "通用负面"
+    },
+    "outputs": {
+      "FIZZFRAME": "Fizz帧",
+      "CONDITIONING": "条件",
+      "POS_COND": "正条件",
+      "NEG_COND": "负条件"
+    }
+  },
+  "FizzFrame": {
+    "title": "Fizz帧",
+    "inputs": {
+      "previous_frame": "上一帧"
+    },
+    "widgets": {
+      "frame": "帧",
+      "positive_text": "正面文本",
+      "negative_text": "负面文本"
+    },
+    "outputs": {
+      "FIZZFRAME": "Fizz帧",
+      "CONDITIONING": "条件",
+      "POS_COND": "正条件",
+      "NEG_COND": "负条件"
+    }
+  },
+  "FizzFrameConcatenate": {
+    "title": "Fizz帧连锁",
+    "inputs": {
+      "frame": "帧"
+    },
+    "outputs": {
+      "STRING": "字符串"
+    }
+  },
+  "ImagesFromBatchSchedule": {
+    "title": "从批处理调度获取图像📅🅕🅝",
+    "inputs": {
+      "images": "图像组"
+    },
+    "widgets": {
+      "text": "文本",
+      "current_frame": "当前帧",
+      "max_frames": "最大帧数",
+      "print_output": "打印输出"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "ConcatStringSingle": {
+    "title": "单字符串拼接📅🅕🅝",
+    "inputs": {
+      "string_a": "字符串A",
+      "string_b": "字符串B"
+    },
+    "widgets": {},
+    "outputs": {
+      "string": "字符串"
+    }
+  },
+  "convertKeyframeKeysToBatchKeys": {
+    "title": "关键帧键转批处理键📅🅕🅝",
+    "inputs": {
+      "input": "输入"
+    },
+    "widgets": {
+      "num_latents": "Latent数量"
+    },
+    "outputs": {
+      "INT": "整数"
+    }
+  },
+  "CalculateFrameOffset": {
+    "title": "计算帧偏移",
+    "inputs": {},
+    "widgets": {
+      "current_frame": "当前帧",
+      "max_frames": "最大帧数",
+      "num_latent_inputs": "输入Latent数量",
+      "index": "索引"
+    },
+    "outputs": {
+      "INT": "整数"
+    }
+  },
+  "CalculateLatentInterpFrameNumber": {
+    "title": "计算Latent帧插值",
+    "widgets": {
+      "current_frame": "当前帧",
+      "max_frames": "最大帧数",
+      "num_latent_inputs": "Latent数量"
+    },
+    "outputs": {
+      "INT": "整数"
+    }
+  }
 }

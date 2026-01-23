@@ -1,0 +1,621 @@
+{
+  "🎵📊 Audio Visualizer": {
+    "title": "🎵📊音频可视化器",
+    "inputs": {
+      "audio": "音频"
+    },
+    "widgets": {
+      "output_type": "输出类型",
+      "visualizer_script": "可视化脚本",
+      "scale": "缩放比例",
+      "stereo_to_mono": "立体声转单声道",
+      "framerate": "帧率",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "随机种子"
+    },
+    "outputs": {
+      "image": "图像",
+      "image_batch": "图像批次",
+      "video": "视频"
+    }
+  },
+  "🎨 Colorful Starting Image": {
+    "title": "🎨 多彩起始图像",
+    "inputs": {},
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "components": "组件数量",
+      "component_scale": "组件缩放",
+      "shape_string": "形状字符串",
+      "color_palette": "颜色调色板",
+      "color_harmony": "色彩和谐度",
+      "fill_mode": "填充模式",
+      "shape_opacity": "形状不透明度",
+      "background_color": "背景颜色",
+      "positioning_bias": "定位偏置",
+      "arrangement": "排列方式",
+      "size_distribution": "尺寸分布",
+      "allow_rotation": "允许旋转",
+      "noise_level": "噪点级别",
+      "noise_scale": "噪点缩放",
+      "noise_color": "噪点颜色",
+      "warp_type": "扭曲类型",
+      "warp_intensity": "扭曲强度",
+      "blur_radius": "模糊半径",
+      "seed": "随机种子",
+      "harmony": "和谐度",
+      "palette": "调色板",
+      "harmony_colors": "和谐颜色",
+      "colorized_hue": "彩色色调",
+      "bias": "偏置",
+      "arrangement_params": "排列参数",
+      "max_size": "最大尺寸",
+      "distribution": "分布",
+      "draw": "绘制",
+      "points": "点集",
+      "color": "颜色",
+      "color1": "颜色1",
+      "color2": "颜色2",
+      "opacity": "不透明度",
+      "shape": "形状",
+      "image": "图像",
+      "mask": "遮罩",
+      "pos_bias": "位置偏置",
+      "size_dist": "尺寸分布",
+      "rotation": "旋转",
+      "noise_rng": "噪点随机数生成器",
+      "intensity": "强度"
+    },
+    "outputs": {
+      "image": "图像",
+      "mask": "遮罩"
+    }
+  },
+  "🖼️ Download Image from URL": {
+    "title": "🖼️ 从URL下载图像",
+    "inputs": {},
+    "widgets": {
+      "image_url": "图像URL",
+      "save_file_name_override": "保存文件名覆盖",
+      "save_path": "保存路径"
+    },
+    "outputs": {
+      "image": "图像",
+      "width": "宽度",
+      "height": "高度",
+      "int": "整数"
+    }
+  },
+  "📅 Format Date Time": {
+    "title": "📅 格式化日期时间",
+    "inputs": {
+      "date_format": "日期格式"
+    },
+    "widgets": {
+      "date_format": "日期格式"
+    },
+    "outputs": {
+      "formatted_date_time": "格式化日期时间"
+    }
+  },
+  "⛔ Generate Negative Prompt": {
+    "title": "⛔ 生成负面提示词",
+    "inputs": {
+      "input_prompt": "输入提示词"
+    },
+    "widgets": {
+      "max_length": "最大长度",
+      "num_beams": "束搜索数",
+      "temperature": "温度",
+      "top_k": "Top-K",
+      "top_p": "Top-P",
+      "blocked_words": "屏蔽词汇"
+    },
+    "outputs": {
+      "negative_prompt": "负面提示词"
+    }
+  },
+  "📁 Get File Path": {
+    "title": "获取文件路径",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "image": "图像"
+    },
+    "outputs": {
+      "full_file_path": "完整文件路径",
+      "file_path_only": "仅文件路径",
+      "file_name_only": "仅文件名",
+      "file_extension_only": "仅文件扩展名"
+    }
+  },
+  "GroqAudiotranscription": {
+    "title": "GroqI音频转录",
+    "inputs": {},
+    "widgets": {
+      "model": "模型",
+      "file_path": "文件路径",
+      "preset": "预设",
+      "user_input": "用户输入",
+      "response_format": "响应格式",
+      "temperature": "温度",
+      "language": "语言",
+      "max_retries": "最大重试次数"
+    },
+    "outputs": {
+      "transcription_result": "转录结果",
+      "success": "成功",
+      "status_code": "状态码"
+    }
+  },
+  "✨📝 Groq ALM API - Transcribe": {
+    "title": "Groq API文本翻译",
+    "inputs": {},
+    "widgets": {
+      "model": "模型",
+      "file_path": "文件路径",
+      "preset": "预设",
+      "user_input": "用户输入",
+      "response_format": "响应格式",
+      "temperature": "温度",
+      "language": "语言",
+      "max_retries": "最大重试次数"
+    },
+    "outputs": {
+      "transcription_result": "转录结果",
+      "success": "成功",
+      "status_code": "状态码"
+    }
+  },
+  "GroqAPICompletion": {
+    "title": "Groq API补全",
+    "inputs": {
+      "image": "图像",
+      "prompt_name": "提示词名称",
+      "image_path": "图像路径",
+      "image_tensor": "图像张量",
+      "image_pil": "PIL图像",
+      "filename": "文件名"
+    },
+    "widgets": {
+      "model": "模型",
+      "preset": "预设",
+      "system_message": "系统消息",
+      "user_input": "用户输入",
+      "temperature": "温度",
+      "max_tokens": "最大标记数",
+      "top_p": "Top-P",
+      "seed": "随机种子",
+      "max_retries": "最大重试次数",
+      "stop": "停止序列",
+      "json_mode": "JSON模式"
+    },
+    "outputs": {
+      "string": "字符串",
+      "boolean": "布尔值"
+    }
+  },
+  "✨💬 Groq LLM API": {
+    "title": "✨💬Groq API LLM大语言模型",
+    "inputs": {},
+    "widgets": {
+      "model": "模型",
+      "preset": "预设",
+      "system_message": "系统消息",
+      "user_input": "用户输入",
+      "temperature": "温度",
+      "max_tokens": "最大标记数",
+      "top_p": "Top-P",
+      "seed": "随机种子",
+      "max_retries": "最大重试次数",
+      "stop": "停止序列",
+      "json_mode": "JSON模式"
+    },
+    "outputs": {
+      "api_response": "API 响应",
+      "success": "成功",
+      "status_code": "状态码"
+    }
+  },
+  "✨📷 Groq VLM API": {
+    "title": "✨📷 Groq API VLM视觉语言模型",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "model": "模型",
+      "preset": "预设",
+      "system_message": "系统消息",
+      "user_input": "用户输入",
+      "temperature": "温度",
+      "max_tokens": "最大标记数",
+      "top_p": "Top-P",
+      "seed": "随机种子",
+      "max_retries": "最大重试次数",
+      "stop": "停止序列",
+      "json_mode": "JSON模式"
+    },
+    "outputs": {
+      "api_response": "API 响应",
+      "success": "成功",
+      "status_code": "状态码"
+    }
+  },
+  "📂 Load Images From Path": {
+    "title": "📂从路径加载图像",
+    "inputs": {},
+    "widgets": {
+      "seed": "随机种子",
+      "input_path": "输入路径"
+    },
+    "outputs": {
+      "image": "图像",
+      "mask": "遮罩",
+      "string": "字符串",
+      "image_path": "图像路径",
+      "current_index": "当前索引",
+      "total_count": "总数量"
+    }
+  },
+  "🖼️ Load Image Advanced": {
+    "title": "🖼️ 高级图像加载",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "image": "图像"
+    },
+    "outputs": {
+      "image": "图像",
+      "mask": "遮罩",
+      "image_path": "图像路径",
+      "positive_prompt": "正面提示词",
+      "width": "宽度",
+      "height": "高度",
+      "string": "字符串",
+      "int": "整数"
+    }
+  },
+  "🎲 Load Random Checkpoint": {
+    "title": "随机加载 Checkpoint模型",
+    "inputs": {},
+    "widgets": {
+      "checkpoints": "Checkpoint模型",
+      "seed": "随机种子",
+      "repeat_count": "重复次数",
+      "shuffle": "随机打乱",
+      "query": "查询",
+      "candidates": "候选集",
+      "limit_to_paths": "限制路径"
+    },
+    "outputs": {
+      "model": "模型",
+      "clip": "CLIP模型",
+      "vae": "VAE模型",
+      "path": "路径"
+    }
+  },
+  "LoadTextImagePairsList": {
+    "title": "加载文本图像对列表",
+    "inputs": {
+      "image_input": "图像输入"
+    },
+    "widgets": {
+      "seed": "随机种子",
+      "folder_path": "文件夹路径",
+      "force_reload": "强制重新加载",
+      "text_input": "文本输入",
+      "limit_count": "限制数量",
+      "text_format_extension": "文本格式扩展名",
+      "img_tensor": "图像张量",
+      "target_height": "目标高度",
+      "target_width": "目标宽度"
+    },
+    "outputs": {
+      "image": "图像",
+      "string": "字符串",
+      "int": "整数"
+    }
+  },
+  "LoadTextImagePairSingle": {
+    "title": "加载单个文本图像对",
+    "inputs": {
+      "image_input": "图像输入"
+    },
+    "widgets": {
+      "seed": "随机种子",
+      "folder_path": "文件夹路径",
+      "image_input": "图像输入",
+      "text_input": "文本输入",
+      "text_format_extension": "文本格式扩展名"
+    },
+    "outputs": {
+      "image": "图像",
+      "string": "字符串",
+      "int": "整数"
+    }
+  },
+  "🏷️ LoRA Loader Prompt Tags": {
+    "title": "🏷️ 加载LoRA标签",
+    "inputs": {
+      "MODEL": "模型",
+      "CLIP": "CLIP模型",
+      "STRING": "字符串"
+    },
+    "widgets": {
+      "console_log": "控制台日志"
+    },
+    "outputs": {
+      "model": "模型",
+      "clip": "CLIP模型",
+      "string": "字符串",
+      "MODEL": "模型",
+      "CLIP": "CLIP模型",
+      "STRING": "字符串"
+    }
+  },
+  "🖼️📊 Metadata Extractor (List)": {
+    "title": "🖼️📊 元数据提取器 (列表)",
+    "inputs": {
+      "image_input": "图像输入"
+    },
+    "widgets": {
+      "seed": "随机种子",
+      "input_path": "输入路径",
+      "filter_params": "过滤参数",
+      "max_file_count": "最大文件数"
+    },
+    "outputs": {
+      "image": "图像",
+      "positive_prompt": "正面提示词",
+      "negative_prompt": "负面提示词",
+      "parsed_params_json": "解析后的参数 JSON 数据",
+      "filtered_params_grouped": "过滤后并分组的参数",
+      "raw_metadata_json": "原始元数据 JSON 数据",
+      "string": "字符串"
+    }
+  },
+  "🖼️📊 Metadata Extractor (Single)": {
+    "title": "🖼️📊 元数据提取器 (单文件)",
+    "inputs": {
+      "image_input": "图像输入"
+    },
+    "widgets": {
+      "seed": "随机种子",
+      "input_path": "输入路径",
+      "filter_params": "过滤参数"
+    },
+    "outputs": {
+      "image": "图像",
+      "positive_prompt": "正面提示词",
+      "negative_prompt": "负面提示词",
+      "parsed_params_json": "解析后的参数 JSON 数据",
+      "filtered_params_grouped": "过滤后并分组的参数",
+      "filtered_params_list": "过滤后的参数列表",
+      "raw_metadata_json": "原始元数据 JSON 数据",
+      "string": "字符串"
+    }
+  },
+  "⚙️ Prompt Property Extractor": {
+    "title": "⚙️提示词属性提取器",
+    "inputs": {
+      "model": "模型",
+      "clip": "CLIP模型",
+      "vae": "VAE模型"
+    },
+    "widgets": {
+      "input_string": "输入字符串",
+      "load_clip_from_checkpoint": "从Checkpoint模型加载CLIP",
+      "load_vae_from_checkpoint": "从Checkpoint模型加载VAE",
+      "cfg": "CFG引导系数",
+      "steps": "步数",
+      "sampler_name": "采样器名称",
+      "denoise": "降噪",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "随机种子",
+      "start_step": "起始步骤",
+      "end_step": "结束步骤"
+    },
+    "outputs": {
+      "model": "模型",
+      "clip": "CLIP模型",
+      "vae": "VAE模型",
+      "positive": "正面提示词",
+      "negative": "负面提示词",
+      "seed": "随机种子",
+      "steps": "步数",
+      "latent": "Latent",
+      "cfg": "CFG引导系数",
+      "sampler": "采样器",
+      "denoise": "降噪",
+      "int": "整数",
+      "float": "浮点数",
+      "none": "无",
+      "width": "宽度",
+      "height": "高度",
+      "start_step": "起始步骤",
+      "end_step": "结束步骤",
+      "other_tags": "其他标签",
+      "resolved_string": "已解析字符串",
+      "string": "字符串"
+    }
+  },
+  "📐 Resolution Image Size Selector": {
+    "title": "📐 图像尺寸选择器",
+    "inputs": {
+      "image (optional)": "图像（可选）"
+    },
+    "widgets": {
+      "preset": "预设",
+      "preset_user": "用户预设",
+      "custom_width": "自定义宽度",
+      "custom_height": "自定义高度",
+      "multiply": "乘数",
+      "swap_width_and_height": "交换宽高",
+      "image_min_length": "图像最小长度",
+      "image_max_length": "图像最大长度",
+      "snap_to_nearest": "对齐到最近值",
+      "snap_resolution": "对齐分辨率",
+      "batch_size": "批次大小",
+      "width": "宽度",
+      "height": "高度",
+      "preset_name": "预设名称",
+      "from_user_presets": "来自用户预设",
+      "image": "图像"
+    },
+    "outputs": {
+      "width": "宽度",
+      "height": "高度",
+      "latent": "Latent"
+    }
+  },
+  "💾 Save Text File With Path": {
+    "title": "💾保存文本文件到路径",
+    "inputs": {
+      "file_text": "文件文本"
+    },
+    "widgets": {
+      "path": "路径",
+      "prefix": "前缀",
+      "counter_separator": "计数器分隔符",
+      "counter_length": "计数器长度",
+      "suffix": "后缀",
+      "output_extension": "输出扩展名",
+      "separator": "分隔符",
+      "number_padding": "数字填充",
+      "extension": "扩展名",
+      "file": "文件",
+      "content": "内容"
+    },
+    "outputs": {
+      "output_full_path": "输出完整路径",
+      "output_name": "输出名称",
+      "output_path": "输出路径"
+    }
+  },
+  "🧹 String Cleaning": {
+    "title": "🧹 字符串清理",
+    "inputs": {
+      "input_string": "输入字符串"
+    },
+    "widgets": {
+      "collapse_sequential_spaces": "合并连续空格",
+      "strip_leading_spaces": "去除前导空格",
+      "strip_trailing_spaces": "去除尾随空格",
+      "strip_empty_lines": "去除空行",
+      "strip_leading_symbols": "去除前导符号",
+      "strip_trailing_symbols": "去除尾随符号",
+      "strip_newlines": "去除换行符",
+      "replace_newlines_with_period_space": "用句点和空格替换换行",
+      "strip_inside_tags": "去除标签内部内容",
+      "strip_between_start": "起始标记间去除",
+      "strip_between_end": "结束标记间去除",
+      "strip_leading_custom": "去除自定义前导字符",
+      "strip_trailing_custom": "去除自定义尾随字符",
+      "strip_all_custom": "去除所有自定义字符",
+      "remove_text_before": "移除前面文本",
+      "remove_text_after": "移除后面文本",
+      "multiline_find": "多行查找",
+      "multiline_replace": "多行替换"
+    },
+    "outputs": {
+      "string": "字符串",
+      "cleaned_string": "清理后的字符串"
+    }
+  },
+  "✂️ String Text Extractor": {
+    "title": "✂️ 字符串文本提取器",
+    "inputs": {
+      "input_string": "输入字符串"
+    },
+    "widgets": {
+      "input_string": "输入字符串",
+      "delimiters": "分隔符"
+    },
+    "outputs": {
+      "string": "字符串",
+      "extracted_text": "提取的文本",
+      "remainder_text": "剩余的文本",
+      "extracted_list": "提取的列表"
+    }
+  },
+  "✂️ String Text Splitter": {
+    "title": "✂️ 字符串文本分割器",
+    "inputs": {
+      "input_string": "输入字符串"
+    },
+    "widgets": {
+      "delimiter": "分隔符",
+      "split_at_linebreaks": "在换行处分割",
+      "target_indices": "目标索引"
+    },
+    "outputs": {
+      "string": "字符串",
+      "first_chunk": "第一部分",
+      "remainder": "余数",
+      "chunk_list": "分块列表",
+      "targeted_chunks": "目标分块"
+    }
+  },
+  "🔠 Tiktoken Tokenizer Info": {
+    "title": "🔠 Tiktoken分词器",
+    "inputs": {
+      "input_string": "输入字符串"
+    },
+    "widgets": {
+      "input_string": "输入字符串",
+      "encoding_type": "编码类型",
+      "token_chunk_size": "标记块大小"
+    },
+    "outputs": {
+      "int": "整数",
+      "list": "列表",
+      "token_count": "词元计数",
+      "character_count": "字符计数",
+      "word_count": "单词计数",
+      "split_string": "分割字符串",
+      "split_string_list": "分割字符串列表",
+      "split_token_ids": "分割词元ID",
+      "split_token_ids_list": "分割词元ID列表",
+      "text_hash": "文本哈希",
+      "special_tokens_used": "已使用的特殊词元",
+      "special_tokens_used_list": "已使用的特殊词元列表",
+      "token_chunk_by_size": "按大小分块的词元",
+      "token_chunk_by_size_to_word": "按大小分块至单词",
+      "token_chunk_by_size_to_section": "按大小分块至段落"
+    }
+  },
+  "📝 Wildcard Processor": {
+    "title": "📝提示词处理器",
+    "inputs": {
+      "wildcard_string": "提示词字符串"
+    },
+    "widgets": {
+      "wildcard_string": "提示词字符串",
+      "seed": "随机种子",
+      "multiple_separator": "多重分隔符",
+      "recache_wildcards": "重新缓存提示词",
+      "console_log": "控制台日志",
+      "message": "消息",
+      "level": "级别",
+      "log": "日志",
+      "wildcard_name": "提示词名称",
+      "match": "匹配",
+      "text": "文本",
+      "tag_delimiters_str": "标签分隔符字符串"
+    },
+    "outputs": {
+      "string": "字符串",
+      "processed_text": "已处理文本",
+      "seed": "种子",
+      "extracted_tags_string": "提取标签（字符串）",
+      "extracted_tags_list": "提取标签（列表）",
+      "raw_tags_string": "原始标签（字符串）",
+      "raw_tags_list": "原始标签（列表）"
+    }
+  }
+}
