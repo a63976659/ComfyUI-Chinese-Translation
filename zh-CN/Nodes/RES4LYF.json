@@ -533,18 +533,20 @@
             "width": "宽度",
             "height": "高度",
             "mask": "遮罩",
+            "empty_latent": "空Latent",
             "int": "整数"
         }
     },
     "VAEStyleTransferLatent": {
         "title": "VAE风格转移Latent",
         "inputs": {
-            "method": "方法",
             "latent": "Latent",
             "style_ref": "风格参考",
             "vae": "VAE"
         },
-        "widgets": {},
+        "widgets": {
+            "method": "方法"
+        },
         "outputs": {
             "latent": "Latent"
         }
@@ -612,124 +614,8 @@
             "image": "图像"
         }
     },
-    "Film_Grain": {
-        "title": "胶片颗粒",
-        "inputs": {
-            "image": "图像",
-            "density": "密度",
-            "intensity": "强度",
-            "highlights": "高光",
-            "supersample_factor": "超采样因子",
-            "repeats": "重复次数",
-            "img": "图像"
-        },
-        "widgets": {},
-        "outputs": {
-            "image": "图像"
-        }
-    },
-    "Image_Grain_Add": {
-        "title": "图像添加噪点",
-        "inputs": {
-            "image": "图像",
-            "weight": "权重",
-            "density": "密度",
-            "intensity": "强度",
-            "highlights": "高光",
-            "supersample_factor": "超采样因子",
-            "repeats": "重复次数",
-            "img": "图像"
-        },
-        "widgets": {},
-        "outputs": {
-            "image": "图像"
-        }
-    },
-    "Frequency_Separation_Hard_Light": {
-        "title": "频率分离_强光",
-        "inputs": {
-            "high_pass": "高通",
-            "original": "原始图像",
-            "low_pass": "低通"
-        },
-        "widgets": {},
-        "outputs": {
-            "image": "图像"
-        }
-    },
-    "Frequency_Separation_Hard_Light_LAB": {
-        "title": "频率分离_强光_LAB",
-        "inputs": {
-            "high_pass": "高通",
-            "original": "原始图像",
-            "low_pass": "低通"
-        },
-        "widgets": {},
-        "outputs": {
-            "image": "图像"
-        }
-    },
-    "Frame_Select": {
-        "title": "帧选择",
-        "inputs": {
-            "frames": "帧序列",
-            "select": "选择帧号"
-        },
-        "widgets": {},
-        "outputs": {
-            "image": "图像"
-        }
-    },
-    "Frames_Slice": {
-        "title": "帧切片",
-        "inputs": {
-            "frames": "帧序列",
-            "start": "开始帧",
-            "stop": "结束帧"
-        },
-        "widgets": {},
-        "outputs": {
-            "image": "图像"
-        }
-    },
-    "Frames_Concat": {
-        "title": "帧拼接",
-        "inputs": {
-            "frames_0": "帧序列_0",
-            "frames_1": "帧序列_1"
-        },
-        "widgets": {},
-        "outputs": {
-            "image": "图像"
-        }
-    },
-    "Image_Channels_LAB": {
-        "title": "图像通道_LAB",
-        "inputs": {
-            "RGB": "RGB",
-            "L": "L通道",
-            "A": "A通道",
-            "B": "B通道"
-        },
-        "widgets": {},
-        "outputs": {
-            "image": "图像"
-        }
-    },
     "Frequency_Separation_Vivid_Light": {
         "title": "频率分离_鲜艳光",
-        "inputs": {
-            "high_pass": "高通",
-            "original": "原始图像",
-            "low_pass": "低通"
-        },
-        "widgets": {},
-        "outputs": {
-            "image": "图像"
-        }
-    },
-    "Frequency_Separation_Linear_Light": {
-        "title": "频率分离_线性光",
         "inputs": {
             "high_pass": "高通",
             "original": "原始图像",
@@ -754,41 +640,7 @@
             "image": "图像"
         }
     },
-    "ImageSharpenFS": {
-        "title": "图像锐化FS",
-        "inputs": {
-            "images": "图像",
-            "method": "方法",
-            "type": "类型",
-            "intensity": "强度"
-        },
-        "widgets": {},
-        "outputs": {
-            "image": "图像"
-        }
-    },
-    "ImageMedianBlur": {
-        "title": "图像中值模糊",
-        "inputs": {
-            "images": "图像",
-            "size": "大小"
-        },
-        "widgets": {},
-        "outputs": {
-            "image": "图像"
-        }
-    },
-    "ImageGaussianBlur": {
-        "title": "图像高斯模糊",
-        "inputs": {
-            "images": "图像",
-            "size": "大小"
-        },
-        "widgets": {},
-        "outputs": {
-            "image": "图像"
-        }
-    },
+
     "FastSmudgeBlur": {
         "title": "快速涂抹模糊",
         "inputs": {
@@ -800,30 +652,15 @@
             "image": "图像"
         }
     },
-    "Image_Pair_Split": {
+    "Image Pair Split": {
         "title": "图像对拆分",
         "inputs": {
             "img_pair": "图像对"
         },
         "widgets": {},
         "outputs": {
-            "image": "图像"
-        }
-    },
-    "Image_Crop_Location_Exact": {
-        "title": "图像精确位置裁剪",
-        "inputs": {
-            "image": "图像",
-            "x": "X坐标",
-            "y": "Y坐标",
-            "width": "宽度",
-            "height": "高度",
-            "edge": "边缘处理"
-        },
-        "widgets": {},
-        "outputs": {
-            "image": "图像",
-            "crop_data": "裁剪数据"
+            "img_0": "图像0",
+            "img_1": "图像1"
         }
     },
     "Masks Unpack 4": {
@@ -857,38 +694,6 @@
         "outputs": {
             "mask": "遮罩",
             "masks": "遮罩"
-        }
-    },
-    "Image_Get_Color_Swatches": {
-        "title": "图像获取颜色样本",
-        "inputs": {
-            "image_color_swatches": "图像颜色样本"
-        },
-        "widgets": {},
-        "outputs": {
-            "color_swatches": "颜色样本"
-        }
-    },
-    "Masks_From_Color_Swatches": {
-        "title": "从颜色样本生成遮罩",
-        "inputs": {
-            "image_color_mask": "图像颜色遮罩",
-            "color_swatches": "颜色样本"
-        },
-        "widgets": {},
-        "outputs": {
-            "mask": "遮罩"
-        }
-    },
-    "Masks_From_Colors": {
-        "title": "从颜色生成遮罩",
-        "inputs": {
-            "image_color_swatches": "图像颜色样本",
-            "image_color_mask": "图像颜色遮罩"
-        },
-        "widgets": {},
-        "outputs": {
-            "mask": "遮罩"
         }
     },
     "MaskSketch": {
@@ -1677,74 +1482,6 @@
             "mask": "遮罩"
         }
     },
-    "Frame_Select_Latent_Raw": {
-        "title": "帧选择Latent原始",
-        "inputs": {
-            "frames": "帧",
-            "select": "选择"
-        },
-        "widgets": {},
-        "outputs": {
-            "latent": "Latent"
-        }
-    },
-    "Frames_Slice_Latent_Raw": {
-        "title": "帧切片Latent原始",
-        "inputs": {
-            "frames": "帧",
-            "start": "开始",
-            "stop": "结束"
-        },
-        "widgets": {},
-        "outputs": {
-            "latent": "Latent"
-        }
-    },
-    "Frames_Concat_Latent_Raw": {
-        "title": "帧拼接Latent原始",
-        "inputs": {
-            "frames_0": "帧0",
-            "frames_1": "帧1"
-        },
-        "widgets": {},
-        "outputs": {
-            "latent": "Latent"
-        }
-    },
-    "Frame_Select_Latent": {
-        "title": "帧选择Latent",
-        "inputs": {
-            "frames": "帧",
-            "select": "选择"
-        },
-        "widgets": {},
-        "outputs": {
-            "latent": "Latent"
-        }
-    },
-    "Frames_Slice_Latent": {
-        "title": "帧切片Latent",
-        "inputs": {
-            "frames": "帧",
-            "start": "开始",
-            "stop": "结束"
-        },
-        "widgets": {},
-        "outputs": {
-            "latent": "Latent"
-        }
-    },
-    "Frames_Concat_Latent": {
-        "title": "帧拼接Latent",
-        "inputs": {
-            "frames_0": "帧0",
-            "frames_1": "帧1"
-        },
-        "widgets": {},
-        "outputs": {
-            "latent": "Latent"
-        }
-    },
     "Frames Concat Masks": {
         "title": "帧拼接遮罩",
         "inputs": {
@@ -2362,7 +2099,7 @@
             "cond_pos": "正面条件",
             "cond_neg": "负面条件",
             "conditioning": "条件",
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "latent_image": "Latent图像"
         }
     },
@@ -2880,13 +2617,13 @@
     "set_precision_sigmas": {
         "title": "设置噪声调度表精度",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "precision": "精度",
             "set_default": "设为默认"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_interpolate": {
@@ -2901,27 +2638,27 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_noise_inversion": {
         "title": "噪声调度表噪声反转",
         "inputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_variance_floor": {
         "title": "噪声调度表方差下限",
         "inputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_from_text": {
@@ -2931,7 +2668,7 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_concatenate": {
@@ -2942,96 +2679,96 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_truncate": {
         "title": "噪声调度表截断",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "sigmas_until": "截断点"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_start": {
         "title": "噪声调度表起始段",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "sigmas_until": "截止点"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_split": {
         "title": "噪声调度表分割",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "sigmas_start": "起始点",
             "sigmas_end": "结束点"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_pad": {
         "title": "噪声调度表填充",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "value": "填充值"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_unpad": {
         "title": "噪声调度表去除填充",
         "inputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_set_floor": {
         "title": "设置噪声调度表下限",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "floor": "下限值",
             "new_floor": "新下限值"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_delete_below_floor": {
         "title": "删除低于下限的噪声值",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "floor": "下限值"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_delete_value": {
         "title": "删除指定噪声值",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "value": "目标值"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_delete_consecutive_duplicates": {
@@ -3041,84 +2778,84 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_cleanup": {
         "title": "噪声调度表清理",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "sigmin": "最小噪声值"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_mult": {
         "title": "噪声调度表乘法",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "multiplier": "乘数",
             "sigmas2": "噪声调度表2"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_modulus": {
         "title": "噪声调度表取模",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "divisor": "除数"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_quotient": {
         "title": "噪声调度表整除",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "divisor": "除数"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_add": {
         "title": "噪声调度表加法",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "addend": "加数"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_power": {
         "title": "噪声调度表幂运算",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "power": "幂指数"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_abs": {
         "title": "噪声调度表绝对值",
         "inputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas2_mult": {
@@ -3129,7 +2866,7 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas2_add": {
@@ -3140,7 +2877,7 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "Sigmas Recast": {
@@ -3159,7 +2896,7 @@
     "sigmas_count": {
         "title": "统计噪声调度表长度",
         "inputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         },
         "widgets": {},
         "outputs": {
@@ -3185,7 +2922,7 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_math3": {
@@ -3215,7 +2952,7 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_iteration_karras": {
@@ -3229,11 +2966,11 @@
             "s_max": "最大噪声值",
             "s_min_end": "结束最小噪声值",
             "momentums": "动量列表",
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_iteration_polyexp": {
@@ -3247,11 +2984,11 @@
             "s_max": "最大噪声值",
             "s_min_end": "结束最小噪声值",
             "momentums": "动量列表",
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "tan_scheduler": {
@@ -3267,7 +3004,7 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "tan_scheduler_2stage": {
@@ -3288,7 +3025,7 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "tan_scheduler_2stage_simple": {
@@ -3308,7 +3045,7 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "linear_quadratic_advanced": {
@@ -3321,7 +3058,7 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "constant_scheduler": {
@@ -3334,7 +3071,7 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "ClownScheduler": {
@@ -3357,13 +3094,13 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_sigmoid": {
         "title": "Sigmoid噪声调度表变换",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "variant": "变体类型",
             "gain": "增益",
             "offset": "偏移量",
@@ -3371,13 +3108,13 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_easing": {
         "title": "缓动函数噪声调度表变换",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "easing_type": "缓动类型",
             "easing_mode": "缓动模式",
             "normalize_input": "标准化输入",
@@ -3387,26 +3124,26 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_hyperbolic": {
         "title": "双曲函数噪声调度表变换",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "function": "函数类型",
             "scale": "缩放因子",
             "normalize_output": "标准化输出"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_gaussian": {
         "title": "高斯噪声调度表变换",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "mean": "均值",
             "std": "标准差",
             "operation": "操作类型",
@@ -3414,13 +3151,13 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_percentile": {
         "title": "百分位噪声调度表映射",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "percentile_min": "最小百分位",
             "percentile_max": "最大百分位",
             "target_min": "目标最小值",
@@ -3429,39 +3166,39 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_kernel_smooth": {
         "title": "核平滑噪声调度表",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "kernel": "核函数",
             "kernel_size": "核大小",
             "sigma": "平滑参数"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_quantile_norm": {
         "title": "分位数标准化噪声调度表",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "target_distribution": "目标分布",
             "num_quantiles": "分位数数量",
             "reference_sigmas": "参考噪声调度表"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_adaptive_step": {
         "title": "自适应步长噪声调度表",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "adaptation_type": "适应类型",
             "sensitivity": "敏感度",
             "min_step": "最小步长",
@@ -3470,13 +3207,13 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_chaos": {
         "title": "混沌系统噪声调度表",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "system": "混沌系统",
             "parameter": "系统参数",
             "iterations": "迭代次数",
@@ -3485,13 +3222,13 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_reaction_diffusion": {
         "title": "反应-扩散系统噪声调度表",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "system": "反应-扩散系统",
             "iterations": "迭代次数",
             "dt": "时间步长",
@@ -3503,13 +3240,13 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_attractor": {
         "title": "吸引子系统噪声调度表",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "attractor": "吸引子类型",
             "iterations": "迭代次数",
             "dt": "时间步长",
@@ -3518,18 +3255,18 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_catmull_rom": {
         "title": "Catmull-Rom样条噪声调度表",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "tension": "张力参数"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_conway_sequence": {
@@ -3543,7 +3280,7 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_gilbreath_sequence": {
@@ -3557,20 +3294,20 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_cnf_inverse": {
         "title": "CNF逆变换噪声调度表",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "time_steps": "时间步数",
             "flow_type": "流类型",
             "reverse": "反向"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_riemannian_flow": {
@@ -3584,7 +3321,7 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_langevin_dynamics": {
@@ -3599,7 +3336,7 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_persistent_homology": {
@@ -3614,7 +3351,7 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_normalizing_flows": {
@@ -3629,19 +3366,19 @@
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "sigmas_split_value": {
         "title": "按值分割噪声调度表",
         "inputs": {
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "split_value": "分割值",
             "bias_split_up": "向上偏置分割"
         },
         "widgets": {},
         "outputs": {
-            "sigmas": "噪声调度表"
+            "sigmas": "调度表"
         }
     },
     "SharkSampler": {
@@ -3660,7 +3397,7 @@
             "positive": "正向条件引导",
             "negative": "负向条件引导",
             "sampler": "采样算法",
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "latent_image": "Latent图像",
             "extra_options": "额外选项",
             "options": "选项",
@@ -3703,7 +3440,7 @@
             "positive": "正向条件引导",
             "negative": "负向条件引导",
             "sampler": "采样算法",
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "latent_image": "Latent图像",
             "options": "选项",
             "denoise_alt": "备用降噪强度",
@@ -3739,7 +3476,7 @@
             "positive": "正向条件引导",
             "negative": "负向条件引导",
             "sampler": "采样算法",
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "latent_image": "Latent图像",
             "options": "选项",
             "denoise_alt": "备用降噪强度",
@@ -3889,7 +3626,7 @@
             "implicit_type_substeps": "隐式子步积分类型",
             "implicit_steps": "隐式步数",
             "implicit_substeps": "隐式子步数",
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "sigmas_override": "覆盖噪声调度表",
             "guides": "引导数据",
             "options": "选项",
@@ -3969,7 +3706,7 @@
             "implicit_type_substeps": "隐式子步积分类型",
             "implicit_steps": "隐式步数",
             "implicit_substeps": "隐式子步数",
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "sigmas_override": "覆盖噪声调度表",
             "guides": "引导数据",
             "options": "选项",
@@ -4041,7 +3778,7 @@
             "implicit_type_substeps": "隐式子步积分类型",
             "implicit_steps": "隐式步数",
             "implicit_substeps": "隐式子步数",
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "sigmas_override": "覆盖噪声调度表",
             "guides": "引导数据",
             "options": "选项",
@@ -4105,7 +3842,7 @@
             "implicit_type_substeps": "隐式子步积分类型",
             "implicit_steps": "隐式步数",
             "implicit_substeps": "隐式子步数",
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "sigmas_override": "覆盖噪声调度表",
             "guides": "引导数据",
             "options": "选项",
@@ -4729,7 +4466,7 @@
             "truncate_conditioning": "截断条件引导",
             "positive": "正向条件引导",
             "negative": "负向条件引导",
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "latent_image": "Latent图像",
             "guides": "引导数据",
             "options": "选项",
@@ -4846,7 +4583,7 @@
             "negative": "负向条件引导",
             "sampler": "采样算法",
             "latent_image": "Latent图像",
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "latent_noise": "Latent噪声",
             "latent_noise_match": "Latent噪声匹配"
         },
@@ -4971,7 +4708,7 @@
             "positive": "正向条件引导",
             "negative": "负向条件引导",
             "sampler": "采样算法",
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "latent_image": "Latent图像",
             "options": "选项",
             "extra_options": "额外选项",
@@ -5012,7 +4749,7 @@
             "extra_options": "额外选项",
             "positive": "正向条件引导",
             "negative": "负向条件引导",
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "latent_image": "Latent图像",
             "guides": "引导数据",
             "options": "选项",
@@ -5075,7 +4812,7 @@
             "positive": "正向条件引导",
             "negative": "负向条件引导",
             "sampler": "采样算法",
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "latent_image": "Latent图像",
             "guide_type": "引导类型",
             "guide_weight": "引导权重",
@@ -5311,6 +5048,956 @@
             "options": "选项"
         }
     },
+    "Sigmas Noise Inversion": {
+        "title": "噪声反转Sigma序列",
+        "inputs": {
+            "sigmas": "Sigma序列"
+        },
+        "widgets": {
+            "sigmas": "Sigma序列"
+        },
+        "outputs": {
+            "sigmas_fwd": "sigma_前向",
+            "sigmas_rev": "sigma_反向"
+        }
+    },
+    "Sigmas Variance Floor": {
+        "title": "方差下限Sigma序列",
+        "inputs": {
+            "sigmas": "Sigma序列"
+        },
+        "widgets": {
+            "sigmas": "Sigma序列"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas From Text": {
+        "title": "从文本生成Sigma序列",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "text": "文本"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas Concat": {
+        "title": "Sigma序列拼接",
+        "inputs": {
+            "sigmas_1": "Sigma序列1",
+            "sigmas_2": "Sigma序列2"
+        },
+        "widgets": {},
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas Truncate": {
+        "title": "Sigma序列截断",
+        "inputs": {
+            "sigmas": "Sigma序列"
+        },
+        "widgets": {
+            "sigmas_until": "截断位置"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas Start": {
+        "title": "Sigma序列起始",
+        "inputs": {
+            "sigmas": "Sigma序列"
+        },
+        "widgets": {
+            "sigmas_until": "起始位置"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas Split": {
+        "title": "Sigma序列分割",
+        "inputs": {
+            "sigmas": "Sigma序列"
+        },
+        "widgets": {
+            "sigmas_start": "起始位置",
+            "sigmas_end": "结束位置"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas Pad": {
+        "title": "Sigma序列填充",
+        "inputs": {
+            "sigmas": "Sigma序列"
+        },
+        "widgets": {
+            "value": "填充值"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas Unpad": {
+        "title": "Sigma序列去填充",
+        "inputs": {
+            "sigmas": "Sigma序列"
+        },
+        "widgets": {
+            "sigmas": "Sigma序列"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas_Set_Floor": {
+        "title": "设置Sigma序列下限",
+        "inputs": {
+            "sigmas": "Sigma序列",
+            "floor": "原下限",
+            "new_floor": "新下限"
+        },
+        "widgets": {
+            "sigmas": "Sigma序列",
+            "floor": "原下限",
+            "new_floor": "新下限"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas_Delete_Below_Floor": {
+        "title": "删除低于下限的Sigma值",
+        "inputs": {
+            "sigmas": "Sigma序列",
+            "floor": "下限"
+        },
+        "widgets": {
+            "sigmas": "Sigma序列",
+            "floor": "下限"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas_Delete_Value": {
+        "title": "删除特定Sigma值",
+        "inputs": {
+            "sigmas": "Sigma序列",
+            "value": "删除值"
+        },
+        "widgets": {
+            "sigmas": "Sigma序列",
+            "value": "删除值"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas Split Value": {
+        "title": "Sigma分割值",
+        "inputs": {
+            "sigmas": "Sigma序列"
+        },
+        "widgets": {
+            "split_value": "分割值",
+            "bias_split_up": "偏向于向上分割"
+        },
+        "outputs": {
+            "high_sigmas": "高Sigma",
+            "low_sigmas": "低Sigma"
+        }
+    },
+    "Sigmas_Delete_Consecutive_Duplicates": {
+        "title": "删除连续重复的Sigma值",
+        "inputs": {
+            "sigmas_1": "Sigma序列1"
+        },
+        "widgets": {
+            "sigmas_1": "Sigma序列1"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas_Cleanup": {
+        "title": "Sigma序列清理",
+        "inputs": {
+            "sigmas": "Sigma序列",
+            "sigmin": "最小Sigma值"
+        },
+        "widgets": {
+            "sigmas": "Sigma序列",
+            "sigmin": "最小Sigma值"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas_Mult": {
+        "title": "Sigma序列乘法",
+        "inputs": {
+            "sigmas": "Sigma序列",
+            "multiplier": "乘数",
+            "sigmas2": "Sigma序列2"
+        },
+        "widgets": {
+            "sigmas": "Sigma序列",
+            "multiplier": "乘数",
+            "sigmas2": "Sigma序列2"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas_Modulus": {
+        "title": "Sigma序列取模",
+        "inputs": {
+            "sigmas": "Sigma序列",
+            "divisor": "除数"
+        },
+        "widgets": {
+            "sigmas": "Sigma序列",
+            "divisor": "除数"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas_Quotient": {
+        "title": "Sigma序列取商",
+        "inputs": {
+            "sigmas": "Sigma序列",
+            "divisor": "除数"
+        },
+        "widgets": {
+            "sigmas": "Sigma序列",
+            "divisor": "除数"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas_Add": {
+        "title": "Sigma序列加法",
+        "inputs": {
+            "sigmas": "Sigma序列",
+            "addend": "加数"
+        },
+        "widgets": {
+            "sigmas": "Sigma序列",
+            "addend": "加数"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas_Power": {
+        "title": "Sigma序列幂运算",
+        "inputs": {
+            "sigmas": "Sigma序列",
+            "power": "指数"
+        },
+        "widgets": {
+            "sigmas": "Sigma序列",
+            "power": "指数"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas_Abs": {
+        "title": "Sigma序列绝对值",
+        "inputs": {
+            "sigmas": "Sigma序列"
+        },
+        "widgets": {
+            "sigmas": "Sigma序列"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas2_Mult": {
+        "title": "双Sigma序列乘法",
+        "inputs": {
+            "sigmas_1": "Sigma序列1",
+            "sigmas_2": "Sigma序列2"
+        },
+        "widgets": {
+            "sigmas_1": "Sigma序列1",
+            "sigmas_2": "Sigma序列2"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas2_Add": {
+        "title": "双Sigma序列加法",
+        "inputs": {
+            "sigmas_1": "Sigma序列1",
+            "sigmas_2": "Sigma序列2"
+        },
+        "widgets": {
+            "sigmas_1": "Sigma序列1",
+            "sigmas_2": "Sigma序列2"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas_Rescale": {
+        "title": "Sigma序列重缩放",
+        "inputs": {
+            "start": "起始值",
+            "end": "结束值",
+            "sigmas": "Sigma序列"
+        },
+        "widgets": {
+            "start": "起始值",
+            "end": "结束值",
+            "sigmas": "Sigma序列"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas_Count": {
+        "title": "Sigma序列计数",
+        "inputs": {
+            "sigmas": "Sigma序列"
+        },
+        "widgets": {
+            "sigmas": "Sigma序列"
+        },
+        "outputs": {
+            "int": "整数"
+        }
+    },
+    "Sigmas_Math1": {
+        "title": "单函数Sigma序列数学运算",
+        "inputs": {
+            "start": "起始值",
+            "stop": "停止值",
+            "trim": "修剪",
+            "x": "X参数",
+            "y": "Y参数",
+            "z": "Z参数",
+            "f1": "函数1",
+            "rescale": "重缩放",
+            "max1": "最大值1",
+            "min1": "最小值1",
+            "a": "参数A",
+            "b": "参数B",
+            "c": "参数C"
+        },
+        "widgets": {
+            "start": "起始值",
+            "stop": "停止值",
+            "trim": "修剪",
+            "x": "X参数",
+            "y": "Y参数",
+            "z": "Z参数",
+            "f1": "函数1",
+            "rescale": "重缩放",
+            "max1": "最大值1",
+            "min1": "最小值1",
+            "a": "参数A",
+            "b": "参数B",
+            "c": "参数C"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas_Math3": {
+        "title": "三函数Sigma序列数学运算",
+        "inputs": {
+            "start": "起始值",
+            "stop": "停止值",
+            "trim": "修剪",
+            "a": "参数A",
+            "b": "参数B",
+            "c": "参数C",
+            "x": "X参数",
+            "y": "Y参数",
+            "z": "Z参数",
+            "f1": "函数1",
+            "rescale1": "重缩放1",
+            "max1": "最大值1",
+            "min1": "最小值1",
+            "f2": "函数2",
+            "rescale2": "重缩放2",
+            "max2": "最大值2",
+            "min2": "最小值2",
+            "f3": "函数3",
+            "rescale3": "重缩放3",
+            "max3": "最大值3",
+            "min3": "最小值3"
+        },
+        "widgets": {
+            "start": "起始值",
+            "stop": "停止值",
+            "trim": "修剪",
+            "a": "参数A",
+            "b": "参数B",
+            "c": "参数C",
+            "x": "X参数",
+            "y": "Y参数",
+            "z": "Z参数",
+            "f1": "函数1",
+            "rescale1": "重缩放1",
+            "max1": "最大值1",
+            "min1": "最小值1",
+            "f2": "函数2",
+            "rescale2": "重缩放2",
+            "max2": "最大值2",
+            "min2": "最小值2",
+            "f3": "函数3",
+            "rescale3": "重缩放3",
+            "max3": "最大值3",
+            "min3": "最小值3"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas_Iteration_Karras": {
+        "title": "Karras迭代Sigma序列",
+        "inputs": {
+            "steps_up": "上行步数",
+            "steps_down": "下行步数",
+            "rho_up": "上行密度",
+            "rho_down": "下行密度",
+            "s_min_start": "起始最小值",
+            "s_max": "最大值",
+            "s_min_end": "结束最小值",
+            "momentums": "动量",
+            "sigmas": "Sigma序列"
+        },
+        "widgets": {
+            "steps_up": "上行步数",
+            "steps_down": "下行步数",
+            "rho_up": "上行密度",
+            "rho_down": "下行密度",
+            "s_min_start": "起始最小值",
+            "s_max": "最大值",
+            "s_min_end": "结束最小值",
+            "momentums": "动量",
+            "sigmas": "Sigma序列"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Sigmas_Iteration_Polyexp": {
+        "title": "多项式指数迭代Sigma序列",
+        "inputs": {
+            "steps_up": "上行步数",
+            "steps_down": "下行步数",
+            "rho_up": "上行密度",
+            "rho_down": "下行密度",
+            "s_min_start": "起始最小值",
+            "s_max": "最大值",
+            "s_min_end": "结束最小值",
+            "momentums": "动量",
+            "sigmas": "Sigma序列"
+        },
+        "widgets": {
+            "steps_up": "上行步数",
+            "steps_down": "下行步数",
+            "rho_up": "上行密度",
+            "rho_down": "下行密度",
+            "s_min_start": "起始最小值",
+            "s_max": "最大值",
+            "s_min_end": "结束最小值",
+            "momentums": "动量",
+            "sigmas": "Sigma序列"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Tan_Scheduler": {
+        "title": "正切调度器",
+        "inputs": {
+            "steps": "步数",
+            "offset": "偏移",
+            "slope": "斜率",
+            "start": "起始值",
+            "end": "结束值",
+            "sgm": "SGM参数",
+            "pad": "填充"
+        },
+        "widgets": {
+            "steps": "步数",
+            "offset": "偏移",
+            "slope": "斜率",
+            "start": "起始值",
+            "end": "结束值",
+            "sgm": "SGM参数",
+            "pad": "填充"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Tan_Scheduler_2Stage": {
+        "title": "两阶段正切调度器",
+        "inputs": {
+            "steps": "步数",
+            "midpoint": "中点",
+            "pivot_1": "支点1",
+            "pivot_2": "支点2",
+            "slope_1": "斜率1",
+            "slope_2": "斜率2",
+            "start": "起始值",
+            "middle": "中间值",
+            "end": "结束值",
+            "pad": "填充",
+            "slope": "斜率",
+            "pivot": "支点"
+        },
+        "widgets": {
+            "steps": "步数",
+            "midpoint": "中点",
+            "pivot_1": "支点1",
+            "pivot_2": "支点2",
+            "slope_1": "斜率1",
+            "slope_2": "斜率2",
+            "start": "起始值",
+            "middle": "中间值",
+            "end": "结束值",
+            "pad": "填充",
+            "slope": "斜率",
+            "pivot": "支点"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Tan_Scheduler_2Stage_Simple": {
+        "title": "简化两阶段正切调度器",
+        "inputs": {
+            "steps": "步数",
+            "pivot_1": "支点1",
+            "pivot_2": "支点2",
+            "slope_1": "斜率1",
+            "slope_2": "斜率2",
+            "start": "起始值",
+            "middle": "中间值",
+            "end": "结束值",
+            "pad": "填充",
+            "slope": "斜率",
+            "pivot": "支点"
+        },
+        "widgets": {
+            "steps": "步数",
+            "pivot_1": "支点1",
+            "pivot_2": "支点2",
+            "slope_1": "斜率1",
+            "slope_2": "斜率2",
+            "start": "起始值",
+            "middle": "中间值",
+            "end": "结束值",
+            "pad": "填充",
+            "slope": "斜率",
+            "pivot": "支点"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+    "Linear_Quadratic_Advanced": {
+        "title": "线性二次高级调度器",
+        "inputs": {
+            "model": "模型",
+            "steps": "步数",
+            "denoise": "降噪强度",
+            "inflection_percent": "拐点百分比"
+        },
+        "widgets": {
+            "model": "模型",
+            "steps": "步数",
+            "denoise": "降噪强度",
+            "inflection_percent": "拐点百分比"
+        },
+        "outputs": {
+            "sigmas": "Sigma序列"
+        }
+    },
+  "Frame Select Latent Raw": {
+    "title": "原始Latent帧选择",
+    "inputs": {
+      "frames": "帧序列"
+    },
+    "widgets": {
+      "select": "选择索引"
+    },
+    "outputs": {
+      "latent": "Latent"
+    }
+  },
+  "Frames Slice Latent Raw": {
+    "title": "原始Latent帧切片",
+    "inputs": {
+      "frames": "帧序列"
+    },
+    "widgets": {
+      "start": "起始索引",
+      "stop": "结束索引"
+    },
+    "outputs": {
+      "latent": "Latent"
+    }
+  },
+  "Frame Select Latent": {
+    "title": "Latent帧选择",
+    "inputs": {
+      "frames": "帧序列"
+    },
+    "widgets": {
+      "select": "选择索引"
+    },
+    "outputs": {
+      "latent": "Latent"
+    }
+  },
+  "Frames Slice Latent": {
+    "title": "Latent帧切片",
+    "inputs": {
+      "frames": "帧序列"
+    },
+    "widgets": {
+      "start": "起始索引",
+      "stop": "结束索引"
+    },
+    "outputs": {
+      "latent": "Latent"
+    }
+  },
+  "Frames Concat Latent": {
+    "title": "Latent帧拼接",
+    "inputs": {
+      "frames_0": "帧序列0",
+      "frames_1": "帧序列1"
+    },
+    "widgets": {},
+    "outputs": {
+      "latent": "Latent"
+    }
+  },
+  "Frames Concat Latent Raw": {
+    "title": "原始Latent帧拼接",
+    "inputs": {
+      "frames_0": "帧序列0",
+      "frames_1": "帧序列1"
+    },
+    "widgets": {},
+    "outputs": {
+      "latent": "Latent"
+    }
+  },
+  "PrepForUnsampling": {
+    "title": "准备进行 去 采样",
+    "inputs": {
+      "image_1": "图像_1",
+      "image_2": "图像_2",
+      "mask": "遮罩",
+      "latent": "Latent",
+      "vae": "VAE"
+    },
+    "widgets": {
+      "resize_to_input": "根据输入 调整尺寸",
+      "width": "宽度",
+      "height": "高度",
+      "mask_channel": "遮罩通道",
+      "invert_mask": "反转遮罩",
+      "latent_type": "Latent类型"
+    },
+    "outputs": {
+      "latent": "Latent",
+      "width": "宽度",
+      "height": "高度",
+      "mask": "遮罩",
+      "latent_1": "Latent 1",
+      "latent_2": "Latent 2",
+      "empty_latent": "空Latent"
+    }
+  },
+  "TorchCompileModelFluxAdv": {
+    "title": "PyTorch模型编译优化器",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "backend": "后端",
+      "fullgraph": "完整图",
+      "mode": "模式",
+      "double_blocks": "双精度块",
+      "single_blocks": "单精度块",
+      "dynamic": "动态编译",
+      "blocks_str": "块结构字符串"
+    },
+    "outputs": {
+      "model": "模型"
+    }
+  },
+  "Image Get Color Swatches": {
+    "title": "图像提取色板",
+    "inputs": {
+      "image_color_swatches": "图像色板"
+    },
+    "widgets": {},
+    "outputs": {
+      "color_swatches": "色板"
+    }
+  },
+  "Masks From Color Swatches": {
+    "title": "从色板生成遮罩",
+    "inputs": {
+      "image_color_mask": "彩色遮罩图像",
+      "color_swatches": "色板"
+    },
+    "widgets": {},
+    "outputs": {
+      "masks": "遮罩"
+    }
+  },
+  "Masks From Colors": {
+    "title": "从颜色生成遮罩",
+    "inputs": {
+      "image_color_swatches": "图像色板",
+      "image_color_mask": "彩色遮罩图像"
+    },
+    "widgets": {},
+    "outputs": {
+      "masks": "遮罩"
+    }
+  },
+  "Image Sharpen FS": {
+    "title": "图像锐化",
+    "inputs": {
+      "images": "图像组"
+    },
+    "widgets": {
+      "method": "方法",
+      "type": "类型",
+      "intensity": "强度"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "Image Median Blur": {
+    "title": "图像中值模糊",
+    "inputs": {
+      "images": "图像组"
+    },
+    "widgets": {
+      "size": "尺寸"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "Image Gaussian Blur": {
+    "title": "图像高斯模糊",
+    "inputs": {
+      "images": "图像组"
+    },
+    "widgets": {
+      "size": "尺寸"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "Image Channels LAB": {
+    "title": "图像LAB通道",
+    "inputs": {
+      "RGB": "RGB图像",
+      "L": "L通道",
+      "A": "A通道",
+      "B": "B通道"
+    },
+    "widgets": {},
+    "outputs": {
+      "RGB": "RGB图像",
+      "L": "L通道",
+      "A": "A通道",
+      "B": "B通道"
+    }
+  },
+  "Image Crop Location Exact": {
+    "title": "图像精确裁剪位置",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "x": "X坐标",
+      "y": "Y坐标",
+      "width": "宽度",
+      "height": "高度",
+      "edge": "边缘处理"
+    },
+    "outputs": {
+      "image": "图像",
+      "crop_data": "裁剪数据"
+    }
+  },
+  "Film Grain": {
+    "title": "胶片颗粒效果",
+    "inputs": {
+      "image": "图像",
+      "img": "图像"
+    },
+    "widgets": {
+      "density": "密度",
+      "intensity": "强度",
+      "highlights": "高光",
+      "supersample_factor": "超采样因子",
+      "repeats": "重复次数"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "Frequency Separation Hard Light": {
+    "title": "频率分离-强光混合",
+    "inputs": {
+      "high_pass": "高通图像",
+      "original": "原始图像",
+      "low_pass": "低通图像"
+    },
+    "widgets": {},
+    "outputs": {
+      "high_pass": "高通图像",
+      "original": "原始图像",
+      "low_pass": "低通图像"
+    }
+  },
+  "Frequency Separation Hard Light LAB": {
+    "title": "频率分离-强光混合(LAB)",
+    "inputs": {
+      "high_pass": "高通图像",
+      "original": "原始图像",
+      "low_pass": "低通图像"
+    },
+    "widgets": {},
+    "outputs": {
+      "high_pass": "高通图像",
+      "original": "原始图像",
+      "low_pass": "低通图像"
+    }
+  },
+  "Frequency Separation Linear Light": {
+    "title": "频率分离-线性光混合",
+    "inputs": {
+      "high_pass": "高通图像",
+      "original": "原始图像",
+      "low_pass": "低通图像"
+    },
+    "widgets": {},
+    "outputs": {
+      "high_pass": "高通图像",
+      "original": "原始图像",
+      "low_pass": "低通图像"
+    }
+  },
+  "Frame Select": {
+    "title": "帧选择",
+    "inputs": {
+      "frames": "帧序列"
+    },
+    "widgets": {
+      "select": "选择索引"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "Frames Slice": {
+    "title": "帧切片",
+    "inputs": {
+      "frames": "帧序列"
+    },
+    "widgets": {
+      "start": "起始索引",
+      "stop": "结束索引"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "Frames Concat": {
+    "title": "帧拼接",
+    "inputs": {
+      "frames_0": "帧序列0",
+      "frames_1": "帧序列1"
+    },
+    "widgets": {},
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "Image Grain Add": {
+    "title": "图像添加噪点颗粒",
+    "inputs": {
+      "image": "图像",
+      "img": "图像"
+    },
+    "widgets": {
+      "weight": "权重",
+      "density": "密度",
+      "intensity": "强度",
+      "highlights": "高光",
+      "supersample_factor": "超采样因子",
+      "repeats": "重复次数"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "Image Repeat Tile To Size": {
+    "title": "图像重复平铺到尺寸",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "crop": "裁剪",
+      "method": "方法",
+      "interpolation": "插值方法",
+      "condition": "条件",
+      "multiple_of": "倍数",
+      "keep_proportion": "保持比例"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "ModelTimestepPatcher": {
+    "title": "模型时间步补丁器",
+    "inputs": {
+            "model": "模型"
+    },
+    "widgets": {
+      "scaling": "缩放",
+      "shift": "偏移"
+    },
+    "outputs": {
+            "model": "模型"
+    }
+  },
     "UltraSharkSampler_Tiled": {
         "title": "超级Shark分块采样器",
         "inputs": {
@@ -5331,7 +6018,7 @@
             "positive": "正向条件引导",
             "negative": "负向条件引导",
             "sampler": "采样算法",
-            "sigmas": "噪声调度表",
+            "sigmas": "调度表",
             "latent_image": "Latent图像",
             "clip_name": "CLIP模型名称",
             "strength": "强度",
