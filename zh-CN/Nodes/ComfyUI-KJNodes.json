@@ -3463,8 +3463,61 @@
       "latent": "Latent"
     }
   },
+  "ModelMemoryUseReportPatch": {
+    "title": "模型内存使用报告补丁(KJ)",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "model": "模型"
+    },
+    "outputs": {
+      "model": "模型"
+    },
+    "description": "向模型中添加回调函数，以便在采样完成后报告内存使用情况"
+  },
+  "ModelMemoryUsageFactorOverride": {
+    "title": "模型内存使用率因素自定义值(KJ)",
+    "inputs": {
+      "model": "模型",
+      "memory_usage_factor": "内存使用因子"
+    },
+    "widgets": {
+      "model": "模型",
+      "memory_usage_factor": "内存使用因子"
+    },
+    "outputs": {
+      "model": "模型"
+    },
+    "description": "在采样过程中会覆盖模型的内存使用系数。"
+  },
+  "LTXVEnhanceAVideoKJ": {
+    "title": "LTX视频增强(KJ)",
+    "inputs": {
+      "model": "模型",
+      "latent": "Latent",
+      "weight": "权重"
+    },
+    "widgets": {
+      "model": "模型",
+      "latent": "Latent",
+      "weight": "权重"
+    },
+    "outputs": {
+      "model": "模型"
+    }
+  },
+  "LTX2BlockLoraSelect": {
+    "title": "LTX2块Lora选择器(KJ)",
+    "inputs": {},
+    "widgets": {},
+    "outputs": {
+      "selectedditblocks": "选择的DIT块"
+    },
+    "description": "向模型中添加回调函数，以便在采样完成后报告内存使用情况"
+  },
   "HunyuanVideoEncodeKeyframesToCond": {
-    "title": "混元视频 首尾帧编码到条件",
+    "title": "混元视频 首尾帧编码到条件(KJ)",
     "inputs": {
       "model": "模型",
       "positive": "正向提示",
