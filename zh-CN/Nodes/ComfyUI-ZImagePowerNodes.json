@@ -1,0 +1,76 @@
+{
+  "EmptyZImageLatentImage //ZImagePowerNodes": {
+    "title": "⚡| 空的 Z 图像 Latent",
+    "inputs": {},
+    "widgets": {
+      "landscape": "切换竖屏模式",
+      "ratio": "宽高比",
+      "size": "尺寸",
+      "batch_size": "批次大小"
+    },
+    "outputs": {
+      "latent": "Latent"
+    }
+  },
+  "SaveImage //ZImagePowerNodes": {
+    "title": "⚡| 保存图片",
+    "inputs": {
+      "images": "图像"
+    },
+    "widgets": {
+      "filename_prefix": "文件名前缀",
+      "civitai_compatible_metadata": "Civitai 兼容元数据"
+    },
+    "outputs": {
+      "int": "整数",
+      "float": "浮点数",
+      "latent": "Latent"
+    }
+  },
+  "StylePromptEncoder //ZImagePowerNodes": {
+    "title": "⚡| 风格与提示词编码器",
+    "inputs": {
+      "clip": "CLIP",
+      "customization": "定制化"
+    },
+    "widgets": {
+      "category": "类别",
+      "style": "风格"
+    },
+    "outputs": {
+      "CONDITIONS": "条件",
+      "STRING": "字符串"
+    }
+  },
+  "StyleStringInjector //ZImagePowerNodes": {
+    "title": "⚡| 风格字符串注入器",
+    "inputs": {
+      "string": "字符串"
+    },
+    "widgets": {
+      "category": "类别",
+      "style": "风格"
+    },
+    "outputs": {
+      "CONDITIONS": "条件",
+      "STRING": "字符串"
+    }
+  },
+  "ZSamplerTurbo //ZImagePowerNodes": {
+    "title": "⚡| Z采样器 加速",
+    "inputs": {
+      "model": "模型",
+      "latent_input": "Latent输入",
+      "positive": "正向提示词"
+    },
+    "widgets": {
+      "seed": "随机种子",
+      "steps": "步数",
+      "denoise": "降噪"
+    },
+    "outputs": {
+      "latent_output": "Latent输出",
+      "latent": "Latent"
+    }
+  }
+}
