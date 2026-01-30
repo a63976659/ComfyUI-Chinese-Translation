@@ -965,7 +965,7 @@
             "force_inpaint": "强制重绘",
             "cycle": "循环次数",
             "inpaint_model": "修复模型",
-            "noise_mask_feather": "噪波蒙版羽化",
+            "noise_mask_feather": "噪波遮罩羽化",
             "tiled_encode": "分块编码",
             "tiled_decode": "分块解码",
             "wildcard": "提示词",
@@ -1005,7 +1005,7 @@
             "force_inpaint": "强制重绘",
             "cycle": "循环次数",
             "inpaint_model": "修复模型",
-            "noise_mask_feather": "噪波蒙版羽化",
+            "noise_mask_feather": "噪波遮罩羽化",
             "tiled_encode": "分块编码",
             "tiled_decode": "分块解码",
             "wildcard": "提示词",
@@ -1042,7 +1042,7 @@
             "wildcard": "提示词",
             "cycle": "循环次数",
             "inpaint_model": "修复模型",
-            "noise_mask_feather": "噪波蒙版羽化",
+            "noise_mask_feather": "噪波遮罩羽化",
             "tiled_encode": "分块编码",
             "tiled_decode": "分块解码",
             "refiner_ratio": "优化比率"
@@ -1085,7 +1085,7 @@
             "force_inpaint": "强制重绘",
             "cycle": "循环次数",
             "inpaint_model": "修复模型",
-            "noise_mask_feather": "噪波蒙版羽化",
+            "noise_mask_feather": "噪波遮罩羽化",
             "tiled_encode": "分块编码",
             "tiled_decode": "分块解码",
             "wildcard": "提示词"
@@ -1126,7 +1126,7 @@
             "wildcard": "提示词",
             "cycle": "循环次数",
             "inpaint_model": "修复模型",
-            "noise_mask_feather": "噪波蒙版羽化",
+            "noise_mask_feather": "噪波遮罩羽化",
             "tiled_encode": "分块编码",
             "tiled_decode": "分块解码",
             "refiner_ratio": "优化比率"
@@ -1173,7 +1173,7 @@
             "basic_pipe": "基础节点束",
             "cnet_images": "控制图像"
         },
-        "description": "基于检测区域信息集合(Seg)中的各个区域，以引导尺寸为基础进行放大后通过修复(inpainting)的方式增强优化。\n此节点是专为AnimateDiff等视频优化改善设计的特殊优化增强节点，能够处理Seg中包含的跨多帧的批量蒙版情况。"
+        "description": "基于检测区域信息集合(Seg)中的各个区域，以引导尺寸为基础进行放大后通过修复(inpainting)的方式增强优化。\n此节点是专为AnimateDiff等视频优化改善设计的特殊优化增强节点，能够处理Seg中包含的跨多帧的批量遮罩情况。"
     },
     "NoiseInjectionDetailerHookProvider": {
         "title": "插入噪波优化约束器",
@@ -1275,7 +1275,7 @@
             "batch_size": "批量大小",
             "cycle": "循环次数",
             "inpaint_model": "修复模型",
-            "noise_mask_feather": "噪波蒙版羽化",
+            "noise_mask_feather": "噪波遮罩羽化",
             "refiner_ratio": "优化比率"
         },
         "outputs": {
@@ -1312,7 +1312,7 @@
             "segs": "Seg",
             "cnet_images": "控制图像"
         },
-        "description": "基于检测区域信息集合(SEGS)中的各个区域，以引导尺寸为基础进行放大后通过修复(inpainting)的方式增强优化。\n 此节点直接作用于SEGS而非原图，若需应用于原图请使用'SEGS粘贴'节点。\n 此节点是专为AnimateDiff等视频优化改善设计的特殊优化增强节点，能够处理SEGS中包含的跨多帧的批量蒙版情况。"
+        "description": "基于检测区域信息集合(SEGS)中的各个区域，以引导尺寸为基础进行放大后通过修复(inpainting)的方式增强优化。\n 此节点直接作用于SEGS而非原图，若需应用于原图请使用'SEGS粘贴'节点。\n 此节点是专为AnimateDiff等视频优化改善设计的特殊优化增强节点，能够处理SEGS中包含的跨多帧的批量遮罩情况。"
     },
     "SEGSPaste": {
         "title": "Seg粘贴",
@@ -1606,7 +1606,7 @@
             "drop_size": "最小尺寸",
             "cycle": "循环次数",
             "inpaint_model": "修复模型",
-            "noise_mask_feather": "噪波蒙版羽化",
+            "noise_mask_feather": "噪波遮罩羽化",
             "tiled_encode": "分块编码",
             "tiled_decode": "分块解码"
         },
@@ -1654,7 +1654,7 @@
             "refiner_ratio": "优化比率",
             "cycle": "循环次数",
             "inpaint_model": "修复模型",
-            "noise_mask_feather": "噪波蒙版羽化",
+            "noise_mask_feather": "噪波遮罩羽化",
             "tiled_encode": "分块编码",
             "tiled_decode": "分块解码"
         },
@@ -1696,7 +1696,7 @@
             "refiner_ratio": "优化比率",
             "cycle": "循环次数",
             "inpaint_model": "修复模型",
-            "noise_mask_feather": "噪波蒙版羽化",
+            "noise_mask_feather": "噪波遮罩羽化",
             "tiled_encode": "分块编码",
             "tiled_decode": "分块解码",
             "bbox_fill": "bbox填补",
@@ -1710,7 +1710,7 @@
             "basic_pipe": "基础节点束",
             "refiner_basic_pipe_opt": "优化基础节点束"
         },
-        "description": "此优化增强节点通过放大蒙版指定区域并以引导尺寸为基础进行放大修复来增强优化。"
+        "description": "此优化增强节点通过放大遮罩指定区域并以引导尺寸为基础进行放大修复来增强优化。"
     },
     "ToDetailerPipe": {
         "title": "到优化束",

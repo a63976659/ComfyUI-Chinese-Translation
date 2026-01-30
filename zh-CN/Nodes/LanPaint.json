@@ -1,0 +1,162 @@
+{
+  "LanPaint_KSampler": {
+    "title": "LanPaint 采样器",
+    "inputs": {
+      "model": "模型",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "sampler_name": "采样器",
+      "scheduler": "调度器",
+      "positive": "正向提示",
+      "negative": "负向提示",
+      "latent_image": "latent",
+      "denoise": "去噪强度",
+      "LanPaint_NumSteps": "LanPaint 步数",
+      "LanPaint_PromptMode": "LanPaint 提示模式",
+      "LanPaint_Info": "LanPaint 采样器。更多信息，请访问 https://github.com/scraed/LanPaint。如果你觉得有用，请给个星星！",
+      "Inpainting_mode": "修复模式"
+    },
+    "widgets": {
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "sampler_name": "采样器",
+      "scheduler": "调度器",
+      "denoise": "去噪强度",
+      "LanPaint_NumSteps": "LanPaint 步数",
+      "LanPaint_PromptMode": "LanPaint 提示模式",
+      "Inpainting_mode": "修复模式"
+    },
+    "outputs": {
+      "LATENT": "latent"
+    }
+  },
+  "LanPaint_KSamplerAdvanced": {
+    "title": "LanPaint 采样器 (高级)",
+    "inputs": {
+      "model": "模型",
+      "add_noise": "添加噪声",
+      "noise_seed": "噪声种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "sampler_name": "采样器",
+      "scheduler": "调度器",
+      "positive": "正向提示",
+      "negative": "负向提示",
+      "latent_image": "latent",
+      "start_at_step": "开始步数",
+      "end_at_step": "结束步数",
+      "return_with_leftover_noise": "保留剩余噪声",
+      "LanPaint_NumSteps": "LanPaint 步数",
+      "LanPaint_Lambda": "LanPaint Lambda",
+      "LanPaint_StepSize": "LanPaint 步长",
+      "LanPaint_Beta": "LanPaint Beta",
+      "LanPaint_Friction": "LanPaint 摩擦力",
+      "LanPaint_PromptMode": "LanPaint 提示模式",
+      "LanPaint_EarlyStop": "LanPaint 提前停止",
+      "LanPaint_Info": "LanPaint 高级采样器。更多信息，请访问 https://github.com/scraed/LanPaint。如果你觉得有用，请给个星星！",
+      "Inpainting_mode": "修复模式"
+    },
+    "widgets": {
+      "add_noise": "添加噪声",
+      "noise_seed": "噪声种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "sampler_name": "采样器",
+      "scheduler": "调度器",
+      "start_at_step": "开始步数",
+      "end_at_step": "结束步数",
+      "return_with_leftover_noise": "保留剩余噪声",
+      "LanPaint_NumSteps": "LanPaint 步数",
+      "LanPaint_Lambda": "LanPaint Lambda",
+      "LanPaint_StepSize": "LanPaint 步长",
+      "LanPaint_Beta": "LanPaint Beta",
+      "LanPaint_Friction": "LanPaint 摩擦力",
+      "LanPaint_PromptMode": "LanPaint 提示模式",
+      "LanPaint_EarlyStop": "LanPaint 提前停止",
+      "Inpainting_mode": "修复模式"
+    },
+    "outputs": {
+      "LATENT": "latent"
+    }
+  },
+  "LanPaint_SamplerCustom": {
+    "title": "LanPaint 自定义采样器",
+    "inputs": {
+      "model": "模型",
+      "add_noise": "添加噪声",
+      "noise_seed": "噪声种子",
+      "cfg": "CFG",
+      "positive": "正向提示",
+      "negative": "负向提示",
+      "sampler": "采样器",
+      "sigmas": "Sigmas",
+      "latent_image": "latent",
+      "LanPaint_NumSteps": "LanPaint 步数",
+      "LanPaint_PromptMode": "LanPaint 提示模式",
+      "LanPaint_Info": "LanPaint 自定义采样器。更多信息，请访问 https://github.com/scraed/LanPaint。如果你觉得有用，请给个星星！"
+    },
+    "widgets": {
+      "add_noise": "添加噪声",
+      "noise_seed": "噪声种子",
+      "cfg": "CFG",
+      "sampler": "采样器",
+      "sigmas": "Sigmas",
+      "LanPaint_NumSteps": "LanPaint 步数",
+      "LanPaint_PromptMode": "LanPaint 提示模式"
+    },
+    "outputs": {
+      "output": "输出",
+      "denoised_output": "去噪输出"
+    }
+  },
+  "LanPaint_SamplerCustomAdvanced": {
+    "title": "LanPaint 自定义采样器 (高级)",
+    "inputs": {
+      "noise": "噪声",
+      "guider": "引导器",
+      "sampler": "采样器",
+      "sigmas": "Sigmas",
+      "latent_image": "latent",
+      "LanPaint_NumSteps": "LanPaint 步数",
+      "LanPaint_Lambda": "LanPaint Lambda",
+      "LanPaint_StepSize": "LanPaint 步长",
+      "LanPaint_Beta": "LanPaint Beta",
+      "LanPaint_Friction": "LanPaint 摩擦力",
+      "LanPaint_PromptMode": "LanPaint 提示模式",
+      "LanPaint_EarlyStop": "LanPaint 提前停止",
+      "LanPaint_Info": "LanPaint 高级自定义采样器。更多信息，请访问 https://github.com/scraed/LanPaint。如果你觉得有用，请给个星星！"
+    },
+    "widgets": {
+      "sampler": "采样器",
+      "sigmas": "Sigmas",
+      "LanPaint_NumSteps": "LanPaint 步数",
+      "LanPaint_Lambda": "LanPaint Lambda",
+      "LanPaint_StepSize": "LanPaint 步长",
+      "LanPaint_Beta": "LanPaint Beta",
+      "LanPaint_Friction": "LanPaint 摩擦力",
+      "LanPaint_PromptMode": "LanPaint 提示模式",
+      "LanPaint_EarlyStop": "LanPaint 提前停止"
+    },
+    "outputs": {
+      "output": "输出",
+      "denoised_output": "去噪输出"
+    }
+  },
+  "LanPaint_MaskBlend": {
+    "title": "LanPaint 遮罩混合",
+    "inputs": {
+      "image1": "图像1",
+      "image2": "图像2",
+      "mask": "遮罩",
+      "blend_overlap": "混合重叠"
+    },
+    "widgets": {
+      "blend_overlap": "混合重叠"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    }
+  }
+}
