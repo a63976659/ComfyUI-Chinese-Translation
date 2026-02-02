@@ -1,0 +1,1005 @@
+{
+    "1hew_AudioDuration": {
+        "title": "音频时长",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "获取音频的时长。"
+    },
+    "1hew_ImageBatchExtract": {
+        "title": "图像批次提取",
+        "inputs": {
+            "image": "图像",
+            "mode": "模式",
+            "index": "索引",
+            "step": "步长",
+            "uniform": "均匀",
+            "max_keep": "最大保留数量"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "从图像批次中提取指定模式下的图像。"
+    },
+    "1hew_ImageBatchGroup": {
+        "title": "图像批次分组",
+        "inputs": {
+            "image": "图像",
+            "batch_size": "批次大小",
+            "overlap": "重叠",
+            "last_batch_mode": "最后一个批次模式",
+            "color": "颜色"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将图像批次进行分组处理。"
+    },
+    "1hew_ImageBatchRange": {
+        "title": "图像批次范围",
+        "inputs": {
+            "image": "图像",
+            "start_index": "起始索引",
+            "num_frame": "帧数"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "从图像批次中提取指定范围内的图像。"
+    },
+    "1hew_ImageBatchSplit": {
+        "title": "图像批次分割",
+        "inputs": {
+            "image": "图像",
+            "take_count": "取帧数",
+            "from_start": "从开始"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "从图像批次中按指定数量分割图像。"
+    },
+    "1hew_ImageListAppend": {
+        "title": "图像列表追加",
+        "inputs": {
+            "image_1": "图像1",
+            "image_2": "图像2"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将两个图像追加到列表中。"
+    },
+    "1hew_MaskBatchMathOps": {
+        "title": "遮罩批次数学运算",
+        "inputs": {
+            "mask": "遮罩",
+            "operation": "操作"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "对遮罩批次执行数学运算。"
+    },
+    "1hew_MaskBatchRange": {
+        "title": "遮罩批次范围",
+        "inputs": {
+            "mask": "遮罩",
+            "start_index": "起始索引",
+            "num_frame": "帧数"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "从遮罩批次中提取指定范围内的遮罩。"
+    },
+    "1hew_MaskBatchSplit": {
+        "title": "遮罩批次分割",
+        "inputs": {
+            "mask": "遮罩",
+            "take_count": "取帧数",
+            "from_start": "从开始"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "从遮罩批次中按指定数量分割遮罩。"
+    },
+    "1hew_VideoCutGroup": {
+        "title": "视频剪辑分组",
+        "inputs": {
+            "image": "图像",
+            "threshold_base": "阈值基础",
+            "threshold_range": "阈值范围",
+            "threshold_count": "阈值计数",
+            "kernel": "内核",
+            "min_frame_count": "最小帧数",
+            "max_frame_count": "最大帧数",
+            "fast": "快速",
+            "add_frame": "增加帧",
+            "delete_frame": "删除帧"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "根据图像进行视频剪辑分组。"
+    },
+    "1hew_MatchBrightnessContrast": {
+        "title": "匹配亮度对比度",
+        "inputs": {
+            "source_image": "源图像",
+            "reference_image": "参考图像",
+            "edge_amount": "边缘量",
+            "consistency": "一致性",
+            "method": "方法"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "匹配源图像和参考图像之间的亮度和对比度。"
+    },
+    "1hew_TextEncodeQwenImageEdit": {
+        "title": "文本编码Qwen图像编辑",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": "使用Qwen模型对文本进行编码以用于图像编辑。"
+    },
+    "1hew_ImageBatchToList": {
+        "title": "图像批次转列表",
+        "inputs": {
+            "image_batch": "图像批次"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将图像批次转换为图像列表。"
+    },
+    "1hew_ImageListToBatch": {
+        "title": "图像列表转批次",
+        "inputs": {
+            "image_list": "图像列表"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将图像列表转换为图像批次。"
+    },
+    "1hew_MaskBatchToList": {
+        "title": "遮罩批次转列表",
+        "inputs": {
+            "mask_batch": "遮罩批次"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将遮罩批次转换为遮罩列表。"
+    },
+    "1hew_MaskListToBatch": {
+        "title": "遮罩列表转换为批次",
+        "description": "将多个遮罩转换为一个批次。",
+        "inputs": {
+            "mask_list": "遮罩列表"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_StringCoordinateToBBoxes": {
+        "title": "字符串坐标转边界框",
+        "description": "从坐标字符串生成边界框。",
+        "inputs": {
+            "coordinates_string": "坐标字符串"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_StringCoordinateToBBoxMask": {
+        "title": "字符串坐标转边界框遮罩",
+        "description": "从坐标字符串生成边界框遮罩。",
+        "inputs": {
+            "image": "图像",
+            "coordinates_string": "坐标字符串",
+            "output_mode": "输出模式"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_TextListToString": {
+        "title": "文本列表转字符串",
+        "description": "将文本列表合并为一个字符串。",
+        "inputs": {
+            "text_list": "文本列表",
+            "prefix": "前缀",
+            "suffix": "后缀",
+            "separator": "分隔符"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_URLToVideo": {
+        "title": "URL转视频",
+        "description": "从URL获取视频。",
+        "inputs": {
+            "video_url": "视频URL",
+            "timeout": "超时时间"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_DetectGuideLine": {
+        "title": "检测引导线",
+        "description": "检测图像中的引导线。",
+        "inputs": {
+            "image": "图像",
+            "canny_low": "Canny低阈值",
+            "canny_high": "Canny高阈值",
+            "seg_min_len": "最小分割长度",
+            "seg_max_gap": "最大分割间隙",
+            "guide_filter": "引导滤波器",
+            "guide_width": "引导线宽度",
+            "cluster_eps": "聚类ε值"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_DetectYolo": {
+        "title": "检测 Yolo",
+        "description": "使用YOLO模型检测图像中的对象。",
+        "inputs": {
+            "image": "图像",
+            "yolo_model": "YOLO模型",
+            "threshold": "阈值",
+            "mask_index": "遮罩索引",
+            "label": "标签",
+            "label_size": "标签大小"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_ImageAddLabel": {
+        "title": "图像添加标签",
+        "description": "在图像上添加文本标签。",
+        "inputs": {
+            "image": "图像",
+            "height_pad": "高度填充",
+            "font_size": "字体大小",
+            "invert_color": "反色",
+            "font": "字体",
+            "text": "文本",
+            "direction": "方向",
+            "input1": "输入1",
+            "input2": "输入2"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_ImageBBoxOverlayByMask": {
+        "title": "通过遮罩在图像上绘制边界框",
+        "description": "通过遮罩在图像上绘制边界框。",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "bbox_color": "边界框颜色",
+            "stroke_width": "描边宽度",
+            "fill": "填充",
+            "padding": "内边距",
+            "output_mode": "输出模式"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_ImageEditStitch": {
+        "title": "图像编辑拼接",
+        "description": "编辑并拼接图像。",
+        "inputs": {
+            "reference_image": "参考图像",
+            "edit_image": "编辑图像",
+            "edit_mask": "编辑遮罩",
+            "edit_image_position": "编辑图像位置",
+            "match_edit_size": "匹配编辑尺寸",
+            "spacing": "间距",
+            "spacing_color": "间距颜色",
+            "pad_color": "填充颜色"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_ImageMainStitch": {
+        "title": "图像拼接",
+        "description": "主要的图像拼接。",
+        "inputs": {
+            "image_1": "图像1",
+            "image_2": "图像2",
+            "image_3": "图像3",
+            "direction": "方向",
+            "match_image_size": "匹配图像尺寸",
+            "spacing_width": "间距宽度",
+            "spacing_color": "间距颜色",
+            "pad_color": "填充颜色"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_ImagePingPong": {
+        "title": "图像循环",
+        "description": "图像来回处理。",
+        "inputs": {
+            "image": "图像",
+            "pre_reverse": "预反转",
+            "ops_count": "操作次数",
+            "frame_count": "帧数",
+            "remove_link_frame": "移除链接帧"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_ImagePlot": {
+        "title": "图像绘制",
+        "description": "绘制图像网格布局。",
+        "inputs": {
+            "image": "图像",
+            "layout": "布局",
+            "spacing": "间距",
+            "grid_columns": "网格列数",
+            "background_color": "背景颜色"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_ImageResizeFluxKontext": {
+        "title": "图像缩放 Flux Kontext",
+        "description": "使用Flux Kontext调整图像大小。",
+        "inputs": {
+            "preset_size": "预设尺寸",
+            "fit": "适应方式",
+            "pad_color": "填充颜色",
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_ImageResizeJimeng": {
+        "title": "图像缩放 即梦",
+        "description": "使用Jimeng调整图像大小。",
+        "inputs": {
+            "preset_size": "预设尺寸",
+            "fit": "适应方式",
+            "pad_color": "填充颜色",
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_ImageResizeQwenImage": {
+        "title": "图像缩放 Qwen千问图像",
+        "description": "对图像进行缩放。",
+        "inputs": {
+            "preset_size": "预设尺寸",
+            "fit": "适应方式",
+            "pad_color": "填充颜色",
+            "image": "图像",
+            "mask": "遮罩"
+        }
+    },
+    "1hew_ImageResizeUniversal": {
+        "title": "通用图像缩放",
+        "description": "对图像进行通用缩放。",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "get_image_size": "获取图像尺寸",
+            "preset_ratio": "预设比例",
+            "proportional_width": "按宽度比例缩放",
+            "proportional_height": "按高度比例缩放",
+            "method": "方法",
+            "scale_to_side": "缩放到边长",
+            "scale_to_length": "缩放到长度",
+            "fit": "适应方式",
+            "pad_color": "填充颜色",
+            "divisible_by": "可被整除"
+        }
+    },
+    "1hew_ImageRotateWithMask": {
+        "title": "带遮罩旋转图像",
+        "description": "对图像进行旋转，并应用遮罩。",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "angle": "角度",
+            "pad_color": "填充颜色",
+            "expand": "扩展",
+            "mask_center": "遮罩中心"
+        }
+    },
+    "1hew_ImageSolid": {
+        "title": "生成纯色图像",
+        "description": "生成纯色图像。",
+        "inputs": {
+            "get_image_size": "获取图像尺寸",
+            "preset_size": "预设尺寸",
+            "width": "宽度",
+            "height": "高度",
+            "color": "颜色",
+            "alpha": "透明度",
+            "invert": "反转",
+            "mask_opacity": "遮罩透明度",
+            "divisible_by": "可被整除"
+        }
+    },
+    "1hew_ImageStrokeByMask": {
+        "title": "通过遮罩绘制轮廓",
+        "description": "通过遮罩在图像上绘制轮廓。",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "stroke_width": "轮廓宽度",
+            "stroke_color": "轮廓颜色"
+        }
+    },
+    "1hew_ImageBlendModeByAlpha": {
+        "title": "通过Alpha混合模式",
+        "description": "通过Alpha值在叠加图像和基础图像之间进行混合。",
+        "inputs": {
+            "overlay_image": "叠加图像",
+            "base_image": "基础图像",
+            "overlay_mask": "叠加遮罩",
+            "blend_mode": "混合模式",
+            "opacity": "不透明度",
+            "invert_mask": "反转遮罩"
+        }
+    },
+    "1hew_ImageBlendModeByCSS": {
+        "title": "通过CSS混合模式",
+        "description": "通过CSS混合模式在叠加图像和基础图像之间进行混合。",
+        "inputs": {
+            "overlay_image": "叠加图像",
+            "base_image": "基础图像",
+            "blend_mode": "混合模式",
+            "blend_percentage": "混合百分比",
+            "overlay_mask": "叠加遮罩",
+            "invert_mask": "反转遮罩"
+        }
+    },
+    "1hew_ImageMaskBlend": {
+        "title": "通过遮罩混合图像",
+        "description": "通过遮罩在图像之间进行混合。",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "fill_hole": "填充空洞",
+            "invert": "反转",
+            "feather": "羽化",
+            "opacity": "不透明度",
+            "expansion": "扩展",
+            "background_color": "背景颜色",
+            "background_opacity": "背景透明度",
+            "output_mask_invert": "输出遮罩反转"
+        }
+    },
+    "1hew_ImageCropSquare": {
+        "title": "裁剪为正方形图像",
+        "description": "将图像裁剪为正方形。",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "scale_factor": "缩放因子",
+            "extra_padding": "额外填充",
+            "fill_color": "填充颜色",
+            "apply_mask": "应用遮罩",
+            "divisible_by": "可被整除"
+        }
+    },
+    "1hew_ImageCropWithBBoxMask": {
+        "title": "使用边界框遮罩裁剪图像",
+        "description": "使用边界框遮罩裁剪图像。",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "preset_ratio": "预设比例",
+            "get_crop_ratio": "获取裁剪比例",
+            "scale_strength": "缩放强度",
+            "crop_to_side": "裁剪到边长",
+            "crop_to_length": "裁剪到长度",
+            "divisible_by": "可被整除"
+        }
+    },
+    "1hew_ImageEdgeCropPad": {
+        "title": "边缘裁剪并填充",
+        "description": "对图像进行边缘裁剪并填充。",
+        "inputs": {
+            "image": "图像",
+            "uniform_amount": "均匀填充量",
+            "top_amount": "顶部填充量",
+            "bottom_amount": "底部填充量",
+            "left_amount": "左侧填充量",
+            "right_amount": "右侧填充量",
+            "pad_color": "填充颜色",
+            "divisible_by": "可被整除"
+        }
+    },
+    "1hew_ImageGridSplit": {
+        "title": "图像网格分割",
+        "description": "将图像分割成网格。",
+        "inputs": {
+            "image": "图像",
+            "rows": "行数",
+            "columns": "列数",
+            "index": "索引",
+            "all": "全部"
+        }
+    },
+    "1hew_ImageMaskCrop": {
+        "title": "通过遮罩裁剪图像",
+        "description": "通过遮罩裁剪图像。",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "output_crop": "输出裁剪",
+            "output_alpha": "输出透明度"
+        }
+    },
+    "1hew_ImagePasteByBBoxMask": {
+        "title": "通过边界框遮罩粘贴图像",
+        "description": "通过边界框遮罩在图像上粘贴。",
+        "inputs": {
+            "paste_image": "粘贴图像",
+            "base_image": "基础图像",
+            "bbox_mask": "边界框遮罩",
+            "paste_mask": "粘贴遮罩",
+            "position_x": "X位置",
+            "position_y": "Y位置",
+            "scale": "缩放",
+            "rotation": "旋转",
+            "opacity": "不透明度",
+            "apply_paste_mask": "应用粘贴遮罩"
+        }
+    },
+    "1hew_ImageHLFreqCombine": {
+        "title": "高频低频图像结合",
+        "description": "结合高频和低频图像。",
+        "inputs": {
+            "high_freq": "高频图像",
+            "low_freq": "低频图像",
+            "method": "方法",
+            "high_strength": "高频强度",
+            "low_strength": "低频强度"
+        }
+    },
+    "1hew_ImageHLFreqSeparate": {
+        "title": "图像高频低频频率分离",
+        "inputs": {
+            "image": "图像",
+            "method": "方法",
+            "blur_radius": "模糊半径"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将图像中的高频和低频成分分开处理。"
+    },
+    "1hew_ImageHLFreqTransform": {
+        "title": "图像高频低频频率变换",
+        "inputs": {
+            "generate_image": "生成图像",
+            "detail_image": "细节图像",
+            "detail_mask": "细节遮罩",
+            "method": "方法",
+            "blur_radius": "模糊半径"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "对图像的高频和低频成分进行变换操作。"
+    },
+    "1hew_ImageTileMerge": {
+        "title": "图像瓦片合并",
+        "inputs": {
+            "tile": "瓦片",
+            "tile_meta": "瓦片元数据",
+            "blend_strength": "融合强度"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将多个瓦片图像合并成一张完整的图像。"
+    },
+    "1hew_ImageTileSplit": {
+        "title": "图像分块",
+        "inputs": {
+            "image": "图像",
+            "get_tile_size": "获取分块尺寸",
+            "mode": "模式",
+            "overlap_amount": "重叠量",
+            "grid_row": "行数",
+            "grid_col": "列数",
+            "divisible_by": "可被整除数"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将图像分割成多个分块。"
+    },
+    "1hew_IntImageSideLength": {
+        "title": "整数图像边长",
+        "inputs": {
+            "image": "图像",
+            "mode": "模式"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "计算或设置图像的边长为整数值。"
+    },
+    "1hew_IntImageSize": {
+        "title": "整数图像尺寸",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "获取图像的整数尺寸。"
+    },
+    "1hew_IntMaskSideLength": {
+        "title": "整数遮罩边长",
+        "inputs": {
+            "mask": "遮罩",
+            "mode": "模式"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "计算或设置遮罩的边长为整数值。"
+    },
+    "1hew_IntSplit": {
+        "title": "整数分割",
+        "inputs": {
+            "total": "总数",
+            "split_point": "分割点"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将一个整数按照指定位置分割成两部分。"
+    },
+    "1hew_IntWan": {
+        "title": "整数万位",
+        "inputs": {
+            "value": "值"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "获取或设置整数的万位。"
+    },
+    "1hew_GetFileCount": {
+        "title": "获取文件数量",
+        "inputs": {
+            "folder": "文件夹",
+            "type": "类型",
+            "include_subdir": "包含子目录"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "统计指定文件夹及其子目录下的文件数量。"
+    },
+    "1hew_LoadImage": {
+        "title": "加载图像",
+        "inputs": {
+            "get_image_size": "获取图像尺寸",
+            "file": "文件",
+            "index": "索引",
+            "include_subdir": "包含子目录",
+            "all": "全部"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "从指定路径加载图像文件。"
+    },
+    "1hew_LoadVideo": {
+        "title": "加载视频",
+        "inputs": {
+            "file": "文件",
+            "frame_limit": "帧限制",
+            "fps": "帧率",
+            "start_skip": "开始跳过",
+            "end_skip": "结束跳过",
+            "format": "格式",
+            "video_index": "视频索引",
+            "include_subdir": "包含子目录"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "从指定路径加载视频文件。"
+    },
+    "1hew_LoadVideoToImage": {
+        "title": "视频转图像",
+        "inputs": {
+            "file": "文件",
+            "frame_limit": "帧限制",
+            "fps": "帧率",
+            "start_skip": "开始跳过",
+            "end_skip": "结束跳过",
+            "format": "格式",
+            "video_index": "视频索引",
+            "include_subdir": "包含子目录"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将视频文件转换为一系列图像帧。"
+    },
+    "1hew_SaveImage": {
+        "title": "保存图像",
+        "inputs": {
+            "image": "图像",
+            "filename_prefix": "文件名前缀",
+            "save_output": "保存输出",
+            "save_metadata": "保存元数据"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将图像保存到指定路径。"
+    },
+    "1hew_SaveVideo": {
+        "title": "保存视频",
+        "inputs": {
+            "video": "视频",
+            "filename_prefix": "文件名前缀",
+            "save_output": "保存输出",
+            "save_metadata": "保存元数据"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将视频保存到指定路径。"
+    },
+    "1hew_SaveVideoByImage": {
+        "title": "图像保存为视频",
+        "description": "根据图像和音频保存视频。",
+        "inputs": {
+            "image": "图像",
+            "audio": "音频",
+            "fps": "帧率",
+            "filename_prefix": "文件名前缀",
+            "save_output": "保存输出",
+            "save_metadata": "保存元数据"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_AnyEmptyBool": {
+        "title": "任何 空 布尔",
+        "description": "检测布尔值是否为空。",
+        "inputs": {
+            "any": "任意值"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_AnyEmptyInt": {
+        "title": "任何 空 整数",
+        "description": "检测整数值是否为空。",
+        "inputs": {
+            "any": "任意值",
+            "empty": "空值",
+            "not_empty": "非空值"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_AnySwitchBool": {
+        "title": "任何开关布尔",
+        "description": "根据布尔值切换两个选项。",
+        "inputs": {
+            "boolean": "布尔值",
+            "on_true": "真时",
+            "on_false": "假时"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_AnySwitchInt": {
+        "title": "任何开关 整数",
+        "description": "根据整数值切换选项。",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_MaskCropByBBoxMask": {
+        "title": "通过边界框遮罩裁剪遮罩",
+        "description": "通过边界框遮罩裁剪遮罩。",
+        "inputs": {
+            "mask": "遮罩",
+            "bbox_mask": "边界框遮罩"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_MaskFillHole": {
+        "title": "填充遮罩 孔洞",
+        "description": "填充遮罩中的孔洞。",
+        "inputs": {
+            "mask": "遮罩",
+            "invert_mask": "反转遮罩"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_MaskPasteByBBoxMask": {
+        "title": "通过边界框遮罩粘贴遮罩",
+        "description": "通过边界框遮罩粘贴遮罩。",
+        "inputs": {
+            "paste_mask": "粘贴遮罩",
+            "bbox_mask": "边界框遮罩",
+            "base_mask": "基础遮罩"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_MaskRepeat": {
+        "title": "复制遮罩",
+        "description": "重复遮罩。",
+        "inputs": {
+            "mask": "遮罩",
+            "invert": "反转",
+            "count": "次数"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_MultiImageBatch": {
+        "title": "多图像批量处理",
+        "description": "批量处理多张图像。",
+        "inputs": {
+            "fit": "适应",
+            "pad_color": "填充颜色",
+            "image_1": "图像1"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_MultiImageStitch": {
+        "title": "多图像拼接",
+        "description": "拼接多张图像。",
+        "inputs": {
+            "direction": "方向",
+            "match_image_size": "匹配图像大小",
+            "spacing_width": "间距宽度",
+            "spacing_color": "间距颜色",
+            "pad_color": "填充颜色",
+            "image_1": "图像1",
+            "image_2": "图像2"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_MultiMaskBatch": {
+        "title": "多遮罩拼接",
+        "description": "批量处理多个遮罩。",
+        "inputs": {
+            "fit": "适应",
+            "pad_color": "填充颜色",
+            "mask_1": "遮罩1"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_MaskMathOps": {
+        "title": "多遮罩数学运算",
+        "description": "执行多个遮罩的数学运算。",
+        "inputs": {
+            "mask_1": "遮罩1",
+            "mask_2": "遮罩2",
+            "operation": "操作"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_MultiStringJoin": {
+        "title": "多字符串连接",
+        "description": "连接多个字符串。",
+        "inputs": {
+            "filter_empty_line": "过滤空行",
+            "filter_comment": "过滤注释",
+            "separator": "分隔符",
+            "input": "输入"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_ListCustomFloat": {
+        "title": "自定义浮点数列表",
+        "description": "自定义浮点数列表。",
+        "inputs": {
+            "custom_text": "自定义文本"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_ListCustomInt": {
+        "title": "自定义整数列表",
+        "inputs": {
+            "custom_text": "自定义文本"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "生成一个包含自定义整数的列表。"
+    },
+    "1hew_ListCustomSeed": {
+        "title": "自定义种子列表",
+        "inputs": {
+            "seed": "种子",
+            "count": "数量"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "生成一个包含指定数量随机种子的列表。"
+    },
+    "1hew_ListCustomString": {
+        "title": "自定义字符串列表",
+        "inputs": {
+            "custom_text": "自定义文本"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "生成一个包含自定义字符串的列表。"
+    },
+    "1hew_StringFilter": {
+        "title": "字符串过滤",
+        "inputs": {
+            "text": "文本",
+            "filter_empty_line": "过滤空行",
+            "filter_comment": "过滤注释",
+            "input": "输入"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "过滤掉文本中的空行和注释。"
+    },
+    "1hew_StringJoinMulti": {
+        "title": "多字符串连接",
+        "inputs": {
+            "text1": "文本1",
+            "text2": "文本2",
+            "text3": "文本3",
+            "text4": "文本4",
+            "text5": "文本5",
+            "filter_empty_line": "过滤空行",
+            "filter_comment": "过滤注释",
+            "separator": "分隔符",
+            "input": "输入"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将多个文本连接成一个字符串，并可选择过滤空行和注释。"
+    },
+    "1hew_TextCustomExtract": {
+        "title": "文本自定义提取",
+        "inputs": {
+            "json_data": "JSON数据",
+            "key": "键",
+            "precision_match": "精确匹配",
+            "label_filter": "标签过滤"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "从JSON数据中提取特定键的值，并进行精确匹配和标签过滤。"
+    },
+    "1hew_TextPrefixSuffix": {
+        "title": "文本前缀后缀",
+        "inputs": {
+            "text": "文本",
+            "prefix": "前缀",
+            "suffix": "后缀"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "在文本前后添加指定的前缀和后缀。"
+    },
+    "1hew_RangeMapping": {
+        "title": "范围映射",
+        "inputs": {
+            "value": "值",
+            "min": "最小值",
+            "max": "最大值",
+            "rounding": "四舍五入"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "将0-1范围值映射到[min,max]，支持小数精度控制。"
+    },
+    "1hew_WorkflowName": {
+        "title": "工作流名称",
+        "inputs": {
+            "prefix": "前缀",
+            "suffix": "后缀",
+            "date_format": "日期格式",
+            "full_path": "完整路径",
+            "strip_extension": "去除扩展名"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "生成一个带有前缀、后缀和日期格式的工作流名称。"
+    }
+}
