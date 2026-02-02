@@ -1,334 +1,2933 @@
 {
-    "FunTextBox": {
-        "title": "Fun文本框",
-        "inputs": {},
-        "widgets": {
-            "prompt": "提示词"
-        },
-        "outputs": {
-            "prompt": "字符串提示词"
-        }
+  "FunTextBox": {
+    "title": "Fun文本框",
+    "inputs": {
+      "prompt": "提示词"
     },
-    "VideoToCanny": {
-        "title": "视频转Canny边缘",
-        "inputs": {
-            "input_video": "输入视频"
-        },
-        "widgets": {
-            "low_threshold": "低阈值",
-            "high_threshold": "高阈值",
-            "video_length": "视频长度"
-        },
-        "outputs": {
-            "images": "图像"
-        }
+    "widgets": {
+      "prompt": "提示词"
     },
-    "VideoToDepth": {
-        "title": "视频转深度图",
-        "inputs": {
-            "input_video": "输入视频"
-        },
-        "widgets": {
-            "video_length": "视频长度"
-        },
-        "outputs": {
-            "images": "图像"
-        }
-    },
-    "VideoToPose": {
-        "title": "视频转姿势图",
-        "inputs": {
-            "input_video": "输入视频"
-        },
-        "widgets": {
-            "video_length": "视频长度"
-        },
-        "outputs": {
-            "images": "图像"
-        }
-    },
-    "VideoToOpenpose": {
-        "title": "视频转姿势图",
-        "inputs": {
-            "input_video": "输入视频"
-        },
-        "widgets": {
-            "video_length": "视频长度"
-        },
-        "outputs": {
-            "images": "图像"
-        }
-    },
-    "LoadCogVideoXFunModel": {
-        "title": "加载Cog视频XFun模型",
-        "inputs": {},
-        "widgets": {
-            "model": "模型",
-            "model_type": "模型类型",
-            "GPU_memory_mode": "GPU内存模式",
-            "precision": "精度"
-        },
-        "outputs": {
-            "cogvideoxfun_model": "Cog视频XFun模型"
-        }
-    },
-    "LoadCogVideoXFunLora": {
-        "title": "加载Cog视频XFun LoRA",
-        "inputs": {
-            "cogvideoxfun_model": "Cog视频XFun模型"
-        },
-        "widgets": {
-            "strength_model": "模型强度",
-            "lora_name": "LoRA名称",
-            "lora_cache": "LoRA缓存"
-        },
-        "outputs": {
-            "cogvideoxfun_model": "Fun模型"
-        }
-    },
-    "CogVideoXFunT2VSampler": {
-        "title": "Cog视频XFun文本转视频采样器",
-        "inputs": {
-            "cogvideoxfun_model": "Cog视频XFun模型",
-            "prompt": "提示词",
-            "negative_prompt": "负面提示词"
-        },
-        "widgets": {
-            "video_length": "视频长度",
-            "width": "宽度",
-            "height": "高度",
-            "seed": "种子",
-            "steps": "步数",
-            "cfg": "分类器自由引导尺度",
-            "is_image": "是否为图像",
-            "scheduler": "调度器"
-        },
-        "outputs": {
-            "images": "图像"
-        }
-    },
-    "CogVideoXFunInpaintSampler": {
-        "title": "Cog视频XFun修复采样器",
-        "inputs": {
-            "cogvideoxfun_model": "Cog视频XFun模型",
-            "prompt": "提示词",
-            "negative_prompt": "负面提示词",
-            "start_img": "起始图像",
-            "end_img": "结束图像"
-        },
-        "widgets": {
-            "video_length": "视频长度",
-            "base_resolution": "基础分辨率",
-            "scheduler": "调度器",
-            "seed": "种子",
-            "steps": "步数",
-            "cfg": "分类器自由引导尺度"
-        },
-        "outputs": {
-            "images": "图像"
-        }
-    },
-    "CogVideoXFunV2VSampler": {
-        "title": "Cog视频XFun V2视频采样器",
-        "inputs": {
-            "cogvideoxfun_model": "Cog视频XFun模型",
-            "prompt": "提示词",
-            "negative_prompt": "负面提示词",
-            "validation_video": "验证视频",
-            "control_video": "控制视频"
-        },
-        "widgets": {
-            "video_length": "视频长度",
-            "base_resolution": "基础分辨率",
-            "scheduler": "调度器",
-            "seed": "种子",
-            "steps": "步数",
-            "cfg": "分类器自由引导尺度",
-            "denoise_strength": "去噪强度"
-        },
-        "outputs": {
-            "images": "图像"
-        }
-    },
-    "LoadWanModel": {
-        "title": "加载Wan模型",
-        "inputs": {},
-        "widgets": {
-            "model": "模型",
-            "GPU_memory_mode": "GPU内存模式",
-            "config": "配置",
-            "precision": "精度"
-        },
-        "outputs": {
-            "funmodels": "Fun模型"
-        }
-    },
-    "LoadWanLora": {
-        "title": "加载Wan LoRA",
-        "inputs": {
-            "funmodels": "Fun模型"
-        },
-        "widgets": {
-            "strength_model": "模型强度",
-            "lora_name": "LoRA名称",
-            "lora_cache": "LoRA缓存"
-        },
-        "outputs": {
-            "funmodels": "Fun模型"
-        }
-    },
-    "WanT2VSampler": {
-        "title": "Wan文本转视频采样器",
-        "inputs": {
-            "funmodels": "Fun模型",
-            "prompt": "提示词",
-            "negative_prompt": "负面提示词"
-        },
-        "widgets": {
-            "video_length": "视频长度",
-            "width": "宽度",
-            "height": "高度",
-            "seed": "种子",
-            "steps": "步数",
-            "cfg": "分类器自由引导尺度",
-            "teacache_threshold": "茶缓存阈值",
-            "num_skip_start_steps": "跳过起始步数",
-            "is_image": "是否为图像",
-            "scheduler": "调度器",
-            "enable_teacache": "启用茶缓存",
-            "teacache_offload": "茶缓存卸载"
-        },
-        "outputs": {
-            "images": "图像"
-        }
-    },
-    "WanI2VSampler": {
-        "title": "Wan图像转视频采样器",
-        "inputs": {
-            "funmodels": "Fun模型",
-            "prompt": "提示词",
-            "negative_prompt": "负面提示词",
-            "start_img": "起始图像"
-        },
-        "widgets": {
-            "video_length": "视频长度",
-            "base_resolution": "基础分辨率",
-            "scheduler": "调度器",
-            "enable_teacache": "启用tea缓存",
-            "teacache_offload": "tea缓存卸载",
-            "seed": "种子",
-            "steps": "步数",
-            "cfg": "cfg",
-            "teacache_threshold": "tea缓存阈值",
-            "num_skip_start_steps": "跳过起始步数"
-        },
-        "outputs": {
-            "images": "图像"
-        }
-    },
-    "LoadWanFunModel": {
-        "title": "加载WanFun模型",
-        "inputs": {},
-        "widgets": {
-            "model": "模型",
-            "model_type": "模型类型",
-            "GPU_memory_mode": "GPU内存模式",
-            "config": "配置",
-            "precision": "精度"
-        },
-        "outputs": {
-            "funmodels": "Fun模型"
-        }
-    },
-    "LoadWanFunLora": {
-        "title": "加载WanFun LoRA",
-        "inputs": {
-            "funmodels": "Fun模型"
-        },
-        "widgets": {
-            "strength_model": "模型强度",
-            "lora_name": "LoRA名称",
-            "lora_cache": "LoRA缓存"
-        },
-        "outputs": {
-            "funmodels": "Fun模型"
-        }
-    },
-    "WanFunT2VSampler": {
-        "title": "WanFun文本转视频采样器",
-        "inputs": {
-            "funmodels": "Fun模型",
-            "prompt": "提示词",
-            "negative_prompt": "负面提示词"
-        },
-        "widgets": {
-            "video_length": "视频长度",
-            "width": "宽度",
-            "height": "高度",
-            "seed": "种子",
-            "steps": "步数",
-            "cfg": "cfg",
-            "teacache_threshold": "tea缓存阈值",
-            "num_skip_start_steps": "跳过起始步数",
-            "is_image": "是否为图像",
-            "scheduler": "调度器",
-            "enable_teacache": "启用tea缓存",
-            "teacache_offload": "tea缓存卸载"
-        },
-        "outputs": {
-            "images": "图像"
-        }
-    },
-    "WanFunInpaintSampler": {
-        "title": "WanFun修复采样器",
-        "inputs": {
-            "funmodels": "Fun模型",
-            "prompt": "提示词",
-            "negative_prompt": "负面提示词",
-            "start_img": "起始图像",
-            "end_img": "结束图像"
-        },
-        "widgets": {
-            "video_length": "视频长度",
-            "base_resolution": "基础分辨率",
-            "scheduler": "调度器",
-            "enable_teacache": "启用tea缓存",
-            "teacache_offload": "tea缓存卸载",
-            "seed": "种子",
-            "steps": "步数",
-            "cfg": "cfg",
-            "teacache_threshold": "tea缓存阈值",
-            "num_skip_start_steps": "跳过起始步数"
-        },
-        "outputs": {
-            "images": "图像"
-        }
-    },
-    "WanFunV2VSampler": {
-        "title": "WanFun视频转视频采样器",
-        "inputs": {
-            "funmodels": "Fun模型",
-            "prompt": "提示词",
-            "negative_prompt": "负面提示词",
-            "validation_video": "验证视频",
-            "control_video": "控制视频",
-            "ref_image": "参考图像"
-        },
-        "widgets": {
-            "video_length": "视频长度",
-            "base_resolution": "基础分辨率",
-            "scheduler": "调度器",
-            "enable_teacache": "启用tea缓存",
-            "teacache_offload": "tea缓存卸载",
-            "seed": "种子",
-            "steps": "步数",
-            "cfg": "cfg",
-            "denoise_strength": "去噪强度",
-            "teacache_threshold": "tea缓存阈值",
-            "num_skip_start_steps": "跳过起始步数"
-        },
-        "outputs": {
-            "images": "图像"
-        }
+    "outputs": {
+      "prompt": "文本"
     }
+  },
+  "FunRiflex": {
+    "title": "Fun RIFLEX视频加帧",
+    "inputs": {
+      "riflex_k": "RIFLEX参数"
+    },
+    "widgets": {
+      "riflex_k": "RIFLEX参数"
+    },
+    "outputs": {
+      "riflex_k": "RIFLEX参数"
+    }
+  },
+  "FunCompile": {
+    "title": "Fun编译",
+    "inputs": {
+      "cache_size_limit": "缓存大小限制",
+      "funmodels": "模型"
+    },
+    "widgets": {
+      "cache_size_limit": "缓存大小限制",
+      "funmodels": "模型"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "FunAttention": {
+    "title": "Fun注意力",
+    "inputs": {
+      "attention_type": "注意力类型",
+      "funmodels": "模型"
+    },
+    "widgets": {
+      "attention_type": "注意力类型",
+      "funmodels": "模型"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "LoadQwenImageModel": {
+    "title": "加载Qwen千问图像模型",
+    "inputs": {
+      "model": "模型",
+      "GPU_memory_mode": "GPU内存模式",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model": "模型",
+      "GPU_memory_mode": "GPU内存模式",
+      "precision": "精度"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "LoadQwenImageLora": {
+    "title": "加载Qwen千问图像 Lora",
+    "inputs": {
+      "funmodels": "Qwen千问图像模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "widgets": {
+      "funmodels": "Qwen千问图像模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    }
+  },
+  "LoadQwenImageTextEncoderModel": {
+    "title": "加载Qwen千问图像 文本编码器模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "outputs": {
+      "text_encoder": "文本编码器",
+      "tokenizer": "分词器"
+    }
+  },
+  "LoadQwenImageTransformerModel": {
+    "title": "加载Qwen千问图像 转换器模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "zero_cond_t": "零条件时间步",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "zero_cond_t": "零条件时间步",
+      "precision": "精度"
+    },
+    "outputs": {
+      "transformer": "转换器",
+      "model_name": "模型名称"
+    }
+  },
+  "LoadQwenImageVAEModel": {
+    "title": "加载Qwen千问图像 VAE模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "vae": "VAE"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "vae": "VAE"
+    }
+  },
+  "LoadQwenImageProcessor": {
+    "title": "加载Qwen千问图像 处理器",
+    "inputs": {
+      "model_name": "模型名称",
+      "processor": "处理器"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "processor": "处理器"
+    }
+  },
+  "CombineQwenImagePipeline": {
+    "title": "组合Qwen千问图像 流水线",
+    "inputs": {
+      "transformer": "转换器",
+      "vae": "VAE模型",
+      "text_encoder": "文本编码器",
+      "tokenizer": "分词器",
+      "model_name": "模型名称",
+      "GPU_memory_mode": "GPU内存模式",
+      "processor": "处理器"
+    },
+    "widgets": {
+      "transformer": "转换器",
+      "vae": "VAE模型",
+      "text_encoder": "文本编码器",
+      "tokenizer": "分词器",
+      "model_name": "模型名称",
+      "GPU_memory_mode": "GPU内存模式",
+      "processor": "处理器"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "LoadCogVideoXFunModel": {
+    "title": "加载CogVideoX-Fun模型",
+    "inputs": {
+      "model": "模型",
+      "model_type": "模型类型",
+      "GPU_memory_mode": "GPU内存模式",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model": "模型",
+      "model_type": "模型类型",
+      "GPU_memory_mode": "GPU内存模式",
+      "precision": "精度"
+    },
+    "outputs": {
+      "cogvideoxfun_model": "CogVideoX-Fun模型"
+    }
+  },
+  "LoadCogVideoXFunLora": {
+    "title": "加载CogVideoX-Fun Lora",
+    "inputs": {
+      "cogvideoxfun_model": "CogVideoX-Fun模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "widgets": {
+      "cogvideoxfun_model": "CogVideoX-Fun模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "outputs": {
+      "cogvideoxfun_model": "CogVideoX-Fun模型"
+    }
+  },
+  "CogVideoXFunT2VSampler": {
+    "title": "CogVideoX-Fun文本到视频采样器",
+    "inputs": {
+      "cogvideoxfun_model": "CogVideoX-Fun模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "funmodels": "模型"
+    },
+    "widgets": {
+      "cogvideoxfun_model": "CogVideoX-Fun模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "funmodels": "模型"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "CogVideoXFunV2VSampler": {
+    "title": "CogVideoX-Fun视频到视频采样器",
+    "inputs": {
+      "cogvideoxfun_model": "CogVideoX-Fun模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "base_resolution": "基础分辨率",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise_strength": "去噪强度",
+      "scheduler": "调度器",
+      "validation_video": "验证视频",
+      "control_video": "控制视频"
+    },
+    "widgets": {
+      "cogvideoxfun_model": "CogVideoX-Fun模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "base_resolution": "基础分辨率",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise_strength": "去噪强度",
+      "scheduler": "调度器",
+      "validation_video": "验证视频",
+      "control_video": "控制视频"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "LoadCogVideoXFunLora": {
+    "title": "加载CogVideoX-Fun Lora",
+    "inputs": {
+      "cogvideoxfun_model": "CogVideoX-Fun模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "widgets": {
+      "cogvideoxfun_model": "CogVideoX-Fun模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "outputs": {
+      "cogvideoxfun_model": "CogVideoX-Fun模型"
+    }
+  },
+  "CogVideoXFunI2VSampler": {
+    "title": "CogVideoX-Fun图像到视频采样器",
+    "inputs": {
+      "cogvideoxfun_model": "CogVideoX-Fun模型",
+      "image": "图像",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "funmodels": "模型"
+    },
+    "widgets": {
+      "cogvideoxfun_model": "CogVideoX-Fun模型",
+      "image": "图像",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "funmodels": "模型"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "CogVideoXFunInpaintSampler": {
+    "title": "CogVideoX-Fun图像修复采样器",
+    "inputs": {
+      "cogvideoxfun_model": "CogVideoX-Fun模型",
+      "image": "图像",
+      "mask": "遮罩",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "funmodels": "模型"
+    },
+    "widgets": {
+      "cogvideoxfun_model": "CogVideoX-Fun模型",
+      "image": "图像",
+      "mask": "遮罩",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "funmodels": "模型"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "Wan2_2FunI2VSampler": {
+    "title": "Wan2.2图像到视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "image": "图像",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "image": "图像",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "WanFunT2VSampler": {
+    "title": "Wan文本到视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "is_image": "是否为图像",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过开始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "is_image": "是否为图像",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过开始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "WanFunI2VSampler": {
+    "title": "Wan图像到视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "image": "图像",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "image": "图像",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "WanFunInpaintSampler": {
+    "title": "Wan图像修复采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "start_img": "开始图像",
+      "end_img": "结束图像",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "riflex_k": "RIFLEX参数"
+    },
+    "widgets": {
+      "video_length": "视频长度",
+      "base_resolution": "基础分辨率",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用缓存功能",
+      "num_skip_start_steps": "跳过开始步数",
+      "teacache_offload": "茶缓存卸载",
+      "cfg_skip_ratio": "CFG跳过比率"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "WanI2VSampler": {
+    "title": "Wan 图生视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "start_img": "起始图像",
+      "riflex_k": "RIFLEX参数"
+
+    },
+    "widgets": {
+      "video_length": "视频长度",
+      "base_resolution": "基础分辨率",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "WanT2VSampler": {
+    "title": "Wan 文生视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "is_image": "是否为图像",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过开始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "is_image": "是否为图像",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过开始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "QwenImageT2VSampler": {
+    "title": "Qwen千问图像 文生视频采样器",
+    "inputs": {
+      "funmodels": "Qwen千问图像模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "widgets": {
+      "funmodels": "Qwen千问图像模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "QwenImageI2VSampler": {
+    "title": "Qwen千问图像 图生视频采样器",
+    "inputs": {
+      "funmodels": "Qwen千问图像模型",
+      "image": "图像",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "widgets": {
+      "funmodels": "Qwen千问图像模型",
+      "image": "图像",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "QwenImageControlSampler": {
+    "title": "Qwen千问图像 控制采样器",
+    "inputs": {
+      "funmodels": "Qwen千问图像模型",
+      "control_image": "控制图像",
+      "control_context_scale": "控制上下文比例",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "widgets": {
+      "funmodels": "Qwen千问图像模型",
+      "control_image": "控制图像",
+      "control_context_scale": "控制上下文比例",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "QwenImageEditSampler": {
+    "title": "Qwen千问图像 编辑采样器",
+    "inputs": {
+      "funmodels": "Qwen千问图像模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例",
+      "image": "图像"
+    },
+    "widgets": {
+      "funmodels": "Qwen千问图像模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例",
+      "image": "图像"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "QwenImageEditPlusSampler": {
+    "title": "Qwen千问图像 编辑增强采样器",
+    "inputs": {
+      "funmodels": "Qwen千问图像模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例",
+      "image": "图像"
+    },
+    "widgets": {
+      "funmodels": "Qwen千问图像模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例",
+      "image": "图像"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "LoadFlux2TransformerModel": {
+    "title": "加载Flux2转换器模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "outputs": {
+      "transformer": "转换器",
+      "model_name": "模型名称"
+    }
+  },
+  "LoadFlux2VAEModel": {
+    "title": "加载Flux2 VAE模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "outputs": {
+      "vae": "VAE"
+    }
+  },
+  "LoadFlux2TextEncoderModel": {
+    "title": "加载Flux2文本编码器模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "outputs": {
+      "text_encoder": "文本编码器",
+      "tokenizer": "分词器"
+    }
+  },
+  "CombineFlux2Pipeline": {
+    "title": "组合Flux2流水线",
+    "inputs": {
+      "transformer": "转换器",
+      "vae": "VAE",
+      "text_encoder": "文本编码器",
+      "tokenizer": "分词器",
+      "model_name": "模型名称",
+      "GPU_memory_mode": "GPU内存模式"
+    },
+    "widgets": {
+      "transformer": "转换器",
+      "vae": "VAE",
+      "text_encoder": "文本编码器",
+      "tokenizer": "分词器",
+      "model_name": "模型名称",
+      "GPU_memory_mode": "GPU内存模式"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "LoadFlux2Lora": {
+    "title": "加载Flux2 Lora",
+    "inputs": {
+      "funmodels": "模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "Flux2T2ISampler": {
+    "title": "Flux2文本到图像采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "LoadFlux2ControlNetInPipeline": {
+    "title": "在流水线中加载Flux2 ControlNet",
+    "inputs": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "funmodels": "模型"
+    },
+    "widgets": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "funmodels": "模型"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "LoadFlux2ControlNetInModel": {
+    "title": "在模型中加载Flux2 ControlNet",
+    "inputs": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "transformer": "转换器"
+    },
+    "widgets": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "transformer": "转换器"
+    },
+    "outputs": {
+      "transformer": "转换器"
+    }
+  },
+  "Flux2ControlSampler": {
+    "title": "Flux2控制采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "control_image": "控制图像",
+      "control_context_scale": "控制上下文比例",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "inpaint_image": "修复图像",
+      "mask_image": "蒙版图像",
+      "image": "图像",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "control_image": "控制图像",
+      "control_context_scale": "控制上下文比例",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "inpaint_image": "修复图像",
+      "mask_image": "蒙版图像",
+      "image": "图像",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "ZImageControlSampler": {
+    "title": "ZImage控制采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "control_image": "控制图像",
+      "control_context_scale": "控制上下文比例",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "inpaint_image": "修复图像",
+      "mask_image": "蒙版图像",
+      "image": "图像",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "control_image": "控制图像",
+      "control_context_scale": "控制上下文比例",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "inpaint_image": "修复图像",
+      "mask_image": "蒙版图像",
+      "image": "图像",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "ZImageT2VSampler": {
+    "title": "ZImage文本到视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "ZImageI2VSampler": {
+    "title": "ZImage图像到视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "image": "图像",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "image": "图像",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "LoadWanClipEncoderModel": {
+    "title": "加载Wan Clip编码器模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "outputs": {
+      "clip_encoder": "Clip编码器"
+    }
+  },
+  "LoadWanTextEncoderModel": {
+    "title": "加载Wan文本编码器模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "outputs": {
+      "text_encoder": "文本编码器",
+      "tokenizer": "分词器"
+    }
+  },
+  "LoadWanTransformerModel": {
+    "title": "加载Wan转换器模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "outputs": {
+      "transformer": "转换器",
+      "model_name": "模型名称"
+    }
+  },
+  "LoadWanVAEModel": {
+    "title": "加载Wan VAE模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "outputs": {
+      "vae": "VAE"
+    }
+  },
+  "CombineWanPipeline": {
+    "title": "组合Wan流水线",
+    "inputs": {
+      "transformer": "转换器",
+      "vae": "VAE",
+      "text_encoder": "文本编码器",
+      "tokenizer": "分词器",
+      "model_name": "模型名称",
+      "GPU_memory_mode": "GPU内存模式",
+      "model_type": "模型类型",
+      "clip_encoder": "Clip编码器"
+    },
+    "widgets": {
+      "transformer": "转换器",
+      "vae": "VAE",
+      "text_encoder": "文本编码器",
+      "tokenizer": "分词器",
+      "model_name": "模型名称",
+      "GPU_memory_mode": "GPU内存模式",
+      "model_type": "模型类型",
+      "clip_encoder": "Clip编码器"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "LoadWanModel": {
+    "title": "加载Wan模型",
+    "inputs": {
+      "model": "模型",
+      "GPU_memory_mode": "GPU内存模式",
+      "config": "配置",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model": "模型",
+      "GPU_memory_mode": "GPU内存模式",
+      "config": "配置",
+      "precision": "精度"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "LoadWanLora": {
+    "title": "加载Wan Lora",
+    "inputs": {
+      "funmodels": "模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "LoadWanFunModel": {
+    "title": "加载Wan模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "config": "配置",
+      "model": "模型",
+      "model_type": "模型类型"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "config": "配置",
+      "model": "模型",
+      "model_type": "模型类型"
+    }
+  },
+  "LoadWanFunLora": {
+    "title": "加载Wan Lora",
+    "inputs": {
+      "funmodels": "模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    }
+  },
+  "LoadZImageModel": {
+    "title": "加载ZImage模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "model": "模型",
+      "model_type": "模型类型"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "model": "模型",
+      "model_type": "模型类型"
+    }
+  },
+  "LoadZImageLora": {
+    "title": "加载ZImage Lora",
+    "inputs": {
+      "funmodels": "模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    }
+  },
+  "LoadFunControlNet": {
+    "title": "加载Fun ControlNet",
+    "inputs": {
+      "controlnet_name": "ControlNet名称",
+      "precision": "精度",
+      "funmodels": "模型"
+    },
+    "widgets": {
+      "controlnet_name": "ControlNet名称",
+      "precision": "精度",
+      "funmodels": "模型"
+    }
+  },
+  "LoadZImageControlNetInPipeline": {
+    "title": "在流水线中加载Z图像ControlNet",
+    "inputs": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "sub_transformer_name": "子转换器名称",
+      "funmodels": "ZImage模型"
+    },
+    "widgets": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "sub_transformer_name": "子转换器名称",
+      "funmodels": "ZImage模型"
+    },
+    "outputs": {
+      "funmodels": "ZImage模型"
+    }
+  },
+  "LoadZImageControlNetInModel": {
+    "title": "在模型中加载Z图像ControlNet",
+    "inputs": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "transformer": "转换器"
+    },
+    "widgets": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "transformer": "转换器"
+    },
+    "outputs": {
+      "transformer": "转换器"
+    }
+  },
+  "LoadQwenImageControlNet": {
+    "title": "加载Qwen千问图像 ControlNet",
+    "inputs": {
+      "controlnet_name": "ControlNet名称",
+      "precision": "精度",
+      "funmodels": "模型"
+    },
+    "widgets": {
+      "controlnet_name": "ControlNet名称",
+      "precision": "精度",
+      "funmodels": "模型"
+    }
+  },
+  "LoadZImageLora": {
+    "title": "加载ZImage Lora",
+    "inputs": {
+      "funmodels": "ZImage模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "widgets": {
+      "funmodels": "ZImage模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "LoadZImageTextEncoderModel": {
+    "title": "加载Z图像文本编码器模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "outputs": {
+      "text_encoder": "文本编码器",
+      "tokenizer": "分词器"
+    }
+  },
+  "LoadZImageControlNetInPipeline": {
+    "title": "在流水线中加载Z图像ControlNet",
+    "inputs": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "sub_transformer_name": "子转换器名称",
+      "funmodels": "ZImage模型"
+    },
+    "widgets": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "sub_transformer_name": "子转换器名称",
+      "funmodels": "ZImage模型"
+    },
+    "outputs": {
+      "funmodels": "ZImage模型"
+    }
+  },
+  "LoadZImageControlNetInModel": {
+    "title": "在模型中加载Z图像ControlNet",
+    "inputs": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "transformer": "转换器"
+    },
+    "widgets": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "transformer": "转换器"
+    },
+    "outputs": {
+      "transformer": "转换器"
+    }
+  },
+  "LoadZImageTransformerModel": {
+    "title": "加载Z图像转换器模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "outputs": {
+      "transformer": "转换器",
+      "model_name": "模型名称"
+    }
+  },
+  "LoadZImageModel": {
+    "title": "加载ZImage模型",
+    "inputs": {
+      "model": "模型",
+      "GPU_memory_mode": "GPU内存模式",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model": "模型",
+      "GPU_memory_mode": "GPU内存模式",
+      "precision": "精度"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "CreateTrajectoryBasedOnKJNodes": {
+    "title": "基于KJNodes创建轨迹",
+    "inputs": {
+      "coordinates": "坐标",
+      "masks": "掩码"
+    },
+    "widgets": {
+      "coordinates": "坐标",
+      "masks": "掩码"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "LoadQwenImageProcessor": {
+    "title": "加载Qwen千问图像处理器",
+    "inputs": {},
+    "widgets": {},
+    "outputs": {
+      "processor": "处理器"
+    }
+  },
+  "FunControlNetLoader": {
+    "title": "Fun ControlNet加载器",
+    "inputs": {
+      "controlnet_name": "ControlNet名称",
+      "precision": "精度",
+      "funmodels": "模型"
+    },
+    "widgets": {
+      "controlnet_name": "ControlNet名称",
+      "precision": "精度",
+      "funmodels": "模型"
+    }
+  },
+  "LoadFunLora": {
+    "title": "加载Fun Lora",
+    "inputs": {
+      "funmodels": "模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    }
+  },
+  "LoadFlux2Model": {
+    "title": "加载Flux2模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "model": "模型",
+      "model_type": "模型类型"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "model": "模型",
+      "model_type": "模型类型"
+    }
+  },
+  "QwenImageSampler": {
+    "title": "文心图像采样器",
+    "inputs": {
+      "funmodels": "Qwen千问图像模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数"
+    },
+    "widgets": {
+      "funmodels": "Qwen千问图像模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "LoadWan2_1Model": {
+    "title": "加载Wan2.1模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "model": "模型",
+      "model_type": "模型类型"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "model": "模型",
+      "model_type": "模型类型"
+    }
+  },
+  "Wan2_1T2VSampler": {
+    "title": "Wan2.1文本到视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "Wan2_1V2VSampler": {
+    "title": "Wan2.1视频到视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "video": "视频",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "video": "视频",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "Wan2_1InpaintSampler": {
+    "title": "Wan2.1图像修复采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "image": "图像",
+      "mask": "遮罩",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "image": "图像",
+      "mask": "遮罩",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "LoadWan2_1FunModel": {
+    "title": "加载Wan2.1模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "model": "模型",
+      "model_type": "模型类型"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "model": "模型",
+      "model_type": "模型类型"
+    }
+  },
+  "Wan2_1FunT2VSampler": {
+    "title": "Wan2.1文本到视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "Wan2_1FunInpaintSampler": {
+    "title": "Wan2.1图像修复采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "image": "图像",
+      "mask": "遮罩",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "image": "图像",
+      "mask": "遮罩",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "LoadWan2_2TransformerModel": {
+    "title": "加载Wan2.2转换器模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "outputs": {
+      "transformer": "转换器",
+      "model_name": "模型名称"
+    }
+  },
+  "CombineWan2_2Pipeline": {
+    "title": "组合Wan2.2流水线",
+    "inputs": {
+      "transformer": "转换器",
+      "vae": "VAE",
+      "text_encoder": "文本编码器",
+      "tokenizer": "分词器",
+      "model_name": "模型名称",
+      "GPU_memory_mode": "GPU内存模式",
+      "model_type": "模型类型",
+      "clip_encoder": "Clip编码器",
+      "transformer_2": "转换器2"
+    },
+    "widgets": {
+      "transformer": "转换器",
+      "vae": "VAE",
+      "text_encoder": "文本编码器",
+      "tokenizer": "分词器",
+      "model_name": "模型名称",
+      "GPU_memory_mode": "GPU内存模式",
+      "model_type": "模型类型",
+      "clip_encoder": "Clip编码器",
+      "transformer_2": "转换器2"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "LoadWan2_2Model": {
+    "title": "加载Wan2.2模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "model": "模型",
+      "model_type": "模型类型",
+      "config": "配置"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "model": "模型",
+      "model_type": "模型类型",
+      "config": "配置"
+    }
+  },
+  "Wan2_2T2VSampler": {
+    "title": "Wan2.2文本到视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "riflex_k": "RIFLEX参数",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "is_image": "是否为图像",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "boundary": "边界",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "riflex_k": "RIFLEX参数",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "is_image": "是否为图像",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "boundary": "边界",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "Wan2_2V2VSampler": {
+    "title": "Wan2.2视频到视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "validation_video": "验证视频",
+      "control_video": "控制视频",
+      "start_image": "起始图像",
+      "end_image": "结束图像",
+      "ref_image": "参考图像",
+      "camera_conditions": "相机条件",
+      "riflex_k": "RIFLEX参数",
+      "video_length": "视频长度",
+      "base_resolution": "基础分辨率",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise_strength": "去噪强度",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "boundary": "边界",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "validation_video": "验证视频",
+      "control_video": "控制视频",
+      "start_image": "起始图像",
+      "end_image": "结束图像",
+      "ref_image": "参考图像",
+      "camera_conditions": "相机条件",
+      "riflex_k": "RIFLEX参数",
+      "video_length": "视频长度",
+      "base_resolution": "基础分辨率",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise_strength": "去噪强度",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "boundary": "边界",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "Wan2_2InpaintSampler": {
+    "title": "Wan2.2图像修复采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "image": "图像",
+      "mask": "遮罩",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "image": "图像",
+      "mask": "遮罩",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数",
+      "base_resolution": "基础分辨率",
+      "shift": "偏移",
+      "teacache": "TEACache",
+      "teacache_latent": "TEACache潜在",
+      "teacache_cond": "TEACache条件",
+      "teacache_threshold": "TEACache阈值",
+      "teacache_step": "TEACache步数",
+      "teacache_prompt": "TEACache提示词",
+      "teacache_negative": "TEACache负面提示词"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "LoadWan2_2FunModel": {
+    "title": "加载Wan2.2模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "model": "模型",
+      "model_type": "模型类型",
+      "config": "配置"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "model": "模型",
+      "model_type": "模型类型",
+      "config": "配置"
+    }
+  },
+  "Wan2_2FunV2VSampler": {
+    "title": "Wan2.2视频到视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "validation_video": "验证视频",
+      "control_video": "控制视频",
+      "start_image": "起始图像",
+      "end_image": "结束图像",
+      "ref_image": "参考图像",
+      "camera_conditions": "相机条件",
+      "riflex_k": "RIFLEX参数",
+      "video_length": "视频长度",
+      "base_resolution": "基础分辨率",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise_strength": "去噪强度",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "boundary": "边界",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "validation_video": "验证视频",
+      "control_video": "控制视频",
+      "start_image": "起始图像",
+      "end_image": "结束图像",
+      "ref_image": "参考图像",
+      "camera_conditions": "相机条件",
+      "riflex_k": "RIFLEX参数",
+      "video_length": "视频长度",
+      "base_resolution": "基础分辨率",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise_strength": "去噪强度",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "boundary": "边界",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "Wan2_2FunInpaintSampler": {
+    "title": "Wan2.2图像修复采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "start_img": "起始图像",
+      "end_img": "结束图像",
+      "riflex_k": "RIFLEX参数",
+      "video_length": "视频长度",
+      "base_resolution": "基础分辨率",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "boundary": "边界",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "start_img": "起始图像",
+      "end_img": "结束图像",
+      "riflex_k": "RIFLEX参数",
+      "video_length": "视频长度",
+      "base_resolution": "基础分辨率",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "boundary": "边界",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "LoadWan2_2VaceFunModel": {
+    "title": "加载Wan2.2 Vace模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "model": "模型",
+      "model_type": "模型类型",
+      "config": "配置"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "GPU_memory_mode": "GPU内存模式",
+      "model": "模型",
+      "model_type": "模型类型",
+      "config": "配置"
+    }
+  },
+  "Wan2_2VaceFunSampler": {
+    "title": "Wan2.2 Vace Fun采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "start_img": "起始图像",
+      "riflex_k": "RIFLEX参数",
+      "video_length": "视频长度",
+      "base_resolution": "基础分辨率",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "boundary": "边界",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例",
+      "padding_in_subject_ref_images": "在主体参考图像中添加填充",
+      "control_video": "控制视频",
+      "start_image": "起始图像",
+      "end_image": "结束图像",
+      "subject_ref_images": "主体参考图像"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "start_img": "起始图像",
+      "riflex_k": "RIFLEX参数",
+      "video_length": "视频长度",
+      "base_resolution": "基础分辨率",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "boundary": "边界",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例",
+      "padding_in_subject_ref_images": "在主体参考图像中添加填充",
+      "control_video": "控制视频",
+      "start_image": "起始图像",
+      "end_image": "结束图像",
+      "subject_ref_images": "主体参考图像"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "LoadZImageTransformerModel": {
+    "title": "加载Z图像变换器模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "transformer": "变换器"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "transformer": "变换器"
+    }
+  },
+  "LoadZImageVAEModel": {
+    "title": "加载Z图像VAE模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "vae": "VAE"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "vae": "VAE"
+    }
+  },
+  "LoadZImageTextEncoderModel": {
+    "title": "加载Z图像文本编码器模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "text_encoder": "文本编码器",
+      "tokenizer": "分词器"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "text_encoder": "文本编码器",
+      "tokenizer": "分词器"
+    }
+  },
+  "CombineZImagePipeline": {
+    "title": "组合Z图像流水线",
+    "inputs": {
+      "text_encoder": "文本编码器",
+      "transformer": "变换器",
+      "vae": "VAE模型",
+      "processor": "处理器",
+      "tokenizer": "分词器",
+      "model_name": "模型名称",
+      "GPU_memory_mode": "GPU内存模式"
+    },
+    "widgets": {
+      "text_encoder": "文本编码器",
+      "transformer": "变换器",
+      "vae": "VAE模型",
+      "processor": "处理器",
+      "tokenizer": "分词器",
+      "model_name": "模型名称",
+      "GPU_memory_mode": "GPU内存模式"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "LoadZImageControlNetInPipeline": {
+    "title": "在流水线中加载Z图像ControlNet",
+    "inputs": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "sub_transformer_name": "子转换器名称",
+      "funmodels": "模型"
+    },
+    "widgets": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "sub_transformer_name": "子转换器名称",
+      "funmodels": "模型"
+    }
+  },
+  "LoadZImageControlNetInModel": {
+    "title": "在模型中加载Z图像ControlNet",
+    "inputs": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "transformer": "转换器"
+    },
+    "widgets": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "transformer": "转换器"
+    }
+  },
+  "ZImageT2ISampler": {
+    "title": "Z图像文本到图像采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "width": "宽度",
+      "height": "高度",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "denoise": "去噪强度",
+      "riflex_k": "RIFLEX参数"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "WanFunV2VSampler": {
+    "title": "Wan视频到视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "validation_video": "验证视频",
+      "control_video": "控制视频",
+      "start_image": "开始图像",
+      "ref_image": "参考图像",
+      "camera_conditions": "摄像机参数",
+      "riflex_k": "RIFLEX参数"
+    },
+    "widgets": {
+      "video_length": "视频长度",
+      "base_resolution": "基础分辨率",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "denoise_strength": "去噪强度",
+      "shift": "偏移",
+      "scheduler": "调度器",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用缓存功能",
+      "num_skip_start_steps": "跳过开始步数",
+      "teacache_offload": "茶缓存卸载",
+      "cfg_skip_ratio": "CFG跳过比率"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "LoadWan2_2FunLora": {
+    "title": "加载Wan2.2 LoRA",
+    "inputs": {
+      "funmodels": "模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "lora_name": "Lora名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    }
+  },
+  "LoadWan2_2Lora": {
+    "title": "加载Wan2.2 Lora",
+    "inputs": {
+      "funmodels": "模型",
+      "lora_name": "Lora名称",
+      "lora_high_name": "Lora高分辨率名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "lora_name": "Lora名称",
+      "lora_high_name": "Lora高分辨率名称",
+      "strength_model": "模型强度",
+      "lora_cache": "Lora缓存"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "Wan2_2FunT2VSampler": {
+    "title": "Wan2.2文本到视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "riflex_k": "RIFLEX参数",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "is_image": "是否为图像",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "boundary": "边界",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "riflex_k": "RIFLEX参数",
+      "video_length": "视频长度",
+      "width": "宽度",
+      "height": "高度",
+      "is_image": "是否为图像",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "boundary": "边界",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "LoadVaceWanTransformer3DModel": {
+    "title": "加载Vace Wan 3D变换器模型",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "widgets": {
+      "model_name": "模型名称",
+      "precision": "精度"
+    },
+    "outputs": {
+      "transformer": "变换器",
+      "model_name": "模型名称"
+    }
+  },
+  "CombineWan2_2VaceFunPipeline": {
+    "title": "组合Wan2.2 Vace Fun流水线",
+    "inputs": {
+      "text_encoder": "文本编码器",
+      "transformer": "变换器",
+      "vae": "VAE模型",
+      "tokenizer": "分词器",
+      "model_name": "模型名称",
+      "GPU_memory_mode": "GPU内存模式",
+      "clip_encoder": "Clip编码器",
+      "transformer_2": "变换器2"
+    },
+    "widgets": {
+      "text_encoder": "文本编码器",
+      "transformer": "变换器",
+      "vae": "VAE模型",
+      "tokenizer": "分词器",
+      "model_name": "模型名称",
+      "GPU_memory_mode": "GPU内存模式",
+      "clip_encoder": "Clip编码器",
+      "transformer_2": "变换器2"
+    }
+  },
+  "LoadQwenImageControlNetInPipeline": {
+    "title": "在流水线中加载Qwen千问图像 ControlNet",
+    "inputs": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "sub_transformer_name": "子变换器名称",
+      "funmodels": "模型"
+    },
+    "widgets": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "sub_transformer_name": "子变换器名称",
+      "funmodels": "模型"
+    },
+    "outputs": {
+      "funmodels": "模型"
+    }
+  },
+  "LoadQwenImageControlNetInModel": {
+    "title": "在模型中加载Qwen千问图像 ControlNet",
+    "inputs": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "transformer": "变换器"
+    },
+    "widgets": {
+      "config": "配置",
+      "model_name": "模型名称",
+      "transformer": "变换器"
+    },
+    "outputs": {
+      "transformer": "变换器"
+    }
+  },
+  "Wan2_2I2VSampler": {
+    "title": "Wan2.2图像到视频采样器",
+    "inputs": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "start_img": "起始图像",
+      "riflex_k": "RIFLEX参数",
+      "video_length": "视频长度",
+      "base_resolution": "基础分辨率",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "boundary": "边界",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "widgets": {
+      "funmodels": "模型",
+      "prompt": "提示词",
+      "negative_prompt": "负面提示词",
+      "start_img": "起始图像",
+      "riflex_k": "RIFLEX参数",
+      "video_length": "视频长度",
+      "base_resolution": "基础分辨率",
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "scheduler": "调度器",
+      "shift": "偏移",
+      "boundary": "边界",
+      "teacache_threshold": "TEACache阈值",
+      "enable_teacache": "启用TEACache",
+      "num_skip_start_steps": "跳过起始步数",
+      "teacache_offload": "TEACache卸载",
+      "cfg_skip_ratio": "CFG跳过比例"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "ImageToCanny": {
+    "title": "图像转Canny边缘",
+    "inputs": {
+      "input_image": "输入图像",
+      "low_threshold": "低阈值",
+      "high_threshold": "高阈值"
+    },
+    "widgets": {
+      "input_image": "输入图像",
+      "low_threshold": "低阈值",
+      "high_threshold": "高阈值"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "ImageToPose": {
+    "title": "图像转姿态",
+    "inputs": {
+      "input_image": "输入图像"
+    },
+    "widgets": {
+      "input_image": "输入图像"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "ImageToDepth": {
+    "title": "图像转深度图",
+    "inputs": {
+      "input_image": "输入图像"
+    },
+    "widgets": {
+      "input_image": "输入图像"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "VideoToCanny": {
+    "title": "视频转Canny边缘",
+    "inputs": {
+      "input_video": "输入视频",
+      "low_threshold": "低阈值",
+      "high_threshold": "高阈值",
+      "video_length": "视频长度"
+    },
+    "widgets": {
+      "input_video": "输入视频",
+      "low_threshold": "低阈值",
+      "high_threshold": "高阈值",
+      "video_length": "视频长度"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "VideoToDepth": {
+    "title": "视频转深度图",
+    "inputs": {
+      "input_video": "输入视频",
+      "video_length": "视频长度"
+    },
+    "widgets": {
+      "input_video": "输入视频",
+      "video_length": "视频长度"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "VideoToOpenpose": {
+    "title": "视频转姿态",
+    "inputs": {
+      "input_video": "输入视频",
+      "video_length": "视频长度"
+    },
+    "widgets": {
+      "input_video": "输入视频",
+      "video_length": "视频长度"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+  "ImageMaximumNode": {
+    "title": "图像最大值节点",
+    "inputs": {
+      "video_1": "视频1",
+      "video_2": "视频2"
+    },
+    "widgets": {
+      "video_1": "视频1",
+      "video_2": "视频2"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "ImageCollectNode": {
+    "title": "图像收集节点",
+    "inputs": {
+      "image_1": "图像1",
+      "image_2": "图像2"
+    },
+    "widgets": {
+      "image_1": "图像1",
+      "image_2": "图像2"
+    },
+    "outputs": {
+      "image": "图像"
+    }
+  },
+  "CreateTrajectoryBasedOnKNodes": {
+    "title": "基于K.Nodes创建轨迹",
+    "inputs": {
+      "video": "视频"
+    },
+    "widgets": {
+      "video": "视频"
+    },
+    "outputs": {
+      "trajectory": "轨迹"
+    }
+  },
+  "CameraBasicFromChaoJie": {
+    "title": "基础相机控制",
+    "inputs": {
+      "camera_pose": "相机姿态",
+      "speed": "速度",
+      "video_length": "视频长度"
+    },
+    "widgets": {
+      "camera_pose": "相机姿态",
+      "speed": "速度",
+      "video_length": "视频长度"
+    },
+    "outputs": {
+      "CameraPose": "相机姿态"
+    }
+  },
+  "CameraCombineFromChaoJie": {
+    "title": "组合相机控制",
+    "inputs": {
+      "camera_pose1": "相机姿态1",
+      "camera_pose2": "相机姿态2",
+      "camera_pose3": "相机姿态3",
+      "camera_pose4": "相机姿态4",
+      "speed": "速度",
+      "video_length": "视频长度"
+    },
+    "widgets": {
+      "camera_pose1": "相机姿态1",
+      "camera_pose2": "相机姿态2",
+      "camera_pose3": "相机姿态3",
+      "camera_pose4": "相机姿态4",
+      "speed": "速度",
+      "video_length": "视频长度"
+    },
+    "outputs": {
+      "CameraPose": "相机姿态"
+    }
+  },
+  "CameraJoinFromChaoJie": {
+    "title": "连接相机控制",
+    "inputs": {
+      "camera_pose1": "相机姿态1",
+      "camera_pose2": "相机姿态2"
+    },
+    "widgets": {
+      "camera_pose1": "相机姿态1",
+      "camera_pose2": "相机姿态2"
+    },
+    "outputs": {
+      "CameraPose": "相机姿态"
+    }
+  },
+  "CameraTrajectoryFromChaoJie": {
+    "title": "相机轨迹",
+    "inputs": {
+      "camera_pose": "相机姿态",
+      "fx": "焦距X",
+      "fy": "焦距Y",
+      "cx": "光心X",
+      "cy": "光心Y"
+    },
+    "widgets": {
+      "camera_pose": "相机姿态",
+      "fx": "焦距X",
+      "fy": "焦距Y",
+      "cx": "光心X",
+      "cy": "光心Y"
+    },
+    "outputs": {
+      "camera_trajectory": "相机轨迹",
+      "video_length": "视频长度"
+    }
+  }
 }
