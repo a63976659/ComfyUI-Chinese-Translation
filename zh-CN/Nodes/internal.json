@@ -3424,7 +3424,7 @@
         }
     },
     "EmptyHunyuanLatentVideo": {
-        "title": "混元空Latent视频容器",
+        "title": "Hunyuan混元空Latent视频容器",
         "inputs": {
             "width": "宽度",
             "height": "高度",
@@ -3436,7 +3436,7 @@
         }
     },
     "TextEncodeHunyuanVideo_ImageToVideo": {
-        "title": "混元视频文本编码（图像转视频）",
+        "title": "Hunyuan混元视频文本编码（图像转视频）",
         "inputs": {
             "clip": "CLIP模型",
             "clip_vision_output": "CLIP视觉输出",
@@ -3448,7 +3448,7 @@
         }
     },
     "HunyuanImageToVideo": {
-        "title": "混元图像转视频",
+        "title": "Hunyuan混元图像转视频",
         "inputs": {
             "positive": "正向条件",
             "vae": "VAE编码器",
@@ -3467,7 +3467,7 @@
         }
     },
     "HunyuanVideo15ImageToVideo": {
-        "title": "混元视频15 图像转视频",
+        "title": "Hunyuan混元视频15 图像转视频",
         "inputs": {
             "positive": "正向条件",
             "negative": "负面条件",
@@ -3489,7 +3489,7 @@
         }
     },
     "HunyuanVideo15SuperResolution": {
-        "title": "混元视频15 超分辨率",
+        "title": "Hunyuan混元视频15 超分辨率",
         "inputs": {
             "positive": "正向条件",
             "negative": "负面条件",
@@ -3508,7 +3508,7 @@
         }
     },
     "EmptyLatentHunyuan3Dv2": {
-        "title": "混元3D 空Latent V2",
+        "title": "Hunyuan混元3D 空Latent V2",
         "inputs": {},
         "widgets": {
             "resolution": "分辨率",
@@ -3519,7 +3519,7 @@
         }
     },
     "EmptyHunyuanVideo15Latent": {
-        "title": "混元视频15 空Latent",
+        "title": "Hunyuan混元视频15 空Latent",
         "inputs": {},
         "widgets": {
             "width": "宽度",
@@ -3532,7 +3532,7 @@
         }
     },
     "HunyuanVideo15LatentUpscaleWithModel": {
-        "title": "混元视频15 Latent 模型放大分辨率",
+        "title": "Hunyuan混元视频15 Latent 模型放大分辨率",
         "inputs": {
             "model": "模型",
             "samples": "采样"
@@ -3548,7 +3548,7 @@
         }
     },
     "Hunyuan3Dv2Conditioning": {
-        "title": "混元3D V2条件设置",
+        "title": "Hunyuan混元3D V2条件设置",
         "inputs": {
             "clip_vision_output": "CLIP视觉输出"
         },
@@ -3558,7 +3558,7 @@
         }
     },
     "Hunyuan3Dv2ConditioningMultiView": {
-        "title": "混元3D V2多视角条件",
+        "title": "Hunyuan混元3D V2多视角条件",
         "inputs": {
             "front": "前视图",
             "left": "左视图",
@@ -3571,7 +3571,7 @@
         }
     },
     "VAEDecodeHunyuan3D": {
-        "title": "混元3D VAE解码",
+        "title": "Hunyuan混元3D VAE解码",
         "inputs": {
             "samples": "样本",
             "vae": "VAE解码器",
@@ -3583,7 +3583,7 @@
         }
     },
     "HunyuanRefinerLatent": {
-        "title": "混元精炼器 Latent",
+        "title": "Hunyuan混元精炼器 Latent",
         "inputs": {
             "positive": "正向条件",
             "negative": "负面条件",
@@ -3599,7 +3599,7 @@
         }
     },
     "EmptyHunyuanImageLatent": {
-        "title": "混元图像  空Latent",
+        "title": "Hunyuan混元图像  空Latent",
         "inputs": {},
         "widgets": {
             "width": "宽度",
@@ -3611,6 +3611,42 @@
             "positive": "正向条件",
             "negative": "负面条件",
             "latent": "Latent"
+        }
+    },
+    "TencentTextToModelNode": {
+        "title": "Hunyuan混元3D：文生模型（专业版）",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "face_count": "面部数量",
+            "pbr": "物理增强渲染",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "GLB": "GLB 格式",
+            "OBJ": "OBJ 格式"
+        }
+    },
+    "TencentImageToModelNode": {
+        "title": "Hunyuan混元3D：图生模型（专业版）",
+        "inputs": {
+            "image": "图像",
+            "image_left": "左侧图片",
+            "image_right": "右侧图片",
+            "image_back": "背面图片"
+        },
+        "widgets": {
+            "model": "模型",
+            "face_count": "面部数量",
+            "generate_type": "生成类型",
+            "pbr": "物理增强渲染",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "GLB": "GLB 格式",
+            "OBJ": "OBJ 格式"
         }
     },
     "VoxelToMeshBasic": {
@@ -4907,6 +4943,208 @@
         "outputs": {
             "IMAGE": "图像",
             "MASK": "遮罩"
+        }
+    },
+    "BriaImageEditNode": {
+        "title": "Bria FIBO  图像编辑",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
+            "guidance_scale": "引导强度",
+            "steps": "步数",
+            "moderation": "审核",
+            "prompt_content_moderation": "提示内容审核",
+            "visual_input_moderation": "视觉输入审核",
+            "visual_output_moderation": "视觉输出审核"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "structured_prompt": "结构化提示语"
+        }
+    },
+    "GrokImageNode": {
+        "title": "Grok 图像",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
+            "aspect_ratio": "宽高比",
+            "number_of_images": "图像数量"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
+    "GrokImageEditNode": {
+        "title": "Grok 图像编辑",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
+            "aspect_ratio": "宽高比",
+            "number_of_images": "图像数量"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
+    "GrokVideoNode": {
+        "title": "Grok 视频",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
+            "aspect_ratio": "宽高比",
+            "resolution": "分辨率",
+            "duration": "时长"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        }
+    },
+    "GrokVideoEditNode": {
+        "title": "Grok 视频编辑",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
+            "aspect_ratio": "宽高比",
+            "resolution": "分辨率",
+            "duration": "时长"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        }
+    },
+    "HitPawGeneralImageEnhance": {
+        "title": "HitPaw 图像整体增强功能",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "upscale_factor": "放大比例",
+            "auto_downscale": "自动缩放"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
+    "HitPawVideoEnhance": {
+        "title": "HitPaw 视频增强功能",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        }
+    },
+    "MagnificImageStyleTransferNode": {
+        "title": "Magnific辉煌 图像风格转换",
+        "inputs": {
+            "image": "图像",
+            "reference_image": "参考图像"
+        },
+        "widgets": {
+            "style_strength": "风格强度",
+            "structure_strength": "结构强度",
+            "flavor": "风格",
+            "engine": "引擎",
+            "portrait_mode": "肖像模式",
+            "fixed_generation": "固定生成"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
+    "MagnificImageRelightNode": {
+        "title": "Magnific辉煌 图像重新打光",
+        "inputs": {
+            "image": "图像",
+            "reference_image": "参考图像"
+        },
+        "widgets": {
+            "light_transfer_strength": "光照强度",
+            "style": "风格",
+            "interpolate_from_original": "从原始数据中进行插值",
+            "change_background": "更改背景",
+            "preserve_details": "保留细节",
+            "advanced_settings": "高级设置"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
+    "MagnificImageSkinEnhancerNode": {
+        "title": "Magnific辉煌 图像皮肤增强器",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "sharpen": "锐化",
+            "smart_grain": "智能 颗粒",
+            "mode": "模式"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
+    "RecraftCreateStyleNode": {
+        "title": "重新 设计风格",
+        "inputs": {
+            "image": "图像",
+            "image0": "图像0"
+        },
+        "widgets": {
+            "style": "风格"
+        },
+        "outputs": {
+            "style": "风格",
+            "style_id": "风格ID"
+        }
+    },
+    "WavespeedImageUpscaleNode": {
+        "title": "WaveSpeed波速 图像放大",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "target_resolution": "目标分辨率"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
+    "WavespeedFlashVSRNode": {
+        "title": "WaveSpeed波速 FlashVSR 视频放大功能",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "target_resolution": "目标分辨率"
+        },
+        "outputs": {
+            "VIDEO": "视频"
         }
     },
     "GeminiImage2Node": {
@@ -7043,6 +7281,78 @@
             "VIDEO": "生成视频"
         }
     },
+    "ViduExtendVideoNode": {
+        "title": "Vidu 视频延长",
+        "inputs": {
+            "video": "视频",
+            "end_frame": "结束帧"
+        },
+        "widgets": {
+            "model": "模型",
+            "duration": "时长(秒)",
+            "resolution": "分辨率",
+            "prompt": "提示词",
+            "seed": "随机种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        }
+    },
+    "ViduMultiFrameVideoNode": {
+        "title": "Vidu 多帧视频生成",
+        "inputs": {
+            "start_image": "开始图像",
+            "end_image1": "结束图像1",
+            "end_image2": "结束图像2"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "随机种子",
+            "control_after_generate": "生成后控制",
+            "resolution": "分辨率",
+            "frames": "多帧",
+            "duration": "时长(秒)",
+            "duration1": "1时长(秒)",
+            "duration1": "2时长(秒)"
+        },
+        "outputs": {
+            "VIDEO": "生成视频"
+        }
+    },
+    "Vidu3TextToVideoNode": {
+        "title": "Vidu Q3 文生视频",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "aspect_ratio": "宽高比",
+            "resolution": "分辨率",
+            "duration": "时长(秒)",
+            "audio": "音频",
+            "seed": "随机种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "生成视频"
+        }
+    },
+    "Vidu3ImageToVideoNode": {
+        "title": "Vidu Q3 图生视频",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "duration": "时长(秒)",
+            "audio": "音频",
+            "seed": "随机种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "生成视频"
+        }
+    },
     "TextEncodeAceStepAudio": {
         "title": "ACE音频文本编码",
         "inputs": {
@@ -8589,6 +8899,144 @@
         },
         "outputs": {
             "resized": "调整后大小"
+        }
+    },
+    "MeshyTextToModelNode": {
+        "title": "Meshy影眸：文生模型",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "style": "风格",
+            "should_remesh": "重新网格化",
+            "topology": "拓扑结构",
+            "target_polycount": "目标多边形数量",
+            "symmetry_mode": "对称模式",
+            "pose_mode": "姿态模式",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "meshy_task_id": "Meshy影眸任务编号",
+            "GLB": "GLB 格式",
+            "FBX": "FBX 格式"
+        }
+    },
+    "MeshyRefineNode": {
+        "title": "Meshy影眸：完善草图模型",
+        "inputs": {
+            "meshy_task_id": "Meshy影眸任务编号",
+            "texture_image": "纹理图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "enable_pbr": "启用 PBR物理增强渲染",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "meshy_task_id": "Meshy影眸任务编号",
+            "GLB": "GLB 格式",
+            "FBX": "FBX 格式"
+        }
+    },
+    "MeshyImageToModelNode": {
+        "title": "Meshy影眸：图生模型",
+        "inputs": {
+            "image": "图像",
+            "texture_image": "纹理图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "should_remesh": "重新网格化",
+            "topology": "拓扑结构",
+            "target_polycount": "目标多边形数量",
+            "symmetry_mode": "对称模式",
+            "should_texture": "应用纹理",
+            "enable_pbr": "启用 PBR物理增强渲染",
+            "pose_mode": "姿态模式",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "meshy_task_id": "Meshy影眸任务编号",
+            "GLB": "GLB 格式",
+            "FBX": "FBX 格式"
+        }
+    },
+    "MeshyMultiImageToModelNode": {
+        "title": "Meshy影眸：多图生模型",
+        "inputs": {
+            "image": "图像",
+            "image0": "图像0",
+            "image1": "图像1",
+            "texture_image": "纹理图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "should_remesh": "重新网格化",
+            "topology": "拓扑结构",
+            "target_polycount": "目标多边形数量",
+            "symmetry_mode": "对称模式",
+            "should_texture": "应用纹理",
+            "enable_pbr": "启用 PBR物理增强渲染",
+            "pose_mode": "姿态模式",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "meshy_task_id": "Meshy影眸任务编号",
+            "GLB": "GLB 格式",
+            "FBX": "FBX 格式"
+        }
+    },
+    "MeshyRigModelNode": {
+        "title": "Meshy影眸：骨骼模型",
+        "inputs": {
+            "meshy_task_id": "Meshy影眸任务编号",
+            "texture_image": "纹理图像"
+        },
+        "widgets": {
+            "height_meters": "高度（米）"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "meshy_task_id": "Meshy影眸任务编号",
+            "GLB": "GLB 格式",
+            "FBX": "FBX 格式"
+        }
+    },
+    "MeshyAnimateModelNode": {
+        "title": "Meshy影眸：动画模型",
+        "inputs": {
+            "rig_task_id": "骨骼任务编号",
+            "texture_image": "纹理图像"
+        },
+        "widgets": {
+            "action_id": "动作ID"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "meshy_task_id": "Meshy影眸任务编号",
+            "GLB": "GLB 格式",
+            "FBX": "FBX 格式"
+        }
+    },
+    "MeshyTextureNode": {
+        "title": "Meshy影眸：纹理模型",
+        "inputs": {
+            "meshy_task_id": "Meshy影眸任务编号",
+            "image_style": "图像风格"
+        },
+        "widgets": {
+            "model": "模型",
+            "enable_original_uv": "启用 原先UV",
+            "pbr": "PBR物理增强渲染"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "meshy_task_id": "Meshy影眸任务编号",
+            "GLB": "GLB 格式",
+            "FBX": "FBX 格式"
         }
     },
     "TemporalScoreRescaling": {
