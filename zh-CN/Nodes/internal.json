@@ -659,6 +659,35 @@
         },
         "description": "用于微调扩散模型和 CLIP 模型，改变 Latent 降噪的效果，实现控制风格等功能。多个 LoRA 可以直接连接到一起。"
     },
+    "LoraLoaderBypass": {
+        "title": "加载LoRA（旁路）（用于调试）",
+        "inputs": {
+            "model": "模型",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "lora_name": "LoRA名称",
+            "strength_model": "模型强度",
+            "strength_clip": "CLIP强度"
+        },
+        "outputs": {
+            "MODEL": "模型",
+            "CLIP": "CLIP"
+        }
+    },
+    "LoraLoaderBypassModelOnly": {
+        "title": "加载LoRA（旁路，仅模型）（用于调试）",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "lora_name": "LoRA名称",
+            "strength_model": "模型强度"
+        },
+        "outputs": {
+            "MODEL": "模型"
+        }
+    },
     "ControlNetLoader": {
         "title": "ControlNet加载器",
         "widgets": {
@@ -4048,6 +4077,23 @@
             "MODEL": "模型"
         }
     },
+    "TextEncodeZImageOmni": {
+        "title": "文本编码  Z图像 通用",
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image_encoder": "图像编码器",
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3"
+        },
+        "widgets": {
+            "auto_resize_images": "自动调整图像大小"
+        },
+        "outputs": {
+            "CONDITIONING": "条件"
+        }
+    },
     "TextEncodeQwenImageEdit": {
         "title": "千问图像文字编辑",
         "inputs": {
@@ -4946,13 +4992,14 @@
         }
     },
     "BriaImageEditNode": {
-        "title": "Bria FIBO  图像编辑",
+        "title": "Bria 图像编辑",
         "inputs": {
             "image": "图像",
-            "mask": "遮罩",
-            "prompt": "提示词"
+            "mask": "遮罩"
         },
         "widgets": {
+            "model": "模型",
+            "prompt": "提示词",
             "seed": "种子",
             "control_after_generate": "生成后控制",
             "guidance_scale": "引导强度",
@@ -4991,6 +5038,7 @@
             "seed": "种子",
             "control_after_generate": "生成后控制",
             "aspect_ratio": "宽高比",
+            "resolution": "分辨率",
             "number_of_images": "图像数量"
         },
         "outputs": {
@@ -7312,9 +7360,9 @@
             "control_after_generate": "生成后控制",
             "resolution": "分辨率",
             "frames": "多帧",
-            "duration": "时长(秒)",
-            "duration1": "1时长(秒)",
-            "duration2": "2时长(秒)"
+            "duration:": "时长(秒)",
+            "duration1:": "1时长(秒)",
+            "duration2:": "2时长(秒)"
         },
         "outputs": {
             "VIDEO": "生成视频"
@@ -7327,6 +7375,7 @@
             "model": "模型",
             "aspect_ratio": "宽高比",
             "resolution": "分辨率",
+            "duration:": "时长(秒)",
             "duration": "时长(秒)",
             "audio": "音频",
             "seed": "随机种子",
@@ -9048,6 +9097,20 @@
         },
         "outputs": {
             "rgb_int": "rgb数值"
+        }
+    },
+    "ReferenceTimbreAudio": {
+        "title": "参考音频",
+        "inputs": {
+            "conditioning": "条件",
+            "latents": "Latent"
+        },
+        "widgets": {
+            "reference_latents_method": "参考Latent方法"
+        },
+        "outputs": {
+            "CONDITIONING": "条件",
+            "conditioning": "条件"
         }
     },
     "TemporalScoreRescaling": {
