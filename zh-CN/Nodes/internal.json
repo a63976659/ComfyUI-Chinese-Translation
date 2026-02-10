@@ -9116,6 +9116,35 @@
             "conditioning": "条件"
         }
     },
+    "VAEDecodeAudioTiled": {
+        "title": "VAE音频解码（分块）",
+        "inputs": {
+            "vae": "VAE",
+            "samples": "采样"
+        },
+        "widgets": {
+            "tile_size": "分块大小",
+            "overlap": "融合数量"
+        },
+        "outputs": {
+            "AUDIO": "音频"
+        }
+    },
+    "JoinAudioChannels": {
+        "title": "音频通道合并",
+        "inputs": {
+            "audio_left": "左声道",
+            "audio_right": "右声道"
+        },
+        "widgets": {
+            "tile_size": "分块大小",
+            "overlap": "融合数量"
+        },
+        "outputs": {
+            "AUDIO": "音频",
+            "audio": "音频"
+        }
+    },
     "TemporalScoreRescaling": {
         "title": "TSR - 时序分数重缩放",
         "inputs": {
