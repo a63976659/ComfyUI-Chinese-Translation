@@ -3516,6 +3516,251 @@
     },
     "description": "向模型中添加回调函数，以便在采样完成后报告内存使用情况"
   },
+  "VisualizeSigmasKJ": {
+    "title": "可视化sigma值(KJ)",
+    "inputs": {
+      "sigmas": "sigma值"
+    },
+    "widgets": {
+      "start_step": "起始步数",
+      "end_step": "结束步数"
+    },
+    "outputs": {
+      "sigmas_out": "sigma输出",
+      "image": "图像"
+    },
+    "description": ""
+  },
+  "LTX2SamplingPreviewOverride": {
+    "title": "LTX2采样预览覆盖",
+    "inputs": {
+      "model": "模型",
+      "latent_upscale_model": "Latent放大模型",
+      "vae": "VAE"
+    },
+    "widgets": {
+      "preview_rate": "预览速率"
+    },
+    "outputs": {},
+    "description": "暂时禁用了 LTX2 采样预览功能，这一措施将持续到预览功能在稳定的核心版本中得以完善为止。"
+  },
+  "LTXVAddGuidesFromBatch": {
+    "title": "从批处理添加引导图像",
+    "inputs": {
+      "positive": "正向引导",
+      "negative": "负面引导",
+      "vae": "VAE",
+      "latent": "Latent",
+      "images": "图像"
+    },
+    "widgets": {
+      "strength": "强度"
+    },
+    "outputs": {
+      "positive": "正向引导",
+      "negative": "负面引导",
+      "latent": "Latent"
+    },
+    "description": "会将一批中的多个引导图像按照对应的帧索引添加到Latent图像中。批次中的非黑色图像将被用作引导图像。"
+  },
+  "LTX2AudioLatentNormalizingSampling": {
+    "title": "LTX2音频Latent标准化采样",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "audio_normalization_factors": "音频标准化因素"
+    },
+    "outputs": {},
+    "description": "通过在指定的采样步骤对音频Latent进行标准化处理，提高了 LTX2 生成的音频质量。"
+  },
+  "PreviewLatentNoiseMask": {
+    "title": "预览Latent噪声遮罩",
+    "inputs": {
+      "latent": "Latent"
+    },
+    "widgets": {},
+    "outputs": {
+      "mask": "遮罩"
+    },
+    "description": "预览Latent噪声遮罩"
+  },
+  "WanChunkFeedForward": {
+    "title": "Wan视频 分块前馈",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "chunks": "块数",
+      "dim_threshold": "维度阈值"
+    },
+    "outputs": {
+      "model": "模型"
+    },
+    "description": "实验性功能，可能会改变模型输出！！通过分块前馈（神经网络中的概念）激活来减少峰值显存使用量。"
+  },
+  "SamplerSelfRefineVideo": {
+    "title": "采样器自我精炼视频",
+    "inputs": {
+      "latent": "Latent"
+    },
+    "widgets": {
+      "input_mode": "输入模式",
+      "start_step1": "开始步骤1",
+      "end_step1": "结束步骤1",
+      "start_step2": "开始步骤2",
+      "end_step2": "结束步骤2",
+      "steps_1": "步骤1",
+      "steps_2": "步骤2",
+      "certain_percentage": "确定百分比",
+      "uncertainty_threshold": "不确定性阈值",
+      "verbose": "详细",
+      "seed": "随机种子"
+    },
+    "outputs": {},
+    "description": "尝试实现 https://github.com/agwmon/self-refine-video，仅供测试，可能无法按预期工作。"
+  },
+  "LTXVAddGuideMulti": {
+    "title": "LTX视频 添加多个引导图像",
+    "inputs": {
+      "positive": "正向引导",
+      "negative": "负面引导",
+      "vae": "VAE",
+      "latent": "Latent",
+      "images_1": "图像1"
+    },
+    "widgets": {
+      "Number of Guides": "引导数量",
+      "frame_idx_1": "帧索引 1",
+      "strength_1": "强度 1"
+    },
+    "outputs": {
+      "positive": "正向引导",
+      "negative": "负面引导",
+      "latent": "Latent"
+    },
+    "description": "在指定的帧索引处添加多个引导图像，并设置其强度，使用“动态组合”功能，此功能需要 ComfyUI 0.8.1 版本及前端 1.33.4 或更高版本。"
+  },
+  "LTXVImgToVideoInplaceKJ": {
+    "title": "将图像转换为视频",
+    "inputs": {
+      "vae": "VAE",
+      "latent": "Latent",
+      "images_1": "图像1"
+    },
+    "widgets": {
+      "Number of Guides": "引导数量",
+      "index_1": "索引 1",
+      "strength_1": "强度 1"
+    },
+    "outputs": {
+      "latent": "Latent"
+    },
+    "description": "将视频的Latent帧替换为编码后的输入图像，使用 动态组合 功能，该功能需要 ComfyUI 0.8.1 版本及前端 1.33.4 或更高版本。"
+  },
+  "LTXVAudioVideoMask": {
+    "title": "音频和视频遮罩",
+    "inputs": {
+      "video_latent": "视频Latent",
+      "audio_latent": "音频Latent"
+    },
+    "widgets": {
+      "video_fps": "视频帧率",
+      "video_start_time": "视频开始时间",
+      "video_end_time": "视频结束时间",
+      "audio_start_time": "音频开始时间",
+      "audio_end_time": "音频结束时间",
+      "max_length": "最大长度"
+    },
+    "outputs": {
+      "video_latent": "视频Latent",
+      "audio_latent": "音频Latent"
+    },
+    "description": "根据指定的时间范围为视频和音频的Latent内容创建噪音遮罩。在这些被遮罩的区域中会生成新的内容。"
+  },
+  "LTX2AttentionTunerPatch": {
+    "title": "LTX2 注意力调整补丁",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "blocks": "块",
+      "video_scale": "视频缩放",
+      "audio_scale": "音频缩放",
+      "audio_to_video_scale": "音频到视频缩放",
+      "video_to_audio_scale": "视频到音频缩放"
+    },
+    "outputs": {
+      "model": "模型"
+    },
+    "description": "實驗性！根據不同模態設定注意力縮放因子的自定義 LTX2 前向傳遞，同時還降低了峰值 显存 使用量。"
+  },
+  "LTX2_NAG": {
+    "title": "LTX2标准化注意力引导",
+    "inputs": {
+      "model": "模型",
+      "nag_cond_video": "视频条件",
+      "nag_cond_audio": "音频条件"
+    },
+    "widgets": {
+      "nag_scale": "NAG缩放",
+      "nag_alpha": "NAG alpha",
+      "nag_tau": "NAG tau",
+      "inplace": "原地操作"
+    },
+    "outputs": {
+      "model": "模型"
+    },
+    "description": "https://github.com/ChenDarYen/Normalized-Attention-Guidance"
+  },
+  "LTX2MemoryEfficientSageAttentionPatch": {
+    "title": "LTX2高效内存Sage注意力补丁",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {},
+    "outputs": {
+      "model": "模型"
+    },
+    "description": "实验性！激活自定义Sage注意力以减少峰值显存使用量，覆盖注意力模式。需要最新版本的Sage注意力。"
+  },
+  "LTXVChunkFeedForward": {
+    "title": "LTX视频 分块前馈激活",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "chunks": "分块",
+      "dim_threshold": "维度阈值"
+    },
+    "outputs": {
+      "model": "模型"
+    },
+    "description": "实验性且可能会改变模型输出！分块前馈（神经网络中的概念）激活可降低虚拟内存峰值使用量。"
+  },
+  "LTX2LoraLoaderAdvanced": {
+    "title": "LTX2高级Lora加载器",
+    "inputs": {
+      "model": "模型",
+      "opt_lora_path": "优化LoRA路径",
+      "blocks": "块"
+    },
+    "widgets": {
+      "lora_name": "LoRA名称",
+      "strength_model": "模型强度",
+      "video": "视频",
+      "video_to_audio": "视频转音频",
+      "audio": "音频",
+      "audio_to_video": "音频转视频",
+      "other": "其他"
+    },
+    "outputs": {
+      "model": "模型",
+      "loaded_keys_info": "加载密钥信息",
+      "rank": "等级"
+    },
+    "description": "具有针对LTX2模型的每个块强度控制的高级LoRA加载器"
+  },
   "HunyuanVideoEncodeKeyframesToCond": {
     "title": "混元视频 首尾帧编码到条件(KJ)",
     "inputs": {

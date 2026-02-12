@@ -1,6 +1,6 @@
 {
     "TTPlanet_Tile_Preprocessor_Simple": {
-        "title": "TTP分块预处理器（简易版）",
+        "title": "分块预处理器-简易版(TTP)",
         "inputs": {
             "image": "图像"
         },
@@ -13,7 +13,7 @@
         }
     },
     "TTP_Image_Tile_Batch": {
-        "title": "TTP图像分块 批处理",
+        "title": "图像分块 批处理(TTP)",
         "inputs": {
             "image": "图像"
         },
@@ -29,7 +29,7 @@
         }
     },
     "TTP_Image_Assy": {
-        "title": "TTP图像拼接/重组",
+        "title": "图像拼接/重组(TTP)",
         "inputs": {
             "tiles": "分块图像",
             "positions": "位置",
@@ -44,7 +44,7 @@
         }
     },
     "TTP_Tile_image_size": {
-        "title": "TTP分块图像尺寸",
+        "title": "分块图像尺寸(TTP)",
         "inputs": {
             "image": "图像"
         },
@@ -59,7 +59,7 @@
         }
     },
     "TTP_Expand_And_Mask": {
-        "title": "TTP图像扩展与遮罩",
+        "title": "图像扩展与遮罩(TTP)",
         "inputs": {
             "image": "图像"
         },
@@ -81,7 +81,7 @@
         }
     },
     "TTP_text_mix": {
-        "title": "TTP文本混合",
+        "title": "文本混合(TTP)",
         "outputs": {
             "text1": "文本1",
             "text2": "文本2",
@@ -90,7 +90,7 @@
         }
     },
     "TTP_CoordinateSplitter": {
-        "title": "TTP坐标拆分器",
+        "title": "坐标拆分器(TTP)",
         "inputs": {
             "Positions": "位置"
         },
@@ -99,13 +99,13 @@
         }
     },
     "TTP_condtobatch": {
-        "title": "TTP条件 批次处理",
+        "title": "条件 批次处理(TTP)",
         "inputs": {
             "conditionings": "条件"
         }
     },
     "TTP_condsetarea_merge": {
-        "title": "TTP条件坐标合并",
+        "title": "条件坐标合并(TTP)",
         "inputs": {
             "conditioning_batch": "条件批次",
             "coordinates": "坐标"
@@ -115,7 +115,7 @@
         }
     },
     "TeaCacheHunyuanVideoSampler": {
-        "title": "TTP Tea缓存 混元视频采样器",
+        "title": "Tea缓存 混元视频采样器(TTP)",
         "inputs": {
             "noise": "噪声",
             "guider": "引导器",
@@ -133,8 +133,57 @@
             "denoised_output": "降噪Latent"
         }
     },
+    "LTXVFirstLastFrameControl_TTP": {
+        "title": "LTX视频 首尾帧控制(TTP)",
+        "inputs": {
+            "vae": "VAE",
+            "latent": "Latent",
+            "first_image": "首帧图像",
+            "last_image": "尾帧图像",
+            "latent_image": "Latent 图像"
+        },
+        "widgets": {
+            "first_strength": "首帧强度",
+            "last_strength": "尾帧强度"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "denoised_output": "降噪Latent"
+        }
+    },
+    "LTXVMiddleFrame_TTP": {
+        "title": "LTX视频 中间帧(TTP)",
+        "inputs": {
+            "image": "图像",
+            "middle_frames": "中间帧图像"
+        },
+        "widgets": {
+            "position": "位置",
+            "strength": "强度"
+        },
+        "outputs": {
+            "middle_frames": "中间帧图像"
+        }
+    },
+    "LTXVContext_TTP": {
+        "title": "LTX视频 上下文(TTP)",
+        "inputs": {
+            "vae": "VAE",
+            "latent": "Latent",
+            "image": "图像",
+            "previous_video": "前一个视频"
+        },
+        "widgets": {
+            "context_latent_frames": "上下文Latent帧",
+            "context_strength": "上下文强度"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "denoised_output": "降噪Latent"
+        }
+    },
     "TTP_condsetarea_merge_test": {
-        "title": "TTP 条件集区域合并测试",
+        "title": "条件集区域合并测试(TTP)",
         "inputs": {
             "conditioning_batch": "条件批次",
             "coordinates": "坐标"
