@@ -1,0 +1,179 @@
+{
+    "ModelScopeImageCaptionNode": {
+        "title": "图像描述(ModelScope)",
+        "inputs": {
+            "image": "图像",
+            "model": "模型"
+        },
+        "widgets": {
+            "api_tokens": "API密钥",
+            "prompt1": "提示1",
+            "prompt2": "提示2",
+            "max_tokens": "最大令牌数",
+            "temperature": "温度",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "description": "图像描述"
+        },
+        "description": "类别: ModelScopeAPI"
+    },
+    "ModelScopeLoraPresetNode": {
+        "title": "Lora预设(ModelScope)",
+        "inputs": {},
+        "widgets": {
+            "action": "操作",
+            "preset_name": "预设名称",
+            "lora_model_id": "LoRA模型ID",
+            "default_weight": "默认权重",
+            "target_preset": "目标预设"
+        },
+        "outputs": {
+            "lora_model_id": "LoRA模型ID",
+            "lora_weight": "LoRA权重",
+            "preset_info": "预设信息"
+        },
+        "description": "Lora预设"
+    },
+    "ModelScopeSingleLoraLoaderNode": {
+        "title": "单个Lora加载器(ModelScope)",
+        "inputs": {},
+        "widgets": {
+            "lora_preset": "LoRA预设",
+            "lora_weight": "LoRA权重",
+            "use_custom_weight": "使用自定义权重"
+        },
+        "outputs": {
+            "lora_id": "LoRA ID",
+            "lora_weight": "LoRA权重"
+        },
+        "description": "单个Lora加载器"
+    },
+    "ModelScopeMultiLoraLoaderNode": {
+        "title": "多个Lora加载器(ModelScope)",
+        "inputs": {},
+        "widgets": {
+            "lora1_preset": "LoRA1预设",
+            "lora2_preset": "LoRA2预设",
+            "lora3_preset": "LoRA3预设",
+            "lora1_weight": "LoRA1权重",
+            "lora2_weight": "LoRA2权重",
+            "lora3_weight": "LoRA3权重",
+            "lora1_use_custom": "LoRA1使用自定义",
+            "lora2_use_custom": "LoRA2使用自定义",
+            "lora3_use_custom": "LoRA3使用自定义"
+        },
+        "outputs": {
+            "lora1_id": "LoRA1 ID",
+            "lora2_id": "LoRA2 ID",
+            "lora3_id": "LoRA3 ID",
+            "lora1_w": "LoRA1权重",
+            "lora2_w": "LoRA2权重",
+            "lora3_w": "LoRA3权重"
+        },
+        "description": "多个Lora加载器"
+    },
+    "ModelScopeImageNode": {
+        "title": "图像生成(ModelScope)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示",
+            "api_tokens": "API密钥",
+            "negative_prompt": "否定提示",
+            "width": "宽度",
+            "height": "高度",
+            "seed": "随机种子",
+            "steps": "步骤",
+            "guidance": "引导",
+            "lora1_id": "LoRA1 ID",
+            "lora1_w": "LoRA1权重",
+            "lora2_id": "LoRA2 ID",
+            "lora2_w": "LoRA2权重",
+            "lora3_id": "LoRA3 ID",
+            "lora3_w": "LoRA3权重"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "图像生成"
+    },
+    "ModelScopeImageEditNode": {
+        "title": "图像编辑(ModelScope)",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "prompt": "提示",
+            "api_tokens": "API密钥",
+            "image_gen_mode": "图像生成模式",
+            "negative_prompt": "否定提示",
+            "width": "宽度",
+            "height": "高度",
+            "steps": "步骤",
+            "guidance": "引导",
+            "seed": "随机种子",
+            "lora1_id": "LoRA1 ID",
+            "lora1_w": "LoRA1权重",
+            "lora2_id": "LoRA2 ID",
+            "lora2_w": "LoRA2权重",
+            "lora3_id": "LoRA3 ID",
+            "lora3_w": "LoRA3权重",
+            "gen_model": "生成模型",
+            "edit_model": "编辑模型"
+        },
+        "outputs": {
+            "edited_image": "编辑后的图像"
+        },
+        "description": "编辑图像"
+    },
+    "ModelScopeTextNode": {
+        "title": "文本生成(ModelScope)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "user_prompt": "用户提示",
+            "api_token": "API密钥",
+            "system_prompt": "系统提示",
+            "max_tokens": "最大令牌数",
+            "temperature": "温度",
+            "stream": "流式",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "response": "响应"
+        },
+        "description": "文本生成"
+    },
+    "OpenAINotInstalledNode": {
+        "title": "未安装OpenAI(ModelScope)",
+        "inputs": {},
+        "widgets": {
+            "install_command": "安装命令"
+        },
+        "outputs": {
+            "message": "消息"
+        },
+        "description": "ModelScopeAPI"
+    },
+    "ModelScopeVisionNode": {
+        "title": "视觉识别(ModelScope)",
+        "inputs": {
+            "image": "图像",
+            "model": "模型"
+        },
+        "widgets": {
+            "prompt": "提示",
+            "api_token": "API密钥",
+            "max_tokens": "最大令牌数",
+            "temperature": "温度"
+        },
+        "outputs": {
+            "description": "描述"
+        },
+        "description": "视觉识别"
+    }
+}
