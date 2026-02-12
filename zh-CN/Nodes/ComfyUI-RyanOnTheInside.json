@@ -4199,6 +4199,107 @@
             "end_frame": "结束帧"
         }
     },
+    "ACEStep15TaskTextEncode": {
+        "title": "ACE音乐Step15文本编码⚡🅡🅞🅣🅘",
+        "inputs": {
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "task_type": "任务类型",
+            "track_name": "轨道名称",
+            "bpm": "每分钟节拍数",
+            "duration": "持续时间",
+            "keyscale": "键扩展",
+            "timesignature": "时间签名",
+            "language": "语言",
+            "text": "文本",
+            "lyrics": "歌词",
+            "seed": "种子",
+            "cfg_scale": "CFG 缩放",
+            "temperature": "温度",
+            "top_p": "Top-P",
+            "top_k": "Top-K"
+        },
+        "outputs": {
+            "conditioning": "条件"
+        },
+        "description": "文本编码器"
+    },
+    "AudioRegionMask15": {
+        "title": "音频区域遮罩 (ACE 1.5) ⚡🅡🅞🅣🅘",
+        "inputs": {
+            "audio_latents": "音频Latent"
+        },
+        "widgets": {
+            "start_time": "开始时间",
+            "end_time": "结束时间",
+            "mask_value": "遮罩值",
+            "feather_seconds": "羽化秒数"
+        },
+        "outputs": {},
+        "description": "音乐ACE 1.5"
+    },
+    "ACEStep15SemanticExtractor": {
+        "title": "ACE步15 语义提取器⚡🅡🅞🅣🅘",
+        "inputs": {
+            "model": "模型",
+            "source_latents": "源Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "semantic_hints": "语义提示"
+        },
+        "description": "音乐ACE 1.5"
+    },
+    "ACEStep15SemanticHintsBlend": {
+        "title": "ACE步15语义提示混合⚡🅡🅞🅣🅘",
+        "inputs": {
+            "hints_a": "提示A",
+            "hints_b": "提示B"
+        },
+        "widgets": {
+            "blend_factor": "混合比例"
+        },
+        "outputs": {
+            "blended_hints": "混合后的提示"
+        },
+        "description": "音乐ACE 1.5"
+    },
+    "ModelSamplingACEStep": {
+        "title": "模型采样 ACE 步⚡🅡🅞🅣🅘",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "shift": "偏移"
+        },
+        "outputs": {},
+        "description": "音乐ACE 1.5"
+    },
+    "AudioTemporalMask15": {
+        "title": "时间域音频遮罩15⚡🅡🅞🅣🅘",
+        "inputs": {
+            "audio_latents": "音频Latent",
+            "length_mismatch": "长度不匹配"
+        },
+        "widgets": {
+            "value": "值"
+        },
+        "outputs": {},
+        "description": "音乐ACE 1.5"
+    },
+    "MaskToAudioMask15": {
+        "title": "遮罩转音频遮罩15⚡🅡🅞🅣🅘",
+        "inputs": {
+            "audio_latents": "音频Latent",
+            "spatial_mask": "空间遮罩"
+        },
+        "widgets": {
+            "frame_summary": "帧摘要"
+        },
+        "outputs": {},
+        "description": "音乐ACE 1.5"
+    },
     "FlexVideoBase": {
         "title": "Flex 视频基础⚡🅡🅞🅣🅘",
         "inputs": {
