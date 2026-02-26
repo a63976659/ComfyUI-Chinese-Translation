@@ -3414,6 +3414,79 @@
             "image": "图像"
         }
     },
+    "LayerFilter: DistortDisplace": {
+        "title": "图层滤镜：扭曲置换",
+        "inputs": {
+          "image": "图像",
+          "material_image": "材质图像",
+          "mask": "蒙版"
+        },
+        "widgets": {
+          "distort_strength": "扭曲强度",
+          "smoothness": "平滑度",
+          "anti_aliasing": "抗锯齿",
+          "shadow_blend_mode": "阴影混合模式",
+          "highlight_blend_mode": "高光混合模式",
+          "shadow_strength": "阴影强度",
+          "highlight_strength": "高光强度"
+        },
+        "outputs": {
+          "image": "图像",
+          "displaced_material": "置换材质"
+        }
+    },
+    "LayerMask: MaskEdgeUltraDetail V3": {
+        "title": "图层遮罩：边缘超细节V3",
+        "inputs": {
+          "image": "图像",
+          "mask": "遮罩",
+          "transparent_trimap": "透明边框"
+        },
+        "widgets": {
+          "method": "方法",
+          "mask_grow": "遮罩扩展",
+          "fix_gap": "修复间隙",
+          "fix_threshold": "修复阈值",
+          "mask_edge_erode": "遮罩边缘腐蚀",
+          "mask_edge_dilate": "遮罩边缘膨胀",
+          "transparent_trimap_erode": "透明边框腐蚀操作",
+          "transparent_trimap_dilate": "透明边框膨胀操作",
+          "trimap_blur": "模糊",
+          "black_point": "黑场",
+          "white_point": "白场",
+          "spread_mask_grow": "扩散遮罩扩展",
+          "device": "设备",
+          "max_megapixels": "最大百万像素"
+        },
+        "outputs": {
+          "image": "图像",
+          "mask": "遮罩"
+        }
+    },
+    "LayerUtility: ImageBatchToList": {
+        "title": "图层工具：图像批次到列表（多选）",
+        "inputs": {
+          "image": "图像"
+        },
+        "widgets": {
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "LayerUtility: ImageListToBatch": {
+        "title": "图层工具：图像列表到批次（多选）",
+        "inputs": {
+          "image": "图像"
+        },
+        "widgets": {
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
     "LayerMask: MaskBoxExtend": {
         "title": "图层遮罩：反相",
         "inputs": {
