@@ -1,0 +1,642 @@
+{
+    "PainterAI2V": {
+        "title": "绘画 AI图像转视频",
+        "inputs": {
+            "high_model": "高噪模型",
+            "low_model": "低噪模型",
+            "model_patch": "模型补丁",
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "vae": "VAE模型",
+            "clip_vision_output": "CLIP视觉输出",
+            "start_image": "起始图像",
+            "end_image": "结束图像",
+            "audio_encoder": "音频编码器",
+            "previous_frames": "前序帧序列"
+        },
+        "widgets": {
+            "mode": "模式",
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "video_fps": "视频帧率",
+            "motion_frame": "运动帧",
+            "audio_scale": "音频缩放"
+        },
+        "outputs": {
+            "high_model": "高噪模型",
+            "low_model": "低噪模型",
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent": "Latent",
+            "trim_image": "裁剪图像"
+        },
+        "description": ""
+    },
+    "PainterAudioCut": {
+        "title": "绘画 音频裁剪",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "frame_rate": "帧率",
+            "head_silence_frames": "开头静音帧数",
+            "start_frame": "起始帧",
+            "end_frame": "结束帧",
+            "tail_silence_frames": "结尾静音帧数"
+        },
+        "outputs": {
+            "trimmed_audio": "裁剪后的音频",
+            "total_frame": "总帧数"
+        },
+        "description": "类别: 音频/处理"
+    },
+    "PainterAudioLength": {
+        "title": "绘画 音频长度",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {},
+        "outputs": {
+            "duration_seconds": "时长（秒）"
+        },
+        "description": "类别: 音频"
+    },
+    "PainterAV2V": {
+        "title": "绘画 音频视频转视频",
+        "inputs": {
+            "model": "模型",
+            "model_patch": "模型补丁",
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "vae": "VAE模型",
+            "audio_encoder": "音频编码器",
+            "video": "视频",
+            "mask": "遮罩",
+            "start_image": "起始图像",
+            "clip_vision_output": "CLIP视觉输出"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "fps": "帧率",
+            "audio_scale": "音频缩放"
+        },
+        "outputs": {
+            "model": "模型",
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent": "Latent"
+        },
+        "description": ""
+    },
+    "PainterCombineFromBatch": {
+        "title": "绘画 批处理合并",
+        "inputs": {
+            "images": "图像序列"
+        },
+        "widgets": {
+            "overlap_frames": "重叠帧数",
+            "trim_frames": "修剪帧数"
+        },
+        "outputs": {
+            "images": "图像组"
+        },
+        "description": "类别: 绘画 /视频"
+    },
+    "PainterFLF2V": {
+        "title": "绘画 首尾帧转视频",
+        "inputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "vae": "VAE模型",
+            "clip_vision_start_image": "起始图像CLIP视觉",
+            "clip_vision_end_image": "结束图像CLIP视觉",
+            "start_image": "起始图像",
+            "end_image": "结束图像"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "batch_size": "批处理大小",
+            "motion_amplitude": "运动幅度"
+        },
+        "outputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent": "Latent"
+        },
+        "description": ""
+    },
+    "PainterFluxImageEdit": {
+        "title": "绘画 Flux图像编辑",
+        "inputs": {
+            "clip": "CLIP模型",
+            "vae": "VAE模型",
+            "image1_mask": "图像1遮罩",
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "image4": "图像4",
+            "image5": "图像5",
+            "image6": "图像6",
+            "image7": "图像7",
+            "image8": "图像8",
+            "image9": "图像9",
+            "image10": "图像10"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "mode": "模式",
+            "batch_size": "批处理大小",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent": "Latent"
+        },
+        "description": "类别: 高级/条件"
+    },
+    "PainterFrameCount": {
+        "title": "绘画 帧计数",
+        "inputs": {
+            "frame_number": "帧编号"
+        },
+        "widgets": {
+            "frame_number": "帧编号"
+        },
+        "outputs": {
+            "aligned_frame": "对齐帧"
+        },
+        "description": "类别: Prince"
+    },
+    "PainterHumoAI2V": {
+        "title": "绘画 Humo图像转视频",
+        "inputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "vae": "VAE模型",
+            "audio_encoder": "音频编码器",
+            "start_image": "起始图像",
+            "end_image": "结束图像"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "batch_size": "批处理大小",
+            "fps": "帧率"
+        },
+        "outputs": {
+            "high_positive": "高 正向提示词",
+            "high_negative": "高 负向提示词",
+            "low_positive": "低 正向提示词",
+            "low_negative": "低 负向提示词",
+            "latent": "Latent"
+        },
+        "description": ""
+    },
+    "PainterHumoAV2V": {
+        "title": "绘画 Humo音视频转视频",
+        "inputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "vae": "VAE模型",
+            "video": "视频",
+            "audio_encoder_output": "音频编码器输出",
+            "start_image": "起始图像",
+            "end_image": "结束图像"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "fps": "帧率"
+        },
+        "outputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent": "Latent"
+        },
+        "description": "类别: 条件/视频模型"
+    },
+    "PainterI2V": {
+        "title": "绘画 图像转视频",
+        "inputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "vae": "VAE模型",
+            "clip_vision_output": "CLIP视觉输出",
+            "start_image": "起始图像"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "batch_size": "批处理大小",
+            "motion_amplitude": "运动幅度"
+        },
+        "outputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent": "Latent"
+        },
+        "description": ""
+    },
+    "PainterI2VAdvanced": {
+        "title": "绘画 图像转视频（高级）",
+        "inputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "vae": "VAE模型",
+            "clip_vision": "CLIP视觉",
+            "start_image": "起始图像"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "batch_size": "批处理大小",
+            "motion_amplitude": "运动幅度",
+            "color_protect": "色彩保护",
+            "correct_strength": "校正强度"
+        },
+        "outputs": {
+            "high_positive": "高 正向提示词",
+            "high_negative": "高 负向提示词",
+            "low_positive": "低 正向提示词",
+            "low_negative": "低 负向提示词",
+            "latent": "Latent"
+        },
+        "description": ""
+    },
+    "PainterImageFromBatch": {
+        "title": "绘画 从批处理提取图像",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "start_frame": "起始帧",
+            "frame_count": "帧数",
+            "start_from": "起始位置"
+        },
+        "outputs": {},
+        "description": "类别: 图像/批处理"
+    },
+    "PainterImageLoad": {
+        "title": "绘画 图像加载",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "image_name": "图像名称"
+        },
+        "outputs": {},
+        "description": "类别: 图像"
+    },
+    "PainterLongVideo": {
+        "title": "绘画 长视频生成",
+        "inputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "vae": "VAE模型",
+            "previous_video": "前序视频",
+            "initial_reference_image": "初始参考图像",
+            "clip_vision_output": "CLIP视觉输出",
+            "start_image": "起始图像",
+            "end_image": "结束图像"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "batch_size": "批处理大小",
+            "motion_frames": "运动帧数",
+            "motion_amplitude": "运动幅度"
+        },
+        "outputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent": "Latent"
+        },
+        "description": "类别: 视频/绘画 "
+    },
+    "PainterLTX2V": {
+        "title": "绘画 LTX图像转视频",
+        "inputs": {
+            "video_vae": "视频VAE",
+            "audio_vae": "音频VAE",
+            "start_image": "起始图像",
+            "end_image": "结束图像"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "frame_rate": "帧率",
+            "batch_size": "批处理大小"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "video_latent": "视频Latent",
+            "audio_latent": "音频Latent"
+        },
+        "description": "类别: 潜在/视频/ltxv"
+    },
+    "PainterLTX2VPlus": {
+        "title": "绘画 LTX图像转视频增强版",
+        "inputs": {
+            "video_vae": "视频VAE",
+            "audio_vae": "音频VAE",
+            "start_image": "起始图像",
+            "end_image": "结束图像",
+            "latent": "Latent",
+            "upscale_model": "超分辨率模型"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "frame_rate": "帧率",
+            "batch_size": "批处理大小"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "video_latent": "视频Latent",
+            "audio_latent": "音频Latent",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": "类别: Latent/视频/ltxv"
+    },
+    "PainterMultiF2V": {
+        "title": "绘画 多帧序列转视频",
+        "inputs": {
+            "clip": "CLIP模型",
+            "vae": "VAE模型",
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "start_image": "起始图像",
+            "image_2": "图像2",
+            "image_3": "图像3",
+            "image_4": "图像4"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "batch_size": "批处理大小"
+        },
+        "outputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent": "Latent",
+            "segment_count": "片段数量"
+        },
+        "description": "类别: 绘画 /Wan"
+    },
+    "PainterPrompt": {
+        "title": "绘画 提示词",
+        "inputs": {
+            "optional_prompt_list": "可选提示词列表"
+        },
+        "widgets": {
+            "prompt_1": "提示词1",
+            "prompt_2": "提示词2",
+            "prompt_3": "提示词3"
+        },
+        "outputs": {
+            "prompt_list": "提示词列表",
+            "prompt_strings": "提示词字符串"
+        },
+        "description": "类别: 绘画 /提示词"
+    },
+    "PainterQwenImageEditPlus": {
+        "title": "绘画 Qwen图像编辑增强版",
+        "inputs": {
+            "clip": "CLIP模型",
+            "mode": "模式",
+            "vae": "VAE模型",
+            "image1_mask": "图像1遮罩",
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "image4": "图像4",
+            "image5": "图像5",
+            "image6": "图像6",
+            "image7": "图像7",
+            "image8": "图像8",
+            "image9": "图像9",
+            "image10": "图像10"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "batch_size": "批处理大小",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent": "Latent"
+        },
+        "description": "类别: 高级/条件"
+    },
+    "PainterS2Vplus": {
+        "title": "绘画 图像序列转视频增强版",
+        "inputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "vae": "VAE模型",
+            "video": "视频",
+            "audio_encoder_output": "音频编码器输出",
+            "start_image": "起始图像",
+            "previous_frames": "前序帧序列"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "video_fps": "视频帧率",
+            "audio_scale": "音频缩放",
+            "motion_frame_count": "运动帧数"
+        },
+        "outputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent": "Latent",
+            "trim_image": "裁剪图像"
+        },
+        "description": ""
+    },
+    "PainterSampler": {
+        "title": "绘画 采样器",
+        "inputs": {
+            "high_model": "高噪模型",
+            "low_model": "低噪模型",
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent_image": "Latent图像"
+        },
+        "widgets": {
+            "add_noise": "添加噪声",
+            "noise_seed": "噪声种子",
+            "steps": "步数",
+            "high_cfg": "高CFG",
+            "low_cfg": "低CFG",
+            "sampler_name": "采样器名称",
+            "scheduler": "调度器",
+            "start_at_step": "起始步",
+            "switch_at_step": "切换步",
+            "end_at_step": "结束步",
+            "return_leftover_noise": "返回剩余噪声"
+        },
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "类别: 采样/绘画 "
+    },
+    "PainterSamplerLTXV": {
+        "title": "绘画 LTXV采样器",
+        "inputs": {
+            "model": "模型",
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent_image": "Latent图像",
+            "video_latent": "视频Latent",
+            "audio_latent": "音频Latent",
+            "sigmas": "Sigmas序列"
+        },
+        "widgets": {
+            "add_noise": "添加噪声",
+            "noise_seed": "噪声种子",
+            "steps": "步数",
+            "cfg": "CFG",
+            "sampler_name": "采样器名称",
+            "scheduler": "调度器",
+            "start_at_step": "起始步",
+            "end_at_step": "结束步",
+            "return_noise": "返回噪声"
+        },
+        "outputs": {
+            "video_latent": "视频Latent",
+            "audio_latent": "音频Latent",
+            "latent": "Latent"
+        },
+        "description": ""
+    },
+    "PainterSequentialF2V": {
+        "title": "绘画 顺序帧转视频",
+        "inputs": {
+            "clip": "CLIP模型",
+            "vae": "VAE模型",
+            "start_image": "起始图像",
+            "end_image": "结束图像",
+            "previous_video": "前序视频",
+            "positive": "正向提示词",
+            "negative": "负向提示词"
+        },
+        "widgets": {
+            "segment_index": "片段索引",
+            "num_segments": "片段数量",
+            "frames_per_segment": "每片段帧数",
+            "width": "宽度",
+            "height": "高度",
+            "batch_size": "批处理大小"
+        },
+        "outputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent": "Latent",
+            "current_index": "当前索引"
+        },
+        "description": "类别: 绘画 /Wan"
+    },
+    "PainterVideoCombine": {
+        "title": "绘画 视频合并",
+        "inputs": {
+            "images": "图像序列",
+            "audio": "音频"
+        },
+        "widgets": {
+            "frame_rate": "帧率",
+            "format": "格式",
+            "filename_prefix": "文件名前缀"
+        },
+        "outputs": {
+            "filename": "文件名"
+        },
+        "description": "类别: 绘画 /视频"
+    },
+    "VideoInfoSource": {
+        "title": "绘画 视频信息源",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {},
+        "outputs": {
+            "fps🟡": "帧率🟡",
+            "Frame_count🟡": "帧数🟡",
+            "width🟡": "宽度🟡",
+            "height🟡": "高度🟡"
+        },
+        "description": "类别: 视频信息"
+    },
+    "VideoInfoLoaded": {
+        "title": "绘画 已加载视频信息",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {},
+        "outputs": {
+            "fps🟢": "帧率🟢",
+            "Frame_count🟢": "帧数🟢",
+            "width🟢": "宽度🟢",
+            "height🟢": "高度🟢"
+        },
+        "description": "类别: 视频信息"
+    },
+    "PainterVideoUpscale": {
+        "title": "绘画 视频超分放大",
+        "inputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "vae": "VAE模型",
+            "video": "视频",
+            "start_image": "起始图像",
+            "end_image": "结束图像"
+        },
+        "widgets": {
+            "upscale_method": "超分放大方法",
+            "width": "宽度",
+            "height": "高度",
+            "crop": "裁剪",
+            "length": "长度"
+        },
+        "outputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent": "Latent"
+        },
+        "description": "类别: 绘画 /视频"
+    },
+    "PainterVRAM": {
+        "title": "绘画 显存管理",
+        "inputs": {
+            "anything": "任意输入"
+        },
+        "widgets": {
+            "reserved": "预留",
+            "mode": "模式",
+            "clean_gpu_before": "执行前清理GPU"
+        },
+        "outputs": {
+            "output": "输出"
+        },
+        "description": "类别: 显存"
+    }
+}
