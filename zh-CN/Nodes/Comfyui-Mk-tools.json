@@ -1,0 +1,125 @@
+{
+    "StoryboardPromptParser": {
+        "title": "分镜提示词解析器（批处理）",
+        "inputs": {
+            "positive_block": "正向提示词块",
+            "negative_block": "负向提示词块"
+        },
+        "widgets": {
+            "split_mode": "分割模式",
+            "shot_delim": "镜头分隔符",
+            "joiner": "连接符",
+            "strip_lines": "去除行首尾空白",
+            "drop_empty_lines": "删除空行",
+            "strip_header": "去除标题",
+            "min_shots": "最小镜头数",
+            "preview_sep": "预览分隔符",
+            "preview_prefix_index": "预览添加索引前缀"
+        },
+        "outputs": {
+            "pos_list": "正向提示词列表",
+            "neg_list": "负向提示词列表",
+            "count": "数量",
+            "fingerprint": "指纹",
+            "preview_text": "预览文本"
+        },
+        "description": "类别: NB/分镜"
+    },
+    "StoryboardPromptRouter": {
+        "title": "分镜提示词路由器",
+        "inputs": {
+            "list_in": "输入列表"
+        },
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {
+            "batch_text": "批处理文本",
+            "single_text": "单条文本",
+            "index": "索引"
+        },
+        "description": "类别: NB/分镜"
+    },
+    "StoryboardFanOut16": {
+        "title": "分镜16路输出",
+        "inputs": {
+            "list_in": "输入列表"
+        },
+        "widgets": {},
+        "outputs": {
+            "shot_01": "镜头01",
+            "shot_02": "镜头02",
+            "shot_03": "镜头03",
+            "shot_04": "镜头04",
+            "shot_05": "镜头05",
+            "shot_06": "镜头06",
+            "shot_07": "镜头07",
+            "shot_08": "镜头08",
+            "shot_09": "镜头09",
+            "shot_10": "镜头10",
+            "shot_11": "镜头11",
+            "shot_12": "镜头12",
+            "shot_13": "镜头13",
+            "shot_14": "镜头14",
+            "shot_15": "镜头15",
+            "shot_16": "镜头16"
+        },
+        "description": "类别: NB/分镜"
+    },
+    "StoryboardListPreview": {
+        "title": "分镜列表可读预览",
+        "inputs": {
+            "list_in": "输入列表"
+        },
+        "widgets": {
+            "sep": "分隔符",
+            "prefix_index": "添加索引前缀"
+        },
+        "outputs": {
+            "text": "文本",
+            "count": "数量"
+        },
+        "description": "类别: NB/分镜"
+    },
+    "FreezeHead": {
+        "title": "冻结首帧并拼接",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": "类别: 视频/批次"
+    },
+    "AudioDurationToFrames": {
+        "title": "音频时长转帧数,",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": "类别: 音频/时长"
+    },
+    "CameraMovePro": {
+        "title": "相机运镜",
+        "inputs": {
+            "frames": "帧图像",
+            "audio": "音频"
+        },
+        "widgets": {},
+        "outputs": {
+            "frames": "帧图像",
+            "audio": "音频"
+        },
+        "description": "类别: 视频/相机运镜"
+    },
+    "CLIPTextEncodeBatchList": {
+        "title": "CLIP文本编码（批处理列表）",
+        "inputs": {
+            "clip": "CLIP模型",
+            "text": "文本"
+        },
+        "widgets": {
+            "pooled_fallback": "池化回退"
+        },
+        "outputs": {
+            "conditioning": "条件向量"
+        },
+        "description": "类别: NB/分镜"
+    }
+}
