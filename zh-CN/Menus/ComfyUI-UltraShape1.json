@@ -1,0 +1,96 @@
+{
+    "UltraShapeLoadModel": {
+        "title": "超精细模型加载",
+        "inputs": {},
+        "widgets": {
+            "checkpoint": "检查点",
+            "config": "配置",
+            "dtype": "数据类型",
+            "low_vram": "低显存模式"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "类别: 超精细/U loaders"
+    },
+    "UltraShapeLoadCoarseMesh": {
+        "title": "超精细粗体网格加载",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "mesh_path": "网格路径",
+            "normalize_scale": "标准化比例",
+            "num_sharp_points": "尖锐点数量",
+            "num_uniform_points": "均匀点数量",
+            "num_latents": "Latent数量"
+        },
+        "outputs": {
+            "coarse_mesh": "粗体网格"
+        },
+        "description": "类别: 超精细/U loaders"
+    },
+    "UltraShapeRefine": {
+        "title": "超精细细化",
+        "inputs": {
+            "model": "模型",
+            "coarse_mesh": "粗体网格",
+            "image": "图像"
+        },
+        "widgets": {
+            "steps": "步骤",
+            "guidance_scale": "引导比例",
+            "octree_resolution": "八叉树分辨率",
+            "num_chunks": "块数",
+            "mc_level": "MC级别",
+            "box_v": "盒子体积",
+            "seed": "随机种子",
+            "remove_bg": "移除背景"
+        },
+        "outputs": {
+            "refined_mesh": "细化网格"
+        },
+        "description": "类别: 超精细"
+    },
+    "UltraShapeMeshSelector": {
+        "title": "超精细网格选择器",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "image": "图像"
+        },
+        "outputs": {
+            "mesh_path": "网格路径"
+        },
+        "description": "类别: 超精细/U loaders"
+    },
+    "UltraShapeSaveGLB": {
+        "title": "超精细保存为GLB",
+        "inputs": {
+            "refined_mesh": "细化网格"
+        },
+        "widgets": {
+            "output_dir": "输出目录",
+            "filename_prefix": "文件名前缀",
+            "file_format": "文件格式"
+        },
+        "outputs": {
+            "file_path": "文件路径"
+        },
+        "description": "类别: 超精细"
+    },
+    "UltraShapeConvertToGLB": {
+        "title": "超精细转换为GLB",
+        "inputs": {
+            "refined_mesh": "细化网格"
+        },
+        "widgets": {
+            "file_format": "文件格式"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": "类别: 超精细"
+    }
+}

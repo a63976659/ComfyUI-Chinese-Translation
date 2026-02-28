@@ -1,0 +1,395 @@
+{
+    "BooleanBasic": {
+        "title": "布尔基础",
+        "inputs": {},
+        "widgets": {
+            "boolean": "布尔值"
+        },
+        "outputs": {},
+        "description": "类别: ControlAltAI 节点/逻辑"
+    },
+    "BooleanReverse": {
+        "title": "布尔反转",
+        "inputs": {},
+        "widgets": {
+            "boolean": "布尔值"
+        },
+        "outputs": {},
+        "description": "类别: ControlAltAI 节点/逻辑"
+    },
+    "ChooseUpscaleModel": {
+        "title": "选择放大模型",
+        "inputs": {
+            "upscale_model_1": "放大模型1",
+            "upscale_model_2": "放大模型2"
+        },
+        "widgets": {
+            "use_model_1": "使用模型1"
+        },
+        "outputs": {
+            "upscale_model": "放大模型"
+        },
+        "description": "类别: ControlAltAI 节点/逻辑"
+    },
+    "FluxAttentionCleanup": {
+        "title": "Flux 注意力清理",
+        "inputs": {
+            "any_input": "任意输入"
+        },
+        "widgets": {},
+        "outputs": {
+            "message": "消息"
+        },
+        "description": "类别: ControlAltAI 节点/Flux 区域"
+    },
+    "FluxAttentionControl": {
+        "title": "Flux 注意力控制",
+        "inputs": {
+            "model": "模型",
+            "condition": "条件",
+            "latent_dimensions": "Latent维度",
+            "region1": "区域1",
+            "region2": "区域2",
+            "region3": "区域3"
+        },
+        "widgets": {
+            "number_of_regions": "区域数量",
+            "enabled": "启用",
+            "feather_radius1": "羽化半径1",
+            "feather_radius2": "羽化半径2",
+            "feather_radius3": "羽化半径3"
+        },
+        "outputs": {
+            "model": "模型",
+            "conditioning": "条件"
+        },
+        "description": "类别: ControlAltAI 节点/Flux 区域"
+    },
+    "FluxControlNetApply": {
+        "title": "Flux ControlNet控制网应用",
+        "inputs": {
+            "conditioning": "条件",
+            "control_net": "控制网",
+            "image": "图像"
+        },
+        "widgets": {
+            "strength": "强度"
+        },
+        "outputs": {},
+        "description": "类别: ControlAltAI 节点/Flux"
+    },
+    "FluxResolutionNode": {
+        "title": "Flux 分辨率节点",
+        "inputs": {},
+        "widgets": {
+            "megapixel": "百万像素",
+            "aspect_ratio": "宽高比",
+            "divisible_by": "可被整除",
+            "custom_ratio": "自定义宽高比",
+            "custom_aspect_ratio": "自定义宽高比"
+        },
+        "outputs": {
+            "width": "宽度",
+            "height": "高度",
+            "resolution": "分辨率",
+            "preview": "预览"
+        },
+        "description": "类别: ControlAltAI 节点/Flux"
+    },
+    "FluxSampler": {
+        "title": "Flux 取样器",
+        "inputs": {
+            "model": "模型",
+            "conditioning": "条件",
+            "latent_image": "Latent图像"
+        },
+        "widgets": {
+            "steps": "步骤",
+            "denoise": "去噪",
+            "noise_seed": "噪声种子",
+            "sampler_name": "取样器名称",
+            "scheduler": "调度器"
+        },
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "类别: ControlAltAI 节点/Flux"
+    },
+    "FluxUnionControlNetApply": {
+        "title": "Flux 统一ControlNet控制网应用",
+        "inputs": {
+            "conditioning": "条件",
+            "control_net": "ControlNet控制网",
+            "image": "图像",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "union_controlnet_type": "统一ControlNet类型",
+            "strength": "强度",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {},
+        "description": "类别: ControlAltAI 节点/Flux"
+    },
+    "GetImageSizeRatio": {
+        "title": "获取图像尺寸比例",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "width": "宽度",
+            "height": "高度",
+            "ratio": "比例"
+        },
+        "description": "类别: ControlAltAI 节点/图像"
+    },
+    "HiDreamResolutionNode": {
+        "title": "HiDream 分辨率节点",
+        "inputs": {},
+        "widgets": {
+            "resolution": "分辨率"
+        },
+        "outputs": {
+            "width": "宽度",
+            "height": "高度",
+            "resolution": "分辨率",
+            "preview": "预览"
+        },
+        "description": "类别: ControlAltAI 节点/HiDream"
+    },
+    "IntegerSettingsAdvanced": {
+        "title": "高级整数设置",
+        "inputs": {},
+        "widgets": {
+            "setting_1": "设置1",
+            "setting_2": "设置2",
+            "setting_3": "设置3"
+        },
+        "outputs": {
+            "setting_value": "设置值"
+        },
+        "description": "类别: ControlAltAI 节点/逻辑"
+    },
+    "IntegerSettings": {
+        "title": "整数设置",
+        "inputs": {},
+        "widgets": {
+            "setting": "设置"
+        },
+        "outputs": {
+            "setting_value": "设置值"
+        },
+        "description": "类别: ControlAltAI 节点/逻辑"
+    },
+    "NoisePlusBlend": {
+        "title": "噪声叠加混合",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "noise_scale": "噪声缩放",
+            "blend_opacity": "混合透明度"
+        },
+        "outputs": {
+            "blended_image_output": "混合图像输出",
+            "noise_output": "噪声输出"
+        },
+        "description": "类别: ControlAltAI 节点/图像"
+    },
+    "PerturbationTexture": {
+        "title": "扰动纹理",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "noise_scale": "噪声缩放",
+            "texture_strength": "纹理强度",
+            "texture_type": "纹理类型",
+            "frequency": "频率",
+            "perturbation_factor": "扰动因子",
+            "use_mask": "使用遮罩",
+            "seed": "种子"
+        },
+        "outputs": {
+            "textured_image_output": "纹理化图像输出",
+            "texture_layer": "纹理层"
+        },
+        "description": "类别: ControlAltAI 节点/图像"
+    },
+    "RegionMaskConditioning": {
+        "title": "区域遮罩条件",
+        "inputs": {
+            "mask1": "遮罩1",
+            "bbox1": "边界框1",
+            "conditioning1": "条件1",
+            "mask2": "遮罩2",
+            "bbox2": "边界框2",
+            "conditioning2": "条件2",
+            "mask3": "遮罩3",
+            "bbox3": "边界框3",
+            "conditioning3": "条件3"
+        },
+        "widgets": {
+            "number_of_regions": "区域数量",
+            "strength1": "强度1",
+            "strength2": "强度2",
+            "strength3": "强度3"
+        },
+        "outputs": {
+            "region1": "区域1",
+            "region2": "区域2",
+            "region3": "区域3",
+            "region_count": "区域数量",
+            "preview_image": "预览图像"
+        },
+        "description": "类别：ControlAltAI 节点/Flux 区域"
+    },
+    "RegionMaskGenerator": {
+        "title": "区域遮罩生成器",
+        "inputs": {},
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "number_of_regions": "区域数量",
+            "region1_x1": "区域1_x1",
+            "region1_y1": "区域1_y1",
+            "region1_x2": "区域1_x2",
+            "region1_y2": "区域1_y2",
+            "region2_x1": "区域2_x1",
+            "region2_y1": "区域2_y1",
+            "region2_x2": "区域2_x2",
+            "region2_y2": "区域2_y2",
+            "region3_x1": "区域3_x1",
+            "region3_y1": "区域3_y1",
+            "region3_x2": "区域3_x2",
+            "region3_y2": "区域3_y2"
+        },
+        "outputs": {
+            "colored_regions_image": "着色区域图像",
+            "bbox_preview": "边界框预览",
+            "mask1": "遮罩1",
+            "mask2": "遮罩2",
+            "mask3": "遮罩3",
+            "number_of_regions": "区域数量",
+            "bbox1": "边界框1",
+            "bbox2": "边界框2",
+            "bbox3": "边界框3"
+        },
+        "description": "类别：ControlAltAI 节点/Flux 区域"
+    },
+    "RegionMaskProcessor": {
+        "title": "区域遮罩处理器",
+        "inputs": {
+            "mask1": "遮罩1",
+            "bbox1": "边界框1",
+            "mask2": "遮罩2",
+            "bbox2": "边界框2",
+            "mask3": "遮罩3",
+            "bbox3": "边界框3"
+        },
+        "widgets": {
+            "blur_radius": "模糊半径",
+            "threshold": "阈值",
+            "feather_edges": "羽化边缘",
+            "number_of_regions": "区域数量"
+        },
+        "outputs": {
+            "processed_mask1": "处理后的遮罩1",
+            "processed_bbox1": "处理后的边界框1",
+            "processed_mask2": "处理后的遮罩2",
+            "processed_bbox2": "处理后的边界框2",
+            "processed_mask3": "处理后的遮罩3",
+            "processed_bbox3": "处理后的边界框3",
+            "preview_image": "预览图像",
+            "region_count": "区域数量"
+        },
+        "description": "类别：ControlAltAI 节点/Flux 区域"
+    },
+    "RegionMaskValidator": {
+        "title": "区域遮罩验证器",
+        "inputs": {
+            "mask1": "遮罩1",
+            "bbox1": "边界框1",
+            "mask2": "遮罩2",
+            "bbox2": "边界框2",
+            "mask3": "遮罩3",
+            "bbox3": "边界框3"
+        },
+        "widgets": {
+            "number_of_regions": "区域数量",
+            "min_region_size": "最小区域大小",
+            "max_overlap": "最大重叠"
+        },
+        "outputs": {
+            "valid_mask1": "有效遮罩1",
+            "valid_bbox1": "有效边界框1",
+            "valid_mask2": "有效遮罩2",
+            "valid_bbox2": "有效边界框2",
+            "valid_mask3": "有效遮罩3",
+            "valid_bbox3": "有效边界框3",
+            "valid_region_count": "有效区域数量",
+            "is_valid": "是否有效",
+            "validation_message": "验证信息",
+            "validation_preview": "验证预览"
+        },
+        "description": "类别：ControlAltAI 节点/Flux 区域"
+    },
+    "RegionOverlayVisualizer": {
+        "title": "区域叠加可视化器",
+        "inputs": {
+            "image": "图像",
+            "region_preview": "区域预览"
+        },
+        "widgets": {
+            "opacity": "透明度"
+        },
+        "outputs": {},
+        "description": "类别：ControlAltAI 节点/Flux 区域"
+    },
+    "TextBridge": {
+        "title": "文本桥接器",
+        "inputs": {
+            "passthrough_text": "通过文本"
+        },
+        "widgets": {
+            "text_input": "文本输入"
+        },
+        "outputs": {
+            "text_output": "文本输出"
+        },
+        "description": "类别：ControlAltAI 节点/辅助工具"
+    },
+    "ThreeWaySwitch": {
+        "title": "三向切换器",
+        "inputs": {
+            "input_1": "输入1",
+            "input_2": "输入2",
+            "input_3": "输入3"
+        },
+        "widgets": {
+            "selection_setting": "选择设置"
+        },
+        "outputs": {
+            "output": "输出"
+        },
+        "description": "类别：ControlAltAI 节点/逻辑"
+    },
+    "TwoWaySwitch": {
+        "title": "双向切换器",
+        "inputs": {
+            "input_1": "输入1",
+            "input_2": "输入2"
+        },
+        "widgets": {
+            "selection_setting": "选择设置"
+        },
+        "outputs": {
+            "output": "输出"
+        },
+        "description": "类别：ControlAltAI 节点/逻辑"
+    }
+}

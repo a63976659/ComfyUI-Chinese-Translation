@@ -1,0 +1,142 @@
+{
+    "AlignDepthMaps": {
+        "title": "对齐深度图",
+        "inputs": {
+            "depth_maps": "深度图",
+            "extrinsics": "外参",
+            "intrinsics": "内参",
+            "method": "方法"
+        },
+        "widgets": {
+            "reference_view": "参考视图"
+        },
+        "outputs": {
+            "aligned_depth_maps": "对齐后的深度图",
+            "extrinsics": "外参",
+            "intrinsics": "内参",
+            "alignment_info": "对齐信息"
+        },
+        "description": "类别: SHARP"
+    },
+    "LoadImageWithExif": {
+        "title": "加载带EXIF信息的图像",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "default_focal_mm": "默认焦距（毫米）"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "focal_length_mm": "焦距（毫米）"
+        },
+        "description": "类别: SHARP"
+    },
+    "LoadSharpModel": {
+        "title": "加载SHARP模型",
+        "inputs": {
+            "precision": "精度"
+        },
+        "widgets": {
+            "checkpoint_path": "检查点路径"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "类别: SHARP"
+    },
+    "MergeGaussians": {
+        "title": "合并高斯分布",
+        "inputs": {},
+        "widgets": {
+            "ply_folder": "PLY文件夹",
+            "output_prefix": "输出前缀",
+            "max_depth": "最大深度",
+            "min_opacity": "最小透明度"
+        },
+        "outputs": {
+            "ply_path": "PLY路径",
+            "num_gaussians": "高斯分布数量"
+        },
+        "description": "类别: SHARP"
+    },
+    "SharpPredict": {
+        "title": "SHARP预测",
+        "inputs": {
+            "model": "模型",
+            "image": "图像",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "widgets": {
+            "focal_length_mm": "焦距（毫米）",
+            "output_prefix": "输出前缀"
+        },
+        "outputs": {
+            "ply_path": "PLY路径",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "description": "类别: SHARP"
+    },
+    "SharpPredictDepth": {
+        "title": "SHARP预测深度",
+        "inputs": {
+            "model": "模型",
+            "image": "图像",
+            "extrinsics": "外参",
+            "intrinsics": "内参",
+            "reference_depth": "参考深度"
+        },
+        "widgets": {},
+        "outputs": {
+            "depth_maps": "深度图",
+            "extrinsics": "外参",
+            "intrinsics": "内参",
+            "alignment_maps": "对齐图"
+        },
+        "description": "类别: SHARP"
+    },
+    "ProjectDepthToPanorama": {
+        "title": "将深度投影到全景图",
+        "inputs": {
+            "depth_maps": "深度图",
+            "extrinsics": "外参",
+            "intrinsics": "内参",
+            "blend_mode": "混合模式",
+            "border_color": "边框颜色"
+        },
+        "widgets": {
+            "panorama_width": "全景图宽度",
+            "show_borders": "显示边界",
+            "disagreement_scale": "分歧缩放"
+        },
+        "outputs": {
+            "panoramic_depth": "全景深度",
+            "debug_overlay": "调试叠加",
+            "disagreement_heatmap": "分歧热图"
+        },
+        "description": "类别: SHARP"
+    },
+    "SamplePanorama": {
+        "title": "采样全景图",
+        "inputs": {
+            "panorama": "全景图"
+        },
+        "widgets": {
+            "fov_degrees": "视场角（度）",
+            "overlap_percent": "重叠百分比",
+            "output_size": "输出尺寸",
+            "skip_poles": "跳过极点"
+        },
+        "outputs": {
+            "images": "图像",
+            "extrinsics": "外参",
+            "intrinsics": "内参",
+            "num_horizontal": "水平数量",
+            "num_vertical": "垂直数量"
+        },
+        "description": "类别: SHARP"
+    }
+}

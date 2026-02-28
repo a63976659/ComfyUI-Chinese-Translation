@@ -1,0 +1,81 @@
+{
+    "PlyPreviewLoadGaussianPLYEnhance": {
+        "title": "加载3D高斯溅射PLY文件",
+        "inputs": {},
+        "widgets": {
+            "ply_file": "PLY文件路径",
+            "auto_resolution": "自动分辨率",
+            "enable_opacity_filter": "启用透明度过滤",
+            "fov_degrees": "视场角度",
+            "target_scale": "目标缩放",
+            "image_width": "图像宽度",
+            "image_height": "图像高度",
+            "opacity_threshold": "透明度阈值"
+        },
+        "outputs": {
+            "ply_path": "PLY文件路径",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "description": "右键点击 → 刷新节点以加载新的 PLY 文件"
+    },
+    "PlyPreviewLoadGaussianPLYPathEnhance": {
+        "title": "加载3D高斯溅射PLY路径",
+        "inputs": {},
+        "widgets": {
+            "ply_path": "PLY文件路径",
+            "fov_degrees": "视场角度",
+            "auto_resolution": "自动分辨率",
+            "enable_opacity_filter": "启用透明度过滤",
+            "target_scale": "目标缩放",
+            "image_width": "图像宽度",
+            "image_height": "图像高度",
+            "opacity_threshold": "透明度阈值"
+        },
+        "outputs": {
+            "ply_path": "PLY文件路径",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "description": "分类: Ply预览"
+    },
+    "PlyPreviewPreviewGaussianEnhance": {
+        "title": "3D高斯溅射预览节点",
+        "inputs": {
+            "ply_path": "PLY文件路径",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "widgets": {
+            "Scale": "规模",
+            "Reset View": "重置视图",
+            "Screenshot": "截图"
+        },
+        "outputs": {},
+        "description": "执行完毕后，高斯斑点信息将会出现在此处。"
+    },
+    "PlyPreviewProcessGaussianPLYEnhance": {
+        "title": "处理3D高斯溅射PLY文件",
+        "inputs": {
+            "ply_path": "PLY文件路径",
+            "input_extrinsics": "输入外参",
+            "input_intrinsics": "输入内参"
+        },
+        "widgets": {
+            "override_camera": "覆盖相机设置",
+            "fov_degrees": "视场角度",
+            "auto_resolution": "自动分辨率",
+            "target_scale": "目标缩放",
+            "image_width": "图像宽度",
+            "image_height": "图像高度",
+            "opacity_threshold": "透明度阈值",
+            "enable_opacity_filter": "启用透明度过滤"
+        },
+        "outputs": {
+            "ply_path": "PLY文件路径",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "description": "分类: Ply预览"
+    }
+}
