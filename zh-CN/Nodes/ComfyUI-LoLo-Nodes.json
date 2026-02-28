@@ -1,0 +1,215 @@
+{
+    "DebugMemoryNode": {
+        "title": "调试内存节点",
+        "inputs": {
+            "anything": "任意"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "类别：utils/debug"
+    },
+    "FlashVSRPipeCleaner": {
+        "title": "FlashVSR线管清理",
+        "inputs": {
+            "pipe": "管道",
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "类别：FlashVSR/utils"
+    },
+    "LoLolClearCache": {
+        "title": "LoLol清除缓存",
+        "inputs": {
+            "input_1": "输入1",
+            "input_2": "输入2",
+            "input_3": "输入3",
+            "input_4": "输入4",
+            "input_5": "输入5"
+        },
+        "widgets": {
+            "clean_cuda": "清理CUDA",
+            "clean_memory": "清理内存",
+            "clean_unused_models": "清理未使用的模型"
+        },
+        "outputs": {
+            "output_1": "输出1",
+            "output_2": "输出2",
+            "output_3": "输出3",
+            "output_4": "输出4",
+            "output_5": "输出5"
+        },
+        "description": "类别：LoLoNodes"
+    },
+    "LoLolClearCacheWithLabel": {
+        "title": "LoLol清除带有标签的缓存",
+        "inputs": {
+            "input_1": "输入1",
+            "input_2": "输入2",
+            "input_3": "输入3",
+            "input_4": "输入4",
+            "input_5": "输入5"
+        },
+        "widgets": {
+            "label": "标签",
+            "clean_cuda": "清理CUDA",
+            "clean_memory": "清理内存",
+            "clean_unused_models": "清理未使用的模型"
+        },
+        "outputs": {
+            "output_1": "输出1",
+            "output_2": "输出2",
+            "output_3": "输出3",
+            "output_4": "输出4",
+            "output_5": "输出5"
+        },
+        "description": "类别：LoLoNodes"
+    },
+    "LoloGenerateFilename": {
+        "title": "Lolo生成文件名",
+        "inputs": {},
+        "widgets": {
+            "prefix": "前缀",
+            "seed": "种子"
+        },
+        "outputs": {
+            "filename": "文件名"
+        },
+        "description": "类别：LoLo Nodes/Utils"
+    },
+    "LoloGetVideoInfo": {
+        "title": "Lolo获取视频信息",
+        "inputs": {},
+        "widgets": {
+            "video": "视频"
+        },
+        "outputs": {
+            "frames_count": "帧数",
+            "fps": "帧率",
+            "audio": "音频"
+        },
+        "description": "类别：LoLo Nodes/video"
+    },
+    "LoloLoadStringFromDir": {
+        "title": "Lolo从目录加载字符串",
+        "inputs": {},
+        "widgets": {
+            "dir": "目录",
+            "suffix": "后缀",
+            "load": "加载",
+            "index": "索引",
+            "refresh_seed": "刷新种子"
+        },
+        "outputs": {
+            "str": "字符串",
+            "file_name": "文件名"
+        },
+        "description": "类别：LoLo Nodes/Utils"
+    },
+    "LoloLoadStringFromFile": {
+        "title": "Lolo从文件中加载字符串",
+        "inputs": {},
+        "widgets": {
+            "dir": "目录",
+            "filename": "文件名",
+            "suffix": "后缀",
+            "seed": "种子"
+        },
+        "outputs": {
+            "str": "字符串"
+        },
+        "description": "类别：LoLo Nodes/Utils"
+    },
+    "LoloSaveDirToZip": {
+        "title": "Lolo保存目录到压缩文件中",
+        "inputs": {
+            "any_input": "任何输入"
+        },
+        "widgets": {
+            "dir": "目录",
+            "seed": "种子",
+            "suffix": "后缀",
+            "limit": "限制"
+        },
+        "outputs": {
+            "file_path": "文件路径",
+            "file_size": "文件大小"
+        },
+        "description": "类别：LoLo Nodes/Utils"
+    },
+    "LoloSaveString2File": {
+        "title": "Lolo将字符串保存到文件中",
+        "inputs": {
+            "str": "字符串"
+        },
+        "widgets": {
+            "filename": "文件名",
+            "path": "路径",
+            "mode": "模式",
+            "ext": "扩展名",
+            "separator": "分隔符"
+        },
+        "outputs": {
+            "init_str": "初始化字符串",
+            "file_full_path": "完整文件路径"
+        },
+        "description": "类别：LoLo Nodes/Utils"
+    },
+    "LoloVideoCombine": {
+        "title": "Lolo视频合并",
+        "inputs": {
+            "audio": "音频",
+            "any": "任何"
+        },
+        "widgets": {
+            "video_dir": "视频目录",
+            "filename_prefix": "文件名前缀"
+        },
+        "outputs": {
+            "result_path": "结果路径"
+        },
+        "description": "类别：LoLo Nodes/video"
+    },
+    "LoloVideoSaveOutput": {
+        "title": "Lolo输出视频保存",
+        "inputs": {
+            "images": "图像",
+            "format": "格式",
+            "codec": "编码器"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "output_last_frame_count": "输出最后一帧数量",
+            "fps": "帧率"
+        },
+        "outputs": {
+            "output_last_frames": "输出最后一帧"
+        },
+        "description": "类别：LoLo Nodes/video"
+    },
+    "WanInfiniteTalkToVideoEx": {
+        "title": "Wan InfiniteTalk 万 无限对话转视频",
+        "inputs": {
+            "mode": "模式",
+            "model": "模型",
+            "model_patch": "模型补丁",
+            "positive": "积极",
+            "negative": "消极",
+            "vae": "VAE",
+            "clip_vision_output": "CLIP视觉输出",
+            "start_image": "起始图像",
+            "audio_encoder_output_1": "音频编码输出1",
+            "previous_frames": "先前帧"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "motion_frame_count": "运动帧数",
+            "audio_scale": "音频缩放",
+            "audio_offset": "音频偏移"
+        },
+        "outputs": {},
+        "description": ""
+    }
+}

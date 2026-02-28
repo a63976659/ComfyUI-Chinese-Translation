@@ -1,0 +1,1378 @@
+{
+    "RadianceDenoise": {
+        "title": "Radiance降噪",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "d": "d",
+            "sigmaColor": "sigma颜色",
+            "sigmaSpace": "sigma空间"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/Filter"
+    },
+    "RadianceDepthMapGenerator": {
+        "title": "Radiance深度图生成器",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "normalize": "标准化",
+            "invert": "反转",
+            "blur_edges": "模糊边缘",
+            "use_gpu": "使用GPU",
+            "model_size": "模型尺寸"
+        },
+        "outputs": {
+            "depth_map": "深度图"
+        },
+        "description": "类别: FXTD Studios/Radiance/Data"
+    },
+    "RadianceDNAReader": {
+        "title": "Radiance DNA读取器",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "is_signed": "是否签名",
+            "signature_data": "签名数据"
+        },
+        "description": "类别: FXTD Studios/Radiance/Data"
+    },
+    "RadianceDNAWriter": {
+        "title": "Radiance DNAN写入器",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "project": "项目",
+            "artist": "艺术家",
+            "notes": "备注"
+        },
+        "outputs": {
+            "image": "图像",
+            "success": "成功",
+            "status": "状态"
+        },
+        "description": "类别: FXTD Studios/Radiance/Data"
+    },
+    "RadianceDNAValidator": {
+        "title": "Radiance DNA验证器",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "require_signed": "要求签名"
+        },
+        "outputs": {
+            "image": "图像",
+            "is_valid": "有效",
+            "status": "状态"
+        },
+        "description": "类别: FXTD Studios/Radiance/Data"
+    },
+    "RadianceGrade": {
+        "title": "Radiance等级调整",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "preset_strength": "预设强度",
+            "lift_r": "红色提升",
+            "lift_g": "绿色提升",
+            "lift_b": "蓝色提升",
+            "gamma_r": "红色伽马",
+            "gamma_g": "绿色伽马",
+            "gamma_b": "蓝色伽马",
+            "gain_r": "红色增益",
+            "gain_g": "绿色增益",
+            "gain_b": "蓝色增益",
+            "offset_r": "红色偏移",
+            "offset_g": "绿色偏移",
+            "offset_b": "蓝色偏移",
+            "contrast": "对比度",
+            "pivot": "中性色",
+            "saturation": "饱和度",
+            "preset": "预设"
+        },
+        "outputs": {
+            "image": "图像",
+            "grade_info": "等级信息"
+        },
+        "description": "类别: FXTD Studios/Radiance/Color"
+    },
+    "RadianceReadVideo": {
+        "title": "Radiance视频读取器",
+        "inputs": {},
+        "widgets": {
+            "input_colorspace": "输入色彩空间",
+            "video_path": "视频路径",
+            "start_frame": "起始帧",
+            "frame_count": "帧数",
+            "frame_stride": "帧间隔",
+            "extract_audio": "提取音频"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "MASK": "遮罩",
+            "frame_count": "帧数",
+            "width": "宽度",
+            "height": "高度",
+            "fps": "帧率",
+            "audio": "音频"
+        },
+        "description": "类别: FXTD Studios/Radiance/IO"
+    },
+    "RadianceReadSequence": {
+        "title": "Radiance序列读取器",
+        "inputs": {},
+        "widgets": {
+            "folder_path": "文件夹路径",
+            "pattern": "模式",
+            "start_frame": "起始帧",
+            "frame_limit": "帧限制",
+            "input_colorspace": "输入色彩空间",
+            "fps": "帧率"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "MASK": "遮罩",
+            "frame_count": "帧数",
+            "width": "宽度",
+            "height": "高度",
+            "fps": "帧率",
+            "filename_list": "文件名列表"
+        },
+        "description": "类别: FXTD Studios/Radiance/IO"
+    },
+    "RadianceWrite": {
+        "title": "Radiance写入器",
+        "inputs": {
+            "images": "图像",
+            "audio": "音频"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "output_format": "输出格式",
+            "output_color_space": "输出色彩空间",
+            "fps": "帧率",
+            "quality": "质量",
+            "subfolder": "子文件夹"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "file_path": "文件路径"
+        },
+        "description": "类别: FXTD Studios/Radiance/IO"
+    },
+    "RadianceWriteVideo": {
+        "title": "Radiance视频写入器",
+        "inputs": {
+            "images": "图像",
+            "audio": "音频"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "fps": "帧率",
+            "codec": "编解码器",
+            "output_color_space": "输出色彩空间",
+            "quality": "质量",
+            "subfolder": "子文件夹"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "file_path": "文件路径"
+        },
+        "description": "类别: FXTD Studios/Radiance/IO"
+    },
+    "RadianceReroute": {
+        "title": "Radiance重定向器",
+        "inputs": {
+            "data": "数据"
+        },
+        "widgets": {},
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/Layout"
+    },
+    "RadianceAdvancedReroute": {
+        "title": "Radiance高级重定向器",
+        "inputs": {
+            "data": "数据"
+        },
+        "widgets": {
+            "label": "标签",
+            "color": "颜色"
+        },
+        "outputs": {
+            "data": "数据"
+        },
+        "description": "类别: FXTD Studios/Radiance/Layout"
+    },
+    "RadianceUnifiedLoader": {
+        "title": "Radiance统一加载器",
+        "inputs": {
+        },
+        "widgets": {
+            "preset": "预设",
+            "unet_name": "UNet名称",
+            "weight_dtype": "权重数据类型",
+            "clip_name1": "CLIP名称1",
+            "model_type": "模型类型",
+            "clip_dtype": "CLIP数据类型",
+            "device": "设备",
+            "vae_name": "VAE名称",
+            "clip_name2": "CLIP名称2",
+            "lora_1": "LORA1",
+            "lora_2": "LORA2",
+            "lora_3": "LORA3",
+            "controlnet_name": "ControlNet名称",
+            "check_vram": "检查VRAM",
+            "use_cache": "使用缓存",
+            "lora_on_error": "LORA错误处理",
+            "lora_1_model_str": "LORA1模型字符串",
+            "lora_1_clip_str": "LORA1 CLIP字符串",
+            "lora_2_model_str": "LORA2模型字符串",
+            "lora_2_clip_str": "LORA2 CLIP字符串",
+            "lora_3_model_str": "LORA3模型字符串",
+            "lora_3_clip_str": "LORA3 CLIP字符串",
+            "controlnet_strength": "ControlNet强度",
+            "controlnet_start": "ControlNet开始",
+            "controlnet_end": "ControlNet结束"
+        },
+        "outputs": {
+            "MODEL": "模型",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "CONTROLNET": "ControlNet",
+            "load_info": "加载信息"
+        },
+        "description": "类别: FXTD Studios/Radiance/Generate"
+    },
+    "RadianceNukeBridge": {
+        "title": "RadianceNUKE桥接器",
+        "inputs": {
+            "images": "图像",
+            "depth_map": "深度图"
+        },
+        "widgets": {
+            "host": "主机",
+            "port": "端口",
+            "stream_name": "流名称",
+            "send_mode": "发送模式",
+            "color_space": "色彩空间",
+            "bit_depth": "位深度",
+            "compression": "压缩",
+            "connect_viewer": "连接查看器",
+            "raw": "原始",
+            "start_frame": "起始帧",
+            "output_path": "输出路径"
+        },
+        "outputs": {
+            "image": "图像",
+            "nuke_status": "NUKE状态"
+        },
+        "description": "类别: FXTD Studios/Radiance/Pipeline"
+    },
+    "RadianceMetadataOverlay": {
+        "title": "Radiance元数据叠加器",
+        "inputs": {
+            "image": "图像",
+            "report_text": "报告文本"
+        },
+        "widgets": {
+            "enabled": "启用",
+            "project": "项目",
+            "shot": "镜头",
+            "frame": "帧",
+            "timecode": "时间码",
+            "font_size": "字体大小",
+            "opacity": "透明度",
+            "user_text": "用户文本",
+            "position": "位置"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/Draw"
+    },
+    "RadianceCinematicPromptEncoder": {
+        "title": "Radiance电影提示编码器",
+        "inputs": {
+            "clip": "clip"
+        },
+        "widgets": {
+            "style_preset": "风格预设",
+            "context_window": "上下文窗口",
+            "framing": "构图",
+            "camera_type": "摄像机类型",
+            "lens_focal": "焦距",
+            "aperture_dof": "光圈景深",
+            "lighting": "照明",
+            "style_aesthetic": "风格美学",
+            "film_stock": "胶片种类",
+            "shutter_speed": "快门速度",
+            "color_grading": "色彩分级",
+            "aspect_ratio": "宽高比",
+            "negative_strength": "负片强度",
+            "base_prompt": "基础提示",
+            "custom_details": "自定义细节",
+            "year_era": "年代",
+            "clip_skip": "跳过帧数",
+            "lora_keywords": "LORA关键词",
+            "use_break": "使用断点"
+        },
+        "outputs": {
+            "positive": "正面提示",
+            "negative": "负面提示"
+        },
+        "description": "类别: FXTD Studios/Radiance/生成"
+    },
+    "RadianceQC": {
+        "title": "Radiance质量检查",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "black_threshold": "黑色阈值",
+            "white_threshold": "白色阈值",
+            "overlay_opacity": "叠加透明度",
+            "banding_threshold": "色带阈值",
+            "enable_focus_check": "启用聚焦检查",
+            "enable_artifacts_check": "启用伪影检查",
+            "enable_noise_check": "启用噪声检查",
+            "fail_on_errors": "遇到错误时失败"
+        },
+        "outputs": {
+            "overlay_image": "叠加图像",
+            "qc_report_text": "质量报告文本",
+            "qc_report_json": "质量报告JSON",
+            "status": "状态"
+        },
+        "description": "类别: FXTD Studios/Radiance/分析"
+    },
+    "RadianceQCExport": {
+        "title": "Radiance质量检查导出",
+        "inputs": {
+            "qc_report_json": "质量报告JSON"
+        },
+        "widgets": {
+            "export_format": "导出格式",
+            "output_path": "输出路径",
+            "filename_prefix": "文件名前缀"
+        },
+        "outputs": {
+            "export_status": "导出状态"
+        },
+        "description": "类别: FXTD Studios/Radiance/分析"
+    },
+    "FXTD_RadianceViewer": {
+        "title": "FXTD_查看器",
+        "inputs": {
+            "image": "图像",
+            "compare_image": "比较图像",
+            "zdepth": "Z深度"
+        },
+        "widgets": {
+            "bit_depth": "位深度"
+        },
+        "outputs": {
+            "image": "图像",
+            "metadata": "元数据"
+        },
+        "description": "类别: FXTD Studios/Radiance/视图"
+    },
+    "RadianceResolution": {
+        "title": "Radiance分辨率",
+        "inputs": {},
+        "widgets": {
+            "preset": "预设",
+            "model_type": "模型类型",
+            "orientation": "目标",
+            "scale_factor": "缩放比例",
+            "latent_channels": "Latent通道",
+            "custom_width": "自定义宽度",
+            "custom_height": "自定义高度",
+            "use_custom": "使用自定义",
+            "batch_size": "批量大小",
+            "width": "宽度",
+            "height": "高度",
+            "swap_dimensions": "交换维度"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "preview": "预览",
+            "width": "宽度",
+            "height": "高度",
+            "info": "信息"
+        },
+        "description": "类别: FXTD Studios/Radiance/图像"
+    },
+    "RadianceSamplerPro": {
+        "title": "Radiance高级采样器",
+        "inputs": {
+            "model": "模型",
+            "positive": "正面提示",
+            "negative": "负面提示",
+            "latent_image": "Latent图像",
+            "refiner_model": "细化模型",
+            "noise_override": "噪声覆盖"
+        },
+        "widgets": {
+            "preset": "预设",
+            "sampler": "采样器",
+            "sampler_mode": "采样器模式",
+            "scheduler": "调度器",
+            "scheduler_mode": "调度器模式",
+            "flux_guidance_profile": "流引导配置文件",
+            "model_type": "模型类型",
+            "preview_method": "预览方法",
+            "steps": "步骤",
+            "start_step": "起始步骤",
+            "end_step": "结束步骤",
+            "cfg": "CFG",
+            "phase_split": "阶段划分",
+            "denoise": "降噪",
+            "flux_shift": "流偏移",
+            "flux_guidance": "流引导",
+            "add_noise": "添加噪声",
+            "return_with_leftover_noise": "返回剩余噪声",
+            "seed": "种子",
+            "pag_scale": "PAG缩放",
+            "sigma_blend_steps": "σ混合步骤",
+            "refiner_start_step": "细化开始步骤"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "sigmas": "σ值",
+            "sigma_report": "σ报告"
+        },
+        "description": "类别: FXTD Studios/Radiance/生成"
+    },
+    "RadianceWaveform": {
+        "title": "Radiance波形图",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "size": "尺寸",
+            "opacity": "透明度",
+            "mode": "模式"
+        },
+        "outputs": {
+            "waveform_image": "波形图"
+        },
+        "description": "类别: FXTD Studios/Radiance/分析"
+    },
+    "RadianceVectorscope": {
+        "title": "Radiance向量视图",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "size": "尺寸",
+            "opacity": "透明度",
+            "skin_tone_line": "肤色线"
+        },
+        "outputs": {
+            "vectorscope_image": "向量视图"
+        },
+        "description": "类别: FXTD Studios/Radiance/分析"
+    },
+    "RadianceCinemaStudio": {
+        "title": "Radiance电影工作室",
+        "inputs": {},
+        "widgets": {
+            "base_prompt": "基础提示",
+            "camera": "摄像机",
+            "lens_series": "镜头系列",
+            "focal_length": "焦距",
+            "aperture": "光圈",
+            "shutter": "快门",
+            "iso": "ISO",
+            "shot_type": "拍摄类型",
+            "camera_movement": "摄像机运动"
+        },
+        "outputs": {
+            "prompt": "提示",
+            "technical_data_str": "技术数据字符串"
+        },
+        "description": "类别: FXTD Studios/Radiance/生成"
+    },
+    "RadianceLUTApply": {
+        "title": "Radiance LUT应用",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "strength": "强度",
+            "log_space": "对数空间",
+            "clamp_output": "钳制输出",
+            "lut_file": "LUT文件",
+            "log_encoding": "对数编码",
+            "interpolation": "插值"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
+    "RadianceLUTBlend": {
+        "title": "RadianceLUT混合",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "blend_factor": "混合因子",
+            "strength": "强度",
+            "clamp_output": "钳制输出",
+            "lut_a": "LUT A",
+            "lut_b": "LUT B",
+            "blend_mode": "混合模式"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
+    "RadianceOCIODisplayView": {
+        "title": "RadianceOCIO显示视图",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "config_path": "配置路径",
+            "display": "显示器",
+            "view": "视图",
+            "look": "外观",
+            "exposure_adjust": "曝光调整",
+            "context_key": "上下文键",
+            "context_value": "上下文值"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
+    "RadianceOCIOCDL": {
+        "title": "Radiance OCIO CDL",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "cdl_file": "CDL文件",
+            "slope_r": "红色斜率",
+            "slope_g": "绿色斜率",
+            "slope_b": "蓝色斜率",
+            "offset_r": "红色偏移",
+            "offset_g": "绿色偏移",
+            "offset_b": "蓝色偏移",
+            "power_r": "红色幂",
+            "power_g": "绿色幂",
+            "power_b": "蓝色幂",
+            "saturation": "饱和度"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
+    "RadianceGPUColorMatrix": {
+        "title": "RadianceGPU颜色矩阵",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "r_vector": "R向量",
+            "g_vector": "G向量",
+            "b_vector": "B向量",
+            "a_vector": "A向量",
+            "offset": "偏移",
+            "clamp_output": "钳制输出",
+            "preset": "预设",
+            "matrix_type": "矩阵类型"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
+    "RadianceOCIOColorTransform": {
+        "title": "RadianceOCIO颜色转换",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "config_file": "配置文件",
+            "input_space": "输入空间",
+            "output_space": "输出空间",
+            "direction": "方向"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
+    "RadianceSceneLinearWorkflow": {
+        "title": "Radiance场景线性工作流",
+        "inputs": {},
+        "widgets": {
+            "preset": "预设"
+        },
+        "outputs": {
+            "decode": "解码",
+            "working_space": "工作空间",
+            "encode": "编码"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
+    "RadianceLogCurveDecode": {
+        "title": "Radiance对数曲线解码",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "use_gpu": "使用GPU",
+            "curve": "曲线",
+            "target_gamut": "目标色域",
+            "exposure_index": "曝光指数"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
+    "RadianceLogCurveEncode": {
+        "title": "Radiance对数曲线编码",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "apply_gamma": "应用伽马",
+            "gamma": "伽马",
+            "exposure": "曝光",
+            "clamp_output": "裁剪输出",
+            "curve": "曲线",
+            "source_gamut": "源色域",
+            "exposure_index": "曝光指数"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
+    "RadianceACES2OutputTransform": {
+        "title": "RadianceACES2输出变换",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "peak_luminance": "峰值亮度",
+            "contrast": "对比度",
+            "gamut_compress": "色域压缩",
+            "gamut_threshold": "色域阈值",
+            "display_target": "显示目标"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
+    "RadianceWhiteBalance": {
+        "title": "Radiance白平衡",
+        "inputs": {
+            "image": "图像",
+            "preset": "预设"
+        },
+        "widgets": {
+            "temperature": "温度",
+            "tint": "色调",
+            "source_temperature": "源温度",
+            "intensity": "强度",
+            "use_gpu": "使用GPU"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
+    "RadianceDepthOfField": {
+        "title": "Radiance景深",
+        "inputs": {
+            "image": "图像",
+            "depth_map": "深度图"
+        },
+        "widgets": {
+            "blur_amount": "模糊量",
+            "focus_distance": "聚焦距离",
+            "focus_range": "聚焦范围",
+            "highlight_boost": "高光增强",
+            "foreground_blur": "前景模糊",
+            "use_gpu": "使用GPU",
+            "bokeh_shape": "散景形状"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/滤镜"
+    },
+    "RadianceMotionBlur": {
+        "title": "Radiance运动模糊",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "amount": "量",
+            "angle": "角度",
+            "center_x": "中心X",
+            "center_y": "中心Y",
+            "samples": "样本数",
+            "use_gpu": "使用GPU",
+            "blur_type": "模糊类型"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/滤镜"
+    },
+    "RadianceRollingShutter": {
+        "title": "Radiance滚动快门",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "skew_amount": "倾斜量",
+            "wobble_frequency": "抖动频率",
+            "wobble_amplitude": "抖动幅度",
+            "flash_band_position": "闪光带位置",
+            "flash_band_width": "闪光带宽度",
+            "use_gpu": "使用GPU",
+            "shutter_direction": "快门方向"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/滤镜"
+    },
+    "RadianceCompressionArtifacts": {
+        "title": "Radiance压缩伪影",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "quality": "质量",
+            "block_size": "块大小",
+            "color_subsampling": "色彩子采样",
+            "banding_levels": "色带等级",
+            "noise_amount": "噪声量",
+            "artifact_type": "伪影类型"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/滤镜"
+    },
+    "RadianceFilmGrain": {
+        "title": "Radiance胶片颗粒",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "intensity": "强度",
+            "seed": "种子",
+            "size": "尺寸",
+            "iso": "ISO",
+            "halation": "晕轮",
+            "gate_weave": "栅格编织",
+            "use_gpu": "使用GPU",
+            "profile": "配置文件",
+            "blend_mode": "混合模式"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/滤镜"
+    },
+    "HDRHistogram": {
+        "title": "HDR直方图",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "show_clipping": "显示裁剪",
+            "stops_range": "停止范围",
+            "mode": "模式"
+        },
+        "outputs": {
+            "histogram": "直方图",
+            "stats": "统计信息"
+        },
+        "description": "类别: FXTD Studios/Radiance/分析"
+    },
+    "ImageToFloat32": {
+        "title": "图像转为浮点32",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "normalize": "标准化",
+            "source_gamma": "源伽马"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
+    "Float32ColorCorrect": {
+        "title": "浮点32颜色校正",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "exposure": "曝光",
+            "contrast": "对比度",
+            "brightness": "亮度",
+            "saturation": "饱和度",
+            "gamma": "伽马",
+            "lift_r": "红色提升",
+            "lift_g": "绿色提升",
+            "lift_b": "蓝色提升",
+            "gain_r": "红色增益",
+            "gain_g": "绿色增益",
+            "gain_b": "蓝色增益",
+            "clamp_output": "裁剪输出",
+            "luma_space": "亮度空间"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
+    "ColorSpaceConvert": {
+        "title": "颜色空间转换",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "source_space": "源颜色空间",
+            "exposure": "曝光",
+            "gamma_adjust": "伽马调整",
+            "use_gpu": "使用GPU",
+            "target_space": "目标颜色空间",
+            "chromatic_adaptation": "色度适应"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
+    "DaVinciWideGamut": {
+        "title": "达芬奇宽色域",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "transform": "转换"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
+    "ARRIWideGamut4": {
+        "title": "ARRI 广色域 4",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "direction": "方向"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/Color"
+    },
+    "ACES2OutputTransform": {
+        "title": "ACES2 输出转换器",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "peak_luminance": "峰值亮度",
+            "creative_white_scale": "创意白色比例",
+            "exposure_adjust": "曝光调整",
+            "gamut_compress": "色域压缩",
+            "input_colorspace": "输入色彩空间",
+            "output_transform": "输出变换",
+            "surround": "环境"
+        },
+        "outputs": {
+            "output_image": "输出图像",
+            "transform_info": "变换信息"
+        },
+        "description": "类别: FXTD Studios/Radiance/Color"
+    },
+    "LoadImageEXR": {
+        "title": "加载EXR图像",
+        "inputs": {},
+        "widgets": {
+            "file_path": "文件路径",
+            "input_folder_file": "输入文件夹或文件",
+            "exposure_adjust": "曝光调整"
+        },
+        "outputs": {
+            "image": "图像",
+            "alpha_mask": "alpha遮罩",
+            "depth_mask": "深度遮罩",
+            "metadata": "元数据"
+        },
+        "description": "类别: FXTD Studios/Radiance/Image"
+    },
+    "LoadImageEXRSequence": {
+        "title": "加载图像EXR序列",
+        "inputs": {},
+        "widgets": {
+            "folder_path": "文件夹路径",
+            "file_pattern": "文件模式",
+            "start_frame": "起始帧",
+            "end_frame": "结束帧",
+            "frame_step": "帧步长",
+            "max_frames": "最大帧数",
+            "exposure_adjust": "曝光调整"
+        },
+        "outputs": {
+            "images": "图像序列",
+            "alpha_masks": "alpha遮罩序列",
+            "depth_masks": "深度遮罩序列",
+            "metadata": "元数据",
+            "frame_count": "帧数"
+        },
+        "description": "类别: FXTD Studios/Radiance/Image"
+    },
+    "SaveImage16bit": {
+        "title": "保存16bit图像",
+        "inputs": {
+            "images": "图像序列"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "format": "格式",
+            "tonemap": "色调映射"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/Image"
+    },
+    "RadianceSaveEXR": {
+        "title": "Radiance保存为EXR图像",
+        "inputs": {
+            "images": "图像序列"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "format": "格式",
+            "bit_depth": "位深度",
+            "compression": "压缩",
+            "input_color_space": "输入色彩空间",
+            "output_color_space": "输出色彩空间",
+            "alpha_mode": "alpha模式",
+            "premultiply_alpha": "预乘alpha",
+            "subfolder": "子文件夹",
+            "start_frame": "起始帧",
+            "frame_padding": "帧填充",
+            "add_metadata": "添加元数据",
+            "custom_metadata": "自定义元数据",
+            "channel_format": "通道格式"
+        },
+        "outputs": {
+            "file_paths": "文件路径列表",
+            "folder_path": "文件夹路径",
+            "frame_count": "帧数"
+        },
+        "description": "类别: FXTD Studios/Radiance/Image"
+    },
+    "ACESConfigManager": {
+        "title": "ACES配置管理器",
+        "inputs": {},
+        "widgets": {
+            "action": "操作",
+            "custom_config_path": "自定义配置路径",
+            "install_path": "安装路径"
+        },
+        "outputs": {
+            "config_path": "配置路径",
+            "colorspaces_list": "色彩空间列表",
+            "status_info": "状态信息"
+        },
+        "description": "类别: FXTD Studios/Radiance/Color"
+    },
+    "OCIOListColorspaces": {
+        "title": "OCIO 列出颜色空间",
+        "inputs": {},
+        "widgets": {
+            "ocio_config_path": "OCIO配置路径",
+            "filter_role": "过滤角色"
+        },
+        "outputs": {
+            "colorspaces_list": "色彩空间列表"
+        },
+        "description": "类别: FXTD Studios/Radiance/Color"
+    },
+    "HDR360Generate": {
+        "title": "HDR 360全景图生成器",
+        "inputs": {
+            "source_image": "源图像"
+        },
+        "widgets": {
+            "output_width": "输出宽度",
+            "output_height": "输出高度",
+            "horizontal_fov": "水平视场角",
+            "vertical_fov": "垂直视场角",
+            "rotation_x": "旋转X轴",
+            "rotation_y": "旋转Y轴",
+            "rotation_z": "旋转Z轴",
+            "exposure_adjust": "曝光调整",
+            "projection_type": "投影类型",
+            "interpolation": "插值方法",
+            "fill_mode": "填充模式"
+        },
+        "outputs": {
+            "panorama": "全景图",
+            "projection_map": "投影图"
+        },
+        "description": "类别: FXTD Studios/Radiance/Image"
+    },
+    "HDRExposureBlend": {
+        "title": "HDR 光照融合",
+        "inputs": {
+            "low_exposure": "低曝光图像",
+            "high_exposure": "高曝光图像",
+            "mid_exposure": "中间曝光图像"
+        },
+        "widgets": {
+            "blend_method": "混合方法",
+            "shadow_weight": "阴影权重",
+            "highlight_weight": "高光权重",
+            "transition_smoothness": "过渡平滑度",
+            "exposure_offset_low": "低曝光偏移",
+            "exposure_offset_high": "高曝光偏移",
+            "ghost_removal": "鬼影去除"
+        },
+        "outputs": {
+            "blended_hdr": "混合后的HDR图像",
+            "blend_mask": "混合遮罩",
+            "blend_info": "混合信息"
+        },
+        "description": "类别: FXTD Studios/Radiance/Color"
+    },
+    "HDRShadowHighlightRecovery": {
+        "title": "HDR 阴影高光恢复",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "shadow_amount": "阴影恢复量",
+            "highlight_amount": "高光恢复量",
+            "shadow_tone": "阴影色调",
+            "highlight_tone": "高光色调",
+            "color_correction": "颜色校正",
+            "local_contrast": "局部对比度"
+        },
+        "outputs": {
+            "recovered_image": "恢复后的图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/Color"
+    },
+    "GPUTensorOps": {
+        "title": "GPU 张量运算操作",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "value": "值",
+            "force_gpu": "强制使用GPU",
+            "operation": "操作"
+        },
+        "outputs": {
+            "processed_image": "处理后的图像",
+            "performance_info": "性能信息"
+        },
+        "description": "类别: FXTD Studios/Radiance/Color"
+    },
+    "RadianceHighlightSynthesis": {
+        "title": "“辉光高光合成”",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "threshold": "阈值",
+            "expansion": "扩展",
+            "detail_amount": "细节量",
+            "detail_scale": "细节缩放",
+            "blend_mode": "混合模式"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/Color"
+    },
+    "HDRExpandDynamicRange": {
+        "title": "HDR 扩展动态范围",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "source_gamma": "源伽玛",
+            "highlight_recovery": "高光恢复",
+            "black_point": "黑点",
+            "target_stops": "目标停止数",
+            "highlight_rolloff": "高光滚降"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/Color"
+    },
+    "HDRToneMap": {
+        "title": "HDR 色调映射图",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "exposure": "曝光",
+            "gamma": "伽玛",
+            "white_point": "白点",
+            "contrast": "对比度",
+            "saturation": "饱和度",
+            "highlight_compression": "高光压缩",
+            "shadow_lift": "阴影提升",
+            "use_gpu": "使用GPU",
+            "preset": "预设",
+            "operator": "操作符"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/Color"
+    },
+    "RadianceVAE4KEncode": {
+        "title": "RadianceVAE4K编码",
+        "inputs": {
+            "pixels": "像素",
+            "vae": "vae",
+            "source_space": "源空间",
+            "tile_size": "分块尺寸",
+            "alpha_handling": "透明处理",
+            "hdr_mode": "HDR模式"
+        },
+        "widgets": {
+            "overlap": "重叠",
+            "exposure": "曝光"
+        },
+        "outputs": {
+            "samples": "样本",
+            "alpha": "透明度",
+            "metadata": "元数据"
+        },
+        "description": "类别: FXTD Studios/Radiance/生成"
+    },
+    "RadianceVAE4KDecode": {
+        "title": "RadianceVAE4K解码",
+        "inputs": {
+            "samples": "样本",
+            "vae": "vae",
+            "target_space": "目标空间",
+            "tile_size": "分块尺寸",
+            "alpha": "透明度",
+            "hdr_mode": "HDR模式"
+        },
+        "widgets": {
+            "overlap": "重叠",
+            "exposure_adjust": "曝光调整",
+            "inverse_tonemap": "反调色板",
+            "target_stops": "目标曝光级",
+            "crop_padding": "裁剪填充",
+            "export_rhdr": "导出HDR"
+        },
+        "outputs": {
+            "image": "图像",
+            "metadata": "元数据"
+        },
+        "description": "类别: FXTD Studios/Radiance/生成"
+    },
+    "RadianceVAE4KRoundtrip": {
+        "title": "RadianceVAE4K往返",
+        "inputs": {
+            "pixels": "像素",
+            "vae": "vae",
+            "source_space": "源空间",
+            "target_space": "目标空间",
+            "tile_size": "分块尺寸",
+            "hdr_mode": "HDR模式"
+        },
+        "widgets": {
+            "overlap": "重叠",
+            "exposure": "曝光",
+            "export_rhdr": "导出HDR"
+        },
+        "outputs": {
+            "image": "图像",
+            "latent": "Latent变量",
+            "metadata": "元数据"
+        },
+        "description": "类别: FXTD Studios/Radiance/生成"
+    },
+    "RadianceProUpscale": {
+        "title": "RadiancePro放大",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "scale_factor": "放大倍数",
+            "sharpening": "锐化",
+            "sharpen_radius": "锐化半径",
+            "detail_enhancement": "细节增强",
+            "antialiasing": "抗锯齿",
+            "process_in_linear": "在线性空间处理",
+            "use_tiles": "使用分块",
+            "tile_size": "分块尺寸",
+            "tile_overlap": "分块重叠",
+            "preset": "预设",
+            "method": "方法",
+            "input_color_space": "输入色彩空间",
+            "output_bit_depth": "输出位深度"
+        },
+        "outputs": {
+            "upscaled_image": "放大后的图像",
+            "width": "宽度",
+            "height": "高度",
+            "info": "信息"
+        },
+        "description": "类别: FXTD Studios/Radiance/图像"
+    },
+    "RadianceUpscaleBySize": {
+        "title": "Radiance按尺寸放大",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "maintain_aspect": "保持宽高比",
+            "sharpening": "锐化",
+            "process_in_linear": "在线性空间处理",
+            "method": "方法",
+            "aspect_mode": "宽高比模式"
+        },
+        "outputs": {
+            "upscaled_image": "放大后的图像",
+            "final_width": "最终宽度",
+            "final_height": "最终高度"
+        },
+        "description": "类别: FXTD Studios/Radiance/图像"
+    },
+    "RadianceDownscale32bit": {
+        "title": "Radiance32位缩小",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "scale_factor": "缩小倍数",
+            "antialiasing": "抗锯齿",
+            "pre_blur": "预模糊",
+            "process_in_linear": "在线性空间处理",
+            "use_gpu": "使用GPU",
+            "method": "方法"
+        },
+        "outputs": {
+            "downscaled_image": "缩小后的图像",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": "类别: FXTD Studios/Radiance/图像"
+    },
+    "RadianceBitDepthConvert": {
+        "title": "Radiance位深度转换",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "dither_strength": "抖动强度",
+            "output_depth": "输出位深度",
+            "dithering": "抖动"
+        },
+        "outputs": {
+            "converted_image": "转换后的图像",
+            "bit_depth_info": "位深度信息"
+        },
+        "description": "类别: FXTD Studios/Radiance/图像"
+    },
+    "RadianceVAEEncode": {
+        "title": "◎ VAE 编码器专业版",
+        "inputs": {
+            "pixels": "图像"
+        },
+        "widgets": {
+            "source_space": "源颜色空间",
+            "tile_size": "分块尺寸",
+            "overlap": "重叠",
+            "exposure": "曝光",
+            "alpha_handling": "透明处理",
+            "hdr_mode": "HDR模式"
+        },
+        "outputs": {
+            "samples": "样本",
+            "alpha": "透明度",
+            "metadata": "元数据"
+        },
+        "description": ""
+    },
+    "RadianceVAEDecode": {
+        "title": "◎ VAE 解码器专业版",
+        "inputs": {
+            "samples": "样本",
+            "alpha": "透明度"
+        },
+        "widgets": {
+            "target_space": "目标空间",
+            "tile_size": "分块尺寸",
+            "overlap": "重叠",
+            "exposure_adjust": "曝光调整",
+            "inverse_tonemap": "反调色板",
+            "target_stops": "目标曝光级",
+            "crop_padding": "裁剪填充",
+            "export_rhdr": "导出HDR",
+            "hdr_mode": "HDR模式"
+        },
+        "outputs": {
+            "image": "图像",
+            "metadata": "元数据"
+        },
+        "description": ""
+    },
+    "RadianceAIUpscale": {
+        "title": "RadianceAI放大",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "tile_size": "分块尺寸",
+            "tile_overlap": "分块重叠",
+            "auto_download": "自动下载",
+            "unload_model": "卸载模型",
+            "model_name": "模型名称",
+            "mode": "模式"
+        },
+        "outputs": {
+            "image": "图像",
+            "info": "信息"
+        },
+        "description": "类别: FXTD Studios/Radiance/图像"
+    }
+}
