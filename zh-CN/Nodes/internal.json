@@ -1923,6 +1923,21 @@
             "IMAGE": "图像"
         }
     },
+    "ImageCropV2": {
+        "title": "图像裁剪V2",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "x": "X",
+            "y": "Y"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
     "RepeatImageBatch": {
         "title": "复制图像批次",
         "inputs": {
@@ -3678,6 +3693,18 @@
             "OBJ": "OBJ 格式"
         }
     },
+    "Tencent3DPartNode": {
+        "title": "Hunyuan混元3D：3D 部件",
+        "inputs": {
+            "model_3d": "3D模型"
+        },
+        "widgets": {
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "FBX": "FBX 格式"
+        }
+    },
     "VoxelToMeshBasic": {
         "title": "基础体素转网格",
         "inputs": {
@@ -4615,7 +4642,7 @@
         }
     },
     "RecraftRemoveBackgroundNode": {
-        "title": "Recraft 移除背景",
+        "title": "Recraft重新创作 移除背景",
         "inputs": {
             "image": "图像"
         },
@@ -5156,8 +5183,44 @@
             "IMAGE": "图像"
         }
     },
+    "MagnificImageUpscalerCreativeNode": {
+        "title": "Magnific辉煌 图像放大（创意模式）",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "scale_factor": "缩放系数",
+            "optimized_for": "优化目标",
+            "creativity": "创造力",
+            "hdr": "HDR高动态范围",
+            "resemblance": "相似度",
+            "fractality": "分形度",
+            "engine": "引擎",
+            "auto_downscale": "自动降采样"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
+    "MagnificImageUpscalerPreciseV2Node": {
+        "title": "Magnific辉煌 图像放大 V2",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "scale_factor": "缩放系数",
+            "flavor": "风格",
+            "sharpen": "锐化",
+            "smart_grain": "智能颗粒",
+            "ultra_detail": "超精细细节",
+            "auto_downscale": "自动降采样"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
     "RecraftCreateStyleNode": {
-        "title": "重新 设计风格",
+        "title": "Recraft重新创作 设计风格",
         "inputs": {
             "image": "图像",
             "image0": "图像0"
@@ -5801,6 +5864,20 @@
             "mode": "模式",
             "character_orientation": "角色定位",
             "keep_original_sound": "保持原始声音"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        }
+    },
+    "KlingAvatarNode": {
+        "title": "可灵 Avatar 2",
+        "inputs": {
+            "reference_video": "参考视频",
+            "reference_image": "参考图像"
+        },
+        "widgets": {
+            "mode": "模式",
+            "seed": "随机种子"
         },
         "outputs": {
             "VIDEO": "视频"
@@ -6770,9 +6847,9 @@
         }
     },
     "RecraftColorRGB": {
-        "title": "Recraft 颜色 RGB",
+        "title": "Recraft重新创作 颜色 RGB",
         "inputs": {
-            "recraft_color": "Recraft颜色"
+            "recraft_color": "Recraft重新创作 颜色"
         },
         "widgets": {
             "r": "红色值",
@@ -6780,12 +6857,12 @@
             "b": "蓝色值"
         },
         "outputs": {
-            "recraft_color": "Recraft颜色",
+            "recraft_color": "Recraft重新创作 颜色",
             "string": "字符串"
         }
     },
     "RecraftControls": {
-        "title": "Recraft控制参数",
+        "title": "Recraft重新创作 控制参数",
         "inputs": {
             "colors": "颜色",
             "background_color": "背景颜色"
@@ -6796,12 +6873,12 @@
             "b": "蓝色值"
         },
         "outputs": {
-            "recraft_controls": "Recraft控制参数",
+            "recraft_controls": "Recraft重新创作 控制参数",
             "string": "字符串"
         }
     },
     "RecraftStyleV3RealisticImage": {
-        "title": "Recraft 风格 - 真实图像",
+        "title": "Recraft重新创作 风格 - 真实图像",
         "inputs": {
             "colors": "颜色",
             "background_color": "背景颜色"
@@ -6810,11 +6887,11 @@
             "substyle": "子风格"
         },
         "outputs": {
-            "recraft_style": "Recraft风格"
+            "recraft_style": "Recraft重新创作 风格"
         }
     },
     "RecraftStyleV3DigitalIllustration": {
-        "title": "Recraft 风格 - 数字插画",
+        "title": "Recraft重新创作 风格 - 数字插画",
         "inputs": {
             "colors": "颜色",
             "background_color": "背景颜色"
@@ -6823,11 +6900,11 @@
             "substyle": "子风格"
         },
         "outputs": {
-            "recraft_style": "Recraft风格"
+            "recraft_style": "Recraft重新创作 风格"
         }
     },
     "RecraftStyleV3LogoRaster": {
-        "title": "Recraft 风格 - 光栅logo",
+        "title": "Recraft重新创作 风格 - 光栅logo",
         "inputs": {
             "colors": "颜色",
             "background_color": "背景颜色"
@@ -6836,11 +6913,11 @@
             "substyle": "子风格"
         },
         "outputs": {
-            "recraft_style": "Recraft风格"
+            "recraft_style": "Recraft重新创作 风格"
         }
     },
     "RecraftStyleV3InfiniteStyleLibrary": {
-        "title": "Recraft风格 - 无限风格库",
+        "title": "Recraft重新创作 风格 - 无限风格库",
         "inputs": {
             "colors": "颜色",
             "background_color": "背景颜色"
@@ -6849,15 +6926,15 @@
             "style_id": "风格ID"
         },
         "outputs": {
-            "recraft_style": "Recraft风格"
+            "recraft_style": "Recraft重新创作 风格"
         }
     },
     "RecraftTextToImageNode": {
-        "title": "Recraft 文生图",
+        "title": "Recraft重新创作 文生图",
         "inputs": {
-            "recraft_style": "Recraft风格",
+            "recraft_style": "Recraft重新创作 风格",
             "negative_prompt": "负面提示词",
-            "recraft_controls": "Recraft控制参数"
+            "recraft_controls": "Recraft重新创作 控制参数"
         },
         "widgets": {
             "prompt": "提示词",
@@ -6872,12 +6949,12 @@
         }
     },
     "RecraftImageToImageNode": {
-        "title": "Recraft 图生图",
+        "title": "Recraft重新创作 图生图",
         "inputs": {
             "image": "输入图像",
-            "recraft_style": "Recraft风格",
+            "recraft_style": "Recraft重新创作 风格",
             "negative_prompt": "负面提示词",
-            "recraft_controls": "Recraft控制参数",
+            "recraft_controls": "Recraft重新创作 控制参数",
             "auth_token": "授权令牌"
         },
         "widgets": {
@@ -6892,11 +6969,11 @@
         }
     },
     "RecraftImageInpaintingNode": {
-        "title": "Recraft 图像修复",
+        "title": "Recraft重新创作 图像修复",
         "inputs": {
             "image": "图像",
             "mask": "遮罩",
-            "recraft_style": "Recraft风格",
+            "recraft_style": "Recraft重新创作 风格",
             "negative_prompt": "负面提示词",
             "auth_token": "授权令牌"
         },
@@ -6911,9 +6988,9 @@
         }
     },
     "RecraftTextToVectorNode": {
-        "title": "Recraft 文生矢量图",
+        "title": "Recraft重新创作 文生矢量图",
         "inputs": {
-            "recraft_controls": "Recraft控制参数",
+            "recraft_controls": "Recraft重新创作 控制参数",
             "negative_prompt": "负面提示词",
             "auth_token": "授权令牌"
         },
@@ -6930,7 +7007,7 @@
         }
     },
     "RecraftVectorizeImageNode": {
-        "title": "Recraft 图像矢量化",
+        "title": "Recraft重新创作 图像矢量化",
         "inputs": {
             "image": "图像",
             "auth_token": "授权令牌"
@@ -6941,10 +7018,10 @@
         }
     },
     "RecraftReplaceBackgroundNode": {
-        "title": "Recraft 更换背景",
+        "title": "Recraft重新创作 更换背景",
         "inputs": {
             "image": "图像",
-            "recraft_style": "Recraft风格",
+            "recraft_style": "Recraft重新创作 风格",
             "negative_prompt": "负面提示词",
             "auth_token": "授权令牌"
         },
@@ -6959,7 +7036,7 @@
         }
     },
     "RecraftCrispUpscaleNode": {
-        "title": "Recraft 清晰放大图像",
+        "title": "Recraft重新创作 清晰放大图像",
         "inputs": {
             "image": "图像",
             "auth_token": "授权令牌"
@@ -6970,7 +7047,7 @@
         }
     },
     "RecraftCreativeUpscaleNode": {
-        "title": "Recraft 创意放大图像",
+        "title": "Recraft重新创作 创意放大图像",
         "inputs": {
             "image": "图像",
             "auth_token": "授权令牌"
@@ -6978,6 +7055,39 @@
         "widgets": {},
         "outputs": {
             "IMAGE": "图像"
+        }
+    },
+    "RecraftV4TextToImageNode": {
+        "title": "Recraft重新创作 文生图V4",
+        "inputs": {
+            "recraft_controls": "Recraft重新创作 控制参数"
+        },
+        "widgets": {
+            "model": "模型",
+            "size": "尺寸",
+            "n": "数量",
+            "seed": "种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "string": "字符串"
+        }
+    },
+    "RecraftV4TextToVectorNode": {
+        "title": "Recraft重新创作 文生矢量图V4",
+        "inputs": {
+            "recraft_controls": "Recraft重新创作 控制参数"
+        },
+        "widgets": {
+            "model": "模型",
+            "size": "尺寸",
+            "n": "数量",
+            "seed": "种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "SVG": "SVG矢量格式"
         }
     },
     "StabilityStableImageUltraNode": {
@@ -7397,6 +7507,26 @@
             "audio": "音频",
             "seed": "随机种子",
             "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "生成视频"
+        }
+    },
+    "Vidu3StartEndToVideoNode": {
+        "title": "Vidu3 首尾帧转视频",
+        "inputs": {
+            "first_frame": "首帧图像",
+            "end_frame": "尾帧图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "duration": "时长(秒)",
+            "audio": "音频",
+            "prompt": "提示词",
+            "seed": "随机种子",
+            "control_after_generate": "生成后控制",
+            "movement_amplitude": "运动幅度"
         },
         "outputs": {
             "VIDEO": "生成视频"
@@ -8920,7 +9050,7 @@
         "widgets": {
             "seed": "随机种子",
             "bpm": "节拍数（分钟）",
-            "duration": "持续时间",
+            "duration": "时长(秒)",
             "timesignature": "时间标记符号",
             "language": "语言",
             "keyscale": "音调",
@@ -9168,6 +9298,315 @@
         "widgets": {},
         "outputs": {
             "list": "列表"
+        }
+    },
+    "SplitImageToTileList": {
+        "title": "图像分块到列表",
+        "inputs": {
+            "images": "图像组"
+        },
+        "widgets": {
+            "tile_width": "分块宽度",
+            "htile_height": "分块高度",
+            "overlap": "重叠部分"
+        },
+        "outputs": {
+            "images": "图像组"
+        }
+    },
+    "ImageMergeTileList": {
+        "title": "分块列表合并到图像",
+        "inputs": {
+            "image_list": "图像列表"
+        },
+        "widgets": {
+            "final_width": "最终宽度",
+            "final_height": "最终高度",
+            "overlap": "重叠部分"
+        },
+        "outputs": {
+            "images": "图像组"
+        }
+    },
+    "GLSLShader": {
+        "title": "GLSL 着色器",
+        "inputs": {
+            "images": "图像组",
+            "image0": "图像0",
+            "ufloatO": "浮点数0",
+            "uintO": "无符号整数0"
+        },
+        "widgets": {
+            "width": "宽度",
+            "size_mode": "尺寸模式"
+        },
+        "outputs": {
+            "IMAGE0": "图像0",
+            "IMAGE1": "图像1",
+            "IMAGE2": "图像2",
+            "IMAGE3": "图像3"
+        }
+    },
+    "NAGuidance": {
+        "title": "标准化注意力引导",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "nag_scale": "NAG 比例",
+            "nag_alpha": "NAG alpha",
+            "nag_tau": "NAG 时间常数"
+        },
+        "outputs": {
+            "MODEL": "模型"
+        }
+    },
+    "PrimitiveBoundingBox": {
+        "title": "边界框Box",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "x": "X",
+            "y": "Y"
+        },
+        "outputs": {
+            "BOUNDING_BOX": "边界框Box"
+        }
+    },
+    "AudioEqualizer3Band": {
+        "title": "音频均衡器（三段式）",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "low_gain_dB": "低频增益（分贝）",
+            "low_freq": "低频频率",
+            "mid_gain_dB": "中频增益（分贝）", 
+            "mid_freq": "中频频率",
+            "midLq": "中频Q值",
+            "high_gain_dB": "高频增益（分贝）",
+            "high_freq": "高频频率"
+        },
+        "outputs": {
+            "AUDIO": "音频"
+        }
+    },
+    "TextGenerate": {
+        "title": "生成文本",
+        "inputs": {
+            "clip": "CLIP",
+            "image": "图像"
+        },
+        "widgets": {
+            "max_length": "最大长度",
+            "Sampling Mode": "采样模式",
+            "temperature": "温度参数",
+            "top_k": "Top K采样",
+            "top_p": "Top P采样",
+            "min_p": "最小P采样",
+            "repetition_penalty": "重复惩罚",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "generated_text": "生成的文字"
+        }
+    },
+    "TextGenerateLTX2Prompt": {
+        "title": "生成LTX2提示词",
+        "inputs": {
+            "clip": "CLIP",
+            "image": "图像"
+        },
+        "widgets": {
+            "max_length": "最大长度",
+            "Sampling Mode": "采样模式",
+            "temperature": "温度参数",
+            "top_k": "Top K采样",
+            "top_p": "Top P采样",
+            "min_p": "最小P采样",
+            "repetition_penalty": "重复惩罚",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "generated_text": "生成的文字"
+        }
+    },
+    "BriaRemoveImageBackground": {
+        "title": "Bria移除图像背景",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "moderation": "审核",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "images": "图像组"
+        }
+    },
+    "BriaRemoveVideoBackground": {
+        "title": "Bria移除视频背景",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "background_color": "背景颜色",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        }
+    },
+    "ElevenLabsSpeechToText": {
+        "title": "Eleven Labs 语音转文本",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "model": "模型",
+            "tag_audio_events": "标记音频事件",
+            "diarize": "说话人识别",
+            "diarization_threshold": "说话人识别阈值",
+            "temperature": "温度参数",
+            "timestamps_granularity": "时间戳粒度",
+            "language_code": "语言代码",
+            "num_speakers": "说话人数",
+            "seed": "随机种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "language_code": "语言代码",
+            "text": "文本",
+            "seed": "单词 JSON 数据"
+        }
+    },
+    "ElevenLabsTextToSpeech": {
+        "title": "Eleven Labs 文本转语音",
+        "inputs": {
+            "voice": "声音"
+        },
+        "widgets": {
+            "stabillity": "稳定性",
+            "apply_text_normalization": "应用文本标准化",
+            "model": "模型",
+            "speed": "速度",
+            "similarity_boost": "相似度增强",
+            "use_speaker_boost": "使用说话人增强",
+            "style": "风格",
+            "language_code": "语言代码",
+            "output_format": "输出格式",
+            "seed": "随机种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "AUDIO": "音频"
+        }
+    },
+    "ElevenLabsTextToSoundEffects": {
+        "title": "Eleven Labs 文本转音效",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "model": "模型",
+            "duration": "时长(秒)",
+            "loop": "循环",
+            "prompt_influence": "提示词影响度",
+            "output_format": "输出格式"
+        },
+        "outputs": {
+            "AUDIO": "音频"
+        }
+    },
+    "ElevenLabsSpeechToSpeech": {
+        "title": "Eleven Labs 语音转语音",
+        "inputs": {
+            "voice": "声音",
+            "audio": "音频"
+        },
+        "widgets": {
+            "stabillity": "稳定性",
+            "model": "模型",
+            "speed": "速度",
+            "similarity_boost": "相似度增强",
+            "use_speaker_boost": "使用说话人增强",
+            "style": "风格",
+            "output_format": "输出格式",
+            "seed": "随机种子",
+            "control_after_generate": "生成后控制",
+            "remove_background_noise": "去除背景噪音"
+        },
+        "outputs": {
+            "AUDIO": "音频"
+        }
+    },
+    "ElevenLabsTextToDialogue": {
+        "title": "Eleven Labs 文本转对话",
+        "inputs": {
+            "voice1": "声音1",
+            "voice2": "声音2",
+            "voice3": "声音3",
+            "voice4": "声音4",
+            "voice5": "声音5",
+            "voice6": "声音6",
+            "voice7": "声音7",
+            "voice8": "声音8",
+            "voice9": "声音9",
+            "voice10": "声音10"
+        },
+        "widgets": {
+            "stabillity": "稳定性",
+            "apply_text_normalization": "应用文本标准化",
+            "model": "模型",
+            "inputs": "输入数量",
+            "language_code": "语言代码",
+            "output_format": "输出格式",
+            "seed": "随机种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "AUDIO": "音频"
+        }
+    },
+    "ElevenLabsVoiceSelector": {
+        "title": "Eleven Labs 语音选择器",
+        "inputs": {},
+        "widgets": {
+            "voice": "声音"
+        },
+        "outputs": {
+            "voice": "声音"
+        }
+    },
+    "ElevenLabsAudioIsolation": {
+        "title": "Eleven Labs 语音分离技术",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {},
+        "outputs": {
+            "AUDIO": "音频"
+        }
+    },
+    "ElevenLabsInstantVoiceClone": {
+        "title": "Eleven Labs 即时语音克隆",
+        "inputs": {
+            "audio0": "音频0",
+            "audio1": "音频1",
+            "audio2": "音频2",
+            "audio3": "音频3",
+            "audio4": "音频4",
+            "audio5": "音频5",
+            "audio6": "音频6"
+        },
+        "widgets": {
+            "remove_background_noise": "去除背景噪音"
+        },
+        "outputs": {
+            "voice": "声音"
         }
     },
     "TemporalScoreRescaling": {
