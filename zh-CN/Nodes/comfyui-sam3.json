@@ -5,11 +5,51 @@
             "model_name": "模型名称"
         },
         "widgets": {
-            "hf_token": "HuggingFace 令牌",
-            "model_name": "模型名称"
+            "precision": "精度",
+            "attention": "注意力机制",
+            "compile": "编译"
         },
         "outputs": {
             "sam3_model": "SAM3模型"
+        }
+    },
+    "SAM3TextSegmentation": {
+        "title": "SAM3 文本分割",
+        "inputs": {
+            "sam3_model": "sam3_模型",
+            "image": "图像",
+            "positive_points": "正面点",
+            "negative_points": "负面点",
+            "box": "边界框"
+        },
+        "widgets": {
+            "confidence_threshold": "置信度阈值",
+            "text_prompt": "文本提示",
+            "max_detections": "最大检测数"
+        },
+        "outputs": {
+            "masks": "遮罩",
+            "visualization": "图像",
+            "boxes": "边界框组",
+            "scores": "分数组"
+        }
+    },
+    "SAM3MultipromptSegmentation": {
+        "title": "SAM3 多段提示 分割",
+        "inputs": {
+            "sam3_model": "sam3_模型",
+            "image": "图像",
+            "positive_points": "正面点",
+            "negative_points": "负面点",
+            "multi_prompts": "多段提示"
+        },
+        "widgets": {
+            "refinement_iterations": "细化迭代",
+            "use_multimask": "使用多遮罩"
+        },
+        "outputs": {
+            "masks": "遮罩",
+            "visualization": "图像"
         }
     },
     "SAM3PointCollector": {
@@ -57,7 +97,8 @@
     "SAM3VideoSegmentation": {
         "title": "SAM3视频分割",
         "inputs": {
-            "video_frames": "视频帧"
+            "video_frames": "视频帧",
+            "video": "视频"
         },
         "widgets": {
             "prompt_mode": "提示模式",
@@ -77,12 +118,14 @@
         "title": "SAM3传播",
         "inputs": {
             "video_model": "视频模型",
-            "video_state": "视频状态"
+            "video_state": "视频状态",
+            "sam3_model": "SAM3模型"
         },
         "widgets": {
             "start_frame": "起始帧",
             "end_frame": "结束帧",
-            "reverse": "反向"
+            "reverse": "反向",
+            "direction": "方向"
         },
         "outputs": {
             "masks": "SAM3视频遮罩",
@@ -114,15 +157,23 @@
             "image": "图像",
             "positive_boxes": "正面边界框",
             "negative_boxes": "负面边界框",
-            "mask_prompt": "遮罩 提示"
+            "mask_prompt": "遮罩 提示",
+            "positive_points": "正点",
+            "negative_points": "负点",
+            "box": "框选"
         },
         "widgets": {
             "confidence_threshold": "置信度阈值",
             "text_prompt": "文本提示",
-            "max_detections": "最大检测数量"
+            "max_detections": "最大检测数量",
+            "refinement_iterations": "细化迭代次数",
+            "use_multimask": "使用多遮罩",
+            "output_best_mask": "输出最佳遮罩"
         },
         "outputs": {
             "masks": "遮罩",
+            "mask": "遮罩",
+            "mask_logits": "遮罩对数",
             "visualization": "图像",
             "boxes": "框",
             "scores": "分数"
@@ -185,6 +236,43 @@
         "widgets": {},
         "outputs": {
             "points_prompt": "SAM3 点提示"
+        }
+    },
+    "SAM3Multi-RegionCollector": {
+        "title": "SAM3 多区域收集器",
+        "inputs": {
+            "sam3_model": "sam3_模型",
+            "image": "图像",
+            "positive_points": "正面点",
+            "negative_points": "负面点",
+            "multi_prompts": "多段提示"
+        },
+        "widgets": {
+            "refinement_iterations": "细化迭代",
+            "use_multimask": "使用多遮罩"
+        },
+        "outputs": {
+            "masks": "遮罩",
+            "multi_prompts": "多段提示"
+        }
+    },
+    "SAM3InteractiveCollector": {
+        "title": "SAM3 互动式收藏者",
+        "inputs": {
+            "sam3_model": "sam3_模型",
+            "image": "图像",
+            "positive_points": "正面点",
+            "negative_points": "负面点",
+            "multi_prompts": "多段提示"
+        },
+        "widgets": {
+            "refinement_iterations": "细化迭代",
+            "use_multimask": "使用多遮罩"
+        },
+        "outputs": {
+            "masks": "遮罩",
+            "visualization": "图像",
+            "multi_prompts": "多段提示"
         }
     },
     "SAM3InteractiveSegmentation": {

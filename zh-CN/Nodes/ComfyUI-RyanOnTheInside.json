@@ -4300,6 +4300,101 @@
         "outputs": {},
         "description": "音乐ACE 1.5"
     },
+    "AudioLatentStretch": {
+        "title": "音频Latent拉伸⚡🅡🅞🅣🅘",
+        "inputs": {
+            "audio_latents": "音频Latent"
+        },
+        "widgets": {
+            "scale_by": "按比例缩放"
+        },
+        "outputs": {},
+        "description": "音频"
+    },
+    "ACEStep15KeystoneConfig": {
+        "title": "ACE步15 基础配置（实验）⚡🅡🅞🅣🅘",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "presence": "临场感",
+            "spectral_tilt": "频谱倾斜",
+            "energy": "能量感",
+            "brilliance": "明亮度",
+            "weight": "权重"
+        },
+        "outputs": {
+            "keystone_config": "关键配置设置"
+        },
+        "description": "音乐ACE 1.5"
+    },
+    "ACEStep15GenerationSteering": {
+        "title": "ACE步15 去噪轨迹均衡器（实验）⚡🅡🅞🅣🅘",
+        "inputs": {
+            "model": "模型",
+            "temporal_mask": "时间遮罩",
+            "keystone_config": "校准配置"
+        },
+        "widgets": {
+            "guidance_scale": "引导比例",
+            "bass_gain": "低音增益",
+            "brightness_gain": "亮度增益",
+            "body_gain": "主体增益",
+            "texture_gain": "纹理增益",
+            "tilt_gain": "倾斜增益",
+            "air_gain": "空气感增益",
+            "effect_start_pct": "效果开始百分比",
+            "effect_end_pct": "效果结束百分比"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "类别：音频/ACEStep"
+    },
+    "ACEStep15MusicalControls": {
+        "title": "ACE步15 去噪轨迹聚合器（实验）⚡🅡🅞🅣🅘",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "guidance_scale": "指导比例",
+            "rhythmic_density": "节奏密度",
+            "rhythmic_regularity": "节奏规整度",
+            "harmonic_complexity": "和声复杂度",
+            "instrument_independence": "乐器独立性",
+            "tonality": "调性",
+            "dynamics": "动态",
+            "effect_start_pct": "效果开始百分比",
+            "effect_end_pct": "效果结束百分比"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "类别：音频/ACEStep"
+    },
+    "ACEStep15LatentChannelEQ": {
+        "title": "ACE步15 Latent通道均衡（实验）⚡🅡🅞🅣🅘",
+        "inputs": {
+            "model": "模型",
+            "temporal_mask": "时间遮罩",
+            "keystone_config": "校准配置"
+        },
+        "widgets": {
+            "hook_mode": "引导钩模式",
+            "bass_gain": "低音增益",
+            "brightness_gain": "亮度增益",
+            "body_gain": "主体增益",
+            "texture_gain": "纹理增益",
+            "tilt_gain": "倾斜增益",
+            "air_gain": "空气感增益",
+            "effect_start_pct": "效果开始百分比",
+            "effect_end_pct": "效果结束百分比"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "类别：音频/ACEStep"
+    },
     "FlexVideoBase": {
         "title": "Flex 视频基础⚡🅡🅞🅣🅘",
         "inputs": {
