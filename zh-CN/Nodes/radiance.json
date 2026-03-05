@@ -1356,6 +1356,156 @@
         },
         "description": ""
     },
+    "RadianceBlendComposite": {
+        "title": "◎ Radiance 混合复合物",
+        "inputs": {
+            "base": "基础图像",
+            "blend": "混合图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "mode": "模式",
+            "opacity": "透明度"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": ""
+    },
+    "RadianceFalseColor": {
+        "title": "◎ Radiance 虚假色彩",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "is_linear": "使用线性",
+            "blend": "混合",
+            "exposure_offset": "曝光偏移"
+        },
+        "outputs": {
+            "false_color": "虚假色彩",
+            "original": "原始"
+        },
+        "description": ""
+    },
+    "RadianceTemporalSmooth": {
+        "title": "◎ Radiance 时间平滑性",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "alpha": "透明度",
+            "motion_aware": "运动感知",
+            "motion_thresholdt": "运动阈值",
+            "warmup_frames": "预热帧"
+        },
+        "outputs": {
+            "images": "图像",
+            "stats": "统计数据"
+        },
+        "description": ""
+    },
+    "RadianceFlickerAnalyze": {
+        "title": "◎ Radiance 闪烁分析",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "channel": "频道"
+        },
+        "outputs": {
+            "images": "图像",
+            "flicker_report": "统计数据"
+        },
+        "description": ""
+    },
+    "RadianceApplyGradeInfo": {
+        "title": "应用分级信息",
+        "inputs": {
+            "grade_info": "分级信息",
+            "image": "图像"
+        },
+        "widgets": {
+            "strength": "强度"
+        },
+        "outputs": {
+            "grade_info": "分级信息",
+            "image": "图像"
+        },
+        "description": ""
+    },
+    "RadianceGradeMatch": {
+        "title": "◎ Radiance 分级匹配",
+        "inputs": {
+            "source": "源",
+            "reference": "参考"
+        },
+        "widgets": {
+            "strength": "强度"
+        },
+        "outputs": {
+            "matched_image": "匹配图像",
+            "grade_info": "分级信息"
+        },
+        "description": ""
+    },
+    "RadianceLUTBake": {
+        "title": "◎ Radiance LUT 烘焙",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "output_path": "输出路径",
+            "lut_title": "lut标题",
+            "lut_size": "LUT_大小",
+            "lift_r": "提升R",
+            "lift_g": "提升G",
+            "lift_b": "提升B",
+            "gamma_r": "伽玛R",
+            "gamma_g": "伽玛G",
+            "gamma_b": "伽玛B",
+            "gain_r": "增益R",
+            "gain_g": "增益G",
+            "gain_b": "增益B",
+            "offset_r": "偏移R",
+            "offset_g": "偏移G",
+            "offset_b": "偏移B",
+            "contrast": "对比度",
+            "pivot": "枢轴",
+            "saturation": "饱和度"
+        },
+        "outputs": {
+            "preview_image": "预览图像",
+            "cube_path": "立方体路径"
+        },
+        "description": ""
+    },
+    "FXTD_RadianceGradeApply": {
+        "title": "◎ Radiance 应用方法",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "exposure": "曝光",
+            "offset": "偏移",
+            "lift": "提升",
+            "gamma": "伽玛",
+            "gain": "增益",
+            "contrast": "对比度",
+            "shadows": "阴影",
+            "highlights": "高光",
+            "saturation": "饱和度",
+            "temperature": "温度",
+            "hue_shift": "色调偏移",
+            "lut_name": "lut名称",
+            "lut_intensity": "lut强度",
+            "color_science": "色彩科学"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": ""
+    },
     "RadianceAIUpscale": {
         "title": "RadianceAI放大",
         "inputs": {
