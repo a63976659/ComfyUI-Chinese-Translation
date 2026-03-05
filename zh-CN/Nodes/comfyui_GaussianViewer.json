@@ -1,0 +1,57 @@
+{
+    "ExtrinsicsToPose": {
+        "title": "外在参数到姿态节点",
+        "inputs": {
+            "extrinsics": "外参"
+        },
+        "widgets": {},
+        "outputs": {
+            "x": "x",
+            "y": "y",
+            "z": "z",
+            "pitch": "俯仰角",
+            "yaw": "偏航角",
+            "roll": "滚动角",
+            "pose_string": "姿态字符串"
+        },
+        "description": "Category: geompack/camera"
+    },
+    "GaussianViewer": {
+        "title": "高斯视图节点",
+        "inputs": {
+            "ply_path": "PLY路径",
+            "extrinsics": "外参",
+            "intrinsics": "内参",
+            "image": "图像"
+        },
+        "widgets": {
+            "Image Ratio": "图像比例",
+            "View": "观看",
+            "Camera": "相机",
+            "Set Camera": "设置相机",
+            "Display": "显示",
+            "Presets": "预设值",
+            "Save": "保存"
+        },
+        "outputs": {
+            "image": "图像",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "description": "Category: geompack/visualization"
+    },
+    "RenderGaussianNode": {
+        "title": "渲染高斯节点",
+        "inputs": {
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "widgets": {
+            "ply_path": "PLY路径"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "Category: geompack/visualization"
+    }
+}
