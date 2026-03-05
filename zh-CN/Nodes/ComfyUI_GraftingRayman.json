@@ -329,16 +329,18 @@
 		}
 	},
 	"GR Lora Randomizer": {
-		"title": "GR LoRA",
+		"title": "GR LoRA随机",
 		"inputs": {
 			"model": "模型",
 			"clip": "CLIP"
 		},
 		"widgets": {
+			"incremental": "逐步增加",
 			"subfolder": "子文件夹",
 			"num_loras": "LoRA数量",
 			"strength": "强度",
 			"seed": "种子",
+			"reset_incremental": "重置逐步增加",
 			"enable_style_lora": "启用风格LoRA",
 			"style_lora_1": "风格LoRA 1",
 			"style_lora_1_strength": "风格LoRA 1强度",
@@ -1101,6 +1103,48 @@
 		"outputs": {
 			"image": "图像",
 			"mask": "遮罩"
+		},
+		"description": ""
+	},
+	"GR Prompt Generator1": {
+		"title": "GR 提示生成器 1",
+		"inputs": {},
+		"widgets": {
+			"seed": "种子",
+			"expand": "扩展",
+			"category": "类别",
+			"type_of_image": "图像类型"
+		},
+		"outputs": {
+			"seed": "种子",
+			"generated_prompts": "生成的提示"
+		},
+		"description": ""
+	},
+	"GR Prompt Replacer": {
+		"title": "GR 提示词替换器",
+		"inputs": {},
+		"widgets": {
+			"case_sensitive": "区分大小写",
+			"match_whole_words": "全词匹配",
+			"sort_by_length": "按长度排序",
+			"preserve_case": "保留大小写",
+			"highlight_format": "高亮格式"
+		},
+		"outputs": {
+			"text": "文本",
+			"highlighted_text": "强调的文字"
+		},
+		"description": ""
+	},
+	"GR Sigma Presets": {
+		"title": "GR 常用预设集",
+		"inputs": {},
+		"widgets": {
+			"preset": "预设"
+		},
+		"outputs": {
+			"sigmas": "Sigmas"
 		},
 		"description": ""
 	},

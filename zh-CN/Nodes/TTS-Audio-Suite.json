@@ -705,6 +705,159 @@
             "TTS_engine": "TTS引擎"
         }
     },
+    "UnifiedASRTranscribeNode": {
+        "title": "✏️  ASR 自动语音转录",
+        "inputs": {
+            "engine": "引擎",
+            "audio": "音频",
+            "language": "语言",
+            "task": "任务",
+            "timestamps": "时间戳",
+            "srt_options": "SRT选项"
+        },
+        "widgets": {
+            "chunk_size": "切片大小",
+            "overlap": "重叠",
+            "enable_asr_cache": "启用ASR缓存"
+        },
+        "outputs": {
+            "text": "文本",
+            "srt": "SRT",
+            "timestamps": "时间戳",
+            "info": "信息"
+        },
+        "description": "Category: TTS Audio Suite/✏️ ASR"
+    },
+    "ASRSRTAdvancedOptionsNode": {
+        "title": "🔧 ASR SRT 高级选项",
+        "inputs": {},
+        "widgets": {
+            "srt_preset": "SRT预设",
+            "srt_mode": "SRT模式",
+            "srt_max_chars_per_line": "每行最大字符数",
+            "srt_max_lines": "最大行数",
+            "srt_max_duration": "最大持续时间",
+            "srt_min_duration": "最小持续时间",
+            "srt_min_gap": "最小间隔",
+            "srt_max_cps": "最大字符每秒",
+            "dedupe_overlaps": "去重重叠",
+            "dedupe_window_ms": "去重窗口毫秒",
+            "dedupe_min_words": "最小单词数",
+            "dedupe_overlap_ratio": "重叠比率",
+            "punctuation_grace_chars": "标点宽容字符",
+            "min_words_per_segment": "每个片段最小单词数",
+            "min_segment_seconds": "最小片段秒数",
+            "merge_trailing_punct_word": "合并尾部标点词",
+            "merge_trailing_punct_max_gap": "合并尾部标点最大间隔",
+            "merge_leading_short_phrase": "合并前缀短语",
+            "merge_leading_short_max_words": "合并前缀短语最大单词数",
+            "merge_leading_short_max_gap": "合并前缀短语最大间隔",
+            "merge_dangling_tail": "合并 悬垂 尾部",
+            "merge_dangling_tail_max_words": "合并 悬垂 尾部最大单词数",
+            "merge_dangling_tail_max_gap": "合并 悬垂 尾部最大间隔",
+            "merge_dangling_tail_allowlist": "合并 悬垂 尾部允许列表",
+            "merge_leading_short_no_punct": "合并前缀无标点",
+            "merge_leading_short_no_punct_max_words": "合并前缀无标点最大单词数",
+            "merge_leading_short_no_punct_max_gap": "合并前缀无标点最大间隔",
+            "merge_incomplete_sentence": "合并不完整句子",
+            "merge_incomplete_max_gap": "合并不完整最大间隔",
+            "merge_incomplete_keywords": "合并不完整关键词",
+            "merge_incomplete_split_next": "合并不完整分割下一个",
+            "merge_allow_overlong": "允许过长"
+        },
+        "outputs": {
+            "asr_srt_options": "ASR SRT选项"
+        },
+        "description": "类别：TTS音频套件/✏️ ASR"
+    },
+    "Qwen3TTSEngineNode": {
+        "title": "⚙️ Qwen3-TTS 引擎",
+        "inputs": {
+            "model_size": "模型大小",
+            "device": "设备",
+            "voice_preset": "语音预设",
+            "language": "语言",
+            "dtype": "数据类型",
+            "attn_implementation": "注意力实现",
+            "compile_mode": "编译模式"
+        },
+        "widgets": {
+            "instruct": "指令",
+            "top_k": "top-k",
+            "top_p": "top-p",
+            "temperature": "温度",
+            "repetition_penalty": "重复惩罚",
+            "max_new_tokens": "最大新标记",
+            "x_vector_only_mode": "仅X向量模式",
+            "use_torch_compile": "使用PyTorch编译",
+            "use_cuda_graphs": "使用CUDA图",
+            "asr_use_forced_aligner": "ASR使用强制对齐器"
+        },
+        "outputs": {
+            "TTS_engine": "TTS引擎"
+        },
+        "description": "类别：TTS 音频套件/⚙️ 引擎"
+    },
+    "EchoTTSEngineNode": {
+        "title": "Echo-TTS 引擎",
+        "inputs": {},
+        "widgets": {
+            "preset": "预设",
+            "device": "设备",
+            "num_steps": "步骤数",
+            "cfg_scale_text": "配置比例文本",
+            "cfg_scale_speaker": "配置比例说话人",
+            "cfg_min_t": "最小配置比例",
+            "cfg_max_t": "最大配置比例",
+            "truncation_factor": "截断因子",
+            "rescale_k": "重缩放K",
+            "rescale_sigma": "重缩放σ",
+            "force_speaker_kv": "强制说话人KV",
+            "speaker_kv_scale": "说话人KV缩放",
+            "speaker_kv_max_layers": "说话人KV最大层数",
+            "speaker_kv_min_t": "说话人KV最小时间",
+            "sequence_length": "序列长度"
+        },
+        "outputs": {
+            "TTS_engine": "TTS引擎"
+        },
+        "description": "类别：TTS 音频套件/Engines"
+    },
+    "Qwen3TTSVoiceDesignerNode": {
+        "title": "🎨 Qwen3TTS语音设计师节点",
+        "inputs": {
+            "TTS_engine": "TTS引擎"
+        },
+        "widgets": {
+            "voice_description": "语音描述",
+            "reference_text": "参考文本",
+            "character_name": "角色名称",
+            "overwrite_character": "覆盖角色",
+            "language": "语言"
+        },
+        "outputs": {
+            "opt_narrator": "选项_叙述者",
+            "preview_audio": "预览音频",
+            "voice_info": "语音信息"
+        },
+        "description": "类别：TTS 音频套件/🎨 Qwen3-TTS"
+    },
+    "RefreshVoiceCacheNode": {
+        "title": "♻️ 更新语音缓存",
+        "inputs": {
+            "signal": "信号",
+            "signal2": "信号2"
+        },
+        "widgets": {
+            "force_refresh": "强制刷新"
+        },
+        "outputs": {
+            "signal": "信号",
+            "signal2": "信号2",
+            "info": "信息"
+        },
+        "description": "类别：TTS 音频套件/🎭 语音与角色"
+    },
     "StepAudioEditXEngineNode": {
         "title": "⚙️ Step Audio EditX 音频快速编辑X引擎",
         "inputs": {},

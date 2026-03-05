@@ -1,0 +1,194 @@
+{
+    "llama_cpp_model_loader": {
+        "title": "llama_cpp_模型加载器",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "mmproj": "多模态投影",
+            "chat_handler": "聊天处理器",
+            "n_ctx": "上下文大小",
+            "vram_limit": "vram限制",
+            "image_min_tokens": "最小图像令牌数",
+            "image_max_tokens": "最大图像令牌数"
+        },
+        "outputs": {
+            "llama_model": "llama模型"
+        },
+        "description": "Category: llama-cpp-vlm"
+    },
+    "llama_cpp_instruct_adv": {
+        "title": "llama_cpp_指令（高级）",
+        "inputs": {
+            "llama_model": "llama模型",
+            "parameters": "参数",
+            "images": "图像",
+            "queue_handler": "队列处理器"
+        },
+        "widgets": {
+            "preset_prompt": "预设提示",
+            "inference_mode": "推理模式",
+            "custom_prompt": "自定义提示",
+            "system_prompt": "系统提示",
+            "max_frames": "最大帧数",
+            "max_size": "最大尺寸",
+            "seed": "种子",
+            "force_offload": "强制卸载",
+            "save_states": "保存状态"
+        },
+        "outputs": {
+            "output": "输出",
+            "output_list": "输出列表",
+            "state_uid": "状态UID"
+        },
+        "description": "Category: llama-cpp-vlm"
+    },
+    "llama_cpp_parameters": {
+        "title": "llama_cpp_参数",
+        "inputs": {},
+        "widgets": {
+            "max_tokens": "最大令牌数",
+            "top_k": "Top-K采样",
+            "top_p": "Top-P采样",
+            "min_p": "最小P采样",
+            "typical_p": "典型P采样",
+            "temperature": "温度",
+            "repeat_penalty": "重复惩罚",
+            "frequency_penalty": "频率惩罚",
+            "presence_penalty": "存在惩罚",
+            "mirostat_mode": "mirostat模式",
+            "mirostat_eta": "Mirostat学习率",
+            "mirostat_tau": "Mirostat目标熵",
+            "state_uid": "状态UID"
+        },
+        "outputs": {
+            "parameters": "参数"
+        },
+        "description": "Category: llama-cpp-vlm"
+    },
+    "llama_cpp_clean_states": {
+        "title": "llama_cpp_清理状态",
+        "inputs": {
+            "any": "任何"
+        },
+        "widgets": {
+            "state_uid": "状态UID"
+        },
+        "outputs": {
+            "any": "任何"
+        },
+        "description": "Category: llama-cpp-vlm"
+    },
+    "llama_cpp_unload_model": {
+        "title": "llama_cpp_卸载模型",
+        "inputs": {
+            "any": "任何"
+        },
+        "widgets": {},
+        "outputs": {
+            "any": "任何"
+        },
+        "description": "Category: llama-cpp-vlm"
+    },
+    "json_to_bbox": {
+        "title": "JSON 转 边界框",
+        "inputs": {
+            "json": "JSON",
+            "image": "图像"
+        },
+        "widgets": {
+            "mode": "模式",
+            "label": "标签"
+        },
+        "outputs": {
+            "bboxes": "边界框",
+            "image_list": "图像列表"
+        },
+        "description": "Category: llama-cpp-vlm"
+    },
+    "bbox_to_segs": {
+        "title": "边界框到分割区域",
+        "inputs": {
+            "bboxes": "边界框",
+            "image": "图像"
+        },
+        "widgets": {
+            "dilation": "膨胀",
+            "feather": "羽化"
+        },
+        "outputs": {
+            "SEGS": "分割区域"
+        },
+        "description": "Category: llama-cpp-vlm"
+    },
+    "bbox_to_mask": {
+        "title": "边界框到遮罩",
+        "inputs": {
+            "bboxes": "边界框",
+            "image": "图像"
+        },
+        "widgets": {
+            "dilation": "膨胀",
+            "feather": "羽化"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        },
+        "description": "Category: llama-cpp-vlm"
+    },
+    "bboxes_to_bbox": {
+        "title": "边界框转边界框",
+        "inputs": {
+            "bboxes": "边界框"
+        },
+        "widgets": {
+            "image_index": "图像索引",
+            "bbox_index": "边界框索引"
+        },
+        "outputs": {
+            "bbox": "边界框"
+        },
+        "description": "Category: llama-cpp-vlm"
+    },
+    "parse_json_node": {
+        "title": "解析 JSON 节点",
+        "inputs": {
+            "input": "输入"
+        },
+        "widgets": {
+            "key": "键",
+            "default": "默认值"
+        },
+        "outputs": {
+            "any": "任何",
+            "string": "字符串",
+            "int": "整数",
+            "float": "浮点数",
+            "boolean": "布尔值"
+        },
+        "description": "Category: llama-cpp-vlm"
+    },
+    "remove_code_block": {
+        "title": "删除代码块",
+        "inputs": {
+            "input": "输入"
+        },
+        "widgets": {
+            "label": "标签"
+        },
+        "outputs": {
+            "output": "输出"
+        },
+        "description": "Category: llama-cpp-vlm"
+    },
+    "PromptEnhancerPreset": {
+        "title": "提示词增强预设器",
+        "inputs": {},
+        "widgets": {
+            "preset": "预设"
+        },
+        "outputs": {
+            "system_prompt": "系统提示"
+        },
+        "description": "Category: llama-cpp-vlm"
+    }
+}
