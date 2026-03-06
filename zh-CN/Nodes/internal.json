@@ -4406,6 +4406,31 @@
             "latent": "Latent"
         }
     },
+    "WanSCAILToVideo": {
+        "title": "Wan SCAIL转视频",
+        "inputs": {
+            "positive": "正向条件",
+            "negative": "负面条件",
+            "vae": "VAE",
+            "clip_vision_output": "CLIP视觉输出",
+            "reference_image": "参考图像",
+            "pose_video": "姿态视频"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "时长",
+            "batch_size": "批大小",
+            "pose_strength": "姿态强度",
+            "pose_start": "姿态开始",
+            "pose_end": "姿态结束"
+        },
+        "outputs": {
+            "positive": "正向条件",
+            "negative": "负面条件",
+            "latent": "Latent"
+        }
+    },
     "WanTrackToVideo": {
         "title": "Wan 目标跟踪到视频",
         "inputs": {
@@ -5276,6 +5301,27 @@
             "IMAGE": "图像",
             "MASK": "遮罩"
         }
+    },
+    "GeminiNanoBanana2": {
+        "title": "纳米香蕉 Pro（谷歌Gemini图片）",
+        "inputs": {
+            "images": "图像组",
+            "files": "文件"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
+            "aspect_ratio": "宽高比",
+            "resolution": "分辨率",
+            "response_modalities": "响应方式",
+            "thinking_level": "思维层次"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "STRING": "字符串"
+        },
+        "description": "通过谷歌 Vertex API 同步生成或编辑图像。"
     },
     "IdeogramV1": {
         "title": "Ideogram文生图V1",
@@ -9619,6 +9665,82 @@
         "outputs": {
             "voice": "声音"
         }
+    },
+    "SDPoseKeypointExtractor": {
+        "title": "SDPose姿态 关键点提取器",
+        "inputs": {
+            "model": "模型",
+            "vae": "VAE编码器",
+            "image": "图像",
+            "bboxes": "边界框"
+        },
+        "widgets": {
+            "batch_size": "批大小"
+        },
+        "outputs": {
+            "keypoints": "关键点"
+        },
+        "description": "使用 SDPose 模型从图像中提取姿态关键点：https://huggingface.co/Comfy-Org/SDPose/tree/main/checkpoints"
+    },
+    "SDPoseDrawKeypoints": {
+        "title": "SDPose姿态 绘制关键点",
+        "inputs": {
+            "keypoints": "关键点"
+        },
+        "widgets": {
+            "draw_body": "绘制身体",
+            "draw_hands": "绘制手部",
+            "draw_face": "绘制面部",
+            "draw_feet": "绘制脚部",
+            "stick_width": "骨骼线宽度",
+            "face_point_size": "面部点大小",
+            "score_threshold": "置信度阈值"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
+    "SDPoseFaceBBoxes": {
+        "title": "SDPose姿态 人脸框定位数据",
+        "inputs": {
+            "keypoints": "关键点"
+        },
+        "widgets": {
+            "scale": "规模",
+            "force_square": "强制平方"
+        },
+        "outputs": {
+            "bboxes": "边界框"
+        }
+    },
+    "CropByBBoxes": {
+        "title": "按照边界框裁剪",
+        "inputs": {
+            "image": "图像",
+            "bboxes": "边界框"
+        },
+        "widgets": {
+            "output_width": "输出宽度",
+            "output_height": "输出高度",
+            "padding": "填充"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        },
+        "description": "根据所提供的边界框，对输入图像批次中的区域进行裁剪和调整大小。"
+    },
+    "ResolutionSelector": {
+        "title": "分辨率选择器",
+        "inputs": {},
+        "widgets": {
+            "aspect_ratio": "宽高比",
+            "megapixels": "百万像素"
+        },
+        "outputs": {
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": "根据纵横比和像素目标值计算宽度和高度。此操作有助于设定空潜像的尺寸。"
     },
     "TemporalScoreRescaling": {
         "title": "TSR - 时序分数重缩放",
