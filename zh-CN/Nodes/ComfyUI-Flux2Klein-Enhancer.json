@@ -1,0 +1,121 @@
+{
+    "Flux2KleinEnhancer": {
+        "title": "Flux2Klein增强器",
+        "inputs": {
+            "conditioning": "条件"
+        },
+        "widgets": {
+            "magnitude": "幅度",
+            "contrast": "对比度",
+            "normalize_strength": "标准化强度",
+            "preserve_original": "保留原始",
+            "edit_text_weight": "文本编辑权重",
+            "active_end_override": "激活结束重置",
+            "low_vram": "低显存",
+            "debug": "调试",
+            "preserve_mode": "保留模式",
+            "device": "设备"
+        },
+        "outputs": {
+            "CONDITIONING": "条件"
+        },
+        "description": "核心多合一增强节点。\n 用于综合控制 Flux2Klein 模型的提示词遵循度、对比度以及文本与图像的编辑权重，是介入并修改底层特征流的主要入口。"
+    },
+    "Flux2KleinDetailController": {
+        "title": "Flux2Klein细节控制器",
+        "inputs": {
+            "conditioning": "条件"
+        },
+        "widgets": {
+            "front_mult": "前端多",
+            "mid_mult": "中端多",
+            "end_mult": "末端多",
+            "emphasis_start": "强调开始",
+            "emphasis_end": "强调结束",
+            "emphasis_mult": "强调多",
+            "preserve_original": "保留原始",
+            "low_vram": "低显存",
+            "debug": "调试",
+            "preserve_mode": "保留模式",
+            "device": "设备"
+        },
+        "outputs": {
+            "CONDITIONING": "条件"
+        },
+        "description": "精细化文本权重控制节点。\n 允许分别对提示词的前端、中端、末端部分进行独立的强度调整（乘数缩放），并在指定的步数范围内针对性地强调特定细节。"
+    },
+    "Flux2KleinRefLatentController": {
+        "title": "Flux2Klein参考Latent控制器",
+        "inputs": {
+            "conditioning": "条件"
+        },
+        "widgets": {
+            "strength": "强度",
+            "blend_with_noise": "与噪声混合",
+            "channel_mask_start": "通道遮罩开始",
+            "channel_mask_end": "通道遮罩结束",
+            "spatial_fade": "空间淡入",
+            "spatial_fade_strength": "空间淡入强度",
+            "debug": "调试"
+        },
+        "outputs": {
+            "CONDITIONING": "条件"
+        },
+        "description": "针对图像流（img_stream）的高级结构控制节点。\n 支持调整参考图与噪声的混合比例、应用特定的通道遮罩，以及通过空间渐变（如中心、边缘、上下）来控制参考图对生成画面的空间影响。"
+    },
+    "Flux2KleinTextRefBalance": {
+        "title": "Flux2Klein文本参考平衡器",
+        "inputs": {
+            "conditioning": "条件"
+        },
+        "widgets": {
+            "balance": "平衡",
+            "debug": "调试"
+        },
+        "outputs": {
+            "CONDITIONING": "条件"
+        },
+        "description": "动态平衡控制节点。\n 用于一键调节文本特征（txt_stream）与图像参考特征（img_stream）之间的权重比例，决定生成画面是更贴近文本描述还是更忠于参考图像。"
+    },
+    "Flux2KleinTextEnhancer": {
+        "title": "Flux2Klein文本增强器",
+        "inputs": {
+            "conditioning": "条件"
+        },
+        "widgets": {
+            "magnitude": "幅度",
+            "contrast": "对比度",
+            "normalize_strength": "标准化强度",
+            "skip_bos": "跳过BOS",
+            "debug": "调试"
+        },
+        "outputs": {
+            "CONDITIONING": "条件"
+        },
+        "description": "专注文本流（txt_stream）的增强节点。\n 通过放大特征幅度和调整对比度来显著强化文本提示词的影响力，支持跳过序列起始符（BOS）以获得更纯粹的文本引导。"
+    },
+    "Flux2KleinSectionedEncoder": {
+        "title": "Flux2Klein分段编码器",
+        "inputs": {
+            "clip": "剪辑"
+        },
+        "widgets": {
+            "front_text": "前端文本",
+            "mid_text": "中间文本",
+            "end_text": "末端文本",
+            "combined_prompt": "组合提示",
+            "show_preview": "显示预览",
+            "debug": "调试",
+            "mode": "模式",
+            "separator": "分隔符"
+        },
+        "outputs": {
+            "conditioning": "条件",
+            "front_section": "前端部分",
+            "mid_section": "中间部分",
+            "end_section": "末端部分",
+            "full_prompt": "完整提示"
+        },
+        "description": "结构化文本输入节点。\n 将提示词分为前、中、后三段进行输入与组合，便于搭配细节控制器（Detail Controller）精确控制画面不同元素的生成优先级和权重。"
+    }
+}
