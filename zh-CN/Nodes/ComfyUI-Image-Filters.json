@@ -1,0 +1,821 @@
+{
+    "AlphaClean": {
+        "title": "Alpha透明 清理",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "radius": "半径",
+            "fill_holes": "填充孔洞",
+            "white_threshold": "白色阈值",
+            "extra_clip": "额外剪裁"
+        },
+        "outputs": {},
+        "description": "类别: 图像-滤镜/image"
+    },
+    "MaskClean": {
+        "title": "遮罩清理",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "radius": "半径",
+            "fill_holes": "填充孔洞",
+            "white_threshold": "白色阈值",
+            "extra_clip": "额外剪裁"
+        },
+        "outputs": {},
+        "description": "类别: 图像-滤镜/mask"
+    },
+    "AlphaMatte": {
+        "title": "Alpha透明 哑光",
+        "inputs": {
+            "images": "图像",
+            "alpha_trimap": "alpha 三边图",
+            "estimate_fg": "估计前景"
+        },
+        "widgets": {
+            "preblur": "预模糊",
+            "blackpoint": "黑色点",
+            "whitepoint": "白色点",
+            "max_iterations": "最大迭代次数"
+        },
+        "outputs": {
+            "alpha": "alpha",
+            "fg": "前景",
+            "bg": "背景"
+        },
+        "description": "类别: 图像-滤镜/image"
+    },
+    "ImageMatting": {
+        "title": "图像抠图",
+        "inputs": {
+            "images": "图像",
+            "trimap": "三边图"
+        },
+        "widgets": {
+            "preblur": "预模糊",
+            "blackpoint": "黑色点",
+            "whitepoint": "白色点",
+            "max_iterations": "最大迭代次数",
+            "estimate_fg": "估计前景"
+        },
+        "outputs": {
+            "matte": "遮罩",
+            "fg": "前景",
+            "bg": "背景"
+        },
+        "description": "类别: 图像-滤镜/image"
+    },
+    "BetterFilmGrain": {
+        "title": "胶片颗粒",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "scale": "比例",
+            "strength": "强度",
+            "saturation": "饱和度",
+            "toe": "趾部",
+            "seed": "种子"
+        },
+        "outputs": {},
+        "description": "类别: 图像-滤镜/image"
+    },
+    "BlurImageFast": {
+        "title": "模糊图像 快速",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "radius_x": "X轴半径",
+            "radius_y": "Y轴半径"
+        },
+        "outputs": {},
+        "description": "类别: 图像-滤镜/image"
+    },
+    "BlurMaskFast": {
+        "title": "模糊遮罩 快速",
+        "inputs": {
+            "masks": "遮罩"
+        },
+        "widgets": {
+            "radius_x": "X轴半径",
+            "radius_y": "Y轴半径"
+        },
+        "outputs": {},
+        "description": "类别: 图像-滤镜/mask"
+    },
+    "ColorMatchImage": {
+        "title": "颜色匹配 图像",
+        "inputs": {
+            "images": "图像",
+            "reference": "参考图像",
+            "blur_type": "模糊类型"
+        },
+        "widgets": {
+            "blur_size": "模糊大小",
+            "factor": "因子"
+        },
+        "outputs": {},
+        "description": "类别: 图像-滤镜/image"
+    },
+    "RestoreDetail": {
+        "title": "恢复细节",
+        "inputs": {
+            "images": "图像",
+            "detail": "细节",
+            "mode": "模式",
+            "blur_type": "模糊类型"
+        },
+        "widgets": {
+            "blur_size": "模糊大小",
+            "factor": "因子"
+        },
+        "outputs": {},
+        "description": "类别: 图像-滤镜/image"
+    },
+    "DilateErodeMask": {
+        "title": "遮罩羽化",
+        "inputs": {
+            "masks": "遮罩",
+            "shape": "形状"
+        },
+        "widgets": {
+            "radius": "半径"
+        },
+        "outputs": {},
+        "description": "类别: 图像-滤镜/mask"
+    },
+    "EnhanceDetail": {
+        "title": "增强细节",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "filter_radius": "滤波器半径",
+            "sigma": "σ",
+            "denoise": "去噪",
+            "detail_mult": "细节倍增"
+        },
+        "outputs": {},
+        "description": "类别: 图像-滤镜/image"
+    },
+    "GuidedFilterImage": {
+        "title": "图像引导滤镜",
+        "inputs": {
+            "images": "图像",
+            "guide": "引导图像"
+        },
+        "widgets": {
+            "size": "大小",
+            "sigma": "σ"
+        },
+        "outputs": {},
+        "description": "类别: 图像-滤镜/image"
+    },
+    "MedianFilterImage": {
+        "title": "中值滤镜图像",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "size": "大小"
+        },
+        "outputs": {},
+        "description": "类别: 图像-滤镜/image"
+    },
+    "BilateralFilterImage": {
+        "title": "双边滤镜图像",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "size": "大小",
+            "sigma_color": "颜色σ",
+            "sigma_space": "空间σ"
+        },
+        "outputs": {},
+        "description": "类别: 图像-滤镜/image"
+    },
+    "FrequencyCombine": {
+        "title": "频率合并",
+        "inputs": {
+            "high_frequency": "高频",
+            "low_frequency": "低频",
+            "mode": "模式"
+        },
+        "widgets": {
+            "eps": "ε"
+        },
+        "outputs": {},
+        "description": "类别: 图像-滤镜/image"
+    },
+    "FrequencySeparate": {
+        "title": "频率分离",
+        "inputs": {
+            "original": "原始图像",
+            "low_frequency": "低频部分",
+            "mode": "模式"
+        },
+        "widgets": {
+            "eps": "ε"
+        },
+        "outputs": {
+            "high_frequency": "高频部分"
+        },
+        "description": "类别: 图像-滤镜/image"
+    },
+    "RemapRange": {
+        "title": "映射范围",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "blackpoint": "黑点",
+            "whitepoint": "白点"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波器/图像"
+    },
+    "ClampImage": {
+        "title": "截断图像",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "blackpoint": "黑点",
+            "whitepoint": "白点"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波器/图像"
+    },
+    "ShuffleChannels": {
+        "title": "打乱通道",
+        "inputs": {
+            "image": "图像",
+            "red": "红色",
+            "green": "绿色",
+            "blue": "蓝色",
+            "alpha": "透明度"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "类别：图像滤波器/图像"
+    },
+    "ClampOutliers": {
+        "title": "截断离群值",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "std_dev": "标准差"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波器/Latent"
+    },
+    "AdainLatent": {
+        "title": "Adain Latent",
+        "inputs": {
+            "latents": "Latent",
+            "reference": "参考"
+        },
+        "widgets": {
+            "factor": "因子"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波器/Latent"
+    },
+    "AdainFilterLatent": {
+        "title": "Adain滤波Latent",
+        "inputs": {
+            "latents": "Latent",
+            "reference": "参考"
+        },
+        "widgets": {
+            "filter_size": "滤波尺寸",
+            "factor": "因子"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波器/Latent"
+    },
+    "SharpenFilterLatent": {
+        "title": "锐化滤波Latent",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "filter_size": "滤波尺寸",
+            "factor": "因子"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波器/Latent"
+    },
+    "AdainImage": {
+        "title": "Adain图像",
+        "inputs": {
+            "images": "图像",
+            "reference": "参考"
+        },
+        "widgets": {
+            "factor": "因子"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波器/图像"
+    },
+    "BatchNormalizeLatent": {
+        "title": "批量标准化Latent",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "factor": "因子"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波器/Latent"
+    },
+    "BatchNormalizeImage": {
+        "title": "批量标准化图像",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "factor": "因子"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波器/图像"
+    },
+    "DifferenceChecker": {
+        "title": "差异检查器",
+        "inputs": {
+            "images1": "图像1",
+            "images2": "图像2"
+        },
+        "widgets": {
+            "multiplier": "乘数",
+            "print_MAE": "打印MAE"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波器/图像"
+    },
+    "ImageConstant": {
+        "title": "常量图像",
+        "inputs": {},
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "batch_size": "批量大小",
+            "red": "红色",
+            "green": "绿色",
+            "blue": "蓝色"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波器/图像"
+    },
+    "ImageConstantHSV": {
+        "title": "常量HSV图像",
+        "inputs": {},
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "batch_size": "批量大小",
+            "hue": "色调",
+            "saturation": "饱和度",
+            "value": "亮度"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波器/图像"
+    },
+    "OffsetLatentImage": {
+        "title": "偏移Latent图像",
+        "inputs": {},
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "batch_size": "批量大小",
+            "offset_0": "偏移0",
+            "offset_1": "偏移1",
+            "offset_2": "偏移2",
+            "offset_3": "偏移3"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波器/Latent"
+    },
+    "RelightSimple": {
+        "title": "简单光照调整",
+        "inputs": {
+            "image": "图像",
+            "normals": "法线"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "z": "Z",
+            "brightness": "亮度"
+        },
+        "outputs": {},
+        "description": "Category: Image-Filters/image"
+    },
+    "LatentStats": {
+        "title": "Latent统计",
+        "inputs": {
+            "latent": "latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "stats": "统计",
+            "c0_mean": "c0 均值",
+            "c1_mean": "c1 均值",
+            "c2_mean": "c2 均值",
+            "c3_mean": "c3 均值"
+        },
+        "description": "Category: Image-Filters/utils"
+    },
+    "Tonemap": {
+        "title": "色调映射",
+        "inputs": {
+            "images": "图像",
+            "input_mode": "输入模式",
+            "output_mode": "输出模式"
+        },
+        "widgets": {
+            "tonemap_scale": "色调映射比例"
+        },
+        "outputs": {},
+        "description": "Category: Image-Filters/image"
+    },
+    "UnTonemap": {
+        "title": "反色调映射",
+        "inputs": {
+            "images": "图像",
+            "input_mode": "输入模式",
+            "output_mode": "输出模式"
+        },
+        "widgets": {
+            "tonemap_scale": "色调映射比例"
+        },
+        "outputs": {},
+        "description": "Category: Image-Filters/image"
+    },
+    "ExposureAdjust": {
+        "title": "曝光调整",
+        "inputs": {
+            "images": "图像",
+            "input_mode": "输入模式",
+            "output_mode": "输出模式",
+            "tonemap": "色调映射"
+        },
+        "widgets": {
+            "stops": "档位",
+            "tonemap_scale": "色调映射比例"
+        },
+        "outputs": {},
+        "description": "Category: Image-Filters/image"
+    },
+    "ConvertNormals": {
+        "title": "法线转换",
+        "inputs": {
+            "normals": "法线",
+            "input_mode": "输入模式",
+            "output_mode": "输出模式",
+            "optional_fill": "可选填充"
+        },
+        "widgets": {
+            "scale_XY": "XY 缩放",
+            "normalize": "标准化",
+            "fix_black": "修复黑色"
+        },
+        "outputs": {},
+        "description": "Category: Image-Filters/image"
+    },
+    "BatchAverageImage": {
+        "title": "批量平均图像",
+        "inputs": {
+            "images": "图像",
+            "operation": "操作"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "Category: Image-Filters/image"
+    },
+    "NormalMapSimple": {
+        "title": "简单法线贴图",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "scale_XY": "XY 缩放"
+        },
+        "outputs": {},
+        "description": "Category: Image-Filters/image"
+    },
+    "DepthToNormals": {
+        "title": "深度转法线",
+        "inputs": {
+            "depth": "深度",
+            "output_mode": "输出模式"
+        },
+        "widgets": {
+            "scale": "缩放"
+        },
+        "outputs": {
+            "normals": "法线"
+        },
+        "description": "Category: Image-Filters/image"
+    },
+    "Keyer": {
+        "title": "抠像",
+        "inputs": {
+            "images": "图像",
+            "operation": "操作"
+        },
+        "widgets": {
+            "low": "低阈值",
+            "high": "高阈值",
+            "gamma": "伽马",
+            "premult": "预乘"
+        },
+        "outputs": {
+            "image": "图像",
+            "alpha": "透明度",
+            "mask": "遮罩"
+        },
+        "description": "Category: Image-Filters/image"
+    },
+    "JitterImage": {
+        "title": "抖动图像",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "jitter_scale": "抖动比例"
+        },
+        "outputs": {},
+        "description": "Category: Image-Filters/image/jitter"
+    },
+    "UnJitterImage": {
+        "title": "反抖动图像",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "jitter_scale": "抖动比例",
+            "oflow_align": "光流对齐"
+        },
+        "outputs": {},
+        "description": "Category: Image-Filters/image/jitter"
+    },
+    "BatchAverageUnJittered": {
+        "title": "批量平均未抖动图像",
+        "inputs": {
+            "images": "图像",
+            "operation": "操作"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "Category: Image-Filters/image/jitter"
+    },
+    "BatchAlign": {
+        "title": "批量对齐",
+        "inputs": {
+            "images": "图像",
+            "direction": "方向"
+        },
+        "widgets": {
+            "ref_frame": "参考帧",
+            "blur": "模糊"
+        },
+        "outputs": {
+            "aligned": "对齐后的图像",
+            "flow": "光流"
+        },
+        "description": "Category: Image-Filters/image"
+    },
+    "InstructPixToPixConditioningAdvanced": {
+        "title": "高级指令像素到像素条件生成",
+        "inputs": {
+            "positive": "正向条件",
+            "negative": "负向条件",
+            "new": "新图像",
+            "original": "原始图像"
+        },
+        "widgets": {
+            "new_scale": "新图像比例",
+            "original_scale": "原始图像比例"
+        },
+        "outputs": {
+            "cond1": "条件1",
+            "cond2": "条件2",
+            "negative": "负向条件",
+            "latent": "latent"
+        },
+        "description": "Category: Image-Filters/conditioning"
+    },
+    "InpaintConditionEncode": {
+        "title": "内补重绘条件编码器",
+        "inputs": {
+            "vae": "vae",
+            "pixels": "像素",
+            "mask": "遮罩"
+        },
+        "widgets": {},
+        "outputs": {
+            "inpaint_condition": "填充条件"
+        },
+        "description": "类别: 图像-滤镜/条件"
+    },
+    "InpaintConditionApply": {
+        "title": "填充条件应用",
+        "inputs": {
+            "positive": "正向",
+            "negative": "负向",
+            "inpaint_condition": "填充条件",
+            "latents_optional": "可选Latent"
+        },
+        "widgets": {
+            "noise_mask": "噪声遮罩"
+        },
+        "outputs": {
+            "positive": "正向",
+            "negative": "负向",
+            "latent": "Latent"
+        },
+        "description": "类别：图像滤波/条件"
+    },
+    "LatentNormalizeShuffle": {
+        "title": "Latent标准化打乱",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "flatten": "展平",
+            "normalize": "标准化",
+            "shuffle": "打乱"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波/Latent"
+    },
+    "RandnLikeLatent": {
+        "title": "随机数与Latent相似",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "seed": "种子"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波/Latent"
+    },
+    "PrintSigmas": {
+        "title": "打印均方差",
+        "inputs": {
+            "sigmas": "均方差"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "类别：图像滤波/工具"
+    },
+    "ShowSigmas": {
+        "title": "显示均方差",
+        "inputs": {
+            "sigmas": "均方差"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "类别：图像滤波/工具"
+    },
+    "VisualizeLatents": {
+        "title": "可视化Latent",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "类别：图像滤波/工具"
+    },
+    "GameOfLife": {
+        "title": "生命游戏",
+        "inputs": {
+            "optional_start": "可选初始状态"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "cell_size": "细胞大小",
+            "seed": "种子",
+            "threshold": "阈值",
+            "steps": "步骤"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "off": "关闭",
+            "on": "开启"
+        },
+        "description": "类别：图像滤波/图像"
+    },
+    "ModelTest": {
+        "title": "模型测试",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "code": "代码"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波/工具"
+    },
+    "ConditioningSubtract": {
+        "title": "条件减法",
+        "inputs": {
+            "cond_orig": "原始条件",
+            "cond_subtract": "减去条件"
+        },
+        "widgets": {
+            "subtract_strength": "减去强度"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波/条件"
+    },
+    "CustomNoise": {
+        "title": "自定义噪声",
+        "inputs": {
+            "noise": "噪声"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "类别：图像滤波/采样"
+    },
+    "ExtractNFrames": {
+        "title": "提取N帧",
+        "inputs": {
+            "images": "图像",
+            "masks": "遮罩"
+        },
+        "widgets": {
+            "frames": "帧"
+        },
+        "outputs": {
+            "index_list": "索引列表",
+            "images": "图像",
+            "masks": "遮罩"
+        },
+        "description": "类别：图像滤波/图像帧"
+    },
+    "MergeFramesByIndex": {
+        "title": "按索引合并帧",
+        "inputs": {
+            "index_list": "索引列表",
+            "orig_images": "原始图像",
+            "images": "图像",
+            "orig_masks": "原始遮罩",
+            "masks": "遮罩"
+        },
+        "widgets": {},
+        "outputs": {
+            "images": "图像",
+            "masks": "遮罩"
+        },
+        "description": "类别：图像滤波/图像帧"
+    },
+    "Hunyuan3Dv2LatentUpscaleBy": {
+        "title": "Hunyuan3Dv2Latent放大",
+        "inputs": {
+            "samples": "样本"
+        },
+        "widgets": {
+            "scale_by": "按比例缩放"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波/Latent"
+    },
+    "PackVideoMask": {
+        "title": "视频遮罩打包",
+        "inputs": {
+            "mask": "遮罩",
+            "blend_mode": "混合模式"
+        },
+        "widgets": {
+            "causal": "因果",
+            "stride": "步长"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波/遮罩"
+    },
+    "PoissonNoise": {
+        "title": "泊松噪声",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "gain": "增益",
+            "gain_r": "红色增益",
+            "gain_g": "绿色通道度",
+            "gain_b": "蓝色增益",
+            "clamp": "饱和",
+            "seed": "种子"
+        },
+        "outputs": {},
+        "description": "类别：图像滤波器/图像"
+    }
+}

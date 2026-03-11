@@ -4,11 +4,11 @@
         "inputs": {
             "depth_maps": "深度图",
             "extrinsics": "外参",
-            "intrinsics": "内参"
+            "intrinsics": "内参",
+            "method": "方法"
         },
         "widgets": {
-            "reference_view": "参考视图",
-            "method": "方法"
+            "reference_view": "参考视图"
         },
         "outputs": {
             "aligned_depth_maps": "对齐后的深度图",
@@ -20,9 +20,10 @@
     },
     "LoadImageWithExif": {
         "title": "加载带EXIF信息的图像",
-        "inputs": {},
+        "inputs": {
+            "image": "图像"
+        },
         "widgets": {
-            "image": "图像",
             "default_focal_mm": "默认焦距（毫米）"
         },
         "outputs": {
@@ -34,9 +35,10 @@
     },
     "LoadSharpModel": {
         "title": "加载SHARP模型",
-        "inputs": {},
+        "inputs": {
+            "precision": "精度"
+        },
         "widgets": {
-            "precision": "精度",
             "checkpoint_path": "检查点路径"
         },
         "outputs": {
@@ -101,14 +103,14 @@
         "inputs": {
             "depth_maps": "深度图",
             "extrinsics": "外参",
-            "intrinsics": "内参"
+            "intrinsics": "内参",
+            "blend_mode": "混合模式",
+            "border_color": "边框颜色"
         },
         "widgets": {
             "panorama_width": "全景图宽度",
             "show_borders": "显示边界",
-            "disagreement_scale": "分歧缩放",
-            "blend_mode": "混合模式",
-            "border_color": "边框颜色"
+            "disagreement_scale": "分歧缩放"
         },
         "outputs": {
             "panoramic_depth": "全景深度",

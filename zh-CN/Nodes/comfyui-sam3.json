@@ -1,56 +1,16 @@
 {
     "LoadSAM3Model": {
         "title": "加载SAM3模型",
-        "inputs": {
-            "model_name": "模型名称"
-        },
+        "inputs": {},
         "widgets": {
             "precision": "精度",
-            "attention": "注意力机制",
+            "attention": "注意力",
             "compile": "编译"
         },
         "outputs": {
-            "sam3_model": "SAM3模型"
-        }
-    },
-    "SAM3TextSegmentation": {
-        "title": "SAM3 文本分割",
-        "inputs": {
-            "sam3_model": "sam3_模型",
-            "image": "图像",
-            "positive_points": "正面点",
-            "negative_points": "负面点",
-            "box": "边界框"
+            "sam3_model": "sam3模型"
         },
-        "widgets": {
-            "confidence_threshold": "置信度阈值",
-            "text_prompt": "文本提示",
-            "max_detections": "最大检测数"
-        },
-        "outputs": {
-            "masks": "遮罩",
-            "visualization": "图像",
-            "boxes": "边界框组",
-            "scores": "分数组"
-        }
-    },
-    "SAM3MultipromptSegmentation": {
-        "title": "SAM3 多段提示 分割",
-        "inputs": {
-            "sam3_model": "sam3_模型",
-            "image": "图像",
-            "positive_points": "正面点",
-            "negative_points": "负面点",
-            "multi_prompts": "多段提示"
-        },
-        "widgets": {
-            "refinement_iterations": "细化迭代",
-            "use_multimask": "使用多遮罩"
-        },
-        "outputs": {
-            "masks": "遮罩",
-            "visualization": "图像"
-        }
+        "description": "类别: SAM3"
     },
     "SAM3PointCollector": {
         "title": "SAM3点收集器",
@@ -60,238 +20,237 @@
         "widgets": {
             "points_store": "点存储",
             "coordinates": "坐标",
-            "neg_coordinates": "负面坐标"
+            "neg_coordinates": "负坐标"
         },
         "outputs": {
-            "positive_points": "SAM3正面点提示",
-            "negative_points": "SAM3负面点提示"
-        }
+            "positive_points": "正点",
+            "negative_points": "负点"
+        },
+        "description": "类别: SAM3"
     },
     "SAM3BBoxCollector": {
-        "title": "SAM3边界框收集器 📦",
+        "title": "SAM3边界框收集器",
         "inputs": {
             "image": "图像"
         },
         "widgets": {
-            "bboxes": "边界框组",
-            "neg_bboxes": "负面边界框组"
+            "bboxes": "边界框",
+            "neg_bboxes": "负边界框"
         },
         "outputs": {
-            "positive_bboxes": "SAM3正面边界框提示",
-            "negative_bboxes": "SAM3负面边界框提示"
-        }
+            "positive_bboxes": "正边界框",
+            "negative_bboxes": "负边界框"
+        },
+        "description": "类别: SAM3"
     },
-    "SAM3VideoModelLoader": {
-        "title": "SAM3视频模型加载器",
+    "SAM3MultiRegionCollector": {
+        "title": "SAM3多区域收集器",
         "inputs": {
-            "model_name": "模型名称"
+            "image": "图像"
         },
         "widgets": {
-            "hf_token": "HuggingFace 令牌",
-            "model_name": "模型名称"
+            "multi_prompts_store": "多提示存储"
         },
         "outputs": {
-            "video_model": "SAM3视频模型"
-        }
+            "multi_prompts": "多提示"
+        },
+        "description": "类别: SAM3"
+    },
+    "SAM3InteractiveCollector": {
+        "title": "SAM3交互式收集器",
+        "inputs": {
+            "sam3_model": "sam3模型",
+            "image": "图像"
+        },
+        "widgets": {
+            "multi_prompts_store": "多提示存储"
+        },
+        "outputs": {
+            "masks": "遮罩",
+            "可视化": "可视化",
+            "multi_prompts": "多提示"
+        },
+        "description": "类别: SAM3"
     },
     "SAM3VideoSegmentation": {
         "title": "SAM3视频分割",
         "inputs": {
             "video_frames": "视频帧",
-            "video": "视频"
+            "video": "视频",
+            "positive_points": "正点",
+            "negative_points": "负点",
+            "positive_boxes": "正边界框",
+            "negative_boxes": "负边界框"
         },
         "widgets": {
             "prompt_mode": "提示模式",
-            "positive_points": "正面点",
-            "negative_points": "负面点",
-            "positive_boxes": "正面边界框",
-            "negative_boxes": "负面边界框",
             "text_prompt": "文本提示",
             "frame_idx": "帧索引",
-            "score_threshold": "分数阈值"
+            "score_threshold": "得分阈值"
         },
         "outputs": {
-            "video_state": "SAM3视频状态"
-        }
+            "video_state": "视频状态"
+        },
+        "description": "类别: SAM3/video"
     },
     "SAM3Propagate": {
         "title": "SAM3传播",
         "inputs": {
-            "video_model": "视频模型",
-            "video_state": "视频状态",
-            "sam3_model": "SAM3模型"
+            "sam3_model": "sam3模型",
+            "video_state": "视频状态"
         },
         "widgets": {
             "start_frame": "起始帧",
             "end_frame": "结束帧",
-            "reverse": "反向",
             "direction": "方向"
         },
         "outputs": {
-            "masks": "SAM3视频遮罩",
-            "scores": "SAM3视频分数",
-            "video_state": "SAM3视频状态"
-        }
+            "masks": "遮罩",
+            "scores": "得分",
+            "video_state": "视频状态"
+        },
+        "description": "类别: SAM3/video"
     },
     "SAM3VideoOutput": {
         "title": "SAM3视频输出",
         "inputs": {
             "masks": "遮罩",
             "video_state": "视频状态",
-            "scores": "分数"
+            "scores": "得分"
         },
         "widgets": {
-            "obj_id": "obj_ID",
+            "obj_id": "对象ID",
             "plot_all_masks": "绘制所有遮罩"
         },
         "outputs": {
             "masks": "遮罩",
-            "frames": "图像帧",
-            "visualization": "图像"
-        }
+            "frames": "帧",
+            "visualization": "可视化"
+        },
+        "description": "类别: SAM3/video"
     },
-    "SAM3Segmentation": {
-        "title": "SAM3分割",
+    "SAM3Grounding": {
+        "title": "SAM3语义匹配",
         "inputs": {
-            "sam3_model": "sam3_模型",
+            "sam3_model": "sam3模型",
             "image": "图像",
-            "positive_boxes": "正面边界框",
-            "negative_boxes": "负面边界框",
-            "mask_prompt": "遮罩 提示",
-            "positive_points": "正点",
-            "negative_points": "负点",
-            "box": "框选"
+            "positive_boxes": "正边界框",
+            "negative_boxes": "负边界框"
         },
         "widgets": {
             "confidence_threshold": "置信度阈值",
             "text_prompt": "文本提示",
-            "max_detections": "最大检测数量",
-            "refinement_iterations": "细化迭代次数",
-            "use_multimask": "使用多遮罩",
-            "output_best_mask": "输出最佳遮罩"
+            "max_detections": "最大检测数"
         },
         "outputs": {
             "masks": "遮罩",
-            "mask": "遮罩",
-            "mask_logits": "遮罩对数",
-            "visualization": "图像",
-            "boxes": "框",
-            "scores": "分数"
-        }
+            "visualization": "可视化",
+            "boxes": "边界框",
+            "scores": "得分"
+        },
+        "description": "类别: SAM3/Grounding"
     },
     "SAM3CreateBox": {
-        "title": "SAM3创建框",
+        "title": "创建边界框",
         "inputs": {},
         "widgets": {
-            "center_x": "中心_x",
-            "center_y": "中心_y",
+            "center_x": "中心X",
+            "center_y": "中心Y",
             "width": "宽度",
             "height": "高度",
             "is_positive": "是否为正"
         },
         "outputs": {
-            "box_prompt": "SAM3_框提示"
-        }
+            "box_prompt": "边界框提示"
+        },
+        "description": "类别: SAM3/prompts"
     },
     "SAM3CreatePoint": {
-        "title": "SAM3创建点",
+        "title": "创建点",
         "inputs": {},
         "widgets": {
-            "x": "x",
-            "y": "y",
-            "is_foreground": "处于前景位置"
+            "x": "X",
+            "y": "Y",
+            "is_foreground": "是否前景"
         },
         "outputs": {
-            "point_prompt": "SAM3 点提示"
-        }
+            "point_prompt": "点提示"
+        },
+        "description": "类别: SAM3/prompts"
     },
     "SAM3CombineBoxes": {
-        "title": "SAM3合并框",
+        "title": "组合边界框",
         "inputs": {
-            "box_1": "框_1",
-            "box_2": "框_2",
-            "box_3": "框_3",
-            "box_4": "框_4",
-            "box_5": "框_5"
+            "box_1": "边界框1",
+            "box_2": "边界框2",
+            "box_3": "边界框3",
+            "box_4": "边界框4",
+            "box_5": "边界框5"
         },
         "widgets": {},
         "outputs": {
-            "boxes_prompt": "SAM3_框提示"
-        }
+            "boxes_prompt": "边界框提示"
+        },
+        "description": "类别: SAM3/prompts"
     },
     "SAM3CombinePoints": {
-        "title": "SAM3合并点",
+        "title": "组合点",
         "inputs": {
-            "point_1": "点_1",
-            "point_2": "点_2",
-            "point_3": "点_3",
-            "point_4": "点_4",
-            "point_5": "点_5",
-            "point_6": "点_6",
-            "point_7": "点_7",
-            "point_8": "点_8",
-            "point_9": "点_9",
-            "point_10": "点_10"
+            "point_1": "点1",
+            "point_2": "点2",
+            "point_3": "点3",
+            "point_4": "点4",
+            "point_5": "点5",
+            "point_6": "点6",
+            "point_7": "点7",
+            "point_8": "点8",
+            "point_9": "点9",
+            "point_10": "点10"
         },
         "widgets": {},
         "outputs": {
-            "points_prompt": "SAM3 点提示"
-        }
+            "points_prompt": "点提示"
+        },
+        "description": "类别: SAM3/prompts"
     },
-    "SAM3Multi-RegionCollector": {
-        "title": "SAM3 多区域收集器",
+    "SAM3Segmentation": {
+        "title": "SAM3分割",
         "inputs": {
-            "sam3_model": "sam3_模型",
+            "sam3_model": "sam3模型",
             "image": "图像",
-            "positive_points": "正面点",
-            "negative_points": "负面点",
-            "multi_prompts": "多段提示"
-        },
-        "widgets": {
-            "refinement_iterations": "细化迭代",
-            "use_multimask": "使用多遮罩"
-        },
-        "outputs": {
-            "masks": "遮罩",
-            "multi_prompts": "多段提示"
-        }
-    },
-    "SAM3InteractiveCollector": {
-        "title": "SAM3 互动式收藏者",
-        "inputs": {
-            "sam3_model": "sam3_模型",
-            "image": "图像",
-            "positive_points": "正面点",
-            "negative_points": "负面点",
-            "multi_prompts": "多段提示"
-        },
-        "widgets": {
-            "refinement_iterations": "细化迭代",
-            "use_multimask": "使用多遮罩"
-        },
-        "outputs": {
-            "masks": "遮罩",
-            "visualization": "图像",
-            "multi_prompts": "多段提示"
-        }
-    },
-    "SAM3InteractiveSegmentation": {
-        "title": "SAM3 交互式分割（实验性）",
-        "inputs": {
-            "sam3_model": "sam3_模型",
-            "image": "图像",
-            "positive_points": "正面点",
-            "negative_points": "负面点",
+            "positive_points": "正点",
+            "negative_points": "负点",
             "box": "边界框"
         },
         "widgets": {
-            "multimask_output": "多遮罩输出"
+            "refinement_iterations": "细化迭代次数",
+            "use_multimask": "使用多遮罩",
+            "output_best_mask": "输出最佳遮罩"
+        },
+        "outputs": {
+            "mask": "遮罩",
+            "mask_logits": "遮罩逻辑",
+            "visualization": "可视化",
+            "boxes": "边界框",
+            "scores": "得分"
+        },
+        "description": "类别: SAM3"
+    },
+    "SAM3MultipromptSegmentation": {
+        "title": "SAM3多提示分割",
+        "inputs": {
+            "sam3_model": "sam3模型",
+            "image": "图像",
+            "multi_prompts": "多提示"
+        },
+        "widgets": {
+            "refinement_iterations": "细化迭代次数",
+            "use_multimask": "使用多遮罩"
         },
         "outputs": {
             "masks": "遮罩",
-            "visualization": "图像",
-            "boxes": "边界框组",
-            "scores": "分数组"
-        }
+            "visualization": "可视化"
+        },
+        "description": "类别: SAM3"
     }
 }
