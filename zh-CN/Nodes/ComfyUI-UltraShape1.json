@@ -1,9 +1,9 @@
 {
     "UltraShapeLoadModel": {
-        "title": "超精细模型加载",
+        "title": "超精细 模型加载",
         "inputs": {},
         "widgets": {
-            "checkpoint": "检查点",
+            "checkpoint": "checkpoint大模型",
             "config": "配置",
             "dtype": "数据类型",
             "low_vram": "低显存模式"
@@ -14,7 +14,7 @@
         "description": "类别: 超精细/U loaders"
     },
     "UltraShapeLoadCoarseMesh": {
-        "title": "超精细粗体网格加载",
+        "title": "超精细 粗体网格加载",
         "inputs": {
             "model": "模型"
         },
@@ -31,7 +31,7 @@
         "description": "类别: 超精细/U loaders"
     },
     "UltraShapeRefine": {
-        "title": "超精细细化",
+        "title": "超精细 细化",
         "inputs": {
             "model": "模型",
             "coarse_mesh": "粗体网格",
@@ -53,7 +53,7 @@
         "description": "类别: 超精细"
     },
     "UltraShapeMeshSelector": {
-        "title": "超精细网格选择器",
+        "title": "超精细 网格选择器",
         "inputs": {
             "image": "图像"
         },
@@ -66,7 +66,7 @@
         "description": "类别: 超精细/U loaders"
     },
     "UltraShapeSaveGLB": {
-        "title": "超精细保存为GLB",
+        "title": "超精细 保存为GLB",
         "inputs": {
             "refined_mesh": "细化网格"
         },
@@ -80,8 +80,51 @@
         },
         "description": "类别: 超精细"
     },
+    "UltraShapeLoadCoarseMeshFromTrimesh": {
+        "title": "超精细 从三角网格中加载粗网格",
+        "inputs": {
+            "model": "模型",
+            "trimesh": "三角网格"
+        },
+        "widgets": {
+            "normalize_scale": "标准化尺度",
+            "num_sharp_points": "锐角点数",
+            "num_uniform_points": "均匀点数",
+            "num_latents": "隐变量数量"
+        },
+        "outputs": {
+            "coarse_mesh": "粗略网格"
+        },
+        "description": "Category: UltraShape/Loaders"
+    },
+    "UltraShapeLoadMesh": {
+        "title": "超精细 加载网格",
+        "inputs": {},
+        "widgets": {
+            "path": "路径"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": "Category: UltraShape/Loaders"
+    },
+    "UltraShapeSaveMesh": {
+        "title": "超精细 保存网格",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "output_dir": "输出目录",
+            "filename_prefix": "文件前缀",
+            "file_format": "文件格式"
+        },
+        "outputs": {
+            "file_path": "文件路径"
+        },
+        "description": "Category: UltraShape"
+    },
     "UltraShapeConvertToGLB": {
-        "title": "超精细转换为GLB",
+        "title": "超精细 转换为GLB",
         "inputs": {
             "refined_mesh": "细化网格"
         },
@@ -92,5 +135,16 @@
             "mesh": "网格"
         },
         "description": "类别: 超精细"
+    },
+    "UltraShapeOutputToTrimesh": {
+        "title": "超精细 输出至三角网格",
+        "inputs": {
+            "refined_mesh": "精修网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "trimesh": "三角网格"
+        },
+        "description": "Category: UltraShape"
     }
 }
