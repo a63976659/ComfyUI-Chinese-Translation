@@ -2,6 +2,8 @@ ComfyUI 中文汉化
 
 作者：猪的飞行梦
 
+[![Bilibili](https://img.shields.io/badge/bilibili-猪的飞行梦-00A1D6?logo=bilibili&logoColor=white)](https://space.bilibili.com/2114638644)
+
 声明：
 本项目是基于 [AIGODLIKE-ComfyUI-Translation](https://github.com/AIGODLIKE/AIGODLIKE-ComfyUI-Translation) 和
 [ComfyUI-DD-Translation](https://github.com/Dontdrunk/ComfyUI-DD-Translation)
@@ -142,6 +144,8 @@ ComfyUI-Chinese-Translation 是一个汉化翻译插件，专门为ComfyUI界面
 如果你觉得插件还不错可以点个收藏。
 
 我的哔哩哔哩主页：https://space.bilibili.com/2114638644
+
+[![Bilibili](https://img.shields.io/badge/bilibili-猪的飞行梦-00A1D6?logo=bilibili&logoColor=white)](https://space.bilibili.com/2114638644)
 
 我的小红书：猪的飞行梦
 
