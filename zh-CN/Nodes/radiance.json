@@ -1506,8 +1506,119 @@
         },
         "description": ""
     },
+    "RadianceShowText": {
+        "title": "◎Radiance 显示文本",
+        "inputs": {
+            "any_input": "任何输入"
+        },
+        "widgets": {},
+        "outputs": {
+            "text": "文本"
+        },
+        "description": "将任何输入数据直接以文本形式显示在节点 Ul 上。"
+    },
+    "RadianceLoadImageMask": {
+        "title": "◎ Radiance 加载图像",
+        "inputs": {},
+        "widgets": {
+            "🎬 Radiance Mask": "🎬Radiance遮罩",
+            "image": "图像"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "MASK": "遮罩"
+        },
+        "description": ""
+    },
+    "RadianceWorkspace": {
+        "title": "◎ Radiance .rad 工作区",
+        "inputs": {},
+        "widgets": {
+            "Export .rad": "导出 .rad",
+            "Import .rad": "导入 .rad",
+            "Save to Library": "保存到库",
+            "Open Library": "打开库",
+            "Docs": "文档",
+            "FXTD Studios": "FXTD工作室"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "RadianceLoraStack": {
+        "title": "◎ Radiance Lora堆",
+        "inputs": {
+            "lora_stack": "Lora堆"
+        },
+        "widgets": {
+            "lora_1": "Lora 1",
+            "lora_1_model": "Lora 1 模型",
+            "lora_1_clip": "Lora 1 CLIP",
+            "lora_2": "Lora 2",
+            "lora_2_model": "Lora 2 模型",
+            "lora_2_clip": "Lora 2 CLIP",
+            "lora_3": "Lora 3",
+            "lora_3_model": "Lora 3 模型",
+            "lora_3_clip": "Lora 3 CLIP",
+            "lora_4": "Lora 4",
+            "lora_4_model": "Lora 4 模型",
+            "lora_4_clip": "Lora 4 CLIP",
+            "lora_5": "Lora 5",
+            "lora_5_model": "Lora 5 模型",
+            "lora_5_clip": "Lora 5 CLIP"
+        },
+        "outputs": {
+            "lora_stack": "Lora堆"
+        },
+        "description": "可将多达 5 个 Lora 协议栈组合成一个累加型 Lora堆。\n 将多个栈串联起来。然后输入到 Radiance 统一加载器中。"
+    },
+    "FXTDCinematicPromptEncoder": {
+        "title": "◎ Radiance 电影提示词编辑器",
+        "inputs": {
+            "clip": "片段",
+            "image_ref": "图像参考"
+        },
+        "widgets": {
+            "active_prompt": "激活提示",
+            "style_preset": "样式预设",
+            "target_arch": "目标架构",
+            "context_window": "上下文窗口",
+            "framing": "构图",
+            "camera_type": "摄像机类型",
+            "lens_focal": "镜头焦距",
+            "aperture_dof": "光圈景深",
+            "lighting": "照明",
+            "style_aesthetic": "风格美学",
+            "film_stock": "胶片库存",
+            "shutter_speed": "快门速度",
+            "color_grading": "色彩分级",
+            "aspect_ratio": "宽高比",
+            "scene_mood": "场景氛围",
+            "prompt_weight_mode": "提示权重模式",
+            "negative_strength": "负面强度",
+            "use_break": "使用中断",
+            "prompt_enhancer": "提示增强器",
+            "base_prompt": "基础提示",
+            "base_prompt_b": "基础提示B",
+            "art_direction": "艺术方向",
+            "subject_weight": "主题权重",
+            "custom_details": "自定义细节",
+            "year_era": "年代时期",
+            "negative_custom": "负面自定义",
+            "clip_skip": "片段跳过",
+            "lora_keywords": "LORA关键词"
+        },
+        "outputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "image_ref": "图像参考",
+            "positive_text": "正向文本",
+            "negative_text": "负向文本",
+            "token_count": "令牌计数"
+        },
+        "description": "v3.0 - 通用电影编码器。\n 可自动为 Flux/T5/Kolors 选择散文格式，为 SD1.5/SDXL 选择结构化格式。\n 支持场景氛围、A/B 提示、主题权重、实际令牌数量、艺术指导以及与建筑相关的负面因素。"
+    },
     "RadianceAIUpscale": {
-        "title": "RadianceAI放大",
+        "title": "Radiance AI放大",
         "inputs": {
             "image": "图像"
         },
