@@ -7612,6 +7612,68 @@
             "VIDEO": "生成视频"
         }
     },
+    "ReveImageCreateNode": {
+        "title": "Reve 文生图",
+        "inputs": {
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "model": "模型",
+            "aspect_ratio": "宽高比",
+            "test_time_scaling": "测试时间缩放",
+            "upscale": "放大",
+            "remove_background": "去除背景",
+            "seed": "种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "string": "字符串"
+        }
+    },
+    "ReveImageEditNode": {
+        "title": "Reve 图像编辑",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "aspect_ratio": "宽高比",
+            "test_time_scaling": "测试时间缩放",
+            "upscale": "放大",
+            "remove_background": "去除背景",
+            "seed": "种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "string": "字符串"
+        }
+    },
+    "ReveImageRemixNode": {
+        "title": "Reve 图像二创",
+        "inputs": {
+            "image_0": "图像0",
+            "image_1": "图像1",
+            "image_2": "图像2",
+            "image_3": "图像3",
+            "image_4": "图像4",
+            "image_5": "图像5"
+        },
+        "widgets": {
+            "model": "模型",
+            "aspect_ratio": "宽高比",
+            "test_time_scaling": "测试时间缩放",
+            "upscale": "放大",
+            "remove_background": "去除背景",
+            "seed": "种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "string": "字符串"
+        }
+    },
     "TextEncodeAceStepAudio": {
         "title": "ACE音频文本编码",
         "inputs": {
@@ -9807,6 +9869,17 @@
             "height": "高度"
         },
         "description": "根据纵横比和像素目标值计算宽度和高度。此操作有助于设定Latent的尺寸。"
+    },
+    "FluxKVCache": {
+        "title": "Flux KV 缓存",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {},
+        "outputs": {
+            "MODEL": "模型"
+        },
+        "description": "为 Flux 系列型号上的引用图像提供了 KV 缓存优化功能。"
     },
     "TemporalScoreRescaling": {
         "title": "TSR - 时序分数重缩放",
