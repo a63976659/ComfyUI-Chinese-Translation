@@ -26,12 +26,8 @@ CUR_PATH = Path(__file__).parent
 
 
 def load_config():
-    """
-    读取插件配置文件
-    返回: 包含 translation_enabled 和 locale 的字典
-    """
     config_path = CUR_PATH.joinpath("config.json")
-    default_config = {"translation_enabled": True, "locale": "zh-CN"}
+    default_config = {"translation_enabled": True, "locale": "zh-CN", "button_style": "gradient"}
     if config_path.exists():
         try:
             config_data = try_get_json(config_path)
@@ -160,8 +156,9 @@ async def set_config(request: web.Request):
         post = await request.post()
         enabled = post.get("translation_enabled", "true").lower() == "true"
         locale = post.get("locale", "zh-CN")
+        button_style = post.get("button_style", "gradient") # 获取样式配置
 
-        config_data = {"translation_enabled": enabled, "locale": locale}
+        config_data = {"translation_enabled": enabled, "locale": locale, "button_style": button_style}
         config_path = CUR_PATH.joinpath("config.json")
 
         with open(config_path, 'w', encoding='utf-8') as f:
