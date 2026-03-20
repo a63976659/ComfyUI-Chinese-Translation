@@ -9,7 +9,8 @@ export function error(...args) {
 
 export let currentConfig = {
     translation_enabled: true,
-    locale: "zh-CN"
+    locale: "zh-CN",
+    button_style: "gradient" // 新增：默认渐变，可选 "plain"
 };
 
 // 存储所有翻译后的目标文本集合，用于判断是否已翻译
@@ -53,8 +54,13 @@ async function loadConfig() {
         const response = await fetch("./translation_node/get_config");
         if (response.ok) {
             const config = await response.json();
+            
+            // 确保这三个变量都被正确同步到了前端内存中
             currentConfig.translation_enabled = config.translation_enabled;
             currentConfig.locale = config.locale || "zh-CN";
+            // 👇 新增这一行：启动时读取服务器保存的按钮样式
+            currentConfig.button_style = config.button_style || "gradient"; 
+            
             return currentConfig.translation_enabled;
         }
     } catch (e) {
@@ -63,11 +69,12 @@ async function loadConfig() {
     return true;
 }
 
-export async function saveConfig(enabled, locale = currentConfig.locale) {
+export async function saveConfig(enabled, locale = currentConfig.locale, button_style = currentConfig.button_style) {
     try {
         const formData = new FormData();
         formData.append('translation_enabled', enabled.toString());
         formData.append('locale', locale);
+        formData.append('button_style', button_style); // 传给后端
 
         const response = await fetch("./translation_node/set_config", {
             method: "POST",
@@ -79,6 +86,7 @@ export async function saveConfig(enabled, locale = currentConfig.locale) {
             if (result.success) {
                 currentConfig.translation_enabled = enabled;
                 currentConfig.locale = locale;
+                currentConfig.button_style = button_style;
                 return true;
             }
         }

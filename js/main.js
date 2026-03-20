@@ -477,6 +477,8 @@ export class TUtils {
       
       const translationEnabled = isTranslationEnabled();
       const locale = currentConfig.locale;
+      const isPlain = currentConfig.button_style === "plain"; // 判断是否为原生模式
+      
       const onText = `翻译开启 (${locale})`;
       const offText = `翻译关闭 (原生)`;
       
@@ -487,35 +489,53 @@ export class TUtils {
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
-        .translation-active {
+        /* 原有的七彩样式 */
+        .translation-active-gradient {
           background: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff80, #0080ff, #8000ff, #ff0080, #ff0000);
-          background-size: 400% 100%;
-          color: white; border: none; animation: flowEffect 8s ease infinite;
+          background-size: 400% 100%; color: white; border: none; animation: flowEffect 8s ease infinite;
           text-shadow: 0 1px 2px rgba(0,0,0,0.7); box-shadow: 0 0 8px rgba(255,255,255,0.3);
           transition: all 0.3s ease; font-weight: bold;
         }
-        .translation-inactive {
+        .translation-inactive-gradient {
           background: linear-gradient(90deg, #f0f0f0, #d0d0d0, #b0b0b0, #909090, #707070, #909090, #b0b0b0, #d0d0d0, #f0f0f0);
-          background-size: 300% 100%; color: #333; border: none;
-          animation: flowEffect 6s ease infinite; box-shadow: 0 0 5px rgba(0,0,0,0.2);
-          transition: all 0.3s ease; font-weight: bold;
+          background-size: 300% 100%; color: #333; border: none; animation: flowEffect 6s ease infinite;
+          box-shadow: 0 0 5px rgba(0,0,0,0.2); transition: all 0.3s ease; font-weight: bold;
         }
+        
+        /* ⬇️ 【修改这里】使用核心底层变量，抛弃带有延迟的 PrimeVue 变量 */
+        .translation-active-plain {
+          background-color: var(--comfy-menu-bg, #353535); 
+          color: var(--input-text, #ffffff);
+          border: 1px solid var(--border-color, #555555);
+          transition: all 0.2s ease;
+        }
+        .translation-inactive-plain {
+          background-color: var(--comfy-input-bg, #1e1e1e); 
+          color: var(--descrip-text, #888888);
+          border: 1px solid var(--border-color, #333333);
+          transition: all 0.2s ease;
+        }
+
         .translation-btn:hover {
-          transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.3); cursor: pointer;
+          transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.3); cursor: pointer; filter: brightness(1.1);
         }
         .translation-btn {
-          cursor: pointer; border-radius: 6px; padding: 6px 12px; font-size: 12px; border: 1px solid rgba(0,0,0,0.1);
+          cursor: pointer; border-radius: 6px; padding: 6px 12px; font-size: 12px;
         }
       `;
       document.head.appendChild(styleElem);
+
+      // 根据配置决定使用哪种 class
+      const activeClass = isPlain ? "translation-active-plain" : "translation-active-gradient";
+      const inactiveClass = isPlain ? "translation-inactive-plain" : "translation-inactive-gradient";
       
       if(document.querySelector(".comfy-menu") && !document.getElementById("toggle-translation-button")) {
         app.ui.menuContainer.appendChild(
           $el("button.translation-btn", {
             id: "toggle-translation-button",
             textContent: translationEnabled ? onText : offText,
-            className: translationEnabled ? "translation-btn translation-active" : "translation-btn translation-inactive",
-            style: { fontWeight: "bold", fontSize: "12px", padding: "6px 12px", borderRadius: "6px", margin: "2px" },
+            className: translationEnabled ? `translation-btn ${activeClass}` : `translation-btn ${inactiveClass}`,
+            style: { fontWeight: isPlain ? "normal" : "bold", margin: "2px" },
             title: translationEnabled ? "已开启翻译效果" : "已使用原生语言",
             onclick: async () => { await toggleTranslation(); },
           })
@@ -536,9 +556,9 @@ export class TUtils {
           
           if(btn.element) {
             btn.element.classList.add("translation-btn");
-            btn.element.classList.add(translationEnabled ? "translation-active" : "translation-inactive");
-            btn.element.style.fontWeight = "bold"; btn.element.style.fontSize = "12px";
-            btn.element.style.padding = "6px 12px"; btn.element.style.borderRadius = "6px"; btn.element.style.margin = "2px";
+            btn.element.classList.add(translationEnabled ? activeClass : inactiveClass);
+            btn.element.style.fontWeight = isPlain ? "normal" : "bold";
+            btn.element.style.margin = "2px";
           }
           
           var group = new ComfyButtonGroup(btn.element);
@@ -582,21 +602,67 @@ const ext = {
           if (locRes.ok) availableLocales = await locRes.json();
       } catch (e) {}
 
-      // 将语言选择器加入到原生设置菜单中
+      // ==========================================
+      // 【核心修复】：拦截 ComfyUI 初始化时的自动触发
+      // ==========================================
+      let isSettingsRegistered = false; 
+
+      // 1. 语言设置
       app.ui.settings.addSetting({
-        id: "🌐 Translation (翻译).Language",
+        id: "🌐Language翻译语言.Language",
         name: "🌐 Language settings for translation (翻译语言设置)",
         type: "combo",
         options: availableLocales,
         defaultValue: currentConfig.locale,
         onChange: async (newVal) => {
+          if (!isSettingsRegistered) return; // 拦截初始化死循环
+          
           if (newVal && newVal !== currentConfig.locale) {
-            await saveConfig(currentConfig.translation_enabled, newVal);
+            await saveConfig(currentConfig.translation_enabled, newVal, currentConfig.button_style);
             alert(`Language set to ${newVal}. The page will reload.`);
             location.reload();
           }
         }
       });
+
+      // 2. UI 风格设置
+      app.ui.settings.addSetting({
+        id: "🌐Language翻译语言.ButtonStyle",
+        name: "🎨 Button Style (翻译按钮样式)",
+        type: "combo",
+        options: ["gradient (七彩渐变)", "plain (原生低调)"],
+        defaultValue: currentConfig.button_style === "plain" ? "plain (原生低调)" : "gradient (七彩渐变)",
+        onChange: async (newVal) => {
+          if (!isSettingsRegistered) return; // 拦截初始化死循环
+          
+          const styleValue = newVal.startsWith("plain") ? "plain" : "gradient";
+          if (styleValue !== currentConfig.button_style) {
+            currentConfig.button_style = styleValue; // 更新内存变量
+            await saveConfig(currentConfig.translation_enabled, currentConfig.locale, styleValue);
+            
+            // 【核心修复】：动态修改 DOM 样式，无需刷新页面！
+            const btns = document.querySelectorAll(".translation-btn");
+            btns.forEach(btn => {
+              const isPlain = styleValue === "plain";
+              const isEnabled = currentConfig.translation_enabled;
+              
+              // 移除旧样式
+              btn.classList.remove("translation-active-gradient", "translation-inactive-gradient", "translation-active-plain", "translation-inactive-plain");
+              
+              // 赋予新样式
+              const activeClass = isPlain ? "translation-active-plain" : "translation-active-gradient";
+              const inactiveClass = isPlain ? "translation-inactive-plain" : "translation-inactive-gradient";
+              btn.classList.add(isEnabled ? activeClass : inactiveClass);
+              
+              // 切换字体粗细
+              btn.style.fontWeight = isPlain ? "normal" : "bold";
+            });
+          }
+        }
+      });
+
+      // 注册完成，放行后续的用户手动点击操作
+      isSettingsRegistered = true; 
 
       TUtils.enhandeDrawNodeWidgets();
       await TUtils.syncTranslation();
