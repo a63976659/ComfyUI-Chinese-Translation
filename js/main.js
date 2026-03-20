@@ -1,48 +1,36 @@
 /**
- * ComfyUI-Chinese-Translation 主逻辑模块
- * 负责翻译功能的核心实现，包括节点翻译、菜单翻译、上下文菜单翻译等
- * 管理翻译数据的同步和应用
+ * ComfyUI-Translation 主逻辑模块
  */
 
 import { app } from "../../../scripts/app.js";
 import { $el } from "../../../scripts/ui.js";
 import { applyMenuTranslation, observeFactory } from "./MenuTranslate.js";
 import {
-  containsChineseCharacters,
+  isAlreadyTranslatedText,
   isAlreadyTranslated,
   nativeTranslatedSettings,
   isTranslationEnabled,
   toggleTranslation,
   initConfig,
+  currentConfig,
+  translatedValueSet,
+  saveConfig,
   error
 } from "./utils.js";
 
-/**
- * 翻译工具类
- * 提供各种翻译相关的静态方法
- */
 export class TUtils {
-  // 翻译数据存储对象
   static T = {
     Menu: {},
     Nodes: {},
     NodeCategory: {},
   };
 
-  /**
-   * 同步翻译数据
-   * 从服务器获取最新的翻译数据并处理
-   * @param {Function} OnFinished 完成回调函数
-   */
   static async syncTranslation(OnFinished = () => {}) {
     try {
+      translatedValueSet.clear();
+      
       if (!isTranslationEnabled()) {
-        // 如果翻译被禁用，清空翻译数据并直接返回
-        TUtils.T = {
-          Menu: {},
-          Nodes: {},
-          NodeCategory: {},
-        };
+        TUtils.T = { Menu: {}, Nodes: {}, NodeCategory: {} };
         OnFinished();
         return;
       }
@@ -50,10 +38,8 @@ export class TUtils {
       try {
         const response = await fetch("./translation_node/get_translation", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: `locale=zh-CN`
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: `locale=${currentConfig.locale}`
         });
         
         if (!response.ok) {
@@ -65,23 +51,9 @@ export class TUtils {
           if (key in resp) TUtils.T[key] = resp[key];
           else TUtils.T[key] = {};
         }
-        
-        const isComfyUIChineseNative = document.documentElement.lang === 'zh-CN';
-        
-        if (isComfyUIChineseNative) {
-          const originalMenu = TUtils.T.Menu || {};
-          TUtils.T.Menu = {};
-          for (const key in originalMenu) {
-            if (!nativeTranslatedSettings.includes(key) && 
-                !nativeTranslatedSettings.includes(originalMenu[key]) &&
-                !containsChineseCharacters(key)) {
-              TUtils.T.Menu[key] = originalMenu[key];
-            }
-          }
-        } else {
-          // 将NodeCategory合并到Menu中 
-          TUtils.T.Menu = Object.assign(TUtils.T.Menu || {}, TUtils.T.NodeCategory || {});
-        }
+
+        // 合并分类到菜单中
+        TUtils.T.Menu = Object.assign(TUtils.T.Menu || {}, TUtils.T.NodeCategory || {});
         
         // 提取 Node 中 key 到 Menu
         for (let key in TUtils.T.Nodes) {
@@ -89,6 +61,26 @@ export class TUtils {
           if(node && node["title"]) {
             TUtils.T.Menu = TUtils.T.Menu || {};
             TUtils.T.Menu[key] = node["title"] || key;
+          }
+        }
+        
+        // ---- 构建判断用的 Set，提取所有字典内容 ----
+        for (const dict of [TUtils.T.Menu, TUtils.T.NodeCategory]) {
+          if (!dict) continue;
+          for (const val of Object.values(dict)) {
+            if (val && typeof val === 'string') translatedValueSet.add(val);
+          }
+        }
+        for (const nodeKey in TUtils.T.Nodes) {
+          const nodeDict = TUtils.T.Nodes[nodeKey];
+          if (!nodeDict) continue;
+          if (nodeDict.title && typeof nodeDict.title === 'string') translatedValueSet.add(nodeDict.title);
+          for (const cat of ['inputs', 'outputs', 'widgets']) {
+            if (nodeDict[cat]) {
+              for (const val of Object.values(nodeDict[cat])) {
+                 if (val && typeof val === 'string') translatedValueSet.add(val);
+              }
+            }
           }
         }
         
@@ -103,10 +95,6 @@ export class TUtils {
     }
   }
 
-  /**
-   * 增强节点小部件绘制功能
-   * 修改滑块控件的显示，在拖动时显示精确值
-   */
   static enhandeDrawNodeWidgets() {
     try {
       let drawNodeWidgets = LGraphCanvas.prototype.drawNodeWidgets;
@@ -136,11 +124,6 @@ export class TUtils {
     }
   }
 
-  /**
-   * 应用节点类型翻译
-   * 为特定节点类型应用标题翻译
-   * @param {string} nodeName 节点名称
-   */
   static applyNodeTypeTranslationEx(nodeName) {
     try {
       let nodesT = this.T.Nodes;
@@ -149,7 +132,7 @@ export class TUtils {
       
       let class_type = nodeType.comfyClass ? nodeType.comfyClass : nodeType.type;
       if (nodesT.hasOwnProperty(class_type)) {
-        const hasNativeTranslation = nodeType.title && containsChineseCharacters(nodeType.title);
+        const hasNativeTranslation = nodeType.title && isAlreadyTranslatedText(nodeType.title);
         if (!hasNativeTranslation && nodesT[class_type]["title"]) {
           nodeType.title = nodesT[class_type]["title"];
         }
@@ -159,17 +142,12 @@ export class TUtils {
     }
   }
 
-  /**
-   * 应用Vue节点显示名称翻译
-   * 为Vue组件节点应用显示名称翻译
-   * @param {Object} nodeDef 节点定义对象
-   */
   static applyVueNodeDisplayNameTranslation(nodeDef) {
     try {
       const nodesT = TUtils.T.Nodes;
       const class_type = nodeDef.name;
       if (nodesT.hasOwnProperty(class_type)) {
-        const hasNativeTranslation = nodeDef.display_name && containsChineseCharacters(nodeDef.display_name);
+        const hasNativeTranslation = nodeDef.display_name && isAlreadyTranslatedText(nodeDef.display_name);
         if (!hasNativeTranslation && nodesT[class_type]["title"]) {
           nodeDef.display_name = nodesT[class_type]["title"];
         }
@@ -179,11 +157,6 @@ export class TUtils {
     }
   }
 
-  /**
-   * 应用Vue节点分类翻译
-   * 为Vue组件节点应用分类路径翻译
-   * @param {Object} nodeDef 节点定义对象
-   */
   static applyVueNodeTranslation(nodeDef) {
     try {
       const catsT = TUtils.T.NodeCategory;
@@ -195,15 +168,9 @@ export class TUtils {
     }
   }
 
-  /**
-   * 应用所有节点类型翻译
-   * 遍历所有注册的节点类型并应用翻译
-   * @param {Object} app 应用实例
-   */
   static applyNodeTypeTranslation(app) {
     try {
       if (!isTranslationEnabled()) return;
-      
       for (let nodeName in LiteGraph.registered_node_types) {
         this.applyNodeTypeTranslationEx(nodeName);
       }
@@ -212,12 +179,6 @@ export class TUtils {
     }
   }
 
-  /**
-   * 检查项目是否需要翻译
-   * 判断项目是否已经被翻译或包含中文
-   * @param {Object} item 要检查的项目
-   * @returns {boolean} 是否需要翻译
-   */
   static needsTranslation(item) {
     if (!item || !item.hasOwnProperty("name")) return false;
     
@@ -225,22 +186,15 @@ export class TUtils {
       return false;
     }
     
-    if (containsChineseCharacters(item.name)) {
+    if (isAlreadyTranslatedText(item.name)) {
       return false;
     }
     
     return true;
   }
 
-  /**
-   * 安全应用翻译
-   * 在确保需要翻译的情况下应用翻译，并保存原始名称
-   * @param {Object} item 要翻译的项目
-   * @param {string} translation 翻译文本
-   */
   static safeApplyTranslation(item, translation) {
     if (this.needsTranslation(item) && translation) {
-      // 保存原始名称
       if (!item._original_name) {
         item._original_name = item.name;
       }
@@ -248,62 +202,36 @@ export class TUtils {
     }
   }
 
-  /**
-   * 还原原始翻译
-   * 将项目的标签还原为原始名称
-   * @param {Object} item 要还原的项目
-   */
   static restoreOriginalTranslation(item) {
     if (item._original_name) {
       item.label = item._original_name;
       delete item._original_name;
     } else if (item.label && item.name) {
-      // 如果没有保存原始名称，则使用name作为fallback
       item.label = item.name;
     }
   }
 
-  /**
-   * 应用节点翻译
-   * 为单个节点应用输入、输出、小部件和标题的翻译
-   * @param {Object} node 节点实例
-   */
   static applyNodeTranslation(node) {
     try {
-      // 基本验证
-      if (!node) {
-        error("applyNodeTranslation: 节点为空");
-        return;
-      }
-      
-      if (!node.constructor) {
-        error("applyNodeTranslation: 节点构造函数为空");
-        return;
-      }
+      if (!node || !node.constructor) return;
 
       let keys = ["inputs", "outputs", "widgets"];
       let nodesT = this.T.Nodes;
       let class_type = node.constructor.comfyClass ? node.constructor.comfyClass : node.constructor.type;
       
-      if (!class_type) {
-        error("applyNodeTranslation: 无法获取节点类型");
-        return;
-      }
+      if (!class_type) return;
 
       if (!isTranslationEnabled()) {
-        // 如果翻译被禁用，还原所有翻译
         for (let key of keys) {
           if (!node.hasOwnProperty(key)) continue;
           if (!node[key] || !Array.isArray(node[key])) continue;
           node[key].forEach((item) => {
-            // 只还原那些确实被我们翻译过的项目（有_original_name标记的）
             if (item._original_name) {
               this.restoreOriginalTranslation(item);
             }
           });
         }
         
-        // 还原标题 - 只还原那些确实被我们翻译过的标题
         if (node._original_title && !node._translation_custom_title) {
           node.title = node._original_title;
           node.constructor.title = node._original_title;
@@ -325,10 +253,7 @@ export class TUtils {
         node[key].forEach((item) => {
           if (!item || !item.name) return;
           if (item.name in t[key]) {
-            // 检查是否有原生翻译
-            const hasNativeTranslation = item.label && containsChineseCharacters(item.label) && !item._original_name;
-            
-            // 如果没有原生翻译，才应用我们的翻译
+            const hasNativeTranslation = item.label && isAlreadyTranslatedText(item.label) && !item._original_name;
             if (!hasNativeTranslation) {
               this.safeApplyTranslation(item, t[key][item.name]);
             }
@@ -337,12 +262,11 @@ export class TUtils {
       }
       
       if (t.hasOwnProperty("title")) {
-        const hasNativeTranslation = node.title && containsChineseCharacters(node.title);
+        const hasNativeTranslation = node.title && isAlreadyTranslatedText(node.title);
         const isCustomizedTitle = node._translation_custom_title || 
           (node.title && node.title !== (node.constructor.comfyClass || node.constructor.type) && node.title !== t["title"]);
         
         if (!isCustomizedTitle && !hasNativeTranslation) {
-          // 保存原始标题
           if (!node._original_title) {
             node._original_title = node.constructor.comfyClass || node.constructor.type;
           }
@@ -351,7 +275,6 @@ export class TUtils {
         }
       }
       
-      // 转换 widget 到 input 时需要刷新socket信息
       let addInput = node.addInput;
       node.addInput = function (name, type, extra_info) {
         var oldInputs = [];
@@ -389,19 +312,9 @@ export class TUtils {
     }
   }
 
-  /**
-   * 应用节点描述翻译
-   * 为节点描述、工具提示等应用翻译
-   * @param {Object} nodeType 节点类型
-   * @param {Object} nodeData 节点数据
-   * @param {Object} app 应用实例
-   */
   static applyNodeDescTranslation(nodeType, nodeData, app) {
     try {
-      // 如果翻译被禁用，直接返回
-      if (!isTranslationEnabled()) {
-        return;
-      }
+      if (!isTranslationEnabled()) return;
       
       let nodesT = this.T.Nodes;
       var t = nodesT[nodeType.comfyClass];
@@ -434,18 +347,11 @@ export class TUtils {
     }
   }
 
-  /**
-   * 应用菜单翻译
-   * 翻译主界面菜单和队列大小显示
-   * @param {Object} app 应用实例
-   */
   static applyMenuTranslation(app) {
     try {
       if (!isTranslationEnabled()) return;
-      
       applyMenuTranslation(TUtils.T);
       
-      // Queue size 单独处理
       const dragHandle = app.ui.menuContainer.querySelector(".drag-handle");
       if (dragHandle && dragHandle.childNodes[1]) {
         observeFactory(dragHandle.childNodes[1], (mutationsList, observer) => {
@@ -465,16 +371,10 @@ export class TUtils {
     }
   }
 
-  /**
-   * 应用上下文菜单翻译
-   * 翻译右键菜单和节点上下文菜单
-   * @param {Object} app 应用实例
-   */
   static applyContextMenuTranslation(app) {
     try {
       if (!isTranslationEnabled()) return;
       
-      // 右键上下文菜单
       var f = LGraphCanvas.prototype.getCanvasMenuOptions;
       LGraphCanvas.prototype.getCanvasMenuOptions = function () {
         var res = f.apply(this, arguments);
@@ -547,7 +447,6 @@ export class TUtils {
             continue;
           }
         }
-
         const ctx = f2.call(this, values, options);
         return ctx;
       };
@@ -557,11 +456,6 @@ export class TUtils {
     }
   }
 
-  /**
-   * 添加节点定义注册回调
-   * 在节点注册时自动应用翻译
-   * @param {Object} app 应用实例
-   */
   static addRegisterNodeDefCB(app) {
     try {
       const f = app.registerNodeDef;
@@ -577,117 +471,74 @@ export class TUtils {
     }
   }
 
-  /**
-   * 添加面板按钮
-   * 在界面上添加翻译切换按钮
-   * @param {Object} app 应用实例
-   */
   static addPanelButtons(app) {
     try {
       if(document.getElementById("toggle-translation-button")) return;
       
       const translationEnabled = isTranslationEnabled();
+      const locale = currentConfig.locale;
+      const onText = `翻译开启 (${locale})`;
+      const offText = `翻译关闭 (原生)`;
       
-      // 创建样式元素，添加按钮动画效果
       const styleElem = document.createElement('style');
       styleElem.textContent = `
         @keyframes flowEffect {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
         }
-        
         .translation-active {
           background: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff80, #0080ff, #8000ff, #ff0080, #ff0000);
           background-size: 400% 100%;
-          color: white;
-          border: none;
-          animation: flowEffect 8s ease infinite;
-          text-shadow: 0 1px 2px rgba(0,0,0,0.7);
-          box-shadow: 0 0 8px rgba(255,255,255,0.3);
-          transition: all 0.3s ease;
-          font-weight: bold;
+          color: white; border: none; animation: flowEffect 8s ease infinite;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.7); box-shadow: 0 0 8px rgba(255,255,255,0.3);
+          transition: all 0.3s ease; font-weight: bold;
         }
-        
         .translation-inactive {
           background: linear-gradient(90deg, #f0f0f0, #d0d0d0, #b0b0b0, #909090, #707070, #909090, #b0b0b0, #d0d0d0, #f0f0f0);
-          background-size: 300% 100%;
-          color: #333;
-          border: none;
-          animation: flowEffect 6s ease infinite;
-          box-shadow: 0 0 5px rgba(0,0,0,0.2);
-          transition: all 0.3s ease;
-          font-weight: bold;
+          background-size: 300% 100%; color: #333; border: none;
+          animation: flowEffect 6s ease infinite; box-shadow: 0 0 5px rgba(0,0,0,0.2);
+          transition: all 0.3s ease; font-weight: bold;
         }
-        
         .translation-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-          cursor: pointer;
+          transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.3); cursor: pointer;
         }
-
         .translation-btn {
-          cursor: pointer;
-          border-radius: 6px;
-          padding: 6px 12px;
-          font-size: 12px;
-          border: 1px solid rgba(0,0,0,0.1);
+          cursor: pointer; border-radius: 6px; padding: 6px 12px; font-size: 12px; border: 1px solid rgba(0,0,0,0.1);
         }
       `;
       document.head.appendChild(styleElem);
       
-      // 添加旧版UI的切换按钮
       if(document.querySelector(".comfy-menu") && !document.getElementById("toggle-translation-button")) {
         app.ui.menuContainer.appendChild(
           $el("button.translation-btn", {
             id: "toggle-translation-button",
-            textContent: translationEnabled ? "汉化已开启" : "汉化已关闭",
+            textContent: translationEnabled ? onText : offText,
             className: translationEnabled ? "translation-btn translation-active" : "translation-btn translation-inactive",
-            style: {
-              fontWeight: "bold",
-              fontSize: "12px",
-              padding: "6px 12px",
-              borderRadius: "6px",
-              margin: "2px",
-            },
-            title: translationEnabled ? "已开启汉化效果" : "已使用原生语言",
-            onclick: async () => {
-              await toggleTranslation();
-            },
+            style: { fontWeight: "bold", fontSize: "12px", padding: "6px 12px", borderRadius: "6px", margin: "2px" },
+            title: translationEnabled ? "已开启翻译效果" : "已使用原生语言",
+            onclick: async () => { await toggleTranslation(); },
           })
         );
       }
       
-      // 添加新版UI的切换按钮
       try {
         if(window?.comfyAPI?.button?.ComfyButton && window?.comfyAPI?.buttonGroup?.ComfyButtonGroup) {
           var ComfyButtonGroup = window.comfyAPI.buttonGroup.ComfyButtonGroup;
           var ComfyButton = window.comfyAPI.button.ComfyButton;
           
           var btn = new ComfyButton({
-            action: async () => {
-              await toggleTranslation();
-            },
-            tooltip: translationEnabled ? "已开启汉化效果" : "已使用原生语言",
-            content: translationEnabled ? "汉化已开启" : "汉化已关闭",
+            action: async () => { await toggleTranslation(); },
+            tooltip: translationEnabled ? "已开启翻译效果" : "已使用原生语言",
+            content: translationEnabled ? onText : offText,
             classList: "toggle-translation-button"
           });
           
-          // 设置按钮样式
           if(btn.element) {
             btn.element.classList.add("translation-btn");
             btn.element.classList.add(translationEnabled ? "translation-active" : "translation-inactive");
-            btn.element.style.fontWeight = "bold";
-            btn.element.style.fontSize = "12px";
-            btn.element.style.padding = "6px 12px";
-            btn.element.style.borderRadius = "6px";
-            btn.element.style.margin = "2px";
+            btn.element.style.fontWeight = "bold"; btn.element.style.fontSize = "12px";
+            btn.element.style.padding = "6px 12px"; btn.element.style.borderRadius = "6px"; btn.element.style.margin = "2px";
           }
           
           var group = new ComfyButtonGroup(btn.element);
@@ -703,26 +554,12 @@ export class TUtils {
     }
   }
 
-  /**
-   * 添加节点标题监控
-   * 监控节点标题变化，标记自定义标题
-   * @param {Object} app 应用实例
-   */
   static addNodeTitleMonitoring(app) {
     try {
-      if (typeof LGraphNode === 'undefined') {
-        error("LGraphNode未定义，无法设置标题监听");
-        return;
-      }
-      
-      const originalSetTitle = LGraphNode.prototype.setTitle || function(title) {
-        this.title = title;
-      };
-      
+      if (typeof LGraphNode === 'undefined') return;
+      const originalSetTitle = LGraphNode.prototype.setTitle || function(title) { this.title = title; };
       LGraphNode.prototype.setTitle = function(title) {
-        if (title && title !== this.constructor.title) {
-          this._translation_custom_title = true;
-        }
+        if (title && title !== this.constructor.title) { this._translation_custom_title = true; }
         return originalSetTitle.call(this, title);
       };
     } catch (e) {
@@ -731,20 +568,36 @@ export class TUtils {
   }
 }
 
-/**
- * ComfyUI 扩展定义
- * 注册翻译插件的各种生命周期回调
- */
 const ext = {
   name: "ComfyUI.TranslationNode",
   
-  /**
-   * 初始化扩展
-   * 加载配置并同步翻译数据
-   */
   async init(app) {
     try {
       await initConfig();
+
+      // 请求获取服务器上的语言列表
+      let availableLocales = ["zh-CN", "en_US"];
+      try {
+          const locRes = await fetch("./translation_node/get_locales");
+          if (locRes.ok) availableLocales = await locRes.json();
+      } catch (e) {}
+
+      // 将语言选择器加入到原生设置菜单中
+      app.ui.settings.addSetting({
+        id: "🌐 Translation (翻译).Language",
+        name: "🌐 Language settings for translation (翻译语言设置)",
+        type: "combo",
+        options: availableLocales,
+        defaultValue: currentConfig.locale,
+        onChange: async (newVal) => {
+          if (newVal && newVal !== currentConfig.locale) {
+            await saveConfig(currentConfig.translation_enabled, newVal);
+            alert(`Language set to ${newVal}. The page will reload.`);
+            location.reload();
+          }
+        }
+      });
+
       TUtils.enhandeDrawNodeWidgets();
       await TUtils.syncTranslation();
     } catch (e) {
@@ -752,24 +605,14 @@ const ext = {
     }
   },
   
-  /**
-   * 设置扩展
-   * 应用各种翻译并添加界面元素
-   */
   async setup(app) {
     try {      
-      const isComfyUIChineseNative = document.documentElement.lang === 'zh-CN';
-      
       TUtils.addNodeTitleMonitoring(app);
       
       if (isTranslationEnabled()) {
         TUtils.applyNodeTypeTranslation(app);
         TUtils.applyContextMenuTranslation(app);
-        
-        if (!isComfyUIChineseNative) {
-          TUtils.applyMenuTranslation(app);
-        }
-        
+        TUtils.applyMenuTranslation(app);
         TUtils.addRegisterNodeDefCB(app);
       }
       
@@ -779,10 +622,6 @@ const ext = {
     }
   },
   
-  /**
-   * 注册节点定义前处理
-   * 应用节点描述和工具提示翻译
-   */
   async beforeRegisterNodeDef(nodeType, nodeData, app) {
     try {
       TUtils.applyNodeDescTranslation(nodeType, nodeData, app);
@@ -791,17 +630,9 @@ const ext = {
     }
   },
   
-  /**
-   * 注册Vue应用节点定义前处理
-   * 应用Vue节点的显示名称和分类翻译
-   */
   beforeRegisterVueAppNodeDefs(nodeDefs) {
     try {
-      // 如果翻译被禁用，直接返回
-      if (!isTranslationEnabled()) {
-        return;
-      }
-      
+      if (!isTranslationEnabled()) return;
       nodeDefs.forEach(TUtils.applyVueNodeDisplayNameTranslation);
       nodeDefs.forEach(TUtils.applyVueNodeTranslation);
     } catch (e) {
@@ -809,36 +640,23 @@ const ext = {
     }
   },
   
-  /**
-   * 加载图表节点处理
-   * 为已加载的图表节点应用翻译
-   */
   loadedGraphNode(node, app) {
     try {
       const originalTitle = node.constructor.comfyClass || node.constructor.type;
       const nodeT = TUtils.T.Nodes[originalTitle];
       const translatedTitle = nodeT?.title;
       
-      if (node.title && 
-          node.title !== originalTitle && 
-          node.title !== translatedTitle) {
+      if (node.title && node.title !== originalTitle && node.title !== translatedTitle) {
         node._translation_custom_title = true;
       }
-      
-      // 无论翻译是否启用都调用，让方法内部判断
       TUtils.applyNodeTranslation(node);
     } catch (e) {
       error(`加载图表节点处理失败 (${node?.title || '未知'}):`, e);
     }
   },
   
-  /**
-   * 创建节点处理
-   * 为新创建的节点应用翻译
-   */
   nodeCreated(node, app) {
     try {
-      // 无论翻译是否启用都调用，让方法内部判断
       TUtils.applyNodeTranslation(node);
     } catch (e) {
       error(`创建节点处理失败 (${node?.title || '未知'}):`, e);
@@ -846,5 +664,4 @@ const ext = {
   },
 };
 
-// 注册扩展到ComfyUI
 app.registerExtension(ext);
