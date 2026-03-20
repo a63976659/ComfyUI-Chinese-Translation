@@ -1,7 +1,7 @@
 """
-ComfyUI-Chinese-Translation 插件主初始化文件
-主要功能：提供翻译服务的后端API，管理翻译配置和资源文件
-版本: 1
+ComfyUI-Translation 插件主初始化文件
+主要功能：提供多语言翻译服务的后端API，管理翻译配置和资源文件
+版本: 2.0 (多国语言版)
 """
 
 import os
@@ -16,7 +16,7 @@ from aiohttp import web
 from pathlib import Path
 
 # 插件版本信息
-VERSION = "1"
+VERSION = "2.0"
 # 插件名称
 ADDON_NAME = "ComfyUI-Chinese-Translation"
 # ComfyUI 主程序路径
@@ -24,30 +24,28 @@ COMFY_PATH = Path(folder_paths.__file__).parent
 # 当前插件路径
 CUR_PATH = Path(__file__).parent
 
+
 def load_config():
     """
     读取插件配置文件
-    返回: 翻译是否启用的布尔值
+    返回: 包含 translation_enabled 和 locale 的字典
     """
     config_path = CUR_PATH.joinpath("config.json")
+    default_config = {"translation_enabled": True, "locale": "zh-CN"}
     if config_path.exists():
         try:
             config_data = try_get_json(config_path)
-            return config_data.get("translation_enabled", True)
+            default_config.update(config_data)
         except Exception:
-            return True
-    return True
+            pass
+    return default_config
 
-# 全局配置变量 - 存储翻译启用状态
-TRANSLATION_ENABLED = load_config()
+# 全局配置变量 - 存储翻译启用状态和当前语言
+GLOBAL_CONFIG = load_config()
 
 
 def try_get_json(path: Path):
-    """
-    尝试使用不同编码读取JSON文件
-    参数: path - 文件路径
-    返回: 解析后的JSON数据字典
-    """
+    """尝试使用不同编码读取JSON文件"""
     for coding in ["utf-8", "gbk"]:
         try:
             return json.loads(path.read_text(encoding=coding))
@@ -57,14 +55,9 @@ def try_get_json(path: Path):
 
 
 def get_nodes_translation(locale):
-    """
-    获取指定语言的节点翻译数据
-    参数: locale - 语言代码 (如: zh-CN, en_US)
-    返回: 节点翻译字典
-    """
     path = CUR_PATH.joinpath(locale, "Nodes")
     if not path.exists():
-        path = CUR_PATH.joinpath("en_US")
+        path = CUR_PATH.joinpath("en_US", "Nodes")
     if not path.exists():
         return {}
     translations = {}
@@ -74,11 +67,6 @@ def get_nodes_translation(locale):
 
 
 def get_category_translation(locale):
-    """
-    获取指定语言的节点分类翻译数据
-    参数: locale - 语言代码
-    返回: 分类翻译字典
-    """
     cats = {}
     for cat_json in CUR_PATH.joinpath(locale, "Categories").glob("*.json"):
         cats.update(try_get_json(cat_json))
@@ -91,11 +79,6 @@ def get_category_translation(locale):
 
 
 def get_menu_translation(locale):
-    """
-    获取指定语言的菜单翻译数据
-    参数: locale - 语言代码
-    返回: 菜单翻译字典
-    """
     menus = {}
     for menu_json in CUR_PATH.joinpath(locale, "Menus").glob("*.json"):
         menus.update(try_get_json(menu_json))
@@ -108,11 +91,6 @@ def get_menu_translation(locale):
 
 
 def compile_translation(locale):
-    """
-    编译指定语言的完整翻译数据
-    参数: locale - 语言代码
-    返回: 包含节点、分类、菜单翻译的JSON字符串
-    """
     nodes_translation = get_nodes_translation(locale)
     node_category_translation = get_category_translation(locale)
     menu_translation = get_menu_translation(locale)
@@ -125,31 +103,38 @@ def compile_translation(locale):
 
 
 def compress_json(data, method="gzip"):
-    """
-    压缩JSON数据
-    参数: data - 要压缩的数据, method - 压缩方法
-    返回: 压缩后的数据
-    """
     if method == "gzip":
         import gzip
         return gzip.compress(data.encode("utf-8"))
     return data
 
 
+@server.PromptServer.instance.routes.get("/translation_node/get_locales")
+async def get_locales(request: web.Request):
+    """
+    API端点: 获取支持的语言列表
+    扫描插件目录，返回所有包含语言文件的文件夹名称
+    """
+    locales = []
+    for item in CUR_PATH.iterdir():
+        if item.is_dir() and item.name not in [".git", "js", "__pycache__"]:
+            # 简单判断该目录下是否有 Nodes, Categories 或 Menu.json
+            if item.joinpath("Nodes").exists() or item.joinpath("Menu.json").exists() or item.joinpath("NodeCategory.json").exists():
+                locales.append(item.name)
+    if not locales:
+        locales = ["en_US", "zh-CN"]
+    return web.Response(status=200, body=json.dumps(locales), headers={"Content-Type": "application/json"})
+
+
 @server.PromptServer.instance.routes.post("/translation_node/get_translation")
 async def get_translation(request: web.Request):
-    """
-    API端点: 获取翻译数据
-    处理前端请求，返回指定语言的翻译数据
-    """
     post = await request.post()
-    locale = post.get("locale", "en_US")
+    locale = post.get("locale", GLOBAL_CONFIG.get("locale", "zh-CN"))
     accept_encoding = request.headers.get("Accept-Encoding", "")
     json_data = "{}"
     headers = {}
 
-    # 实时检查配置文件中的翻译开关
-    current_enabled = load_config()
+    current_enabled = GLOBAL_CONFIG.get("translation_enabled", True)
     if not current_enabled:
         return web.Response(status=200, body=json_data, headers=headers)
 
@@ -166,48 +151,31 @@ async def get_translation(request: web.Request):
 
 @server.PromptServer.instance.routes.get("/translation_node/get_config")
 async def get_config(request: web.Request):
-    """
-    API端点: 获取插件配置
-    返回当前的翻译启用状态
-    """
-    current_enabled = load_config()
-    config_data = {"translation_enabled": current_enabled}
-    return web.Response(status=200, body=json.dumps(config_data), headers={"Content-Type": "application/json"})
+    return web.Response(status=200, body=json.dumps(GLOBAL_CONFIG), headers={"Content-Type": "application/json"})
 
 
 @server.PromptServer.instance.routes.post("/translation_node/set_config")
 async def set_config(request: web.Request):
-    """
-    API端点: 设置插件配置
-    更新翻译启用状态并保存到配置文件
-    """
     try:
         post = await request.post()
         enabled = post.get("translation_enabled", "true").lower() == "true"
+        locale = post.get("locale", "zh-CN")
 
-        # 更新配置文件
+        config_data = {"translation_enabled": enabled, "locale": locale}
         config_path = CUR_PATH.joinpath("config.json")
-        config_data = {"translation_enabled": enabled}
 
         with open(config_path, 'w', encoding='utf-8') as f:
             json.dump(config_data, f, indent=2, ensure_ascii=False)
 
-        # 更新全局变量
-        global TRANSLATION_ENABLED
-        TRANSLATION_ENABLED = enabled
+        global GLOBAL_CONFIG
+        GLOBAL_CONFIG = config_data
 
-        return web.Response(status=200, body=json.dumps({"success": True, "translation_enabled": enabled}),
-                          headers={"Content-Type": "application/json"})
+        return web.Response(status=200, body=json.dumps({"success": True, "config": config_data}), headers={"Content-Type": "application/json"})
     except Exception as e:
-        return web.Response(status=500, body=json.dumps({"success": False, "error": str(e)}),
-                          headers={"Content-Type": "application/json"})
+        return web.Response(status=500, body=json.dumps({"success": False, "error": str(e)}), headers={"Content-Type": "application/json"})
 
 
 def rmtree(path: Path):
-    """
-    递归删除目录或文件
-    参数: path - 要删除的路径
-    """
     if not path.exists():
         return
     if Path(path.resolve()).as_posix() != path.as_posix():
@@ -232,10 +200,6 @@ def rmtree(path: Path):
 
 
 def register():
-    """
-    注册插件到ComfyUI系统
-    创建符号链接或复制文件到web扩展目录
-    """
     import nodes
     translation_node_ext_path = COMFY_PATH.joinpath("web", "extensions", ADDON_NAME)
     if hasattr(nodes, "EXTENSION_WEB_DIRS"):
@@ -256,23 +220,15 @@ def register():
 
 
 def unregister():
-    """
-    注销插件
-    清理web扩展目录中的插件文件
-    """
     translation_node_ext_path = COMFY_PATH.joinpath("web", "extensions", ADDON_NAME)
     try:
         rmtree(translation_node_ext_path)
     except BaseException:
         pass
 
-
-# 注册插件
 register()
-# 注册退出时的清理函数
 atexit.register(unregister)
 
-# ComfyUI 插件标准导出
 NODE_CLASS_MAPPINGS = {}
 WEB_DIRECTORY = "./js"
 
