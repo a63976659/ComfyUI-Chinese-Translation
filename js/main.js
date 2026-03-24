@@ -477,7 +477,28 @@ export class TUtils {
       
       const translationEnabled = isTranslationEnabled();
       const locale = currentConfig.locale;
-      const isPlain = currentConfig.button_style === "plain"; // 判断是否为原生模式
+      
+      // ⬇️【核心修复】：正确解析 ComfyUI 的全局设置 JSON 对象，保证万无一失
+      let isPlain = false;
+      try {
+        // 方法 1: 使用 ComfyUI 官方 API 获取设置 (推荐)
+        let savedStyle = app?.ui?.settings?.getSettingValue?.("🌐Language翻译语言.ButtonStyle");
+        
+        // 方法 2: 兜底机制，如果 API 没就绪，直接剥析 localStorage 底层数据
+        if (!savedStyle) {
+          const settingsStr = localStorage.getItem("Comfy.Settings");
+          if (settingsStr) {
+            const settingsObj = JSON.parse(settingsStr);
+            savedStyle = settingsObj["🌐Language翻译语言.ButtonStyle"];
+          }
+        }
+        
+        if (savedStyle && typeof savedStyle === "string") {
+          isPlain = savedStyle.includes("plain");
+        }
+      } catch(e) {
+        console.warn("读取按钮样式配置失败，采用默认值", e);
+      }
       
       const onText = `翻译开启 (${locale})`;
       const offText = `翻译关闭 (原生)`;
@@ -502,7 +523,7 @@ export class TUtils {
           box-shadow: 0 0 5px rgba(0,0,0,0.2); transition: all 0.3s ease; font-weight: bold;
         }
         
-        /* ⬇️ 【修改这里】使用核心底层变量，抛弃带有延迟的 PrimeVue 变量 */
+        /* 使用核心底层变量，抛弃带有延迟的 PrimeVue 变量 */
         .translation-active-plain {
           background-color: var(--comfy-menu-bg, #353535); 
           color: var(--input-text, #ffffff);
@@ -602,9 +623,6 @@ const ext = {
           if (locRes.ok) availableLocales = await locRes.json();
       } catch (e) {}
 
-      // ==========================================
-      // 【核心修复】：拦截 ComfyUI 初始化时的自动触发
-      // ==========================================
       let isSettingsRegistered = false; 
 
       // 1. 语言设置
@@ -615,7 +633,7 @@ const ext = {
         options: availableLocales,
         defaultValue: currentConfig.locale,
         onChange: async (newVal) => {
-          if (!isSettingsRegistered) return; // 拦截初始化死循环
+          if (!isSettingsRegistered) return; 
           
           if (newVal && newVal !== currentConfig.locale) {
             await saveConfig(currentConfig.translation_enabled, newVal, currentConfig.button_style);
@@ -625,43 +643,33 @@ const ext = {
         }
       });
 
-      // 2. UI 风格设置
+      // 2. UI 风格设置 (纯前端本地存储)
       app.ui.settings.addSetting({
         id: "🌐Language翻译语言.ButtonStyle",
         name: "🎨 Button Style (翻译按钮样式)",
         type: "combo",
         options: ["gradient (七彩渐变)", "plain (原生低调)"],
-        defaultValue: currentConfig.button_style === "plain" ? "plain (原生低调)" : "gradient (七彩渐变)",
-        onChange: async (newVal) => {
-          if (!isSettingsRegistered) return; // 拦截初始化死循环
+        defaultValue: "gradient (七彩渐变)", 
+        onChange: (newVal) => {
+          if (!isSettingsRegistered) return; 
           
-          const styleValue = newVal.startsWith("plain") ? "plain" : "gradient";
-          if (styleValue !== currentConfig.button_style) {
-            currentConfig.button_style = styleValue; // 更新内存变量
-            await saveConfig(currentConfig.translation_enabled, currentConfig.locale, styleValue);
+          const isPlain = newVal.includes("plain");
+          
+          const btns = document.querySelectorAll(".translation-btn");
+          btns.forEach(btn => {
+            const isEnabled = currentConfig.translation_enabled;
             
-            // 【核心修复】：动态修改 DOM 样式，无需刷新页面！
-            const btns = document.querySelectorAll(".translation-btn");
-            btns.forEach(btn => {
-              const isPlain = styleValue === "plain";
-              const isEnabled = currentConfig.translation_enabled;
-              
-              // 移除旧样式
-              btn.classList.remove("translation-active-gradient", "translation-inactive-gradient", "translation-active-plain", "translation-inactive-plain");
-              
-              // 赋予新样式
-              const activeClass = isPlain ? "translation-active-plain" : "translation-active-gradient";
-              const inactiveClass = isPlain ? "translation-inactive-plain" : "translation-inactive-gradient";
-              btn.classList.add(isEnabled ? activeClass : inactiveClass);
-              
-              // 切换字体粗细
-              btn.style.fontWeight = isPlain ? "normal" : "bold";
-            });
-          }
+            btn.classList.remove("translation-active-gradient", "translation-inactive-gradient", "translation-active-plain", "translation-inactive-plain");
+            
+            const activeClass = isPlain ? "translation-active-plain" : "translation-active-gradient";
+            const inactiveClass = isPlain ? "translation-inactive-plain" : "translation-inactive-gradient";
+            btn.classList.add(isEnabled ? activeClass : inactiveClass);
+            
+            btn.style.fontWeight = isPlain ? "normal" : "bold";
+          });
         }
       });
 
-      // 注册完成，放行后续的用户手动点击操作
       isSettingsRegistered = true; 
 
       TUtils.enhandeDrawNodeWidgets();
