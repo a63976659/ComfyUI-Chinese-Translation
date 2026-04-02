@@ -1,0 +1,611 @@
+{
+    "GreyScale": {
+        "title": "灰度",
+        "inputs": {
+            "IMAGE": "图像"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "Equalize": {
+        "title": "直方图均衡化",
+        "inputs": {
+            "IMAGE": "图像"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "AutoContrast": {
+        "title": "自动对比度",
+        "inputs": {
+            "IMAGE": "图像"
+        },
+        "widgets": {
+            "cutoff": "cutoff",
+            "min_value": "最小值"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ResizeFactor": {
+        "title": "调整大小因子",
+        "inputs": {
+            "IMAGE": "图像",
+            "resampler": "重采样器"
+        },
+        "widgets": {
+            "factor": "因子"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "BlendImages": {
+        "title": "图像混合",
+        "inputs": {
+            "IMAGE_A": "图像A",
+            "IMAGE_B": "图像B",
+            "size_mode": "尺寸模式"
+        },
+        "widgets": {
+            "blend": "混合"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "GaussianBlur": {
+        "title": "高斯模糊",
+        "inputs": {
+            "IMAGE": "图像"
+        },
+        "widgets": {
+            "blur_radius": "模糊半径"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "PowerImage": {
+        "title": "幂图像",
+        "inputs": {
+            "IMAGE": "图像",
+            "mode": "模式"
+        },
+        "widgets": {
+            "power_of": "幂"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ImageContrast": {
+        "title": "图像对比度",
+        "inputs": {
+            "IMAGE": "图像"
+        },
+        "widgets": {
+            "contrast": "对比度",
+            "brightness": "亮度"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "PlasmaNoise": {
+        "title": "等离子噪声",
+        "inputs": {},
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "turbulence": "湍流",
+            "value_min": "最小值",
+            "value_max": "最大值",
+            "red_min": "红色最小值",
+            "red_max": "红色最大值",
+            "green_min": "绿色最小值",
+            "green_max": "绿色最大值",
+            "blue_min": "蓝色最小值",
+            "blue_max": "蓝色最大值",
+            "seed": "种子"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "RandNoise": {
+        "title": "随机噪声",
+        "inputs": {},
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "value_min": "最小值",
+            "value_max": "最大值",
+            "red_min": "红色最小值",
+            "red_max": "红色最大值",
+            "green_min": "绿色最小值",
+            "green_max": "绿色最大值",
+            "blue_min": "蓝色最小值",
+            "blue_max": "蓝色最大值",
+            "seed": "种子"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "GreyNoise": {
+        "title": "灰色噪声",
+        "inputs": {},
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "value_min": "最小值",
+            "value_max": "最大值",
+            "red_min": "红色最小值",
+            "red_max": "红色最大值",
+            "green_min": "绿色最小值",
+            "green_max": "绿色最大值",
+            "blue_min": "蓝色最小值",
+            "blue_max": "蓝色最大值",
+            "seed": "种子"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "PinkNoise": {
+        "title": "粉红噪声",
+        "inputs": {},
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "value_min": "最小值",
+            "value_max": "最大值",
+            "red_min": "红色最小值",
+            "red_max": "红色最大值",
+            "green_min": "绿色最小值",
+            "green_max": "绿色最大值",
+            "blue_min": "蓝色最小值",
+            "blue_max": "蓝色最大值",
+            "seed": "种子"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "BrownNoise": {
+        "title": "棕色噪声",
+        "inputs": {},
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "value_min": "最小值",
+            "value_max": "最大值",
+            "red_min": "红色最小值",
+            "red_max": "红色最大值",
+            "green_min": "绿色最小值",
+            "green_max": "绿色最大值",
+            "blue_min": "蓝色最小值",
+            "blue_max": "蓝色最大值",
+            "seed": "种子"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "PlasmaSampler": {
+        "title": "等离子采样器",
+        "inputs": {
+            "model": "模型",
+            "distribution_type": "分布类型",
+            "sampler_name": "采样器名称",
+            "scheduler": "调度器",
+            "positive": "正向",
+            "negative": "负向",
+            "latent_image": "Latent图像"
+        },
+        "widgets": {
+            "noise_seed": "噪声种子",
+            "steps": "步骤",
+            "cfg": "CFG",
+            "denoise": "降噪",
+            "latent_noise": "Latent噪声"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "LoadImagePath": {
+        "title": "加载图像路径",
+        "inputs": {},
+        "widgets": {
+            "image": "图像"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "LoadImagePathWithMetadata": {
+        "title": "加载带元数据的图像路径",
+        "inputs": {},
+        "widgets": {
+            "image": "图像"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "PROMPT": "PROMPT",
+            "NEGATIVE": "NEGATIVE",
+            "WIDTH": "WIDTH",
+            "HEIGHT": "HEIGHT"
+        },
+        "description": ""
+    },
+    "OmniNoise": {
+        "title": "全能噪声",
+        "inputs": {
+            "noise_type": "noise_type",
+            "random_distribution": "random_distribution"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "value_min": "最小值",
+            "value_max": "最大值",
+            "red_min": "红色最小值",
+            "red_max": "红色最大值",
+            "green_min": "绿色最小值",
+            "green_max": "绿色最大值",
+            "blue_min": "蓝色最小值",
+            "blue_max": "蓝色最大值",
+            "seed": "种子",
+            "turbulence": "湍流"
+        },
+        "outputs": {},
+        "description": "统一噪声生成器，将所有噪声类型合并为一个节点。\n支持：随机（均匀/高斯）、Plasma、灰色、粉红和棕色噪声。"
+    },
+    "DazzleCommand": {
+        "title": "眩目指挥",
+        "inputs": {},
+        "widgets": {
+            "pause_seed": "暂停种子",
+            "pause_gate": "暂停门",
+            "play_seed": "播放种子",
+            "play_gate": "播放门"
+        },
+        "outputs": {
+            "signal": "信号"
+        },
+        "description": "工作流编排节点——播放/暂停切换协调\n种子控制和执行门在多个节点之间的控制。"
+    },
+    "DazzleSwitch": {
+        "title": "眩目切换器",
+        "inputs": {
+            "input_01": "输入1",
+            "input_02": "输入2",
+            "input_03": "输入3"
+        },
+        "widgets": {
+            "select": "选择",
+            "mode": "模式",
+            "select_override": "选择覆盖"
+        },
+        "outputs": {
+            "output": "输出",
+            "selected_index": "选择索引"
+        },
+        "description": "智能切换节点——通过下拉选择或INT覆盖路由任何输入。\n\n功能：\n- 动态输入插槽根据连接自动增长/缩小（最小3个）\n- 下拉框动态填充连接输入名称\n- INT选择覆盖用于程序级级联（0 = 使用下拉框）\n- 输出：选择值 + 选择输入的1-based索引\n- 支持混合类型：不同输入的不同类型（模型 + 图像等）"
+    },
+    "FitMaskToImage": {
+        "title": "将遮罩适配到图像",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "missing_mask": "缺失遮罩"
+        },
+        "outputs": {
+            "fixed_mask": "固定遮罩",
+            "preview_image": "预览图像",
+            "info": "信息",
+            "masked_latent": "遮罩Latent"
+        },
+        "description": "修复遮罩和图像之间的尺寸不匹配，用于修复工作流"
+    },
+    "PreviewBridgeExtended": {
+        "title": "扩展预览桥",
+        "inputs": {
+            "images": "图像",
+            "mask_opt": "遮罩选项",
+            "dazzle_signal": "Dazzle信号"
+        },
+        "widgets": {
+            "mask_output": "遮罩输出",
+            "editor_target": "编辑器目标",
+            "restore_mask": "恢复遮罩",
+            "block": "阻塞",
+            "image": "图像"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "info": "信息"
+        },
+        "description": "具有可选遮罩输入的扩展预览桥。将上游节点的遮罩与MaskEditor绘制的遮罩结合。支持恢复遮罩功能以保持遮罩持久性。"
+    },
+    "PreviewBridgeExtendedLatent": {
+        "title": "扩展Latent预览桥",
+        "inputs": {
+            "latent": "Latent",
+            "vae": "VAE",
+            "mask_opt": "遮罩选项",
+            "dazzle_signal": "Dazzle信号"
+        },
+        "widgets": {
+            "mask_output": "遮罩输出",
+            "editor_target": "编辑器目标",
+            "restore_mask": "恢复遮罩",
+            "block": "阻塞",
+            "inject_noise_mask": "注入噪声遮罩",
+            "image": "图像"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "mask": "遮罩",
+            "preview": "预览",
+            "info": "信息"
+        },
+        "description": "用于修复工作流的Latent预览桥。解码Latent进行预览，提供遮罩编辑，并通过原始Latent未修改传递。从Latent中提取噪声遮罩作为上游遮罩。"
+    },
+    "SharkSampler": {
+        "title": "鲨鱼采样器",
+        "inputs": {
+            "noise_type_init": "初始噪声类型",
+            "sampler_mode": "采样器模式",
+            "scheduler": "调度器",
+            "model": "模型",
+            "positive": "正向",
+            "negative": "负向",
+            "sampler": "采样器",
+            "sigmas": "sigmas",
+            "latent_image": "Latent图像",
+            "options": "选项"
+        },
+        "widgets": {
+            "noise_stdev": "噪声标准差",
+            "noise_seed": "噪声种子",
+            "steps": "步骤",
+            "denoise": "去噪",
+            "denoise_alt": "去噪替代",
+            "cfg": "CFG",
+            "extra_options": "额外选项"
+        },
+        "outputs": {
+            "output": "输出",
+            "denoised": "去噪",
+            "sde_noise": "SDE噪声"
+        },
+        "description": ""
+    },
+    "SharkSampler_Beta": {
+        "title": "鲨鱼采样器Beta",
+        "inputs": {
+            "scheduler": "调度器",
+            "sampler_mode": "采样器模式",
+            "model": "模型",
+            "positive": "正向",
+            "negative": "负向",
+            "sampler": "采样器",
+            "sigmas": "sigmas",
+            "latent_image": "Latent图像",
+            "options": "选项"
+        },
+        "widgets": {
+            "steps": "步骤",
+            "steps_to_run": "运行步骤",
+            "denoise": "去噪",
+            "cfg": "CFG",
+            "seed": "种子"
+        },
+        "outputs": {
+            "output": "输出",
+            "denoised": "去噪",
+            "options": "选项"
+        },
+        "description": ""
+    },
+    "SharkChainsampler_Beta": {
+        "title": "鲨鱼链式采样器Beta",
+        "inputs": {
+            "sampler_mode": "采样器模式",
+            "model": "模型",
+            "positive": "正向",
+            "negative": "负向",
+            "sampler": "采样器",
+            "sigmas": "sigmas",
+            "latent_image": "Latent图像",
+            "options": "选项"
+        },
+        "widgets": {
+            "steps_to_run": "运行步骤",
+            "cfg": "CFG"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ClownSamplerAdvanced_Beta": {
+        "title": "高级小丑采样器Beta",
+        "inputs": {
+            "noise_type_sde": "SDE噪声类型",
+            "noise_type_sde_substep": "SDE子步骤噪声类型",
+            "noise_mode_sde": "SDE噪声模式",
+            "noise_mode_sde_substep": "SDE子步骤噪声模式",
+            "overshoot_mode": "超调模式",
+            "overshoot_mode_substep": "超调子步骤模式",
+            "sampler_name": "采样器名称",
+            "implicit_type": "隐式类型",
+            "implicit_type_substeps": "隐式子步骤类型",
+            "guides": "引导",
+            "automation": "自动化",
+            "options": "选项"
+        },
+        "widgets": {
+            "eta": "η",
+            "eta_substep": "子步骤η",
+            "overshoot": "超调",
+            "overshoot_substep": "子步骤超调",
+            "noise_scaling_weight": "噪声缩放权重",
+            "noise_boost_step": "噪声增强步骤",
+            "noise_boost_substep": "子步骤噪声增强",
+            "noise_anchor": "噪声锚点",
+            "s_noise": "S噪声",
+            "s_noise_substep": "子步骤S噪声",
+            "d_noise": "D噪声",
+            "momentum": "动量",
+            "noise_seed_sde": "SDE噪声种子",
+            "implicit_steps": "隐式步骤",
+            "implicit_substeps": "隐式子步骤",
+            "bongmath": "Bongmath",
+            "extra_options": "额外选项"
+        },
+        "outputs": {
+            "sampler": "采样器"
+        },
+        "description": ""
+    },
+    "ClownsharKSampler_Beta": {
+        "title": "小丑鲨鱼采样器Beta",
+        "inputs": {
+            "sampler_name": "采样器名称",
+            "scheduler": "调度器",
+            "sampler_mode": "采样器模式",
+            "model": "模型",
+            "positive": "正向",
+            "negative": "负向",
+            "latent_image": "Latent图像",
+            "sigmas": "sigmas",
+            "guides": "引导",
+            "options": "选项"
+        },
+        "widgets": {
+            "eta": "η",
+            "steps": "步骤",
+            "steps_to_run": "运行步骤",
+            "denoise": "去噪",
+            "cfg": "CFG",
+            "seed": "种子",
+            "bongmath": "Bongmath"
+        },
+        "outputs": {
+            "output": "输出",
+            "denoised": "去噪",
+            "options": "选项"
+        },
+        "description": ""
+    },
+    "ClownsharkChainsampler_Beta": {
+        "title": "小丑鲨鱼链式采样器Beta",
+        "inputs": {
+            "sampler_name": "采样器名称",
+            "sampler_mode": "采样器模式",
+            "model": "模型",
+            "positive": "正向",
+            "negative": "负向",
+            "sigmas": "sigmas",
+            "latent_image": "Latent图像",
+            "guides": "引导",
+            "options": "选项"
+        },
+        "widgets": {
+            "eta": "η",
+            "steps_to_run": "运行步骤",
+            "cfg": "CFG",
+            "bongmath": "Bongmath"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ClownSampler_Beta": {
+        "title": "小丑采样器Beta",
+        "inputs": {
+            "sampler_name": "采样器名称",
+            "guides": "引导",
+            "options": "选项"
+        },
+        "widgets": {
+            "eta": "η",
+            "seed": "种子",
+            "bongmath": "Bongmath"
+        },
+        "outputs": {
+            "sampler": "采样器"
+        },
+        "description": ""
+    },
+    "BongSampler": {
+        "title": "Bong采样器",
+        "inputs": {
+            "model": "模型",
+            "sampler_name": "采样器名称",
+            "scheduler": "调度器",
+            "positive": "正向",
+            "negative": "负向",
+            "latent_image": "Latent图像"
+        },
+        "widgets": {
+            "seed": "种子",
+            "steps": "步骤",
+            "cfg": "CFG",
+            "denoise": "去噪"
+        },
+        "outputs": {
+            "output": "输出"
+        },
+        "description": ""
+    },
+    "DazzleOptions": {
+        "title": "眩目选择",
+        "inputs": {
+            "options_in": "选项输入"
+        },
+        "widgets": {
+            "norm_mode": "标准化模式",
+            "cutoff_curve": "截止曲线",
+            "whitening": "去噪",
+            "phase_randomize": "相位随机化"
+        },
+        "outputs": {
+            "options": "选项"
+        },
+        "description": "用于 SmartResCalc 谱融合和噪声功能的高级配置节点。\n\n连接到 SmartResCalc 的 dazzle_options 输入以覆盖默认行为。\n如果没有连接此节点，SmartResCalc 将使用上下文感知的默认值。\n\n通过 options_in 链接多个 DazzleOptions 节点以实现模块化配置。"
+    },
+    "SmartResolutionCalc": {
+        "title": "智能分辨率计算器",
+        "inputs": {
+            "image": "图像",
+            "vae": "VAE",
+            "fill_image": "填充图像",
+            "dazzleoptions": "眩目选择",
+            "dazzle_signal": "眩目信号"
+        },
+        "widgets": {
+            "aspect_ratio": "纵横比",
+            "divisible_by": "可整除",
+            "custom_ratio": "自定义比例",
+            "mode_status": "模式状态",
+            "custom_aspect_ratio": "自定义纵横比",
+            "batch_size": "批量大小",
+            "scale": "缩放",
+            "fill_type": "填充类型",
+            "image_purpose": "图像用途",
+            "output_image_mode": "输出图像模式",
+            "blend_strength": "融合强度",
+            "cutoff": "截止值",
+            "feature_size": "特征尺寸",
+            "fill_color": "填充颜色"
+        },
+        "outputs": {
+            "megapixels": "百万像素",
+            "width": "宽度",
+            "height": "高度",
+            "seed": "种子",
+            "preview": "预览",
+            "image": "图像",
+            "latent": "Latent空间",
+            "info": "信息"
+        },
+        "description": "智能分辨率计算器 - 灵活的分辨率和Latent空间生成节点。\n\n接受任何组合的百万像素/宽度/高度 + 纵横比，自动计算缺失值，并生成预览和Latent空间图像。\n\n基于开关的输入系统允许显式控制使用哪些维度。"
+    }
+}

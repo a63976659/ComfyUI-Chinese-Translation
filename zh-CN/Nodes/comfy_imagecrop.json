@@ -1,0 +1,294 @@
+{
+    "AutoResizeTo3": {
+        "title": "自动调整至3的倍数",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "mode": "模式"
+        },
+        "outputs": {
+            "image": "图像",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": "将图片调整到宽高均可被 3 整除，可选拉伸/裁剪/填充策略"
+    },
+    "AutoResizeTo8": {
+        "title": "自动调整至8的倍数",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "mode": "模式"
+        },
+        "outputs": {
+            "image": "图像",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": "将图片调整到宽高均可被 8 整除，可选拉伸/裁剪/填充策略"
+    },
+    "BatchGetImages": {
+        "title": "批量获取图像",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "indices": "索引",
+            "keep_order": "保持顺序",
+            "remove_duplicates": "移除重复",
+            "allow_negative": "允许负索引"
+        },
+        "outputs": {
+            "images": "图像批次"
+        },
+        "description": "🔵BB 提取图像（单个或多个-X） - 从图像批次中提取单个或多个图像，输出为新的图像批次\nComfyUI自定义节点"
+    },
+    "CurvePanel": {
+        "title": "曲线面板",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "channel": "通道",
+            "curve_points": "曲线控制点"
+        },
+        "outputs": {
+            "output_image": "输出图像",
+            "preview_image": "预览图像"
+        },
+        "description": "曲线调整节点（带交互面板）\n支持在节点面板中交互编辑曲线（控制点拖拽/添加/删除），并将曲线参数同步到节点参数。"
+    },
+    "DepthAdjustNode": {
+        "title": "深度图明暗调整",
+        "inputs": {
+            "image": "图像",
+            "depth_map": "深度图"
+        },
+        "widgets": {
+            "dark_intensity": "暗部强度",
+            "dark_range": "暗部范围",
+            "dark_feather": "暗部羽化",
+            "light_intensity": "亮部强度",
+            "light_range": "亮部范围",
+            "light_feather": "亮部羽化",
+            "dark_position": "暗部位置",
+            "light_position": "亮部位置"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "深度图明暗调整节点\n根据深度图调整图像的近处和远处明暗程度\n输入:\n    图像: 原图 (IMAGE)\n    深度图: 深度图 (IMAGE) - 白色=近处，黑色=远处\n参数:\n     暗部位置 (\"near\"=近处, \"far\"=远处)\n     暗部强度 (-100 到 100)\n     暗部范围 (5% 到 100%)\n     暗部羽化 (0 到 50)\n     亮部位置 (\"near\"=近处, \"far\"=远处)\n     亮部强度 (-100 到 100)\n     亮部范围 (5% 到 100%)\n     亮部羽化 (0 到 50)\n输出:\n     处理后的图像"
+    },
+    "ImageAnnotateWithPanel": {
+        "title": "图像标注面板",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "marker_size": "标记大小",
+            "font_scale": "字体缩放",
+            "font_size_px": "字体像素大小",
+            "font_family": "字体族",
+            "separator": "分隔符",
+            "label_prefix": "标签前缀",
+            "text_format": "文字格式",
+            "annotations": "标注点",
+            "selected_index": "选中索引",
+            "font_mode": "字体模式",
+            "font_weight": "字体粗细",
+            "marker_color": "标记颜色",
+            "text_color": "文字颜色"
+        },
+        "outputs": {
+            "annotated_image": "标注后图像",
+            "labels_text": "标签文字",
+            "selected_label": "选中标签"
+        },
+        "description": "图像标注节点\n支持在图像上点击添加带编号的标记点"
+    },
+    "ImageDrawingWithPanel": {
+        "title": "图像绘制面板",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "drawing_data": "绘制数据",
+            "brush_size": "画笔大小",
+            "brush_color": "画笔颜色",
+            "current_tool": "当前工具",
+            "fill_mode": "填充模式"
+        },
+        "outputs": {
+            "drawn_image": "绘制后图像",
+            "mask": "遮罩",
+            "drawing_data": "绘制数据"
+        },
+        "description": "图像绘制节点\n支持在图像上绘制线条、填充矩形和填充圆形，实时canvas渲染"
+    },
+    "ImageLUTNode": {
+        "title": "图像LUT映射",
+        "inputs": {
+            "original_image": "原图",
+            "reference_image": "参考图像",
+            "blend_mode": "混合模式",
+            "transfer_mode": "传递模式"
+        },
+        "widgets": {
+            "lut_strength": "LUT强度",
+            "color_bins": "颜色分级数"
+        },
+        "outputs": {
+            "processed_image": "处理后图像"
+        },
+        "description": "ComfyUI节点：使用参考图像作为LUT处理原图\n基于色彩统计的方法实现颜色映射"
+    },
+    "InteractiveCropWithPanel": {
+        "title": "交互式裁剪面板",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "crop_width": "裁剪宽度",
+            "crop_height": "裁剪高度",
+            "offset_x": "X偏移",
+            "offset_y": "Y偏移",
+            "scale": "缩放",
+            "rotation": "旋转",
+            "input_mode": "输入模式",
+            "preset": "预设",
+            "ratio": "比例",
+            "size": "尺寸"
+        },
+        "outputs": {
+            "cropped_image": "裁剪后图像",
+            "preview_image": "预览图像"
+        },
+        "description": "带交互面板的图像剪裁节点\n在节点上显示交互式预览面板，支持鼠标拖拽和缩放"
+    },
+    "LevelsPanel": {
+        "title": "色阶面板",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "channel": "通道",
+            "levels_params": "色阶参数"
+        },
+        "outputs": {
+            "output_image": "输出图像",
+            "preview_image": "预览图像"
+        },
+        "description": "色阶调整节点（带交互面板）\n- 节点类型名（前端识别）: \"levelssss\"\n- 在前端面板中会使用一个 JSON 字符串保存各通道的色阶参数，格式示例：\n  {\"RGB\":{\"in_black\":0,\"in_mid\":1.0,\"in_white\":255,\"out_black\":0,\"out_white\":255}, \"R\":{...}, \"G\":{...}, \"B\":{...}}"
+    },
+    "PerspectiveCropWithPanel": {
+        "title": "透视裁剪面板",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "top_left_x": "左上角X",
+            "top_left_y": "左上角Y",
+            "top_right_x": "右上角X",
+            "top_right_y": "右上角Y",
+            "bottom_left_x": "左下角X",
+            "bottom_left_y": "左下角Y",
+            "bottom_right_x": "右下角X",
+            "bottom_right_y": "右下角Y",
+            "auto_size": "自动尺寸",
+            "output_width": "输出宽度",
+            "output_height": "输出高度",
+            "fill_color": "填充颜色"
+        },
+        "outputs": {
+            "cropped_image": "裁剪后图像",
+            "preview_image": "预览图像"
+        },
+        "description": "Photoshop风格的透视剪裁节点\n支持四角点拖拽定义透视区域，自动进行透视校正和裁剪"
+    },
+    "reeeee": {
+        "title": "尺寸选择器",
+        "inputs": {
+            "category": "类别",
+            "ratio": "比例",
+            "size": "尺寸"
+        },
+        "widgets": {},
+        "outputs": {
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": "用于分类、纵横比和分辨率的尺寸选择器"
+    },
+    "SaveBatchToFolder": {
+        "title": "批量保存到文件夹",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "folder_path": "文件夹路径",
+            "base_name": "基础名称",
+            "start_index": "起始索引",
+            "overwrite": "覆盖"
+        },
+        "outputs": {
+            "file_list": "文件列表"
+        },
+        "description": "将一批 IMAGE 张量保存到文件夹中作为单独的 PNG 文件。\n节点执行副作用（写入文件），并返回原始图像张量不变。"
+    },
+    "SeparateMasks": {
+        "title": "分离遮罩",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "components_per_batch": "每批组件数",
+            "min_component_area": "最小组件面积",
+            "min_component_width": "最小组件宽度",
+            "min_component_height": "最小组件高度"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "SliceCropWithPanel": {
+        "title": "切片裁剪面板",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "pixel_width": "像素宽度",
+            "pixel_height": "像素高度",
+            "count_x": "X方向数量",
+            "count_y": "Y方向数量",
+            "preview_scale": "预览缩放",
+            "split_mode": "分割模式"
+        },
+        "outputs": {
+            "batch_images": "批量图像",
+            "preview_image": "预览图像"
+        },
+        "description": ""
+    },
+    "StraightenLayerWithPanel": {
+        "title": "拉直图层面板",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "rotation_angle": "旋转角度",
+            "reference_line_x1": "参考线X1",
+            "reference_line_y1": "参考线Y1",
+            "reference_line_x2": "参考线X2",
+            "reference_line_y2": "参考线Y2",
+            "auto_crop": "自动裁剪",
+            "fill_color": "填充颜色"
+        },
+        "outputs": {
+            "straightened_image": "拉直后的图像",
+            "preview_image": "预览图像",
+            "calculated_angle": "计算角度"
+        },
+        "description": "Photoshop风格的拉直图层节点"
+    }
+}

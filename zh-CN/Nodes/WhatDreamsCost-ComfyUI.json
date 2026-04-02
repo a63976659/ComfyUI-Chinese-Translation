@@ -1,0 +1,48 @@
+{
+    "LTXKeyframer": {
+        "title": "LTX关键帧器",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": "用编码后的输入图像替换视频的潜在帧。小部件的数量是动态配置的。"
+    },
+    "LTXSequencer": {
+        "title": "LTX序列器",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": "在指定的帧索引或秒处添加多个引导图像，并设置强度。小部件的数量是动态配置的。"
+    },
+    "MultiImageLoader": {
+        "title": "多图像加载器",
+        "inputs": {
+            "interpolation": "插值",
+            "resize_method": "缩放方法"
+        },
+        "widgets": {
+            "image_paths": "图像路径",
+            "width": "宽度",
+            "height": "高度",
+            "multiple_of": "倍数",
+            "img_compression": "图像压缩"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "SpeechLengthCalculator": {
+        "title": "语音长度计算器",
+        "inputs": {},
+        "widgets": {
+            "text": "文本",
+            "fps": "帧率",
+            "additional_time": "额外时间",
+            "text_input": "文本输入"
+        },
+        "outputs": {
+            "slow_frame_count": "慢速帧数",
+            "average_frame_count": "平均帧数",
+            "fast_frame_count": "快速帧数"
+        },
+        "description": ""
+    }
+}

@@ -1,0 +1,111 @@
+{
+    "AutoGrabCutRemover": {
+        "title": "自动抓取剪切去除工具",
+        "inputs": {
+            "image": "图像",
+            "object_class": "object_class",
+            "output_size": "输出尺寸",
+            "scaling_method": "缩放方法",
+            "initial_mask": "初始遮罩",
+            "output_format": "输出格式",
+            "edge_detection_mode": "边缘检测模式"
+        },
+        "widgets": {
+            "confidence_threshold": "置信度阈值",
+            "grabcut_iterations": "GrabCut 迭代次数",
+            "margin_pixels": "边缘像素",
+            "edge_refinement": "边缘细化",
+            "edge_blur_amount": "边缘模糊量",
+            "bbox_safety_margin": "边界框安全余量",
+            "min_bbox_size": "最小边界框尺寸",
+            "fallback_margin_percent": "回退边距百分比",
+            "binary_threshold": "二值化阈值",
+            "auto_adjust": "自动调整",
+            "invert_mask": "反转遮罩",
+            "custom_width": "自定义宽度",
+            "custom_height": "自定义高度"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "bbox_coords": "边界框坐标",
+            "confidence": "置信度",
+            "metrics": "指标",
+            "bbox_tensor": "边界框张量"
+        },
+        "description": "ComfyUI 节点，用于自动化的 GrabCut 背景去除，结合对象检测。\n可以细化现有的背景去除结果或处理原始图像。"
+    },
+    "GrabCutRefinement": {
+        "title": "抓取裁剪优化器",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "output_size": "输出尺寸",
+            "scaling_method": "缩放方法"
+        },
+        "widgets": {
+            "grabcut_iterations": "GrabCut 迭代次数",
+            "edge_refinement": "边缘优化",
+            "edge_blur_amount": "边缘模糊量",
+            "expand_margin": "扩展边距",
+            "bbox_safety_margin": "边界框安全余量",
+            "min_bbox_size": "最小边界框尺寸",
+            "custom_width": "自定义宽度",
+            "custom_height": "自定义高度",
+            "invert_mask": "反转遮罩"
+        },
+        "outputs": {
+            "image": "图像",
+            "refined_mask": "优化后的遮罩"
+        },
+        "description": "ComfyUI 节点，用于使用 抓取裁剪 优化现有遮罩。\n接受图像和遮罩，使用 抓取裁剪 优化遮罩。"
+    },
+    "TransparencyBackgroundRemover": {
+        "title": "透明度背景去除器",
+        "inputs": {
+            "image": "图像",
+            "output_size": "输出尺寸",
+            "scaling_method": "缩放方法",
+            "output_format": "输出格式",
+            "edge_detection_mode": "边缘检测模式"
+        },
+        "widgets": {
+            "tolerance": "容差",
+            "edge_sensitivity": "边缘敏感度",
+            "foreground_bias": "前景偏置",
+            "color_clusters": "颜色簇",
+            "binary_threshold": "二值化阈值",
+            "edge_refinement": "边缘细化",
+            "dither_handling": "抖动处理",
+            "auto_adjust": "自动调整"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "description": "ComfyUI 节点，用于自动化的背景去除并生成透明度。"
+    },
+    "TransparencyBackgroundRemoverBatch": {
+        "title": "透明度背景去除器批量处理工具",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "tolerance": "容差",
+            "edge_sensitivity": "边缘敏感度",
+            "auto_adjust": "自动调整",
+            "foreground_bias": "前景偏置",
+            "color_clusters": "颜色簇",
+            "edge_refinement": "边缘细化",
+            "dither_handling": "抖动处理",
+            "binary_threshold": "二值化阈值",
+            "progress_reporting": "进度报告"
+        },
+        "outputs": {
+            "images": "图像",
+            "masks": "遮罩",
+            "report": "报告"
+        },
+        "description": "带有额外选项和自动调整的批量处理版本。"
+    }
+}

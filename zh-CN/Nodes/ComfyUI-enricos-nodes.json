@@ -1,0 +1,244 @@
+{
+    "Compositor3": {
+        "title": "合成器3",
+        "inputs": {
+            "config": "配置",
+            "extendedConfig": "扩展配置"
+        },
+        "widgets": {
+            "fabricData": "画布数据",
+            "imageName": "图像名称",
+            "tools": "工具"
+        },
+        "outputs": {
+            "transforms": "变换",
+            "image": "图像",
+            "layer_outputs": "层输出"
+        },
+        "description": ""
+    },
+    "Compositor4": {
+        "title": "合成器4",
+        "inputs": {
+            "config": "配置"
+        },
+        "widgets": {
+            "fabricData": "画布数据",
+            "imageName": "图像名称",
+            "seed": "种子"
+        },
+        "outputs": {},
+        "description": "交互式合成画布，用于定位、缩放、旋转和排列多个图像，并提供实时预览和遮罩支持。提供带有图层面板、对齐工具和网格对齐功能的可视化编辑器。"
+    },
+    "Compositor4MasksOutput": {
+        "title": "合成器4遮罩输出",
+        "inputs": {
+            "layer_outputs": "层输出"
+        },
+        "widgets": {},
+        "outputs": {
+            "image_1": "图像_1",
+            "image_2": "图像_2",
+            "image_3": "图像_3",
+            "image_4": "图像_4",
+            "image_5": "图像_5",
+            "image_6": "图像_6",
+            "image_7": "图像_7",
+            "image_8": "图像_8",
+            "mask_1": "遮罩_1",
+            "mask_2": "遮罩_2",
+            "mask_3": "遮罩_3",
+            "mask_4": "遮罩_4",
+            "mask_5": "遮罩_5",
+            "mask_6": "遮罩_6",
+            "mask_7": "遮罩_7",
+            "mask_8": "遮罩_8"
+        },
+        "description": "此节点将 Compositor4 的 COMPOSITOR_OUTPUT_MASKS 分解为单独的图像和遮罩输出。\n通过将层输出分离到专用节点来使合成器的界面更清晰。"
+    },
+    "Compositor4TransformsOut": {
+        "title": "合成器4变换输出",
+        "inputs": {},
+        "widgets": {
+            "transforms": "变换",
+            "channel": "通道",
+            "forceInt": "强制整数"
+        },
+        "outputs": {
+            "x": "x",
+            "y": "y",
+            "width": "宽度",
+            "height": "高度",
+            "angle": "角度",
+            "bbox x": "边界框 x",
+            "bbox y": "边界框 y",
+            "bbox width": "边界框宽度",
+            "bbox height": "边界框高度"
+        },
+        "description": ""
+    },
+    "CompositorColorPicker": {
+        "title": "合成器颜色选择器",
+        "inputs": {
+            "format": "格式"
+        },
+        "widgets": {
+            "red": "红色",
+            "green": "绿色",
+            "blue": "蓝色"
+        },
+        "outputs": {
+            "color_string": "颜色字符串",
+            "color_16bit": "16位颜色值",
+            "color_24bit": "24位颜色值",
+            "color_preview": "颜色预览"
+        },
+        "description": "此节点将 RGB 值（0-255）转换为各种颜色格式：\n- 十六进制颜色字符串（#RRGGBB）\n- 16 位颜色值（RGB565 或 RGB555 格式）\n- 24 位颜色值（与 ComfyUI 的 emptyImage 节点兼容）\n- 预览颜色的图像"
+    },
+    "CompositorConfig3": {
+        "title": "合成器配置3",
+        "inputs": {
+            "image1": "图像1",
+            "mask1": "遮罩1",
+            "image2": "图像2",
+            "mask2": "遮罩2",
+            "image3": "图像3",
+            "mask3": "遮罩3",
+            "image4": "图像4",
+            "mask4": "遮罩4",
+            "image5": "图像5",
+            "mask5": "遮罩5",
+            "image6": "图像6",
+            "mask6": "遮罩6",
+            "image7": "图像7",
+            "mask7": "遮罩7",
+            "image8": "图像8",
+            "mask8": "遮罩8"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "padding": "填充",
+            "normalizeHeight": "归一化高度",
+            "onConfigChanged": "配置更改时",
+            "invertMask": "反转遮罩",
+            "initialized": "初始化"
+        },
+        "outputs": {
+            "config": "配置",
+            "extendedConfig": "扩展配置"
+        },
+        "description": "\n合成器节点\n- 传递最多 8 张图像\n- 可选地传递它们的遮罩（反转它们）\n- 遮罩会自动应用并内部传递为 rgba\n- 使用大小控件来配置合成器，它将在运行时调整大小\n- 设置标志以暂停，以便您有时间构建您的合成（暂停作用于合成器，而不是配置节点）\n"
+    },
+    "CompositorConfig4": {
+        "title": "合成器配置4",
+        "inputs": {
+            "image1": "图像1",
+            "mask1": "遮罩1",
+            "image2": "图像2",
+            "mask2": "遮罩2",
+            "image3": "图像3",
+            "mask3": "遮罩3",
+            "image4": "图像4",
+            "mask4": "遮罩4",
+            "image5": "图像5",
+            "mask5": "遮罩5",
+            "image6": "图像6",
+            "mask6": "遮罩6",
+            "image7": "图像7",
+            "mask7": "遮罩7",
+            "image8": "图像8",
+            "mask8": "遮罩8"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "padding": "填充",
+            "normalizeHeight": "归一化高度",
+            "onConfigChangedContinue": "配置更改时继续",
+            "invertMask": "反转遮罩",
+            "saveFormat": "保存格式",
+            "saveFolder": "保存文件夹"
+        },
+        "outputs": {},
+        "description": "合成器系统 V4 的配置节点。接受最多 8 张图像及其可选遮罩，应用遮罩以创建 RGBA 合成，并提供画布大小控制。遮罩以固定命名方式序列化到磁盘（cfg{node_id}-mask{index}.png）。'onConfigChangedContinue' 暂停选项允许在继续执行之前有时间构建合成。输出用于合成器 V4 节点的配置对象。"
+    },
+    "CompositorMasksOutputV3": {
+        "title": "合成器遮罩输出V3",
+        "inputs": {
+            "layer_outputs": "层输出"
+        },
+        "widgets": {},
+        "outputs": {
+            "image_1": "图像_1",
+            "image_2": "图像_2",
+            "image_3": "图像_3",
+            "image_4": "图像_4",
+            "image_5": "图像_5",
+            "image_6": "图像_6",
+            "image_7": "图像_7",
+            "image_8": "图像_8",
+            "mask_1": "遮罩_1",
+            "mask_2": "遮罩_2",
+            "mask_3": "遮罩_3",
+            "mask_4": "遮罩_4",
+            "mask_5": "遮罩_5",
+            "mask_6": "遮罩_6",
+            "mask_7": "遮罩_7",
+            "mask_8": "遮罩_8"
+        },
+        "description": "此节点将 Compositor3 的 COMPOSITOR_OUTPUT_MASKS 分解为单独的图像和遮罩输出。\n通过将层输出分离到专用节点来使合成器的界面更清晰。"
+    },
+    "CompositorTools3": {
+        "title": "合成器工具3",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "tools": "工具"
+        },
+        "description": "\n实验性节点：仅前端通信，需要页面刷新以填充控件\n"
+    },
+    "CompositorTransformsOutV3": {
+        "title": "合成器变换输出V3 ",
+        "inputs": {},
+        "widgets": {
+            "transforms": "变换",
+            "channel": "通道",
+            "forceInt": "强制整数"
+        },
+        "outputs": {
+            "x": "x",
+            "y": "y",
+            "width": "宽度",
+            "height": "高度",
+            "angle": "角度",
+            "bbox x": "边界框 x",
+            "bbox y": "边界框 y",
+            "bbox width": "边界框宽度",
+            "bbox height": "边界框高度"
+        },
+        "description": ""
+    },
+    "ImageColorSampler": {
+        "title": "图像颜色采样器",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "sample_points": "采样点",
+            "palette_size": "调色板大小",
+            "sample_size": "采样大小",
+            "wait_for_input": "等待输入"
+        },
+        "outputs": {
+            "palette": "调色板",
+            "sampled_colors": "采样颜色",
+            "hex_codes": "十六进制代码",
+            "swatches": "色块",
+            "rgb_24bit": "24位RGB值",
+            "rgb_565": "565位RGB值",
+            "rgb_values": "RGB值"
+        },
+        "description": "此节点允许在输入图像上点击以采样颜色，\n从选定的采样点创建颜色调色板。"
+    }
+}

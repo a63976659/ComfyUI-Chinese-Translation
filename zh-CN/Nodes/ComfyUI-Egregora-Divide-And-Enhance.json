@@ -1,0 +1,78 @@
+{
+    "Egregora Algorithm": {
+        "title": "Egregora 算法",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "tile_resolution": "区块分辨率",
+            "padding_px": "填充像素",
+            "min_scale_factor": "最小缩放因子",
+            "tile_order": "区块顺序",
+            "scaling_method": "缩放方法"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "egregora_data": "Egregora 数据"
+        },
+        "description": ""
+    },
+    "Egregora Divide Select": {
+        "title": "Egregora 分割选择",
+        "inputs": {
+            "image": "图像",
+            "egregora_data": "Egregora 数据"
+        },
+        "widgets": {
+            "tile": "区块",
+            "blend_px": "混合像素",
+            "mask_warp_strength": "遮罩扭曲强度",
+            "mask_warp_frequency": "遮罩扭曲频率",
+            "feather_curve": "羽化曲线"
+        },
+        "outputs": {
+            "TILE(S)": "区块",
+            "MASK(S)": "遮罩"
+        },
+        "description": ""
+    },
+    "Egregora Combine": {
+        "title": "Egregora 合并",
+        "inputs": {
+            "tiles": "区块",
+            "masks": "遮罩",
+            "egregora_data": "Egregora 数据"
+        },
+        "widgets": {
+            "dominance_gamma": "主导伽马",
+            "conflict_boost": "冲突增强",
+            "edge_boost": "边缘增强",
+            "conflict_power": "冲突幂次",
+            "edge_power": "边缘幂次",
+            "transition_focus": "过渡聚焦",
+            "scaling_method": "缩放方法",
+            "combine_mode": "合并模式"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        },
+        "description": ""
+    },
+    "Egregora Debug Mask": {
+        "title": "Egregora 调试遮罩",
+        "inputs": {
+            "egregora_data": "Egregora 数据"
+        },
+        "widgets": {
+            "blend_px": "混合像素",
+            "mask_warp_strength": "遮罩扭曲强度",
+            "mask_warp_frequency": "遮罩扭曲频率",
+            "tile_index": "区块索引",
+            "feather_curve": "羽化曲线"
+        },
+        "outputs": {
+            "masks": "遮罩"
+        },
+        "description": ""
+    }
+}
