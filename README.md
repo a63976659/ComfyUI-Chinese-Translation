@@ -94,6 +94,11 @@ ComfyUI-Chinese-Translation 是一个汉化翻译插件，专门为ComfyUI界面
    
    极致低调UI图标，采用ComfyUI默认色彩同款配色方案，由QQ群友（匿名）提供，感谢。
 
+2026新版开关效果图
+
+<img width="800" height="160" alt="新版开" src="https://github.com/user-attachments/assets/d1e40fd2-7fda-42e9-97ca-585906998685" />
+
+<img width="860" height="160" alt="新版-关" src="https://github.com/user-attachments/assets/137b9799-4f8f-4d8b-aed0-bc06c2501917" />
 
 
 汉化内容：
