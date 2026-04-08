@@ -1,0 +1,306 @@
+{
+    "Flux2KleinConfigPreparer_EditUtils": {
+        "title": "编辑工具: Flux2Klein 配置准备器",
+        "inputs": {
+            "image": "图像",
+            "configs": "配置",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "to_ref": "转为参考",
+            "ref_main_image": "主参考图像",
+            "ref_longest_edge": "参考图像最长边",
+            "ref_crop": "参考图像裁剪",
+            "ref_upscale": "参考图像放大"
+        },
+        "outputs": {
+            "configs": "配置组",
+            "config": "配置"
+        },
+        "description": "用于准备 Flux2Klein 模型的配置和参考图像。"
+    },
+    "Flux2KleinOutputExtractor_EditUtils": {
+        "title": "编辑工具: Flux2Klein 输出提取器",
+        "inputs": {
+            "custom_output": "自定义输出"
+        },
+        "widgets": {},
+        "outputs": {
+            "pad_info": "填充信息",
+            "main_image": "主图像",
+            "vae_images": "VAE图像",
+            "ref_latents": "参考Latent",
+            "full_prompt": "完整提示",
+            "llama_template": "Llama模板",
+            "no_refs_cond": "无参考条件",
+            "mask": "遮罩",
+            "output_8": "输出8"
+        },
+        "description": "从Flux2Klein输出中提取特定数据的节点"
+    },
+    "CropWithPadInfo_EditUtils": {
+        "title": "裁剪与填充信息编辑工具",
+        "inputs": {
+            "pad_info": "填充信息",
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "cropped_image": "裁剪后的图像",
+            "scale_by": "按比例缩放",
+            "IMAGE": "图像",
+            "FLOAT": "浮点数"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "ModelConfig_EditUtils": {
+        "title": "模型配置编辑工具",
+        "inputs": {},
+        "widgets": {
+            "model_choice": "模型选择",
+            "model_name": "模型名称",
+            "vae_unit": "VAE 单元",
+            "instruction": "指令"
+        },
+        "outputs": {
+            "model_config": "模型配置",
+            "DICT": "字典"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "QwenModelConfig_EditUtils": {
+        "title": "Qwen 模型配置编辑工具",
+        "inputs": {},
+        "widgets": {
+            "instruction": "指令"
+        },
+        "outputs": {
+            "model_config": "模型配置",
+            "DICT": "字典"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Flux2KleinModelConfig_EditUtils": {
+        "title": "Flux2Klein 模型配置编辑工具",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "model_config": "模型配置",
+            "DICT": "字典"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "EditTextEncode_EditUtils": {
+        "title": "文本编码编辑工具",
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "configs": "配置",
+            "model_config": "模型配置"
+        },
+        "widgets": {
+            "prompt": "提示"
+        },
+        "outputs": {
+            "conditioning": "条件化",
+            "latent": "Latent",
+            "custom_output": "自定义输出",
+            "main_image": "主图像",
+            "mask": "遮罩"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "ConfigJsonParser_EditUtils": {
+        "title": "配置 JSON 解析器编辑工具",
+        "inputs": {
+            "image": "图像",
+            "configs": "配置",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "config_json": "配置 JSON"
+        },
+        "outputs": {
+            "configs": "配置组",
+            "config": "配置",
+            "LIST": "列表",
+            "ANY": "任意类型"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "QwenConfigPreparer_EditUtils": {
+        "title": "Qwen 配置准备编辑工具",
+        "inputs": {
+            "image": "图像",
+            "configs": "配置",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "to_ref": "转参考",
+            "ref_main_image": "参考主图像",
+            "ref_longest_edge": "最长边参考",
+            "ref_crop": "裁剪参考",
+            "ref_upscale": "放大参考",
+            "to_vl": "转视觉语言",
+            "vl_resize": "视觉语言调整大小",
+            "vl_target_size": "目标尺寸",
+            "vl_crop": "视觉语言裁剪",
+            "vl_upscale": "视觉语言放大"
+        },
+        "outputs": {
+            "configs": "配置组",
+            "config": "配置",
+            "LIST": "列表",
+            "ANY": "任意类型"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "QwenEditOutputExtractor_EditUtils": {
+        "title": "Qwen 编辑输出提取编辑工具",
+        "inputs": {
+            "custom_output": "自定义输出"
+        },
+        "widgets": {},
+        "outputs": {
+            "pad_info": "填充信息",
+            "full_refs_cond": "完整参考条件",
+            "main_ref_cond": "主要参考条件",
+            "main_image": "主图像",
+            "vae_images": "VAE 图像",
+            "ref_latents": "参考Latent",
+            "vl_images": "视觉语言图像",
+            "full_prompt": "完整提示",
+            "llama_template": "LLaMA 模板",
+            "no_refs_cond": "无参考条件",
+            "mask": "遮罩"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "ListExtractor_EditUtils": {
+        "title": "列表提取编辑工具",
+        "inputs": {
+            "items": "项目"
+        },
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {
+            "item": "项",
+            "ANY": "任意类型"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Any2Image_EditUtils": {
+        "title": "任意类型转图像编辑工具",
+        "inputs": {
+            "item": "项"
+        },
+        "widgets": {},
+        "outputs": {
+            "item": "项",
+            "IMAGE": "图像"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Any2Latent_EditUtils": {
+        "title": "任意类型转Latent编辑工具",
+        "inputs": {
+            "item": "项"
+        },
+        "widgets": {},
+        "outputs": {
+            "item": "项",
+            "LATENT": "Latent"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "AdaptiveLongestEdge_EditUtils": {
+        "title": "自适应最长边编辑工具",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "min_size": "最小尺寸",
+            "max_size": "最大尺寸"
+        },
+        "outputs": {
+            "longest_edge": "最长边",
+            "INT": "整数"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "LoadImageWithFilename_EditUtils": {
+        "title": "通过文件名加载图像编辑工具",
+        "inputs": {},
+        "widgets": {
+            "image": "图像"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "filename": "文件名"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "QwenEditTextEncode_EditUtils": {
+        "title": "Qwen千问编辑 文本编辑器",
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "ref_longest_edge": "参考最长边",
+            "prompt": "提示词"
+        },
+        "outputs": {
+            "conditioning": "条件",
+            "latent": "Latent",
+            "custom_output": "自定义输出",
+            "main_image": "主图像",
+            "mask": "遮罩"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Flux2KleinEditTextEncode_EditUtils": {
+        "title": "Flux2Klein文字编辑工具",
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "ref_longest_edge": "参考最长边",
+            "prompt": "提示词"
+        },
+        "outputs": {
+            "conditionond": "条件",
+            "latent": "Latent",
+            "custom_output": "自定义输出",
+            "main_image": "主图像",
+            "mask": "遮罩"
+        },
+        "description": "",
+        "api_version": "V1"
+    }
+}
