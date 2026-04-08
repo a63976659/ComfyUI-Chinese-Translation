@@ -107,7 +107,8 @@ class TExe {
           }
         }
 
-        if (target.innerText && !isAlreadyTranslatedText(target.innerText)) {
+        if (target.innerText && !isAlreadyTranslatedText(target.innerText) &&
+            (!target.children || target.children.length === 0)) {
           const innerTextTranslated = this.MT(target.innerText);
           if (innerTextTranslated) {
             target.innerText = innerTextTranslated;

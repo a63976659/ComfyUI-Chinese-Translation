@@ -382,6 +382,7 @@ export class TUtils {
         for (let item of res) {
           if (item == null || !item.hasOwnProperty("content")) continue;
           if (item.content in menuT) {
+            if (!item._originalContent) item._originalContent = item.content;
             item.content = menuT[item.content];
           }
         }
@@ -405,48 +406,82 @@ export class TUtils {
         for (let value of values) {
           if (value == null || !value.hasOwnProperty("content")) continue;
           
+          // 保存原始英文 content（优先保留最早的原始值，防止多次翻译覆盖）
+          let originalContent = value._originalContent || value.content;
+          let isTranslated = false;
+          
           if (value.value in tN) {
             value.content = tN[value.value]["title"] || value.content;
-            continue;
-          }
-          
-          if (value.content in t) {
+            isTranslated = true;
+          } else if (value.content in t) {
             value.content = t[value.content];
-            continue;
+            isTranslated = true;
+          } else {
+            var extra_info = options.extra || options.parentMenu?.options?.extra;
+            
+            var matchInput = value.content?.match(reInput);
+            if (matchInput) {
+              var match = matchInput[1];
+              extra_info?.inputs?.find((i) => {
+                if (i.name != match) return false;
+                match = i.label ? i.label : i.name;
+              });
+              extra_info?.widgets?.find((i) => {
+                if (i.name != match) return false;
+                match = i.label ? i.label : i.name;
+              });
+              value.content = cvt + match + tinp;
+              isTranslated = true;
+            } else {
+              var matchWidget = value.content?.match(reWidget);
+              if (matchWidget) {
+                var match = matchWidget[1];
+                extra_info?.inputs?.find((i) => {
+                  if (i.name != match) return false;
+                  match = i.label ? i.label : i.name;
+                });
+                extra_info?.widgets?.find((i) => {
+                  if (i.name != match) return false;
+                  match = i.label ? i.label : i.name;
+                });
+                value.content = cvt + match + twgt;
+                isTranslated = true;
+              }
+            }
           }
           
-          var extra_info = options.extra || options.parentMenu?.options?.extra;
-          
-          var matchInput = value.content?.match(reInput);
-          if (matchInput) {
-            var match = matchInput[1];
-            extra_info?.inputs?.find((i) => {
-              if (i.name != match) return false;
-              match = i.label ? i.label : i.name;
-            });
-            extra_info?.widgets?.find((i) => {
-              if (i.name != match) return false;
-              match = i.label ? i.label : i.name;
-            });
-            value.content = cvt + match + tinp;
-            continue;
-          }
-          
-          var matchWidget = value.content?.match(reWidget);
-          if (matchWidget) {
-            var match = matchWidget[1];
-            extra_info?.inputs?.find((i) => {
-              if (i.name != match) return false;
-              match = i.label ? i.label : i.name;
-            });
-            extra_info?.widgets?.find((i) => {
-              if (i.name != match) return false;
-              match = i.label ? i.label : i.name;
-            });
-            value.content = cvt + match + twgt;
-            continue;
+          // 仅对实际翻译过的菜单项包装回调，执行前恢复英文、执行后恢复中文
+          if (isTranslated) {
+            value._originalContent = originalContent;
+            
+            if (typeof value.callback === "function") {
+              const originalCallback = value.callback;
+              value.callback = function(v, ...args) {
+                const translatedContent = v.content;
+                v.content = v._originalContent;
+                const result = originalCallback.apply(this, [v, ...args]);
+                v.content = translatedContent;
+                return result;
+              };
+            }
           }
         }
+        
+        // 共享回调也需要拦截：执行前恢复英文、执行后恢复中文
+        if (options && typeof options.callback === "function") {
+          const originalOptCallback = options.callback;
+          options.callback = function(v, ...args) {
+            if (v && v._originalContent) {
+              const translatedContent = v.content;
+              v.content = v._originalContent;
+              const result = originalOptCallback.apply(this, [v, ...args]);
+              v.content = translatedContent;
+              return result;
+            }
+            return originalOptCallback.apply(this, [v, ...args]);
+          };
+        }
+        
         const ctx = f2.call(this, values, options);
         return ctx;
       };
