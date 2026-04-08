@@ -3,18 +3,17 @@
  */
 
 import { app } from "../../../scripts/app.js";
-import { $el } from "../../../scripts/ui.js";
 import { applyMenuTranslation, observeFactory } from "./MenuTranslate.js";
+import { registerSettings, addPanelButtons, setupPluginManager } from "./SettingsPanel.js";
 import {
   isAlreadyTranslatedText,
   isAlreadyTranslated,
   nativeTranslatedSettings,
   isTranslationEnabled,
-  toggleTranslation,
+  isOptionTranslationEnabled,
   initConfig,
   currentConfig,
   translatedValueSet,
-  saveConfig,
   error
 } from "./utils.js";
 
@@ -307,6 +306,25 @@ export class TUtils {
         }
         return res;
       };
+
+      // 拦截动态生成的小部件 (addWidget)，确保第三方插件动态添加的控件也能被翻译
+      let addWidget = node.addWidget;
+      if (addWidget && !node._addWidget_translated) {
+        node.addWidget = function (type, name, value, callback, options) {
+          // 先让底层创建控件
+          let res = addWidget.apply(this, arguments);
+          // 控件创建完毕后立刻检查翻译
+          if (isTranslationEnabled() && res && res.name) {
+            let class_type = this.constructor.comfyClass || this.constructor.type;
+            let dict = TUtils.T.Nodes[class_type];
+            if (dict && dict["widgets"] && res.name in dict["widgets"]) {
+              TUtils.safeApplyTranslation(res, dict["widgets"][res.name]);
+            }
+          }
+          return res;
+        };
+        node._addWidget_translated = true; // 防止重复拦截
+      }
     } catch (e) {
       error(`为节点 ${node?.title || '未知'} 应用翻译失败:`, e);
     }
@@ -413,7 +431,7 @@ export class TUtils {
           if (value.value in tN) {
             value.content = tN[value.value]["title"] || value.content;
             isTranslated = true;
-          } else if (value.content in t) {
+          } else if (isOptionTranslationEnabled() && value.content in t) {
             value.content = t[value.content];
             isTranslated = true;
           } else {
@@ -506,130 +524,6 @@ export class TUtils {
     }
   }
 
-  static addPanelButtons(app) {
-    try {
-      if(document.getElementById("toggle-translation-button")) return;
-      
-      const translationEnabled = isTranslationEnabled();
-      const locale = currentConfig.locale;
-      
-      // ⬇️【核心修复】：正确解析 ComfyUI 的全局设置 JSON 对象，保证万无一失
-      let isPlain = false;
-      try {
-        // 方法 1: 使用 ComfyUI 官方 API 获取设置 (推荐)
-        let savedStyle = app?.ui?.settings?.getSettingValue?.("🌐Language翻译语言.ButtonStyle");
-        
-        // 方法 2: 兜底机制，如果 API 没就绪，直接剥析 localStorage 底层数据
-        if (!savedStyle) {
-          const settingsStr = localStorage.getItem("Comfy.Settings");
-          if (settingsStr) {
-            const settingsObj = JSON.parse(settingsStr);
-            savedStyle = settingsObj["🌐Language翻译语言.ButtonStyle"];
-          }
-        }
-        
-        if (savedStyle && typeof savedStyle === "string") {
-          isPlain = savedStyle.includes("plain");
-        }
-      } catch(e) {
-        console.warn("读取按钮样式配置失败，采用默认值", e);
-      }
-      
-      const onText = `翻译开启 (${locale})`;
-      const offText = `翻译关闭 (原生)`;
-      
-      const styleElem = document.createElement('style');
-      styleElem.textContent = `
-        @keyframes flowEffect {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        /* 原有的七彩样式 */
-        .translation-active-gradient {
-          background: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff80, #0080ff, #8000ff, #ff0080, #ff0000);
-          background-size: 400% 100%; color: white; border: none; animation: flowEffect 8s ease infinite;
-          text-shadow: 0 1px 2px rgba(0,0,0,0.7); box-shadow: 0 0 8px rgba(255,255,255,0.3);
-          transition: all 0.3s ease; font-weight: bold;
-        }
-        .translation-inactive-gradient {
-          background: linear-gradient(90deg, #f0f0f0, #d0d0d0, #b0b0b0, #909090, #707070, #909090, #b0b0b0, #d0d0d0, #f0f0f0);
-          background-size: 300% 100%; color: #333; border: none; animation: flowEffect 6s ease infinite;
-          box-shadow: 0 0 5px rgba(0,0,0,0.2); transition: all 0.3s ease; font-weight: bold;
-        }
-        
-        /* 使用核心底层变量，抛弃带有延迟的 PrimeVue 变量 */
-        .translation-active-plain {
-          background-color: var(--comfy-menu-bg, #353535); 
-          color: var(--input-text, #ffffff);
-          border: 1px solid var(--border-color, #555555);
-          transition: all 0.2s ease;
-        }
-        .translation-inactive-plain {
-          background-color: var(--comfy-input-bg, #1e1e1e); 
-          color: var(--descrip-text, #888888);
-          border: 1px solid var(--border-color, #333333);
-          transition: all 0.2s ease;
-        }
-
-        .translation-btn:hover {
-          transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.3); cursor: pointer; filter: brightness(1.1);
-        }
-        .translation-btn {
-          cursor: pointer; border-radius: 6px; padding: 6px 12px; font-size: 12px;
-        }
-      `;
-      document.head.appendChild(styleElem);
-
-      // 根据配置决定使用哪种 class
-      const activeClass = isPlain ? "translation-active-plain" : "translation-active-gradient";
-      const inactiveClass = isPlain ? "translation-inactive-plain" : "translation-inactive-gradient";
-      
-      if(document.querySelector(".comfy-menu") && !document.getElementById("toggle-translation-button")) {
-        app.ui.menuContainer.appendChild(
-          $el("button.translation-btn", {
-            id: "toggle-translation-button",
-            textContent: translationEnabled ? onText : offText,
-            className: translationEnabled ? `translation-btn ${activeClass}` : `translation-btn ${inactiveClass}`,
-            style: { fontWeight: isPlain ? "normal" : "bold", margin: "2px" },
-            title: translationEnabled ? "已开启翻译效果" : "已使用原生语言",
-            onclick: async () => { await toggleTranslation(); },
-          })
-        );
-      }
-      
-      try {
-        if(window?.comfyAPI?.button?.ComfyButton && window?.comfyAPI?.buttonGroup?.ComfyButtonGroup) {
-          var ComfyButtonGroup = window.comfyAPI.buttonGroup.ComfyButtonGroup;
-          var ComfyButton = window.comfyAPI.button.ComfyButton;
-          
-          var btn = new ComfyButton({
-            action: async () => { await toggleTranslation(); },
-            tooltip: translationEnabled ? "已开启翻译效果" : "已使用原生语言",
-            content: translationEnabled ? onText : offText,
-            classList: "toggle-translation-button"
-          });
-          
-          if(btn.element) {
-            btn.element.classList.add("translation-btn");
-            btn.element.classList.add(translationEnabled ? activeClass : inactiveClass);
-            btn.element.style.fontWeight = isPlain ? "normal" : "bold";
-            btn.element.style.margin = "2px";
-          }
-          
-          var group = new ComfyButtonGroup(btn.element);
-          if(app.menu?.settingsGroup?.element) {
-            app.menu.settingsGroup.element.before(group.element);
-          }
-        }
-      } catch(e) {
-        error("添加新版UI语言按钮失败:", e);
-      }
-    } catch (e) {
-      error("添加面板按钮失败:", e);
-    }
-  }
-
   static addNodeTitleMonitoring(app) {
     try {
       if (typeof LGraphNode === 'undefined') return;
@@ -650,62 +544,7 @@ const ext = {
   async init(app) {
     try {
       await initConfig();
-
-      // 请求获取服务器上的语言列表
-      let availableLocales = ["zh-CN", "en_US"];
-      try {
-          const locRes = await fetch("./translation_node/get_locales");
-          if (locRes.ok) availableLocales = await locRes.json();
-      } catch (e) {}
-
-      let isSettingsRegistered = false; 
-
-      // 1. 语言设置
-      app.ui.settings.addSetting({
-        id: "🌐Language翻译语言.Language",
-        name: "🌐 Language settings for translation (翻译语言设置)",
-        type: "combo",
-        options: availableLocales,
-        defaultValue: currentConfig.locale,
-        onChange: async (newVal) => {
-          if (!isSettingsRegistered) return; 
-          
-          if (newVal && newVal !== currentConfig.locale) {
-            await saveConfig(currentConfig.translation_enabled, newVal, currentConfig.button_style);
-            alert(`Language set to ${newVal}. The page will reload.`);
-            location.reload();
-          }
-        }
-      });
-
-      // 2. UI 风格设置 (纯前端本地存储)
-      app.ui.settings.addSetting({
-        id: "🌐Language翻译语言.ButtonStyle",
-        name: "🎨 Button Style (翻译按钮样式)",
-        type: "combo",
-        options: ["gradient (七彩渐变)", "plain (原生低调)"],
-        defaultValue: "gradient (七彩渐变)", 
-        onChange: (newVal) => {
-          if (!isSettingsRegistered) return; 
-          
-          const isPlain = newVal.includes("plain");
-          
-          const btns = document.querySelectorAll(".translation-btn");
-          btns.forEach(btn => {
-            const isEnabled = currentConfig.translation_enabled;
-            
-            btn.classList.remove("translation-active-gradient", "translation-inactive-gradient", "translation-active-plain", "translation-inactive-plain");
-            
-            const activeClass = isPlain ? "translation-active-plain" : "translation-active-gradient";
-            const inactiveClass = isPlain ? "translation-inactive-plain" : "translation-inactive-gradient";
-            btn.classList.add(isEnabled ? activeClass : inactiveClass);
-            
-            btn.style.fontWeight = isPlain ? "normal" : "bold";
-          });
-        }
-      });
-
-      isSettingsRegistered = true; 
+      await registerSettings(app);
 
       TUtils.enhandeDrawNodeWidgets();
       await TUtils.syncTranslation();
@@ -725,7 +564,8 @@ const ext = {
         TUtils.addRegisterNodeDefCB(app);
       }
       
-      TUtils.addPanelButtons(app);
+      addPanelButtons(app);
+      setupPluginManager();
     } catch (e) {
       error("扩展设置失败:", e);
     }

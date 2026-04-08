@@ -10,7 +10,9 @@ export function error(...args) {
 export let currentConfig = {
     translation_enabled: true,
     locale: "zh-CN",
-    button_style: "gradient" // 新增：默认渐变，可选 "plain"
+    button_style: "gradient",
+    disabled_plugins: [],
+    translate_options: true
 };
 
 // 存储所有翻译后的目标文本集合，用于判断是否已翻译
@@ -55,11 +57,11 @@ async function loadConfig() {
         if (response.ok) {
             const config = await response.json();
             
-            // 确保这三个变量都被正确同步到了前端内存中
             currentConfig.translation_enabled = config.translation_enabled;
             currentConfig.locale = config.locale || "zh-CN";
-            // 👇 新增这一行：启动时读取服务器保存的按钮样式
-            currentConfig.button_style = config.button_style || "gradient"; 
+            currentConfig.button_style = config.button_style || "gradient";
+            currentConfig.disabled_plugins = config.disabled_plugins || [];
+            currentConfig.translate_options = config.translate_options !== false;
             
             return currentConfig.translation_enabled;
         }
@@ -69,12 +71,14 @@ async function loadConfig() {
     return true;
 }
 
-export async function saveConfig(enabled, locale = currentConfig.locale, button_style = currentConfig.button_style) {
+export async function saveConfig(enabled, locale = currentConfig.locale, button_style = currentConfig.button_style, disabled_plugins = currentConfig.disabled_plugins, translate_options = currentConfig.translate_options) {
     try {
         const formData = new FormData();
         formData.append('translation_enabled', enabled.toString());
         formData.append('locale', locale);
-        formData.append('button_style', button_style); // 传给后端
+        formData.append('button_style', button_style);
+        formData.append('disabled_plugins', JSON.stringify(disabled_plugins));
+        formData.append('translate_options', translate_options.toString());
 
         const response = await fetch("./translation_node/set_config", {
             method: "POST",
@@ -87,6 +91,8 @@ export async function saveConfig(enabled, locale = currentConfig.locale, button_
                 currentConfig.translation_enabled = enabled;
                 currentConfig.locale = locale;
                 currentConfig.button_style = button_style;
+                currentConfig.disabled_plugins = disabled_plugins;
+                currentConfig.translate_options = translate_options;
                 return true;
             }
         }
@@ -98,6 +104,10 @@ export async function saveConfig(enabled, locale = currentConfig.locale, button_
 
 export function isTranslationEnabled() {
     return currentConfig.translation_enabled;
+}
+
+export function isOptionTranslationEnabled() {
+    return currentConfig.translate_options;
 }
 
 export async function initConfig() {

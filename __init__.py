@@ -27,7 +27,7 @@ CUR_PATH = Path(__file__).parent
 
 def load_config():
     config_path = CUR_PATH.joinpath("config.json")
-    default_config = {"translation_enabled": True, "locale": "zh-CN", "button_style": "gradient"}
+    default_config = {"translation_enabled": True, "locale": "zh-CN", "button_style": "gradient", "disabled_plugins": [], "translate_options": True}
     if config_path.exists():
         try:
             config_data = try_get_json(config_path)
@@ -50,14 +50,17 @@ def try_get_json(path: Path):
     return {}
 
 
-def get_nodes_translation(locale):
+def get_nodes_translation(locale, disabled_plugins=None):
     path = CUR_PATH.joinpath(locale, "Nodes")
     if not path.exists():
         path = CUR_PATH.joinpath("en_US", "Nodes")
     if not path.exists():
         return {}
+    disabled = set(disabled_plugins or [])
     translations = {}
     for jpath in path.glob("*.json"):
+        if jpath.stem in disabled:
+            continue
         translations.update(try_get_json(jpath))
     return translations
 
@@ -86,8 +89,8 @@ def get_menu_translation(locale):
     return menus
 
 
-def compile_translation(locale):
-    nodes_translation = get_nodes_translation(locale)
+def compile_translation(locale, disabled_plugins=None):
+    nodes_translation = get_nodes_translation(locale, disabled_plugins)
     node_category_translation = get_category_translation(locale)
     menu_translation = get_menu_translation(locale)
 
@@ -134,8 +137,10 @@ async def get_translation(request: web.Request):
     if not current_enabled:
         return web.Response(status=200, body=json_data, headers=headers)
 
+    disabled_plugins = GLOBAL_CONFIG.get("disabled_plugins", [])
+
     try:
-        json_data = compile_translation(locale)
+        json_data = compile_translation(locale, disabled_plugins)
         if "gzip" in accept_encoding:
             json_data = compress_json(json_data, method="gzip")
             headers["Content-Encoding"] = "gzip"
@@ -150,15 +155,45 @@ async def get_config(request: web.Request):
     return web.Response(status=200, body=json.dumps(GLOBAL_CONFIG), headers={"Content-Type": "application/json"})
 
 
+@server.PromptServer.instance.routes.get("/translation_node/get_plugin_list")
+async def get_plugin_list(request: web.Request):
+    """
+    API端点: 获取当前语言的插件翻译文件列表
+    返回所有 JSON 文件名（不含扩展名）
+    """
+    locale = GLOBAL_CONFIG.get("locale", "zh-CN")
+    path = CUR_PATH.joinpath(locale, "Nodes")
+    plugins = sorted([f.stem for f in path.glob("*.json")]) if path.exists() else []
+    return web.Response(status=200, body=json.dumps(plugins, ensure_ascii=False), headers={"Content-Type": "application/json"})
+
+
 @server.PromptServer.instance.routes.post("/translation_node/set_config")
 async def set_config(request: web.Request):
     try:
         post = await request.post()
         enabled = post.get("translation_enabled", "true").lower() == "true"
         locale = post.get("locale", "zh-CN")
-        button_style = post.get("button_style", "gradient") # 获取样式配置
+        button_style = post.get("button_style", "gradient")
 
-        config_data = {"translation_enabled": enabled, "locale": locale, "button_style": button_style}
+        # 解析禁用插件列表
+        disabled_plugins_str = post.get("disabled_plugins", "[]")
+        try:
+            disabled_plugins = json.loads(disabled_plugins_str)
+            if not isinstance(disabled_plugins, list):
+                disabled_plugins = []
+        except (json.JSONDecodeError, TypeError):
+            disabled_plugins = []
+
+        # 解析选项翻译开关
+        translate_options = post.get("translate_options", "true").lower() == "true"
+
+        config_data = {
+            "translation_enabled": enabled,
+            "locale": locale,
+            "button_style": button_style,
+            "disabled_plugins": disabled_plugins,
+            "translate_options": translate_options
+        }
         config_path = CUR_PATH.joinpath("config.json")
 
         with open(config_path, 'w', encoding='utf-8') as f:

@@ -5,6 +5,7 @@
 import { 
   isAlreadyTranslatedText, 
   nativeTranslatedSettings,
+  isOptionTranslationEnabled,
   error
 } from "./utils.js";
 
@@ -77,6 +78,12 @@ class TExe {
         return;
       }
       
+      // COMBO 下拉选项翻译开关：ContextMenu 容器内的文本受此开关控制
+      if (!isOptionTranslationEnabled()) {
+        const el = target.nodeType === Node.TEXT_NODE ? target.parentElement : target;
+        if (el?.closest?.(".litecontextmenu")) return;
+      }
+      
       if (target.childNodes && target.childNodes.length) {
         const childNodes = Array.from(target.childNodes);
         for (const childNode of childNodes) {
@@ -115,7 +122,7 @@ class TExe {
           }
         }
         
-        if (target.nodeName === "SELECT") {
+        if (target.nodeName === "SELECT" && isOptionTranslationEnabled()) {
           Array.from(target.options).forEach(option => {
             if (option.text && !isAlreadyTranslatedText(option.text)) {
               const optionTextTranslated = this.MT(option.text);
