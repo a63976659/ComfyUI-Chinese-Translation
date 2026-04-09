@@ -1,220 +1,342 @@
 {
-  "EmptyZImageLatentImage //ZImagePowerNodes": {
-    "title": "⚡| 空 Latent Z 图像",
-    "inputs": {},
-    "widgets": {
-      "landscape": "切换横竖屏模式",
-      "ratio": "宽高比",
-      "size": "尺寸",
-      "batch_size": "批次大小"
+    "ZSamplerTurbo2 //ZImagePowerNodes": {
+        "title": "⚡| Z-采样器 涡轮增压",
+        "inputs": {
+            "latent_input": "Latent输入",
+            "model": "模型",
+            "positive": "正向条件",
+            "positive_stg2": "第二阶段正向条件",
+            "positive_stg3": "第三阶段正向条件"
+        },
+        "widgets": {
+            "seed": "种子",
+            "steps": "步骤数",
+            "denoise": "降噪",
+            "z_vibrance": "Z-鲜艳度",
+            "mode": "模式",
+            "lowres_sample": "低分辨率 采样"
+        },
+        "outputs": {
+            "latent_output": "Latent输出"
+        },
+        "description": "使用特定于“Z-图像涡轮”的过程高效地去除隐空间图像中的噪声。此节点接收一个 Z-图像涡轮模型、初始隐空间图像以及调节参数，并产生一个可用于解码为最终图像的去噪隐空间输出。",
+        "api_version": "V3"
     },
-    "outputs": {
-      "latent": "Latent"
+    "ZSamplerTurbo2Advanced //ZImagePowerNodes": {
+        "title": "⚡| Z-采样器 涡轮增压 高级版",
+        "inputs": {
+            "latent_input": "Latent输入",
+            "model": "模型",
+            "positive": "正向条件",
+            "positive_stg2": "第二阶段正向条件",
+            "positive_stg3": "第三阶段正向条件"
+        },
+        "widgets": {
+            "add_noise": "添加噪声",
+            "seed": "种子",
+            "steps": "步骤数",
+            "start_at_step": "从第几步开始",
+            "end_at_step": "到第几步结束",
+            "force_final_denoising": "强制最终去噪",
+            "divider": "分割符",
+            "z_vibrance": "Z-鲜艳度",
+            "initial_bias_level": "初始偏差级别",
+            "initial_sample_size": "初始样本大小"
+        },
+        "outputs": {
+            "latent_output": "Latent输出"
+        },
+        "description": "高效地去除隐像中的噪声，并针对“Z-图像加速器”进行了专门调优。此节点接受一个Z-图像加速器模型、初始隐像和条件参数，并生成一个可用于解码最终图像的去噪隐像输出。高级版本包括额外参数以实现更精确的控制和采样器链式连接。",
+        "api_version": "V3"
+    },
+    "ZSamplerTurbo2Laboratory //ZImagePowerNodes": {
+        "title": "⚡| Z-采样器 涡轮增压 实验室版",
+        "inputs": {
+            "model": "模型",
+            "positive": "正向条件",
+            "latent_input": "Latent输入"
+        },
+        "widgets": {
+            "seed": "种子",
+            "steps": "步骤数",
+            "denoise": "去噪强度",
+            "divider1": "分割符1",
+            "initial_noise_bias_level": "初始噪声偏差级别",
+            "initial_noise_overdose": "初始噪声过量",
+            "noise_est_sample_size": "噪声估计样本大小",
+            "noise_est_sample_bias": "噪声估计样本偏差",
+            "noise_est_sample_scale": "噪声估计样本缩放",
+            "divider2": "分割符2",
+            "inject_noise_st1": "第一阶段注入噪声",
+            "inject_freq_st1": "第一阶段注入频率",
+            "inject_noise_st2": "第二阶段注入噪声",
+            "inject_freq_st2": "第二阶段注入频率",
+            "inject_noise_st3": "第三阶段注入噪声",
+            "inject_freq_st3": "第三阶段注入频率",
+            "divider3": "分割符3",
+            "sigma_preset_name": "预设σ名称",
+            "sigma0_off": "σ0 偏移",
+            "sigma1_off": "σ1 偏移",
+            "sigma2_off": "σ2 偏移",
+            "sigma3_off": "σ3 偏移",
+            "sigma4_off": "σ4 偏移",
+            "sigma5_off": "σ5 偏移",
+            "sigma6_off": "σ6 偏移",
+            "sigma7_off": "σ7 偏移",
+            "sigma8_off": "σ8 偏移",
+            "sigma9_off": "σ9 偏移",
+            "sigma10_off": "σ10 偏移"
+        },
+        "outputs": {
+            "latent_output": "Latent输出"
+        },
+        "description": "高效地去除Latent中的噪声，并特别针对“Z-图像加速器”模型进行了优化。此节点接受一个Z-图像加速器模型、Latent输入和条件参数，并生成一个可用于进一步处理或解码的去噪输出。",
+        "api_version": "V3"
+    },
+    "IllustrationStylePromptEncoder //ZImagePowerNodes": {
+        "title": "❌插图风格提示编码器",
+        "inputs": {
+            "clip": "CLIP",
+            "customization": "自定义选项"
+        },
+        "widgets": {
+            "style_to_apply": "要应用的风格",
+            "text": "文本提示"
+        },
+        "outputs": {},
+        "description": "将文本提示转换为嵌入，适应所选的插图风格。此节点接收一个提示，根据选定的选项调整其视觉样式，然后使用提供的文本编码器将其编码为一个引导图像生成的嵌入。",
+        "api_version": "V3"
+    },
+    "PhotoStylePromptEncoder //ZImagePowerNode": {
+        "title": "❌照片风格 提示编码器",
+        "inputs": {
+            "clip": "CLIP",
+            "customization": "自定义选项"
+        },
+        "widgets": {
+            "style_to_apply": "要应用的风格",
+            "text": "文本提示"
+        },
+        "outputs": {},
+        "description": "将文本提示转换为嵌入，适应所选的照片风格。此节点接收一个提示，根据选定的选项调整其视觉样式，然后使用提供的文本编码器将其编码为一个引导图像生成的嵌入。",
+        "api_version": "V3"
+    },
+    "EmptyZImageLatentImage //ZImagePowerNodes": {
+        "title": "⚡| 空 Latent Z 图像",
+        "inputs": {},
+        "widgets": {
+            "landscape": "切换横竖屏模式",
+            "ratio": "宽高比",
+            "size": "尺寸",
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "SaveImage //ZImagePowerNodes": {
+        "title": "⚡| 保存图片",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "civitai_compatible_metadata": "Civitai 兼容元数据"
+        },
+        "outputs": {
+            "int": "整数",
+            "float": "浮点数",
+            "latent": "Latent"
+        }
+    },
+    "StylePromptEncoder //ZImagePowerNodes": {
+        "title": "⚡| 风格与提示词 编辑",
+        "inputs": {
+            "clip": "CLIP",
+            "customization": "定制化"
+        },
+        "widgets": {
+            "category": "类别",
+            "style": "风格"
+        },
+        "outputs": {
+            "CONDITIONS": "条件",
+            "STRING": "字符串"
+        }
+    },
+    "StyleStringInjector //ZImagePowerNodes": {
+        "title": "⚡| 风格 注入字符串",
+        "inputs": {
+            "string": "字符串"
+        },
+        "widgets": {
+            "🖼️ Select Style ...": "🖼️选择风格",
+            "style": "风格"
+        },
+        "outputs": {
+            "CONDITIONS": "条件",
+            "STRING": "字符串"
+        }
+    },
+    "StylePromptEncoder2 //ZImagePowerNodes": {
+        "title": "⚡| 风格 &提示词 编辑",
+        "inputs": {
+            "clip": "CLIP",
+            "customization": "自定义"
+        },
+        "widgets": {
+            "style": "风格",
+            "🖼️ Select Style ...": "🖼️选择风格",
+            "text": "文本",
+            "gallery": "画廊",
+            "spacer": "间隔"
+        },
+        "outputs": {
+            "CONDITIONS": "条件",
+            "STRING": "字符串"
+        },
+        "description": "将文本提示转换为嵌入物，自动适应提示以匹配所选风格。此节点将提示调整为所选选项的视觉风格，并使用提供的文本编码器对其进行编码，以生成引导图像生成的嵌入物。"
+    },
+    "StyleStringInjector2 //ZImagePowerNodes": {
+        "title": "⚡| 风格 注入字符串",
+        "inputs": {
+            "string": "字符串"
+        },
+        "widgets": {
+            "style": "风格",
+            "🖼️ Select Style ...": "🖼️选择风格",
+            "gallery": "画廊"
+        },
+        "outputs": {
+            "STRING": "字符串"
+        },
+        "description": "向您的提示中注入一种风格。此节点将文本提示根据所选风格进行修改。"
+    },
+    "ZSamplerTurboAdvanced //ZImagePowerNodes": {
+        "title": "⚡| Z-采样器 Turbo（高级版）",
+        "inputs": {
+            "model": "模型",
+            "positive": "正向提示词",
+            "latent_input": "Latent输入"
+        },
+        "widgets": {
+            "seed": "种子",
+            "steps": "步骤",
+            "denoise": "去噪",
+            "initial_noise_calibration": "初始噪声校准",
+            "noise_bias_estimation": "噪声偏差估计",
+            "noise_bias_sample_size": "噪声偏差样本大小",
+            "noise_bias_scale": "噪声偏差缩放",
+            "noise_overdose": "噪声过载",
+            "divider": "分割"
+        },
+        "outputs": {
+            "latent_output": "Latent输出",
+            "latent": "Latent"
+        },
+        "description": "高效地去噪潜在图像，特别针对 'Z-图像 Turbo' 模型进行了优化。此节点接受一个 Z-图像 Turbo 模型、一个初始潜在图像以及条件参数，产生一个准备进一步处理或解码的去噪输出。"
+    },
+    "MyTop10Styles //ZImagePowerNodes": {
+        "title": "⚡| 我的10种风格",
+        "inputs": {
+            "input": "输入",
+            "top_styles": "流行风格",
+            "divider": "分割"
+        },
+        "widgets": {
+            "style_1": "风格1",
+            "style_2": "风格2",
+            "style_3": "风格3",
+            "style_4": "风格4",
+            "style_5": "风格5",
+            "style_6": "风格6",
+            "style_7": "风格7",
+            "style_8": "风格8",
+            "style_9": "风格9",
+            "style_10": "风格10",
+            "control_after_generate": "生成后控制",
+            "output_to": "输出至"
+        },
+        "outputs": {
+            "output": "输出"
+        },
+        "description": "允许您从您的个性化前10种列表中选择一种视觉风格。此节点依赖于 '我的前10种风格编辑器' 来提供您最喜欢的风格列表。"
+    },
+    "MyTop10StylesEditor //ZImagePowerNodes": {
+        "title": "⚡| 我的10种风格（编辑器）",
+        "inputs": {
+            "gallery_1": "画廊1",
+            "spacer_1": "间隔1",
+            "gallery_2": "画廊2",
+            "spacer_2": "间隔2",
+            "gallery_3": "画廊3",
+            "spacer_3": "间隔3",
+            "gallery_4": "画廊4",
+            "spacer_4": "间隔4",
+            "gallery_5": "画廊5",
+            "spacer_5": "间隔5",
+            "gallery_6": "画廊6",
+            "spacer_6": "间隔6",
+            "gallery_7": "画廊7",
+            "spacer_7": "间隔7",
+            "gallery_8": "画廊8",
+            "spacer_8": "间隔8",
+            "gallery_9": "画廊9",
+            "spacer_9": "间隔9",
+            "gallery_10": "画廊10"
+        },
+        "widgets": {
+            "🖼️ Select Style ...": "🖼️选择风格",
+            "style_1": "风格1",
+            "style_2": "风格2",
+            "style_3": "风格3",
+            "style_4": "风格4",
+            "style_5": "风格5",
+            "style_6": "风格6",
+            "style_7": "风格7",
+            "style_8": "风格8",
+            "style_9": "风格9",
+            "style_10": "风格10"
+        },
+        "outputs": {
+            "TOP_STYLES": "流行风格"
+        },
+        "description": "允许您创建一个个性化的前10种视觉风格列表，从所有可用选项中选择以构建您的理想收藏。此节点设计用于与 '我的前10种风格' 一起工作，定义和利用您偏好的风格。"
+    },
+    "VAEEncodeSoftInpainting //ZImagePowerNodes": {
+        "title": "⚡| VAE 编码（用于软修复）",
+        "inputs": {
+            "pixels": "像素",
+            "vae": "vae",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "output_size": "输出大小",
+            "mask_blur_pixels": "遮罩模糊像素"
+        },
+        "outputs": {
+            "latent_output": "Latent输出",
+            "latent": "Latent"
+        },
+        "description": "使用 VAE 模型将输入图像及其修复遮罩编码到Latent。"
+    },
+    "ZSamplerTurbo //ZImagePowerNodes": {
+        "title": "⚡| Z采样器 加速",
+        "inputs": {
+            "model": "模型",
+            "latent_input": "Latent输入",
+            "positive": "正向提示词"
+        },
+        "widgets": {
+            "seed": "随机种子",
+            "steps": "步数",
+            "denoise": "降噪",
+            "initial_noise_calibration": "初始噪声校准",
+            "lowres_bias": "低分辨率偏差"
+        },
+        "outputs": {
+            "latent_output": "Latent输出",
+            "latent": "Latent"
+        }
     }
-  },
-  "SaveImage //ZImagePowerNodes": {
-    "title": "⚡| 保存图片",
-    "inputs": {
-      "images": "图像"
-    },
-    "widgets": {
-      "filename_prefix": "文件名前缀",
-      "civitai_compatible_metadata": "Civitai 兼容元数据"
-    },
-    "outputs": {
-      "int": "整数",
-      "float": "浮点数",
-      "latent": "Latent"
-    }
-  },
-  "StylePromptEncoder //ZImagePowerNodes": {
-    "title": "⚡| 风格与提示词 编辑",
-    "inputs": {
-      "clip": "CLIP",
-      "customization": "定制化"
-    },
-    "widgets": {
-      "category": "类别",
-      "style": "风格"
-    },
-    "outputs": {
-      "CONDITIONS": "条件",
-      "STRING": "字符串"
-    }
-  },
-  "StyleStringInjector //ZImagePowerNodes": {
-    "title": "⚡| 风格 注入字符串",
-    "inputs": {
-      "string": "字符串"
-    },
-    "widgets": {
-      "🖼️ Select Style ...": "🖼️选择风格",
-      "style": "风格"
-    },
-    "outputs": {
-      "CONDITIONS": "条件",
-      "STRING": "字符串"
-    }
-  },
-  "StylePromptEncoder2 //ZImagePowerNodes": {
-    "title": "⚡| 风格 &提示词 编辑",
-    "inputs": {
-      "clip": "CLIP",
-      "customization": "自定义"
-    },
-    "widgets": {
-      "style": "风格",
-      "🖼️ Select Style ...": "🖼️选择风格",
-      "text": "文本",
-      "gallery": "画廊",
-      "spacer": "间隔"
-    },
-    "outputs": {
-      "CONDITIONS": "条件",
-      "STRING": "字符串"
-    },
-    "description": "将文本提示转换为嵌入物，自动适应提示以匹配所选风格。此节点将提示调整为所选选项的视觉风格，并使用提供的文本编码器对其进行编码，以生成引导图像生成的嵌入物。"
-  },
-  "StyleStringInjector2 //ZImagePowerNodes": {
-    "title": "⚡| 风格 注入字符串",
-    "inputs": {
-      "string": "字符串"
-    },
-    "widgets": {
-      "style": "风格",
-      "🖼️ Select Style ...": "🖼️选择风格",
-      "gallery": "画廊"
-    },
-    "outputs": {
-      "STRING": "字符串"
-    },
-    "description": "向您的提示中注入一种风格。此节点将文本提示根据所选风格进行修改。"
-  },
-  "ZSamplerTurboAdvanced //ZImagePowerNodes": {
-    "title": "⚡| Z-采样器 Turbo（高级版）",
-    "inputs": {
-      "model": "模型",
-      "positive": "正向提示词",
-      "latent_input": "Latent输入"
-    },
-    "widgets": {
-      "seed": "种子",
-      "steps": "步骤",
-      "denoise": "去噪",
-      "initial_noise_calibration": "初始噪声校准",
-      "noise_bias_estimation": "噪声偏差估计",
-      "noise_bias_sample_size": "噪声偏差样本大小",
-      "noise_bias_scale": "噪声偏差缩放",
-      "noise_overdose": "噪声过载",
-      "divider": "分割"
-    },
-    "outputs": {
-      "latent_output": "Latent输出",
-      "latent": "Latent"
-    },
-    "description": "高效地去噪潜在图像，特别针对 'Z-图像 Turbo' 模型进行了优化。此节点接受一个 Z-图像 Turbo 模型、一个初始潜在图像以及条件参数，产生一个准备进一步处理或解码的去噪输出。"
-  },
-  "MyTop10Styles //ZImagePowerNodes": {
-    "title": "⚡| 我的10种风格",
-    "inputs": {
-      "input": "输入",
-      "top_styles": "流行风格",
-      "divider": "分割"
-    },
-    "widgets": {
-      "style_1": "风格1",
-      "style_2": "风格2",
-      "style_3": "风格3",
-      "style_4": "风格4",
-      "style_5": "风格5",
-      "style_6": "风格6",
-      "style_7": "风格7",
-      "style_8": "风格8",
-      "style_9": "风格9",
-      "style_10": "风格10",
-      "control_after_generate": "生成后控制",
-      "output_to": "输出至"
-    },
-    "outputs": {
-      "output": "输出"
-    },
-    "description": "允许您从您的个性化前10种列表中选择一种视觉风格。此节点依赖于 '我的前10种风格编辑器' 来提供您最喜欢的风格列表。"
-  },
-  "MyTop10StylesEditor //ZImagePowerNodes": {
-    "title": "⚡| 我的10种风格（编辑器）",
-    "inputs": {
-      "gallery_1": "画廊1",
-      "spacer_1": "间隔1",
-      "gallery_2": "画廊2",
-      "spacer_2": "间隔2",
-      "gallery_3": "画廊3",
-      "spacer_3": "间隔3",
-      "gallery_4": "画廊4",
-      "spacer_4": "间隔4",
-      "gallery_5": "画廊5",
-      "spacer_5": "间隔5",
-      "gallery_6": "画廊6",
-      "spacer_6": "间隔6",
-      "gallery_7": "画廊7",
-      "spacer_7": "间隔7",
-      "gallery_8": "画廊8",
-      "spacer_8": "间隔8",
-      "gallery_9": "画廊9",
-      "spacer_9": "间隔9",
-      "gallery_10": "画廊10"
-    },
-    "widgets": {
-      "🖼️ Select Style ...": "🖼️选择风格",
-      "style_1": "风格1",
-      "style_2": "风格2",
-      "style_3": "风格3",
-      "style_4": "风格4",
-      "style_5": "风格5",
-      "style_6": "风格6",
-      "style_7": "风格7",
-      "style_8": "风格8",
-      "style_9": "风格9",
-      "style_10": "风格10"
-    },
-    "outputs": {
-      "TOP_STYLES": "流行风格"
-    },
-    "description": "允许您创建一个个性化的前10种视觉风格列表，从所有可用选项中选择以构建您的理想收藏。此节点设计用于与 '我的前10种风格' 一起工作，定义和利用您偏好的风格。"
-  },
-  "VAEEncodeSoftInpainting //ZImagePowerNodes": {
-    "title": "⚡| VAE 编码（用于软修复）",
-    "inputs": {
-      "pixels": "像素",
-      "vae": "vae",
-      "mask": "遮罩"
-    },
-    "widgets": {
-      "output_size": "输出大小",
-      "mask_blur_pixels": "遮罩模糊像素"
-    },
-    "outputs": {
-      "latent_output": "Latent输出",
-      "latent": "Latent"
-    },
-    "description": "使用 VAE 模型将输入图像及其修复遮罩编码到Latent。"
-  },
-  "ZSamplerTurbo //ZImagePowerNodes": {
-    "title": "⚡| Z采样器 加速",
-    "inputs": {
-      "model": "模型",
-      "latent_input": "Latent输入",
-      "positive": "正向提示词"
-    },
-    "widgets": {
-      "seed": "随机种子",
-      "steps": "步数",
-      "denoise": "降噪",
-      "initial_noise_calibration": "初始噪声校准",
-      "lowres_bias": "低分辨率偏差"
-    },
-    "outputs": {
-      "latent_output": "Latent输出",
-      "latent": "Latent"
-    }
-  }
 }
