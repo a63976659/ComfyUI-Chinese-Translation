@@ -1,0 +1,181 @@
+{
+    "VoiceBridgeASRLoader": {
+        "title": "语音桥ASR加载器",
+        "inputs": {},
+        "widgets": {
+            "repo_id": "仓库ID",
+            "source": "源",
+            "precision": "精度",
+            "attention": "注意力",
+            "max_new_tokens": "最大新词元数",
+            "forced_aligner": "强制对齐器",
+            "local_model_path_asr": "本地ASR模型路径",
+            "local_model_path_fa": "本地FA模型路径"
+        },
+        "outputs": {
+            "model_key": "模型键",
+            "MODEL_KEY": "MODEL_KEY"
+        },
+        "description": "类别: ASR加载",
+        "api_version": "V1"
+    },
+    "VoiceBridgeASRTranscribe": {
+        "title": "语音桥ASr转录",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "model_key": "模型键",
+            "language": "语言",
+            "context": "上下文",
+            "return_timestamps": "返回时间戳"
+        },
+        "outputs": {
+            "forced_aligns": "强制对齐结果",
+            "text": "文本",
+            "language": "语言",
+            "timestamps": "时间戳",
+            "LIST": "列表",
+            "STRING": "字符串"
+        },
+        "description": "类别: ASR转录",
+        "api_version": "V1"
+    },
+    "VoiceBridgeTTSLoader": {
+        "title": "语音桥TTS加载器",
+        "inputs": {},
+        "widgets": {
+            "repo_id": "仓库ID",
+            "source": "源",
+            "precision": "精度",
+            "attention": "注意力",
+            "local_model_path": "本地TTS模型路径"
+        },
+        "outputs": {
+            "model_key": "模型键",
+            "MODEL_KEY": "MODEL_KEY"
+        },
+        "description": "类别: TTS加载",
+        "api_version": "V1"
+    },
+    "VoiceClonePrompt": {
+        "title": "语音克隆提示",
+        "inputs": {
+            "model_key": "模型键",
+            "ref_audio": "参考音频"
+        },
+        "widgets": {
+            "ref_text": "参考文本"
+        },
+        "outputs": {
+            "voice_clone_prompt": "语音克隆提示",
+            "VOICE_CLONE_PROMPT": "语音克隆提示"
+        },
+        "description": "类别: 语音克隆提示",
+        "api_version": "V1"
+    },
+    "SRTToAudio": {
+        "title": "SRT 转换为音频",
+        "inputs": {
+            "model_key": "模型键",
+            "voice_clone_prompt": "语音克隆提示"
+        },
+        "widgets": {
+            "srt_string": "SRT 字符串",
+            "language": "语言",
+            "tempo_limit": "节奏限制",
+            "mini_gap_ms": "最小间隙毫秒",
+            "batch_size": "批处理大小"
+        },
+        "outputs": {
+            "audio": "音频",
+            "adjusted_srt": "调整后的SRT",
+            "AUDIO": "音频",
+            "STRING": "字符串"
+        },
+        "description": "类别: SRT转换为音频",
+        "api_version": "V1"
+    },
+    "generate srt": {
+        "title": "生成Srt",
+        "inputs": {},
+        "widgets": {
+            "forced_aligns": "强制对齐结果",
+            "text": "文本",
+            "language": "语言",
+            "save_srt": "保存srt",
+            "filename_prefix": "文件名前缀"
+        },
+        "outputs": {
+            "srt_string": "srt字符串",
+            "STRING": "字符串"
+        },
+        "description": "类别: 生成srt",
+        "api_version": "V1"
+    },
+    "SaveSRTFromString": {
+        "title": "从字符串保存srt",
+        "inputs": {},
+        "widgets": {
+            "srt_string": "srt字符串",
+            "filename_prefix": "文件名前缀"
+        },
+        "outputs": {
+            "save_path": "保存路径",
+            "STRING": "字符串"
+        },
+        "description": "类别: 从字符串保存srt",
+        "api_version": "V1"
+    },
+    "VoiceBridgeAIAPI": {
+        "title": "语音桥AI API",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "system_prompt": "系统提示",
+            "prompt": "提示",
+            "max_tokens": "最大词元数",
+            "temperature": "温度",
+            "top_p": "Top-P"
+        },
+        "outputs": {
+            "response": "响应",
+            "STRING": "字符串"
+        },
+        "description": "类别: AI API",
+        "api_version": "V1"
+    },
+    "VoiceBridgeUnloadModel": {
+        "title": "语音桥卸载模型",
+        "inputs": {
+            "anything": "任意"
+        },
+        "widgets": {
+            "Unload_ASR_Model": "卸载ASR模型",
+            "Unload_TTS_Model": "卸载TTS模型"
+        },
+        "outputs": {
+            "any": "任意"
+        },
+        "description": "类别: 卸载模型",
+        "api_version": "V1"
+    },
+    "GenerateSRT": {
+        "title": "生成字幕文件",
+        "inputs": {
+            "forced_aligns": "强制对齐数据"
+        },
+        "widgets": {
+            "save_srt": "是否保存SRT文件",
+            "filename_prefix": "文件名前缀",
+            "text": "文本内容",
+            "language": "语言"
+        },
+        "outputs": {
+            "srt_string": "SRT字符串"
+        },
+        "description": "根据输入的文本和语言信息，生成SRT格式的字幕内容。支持强制对齐数据以提高字幕准确性，并可选择是否保存为文件，同时允许自定义输出文件名前缀。"
+    }
+}
