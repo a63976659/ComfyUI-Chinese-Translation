@@ -1,0 +1,836 @@
+{
+    "图像提示词公式": {
+        "title": "Image Prompt Formula",
+        "inputs": {},
+        "widgets": {
+            "主体描述": "Subject Description",
+            "主体权重": "Subject Weight",
+            "表情动作描述": "Expression & Action Description",
+            "表情动作权重": "Expression & Action Weight",
+            "场景描述": "Scene Description",
+            "场景权重": "Scene Weight",
+            "光影描述": "Lighting Description",
+            "光影权重": "Lighting Weight",
+            "画面风格": "Art Style",
+            "风格权重": "Style Weight",
+            "景别描述": "Shot Size Description",
+            "景别权重": "Shot Size Weight",
+            "构图描述": "Composition Description",
+            "构图权重": "Composition Weight",
+            "附加提示词": "Additional Prompts",
+            "附加权重": "Additional Weight"
+        },
+        "outputs": {
+            "提示词": "Prompt",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "随机提示词人像": {
+        "title": "Random Portrait Prompt",
+        "inputs": {},
+        "widgets": {
+            "语言": "Language",
+            "人物": "Character",
+            "国籍": "Nationality",
+            "随机脸型": "Random Face Shape",
+            "随机发型": "Random Hairstyle",
+            "随机饰品": "Random Accessories",
+            "随机服装": "Random Clothing",
+            "随机眼型": "Random Eye Shape",
+            "表情": "Expression",
+            "身材": "Body Type",
+            "动作": "Action",
+            "景别": "Shot Size",
+            "背景类型": "Background Type",
+            "合照类型": "Group Photo Type",
+            "艺术风格": "Artistic Style",
+            "附加提示词": "Additional Prompts",
+            "随机种子": "Random Seed"
+        },
+        "outputs": {
+            "正面提示词": "Positive Prompt",
+            "负面提示词": "Negative Prompt",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "视频提示词公式": {
+        "title": "Video Prompt Formula",
+        "inputs": {},
+        "widgets": {
+            "主体描述": "Subject Description",
+            "人物情绪": "Character Emotion",
+            "主体运动": "Subject Movement",
+            "眼型描述": "Eye Shape Description",
+            "场景描述": "Scene Description",
+            "天气": "Weather",
+            "光源类型": "Light Source Type",
+            "光线类型": "Lighting Type",
+            "时间段": "Time of Day",
+            "景别描述": "Shot Size Description",
+            "构图描述": "Composition Description",
+            "镜头焦段": "Lens Focal Length",
+            "机位角度": "Camera Angle",
+            "镜头类型": "Lens Type",
+            "镜头目标": "Camera Target",
+            "运镜方式": "Camera Movement",
+            "色调": "Color Tone",
+            "视觉风格": "Visual Style",
+            "附加提示词": "Additional Prompts"
+        },
+        "outputs": {
+            "提示词": "Prompt",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "视频动态带运镜": {
+        "title": "Video Dynamics with Camera Movement",
+        "inputs": {},
+        "widgets": {
+            "基础场景描述": "Base Scene Description",
+            "主体元素": "Subject Elements",
+            "动态类型": "Dynamic Type",
+            "具体动态": "Specific Dynamics",
+            "动态程度": "Dynamics Intensity",
+            "动态速度": "Dynamics Speed",
+            "动态节奏": "Dynamics Rhythm",
+            "与环境互动": "Environment Interaction",
+            "运镜方式": "Camera Movement",
+            "镜头目标": "Camera Target",
+            "多个主体": "Multiple Subjects",
+            "运镜速度": "Camera Speed",
+            "运镜时长": "Camera Duration",
+            "视觉连贯性": "Visual Consistency",
+            "附加动态描述": "Additional Dynamics Description"
+        },
+        "outputs": {
+            "动态提示词": "Dynamics Prompt",
+            "运镜提示词": "Camera Movement Prompt",
+            "完整提示词": "Complete Prompt",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "图像裁剪节点": {
+        "title": "Image Crop Node",
+        "inputs": {},
+        "widgets": {
+            "图像文件": "Image File",
+            "预设": "Preset",
+            "裁剪宽度": "Crop Width",
+            "裁剪高度": "Crop Height",
+            "裁剪X": "Crop X",
+            "裁剪Y": "Crop Y",
+            "缩放比例": "Scale Ratio"
+        },
+        "outputs": {
+            "图像": "Image",
+            "宽度": "Width",
+            "高度": "Height",
+            "IMAGE": "IMAGE",
+            "INT": "INT"
+        },
+        "description": "Drag the crop box with the mouse to move it\nDouble-click the crop box to make it follow the mouse\nDrag the crop box again with the mouse to release adhesion.\nℹ️ Other preset scaling will work normally\nIn custom mode, scaling may behave abnormally at extreme widths/heights. Please use with caution!",
+        "api_version": "V1"
+    },
+    "智能缩放图像及遮罩": {
+        "title": "Smart Resize Image & Mask",
+        "inputs": {},
+        "widgets": {
+            "调整类型": "Resize Type",
+            "插值方法": "Interpolation Method",
+            "图像或遮罩": "Image or Mask",
+            "参考图像": "Reference Image",
+            "裁剪方式": "Crop Method",
+            "宽度": "Width",
+            "高度": "Height",
+            "缩放系数": "Scale Factor",
+            "指定长度": "Target Length",
+            "百万像素": "Megapixels",
+            "放大": "Upscale"
+        },
+        "outputs": {
+            "图像/遮罩": "Image/Mask",
+            "*": "*"
+        },
+        "description": "\n    Resize Type Description:\n    1. Exact Size/Width/Height: Force resize to specific pixels.\n    2. Scale Factor: Scale by multiplier (e.g., 0.5 or 2.0).\n    3. Target Long/Short Edge: Lock one edge length, other edge scales proportionally.\n    4. Target Pixels: Maintain aspect ratio, adjust total pixel count to approximate value (e.g., 1MP).\n    5. Match Image: Resize input image to match reference image dimensions.\n    6. To Multiple: 【Important】Adjust image dimensions to integer multiples of specified value (e.g., 8).\n       - Purpose: Fix non-standard size images to prevent SD VAE or video model errors due to indivisible dimensions.\n       - Algorithm: Scale proportionally to cover target size, then center crop.\n    ",
+        "api_version": "V1"
+    },
+    "智能预览图像及遮罩": {
+        "title": "Smart Preview Image & Mask",
+        "inputs": {},
+        "widgets": {
+            "输入数据": "Input Data"
+        },
+        "outputs": {},
+        "description": "\n    Smart Preview Node:\n    Can connect Image (IMAGE) or Mask (MASK).\n    - Automatically detects input type.\n    - If Mask, automatically converts to grayscale image for preview.\n    - If Image, displays directly.\n    ",
+        "api_version": "V1"
+    },
+    "智能体对话预设": {
+        "title": "Agent Dialogue Settings",
+        "inputs": {},
+        "widgets": {
+            "模式": "Mode",
+            "预设_主体描述": "Assumed - Main Description",
+            "预设_系统指令": "Pre-set _ System Instruction",
+            "手动_主体描述": "Manual - Main Description",
+            "手动_系统指令": "Manual system instructions",
+            "保存为预设": "Save as default"
+        },
+        "outputs": {
+            "主体描述": "Main description",
+            "系统指令": "System instruction"
+        },
+        "description": "Agent Dialogue Settings - Support for reading and saving dialogue instructions for specific entities",
+        "api_version": "V1"
+    },
+    "提示词预设": {
+        "title": "Hint preset",
+        "inputs": {},
+        "widgets": {
+            "预设文件": "Default file"
+        },
+        "outputs": {
+            "提示词": "Prompt"
+        },
+        "description": "Prompt: Read txt file from the preset folder",
+        "api_version": "V1"
+    },
+    "合并多组提示词": {
+        "title": "Merge multiple sets of prompt words",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "合并提示词": "Merge prompt words",
+            "STRING": "STRING"
+        },
+        "description": "Concatenate up to 50 sets of prompt word strings into a complete long text using the selected delimiter. \n Automatically ignore empty input.",
+        "api_version": "V1"
+    },
+    "图像输入反转": {
+        "title": "Image Input Reversal",
+        "inputs": {},
+        "widgets": {
+            "反转": "Reversal",
+            "图像1": "Image1",
+            "图像2": "Image2"
+        },
+        "outputs": {
+            "输出图像1": "Output Image1",
+            "输出图像2": "Output Image2",
+            "IMAGE": "IMAGE"
+        },
+        "description": "Based on the boolean value, determine whether to swap the order of the two image inputs.\n Used for A/B testing or conditional control of image flow.",
+        "api_version": "V1"
+    },
+    "字符串输入反转": {
+        "title": "String input reversal",
+        "inputs": {
+            "字符串1": "String1",
+            "字符串2": "String2"
+        },
+        "widgets": {
+            "反转": "Reversal"
+        },
+        "outputs": {
+            "输出字符串1": "Output string1",
+            "输出字符串2": "Output string2",
+            "STRING": "STRING"
+        },
+        "description": "Based on the boolean value, determine whether to swap the order of the two input strings.\n Used to quickly switch prompts or paths between different workflow branches.",
+        "api_version": "V1"
+    },
+    "提取视频帧": {
+        "title": "Extract Video Frame",
+        "inputs": {
+            "图像序列": "Image Sequence"
+        },
+        "widgets": {
+            "选择帧": "Select Frame"
+        },
+        "outputs": {
+            "帧图像": "Frame Image",
+            "IMAGE": "IMAGE"
+        },
+        "description": "Extract the first or last frame from an input image batch (video sequence).\n Commonly used to obtain the starting reference image or ending state of a video.",
+        "api_version": "V1"
+    },
+    "批量输出同名图像": {
+        "title": "Batch Output Same-Name Images",
+        "inputs": {},
+        "widgets": {
+            "文本内容1": "Text Content 1",
+            "图像目录1": "Image Directory 1",
+            "文本内容2": "Text Content 2",
+            "图像目录2": "Image Directory 2"
+        },
+        "outputs": {
+            "图像": "Image",
+            "状态": "Status",
+            "IMAGE": "IMAGE",
+            "STRING": "STRING"
+        },
+        "description": "Search for images matching the text in two directories respectively.\n Process Group 1 first, then Group 2.\n Successfully matched images will be merged into a Batch in order, with sequential numbers in the status text increasing continuously.",
+        "api_version": "V1"
+    },
+    "判断并输出加载的图像": {
+        "title": "Judge and Output Loaded Image",
+        "inputs": {},
+        "widgets": {
+            "文本内容": "Text Content",
+            "图像文件": "Image File"
+        },
+        "outputs": {
+            "图像": "Image",
+            "状态": "Status",
+            "IMAGE": "IMAGE",
+            "STRING": "STRING"
+        },
+        "description": "Search the text content based on the loaded image's filename (truncated before the first symbol).\n If the text contains the keyword, output the image; otherwise, do not output. Supports continuous text matching.",
+        "api_version": "V1"
+    },
+    "视频动效提示词": {
+        "title": "Video Motion Effect Prompt",
+        "inputs": {},
+        "widgets": {
+            "基础描述": "Base Description",
+            "人物动态效果": "Character Motion Effect",
+            "环境动态效果": "Environment Motion Effect",
+            "镜头特效": "Lens Effect",
+            "物理效果": "Physics Effect",
+            "效果强度": "Effect Intensity",
+            "效果时长": "Effect Duration",
+            "附加动态描述": "Additional Motion Description",
+            "动态目标对象": "Motion Target Object"
+        },
+        "outputs": {
+            "动效提示词": "Motion Effect Prompt",
+            "完整提示词": "Complete Prompt",
+            "技术说明": "Technical Description",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "视频运镜提示词": {
+        "title": "Video Camera Movement Prompt",
+        "inputs": {},
+        "widgets": {
+            "运镜方式": "Camera Movement Method",
+            "镜头目标": "Focus Target",
+            "运镜速度": "Speed of Camera Movement",
+            "运镜时长": "Duration of Camera Movement",
+            "画面动态描述": "Description of Dynamic in Scene"
+        },
+        "outputs": {
+            "运镜提示词": "Camera Movement Prompt",
+            "技术说明": "Technical Explanation",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "视频首尾帧转场-增强版": {
+        "title": "Enhanced Video Transition Between First and Last Frames",
+        "inputs": {},
+        "widgets": {
+            "首帧描述_建议填写": " Suggested Description for First Frame",
+            "尾帧描述_建议填写": " Suggested Description for Last Frame",
+            "主要转场方式": "Main Transition Method",
+            "转场时长": "Transition Duration",
+            "运动平滑度": "Smoothness of Motion",
+            "人物动态效果": "Dynamic Effect on Characters",
+            "人物效果强度": "Intensity of Dynamic Effect on Characters",
+            "环境动态效果": "Dynamic Effect on Environment",
+            "环境效果强度": "Intensity of Dynamic Effect on Environment",
+            "运镜方式": "Camera Movement Method",
+            "运动子类型": "Subtype of Motion",
+            "运动方向": "Direction of Motion",
+            "变形子类型": "Subtype of Deformation",
+            "遮挡物类型": "Type of Obstruction",
+            "前景遮挡物": "Foreground Obstruction",
+            "展开方式": "Expansion Method",
+            "人物变化类型": "Change Type of Characters",
+            "转场节奏": "Rhythm of Transition",
+            "视觉连贯性": "Visual Continuity",
+            "附加转场描述": "Additional Transition Description"
+        },
+        "outputs": {
+            "转场提示词": "Transition Prompt",
+            "完整提示词": "Complete Prompt",
+            "技术说明": "Technical Explanation",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "视频首尾帧转场": {
+        "title": "Video Transition Between First and Last Frames",
+        "inputs": {},
+        "widgets": {
+            "首帧描述_建议填写": "Suggested Description for First Frame",
+            "尾帧描述_建议填写": "Suggested Description for Last Frame",
+            "主要转场方式": "Main Transition Method",
+            "转场时长": "Transition Duration",
+            "运动平滑度": "Smoothness of Motion",
+            "运动子类型": "Subtype of Motion",
+            "运动方向": "Direction of Motion",
+            "变形子类型": "Subtype of Deformation",
+            "遮挡物类型": "Type of Obstruction",
+            "前景遮挡物": "Foreground Obstruction",
+            "展开方式": "Expansion Method",
+            "人物变化类型": "Change Type of Characters",
+            "转场节奏": "Rhythm of Transition",
+            "视觉连贯性": "Visual Continuity",
+            "附加转场描述": "Additional Transition Description"
+        },
+        "outputs": {
+            "转场提示词": "Transition Prompt",
+            "完整提示词": "Complete Prompt",
+            "技术说明": "Technical Explanation",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "图像遮罩预览节点": {
+        "title": "Image Mask Preview Node",
+        "inputs": {},
+        "widgets": {
+            "image": "image",
+            "遮罩颜色": "Mask Color",
+            "图像": "Image",
+            "遮罩": "Mask"
+        },
+        "outputs": {
+            "图像": "Image",
+            "遮罩": "Mask",
+            "图像合并遮罩": "Merged Image with Mask"
+        },
+        "description": "🖼️ Image Mask Preview and Editing Node\n\nCore Features:\n1. Node Preview: Preview the image and mask, or either one.\n2. Mask Editing: Edit the mask of of the image.\n3. Offline Cache: Continue working using cached data even if input is disconnected.\n4. Image Mask Blending: Overlay the mask color onto the original image to output a solid image.",
+        "api_version": "V1"
+    },
+    "千问单图编辑-图像编辑": {
+        "title": "Qwen Single Image Edit - Image Editing",
+        "inputs": {},
+        "widgets": {
+            "目标": "Target",
+            "编辑类型": "Editing Type",
+            "附加提示词": "Additional Prompt"
+        },
+        "outputs": {
+            "编辑提示词": "Edit Prompt"
+        },
+        "description": "Edit prompt for image editing processing",
+        "api_version": "V1"
+    },
+    "千问单图编辑-图像转绘": {
+        "title": "Qwen Single Image Edit - Retouch and Transfer Style",
+        "inputs": {},
+        "widgets": {
+            "转绘风格": "Retouch Style",
+            "色彩风格": "Color Style",
+            "附加提示词": "Additional Prompt"
+        },
+        "outputs": {
+            "编辑提示词": "Edit Prompt"
+        },
+        "description": "Edit prompt for retouching and transferring style of the image",
+        "api_version": "V1"
+    },
+    "千问单图编辑-图像变文创产品": {
+        "title": "Qwen Single Image Edit - Convert to Cultural Product",
+        "inputs": {},
+        "widgets": {
+            "目标": "Target",
+            "样式": "Style",
+            "附加提示词": "Additional Prompt"
+        },
+        "outputs": {
+            "编辑提示词": "Edit Prompt"
+        },
+        "description": "Edit prompt for converting image to cultural product",
+        "api_version": "V1"
+    },
+    "千问单图编辑-物品换材质": {
+        "title": "Qwen Single Image Edit - Replace Object Material",
+        "inputs": {},
+        "widgets": {
+            "目标": "Target",
+            "材质": "Material",
+            "附加提示词": "Additional Prompt"
+        },
+        "outputs": {
+            "编辑提示词": "Edit Prompt"
+        },
+        "description": "Edit prompt for replacing object material",
+        "api_version": "V1"
+    },
+    "千问单图编辑-人物换动作": {
+        "title": "Qwen Single Image Edit - Replace Character Action",
+        "inputs": {},
+        "widgets": {
+            "角色": "Character",
+            "动作": "Action",
+            "附加提示词": "Additional Prompt"
+        },
+        "outputs": {
+            "编辑提示词": "Edit Prompt"
+        },
+        "description": "Edit prompt for replacing character action",
+        "api_version": "V1"
+    },
+    "千问单图编辑-改变镜头": {
+        "title": "Qwen Single Image Edit - Change Lens Type",
+        "inputs": {},
+        "widgets": {
+            "目标": "Target",
+            "镜头": "Lens",
+            "附加提示词": "Additional Prompt"
+        },
+        "outputs": {
+            "编辑提示词": "Edit Prompt",
+            "STRING": "STRING"
+        },
+        "description": "Edit prompt for changing lens type",
+        "api_version": "V1"
+    },
+    "千问单图编辑-改变视角": {
+        "title": "Qwen Single Image Edit - Change Perspective",
+        "inputs": {},
+        "widgets": {
+            "目标": "Target",
+            "方向": "Direction",
+            "角度": "Angle",
+            "附加提示词": "Additional Prompt"
+        },
+        "outputs": {
+            "编辑提示词": "Edit Prompt",
+            "STRING": "STRING"
+        },
+        "description": "Prompt editing for changing perspective in single image edits",
+        "api_version": "V1"
+    },
+    "表情包生成": {
+        "title": "Emoticon Pack Generation",
+        "inputs": {},
+        "widgets": {
+            "主体": "Subject",
+            "详细内容": "Detailed Content",
+            "布局": "Layout",
+            "表情包风格": "Emoticon Pack Style",
+            "背景颜色": "Background Color",
+            "附加提示词": "Additional Prompt"
+        },
+        "outputs": {
+            "表情包提示词": "Emoticon Pack Prompt",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "千问图像": {
+        "title": "Qwen Image",
+        "inputs": {},
+        "widgets": {
+            "主体": "Subject",
+            "细节": "Details",
+            "场景": "Scene",
+            "景别": "Shot Size",
+            "附加提示词": "Additional Prompt"
+        },
+        "outputs": {
+            "千问图像提示词": "Qwen Image Prompt",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "海报生成": {
+        "title": "Poster Generation",
+        "inputs": {},
+        "widgets": {
+            "海报类型": "Poster Type",
+            "主体_前景描述": "Foreground Subject Description",
+            "海报主题文字": "Poster Theme Text",
+            "副标题": "Subheading",
+            "中部标语": "Central Slogan",
+            "活动亮点介绍": "Event Highlights Introduction",
+            "底部日期与地点": "Date and Location at Bottom",
+            "背景描述": "Background Description",
+            "字体颜色": "Font Color",
+            "背景颜色": "Background Color",
+            "附加提示词": "Additional Prompt"
+        },
+        "outputs": {
+            "海报提示词": "Poster Prompt",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "艺术字体生成": {
+        "title": "Artistic Font Generation",
+        "inputs": {},
+        "widgets": {
+            "文字内容": "Text Content",
+            "字体风格": "Font Style",
+            "视角方向": "View Direction",
+            "排版方式": "Layout",
+            "字体颜色": "Font Color",
+            "背景颜色": "Background Color",
+            "附加提示词": "Additional Prompt"
+        },
+        "outputs": {
+            "艺术字体提示词": "Artistic Font Prompt",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "LOGO生成": {
+        "title": "LOGO Generation",
+        "inputs": {},
+        "widgets": {
+            "LOGO形象": "LOGO Appearance",
+            "LOGO文字": "LOGO Text",
+            "颜色预设": "Color Preset",
+            "附加提示词": "Additional Prompt"
+        },
+        "outputs": {
+            "LOGO提示词": "LOGO Prompt",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Wan26多镜头": {
+        "title": "Wan26 Multi-Camera Setup",
+        "inputs": {},
+        "widgets": {
+            "总体描述": "Overall Description",
+            "镜头数量": "Number of Cameras",
+            "启用智能多镜": "Enable Intelligent Multiple Cameras",
+            "镜头1开始时间": "Camera 1 Start Time",
+            "镜头X结束时间": "Camera X End Time",
+            "镜头X运镜方式": "Camera X Camera Movement",
+            "镜头1描述": "Camera 1 Description",
+            "镜头2开始时间": "Camera 2 Start Time",
+            "镜头2结束时间": "Camera 2 End Time",
+            "镜头2运镜方式": "Camera 2 Camera Movement",
+            "镜头2描述": "Camera 2 Description",
+            "镜头3开始时间": "Camera 3 Start Time",
+            "镜头3结束时间": "Camera 3 End Time",
+            "镜头3运镜方式": "Camera 3 Camera Movement",
+            "镜头3描述": "Camera 3 Description",
+            "镜头4开始时间": "Camera 4 Start Time",
+            "镜头4结束时间": "Camera 4 End Time",
+            "镜头4运镜方式": "Camera 4 Camera Movement",
+            "镜头4描述": "Camera 4 Description",
+            "镜头5开始时间": "Camera 5 Start Time",
+            "镜头5结束时间": "Camera 5 End Time",
+            "镜头5运镜方式": "Camera 5 Camera Movement",
+            "镜头5描述": "Camera 5 Description",
+            "转场效果": "Transition Effect",
+            "时间格式": "Time Format",
+            "视频总时长": "Total Video Duration",
+            "附加指令": "Additional Instructions"
+        },
+        "outputs": {
+            "多镜头提示词": "Multi-Camera Prompt",
+            "完整提示词": "Complete Prompt",
+            "镜头结构表": "Camera Structure Table",
+            "STRING": "STRING"
+        },
+        "description": "Useful for Wan2.6 API nodes, recommended to use complete prompts.",
+        "api_version": "V1"
+    },
+    "Wan26图生视频": {
+        "title": "Wan26 Image-to-Video",
+        "inputs": {},
+        "widgets": {
+            "场景描述": "Scene Description",
+            "主角A引用名": "Character A Reference Name",
+            "主角A动作": "Character A Action",
+            "主角B引用名": "Character B Reference Name",
+            "主角B动作": "Character B Action",
+            "运镜方式": "Camera Movement",
+            "主角A台词": "Character A Dialogue",
+            "主角B台词": "Character B Dialogue",
+            "其他元素动作": "Other Elements Actions",
+            "镜头目标": "Target Lens",
+            "运镜速度": "Camera Speed",
+            "运镜时长": "Duration of Camera Movement",
+            "人物动态效果": "Character Dynamic Effects",
+            "环境动态效果": "Environmental Dynamic Effects",
+            "附加描述": "Additional Description"
+        },
+        "outputs": {
+            "Wan提示词": "Wan Prompt",
+            "完整提示词": "Complete Prompt",
+            "技术说明": "Technical Explanation",
+            "STRING": "STRING"
+        },
+        "description": "Useful for Wan2.6 API nodes, recommended to use complete prompts.",
+        "api_version": "V1"
+    },
+    "Wan25图生视频": {
+        "title": "Wan25 Image-to-Video",
+        "inputs": {},
+        "widgets": {
+            "画面描述": "Scene Description",
+            "场景动效": "Scene Dynamics",
+            "主体动作": "Subject Action",
+            "运镜方式": "Camera Movement",
+            "镜头目标": "Target Lens",
+            "声音描述": "Sound Description",
+            "是否添加音效": "Add Sound Effects?",
+            "背景音乐": "Background Music",
+            "视觉连贯性": "Visual Continuity",
+            "音效细节": "Sound Effect Details",
+            "运镜速度": "Camera Speed",
+            "运镜时长": "Duration of Camera Movement",
+            "附加描述": "Additional Description"
+        },
+        "outputs": {
+            "视觉提示词": "Visual Prompt",
+            "声音提示词": "Audio Prompt",
+            "完整提示词": "Complete Prompt",
+            "STRING": "STRING"
+        },
+        "description": "Useful for Wan2.5 API nodes, recommended to use complete prompts.",
+        "api_version": "V1"
+    },
+    "ACE高级流派融合": {
+        "title": "Advanced Genre Fusion",
+        "inputs": {},
+        "widgets": {
+            "整体基调": "Overall Tone",
+            "主歌风格": "Verse Style",
+            "主歌形容词": "Verse Descriptor",
+            "副歌风格": "Chorus Style",
+            "副歌形容词": "Chorus Descriptor",
+            "融合连接词": "Fusion Connector"
+        },
+        "outputs": {
+            "结构化系统指令(Caption)": "Structured System Instruction (Caption)",
+            "STRING": "STRING"
+        },
+        "description": "This node is used to generate a structured genre fusion system instruction.\n\nUnlike standard nodes that use an overall style, this node allows you to explicitly specify different genres for the verse and chorus.\nFor example, the verse can be 'rap' while the chorus suddenly becomes 'opera'.\n\n**Usage**: Use instead of other music nodes' system instructions.",
+        "api_version": "V1"
+    },
+    "ACE提示词预设": {
+        "title": "ACE Prompt Settings",
+        "inputs": {},
+        "widgets": {
+            "主要流派": "Main Genre",
+            "融合流派A": "Fusion Genre A",
+            "融合流派B": "Fusion Genre B",
+            "歌曲主题": "Song Theme",
+            "情感氛围1": "Emotion/Atmosphere 1",
+            "情感氛围2": "Emotion/Atmosphere 2",
+            "人声特色1": "Vocal Feature 1",
+            "人声特色2": "Vocal Feature 2",
+            "乐器重点1": "Key Instrument 1",
+            "乐器重点2": "Key Instrument 2",
+            "节奏速度": "Tempo/Rhythm",
+            "额外风格关键词": "Additional Style Keywords",
+            "前奏_类型": "Intro_Type",
+            "前奏_描述": "Intro_Description",
+            "前奏_歌词": "Intro_Lyrics",
+            "段落1_类型": "Verse 1_Type",
+            "段落1_风格描述": "Verse 1_Style Description",
+            "段落1_歌词": "Verse 1_Lyrics",
+            "段落2_类型": "Verse 2_Type",
+            "段落2_风格描述": "Verse 2_Style Description",
+            "段落2_歌词": "Verse 2_Lyrics",
+            "段落3_类型": "Verse 3_Type",
+            "段落3_风格描述": "Verse 3_Style Description",
+            "段落3_歌词": "Verse 3_Lyrics",
+            "段落4_类型": "Verse 4_Type",
+            "段落4_风格描述": "Verse 4_Style Description",
+            "段落4_歌词": "Verse 4_Lyrics",
+            "段落5_类型": "Verse 5_Type",
+            "段落5_风格描述": "Verse 5_Style Description",
+            "段落5_歌词": "Verse 5_Lyrics",
+            "段落6_类型": "Verse 6_Type",
+            "段落6_风格描述": "Verse 6_Style Description",
+            "段落6_歌词": "Verse 6_Lyrics",
+            "段落7_类型": "Verse 7_Type",
+            "段落7_风格描述": "Verse 7_Style Description",
+            "段落7_歌词": "Verse 7_Lyrics",
+            "段落8_类型": "Verse 8_Type",
+            "段落8_风格描述": "Verse 8_Style Description",
+            "段落8_歌词": "Verse 8_Lyrics",
+            "段落9_类型": "Verse 9_Type",
+            "段落9_风格描述": "Verse 9_Style Description",
+            "段落9_歌词": "Verse 9_Lyrics",
+            "尾奏_类型": "Outro_Type",
+            "尾奏_描述": "Outro_Description",
+            "尾奏_歌词": "Outro_Lyrics"
+        },
+        "outputs": {},
+        "description": "This node supports the [dynamic preset function] of ACE-Step 1.5 music cue words.\n\n- When used in conjunction with the front-end script, selecting *Main Genre* will automatically fill in the style and structure.\n- Selecting *None* or *Standard Full Version* will unlock the free editing mode.\n- **Default state**: Configured as *Standard Full Version*, ensuring that all paragraphs are activated upon the initial load.",
+        "api_version": "V1"
+    },
+    "ACE提示词公式": {
+        "title": "ACE Prompt Formula",
+        "inputs": {},
+        "widgets": {
+            "主要流派": "Main Genre",
+            "融合流派A": "Fusion Genre A",
+            "融合流派B": "Fusion Genre B",
+            "歌曲主题": "Song Theme",
+            "情感氛围1": "Emotion/Atmosphere 1",
+            "情感氛围2": "Emotion/Atmosphere 2",
+            "人声特色1": "Vocal Feature 1",
+            "人声特色2": "Vocal Feature 2",
+            "乐器重点1": "Key Instrument 1",
+            "乐器重点2": "Key Instrument 2",
+            "节奏速度": "Tempo/Rhythm",
+            "额外风格关键词": "Additional Style Keywords",
+            "前奏_类型": "Intro_Type",
+            "前奏_描述": "Intro_Description",
+            "前奏_歌词": "Intro_Lyrics",
+            "段落1_类型": "Verse 1_Type",
+            "段落1_风格描述": "Verse 1_Style Description",
+            "段落1_歌词": "Verse 1_Lyrics",
+            "段落2_类型": "Verse 2_Type",
+            "段落2_风格描述": "Verse 2_Style Description",
+            "段落2_歌词": "Verse 2_Lyrics",
+            "段落3_类型": "Verse 3_Type",
+            "段落3_风格描述": "Verse 3_Style Description",
+            "段落3_歌词": "Verse 3_Lyrics",
+            "段落4_类型": "Verse 4_Type",
+            "段落4_风格描述": "Verse 4_Style Description",
+            "段落4_歌词": "Verse 4_Lyrics",
+            "段落5_类型": "Verse 5_Type",
+            "段落5_风格描述": "Verse 5_Style Description",
+            "段落5_歌词": "Verse 5_Lyrics",
+            "段落6_类型": "Verse 6_Type",
+            "段落6_风格描述": "Verse 6_Style Description",
+            "段落6_歌词": "Verse 6_Lyrics",
+            "段落7_类型": "Verse 7_Type",
+            "段落7_风格描述": "Verse 7_Style Description",
+            "段落7_歌词": "Verse 7_Lyrics",
+            "段落8_类型": "Verse 8_Type",
+            "段落8_风格描述": "Verse 8_Style Description",
+            "段落8_歌词": "Verse 8_Lyrics",
+            "段落9_类型": "Verse 9_Type",
+            "段落9_风格描述": "Verse 9_Style Description",
+            "段落9_歌词": "Verse 9_Lyrics",
+            "尾奏_类型": "Outro_Type",
+            "尾奏_描述": "Outro_Description",
+            "尾奏_歌词": "Outro_Lyrics"
+        },
+        "outputs": {},
+        "description": "This node is specifically designed for the ACE-Step 1.5 model and is optimized for Chinese pop music.\n\n\n[Structure Explanation]\nThis node presets 10 paragraphs (Intro -> Outro), which is the standard structure for generating a complete 3-4 minute pop song.\nIf you only need to generate a short song, you can select the unwanted paragraph types as *None*.\n\n\n[Usage Tips]\n- The lyrics box already has reference lyrics preset, and you can directly run the test.\n- Song title *Full Green Pass* is created by the intelligent model path repair plugin: https://github.com/a63976659/ComfyUI-Any-Path-Repair\n- ✨ To prevent possible disputes over song creation or copyright, use the default lyrics provided by the plugin to generate the song. The copyright belongs to the plugin owner.",
+        "api_version": "V1"
+    }
+}
