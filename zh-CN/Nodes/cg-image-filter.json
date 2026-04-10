@@ -1,0 +1,235 @@
+{
+    "Image Filter": {
+        "title": "图像过滤器",
+        "inputs": {
+            "images": "图像",
+            "latents": "Latent",
+            "masks": "遮罩"
+        },
+        "widgets": {
+            "timeout": "超时时间",
+            "ontimeout": "超时时的操作",
+            "tip": "提示",
+            "extra1": "额外参数1",
+            "extra2": "额外参数2",
+            "extra3": "额外参数3",
+            "pick_list_start": "选择列表开始",
+            "pick_list": "选择列表",
+            "video_frames": "视频帧",
+            "graph_id": "图形ID"
+        },
+        "outputs": {
+            "images": "图像",
+            "latents": "Latent",
+            "masks": "遮罩",
+            "extra1": "额外参数1",
+            "extra2": "额外参数2",
+            "extra3": "额外参数3",
+            "indexes": "索引"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "Text Image Filter": {
+        "title": "带有附加信息的文字图像过滤器",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "text": "文本",
+            "timeout": "超时时间",
+            "tip": "提示",
+            "extra1": "额外参数1",
+            "extra2": "额外参数2",
+            "extra3": "额外参数3",
+            "textareaheight": "文本区域高度",
+            "graph_id": "图形ID"
+        },
+        "outputs": {
+            "images": "图像",
+            "text": "文本",
+            "extra1": "额外参数1",
+            "extra2": "额外参数2",
+            "extra3": "额外参数3"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "Mask Image Filter": {
+        "title": "遮罩图像过滤器",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "timeout": "超时时间",
+            "if_no_mask": "无遮罩时的操作",
+            "if_inputs_unchanged": "输入未改变时的操作",
+            "tip": "提示",
+            "extra1": "额外参数1",
+            "extra2": "额外参数2",
+            "extra3": "额外参数3",
+            "graph_id": "图形ID"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "extra1": "额外参数1",
+            "extra2": "额外参数2",
+            "extra3": "额外参数3"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "Batch from Image List": {
+        "title": "从图像列表创建批次",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "Image List From Batch": {
+        "title": "从批次创建图像列表",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "Pick from List": {
+        "title": "从列表中选取",
+        "inputs": {
+            "anything": "任何项"
+        },
+        "widgets": {
+            "indexes": "索引"
+        },
+        "outputs": {
+            "picks": "选取结果"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "Masked Section": {
+        "title": "遮罩部分",
+        "inputs": {
+            "mask": "遮罩",
+            "image": "图像"
+        },
+        "widgets": {
+            "minimum": "最小值"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "返回只包括遮罩部分裁剪后的图像",
+        "api_version": "V3"
+    },
+    "StringToStringList": {
+        "title": "字符串转换为字符串列表",
+        "inputs": {},
+        "widgets": {
+            "string": "字符串",
+            "split": "分割符"
+        },
+        "outputs": {
+            "string_list": "字符串列表"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "Split String by Commas": {
+        "title": "按逗号分割字符串",
+        "inputs": {},
+        "widgets": {
+            "string": "字符串",
+            "split": "分割符"
+        },
+        "outputs": {
+            "string": "字符串",
+            "string2": "字符串2",
+            "string3": "字符串3",
+            "string4": "字符串4",
+            "string5": "字符串5",
+            "allt": "所有作为列表"
+        },
+        "description": "按输入字符串分割，并去除空格。",
+        "api_version": "V3"
+    },
+    "Any List to String": {
+        "title": "任意列表转字符串",
+        "inputs": {
+            "anything": "任何项"
+        },
+        "widgets": {
+            "join": "连接符"
+        },
+        "outputs": {
+            "string": "字符串"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "String to Int": {
+        "title": "字符串转整数",
+        "inputs": {},
+        "widgets": {
+            "string": "字符串",
+            "default": "默认值"
+        },
+        "outputs": {
+            "int": "整数"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "String to Float": {
+        "title": "字符串转浮点数",
+        "inputs": {},
+        "widgets": {
+            "string": "字符串",
+            "default": "默认值"
+        },
+        "outputs": {
+            "float": "浮点数"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "cg_String to Int": {
+        "title": "cg_字符串转整数",
+        "inputs": {},
+        "widgets": {
+            "string": "字符串",
+            "default": "默认值"
+        },
+        "outputs": {
+            "int": "整数"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "cg_String to Float": {
+        "title": "cg_字符串转浮点数",
+        "inputs": {},
+        "widgets": {
+            "string": "字符串",
+            "default": "默认值"
+        },
+        "outputs": {
+            "float": "浮点数"
+        },
+        "description": "",
+        "api_version": "V3"
+    }
+}
