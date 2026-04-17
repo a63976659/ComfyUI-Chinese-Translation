@@ -20,13 +20,24 @@ class TExe {
   }
 
   constructor() {
-    this.excludeClass = ["lite-search-item-type"];
+    this.excludeClass = [
+      "lite-search-item-type",
+      "p-virtualscroller", // 拦截模版搜索中的虚拟滚动列表
+      "p-listbox"          // 拦截 PrimeVue 列表容器
+    ];
     this.observers = [];
+    
+    // 【核心修复 1】：内部微任务防抖队列，解决同一 Target 瞬间被触发数百次的问题
+    this.pendingNodes = new Set();
+    this.isScheduling = false;
   }
 
   tSkip(node) {
     try {
-      return this.excludeClass.some((cls) => node.classList?.contains(cls));
+      // 性能优化：文本节点直接查父级，精准匹配黑名单组件
+      const el = node.nodeType === Node.TEXT_NODE ? node.parentElement : node;
+      if (!el || typeof el.closest !== 'function') return false;
+      return this.excludeClass.some((cls) => el.closest(`.${cls}`));
     } catch (e) {
       return false;
     }
@@ -53,15 +64,33 @@ class TExe {
   translateAllText(node) {
     try {
       let T = this.T;
-      if (!T) return;
-      if (!node || !node.querySelectorAll) return;
-      
-      const allElements = node.querySelectorAll("*");
-      for (const ele of allElements) {
-        if (ele.textContent && nativeTranslatedSettings.includes(ele.textContent)) {
-          continue;
-        }
-        this.replaceText(ele);
+      if (!T || !node) return;
+      // 过滤掉不合理的 DOM 节点
+      if (node.nodeType !== Node.ELEMENT_NODE && node.nodeType !== Node.DOCUMENT_FRAGMENT_NODE) return;
+
+      // 把待翻译节点加入防抖队列 (应对你第3、4轮发现的 target 重复重入问题)
+      this.pendingNodes.add(node);
+
+      if (!this.isScheduling) {
+        this.isScheduling = true;
+        
+        // 使用 queueMicrotask 在当前所有同步 Mutation 回调执行完毕后，统一收网
+        queueMicrotask(() => {
+          const nodesToTranslate = Array.from(this.pendingNodes);
+          this.pendingNodes.clear();
+          this.isScheduling = false;
+
+          for (const targetNode of nodesToTranslate) {
+            // 如果节点已经被销毁（Vue 虚拟列表频繁销毁重建），直接跳过
+            if (!document.contains(targetNode) && targetNode.nodeType !== Node.DOCUMENT_FRAGMENT_NODE) {
+              continue;
+            }
+
+            // 【核心修复 2】：彻底移除 querySelectorAll("*") ！！
+            // 直接把父容器抛给 replaceText，让它利用自带的递归完成 O(N) 的单次遍历。
+            this.replaceText(targetNode);
+          }
+        });
       }
     } catch (e) {
       error("翻译所有文本出错:", e);
@@ -161,23 +190,34 @@ export function applyMenuTranslation(T) {
     
     texe.translateAllText(document.querySelector(".litegraph"));
     
+    let _bodyDebounceTimer = null;
+    let _bodyPendingMutations = [];
+    
     const bodyObserver = observeFactory(document.querySelector("body.litegraph"), (mutationsList) => {
-      for (let mutation of mutationsList) {
-        for (const node of mutation.addedNodes) {
-          if (node.classList?.contains("comfy-modal")) {
-            texe.translateAllText(node);
-            observeModalNode(node);
-          } else if (node.classList?.contains("p-dialog-mask")) {
-            const dialog = node.querySelector(".p-dialog");
-            if (dialog) {
-              texe.translateAllText(dialog);
-              observeFactory(dialog, handleSettingsDialog, dialog?.role === "dialog");
+      _bodyPendingMutations.push(...mutationsList);
+      if (_bodyDebounceTimer) clearTimeout(_bodyDebounceTimer);
+      _bodyDebounceTimer = setTimeout(() => {
+        _bodyDebounceTimer = null;
+        const mutations = _bodyPendingMutations;
+        _bodyPendingMutations = [];
+        
+        for (const mutation of mutations) {
+          for (const node of mutation.addedNodes) {
+            if (node.classList?.contains("comfy-modal")) {
+              texe.translateAllText(node);
+              observeModalNode(node);
+            } else if (node.classList?.contains("p-dialog-mask")) {
+              const dialog = node.querySelector(".p-dialog");
+              if (dialog) {
+                texe.translateAllText(dialog);
+                observeFactory(dialog, handleSettingsDialog, dialog?.role === "dialog");
+              }
+            } else {
+              texe.translateAllText(node);
             }
-          } else {
-            texe.translateAllText(node);
           }
         }
-      }
+      }, 16);
     }, true);
     
     texe.observers.push(bodyObserver);
@@ -229,10 +269,26 @@ function observeModalNode(node) {
   }
 }
 
+let _menuDebounceTimer = null;
+let _menuPendingMutations = [];
+
 function handleComfyNewUIMenu(mutationsList) {
-  for (let mutation of mutationsList) {
-    texe.translateAllText(mutation.target);
-  }
+  _menuPendingMutations.push(...mutationsList);
+  if (_menuDebounceTimer) clearTimeout(_menuDebounceTimer);
+  _menuDebounceTimer = setTimeout(() => {
+    _menuDebounceTimer = null;
+    const mutations = _menuPendingMutations;
+    _menuPendingMutations = [];
+    
+    // 去重：同一 target 只翻译一次
+    const targets = new Set();
+    for (const mutation of mutations) {
+      targets.add(mutation.target);
+    }
+    for (const target of targets) {
+      texe.translateAllText(target);
+    }
+  }, 16);
 }
 
 function handleHistoryAndQueueButtons() {

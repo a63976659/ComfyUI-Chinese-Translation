@@ -225,17 +225,17 @@ export function addPanelButtons(app) {
 const SELF_NAME = "ComfyUI-Chinese-Translation";
 const PANEL_ID = "tl-plugin-manager-panel";
 
-async function buildPluginPanel(parentEl) {
-  if (document.getElementById(PANEL_ID)) return;
+// 注入锁：防止并发调用导致重复注入面板
+let isInjecting = false;
 
-  let plugins = [];
-  try {
-    const resp = await fetch("./translation_node/get_plugin_list");
-    plugins = (await resp.json()).filter(n => n !== SELF_NAME && n !== "internal");
-  } catch (e) { error("获取插件列表失败:", e); }
+function buildPluginPanel(parentEl) {
+  // 强制去重：如果面板已存在，直接返回
+  const existing = document.getElementById(PANEL_ID);
+  if (existing) return;
 
   const disabled = new Set(currentConfig.disabled_plugins || []);
 
+  // 先创建面板 DOM 并设置 ID，确保去重检查能正确工作
   const panel = document.createElement("div");
   panel.id = PANEL_ID;
   panel.style.cssText = "margin-top:12px;padding:10px;border:1px solid #444;border-radius:6px;background:#1e1e1e;font-size:13px;";
@@ -259,17 +259,30 @@ async function buildPluginPanel(parentEl) {
   const searchEl = panel.querySelector("#tl-plugin-search");
   const statusEl = panel.querySelector("#tl-status");
 
-  plugins.forEach(name => {
-    const checked = !disabled.has(name);
-    const div = document.createElement("div");
-    div.style.cssText = "padding:2px 4px;border-radius:3px;";
-    div.innerHTML = `<label style="display:flex;align-items:center;gap:6px;cursor:pointer;"><input type="checkbox" ${checked ? "checked" : ""} data-plugin="${name}" style="cursor:pointer;"> <span style="word-break:break-all;">${name}</span></label>`;
-    div.addEventListener("mouseenter", () => div.style.background = "#333");
-    div.addEventListener("mouseleave", () => div.style.background = "");
-    listEl.appendChild(div);
-  });
+  // 先显示加载状态
+  statusEl.textContent = "正在加载插件列表...";
 
-  statusEl.textContent = `共 ${plugins.length} 个翻译文件，已禁用 ${disabled.size} 个`;
+  // 异步加载插件列表并填充内容
+  fetch("./translation_node/get_plugin_list")
+    .then(resp => resp.json())
+    .then(plugins => {
+      plugins = plugins.filter(n => n !== SELF_NAME && n !== "internal");
+      statusEl.textContent = `共 ${plugins.length} 个翻译文件，已禁用 ${disabled.size} 个`;
+      
+      plugins.forEach(name => {
+        const checked = !disabled.has(name);
+        const div = document.createElement("div");
+        div.style.cssText = "padding:2px 4px;border-radius:3px;";
+        div.innerHTML = `<label style="display:flex;align-items:center;gap:6px;cursor:pointer;"><input type="checkbox" ${checked ? "checked" : ""} data-plugin="${name}" style="cursor:pointer;"> <span style="word-break:break-all;">${name}</span></label>`;
+        div.addEventListener("mouseenter", () => div.style.background = "#333");
+        div.addEventListener("mouseleave", () => div.style.background = "");
+        listEl.appendChild(div);
+      });
+    })
+    .catch(e => {
+      error("获取插件列表失败:", e);
+      statusEl.textContent = "加载插件列表失败";
+    });
 
   // 搜索过滤
   searchEl.addEventListener("input", () => {
@@ -305,31 +318,43 @@ async function buildPluginPanel(parentEl) {
 }
 
 function tryInjectPluginPanel() {
+  // 检查注入锁，防止并发调用
+  if (isInjecting) return;
+  // 检查面板是否已存在
   if (document.getElementById(PANEL_ID)) return;
 
-  // 新版 UI
-  const allSettingItems = document.querySelectorAll('[class*="setting-item"], [class*="SettingItem"], .p-fieldset, .p-panel');
-  for (const item of allSettingItems) {
-    if (item.textContent?.includes("Translate COMBO Options") || item.textContent?.includes("翻译下拉选项")) {
-      const container = item.closest('[class*="group"], [class*="category"], .p-fieldset-content, .p-panel-content') || item.parentElement;
-      if (container) buildPluginPanel(container);
-      return;
-    }
-  }
+  isInjecting = true;
+  try {
+    // 持有锁后再次检查，防止并发调用已注入面板
+    if (document.getElementById(PANEL_ID)) return;
 
-  // 旧版 UI
-  const oldDialog = document.querySelector("#comfy-settings-dialog");
-  if (oldDialog) {
-    const tbody = oldDialog.querySelector("tbody");
-    if (tbody) {
-      const rows = tbody.querySelectorAll("tr");
-      for (const row of rows) {
-        if (row.textContent?.includes("Translate COMBO") || row.textContent?.includes("翻译下拉")) {
-          buildPluginPanel(tbody);
-          return;
+    // 新版 UI
+    const allSettingItems = document.querySelectorAll('[class*="setting-item"], [class*="SettingItem"], .p-fieldset, .p-panel');
+    for (const item of allSettingItems) {
+      if (item.textContent?.includes("Translate COMBO Options") || item.textContent?.includes("翻译下拉选项")) {
+        const container = item.closest('[class*="group"], [class*="category"], .p-fieldset-content, .p-panel-content') || item.parentElement;
+        if (container) buildPluginPanel(container);
+        return;
+      }
+    }
+
+    // 旧版 UI
+    const oldDialog = document.querySelector("#comfy-settings-dialog");
+    if (oldDialog) {
+      const tbody = oldDialog.querySelector("tbody");
+      if (tbody) {
+        const rows = tbody.querySelectorAll("tr");
+        for (const row of rows) {
+          if (row.textContent?.includes("Translate COMBO") || row.textContent?.includes("翻译下拉")) {
+            buildPluginPanel(tbody);
+            return;
+          }
         }
       }
     }
+  } finally {
+    // 同步解锁，不用 requestAnimationFrame
+    isInjecting = false;
   }
 }
 
