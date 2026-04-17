@@ -155,6 +155,21 @@
         "outputs": {},
         "description": "将图像列表转换为图像批次。"
     },
+    "1hew_ImageToURL": {
+        "title": "图像转网址链接 URL",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "mode": "模式",
+            "timeout": "超时"
+        },
+        "outputs": {
+            "url": "网址链接 URL"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
     "1hew_MaskBatchToList": {
         "title": "遮罩批次转列表",
         "inputs": {
@@ -172,6 +187,18 @@
         },
         "widgets": {},
         "outputs": {}
+    },
+    "1hew_MaskToSam3Box": {
+        "title": "遮罩转Sam3Box",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "condition": "状态",
+            "output_mode": "输出模式"
+        },
+        "outputs": {},
+        "description": ""
     },
     "1hew_StringCoordinateToBBoxes": {
         "title": "字符串坐标转边界框",
@@ -205,6 +232,17 @@
         "widgets": {},
         "outputs": {}
     },
+    "1hew_TextToAny": {
+        "title": "文本转任意格式",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {},
+        "outputs": {
+            "any": "任意"
+        },
+        "description": ""
+    },
     "1hew_URLToVideo": {
         "title": "URL转视频",
         "description": "从URL获取视频。",
@@ -230,6 +268,41 @@
         },
         "widgets": {},
         "outputs": {}
+    },
+    "1hew_DetectRemoveBG": {
+        "title": "移除背景",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "add_background": "添加背景"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "1hew_DetectRemoveBGRefine": {
+        "title": "移除背景优化",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "type": "类型",
+            "subject_protect": "主体保护",
+            "feather": "羽化",
+            "decolor_edge": "边缘去色"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "description": "",
+        "api_version": "V3"
     },
     "1hew_DetectYolo": {
         "title": "检测 Yolo",
@@ -261,6 +334,37 @@
         },
         "widgets": {},
         "outputs": {}
+    },
+    "1hew_ImageAlphaClean": {
+        "title": "Alpha 通道清理",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "clean_strength": "清理强度",
+            "detect_only": "仅检测"
+        },
+        "outputs": {
+            "mask": "遮罩",
+            "noise_mask": "噪声遮罩"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "1hew_ImageAlphaSplit": {
+        "title": "Alpha 通道分离",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "background_color": "背景颜色"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "description": "",
+        "api_version": "V3"
     },
     "1hew_ImageBBoxOverlayByMask": {
         "title": "通过遮罩在图像上绘制边界框",
@@ -334,61 +438,6 @@
         },
         "widgets": {},
         "outputs": {}
-    },
-    "1hew_ImageResizeFluxKontext": {
-        "title": "图像缩放 Flux Kontext",
-        "description": "使用Flux Kontext调整图像大小。",
-        "inputs": {
-            "preset_size": "预设尺寸",
-            "fit": "适应方式",
-            "pad_color": "填充颜色",
-            "image": "图像",
-            "mask": "遮罩"
-        },
-        "widgets": {},
-        "outputs": {}
-    },
-    "1hew_ImageResizeJimeng": {
-        "title": "图像缩放 即梦",
-        "description": "使用Jimeng调整图像大小。",
-        "inputs": {
-            "preset_size": "预设尺寸",
-            "fit": "适应方式",
-            "pad_color": "填充颜色",
-            "image": "图像",
-            "mask": "遮罩"
-        },
-        "widgets": {},
-        "outputs": {}
-    },
-    "1hew_ImageResizeQwenImage": {
-        "title": "图像缩放 Qwen千问图像",
-        "description": "对图像进行缩放。",
-        "inputs": {
-            "preset_size": "预设尺寸",
-            "fit": "适应方式",
-            "pad_color": "填充颜色",
-            "image": "图像",
-            "mask": "遮罩"
-        }
-    },
-    "1hew_ImageResizeUniversal": {
-        "title": "通用图像缩放",
-        "description": "对图像进行通用缩放。",
-        "inputs": {
-            "image": "图像",
-            "mask": "遮罩",
-            "get_image_size": "获取图像尺寸",
-            "preset_ratio": "预设比例",
-            "proportional_width": "按宽度比例缩放",
-            "proportional_height": "按高度比例缩放",
-            "method": "方法",
-            "scale_to_side": "缩放到边长",
-            "scale_to_length": "缩放到长度",
-            "fit": "适应方式",
-            "pad_color": "填充颜色",
-            "divisible_by": "可被整除"
-        }
     },
     "1hew_ImageRotateWithMask": {
         "title": "带遮罩旋转图像",
@@ -480,19 +529,22 @@
             "divisible_by": "可被整除"
         }
     },
-    "1hew_ImageCropWithBBoxMask": {
-        "title": "使用边界框遮罩裁剪图像",
-        "description": "使用边界框遮罩裁剪图像。",
-        "inputs": {
+    "1hew_ImageCropWithBBoxBoxMask": {
+        "title": "边界框裁剪",
+        "inputs": {},
+        "widgets": {
             "image": "图像",
             "mask": "遮罩",
             "preset_ratio": "预设比例",
             "get_crop_ratio": "获取裁剪比例",
             "scale_strength": "缩放强度",
-            "crop_to_side": "裁剪到边长",
-            "crop_to_length": "裁剪到长度",
-            "divisible_by": "可被整除"
-        }
+            "crop_to_side": "裁剪至边长",
+            "crop_to_length": "裁剪至长度",
+            "divisible_by": "整除倍数"
+        },
+        "outputs": {},
+        "description": "图像裁切器 - 根据遮罩裁切图像，并返回边界框遮罩信息以便后续粘贴回原位置",
+        "api_version": "V3"
     },
     "1hew_ImageEdgeCropPad": {
         "title": "边缘裁剪并填充",
@@ -579,6 +631,111 @@
         "widgets": {},
         "outputs": {},
         "description": "对图像的高频和低频成分进行变换操作。"
+    },
+    "1hew_ImageResizeFluxKontext": {
+        "title": "图像缩放 Flux Kontext",
+        "description": "使用Flux Kontext调整图像大小。",
+        "inputs": {
+            "preset_size": "预设尺寸",
+            "fit": "适应方式",
+            "pad_color": "填充颜色",
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_ImageResizeGemini30ProImage": {
+        "title": "图像缩放 Gemini 3.0 Pro",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "preset_size": "预设尺寸",
+            "fit": "适应方式",
+            "pad_color": "填充颜色"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "1hew_ImageResizeGemini31FlashImage": {
+        "title": "图像缩放 Gemini 3.1 Flash",
+        "inputs": {},
+        "widgets": {
+            "preset_size": "预设尺寸",
+            "fit": "适应方式",
+            "pad_color": "填充颜色",
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "outputs": {},
+        "description": "",
+        "api_version": "V3"
+    },
+    "1hew_ImageResizeJimeng": {
+        "title": "图像缩放 即梦",
+        "description": "使用Jimeng调整图像大小。",
+        "inputs": {
+            "preset_size": "预设尺寸",
+            "fit": "适应方式",
+            "pad_color": "填充颜色",
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {},
+        "outputs": {}
+    },
+    "1hew_ImageResizeQwenImage": {
+        "title": "图像缩放 Qwen千问图像",
+        "description": "对图像进行缩放。",
+        "inputs": {
+            "preset_size": "预设尺寸",
+            "fit": "适应方式",
+            "pad_color": "填充颜色",
+            "image": "图像",
+            "mask": "遮罩"
+        }
+    },
+    "1hew_ImageResizeSquare": {
+        "title": "图像缩放 正方形",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "preset_size": "预设尺寸",
+            "fit": "适应方式",
+            "pad_color": "填充颜色"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "1hew_ImageResizeUniversal": {
+        "title": "通用图像缩放",
+        "description": "对图像进行通用缩放。",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "get_image_size": "获取图像尺寸",
+            "preset_ratio": "预设比例",
+            "proportional_width": "按宽度比例缩放",
+            "proportional_height": "按高度比例缩放",
+            "method": "方法",
+            "scale_to_side": "缩放到边长",
+            "scale_to_length": "缩放到长度",
+            "fit": "适应方式",
+            "pad_color": "填充颜色",
+            "divisible_by": "可被整除"
+        }
     },
     "1hew_ImageTileMerge": {
         "title": "图像瓦片合并",
@@ -678,6 +835,22 @@
         "outputs": {},
         "description": "从指定路径加载图像文件。"
     },
+    "1hew_LoadTxt": {
+        "title": "加载文本",
+        "inputs": {},
+        "widgets": {
+            "file": "文件",
+            "encode": "编码",
+            "index": "索引",
+            "include_subdir": "包含子目录"
+        },
+        "outputs": {
+            "text": "文本",
+            "filename": "文件名"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
     "1hew_LoadVideo": {
         "title": "加载视频",
         "inputs": {
@@ -721,6 +894,23 @@
         "widgets": {},
         "outputs": {},
         "description": "将图像保存到指定路径。"
+    },
+    "1hew_SaveTxt": {
+        "title": "保存文本",
+        "inputs": {
+            "any": "任意"
+        },
+        "widgets": {
+            "filename": "文件名",
+            "auto_increment": "自动递增",
+            "save_output": "保存输出",
+            "encode": "编码"
+        },
+        "outputs": {
+            "file_path": "文件路径"
+        },
+        "description": "",
+        "api_version": "V3"
     },
     "1hew_SaveVideo": {
         "title": "保存视频",
@@ -779,12 +969,72 @@
         "widgets": {},
         "outputs": {}
     },
-    "1hew_AnySwitchInt": {
-        "title": "任何开关 整数",
-        "description": "根据整数值切换选项。",
+    "1hew_AnySwitchSelect": {
+        "title": "选择器切换",
+        "inputs": {
+            "input_1": "输入1"
+        },
+        "widgets": {
+            "select": "选择"
+        },
+        "outputs": {
+            "output": "输出",
+            "select": "选择"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "1hew_MultiSwitchSelect": {
+        "title": "多重选择器切换",
+        "inputs": {
+            "input_1": "输入1"
+        },
+        "widgets": {
+            "select": "选择"
+        },
+        "outputs": {
+            "output_1": "输出1",
+            "select": "选择"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "1hew_text_match_rownum": {
+        "title": "文本匹配行号",
         "inputs": {},
-        "widgets": {},
-        "outputs": {}
+        "widgets": {
+            "text_multiline": "多行文本",
+            "text_single": "单行文本"
+        },
+        "outputs": {},
+        "description": "",
+        "api_version": "V3"
+    },
+    "1hew_text_match_value": {
+        "title": "文本匹配值",
+        "inputs": {},
+        "widgets": {
+            "text_multiline": "多行文本",
+            "text_single": "单行文本"
+        },
+        "outputs": {},
+        "description": "",
+        "api_version": "V3"
+    },
+    "1hew_MaskAlphaClean": {
+        "title": "遮罩透明度清理",
+        "inputs": {},
+        "widgets": {
+            "mask": "遮罩",
+            "clean_strength": "清理强度",
+            "detect_only": "仅检测"
+        },
+        "outputs": {
+            "mask": "遮罩",
+            "noise_mask": "噪声遮罩"
+        },
+        "description": "",
+        "api_version": "V3"
     },
     "1hew_MaskCropByBBoxMask": {
         "title": "通过边界框遮罩裁剪遮罩",
@@ -828,6 +1078,41 @@
         "widgets": {},
         "outputs": {}
     },
+    "1hew_MaskSeparate": {
+        "title": "遮罩分离",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "threshold": "阈值",
+            "min_area": "最小面积",
+            "sort_mode": "排序模式",
+            "connectivity": "连通性"
+        },
+        "outputs": {
+            "mask": "遮罩",
+            "count": "整数"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
+    "1hew_MaskToImage": {
+        "title": "遮罩转图像",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "fill_hole": "填充孔洞",
+            "white_area_color": "白色区域颜色",
+            "black_area_color": "黑色区域颜色",
+            "output_alpha": "输出Alpha通道"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "",
+        "api_version": "V3"
+    },
     "1hew_MultiImageBatch": {
         "title": "多图像批量处理",
         "description": "批量处理多张图像。",
@@ -838,6 +1123,21 @@
         },
         "widgets": {},
         "outputs": {}
+    },
+    "1hew_MultiImageOverlay": {
+        "title": "多图像叠加",
+        "inputs": {
+            "image_1": "图像 1"
+        },
+        "widgets": {
+            "fit_mode": "适应模式",
+            "color": "颜色"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "多图层叠加：\n- image_1 为最上层，数字越大越靠底层\n- RGBA 输入使用 alpha 做正常图层合成\n- RGB 输入视为不透明图层",
+        "api_version": "V3"
     },
     "1hew_MultiImageStitch": {
         "title": "多图像拼接",
@@ -989,29 +1289,6 @@
         "outputs": {},
         "description": "将0-1范围值映射到[min,max]，支持小数精度控制。"
     },
-    "1hew_MaskToSam3Box": {
-        "title": "遮罩转Sam3Box",
-        "inputs": {
-            "mask": "遮罩"
-        },
-        "widgets": {
-            "condition": "状态",
-            "output_mode": "输出模式"
-        },
-        "outputs": {},
-        "description": ""
-    },
-    "1hew_TextToAny": {
-        "title": "文本转任意格式",
-        "inputs": {
-            "mask": "遮罩"
-        },
-        "widgets": {},
-        "outputs": {
-            "any": "任意"
-        },
-        "description": ""
-    },
     "1hew_WorkflowName": {
         "title": "工作流名称",
         "inputs": {
@@ -1024,5 +1301,26 @@
         "widgets": {},
         "outputs": {},
         "description": "生成一个带有前缀、后缀和日期格式的工作流名称。"
+    },
+    "1hew_ImageCropWithBBoxMask": {
+        "title": "使用边界框遮罩裁剪图像",
+        "description": "使用边界框遮罩裁剪图像。",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "preset_ratio": "预设比例",
+            "get_crop_ratio": "获取裁剪比例",
+            "scale_strength": "缩放强度",
+            "crop_to_side": "裁剪到边长",
+            "crop_to_length": "裁剪到长度",
+            "divisible_by": "可被整除"
+        }
+    },
+    "1hew_AnySwitchInt": {
+        "title": "任何开关 整数",
+        "description": "根据整数值切换选项。",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {}
     }
 }

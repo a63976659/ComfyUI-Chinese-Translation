@@ -1,194 +1,539 @@
 {
-    "llama_cpp_model_loader": {
-        "title": "llama_cpp_模型加载器",
-        "inputs": {},
-        "widgets": {
-            "model": "模型",
-            "mmproj": "多模态投影",
-            "chat_handler": "聊天处理器",
-            "n_ctx": "上下文大小",
-            "vram_limit": "vram限制",
-            "image_min_tokens": "最小图像令牌数",
-            "image_max_tokens": "最大图像令牌数"
-        },
-        "outputs": {
-            "llama_model": "llama模型"
-        },
-        "description": "Category: llama-cpp-vlm"
+  "forced_aligner_inference": {
+    "title": "强制对齐推理节点",
+    "inputs": {
+      "aligner_model": "对齐模型",
+      "audio": "音频"
     },
-    "llama_cpp_instruct_adv": {
-        "title": "llama_cpp_指令（高级）",
-        "inputs": {
-            "llama_model": "llama模型",
-            "parameters": "参数",
-            "images": "图像",
-            "queue_handler": "队列处理器"
-        },
-        "widgets": {
-            "preset_prompt": "预设提示",
-            "inference_mode": "推理模式",
-            "custom_prompt": "自定义提示",
-            "system_prompt": "系统提示",
-            "max_frames": "最大帧数",
-            "max_size": "最大尺寸",
-            "seed": "种子",
-            "force_offload": "强制卸载",
-            "save_states": "保存状态"
-        },
-        "outputs": {
-            "output": "输出",
-            "output_list": "输出列表",
-            "state_uid": "状态UID"
-        },
-        "description": "Category: llama-cpp-vlm"
+    "widgets": {
+      "text": "文本",
+      "sample_rate": "采样率",
+      "output_format": "输出格式",
+      "language": "语言"
     },
-    "llama_cpp_parameters": {
-        "title": "llama_cpp_参数",
-        "inputs": {},
-        "widgets": {
-            "max_tokens": "最大令牌数",
-            "top_k": "Top-K采样",
-            "top_p": "Top-P采样",
-            "min_p": "最小P采样",
-            "typical_p": "典型P采样",
-            "temperature": "温度",
-            "repeat_penalty": "重复惩罚",
-            "frequency_penalty": "频率惩罚",
-            "presence_penalty": "存在惩罚",
-            "mirostat_mode": "mirostat模式",
-            "mirostat_eta": "Mirostat学习率",
-            "mirostat_tau": "Mirostat目标熵",
-            "state_uid": "状态UID"
-        },
-        "outputs": {
-            "parameters": "参数"
-        },
-        "description": "Category: llama-cpp-vlm"
+    "outputs": {
+      "aligned_text": "对齐后的文本",
+      "timestamps": "时间戳",
+      "subtitle_text": "字幕文本",
+      "STRING": "字符串",
+      "JSON": "JSON"
     },
-    "llama_cpp_clean_states": {
-        "title": "llama_cpp_清理状态",
-        "inputs": {
-            "any": "任何"
-        },
-        "widgets": {
-            "state_uid": "状态UID"
-        },
-        "outputs": {
-            "any": "任何"
-        },
-        "description": "Category: llama-cpp-vlm"
+    "description": "执行强制对齐推理",
+    "api_version": "V1"
+  },
+  "forced_aligner_loader": {
+    "title": "强制对齐模型加载节点",
+    "inputs": {},
+    "widgets": {
+      "forced_aligner_model": "对齐模型",
+      "n_gpu_layers": "GPU 层数",
+      "precision": "精度",
+      "batch_size": "批量大小",
+      "flash_attention": "闪注意力"
     },
-    "llama_cpp_unload_model": {
-        "title": "llama_cpp_卸载模型",
-        "inputs": {
-            "any": "任何"
-        },
-        "widgets": {},
-        "outputs": {
-            "any": "任何"
-        },
-        "description": "Category: llama-cpp-vlm"
+    "outputs": {
+      "aligner_model": "对齐模型",
+      "ALIGNERMODEL": "ALIGNERMODEL"
     },
-    "json_to_bbox": {
-        "title": "JSON 转 边界框",
-        "inputs": {
-            "json": "JSON",
-            "image": "图像"
-        },
-        "widgets": {
-            "mode": "模式",
-            "label": "标签"
-        },
-        "outputs": {
-            "bboxes": "边界框",
-            "image_list": "图像列表"
-        },
-        "description": "Category: llama-cpp-vlm"
+    "description": "加载强制对齐模型",
+    "api_version": "V1"
+  },
+  "llama_cpp_api_model_config": {
+    "title": "Llama-Cpp API 模型配置",
+    "inputs": {},
+    "widgets": {
+      "model_name": "模型名称",
+      "api_provider": "API 提供商",
+      "api_base": "API 基础 URL",
+      "api_key": "API 密钥",
+      "max_tokens": "最大令牌数",
+      "temperature": "温度",
+      "preview_info": "预览信息"
     },
-    "bbox_to_segs": {
-        "title": "边界框到分割区域",
-        "inputs": {
-            "bboxes": "边界框",
-            "image": "图像"
-        },
-        "widgets": {
-            "dilation": "膨胀",
-            "feather": "羽化"
-        },
-        "outputs": {
-            "SEGS": "分割区域"
-        },
-        "description": "Category: llama-cpp-vlm"
+    "outputs": {
+      "api_config": "API 配置",
+      "preview": "预览",
+      "APICONFIG": "API配置",
+      "STRING": "字符串"
     },
-    "bbox_to_mask": {
-        "title": "边界框到遮罩",
-        "inputs": {
-            "bboxes": "边界框",
-            "image": "图像"
-        },
-        "widgets": {
-            "dilation": "膨胀",
-            "feather": "羽化"
-        },
-        "outputs": {
-            "mask": "遮罩"
-        },
-        "description": "Category: llama-cpp-vlm"
+    "description": "",
+    "api_version": "V1"
+  },
+  "llama_cpp_api_inference": {
+    "title": "Llama-Cpp API 推理",
+    "inputs": {
+      "images": "图像",
+      "video": "视频",
+      "audio": "音频",
+      "api_config": "API 配置"
     },
-    "bboxes_to_bbox": {
-        "title": "边界框转边界框",
-        "inputs": {
-            "bboxes": "边界框"
-        },
-        "widgets": {
-            "image_index": "图像索引",
-            "bbox_index": "边界框索引"
-        },
-        "outputs": {
-            "bbox": "边界框"
-        },
-        "description": "Category: llama-cpp-vlm"
+    "widgets": {
+      "inference_mode": "推理模式",
+      "preset_prompt": "默认提示",
+      "system_prompt": "系统提示",
+      "text_input": "文本输入",
+      "prompt_language": "提示语言",
+      "response_language": "响应语言",
+      "video_max_frames": "视频最大帧数",
+      "video_sampling": "视频抽样",
+      "video_manual_indices": "视频手动索引",
+      "image_max_size": "图像最大尺寸",
+      "tts_voice": "TTS语音合成  声音",
+      "tts_emotion": "TTS语音合成  情感",
+      "tts_speed": "TTS语音合成  速度",
+      "seed": "随机种子"
     },
-    "parse_json_node": {
-        "title": "解析 JSON 节点",
-        "inputs": {
-            "input": "输入"
-        },
-        "widgets": {
-            "key": "键",
-            "default": "默认值"
-        },
-        "outputs": {
-            "any": "任何",
-            "string": "字符串",
-            "int": "整数",
-            "float": "浮点数",
-            "boolean": "布尔值"
-        },
-        "description": "Category: llama-cpp-vlm"
+    "outputs": {
+      "text": "文本",
+      "audio": "音频",
+      "STRING": "字符串",
+      "AUDIO": "音频"
     },
-    "remove_code_block": {
-        "title": "删除代码块",
-        "inputs": {
-            "input": "输入"
-        },
-        "widgets": {
-            "label": "标签"
-        },
-        "outputs": {
-            "output": "输出"
-        },
-        "description": "Category: llama-cpp-vlm"
+    "description": "API 多媒体推理节点 - 支持图像/视频/音频输入，文本/音频输出",
+    "api_version": "V1"
+  },
+  "llama_cpp_asr_loader": {
+    "title": "Llama-Cpp ASR 模型加载器",
+    "inputs": {},
+    "widgets": {
+      "asr_model": "ASR 模型",
+      "n_gpu_layers": "GPU 层数",
+      "language": "语言",
+      "task": "任务",
+      "backend": "后端",
+      "enable_timestamps": "启用时间戳",
+      "max_new_tokens": "最大新令牌数",
+      "batch_size": "批量大小",
+      "flash_attention": "闪注意力"
     },
-    "PromptEnhancerPreset": {
-        "title": "提示词增强预设器",
-        "inputs": {},
-        "widgets": {
-            "preset": "预设"
-        },
-        "outputs": {
-            "system_prompt": "系统提示"
-        },
-        "description": "Category: llama-cpp-vlm"
-    }
+    "outputs": {
+      "asr_model": "ASR 模型",
+      "ASRMODEL": "ASRMODEL"
+    },
+    "description": "ASR 模型加载器\n用于加载自动语音识别模型，支持 Whisper 等 ASR 架构",
+    "api_version": "V1"
+  },
+  "llama_cpp_sharded_model_loader": {
+    "title": "Llama-Cpp 分段模型加载器",
+    "inputs": {},
+    "widgets": {
+      "model_name": "模型名称",
+      "quantization": "量化",
+      "enable_asr": "启用语音识别",
+      "enable_tts": "启用文本转语音",
+      "n_ctx": "上下文长度",
+      "n_gpu_layers": "GPU层数",
+      "vram_limit": "显存限制",
+      "image_min_tokens": "图像最小token数",
+      "image_max_tokens": "图像最大token数",
+      "attention_type": "注意力类型"
+    },
+    "outputs": {
+      "llama_model": "Llama 模型"
+    },
+    "description": "分段模型加载器",
+    "api_version": "V1"
+  },
+  "llama_cpp_tts_loader": {
+    "title": "Llama-Cpp TTS语音合成  模型加载器",
+    "inputs": {},
+    "widgets": {
+      "tts_model": "TTS语音合成  模型",
+      "n_gpu_layers": "GPU 层数",
+      "sample_rate": "采样率",
+      "model_type": "模型类型",
+      "voice": "人声",
+      "emotion": "情感",
+      "language": "语言",
+      "temperature": "温度",
+      "top_p": "top_p",
+      "top_k": "top_k",
+      "repetition_penalty": "重复惩罚",
+      "max_new_tokens": "最大新 token 数",
+      "use_cache": "使用缓存",
+      "ref_audio_path": "参考音频路径",
+      "speed": "速度",
+      "pitch": "音高",
+      "volume": "音量"
+    },
+    "outputs": {
+      "tts_model": "TTS语音合成  模型",
+      "TTSMODEL": "TTS语音合成 模型"
+    },
+    "description": "TTS语音合成  模型加载器\n支持所有 TTS语音合成  模型类型，通过模型类型选择器自动识别或手动指定",
+    "api_version": "V1"
+  },
+  "llama_cpp_unified_inference": {
+    "title": "Llama-Cpp 统一推理",
+    "inputs": {
+      "llama_model": "Llama 模型",
+      "parameters": "参数",
+      "images": "图像",
+      "video": "视频",
+      "audio": "音频",
+      "tts_model": "TTS 模型",
+      "asr_model": "ASR 模型",
+      "queue_handler": "队列处理器"
+    },
+    "widgets": {
+      "inference_mode": "推理模式",
+      "preset_prompt": "预设提示",
+      "text_input": "文本输入",
+      "prompt_language": "提示语言",
+      "response_language": "响应语言",
+      "video_max_frames": "视频最大帧数",
+      "video_sampling": "视频采样",
+      "video_manual_indices": "视频手动索引",
+      "image_max_size": "图像最大尺寸",
+      "audio_output_mode": "音频输出模式",
+      "omni_speaker": "Omni 发声器",
+      "tts_speed": "TTS 语速",
+      "seed": "随机种子",
+      "force_offload": "强制卸载",
+      "save_states": "保存状态"
+    },
+    "outputs": {
+      "output": "输出",
+      "output_list": "输出列表",
+      "state_uid": "状态唯一标识",
+      "audio": "音频"
+    },
+    "description": "统一推理节点 - 支持 VL 模型\n自动检测模型类型并 使用对应的推理方式\n支持 ASR + VL + TTS语音合成  组合处理音频",
+    "api_version": "V1"
+  },
+  "multi_image_input": {
+    "title": "多图输入节点",
+    "inputs": {},
+    "widgets": {
+      "image1": "image1",
+      "image2": "image2",
+      "image3": "image3",
+      "image4": "image4",
+      "image5": "image5",
+      "image6": "image6",
+      "image7": "image7",
+      "image8": "image8",
+      "image9": "image9",
+      "image10": "image10",
+      "image11": "image11",
+      "mode": "模式",
+      "story_type": "故事类型",
+      "story_length": "故事长度",
+      "language": "语言",
+      "max_size": "最大尺寸",
+      "custom_prompt": "自定义提示词",
+      "include_image_descriptions": "包含图像描述",
+      "story_theme": "故事主题",
+      "narrative_style": "叙述风格",
+      "content_focus": "内容重点",
+      "target_audience": "目标受众",
+      "video_model": "视频模型"
+    },
+    "outputs": {
+      "images": "图像",
+      "prompt": "提示词",
+      "IMAGE": "IMAGE",
+      "STRING": "字符串"
+    },
+    "description": "支持输入多张图像进行分析\n支持无图像模式，通过选项设置生成提示词\n自动预处理和编码\n输出可直接连接到llama_cpp_instruct_adv节点的自定义提示词\n专为wan2.2视频生成优化",
+    "api_version": "V1"
+  },
+  "multi_model_tts": {
+    "title": "多模型语音合成节点",
+    "inputs": {
+      "tts_model_1": "语音合成模型_1",
+      "tts_model_2": "语音合成模型_2",
+      "tts_model_3": "语音合成模型_3",
+      "tts_model_4": "语音合成模型_4",
+      "role_config_1": "角色配置1",
+      "role_config_2": "角色配置2",
+      "role_config_3": "角色配置3",
+      "role_config_4": "角色配置4"
+    },
+    "widgets": {
+      "dialogue_text": "对话文本",
+      "pause_duration": "暂停时长",
+      "add_silence": "添加静默",
+      "force_offload": "强制卸载",
+      "output_format": "输出格式"
+    },
+    "outputs": {
+      "text": "文本",
+      "audio": "音频",
+      "dialogue_info": "对话信息",
+      "STRING": "字符串",
+      "AUDIO": "音频",
+      "DICT": "DICT"
+    },
+    "description": "支持加载多个TTS语音合成 模型，为不同角色分配不同模型，合成多角色对话音频",
+    "api_version": "V1"
+  },
+  "RoleConfig": {
+    "title": "角色配置节点",
+    "inputs": {},
+    "widgets": {
+      "role_name": "角色名称",
+      "config_type": "配置类型",
+      "local_voice": "本地音色",
+      "local_emotion": "本地情感",
+      "api_voice": "API音色",
+      "speed": "语速",
+      "pitch": "音调",
+      "volume": "音量",
+      "api_config_name": "API配置名称",
+      "use_custom_api": "使用自定义API",
+      "api_provider": "API提供商",
+      "api_base": "API基础地址",
+      "api_key": "API密钥"
+    },
+    "outputs": {
+      "role_config": "角色配置",
+      "ROLE_CONFIG": "ROLE_CONFIG"
+    },
+    "description": "用于配置角色的参数，包括名称、音色、语速、音高、音量等\n支持本地TTS语音合成 模型和API TTS语音合成 模型",
+    "api_version": "V1"
+  },
+  "tts_align": {
+    "title": "TTS语音合成 对齐节点",
+    "inputs": {
+      "tts_model": "TTS语音合成 模型"
+    },
+    "widgets": {
+      "timestamps": "时间戳",
+      "text": "文本",
+      "sample_rate": "采样率",
+      "align_mode": "对齐模式",
+      "silence_padding": "静默填充"
+    },
+    "outputs": {
+      "aligned_audio": "对齐后的音频",
+      "alignment_info": "对齐信息",
+      "AUDIO": "音频",
+      "JSON": "JSON"
+    },
+    "description": "TTS语音合成 对齐节点",
+    "api_version": "V1"
+  },
+  "VideoLoader": {
+    "title": "视频加载节点",
+    "inputs": {},
+    "widgets": {
+      "video": "视频",
+      "force_rate": "强制帧率",
+      "custom_width": "自定义宽度",
+      "custom_height": "自定义高度",
+      "frame_load_cap": "帧加载上限",
+      "skip_first_frames": "跳过首帧",
+      "select_every_nth": "每隔几帧选取",
+      "format": "格式",
+      "choose video to upload": "选择要上传的视频"
+    },
+    "outputs": {
+      "images": "图像",
+      "video": "视频",
+      "audio": "音频",
+      "IMAGE": "IMAGE",
+      "VIDEO": "VIDEO",
+      "AUDIO": "音频"
+    },
+    "description": "- 无输入端口\n- 输出端口：图像序列、视频、音频\n- 支持视频文件选择和上传\n- 支持自定义帧率、分辨率、帧数限制等参数",
+    "api_version": "V1"
+  },
+  "llama_cpp_model_loader": {
+    "title": "Llama-Cpp 模型加载器",
+    "inputs": {},
+    "widgets": {
+      "model": "模型路径",
+      "mmproj": "多模态投影",
+      "enable_mmproj": "启用 多模态投影",
+      "enable_asr": "启用 ASR",
+      "enable_tts": "启用 TTS",
+      "device_mode": "设备模式",
+      "n_ctx": "上下文长度",
+      "n_gpu_layers": "GPU 层数",
+      "vram_limit": "显存限制",
+      "image_min_tokens": "图像最小 token 数",
+      "image_max_tokens": "图像最大 token 数",
+      "attention_type": "注意力类型"
+    },
+    "outputs": {
+      "llama_model": "llama模型"
+    },
+    "description": "Category: llama-cpp-vlm"
+  },
+  "llama_cpp_instruct_adv": {
+    "title": "llama_cpp_指令（高级）",
+    "inputs": {
+      "llama_model": "llama模型",
+      "parameters": "参数",
+      "images": "图像",
+      "queue_handler": "队列处理器"
+    },
+    "widgets": {
+      "preset_prompt": "预设提示",
+      "inference_mode": "推理模式",
+      "custom_prompt": "自定义提示",
+      "system_prompt": "系统提示",
+      "max_frames": "最大帧数",
+      "max_size": "最大尺寸",
+      "seed": "种子",
+      "force_offload": "强制卸载",
+      "save_states": "保存状态"
+    },
+    "outputs": {
+      "output": "输出",
+      "output_list": "输出列表",
+      "state_uid": "状态UID"
+    },
+    "description": "Category: llama-cpp-vlm"
+  },
+  "llama_cpp_parameters": {
+    "title": "llama_cpp_参数",
+    "inputs": {},
+    "widgets": {
+      "max_tokens": "最大令牌数",
+      "top_k": "Top-K采样",
+      "top_p": "Top-P采样",
+      "min_p": "最小P采样",
+      "typical_p": "典型P采样",
+      "temperature": "温度",
+      "repeat_penalty": "重复惩罚",
+      "frequency_penalty": "频率惩罚",
+      "presence_penalty": "存在惩罚",
+      "mirostat_mode": "mirostat模式",
+      "mirostat_eta": "Mirostat学习率",
+      "mirostat_tau": "Mirostat目标熵",
+      "state_uid": "状态UID"
+    },
+    "outputs": {
+      "parameters": "参数"
+    },
+    "description": "Category: llama-cpp-vlm"
+  },
+  "llama_cpp_clean_states": {
+    "title": "llama_cpp_清理状态",
+    "inputs": {
+      "any": "任何"
+    },
+    "widgets": {
+      "state_uid": "状态UID"
+    },
+    "outputs": {
+      "any": "任何"
+    },
+    "description": "Category: llama-cpp-vlm"
+  },
+  "llama_cpp_unload_model": {
+    "title": "llama_cpp_卸载模型",
+    "inputs": {
+      "any": "任何"
+    },
+    "widgets": {},
+    "outputs": {
+      "any": "任何"
+    },
+    "description": "Category: llama-cpp-vlm"
+  },
+  "json_to_bbox": {
+    "title": "JSON 转 边界框",
+    "inputs": {
+      "json": "JSON",
+      "image": "图像"
+    },
+    "widgets": {
+      "mode": "模式",
+      "label": "标签"
+    },
+    "outputs": {
+      "bboxes": "边界框",
+      "image_list": "图像列表"
+    },
+    "description": "Category: llama-cpp-vlm"
+  },
+  "bbox_to_segs": {
+    "title": "边界框到分割区域",
+    "inputs": {
+      "bboxes": "边界框",
+      "image": "图像"
+    },
+    "widgets": {
+      "dilation": "膨胀",
+      "feather": "羽化"
+    },
+    "outputs": {
+      "SEGS": "分割区域"
+    },
+    "description": "Category: llama-cpp-vlm"
+  },
+  "bbox_to_mask": {
+    "title": "边界框到遮罩",
+    "inputs": {
+      "bboxes": "边界框",
+      "image": "图像"
+    },
+    "widgets": {
+      "dilation": "膨胀",
+      "feather": "羽化"
+    },
+    "outputs": {
+      "mask": "遮罩"
+    },
+    "description": "Category: llama-cpp-vlm"
+  },
+  "bboxes_to_bbox": {
+    "title": "边界框转边界框",
+    "inputs": {
+      "bboxes": "边界框"
+    },
+    "widgets": {
+      "image_index": "图像索引",
+      "bbox_index": "边界框索引"
+    },
+    "outputs": {
+      "bbox": "边界框"
+    },
+    "description": "Category: llama-cpp-vlm"
+  },
+  "parse_json_node": {
+    "title": "解析 JSON 节点",
+    "inputs": {
+      "input": "输入"
+    },
+    "widgets": {
+      "key": "键",
+      "default": "默认值"
+    },
+    "outputs": {
+      "any": "任何",
+      "string": "字符串",
+      "int": "整数",
+      "float": "浮点数",
+      "boolean": "布尔值"
+    },
+    "description": "Category: llama-cpp-vlm"
+  },
+  "remove_code_block": {
+    "title": "删除代码块",
+    "inputs": {
+      "input": "输入"
+    },
+    "widgets": {
+      "label": "标签"
+    },
+    "outputs": {
+      "output": "输出"
+    },
+    "description": "Category: llama-cpp-vlm"
+  },
+  "PromptEnhancerPreset": {
+    "title": "提示词增强预设器",
+    "inputs": {},
+    "widgets": {
+      "preset": "预设"
+    },
+    "outputs": {
+      "system_prompt": "系统提示"
+    },
+    "description": "Category: llama-cpp-vlm"
+  }
 }

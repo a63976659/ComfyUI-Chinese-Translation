@@ -1,4 +1,123 @@
 {
+    "ImageTransformKJ": {
+        "title": "图像变换 KJ",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "target_width": "目标宽度",
+            "target_height": "目标高度",
+            "upscale_method": "放大方法",
+            "keep_proportion": "保持比例",
+            "divisible_by": "可整除数",
+            "extra_padding": "额外填充",
+            "invert_crop": "反转裁剪",
+            "grid_size": "网格大小"
+        },
+        "outputs": {
+            "width": "宽度",
+            "height": "高度",
+            "output": "输出图像",
+            "output_mask": "输出遮罩"
+        },
+        "description": "这是一个用于图像变换的节点，支持调整图像尺寸、放大方法、保持比例等参数，并支持对遮罩进行同步变换。"
+    },
+    "ScreencapStream": {
+        "title": "屏幕捕获流 KJ",
+        "inputs": {},
+        "widgets": {
+            "crop_width": "裁剪宽度",
+            "crop_height": "裁剪高度",
+            "Start capture": "开始捕获",
+            "Hide preview": "隐藏预览"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "该节点用于实时捕获屏幕画面。它允许用户自定义捕获区域的宽度和高度，并提供开始和停止捕获的控制按钮。捕获到的实时画面会显示在预览窗口中，方便用户监控屏幕录制情况。"
+    },
+    "DecodeAndSaveVideo": {
+        "title": "解码并保存视频 KJ",
+        "inputs": {
+            "video_latent": "视频Latent",
+            "video_vae": "视频 VAE 模型",
+            "audio_latent": "音频Latent",
+            "audio_vae": "音频 VAE 模型"
+        },
+        "widgets": {
+            "fps": "帧率",
+            "filename_prefix": "文件名前缀",
+            "format": "格式",
+            "codec": "编解码器",
+            "tiling": "分块处理"
+        },
+        "outputs": {
+            "video": "解码后的视频",
+            "filename": "保存后的文件名"
+        },
+        "description": "该节点用于将视频潜在空间（Video Latent）解码为实际视频文件并保存。它支持同时解码音频。用户可以在这里配置帧率（FPS）、文件名前缀、输出格式（如 MP4, MOV 等）、视频编解码器（如 H.264, H.265）以及是否启用分块处理（Tiling）以处理大视频。"
+    },
+    "EncodeVideoComponents": {
+        "title": "编码视频组件 KJ",
+        "inputs": {
+            "video": "视频",
+            "vae": "VAE 模型"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "max_frames": "最大帧数",
+            "upscale_method": "放大方法",
+            "Keep Proportion": "保持比例"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "audio": "音频",
+            "fps": "帧率",
+            "frame_count": "帧数"
+        },
+        "description": "该节点用于将视频帧编码为潜在空间（Latent）表示，通常用于视频生成或处理流程中。它接受视频流和 VAE 模型作为输入，并输出编码后的潜在空间数据、音频流、帧率信息以及总帧数。用户还可以在此设置输出的分辨率（宽度和高度）、限制最大帧数、选择图像放大方法（如 Lanczos）以及是否保持原始宽高比。"
+    },
+    "ColorMatchV2": {
+        "title": "颜色匹配 V2 KJ",
+        "inputs": {
+            "image_target": "目标图像",
+            "image_ref": "参考图像"
+        },
+        "widgets": {
+            "method": "方法",
+            "strength": "强度",
+            "multithread": "多线程"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "用于将参考图像的颜色风格应用到目标图像上的节点。支持多种匹配算法（如 mkl），可调节匹配强度，并支持多线程处理以提高效率。"
+    },
+    "PreviewImageOrMask": {
+        "title": "预览图像或遮罩 KJ",
+        "inputs": {
+            "input": "输入图像或遮罩"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "该节点用于在 ComfyUI 界面中直接显示输入的图像或遮罩，主要用于调试和查看处理过程中的中间结果。它通常不输出数据流，仅作为可视化预览使用。"
+    },
+    "ImageSharpenKJ": {
+        "title": "图像锐化 KJ",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "method": "方法",
+            "strength": "强度"
+        },
+        "outputs": {
+            "output": "输出图像"
+        },
+        "description": "该节点用于对输入图像进行锐化处理。它允许用户选择不同的锐化算法（如 rcas）并调整锐化的强度，从而增强图像的清晰度和细节。"
+    },
     "PlaySoundKJ": {
         "title": "播放声音",
         "inputs": {
@@ -1884,7 +2003,7 @@
             "model": "模型"
         },
         "widgets": {
-            "patch_cublaslinear": "CUBlas线性补丁",
+            "allow_compile": "允许编译",
             "sage_attention": "SAGE注意力"
         },
         "outputs": {

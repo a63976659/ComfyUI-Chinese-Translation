@@ -1,35 +1,39 @@
 {
-    "RadianceDenoise": {
-        "title": "◎ Radiance 降噪",
+    "◎ RadianceDenoise": {
+        "title": "◎ Radiance去噪",
         "inputs": {
             "image": "图像"
         },
         "widgets": {
-            "d": "d",
-            "sigmaColor": "sigma颜色",
-            "sigmaSpace": "sigma空间"
+            "d": "滤波直径",
+            "sigmaColor": "颜色标准差",
+            "sigmaSpace": "空间标准差",
+            "hdr_auto_sigma": "HDR自动标准差"
         },
         "outputs": {
-            "image": "图像"
+            "IMAGE": "图像"
         },
-        "description": "32 位浮点图像的边缘保持双边滤波器"
+        "description": "32位浮点双边滤波去噪。在平滑噪声的同时保留边缘。适用于SDR [0,1]和HDR线性光图像。启用HDR自动标准差（默认开启）可获得正确的HDR效果。",
+        "api_version": "V1"
     },
-    "RadianceDepthMapGenerator": {
-        "title": "◎ Radiance 深度图生成器",
+    "◎ RadianceDepthMapGenerator": {
+        "title": "◎ Radiance深度图生成器",
         "inputs": {
             "image": "图像"
         },
         "widgets": {
+            "model_size": "模型大小",
             "normalize": "标准化",
             "invert": "反转",
-            "blur_edges": "模糊边缘",
-            "use_gpu": "使用GPU",
-            "model_size": "模型尺寸"
+            "blur_edges": "边缘模糊",
+            "use_gpu": "使用GPU"
         },
         "outputs": {
-            "depth_map": "深度图"
+            "depth_map": "深度图",
+            "IMAGE": "图像"
         },
-        "description": "对深度图进行标准化和着色"
+        "description": "Depth Anything V2单目深度估计。视频安全——通过时空对齐标准化每一帧，防止闪烁。输出3通道灰度深度图。连接到景深节点可获得真实的散焦模糊效果。",
+        "api_version": "V1"
     },
     "RadianceDNAReader": {
         "title": "◎ Radiance DNA读取器",
@@ -105,89 +109,87 @@
         },
         "description": "每通道可调节增益/伽玛/增益/偏移，提供 13 种电影级预设、LAB 匹配调色和 JSON 导出功能"
     },
-    "RadianceReadVideo": {
-        "title": "◎ Radiance 视频读取器",
-        "inputs": {},
-        "widgets": {
-            "input_colorspace": "输入色彩空间",
-            "video_path": "视频路径",
-            "start_frame": "起始帧",
-            "frame_count": "帧数",
-            "frame_stride": "帧间隔",
-            "extract_audio": "提取音频"
-        },
-        "outputs": {
-            "IMAGE": "图像",
-            "MASK": "遮罩",
-            "frame_count": "帧数",
-            "width": "宽度",
-            "height": "高度",
-            "fps": "帧率",
-            "audio": "音频"
-        },
-        "description": "读取带有对数颜色变换的 MP4/MOV/AVI 格式文件"
-    },
-    "RadianceReadSequence": {
-        "title": "◎ Radiance 序列读取器",
-        "inputs": {},
-        "widgets": {
-            "folder_path": "文件夹路径",
-            "pattern": "模式",
-            "start_frame": "起始帧",
-            "frame_limit": "帧限制",
-            "input_colorspace": "输入色彩空间",
-            "fps": "帧率"
-        },
-        "outputs": {
-            "IMAGE": "图像",
-            "MASK": "遮罩",
-            "frame_count": "帧数",
-            "width": "宽度",
-            "height": "高度",
-            "fps": "帧率",
-            "filename_list": "文件名列表"
-        },
-        "description": "EXR/PNG/TIFF 序列读取器"
-    },
-    "RadianceWrite": {
-        "title": "◎ Radiance 写入器",
+    "RadianceApplyGradeInfo": {
+        "title": "◎ Radiance 应用分级信息",
         "inputs": {
-            "images": "图像",
+            "grade_info": "分级信息",
+            "image": "图像"
+        },
+        "widgets": {
+            "strength": "强度"
+        },
+        "outputs": {
+            "grade_info": "分级信息",
+            "image": "图像"
+        },
+        "description": "将已保存的 grade_info JSON 应用于任何图像"
+    },
+    "RadianceGradeMatch": {
+        "title": "◎ Radiance 分级匹配",
+        "inputs": {
+            "source": "源",
+            "reference": "参考"
+        },
+        "widgets": {
+            "strength": "强度"
+        },
+        "outputs": {
+            "matched_image": "匹配图像",
+            "grade_info": "分级信息"
+        },
+        "description": "通过 CIE L*a*b* 平均值/标准差转移实现逐帧色彩匹配"
+    },
+    "◎ RadianceDigitalCinemaRead": {
+        "title": "◎ Radiance数字影院读取器",
+        "inputs": {},
+        "widgets": {
+            "source_path": "源文件路径",
+            "start_frame": "起始帧",
+            "frame_limit": "帧数限制",
+            "input_colorspace": "输入色彩空间",
+            "fps_override": "帧率覆盖"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "MASK": "遮罩",
+            "frame_count": "帧数",
+            "width": "宽度",
+            "height": "高度",
+            "fps": "帧率",
+            "audio": "音频",
+            "video": "视频",
+            "INT": "整数",
+            "FLOAT": "浮点数",
+            "AUDIO": "音频",
+            "STRING": "字符串"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "◎ RadianceDigitalCinemaWrite": {
+        "title": "◎ Radiance数字影院写入",
+        "inputs": {
+            "image": "图像",
             "audio": "音频"
         },
         "widgets": {
             "filename_prefix": "文件名前缀",
+            "write_mode": "写入模式",
             "output_format": "输出格式",
-            "output_color_space": "输出色彩空间",
             "fps": "帧率",
             "quality": "质量",
-            "subfolder": "子文件夹"
-        },
-        "outputs": {
-            "IMAGE": "图像",
-            "file_path": "文件路径"
-        },
-        "description": "类别: FXTD Studios/Radiance/IO"
-    },
-    "RadianceWriteVideo": {
-        "title": "◎ Radiance 视频写入器",
-        "inputs": {
-            "images": "图像",
-            "audio": "音频"
-        },
-        "widgets": {
-            "filename_prefix": "文件名前缀",
-            "fps": "帧率",
-            "codec": "编解码器",
             "output_color_space": "输出色彩空间",
-            "quality": "质量",
-            "subfolder": "子文件夹"
+            "broadcast_safe": "广播安全",
+            "output_path": "输出路径",
+            "start_frame": "起始帧",
+            "bit_depth": "位深",
+            "compression": "压缩",
+            "alpha_mode": "Alpha模式",
+            "custom_metadata": "自定义元数据"
         },
-        "outputs": {
-            "IMAGE": "图像",
-            "file_path": "文件路径"
-        },
-        "description": "导出 ProRes 4444、H.264、H.265、EXR 序列"
+        "outputs": {},
+        "description": "",
+        "api_version": "V1"
     },
     "RadianceReroute": {
         "title": "◎ Radiance 重定向器",
@@ -214,10 +216,106 @@
         },
         "description": "高级重定向功能，带标签和自动类型颜色检测"
     },
+    "RadianceMux": {
+        "title": "Radiance多路复用器",
+        "inputs": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+        },
+        "widgets": {
+            "index": "索引",
+            "label": "标签"
+        },
+        "outputs": {
+            "selected": "已选",
+            "*": "*"
+        },
+        "description": "A/B/C/D 输入多路复用器——使用索引（0=A, 1=B, 2=C, 3=D）选择最多 4 个输入中的一个进行传递。非常适合无需重新连线即可进行快速比较。",
+        "api_version": "V1"
+    },
+    "RadianceGate": {
+        "title": "Radiance门控",
+        "inputs": {
+            "data": "数据",
+            "fallback": "回退值"
+        },
+        "widgets": {
+            "open": "开启",
+            "label": "标签"
+        },
+        "outputs": {
+            "data": "选定的数据（开启时为输入，关闭时为回退值）。",
+            "is_open": "回显开启状态——连接到另一个门控或条件节点。",
+            "*": "*",
+            "BOOLEAN": "BOOLEAN"
+        },
+        "description": "布尔门控——当 open=True 时传递数据，当 open=False 时返回回退值（或 None）。用于启用/禁用分支而无需重新连线。",
+        "api_version": "V1"
+    },
+    "RadianceNote": {
+        "title": "Radiance备注",
+        "inputs": {},
+        "widgets": {
+            "text": "文本",
+            "title": "标题",
+            "color": "颜色",
+            "font_size": "字号"
+        },
+        "outputs": {},
+        "description": "用于工作流文档的便签。无数据连接——纯展示。支持标题、正文文本和颜色选择。",
+        "api_version": "V1"
+    },
+    "RadianceDebugProbe": {
+        "title": "Radiance调试探针",
+        "inputs": {
+            "data": "数据"
+        },
+        "widgets": {
+            "label": "标签",
+            "enabled": "启用",
+            "log_level": "日志级别"
+        },
+        "outputs": {
+            "data": "输入数据，原样传递。",
+            "probe_report": "人类可读的诊断字符串——连接到文本预览节点。",
+            "*": "*",
+            "STRING": "STRING"
+        },
+        "description": "非破坏性调试探针。记录张量形状/范围/数据类型、字符串值、列表/字典长度。数据原样传递。",
+        "api_version": "V1"
+    },
+    "RadianceLoraStack": {
+        "title": "◎ Radiance Lora堆",
+        "inputs": {
+            "lora_stack": "Lora堆"
+        },
+        "widgets": {
+            "lora_1": "Lora 1",
+            "lora_1_model": "Lora 1 模型",
+            "lora_1_clip": "Lora 1 CLIP",
+            "lora_2": "Lora 2",
+            "lora_2_model": "Lora 2 模型",
+            "lora_2_clip": "Lora 2 CLIP",
+            "lora_3": "Lora 3",
+            "lora_3_model": "Lora 3 模型",
+            "lora_3_clip": "Lora 3 CLIP",
+            "lora_4": "Lora 4",
+            "lora_4_model": "Lora 4 模型",
+            "lora_4_clip": "Lora 4 CLIP",
+            "lora_5": "Lora 5",
+            "lora_5_model": "Lora 5 模型",
+            "lora_5_clip": "Lora 5 CLIP"
+        },
+        "outputs": {
+            "lora_stack": "Lora堆"
+        },
+        "description": "可将多达 5 个 Lora 协议栈组合成一个累加型 Lora堆。\n 将多个栈串联起来。然后输入到 Radiance 统一加载器中。"
+    },
     "RadianceUnifiedLoader": {
         "title": "◎ Radiance 统一加载器",
-        "inputs": {
-        },
+        "inputs": {},
         "widgets": {
             "preset": "预设",
             "unet_name": "UNet名称",
@@ -254,11 +352,31 @@
         },
         "description": "在一个节点中加载Checkpoint大模型、CLIP 和 VAE"
     },
-    "RadianceNukeBridge": {
-        "title": "◎ Radiance NUKE桥接器",
+    "RadianceControlApply": {
+        "title": "Radiance ControlNet 应用",
         "inputs": {
-            "images": "图像",
-            "depth_map": "深度图"
+            "conditioning": "条件",
+            "control_net": "Control Net",
+            "image": "图像"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比",
+            "control_type": "控制类型"
+        },
+        "outputs": {
+            "conditioning": "条件",
+            "CONDITIONING": "条件"
+        },
+        "description": "Radiance 套件的高级 ControlNet 应用节点。\n- 如果 CONTROL_NET 为 None 则优雅绕过（防止 AttributeError 崩溃）。\n- 支持标准的开始/结束百分比和强度控制。",
+        "api_version": "V1"
+    },
+    "◎ RadianceNukeBridge": {
+        "title": "◎ Radiance Nuke 桥接",
+        "inputs": {
+            "depth_map": "深度图",
+            "images": "图像"
         },
         "widgets": {
             "host": "主机",
@@ -266,21 +384,24 @@
             "stream_name": "流名称",
             "send_mode": "发送模式",
             "color_space": "色彩空间",
-            "bit_depth": "位深度",
+            "bit_depth": "位深",
             "compression": "压缩",
             "connect_viewer": "连接查看器",
-            "raw": "原始",
+            "raw": "原始数据",
             "start_frame": "起始帧",
             "output_path": "输出路径"
         },
         "outputs": {
             "image": "图像",
-            "nuke_status": "NUKE状态"
+            "nuke_status": "Nuke 状态",
+            "IMAGE": "图像",
+            "STRING": "字符串"
         },
-        "description": "向 Nuke 发送/接收图像"
+        "description": "通过 EXR + TCP 将图像直接发送到 Nuke 的查看器。使用 Radiance IO 写入包含 RGBA + 深度的完整 float32 EXR，然后在 Nuke 中创建一个连接到查看器的 Read 节点。需要在 Nuke 内部运行 scripts/start_nuke_server.py。",
+        "api_version": "V1"
     },
-    "RadianceMetadataOverlay": {
-        "title": "◎ Radiance 元数据叠加器",
+    "◎ RadianceMetadataOverlay": {
+        "title": "◎ Radiance 元数据叠加",
         "inputs": {
             "image": "图像",
             "report_text": "报告文本"
@@ -290,16 +411,36 @@
             "project": "项目",
             "shot": "镜头",
             "frame": "帧",
-            "timecode": "时间码",
+            "timecode": "时码",
+            "position": "位置",
             "font_size": "字体大小",
-            "opacity": "透明度",
-            "user_text": "用户文本",
-            "position": "位置"
+            "opacity": "不透明度",
+            "user_text": "用户文本"
         },
         "outputs": {
-            "image": "图像"
+            "image": "图像",
+            "IMAGE": "图像"
         },
-        "description": "烧录时间码、镜头信息和质量控制报告（片头/样片风格）"
+        "description": "将元数据、时码和报告烧录到图像上（Slate/烧录）。",
+        "api_version": "V1"
+    },
+    "◎ RadianceBlendComposite": {
+        "title": "◎ Radiance 混合合成",
+        "inputs": {
+            "base": "基础图像",
+            "blend": "混合图像"
+        },
+        "widgets": {
+            "mode": "模式",
+            "opacity": "不透明度",
+            "mask": "遮罩"
+        },
+        "outputs": {
+            "image": "图像",
+            "IMAGE": "图像"
+        },
+        "description": "使用正常、添加、滤色、正片叠底、叠加、柔光、差值或除法混合模式合成两个图像。",
+        "api_version": "V1"
     },
     "RadianceCinematicPromptEncoder": {
         "title": "◎ Radiance 电影提示编码器",
@@ -333,43 +474,61 @@
         },
         "description": "传感器特性、白平衡、预设"
     },
-    "RadianceQC": {
-        "title": "◎ Radiance 质量检查",
+    "◎ RadianceQC": {
+        "title": "◎ Radiance 质检",
         "inputs": {
             "image": "图像"
         },
         "widgets": {
             "black_threshold": "黑色阈值",
             "white_threshold": "白色阈值",
-            "overlay_opacity": "叠加透明度",
+            "overlay_opacity": "叠加不透明度",
             "banding_threshold": "色带阈值",
-            "enable_focus_check": "启用聚焦检查",
+            "enable_focus_check": "启用对焦检查",
             "enable_artifacts_check": "启用伪影检查",
-            "enable_noise_check": "启用噪声检查",
-            "fail_on_errors": "遇到错误时失败"
+            "enable_noise_check": "启用噪点检查",
+            "fail_on_errors": "出错时失败"
         },
         "outputs": {
             "overlay_image": "叠加图像",
-            "qc_report_text": "质量报告文本",
-            "qc_report_json": "质量报告JSON",
-            "status": "状态"
+            "qc_report_text": "质检报告文本",
+            "qc_report_json": "质检报告 JSON",
+            "status": "状态",
+            "IMAGE": "IMAGE",
+            "STRING": "STRING"
         },
-        "description": "自动缺陷检测（削波、条纹、噪声、色域）"
+        "description": "具有全面检查和结构化报告的生产质检",
+        "api_version": "V1"
     },
-    "RadianceQCExport": {
-        "title": "◎ Radiance 质量检查导出",
+    "◎ RadianceQCExport": {
+        "title": "◎ Radiance 质检导出",
         "inputs": {
-            "qc_report_json": "质量报告JSON"
+            "qc_report_json": "质检报告 JSON"
         },
         "widgets": {
-            "export_format": "导出格式",
             "output_path": "输出路径",
-            "filename_prefix": "文件名前缀"
+            "filename_prefix": "文件名前缀",
+            "export_format": "导出格式"
         },
         "outputs": {
-            "export_status": "导出状态"
+            "export_status": "导出状态",
+            "STRING": "STRING"
         },
-        "description": "类别: FXTD Studios/Radiance/分析"
+        "description": "将质检报告导出为文件以便集成到流程中。\n支持 JSON、CSV 和 HTML 格式。",
+        "api_version": "V1"
+    },
+    "RadianceLoadImageMask": {
+        "title": "◎ Radiance 加载图像",
+        "inputs": {},
+        "widgets": {
+            "🎬 Radiance Mask": "🎬Radiance遮罩",
+            "image": "图像"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "MASK": "遮罩"
+        },
+        "description": "增强型图像加载器，集成柔笔刷遮罩编辑器"
     },
     "FXTD_RadianceViewer": {
         "title": "FXTD_查看器",
@@ -384,6 +543,32 @@
         "outputs": {
             "image": "图像",
             "metadata": "元数据"
+        },
+        "description": ""
+    },
+    "FXTD_RadianceGradeApply": {
+        "title": "◎ Radiance 应用方法",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "exposure": "曝光",
+            "offset": "偏移",
+            "lift": "提升",
+            "gamma": "伽玛",
+            "gain": "增益",
+            "contrast": "对比度",
+            "shadows": "阴影",
+            "highlights": "高光",
+            "saturation": "饱和度",
+            "temperature": "温度",
+            "hue_shift": "色调偏移",
+            "lut_name": "lut名称",
+            "lut_intensity": "lut强度",
+            "color_science": "色彩科学"
+        },
+        "outputs": {
+            "image": "图像"
         },
         "description": ""
     },
@@ -454,55 +639,143 @@
         },
         "description": "具有相移、CFG++、PAG 和动态制导的通量优化采样器"
     },
-    "RadianceWaveform": {
+    "◎ RadianceWaveform": {
         "title": "◎ Radiance 波形图",
         "inputs": {
             "image": "图像"
         },
         "widgets": {
+            "mode": "模式",
             "size": "尺寸",
-            "opacity": "透明度",
-            "mode": "模式"
+            "opacity": "不透明度"
         },
         "outputs": {
-            "waveform_image": "波形图"
+            "waveform_image": "波形图像",
+            "IMAGE": "图像"
         },
-        "description": "RGB 叠加、亮度、以及 Parade 波形监视器"
+        "description": "使用波形监视器可视化图像曝光和通道平衡。",
+        "api_version": "V1"
     },
-    "RadianceVectorscope": {
-        "title": "◎ Radiance 向量视图",
+    "◎ RadianceVectorscope": {
+        "title": "◎ Radiance 矢量示波器",
         "inputs": {
             "image": "图像"
         },
         "widgets": {
             "size": "尺寸",
-            "opacity": "透明度",
+            "opacity": "不透明度",
             "skin_tone_line": "肤色线"
         },
         "outputs": {
-            "vectorscope_image": "向量视图"
+            "vectorscope_image": "矢量示波器图像",
+            "IMAGE": "图像"
         },
-        "description": "带有肤色线和网格线的 YUV 矢量示波器"
+        "description": "可视化颜色饱和度和色调分布（U/V 图）。",
+        "api_version": "V1"
     },
-    "RadianceCinemaStudio": {
-        "title": "◎ Radiance 电影工作室",
+    "◎ RadianceFalseColor": {
+        "title": "◎ Radiance 伪彩色",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "is_linear": "是否线性",
+            "blend": "混合",
+            "exposure_offset": "曝光偏移"
+        },
+        "outputs": {
+            "false_color": "伪彩色曝光可视化（7分区行业标准调色板）。",
+            "original": "原始图像直通。",
+            "IMAGE": "图像"
+        },
+        "description": "将 7 分区伪彩色曝光叠加层烘焙为图像，用于流水线/批处理。",
+        "api_version": "V1"
+    },
+    "◎ RadianceCinemaStudio": {
+        "title": "◎ Radiance 电影摄影棚",
         "inputs": {},
         "widgets": {
-            "base_prompt": "基础提示",
-            "camera": "摄像机",
+            "base_prompt": "基础提示词",
+            "camera": "相机",
             "lens_series": "镜头系列",
             "focal_length": "焦距",
             "aperture": "光圈",
             "shutter": "快门",
             "iso": "ISO",
-            "shot_type": "拍摄类型",
-            "camera_movement": "摄像机运动"
+            "shot_type": "镜头类型",
+            "camera_movement": "运镜"
         },
         "outputs": {
-            "prompt": "提示",
-            "technical_data_str": "技术数据字符串"
+            "prompt": "提示词",
+            "technical_data_str": "技术数据字符串",
+            "STRING": "字符串"
         },
-        "description": "真实世界的摄像机物理特性（ARRI、RED、索尼、Blackmagic）"
+        "description": "使用真实世界的相机和镜头配置文件生成逼真的电影摄影提示词。",
+        "api_version": "V1"
+    },
+    "◎ RadianceTemporalSmooth": {
+        "title": "◎ Radiance 时域平滑",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "alpha": "Alpha",
+            "motion_aware": "运动感知",
+            "motion_threshold": "运动阈值",
+            "warmup_frames": "预热帧数"
+        },
+        "outputs": {
+            "images": "时域平滑后的图像批次。",
+            "stats": "JSON 统计数据：每帧平滑前后的平均差值。",
+            "IMAGE": "图像",
+            "STRING": "字符串"
+        },
+        "description": "通过每像素指数移动平均（EMA）及可选的运动感知遮罩，减少视频批次中的帧间闪烁。",
+        "api_version": "V1"
+    },
+    "◎ RadianceFlickerAnalyze": {
+        "title": "◎ Radiance 闪烁分析",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "channel": "通道"
+        },
+        "outputs": {
+            "images": "图像",
+            "flicker_report": "闪烁报告",
+            "IMAGE": "图像",
+            "STRING": "字符串"
+        },
+        "description": "计算每帧闪烁指数（亮度差值 %）用于视频质量检查。直通图像，输出 JSON 报告。",
+        "api_version": "V1"
+    },
+    "◎ RadianceShowText": {
+        "title": "◎ Radiance 显示文本",
+        "inputs": {},
+        "widgets": {
+            "any_input": "任意输入"
+        },
+        "outputs": {
+            "text": "文本",
+            "STRING": "字符串"
+        },
+        "description": "直接在节点 UI 上将任意输入数据显示为文本。",
+        "api_version": "V1"
+    },
+    "RadianceWorkspace": {
+        "title": "◎ Radiance .rad 工作区",
+        "inputs": {},
+        "widgets": {
+            "Export .rad": "导出 .rad",
+            "Import .rad": "导入 .rad",
+            "Save to Library": "保存到库",
+            "Open Library": "打开库",
+            "Docs": "文档",
+            "FXTD Studios": "FXTD工作室"
+        },
+        "outputs": {},
+        "description": "定义工作区范围的变量和设置"
     },
     "RadianceLUTApply": {
         "title": "◎ Radiance  LUT应用",
@@ -660,23 +933,6 @@
             "curve": "曲线",
             "source_gamut": "源色域",
             "exposure_index": "曝光指数"
-        },
-        "outputs": {
-            "image": "图像"
-        },
-        "description": "类别: FXTD Studios/Radiance/颜色"
-    },
-    "RadianceACES2OutputTransform": {
-        "title": "◎ Radiance ACES2输出变换",
-        "inputs": {
-            "image": "图像"
-        },
-        "widgets": {
-            "peak_luminance": "峰值亮度",
-            "contrast": "对比度",
-            "gamut_compress": "色域压缩",
-            "gamut_threshold": "色域阈值",
-            "display_target": "显示目标"
         },
         "outputs": {
             "image": "图像"
@@ -997,6 +1253,29 @@
         },
         "description": "OpenEXR 导出（含元数据）"
     },
+    "OCIOColorTransform": {
+        "title": "OCIO 色彩变换",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "source_colorspace": "源色彩空间",
+            "target_colorspace": "目标色彩空间",
+            "ocio_config_path": "OCIO 配置路径",
+            "look": "外观",
+            "exposure_stops": "曝光档位",
+            "direction": "方向",
+            "clamp_output": "钳制输出"
+        },
+        "outputs": {
+            "image": "图像",
+            "metadata": "元数据",
+            "IMAGE": "图像",
+            "STRING": "字符串"
+        },
+        "description": "对图像应用 OCIO 色彩空间变换。支持活动 OCIO 配置中的任何源/目标对，包括所有对数格式（LogC4, S-Log3, V-Log, DaVinci Intermediate, Log3G10）。",
+        "api_version": "V1"
+    },
     "ACESConfigManager": {
         "title": "ACES配置管理器",
         "inputs": {},
@@ -1315,6 +1594,312 @@
         },
         "description": "抖动 8/16/32 位转换"
     },
+    "RadianceAIUpscale": {
+        "title": "◎ Radiance AI放大",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "tile_size": "分块尺寸",
+            "tile_overlap": "分块重叠",
+            "auto_download": "自动下载",
+            "unload_model": "卸载模型",
+            "model_name": "模型名称",
+            "mode": "模式"
+        },
+        "outputs": {
+            "image": "图像",
+            "info": "信息"
+        },
+        "description": "RealESRGAN, SUPIR  RealESRGAN，SUPIR"
+    },
+    "RadianceSharpen32bit": {
+        "title": "Radiance 32位锐化",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "mode": "模式",
+            "amount": "强度",
+            "radius": "半径",
+            "threshold": "阈值",
+            "process_in_linear": "线性空间处理"
+        },
+        "outputs": {
+            "sharpened_image": "锐化图像",
+            "IMAGE": "图像"
+        },
+        "description": "专业 32 位锐化 —— 反遮罩或高通，真正的 float32 精度，HDR 安全。",
+        "api_version": "V1"
+    },
+    "RadianceDenoise": {
+        "title": "◎ Radiance 降噪",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "d": "d",
+            "sigmaColor": "sigma颜色",
+            "sigmaSpace": "sigma空间"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "32 位浮点图像的边缘保持双边滤波器"
+    },
+    "RadianceDepthMapGenerator": {
+        "title": "◎ Radiance 深度图生成器",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "normalize": "标准化",
+            "invert": "反转",
+            "blur_edges": "模糊边缘",
+            "use_gpu": "使用GPU",
+            "model_size": "模型尺寸"
+        },
+        "outputs": {
+            "depth_map": "深度图"
+        },
+        "description": "对深度图进行标准化和着色"
+    },
+    "RadianceReadVideo": {
+        "title": "◎ Radiance 视频读取器",
+        "inputs": {},
+        "widgets": {
+            "input_colorspace": "输入色彩空间",
+            "video_path": "视频路径",
+            "start_frame": "起始帧",
+            "frame_count": "帧数",
+            "frame_stride": "帧间隔",
+            "extract_audio": "提取音频"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "MASK": "遮罩",
+            "frame_count": "帧数",
+            "width": "宽度",
+            "height": "高度",
+            "fps": "帧率",
+            "audio": "音频"
+        },
+        "description": "读取带有对数颜色变换的 MP4/MOV/AVI 格式文件"
+    },
+    "RadianceReadSequence": {
+        "title": "◎ Radiance 序列读取器",
+        "inputs": {},
+        "widgets": {
+            "folder_path": "文件夹路径",
+            "pattern": "模式",
+            "start_frame": "起始帧",
+            "frame_limit": "帧限制",
+            "input_colorspace": "输入色彩空间",
+            "fps": "帧率"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "MASK": "遮罩",
+            "frame_count": "帧数",
+            "width": "宽度",
+            "height": "高度",
+            "fps": "帧率",
+            "filename_list": "文件名列表"
+        },
+        "description": "EXR/PNG/TIFF 序列读取器"
+    },
+    "RadianceWrite": {
+        "title": "◎ Radiance 写入器",
+        "inputs": {
+            "images": "图像",
+            "audio": "音频"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "output_format": "输出格式",
+            "output_color_space": "输出色彩空间",
+            "fps": "帧率",
+            "quality": "质量",
+            "subfolder": "子文件夹"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "file_path": "文件路径"
+        },
+        "description": "类别: FXTD Studios/Radiance/IO"
+    },
+    "RadianceWriteVideo": {
+        "title": "◎ Radiance 视频写入器",
+        "inputs": {
+            "images": "图像",
+            "audio": "音频"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "fps": "帧率",
+            "codec": "编解码器",
+            "output_color_space": "输出色彩空间",
+            "quality": "质量",
+            "subfolder": "子文件夹"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "file_path": "文件路径"
+        },
+        "description": "导出 ProRes 4444、H.264、H.265、EXR 序列"
+    },
+    "RadianceNukeBridge": {
+        "title": "◎ Radiance NUKE桥接器",
+        "inputs": {
+            "images": "图像",
+            "depth_map": "深度图"
+        },
+        "widgets": {
+            "host": "主机",
+            "port": "端口",
+            "stream_name": "流名称",
+            "send_mode": "发送模式",
+            "color_space": "色彩空间",
+            "bit_depth": "位深度",
+            "compression": "压缩",
+            "connect_viewer": "连接查看器",
+            "raw": "原始",
+            "start_frame": "起始帧",
+            "output_path": "输出路径"
+        },
+        "outputs": {
+            "image": "图像",
+            "nuke_status": "NUKE状态"
+        },
+        "description": "向 Nuke 发送/接收图像"
+    },
+    "RadianceMetadataOverlay": {
+        "title": "◎ Radiance 元数据叠加器",
+        "inputs": {
+            "image": "图像",
+            "report_text": "报告文本"
+        },
+        "widgets": {
+            "enabled": "启用",
+            "project": "项目",
+            "shot": "镜头",
+            "frame": "帧",
+            "timecode": "时间码",
+            "font_size": "字体大小",
+            "opacity": "透明度",
+            "user_text": "用户文本",
+            "position": "位置"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "烧录时间码、镜头信息和质量控制报告（片头/样片风格）"
+    },
+    "RadianceQC": {
+        "title": "◎ Radiance 质量检查",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "black_threshold": "黑色阈值",
+            "white_threshold": "白色阈值",
+            "overlay_opacity": "叠加透明度",
+            "banding_threshold": "色带阈值",
+            "enable_focus_check": "启用聚焦检查",
+            "enable_artifacts_check": "启用伪影检查",
+            "enable_noise_check": "启用噪声检查",
+            "fail_on_errors": "遇到错误时失败"
+        },
+        "outputs": {
+            "overlay_image": "叠加图像",
+            "qc_report_text": "质量报告文本",
+            "qc_report_json": "质量报告JSON",
+            "status": "状态"
+        },
+        "description": "自动缺陷检测（削波、条纹、噪声、色域）"
+    },
+    "RadianceQCExport": {
+        "title": "◎ Radiance 质量检查导出",
+        "inputs": {
+            "qc_report_json": "质量报告JSON"
+        },
+        "widgets": {
+            "export_format": "导出格式",
+            "output_path": "输出路径",
+            "filename_prefix": "文件名前缀"
+        },
+        "outputs": {
+            "export_status": "导出状态"
+        },
+        "description": "类别: FXTD Studios/Radiance/分析"
+    },
+    "RadianceWaveform": {
+        "title": "◎ Radiance 波形图",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "size": "尺寸",
+            "opacity": "透明度",
+            "mode": "模式"
+        },
+        "outputs": {
+            "waveform_image": "波形图"
+        },
+        "description": "RGB 叠加、亮度、以及 Parade 波形监视器"
+    },
+    "RadianceVectorscope": {
+        "title": "◎ Radiance 向量视图",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "size": "尺寸",
+            "opacity": "透明度",
+            "skin_tone_line": "肤色线"
+        },
+        "outputs": {
+            "vectorscope_image": "向量视图"
+        },
+        "description": "带有肤色线和网格线的 YUV 矢量示波器"
+    },
+    "RadianceCinemaStudio": {
+        "title": "◎ Radiance 电影工作室",
+        "inputs": {},
+        "widgets": {
+            "base_prompt": "基础提示",
+            "camera": "摄像机",
+            "lens_series": "镜头系列",
+            "focal_length": "焦距",
+            "aperture": "光圈",
+            "shutter": "快门",
+            "iso": "ISO",
+            "shot_type": "拍摄类型",
+            "camera_movement": "摄像机运动"
+        },
+        "outputs": {
+            "prompt": "提示",
+            "technical_data_str": "技术数据字符串"
+        },
+        "description": "真实世界的摄像机物理特性（ARRI、RED、索尼、Blackmagic）"
+    },
+    "RadianceACES2OutputTransform": {
+        "title": "◎ Radiance ACES2输出变换",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "peak_luminance": "峰值亮度",
+            "contrast": "对比度",
+            "gamut_compress": "色域压缩",
+            "gamut_threshold": "色域阈值",
+            "display_target": "显示目标"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "类别: FXTD Studios/Radiance/颜色"
+    },
     "RadianceVAEEncode": {
         "title": "◎ Radiance VAE 编码器专业版",
         "inputs": {
@@ -1372,7 +1957,7 @@
         "outputs": {
             "image": "图像"
         },
-        "description": "8 种混合模式 + 可选蒙版 — 正常、添加、屏幕、正片叠底、叠加、柔光、差值、分割"
+        "description": "8 种混合模式 + 可选遮罩 — 正常、添加、屏幕、正片叠底、叠加、柔光、差值、分割"
     },
     "RadianceFalseColor": {
         "title": "◎ Radiance 虚假色彩",
@@ -1421,36 +2006,6 @@
         },
         "description": "帧间闪烁指数测量和 JSON 报告"
     },
-    "RadianceApplyGradeInfo": {
-        "title": "◎ Radiance 应用分级信息",
-        "inputs": {
-            "grade_info": "分级信息",
-            "image": "图像"
-        },
-        "widgets": {
-            "strength": "强度"
-        },
-        "outputs": {
-            "grade_info": "分级信息",
-            "image": "图像"
-        },
-        "description": "将已保存的 grade_info JSON 应用于任何图像"
-    },
-    "RadianceGradeMatch": {
-        "title": "◎ Radiance 分级匹配",
-        "inputs": {
-            "source": "源",
-            "reference": "参考"
-        },
-        "widgets": {
-            "strength": "强度"
-        },
-        "outputs": {
-            "matched_image": "匹配图像",
-            "grade_info": "分级信息"
-        },
-        "description": "通过 CIE L*a*b* 平均值/标准差转移实现逐帧色彩匹配"
-    },
     "RadianceLUTBake": {
         "title": "◎ Radiance LUT 烘焙",
         "inputs": {
@@ -1482,32 +2037,6 @@
         },
         "description": "将烘焙等级参数导出到 33³ .cube LUT 文件"
     },
-    "FXTD_RadianceGradeApply": {
-        "title": "◎ Radiance 应用方法",
-        "inputs": {
-            "image": "图像"
-        },
-        "widgets": {
-            "exposure": "曝光",
-            "offset": "偏移",
-            "lift": "提升",
-            "gamma": "伽玛",
-            "gain": "增益",
-            "contrast": "对比度",
-            "shadows": "阴影",
-            "highlights": "高光",
-            "saturation": "饱和度",
-            "temperature": "温度",
-            "hue_shift": "色调偏移",
-            "lut_name": "lut名称",
-            "lut_intensity": "lut强度",
-            "color_science": "色彩科学"
-        },
-        "outputs": {
-            "image": "图像"
-        },
-        "description": ""
-    },
     "RadianceShowText": {
         "title": "◎Radiance 显示文本",
         "inputs": {
@@ -1518,60 +2047,6 @@
             "text": "文本"
         },
         "description": "将任何输入数据直接以文本形式显示在节点 Ul 上。"
-    },
-    "RadianceLoadImageMask": {
-        "title": "◎ Radiance 加载图像",
-        "inputs": {},
-        "widgets": {
-            "🎬 Radiance Mask": "🎬Radiance遮罩",
-            "image": "图像"
-        },
-        "outputs": {
-            "IMAGE": "图像",
-            "MASK": "遮罩"
-        },
-        "description": "增强型图像加载器，集成柔笔刷蒙版编辑器"
-    },
-    "RadianceWorkspace": {
-        "title": "◎ Radiance .rad 工作区",
-        "inputs": {},
-        "widgets": {
-            "Export .rad": "导出 .rad",
-            "Import .rad": "导入 .rad",
-            "Save to Library": "保存到库",
-            "Open Library": "打开库",
-            "Docs": "文档",
-            "FXTD Studios": "FXTD工作室"
-        },
-        "outputs": {},
-        "description": "定义工作区范围的变量和设置"
-    },
-    "RadianceLoraStack": {
-        "title": "◎ Radiance Lora堆",
-        "inputs": {
-            "lora_stack": "Lora堆"
-        },
-        "widgets": {
-            "lora_1": "Lora 1",
-            "lora_1_model": "Lora 1 模型",
-            "lora_1_clip": "Lora 1 CLIP",
-            "lora_2": "Lora 2",
-            "lora_2_model": "Lora 2 模型",
-            "lora_2_clip": "Lora 2 CLIP",
-            "lora_3": "Lora 3",
-            "lora_3_model": "Lora 3 模型",
-            "lora_3_clip": "Lora 3 CLIP",
-            "lora_4": "Lora 4",
-            "lora_4_model": "Lora 4 模型",
-            "lora_4_clip": "Lora 4 CLIP",
-            "lora_5": "Lora 5",
-            "lora_5_model": "Lora 5 模型",
-            "lora_5_clip": "Lora 5 CLIP"
-        },
-        "outputs": {
-            "lora_stack": "Lora堆"
-        },
-        "description": "可将多达 5 个 Lora 协议栈组合成一个累加型 Lora堆。\n 将多个栈串联起来。然后输入到 Radiance 统一加载器中。"
     },
     "FXTDCinematicPromptEncoder": {
         "title": "◎ Radiance 电影提示词编辑器",
@@ -1618,24 +2093,5 @@
             "token_count": "令牌计数"
         },
         "description": "v3.0 - 通用电影编码器。\n 可自动为 Flux/T5/Kolors 选择散文格式，为 SD1.5/SDXL 选择结构化格式。\n 支持场景氛围、A/B 提示、主题权重、实际令牌数量、艺术指导以及与建筑相关的负面因素。"
-    },
-    "RadianceAIUpscale": {
-        "title": "◎ Radiance AI放大",
-        "inputs": {
-            "image": "图像"
-        },
-        "widgets": {
-            "tile_size": "分块尺寸",
-            "tile_overlap": "分块重叠",
-            "auto_download": "自动下载",
-            "unload_model": "卸载模型",
-            "model_name": "模型名称",
-            "mode": "模式"
-        },
-        "outputs": {
-            "image": "图像",
-            "info": "信息"
-        },
-        "description": "RealESRGAN, SUPIR  RealESRGAN，SUPIR"
     }
 }

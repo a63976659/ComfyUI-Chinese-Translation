@@ -204,6 +204,40 @@
         },
         "description": "此节点作为调度指挥官，指示其他插帧节点哪些帧需要处理，哪些可以跳过。"
     },
+    "MOMO VFI": {
+        "title": "MOMO 画质优先(视频插帧)(仅支持 2 倍倍率)",
+        "inputs": {
+            "frames": "帧",
+            "optional_interpolation_states": "可选插值状态"
+        },
+        "widgets": {
+            "ckpt_name": "模型名称",
+            "clear_cache_after_n_frames": "N 帧后清除缓存",
+            "multiplier": "倍率",
+            "num_inference_steps": "推理步数"
+        },
+        "outputs": {
+            "IMAGE": "输出图像"
+        },
+        "description": "该节点利用 MOMO 模型进行视频帧插值，能够将视频帧插值到 2 倍分辨率。高精度迭代细化，对伪影零容忍、画质优先任务。"
+    },
+    "ATM VFI": {
+        "title": "ATM 真人运动(视频插帧)(仅支持 2 倍倍率)",
+        "inputs": {
+            "frames": "帧",
+            "optional_interpolation_states": "可选插值状态"
+        },
+        "widgets": {
+            "ckpt_name": "模型名称",
+            "clear_cache_after_n_frames": "N 帧后清除缓存",
+            "multiplier": "倍率",
+            "num_inference_steps": "推理步数"
+        },
+        "outputs": {
+            "frames": "帧"
+        },
+        "description": "ATM VFI 是一种基于 Transformer 的视频帧插值技术。Transformer 全局建模，复杂运动、多人交互、真实场景。它支持 2 倍倍率。"
+    },
     "KSampler Gradually Adding More Denoise (efficient)": {
         "title": "K采样器-渐进式降噪(高效)",
         "inputs": {

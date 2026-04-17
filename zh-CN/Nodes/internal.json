@@ -1015,7 +1015,7 @@
         }
     },
     "StableCascade_StageB_Conditioning": {
-        "title": "稳定的级联_StageB条件",
+        "title": "稳定扩散_StageB条件",
         "inputs": {
             "conditioning": "条件",
             "stage_c": "Stage_C"
@@ -2662,7 +2662,7 @@
         }
     },
     "StableCascade_SuperResolutionControlnet": {
-        "title": "稳定的级联_超分ControlNet",
+        "title": "稳定扩散_超分ControlNet",
         "inputs": {
             "image": "图像",
             "vae": "VAE"
@@ -3347,7 +3347,7 @@
         }
     },
     "ModelSamplingStableCascade": {
-        "title": "模型采样算法Cascade",
+        "title": "模型采样算法 稳定扩散",
         "inputs": {
             "model": "模型"
         },
@@ -4223,6 +4223,7 @@
         "inputs": {
             "image": "输入图像"
         },
+        "widgets": {},
         "outputs": {
             "image": "输出图像"
         }
@@ -4234,6 +4235,7 @@
             "U": "U通道",
             "V": "V通道"
         },
+        "widgets": {},
         "outputs": {
             "IMAGE": "输出图像"
         }
@@ -4246,6 +4248,7 @@
             "text": "文本",
             "clip": "CLIP模型"
         },
+        "widgets": {},
         "outputs": {
             "CONDITIONING": "条件输出"
         }
@@ -4255,8 +4258,21 @@
         "inputs": {
             "value": "值"
         },
+        "widgets": {},
         "outputs": {
             "none": "无"
+        }
+    },
+    "JsonExtractString": {
+        "title": "从 JSON 中提取字符串",
+        "inputs": {
+            "value": "值"
+        },
+        "widgets": {
+            "key": "密钥"
+        },
+        "outputs": {
+            "STRING": "字符串"
         }
     },
     "PrimitiveInt": {
@@ -4841,6 +4857,138 @@
             "latent": "Latent"
         }
     },
+    "Wan2TextToVideoApi": {
+        "title": "Wan2.7 文生视频",
+        "inputs": {
+            "positive": "正向条件",
+            "negative": "负面条件",
+            "audio": "音频"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "ratio": "宽高比",
+            "seed": "随机种子",
+            "duration": "时长(秒)",
+            "prompt_extend": "扩展提示词",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "生成视频"
+        }
+    },
+    "Wan2ImageToVideoApi": {
+        "title": "Wan2.7 图生视频",
+        "inputs": {
+            "first_frame": "首帧图像",
+            "last_frame": "尾帧图像",
+            "audio": "音频"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "duration": "时长(秒)",
+            "ratio": "宽高比",
+            "seed": "随机种子",
+            "prompt_extend": "扩展提示词",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "生成视频"
+        }
+    },
+    "Wan2VideoContinuationApi": {
+        "title": "Wan2.7 视频延长",
+        "inputs": {
+            "first_clip": "第一段剪辑",
+            "last_frame": "尾帧图像",
+            "audio": "音频"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "duration": "时长(秒)",
+            "ratio": "宽高比",
+            "seed": "随机种子",
+            "prompt_extend": "扩展提示词",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "生成视频"
+        }
+    },
+    "Wan2VideoEditApi": {
+        "title": "Wan2.7 视频编辑",
+        "inputs": {
+            "video": "视频",
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "image4": "图像4"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "ratio": "宽高比",
+            "duration": "时长(秒)",
+            "seed": "随机种子",
+            "audio_setting": "音频设置",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "生成视频"
+        }
+    },
+    "Wan2ReferenceVideoApi": {
+        "title": "Wan2.7 参考生视频",
+        "inputs": {
+            "video1": "视频1",
+            "video2": "视频2",
+            "video3": "视频3",
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "image4": "图像4"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "ratio": "宽高比",
+            "duration": "时长(秒)",
+            "seed": "随机种子",
+            "audio_setting": "音频设置",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "生成视频"
+        }
+    },
+    "SoniloVideoToMusic": {
+        "title": "Sonilo 视频生音乐",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "duration": "时长(秒)",
+            "model": "模型",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "AIDEO": "音频"
+        }
+    },
+    "SoniloTextToMusic": {
+        "title": "Sonilo 文生音乐",
+        "inputs": {
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "AIDEO": "音频"
+        }
+    },
     "OpenAIVideoSora2": {
         "title": "OpenAI Sora2 - 视频",
         "inputs": {
@@ -5148,6 +5296,29 @@
             "VIDEO": "视频"
         }
     },
+    "GrokVideoReferenceNode": {
+        "title": "Grok 参考生视频",
+        "inputs": {
+            "reference_0": "参考0",
+            "reference_1": "参考1",
+            "reference_2": "参考2",
+            "reference_3": "参考3",
+            "reference_4": "参考4",
+            "reference_5": "参考5",
+            "reference_6": "参考6"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "aspect_ratio": "宽高比",
+            "duration": "时长",
+            "seed": "种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        }
+    },
     "GrokVideoEditNode": {
         "title": "Grok 视频编辑",
         "inputs": {
@@ -5159,6 +5330,21 @@
             "control_after_generate": "生成后控制",
             "aspect_ratio": "宽高比",
             "resolution": "分辨率",
+            "duration": "时长"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        }
+    },
+    "GrokVideoExtendNode": {
+        "title": "Grok 视频延长",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
             "duration": "时长"
         },
         "outputs": {
@@ -5425,6 +5611,45 @@
         "outputs": {
             "IMAGE": "图像",
             "MASK": "遮罩"
+        }
+    },
+    "QuiverTextToSVGNode": {
+        "title": "文生矢量图像SVG",
+        "inputs": {
+            "ref_0": "参考",
+            "ref_1": "参考1",
+            "ref_2": "参考2",
+            "ref_3": "参考3"
+        },
+        "widgets": {
+            "model": "模型",
+            "temperature": "温度",
+            "top_p": "最高概率比例",
+            "presence_penalty": "存在性惩罚",
+            "control_after_generate": "生成后控制",
+            "seed": "种子"
+        },
+        "outputs": {
+            "SVG": "矢量图像"
+        }
+    },
+    "QuiverImageToSVGNode": {
+        "title": "图生矢量图像SVG",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "auto_crop": "自动裁剪",
+            "model": "模型",
+            "target_size": "目标尺寸",
+            "temperature": "温度",
+            "top_p": "最高概率比例",
+            "presence_penalty": "存在性惩罚",
+            "control_after_generate": "生成后控制",
+            "seed": "种子"
+        },
+        "outputs": {
+            "SVG": "矢量图像"
         }
     },
     "KlingCameraControls": {
@@ -6210,6 +6435,27 @@
             "VIDEO": "视频"
         }
     },
+    "ByteDance2TextToVideoNode": {
+        "title": "字节跳动2.0 文生视频",
+        "inputs": {
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "ratio": "宽高比",
+            "generate_audio": "生成音频",
+            "duration": "时长",
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
+            "camera_fixed": "固定镜头",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "video": "视频",
+            "VIDEO": "视频"
+        }
+    },
     "ByteDanceImageToVideoNode": {
         "title": "字节跳动 图生视频",
         "inputs": {
@@ -6252,6 +6498,42 @@
             "VIDEO": "视频"
         }
     },
+    "ByteDance2ReferenceNode": {
+        "title": "字节跳动2.0 参考转视频",
+        "inputs": {
+            "image_1": "图像1",
+            "image_2": "图像2",
+            "image_3": "图像3",
+            "image_4": "图像4",
+            "image_5": "图像5",
+            "image_6": "图像6",
+            "image_7": "图像7",
+            "image_8": "图像8",
+            "image_9": "图像9",
+            "video_1": "视频1",
+            "video_2": "视频2",
+            "video_3": "视频3",
+            "audio_1": "音频1",
+            "audio_2": "音频2",
+            "audio_3": "音频3",
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "ratio": "宽高比",
+            "generate_audio": "生成音频",
+            "duration": "时长",
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
+            "camera_fixed": "固定镜头",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "video": "视频",
+            "VIDEO": "视频"
+        }
+    },
     "ByteDanceFirstLastFrameNode": {
         "title": "字节跳动 首尾帧转视频",
         "inputs": {
@@ -6267,6 +6549,28 @@
             "seed": "种子",
             "control_after_generate": "生成后控制",
             "camera_fixed": "固定镜头",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "video": "视频",
+            "VIDEO": "视频"
+        }
+    },
+    "ByteDance2FirstLastFrameNode": {
+        "title": "字节跳动2.0 首尾帧转视频",
+        "inputs": {
+            "first_frame": "首帧图像",
+            "last_frame": "尾帧图像",
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "ratio": "宽高比",
+            "generate_audio": "生成音频",
+            "duration": "时长",
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
             "watermark": "水印"
         },
         "outputs": {
@@ -7711,6 +8015,26 @@
             "CLIP": "CLIP"
         }
     },
+    "LTXVReferenceAudio": {
+        "title": "LTXV 参考音频（ID-LoRA）",
+        "inputs": {
+            "model": "模型",
+            "positive": "正向条件",
+            "negative": "负面条件",
+            "reference_audio": "参考音频",
+            "Audio_VAE": "音频 VAE"
+        },
+        "widgets": {
+            "identity_guidance_scale": "特征引导权重",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "MODEL": "模型",
+            "positive": "正向条件",
+            "negative": "负面条件"
+        }
+    },
     "Load3D": {
         "title": "3D模型加载器",
         "inputs": {
@@ -7734,6 +8058,7 @@
             "IMAGE": "图像",
             "MASK": "遮罩",
             "TEXT": "模型信息",
+            "model_3d": "3D模型",
             "camera_info": "相机参数"
         }
     },
@@ -9880,6 +10205,75 @@
             "MODEL": "模型"
         },
         "description": "为 Flux 系列型号上的引用图像提供了 KV 缓存优化功能。"
+    },
+    "RTDETR_detect": {
+        "title": "RT-DETR 检测器",
+        "inputs": {
+            "image": "图像",
+            "model": "模型"
+        },
+        "widgets": {
+            "threshold": "阈值",
+            "class_name": "类别名称",
+            "max_detections": "最大检测数量"
+        },
+        "outputs": {
+            "MODEL": "模型",
+            "bboxes": "边界框"
+        },
+        "description": ""
+    },
+    "DrawBBoxes": {
+        "title": "绘制边界框",
+        "inputs": {
+            "image": "图像",
+            "bboxes": "边界框"
+        },
+        "widgets": {},
+        "outputs": {
+            "out_image": "输出图像",
+            "bboxes": "边界框"
+        },
+        "description": ""
+    },
+    "CurveEditor": {
+        "title": "曲线编辑器",
+        "inputs": {
+            "histogram": "直方图"
+        },
+        "widgets": {},
+        "outputs": {
+            "out_image": "输出图像",
+            "curve": "曲线"
+        },
+        "description": ""
+    },
+    "ImageHistogram": {
+        "title": "图像 直方图",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "rgb": "RGB",
+            "luminance": "亮度",
+            "red": "红色",
+            "green": "绿色",
+            "blue": "蓝色"
+        },
+        "description": "显示图像的直方图，支持按 RGB、亮度、红、绿、蓝通道选择"
+    },
+    "ComfyNumberConvert": {
+        "title": "数字转换",
+        "inputs": {
+            "value": "值"
+        },
+        "widgets": {},
+        "outputs": {
+            "Float": "浮点",
+            "INT": "整数"
+        },
+        "description": ""
     },
     "TemporalScoreRescaling": {
         "title": "TSR - 时序分数重缩放",

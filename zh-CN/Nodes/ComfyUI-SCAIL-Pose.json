@@ -1,4 +1,37 @@
 {
+    "NLFModelLoader": {
+        "title": "NLF姿态模型 加载器",
+        "inputs": {},
+        "widgets": {
+            "nlf_model": "NLF 模型"
+        },
+        "outputs": {
+            "nlf_model": "NLF 模型",
+            "NLF_MODEL": "NLF 模型"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "NLFPredictPoses": {
+        "title": "NLF 预测姿态",
+        "inputs": {
+            "nlf_model": "NLF 模型",
+            "images": "图像"
+        },
+        "widgets": {
+            "per_batch": "每批数量",
+            "num_aug": "增强数量",
+            "detector_threshold": "检测器阈值"
+        },
+        "outputs": {
+            "pose_results": "姿态结果",
+            "bboxes": "边界框",
+            "NLFPRED": "NLF 预测结果",
+            "BBOX": "边界框"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
     "PoseDetectionVitPoseToDWPose": {
         "title": "姿态检测：Vit姿态转DW姿态",
         "inputs": {
