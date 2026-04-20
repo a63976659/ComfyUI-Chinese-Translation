@@ -22,6 +22,7 @@ class TExe {
   constructor() {
     this.excludeClass = [
       "lite-search-item-type",
+      "p-tree",            // 拦截扩展节点组 (Vue Tree)
       "p-virtualscroller", // 拦截模版搜索中的虚拟滚动列表
       "p-listbox"          // 拦截 PrimeVue 列表容器
     ];
