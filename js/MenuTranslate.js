@@ -232,6 +232,19 @@ export function applyMenuTranslation(T) {
     let _bodyPendingMutations = [];
     
     const bodyObserver = observeFactory(document.querySelector("body.litegraph"), (mutationsList) => {
+      // 【立即检测】在防抖之前，同步检测新增的 .p-tree 元素
+      for (const mutation of mutationsList) {
+        for (const node of mutation.addedNodes) {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            if (node.classList?.contains('p-tree')) {
+              setupTreeObserver(node);
+            } else if (node.querySelectorAll) {
+              node.querySelectorAll('.p-tree').forEach(setupTreeObserver);
+            }
+          }
+        }
+      }
+      
       _bodyPendingMutations.push(...mutationsList);
       if (_bodyDebounceTimer) clearTimeout(_bodyDebounceTimer);
       _bodyDebounceTimer = setTimeout(() => {
@@ -244,14 +257,6 @@ export function applyMenuTranslation(T) {
           for (const mutation of mutations) {
             for (const node of mutation.addedNodes) {
               if (node.nodeType === Node.ELEMENT_NODE) scheduleTranslation(node);
-              // 即使被阻塞，也检测新增的 .p-tree 元素
-              if (node.nodeType === Node.ELEMENT_NODE) {
-                if (node.classList?.contains('p-tree')) {
-                  setupTreeObserver(node);
-                } else if (node.querySelectorAll) {
-                  node.querySelectorAll('.p-tree').forEach(setupTreeObserver);
-                }
-              }
             }
           }
           return;
@@ -273,14 +278,6 @@ export function applyMenuTranslation(T) {
                 }
               } else {
                 texe.translateAllText(node);
-              }
-              // 检测新增的 .p-tree 元素，设置专用翻译 Observer
-              if (node.nodeType === Node.ELEMENT_NODE) {
-                if (node.classList?.contains('p-tree')) {
-                  setupTreeObserver(node);
-                } else if (node.querySelectorAll) {
-                  node.querySelectorAll('.p-tree').forEach(setupTreeObserver);
-                }
               }
             }
           }
@@ -344,6 +341,29 @@ let _menuDebounceTimer = null;
 let _menuPendingMutations = [];
 
 function handleComfyNewUIMenu(mutationsList) {
+  // 【立即检测】在防抖之前，同步检测 .p-tree 元素
+  for (const mutation of mutationsList) {
+    const target = mutation.target;
+    if (target?.nodeType === Node.ELEMENT_NODE) {
+      if (target.classList?.contains('p-tree')) {
+        setupTreeObserver(target);
+      } else if (target.querySelectorAll) {
+        target.querySelectorAll('.p-tree').forEach(setupTreeObserver);
+      }
+    }
+    if (mutation.type === "childList") {
+      for (const node of mutation.addedNodes) {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          if (node.classList?.contains('p-tree')) {
+            setupTreeObserver(node);
+          } else if (node.querySelectorAll) {
+            node.querySelectorAll('.p-tree').forEach(setupTreeObserver);
+          }
+        }
+      }
+    }
+  }
+  
   _menuPendingMutations.push(...mutationsList);
   if (_menuDebounceTimer) clearTimeout(_menuDebounceTimer);
   _menuDebounceTimer = setTimeout(() => {
@@ -371,13 +391,6 @@ function handleComfyNewUIMenu(mutationsList) {
       }
       for (const target of targets) {
         texe.translateAllText(target);
-        // 子图区域专用翻译：检测新增的 .p-tree 元素
-        if (target.nodeType === Node.ELEMENT_NODE && target.querySelectorAll) {
-          if (target.classList?.contains('p-tree')) {
-            setupTreeObserver(target);
-          }
-          target.querySelectorAll('.p-tree').forEach(setupTreeObserver);
-        }
       }
     } finally {
       setTimeout(() => { _isTranslating = false; }, 0);
