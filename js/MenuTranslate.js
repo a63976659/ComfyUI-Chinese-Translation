@@ -22,6 +22,7 @@ class TExe {
   constructor() {
     this.excludeClass = [
       "lite-search-item-type",
+      "p-tree",            // 拦截扩展节点组 (Vue Tree)
       "p-virtualscroller", // 拦截模版搜索中的虚拟滚动列表
       "p-listbox"          // 拦截 PrimeVue 列表容器
     ];
@@ -183,6 +184,39 @@ class TExe {
 
 let texe = new TExe();
 
+let _isTranslating = false;
+
+let _pendingNodes = new Set();
+let _rafId = null;
+
+function scheduleTranslation(node) {
+  if (!node || !node.querySelectorAll) return;
+  _pendingNodes.add(node);
+  if (_rafId !== null) cancelAnimationFrame(_rafId);
+  _rafId = requestAnimationFrame(flushTranslations);
+}
+
+function flushTranslations() {
+  _rafId = null;
+  if (_pendingNodes.size === 0) return;
+  _isTranslating = true;
+  try {
+    for (const node of _pendingNodes) {
+      if (node.isConnected) texe.translateAllText(node);
+    }
+    _pendingNodes.clear();
+  } finally {
+    setTimeout(() => { _isTranslating = false; }, 0);
+  }
+}
+
+function isSearchRelatedElement(node) {
+  if (!node || !node.classList) return false;
+  return node.classList.contains("litesearchbox") || 
+         node.classList.contains("lite-search-item") ||
+         (node.querySelector && !!node.querySelector(".litesearchbox"));
+}
+
 export function applyMenuTranslation(T) {
   try {
     texe.cleanupObservers();
@@ -201,21 +235,37 @@ export function applyMenuTranslation(T) {
         const mutations = _bodyPendingMutations;
         _bodyPendingMutations = [];
         
-        for (const mutation of mutations) {
-          for (const node of mutation.addedNodes) {
-            if (node.classList?.contains("comfy-modal")) {
-              texe.translateAllText(node);
-              observeModalNode(node);
-            } else if (node.classList?.contains("p-dialog-mask")) {
-              const dialog = node.querySelector(".p-dialog");
-              if (dialog) {
-                texe.translateAllText(dialog);
-                observeFactory(dialog, handleSettingsDialog, dialog?.role === "dialog");
-              }
-            } else {
-              texe.translateAllText(node);
+        if (_isTranslating) {
+          // 被阻塞时不丢弃，收集到调度器延迟处理
+          for (const mutation of mutations) {
+            for (const node of mutation.addedNodes) {
+              if (node.nodeType === Node.ELEMENT_NODE) scheduleTranslation(node);
             }
           }
+          return;
+        }
+        _isTranslating = true;
+        try {
+          for (const mutation of mutations) {
+            for (const node of mutation.addedNodes) {
+              // 搜索元素由 setupSearchBoxObserver 专责处理
+              if (isSearchRelatedElement(node)) continue;
+              if (node.classList?.contains("comfy-modal")) {
+                texe.translateAllText(node);
+                observeModalNode(node);
+              } else if (node.classList?.contains("p-dialog-mask")) {
+                const dialog = node.querySelector(".p-dialog");
+                if (dialog) {
+                  texe.translateAllText(dialog);
+                  observeFactory(dialog, handleSettingsDialog, dialog?.role === "dialog");
+                }
+              } else {
+                texe.translateAllText(node);
+              }
+            }
+          }
+        } finally {
+          setTimeout(() => { _isTranslating = false; }, 0);
         }
       }, 16);
     }, true);
@@ -280,13 +330,29 @@ function handleComfyNewUIMenu(mutationsList) {
     const mutations = _menuPendingMutations;
     _menuPendingMutations = [];
     
-    // 去重：同一 target 只翻译一次
-    const targets = new Set();
-    for (const mutation of mutations) {
-      targets.add(mutation.target);
+    if (_isTranslating) {
+      // 被阻塞时不丢弃，收集到调度器延迟处理
+      for (const mutation of mutations) {
+        if (mutation.type === "childList") {
+          for (const node of mutation.addedNodes) {
+            if (node.nodeType === Node.ELEMENT_NODE) scheduleTranslation(node);
+          }
+        }
+      }
+      return;
     }
-    for (const target of targets) {
-      texe.translateAllText(target);
+    _isTranslating = true;
+    try {
+      // 去重：同一 target 只翻译一次
+      const targets = new Set();
+      for (const mutation of mutations) {
+        targets.add(mutation.target);
+      }
+      for (const target of targets) {
+        texe.translateAllText(target);
+      }
+    } finally {
+      setTimeout(() => { _isTranslating = false; }, 0);
     }
   }, 16);
 }
