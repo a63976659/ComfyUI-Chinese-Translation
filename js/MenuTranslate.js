@@ -31,6 +31,9 @@ class TExe {
     // 【核心修复 1】：内部微任务防抖队列，解决同一 Target 瞬间被触发数百次的问题
     this.pendingNodes = new Set();
     this.isScheduling = false;
+
+    // 子图区域翻译：已设置 Observer 的 .p-tree 元素集合，避免重复创建
+    this.observedTrees = new Set();
   }
 
   tSkip(node) {
@@ -176,6 +179,7 @@ class TExe {
         }
       });
       this.observers = [];
+      this.observedTrees.clear();
     } catch (e) {
       error("清理观察者出错:", e);
     }
@@ -240,6 +244,14 @@ export function applyMenuTranslation(T) {
           for (const mutation of mutations) {
             for (const node of mutation.addedNodes) {
               if (node.nodeType === Node.ELEMENT_NODE) scheduleTranslation(node);
+              // 即使被阻塞，也检测新增的 .p-tree 元素
+              if (node.nodeType === Node.ELEMENT_NODE) {
+                if (node.classList?.contains('p-tree')) {
+                  setupTreeObserver(node);
+                } else if (node.querySelectorAll) {
+                  node.querySelectorAll('.p-tree').forEach(setupTreeObserver);
+                }
+              }
             }
           }
           return;
@@ -261,6 +273,14 @@ export function applyMenuTranslation(T) {
                 }
               } else {
                 texe.translateAllText(node);
+              }
+              // 检测新增的 .p-tree 元素，设置专用翻译 Observer
+              if (node.nodeType === Node.ELEMENT_NODE) {
+                if (node.classList?.contains('p-tree')) {
+                  setupTreeObserver(node);
+                } else if (node.querySelectorAll) {
+                  node.querySelectorAll('.p-tree').forEach(setupTreeObserver);
+                }
               }
             }
           }
@@ -289,6 +309,7 @@ export function applyMenuTranslation(T) {
     handleHistoryAndQueueButtons();
     handleSettingsDialog();
     setupSearchBoxObserver();
+    setupTreeTranslationObserver();
   } catch (e) {
     error("应用菜单翻译出错:", e);
   }
@@ -350,6 +371,13 @@ function handleComfyNewUIMenu(mutationsList) {
       }
       for (const target of targets) {
         texe.translateAllText(target);
+        // 子图区域专用翻译：检测新增的 .p-tree 元素
+        if (target.nodeType === Node.ELEMENT_NODE && target.querySelectorAll) {
+          if (target.classList?.contains('p-tree')) {
+            setupTreeObserver(target);
+          }
+          target.querySelectorAll('.p-tree').forEach(setupTreeObserver);
+        }
       }
     } finally {
       setTimeout(() => { _isTranslating = false; }, 0);
@@ -510,4 +538,65 @@ function setupSearchBoxObserver() {
   });
   
   if (searchObserver) texe.observers.push(searchObserver);
+}
+
+// ========== 子图区域（PrimeVue Tree）专用翻译 ==========
+// 绕开 tSkip 的 p-tree 排除，直接遍历翻译树内文本节点
+
+let _treeDebounceTimer = null;
+
+/**
+ * 直接遍历 .p-tree 内的文本节点进行翻译，绕开 tSkip 的 p-tree 排除
+ * 不经过 replaceText/tSkip，直接调用 texe.MT() 查询翻译并替换
+ * @param {Element} treeRoot - .p-tree 根元素
+ */
+function translateTreeLabels(treeRoot) {
+  if (!treeRoot || !texe.T) return;
+  try {
+    const walker = document.createTreeWalker(treeRoot, NodeFilter.SHOW_TEXT, null, false);
+    let textNode;
+    while (textNode = walker.nextNode()) {
+      const txt = textNode.textContent?.trim();
+      if (!txt) continue;
+      if (isAlreadyTranslatedText(txt)) continue;
+      const translated = texe.MT(txt);
+      if (translated && translated !== txt) {
+        textNode.textContent = textNode.textContent.replace(txt, translated);
+      }
+    }
+  } catch (e) {
+    error("翻译Tree标签出错:", e);
+  }
+}
+
+/**
+ * 为单个 .p-tree 元素设置 MutationObserver，监听展开/收起等变化
+ * 首次调用时立即执行翻译，后续变化经 16ms 防抖后重新翻译
+ * @param {Element} treeEl - .p-tree 元素
+ */
+function setupTreeObserver(treeEl) {
+  if (!treeEl || texe.observedTrees.has(treeEl)) return;
+  texe.observedTrees.add(treeEl);
+
+  // 首次翻译
+  translateTreeLabels(treeEl);
+
+  // 监听树的变化（展开/收起/切换），16ms 防抖
+  const observer = observeFactory(treeEl, () => {
+    if (_treeDebounceTimer) clearTimeout(_treeDebounceTimer);
+    _treeDebounceTimer = setTimeout(() => {
+      _treeDebounceTimer = null;
+      translateTreeLabels(treeEl);
+    }, 16);
+  }, true);
+
+  if (observer) texe.observers.push(observer);
+}
+
+/**
+ * 查找所有 .p-tree 元素并设置翻译 Observer
+ * 在 applyMenuTranslation 末尾调用，以及检测到新 .p-tree 时调用
+ */
+function setupTreeTranslationObserver() {
+  document.querySelectorAll('.p-tree').forEach(setupTreeObserver);
 }
