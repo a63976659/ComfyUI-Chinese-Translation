@@ -98,6 +98,24 @@
             "denoised_output": "降噪输出"
         }
     },
+    "InpaintModelConditioning": {
+        "title": "内补模型条件",
+        "inputs": {
+            "positive": "正面条件",
+            "negative": "负面条件",
+            "vae": "VAE",
+            "pixels": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "text": "文本"
+        },
+        "outputs": {
+            "positive": "正面条件",
+            "negative": "负面条件",
+            "latent": "Latent"
+        }
+    },
     "ExtendIntermediateSigmas": {
         "title": "扩展中间Sigma",
         "inputs": {
@@ -688,15 +706,6 @@
             "MODEL": "模型"
         }
     },
-    "ControlNetLoader": {
-        "title": "ControlNet加载器",
-        "widgets": {
-            "control_net_name": "ControlNet名称"
-        },
-        "outputs": {
-            "CONTROL_NET": "ControlNet"
-        }
-    },
     "DiffControlNetLoader": {
         "title": "DiffControlNet加载器",
         "inputs": {
@@ -800,24 +809,6 @@
             "CONDITIONING": "条件"
         }
     },
-    "InpaintModelConditioning": {
-        "title": "修复模型条件",
-        "inputs": {
-            "positive": "正面条件",
-            "negative": "负面条件",
-            "vae": "VAE",
-            "pixels": "图像",
-            "mask": "遮罩"
-        },
-        "widgets": {
-            "text": "文本"
-        },
-        "outputs": {
-            "positive": "正面条件",
-            "negative": "负面条件",
-            "latent": "Latent"
-        }
-    },
     "InstructPixToPixConditioning": {
         "title": "指导 Pix到Pix条件",
         "inputs": {
@@ -912,38 +903,6 @@
             "positive": "正面条件",
             "negative": "负面条件",
             "latent": "Latent"
-        }
-    },
-    "ControlNetApply": {
-        "title": "ControlNet应用（旧版）",
-        "inputs": {
-            "conditioning": "条件",
-            "control_net": "ControlNet",
-            "image": "图像"
-        },
-        "widgets": {
-            "strength": "强度"
-        },
-        "outputs": {
-            "CONDITIONING": "条件"
-        }
-    },
-    "ControlNetApplyAdvanced": {
-        "title": "ControlNet应用（高级）",
-        "inputs": {
-            "positive": "正面条件",
-            "negative": "负面条件",
-            "control_net": "ControlNet",
-            "image": "图像"
-        },
-        "widgets": {
-            "strength": "强度",
-            "start_percent": "开始时间",
-            "end_percent": "结束时间"
-        },
-        "outputs": {
-            "positive": "正面条件",
-            "negative": "负面条件"
         }
     },
     "ControlNetApplySD3": {
