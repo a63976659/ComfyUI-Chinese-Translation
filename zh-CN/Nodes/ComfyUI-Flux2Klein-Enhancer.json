@@ -1,4 +1,53 @@
 {
+    "Flux2KleinKSampler": {
+        "title": "FLUX.2 Klein K采样器",
+        "inputs": {
+            "model": "模型",
+            "positive": "正面提示词",
+            "negative": "负面提示词",
+            "latent_image": "图像Latent"
+        },
+        "widgets": {
+            "steps": "步数",
+            "guidance_scale": "引导比例",
+            "seed": "种子",
+            "denoise": "去噪",
+            "base_shift": "基础偏移",
+            "max_shift": "最大偏移"
+        },
+        "outputs": {},
+        "description": "FLUX.2 Klein KSampler 节点用于在Latent空间中进行图像生成。"
+    },
+    "IdentityFeatureTransfer": {
+        "title": "FLUX.2 Klein身份特征迁移",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_block": "起始块",
+            "end_block": "结束块",
+            "mode": "模式",
+            "top_k_percent": "top_k 百分比"
+        },
+        "outputs": {},
+        "description": "FLUX.2 Klein身份特征迁移节点"
+    },
+    "IdentityGuidance": {
+        "title": "FLUX.2 Klein身份引导",
+        "inputs": {
+            "model": "模型",
+            "identity_latent": "身份Latent"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比",
+            "mode": "模式"
+        },
+        "outputs": {},
+        "description": "用于在FLUX.2模型中应用Klein身份引导的节点"
+    },
     "Flux2KleinColorAnchor": {
         "title": "Flux2 Klein色彩锚点",
         "inputs": {
