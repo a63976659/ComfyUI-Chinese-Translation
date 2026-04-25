@@ -1,0 +1,259 @@
+{
+    "RSColorPicker": {
+        "title": "🦊颜色选择器",
+        "inputs": {},
+        "widgets": {
+            "color": "颜色"
+        },
+        "outputs": {},
+        "description": "支持吸管的交互式颜色选择器部件",
+        "api_version": "V1"
+    },
+    "RSCropImage": {
+        "title": "🦊裁剪图像",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "crop_data": "裁剪数据"
+        },
+        "outputs": {
+            "CROPPED_IMAGE": "裁剪后的图像",
+            "CROP_DATA": "裁剪数据"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "RS Image Selector": {
+        "title": "🦊图像选择器",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "selected_images": "选定的图像",
+            "IMAGE": "图像"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "LoadImageWithText": {
+        "title": "🦊加载带有文本的图像",
+        "inputs": {},
+        "widgets": {
+            "mode": "模式",
+            "filename_prefix": "文件前缀",
+            "text_input": "文本输入",
+            "image": "图像"
+        },
+        "outputs": {
+            "image": "图像",
+            "text": "文本",
+            "IMAGE": "图像",
+            "STRING": "文本"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "RSInsertCropImage": {
+        "title": "🦊插入裁剪图像",
+        "inputs": {
+            "original_image": "原始图像",
+            "cropped_image": "裁剪后的图像",
+            "crop_data": "裁剪数据"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "图像"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "RaykoIntermediateSplineMask": {
+        "title": "🦊Rayko中间样条遮罩",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "coordinates": "坐标"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "IMAGE": "图像",
+            "MASK": "遮罩"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "RS_Last_Frame": {
+        "title": "🦊最后帧",
+        "inputs": {
+            "video_frames": "视频帧"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "图像"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "RaykoLoopSwitchSeed": {
+        "title": "🦊Rayko循环切换种子",
+        "inputs": {},
+        "widgets": {
+            "start_at_step": "从步骤开始",
+            "end_at_step": "到步骤结束",
+            "jump": "跳跃",
+            "control_before_generate": "生成前控制",
+            "value_1": "值1",
+            "value_2": "值2",
+            "value_3": "值3",
+            "value_4": "值4",
+            "value_5": "值5",
+            "value_6": "值6",
+            "value_7": "值7",
+            "value_8": "值8",
+            "value_9": "值9",
+            "value_10": "值10"
+        },
+        "outputs": {
+            "INT": "整数"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "RaykoModelsLoader": {
+        "title": "🦊Rayko模型加载器",
+        "inputs": {},
+        "widgets": {
+            "unet_name": "Unet 名称",
+            "weight_dtype": "权重数据类型",
+            "clip_name": "CLIP名称",
+            "clip_type": "CLIP类型",
+            "clip_device": "CLIP设备",
+            "vae_name": "VAE名称"
+        },
+        "outputs": {
+            "MODEL": "模型",
+            "CLIP": "CLIP",
+            "VAE": "VAE"
+        },
+        "description": "该节点结合了模型、clip、vae和loras的加载器。",
+        "api_version": "V1"
+    },
+    "RSOutpaint": {
+        "title": "🦊扩展绘画",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "crop_state": "裁剪状态"
+        },
+        "outputs": {
+            "control_image": "控制图像",
+            "control_mask": "控制遮罩",
+            "mask_image": "遮罩图像",
+            "width": "宽度",
+            "height": "高度",
+            "IMAGE": "图像",
+            "MASK": "遮罩",
+            "INT": "整数"
+        },
+        "description": "具有自动重置功能的交互式遮罩以扩展绘画",
+        "api_version": "V1"
+    },
+    "RS_Saturation": {
+        "title": "🦊饱和度调整",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "intensity": "强度"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        },
+        "description": "无瑕疵的饱和度控制，处理正确的张量",
+        "api_version": "V1"
+    },
+    "RSSaveImage": {
+        "title": "🦊保存图像",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "TEXT": "文本"
+        },
+        "outputs": {},
+        "description": "",
+        "api_version": "V1"
+    },
+    "SaveImagePair": {
+        "title": "🦊保存图像对",
+        "inputs": {
+            "reference": "参考",
+            "final": "最终结果"
+        },
+        "widgets": {
+            "filename_prefix": "文件前缀",
+            "concat_type": "拼接类型",
+            "text1": "文本1",
+            "text2": "文本2",
+            "footer_height": "底部高度",
+            "font_name": "字体名称",
+            "font_size": "字体大小",
+            "theme": "主题",
+            "scale_factor": "缩放因子"
+        },
+        "outputs": {},
+        "description": "",
+        "api_version": "V1"
+    },
+    "RaykoSplineMask": {
+        "title": "🦊Rayko样条遮罩",
+        "inputs": {},
+        "widgets": {
+            "image": "图像",
+            "coordinates": "坐标"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "IMAGE": "图像",
+            "MASK": "遮罩"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Rayko_Styles_CSV_Loader": {
+        "title": "🦊Rayko样式CSV加载器",
+        "inputs": {},
+        "widgets": {
+            "➕ADD STYLE": "➕增添风格",
+            "SELECT CSV FILE": "选择 CSV 文件"
+        },
+        "outputs": {
+            "positive prompt": "正向提示词",
+            "negative prompt": "负向提示词",
+            "STRING": "文本"
+        },
+        "description": "从CSV文件加载并组合样式用于提示词生成。",
+        "api_version": "V1"
+    },
+    "RS_TextOverlay": {
+        "title": "🦊文本叠加",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "node_data": "节点数据"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        },
+        "description": "",
+        "api_version": "V1"
+    }
+}
