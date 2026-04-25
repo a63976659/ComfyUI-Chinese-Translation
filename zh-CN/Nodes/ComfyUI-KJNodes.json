@@ -3668,7 +3668,7 @@
         "description": ""
     },
     "LTX2SamplingPreviewOverride": {
-        "title": "LTX2采样预览覆盖",
+        "title": "LTX2采样预览覆盖(KJ)",
         "inputs": {
             "model": "模型",
             "latent_upscale_model": "Latent放大模型",
@@ -3681,7 +3681,7 @@
         "description": "暂时禁用了 LTX2 采样预览功能，这一措施将持续到预览功能在稳定的核心版本中得以完善为止。"
     },
     "LTXVAddGuidesFromBatch": {
-        "title": "从批处理添加引导图像",
+        "title": "从批处理添加引导图像(KJ)",
         "inputs": {
             "positive": "正向引导",
             "negative": "负面引导",
@@ -3700,7 +3700,7 @@
         "description": "会将一批中的多个引导图像按照对应的帧索引添加到Latent图像中。批次中的非黑色图像将被用作引导图像。"
     },
     "LTX2AudioLatentNormalizingSampling": {
-        "title": "LTX2音频Latent标准化采样",
+        "title": "LTX2音频Latent标准化采样(KJ)",
         "inputs": {
             "model": "模型"
         },
@@ -3711,7 +3711,7 @@
         "description": "通过在指定的采样步骤对音频Latent进行标准化处理，提高了 LTX2 生成的音频质量。"
     },
     "PreviewLatentNoiseMask": {
-        "title": "预览Latent噪声遮罩",
+        "title": "预览Latent噪声遮罩(KJ)",
         "inputs": {
             "latent": "Latent"
         },
@@ -3722,7 +3722,7 @@
         "description": "预览Latent噪声遮罩"
     },
     "WanChunkFeedForward": {
-        "title": "Wan视频 分块前馈",
+        "title": "Wan视频 分块前馈(KJ)",
         "inputs": {
             "model": "模型"
         },
@@ -3736,7 +3736,7 @@
         "description": "实验性功能，可能会改变模型输出！！通过分块前馈（神经网络中的概念）激活来减少峰值显存使用量。"
     },
     "SamplerSelfRefineVideo": {
-        "title": "采样器自我精炼视频",
+        "title": "采样器自我精炼视频(KJ)",
         "inputs": {
             "latent": "Latent"
         },
@@ -3757,7 +3757,7 @@
         "description": "尝试实现 https://github.com/agwmon/self-refine-video，仅供测试，可能无法按预期工作。"
     },
     "LTXVAddGuideMulti": {
-        "title": "LTX视频 添加多个引导图像",
+        "title": "LTX视频 添加多个引导图像(KJ)",
         "inputs": {
             "positive": "正向引导",
             "negative": "负面引导",
@@ -3795,7 +3795,7 @@
         "description": "将视频的Latent帧替换为编码后的输入图像，使用 动态组合 功能，该功能需要 ComfyUI 0.8.1 版本及前端 1.33.4 或更高版本。"
     },
     "LTXVAudioVideoMask": {
-        "title": "音频和视频遮罩",
+        "title": "音频和视频遮罩(KJ)",
         "inputs": {
             "video_latent": "视频Latent",
             "audio_latent": "音频Latent"
@@ -3815,7 +3815,7 @@
         "description": "根据指定的时间范围为视频和音频的Latent内容创建噪音遮罩。在这些被遮罩的区域中会生成新的内容。"
     },
     "LTX2AttentionTunerPatch": {
-        "title": "LTX2 注意力调整补丁",
+        "title": "LTX2 注意力调整补丁(KJ)",
         "inputs": {
             "model": "模型"
         },
@@ -3832,7 +3832,7 @@
         "description": "實驗性！根據不同模態設定注意力縮放因子的自定義 LTX2 前向傳遞，同時還降低了峰值 显存 使用量。"
     },
     "LTX2_NAG": {
-        "title": "LTX2标准化注意力引导",
+        "title": "LTX2标准化注意力引导(KJ)",
         "inputs": {
             "model": "模型",
             "nag_cond_video": "视频条件",
@@ -3850,7 +3850,7 @@
         "description": "https://github.com/ChenDarYen/Normalized-Attention-Guidance"
     },
     "LTX2MemoryEfficientSageAttentionPatch": {
-        "title": "LTX2高效内存Sage注意力补丁",
+        "title": "LTX2高效内存Sage注意力补丁(KJ)",
         "inputs": {
             "model": "模型"
         },
@@ -3861,7 +3861,7 @@
         "description": "实验性！激活自定义Sage注意力以减少峰值显存使用量，覆盖注意力模式。需要最新版本的Sage注意力。"
     },
     "LTXVChunkFeedForward": {
-        "title": "LTX视频 分块前馈激活",
+        "title": "LTX视频 分块前馈激活(KJ)",
         "inputs": {
             "model": "模型"
         },
@@ -3875,7 +3875,7 @@
         "description": "实验性且可能会改变模型输出！分块前馈（神经网络中的概念）激活可降低虚拟内存峰值使用量。"
     },
     "LTX2LoraLoaderAdvanced": {
-        "title": "LTX2高级Lora加载器",
+        "title": "LTX2高级Lora加载器(KJ)",
         "inputs": {
             "model": "模型",
             "opt_lora_path": "优化LoRA路径",
@@ -3896,6 +3896,22 @@
             "rank": "等级"
         },
         "description": "具有针对LTX2模型的每个块强度控制的高级LoRA加载器"
+    },
+    "HDRPreviewKJ": {
+        "title": "HDR 预览 (KJ)",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "exposure": "曝光",
+            "saturation": "饱和度",
+            "fps": "帧率",
+            "input_space": "输入空间"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "高动态范围压缩图像的实时曝光预览。\n输入：经过 LogC3 压缩的[0,1]范围内的图像/视频批次（例如，HDR IC-LoRA 工作流程中经过 VAE 解码后的输出，尚未进行 HDR 解压缩）。\n在浏览器的 WebGL 片段着色器中，通过减压、曝光、饱和度、雷纳德色调映射以及 sRGB 处理实现了实时滑块反馈功能。同样的数学运算在服务器端运行，以生成烘焙后的 sRGB 图像输出。\n滑块的改变会立即更新预览；而图像输出则在工作流程重新排队时才进行更新。 "
     },
     "HunyuanVideoEncodeKeyframesToCond": {
         "title": "混元视频 首尾帧编码到条件(KJ)",
