@@ -1,0 +1,1112 @@
+{
+    "GeomPackLoadMeshBlend": {
+        "title": "从 Blender .blend 文件加载网格",
+        "inputs": {},
+        "widgets": {
+            "file_path": "文件路径"
+        },
+        "outputs": {
+            "mesh": "网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "使用 bpy 加载 Blender .blend 文件。\n\n通过 bpy Python 模块直接从 .blend 文件提取网格数据。",
+        "api_version": "V1"
+    },
+    "GeomPackLoadMeshFBX": {
+        "title": "从 FBX 文件加载网格",
+        "inputs": {},
+        "widgets": {
+            "file_path": "文件路径"
+        },
+        "outputs": {
+            "mesh": "网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "使用 bpy 加载 FBX 文件。\n\n通过 bpy Python 模块直接导入 FBX 文件并提取网格数据。",
+        "api_version": "V1"
+    },
+    "GeomPackBooleanBlender": {
+        "title": "Blender 布尔运算",
+        "inputs": {
+            "mesh_a": "网格 A",
+            "mesh_b": "网格 B"
+        },
+        "widgets": {
+            "operation": "操作"
+        },
+        "outputs": {
+            "result_mesh": "结果网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "Blender 布尔运算 - 使用 Blender 的 EXACT 解算器执行布尔运算。\n\n执行构造实体几何学 (CSG) 操作：\n- 合并：将两个网格合并为一个\n- 减去：从网格 A 中减去网格 B\n- 交集：保留重叠部分\n\n使用 Blender 的 bpy 模块和 EXACT 布尔解算器。\n对于基于 CGAL 的布尔运算，请使用“CGAL 布尔”节点。",
+        "api_version": "V1"
+    },
+    "GeomPackRemeshBlender": {
+        "title": "Blender 基于的重新网格化",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {
+            "backend": "后端",
+            "voxel_size": "体素大小",
+            "octree_depth": "八叉树深度",
+            "scale": "缩放",
+            "sharpness": "锐度度"
+        },
+        "outputs": {
+            "remeshed_mesh": "重新网格化的网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "Blender 基于的重新网格化 - 使用 bpy 进行重新网格化。\n\n可用后端：\n- blender_voxel：基于体素的重新网格化（无缝输出\n- blender_smooth：平滑重新网格修饰符\n- blender_sharp：尖锐重新网格修饰符（保留边缘\n- blender_blocks：块状重新网格修饰符\n\n需要安装 bpy（Blender Python 模块）。",
+        "api_version": "V1"
+    },
+    "GeomPackRemeshWithTexture": {
+        "title": "带有纹理保存的重新网格化",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {
+            "method": "方法",
+            "remesh_method": "重新网格方法",
+            "voxel_size": "体素大小",
+            "target_face_count": "目标面数",
+            "bake_margin": "烘焙边距"
+        },
+        "outputs": {
+            "remeshed_mesh": "重新网格化的网格",
+            "baked_texture": "烘焙后的纹理",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "IMAGE": "图像",
+            "STRING": "STRING"
+        },
+        "description": "使用 Blender 烘焙保存纹理的重新网格化。\n\n工作流程：\n1. 使用选定算法重新网格化输入几何形状\n2. 为重新网格化的表面生成新的 UV 坐标\n3. 使用 Blender 将原始纹理烘焙到新 UV 上\n4. 返回具有烘焙纹理的重新网格化网格",
+        "api_version": "V1"
+    },
+    "GeomPackRemeshGPU": {
+        "title": "GPU 加速的重新网格化",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {
+            "target_face_count": "目标面数",
+            "remesh_band": "重新网格带宽"
+        },
+        "outputs": {
+            "remeshed_mesh": "重新网格化的网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "GPU 加速的双轮廓重新网格化 - 使用 CuMesh 实现。\n\n使用与 TRELLIS 相同的算法实现高质量网格生成。\n需要 CUDA 兼容 GPU、torch 和 cumesh 包。",
+        "api_version": "V1"
+    },
+    "GeomPackConnectedComponents": {
+        "title": "连接组件标记",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {},
+        "outputs": {
+            "trimesh": "Trimesh三维模型",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "用 part_id 面属性标记断开的网格组件。\n\n每个断开的部分都会获得一个唯一的整数 ID（(1, 2, 3, ...)。\ns_id 存储在可以使用基于场的网格预览节点可视化的面属性中。\n\n支持批量处理：输入一组网格，获取一组结果。",
+        "api_version": "V1"
+    },
+    "GeomPackDegenerateFaces": {
+        "title": "检测退化面",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {},
+        "outputs": {
+            "trimesh": "Trimesh三维模型",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "检测退化面并显示面积最小的面。\n\n真正退化的面具有：\n- 重复顶点（塌陷边\n- 面积为零（共线点\n\n还显示了按面积排序的前 30 个面以供检查。",
+        "api_version": "V1"
+    },
+    "GeomPackMeshInfo": {
+        "title": "网格信息",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "outputs": {
+            "info": "信息",
+            "STRING": "STRING"
+        },
+        "description": "显示详细的网格信息和统计数据。\n现在使用 trimessh 提供增强的网格分析。",
+        "api_version": "V1"
+    },
+    "GeomPackMeshQuality": {
+        "title": "网格质量",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "Trimesh三维模型",
+            "include_face_quality": "包括面质量",
+            "include_edge_stats": "包括边统计"
+        },
+        "outputs": {
+            "min_quality": "最小质量",
+            "mean_quality": "平均质量",
+            "info": "信息",
+            "FLOAT": "FLOAT",
+            "STRING": "STRING"
+        },
+        "description": "网格质量 - 计算用于网格分析的质量指标。\n\n分析网格的各种质量指标，包括：\n- 三角形质量（方面比、角度\n- 边长统计\n- 面积分布\n- 退化检测\n- 流形状态\n\n有助于识别在进一步处理之前的问题几何形状。",
+        "api_version": "V1"
+    },
+    "GeomPackOpenEdges": {
+        "title": "打开/边界边检测",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {},
+        "outputs": {
+            "trimesh": "Trimesh三维模型",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "检测并标记包含开放/边界边的面。\n\n边界边是指只属于一个面而不共享的边。\n此节点查找所有此类边，并标记包含它们的面。\n\n支持批量处理：输入一组网格，获取一组结果。",
+        "api_version": "V1"
+    },
+    "ScrambleIntField": {
+        "title": "扰乱整数字段",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "field_name": "字段名称",
+            "seed": "种子"
+        },
+        "outputs": {
+            "mesh": "网格",
+            "TRIMESH": "TRIMESH"
+        },
+        "description": "重新分配整数字段值以最大化相邻面之间的对比度。\n适用于可视化分割结果，在 分割段之间可能因偶然性而具有相似标签编号的情况下。\n\n使用贪婪图着色法在片段邻接图上进行。",
+        "api_version": "V1"
+    },
+    "GeomPackBooleanCGAL": {
+        "title": "CGAL布尔运算",
+        "inputs": {
+            "mesh_a": "网格 A",
+            "mesh_b": "网格 B"
+        },
+        "widgets": {
+            "operation": "操作"
+        },
+        "outputs": {
+            "result_mesh": "结果网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "CGAL布尔运算 - 使用CGAL执行网格的联合、差集和交集。\n\n执行构造实体几何学(CSG) 操作:\n- 联合: 将两个网格合并为一个\n- 差集: 从mesh_a中减去mesh_b\n- 交集: 只保留重叠部分\n\n使用libigl与CGAL后端实现稳健的布尔运算。\n对于基于Blender的布尔运算，请使用“Blender布尔”节点。",
+        "api_version": "V1"
+    },
+    "GeomPackCombineMeshes": {
+        "title": "合并网格",
+        "inputs": {
+            "mesh_a": "网格_a",
+            "mesh_b": "网格_b",
+            "mesh_c": "网格_c",
+            "mesh_d": "网格_d"
+        },
+        "widgets": {},
+        "outputs": {
+            "combined_mesh": "组合网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "合并网格 - 将多个网格连接成一个。\n\n简单地连接顶点和面而不执行布尔运算。\n结果包含所有输入网格作为单独组件的所有几何体。\n适用于分组对象或准备批量操作。",
+        "api_version": "V1"
+    },
+    "GeomPackCombineMeshesBatch": {
+        "title": "批量合并网格",
+        "inputs": {
+            "meshes": "网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "combined_mesh": "组合网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "将一批网格合并为单个网格。",
+        "api_version": "V1"
+    },
+    "GeomPackSplitByField": {
+        "title": "按字段分割网格",
+        "inputs": {
+            "geometry": "几何体"
+        },
+        "widgets": {
+            "field_name": "字段名称"
+        },
+        "outputs": {
+            "geometries": "几何体",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "根据离散顶点属性字段分割点云或网格。\n\n适用于调试分割结果 - 分别提取每个簇。\n任何整数值顶点属性均可工作（例如标签、基本类型）。",
+        "api_version": "V1"
+    },
+    "GeomPackMeshToPointCloud": {
+        "title": "网格转换为点云",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "Trimesh三维模型",
+            "mode": "模式",
+            "sample_count": "采样数量",
+            "sampling_method": "采样方法",
+            "include_normals": "包括法线"
+        },
+        "outputs": {
+            "point_cloud": "点云",
+            "TRIMESH": "TRIMESH"
+        },
+        "description": "通过表面采样点将网格转换为点云。\n\n使用各种采样方法从网格表面采样点。\n可选地包括法线和颜色。",
+        "api_version": "V1"
+    },
+    "GeomPackSubsamplePointCloud": {
+        "title": "子采样点云",
+        "inputs": {
+            "point_cloud": "点云"
+        },
+        "widgets": {
+            "method": "方法",
+            "target_count": "目标数量",
+            "seed": "种子"
+        },
+        "outputs": {
+            "point_cloud": "点云",
+            "TRIMESH": "TRIMESH"
+        },
+        "description": "减少点云的数量同时保留属性。\n\n支持多种采样方法并保留颜色、法线和其他顶点数据。",
+        "api_version": "V1"
+    },
+    "GeomPackMeshToMeshDistance": {
+        "title": "网格到网格距离",
+        "inputs": {
+            "mesh_a": "网格A",
+            "mesh_b": "网格B"
+        },
+        "widgets": {
+            "metric": "度量标准",
+            "sample_count": "采样数量",
+            "symmetric": "对称"
+        },
+        "outputs": {
+            "distance": "距离",
+            "info": "信息",
+            "FLOAT": "FLOAT",
+            "STRING": "STRING"
+        },
+        "description": "统一网格距离 - 使用多种度量标准比较两个网格。\n\n度量标准:\n- hausdorff: 最大距离（最坏情况偏差\n- chamfer: 平均平方距离（整体相似性\n\n这些度量标准从网格表面上采样点并计算距离。",
+        "api_version": "V1"
+    },
+    "GeomPackPointToMeshDistance": {
+        "title": "点到网格距离",
+        "inputs": {
+            "target_mesh": "目标网格",
+            "pointcloud": "点云"
+        },
+        "widgets": {
+            "distance_type": "距离类型",
+            "sign_method": "符号方法"
+        },
+        "outputs": {
+            "pointcloud": "点云",
+            "info": "信息"
+        },
+        "description": "点到网格距离 - 计算点云/网格到目标网格表面的距离场。\n\n对于输入中的每个顶点（（点云或网格），找到最近的目标网格表面顶点并计算距离。返回带有‘距离’字段添加到顶点属性的输入几何体。\n\n支持两种方式:\n- 无符号距离（使用trimesh：始终正值，测量表面接近程度\n- 带符号距离（使用igig.signed_distance：外部正数，内部负数\n\n适用于邻近分析、误差测量、基于距离的可视化以及隐式曲面表示（(SDF)。",
+        "api_version": "V1"
+    },
+    "GeomPackGetMeshFilename": {
+        "title": "获取网格文件名",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "filename": "文件名",
+            "STRING": "STRING"
+        },
+        "description": "从网格元数据中提取文件名（（不含扩展名）。\n\n返回加载网格文件时使用的原始文件名。\n适用于批处理以在输出中保留原始名称。\n\n支持批处理：输入网格列表，获得文件名列表。",
+        "api_version": "V1"
+    },
+    "GeomPackLoadMesh": {
+        "title": "加载网格",
+        "inputs": {},
+        "widgets": {
+            "file_path": "文件路径"
+        },
+        "outputs": {
+            "mesh": "网格",
+            "texture": "纹理",
+            "TRIMESH": "TRIMESH",
+            "IMAGE": "图像"
+        },
+        "description": "从文件加载网格（（OBJ、PLY、STL、OFF等）\n现在返回trimesh.Trimesh对象以更好地处理网格。",
+        "api_version": "V1"
+    },
+    "GeomPackLoadMeshBatch": {
+        "title": "批量加载网格",
+        "inputs": {},
+        "widgets": {
+            "folder_path": "文件夹路径",
+            "start_index": "起始索引",
+            "max_meshes": "最大网格数量"
+        },
+        "outputs": {
+            "meshes": "网格",
+            "TRIMESH": "TRIMESH"
+        },
+        "description": "从文件夹加载多个网格（（批量加载）。\n类似于ComfyUI的图像批量加载，具有起始索引和最大网格数量控制。",
+        "api_version": "V1"
+    },
+    "GeomPackLoadMeshGlob": {
+        "title": "根据提示词加载网格",
+        "inputs": {},
+        "widgets": {
+            "glob_pattern": "提示词模式",
+            "sort_by": "排序依据"
+        },
+        "outputs": {
+            "meshes": "网格",
+            "textures": "纹理",
+            "file_paths": "文件路径",
+            "TRIMESH": "TRIMESH",
+            "IMAGE": "图像",
+            "STRING": "STRING"
+        },
+        "description": "加载匹配提示词模式的所有网格",
+        "api_version": "V1"
+    },
+    "GeomPackLoadMeshPath": {
+        "title": "从路径加载网格",
+        "inputs": {},
+        "widgets": {
+            "file_path": "文件路径"
+        },
+        "outputs": {
+            "mesh": "网格",
+            "texture": "纹理",
+            "TRIMESH": "TRIMESH",
+            "IMAGE": "图像"
+        },
+        "description": "从路径加载网格（（支持批量路径，换行或逗号分隔）。",
+        "api_version": "V1"
+    },
+    "GeomPackSaveMesh": {
+        "title": "保存几何体到文件",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {
+            "file_path": "文件路径",
+            "format": "格式"
+        },
+        "outputs": {
+            "file_path": "文件路径",
+            "STRING": "字符串"
+        },
+        "description": "将网格或点云保存到文件（OBJ, PLY, STL, OFF等格式。\n支持由trimesh提供的所有格式。\n点云（无面的顶点）可以以PLY格式保存。",
+        "api_version": "V1"
+    },
+    "GeomPackSaveMeshBatch": {
+        "title": "批量保存几何体到文件夹",
+        "inputs": {
+            "trimesh": "Trimesh三维模型",
+            "names": "名称列表"
+        },
+        "widgets": {
+            "folder_name": "文件夹名称",
+            "base_name": "基础名称",
+            "format": "格式"
+        },
+        "outputs": {
+            "output_folder": "输出文件夹",
+            "saved_count": "已保存数量",
+            "STRING": "字符串",
+            "INT": "整数"
+        },
+        "description": "将多个网格按顺序编号保存到一个文件夹。\n\n文件命名方式：{基础名称}_{序号}.{格式}\n根据批次大小自动确定数字位数：\n- 1-9个网格：_1, _9, ...\n- 10-99个网格：_01, _09, ...\n- 100-999个网格：_001, _009, ...",
+        "api_version": "V1"
+    },
+    "GeomPackParaViewFilter": {
+        "title": "使用PyVista应用VTK/ParaView分析滤镜",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {
+            "filter_type": "滤镜类型",
+            "axis": "轴",
+            "factor": "因子",
+            "scalar_field": "标量场",
+            "angle": "角度"
+        },
+        "outputs": {
+            "filtered_mesh": "过滤后的网格",
+            "TRIMESH": "三角网格"
+        },
+        "description": "使用PyVista在ParaView中应用VTK分析滤镜。\n\n生成用于预览网格（视图模式）的可视化标量场。",
+        "api_version": "V1"
+    },
+    "GeomPackCreatePrimitive": {
+        "title": "创建基本几何体",
+        "inputs": {},
+        "widgets": {
+            "shape": "形状",
+            "size": "尺寸",
+            "subdivisions": "细分次数"
+        },
+        "outputs": {
+            "mesh": "网格",
+            "TRIMESH": "三角网格"
+        },
+        "description": "创建基本几何体（立方体、球体、平面）\n使用trimessh创建函数生成高质量的基本几何体。",
+        "api_version": "V1"
+    },
+    "GeomPackReconstructSurface": {
+        "title": "表面重建",
+        "inputs": {
+            "points": "点"
+        },
+        "widgets": {
+            "method": "方法",
+            "poisson_depth": "Poisson深度",
+            "poisson_scale": "Poisson尺度",
+            "ball_radius": "球半径",
+            "alpha": "α参数",
+            "estimate_normals": "估计法向量",
+            "normal_radius": "法向量半径"
+        },
+        "outputs": {
+            "reconstructed_mesh": "重构后的网格",
+            "info": "信息",
+            "TRIMESH": "三角网格",
+            "STRING": "字符串"
+        },
+        "description": "从点云重建表面。\n\n接受TRIMESH对象（包括来自Mesh To PointCloud节点的点云）。\n点云表示为只有顶点的TRIMESH（没有面）。\n\n多种重建算法可供选择：\n- poisson：经过平滑处理的水密式Poisson表面重建\n- ball_pivoting：球形定位算法（保留细节\n- alpha_shape：α形状重建\n- convex_hull：简单的凸包（粗糙但快速\n- delaunay_2d：二维Delaunay三角剖分（适用于高度场）\n\n需要Open3D或PyMeshLab来实现高级功能。",
+        "api_version": "V1"
+    },
+    "GeomPackAlphaWrap": {
+        "title": "Alpha包裹",
+        "inputs": {
+            "input_mesh": "输入网格"
+        },
+        "widgets": {
+            "alpha_percent": "α百分比",
+            "offset_percent": "偏移百分比"
+        },
+        "outputs": {
+            "wrapped_mesh": "包裹后的网格",
+            "info": "信息",
+            "TRIMESH": "三角网格",
+            "STRING": "字符串"
+        },
+        "description": "Alpha包裹 - 生成一个紧贴且封闭的包裹网格。\n\n使用PyMeshLab的CGAL Alpha Wrap算法来创建一个紧密包裹的封闭网格。\n\n适用于：\n- 点云\n- 非流形网格\n- 带孔洞的网格\n- 多边形杂烩（重叠/相交几何体）\n\n参数：\n- α：控制包裹的紧致度。数值越小，包裹越紧，细节越多。\n   相对于包围盒对角线的比例（例如0.01 表示1%的包围盒对角线长度）。\n- 偏移：表面偏移距离。数值越小，与原始表面的距离越近。\n   相对于包围盒对角线的比例。",
+        "api_version": "V1"
+    },
+    "RefineMesh": {
+        "title": "细化网格",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {
+            "operation": "操作",
+            "target_face_count": "目标面片数",
+            "decimation_method": "降量化方法",
+            "subdivision_iterations": "细分迭代次数",
+            "smoothing_iterations": "平滑迭代次数",
+            "lambda_factor": "λ因子"
+        },
+        "outputs": {
+            "refined_mesh": "细化后的网格",
+            "info": "信息",
+            "TRIMESH": "三角网格",
+            "STRING": "字符串"
+        },
+        "description": "统一非破坏性网格细化操作。\n\n整合了网格细化操作：\n- 降量化：减少面片数（四元误差指标）\n- 子细分环路：光滑子细分（环路算法）\n- 子细分中点：简单中点子细分\n- 拉普拉斯平滑：迭代拉普拉斯平滑\n\n参数针对特定操作而定；未使用的参数会被忽略。",
+        "api_version": "V1"
+    },
+    "GeomPackRemesh": {
+        "title": "重新网格化",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {
+            "backend": "后端",
+            "target_edge_length": "目标边长",
+            "iterations": "迭代次数",
+            "feature_angle": "特征角",
+            "adaptive": "自适应",
+            "target_vertex_count": "目标顶点数",
+            "deterministic": "确定性",
+            "crease_angle": "折痕角",
+            "target_face_count": "目标面片数",
+            "preserve_sharp": "保留尖锐边缘",
+            "preserve_boundary": "保留边界"
+        },
+        "outputs": {
+            "remeshed_mesh": "重新网格化的网格",
+            "info": "信息",
+            "TRIMESH": "三角网格",
+            "STRING": "字符串"
+        },
+        "description": "重新网格化 - 改变拓扑结构的重新网格化操作（主要后端）。\n\n可用后端：\n- pymeshlab_isotropic: PyMeshLab各向同性重新网格化（快速）\n- instant_meshes: 场向准方形重新网格化\n- quadriflow: 四流QuadriFlow重新网格化（良好拓扑）\n\n对于CGAL各向同性重新网格化，请使用“CGAL重新网格化”节点。\n对于Blender体素/修饰符重新网格化，请使用“Blender重新网格化”节点。\n对于GPU加速重新网格化，请使用“GPU重新网格化”节点。",
+        "api_version": "V1"
+    },
+    "GeomPackRemeshCGAL": {
+        "title": "CGAL重新网格化",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {
+            "target_edge_length": "目标边长",
+            "iterations": "迭代次数",
+            "protect_boundaries": "保护边界"
+        },
+        "outputs": {
+            "remeshed_mesh": "重新网格化的网格",
+            "info": "信息",
+            "TRIMESH": "三角网格",
+            "STRING": "字符串"
+        },
+        "description": "高质各向同性重新网格化 - 使用CGAL进行高质量的各向同性重新网格化。\n\n需要安装CGAL Python绑定库。\n生成具有优良角度属性的高质量各向同性三角剖分。",
+        "api_version": "V1"
+    },
+    "GeomPackAddNormalsToPointCloud": {
+        "title": "在点云中添加法线",
+        "inputs": {
+            "pointcloud": "点云"
+        },
+        "widgets": {
+            "method": "方法",
+            "k_neighbors": "K近邻数",
+            "search_radius": "搜索半径",
+            "mls_smoothing": "MLS平滑度",
+            "orient_normals": "定向法线",
+            "add_as_attributes": "作为属性添加"
+        },
+        "outputs": {
+            "pointcloud_with_normals": "带有法线的点云",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "字符串"
+        },
+        "description": "使用Open3D或PyMeshLab方法估计并添加点云法线。",
+        "api_version": "V1"
+    },
+    "GeomPackCheckNormals": {
+        "title": "检查网格法线",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "outputs": {
+            "info": "信息",
+            "STRING": "字符串"
+        },
+        "description": "分析网格法线一致性及质量。\n\n检查面法线方向，报告不一致情况，并提供关于网格拓扑问题的诊断信息。",
+        "api_version": "V1"
+    },
+    "GeomPackComputeNormals": {
+        "title": "计算网格法线",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "Trimesh三维模型",
+            "smooth_vertex_normals": "平滑顶点法线"
+        },
+        "outputs": {
+            "mesh_with_normals": "带有法线的网格",
+            "TRIMESH": "TRIMESH"
+        },
+        "description": "根据自定义设置重新计算网格法线。\n\n重新计算面和顶点法线。适用于网格操作后、从无法线格式导入时或当法线看起来不正确时。",
+        "api_version": "V1"
+    },
+    "GeomPackFillHoles": {
+        "title": "填充网格孔洞",
+        "inputs": {},
+        "widgets": {
+            "mesh": "网格",
+            "method": "方法",
+            "perimeter": "周长",
+            "maxholesize": "最大孔洞大小"
+        },
+        "outputs": {
+            "filled_mesh": "填充后的网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "字符串"
+        },
+        "description": "通过添加新三角形面片来填补网格中的孔洞。\n\n识别边界环（孔洞），然后用新的三角形面片填补它们。\n适用于网格修复、创建适合3D打印的封闭网格或闭合扫描几何体中的间隙。",
+        "api_version": "V1"
+    },
+    "GeomPackFixSelfIntersectionsByRemoval": {
+        "title": "通过移除解决网格自我相交",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "Trimesh三维模型",
+            "fill_holes": "填充孔洞",
+            "fix_normals": "修正法线",
+            "max_hole_size": "最大孔洞尺寸",
+            "re_detect_after_fix": "修复后重新检测"
+        },
+        "outputs": {
+            "fixed_mesh": "修复后的网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "字符串"
+        },
+        "description": "通过移除相交面并填补孔洞来解决网格自我相交。\n\n移除标记为自我相交的面（来自DetectSelfIntersections节点），\n然后可选地填补结果孔洞并修正法线。这是一种简单但有效的处理孤立自我相交区域的方法。",
+        "api_version": "V1"
+    },
+    "GeomPackFixNormals": {
+        "title": "修正法线方向",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "Trimesh三维模型",
+            "method": "方法"
+        },
+        "outputs": {
+            "fixed_mesh": "修复后的网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "字符串"
+        },
+        "description": "修正不一致的法线方向。\n\n确保所有面法线指向一致（向外或向内）。使用图遍历来传播三角网格上的一致方向。\n对于正确的渲染和布尔运算至关重要。",
+        "api_version": "V1"
+    },
+    "GeomPackMergeVertices": {
+        "title": "合并网格顶点",
+        "inputs": {},
+        "widgets": {
+            "mesh": "网格",
+            "tolerance": "容差"
+        },
+        "outputs": {
+            "merged_mesh": "合并后的网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "字符串"
+        },
+        "description": "使用可配置容差 合并网格中的重复顶点。\n\n指定距离容差内的顶点被合并为单个顶点。\n这适用于：\n- 修复CAD网格化产生的断开连接网格组件（（OCC） - 修复由于浮点精度问题而产生近似重复顶点的网格 - 减少具有冗余顶点的网格的顶点数量\n\n容差以世界单位指定。例如： - 1e-8: 非常紧（（几乎只有精确匹配）  - 1e-5: 标准CAD网格推荐  - 1e-3: 松散（（粗略网格）",
+        "api_version": "V1"
+    },
+    "GeomPackMeshFix": {
+        "title": "自动网格修复",
+        "inputs": {
+            "input_mesh": "输入网格"
+        },
+        "widgets": {
+            "remove_small_components": "移除小部件",
+            "join_components": "连接部件",
+            "fill_holes": "填充孔洞",
+            "max_hole_edges": "最大孔洞边数",
+            "refine_holes": "细化孔洞",
+            "clean_mesh": "清洁网格",
+            "clean_iterations": "清洁迭代次数",
+            "inner_loops": "内部循环"
+        },
+        "outputs": {
+            "repaired_mesh": "修复后的网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "字符串"
+        },
+        "description": "使用MeshFix算法进行轻触修复。\n\n执行轻微的修复操作：\n- 移除小的孤立部件\n - 连接附近分离的部分\n - 填充边界孔洞\n - 移除自我相交和退化面\n\n基于Marco Attene开发的MeshFix库。",
+        "api_version": "V1"
+    },
+    "GeomPackRemoveDegenerateFaces": {
+        "title": "移除退化面",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "min_area": "最小面积"
+        },
+        "outputs": {
+            "cleaned_mesh": "清理后的网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "字符串"
+        },
+        "description": "移除网格中的退化面。\n\n一个面被认为是退化的如果：\n - 它具有重复的顶点索引（（例如，[ t,  t,  t])  - 其面积为零或接近零\n\n这适用于：\n - 在顶点合并操作后清理网格\n - 修复从CAD系统导入的网格中生成的细三角形",
+        "api_version": "V1"
+    },
+    "GeomPackVisualizeNormalField": {
+        "title": "可视化法线场",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "outputs": {
+            "mesh_with_fields": "带有场的网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "字符串"
+        },
+        "description": "为VTK查看器创建法线场可视化。\n\n将顶点法线作为标量场（（X、Y、Z分量）添加到网格中，这些标量场可以在VTK查看器中使用颜色映射进行可视化。有助于调试法线方向问题或理解表面几何结构。",
+        "api_version": "V1"
+    },
+    "GeomPackDetectSelfIntersections": {
+        "title": "检测网格自我相交",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "outputs": {
+            "mesh_with_field": "带有场的网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "字符串"
+        },
+        "description": "检测网格中的自我相交面。\n\n分析网格以查找相互相交的面。\n创建标量场以可视化哪些面/顶点参与了自我相交。对于在布尔运算或3D打印之前检查网格质量至关重要。",
+        "api_version": "V1"
+    },
+    "GeomPackFixSelfIntersectionsByPerturbation": {
+        "title": "通过微调顶点修复自相交",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {
+            "epsilon": "ε",
+            "max_iterations": "最大迭代次数",
+            "direction": "方向",
+            "scale_by_intersection_count": "根据相交数量缩放",
+            "re_detect_after_fix": "修复后重新检测"
+        },
+        "outputs": {
+            "fixed_mesh": "修复后的网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "通过轻微移动顶点来修复自相交。\n\n通过对相邻于自相交面的顶点沿法线方向进行微调来修复自相交。这是一种非破坏性方法，可以保留网格拓扑结构但可能无法解决所有类型的相交。",
+        "api_version": "V1"
+    },
+    "GeomPackRemeshSelfIntersections": {
+        "title": "通过重网格化移除自相交",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "detect_only": "仅检测",
+            "remove_unreferenced": "删除未引用项",
+            "extract_outer_hull": "提取外壳",
+            "stitch_all": "缝合所有部分"
+        },
+        "outputs": {
+            "fixed_mesh": "修复后的网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "通过重网格化移除自相交。\n\n使用libigl CGAL细分自相交三角形，使得相交位于边线上。可选地提取外壳以获得干净的流形结果。适用于准备用于布尔运算或3D打印的网格。",
+        "api_version": "V1"
+    },
+    "GeomPackExtractSkeleton": {
+        "title": "从3D网格提取骨架",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "Trimesh三维模型",
+            "algorithm": "算法",
+            "fix_mesh": "修复网格",
+            "normalize": "标准化",
+            "waves": "波长",
+            "step_size": "步长",
+            "sampling_dist": "采样距离",
+            "cluster_pos": "聚类位置",
+            "shape_weight": "形状权重",
+            "sample_weight": "样本权重",
+            "inv_dist": "倒数距离",
+            "min_length": "最小长度"
+        },
+        "outputs": {
+            "skeleton": "骨架",
+            "SKELETON": "SKELETON"
+        },
+        "description": "使用Skeletor库从3D网格中提取骨架数据。\n\n输出带有可选标准化到[-1, 1]范围内的骨架数据（顶点+边）。默认情况下保留原始网格比例。",
+        "api_version": "V1"
+    },
+    "GeomPackMeshFromSkeleton": {
+        "title": "从骨架生成网格",
+        "inputs": {
+            "skeleton": "骨架"
+        },
+        "widgets": {
+            "joint_radius": "关节半径",
+            "bone_radius": "骨骼半径"
+        },
+        "outputs": {
+            "trimesh": "Trimesh三维模型",
+            "TRIMESH": "TRIMESH"
+        },
+        "description": "将骨架转换为具有圆柱（骨骼）和球体（关节）的实心网格。\n\n高质量可视化，几何参数可调节。",
+        "api_version": "V1"
+    },
+    "GeomPackDepthNormalsToMesh": {
+        "title": "深度法线转网格",
+        "inputs": {
+            "depth": "深度",
+            "depth_image": "深度图像",
+            "normal_map": "法线贴图"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "depth_scale": "深度比例",
+            "method": "方法",
+            "poisson_depth": "泊松深度",
+            "poisson_scale": "泊松尺度",
+            "skip_background": "跳过背景",
+            "background_threshold": "背景阈值",
+            "invert_depth": "反转深度"
+        },
+        "outputs": {
+            "mesh": "网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "深度+法线转网格 - 将深度图和法线图转换为平滑3D网格。\n\n接受深度图（遮罩）和法线图（图像，R通道为Nx，G通道为Ny，并使用Poisson或Ball Pivoting算法重建表面。\n\n此方法通过使用定向点云的正确曲面重构消除了基于网格的高度图阶梯状伪影。\n\n适用于CAD光线追踪工作流程，其中深度和法线可用。",
+        "api_version": "V1"
+    },
+    "GeomPackTextureToGeometry": {
+        "title": "纹理转几何",
+        "inputs": {
+            "mask": "遮罩",
+            "depth_image": "深度图像",
+            "field": "领域"
+        },
+        "widgets": {
+            "height_scale": "高度比例",
+            "field_name": "领域名称",
+            "backend": "后端",
+            "poisson_depth": "泊松深度",
+            "invert_height": "反转高度",
+            "smooth_normals": "平滑法线",
+            "skip_black": "跳过黑色",
+            "black_threshold": "黑色阈值"
+        },
+        "outputs": {
+            "mesh": "网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "纹理转几何 - 将高度图纹理转换为3D网格几何。\n\n接受图像（高度图），并将其转换为3D网格。多种后端可供选择：\n- grid：快速基于网格的位移（可能会出现阶梯状伪影）\n- poisson_pymeshlab：PyMeshLab屏风Poisson重建（平滑）\n- poisson_open3d：Open3D Poisson重建（平滑，需要Open3D）\n- delaunay_2d：二维Delaunay三角剖分",
+        "api_version": "V1"
+    },
+    "GeomPackNormalizeMeshToBBox": {
+        "title": "将网格规范化至包围盒",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {
+            "target_size": "目标尺寸"
+        },
+        "outputs": {
+            "normalized_mesh": "规范化后的网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "description": "将网格中心化并均匀缩放以适应目标包围盒。在估计TripoSF的法线之前使用。",
+        "api_version": "V1"
+    },
+    "GeomPackTransformMesh": {
+        "title": "统一变换网格",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "Trimesh三维模型",
+            "operation": "操作",
+            "translate_x": "X轴平移",
+            "translate_y": "Y轴平移",
+            "translate_z": "Z轴平移",
+            "rotate_x": "X轴旋转",
+            "rotate_y": "Y轴旋转",
+            "rotate_z": "Z轴旋转",
+            "scale_uniform": "均匀缩放",
+            "scale_x": "X轴缩放",
+            "scale_y": "Y轴缩放",
+            "scale_z": "Z轴缩放",
+            "mirror_axis": "镜像轴",
+            "center_x": "X轴居中",
+            "center_y": "Y轴居中",
+            "center_z": "Z轴居中",
+            "matrix_string": "矩阵字符串"
+        },
+        "outputs": {
+            "transformed_mesh": "变换后的网格",
+            "info": "信息",
+            "TRIMESH": "TRIMESH",
+            "STRING": "STRING"
+        },
+        "descriptionption": "统一变换 - 对网格应用各种变换。\n\n支持：\n- translate：通过偏移量移动网格\n- rotate：绕轴旋转（度数）\n- scale：均匀缩放或按轴缩放\n- mirror：沿轴镜像/反射\n- center：使网格在原点居中\n- align_to_axes：将主轴对齐到世界坐标轴\n- apply_matrix：应用自定义4x4变换矩阵",
+        "api_version": "V1"
+    },
+    "GeomPackUVUnwrap": {
+        "title": "几何包裹UV展开",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "Trimesh三维模型",
+            "method": "方法",
+            "chart_cone_angle": "图表圆锥角",
+            "chart_refine_iterations": "图表细化迭代次数",
+            "chart_global_iterations": "图表全局迭代次数",
+            "chart_smooth_strength": "图表平滑强度",
+            "iterations": "迭代次数",
+            "angle_limit": "角度限制",
+            "island_margin": "岛屿边缘",
+            "scale_to_bounds": "缩放至边界",
+            "cube_size": "立方体大小",
+            "cylinder_radius": "圆柱半径"
+        },
+        "outputs": {
+            "unwrapped_mesh": "展开后的网格",
+            "info": "信息",
+            "TRIMESH": "三角网格",
+            "STRING": "字符串"
+        },
+        "description": "通用UV展开 - 统一的UV展开操作。\n\n将多个UV展开后端整合到一个节点中。\n参数根据具体方法而定；未使用的参数会被忽略。",
+        "api_version": "V1"
+    },
+    "GeomPackBackdraftView": {
+        "title": "几何包裹背风视图",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "Trimesh三维模型",
+            "resolution": "分辨率",
+            "backend": "后端",
+            "show_filename": "显示文件名"
+        },
+        "outputs": {
+            "backdraft_image": "背风图像",
+            "IMAGE": "图像"
+        },
+        "description": "从Z轴渲染网格并检测背风区域。\n\n背风 = 当从上方射出的光线击中超过一个面时。\n这表明存在会导致制造过程中材料被卡住的倒勾。",
+        "api_version": "V1"
+    },
+    "GeomPackPreviewGaussian": {
+        "title": "几何包裹高斯预览",
+        "inputs": {
+            "ply_path": "PLY路径",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "预览高斯点云文件。\n\n在交互式gsplat.js查看器中以3D方式显示高斯点，并带有旋转控制和实时渲染。",
+        "api_version": "V1"
+    },
+    "GeomPackPreviewMesh": {
+        "title": "几何包裹网格预览",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "outputs": {},
+        "description": "使用交互式3D查看器预览网格。\n\n在具有旋转控制的Three.js查看器中显示网格。\n允许旋转、平移和缩放以检查网格几何形状。",
+        "api_version": "V1"
+    },
+    "GeomPackPreviewMeshAnalysis": {
+        "title": "几何包裹网格分析预览",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "使用分析按钮预览网格。\n\n在VTK.js查看器中显示网格，带有可点击的按钮来计算：\n- 开放边（边界顶点）\n- 连通组件（部分ID）\n- 自相交\n\n点击按钮以计算并可视化相应的分析。",
+        "api_version": "V1"
+    },
+    "GeomPackPreviewMeshDual": {
+        "title": "几何包裹双网格预览",
+        "inputs": {
+            "mesh_1": "网格1",
+            "mesh_2": "网格2"
+        },
+        "widgets": {
+            "layout": "布局",
+            "mode": "模式",
+            "opacity_1": "透明度1",
+            "opacity_2": "透明度2"
+        },
+        "outputs": {},
+        "description": "统一的双网格预览 - 支持侧边并排和叠加布局。\n\n结合两个网格进行比较，支持完整的场可视化功能。\n选择同步的并边并排窗口或单个叠加窗口。",
+        "api_version": "V1"
+    },
+    "GeomPackPreviewMeshMulti": {
+        "title": "几何包裹多网格预览",
+        "inputs": {
+            "mesh_1": "网格1",
+            "mesh_2": "网格2",
+            "mesh_3": "网格3",
+            "mesh_4": "网格4"
+        },
+        "widgets": {
+            "mode": "模式"
+        },
+        "outputs": {},
+        "description": "使用VTK.js的多网格预览 - 显示最多四个网格的网格布局。\n\n网格布局：\n- 1个网格：1x1\n- 2个网格：1x2（并排排列\n- 3个网格：1x3（水平行\n- 4个网格：2x2\n\n支持与同步相机一起的标量场可视化。",
+        "api_version": "V1"
+    },
+    "GeomPackPreviewMeshUV": {
+        "title": "几何包裹网格UV预览",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {
+            "show_checker": "显示棋盘格",
+            "show_wireframe": "显示线框"
+        },
+        "outputs": {},
+        "description": "使用同步的3D和UV布局视图预览网格。\n\n在分割窗格的交互式查看器中显示网格：\n- 左侧：带有线框叠加的可旋控的3D网格视图\n- 右侧：在 0-1 空间中的2D UV布局\n- 单击任一侧视图会突出显示另一侧对应的点\n\n适用于检查UV展开质量、接缝位置以及纹理映射。",
+        "api_version": "V1"
+    },
+    "GeomPackPreviewMeshVTK": {
+        "title": "几何包裹网格VTK预览",
+        "inputs": {
+            "trimesh": "Trimesh三维模型",
+            "voxelgrid": "体素网格"
+        },
+        "widgets": {
+            "mode": "模式"
+        },
+        "outputs": {},
+        "description": "使用VTK.js科学可视化查看器预览网格。\n\n在具有轨道球控制的交互式VTK.js查看器中显示网格。\n更适合于科学可视化、网格分析和大型数据集。",
+        "api_version": "V1"
+    },
+    "GeomPackPreviewMeshVTKBatch": {
+        "title": "几何包裹批量网格VTK预览",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {
+            "mode": "模式",
+            "index": "索引"
+        },
+        "outputs": {},
+        "description": "使用VTK.js科学可视化查看器预览批量网格，带有索引导航。\n\n在具有轨道球控制的交互式VTK.js查看器中显示批量网格。\n包括循环浏览批量网格的导航按钮。\n更适合于科学可视化、网格分析和大型数据集。",
+        "api_version": "V1"
+    }
+}

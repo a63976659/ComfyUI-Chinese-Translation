@@ -1,0 +1,105 @@
+{
+    "SeeThrough_LoadLayerDiffModel": {
+        "title": "加载层差异模型",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "vae_ckpt": "VAE 模型路径",
+            "unet_ckpt": "UNet 模型路径",
+            "quant_mode": "量化模式",
+            "cache_tag_embeds": "缓存标签嵌入",
+            "group_offload": "分组卸载"
+        },
+        "outputs": {
+            "layerdiff_model": "层差异模型",
+            "SEETHROUGH_LAYERDIFF_MODEL": "SEETHROUGH 层差异模型"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "SeeThrough_LoadDepthModel": {
+        "title": "加载深度模型",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "quant_mode": "量化模式",
+            "cache_tag_embeds": "缓存标签嵌入",
+            "group_offload": "分组卸载"
+        },
+        "outputs": {
+            "depth_model": "深度模型",
+            "SEETHROUGH_DEPTH_MODEL": "SEETHROUGH 深度模型"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "SeeThrough_GenerateLayers": {
+        "title": "生成图层",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "layerdiff_model": "层差异模型",
+            "seed": "随机种子",
+            "resolution": "分辨率",
+            "num_inference_steps": "推理步骤数"
+        },
+        "outputs": {
+            "layers": "图层",
+            "preview": "预览",
+            "SEETHROUGH_LAYERS": "SEETHROUGH 图层",
+            "IMAGE": "图像"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "SeeThrough_GenerateDepth": {
+        "title": "生成深度",
+        "inputs": {},
+        "widgets": {
+            "layers": "图层",
+            "depth_model": "深度模型",
+            "seed": "随机种子",
+            "resolution_depth": "深度分辨率"
+        },
+        "outputs": {
+            "layers_depth": "深度图层",
+            "preview": "预览",
+            "SEETHROUGH_LAYERS_DEPTH": "SEETHROUGH 深度图层",
+            "IMAGE": "图像"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "SeeThrough_PostProcess": {
+        "title": "后处理",
+        "inputs": {},
+        "widgets": {
+            "layers_depth": "深度图层",
+            "tblr_split": "分割上下左右",
+            "use_lama": "使用 LAMA"
+        },
+        "outputs": {
+            "parts": "部分",
+            "preview": "预览",
+            "SEETHROUGH_PARTPart": "SEETHROUGH 部分",
+            "IMAGE": "图像"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "SeeThrough_SavePSD": {
+        "title": "保存 PSD",
+        "inputs": {},
+        "widgets": {
+            "parts": "部分",
+            "filename_prefix": "文件前缀"
+        },
+        "outputs": {
+            "info_file": "信息文件",
+            "STRING": "字符串"
+        },
+        "description": "",
+        "api_version": "V1"
+    }
+}
