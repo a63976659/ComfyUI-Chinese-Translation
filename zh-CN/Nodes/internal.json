@@ -10369,6 +10369,26 @@
         },
         "description": "[后条件生成函数功能] TSR - 时间分数缩放（2510.01184） 对模型的分数或噪声进行缩放，以控制采样的多样性。"
     },
+    "SAM3_Detect": {
+        "title": "SAM3 检测",
+        "inputs": {
+            "model": "模型",
+            "image": "图像",
+            "conditioning": "条件",
+            "bboxes": "边界框",
+            "positive_coords": "正向坐标",
+            "negative_coords": "负向坐标"
+        },
+        "widgets": {
+            "threshold": "阈值",
+            "refine_iterations": "迭代次数",
+            "individual_masks": "单独遮罩"
+        },
+        "outputs": {
+            "masks": "遮罩",
+            "bboxes": "边界框"
+        }
+    },
     "SaveImageWebsocket": {
         "title": "保存图像到网络接口",
         "inputs": {
