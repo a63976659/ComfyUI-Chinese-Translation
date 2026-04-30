@@ -7951,6 +7951,95 @@
             "string": "字符串"
         }
     },
+    "HappyHorseTextToVideoApi": {
+        "title": "快乐马 文生视频",
+        "inputs": {
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "ratio": "宽高比",
+            "duration": "时长(秒)",
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "使用“HappyHorse”模型根据文本提示生成一段视频。"
+    },
+    "HappyHorse Image to Video": {
+        "title": "快乐马 图生视频",
+        "inputs": {
+            "first_frame": "首帧图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "duration": "时长(秒)",
+            "seed": "随机种子",
+            "control_after_generate": "生成后控制",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "生成视频"
+        },
+        "description": "使用“HappyHorse”模型从第一帧图像生成一段视频。"
+    },
+    "HappyHorseVideoEditApi": {
+        "title": "快乐马 视频编辑",
+        "inputs": {
+            "video": "视频",
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "image4": "图像4",
+            "image5": "图像5"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "ratio": "宽高比",
+            "duration": "时长(秒)",
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "生成视频"
+        },
+        "description": "使用“快乐马”模型通过文字说明或参考图像来编辑视频。/n输出视频时长为 3 至 15 秒，与输入视频时长一致；输入时长超过 15 秒的将被截取。"
+    },
+    "HappyHorseReferenceVideoApi": {
+        "title": "快乐马 参考生视频",
+        "inputs": {
+            "video": "视频",
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "image4": "图像4",
+            "image5": "图像5",
+            "image6": "图像6",
+            "image7": "图像7",
+            "image8": "图像8",
+            "image9": "图像9"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "ratio": "宽高比",
+            "duration": "时长(秒)",
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "生成视频"
+        },
+        "description": "使用“HappyHorse”模型，根据参考材料生成一个包含人物或物体的视频。/n支持单个字符的展示以及多个字符之间的互动。"
+    },
     "TextEncodeAceStepAudio": {
         "title": "ACE音频文本编码",
         "inputs": {
@@ -10247,6 +10336,24 @@
             "INT": "整数"
         },
         "description": ""
+    },
+    "VAEEncodeForInpaint": {
+        "title": "VAE编码（局部重绘）",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {}
+    },
+    "ControlNetApply": {
+        "title": "应用ControlNet（旧版）",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {}
+    },
+    "ControlNetApplyAdvanced": {
+        "title": "应用ControlNet（旧版高级）",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {}
     },
     "TemporalScoreRescaling": {
         "title": "TSR - 时序分数重缩放",
