@@ -1,118 +1,414 @@
 {
     "INPAINT_LoadFooocusInpaint": {
-        "title": "加载Fooocus局部重绘",
+        "title": "加载 Fooocus 修复模型",
+        "inputs": {
+            "head": "头部模型",
+            "patch": "修补模型"
+        },
         "widgets": {
-            "head": "head",
-            "patch": "patch"
+            "head": "头部模型",
+            "patch": "修补模型"
         },
         "outputs": {
-            "INPAINT_PATCH": "局部重绘组件"
+            "inpaint patch": "修复补丁"
+        }
+    },
+    "LoadFooocusInpaint": {
+        "title": "加载 Fooocus 修复模型",
+        "inputs": {
+            "head": "头部模型",
+            "patch": "修补模型"
+        },
+        "widgets": {
+            "head": "头部模型",
+            "patch": "修补模型"
+        },
+        "outputs": {
+            "inpaint patch": "修复补丁"
         }
     },
     "INPAINT_ApplyFooocusInpaint": {
-        "title": "应用Fooocus局部重绘",
+        "title": "应用 Fooocus 修复",
         "inputs": {
             "model": "模型",
-            "patch": "局部重绘组件",
-            "latent": "Latent"
+            "patch": "修复补丁",
+            "inpaint_patch": "修复补丁",
+            "inpaint patch": "修复补丁",
+            "latent": "潜空间"
+        },
+        "widgets": {
+            "patch": "修复补丁",
+            "inpaint_patch": "修复补丁",
+            "inpaint patch": "修复补丁",
+            "latent": "潜空间"
         },
         "outputs": {
-            "MODEL": "模型"
+            "model": "模型"
+        }
+    },
+    "ApplyFooocusInpaint": {
+        "title": "应用 Fooocus 修复",
+        "inputs": {
+            "model": "模型",
+            "patch": "修复补丁",
+            "inpaint_patch": "修复补丁",
+            "inpaint patch": "修复补丁",
+            "latent": "潜空间"
+        },
+        "widgets": {
+            "patch": "修复补丁",
+            "inpaint_patch": "修复补丁",
+            "inpaint patch": "修复补丁",
+            "latent": "潜空间"
+        },
+        "outputs": {
+            "model": "模型"
         }
     },
     "INPAINT_VAEEncodeInpaintConditioning": {
-        "title": "VAE编码局部重绘条件",
+        "title": "VAE 编码 & 修复条件",
         "inputs": {
-            "positive": "正面条件",
-            "negative": "负面条件",
+            "positive": "正向条件",
+            "negative": "负向条件",
             "vae": "VAE",
-            "pixels": "图像",
+            "pixels": "像素",
             "mask": "遮罩"
         },
+        "widgets": {},
         "outputs": {
-            "positive": "正面条件",
-            "negative": "负面条件",
-            "latent_inpaint": "局部重绘Latent",
-            "latent_samples": "采样Latent"
+            "positive": "正向条件",
+            "negative": "负向条件",
+            "latent inpaint": "修复潜空间",
+            "latent samples": "潜空间样本"
+        }
+    },
+    "VAEEncodeInpaintConditioning": {
+        "title": "VAE 编码 & 修复条件",
+        "inputs": {
+            "positive": "正向条件",
+            "negative": "负向条件",
+            "vae": "VAE",
+            "pixels": "像素",
+            "mask": "遮罩"
+        },
+        "widgets": {},
+        "outputs": {
+            "positive": "正向条件",
+            "negative": "负向条件",
+            "latent inpaint": "修复潜空间",
+            "latent samples": "潜空间样本"
         }
     },
     "INPAINT_MaskedFill": {
-        "title": "遮罩填充",
+        "title": "填充遮罩区域",
         "inputs": {
             "image": "图像",
-            "mask": "遮罩"
+            "mask": "遮罩",
+            "fill": "填充方式",
+            "falloff": "衰减"
         },
         "widgets": {
             "fill": "填充方式",
             "falloff": "衰减"
         },
         "outputs": {
-            "IMAGE": "图像"
+            "image": "图像"
         }
     },
-    "INPAINT_MaskedBlur": {
-        "title": "遮罩模糊",
+    "MaskedFill": {
+        "title": "填充遮罩区域",
         "inputs": {
             "image": "图像",
-            "mask": "遮罩"
+            "mask": "遮罩",
+            "fill": "填充方式",
+            "falloff": "衰减"
         },
         "widgets": {
-            "blur": "模糊",
+            "fill": "填充方式",
             "falloff": "衰减"
         },
         "outputs": {
-            "IMAGE": "图像"
+            "image": "图像"
+        }
+    },
+    "INPAINT_MaskedBlur": {
+        "title": "模糊遮罩区域",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "blur": "模糊程度",
+            "falloff": "衰减"
+        },
+        "widgets": {
+            "blur": "模糊程度",
+            "falloff": "衰减"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "MaskedBlur": {
+        "title": "模糊遮罩区域",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "blur": "模糊程度",
+            "falloff": "衰减"
+        },
+        "widgets": {
+            "blur": "模糊程度",
+            "falloff": "衰减"
+        },
+        "outputs": {
+            "image": "图像"
         }
     },
     "INPAINT_LoadInpaintModel": {
-        "title": "加载局部重绘模型",
+        "title": "加载修复模型",
+        "inputs": {
+            "model_name": "模型名称"
+        },
         "widgets": {
             "model_name": "模型名称"
         },
         "outputs": {
-            "INPAINT_MODEL": "局部重绘模型"
+            "inpaint model": "修复模型"
+        }
+    },
+    "LoadInpaintModel": {
+        "title": "加载修复模型",
+        "inputs": {
+            "model_name": "模型名称"
+        },
+        "widgets": {
+            "model_name": "模型名称"
+        },
+        "outputs": {
+            "inpaint model": "修复模型"
         }
     },
     "INPAINT_InpaintWithModel": {
-        "title": "使用模型局部重绘",
+        "title": "修复 (使用模型)",
         "inputs": {
-            "inpaint_model": "局部重绘模型",
+            "inpaint_model": "修复模型",
             "image": "图像",
             "mask": "遮罩",
-            "optional_upscale_model": "放大模型(可选)"
+            "seed": "种子",
+            "optional_upscale_model": "超分辨率模型(可选)",
+            "upscale_model": "超分辨率模型(可选)",
+            "upscale model (optional)": "超分辨率模型(可选)"
         },
         "widgets": {
-            "seed": "随机种",
-            "control_before_generate": "运行前操作"
+            "seed": "种子",
+            "optional_upscale_model": "超分辨率模型(可选)",
+            "upscale_model": "超分辨率模型(可选)",
+            "upscale model (optional)": "超分辨率模型(可选)",
+            "after generate": "生成后控制"
         },
         "outputs": {
-            "IMAGE": "图像"
+            "inpainted image": "修复后图像"
+        }
+    },
+    "InpaintWithModel": {
+        "title": "修复 (使用模型)",
+        "inputs": {
+            "inpaint_model": "修复模型",
+            "image": "图像",
+            "mask": "遮罩",
+            "seed": "种子",
+            "optional_upscale_model": "超分辨率模型(可选)",
+            "upscale_model": "超分辨率模型(可选)",
+            "upscale model (optional)": "超分辨率模型(可选)"
+        },
+        "widgets": {
+            "seed": "种子",
+            "optional_upscale_model": "超分辨率模型(可选)",
+            "upscale_model": "超分辨率模型(可选)",
+            "upscale model (optional)": "超分辨率模型(可选)",
+            "after generate": "生成后控制"
+        },
+        "outputs": {
+            "inpainted image": "修复后图像"
+        }
+    },
+    "INPAINT_ColorMatch": {
+        "title": "颜色匹配 (遮罩)",
+        "inputs": {
+            "target": "目标图像",
+            "reference": "参考图像",
+            "exclude_mask": "排除遮罩(可选)",
+            "strength": "强度"
+        },
+        "widgets": {
+            "strength": "强度"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "ColorMatch": {
+        "title": "颜色匹配 (遮罩)",
+        "inputs": {
+            "target": "目标图像",
+            "reference": "参考图像",
+            "exclude_mask": "排除遮罩(可选)",
+            "strength": "强度"
+        },
+        "widgets": {
+            "strength": "强度"
+        },
+        "outputs": {
+            "image": "图像"
         }
     },
     "INPAINT_DenoiseToCompositingMask": {
-        "title": "降噪到合成遮罩",
+        "title": "去噪转合成遮罩",
         "inputs": {
-            "mask": "遮罩"
+            "mask": "遮罩",
+            "offset": "偏移",
+            "threshold": "阈值"
         },
         "widgets": {
             "offset": "偏移",
             "threshold": "阈值"
         },
         "outputs": {
-            "MASK": "遮罩"
+            "mask": "遮罩"
+        }
+    },
+    "DenoiseToCompositingMask": {
+        "title": "去噪转合成遮罩",
+        "inputs": {
+            "mask": "遮罩",
+            "offset": "偏移",
+            "threshold": "阈值"
+        },
+        "widgets": {
+            "offset": "偏移",
+            "threshold": "阈值"
+        },
+        "outputs": {
+            "mask": "遮罩"
         }
     },
     "INPAINT_ExpandMask": {
         "title": "扩展遮罩",
         "inputs": {
-            "mask": "遮罩"
+            "mask": "遮罩",
+            "grow": "扩展量",
+            "blur": "模糊",
+            "blur_type": "模糊类型"
         },
         "widgets": {
-            "grow": "生长",
-            "blur": "模糊"
+            "grow": "扩展量",
+            "blur": "模糊",
+            "blur_type": "模糊类型"
         },
         "outputs": {
-            "MASK": "遮罩"
+            "mask": "遮罩"
+        }
+    },
+    "ExpandMask": {
+        "title": "扩展遮罩",
+        "inputs": {
+            "mask": "遮罩",
+            "grow": "扩展量",
+            "blur": "模糊",
+            "blur_type": "模糊类型"
+        },
+        "widgets": {
+            "grow": "扩展量",
+            "blur": "模糊",
+            "blur_type": "模糊类型"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        }
+    },
+    "INPAINT_ShrinkMask": {
+        "title": "收缩遮罩",
+        "inputs": {
+            "mask": "遮罩",
+            "shrink": "收缩量",
+            "blur": "模糊",
+            "blur_type": "模糊类型"
+        },
+        "widgets": {
+            "shrink": "收缩量",
+            "blur": "模糊",
+            "blur_type": "模糊类型"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        }
+    },
+    "ShrinkMask": {
+        "title": "收缩遮罩",
+        "inputs": {
+            "mask": "遮罩",
+            "shrink": "收缩量",
+            "blur": "模糊",
+            "blur_type": "模糊类型"
+        },
+        "widgets": {
+            "shrink": "收缩量",
+            "blur": "模糊",
+            "blur_type": "模糊类型"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        }
+    },
+    "INPAINT_StabilizeMask": {
+        "title": "稳定遮罩",
+        "inputs": {
+            "mask": "遮罩",
+            "epsilon": "阈值"
+        },
+        "widgets": {
+            "epsilon": "阈值"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        }
+    },
+    "StabilizeMask": {
+        "title": "稳定遮罩",
+        "inputs": {
+            "mask": "遮罩",
+            "epsilon": "阈值"
+        },
+        "widgets": {
+            "epsilon": "阈值"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        }
+    },
+    "INPAINT_MaskBoundingBox": {
+        "title": "遮罩边界框",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {},
+        "outputs": {
+            "x": "X",
+            "y": "Y",
+            "width": "宽度",
+            "height": "高度"
+        }
+    },
+    "MaskBoundingBox": {
+        "title": "遮罩边界框",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {},
+        "outputs": {
+            "x": "X",
+            "y": "Y",
+            "width": "宽度",
+            "height": "高度"
         }
     }
 }
