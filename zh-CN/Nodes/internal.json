@@ -787,6 +787,7 @@
             "style_model": "风格模型",
             "clip_vision_output": "CLIP视觉输出"
         },
+        "widgets": {},
         "outputs": {
             "CONDITIONING": "条件"
         }
@@ -817,6 +818,7 @@
             "vae": "VAE",
             "pixels": "图像"
         },
+        "widgets": {},
         "outputs": {
             "positive": "正面条件",
             "negative": "负面条件",
@@ -6817,6 +6819,25 @@
             "video": "视频"
         }
     },
+    "TopazVideoEnhanceV2": {
+        "title": "Topaz视频增强器V2",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "upscaler_model": "增强模型",
+            "upscaler_resolution": "提升分辨率",
+            "creativity": "时长",
+            "sharp:": "锐利",
+            "realism:": "写实",
+            "interpolation_model": "插值模型",
+            "dynamic_compression_level": "动态压缩级别"
+        },
+        "outputs": {
+            "VIDEO": "视频",
+            "video": "视频"
+        }
+    },
     "OpenAIDalle2": {
         "title": "OpenAI DALL·E 2",
         "inputs": {
@@ -10388,6 +10409,110 @@
             "masks": "遮罩",
             "bboxes": "边界框"
         }
+    },
+    "SAM3_VideoTrack": {
+        "title": "SAM3 视频轨迹",
+        "inputs": {
+            "model": "模型",
+            "images": "图像",
+            "conditioning": "条件",
+            "initial_mask": "初始遮罩"
+        },
+        "widgets": {
+            "detection_threshold": "检测阈值",
+            "max_objects": "最大对象数量",
+            "detect_interval": "检测间隔"
+        },
+        "outputs": {
+            "track_data": "跟踪数据",
+            "bboxes": "边界框"
+        }
+    },
+    "SAM3_TrackPreview": {
+        "title": "SAM3 轨迹预览",
+        "inputs": {
+            "track_data": "跟踪数据",
+            "images": "图像"
+        },
+        "widgets": {
+            "opacity": "透明度",
+            "fps": "帧率"
+        },
+        "outputs": {
+            "track_data": "跟踪数据",
+            "bboxes": "边界框"
+        }
+    },
+    "SAM3_TrackToMask": {
+        "title": "SAM3 轨迹遮罩",
+        "inputs": {
+            "track_data": "跟踪数据"
+        },
+        "widgets": {
+            "object_indices": "对象索引"
+        },
+        "outputs": {
+            "masks": "遮罩"
+        }
+    },
+    "SUPIRApply": {
+        "title": "SUPIR应用",
+        "inputs": {
+            "model": "模型",
+            "model_patch": "模型补丁",
+            "vae": "VAE",
+            "image": "图像"
+        },
+        "widgets": {
+            "strength_start": "强度开始",
+            "strength_end": "强度结束",
+            "restore_cfg": "恢复CFG",
+            "restore_cfg_s_tmin": "恢复CFG最小值"
+        },
+        "outputs": {
+            "MODEL": "模型"
+        }
+    },
+    "ColorTransfer": {
+        "title": "颜色转移",
+        "inputs": {
+            "image_target": "目标图像",
+            "image_ref": "参考图像"
+        },
+        "widgets": {
+            "method": "方法",
+            "source_stats": "源统计",
+            "strength": "强度"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "根据参考图像对目标图像进行颜色转移"
+    },
+    "FrameInterpolationModelLoader": {
+        "title": "加载帧插值模型",
+        "inputs": {
+            "model_name": "模型名称"
+        },
+        "widgets": {},
+        "outputs": {
+            "INTERP_MODEL": "插值模型"
+        },
+        "description": "加载帧插值模型"
+    },
+    "FrameInterpolate": {
+        "title": "帧插值",
+        "inputs": {
+            "interp_model": "插值模型",
+            "images": "图像"
+        },
+        "widgets": {
+            "multiplier": "倍数"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "用于对图像序列进行帧插值的节点"
     },
     "SaveImageWebsocket": {
         "title": "保存图像到网络接口",
