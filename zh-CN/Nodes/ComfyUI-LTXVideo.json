@@ -7,7 +7,6 @@
             "device": "设备"
         },
         "outputs": {},
-        "description": "",
         "api_version": "V3"
     },
     "LTXVSaveConditioning": {
@@ -1481,6 +1480,35 @@
         "outputs": {
             "image": "CPU图像"
         }
+    },
+    "LTXVHDRDecodePostprocess": {
+        "title": "🅛🅣🅧 HDR 解码后处理",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "exposure": "曝光",
+            "save_exr": "保存.exr",
+            "output_dir": "输出目录",
+            "filename_prefix": "文件名前缀",
+            "half_precision": "半精度"
+        },
+        "outputs": {
+            "tonemapped": "色调映射",
+            "hdr_linear": "HDR线性"
+        }
+    },
+    "LTXVAdainLatent": {
+        "title": "🅛🅣🅧 风格迁移 Latent",
+        "inputs": {
+            "latents": "Latent",
+            "reference": "参考Latent"
+        },
+        "widgets": {
+            "factor": "权重",
+            "per_frame": "每帧"
+        },
+        "outputs": {}
     },
     "LTXRFForwardODESampler": {
         "title": "🅛🅣🅧 Rf-Inv 前向采样器",
