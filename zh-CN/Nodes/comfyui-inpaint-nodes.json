@@ -31,17 +31,10 @@
         "title": "应用 Fooocus 修复",
         "inputs": {
             "model": "模型",
-            "patch": "修复补丁",
-            "inpaint_patch": "修复补丁",
             "inpaint patch": "修复补丁",
-            "latent": "潜空间"
+            "latent": "Latent"
         },
-        "widgets": {
-            "patch": "修复补丁",
-            "inpaint_patch": "修复补丁",
-            "inpaint patch": "修复补丁",
-            "latent": "潜空间"
-        },
+        "widgets": {},
         "outputs": {
             "model": "模型"
         }
@@ -50,16 +43,15 @@
         "title": "应用 Fooocus 修复",
         "inputs": {
             "model": "模型",
-            "patch": "修复补丁",
             "inpaint_patch": "修复补丁",
             "inpaint patch": "修复补丁",
-            "latent": "潜空间"
+            "latent": "Latent"
         },
         "widgets": {
             "patch": "修复补丁",
             "inpaint_patch": "修复补丁",
             "inpaint patch": "修复补丁",
-            "latent": "潜空间"
+            "latent": "Latent"
         },
         "outputs": {
             "model": "模型"
@@ -78,8 +70,8 @@
         "outputs": {
             "positive": "正向条件",
             "negative": "负向条件",
-            "latent inpaint": "修复潜空间",
-            "latent samples": "潜空间样本"
+            "latent inpaint": "修复Latent",
+            "latent samples": "Latent采样"
         }
     },
     "VAEEncodeInpaintConditioning": {
@@ -95,17 +87,15 @@
         "outputs": {
             "positive": "正向条件",
             "negative": "负向条件",
-            "latent inpaint": "修复潜空间",
-            "latent samples": "潜空间样本"
+            "latent inpaint": "修复Latent",
+            "latent samples": "Latent采样"
         }
     },
     "INPAINT_MaskedFill": {
         "title": "填充遮罩区域",
         "inputs": {
             "image": "图像",
-            "mask": "遮罩",
-            "fill": "填充方式",
-            "falloff": "衰减"
+            "mask": "遮罩"
         },
         "widgets": {
             "fill": "填充方式",
@@ -132,12 +122,10 @@
         }
     },
     "INPAINT_MaskedBlur": {
-        "title": "模糊遮罩区域",
+        "title": "遮罩羽化",
         "inputs": {
             "image": "图像",
-            "mask": "遮罩",
-            "blur": "模糊程度",
-            "falloff": "衰减"
+            "mask": "遮罩"
         },
         "widgets": {
             "blur": "模糊程度",
@@ -148,12 +136,10 @@
         }
     },
     "MaskedBlur": {
-        "title": "模糊遮罩区域",
+        "title": "遮罩羽化",
         "inputs": {
             "image": "图像",
-            "mask": "遮罩",
-            "blur": "模糊程度",
-            "falloff": "衰减"
+            "mask": "遮罩"
         },
         "widgets": {
             "blur": "模糊程度",
@@ -165,9 +151,7 @@
     },
     "INPAINT_LoadInpaintModel": {
         "title": "加载修复模型",
-        "inputs": {
-            "model_name": "模型名称"
-        },
+        "inputs": {},
         "widgets": {
             "model_name": "模型名称"
         },
@@ -193,16 +177,10 @@
             "inpaint_model": "修复模型",
             "image": "图像",
             "mask": "遮罩",
-            "seed": "种子",
-            "optional_upscale_model": "超分辨率模型(可选)",
-            "upscale_model": "超分辨率模型(可选)",
-            "upscale model (optional)": "超分辨率模型(可选)"
+            "upscale model (optional)": "放大模型(可选)"
         },
         "widgets": {
             "seed": "种子",
-            "optional_upscale_model": "超分辨率模型(可选)",
-            "upscale_model": "超分辨率模型(可选)",
-            "upscale model (optional)": "超分辨率模型(可选)",
             "after generate": "生成后控制"
         },
         "outputs": {
@@ -236,8 +214,7 @@
         "inputs": {
             "target": "目标图像",
             "reference": "参考图像",
-            "exclude_mask": "排除遮罩(可选)",
-            "strength": "强度"
+            "exclude_mask": "排除遮罩(可选)"
         },
         "widgets": {
             "strength": "强度"
@@ -264,9 +241,7 @@
     "INPAINT_DenoiseToCompositingMask": {
         "title": "去噪转合成遮罩",
         "inputs": {
-            "mask": "遮罩",
-            "offset": "偏移",
-            "threshold": "阈值"
+            "mask": "遮罩"
         },
         "widgets": {
             "offset": "偏移",
@@ -294,10 +269,7 @@
     "INPAINT_ExpandMask": {
         "title": "扩展遮罩",
         "inputs": {
-            "mask": "遮罩",
-            "grow": "扩展量",
-            "blur": "模糊",
-            "blur_type": "模糊类型"
+            "mask": "遮罩"
         },
         "widgets": {
             "grow": "扩展量",
@@ -311,10 +283,7 @@
     "ExpandMask": {
         "title": "扩展遮罩",
         "inputs": {
-            "mask": "遮罩",
-            "grow": "扩展量",
-            "blur": "模糊",
-            "blur_type": "模糊类型"
+            "mask": "遮罩"
         },
         "widgets": {
             "grow": "扩展量",
@@ -328,10 +297,7 @@
     "INPAINT_ShrinkMask": {
         "title": "收缩遮罩",
         "inputs": {
-            "mask": "遮罩",
-            "shrink": "收缩量",
-            "blur": "模糊",
-            "blur_type": "模糊类型"
+            "mask": "遮罩"
         },
         "widgets": {
             "shrink": "收缩量",
@@ -362,8 +328,7 @@
     "INPAINT_StabilizeMask": {
         "title": "稳定遮罩",
         "inputs": {
-            "mask": "遮罩",
-            "epsilon": "阈值"
+            "mask": "遮罩"
         },
         "widgets": {
             "epsilon": "阈值"
