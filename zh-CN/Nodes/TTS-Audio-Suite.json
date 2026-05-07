@@ -779,7 +779,8 @@
             "language": "语言",
             "dtype": "数据类型",
             "attn_implementation": "注意力实现",
-            "compile_mode": "编译模式"
+            "compile_mode": "编译模式",
+            "asr_translate_target_language": "ASR翻译目标语言"
         },
         "widgets": {
             "instruct": "指令",
@@ -791,7 +792,8 @@
             "x_vector_only_mode": "仅X向量模式",
             "use_torch_compile": "使用PyTorch编译",
             "use_cuda_graphs": "使用CUDA图",
-            "asr_use_forced_aligner": "ASR使用强制对齐器"
+            "asr_use_forced_aligner": "ASR使用强制对齐器",
+            "Translate the speech from {source_language} into {target_language} text. Return only the translated text.": "将语音从{源语言}翻译为{目标语言}文本。仅返回翻译后的文本。"
         },
         "outputs": {
             "TTS_engine": "TTS引擎"
@@ -874,5 +876,168 @@
             "TTS_engine": "TTS引擎"
         },
         "description": "Step Audio EditX TTS引擎配置节点。\n提供零样本语音克隆的配置，支持情感/风格/速度编辑。"
+    },
+    "GraniteASREngineNode": {
+        "title": "🎤 Granite ASR 引擎",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名称",
+            "device": "设备",
+            "max_new_tokens": "最大新标记",
+            "dtype": "数据类型",
+            "attn_implementation": "注意力实现",
+            "asr_use_forced_aligner": "ASR使用强制对齐器",
+            "asr_translate_target_language": "ASR翻译目标语言",
+            "translate_the_speech_from_source_language_into": "翻译语音（从源语言到目标语言）",
+            "translate_the_speech_from_source_language_into_return_only_the_translated_text": "仅返回翻译文本",
+            "do_sample": "采样",
+            "num_beams": "beam数量",
+            "temperature": "温度",
+            "top_k": "top-k",
+            "top_p": "top-p",
+            "repetition_penalty": "重复惩罚",
+            "length_penalty": "长度惩罚",
+            "no_repeat_ngram_size": "无重复n-gram大小",
+            "early_stopping": "提前停止"
+        },
+        "outputs": {
+            "engine": "引擎"
+        }
+    },
+    "RVCDatasetPrepNode": {
+        "title": "📊 RVC 数据集准备",
+        "inputs": {
+            "opt_audio1": "音频(可选)",
+            "model_name": "模型名称"
+        },
+        "widgets": {
+            "dataset_name": "数据集名称",
+            "dataset_source": "数据集来源",
+            "training_sample_rate": "训练采样率",
+            "cpu_workers": "CPU工作线程数",
+            "chunk_seconds": "分块秒数",
+            "overlap_seconds": "重叠秒数",
+            "max_volume": "最大音量",
+            "mute_ratio": "静音比例",
+            "reuse_existing": "重用现有数据",
+            "Upload Files / Zip": "上传文件/Zip包",
+            "Upload Folder": "上传文件夹"
+        },
+        "outputs": {
+            "dataset": "训练数据集",
+            "info": "数据集信息"
+        }
+    },
+    "RVCTrainingConfigNode": {
+        "title": "🎛️ RVC 训练配置",
+        "inputs": {},
+        "widgets": {
+            "epochs": "训练周期",
+            "batch_size": "批次大小",
+            "learning_rate": "学习率",
+            "gpu_ids": "GPU IDs",
+            "num_workers": "工作线程数",
+            "fp16_run": "FP16运行",
+            "save_every_epoch": "每N个周期保存检查点",
+            "cache_data_in_gpu": "GPU缓存数据",
+            "max_checkpoints": "保留最多检查点",
+            "save_every_weights": "每次保存时导出额外权重",
+            "train_index": "训练索引",
+            "save_best_model": "保存最佳模型",
+            "best_model_threshold": "最佳模型阈值",
+            "log_every_epoch": "每周期日志",
+            "pretrained_generator": "预训练生成器",
+            "pretrained_discriminator": "预训练判别器",
+            "c_adv": "对抗损失系数",
+            "c_mel": "梅尔损失系数",
+            "c_kl": "KL正则化系数",
+            "c_fm": "特征匹配系数",
+            "c_tefs": "TEFS系数",
+            "c_hd": "谐波失真系数",
+            "c_tsi": "TSI系数",
+            "c_gp": "梯度惩罚系数",
+            "use_multiscale": "使用多尺度",
+            "use_balancer": "使用平衡器",
+            "use_pareto": "使用帕累托",
+            "fast_mode": "快速模式"
+        },
+        "outputs": {
+            "training_config": "训练配置",
+            "config_info": "配置信息"
+        },
+        "description": "类别：TTS音频套件/🎓 训练"
+    },
+    "ASRPunctuationTruecaseNode": {
+        "title": "📝 ASR 标点恢复/大小写转换",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "model": "模型",
+            "processing_scope": "处理范围",
+            "output_mode": "输出模式",
+            "lowercase_input_first": "首字母小写输入"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "TextToSRTBuilderNode": {
+        "title": "📝 文本转 SRT 构建器",
+        "inputs": {
+            "asr_data": "ASR数据",
+            "srt_options": "SRT选项"
+        },
+        "widgets": {
+            "text": "文本"
+        },
+        "outputs": {
+            "srt": "SRT字幕",
+            "timing_info": "时间信息"
+        }
+    },
+    "SRTAdvancedOptionsNode": {
+        "title": "⚙️ SRT 高级选项",
+        "inputs": {},
+        "widgets": {
+            "srt_preset": "SRT预设",
+            "srt_mode": "SRT模式",
+            "heuristic_language_profile": "启发式语言配置",
+            "tts_ready_mode": "TTS就绪模式",
+            "paragraph_mode": "段落模式",
+            "srt_max_lines": "最大行数",
+            "srt_max_chars_per_line": "每行最大字符数",
+            "srt_max_duration": "最大持续时间",
+            "srt_min_duration": "最小持续时间",
+            "srt_min_gap": "最小间隙",
+            "srt_max_cps": "最大字符/秒"
+        },
+        "outputs": {
+            "srt_options": "SRT选项"
+        }
+    },
+    "UnifiedModelTrainingNode": {
+        "title": "🎓 模型训练",
+        "inputs": {
+            "TTS_engine": "TTS引擎",
+            "training_dataset": "训练数据集",
+            "training_config": "训练配置",
+            "continue_from": "从...继续"
+        },
+        "widgets": {
+            "output_name": "输出名称",
+            "resume": "恢复训练",
+            "overwrite": "覆盖",
+            "Training Dashboard": "训练仪表板",
+            "No Active Job": "无活动任务",
+            "IDLE": "空闲",
+            "Run the node to see live training progress": "运行节点查看实时训练进度",
+            "The widget updates live while the backend writes training metrics": "当后端写入训练指标时，小部件会实时更新"
+        },
+        "outputs": {
+            "training_artifacts": "训练产物",
+            "training_info": "训练信息"
+        },
+        "description": "类别：TTS音频套件/🎓 训练"
     }
 }
