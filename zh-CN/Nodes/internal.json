@@ -810,6 +810,26 @@
             "CONDITIONING": "条件"
         }
     },
+    "LoadBackgroundRemovalModel": {
+        "title": "加载 去除背景 模型",
+        "inputs": {},
+        "widgets": {
+            "bg_removal_name": "去除背景 模型"
+        },
+        "outputs": {
+            "bg_model": "去除背景 模型"
+        }
+    },
+    "OpticalFlowLoader": {
+        "title": "加载 光流 模型",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名称"
+        },
+        "outputs": {
+            "OPTICAL_FLOW": "光流 模型"
+        }
+    },
     "InstructPixToPixConditioning": {
         "title": "指导 Pix到Pix条件",
         "inputs": {
@@ -10513,6 +10533,231 @@
             "image": "图像"
         },
         "description": "用于对图像序列进行帧插值的节点"
+    },
+    "SamplerARVideo": {
+        "title": "AR视频 采样器",
+        "inputs": {},
+        "widgets": {
+            "num_frame_per_block": "每块图像中的帧数"
+        },
+        "outputs": {
+            "Sampler": "采样器"
+        }
+    },
+    "VOIDSampler": {
+        "title": "VOID 采样器",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "Sampler": "采样器"
+        }
+    },
+    "VOIDWarpedNoiseSource": {
+        "title": "VOID 扭曲噪声源",
+        "inputs": {
+            "warped_noise": "扭曲噪声"
+        },
+        "widgets": {},
+        "outputs": {
+            "Sampler": "采样器"
+        }
+    },
+    "ARVideoI2V": {
+        "title": "AR视频 图生视频",
+        "inputs": {
+            "model": "模型",
+            "vae": "Vae",
+            "start_image": "开始图像"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "batch_size": "批大小"
+        },
+        "outputs": {},
+        "description": "AR增强现实"
+    },
+    "VOIDInpaintConditioning": {
+        "title": "VOID 重绘条件",
+        "inputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "vae": "VAE",
+            "video": "视频",
+            "quadmask": "四边形遮罩"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "batch_size": "批大小"
+        },
+        "outputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent": "Latent"
+        },
+        "description": "用于涂改的条件节点"
+    },
+    "WanDancerVideo": {
+        "title": "Wan舞者视频",
+        "inputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "vae": "VAE",
+            "clip_vision_output": "CLIP视觉输出",
+            "clip_vision_output_ref": "CLIP视觉输出参考",
+            "start_image": "开始图像",
+            "mask": "遮罩",
+            "audio_encoder_output": "音频编码输出"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度"
+        },
+        "outputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent": "Latent"
+        },
+        "description": " 点用于视频生成，支持输入正负提示词、VAE、CLIP视觉输出、参考图像、起始图像、遮罩和音频编码器输出，并输出正负提示词和Latent。"
+    },
+    "WanDancerEncodeAudio": {
+        "title": "Wan舞者 音频编码器",
+        "inputs": {
+            "audio": "音频输入"
+        },
+        "widgets": {
+            "video_frames": "视频帧",
+            "audio_inject_scale": "音频注入缩放"
+        },
+        "outputs": {
+            "audio_encoder_output": "音频编码输出",
+            "fps_string": "帧率"
+        },
+        "description": "将视频帧编码为音频的节点"
+    },
+    "EmptyARVideoLatent": {
+        "title": "空Latent AR视频",
+        "inputs": {},
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "batch_size": "批次大小"
+        },
+        "outputs": {},
+        "description": "生成 空AR视频Latent"
+    },
+    "VOIDWarpedNoise": {
+        "title": "VOID扭曲噪声",
+        "inputs": {
+            "optical_flow": "光流",
+            "video": "视频"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "batch_size": "批大小"
+        },
+        "outputs": {
+            "warped_noise": "扭曲噪声"
+        },
+        "description": "生成扭曲噪声的节点"
+    },
+    "RemoveBackground": {
+        "title": "去除背景",
+        "inputs": {
+            "image": "图像",
+            "bg_removal_model": "背景去除模型"
+        },
+        "widgets": {},
+        "outputs": {
+            "mask": "遮罩"
+        },
+        "description": "移除图像背景并生成遮罩"
+    },
+    "WanDancerPadKeyframes": {
+        "title": "Wan舞者动作关键帧",
+        "inputs": {
+            "images": "图像",
+            "audio": "音频"
+        },
+        "widgets": {
+            "segment_length": "分段长度",
+            "segment_index": "分段索引"
+        },
+        "outputs": {
+            "keyframes_sequence": "关键帧序列",
+            "keyframes_mask": "关键帧遮罩",
+            "audio_segment": "音频分段"
+        },
+        "description": "用于处理图像和音频的关键帧生成节点"
+    },
+    "WanDancerPadKeyframesList": {
+        "title": "Wan舞者动作关键帧列表",
+        "inputs": {
+            "images": "图像",
+            "audio": "音频"
+        },
+        "widgets": {
+            "segment_length": "分段长度",
+            "num_segments": "分段数量"
+        },
+        "outputs": {
+            "keyframes_sequence": "关键帧序列",
+            "keyframes_mask": "关键帧遮罩",
+            "audio_segment": "音频分段"
+        },
+        "description": "用于处理图像和音频的关键帧列表节点"
+    },
+    "VOIDQuadmaskPreprocess": {
+        "title": "VOID四边形遮罩预处理",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "dilate_width": "膨胀宽度"
+        },
+        "outputs": {
+            "quadmask": "四边形遮罩"
+        },
+        "description": "对四边形遮罩进行预处理"
+    },
+    "LumaImageNode2": {
+        "title": "Luma UNI-1 图像",
+        "inputs": {
+            "image_1": "图像 1"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "model": "模型",
+            "aspect_ratio": "宽高比",
+            "style": "风格",
+            "web_search": "网络搜索",
+            "seed": "种子"
+        },
+        "outputs": {},
+        "description": "使用 Luma UNl-1 模型从文本生成图像。"
+    },
+    "LumaImageEditNode2": {
+        "title": "Luma UNI-1 图像编辑",
+        "inputs": {
+            "source": "源路径",
+            "image_1": "图像 1"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "model": "模型",
+            "style": "风格",
+            "web_search": "网络搜索",
+            "seed": "种子"
+        },
+        "outputs": {},
+        "description": "使用 Luma UNl-1 模型根据文字提示对现有图像进行编辑。"
     },
     "SaveImageWebsocket": {
         "title": "保存图像到网络接口",
