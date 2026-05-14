@@ -106,22 +106,22 @@
         "api_version": "V1"
     },
     "LTXTiledSampler": {
-        "title": "🎲LTXT平铺取样器",
+        "title": "🎲LTXT分块采样器",
         "inputs": {
             "latent_image": " Latent图像"
         },
         "widgets": {
             "noise": "噪声",
-            "guuid": "guuid",
+            "guuid": "引导",
             "sampler": "采样器",
             "sigmas": "σ值",
-            "bypass_tiling": "绕过平铺",
-            "tile_axis": "平铺轴",
-            "n_tiles": "平铺数",
-            "tile_overlap": "平铺重叠",
-            "max_size_for_no_tile": "无平铺的最大尺寸",
+            "bypass_tiling": "绕过分块",
+            "tile_axis": "分块轴",
+            "n_tiles": "分块数",
+            "tile_overlap": "分块重叠",
+            "max_size_for_no_tile": "无分块的最大尺寸",
             "audio_pass": "音频通道",
-            "audio_carrier_tile": "音频载体平铺",
+            "audio_carrier_tile": "音频载体分块",
             "debug": "调试"
         },
         "outputs": {
@@ -129,27 +129,27 @@
             "denoised_output": "去噪输出",
             "LATENT": " Latent"
         },
-        "description": "作为 SamplerCustomAdvanced 在 LTX2 放大采样过程中的平铺插件替换。每个平铺在训练分布标记计数下运行完整的采样，然后余弦窗口融合。仅用于轻量级降噪。默认音频通道传输；tile_carrying 运行音频采样与一个选定的平铺同时进行（无需额外步骤）。设 bypass_tiling=True 以透明地作为标准单次采样的插件替代（视频+音频一起），适用于调试或不需要平铺的情况。",
+        "description": "作为 SamplerCustomAdvanced 在 LTX2 放大采样过程中的分块插件替换。每个分块在训练分布标记计数下运行完整的采样，然后余弦窗口融合。仅用于轻量级降噪。默认音频通道传输；tile_carrying 运行音频采样与一个选定的分块同时进行（无需额外步骤）。设 bypass_tiling=True 以透明地作为标准单次采样的插件替代（视频+音频一起），适用于调试或不需要分块的情况。",
         "api_version": "V1"
     },
     "LTXVLatentUpsamplerTiled": {
-        "title": "🔍LTXV Latent上采样器平铺",
+        "title": "🔍LTXV Latent上采样器分块",
         "inputs": {
             "samples": "样本",
             "vae": "VAE"
         },
         "widgets": {
             "upscale_model": "上采样模型",
-            "tile_size": "平铺大小",
+            "tile_size": "分块大小",
             "overlap": "重叠",
-            "max_size_for_no_tile": "无平铺的最大尺寸",
+            "max_size_for_no_tile": "无分块的最大尺寸",
             "rotate_for_landscape": "旋转以适应横屏",
             "debug": "调试"
         },
         "outputs": {
             "LATENT": " Latent"
         },
-        "description": "平铺插件替代 LTXV  Latent上采样器。通过在空间平铺中处理上采样并在余弦窗口重叠融合来解决极端纵横比下的色彩偏移和失真问题。在安全纵横比情况下，输出几乎与非平铺相同，在极端情况下避免了上采样模型不稳定的问题。",
+        "description": "分块插件替代 LTXV  Latent上采样器。通过在空间分块中处理上采样并在余弦窗口重叠融合来解决极端纵横比下的色彩偏移和失真问题。在安全纵横比情况下，输出几乎与非分块相同，在极端情况下避免了上采样模型不稳定的问题。",
         "api_version": "V1"
     },
     "LTXModelInspector": {
