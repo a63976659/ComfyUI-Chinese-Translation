@@ -1,0 +1,290 @@
+{
+    "LTXFaceAttentionAnchor": {
+        "title": "🩪LTX面部注意力锚点",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "face_bbox_norm": "人脸边界框归一化",
+            "strength": "强度",
+            "inject_mode": "注入模式",
+            "anchor_frame": "锚定帧",
+            "anchor_upsample": "锚定上采样",
+            "track_threshold": "跟踪阈值",
+            "face_threshold": "人脸阈值",
+            "identity_threshold": "身份阈值",
+            "depth_curve": "深度曲线",
+            "spatial_prior": "空间先验",
+            "block_index_filter": "区块索引过滤器",
+            "bypass": "旁路",
+            "debug": "调试"
+        },
+        "outputs": {
+            "model": "模型",
+            "MODEL": "MODEL"
+        },
+        "description": "v4.0: 面部区域身份锚点。缓存特征移至 LTXLatentAnchor 节点（场景级稳定）。此节点仍针对面部目标。",
+        "api_version": "V1"
+    },
+    "LTXLatentAnchor": {
+        "title": "🎯LTX Latent锚点",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "sigmas": "σ值",
+            "strength": "强度",
+            "cache_at_step": "在步骤时缓存",
+            "similarity_threshold": "相似性阈值",
+            "decay_with_distance": "随距离衰减",
+            "bypass": "旁路",
+            "advanced_mode": "高级模式",
+            "cache_mode": "缓存模式",
+            "forwards_per_step": "每步前向传递次数",
+            "cache_warmup": "缓存预热",
+            "anchor_frame": "锚定帧",
+            "depth_curve": "深度曲线",
+            "block_index_filter": "区块索引过滤器",
+            "debug": "调试"
+        },
+        "outputs": {
+            "model": "模型",
+            "MODEL": "MODEL"
+        },
+        "description": "适用于 LTXX.X 的整个场景Latent锚点。在整个采样过程中稳定提示和条件，并提高物理敏感度。通过连接 SIGMAS 来设置可预测的缓存时间。切换高级模式以访问研究参数。",
+        "api_version": "V1"
+    },
+    "LTXLatentAnchorAware": {
+        "title": "🎯 LTX Latent锚点感知",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "reference_image": "参考图像",
+            "vae": "VAE",
+            "energy_latent": "能量 Latent",
+            "sigmas": "σ值",
+            "strength": "强度",
+            "cache_at_step": "在步骤时缓存",
+            "similarity_threshold": "相似性阈值",
+            "decay_with_distance": "随距离衰减",
+            "energy_threshold": "能量阈值",
+            "bypass": "旁路",
+            "debug": "调试",
+            "advanced_mode": "高级模式",
+            "cache_mode": "缓存模式",
+            "forwards_per_step": "每步前向传递次数",
+            "cache_warmup": "缓存预热",
+            "anchor_frame": "锚定帧",
+            "depth_curve": "深度曲线",
+            "block_index_filter": "区块索引过滤器"
+        },
+        "outputs": {
+            "model": "模型",
+            "MODEL": "MODEL"
+        },
+        "description": "带有外部参考的空间能量调制的 Latent锚点。参考图像（或 Latent输入）提供空间加权；匹配本身使用运行中的 Latent（正确的特征空间）。",
+        "api_version": "V1"
+    },
+    "LTXTextAttentionAmplifier": {
+        "title": "🔊LTX文本注意力放大器",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "text_amplification": "文本放大",
+            "spatial_focus": "空间聚焦",
+            "block_index_filter": "区块索引过滤器",
+            "bypass": "旁路",
+            "debug": "调试"
+        },
+        "outputs": {
+            "model": "模型",
+            "MODEL": "MODEL"
+        },
+        "description": "放大 LTX2 文本交叉注意力（attn7）每个区块，以补偿缩放后标记数量稀释的条件影响。在放大采样期间使用，以恢复提示依从性和颜色稳定性。",
+        "api_version": "V1"
+    },
+    "LTXTiledSampler": {
+        "title": "🎲LTXT平铺取样器",
+        "inputs": {
+            "latent_image": " Latent图像"
+        },
+        "widgets": {
+            "noise": "噪声",
+            "guuid": "guuid",
+            "sampler": "采样器",
+            "sigmas": "σ值",
+            "bypass_tiling": "绕过平铺",
+            "tile_axis": "平铺轴",
+            "n_tiles": "平铺数",
+            "tile_overlap": "平铺重叠",
+            "max_size_for_no_tile": "无平铺的最大尺寸",
+            "audio_pass": "音频通道",
+            "audio_carrier_tile": "音频载体平铺",
+            "debug": "调试"
+        },
+        "outputs": {
+            "output": "输出",
+            "denoised_output": "去噪输出",
+            "LATENT": " Latent"
+        },
+        "description": "作为 SamplerCustomAdvanced 在 LTX2 放大采样过程中的平铺插件替换。每个平铺在训练分布标记计数下运行完整的采样，然后余弦窗口融合。仅用于轻量级降噪。默认音频通道传输；tile_carrying 运行音频采样与一个选定的平铺同时进行（无需额外步骤）。设 bypass_tiling=True 以透明地作为标准单次采样的插件替代（视频+音频一起），适用于调试或不需要平铺的情况。",
+        "api_version": "V1"
+    },
+    "LTXVLatentUpsamplerTiled": {
+        "title": "🔍LTXV Latent上采样器平铺",
+        "inputs": {
+            "samples": "样本",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "upscale_model": "上采样模型",
+            "tile_size": "平铺大小",
+            "overlap": "重叠",
+            "max_size_for_no_tile": "无平铺的最大尺寸",
+            "rotate_for_landscape": "旋转以适应横屏",
+            "debug": "调试"
+        },
+        "outputs": {
+            "LATENT": " Latent"
+        },
+        "description": "平铺插件替代 LTXV  Latent上采样器。通过在空间平铺中处理上采样并在余弦窗口重叠融合来解决极端纵横比下的色彩偏移和失真问题。在安全纵横比情况下，输出几乎与非平铺相同，在极端情况下避免了上采样模型不稳定的问题。",
+        "api_version": "V1"
+    },
+    "LTXModelInspector": {
+        "title": "🔍LTX模型检查器",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "name_filter": "名称筛选器",
+            "focus_path": "焦点路径",
+            "max_modules_listed": "列出的最大模块数",
+            "trace_path_contains": "追踪路径包含",
+            "max_modules_traced": "追踪的最大模块数",
+            "trace_calls_per_module": "每个模块的追踪调用次数",
+            "print_top_level": "打印顶级信息"
+        },
+        "outputs": {
+            "model": "模型",
+            "MODEL": "MODEL"
+        },
+        "description": "检查扩散模型：顶级/名称筛选器/焦点路径/追踪挂钩。",
+        "api_version": "V1"
+    },
+    "LatentCrossFadeAutoConcat": {
+        "title": "🔀 Latent交叉淡入自动拼接",
+        "inputs": {
+            "frames_1": "帧1",
+            "frames_2": "帧2"
+        },
+        "widgets": {
+            "match_spatial": "匹配空间",
+            "interpolate_mode": "插值模式",
+            "cross_fade_frames": "交叉淡入帧",
+            "fade_curve": "淡化曲线"
+        },
+        "outputs": {
+            "latent": " Latent",
+            "LATENT": " Latent"
+        },
+        "description": "自动空间匹配 + 时间拼接，可选交叉淡入。",
+        "api_version": "V1"
+    },
+    "AudioLatentStretch": {
+        "title": "音频 Latent拉伸",
+        "inputs": {
+            "audio_latent": "音频 Latent"
+        },
+        "widgets": {
+            "source_fps": "源帧率",
+            "target_fps": "目标帧率",
+            "interp_mode": "插值模式"
+        },
+        "outputs": {
+            "audio_latent": "音频 Latent",
+            "LATENT": " Latent"
+        },
+        "description": "将音频 Latent重新采样为目标帧率。推荐使用 Hermite 模式。",
+        "api_version": "V1"
+    },
+    "LatentTemporalUpsampler": {
+        "title": "🎞️Latent上上采样器",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {
+            "source_fps": "源帧率",
+            "target_fps": "目标帧率",
+            "interp_mode": "插值模式",
+            "auto_retime": "自动重定时",
+            "motion_scale": "运动缩放",
+            "spatial_sharpen": "空间锐化",
+            "ltx_safe": "LTX安全",
+            "override_frames": "覆盖帧数"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "LATENT": "Latent"
+        },
+        "description": "带有自动节奏校正的 Hermite 时间上采样。",
+        "api_version": "V1"
+    },
+    "LatentMotionSharpener": {
+        "title": "⚡Latent运动锐化器",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {
+            "base_sharpen": "基础锐化",
+            "motion_sharpen": "运动锐化",
+            "motion_thresh": "运动阈值",
+            "temporal_smooth_mask": "时间平滑遮罩"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "LATENT": "Latent"
+        },
+        "description": "根据帧间运动幅度自适应锐化。",
+        "api_version": "V1"
+    },
+    "LatentMotionRetime": {
+        "title": "⏱️Latent运动重定时器",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {
+            "source_fps": "源帧率",
+            "target_fps": "目标帧率",
+            "strength": "强度",
+            "manual_scale": "手动缩放"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "LATENT": "Latent"
+        },
+        "description": "衰减运动幅度以纠正上采样后的Latent的24->30fps节奏。",
+        "api_version": "V1"
+    },
+    "LatentTemporalInpainter": {
+        "title": "👻Latent时间修复器",
+        "inputs": {
+            "latent": "Latent数据"
+        },
+        "widgets": {
+            "anchor_sigma": "锚点sigma",
+            "ghost_sigma": "鬼影sigma",
+            "score_gamma": "评分伽玛",
+            "anchor_blend": "锚点混合",
+            "seed": "种子",
+            "debug_scores": "调试评分"
+        },
+        "outputs": {
+            "latent": "Latent数据",
+            "LATENT": "Latent数据"
+        },
+        "description": "每帧鬼影检测+目标噪声。锁定真实锚定帧。随后使用KSampler降噪至0.3-0.45。",
+        "api_version": "Vv"
+    }
+}
