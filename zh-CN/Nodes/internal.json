@@ -10011,17 +10011,21 @@
         "title": "生成文本",
         "inputs": {
             "clip": "CLIP",
-            "image": "图像"
+            "image": "图像",
+            "video": "视频",
+            "audio": "音频"
         },
         "widgets": {
             "max_length": "最大长度",
             "Sampling Mode": "采样模式",
             "temperature": "温度",
-            "top_k": "Top K采样",
-            "top_p": "Top P采样",
+            "Top K": "Top K采样",
+            "Top P": "Top P采样",
             "min_p": "最小P采样",
             "repetition_penalty": "重复惩罚",
-            "seed": "随机种子"
+            "seed": "随机种子",
+            "presence_penalty": "存在惩罚",
+            "use_default_template": "使用默认模板"
         },
         "outputs": {
             "generated_text": "生成的文字"
@@ -10758,6 +10762,22 @@
         },
         "outputs": {},
         "description": "使用 Luma UNl-1 模型根据文字提示对现有图像进行编辑。"
+    },
+    "ClaudeNode": {
+        "title": "Anthropic Claude",
+        "inputs": {
+            "source": "源路径",
+            "image_1": "图像 1"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "model": "模型",
+            "max_tokens": "最大词元数",
+            "temperature": "温度",
+            "seed": "种子"
+        },
+        "outputs": {},
+        "description": "使用Anthropic的Claude模型生成文本响应。提供一个文本提示，并可选地附上一张或多张图像以构建多模态上下文。"
     },
     "SaveImageWebsocket": {
         "title": "保存图像到网络接口",
