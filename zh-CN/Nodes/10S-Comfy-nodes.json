@@ -9,7 +9,7 @@
             "strength": "强度",
             "inject_mode": "注入模式",
             "anchor_frame": "锚定帧",
-            "anchor_upsample": "锚定上采样",
+            "anchor_upsample": "锚定放大",
             "track_threshold": "跟踪阈值",
             "face_threshold": "人脸阈值",
             "identity_threshold": "身份阈值",
@@ -99,8 +99,7 @@
             "debug": "调试"
         },
         "outputs": {
-            "model": "模型",
-            "MODEL": "MODEL"
+            "model": "模型"
         },
         "description": "放大 LTX2 文本交叉注意力（attn7）每个区块，以补偿缩放后标记数量稀释的条件影响。在放大采样期间使用，以恢复提示依从性和颜色稳定性。",
         "api_version": "V1"
@@ -133,13 +132,13 @@
         "api_version": "V1"
     },
     "LTXVLatentUpsamplerTiled": {
-        "title": "🔍LTXV Latent上采样器分块",
+        "title": "🔍LTXV Latent放大分块",
         "inputs": {
-            "samples": "样本",
+            "samples": "采样",
             "vae": "VAE"
         },
         "widgets": {
-            "upscale_model": "上采样模型",
+            "upscale_model": "放大模型",
             "tile_size": "分块大小",
             "overlap": "重叠",
             "max_size_for_no_tile": "无分块的最大尺寸",
@@ -149,7 +148,7 @@
         "outputs": {
             "LATENT": " Latent"
         },
-        "description": "分块插件替代 LTXV  Latent上采样器。通过在空间分块中处理上采样并在余弦窗口重叠融合来解决极端纵横比下的色彩偏移和失真问题。在安全纵横比情况下，输出几乎与非分块相同，在极端情况下避免了上采样模型不稳定的问题。",
+        "description": "分块插件替代 LTXV  Latent放大。通过在空间分块中处理放大并在余弦窗口重叠融合来解决极端纵横比下的色彩偏移和失真问题。在安全纵横比情况下，输出几乎与非分块相同，在极端情况下避免了放大模型不稳定的问题。",
         "api_version": "V1"
     },
     "LTXModelInspector": {
@@ -167,8 +166,7 @@
             "print_top_level": "打印顶级信息"
         },
         "outputs": {
-            "model": "模型",
-            "MODEL": "MODEL"
+            "model": "模型"
         },
         "description": "检查扩散模型：顶级/名称筛选器/焦点路径/追踪挂钩。",
         "api_version": "V1"
@@ -210,7 +208,7 @@
         "api_version": "V1"
     },
     "LatentTemporalUpsampler": {
-        "title": "🎞️Latent上上采样器",
+        "title": "🎞️Latent放大",
         "inputs": {
             "latent": "Latent"
         },
@@ -228,7 +226,7 @@
             "latent": "Latent",
             "LATENT": "Latent"
         },
-        "description": "带有自动节奏校正的 Hermite 时间上采样。",
+        "description": "带有自动节奏校正的 Hermite 时间放大。",
         "api_version": "V1"
     },
     "LatentMotionSharpener": {
@@ -264,7 +262,7 @@
             "latent": "Latent",
             "LATENT": "Latent"
         },
-        "description": "衰减运动幅度以纠正上采样后的Latent的24->30fps节奏。",
+        "description": "衰减运动幅度以纠正放大后的Latent的24->30fps节奏。",
         "api_version": "V1"
     },
     "LatentTemporalInpainter": {
