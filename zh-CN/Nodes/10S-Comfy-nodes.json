@@ -5,7 +5,7 @@
             "model": "模型"
         },
         "widgets": {
-            "face_bbox_norm": "人脸边界框归一化",
+            "face_bbox_norm": "人脸边界框标准化",
             "strength": "强度",
             "inject_mode": "注入模式",
             "anchor_frame": "锚定帧",
@@ -27,15 +27,15 @@
         "api_version": "V1"
     },
     "LTXLatentAnchor": {
-        "title": "🎯LTX Latent锚点",
+        "title": "LTXLatent锚点",
         "inputs": {
-            "model": "模型"
+            "model": "模型",
+            "sigmas": "sigmas"
         },
         "widgets": {
-            "sigmas": "σ值",
             "strength": "强度",
-            "cache_at_step": "在步骤时缓存",
-            "similarity_threshold": "相似性阈值",
+            "cache_at_step": "缓存于步骤",
+            "similarity_threshold": "相似度阈值",
             "decay_with_distance": "随距离衰减",
             "bypass": "旁路",
             "advanced_mode": "高级模式",
@@ -44,29 +44,27 @@
             "cache_warmup": "缓存预热",
             "anchor_frame": "锚定帧",
             "depth_curve": "深度曲线",
-            "block_index_filter": "区块索引过滤器",
+            "block_index_filter": "区块索引过滤",
             "debug": "调试"
         },
         "outputs": {
-            "model": "模型",
-            "MODEL": "MODEL"
-        },
-        "description": "适用于 LTXX.X 的整个场景Latent锚点。在整个采样过程中稳定提示和条件，并提高物理敏感度。通过连接 SIGMAS 来设置可预测的缓存时间。切换高级模式以访问研究参数。",
-        "api_version": "V1"
-    },
-    "LTXLatentAnchorAware": {
-        "title": "🎯 LTX Latent锚点感知",
-        "inputs": {
             "model": "模型"
         },
-        "widgets": {
+        "description": "适用于LTX2.x的整体场景Latent锚点。稳定提示+条件和物理感知力，在长时间采样过程中保持一致。连接SIGMAS以获得可预测的缓存时间。切换到高级模式访问研究参数。"
+    },
+    "LTXLatentAnchorAware": {
+        "title": "LTXLatent锚点感知",
+        "inputs": {
+            "model": "模型",
             "reference_image": "参考图像",
             "vae": "VAE",
-            "energy_latent": "能量 Latent",
-            "sigmas": "σ值",
+            "energy_latent": "能量Latent",
+            "sigmas": "sigma"
+        },
+        "widgets": {
             "strength": "强度",
-            "cache_at_step": "在步骤时缓存",
-            "similarity_threshold": "相似性阈值",
+            "cache_at_step": "缓存于步骤",
+            "similarity_threshold": "相似度阈值",
             "decay_with_distance": "随距离衰减",
             "energy_threshold": "能量阈值",
             "bypass": "旁路",
@@ -77,212 +75,322 @@
             "cache_warmup": "缓存预热",
             "anchor_frame": "锚定帧",
             "depth_curve": "深度曲线",
-            "block_index_filter": "区块索引过滤器"
+            "block_index_filter": "区块索引过滤"
         },
         "outputs": {
-            "model": "模型",
-            "MODEL": "MODEL"
+            "model": "模型"
         },
-        "description": "带有外部参考的空间能量调制的 Latent锚点。参考图像（或 Latent输入）提供空间加权；匹配本身使用运行中的 Latent（正确的特征空间）。",
-        "api_version": "V1"
+        "description": "带有可选的空间能量调节的Latent锚点，来自外部参考。参考图（或Latent输入）提供空间权重；匹配自身则使用运行中的Latent（正确的特征空间）。"
     },
     "LTXTextAttentionAmplifier": {
-        "title": "🔊LTX文本注意力放大器",
+        "title": "LTX文本注意力放大器",
         "inputs": {
             "model": "模型"
         },
         "widgets": {
-            "text_amplification": "文本放大",
-            "spatial_focus": "空间聚焦",
-            "block_index_filter": "区块索引过滤器",
-            "bypass": "旁路",
+            "text_amplification": "文本注意力放大",
+            "spatial_focus": "空间焦点",
+            "block_index_filter": "区块索引过滤",
+            "bypass": "绕过",
             "debug": "调试"
         },
         "outputs": {
             "model": "模型"
         },
-        "description": "放大 LTX2 文本交叉注意力（attn7）每个区块，以补偿缩放后标记数量稀释的条件影响。在放大采样期间使用，以恢复提示依从性和颜色稳定性。",
-        "api_version": "V1"
+        "description": "放大LTX2文本交叉注意力（attn2）每个区块，以补偿在高token数量扩增时的条件稀释现象。在上采样阶段使用，可恢复提示遵循性与色彩稳定性。"
     },
     "LTXTiledSampler": {
-        "title": "🎲LTXT分块采样器",
+        "title": "LTX平铺采样器",
         "inputs": {
-            "latent_image": " Latent图像"
+            "noise": "噪声",
+            "guider": "引导器",
+            "sampler": "采样器",
+            "sigmas": "sigma",
+            "latent_image": "Latent在图像"
         },
         "widgets": {
-            "noise": "噪声",
-            "guuid": "引导",
-            "sampler": "采样器",
-            "sigmas": "σ值",
-            "bypass_tiling": "绕过分块",
-            "tile_axis": "分块轴",
-            "n_tiles": "分块数",
-            "tile_overlap": "分块重叠",
-            "max_size_for_no_tile": "无分块的最大尺寸",
-            "audio_pass": "音频通道",
-            "audio_carrier_tile": "音频载体分块",
+            "bypass_tiling": "跳过平铺",
+            "tile_axis": "平铺轴",
+            "n_tiles": "平铺数量",
+            "tile_overlap": "平铺重叠",
+            "max_size_for_no_tile": "无平铺的最大尺寸",
+            "audio_pass": "音频通过",
+            "audio_carrier_tile": "音频载体平铺",
             "debug": "调试"
         },
         "outputs": {
             "output": "输出",
-            "denoised_output": "去噪输出",
-            "LATENT": " Latent"
+            "denoised_output": "去噪输出"
         },
-        "description": "作为 SamplerCustomAdvanced 在 LTX2 放大采样过程中的分块插件替换。每个分块在训练分布标记计数下运行完整的采样，然后余弦窗口融合。仅用于轻量级降噪。默认音频通道传输；tile_carrying 运行音频采样与一个选定的分块同时进行（无需额外步骤）。设 bypass_tiling=True 以透明地作为标准单次采样的插件替代（视频+音频一起），适用于调试或不需要分块的情况。",
-        "api_version": "V1"
+        "description": "适用于LTX2上采样阶段轻度细化的平铺式drop-in替换SamplerCustomAdvanced。每个平铺运行完整的训练分布token计数采样，然后余弦混合。仅用于轻度去噪。默认音频通过；audio_carrier_tile运行音频采样与一个选定的平铺同时进行（无需额外步骤）。设置bypass_tiling=true以作为标准单次采样的透明通过，适用于调试或不需要平铺的情况。"
     },
     "LTXVLatentUpsamplerTiled": {
-        "title": "🔍LTXV Latent放大分块",
+        "title": "LTXV Latent 上采样器（瓦片版）",
         "inputs": {
-            "samples": "采样",
+            "samples": "样本",
+            "upscale_model": "超分辨率模型",
             "vae": "VAE"
         },
         "widgets": {
-            "upscale_model": "放大模型",
-            "tile_size": "分块大小",
+            "tile_size": "瓦片大小",
             "overlap": "重叠",
-            "max_size_for_no_tile": "无分块的最大尺寸",
-            "rotate_for_landscape": "旋转以适应横屏",
+            "max_size_for_no_tile": "无需瓦片的最大尺寸",
+            "rotate_for_landscape": "旋转以适配横屏",
             "debug": "调试"
         },
-        "outputs": {
-            "LATENT": " Latent"
-        },
-        "description": "分块插件替代 LTXV  Latent放大。通过在空间分块中处理放大并在余弦窗口重叠融合来解决极端纵横比下的色彩偏移和失真问题。在安全纵横比情况下，输出几乎与非分块相同，在极端情况下避免了放大模型不稳定的问题。",
-        "api_version": "V1"
+        "outputs": {},
+        "description": "LTXVLatentUpsampler 的瓦片式滴入替代方案。通过在空间瓦片上执行上采样，并使用余弦窗重叠融合，有效解决极端纵横比下的色彩偏移和失真问题。在安全纵横比场景下，输出与非瓦片版本几乎一致；在极端情况则避免了超分辨率模型的不稳定现象。"
     },
     "LTXModelInspector": {
-        "title": "🔍LTX模型检查器",
+        "title": "LTX模型检测器",
         "inputs": {
             "model": "模型"
         },
         "widgets": {
-            "name_filter": "名称筛选器",
-            "focus_path": "焦点路径",
-            "max_modules_listed": "列出的最大模块数",
-            "trace_path_contains": "追踪路径包含",
-            "max_modules_traced": "追踪的最大模块数",
-            "trace_calls_per_module": "每个模块的追踪调用次数",
-            "print_top_level": "打印顶级信息"
+            "name_filter": "名称过滤器",
+            "focus_path": "聚焦路径",
+            "max_modules_listed": "列出的最大模块数量",
+            "trace_path_contains": "跟踪路径包含",
+            "max_modules_traced": "追踪的最大模块数量",
+            "trace_calls_per_module": "每个模块的跟踪调用次数",
+            "print_top_level": "打印顶层信息"
         },
         "outputs": {
             "model": "模型"
         },
-        "description": "检查扩散模型：顶级/名称筛选器/焦点路径/追踪挂钩。",
-        "api_version": "V1"
+        "description": "检查扩散模型：顶层结构、名称过滤、聚焦路径及跟踪钩子。"
     },
     "LatentCrossFadeAutoConcat": {
-        "title": "🔀 Latent交叉淡入自动拼接",
+        "title": "Latent交叉淡入自拼接",
         "inputs": {
-            "frames_1": "帧1",
-            "frames_2": "帧2"
+            "frames_0": "帧_0",
+            "frames_1": "帧_1"
         },
         "widgets": {
-            "match_spatial": "匹配空间",
+            "match_spatial": "空间匹配",
             "interpolate_mode": "插值模式",
             "cross_fade_frames": "交叉淡入帧",
-            "fade_curve": "淡化曲线"
+            "fade_curve": "淡出曲线"
         },
         "outputs": {
-            "latent": " Latent",
-            "LATENT": " Latent"
+            "latent": "Latent"
         },
-        "description": "自动空间匹配 + 时间拼接，可选交叉淡入。",
-        "api_version": "V1"
+        "description": "自动空间匹配 + 时间拼接，支持可选交叉淡入。"
     },
     "AudioLatentStretch": {
-        "title": "音频 Latent拉伸",
+        "title": "音频Latent拉伸",
         "inputs": {
-            "audio_latent": "音频 Latent"
+            "audio_latent": "音频Latent"
         },
         "widgets": {
-            "source_fps": "源帧率",
-            "target_fps": "目标帧率",
+            "source_fps": "源FPS",
+            "target_fps": "目标FPS",
             "interp_mode": "插值模式"
         },
         "outputs": {
-            "audio_latent": "音频 Latent",
-            "LATENT": " Latent"
+            "audio_latent": "音频Latent"
         },
-        "description": "将音频 Latent重新采样为目标帧率。推荐使用 Hermite 模式。",
-        "api_version": "V1"
+        "description": "将音频Latent重新采样至目标FPS。推荐使用Hermite模式。"
     },
     "LatentTemporalUpsampler": {
-        "title": "🎞️Latent放大",
+        "title": "Latent时间上采样器",
         "inputs": {
             "latent": "Latent"
         },
         "widgets": {
-            "source_fps": "源帧率",
-            "target_fps": "目标帧率",
+            "source_fps": "源FPS",
+            "target_fps": "目标FPS",
             "interp_mode": "插值模式",
             "auto_retime": "自动重定时",
-            "motion_scale": "运动缩放",
+            "motion_scale": "运动比例",
             "spatial_sharpen": "空间锐化",
             "ltx_safe": "LTX安全",
             "override_frames": "覆盖帧数"
         },
         "outputs": {
-            "latent": "Latent",
-            "LATENT": "Latent"
+            "latent": "Latent"
         },
-        "description": "带有自动节奏校正的 Hermite 时间放大。",
-        "api_version": "V1"
+        "description": "基于Hermite的时间上采样，具备自动节奏校正功能。"
     },
     "LatentMotionSharpener": {
-        "title": "⚡Latent运动锐化器",
+        "title": "Latent运动锐化器",
         "inputs": {
-            "latent": "Latent"
+            "latent": "latent"
         },
         "widgets": {
             "base_sharpen": "基础锐化",
             "motion_sharpen": "运动锐化",
             "motion_thresh": "运动阈值",
-            "temporal_smooth_mask": "时间平滑遮罩"
+            "temporal_smooth_mask": "时域平滑遮罩"
         },
         "outputs": {
-            "latent": "Latent",
-            "LATENT": "Latent"
+            "latent": "latent"
         },
-        "description": "根据帧间运动幅度自适应锐化。",
-        "api_version": "V1"
+        "description": "根据帧间运动幅度自适应锐化。"
     },
     "LatentMotionRetime": {
-        "title": "⏱️Latent运动重定时器",
+        "title": "Latent运动重定时",
         "inputs": {
             "latent": "Latent"
         },
         "widgets": {
-            "source_fps": "源帧率",
-            "target_fps": "目标帧率",
+            "source_fps": "源FPS",
+            "target_fps": "目标FPS",
             "strength": "强度",
             "manual_scale": "手动缩放"
         },
         "outputs": {
-            "latent": "Latent",
-            "LATENT": "Latent"
+            "latent": "latent"
         },
-        "description": "衰减运动幅度以纠正放大后的Latent的24->30fps节奏。",
-        "api_version": "V1"
+        "description": "衰减运动幅度以纠正上采样的Latent上的24->30fps节奏。"
     },
     "LatentTemporalInpainter": {
-        "title": "👻Latent时间修复器",
+        "title": "Latent时间修复器",
         "inputs": {
-            "latent": "Latent数据"
+            "latent": "latent"
         },
         "widgets": {
-            "anchor_sigma": "锚点sigma",
-            "ghost_sigma": "鬼影sigma",
-            "score_gamma": "评分伽玛",
-            "anchor_blend": "锚点混合",
+            "anchor_sigma": "锚点σ",
+            "ghost_sigma": "鬼影σ",
+            "score_gamma": "分数γ",
+            "anchor_blend": "锚点融合",
             "seed": "种子",
-            "debug_scores": "调试评分"
+            "debug_scores": "调试得分"
         },
         "outputs": {
-            "latent": "Latent数据",
-            "LATENT": "Latent数据"
+            "latent": "latent"
         },
-        "description": "每帧鬼影检测+目标噪声。锁定真实锚定帧。随后使用KSampler降噪至0.3-0.45。",
-        "api_version": "Vv"
+        "description": "每帧鬼影检测+目标噪声。锁定真实锚定帧。随后使用KSampler去噪0.3-0.45。"
+    },
+    "LTXActionAmplifier": {
+        "title": "LTX动作放大器",
+        "inputs": {
+            "model": "模型",
+            "clip": "clip",
+            "positive": "正向提示"
+        },
+        "widgets": {
+            "amplification_strength": "放大强度",
+            "action_vocabulary_text": "动作词汇文本",
+            "scale_ceiling": "缩放上限",
+            "auto_threshold": "自动阈值",
+            "similarity_threshold": "相似度阈值",
+            "similarity_sharpness": "相似度锐化",
+            "amplification_floor": "放大下限",
+            "top_k": "Top-K",
+            "bypass": "旁路",
+            "debug": "调试"
+        },
+        "outputs": {},
+        "description": "在正向提示中选择性地放大动作/运动文本标记，增强匹配动词标记的K/V幅度，保留描述性标记不变。与LikenessSemanticClamp对称相反，替代了TextAmplifier的全面比例调整方法。"
+    },
+    "LTXFaceDetector": {
+        "title": "LTX人脸识别检测器",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "padding": "填充",
+            "fallback_bbox": "备用边框",
+            "debug": "调试"
+        },
+        "outputs": {
+            "face_bbox": "人脸边框"
+        },
+        "description": "在图像中检测人脸，发出标准化的边框字符串。将输出连接至LikenessGuide的face_bbox_within_reference、LikenessAnchor的override_face_bbox/frame_0_bbox，或face_anchor的face_bbox_norm。解耦检测与节点逻辑，使多个节点可共享同一边框。"
+    },
+    "LTXLikenessAnchor": {
+        "title": "LTX 相似性锚点",
+        "inputs": {
+            "model": "模型",
+            "reference_info": "参考信息"
+        },
+        "widgets": {
+            "strength": "强度",
+            "reference_source": "参考来源",
+            "frame_0_bbox": "帧0边框",
+            "similarity_threshold": "相似度阈值",
+            "decay_with_distance": "随距离衰减",
+            "bypass": "旁路",
+            "debug": "调试",
+            "advanced_mode": "高级模式",
+            "depth_curve": "深度曲线",
+            "block_index_filter": "区块索引过滤",
+            "similarity_sharpness": "相似度锐化",
+            "override_face_bbox": "覆盖人脸边框",
+            "skip_when_sigma_above": "当sigma超过时跳过",
+            "pull_mode": "拉取模式",
+            "late_block_falloff": "后期区块衰减"
+        },
+        "outputs": {},
+        "description": "每个区块的注意力向参考特征拉近以保持身份一致。两种模式：(1) 从LikenessGuide获取参考信息并使用其附加的参考帧；(2) 不连接参考信息，该节点使用Latent的帧0作为参考——适用于i2v工作流，其中帧0是条件起始图像。v1.2采用定向拉取模式（保留颜色）。"
+    },
+    "LTXLikenessGuide": {
+        "title": "LTX相似性引导",
+        "inputs": {
+            "positive": "正向提示",
+            "negative": "负向提示",
+            "vae": "vae",
+            "latent": "latent",
+            "image": "参考图像"
+        },
+        "widgets": {
+            "strength": "强度",
+            "placement_mode": "放置模式",
+            "face_detect": "人脸检测",
+            "reference_mask_mode": "参考遮罩模式",
+            "face_padding": "人脸填充",
+            "crf": "CRF",
+            "blur_radius": "模糊半径",
+            "interpolation": "插值",
+            "crop": "裁剪",
+            "attention_strength": "注意力强度",
+            "face_bbox_within_reference": "人脸边框在参考内",
+            "emit_latent": "发射latent",
+            "debug": "调试"
+        },
+        "outputs": {
+            "positive": "正向提示",
+            "negative": "负向提示",
+            "latent": "latent",
+            "reference_info": "参考信息"
+        },
+        "description": "附加相似性参考图像到条件设置以保存身份。发射修改后的正向/负向条件（用于Guider）和参考信息元数据（用于LikenessAnchor）。默认情况下，latent输出是对输入的通过——无需扩展，也无需裁剪。引导的价值来自于其与模型及其bbox元数据的条件交互，而不是来自latent修改。"
+    },
+    "LTXLikenessCrop": {
+        "title": "LTX相似性裁剪",
+        "inputs": {
+            "latent": "latent",
+            "reference_info": "参考信息"
+        },
+        "widgets": {
+            "debug": "调试"
+        },
+        "outputs": {},
+        "description": "在VAE解码前从Latent裁剪相似性参考帧。反转LTXLikenessGuide的emit_latent=扩展模式。仅当引导发出扩展latent时使用。若引导处于通过模式（默认），则无需使用此节点——可直接将latent连接至VAE解码。"
+    },
+    "LTXLikenessSemanticClamp": {
+        "title": "LTX相似性语义限制器",
+        "inputs": {
+            "model": "模型",
+            "clip": "clip",
+            "positive": "正向提示",
+            "reference_info": "参考信息"
+        },
+        "widgets": {
+            "suppression_strength": "抑制强度",
+            "face_modifier_text": "面部修饰文本",
+            "similarity_threshold": "相似度阈值",
+            "auto_threshold": "自动阈值",
+            "similarity_sharpness": "相似度锐度",
+            "suppression_floor": "抑制底限",
+            "top_k": "top_k",
+            "soft_edge_frac": "软边缘比例",
+            "override_face_bbox": "覆盖人脸边框",
+            "bypass": "绕过",
+            "debug": "调试"
+        },
+        "outputs": {},
+        "description": "针对attn2区域内的人脸边框区域，实现基于语义的文本标记抑制。通过嵌入空间与修饰词汇表的对应关系，识别提示中的面部修饰标记，并选择性地抑制这些标记对该区域的注意力。替代了已弃用的LikenessClamp的统一幅度缩放方法。"
     }
 }
