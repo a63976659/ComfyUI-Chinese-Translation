@@ -1281,8 +1281,8 @@
         },
         "widgets": {},
         "outputs": {
-            "conds_512": "512分辨率cond",
-            "conds_1024": "1024分辨率cond",
+            "conds_512": "512分辨率条件",
+            "conds_1024": "1024分辨率条件",
             "views_list": "视角列表",
             "pipeline": "管线"
         },
@@ -1464,8 +1464,7 @@
             "preview_images": "预览图",
             "IMAGE": "图像"
         },
-        "description": "\n根据3D网格几何体生成预览图。\n\n参数:\n- trimesh: 3D网格几何体\n- 视角数量: 渲染视角的数量（围绕中心旋转\n- 分辨率: 渲染分辨率\n- 渲染模式: 渲染风格（(正常, 黏土, 底色)\n",
-        "api_version": "V1"
+        "description": "\n根据3D网格几何体生成预览图。\n\n参数:\n- trimesh: 3D网格几何体\n- 视角数量: 渲染视角的数量（围绕中心旋转\n- 分辨率: 渲染分辨率\n- 渲染模式: 渲染风格（(正常, 黏土, 底色)\n"
     },
     "Trellis2RenderVideo": {
         "title": "生成旋转视频",
@@ -1482,8 +1481,7 @@
             "video_path": "视频路径",
             "STRING": "字符串"
         },
-        "description": "\n根据3D网格几何体生成一个旋转视频。\n\n参数:\n- trimesh: 3D网格几何体\n- num_frames: 视频中的帧数\n- fps: 每秒帧数\n- resolution: 渲染分辨率\n- filename_prefix: 输出文件名的前缀\n",
-        "api_version": "V1"
+        "description": "\n根据3D网格几何体生成一个旋转视频。\n\n参数:\n- trimesh: 3D网格几何体\n- num_frames: 视频中的帧数\n- fps: 每秒帧数\n- resolution: 渲染分辨率\n- filename_prefix: 输出文件名的前缀\n"
     },
     "Trellis2GetConditioning": {
         "title": "获取条件",
@@ -1501,8 +1499,7 @@
             "TRELLIS2_CONDITIONING": "TRELLIS2 条件",
             "IMAGE": "图像"
         },
-        "description": "\n使用DinoV3预处理图像并提取视觉特征。\n\n此节点处理以下操作:\n1. 应用遮罩作为alpha通道\n2. 裁剪到对象边界框\n3. alpha预乘法\n4. 使用DinoV3提取特征\n\n参数:\n- model_config: 加载的TRELLIS.配置\n- image: 输入图像（RGB格式\n- mask: 前景遮罩（白色=物体，黑色=背景\n使用任何背景移除节点（BiRefNet、rembg等）来生成遮罩。",
-        "api_version": "V1"
+        "description": "\n使用DinoV3预处理图像并提取视觉特征。\n\n此节点处理以下操作:\n1. 应用遮罩作为alpha通道\n2. 裁剪到对象边界框\n3. alpha预乘法\n4. 使用DinoV3提取特征\n\n参数:\n- model_config: 加载的TRELLIS.配置\n- image: 输入图像（RGB格式\n- mask: 前景遮罩（白色=物体，黑色=背景\n使用任何背景移除节点（BiRefNet、rembg等）来生成遮罩。"
     },
     "Trellis2ImageToShape": {
         "title": "从图像生成形状",
@@ -1524,8 +1521,7 @@
             "TRELLIS2_SHAPE_RESULT": "TRELLIS2 形状结果",
             "TRIMESH": "三角网格"
         },
-        "description": "\n从图像条件生成3D形状。\n\n此节点生成形状几何体（无纹理/PBR材质）。\n连接shape_result到“形状到纹理网格”以获得PBR材质。\n\n参数:\n- model_config: 加载的模型配置（（分辨率在加载模型节点中设置）\n- conditioning: “获取条件”节点的DinoV3条件\n- seed: 用于再现性的随机种子\n- ss_*: 稀疏结构采样参数\n- shape_*: 形状潜在采样参数\n\n返回:\n- shape_result: 用于纹理生成的形状数据\n- mesh: 预览/导出的未着色网格\n",
-        "api_version": "V1"
+        "description": "\n从图像条件生成3D形状。\n\n此节点生成形状几何体（无纹理/PBR材质）。\n连接shape_result到“形状到纹理网格”以获得PBR材质。\n\n参数:\n- model_config: 加载的模型配置（（分辨率在加载模型节点中设置）\n- conditioning: “获取条件”节点的DinoV3条件\n- seed: 用于再现性的随机种子\n- ss_*: 稀疏结构采样参数\n- shape_*: 形状潜在采样参数\n\n返回:\n- shape_result: 用于纹理生成的形状数据\n- mesh: 预览/导出的未着色网格\n"
     },
     "Trellis2ShapeToTexturedMesh": {
         "title": "从形状生成纹理网格",
@@ -1544,8 +1540,7 @@
             "voxelgrid_npz_path": "体素网格路径(.npz文件)",
             "STRING": "字符串"
         },
-        "description": "\n从形状生成具有PBR材质的纹理网格。\n\n从“图像到形状”节点获取shape_result，并生成PBR材质:\n- base_color (RGB) - metallic - roughness - alpha\n\n参数:\n- model_config: 加载的模型配置\n- conditioning: DinoV3条件（与用于形状的相同\n- shape_result: “图像到形状”节点的形状数据\n- seed: 用于纹理变异的随机种子\n- tex_*: 纹理采样参数\n\n返回:\n- mesh_glb_path: 网格几何路径(.glb文件)\n- voxelgrid_npz_path: 体素网格数据路径(.npz文件包括坐标、属性、顶点、面等)\n",
-        "api_version": "V1"
+        "description": "\n从形状生成具有PBR材质的纹理网格。\n\n从“图像到形状”节点获取shape_result，并生成PBR材质:\n- base_color (RGB) - metallic - roughness - alpha\n\n参数:\n- model_config: 加载的模型配置\n- conditioning: DinoV3条件（与用于形状的相同\n- shape_result: “图像到形状”节点的形状数据\n- seed: 用于纹理变异的随机种子\n- tex_*: 纹理采样参数\n\n返回:\n- mesh_glb_path: 网格几何路径(.glb文件)\n- voxelgrid_npz_path: 体素网格数据路径(.npz文件包括坐标、属性、顶点、面等)\n"
     },
     "Trellis2RemoveBackground": {
         "title": "移除背景",
@@ -1561,8 +1556,7 @@
             "IMAGE": "图像",
             "MASK": "遮罩"
         },
-        "description": "\n使用BiRefNet移除图像的背景（同TRELLIS rembg)。\n\n此节点使用BiRefNet分割模型提取前景遮罩。\n遮罩可用于“获取条件”节点。\n\n参数:\n- image: 输入RGB图像\n- low_vram: 当不使用时将模型移动到CPU（较慢但节省显存)\n\n返回:\n- image: 原始图像（未更改)\n- mask: 前景遮罩(白色=物体，黑色=背景)\n",
-        "api_version": "V1"
+        "description": "\n使用BiRefNet移除图像的背景（同TRELLIS rembg)。\n\n此节点使用BiRefNet分割模型提取前景遮罩。\n遮罩可用于“获取条件”节点。\n\n参数:\n- image: 输入RGB图像\n- low_vram: 当不使用时将模型移动到CPU（较慢但节省显存)\n\n返回:\n- image: 原始图像（未更改)\n- mask: 前景遮罩(白色=物体，黑色=背景)\n"
     },
     "LoadTrellis2Models": {
         "title": "加载Trellis2模型",
@@ -1576,8 +1570,7 @@
             "model_config": "模型配置",
             "TRELLIS2_MODEL_CONFIG": "TRELLIS2 模型配置"
         },
-        "description": "\n加载用于图像到3D生成的Trellis2模型配置。\n\n此节点创建一个配置对象，推理节点使用该对象按需加载模型。\n\n分辨率模式:\n- 512: 快速，较低质量\n- 1024_cascade: 最高质量，使用512->1024级联\n- 1536_cascade: 最高分辨率输出\n\n注意力后端:\n- auto: 最佳可用（(saseattn > flash_attn > xformers > sdpa)\n- flash_attn: FlashAttention (需要flash_attn包)\n- xformers: 内存高效注意力 (需要xformers包)\n- sdpa: PyTorch内置scaled_dot_product_attention (PyTorch >= 2.0)\n- sageattn: SageAttention (最快，需要sageattention包)\n",
-        "api_version": "V1"
+        "description": "\n加载用于图像到3D生成的Trellis2模型配置。\n\n此节点创建一个配置对象，推理节点使用该对象按需加载模型。\n\n分辨率模式:\n- 512: 快速，较低质量\n- 1024_cascade: 最高质量，使用512->1024级联\n- 1536_cascade: 最高分辨率输出\n\n注意力后端:\n- auto: 最佳可用（(saseattn > flash_attn > xformers > sdpa)\n- flash_attn: FlashAttention (需要flash_attn包)\n- xformers: 内存高效注意力 (需要xformers包)\n- sdpa: PyTorch内置scaled_dot_product_attention (PyTorch >= 2.0)\n- sageattn: SageAttention (最快，需要sageattention包)\n"
     },
     "Trellis2LoadSSFlowModel": {
         "title": "加载稀疏结构流模型",
@@ -1589,8 +1582,7 @@
             "model": "模型",
             "MODEL": "模型"
         },
-        "description": "\n将稀疏结构流模型包装为标准ComfyUI MODEL。\n\n此节点将流模型封装在ComfyUI的BaseModel/ModelPatcher系统中\n以便KSampler可以驱动它，使用任何取样器/调度程序。\n\n将输出MODEL连接到KSampler的'model'输入。\n使用Trellis2SSConditioning进行正向/负向条件。\n使用Trellis2Empty3DLatent作为初始Latent。\n",
-        "api_version": "V1"
+        "description": "\n将稀疏结构流模型包装为标准ComfyUI MODEL。\n\n此节点将流模型封装在ComfyUI的BaseModel/ModelPatcher系统中\n以便KSampler可以驱动它，使用任何取样器/调度程序。\n\n将输出MODEL连接到KSampler的'model'输入。\n使用Trellis2SSConditioning进行正向/负向条件。\n使用Trellis2Empty3DLatent作为初始Latent。\n"
     },
     "Trellis2SSConditioning": {
         "title": "转换Trellis2 DinoV3条件",
@@ -1602,8 +1594,7 @@
             "positive": "正面条件",
             "negative": "负面条件"
         },
-        "description": "\n将Trellis2 DinoV3条件转换为标准ComfyUI 条件。\n\n接受‘Trellis2 获取条件’的输出并产生\n兼容KSampler的正面/负面条件。\n\n将'positive'连接到KSampler的正面输入。\n将'negative'连接到KSampler的负面输入。\n",
-        "api_version": "V1"
+        "description": "\n将Trellis2 DinoV3条件转换为标准ComfyUI 条件。\n\n接受‘Trellis2 获取条件’的输出并产生\n兼容KSampler的正面/负面条件。\n\n将'positive'连接到KSampler的正面输入。\n将'negative'连接到KSampler的负面输入。\n"
     },
     "Trellis2Empty3DLatent": {
         "title": "创建空3D Latent",
@@ -1616,8 +1607,7 @@
         "outputs": {
             "LATENT": "Latent"
         },
-        "description": "\n为稀疏结构采样创建一个空的3DLatent张量。\n\n读取模型的分辨率和通道计数以创建正确的形状:[批量, 通道, 分辨率, 分辨率, 分辨率]。\n\n对于默认Trellis2模型:[1, 8, 16, 16, 16]。\n",
-        "api_version": "V1"
+        "description": "\n为稀疏结构采样创建一个空的3DLatent张量。\n\n读取模型的分辨率和通道计数以创建正确的形状:[批量, 通道, 分辨率, 分辨率, 分辨率]。\n\n对于默认Trellis2模型:[1, 8, 16, 16, 16]。\n"
     },
     "Trellis2ApplyGuidanceInterval": {
         "title": "应用指导间隔",
@@ -1631,8 +1621,7 @@
         "outputs": {
             "MODEL": "模型"
         },
-        "description": "\n在采样过程中控制何时激活CFG。\n\n对于TRELLIS2流匹配，sigma从1.0（纯噪声）变化到0.0（干净数据）。\n- （0.0, 1.0）= 始终应用CFG（默认设置，与标准KSampler相同）\n- （0.2, 0.8）= 当sigma处于0.2和 0.8之间时才应用CFG\n\n在该区间外，只使用条件预测（无CFG）。",
-        "api_version": "V1"
+        "description": "\n在采样过程中控制何时激活CFG。\n\n对于TRELLIS2流匹配，sigma从1.0（纯噪声）变化到0.0（干净数据）。\n- （0.0, 1.0）= 始终应用CFG（默认设置，与标准KSampler相同）\n- （0.2, 0.8）= 当sigma处于0.2和 0.8之间时才应用CFG\n\n在该区间外，只使用条件预测（无CFG）。"
     },
     "Trellis2DecodeSSLatent": {
         "title": "解码稀疏结构Latent",
@@ -1647,8 +1636,7 @@
             "coords": "坐标",
             "TRELLIS2_SS_COORDCOORD": "Trellis2坐标"
         },
-        "description": "\n将稀疏结构Latent解码为体素坐标。\n\n从KSampler采样的潜在特征，并执行以下步骤：\n1. 运行SparseStructureDecoder（（logits -> 二进制占用率）\n2. 可选地通过最大池化下采样至目标分辨率\n3. 提取活动体素坐标\n\n输出坐标可以传递给后续形状生成节点。",
-        "api_version": "V1"
+        "description": "\n将稀疏结构Latent解码为体素坐标。\n\n从KSampler采样的潜在特征，并执行以下步骤：\n1. 运行SparseStructureDecoder（（logits -> 二进制占用率）\n2. 可选地通过最大池化下采样至目标分辨率\n3. 提取活动体素坐标\n\n输出坐标可以传递给后续形状生成节点。"
     },
     "Trellis2Simplify": {
         "title": "Trellis2 简化网格",
@@ -1665,8 +1653,7 @@
         "outputs": {
             "trimesh": "三角网格"
         },
-        "description": "\n将网格简化为目标面数。\n\n使用CuMesh进行GPU加速简化。\n\n参数：\n- target_face_count: 目标面数\n- fill_holes: 在简化前填充小孔洞\n- fill_holes_perimeter: 要填充的最大孔洞周长\n- remesh: 应用双轮廓重新网格化以获得更清洁的拓扑结构\n- remesh_band: 重新网格化带宽",
-        "api_version": "V1"
+        "description": "\n将网格简化为目标面数。\n\n使用CuMesh进行GPU加速简化。\n\n参数：\n- target_face_count: 目标面数\n- fill_holes: 在简化前填充小孔洞\n- fill_holes_perimeter: 要填充的最大孔洞周长\n- remesh: 应用双轮廓重新网格化以获得更清洁的拓扑结构\n- remesh_band: 重新网格化带宽"
     },
     "Trellis2UVUnwrap": {
         "title": "Trellis2 UV展开网格",
@@ -1682,8 +1669,7 @@
         "outputs": {
             "trimesh": "三角网格"
         },
-        "description": "\n使用xatlas对网格进行UV展开。\n\n仅创建UV贴图，不烘焙纹理。使用Rasterize PBR节点之后再进行纹理烘焙。\n\n参数：\n- chart_cone_angle: 图表聚类阈值（度）\n- chart_refine_iterations: 优化UV图表\n- chart_global_iterations: 全局UV优化迭代次数\n- chart_smooth_strength: UV平滑强度\n\n提示：先简化网格！1000万面数的UV展开需要很长时间。",
-        "api_version": "V1"
+        "description": "\n使用xatlas对网格进行UV展开。\n\n仅创建UV贴图，不烘焙纹理。使用Rasterize PBR节点之后再进行纹理烘焙。\n\n参数：\n- chart_cone_angle: 图表聚类阈值（度）\n- chart_refine_iterations: 优化UV图表\n- chart_global_iterations: 全局UV优化迭代次数\n- chart_smooth_strength: UV平滑强度\n\n提示：先简化网格！1000万面数的UV展开需要很长时间。"
     },
     "Trellis2RasterizePBR": {
         "title": "从体素数据烘焙PBR纹理",
@@ -1697,8 +1683,7 @@
         "outputs": {
             "trimesh": "三角网格"
         },
-        "description": "\n将PBR纹理从体素数据烘焙到UV映射的网格上。\n\n需要一个带有UV的网格，并从VOXELGRID烘焙颜色/金属度/粗糙度。\n\n输入网格必须具有UV（（首先使用UV Unwrap节点）。\n\n参数：\n- texture_size: 烘焙纹理的分辨率（（512-16384像素）",
-        "api_version": "V1"
+        "description": "\n将PBR纹理从体素数据烘焙到UV映射的网格上。\n\n需要一个带有UV的网格，并从VOXELGRID烘焙颜色/金属度/粗糙度。\n\n输入网格必须具有UV（（首先使用UV Unwrap节点）。\n\n参数：\n- texture_size: 烘焙纹理的分辨率（（512-16384像素）"
     },
     "Trellis2ExportGLB": {
         "title": "Trellis2导出 GLB 文件",
@@ -1713,8 +1698,7 @@
         "outputs": {
             "glb_path": "GLB路径"
         },
-        "description": "\n从体素数据一次性导出纹理化的GLTF。\n\n从“形状到纹理网格”获取voxelgrid_npz_path，然后执行以下操作：\n1. 将网格简化为目标面数\n2. 进行UV展开\n3. 从体素数据烘焙PBR纹理（基础色、金属度、粗糙度）\n4. 导出纹理化的GLTF到ComfyUI输出文件夹\n\n参数：\n- voxelgrid_path: 来自“形状到纹理网格”的.npz文件路径\n- decimation_target: 简化后的目标面数\n- texture_size: 烘焙PBR纹理的分辨率\n- remesh: 在简化之前应用重新网格化以获得更清洁的拓扑结构\n- filename_prefix: 输出文件名前缀",
-        "api_version": "V1"
+        "description": "\n从体素数据一次性导出纹理化的GLTF。\n\n从“形状到纹理网格”获取voxelgrid_npz_path，然后执行以下操作：\n1. 将网格简化为目标面数\n2. 进行UV展开\n3. 从体素数据烘焙PBR纹理（基础色、金属度、粗糙度）\n4. 导出纹理化的GLTF到ComfyUI输出文件夹\n\n参数：\n- voxelgrid_path: 来自“形状到纹理网格”的.npz文件路径\n- decimation_target: 简化后的目标面数\n- texture_size: 烘焙PBR纹理的分辨率\n- remesh: 在简化之前应用重新网格化以获得更清洁的拓扑结构\n- filename_prefix: 输出文件名前缀"
     },
     "Trellis2ExportTrimesh": {
         "title": "Trellis2 导出三角网格",
@@ -1728,8 +1712,7 @@
         "outputs": {
             "file_path": "文件路径"
         },
-        "description": "\n将三角网格导出到多种3D文件格式。\n\n支持：GLB, OBJ, PLY, STL, 3MF, DAE",
-        "api_version": "V1"
+        "description": "\n将三角网格导出到多种3D文件格式。\n\n支持：GLB, OBJ, PLY, STL, 3MF, DAE"
     },
     "Trellis2MeshWithVoxeltoTrimesmesh": {
         "title": "Trellis2基于体素的网格转换为三角网格",
@@ -1795,70 +1778,31 @@
         },
         "widgets": {
             "seed": "种子",
-            "纹理步骤": "纹理步骤",
-            "纹理引导强度": "纹理引导强度",
-            "纹理引导缩放": "纹理引导缩放",
-            "纹理缩放t": "纹理缩放t",
-            "分辨率": "分辨率",
-            "纹理大小": "纹理大小",
-            "纹理alpha模式": "纹理alpha模式",
-            "双面材质": "双面材质",
-            "纹理引导区间开始": "纹理引导区间开始",
-            "纹理引导区间结束": "纹理引导区间结束",
-            "烘焙在顶点上": "烘焙在顶点上",
-            "使用自定义法线": "使用自定义法线",
-            "网格聚类阈值圆锥半角弧度": "网格聚类阈值圆锥半角弧度",
-            "前方轴": "前方轴",
-            "混合温度": "混合温度",
-            "采样器": "采样器",
-            "修复": "修复",
-            "详细信息": "详细信息",
-            "DINO锁定": "DINO锁定",
-            "DINO子步数": "DINO子步数",
-            "DINO基础帽": "DINO基础帽"
+            "texture_steps": "纹理步骤",
+            "texture_guidance_strength": "纹理引导强度",
+            "texture_guidance_rescale": "纹理比例调整",
+            "texture_rescale_t": "纹理比例调整t",
+            "resolution": "分辨率",
+            "texture_size": "纹理大小",
+            "texture_alpha_mode": "纹理透明模式",
+            "double_side_material": "双面材质",
+            "texture_guidance_interval_start": "纹理引导区间开始",
+            "texture_guidance_interval_end": "纹理引导区间结束",
+            "max_views": "最大视角",
+            "bake_on_vertices": "在顶点上烘焙",
+            "use_custom_normals": "使用自定义法线",
+            "mesh_cluster_threshold_cone_half_angle_rad": "网格簇阈角半径弧度",
+            "sampler": "采样器",
+            "inpainting": "修复",
+            "verbose": "详细信息",
+            "dino_lock": "DINO锁定",
+            "dino_substeps": "DINO子步",
+            "dino_foundation_cap": "DINO基础帽"
         },
         "outputs": {
             "trimesh": "三角网格",
-            "基色纹理": "基色纹理",
-            "金属光泽粗糙度纹理": "金属光泽粗糙度纹理"
-        },
-        "description": ""
-    },
-    "Trellis2PostProcess": {
-        "title": "Trellis2后处理",
-        "inputs": {
-            "mesh": "网格"
-        },
-        "widgets": {
-            "填充孔洞": "填充孔洞",
-            "修复法线": "修复法线",
-            "修复面朝向": "修复面朝向",
-            "删除重复面": "删除重复面",
-            "焊接顶点": "焊接顶点",
-            "焊接顶点位数": "焊接顶点位数",
-            "平滑": "平滑",
-            "平滑迭代次数": "平滑迭代次数",
-            "细分": "细分",
-            "细分迭代次数": "细分迭代次数"
-        },
-        "outputs": {
-            "mesh": "网格"
-        },
-        "description": ""
-    },
-    "Trellis2UnWrapTrimessh": {
-        "title": "展开三角网格",
-        "inputs": {},
-        "widgets": {
-            "trimessh": "三角网格",
-            "网格簇阈值圆锥半角弧度": "网格簇阈值圆锥半角弧度",
-            "网格簇细化迭代次数": "网格簇细化迭代次数",
-            "网格簇全局迭代次数": "网格簇全局迭代次数",
-            "网格簇光滑强度": "网格簇光滑强度"
-        },
-        "outputs": {
-            "trresm": "三角网格",
-            "TRIMESH": "三角网格"
+            "base_color_texture": "基础颜色纹理",
+            "metallic_roughness_texture": "金属光泽纹理"
         },
         "description": ""
     },
@@ -1908,7 +1852,7 @@
     "Trellis2TexxlatMultiViewGenerator": {
         "title": "Trellis2Texxlat多视图生成器",
         "inputs": {
-            "pipeline": "pipeline",
+            "pipeline": "管线",
             "image_conds": "条件图",
             "views_list": "视图列表",
             "shape_slat": "形状槽"
@@ -1932,7 +1876,7 @@
         "outputs": {
             "texture_slat": "纹理槽",
             "views_list": "视图列表",
-            "pipeline": "pipeline"
+            "pipeline": "管线"
         },
         "description": ""
     },
@@ -1976,7 +1920,7 @@
     "Trellis2UnwrapTrimesmes": {
         "title": "Trellis2展UV",
         "inputs": {
-            "trresm": "trresm"
+            "trresm": "三角网格"
         },
         "widgets": {
             "mesh_cluster_threshold_cone_half_angle_rad": "网格聚类阈值圆锥半角弧度",
@@ -1985,14 +1929,14 @@
             "mesh_cluster_smooth_strength": "网格平滑强度"
         },
         "outputs": {
-            "trresm": "trresm"
+            "trresm": "三角网格"
         },
         "description": ""
     },
     "Trellis2TexxlatGenerator": {
         "title": "Trellis2纹理生成器",
         "inputs": {
-            "pipeline": "pipeline",
+            "pipeline": "管线",
             "image_cond": "条件图",
             "shape_slat": "形状slat",
             "image": "图像",
@@ -2015,14 +1959,14 @@
         },
         "outputs": {
             "texture_slat": "纹理slat",
-            "pipeline": "pipeline"
+            "pipeline": "管线"
         },
         "description": ""
     },
     "Trellis2DecodeLatent": {
         "title": "Trellis2解码Latent",
         "inputs": {
-            "pipeline": "pipeline",
+            "pipeline": "管线",
             "shape_slat": "形状slat",
             "texture_slat": "纹理slat"
         },
