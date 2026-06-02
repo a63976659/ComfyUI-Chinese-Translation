@@ -1,8 +1,1459 @@
 {
+    "Trellis2LoadModel": {
+        "title": "Trellis2 模型加载器",
+        "inputs": {},
+        "widgets": {
+            "modelname": "模型名称",
+            "backend": "运算后端",
+            "device": "运行设备",
+            "low_vram": "低显存模式",
+            "keep_models_loaded": "保持模型常驻内存",
+            "conv_backend": "卷积运算后端",
+            "sparse_backend": "稀疏运算后端",
+            "use_reconviagen": "启用ReconViagen生成器"
+        },
+        "outputs": {
+            "pipeline": "管线"
+        },
+        "description": ""
+    },
+    "Trellis2MeshWithVoxelGenerator": {
+        "title": "Trellis2 体素网格生成器",
+        "inputs": {
+            "pipeline": "管线",
+            "image": "图像"
+        },
+        "widgets": {
+            "seed": "种子",
+            "pipeline_type": "管线类型",
+            "sparse_structure_steps": "稀疏结构生成步数",
+            "shape_steps": "形状生成步数",
+            "texture_steps": "纹理生成步数",
+            "max_num_tokens": "最大Token数量",
+            "max_views": "最大视角数量",
+            "sparse_structure_resolution": "稀疏结构分辨率",
+            "generate_texture_slat": "生成纹理分片",
+            "use_tiled_decoder": "使用分块解码器",
+            "sampler": "采样器",
+            "fill_holes": "填充孔洞",
+            "hole_iterations": "孔洞填充迭代次数",
+            "hole_fill_algorithm": "孔洞填充算法",
+            "keep_only_shell": "仅保留外壳网格"
+        },
+        "outputs": {
+            "mesh": "网格",
+            "bvh": "BVH包围盒结构"
+        },
+        "description": ""
+    },
+    "Trellis2LoadImageWithTransparency": {
+        "title": "Trellis2 带透明通道图像加载器",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "image_with_alpha": "带透明通道图像"
+        },
+        "description": ""
+    },
+    "Trellis2SimplifyMesh": {
+        "title": "Trellis2 网格简化工具",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "target_face_num": "目标面数",
+            "method": "简化算法"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": ""
+    },
+    "Trellis2SimplifyTrimesh": {
+        "title": "Trellis2 三角网格简化工具",
+        "inputs": {
+            "trimesh": "三角网格"
+        },
+        "widgets": {
+            "target_face_num": "目标面数",
+            "method": "简化算法"
+        },
+        "outputs": {
+            "trimesh": "三角网格"
+        },
+        "description": ""
+    },
+    "Trellis2ProgressiveSimplify": {
+        "title": "Trellis2 渐进式网格简化工具",
+        "inputs": {
+            "trimesh": "三角网格",
+            "mesh": "网格"
+        },
+        "widgets": {
+            "max_edge_length": "最大边长阈值",
+            "max_triangle_aspect_ratio": "最大三角形长宽比阈值",
+            "strategy": "简化策略",
+            "stabilizer": "稳定器参数",
+            "touch_near_boundary_edges": "处理边界附近边",
+            "optimize_vertex_positions": "优化顶点位置",
+            "angle_based_weights": "使用基于角度的权重"
+        },
+        "outputs": {
+            "trimesh": "三角网格",
+            "mesh": "网格"
+        },
+        "description": ""
+    },
+    "Trellis2MeshWithVoxelToTrimesh": {
+        "title": "Trellis2 体素网格转三角网格工具",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "reorient_vertices": "重定向顶点方向"
+        },
+        "outputs": {
+            "trimesh": "三角网格"
+        },
+        "description": ""
+    },
+    "Trellis2ExportMesh": {
+        "title": "Trellis2 网格导出工具",
+        "inputs": {
+            "trimesh": "三角网格"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "file_format": "导出文件格式"
+        },
+        "outputs": {
+            "glb_path": "GLB文件路径",
+            "relative_path": "相对路径"
+        },
+        "description": ""
+    },
+    "Trellis2PostProcessMesh": {
+        "title": "Trellis2 网格后处理工具",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "remove_duplicate_faces": "移除重复面",
+            "repair_non_manifold_edges": "修复非流形边",
+            "remove_non_manifold_faces": "移除非流形面",
+            "remove_small_connected_components": "移除小型连通组件",
+            "remove_small_connected_components_size": "小型连通组件尺寸阈值",
+            "unify_faces_orientation": "统一面朝向",
+            "remove_floaters": "移除浮动碎面",
+            "remove_infinite_vertices": "移除无限坐标顶点",
+            "merge_vertices": "合并顶点",
+            "merge_distance": "顶点合并距离阈值",
+            "remove_nan_vertices": "移除无效数值顶点"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": ""
+    },
+    "Trellis2UnWrapAndRasterizer": {
+        "title": "Trellis2 网格UV展开与光栅化工具",
+        "inputs": {
+            "mesh": "网格",
+            "bvh": "BVH包围盒结构"
+        },
+        "widgets": {
+            "mesh_cluster_threshold_cone_half_angle_rad": "网格聚类圆锥半角阈值（弧度）",
+            "mesh_cluster_refine_iterations": "网格聚类细化迭代次数",
+            "mesh_cluster_global_iterations": "网格聚类全局迭代次数",
+            "mesh_cluster_smooth_strength": "网格聚类平滑强度",
+            "texture_size": "纹理尺寸",
+            "texture_alpha_mode": "纹理透明通道模式",
+            "double_side_material": "启用双面材质",
+            "bake_on_vertices": "烘焙到顶点色",
+            "use_custom_normals": "使用自定义法线",
+            "inpainting": "启用图像修复",
+            "reorient_vertices": "重定向顶点方向"
+        },
+        "outputs": {
+            "trimesh": "三角网格",
+            "base_color_texture": "基础色纹理",
+            "metallic_roughness_texture": "金属度粗糙度纹理"
+        },
+        "description": ""
+    },
+    "Trellis2MeshWithVoxelAdvancedGenerator": {
+        "title": "Trellis2 体素网格高级生成器",
+        "inputs": {
+            "pipeline": "管线",
+            "image": "图像"
+        },
+        "widgets": {
+            "seed": "种子",
+            "pipeline_type": "管线类型",
+            "sparse_structure_steps": "稀疏结构生成步数",
+            "sparse_structure_guidance_strength": "稀疏结构引导强度",
+            "sparse_structure_guidance_rescale": "稀疏结构引导重缩放",
+            "sparse_structure_rescale_t": "稀疏结构重缩放T值",
+            "shape_steps": "形状生成步数",
+            "shape_guidance_strength": "形状引导强度",
+            "shape_guidance_rescale": "形状引导重缩放",
+            "shape_rescale_t": "形状重缩放T值",
+            "texture_steps": "纹理生成步数",
+            "texture_guidance_strength": "纹理引导强度",
+            "texture_guidance_rescale": "纹理引导重缩放",
+            "texture_rescale_t": "纹理重缩放T值",
+            "max_num_tokens": "最大Token数量",
+            "max_views": "最大视角数量",
+            "sparse_structure_resolution": "稀疏结构分辨率",
+            "generate_texture_slat": "生成纹理分片",
+            "sparse_structure_guidance_interval_start": "稀疏结构引导区间起始值",
+            "sparse_structure_guidance_interval_end": "稀疏结构引导区间结束值",
+            "shape_guidance_interval_start": "形状引导区间起始值",
+            "shape_guidance_interval_end": "形状引导区间结束值",
+            "texture_guidance_interval_start": "纹理引导区间起始值",
+            "texture_guidance_interval_end": "纹理引导区间结束值",
+            "use_tiled_decoder": "使用分块解码器",
+            "sampler": "采样器",
+            "fill_holes": "填充孔洞",
+            "hole_iterations": "孔洞填充迭代次数",
+            "verbose": "输出详细日志",
+            "dino_lock": "DINO特征锁定",
+            "dino_substeps": "DINO子步数",
+            "hole_fill_algorithm": "孔洞填充算法",
+            "dino_foundation_cap": "DINO基础上限值",
+            "keep_only_shell": "仅保留外壳网格"
+        },
+        "outputs": {
+            "mesh": "网格",
+            "bvh": "BVH包围盒结构"
+        },
+        "description": ""
+    },
+    "Trellis2MeshWithVoxelMultiViewGenerator": {
+        "title": "Trellis2 体素多视图网格生成器",
+        "inputs": {
+            "pipeline": "管线",
+            "front_image": "正面图像",
+            "back_image": "背面图像",
+            "left_image": "左侧图像",
+            "right_image": "右侧图像"
+        },
+        "widgets": {
+            "seed": "种子",
+            "pipeline_type": "管线类型",
+            "sparse_structure_steps": "稀疏结构生成步数",
+            "sparse_structure_guidance_strength": "稀疏结构引导强度",
+            "sparse_structure_guidance_rescale": "稀疏结构引导重缩放",
+            "sparse_structure_rescale_t": "稀疏结构重缩放T值",
+            "shape_steps": "形状生成步数",
+            "shape_guidance_strength": "形状引导强度",
+            "shape_guidance_rescale": "形状引导重缩放",
+            "shape_rescale_t": "形状重缩放T值",
+            "texture_steps": "纹理生成步数",
+            "texture_guidance_strength": "纹理引导强度",
+            "texture_guidance_rescale": "纹理引导重缩放",
+            "texture_rescale_t": "纹理重缩放T值",
+            "max_num_tokens": "最大令牌数",
+            "sparse_structure_resolution": "稀疏结构分辨率",
+            "generate_texture_slat": "生成纹理板条",
+            "sparse_structure_guidance_interval_start": "稀疏结构引导区间起始点",
+            "sparse_structure_guidance_interval_end": "稀疏结构引导区间结束点",
+            "shape_guidance_interval_start": "形状引导区间起始点",
+            "shape_guidance_interval_end": "形状引导区间结束点",
+            "texture_guidance_interval_start": "纹理引导区间起始点",
+            "texture_guidance_interval_end": "纹理引导区间结束点",
+            "use_tiled_decoder": "启用分块解码器",
+            "front_axis": "前向轴",
+            "blend_temperature": "混合温度值",
+            "sampler": "采样器",
+            "fill_holes": "填补孔洞",
+            "hole_iterations": "孔洞填补迭代次数",
+            "verbose": "输出详细日志",
+            "dino_lock": "DINO模型锁定",
+            "dino_substeps": "DINO子步数",
+            "hole_fill_algorithm": "孔洞填充算法",
+            "dino_foundation_cap": "DINO基础上限",
+            "keep_only_shell": "仅保留网格外壳"
+        },
+        "outputs": {
+            "mesh": "网格",
+            "bvh": "BVH层次包围盒"
+        },
+        "description": ""
+    },
+    "Trellis2PostProcessAndUnWrapAndRasterizer": {
+        "title": "Trellis2 后期处理、UV展开与光栅化器",
+        "inputs": {
+            "mesh": "网格",
+            "bvh": "BVH层次包围盒"
+        },
+        "widgets": {
+            "mesh_cluster_threshold_cone_half_angle_rad": "网格聚类阈值圆锥半角（弧度）",
+            "mesh_cluster_refine_iterations": "网格聚类优化迭代次数",
+            "mesh_cluster_global_iterations": "网格聚类全局迭代次数",
+            "mesh_cluster_smooth_strength": "网格聚类平滑强度",
+            "texture_size": "纹理尺寸",
+            "remesh": "重新网格化",
+            "remesh_band": "重网格带宽",
+            "remesh_project": "重网格投影",
+            "target_face_num": "目标面数",
+            "simplify_method": "简化方法",
+            "fill_holes": "填补孔洞",
+            "texture_alpha_mode": "纹理Alpha通道模式",
+            "dual_contouring_resolution": "双轮廓算法分辨率",
+            "double_side_material": "双面材质",
+            "remove_floaters": "移除浮动面片",
+            "bake_on_vertices": "烘焙到顶点",
+            "use_custom_normals": "使用自定义法线",
+            "remove_inner_faces": "移除内部面",
+            "inpainting": "图像修复",
+            "reorient_vertices": "重定向顶点朝向"
+        },
+        "outputs": {
+            "trimesh": "三角网格",
+            "base_color_texture": "基础色纹理",
+            "metallic_roughness_texture": "金属度粗糙度纹理"
+        },
+        "description": ""
+    },
+    "Trellis2Remesh": {
+        "title": "Trellis2 重新网格化",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "remesh_band": "重网格带宽",
+            "remesh_project": "重网格投影",
+            "dual_contouring_resolution": "双轮廓算法分辨率",
+            "remove_floaters": "移除浮动面片",
+            "remove_inner_faces": "移除内部面"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": ""
+    },
+    "Trellis2ReconstructMesh": {
+        "title": "Trellis2 网格重建",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "remesh_band": "重网格带宽",
+            "resolution": "分辨率"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": ""
+    },
+    "Trellis2ReconstructMeshWithQuad": {
+        "title": "Trellis2 四边形网格重建",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "remesh_band": "重网格带宽",
+            "resolution": "分辨率",
+            "remove_floaters": "移除浮动面片",
+            "remove_inner_faces": "移除内部面"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": ""
+    },
+    "Trellis2MeshTexturing": {
+        "title": "Trellis2 网格纹理生成",
+        "inputs": {
+            "pipeline": "管线",
+            "image": "图像",
+            "trimesh": "三角网格"
+        },
+        "widgets": {
+            "seed": "种子",
+            "texture_steps": "纹理生成步数",
+            "texture_guidance_strength": "纹理引导强度",
+            "texture_guidance_rescale": "纹理引导重缩放",
+            "texture_rescale_t": "纹理重缩放T值",
+            "resolution": "分辨率",
+            "texture_size": "纹理尺寸",
+            "texture_alpha_mode": "纹理Alpha通道模式",
+            "double_side_material": "双面材质",
+            "texture_guidance_interval_start": "纹理引导区间起始点",
+            "texture_guidance_interval_end": "纹理引导区间结束点",
+            "max_views": "最大视图数",
+            "bake_on_vertices": "烘焙到顶点",
+            "use_custom_normals": "使用自定义法线",
+            "mesh_cluster_threshold_cone_half_angle_rad": "网格聚类阈值圆锥半角（弧度）",
+            "sampler": "采样器",
+            "inpainting": "图像修复",
+            "verbose": "输出详细日志",
+            "dino_lock": "DINO模型锁定",
+            "dino_substeps": "DINO子步数",
+            "dino_foundation_cap": "DINO基础上限"
+        },
+        "outputs": {
+            "trimesh": "三角网格",
+            "base_color_texture": "基础色纹理",
+            "metallic_roughness_texture": "金属度粗糙度纹理"
+        },
+        "description": ""
+    },
+    "Trellis2MeshTexturingMultiView": {
+        "title": "Trellis2 多视图网格纹理映射",
+        "inputs": {
+            "pipeline": "管线",
+            "front_image": "正面图像",
+            "trimesh": "三角网格",
+            "back_image": "背面图像",
+            "left_image": "左侧图像",
+            "right_image": "右侧图像"
+        },
+        "widgets": {
+            "seed": "种子",
+            "texture_steps": "纹理生成步数",
+            "texture_guidance_strength": "纹理引导强度",
+            "texture_guidance_rescale": "纹理引导重缩放",
+            "texture_rescale_t": "纹理重缩放阈值T",
+            "resolution": "分辨率",
+            "texture_size": "纹理尺寸",
+            "texture_alpha_mode": "纹理Alpha通道模式",
+            "double_side_material": "双面材质",
+            "texture_guidance_interval_start": "纹理引导区间起始值",
+            "texture_guidance_interval_end": "纹理引导区间结束值",
+            "bake_on_vertices": "烘焙到顶点",
+            "use_custom_normals": "使用自定义法线",
+            "mesh_cluster_threshold_cone_half_angle_rad": "网格聚类阈值锥体半角(弧度)",
+            "front_axis": "前向轴",
+            "blend_temperature": "混合温度",
+            "sampler": "采样器",
+            "inpainting": "图像修复",
+            "verbose": "输出详细日志",
+            "dino_lock": "DINO模型锁定",
+            "dino_substeps": "DINO子步数",
+            "dino_foundation_cap": "DINO基础模型上限"
+        },
+        "outputs": {
+            "trimesh": "三角网格",
+            "base_color_texture": "基础色纹理",
+            "metallic_roughness_texture": "金属度粗糙度纹理"
+        },
+        "description": ""
+    },
+    "Trellis2LoadMesh": {
+        "title": "Trellis2 加载网格模型",
+        "inputs": {},
+        "widgets": {
+            "glb_path": "GLB文件路径"
+        },
+        "outputs": {
+            "trimesh": "待生成纹理的GLB网格模型"
+        },
+        "description": "从指定路径加载GLB格式模型。"
+    },
+    "Trellis2PreProcessImage": {
+        "title": "Trellis2 图像预处理",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "padding": "内边距",
+            "remove_background": "移除背景",
+            "max_size": "最大尺寸"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": ""
+    },
+    "Trellis2MeshRefiner": {
+        "title": "Trellis2 网格优化器",
+        "inputs": {
+            "pipeline": "管线",
+            "trimesh": "三角网格",
+            "image": "图像"
+        },
+        "widgets": {
+            "seed": "种子",
+            "resolution": "分辨率",
+            "shape_steps": "形状优化步数",
+            "shape_guidance_strength": "形状引导强度",
+            "shape_guidance_rescale": "形状引导重缩放",
+            "shape_rescale_t": "形状重缩放阈值T",
+            "texture_steps": "纹理生成步数",
+            "texture_guidance_strength": "纹理引导强度",
+            "texture_guidance_rescale": "纹理引导重缩放",
+            "texture_rescale_t": "纹理重缩放阈值T",
+            "max_num_tokens": "最大令牌数",
+            "generate_texture_slat": "生成纹理板",
+            "downsampling": "下采样倍率",
+            "shape_guidance_interval_start": "形状引导区间起始值",
+            "shape_guidance_interval_end": "形状引导区间结束值",
+            "texture_guidance_interval_start": "纹理引导区间起始值",
+            "texture_guidance_interval_end": "纹理引导区间结束值",
+            "use_tiled_decoder": "使用分片解码器",
+            "max_views": "最大视图数",
+            "sampler": "采样器",
+            "verbose": "输出详细日志",
+            "dino_lock": "DINO模型锁定",
+            "dino_substeps": "DINO子步数",
+            "dino_foundation_cap": "DINO基础模型上限"
+        },
+        "outputs": {
+            "mesh": "网格",
+            "bvh": "边界体积层次(BVH)结构"
+        },
+        "description": ""
+    },
+    "Trellis2PostProcess2": {
+        "title": "Trellis2 网格后处理V2",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "fill_holes": "填补孔洞",
+            "fix_normals": "修正法线",
+            "fix_face_orientation": "修正面朝向",
+            "remove_duplicate_faces": "移除重复面",
+            "weld_vertices": "焊接顶点",
+            "weld_vertices_digits": "焊接顶点精度位数",
+            "smooth": "平滑处理",
+            "smooth_iterations": "平滑迭代次数",
+            "subdivide": "细分网格",
+            "subdivide_iterations": "细分迭代次数"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": ""
+    },
+    "Trellis2OvoxelExportToGLB": {
+        "title": "Trellis2 体素网格导出为GLB",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "texture_size": "纹理尺寸",
+            "target_face_num": "目标面数"
+        },
+        "outputs": {
+            "trimesh": "三角网格"
+        },
+        "description": ""
+    },
+    "Trellis2TrimeshToMeshWithVoxel": {
+        "title": "Trellis2 三角网格转带体素网格",
+        "inputs": {
+            "trimesh": "三角网格"
+        },
+        "widgets": {
+            "resolution": "分辨率"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": ""
+    },
+    "Trellis2Continue": {
+        "title": "Trellis2 双路中继节点",
+        "inputs": {
+            "input_1": "输入1",
+            "input_2": "输入2"
+        },
+        "widgets": {},
+        "outputs": {
+            "output_1": "输出1",
+            "output_2": "输出2"
+        },
+        "description": ""
+    },
+    "Trellis2Continue3": {
+        "title": "Trellis2 三路中继节点",
+        "inputs": {
+            "input_1": "输入1",
+            "input_2": "输入2",
+            "input_3": "输入3"
+        },
+        "widgets": {},
+        "outputs": {
+            "output_1": "输出1",
+            "output_2": "输出2",
+            "output_3": "输出3"
+        },
+        "description": ""
+    },
+    "Trellis2Continue4": {
+        "title": "Trellis2 四路中继节点",
+        "inputs": {
+            "input_1": "输入1",
+            "input_2": "输入2",
+            "input_3": "输入3",
+            "input_4": "输入4"
+        },
+        "widgets": {},
+        "outputs": {
+            "output_1": "输出1",
+            "output_2": "输出2",
+            "output_3": "输出3",
+            "output_4": "输出4"
+        },
+        "description": ""
+    },
+    "Trellis2Continue5": {
+        "title": "Trellis2 五路中继节点",
+        "inputs": {
+            "input_1": "输入1",
+            "input_2": "输入2",
+            "input_3": "输入3",
+            "input_4": "输入4",
+            "input_5": "输入5"
+        },
+        "widgets": {},
+        "outputs": {
+            "output_1": "输出1",
+            "output_2": "输出2",
+            "output_3": "输出3",
+            "output_4": "输出4",
+            "output_5": "输出5"
+        },
+        "description": ""
+    },
+    "Trellis2Continue6": {
+        "title": "Trellis2 六路中继节点",
+        "inputs": {
+            "input_1": "输入1",
+            "input_2": "输入2",
+            "input_3": "输入3",
+            "input_4": "输入4",
+            "input_5": "输入5",
+            "input_6": "输入6"
+        },
+        "widgets": {},
+        "outputs": {
+            "output_1": "输出1",
+            "output_2": "输出2",
+            "output_3": "输出3",
+            "output_4": "输出4",
+            "output_5": "输出5",
+            "output_6": "输出6"
+        },
+        "description": ""
+    },
+    "Trellis2MeshWithVoxelToMeshlibMesh": {
+        "title": "Trellis2 带体素网格转Meshlib网格",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "meshlib_mesh": "Meshlib格式网格"
+        },
+        "description": ""
+    },
+    "Trellis2FillHolesWithMeshlib": {
+        "title": "Trellis2 Meshlib网格孔洞填补",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "mesh": "网格",
+            "holes_filled": "已填补孔洞数"
+        },
+        "description": "使用最优三角剖分算法填补网格中的所有孔洞。"
+    },
+    "Trellis2FillHolesNicelyWithMeshlib": {
+        "title": "Trellis2 Meshlib高质量网格孔洞填补",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "mesh": "网格",
+            "holes_filled": "已填补孔洞数"
+        },
+        "description": "使用最优三角剖分算法高质量填补网格中的所有孔洞。"
+    },
+    "Trellis2SmoothNormals": {
+        "title": "Trellis2 法线平滑处理",
+        "inputs": {
+            "trimesh": "三角网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "trimesh": "三角网格"
+        },
+        "description": ""
+    },
+    "Trellis2RemeshWithQuad": {
+        "title": "Trellis2 四边面重网格化",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "remesh_band": "重网格化带宽",
+            "remesh_project": "重网格化投影对齐",
+            "dual_contouring_resolution": "对偶轮廓提取分辨率",
+            "remove_floaters": "移除孤立面片",
+            "remove_inner_faces": "移除内部面"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": ""
+    },
+    "Trellis2BatchSimplifyMeshAndExport": {
+        "title": "Trellis2 网格批量简化导出",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "target_face_num": "目标面数",
+            "method": "简化方法",
+            "fill_holes": "填充孔洞",
+            "reorient_vertices": "顶点重定向",
+            "filename_prefix": "文件名前缀",
+            "file_format": "文件格式",
+            "weld_vertices": "焊接重合顶点",
+            "weld_vertices_digits": "顶点焊接精度位数"
+        },
+        "outputs": {
+            "lst_glb_path": "GLB文件路径列表"
+        },
+        "description": ""
+    },
+    "Trellis2WeldVertices": {
+        "title": "Trellis2 顶点焊接",
+        "inputs": {
+            "trimesh": "三角网格"
+        },
+        "widgets": {
+            "merge_texture": "合并纹理",
+            "merge_normals": "合并法线",
+            "digits": "精度位数"
+        },
+        "outputs": {
+            "trimesh": "三角网格"
+        },
+        "description": ""
+    },
+    "Trellis2StringSelector": {
+        "title": "Trellis2 字符串选择器",
+        "inputs": {},
+        "widgets": {
+            "strings": "字符串列表",
+            "index": "选择索引"
+        },
+        "outputs": {
+            "string": "选中字符串"
+        },
+        "description": ""
+    },
+    "Trellis2FillHolesWithCuMesh": {
+        "title": "Trellis2 CuMesh孔洞填充",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "max_permieters": "最大孔洞周长阈值"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": "填充网格中的所有孔洞"
+    },
+    "Trellis2LaplacianSmoothingWithOpen3d": {
+        "title": "Trellis2 Open3D拉普拉斯平滑",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "iterations": "迭代次数",
+            "method": "平滑方法"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": ""
+    },
+    "Trellis2UnWrapTrimesh": {
+        "title": "Trellis2 三角网格UV展开",
+        "inputs": {
+            "trimesh": "三角网格"
+        },
+        "widgets": {
+            "mesh_cluster_threshold_cone_half_angle_rad": "网格聚类圆锥半角阈值（弧度）",
+            "mesh_cluster_refine_iterations": "网格聚类优化迭代次数",
+            "mesh_cluster_global_iterations": "网格聚类全局迭代次数",
+            "mesh_cluster_smooth_strength": "网格聚类平滑强度"
+        },
+        "outputs": {
+            "trimesh": "三角网格"
+        },
+        "description": ""
+    },
+    "Trellis2MeshWithVoxelCascadeGenerator": {
+        "title": "Trellis2 体素级联网格生成器",
+        "inputs": {
+            "pipeline": "管线",
+            "image": "图像"
+        },
+        "widgets": {
+            "seed": "种子",
+            "pipeline_type": "管线类型",
+            "sparse_structure_steps": "稀疏结构采样步数",
+            "sparse_structure_guidance_strength": "稀疏结构引导强度",
+            "sparse_structure_guidance_rescale": "稀疏结构引导重缩放",
+            "sparse_structure_rescale_t": "稀疏结构重缩放时间步",
+            "sparse_structure_sampler": "稀疏结构采样器",
+            "sparse_structure_resolution": "稀疏结构分辨率",
+            "sparse_structure_guidance_interval_start": "稀疏结构引导区间起始步",
+            "sparse_structure_guidance_interval_end": "稀疏结构引导区间结束步",
+            "low_res_shape_steps": "低分辨率形状采样步数",
+            "low_res_shape_guidance_strength": "低分辨率形状引导强度",
+            "low_res_shape_guidance_rescale": "低分辨率形状引导重缩放",
+            "low_res_shape_rescale_t": "低分辨率形状重缩放时间步",
+            "low_res_shape_sampler": "低分辨率形状采样器",
+            "low_res_shape_guidance_interval_start": "低分辨率形状引导区间起始步",
+            "low_res_shape_guidance_interval_end": "低分辨率形状引导区间结束步",
+            "high_res_shape_steps": "高分辨率形状采样步数",
+            "high_res_shape_guidance_strength": "高分辨率形状引导强度",
+            "high_res_shape_guidance_rescale": "高分辨率形状引导重缩放",
+            "high_res_shape_rescale_t": "高分辨率形状重缩放时间步",
+            "high_res_shape_sampler": "高分辨率形状采样器",
+            "high_res_shape_guidance_interval_start": "高分辨率形状引导区间起始步",
+            "high_res_shape_guidance_interval_end": "高分辨率形状引导区间结束步",
+            "generate_texture_slat": "生成纹理板",
+            "texture_steps": "纹理采样步数",
+            "texture_guidance_strength": "纹理引导强度",
+            "texture_guidance_rescale": "纹理引导重缩放",
+            "texture_rescale_t": "纹理重缩放时间步",
+            "texture_sampler": "纹理采样器",
+            "texture_guidance_interval_start": "纹理引导区间起始步",
+            "texture_guidance_interval_end": "纹理引导区间结束步",
+            "max_num_tokens": "最大Token数",
+            "use_tiled_decoder": "使用分块解码器",
+            "max_views": "最大视角数",
+            "fill_holes": "填充孔洞",
+            "hole_iterations": "孔洞填充迭代次数",
+            "verbose": "输出详细日志",
+            "dino_lock": "Dino锁定",
+            "dino_substeps": "Dino子步长",
+            "hole_fill_algorithm": "孔洞填充算法",
+            "dino_foundation_cap": "Dino基础上限",
+            "keep_only_shell": "仅保留外壳"
+        },
+        "outputs": {
+            "mesh": "网格",
+            "bvh": "BVH加速结构"
+        },
+        "description": ""
+    },
+    "Trellis2ImageCondGenerator": {
+        "title": "Trellis2 图像条件生成器",
+        "inputs": {
+            "pipeline": "管线",
+            "image": "图像"
+        },
+        "widgets": {
+            "max_views": "最大视角数"
+        },
+        "outputs": {
+            "cond_512": "512分辨率条件",
+            "cond_1024": "1024分辨率条件",
+            "pipeline": "管线",
+            "moge_camera_config": "Moge相机配置"
+        },
+        "description": ""
+    },
+    "Trellis2SparseGenerator": {
+        "title": "Trellis2 稀疏结构生成器",
+        "inputs": {
+            "pipeline": "管线",
+            "image_cond": "图像条件",
+            "image": "图像",
+            "moge_camera_config": "Moge相机配置"
+        },
+        "widgets": {
+            "seed": "种子",
+            "sparse_structure_steps": "稀疏结构采样步数",
+            "sparse_structure_guidance_strength": "稀疏结构引导强度",
+            "sparse_structure_guidance_rescale": "稀疏结构引导重缩放",
+            "sparse_structure_rescale_t": "稀疏结构重缩放时间步",
+            "sparse_structure_sampler": "稀疏结构采样器",
+            "sparse_structure_resolution": "稀疏结构分辨率",
+            "sparse_structure_guidance_interval_start": "稀疏结构引导区间起始步",
+            "sparse_structure_guidance_interval_end": "稀疏结构引导区间结束步",
+            "fill_holes": "填充孔洞",
+            "hole_iterations": "孔洞填充迭代次数",
+            "verbose": "输出详细日志",
+            "dino_lock": "Dino锁定",
+            "dino_substeps": "Dino子步长",
+            "hole_fill_algorithm": "孔洞填充算法",
+            "dino_foundation_cap": "Dino基础上限",
+            "keep_only_shell": "仅保留外壳"
+        },
+        "outputs": {
+            "coords": "坐标集",
+            "sparse_structure_resolution": "稀疏结构分辨率",
+            "pipeline": "管线"
+        },
+        "description": ""
+    },
+    "Trellis2ShapeGenerator": {
+        "title": "Trellis2 形状生成器",
+        "inputs": {
+            "pipeline": "管线",
+            "image_cond": "条件图像",
+            "coords": "坐标",
+            "image": "图像",
+            "moge_camera_config": "Moge相机配置"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "shape_steps": "形状生成步数",
+            "shape_guidance_strength": "形状引导强度",
+            "shape_guidance_rescale": "形状引导重缩放系数",
+            "shape_rescale_t": "形状重缩放阈值T",
+            "shape_sampler": "形状采样器",
+            "shape_guidance_interval_start": "形状引导区间起始步",
+            "shape_guidance_interval_end": "形状引导区间结束步",
+            "verbose": "输出详细日志",
+            "dino_lock": "Dino特征锁定",
+            "dino_substeps": "Dino子步数",
+            "dino_foundation_cap": "Dino基础特征上限"
+        },
+        "outputs": {
+            "shape_slat": "形状栅格特征",
+            "resolution": "分辨率",
+            "pipeline": "管线"
+        },
+        "description": ""
+    },
+    "Trellis2ShapeCascadeGenerator": {
+        "title": "Trellis2 级联形状生成器",
+        "inputs": {
+            "pipeline": "管线",
+            "image_cond": "条件图像",
+            "shape_slat": "形状栅格特征",
+            "image": "图像",
+            "moge_camera_config": "Moge相机配置"
+        },
+        "widgets": {
+            "from_resolution": "源分辨率",
+            "to_resolution": "目标分辨率",
+            "sparse_structure_resolution": "稀疏结构分辨率",
+            "max_num_tokens": "最大令牌数",
+            "shape_steps": "形状生成步数",
+            "shape_guidance_strength": "形状引导强度",
+            "shape_guidance_rescale": "形状引导重缩放系数",
+            "shape_rescale_t": "形状重缩放阈值T",
+            "shape_sampler": "形状采样器",
+            "shape_guidance_interval_start": "形状引导区间起始步",
+            "shape_guidance_interval_end": "形状引导区间结束步",
+            "verbose": "输出详细日志",
+            "dino_lock": "Dino特征锁定",
+            "dino_substeps": "Dino子步数",
+            "dino_foundation_cap": "Dino基础特征上限"
+        },
+        "outputs": {
+            "shape_slat": "形状栅格特征",
+            "resolution": "分辨率",
+            "pipeline": "管线",
+            "num_tokens": "令牌数量"
+        },
+        "description": ""
+    },
+    "Trellis2TexSlatGenerator": {
+        "title": "Trellis2 纹理栅格特征生成器",
+        "inputs": {
+            "pipeline": "管线",
+            "image_cond": "条件图像",
+            "shape_slat": "形状栅格特征",
+            "image": "图像",
+            "moge_camera_config": "Moge相机配置"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "texture_steps": "纹理生成步数",
+            "texture_guidance_strength": "纹理引导强度",
+            "texture_guidance_rescale": "纹理引导重缩放系数",
+            "texture_rescale_t": "纹理重缩放阈值T",
+            "texture_sampler": "纹理采样器",
+            "texture_guidance_interval_start": "纹理引导区间起始步",
+            "texture_guidance_interval_end": "纹理引导区间结束步",
+            "verbose": "输出详细日志",
+            "dino_lock": "Dino特征锁定",
+            "dino_substeps": "Dino子步数",
+            "dino_foundation_cap": "Dino基础特征上限",
+            "from_resolution": "源分辨率"
+        },
+        "outputs": {
+            "texture_slat": "纹理栅格特征",
+            "pipeline": "管线"
+        },
+        "description": ""
+    },
+    "Trellis2DecodeLatents": {
+        "title": "Trellis2 Latent解码",
+        "inputs": {
+            "pipeline": "管线",
+            "shape_slat": "形状栅格特征",
+            "texture_slat": "纹理栅格特征"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "use_tiled_decoder": "使用分片解码器"
+        },
+        "outputs": {
+            "mesh": "网格模型",
+            "bvh": "BVH加速结构",
+            "pipeline": "管线"
+        },
+        "description": ""
+    },
+    "Trellis2SimplifyMeshAdvanced": {
+        "title": "Trellis2 高级网格简化",
+        "inputs": {
+            "mesh": "网格模型"
+        },
+        "widgets": {
+            "target_face_num": "目标面数",
+            "thresh": "简化阈值",
+            "lambda_edge_length": "边长权重系数",
+            "lambda_skinny": "狭长三角形抑制权重",
+            "lambda_curvature": "曲率保留权重",
+            "lambda_boundary": "边界保留权重",
+            "lambda_area": "面积权重",
+            "qem_regularization": "QEM正则化强度"
+        },
+        "outputs": {
+            "mesh": "网格模型"
+        },
+        "description": ""
+    },
+    "Trellis2SimplifyTrimeshAdvanced": {
+        "title": "Trellis2 高级三角网格简化",
+        "inputs": {
+            "trimesh": "三角网格"
+        },
+        "widgets": {
+            "target_face_num": "目标面数",
+            "thresh": "简化阈值",
+            "lambda_edge_length": "边长权重系数",
+            "lambda_skinny": "狭长三角形抑制权重",
+            "lambda_curvature": "曲率保留权重",
+            "lambda_boundary": "边界保留权重",
+            "lambda_area": "面积权重",
+            "qem_regularization": "QEM正则化强度"
+        },
+        "outputs": {
+            "trimesh": "三角网格"
+        },
+        "description": ""
+    },
+    "Trellis2MultiViewTexturing": {
+        "title": "Trellis2 多视角纹理烘焙",
+        "inputs": {
+            "trimesh": "三角网格",
+            "front_image": "正面图像",
+            "back_image": "背面图像",
+            "left_image": "左侧图像",
+            "right_image": "右侧图像",
+            "top_image": "顶面图像",
+            "bottom_image": "底面图像",
+            "custom_images": "自定义视角图像",
+            "camera_config": "相机配置"
+        },
+        "widgets": {
+            "texture_size": "纹理尺寸",
+            "blend_texture": "启用纹理混合",
+            "blend_exponent": "混合指数",
+            "ortho_scale": "正交投影缩放系数",
+            "norm_size": "标准化尺寸",
+            "fill_holes": "填补纹理空洞",
+            "max_hole_size": "最大可填补空洞尺寸",
+            "use_metallic": "生成金属粗糙度通道",
+            "depth_eps": "深度偏移阈值",
+            "mesh_cluster_threshold_cone_half_angle_rad": "网格聚类锥半角阈值（弧度）",
+            "add_alpha_channel": "添加透明通道",
+            "front_weight": "正面权重",
+            "back_weight": "背面权重",
+            "left_weight": "左侧权重",
+            "right_weight": "右侧权重",
+            "top_weight": "顶面权重",
+            "bottom_weight": "底面权重",
+            "custom_azimuths": "自定义视角方位角",
+            "custom_elevations": "自定义视角俯仰角",
+            "custom_weights": "自定义视角权重"
+        },
+        "outputs": {
+            "trimesh": "三角网格",
+            "base_color": "基础色贴图",
+            "metallic_roughness": "金属粗糙度贴图"
+        },
+        "description": "通过投影多视角图像为网格模型添加纹理。\n\n采用角度加权混合算法：每个表面会从所有可见视角接收纹理信息，权重由表面朝向与相机视角的正对程度决定。\n\n相机角度定义（Y轴向上坐标系）：\n- 方位角：绕Y轴旋转角度\n  - 0° = 正面（朝-Z方向观察）\n  - 90° = 左侧（朝-X方向观察）\n  - 180° = 背面（朝+Z方向观察）\n  - 270° = 右侧（朝+X方向观察）\n- 俯仰角：绕X轴旋转角度\n  - 0° = 水平视角\n  - 90° = 顶面（朝-Y方向观察，即从上往下看）\n  - -90° = 底面（朝+Y方向观察，即从下往上看）"
+    },
+    "Trellis2ProjectHighPolyToLowPoly": {
+        "title": "Trellis2 高模投射转低模",
+        "inputs": {
+            "high_poly_trimesh": "高多边形三角网格",
+            "low_poly_trimesh": "低多边形三角网格",
+            "front_image": "正面图像",
+            "back_image": "背面图像",
+            "left_image": "左侧图像",
+            "right_image": "右侧图像",
+            "top_image": "顶部图像",
+            "bottom_image": "底部图像",
+            "custom_images": "自定义图像",
+            "camera_config": "相机配置"
+        },
+        "widgets": {
+            "texture_size": "纹理尺寸",
+            "blend_texture": "混合纹理",
+            "blend_exponent": "混合指数",
+            "ortho_scale": "正交投影缩放比例",
+            "norm_size": "标准化尺寸",
+            "fill_holes": "填充孔洞",
+            "max_hole_size": "最大孔洞尺寸",
+            "use_metallic": "启用金属度通道",
+            "depth_eps": "深度误差阈值",
+            "mesh_cluster_threshold_cone_half_angle_rad": "网格聚类阈值圆锥半角弧度值",
+            "add_alpha_channel": "添加Alpha通道",
+            "front_weight": "正面权重",
+            "back_weight": "背面权重",
+            "left_weight": "左侧权重",
+            "right_weight": "右侧权重",
+            "top_weight": "顶部权重",
+            "bottom_weight": "底部权重",
+            "custom_azimuths": "自定义方位角列表",
+            "custom_elevations": "自定义俯仰角列表",
+            "custom_weights": "自定义权重列表"
+        },
+        "outputs": {
+            "trimesh": "三角网格",
+            "base_color": "基础色纹理",
+            "metallic_roughness": "金属粗糙度纹理"
+        },
+        "description": "通过投射多视角图像为网格赋予纹理。\n\n采用角度加权混合算法：每个表面会接收所有能观测到它的视角的纹理，权重由表面与对应相机的正对程度决定。\n\n相机角度（Y轴向上坐标系）：\n- 方位角：绕Y轴旋转\n  - 0° = 正面（朝-Z方向观察）\n  - 90° = 左侧（朝-X方向观察）  \n  - 180° = 背面（朝+Z方向观察）\n  - 270° = 右侧（朝+X方向观察）\n- 俯仰角：绕X轴旋转\n  - 0° = 水平方向\n  - 90° = 顶部（从上方朝-Y方向观察）\n  - -90° = 底部（从下方朝+Y方向观察）"
+    },
+    "Trellis2RenderMultiView": {
+        "title": "Trellis2 多视角渲染",
+        "inputs": {
+            "trimesh": "三角网格"
+        },
+        "widgets": {
+            "render_size": "渲染尺寸",
+            "ortho_scale": "正交投影缩放比例",
+            "blender_exec_path": "Blender可执行文件路径",
+            "azimuths": "方位角列表",
+            "elevations": "俯仰角列表"
+        },
+        "outputs": {
+            "images": "图像",
+            "ortho_scale": "正交投影缩放比例",
+            "azimuths": "方位角列表",
+            "elevations": "俯仰角列表"
+        },
+        "description": ""
+    },
+    "Trellis2CudaReset": {
+        "title": "Trellis2 CUDA重置",
+        "inputs": {
+            "input_1": "输入1"
+        },
+        "widgets": {},
+        "outputs": {
+            "output_1": "输出1"
+        },
+        "description": ""
+    },
+    "Trellis2SaveImage": {
+        "title": "Trellis2 图像保存",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "compress_level": "压缩等级"
+        },
+        "outputs": {
+            "images_path": "图像路径"
+        },
+        "description": "将输入图像保存到ComfyUI输出目录。"
+    },
+    "Trellis2VoxelToMesh": {
+        "title": "Trellis2 体素转网格",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "target_height_mm": "目标高度（毫米）",
+            "sigma": "平滑系数sigma",
+            "coarse_downsample": "粗降采样率",
+            "taubin_iterations": "Taubin平滑迭代次数"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": ""
+    },
+    "Trellis2UnloadAllModels": {
+        "title": "Trellis2 卸载所有模型",
+        "inputs": {
+            "input_1": "输入1"
+        },
+        "widgets": {},
+        "outputs": {
+            "output_1": "输出1"
+        },
+        "description": ""
+    },
+    "Trellis2SparseGeneratorWithReconViaGen": {
+        "title": "Trellis2 带生成式重建的稀疏结构生成器",
+        "inputs": {
+            "pipeline": "管线",
+            "images": "图像"
+        },
+        "widgets": {
+            "seed": "种子",
+            "sparse_structure_steps": "稀疏结构迭代步数",
+            "sparse_structure_guidance_strength": "稀疏结构引导强度",
+            "sparse_structure_guidance_rescale": "稀疏结构引导重缩放系数",
+            "sparse_structure_rescale_t": "稀疏结构重缩放T值",
+            "sparse_structure_sampler": "稀疏结构采样器",
+            "sparse_structure_resolution": "稀疏结构分辨率",
+            "sparse_structure_guidance_interval_start": "稀疏结构引导区间起始点",
+            "sparse_structure_guidance_interval_end": "稀疏结构引导区间结束点",
+            "verbose": "输出详细日志",
+            "dino_lock": "DINO特征锁定",
+            "dino_substeps": "DINO子步数",
+            "dino_foundation_cap": "DINO基础阈值",
+            "fill_holes": "填充孔洞",
+            "hole_iterations": "孔洞填充迭代次数",
+            "hole_fill_algorithm": "孔洞填充算法",
+            "keep_only_shell": "仅保留外壳"
+        },
+        "outputs": {
+            "coords": "坐标列表",
+            "sparse_structure_resolution": "稀疏结构分辨率",
+            "pipeline": "管线"
+        },
+        "description": ""
+    },
+    "Trellis2ExtractImagesFromVideo": {
+        "title": "Trellis2 视频抽帧",
+        "inputs": {},
+        "widgets": {
+            "video_file": "视频文件",
+            "frames_per_second": "每秒抽取帧数"
+        },
+        "outputs": {
+            "images": "图像"
+        },
+        "description": ""
+    },
+    "Trellis2MaxTokensCalculator": {
+        "title": "Trellis2 最大令牌数计算器",
+        "inputs": {},
+        "widgets": {
+            "default_max_tokens": "默认最大令牌数"
+        },
+        "outputs": {
+            "max_tokens": "最大令牌数"
+        },
+        "description": ""
+    },
+    "Trellis2ImageCondMultiViewGenerator": {
+        "title": "Trellis2 图像条件多视角生成器",
+        "inputs": {
+            "pipeline": "管线",
+            "front_image": "正面图像",
+            "back_image": "背面图像",
+            "left_image": "左侧图像",
+            "right_image": "右侧图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "conds_512": "512分辨率cond",
+            "conds_1024": "1024分辨率cond",
+            "views_list": "视角列表",
+            "pipeline": "管线"
+        },
+        "description": ""
+    },
+    "Trellis2SparseMultiViewGenerator": {
+        "title": "Trellis2 稀疏多视角生成器",
+        "inputs": {
+            "pipeline": "管线",
+            "image_conds": "图像条件",
+            "views_list": "视角列表"
+        },
+        "widgets": {
+            "seed": "种子",
+            "sparse_structure_steps": "稀疏结构迭代步数",
+            "sparse_structure_guidance_strength": "稀疏结构引导强度",
+            "sparse_structure_guidance_rescale": "稀疏结构引导重缩放系数",
+            "sparse_structure_rescale_t": "稀疏结构重缩放T值",
+            "sparse_structure_sampler": "稀疏结构采样器",
+            "sparse_structure_resolution": "稀疏结构分辨率",
+            "sparse_structure_guidance_interval_start": "稀疏结构引导区间起始点",
+            "sparse_structure_guidance_interval_end": "稀疏结构引导区间结束点",
+            "fill_holes": "填充孔洞",
+            "hole_iterations": "孔洞填充迭代次数",
+            "verbose": "输出详细日志",
+            "dino_lock": "DINO特征锁定",
+            "dino_substeps": "DINO子步数",
+            "hole_fill_algorithm": "孔洞填充算法",
+            "dino_foundation_cap": "DINO基础阈值",
+            "keep_only_shell": "仅保留外壳",
+            "front_axis": "前向轴",
+            "blend_temperature": "混合温度系数"
+        },
+        "outputs": {
+            "coords": "坐标列表",
+            "sparse_structure_resolution": "稀疏结构分辨率",
+            "views_list": "视角列表",
+            "pipeline": "管线"
+        },
+        "description": ""
+    },
+    "Trellis2ShapeMultiViewGenerator": {
+        "title": "Trellis 形状多视图生成器",
+        "inputs": {
+            "pipeline": "管线",
+            "image_conds": "图像条件",
+            "views_list": "视图列表",
+            "coords": "坐标"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "shape_steps": "形状生成step数",
+            "shape_guidance_strength": "形状引导强度",
+            "shape_guidance_rescale": "形状引导重缩放系数",
+            "shape_rescale_t": "形状重缩放时间步t",
+            "shape_sampler": "形状采样器",
+            "shape_guidance_interval_start": "形状引导区间起始步",
+            "shape_guidance_interval_end": "形状引导区间结束步",
+            "verbose": "输出详细日志",
+            "dino_lock": "DINO特征锁定",
+            "dino_substeps": "DINO子step数",
+            "dino_foundation_cap": "DINO基础阈值",
+            "front_axis": "前向轴",
+            "blend_temperature": "融合温度系数"
+        },
+        "outputs": {
+            "shape_slat": "形状slat稀疏latent",
+            "resolution": "分辨率",
+            "views_list": "视图列表",
+            "pipeline": "管线"
+        },
+        "description": ""
+    },
+    "Trellis2ShapeCascadeMultiViewGenerator": {
+        "title": "Trellis 级联形状多视图生成器",
+        "inputs": {
+            "pipeline": "管线",
+            "image_conds": "图像条件",
+            "views_list": "视图列表",
+            "shape_slat": "形状slat稀疏latent"
+        },
+        "widgets": {
+            "from_resolution": "源分辨率",
+            "to_resolution": "目标分辨率",
+            "sparse_structure_resolution": "稀疏结构分辨率",
+            "max_num_tokens": "最大Token数",
+            "shape_steps": "形状生成step数",
+            "shape_guidance_strength": "形状引导强度",
+            "shape_guidance_rescale": "形状引导重缩放系数",
+            "shape_rescale_t": "形状重缩放时间步t",
+            "shape_sampler": "形状采样器",
+            "shape_guidance_interval_start": "形状引导区间起始步",
+            "shape_guidance_interval_end": "形状引导区间结束步",
+            "verbose": "输出详细日志",
+            "dino_lock": "DINO特征锁定",
+            "dino_substeps": "DINO子step数",
+            "dino_foundation_cap": "DINO基础阈值",
+            "front_axis": "前向轴",
+            "blend_temperature": "融合温度系数"
+        },
+        "outputs": {
+            "shape_slat": "形状slat稀疏latent",
+            "resolution": "分辨率",
+            "views_list": "视图列表",
+            "pipeline": "管线",
+            "num_tokens": "Token数量"
+        },
+        "description": ""
+    },
+    "Trellis2TexSlatMultiViewGenerator": {
+        "title": "Trellis 纹理slat多视图生成器",
+        "inputs": {
+            "pipeline": "管线",
+            "image_conds": "图像条件",
+            "views_list": "视图列表",
+            "shape_slat": "形状slat稀疏latent"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "texture_steps": "纹理生成step数",
+            "texture_guidance_strength": "纹理引导强度",
+            "texture_guidance_rescale": "纹理引导重缩放系数",
+            "texture_rescale_t": "纹理重缩放时间步t",
+            "texture_sampler": "纹理采样器",
+            "texture_guidance_interval_start": "纹理引导区间起始步",
+            "texture_guidance_interval_end": "纹理引导区间结束步",
+            "verbose": "输出详细日志",
+            "dino_lock": "DINO特征锁定",
+            "dino_substeps": "DINO子step数",
+            "dino_foundation_cap": "DINO基础阈值",
+            "front_axis": "前向轴",
+            "blend_temperature": "融合温度系数"
+        },
+        "outputs": {
+            "texture_slat": "纹理slat稀疏latent",
+            "views_list": "视图列表",
+            "pipeline": "管线"
+        },
+        "description": ""
+    },
+    "Trellis2MoGeCameraConfig": {
+        "title": "Trellis MoGe相机配置",
+        "inputs": {},
+        "widgets": {
+            "camera_angle_x": "相机X轴角度",
+            "distance": "拍摄距离",
+            "mesh_scale": "网格缩放比例"
+        },
+        "outputs": {
+            "moge_camera_config": "MoGe相机配置"
+        },
+        "description": ""
+    },
+    "Trellis2FovMoGeCameraConfig": {
+        "title": "Trellis 视场角MoGe相机配置",
+        "inputs": {},
+        "widgets": {
+            "fov": "视场角(FOV)",
+            "unit": "单位",
+            "extend_pixel": "扩展像素数",
+            "mesh_scale": "网格缩放比例"
+        },
+        "outputs": {
+            "moge_camera_config": "MoGe相机配置"
+        },
+        "description": ""
+    },
     "Trellis2RenderPreview": {
         "title": "生成预览图",
         "inputs": {
-            "trimesh": "trimesh格式"
+            "trimesh": "三角网格"
         },
         "widgets": {
             "num_views": "视角数量",
@@ -19,7 +1470,7 @@
     "Trellis2RenderVideo": {
         "title": "生成旋转视频",
         "inputs": {
-            "trimesh": "trimesh格式"
+            "trimesh": "三角网格"
         },
         "widgets": {
             "num_frames": "帧数",
@@ -71,7 +1522,7 @@
             "shape_result": "形状结果",
             "mesh": "网格",
             "TRELLIS2_SHAPE_RESULT": "TRELLIS2 形状结果",
-            "TRIMESH": "trimesh格式"
+            "TRIMESH": "三角网格"
         },
         "description": "\n从图像条件生成3D形状。\n\n此节点生成形状几何体（无纹理/PBR材质）。\n连接shape_result到“形状到纹理网格”以获得PBR材质。\n\n参数:\n- model_config: 加载的模型配置（（分辨率在加载模型节点中设置）\n- conditioning: “获取条件”节点的DinoV3条件\n- seed: 用于再现性的随机种子\n- ss_*: 稀疏结构采样参数\n- shape_*: 形状潜在采样参数\n\n返回:\n- shape_result: 用于纹理生成的形状数据\n- mesh: 预览/导出的未着色网格\n",
         "api_version": "V1"
@@ -187,7 +1638,7 @@
         "title": "解码稀疏结构Latent",
         "inputs": {
             "model_config": "模型配置",
-            "samples": "样本"
+            "samples": "采样"
         },
         "widgets": {
             "ss_resolution": "SS分辨率"
@@ -279,5 +1730,373 @@
         },
         "description": "\n将三角网格导出到多种3D文件格式。\n\n支持：GLB, OBJ, PLY, STL, 3MF, DAE",
         "api_version": "V1"
+    },
+    "Trellis2MeshWithVoxeltoTrimesmesh": {
+        "title": "Trellis2基于体素的网格转换为三角网格",
+        "inputs": {},
+        "widgets": {
+            "mesh": "网格",
+            "reorient_vertices": "重新定向顶点"
+        },
+        "outputs": {
+            "trimesh": "三角网格",
+            "TRIMESH": "三角网格"
+        },
+        "description": ""
+    },
+    "Trellis2MeshTexture": {
+        "title": "Trellis2网格纹理",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "pipeline": "管线",
+            "trimesh": "三角网格",
+            "seed": "种子",
+            "texture_steps": "纹理步骤",
+            "texture_guidance_strength": "纹理引导强度",
+            "texture_guidance_rescale": "纹理比例调整",
+            "texture_rescale_t": "纹理比例调整t",
+            "resolution": "分辨率",
+            "texture_size": "纹理大小",
+            "texture_alpha_mode": "纹理透明模式",
+            "double_side_material": "双面材质",
+            "texture_guidance_interval_start": "纹理引导区间开始",
+            "texture_guidance_interval_end": "纹理引导区间结束",
+            "max_views": "最大视角",
+            "bake_on_vertices": "在顶点上烘焙",
+            "use_custom_normals": "使用自定义法线",
+            "mesh_cluster_threshold_cone_half_angle_rad": "网格簇阈角半径弧度",
+            "sampler": "采样器",
+            "inpainting": "修复",
+            "verbose": "详细信息",
+            "dino_lock": "DINO锁定",
+            "dino_substeps": "DINO子步",
+            "dino_foundation_cap": "DINO基础帽"
+        },
+        "outputs": {
+            "trimesh": "三角网格",
+            "base_color_texture": "基础颜色纹理",
+            "metallic_roughness_texture": "金属光泽纹理",
+            "TRIMESH": "三角网格",
+            "IMAGE": "图像"
+        },
+        "description": ""
+    },
+    "Trellis2MeshTexturerMultiView": {
+        "title": "Trellis2多视图网格纹理化器",
+        "inputs": {
+            "pipeline": "管线",
+            "front_image": "前视图图像",
+            "trimesh": "三角网格",
+            "back_image": "后视图图像",
+            "left_image": "左视图图像",
+            "right_image": "右视图图像"
+        },
+        "widgets": {
+            "seed": "种子",
+            "纹理步骤": "纹理步骤",
+            "纹理引导强度": "纹理引导强度",
+            "纹理引导缩放": "纹理引导缩放",
+            "纹理缩放t": "纹理缩放t",
+            "分辨率": "分辨率",
+            "纹理大小": "纹理大小",
+            "纹理alpha模式": "纹理alpha模式",
+            "双面材质": "双面材质",
+            "纹理引导区间开始": "纹理引导区间开始",
+            "纹理引导区间结束": "纹理引导区间结束",
+            "烘焙在顶点上": "烘焙在顶点上",
+            "使用自定义法线": "使用自定义法线",
+            "网格聚类阈值圆锥半角弧度": "网格聚类阈值圆锥半角弧度",
+            "前方轴": "前方轴",
+            "混合温度": "混合温度",
+            "采样器": "采样器",
+            "修复": "修复",
+            "详细信息": "详细信息",
+            "DINO锁定": "DINO锁定",
+            "DINO子步数": "DINO子步数",
+            "DINO基础帽": "DINO基础帽"
+        },
+        "outputs": {
+            "trimesh": "三角网格",
+            "基色纹理": "基色纹理",
+            "金属光泽粗糙度纹理": "金属光泽粗糙度纹理"
+        },
+        "description": ""
+    },
+    "Trellis2PostProcess": {
+        "title": "Trellis2后处理",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "填充孔洞": "填充孔洞",
+            "修复法线": "修复法线",
+            "修复面朝向": "修复面朝向",
+            "删除重复面": "删除重复面",
+            "焊接顶点": "焊接顶点",
+            "焊接顶点位数": "焊接顶点位数",
+            "平滑": "平滑",
+            "平滑迭代次数": "平滑迭代次数",
+            "细分": "细分",
+            "细分迭代次数": "细分迭代次数"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": ""
+    },
+    "Trellis2UnWrapTrimessh": {
+        "title": "展开三角网格",
+        "inputs": {},
+        "widgets": {
+            "trimessh": "三角网格",
+            "网格簇阈值圆锥半角弧度": "网格簇阈值圆锥半角弧度",
+            "网格簇细化迭代次数": "网格簇细化迭代次数",
+            "网格簇全局迭代次数": "网格簇全局迭代次数",
+            "网格簇光滑强度": "网格簇光滑强度"
+        },
+        "outputs": {
+            "trresm": "三角网格",
+            "TRIMESH": "三角网格"
+        },
+        "description": ""
+    },
+    "Trellis2MultiViewTexture": {
+        "title": "Trellis2多视图纹理",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "三角网格",
+            "texture_size": "纹理大小",
+            "blend_texture": "混合纹理",
+            "blend_exponent": "混合指数",
+            "ortho_scale": "正交比例",
+            "norm_size": "标准化大小",
+            "fill_holes": "填充孔洞",
+            "max_hole_size": "最大孔洞大小",
+            "use_metallic": "使用金属光泽",
+            "depth_eps": "深度误差",
+            "mesh_cluster_threshold_cone_half_angle_rad": "网格聚类阈值圆锥半角弧度",
+            "add_alpha_channel": "添加透明通道",
+            "front_image": "前视图",
+            "back_image": "后视图",
+            "left_image": "左视图",
+            "right_image": "右视图",
+            "top_image": "顶视图",
+            "bottom_image": "底视图",
+            "front_weight": "前视图权重",
+            "back_weight": "后视图权重",
+            "left_weight": "左视图权重",
+            "right_weight": "右视图权重",
+            "top_weight": "顶视图权重",
+            "bottom_weight": "底视图权重",
+            "custom_images": "自定义图像",
+            "custom_azimuths": "自定义方位角",
+            "custom_elevations": "自定义仰角",
+            "custom_weights": "自定义权重",
+            "camera_config": "相机配置"
+        },
+        "outputs": {
+            "trimesh": "三角网格",
+            "base_color": "基础颜色",
+            "metallic_roughness": "金属光泽",
+            "TRIMESH": "TRIMESH",
+            "IMAGE": "图像"
+        },
+        "description": "通过投影多个视角图像应用纹理到网格。\n\n使用角度加权混合：每个表面接收来自所有能看到它的视角的纹理，并根据其面对每个摄像机的角度直接程度加权。\n\n摄像机角度（Y向上坐标系：\n- 方位角：绕Y轴旋转\n  - 0° = 前方（朝向-Z方向）\n  - 90° = 左侧（朝向-X方向）\n  - 180° = 后方（朝向+Z方向）\n  - 270° = 右侧（朝向+X方向）\n- 俯仰角：绕X轴旋转\n  - 0° = 水平\n  - 90° = 顶部（从上方朝向-Y方向）\n  - -90° = 底部（从下方朝向+Y方向）"
+    },
+    "Trellis2TexxlatMultiViewGenerator": {
+        "title": "Trellis2Texxlat多视图生成器",
+        "inputs": {
+            "pipeline": "pipeline",
+            "image_conds": "条件图",
+            "views_list": "视图列表",
+            "shape_slat": "形状槽"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "texture_steps": "纹理步骤",
+            "texture_guidance_strength": "纹理引导强度",
+            "texture_guidance_rescale": "纹理比例调整",
+            "texture_rescale_t": "纹理比例时间",
+            "texture_sampler": "纹理采样器",
+            "texture_guidance_interval_start": "纹理引导区间开始",
+            "texture_guidance_interval_end": "纹理引导区间结束",
+            "verbose": "详细信息",
+            "dino_lock": "DINO锁定",
+            "dino_substeps": "DINO子步数",
+            "dino_foundation_cap": "DINO基础帽",
+            "front_axis": "前轴",
+            "blend_temperature": "混合温度"
+        },
+        "outputs": {
+            "texture_slat": "纹理槽",
+            "views_list": "视图列表",
+            "pipeline": "pipeline"
+        },
+        "description": ""
+    },
+    "Trellis2MeshTextture": {
+        "title": "Trellis2网格纹理",
+        "inputs": {
+            "pipeline": "管道",
+            "image": "图像",
+            "trimesh": "三角网格"
+        },
+        "widgets": {
+            "seed": "种子",
+            "texture_steps": "纹理步骤",
+            "texture_guidance_strength": "纹理引导强度",
+            "texture_guidance_rescale": "纹理引导缩放",
+            "texture_rescale_t": "纹理缩放t",
+            "resolution": "分辨率",
+            "texture_size": "纹理尺寸",
+            "texture_alpha_mode": "纹理透明模式",
+            "double_side_material": "双面材质",
+            "texture_guidance_interval_start": "纹理引导区间开始",
+            "texture_guidance_interval_end": "纹理引导区间结束",
+            "max_views": "最大视图",
+            "bake_on_vertices": "在顶点上烘焙",
+            "use_custom_normals": "使用自定义法线",
+            "mesh_cluster_threshold_cone_half_angle_rad": "网格聚类阈值圆锥半角弧度",
+            "sampler": "采样器",
+            "inpainting": "修复",
+            "verbose": "详细信息",
+            "dino_lock": "dino_lock",
+            "dino_substeps": "dino子步",
+            "dino_foundation_cap": "dino基础帽"
+        },
+        "outputs": {
+            "trimesh": "三角网格",
+            "base_color_texture": "基础颜色纹理",
+            "metallic_roughness_texture": "金属光泽纹理"
+        },
+        "description": ""
+    },
+    "Trellis2UnwrapTrimesmes": {
+        "title": "Trellis2展UV",
+        "inputs": {
+            "trresm": "trresm"
+        },
+        "widgets": {
+            "mesh_cluster_threshold_cone_half_angle_rad": "网格聚类阈值圆锥半角弧度",
+            "mesh_cluster_refinement_iterations": "网格细化迭代次数",
+            "mesh_cluster_global_iterations": "全局网格优化迭代次数",
+            "mesh_cluster_smooth_strength": "网格平滑强度"
+        },
+        "outputs": {
+            "trresm": "trresm"
+        },
+        "description": ""
+    },
+    "Trellis2TexxlatGenerator": {
+        "title": "Trellis2纹理生成器",
+        "inputs": {
+            "pipeline": "pipeline",
+            "image_cond": "条件图",
+            "shape_slat": "形状slat",
+            "image": "图像",
+            "moge_camera_config": "moge相机配置"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "texture_steps": "纹理步骤",
+            "texture_guidance_strength": "纹理引导强度",
+            "texture_guidance_rescale": "纹理引导缩放",
+            "texture_rescale_t": "纹理缩放t",
+            "texture_sampler": "纹理采样器",
+            "texture_guidance_interval_start": "纹理引导区间开始",
+            "texture_guidance_interval_end": "纹理引导区间结束",
+            "verbose": "详细信息",
+            "dino_lock": "dino锁定",
+            "dino_substeps": "dino子步数",
+            "dino_foundation_cap": "dino基础帽",
+            "from_resolution": "起始分辨率"
+        },
+        "outputs": {
+            "texture_slat": "纹理slat",
+            "pipeline": "pipeline"
+        },
+        "description": ""
+    },
+    "Trellis2DecodeLatent": {
+        "title": "Trellis2解码Latent",
+        "inputs": {
+            "pipeline": "pipeline",
+            "shape_slat": "形状slat",
+            "texture_slat": "纹理slat"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "use_tiled_decoder": "使用平铺解码器"
+        },
+        "outputs": {
+            "mesh": "网格",
+            "bvh": "包围盒",
+            "pipeline": "管线"
+        },
+        "description": ""
+    },
+    "Trellis2simplifyTrimeseshAdvanced": {
+        "title": "Trellis2 简化三角片（高级）",
+        "inputs": {
+            "trimesmesh": "三角网格"
+        },
+        "widgets": {
+            "target_face_num": "目标面数",
+            "thresh": "阈值",
+            "lambda_edge_length": "边长权重",
+            "lambda_skinny": "瘦长权重",
+            "lambda_curvature": "曲率权重",
+            "lambda_boundary": "边界权重",
+            "lambda_area": "面积权重",
+            "qem_regularization": "QEM正则化"
+        },
+        "outputs": {
+            "trimesmesh": "三角网格"
+        },
+        "description": ""
+    },
+    "Trellis2MultiViewTexturer": {
+        "title": "Trellis2多视图纹理器",
+        "inputs": {
+            "trimesh": "三角网格",
+            "front_image": "前视图图像",
+            "back_image": "后视图图像",
+            "left_image": "左视图图像",
+            "right_image": "右视图图像",
+            "top_image": "顶视图图像",
+            "bottom_image": "底视图图像",
+            "custom_images": "自定义图像",
+            "camera_config": "相机配置"
+        },
+        "widgets": {
+            "texture_size": "纹理大小",
+            "blend_texture": "混合纹理",
+            "blend_exponent": "混合指数",
+            "ortho_scale": "正交比例",
+            "norm_size": "法线大小",
+            "fill_holes": "填充孔洞",
+            "max_hole_size": "最大孔洞大小",
+            "use_metallic": "使用金属光泽",
+            "depth_eps": "深度阈值",
+            "mesh_cluster_threshold_cone_half_angle_rad": "网格聚类阈值圆锥半角弧度",
+            "add_alpha_channel": "添加alpha通道",
+            "front_weight": "前视图权重",
+            "back_weight": "后视图权重",
+            "left_weight": "左视图权重",
+            "right_weight": "右视图权重",
+            "top_weight": "顶视图权重",
+            "bottom_weight": "底视图权重",
+            "custom_azimuths": "自定义方位角",
+            "custom_elevations": "自定义仰角",
+            "custom_weights": "自定义权重"
+        },
+        "outputs": {
+            "trimesh": "三角网格",
+            "base_color": "基础颜色",
+            "metallic_roughness": "金属光泽粗糙度"
+        },
+        "description": "通过投影多个视角图像应用纹理。\n\n使用角度加权混合：每个表面接收来自所有可以“看到”它的视角的纹理，并权重由表面直接面对每个相机的角度决定。\n\n相机角度（Y向上坐标系）:\n- 方位角：绕Y轴旋转\n  - 1° = 前方（朝向-Z方向）   - 91° = 左侧（朝向-X方向）   - 181° = 后方（朝向+Z方向）   - 271° = 右侧（朝向+X方向） - 俯仰角：绕X轴旋转\n  - 1° = 水平\n  - 91° = 顶部（朝向-Y方向，从上方看）   - -91° = 底部（朝向+Y方向，从下方看）"
     }
 }
