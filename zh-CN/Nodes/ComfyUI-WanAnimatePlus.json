@@ -1,0 +1,465 @@
+{
+  "WanVideoAnimateEmbeds": {
+    "title": "WanAnimate 动画嵌入",
+    "description": "WanAnimate 核心嵌入节点，支持参考图、姿态、面部、背景、prefix_frames 和 transition_video",
+    "inputs": {
+      "vae": "VAE模型",
+      "width": "宽度",
+      "height": "高度",
+      "num_frames": "总帧数",
+      "force_offload": "强制卸载",
+      "frame_window_size": "上下文窗口大小",
+      "colormatch": "色彩匹配",
+      "pose_strength": "姿态强度",
+      "face_strength": "面部强度",
+      "clip_embeds": "CLIP视觉嵌入",
+      "ref_images": "参考图像",
+      "pose_images": "姿态图像",
+      "face_images": "面部图像",
+      "bg_images": "背景图像",
+      "mask": "蒙版",
+      "start_ref_image": "起始参考图",
+      "transition_video": "过渡视频帧",
+      "prefix_frames": "前缀参考帧",
+      "tiled_vae": "分块VAE编码"
+    },
+    "outputs": {
+      "image_embeds": "图像嵌入"
+    }
+  },
+
+  "WanVideoSampler": {
+    "title": "WanAnimate 采样器",
+    "description": "WanAnimate 视频采样器，支持 CFG/APG/APG链式引导",
+    "inputs": {
+      "model": "WanVideo模型",
+      "image_embeds": "图像嵌入",
+      "steps": "采样步数",
+      "cfg": "CFG尺度",
+      "shift": "噪声偏移",
+      "seed": "随机种子",
+      "force_offload": "强制卸载",
+      "scheduler": "调度器",
+      "riflex_freq_index": "RIFLEX频率索引",
+      "text_embeds": "文本嵌入",
+      "samples": "初始潜变量",
+      "denoise_strength": "去噪强度",
+      "feta_args": "Enhance-A-Video参数",
+      "context_options": "上下文选项",
+      "cache_args": "缓存参数",
+      "flowedit_args": "FlowEdit参数",
+      "batched_cfg": "批量CFG",
+      "slg_args": "SLG参数",
+      "rope_function": "RoPE函数",
+      "loop_args": "循环参数",
+      "experimental_args": "实验性参数",
+      "sigmas": "Sigma值",
+      "unianimate_poses": "UniAnimate姿态",
+      "fantasytalking_embeds": "FantasyTalking嵌入",
+      "uni3c_embeds": "Uni3C嵌入",
+      "multitalk_embeds": "MultiTalk嵌入",
+      "freeinit_args": "FreeInit参数",
+      "start_step": "起始步数",
+      "end_step": "结束步数",
+      "add_noise_to_samples": "向样本添加噪声",
+      "guidance_mode": "引导模式",
+      "apg_eta": "APG eta值",
+      "apg_momentum": "APG动量",
+      "apg_norm_threshold": "APG范数阈值",
+      "apg_omega": "APG omega值",
+      "apg_omega_I": "APG omega_I值",
+      "apg_omega_TI": "APG omega_TI值",
+      "chain_omega_V": "链式CFG omega_V值",
+      "chain_omega_I": "链式CFG omega_I值",
+      "chain_omega_TI": "链式CFG omega_TI值"
+    },
+    "outputs": {
+      "samples": "样本",
+      "denoised_samples": "去噪后样本"
+    }
+  },
+
+  "WanVideoSamplerv2": {
+    "title": "WanAnimate 采样器 v2",
+    "description": "WanAnimate 采样器 v2 版本",
+    "inputs": {
+      "model": "WanVideo模型",
+      "image_embeds": "图像嵌入",
+      "steps": "采样步数",
+      "cfg": "CFG尺度",
+      "shift": "噪声偏移",
+      "seed": "随机种子",
+      "force_offload": "强制卸载",
+      "scheduler": "调度器",
+      "text_embeds": "文本嵌入",
+      "samples": "初始潜变量",
+      "denoise_strength": "去噪强度",
+      "context_options": "上下文选项",
+      "cache_args": "缓存参数",
+      "batched_cfg": "批量CFG",
+      "slg_args": "SLG参数",
+      "rope_function": "RoPE函数",
+      "loop_args": "循环参数",
+      "experimental_args": "实验性参数",
+      "sigmas": "Sigma值",
+      "start_step": "起始步数",
+      "end_step": "结束步数"
+    },
+    "outputs": {
+      "samples": "样本",
+      "denoised_samples": "去噪后样本"
+    }
+  },
+
+  "WanVideoScheduler": {
+    "title": "WanAnimate 调度器",
+    "description": "WanAnimate 噪声调度器",
+    "inputs": {
+      "steps": "采样步数",
+      "shift": "噪声偏移",
+      "scheduler": "调度器类型",
+      "start_percent": "起始百分比",
+      "end_percent": "结束百分比"
+    },
+    "outputs": {
+      "sample_scheduler": "采样调度器",
+      "timesteps": "时间步"
+    }
+  },
+
+  "WanVideoSchedulerv2": {
+    "title": "WanAnimate 调度器 v2",
+    "description": "WanAnimate 调度器 v2 版本",
+    "inputs": {
+      "steps": "采样步数",
+      "shift": "噪声偏移",
+      "scheduler": "调度器类型"
+    },
+    "outputs": {
+      "sample_scheduler": "采样调度器",
+      "timesteps": "时间步"
+    }
+  },
+
+  "WanVideoSamplerSettings": {
+    "title": "WanAnimate 采样器设置",
+    "description": "将采样参数打包为设置对象，便于复用",
+    "inputs": {
+      "steps": "采样步数",
+      "cfg": "CFG尺度",
+      "shift": "噪声偏移",
+      "scheduler": "调度器",
+      "riflex_freq_index": "RIFLEX频率索引",
+      "guidance_mode": "引导模式",
+      "apg_eta": "APG eta值",
+      "apg_momentum": "APG动量",
+      "apg_norm_threshold": "APG范数阈值"
+    },
+    "outputs": {
+      "sampler_settings": "采样器设置"
+    }
+  },
+
+  "WanVideoSamplerFromSettings": {
+    "title": "WanAnimate 从设置采样",
+    "description": "使用预设的采样器设置进行采样",
+    "inputs": {
+      "model": "WanVideo模型",
+      "image_embeds": "图像嵌入",
+      "sampler_settings": "采样器设置",
+      "seed": "随机种子",
+      "force_offload": "强制卸载",
+      "text_embeds": "文本嵌入",
+      "samples": "初始潜变量",
+      "denoise_strength": "去噪强度",
+      "context_options": "上下文选项",
+      "cache_args": "缓存参数",
+      "batched_cfg": "批量CFG",
+      "slg_args": "SLG参数",
+      "rope_function": "RoPE函数",
+      "loop_args": "循环参数",
+      "experimental_args": "实验性参数",
+      "sigmas": "Sigma值",
+      "start_step": "起始步数",
+      "end_step": "结束步数"
+    },
+    "outputs": {
+      "samples": "样本",
+      "denoised_samples": "去噪后样本"
+    }
+  },
+
+  "WanVideoEncode": {
+    "title": "WanAnimate VAE编码",
+    "description": "将图像/视频编码为潜变量",
+    "inputs": {
+      "vae": "VAE模型",
+      "width": "宽度",
+      "height": "高度",
+      "num_frames": "总帧数",
+      "noise_aug_strength": "噪声增强强度",
+      "start_latent_strength": "起始潜变量强度",
+      "end_latent_strength": "结束潜变量强度",
+      "force_offload": "强制卸载",
+      "start_image": "起始图像",
+      "end_image": "结束图像",
+      "clip_embeds": "CLIP视觉嵌入",
+      "control_embeds": "控制嵌入",
+      "fun_or_fl2v_model": "Fun/FL2V模型",
+      "temporal_mask": "时间蒙版",
+      "extra_latents": "额外潜变量",
+      "tiled_vae": "分块VAE编码",
+      "add_cond_latents": "额外条件潜变量",
+      "augment_empty_frames": "增强空白帧",
+      "empty_frame_pad_image": "空白帧填充图像"
+    },
+    "outputs": {
+      "image_embeds": "图像嵌入"
+    }
+  },
+
+  "WanVideoDecode": {
+    "title": "WanAnimate VAE解码",
+    "description": "将潜变量解码为视频像素",
+    "inputs": {
+      "samples": "潜变量",
+      "vae": "VAE模型",
+      "enable_tiling": "启用分块",
+      "force_offload": "强制卸载"
+    },
+    "outputs": {
+      "images": "图像"
+    }
+  },
+
+  "WanVideoModelLoader": {
+    "title": "WanAnimate 模型加载器",
+    "description": "加载 Wan Animate 视频生成模型",
+    "inputs": {
+      "model_path": "模型路径",
+      "precision": "精度",
+      "attention_mode": "注意力模式",
+      "load_device": "加载设备",
+      "enable_5b": "启用5B模型"
+    },
+    "outputs": {
+      "model": "WanVideo模型"
+    }
+  },
+
+  "WanVideoVAELoader": {
+    "title": "WanAnimate VAE加载器",
+    "description": "加载 VAE 模型",
+    "inputs": {
+      "model_path": "模型路径"
+    },
+    "outputs": {
+      "vae": "VAE模型"
+    }
+  },
+
+  "WanVideoContextOptions": {
+    "title": "WanAnimate 上下文选项",
+    "description": "配置上下文窗口采样参数",
+    "inputs": {
+      "context_schedule": "上下文调度",
+      "context_frames": "上下文帧数",
+      "context_stride": "上下文步长",
+      "context_overlap": "上下文重叠",
+      "freenoise": "FreeNoise",
+      "verbose": "详细输出"
+    },
+    "outputs": {
+      "context_options": "上下文选项"
+    }
+  },
+
+  "WanVideoTextEncodeCached": {
+    "title": "WanAnimate 文本编码(缓存)",
+    "description": "编码文本提示词为嵌入，支持磁盘缓存和 Qwen LLM 扩展",
+    "inputs": {
+      "model_name": "模型名称",
+      "precision": "精度",
+      "positive_prompt": "正面提示词",
+      "negative_prompt": "负面提示词",
+      "quantization": "量化方法",
+      "use_disk_cache": "使用磁盘缓存",
+      "device": "运行设备",
+      "extender_args": "提示词扩展参数"
+    },
+    "outputs": {
+      "text_embeds": "文本嵌入",
+      "negative_text_embeds": "负面文本嵌入",
+      "positive_prompt": "正面提示词"
+    }
+  },
+
+  "WanVideoClipVisionEncode": {
+    "title": "WanAnimate CLIP视觉编码",
+    "description": "使用 CLIP 视觉模型编码参考图像",
+    "inputs": {
+      "clip_vision": "CLIP视觉模型",
+      "image_1": "图像1",
+      "strength_1": "强度1",
+      "strength_2": "强度2",
+      "crop": "裁剪方式",
+      "combine_embeds": "合并嵌入方式",
+      "force_offload": "强制卸载",
+      "image_2": "图像2",
+      "negative_image": "负面图像",
+      "tiles": "分块数",
+      "ratio": "分块比例"
+    },
+    "outputs": {
+      "image_embeds": "图像嵌入"
+    }
+  },
+
+  "WanVideoLoraSelect": {
+    "title": "WanAnimate LoRA选择",
+    "description": "选择单个 LoRA 模型并配置权重",
+    "inputs": {
+      "model_path": "模型路径",
+      "strength": "权重"
+    },
+    "outputs": {
+      "lora": "LoRA配置"
+    }
+  },
+
+  "WanVideoLoraSelectMulti": {
+    "title": "WanAnimate 多LoRA选择",
+    "description": "选择多个 LoRA 模型并分别配置权重",
+    "inputs": {
+      "lora_1": "LoRA 1",
+      "strength_1": "权重1",
+      "lora_2": "LoRA 2",
+      "strength_2": "权重2",
+      "lora_3": "LoRA 3",
+      "strength_3": "权重3",
+      "lora_4": "LoRA 4",
+      "strength_4": "权重4"
+    },
+    "outputs": {
+      "loras": "LoRA列表"
+    }
+  },
+
+  "WanVideoSetLoRAs": {
+    "title": "WanAnimate 应用LoRA",
+    "description": "将 LoRA 配置应用到视频模型",
+    "inputs": {
+      "model": "WanVideo模型",
+      "lora": "LoRA配置",
+      "loras": "LoRA列表"
+    },
+    "outputs": {
+      "model": "WanVideo模型"
+    }
+  },
+
+  "WanVideoBlockSwap": {
+    "title": "WanAnimate 分块交换配置",
+    "description": "配置模型分块交换策略以节省显存",
+    "inputs": {
+      "blocks_to_swap": "交换块数",
+      "use_non_blocking": "使用非阻塞传输",
+      "vace_blocks_to_swap": "VACE交换块数",
+      "prefetch_blocks": "预取块数",
+      "block_swap_debug": "分块交换调试",
+      "offload_img_emb": "卸载图像嵌入",
+      "offload_txt_emb": "卸载文本嵌入"
+    },
+    "outputs": {
+      "block_swap_args": "分块交换参数"
+    }
+  },
+
+  "WanVideoSetBlockSwap": {
+    "title": "WanAnimate 设置分块交换",
+    "description": "将分块交换配置应用到模型",
+    "inputs": {
+      "model": "WanVideo模型",
+      "block_swap_args": "分块交换参数"
+    },
+    "outputs": {
+      "model": "WanVideo模型"
+    }
+  },
+
+  "WanVideoTorchCompileSettings": {
+    "title": "WanAnimate Torch编译设置",
+    "description": "配置 torch.compile 以加速模型推理",
+    "inputs": {
+      "compile_mode": "编译模式",
+      "fullgraph": "完整计算图",
+      "dynamic": "动态形状",
+      "backend": "后端",
+      "options": "选项"
+    },
+    "outputs": {
+      "compile_args": "编译参数"
+    }
+  },
+
+  "WanVideoUni3C_ControlnetLoader": {
+    "title": "WanAnimate Uni3C ControlNet加载器",
+    "description": "加载 Uni3C ControlNet 模型",
+    "inputs": {
+      "model_path": "模型路径"
+    },
+    "outputs": {
+      "uni3c_controlnet": "Uni3C ControlNet"
+    }
+  },
+
+  "WanVideoUni3C_embeds": {
+    "title": "WanAnimate Uni3C嵌入",
+    "description": "生成 Uni3C ControlNet 控制嵌入",
+    "inputs": {
+      "uni3c_controlnet": "Uni3C ControlNet",
+      "control_images": "控制图像",
+      "strength": "控制强度",
+      "start_percent": "起始百分比",
+      "end_percent": "结束百分比"
+    },
+    "outputs": {
+      "uni3c_embeds": "Uni3C嵌入"
+    }
+  },
+
+  "WanVideoSamplerExtraArgs": {
+    "title": "WanAnimate 采样器额外参数",
+    "description": "配置采样器的额外参数（如可选CFG、可选噪声偏移等）",
+    "inputs": {
+      "optional_cfg": "可选CFG",
+      "optional_noise_offset": "可选噪声偏移",
+      "optional_cfg_scale": "可选CFG尺度",
+      "optional_sigma_max": "可选Sigma最大值",
+      "optional_sigma_min": "可选Sigma最小值"
+    },
+    "outputs": {
+      "sampler_extra_args": "采样器额外参数"
+    }
+  },
+
+  "WanAnimatePlusBernini": {
+    "title": "WanAnimate Bernini条件生成",
+    "description": "Bernini模型条件生成，支持v2v/rv2v/r2v/t2v任务",
+    "inputs": {
+      "vae": "VAE模型",
+      "width": "宽度",
+      "height": "高度",
+      "num_frames": "总帧数",
+      "source_video": "源视频",
+      "reference_video": "参考视频",
+      "reference_images": "参考图像",
+      "ref_max_size": "参考媒体最大边长",
+      "force_offload": "强制卸载",
+      "tiled_vae": "分块VAE编码"
+    },
+    "outputs": {
+      "image_embeds": "图像嵌入"
+    }
+  }
+}
