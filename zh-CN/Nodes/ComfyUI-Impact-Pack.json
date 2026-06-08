@@ -1,4 +1,65 @@
 {
+    "ONNXDetectorForEach": {
+        "title": "逐帧ONNX检测器",
+        "inputs": {
+            "onnx_detector": "ONNX检测器",
+            "image": "图像"
+        },
+        "widgets": {
+            "threshold": "阈值",
+            "dilation": "膨胀系数",
+            "crop_factor": "裁剪系数",
+            "drop_size": "最小尺寸过滤阈值"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ImpactIntConstSender": {
+        "title": "Impact整数常量发送器",
+        "inputs": {
+            "signal": "信号"
+        },
+        "widgets": {
+            "value": "数值",
+            "link_id": "链接ID"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "ImagePasteMasked": {
+        "title": "带遮罩图像粘贴",
+        "inputs": {
+            "destination": "目标图像",
+            "source": "源图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "x": "X坐标",
+            "y": "Y坐标",
+            "resize_source": "调整源图像尺寸"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "Unsampler": {
+        "title": "逆采样器",
+        "inputs": {
+            "model": "模型",
+            "positive": "正向提示词词",
+            "negative": "负向提示词词",
+            "latent_image": "latent 图像"
+        },
+        "widgets": {
+            "steps": "step 总数",
+            "end_at_step": "终止step",
+            "cfg": "CFG 值",
+            "sampler_name": "采样器名称",
+            "scheduler": "调度器",
+            "normalize": "标准化"
+        },
+        "outputs": {},
+        "description": ""
+    },
     "ImpactKSamplerBasicPipe": {
         "title": "K采样器(节点束)",
         "inputs": {

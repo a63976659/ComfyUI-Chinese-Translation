@@ -1,21 +1,21 @@
 {
-    "UpscalerTensorrt": {
-        "title": "⚡Tensorrt 超分放大",
-        "inputs": {
-            "images": "图像",
-            "upscaler_trt_model": "放大训练模型"
-        },
+    "LoadRifeTensorrtModel": {
+        "title": "加载 Rife Tensorrt 模型",
+        "inputs": {},
         "widgets": {
-            "resize_to": "调整大小"
+            "model": "模型",
+            "precision": "精度"
         },
         "outputs": {
-            "IMAGE": "图像"
-        }
+            "rife_trt_model": "Rife Tensorrt 模型"
+        },
+        "description": "加载 Rife Tensorrt 模型节点"
     },
     "RifeTensorrt": {
-        "title": "⚡Tensorrt 超分放大",
+        "title": "RifeTensorrt 超分放大",
         "inputs": {
-            "frames": "序列帧图像"
+            "frames": "序列帧图像",
+            "rife_trt_model": "Rife Tensorrt 模型"
         },
         "widgets": {
             "engine": "引擎",
@@ -28,8 +28,21 @@
             "IMAGE": "图像"
         }
     },
+    "UpscalerTensorrt": {
+        "title": "Tensorrt 超分放大",
+        "inputs": {
+            "images": "图像",
+            "upscaler_trt_model": "放大训练模型"
+        },
+        "widgets": {
+            "resize_to": "调整大小"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
     "LoadUpscalerTensorrtModel": {
-        "title": "⚡超分放大 Tensorrt 模型加载器",
+        "title": "Tensorrt 模型加载器",
         "inputs": {},
         "widgets": {
             "model": "模型",

@@ -1,4 +1,58 @@
 {
+    "RSCollage": {
+        "title": "🦊RS拼贴",
+        "inputs": {
+            "overlay_image": "叠加图像",
+            "background_image": "背景图像",
+            "overlay_mask": "叠加遮罩"
+        },
+        "widgets": {
+            "opacity": "不透明度",
+            "feather_type": "羽化类型",
+            "blur_radius": "模糊半径",
+            "blur_hardness": "模糊硬度"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "RS_ImageToLatent": {
+        "title": "🦊RS图像转Latent",
+        "inputs": {
+            "image": "图像",
+            "vae": "VAE",
+            "preset": "预设"
+        },
+        "widgets": {
+            "mode": "模式",
+            "width": "宽度",
+            "height": "高度",
+            "megapixels": "百万像素",
+            "aspect_ratio": "宽高比",
+            "divisibility_mode": "整除模式",
+            "upscale_method": "放大方法",
+            "rounding_mode": "取整模式",
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "width_px": "像素宽度",
+            "height_px": "像素高度",
+            "width_latent": "Latent宽度",
+            "height_latent": "Latent高度"
+        },
+        "description": "将任意图像转换为Latent，并自动优化模型所需的尺寸"
+    },
+    "LoadImageRGBA": {
+        "title": "🦊加载RGBA图像",
+        "inputs": {},
+        "widgets": {
+            "image": "图像"
+        },
+        "outputs": {
+            "rgba": "RGBA"
+        },
+        "description": "加载保留Alpha通道（RGBA）的图像，支持带透明度的PNG、WEBP、TIFF格式"
+    },
     "RSPrompts": {
         "title": "🦊 提示词",
         "inputs": {

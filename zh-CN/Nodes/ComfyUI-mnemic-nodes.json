@@ -1,4 +1,29 @@
 {
+    "🔀 Batch Wildcard Sampler": {
+        "title": "🔀批量提示词采样器",
+        "inputs": {
+            "model": "模型",
+            "clip": "CLIP 模型",
+            "vae": "VAE 模型",
+            "positive": "正提示词",
+            "negative": "负提示词"
+        },
+        "widgets": {
+            "seed": "随机种子",
+            "batch_size": "批次大小",
+            "width": "宽度",
+            "height": "高度",
+            "steps": "步数",
+            "cfg": "CFG 引导系数",
+            "sampler_name": "采样器名称",
+            "scheduler": "调度器",
+            "denoise": "去噪强度",
+            "recache_wildcards": "重新缓存通配符",
+            "console_log": "控制台日志"
+        },
+        "outputs": {},
+        "description": "针对批量中的每一张图像独立解决提示词问题，因此单次运行会为每个批次索引生成不同的提示一一以及不同的图像。LoRAs可通过提示中的<lora:name:strength>标签按图像逐一加载。可将模型和剪辑与样本连接起来，或将其省略以仅预览已解决的提示。"
+    },
     "💾 Save Image With Metadata": {
         "title": "💾保存图像 带元数据",
         "inputs": {

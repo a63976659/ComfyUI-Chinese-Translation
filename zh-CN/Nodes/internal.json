@@ -7414,7 +7414,93 @@
         },
         "description": "为标准K采样器节点的Tripo喷溅模型打补丁，以在每一步显示实时解码高斯贴图预览。"
     },
-
+    "MediaPipeFaceLandmarker": {
+        "title": "检测面部特征点 (MediaPipe)",
+        "inputs": {
+            "face_detection_model": "面部检测模型",
+            "image": "图像"
+        },
+        "widgets": {
+            "detector_variant": "检测器变体",
+            "num_faces": "面部数量",
+            "min_confidence": "最小置信度",
+            "missing_frame_fallback": "缺失帧回退"
+        },
+        "outputs": {
+            "face_landmarks": "面部特征点",
+            "bboxes": "边界框"
+        },
+        "description": "使用 MediaPipe 库检测图像中的人脸并提取面部地标点。"
+    },
+    "MediaPipeFaceMeshVisualize": {
+        "title": "可视化面部特征点(MediaPipe)",
+        "inputs": {
+            "face_landmarks": "面部特征点",
+            "image": "图像"
+        },
+        "widgets": {
+            "connections": "连接",
+            "color": "颜色",
+            "thickness": "粗细",
+            "point_size": "点大小"
+        },
+        "outputs": {
+            "color": "颜色"
+        },
+        "description": "用于在图像上可视化面部特征点（MediaPipe 插件）"
+    },
+    "MediaPipeFaceMask": {
+        "title": "绘制面部遮罩 (MediaPipe)",
+        "inputs": {
+            "face_landmarks": "面部特征点"
+        },
+        "widgets": {
+            "regions": "区域"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        },
+        "description": "使用 MediaPipe 库绘制面部遮罩。"
+    },
+    "Ideogram4Scheduler": {
+        "title": "Ideogram 4 调度器",
+        "inputs": {},
+        "widgets": {
+            "steps": "步数",
+            "width": "宽度",
+            "height": "高度",
+            "mu": "均值",
+            "std": "标准差"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "CFGOverride": {
+        "title": "CFG 覆盖",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "cfg": "CFG 强度",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "在步骤的[开始，结束]百分比范围内将配置文件覆盖为固定值。当存在多个覆盖时，重叠部分由最接近采样器的覆盖获胜。"
+    },
+    "LoadMediaPipeFaceLandmarker": {
+        "title": "加载人脸检测模型 (MediaPipe)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名称"
+        },
+        "outputs": {
+            "FACE_DETECTION_MODEL": "人脸检测模型"
+        },
+        "description": ""
+    },
     "SaveImageWebsocket": {
         "title": "保存图像到网络接口",
         "inputs": {
