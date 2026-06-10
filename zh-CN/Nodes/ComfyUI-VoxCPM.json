@@ -1,0 +1,146 @@
+{
+    "VoxCPM_TTS": {
+        "title": "VoxCPM 文本转语音",
+        "inputs": {
+            "model_name": "模型名称",
+            "lora_name": "Lora名称",
+            "text": "文本",
+            "voice_design": "语音设计",
+            "cfg": "CFG值",
+            "steps": "步数",
+            "normalize_text": "文本标准化",
+            "seed": "种子",
+            "force_offload": "强制卸载",
+            "device": "设备",
+            "dtype": "数据类型",
+            "voice_config": "语音配置",
+            "advanced_params": "高级参数"
+        },
+        "widgets": {
+            "model_name": "模型名称",
+            "lora_name": "Lora名称",
+            "text": "文本",
+            "voice_design": "语音设计",
+            "cfg": "CFG值",
+            "steps": "步数",
+            "normalize_text": "文本标准化",
+            "seed": "种子",
+            "force_offload": "强制卸载",
+            "device": "设备",
+            "dtype": "数据类型"
+        },
+        "outputs": {
+            "Generated Audio": "生成音频"
+        }
+    },
+    "VoxCPM_VoiceCloning": {
+        "title": "VoxCPM 语音克隆",
+        "inputs": {
+            "prompt_text": "提示文本",
+            "prompt_audio": "提示音频",
+            "reference_audio": "参考音频"
+        },
+        "widgets": {
+            "prompt_text": "提示文本",
+            "trim_silence": "静音裁剪"
+        },
+        "outputs": {
+            "VOICE_CONFIG": "语音配置"
+        }
+    },
+    "VoxCPM_AdvancedParams": {
+        "title": "VoxCPM 高级参数",
+        "inputs": {
+            "min_tokens": "最小token数",
+            "max_tokens": "最大token数",
+            "temperature": "温度",
+            "sway": "摇摆系数",
+            "use_cfg_zero_star": "使用CFG-零*",
+            "retry_max_attempts": "最大重试次数",
+            "retry_threshold": "重试阈值"
+        },
+        "widgets": {
+            "min_tokens": "最小token数",
+            "max_tokens": "最大token数",
+            "temperature": "温度",
+            "sway": "摇摆系数",
+            "use_cfg_zero_star": "使用CFG-零*",
+            "retry_max_attempts": "最大重试次数",
+            "retry_threshold": "重试阈值"
+        },
+        "outputs": {
+            "ADVANCED_PARAMS": "高级参数"
+        }
+    },
+    "VoxCPM_TrainConfig": {
+        "title": "VoxCPM 训练配置",
+        "inputs": {
+            "learning_rate": "学习率",
+            "lora_rank": "Lora等级",
+            "lora_alpha": "Lora Alpha系数",
+            "lora_dropout": "Lora 丢失率",
+            "warmup_steps": "预热步数",
+            "grad_accum_steps": "梯度累积步数",
+            "max_batch_tokens": "最大批次token数",
+            "sample_rate": "采样率",
+            "weight_decay": "权重衰减",
+            "enable_lm_lora": "启用LM Lora",
+            "enable_dit_lora": "启用DiT Lora",
+            "enable_proj_lora": "启用Proj Lora"
+        },
+        "widgets": {
+            "learning_rate": "学习率",
+            "lora_rank": "Lora等级",
+            "lora_alpha": "Lora Alpha系数",
+            "lora_dropout": "Lora 丢失率",
+            "warmup_steps": "预热步数",
+            "grad_accum_steps": "梯度累积步数",
+            "max_batch_tokens": "最大批次token数",
+            "sample_rate": "采样率",
+            "weight_decay": "权重衰减",
+            "enable_lm_lora": "启用LM Lora",
+            "enable_dit_lora": "启用DiT Lora",
+            "enable_proj_lora": "启用Proj Lora"
+        },
+        "outputs": {
+            "Train Config": "训练配置"
+        }
+    },
+    "VoxCPM_DatasetMaker": {
+        "title": "VoxCPM 数据集制作",
+        "inputs": {
+            "audio_directory": "音频目录",
+            "output_filename": "输出文件名"
+        },
+        "widgets": {
+            "audio_directory": "音频目录",
+            "output_filename": "输出文件名"
+        },
+        "outputs": {
+            "Dataset Path": "数据集路径"
+        }
+    },
+    "VoxCPM_LoraTrainer": {
+        "title": "VoxCPM Lora训练器",
+        "inputs": {
+            "base_model_name": "基础模型名称",
+            "train_config": "训练配置",
+            "dataset_path": "数据集路径",
+            "output_name": "输出名称",
+            "max_steps": "最大训练步数",
+            "save_every_steps": "每N步保存",
+            "num_workers": "工作线程数"
+        },
+        "widgets": {
+            "base_model_name": "基础模型名称",
+            "dataset_path": "数据集路径",
+            "output_name": "输出名称",
+            "max_steps": "最大训练步数",
+            "save_every_steps": "每N步保存",
+            "num_workers": "工作线程数"
+        },
+        "outputs": {
+            "LoRA Output Path": "Lora输出路径"
+        }
+    }
+}

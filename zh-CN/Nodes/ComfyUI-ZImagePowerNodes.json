@@ -1,4 +1,27 @@
 {
+    "ZSamplerTurbo2Simple //ZImagePowerNodes": {
+        "title": "⚡| Z-采样器 Turbo ^G2 (简单版)",
+        "inputs": {
+            "latent_input": "Latent输入",
+            "model": "模型",
+            "positive": "正向提示词",
+            "positive_stg2": "正向提示词 阶段2",
+            "positive_stg3": "正向提示词 阶段3"
+        },
+        "widgets": {
+            "seed": "随机种子",
+            "steps": "采样步数",
+            "ibias": "初始偏差",
+            "turbo_creativity": "Turbo 创造力",
+            "old_scheduler": "旧调度器",
+            "noise_injection": "噪声注入",
+            "alternative_refiner": "替代精修器"
+        },
+        "outputs": {
+            "latent_output": "Latent输出"
+        },
+        "description": "一个基于 Turbo 的采样器节点，支持多阶段正向提示词输入，包含生成后控制、步数设置、初始偏差调整以及多种增强选项（如创造力增强、旧调度器、噪声注入和替代精修器）。"
+    },
     "ImageGridBuilder //ZImagePowerNodes": {
         "title": "图像网格构建器",
         "inputs": {
@@ -58,7 +81,6 @@
         "description": "图像添加自定义文字标签。",
         "api_version": "V3"
     },
-
     "ZSamplerTurbo2 //ZImagePowerNodes": {
         "title": "⚡| Z-采样器 涡轮增压",
         "inputs": {

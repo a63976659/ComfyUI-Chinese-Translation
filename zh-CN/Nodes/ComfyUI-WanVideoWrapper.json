@@ -1,4 +1,54 @@
 {
+    "LongCatAvatarWhisperEmbeds": {
+        "title": "LongCat 虚拟形象 对话 嵌入 (v1.5)",
+        "inputs": {
+            "whisper_model": "对话 模型",
+            "audio_1": "音频 1",
+            "audio_2": "音频 2",
+            "audio_3": "音频 3",
+            "audio_4": "音频 4",
+            "ref_target_masks": "参考目标遮罩"
+        },
+        "widgets": {
+            "normalize_loudness": "标准化响度",
+            "num_frames": "帧数",
+            "fps": "帧率",
+            "audio_scale": "音频缩放",
+            "audio_cfg_scale": "音频 CFG 缩放",
+            "multi_audio_type": "多音频类型"
+        },
+        "outputs": {
+            "num_frames": "帧数",
+            "audio": "音频",
+            "multitalk_embeds": "多对话嵌入"
+        },
+        "description": "该节点用于处理虚拟形象的音频嵌入，支持多路音频输入，利用 Whisper 模型提取特征，并允许调整帧数、帧率及音频缩放比例等参数。"
+    },
+    "WanVideoImageToVideoSkyreelsv3_audio": {
+        "title": "Wan视频 长天空 ReelsV3 音频到视频",
+        "inputs": {
+            "vae": "VAE编码器",
+            "start_image": "起始图像",
+            "reference_video": "参考视频",
+            "clip_embeds": "CLIP 嵌入"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "frame_window_size": "帧窗口大小",
+            "motion_frame": "运动帧",
+            "drop_frames": "丢弃帧数",
+            "tiled_vae": "分块 VAE",
+            "force_offload": "强制卸载",
+            "colormatch": "颜色匹配",
+            "output_path": "输出路径"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入",
+            "output_path": "输出路径"
+        },
+        "description": "支持Multi/InfiniteTalk长视频生成采样方法，视频内容在Windows环境下以重叠帧的形式创建。此功能与ContextWindows以及其他除Multi/InfiniteTalk之外的多重功能并不兼容或非必要。"
+    },
     "WanVideoEnhanceAVideo": {
         "title": "Wan视频 增强-A-视频(KJ)",
         "inputs": {},

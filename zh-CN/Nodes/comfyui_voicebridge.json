@@ -20,7 +20,7 @@
         "api_version": "V1"
     },
     "VoiceBridgeASRTranscribe": {
-        "title": "语音桥ASr转录",
+        "title": "语音桥Asrt字幕转录",
         "inputs": {
             "audio": "音频"
         },
@@ -75,13 +75,13 @@
         "api_version": "V1"
     },
     "SRTToAudio": {
-        "title": "SRT 转换为音频",
+        "title": "srt字幕 转换为音频",
         "inputs": {
             "model_key": "模型键",
             "voice_clone_prompt": "语音克隆提示"
         },
         "widgets": {
-            "srt_string": "SRT 字符串",
+            "srt_string": "srt字幕 字符串",
             "language": "语言",
             "tempo_limit": "节奏限制",
             "mini_gap_ms": "最小间隙毫秒",
@@ -89,42 +89,42 @@
         },
         "outputs": {
             "audio": "音频",
-            "adjusted_srt": "调整后的SRT",
+            "adjusted_srt": "调整后的srt字幕",
             "AUDIO": "音频",
             "STRING": "字符串"
         },
-        "description": "类别: SRT转换为音频",
+        "description": "类别: srt字幕转换为音频",
         "api_version": "V1"
     },
     "generate srt": {
-        "title": "生成Srt",
+        "title": "生成srt字幕",
         "inputs": {},
         "widgets": {
             "forced_aligns": "强制对齐结果",
             "text": "文本",
             "language": "语言",
-            "save_srt": "保存srt",
+            "save_srt": "保存srt字幕",
             "filename_prefix": "文件名前缀"
         },
         "outputs": {
-            "srt_string": "srt字符串",
+            "srt_string": "srt字幕字符串",
             "STRING": "字符串"
         },
-        "description": "类别: 生成srt",
+        "description": "类别: 生成srt字幕",
         "api_version": "V1"
     },
     "SaveSRTFromString": {
-        "title": "从字符串保存srt",
+        "title": "从字符串保存srt字幕",
         "inputs": {},
         "widgets": {
-            "srt_string": "srt字符串",
+            "srt_string": "srt字幕字符串",
             "filename_prefix": "文件名前缀"
         },
         "outputs": {
             "save_path": "保存路径",
             "STRING": "字符串"
         },
-        "description": "类别: 从字符串保存srt",
+        "description": "类别: 从字符串保存srt字幕",
         "api_version": "V1"
     },
     "VoiceBridgeAIAPI": {
@@ -162,19 +162,61 @@
         "description": "类别: 卸载模型",
         "api_version": "V1"
     },
+    "VoiceBridgeLoadSRT": {
+        "title": "语音桥接负载 srt字幕",
+        "inputs": {},
+        "widgets": {
+            "srt": "srt字幕",
+            "upload": "上传"
+        },
+        "outputs": {
+            "srt_string": "srt字幕字符串"
+        },
+        "description": "类别: 从字符串保存srt字幕"
+    },
+    "VoiceBridgeSRTSplitter": {
+        "title": "语音桥接 srt字幕 分割器",
+        "inputs": {},
+        "widgets": {
+            "srt": "srt字幕",
+            "upload": "上传"
+        },
+        "outputs": {
+            "texts": "文本内容",
+            "count": "数量",
+            "srt_items": "SRT项目"
+        },
+        "description": "类别: 从字符串保存srt"
+    },
+    "VoiceBridgeAudioListMergerBySRT": {
+        "title": "srt字幕 提供的语音桥接音频列表 合并功能",
+        "inputs": {
+            "audios": "音频",
+            "srt_items": "srt字幕项目"
+        },
+        "widgets": {
+            "tempo_limit": "时长限制",
+            "mini_gap_ms": "最小间隔毫秒"
+        },
+        "outputs": {
+            "audio": "音频",
+            "adjusted_srt": "调整后的字幕（SRT格式）"
+        },
+        "description": "类别: 从字符串保存srt"
+    },
     "GenerateSRT": {
         "title": "生成字幕文件",
         "inputs": {
             "forced_aligns": "强制对齐数据"
         },
         "widgets": {
-            "save_srt": "是否保存SRT文件",
+            "save_srt": "是否保存srt字幕文件",
             "filename_prefix": "文件名前缀",
             "text": "文本内容",
             "language": "语言"
         },
         "outputs": {
-            "srt_string": "SRT字符串"
+            "srt_string": "srt字幕字符串"
         },
         "description": "根据输入的文本和语言信息，生成SRT格式的字幕内容。支持强制对齐数据以提高字幕准确性，并可选择是否保存为文件，同时允许自定义输出文件名前缀。"
     }

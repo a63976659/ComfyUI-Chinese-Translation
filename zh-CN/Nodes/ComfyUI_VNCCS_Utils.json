@@ -1,0 +1,192 @@
+{
+    "VNCCS_PoseStudio": {
+        "title": "VNCCS 姿态工作室",
+        "inputs": {
+            "pose_image": "姿态图像"
+        },
+        "widgets": {
+            "pose_data": "姿态数据"
+        },
+        "outputs": {
+            "images": "图像",
+            "lighting_prompt": "光照提示词词"
+        },
+        "description": "支持网格编辑和多姿态生成的姿态工作室"
+    },
+    "VNCCS_ModelManager": {
+        "title": "VNCCS 模型管理器",
+        "inputs": {},
+        "widgets": {
+            "Check/Refresh Models": "检查/刷新 模型",
+            "repo_id": "仓库ID"
+        },
+        "outputs": {
+            "repo_id": "仓库ID"
+        },
+        "description": ""
+    },
+    "VNCCS_ModelSelector": {
+        "title": "VNCCS 模型选择器",
+        "inputs": {},
+        "widgets": {
+            "repo_id": "仓库ID"
+        },
+        "outputs": {
+            "model_path": "模型路径"
+        },
+        "description": ""
+    },
+    "VNCCS_PositionControl": {
+        "title": "VNCCS 位置控制器",
+        "inputs": {},
+        "widgets": {
+            "azimuth": "方位角",
+            "elevation": "仰角",
+            "distance": "距离",
+            "include_trigger": "包含触发词"
+        },
+        "outputs": {
+            "prompt": "提示词词"
+        },
+        "description": ""
+    },
+    "VNCCS_VisualPositionControl": {
+        "title": "VNCCS 可视化位置控制器",
+        "inputs": {},
+        "widgets": {
+            "camera_data": "相机数据"
+        },
+        "outputs": {
+            "prompt": "提示词词"
+        },
+        "description": ""
+    },
+    "VNCCS_QWEN_Detailer": {
+        "title": "VNCCS 千问 细节增强器",
+        "inputs": {
+            "image": "图像",
+            "bbox_detector": "边界框检测器",
+            "model": "模型",
+            "clip": "剪辑",
+            "vae": "VAE",
+            "sampler_name": "采样器名称",
+            "scheduler": "调度器",
+            "controlnet_image": "ControlNet 参考图像",
+            "image2": "图像2",
+            "sam_model_opt": "SAM模型（可选）",
+            "segm_detector_opt": "分割检测器（可选）"
+        },
+        "widgets": {
+            "prompt": "提示词词",
+            "threshold": "阈值",
+            "dilation": "膨胀系数",
+            "drop_size": "最小过滤尺寸",
+            "feather": "羽化值",
+            "steps": "step数",
+            "cfg": "CFG值",
+            "seed": "随机种子",
+            "denoise": "去噪强度",
+            "tiled_vae_decode": "分块VAE解码",
+            "tile_size": "分块尺寸",
+            "sam_detection_hint": "SAM检测提示词",
+            "sam_dilation": "SAM遮罩膨胀",
+            "sam_threshold": "SAM阈值",
+            "sam_bbox_expansion": "SAM边界框扩展",
+            "sam_mask_hint_threshold": "SAM遮罩提示词阈值",
+            "sam_mask_hint_use_negative": "SAM遮罩提示词使用负例",
+            "target_size": "目标尺寸",
+            "upscale_method": "放大方法",
+            "crop_method": "裁剪方法",
+            "instruction": "指令",
+            "inpaint_mode": "重绘模式",
+            "inpaint_prompt": "重绘提示词词",
+            "color_match_method": "颜色匹配方法",
+            "seam_fix": "接缝修复",
+            "qwen_2511": "Qwen 2511模型",
+            "distortion_fix": "畸变修复"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": ""
+    },
+    "VNCCS_BBox_Extractor": {
+        "title": "VNCCS 边界框提取器",
+        "inputs": {
+            "image": "图像",
+            "bbox_detector": "边界框检测器"
+        },
+        "widgets": {
+            "threshold": "阈值",
+            "dilation": "膨胀系数",
+            "drop_size": "最小过滤尺寸"
+        },
+        "outputs": {
+            "images": "图像"
+        },
+        "description": "从图像中提取边界框检测器检测到的区域"
+    },
+    "LoadSAM3DBodyModel": {
+        "title": "加载SAM 3D人体模型",
+        "inputs": {
+            "device_mode": "设备模式"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "配置SAM 3D人体模型参数。\n\n模型文件存放在固定目录 `<ComfyUI>/模型s/sam3dbody/` 下；\n首次使用时缺失的权重会自动从HuggingFace下载。\n实际模型会在推理运行时在独立工作进程中懒加载。"
+    },
+    "SAM3DBodyProcessToJson": {
+        "title": "SAM 3D人体转姿态JSON",
+        "inputs": {
+            "model": "模型",
+            "image": "图像",
+            "mask": "遮罩",
+            "Left_hand_image": "左手图像",
+            "Right_hand_image": "右手图像"
+        },
+        "widgets": {
+            "bbox_threshold": "边界框阈值",
+            "inference_type": "推理类型",
+            "debug_scale": "调试缩放比例"
+        },
+        "outputs": {
+            "pose_json": "姿态JSON"
+        },
+        "description": "对图像运行SAM 3D人体模型，将预测得到的姿态输出为JSON格式（供「从姿态JSON渲染人体」节点使用）。\n内部生成的网格、骨架和中间可视化结果会被丢弃，只有姿态参数会传递到下游节点。"
+    },
+    "SAM3DBodySettingBodyPresetJson": {
+        "title": "SAM 3D人体预设JSON生成器",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "body_preset_json": "人体预设JSON"
+        },
+        "description": "人体预设编辑器，仅输出人体预设JSON字符串。\n\n从旧版「SAM3DBodyRenderFromJson」节点拆分而来，因此体型/骨骼/融合形变参数状态可以一次编辑，多次复用给多个渲染任务（也可以给其他节点使用，比如导出节点、姿态编辑器的身体预设JSON输入等）。搭配「SAM3DBodyRenderFromPoseAndBodyPresetJson」节点可以渲染单帧。\n\n输出的JSON结构和 `body_preset_settings/*.json` 完全一致，因此可以直接替换已保存的预设，也可以直接导入独立人体预设编辑器使用。"
+    },
+    "SAM3DBodyRenderFromPoseAndBodyPresetJson": {
+        "title": "SAM 3D人体从姿态+预设JSON渲染",
+        "inputs": {
+            "model": "模型",
+            "background_image": "背景图像"
+        },
+        "widgets": {
+            "pose_json": "姿态JSON",
+            "body_preset_json": "人体预设JSON",
+            "offset_x": "X轴偏移",
+            "offset_y": "Y轴偏移",
+            "scale_offset": "缩放偏移",
+            "camera_yaw_deg": "相机偏航角（度）",
+            "camera_pitch_deg": "相机俯仰角（度）",
+            "width": "宽度",
+            "height": "高度",
+            "pose_adjust": "姿态调整",
+            "debug_scale": "调试缩放比例"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "将带姿态的人体渲染为图像。姿态数据来自 `姿态JSON`（图像转姿态JSON节点/姿态编辑器），体型数据来自 `身体预设JSON`（人体预设JSON生成节点/人体预设编辑器）。\n\n其余控件仅为单帧控制参数：相机偏移、轨道旋转、构图、倾斜校正强度，这些参数都不会写入身体预设JSON。"
+    }
+}

@@ -1,4 +1,126 @@
 {
+    "1hew_ImageBatchIndex": {
+        "title": "图像批次索引",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": ""
+    },
+    "1hew_ImageBatchUniform": {
+        "title": "图像批次均匀化",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "num_frame": "帧数"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": ""
+    },
+    "1hew_ImageListInterleave": {
+        "title": "图像列表交错",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "segment_count": "分段数"
+        },
+        "outputs": {
+            "image_list": "图像列表"
+        },
+        "description": ""
+    },
+    "1hew_ImagePadByBBoxMask": {
+        "title": "边界框填充",
+        "inputs": {
+            "paste_image": "粘贴图像",
+            "bbox_mask": "边界框遮罩"
+        },
+        "widgets": {
+            "pad_color": "填充颜色"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "图像边界框填充器 - 按 bbox_遮罩 的外接框放置图像，并将其余区域填充为指定颜色。"
+    },
+    "1hew_IntImageCount": {
+        "title": "整数图像数量",
+        "inputs": {
+            "image_1": "图像1"
+        },
+
+        "widgets": {},
+        "outputs": {
+            "int": "整数"
+        },
+        "description": ""
+    },
+    "1hew_LoadPS": {
+        "title": "加载PS",
+        "inputs": {},
+        "widgets": {
+            "file": "文件",
+            "index": "索引",
+            "include_hidden": "包含隐藏项",
+            "group_mode": "分组模式",
+            "output_mode": "输出模式",
+            "preview": "预览",
+            "choose psd to upload": "选择 PSD 文件上传"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "filename": "文件名",
+            "layer_name": "图层名称"
+        },
+        "description": ""
+    },
+    "1hew_MaskToBBoxMask": {
+        "title": "遮罩转边界框遮罩",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "output_mode": "输出模式",
+            "divisible_by": "可整除"
+        },
+        "outputs": {
+            "bbox_mask": "边界框遮罩"
+        },
+        "description": ""
+    },
+    "1hew_MultiImageList": {
+        "title": "多图像列表",
+        "inputs": {
+            "image_1": "图像1"
+        },
+        "widgets": {
+            "image_1": "图像1"
+        },
+        "outputs": {
+            "image_list": "图像列表"
+        },
+        "description": ""
+    },
+    "1hew_MemoryCleanup": {
+        "title": "内存清理",
+        "inputs": {},
+        "widgets": {
+            "anything": "任意内容",
+            "unload_model": "卸载模型"
+        },
+        "outputs": {},
+        "description": "请求 ComfyUI 在当前任务结束后释放执行缓存与模型占用，适合多次排队执行之间清理 RAM/VRAM。"
+    },
     "1hew_AudioDuration": {
         "title": "音频时长",
         "inputs": {
@@ -1315,6 +1437,89 @@
             "crop_to_length": "裁剪到长度",
             "divisible_by": "可被整除"
         }
+    },
+    "1hew_ImageAlphaJoin": {
+        "title": "图像Alpha连接",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "invert_mask": "反转遮罩"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": ""
+    },
+    "1hew_ImageBatchInterleave": {
+        "title": "图像批次交错",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "segment_count": "段数"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": ""
+    },
+    "1hew_StringRatioGemini31FlashImage": {
+        "title": "字符串比例 Gemini3.1闪存图像",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "selection": "选择"
+        },
+        "outputs": {
+            "string": "字符串"
+        },
+        "description": ""
+    },
+    "1hew_StringRatioGpt20Image": {
+        "title": "字符串比例 GPT2.0图像",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "selection": "选择"
+        },
+        "outputs": {
+            "string": "字符串"
+        },
+        "description": ""
+    },
+    "1hew_ImageResizeGPTImage20": {
+        "title": "图像尺寸调整 GPT图像 2.0",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "preset_size": "预设尺寸",
+            "fit": "方法",
+            "pad_color": "背景颜色"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "description": ""
+    },
+    "1hew_StringResolution": {
+        "title": "字符串解析",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "selection": "选择"
+        },
+        "outputs": {
+            "string": "字符串"
+        },
+        "description": ""
     },
     "1hew_AnySwitchInt": {
         "title": "任何开关 整数",

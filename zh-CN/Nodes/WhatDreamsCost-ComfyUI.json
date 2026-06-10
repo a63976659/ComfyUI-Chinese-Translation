@@ -1,48 +1,173 @@
 {
-    "LTXKeyframer": {
-        "title": "LTX关键帧器",
-        "inputs": {},
-        "widgets": {},
-        "outputs": {},
-        "description": "用编码后的输入图像替换视频的潜在帧。小部件的数量是动态配置的。"
-    },
     "LTXSequencer": {
         "title": "LTX序列器",
-        "inputs": {},
-        "widgets": {},
-        "outputs": {},
-        "description": "在指定的帧索引或秒处添加多个引导图像，并设置强度。小部件的数量是动态配置的。"
-    },
-    "MultiImageLoader": {
-        "title": "多图像加载器",
         "inputs": {
-            "interpolation": "插值",
-            "resize_method": "缩放方法"
+            "positive": "正面提示词",
+            "negative": "负面提示词",
+            "vae": "VAE",
+            "latent": "Latent",
+            "multi_input": "多输入"
         },
         "widgets": {
-            "image_paths": "图像路径",
+            "images_loaded": "已加载图像数",
+            "insert_mode": "插入模式",
+            "frame_rate": "帧率"
+        },
+        "outputs": {
+            "positive": "正面提示词",
+            "negative": "负面提示词",
+            "latent": "Latent"
+        },
+        "description": "用于序列化图像的节点"
+    },
+    "LTXKeyframer": {
+        "title": "LTX关键帧器",
+        "inputs": {
+            "vae": "VAE",
+            "latent": "Latent",
+            "multi_input": "多输入"
+        },
+        "widgets": {},
+        "outputs": {
+            "images_loaded": "已加载图像数"
+        },
+        "description": "在指定的帧索引或秒处添加多个引导图像，并带有相应的强度。动态配置小部件数量。",
+        "api_version": "V3"
+    },
+    "MultiImageLoader": {
+        "title": "多图加载器",
+        "inputs": {},
+        "widgets": {
+            "image_paths": "图片路径",
             "width": "宽度",
             "height": "高度",
+            "interpolation": "插值",
+            "resize_method": "缩放方法",
             "multiple_of": "倍数",
             "img_compression": "图像压缩"
         },
-        "outputs": {},
-        "description": ""
+        "outputs": {
+            "multi_output": "多图输出"
+        },
+        "description": "",
+        "api_version": "V1"
     },
     "SpeechLengthCalculator": {
         "title": "语音长度计算器",
-        "inputs": {},
+        "inputs": {
+            "text_input": "文本输入"
+        },
         "widgets": {
             "text": "文本",
             "fps": "帧率",
-            "additional_time": "额外时间",
-            "text_input": "文本输入"
+            "additional_time": "额外时间"
         },
         "outputs": {
             "slow_frame_count": "慢速帧数",
             "average_frame_count": "平均帧数",
-            "fast_frame_count": "快速帧数"
+            "fast_frame_count": "快速帧数",
+            "text": "文本"
         },
-        "description": ""
+        "description": "",
+        "api_version": "V1"
+    },
+    "LoadAudioUI": {
+        "title": "加载音频界面",
+        "inputs": {},
+        "widgets": {
+            "audio": "音频",
+            "start_time": "开始时间",
+            "end_time": "结束时间",
+            "duration": "时长",
+            "audioUI": "音频UI"
+        },
+        "outputs": {
+            "audio": "音频",
+            "duration": "时长"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "LoadVideoUI": {
+        "title": "加载视频界面",
+        "inputs": {},
+        "widgets": {
+            "video": "视频",
+            "start_time": "开始时间",
+            "end_time": "结束时间",
+            "duration": "时长",
+            "start_frame": "起始帧",
+            "end_frame": "结束帧",
+            "duration_frames": "持续帧数",
+            "resize_method": "缩放方法",
+            "custom_width": "自定义宽度",
+            "custom_height": "自定义高度",
+            "frame_rate": "帧率",
+            "display_mode": "显示模式",
+            "crop_x": "裁剪X轴",
+            "crop_y": "裁剪Y轴",
+            "crop_w": "裁剪宽度",
+            "crop_h": "裁剪高度"
+        },
+        "outputs": {
+            "images": "图像",
+            "audio": "音频",
+            "duration": "时长",
+            "frame_count": "帧数"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "LTXDirector": {
+        "title": "LTX导演",
+        "inputs": {
+            "model": "模型",
+            "clip": "CLIP",
+            "audio_vae": "音频VAE",
+            "optional_latent": "可选Latent"
+        },
+        "widgets": {
+            "duration_frames": "持续帧数",
+            "duration_seconds": "持续秒数",
+            "frame_rate": "帧率",
+            "custom_width": "自定义宽度",
+            "custom_height": "自定义高度",
+            "resize_method": "缩放方法",
+            "display_mode": "显示模式",
+            "divisible_by": "被整除数",
+            "img_compression": "图片压缩"
+        },
+        "outputs": {
+            "model": "模型",
+            "positive": "正向提示词",
+            "video_latent": "视频Latent",
+            "audio_latent": "音频Latent",
+            "guide_data": "引导数据",
+            "frame_rate": "帧率",
+            "combined_audio": "合并音频"
+        },
+        "description": "与Prompt Relay Encode相同，但局部提示和段落长度可以在时间线上拖拽编辑。持续帧数输入只设置时间线比例（像素间距），实际帧数仍然从Latent读取。",
+        "api_version": "V3"
+    },
+    "LTXDirectorGuide": {
+        "title": "LTX导演指南",
+        "inputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "vae": "VAE",
+            "latent": "Latent",
+            "guide_data": "引导数据"
+        },
+        "widgets": {
+            "scale_by": "按比例放大",
+            "upscale_method": "放大方法"
+        },
+        "outputs": {
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "latent": "Latent"
+        },
+        "description": "在指定的时间线帧位置应用来自Prompt Relay Timeline节点的引导图像，并并根据时间线上的强度定义应用。连接来自时间线节点的guide_data。",
+        "api_version": "V3"
     }
 }

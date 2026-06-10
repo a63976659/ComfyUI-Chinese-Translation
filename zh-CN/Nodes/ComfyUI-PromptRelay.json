@@ -1,0 +1,130 @@
+{
+    "PromptRelayEncode": {
+        "title": "提示词中继编码",
+        "inputs": {
+            "model": "模型",
+            "clip": "CLIP",
+            "latent": "Latent",
+            "Empty latent video — dimensions are read from its shape.": "空白Latent视频 — 尺寸从其形状读取。",
+            "global_prompt": "全局提示词",
+            "Conditions the entire video. Anchors persistent characters, objects, and scene context.": "为整个视频设定条件。锚定持续的角色、物体和场景背景。",
+            "local_prompts": "分段提示词",
+            "Ordered prompts for each temporal segment, separated by |": "每个时间段的顺序提示词，用 | 分隔",
+            "segment_lengths": "分段长度",
+            "Comma-separated pixel space frame counts per segment. Leave empty to auto-distribute evenly.": "每段用逗号分隔的像素空间帧数。留空则自动均匀分配。",
+            "epsilon": "epsilon",
+            "Penalty decay parameter. Values below ~0.1 all produce sharp boundaries (paper default 0.001). For softer transitions, try 0.5 or higher.": "惩罚衰减参数。低于约0.1的值都会产生锐利边界（论文默认值0.001）。如需更柔和的过渡，可尝试0.5或更高。",
+            "relay_options": "中继选项",
+            "Optional advanced per-stream tuning. Connect a Prompt Relay Advanced Options node.": "可选的流级高级调整。连接提示词中继高级选项节点。"
+        },
+        "outputs": {
+            "model": "模型",
+            "positive": "正面条件"
+        },
+        "description": "将全局提示词与时序分段提示词结合编码，并对模型进行提示词中继时序控制修补。分段提示词用 | 分隔。负面提示词请使用标准CLIP文本编码节点。"
+    },
+    "PromptRelayEncodeTimeline": {
+        "title": "提示词中继编码（时间轴）",
+        "inputs": {
+            "model": "模型",
+            "clip": "CLIP",
+            "latent": "Latent",
+            "Empty latent video — dimensions are read from its shape.": "空白Latent视频 — 尺寸从其形状读取。",
+            "global_prompt": "全局提示词",
+            "Conditions the entire video. Anchors persistent characters, objects, and scene context.": "为整个视频设定条件。锚定持续的角色、物体和场景背景。",
+            "max_frames": "最大帧数",
+            "Total timeline length in pixel-space frames. Used by the editor for visual scale only.": "时间轴总长度（像素空间帧数）。仅供编辑器视觉比例使用。",
+            "timeline_data": "时间轴数据",
+            "JSON state of the timeline editor (auto-managed; do not edit by hand).": "时间轴编辑器的JSON状态（自动管理，请勿手动编辑）。",
+            "local_prompts": "分段提示词",
+            "Auto-populated from the timeline editor.": "从时间轴编辑器自动填充。",
+            "segment_lengths": "分段长度",
+            "Auto-populated from the timeline editor (pixel-space frame counts).": "从时间轴编辑器自动填充（像素空间帧数）。",
+            "epsilon": "epsilon",
+            "Penalty decay parameter. Values below ~0.1 all produce sharp boundaries (paper default 0.001). For softer transitions, try 0.5 or higher.": "惩罚衰减参数。低于约0.1的值都会产生锐利边界（论文默认值0.001）。如需更柔和的过渡，可尝试0.5或更高。",
+            "fps": "帧率",
+            "Frames per second — only affects how time is displayed in the timeline editor when time_units is set to 'seconds'.": "每秒帧数 — 仅当time_units设置为'秒'时影响时间轴编辑器中的时间显示。",
+            "time_units": "时间单位",
+            "Display the ruler, segment ranges, length input, and total in frames or seconds. Internal storage is always pixel-space frames.": "以帧或秒显示标尺、分段范围、长度输入和总计。内部存储始终为像素空间帧数。",
+            "relay_options": "中继选项",
+            "Optional advanced per-stream tuning. Connect a Prompt Relay Advanced Options node.": "可选的流级高级调整。连接提示词中继高级选项节点。"
+        },
+        "widgets": {
+            "max_frames": "最大帧数",
+            "fps": "帧率",
+            "time_units": "时间单位",
+            "frames": "帧",
+            "seconds": "秒"
+        },
+        "outputs": {
+            "model": "模型",
+            "positive": "正面条件"
+        },
+        "description": "与提示词中继编码相同，但分段提示词和分段长度以可视化方式作为时间轴上的可拖动块进行编辑。max_frames输入仅设置时间轴比例（像素空间）— 实际帧数仍从latent读取。"
+    },
+    "PromptRelaySmartEncode": {
+        "title": "提示词中继编码（智能）",
+        "inputs": {
+            "model": "模型",
+            "clip": "CLIP",
+            "latent": "Latent",
+            "global_prompt": "全局提示词",
+            "Conditions entire video. Leave empty to auto-use the first parsed segment from smart_prompt as the global anchor.": "为整个视频设定条件。留空则自动使用smart_prompt中解析的第一个分段作为全局锚点。",
+            "smart_prompt": "智能提示词",
+            "Enter prompt using Smart Syntax:\n1. Inline: 'text one [0-50] | text two [50-100]'\n2. Block: 'Second 1:\ntext one\nSecond 2:\ntext two'\nSyntax is auto-stripped and normalized evenly or proportionally.": "使用智能语法输入提示词：\n1. 行内式：'第一段文字 [0-50] | 第二段文字 [50-100]'\n2. 区块式：'第一段：\n第一段文字\n第二段：\n第二段文字'\n语法自动去除并均匀或按比例归一化。",
+            "normalize_by_tokens": "按Token归一化",
+            "If true, scales the calculated length of each segment by its token count.": "如果为真，则按各分段的token数量缩放计算长度。",
+            "epsilon": "epsilon"
+        },
+        "widgets": {
+            "normalize_by_tokens": "按Token归一化"
+        },
+        "outputs": {
+            "model": "模型",
+            "positive": "正面条件"
+        },
+        "description": "解析 [0-50] 或区块标题（如'第一段：'）等语法，自动计算分段长度。"
+    },
+    "PromptRelaySmartEncodeTest": {
+        "title": "提示词中继智能编码测试",
+        "inputs": {
+            "smart_prompt": "智能提示词",
+            "Enter prompt using Smart Syntax:\n1. Inline: 'text one [0-50] | text two [50-100]'\n2. Block: 'Second 1:\ntext one\nSecond 2:\ntext two'\nSyntax is auto-stripped and normalized evenly or proportionally.": "使用智能语法输入提示词：\n1. 行内式：'第一段文字 [0-50] | 第二段文字 [50-100]'\n2. 区块式：'第一段：\n第一段文字\n第二段：\n第二段文字'\n语法自动去除并均匀或按比例归一化。",
+            "normalize_by_tokens": "按Token归一化",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "normalize_by_tokens": "按Token归一化"
+        },
+        "outputs": {
+            "parsed_output": "解析输出"
+        },
+        "description": "输出解析后的语法用于测试目的。"
+    },
+    "PromptRelayAdvancedOptions": {
+        "title": "提示词中继高级选项",
+        "inputs": {
+            "video_strength": "视频强度",
+            "Multiplier on the video temporal penalty. 0 disables video segmentation. Most useful in the 0–1 range to soften boundaries; values >1 saturate quickly at the default epsilon (1e-3) because the bias is already large enough to zero out distant tokens. To make >1 visibly meaningful, raise epsilon to ~0.1 or higher.": "视频时间惩罚的乘数。0禁用视频分段。在0-1范围内最有用，可柔化边界；值>1会在默认epsilon（1e-3）下快速饱和，因为偏差已经足够大到可以将远处的token清零。如需让>1产生明显效果，需将epsilon提高到约0.1或更高。",
+            "video_window_scale": "视频窗口缩放",
+            "Scales the flat anchor zone (default L/2 - 2 frames). <1 starts the soft falloff sooner; >1 widens the rigid zone. 0 collapses the anchor to a point — falloff begins immediately at the segment midpoint (sharper than default, not softer).": "缩放平坦锚定区域（默认 L/2 - 2帧）。<1使软衰减更早开始；>1扩大刚性区域。0将锚定收缩为一个点 — 衰减立即从分段中点开始（比默认更锐利，而非更柔和）。",
+            "audio_epsilon": "音频epsilon",
+            "Epsilon for the audio stream. 0 = inherit from the encoder's main epsilon.": "音频流的epsilon。0 = 继承编码器的主epsilon。",
+            "audio_strength": "音频强度",
+            "Multiplier on the audio temporal penalty. 0 lets audio bleed across visual cuts. Most useful in the 0–1 range; values >1 saturate quickly at the default epsilon (1e-3) — raise audio_epsilon to ~0.1 or higher to make >1 visibly meaningful.": "音频时间惩罚的乘数。0允许音频跨视觉切换泄漏。在0-1范围内最有用；值>1会在默认epsilon（1e-3）下快速饱和 — 需将audio_epsilon提高到约0.1或更高才能让>1产生明显效果。",
+            "audio_window_scale": "音频窗口缩放",
+            "Scales the flat anchor zone width for the audio stream. <1 starts the soft falloff sooner; >1 widens the rigid zone. 0 collapses the anchor to a point — falloff begins immediately at the segment midpoint (sharper than default, not softer).": "缩放音频流的平坦锚定区域宽度。<1使软衰减更早开始；>1扩大刚性区域。0将锚定收缩为一个点 — 衰减立即从分段中点开始（比默认更锐利，而非更柔和）。"
+        },
+        "widgets": {
+            "video_strength": "视频强度",
+            "video_window_scale": "视频窗口缩放",
+            "audio_epsilon": "音频epsilon",
+            "audio_strength": "音频强度",
+            "audio_window_scale": "音频窗口缩放"
+        },
+        "outputs": {
+            "relay_options": "中继选项"
+        },
+        "description": "可选的流级时序惩罚调整。连接到提示词中继编码器的中继选项输入。音频字段仅影响LTX2。"
+    }
+}
