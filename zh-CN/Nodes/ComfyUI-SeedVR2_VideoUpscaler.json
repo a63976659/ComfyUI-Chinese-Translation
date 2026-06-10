@@ -1,119 +1,82 @@
 {
-    "SeedVR2": {
-        "title": "SeedVR2 视频超分辨率器",
-        "inputs": {
-            "images": "图像",
-            "block_swap_config": "块交换配置"
-        },
-        "widgets": {
-            "model": "模型",
-            "seed": "种子",
-            "new_resolution": "新分辨率",
-            "batch_size": "批次大小",
-            "preserve_vram": "保留显存"
-        },
-        "outputs": {
-            "image": "图像"
-        }
-    },
     "SeedVR2VideoUpscaler": {
-        "title": "Seed VR2视频 放大",
+        "title": "SeedVR2 视频超分",
         "inputs": {
-            "image": "图像",
-            "dit": "Seed VR2_DIT",
-            "vae": "Seed VR2_VAE"
+            "image": "输入图像",
+            "dit": "DiT模型配置",
+            "vae": "VAE模型配置"
         },
         "widgets": {
-            "seed": "种子",
-            "resolution": "分辨率",
-            "max_resolution": "最大分辨率",
+            "seed": "随机种子",
+            "resolution": "目标分辨率",
+            "max_resolution": "最大分辨率限制",
             "batch_size": "批次大小",
             "uniform_batch_size": "统一批次大小",
+            "temporal_overlap": "时序重叠帧数",
+            "prepend_frames": "前置帧数",
             "color_correction": "色彩校正",
-            "temporal_overlap": "时间重叠",
-            "prepend_frames": "前置帧",
-            "input_noise_scale": "批次大小",
-            "latent_noise_scale": "Latent 噪声系数",
-            "offload_device": "卸载设备",
+            "input_noise_scale": "输入噪声系数",
+            "latent_noise_scale": "潜空间噪声系数",
+            "offload_device": "中间张量卸载设备",
             "enable_debug": "启用调试"
         },
         "outputs": {
-            "image": "图像"
+            "IMAGE": "超分输出图像"
         }
     },
     "SeedVR2LoadDiTModel": {
-        "title": "Seed VR2 下载DiT模型",
+        "title": "SeedVR2 加载DiT模型",
         "inputs": {
-            "torch_compile_args": "torch编译参数",
-            "dit": "Seed VR2_DIT"
+            "torch_compile_args": "Torch编译参数"
         },
         "widgets": {
-            "model": "模型",
-            "device": "设备",
-            "blocks_to_swap": "要交换的块",
-            "swap_io_components": "交换输入/输出组件",
+            "model": "模型选择",
+            "device": "推理设备",
+            "blocks_to_swap": "BlockSwap交换块数",
+            "swap_io_components": "交换IO组件",
+            "offload_device": "卸载设备",
             "cache_model": "缓存模型",
-            "attention_mode": "注意力模式",
-            "offload_device": "卸载设备"
+            "attention_mode": "注意力模式"
         },
         "outputs": {
-            "SEEDVR2_DIT": "Seed VR2_DIT"
+            "SEEDVR2_DIT": "DiT模型配置"
         }
     },
     "SeedVR2LoadVAEModel": {
-        "title": "Seed VR2 下载VAE模型",
+        "title": "SeedVR2 加载VAE模型",
         "inputs": {
-            "torch_compile_args": "torch编译参数",
-            "dit": "Seed VR2_DIT"
+            "torch_compile_args": "Torch编译参数"
         },
         "widgets": {
-            "model": "模型",
-            "device": "设备",
-            "encode_tiled": "编码（分块）",
-            "encode_tile_size": "编码（分块）尺寸",
-            "encode_tile_overlap": "编码（分块）重叠",
-            "decode_tiled": "解码（分块）",
-            "decode_tile_size": "解码（分块）尺寸",
-            "decode_tile_overlap": "解码（分块）重叠",
-            "tile_debug": "分块调试",
+            "model": "模型选择",
+            "device": "推理设备",
+            "encode_tiled": "分块编码",
+            "encode_tile_size": "编码分块尺寸",
+            "encode_tile_overlap": "编码分块重叠",
+            "decode_tiled": "分块解码",
+            "decode_tile_size": "解码分块尺寸",
+            "decode_tile_overlap": "解码分块重叠",
+            "tile_debug": "分块调试模式",
             "offload_device": "卸载设备",
             "cache_model": "缓存模型"
         },
         "outputs": {
-            "SEEDVR2_VAE": "Seed VR2_VAE"
+            "SEEDVR2_VAE": "VAE模型配置"
         }
     },
     "SeedVR2TorchCompileSettings": {
-        "title": "Seed VR2 Torch编译设置",
-        "inputs": {
-            "torch_compile_args": "torch编译参数"
-        },
-        "widgets": {
-            "model": "模型",
-            "mode": "模式",
-            "backend": "后端",
-            "fullgraph": "全图",
-            "dynamic": "动态",
-            "dynamo_cache_size_limit": "动态缓存大小限制",
-            "dynamo_recompile_limit": "动态编译限制",
-            "offload_device": "卸载设备"
-        },
-        "outputs": {
-            "TORCH_COMPILE_ARGS": "torch编译参数"
-        }
-    },
-    "SeedVR2BlockSwap": {
-        "title": "SeedVR2 块交换配置",
+        "title": "SeedVR2 Torch编译设置",
         "inputs": {},
         "widgets": {
-            "blocks_to_swap": "要交换的块",
-            "use_non_blocking": "使用非阻塞",
-            "offload_io_components": "卸载输入输出组件",
-            "cache_model": "缓存模型",
-            "enable_debug": "启用调试"
+            "backend": "编译后端",
+            "mode": "优化模式",
+            "fullgraph": "完整图编译",
+            "dynamic": "动态形状",
+            "dynamo_cache_size_limit": "缓存大小限制",
+            "dynamo_recompile_limit": "重编译次数限制"
         },
         "outputs": {
-            "block_swap_config": "块交换配置"
+            "TORCH_COMPILE_ARGS": "Torch编译配置"
         }
     }
 }
