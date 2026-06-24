@@ -7529,6 +7529,225 @@
         },
         "description": "附加1至10张参考图像用于条件设置，一张用于编辑指令，多张用于主题驱动的个性化。"
     },
+    "DA3Inference": {
+        "title": "运行 任何深度 3",
+        "inputs": {
+            "da3_model": "Depth3_模型",
+            "image": "图像"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "resize_method": "缩放方法",
+            "mode": "模式"
+        },
+        "outputs": {
+            "da3_geometry": "Depth3_几何"
+        },
+        "description": "在图像上运行 任何深度3。在多视图模式下，每张图像被视为同一场景的独立视图。"
+    },
+    "DA3Render": {
+        "title": "渲染 任何深度 3",
+        "inputs": {
+            "da3_geometry": "Depth3_几何"
+        },
+        "widgets": {
+            "output": "输出",
+            "normalization": "标准化",
+            "apply_sky_clip": "应用天空裁剪"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "从 任何深度3 几何数据中渲染深度图、信心图或天空遮罩。"
+    },
+    "LoadDA3Model": {
+        "title": "加载 任何深度 3",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名称",
+            "weight_dtype": "权重数据类型"
+        },
+        "outputs": {
+            "DA3_MODEL": "Depth3_模型"
+        },
+        "description": "加载 Depth Anything 3 模型"
+    },
+    "DualModelGuider": {
+        "title": "双模型CFG引导器",
+        "inputs": {
+            "model": "正面模型",
+            "positive": "正面提示词",
+            "model_negative": "负面模型",
+            "negative": "负面提示词"
+        },
+        "widgets": {
+            "cfg": "CFG值"
+        },
+        "outputs": {
+            "GUIDER": "引导器"
+        },
+        "description": "用于双模型CFG引导的节点"
+    },
+    "DA3GeometryToMesh": {
+        "title": "将 任何深度3 几何体转换为网格",
+        "inputs": {
+            "da3_geometry": "Depth3 几何体"
+        },
+        "widgets": {
+            "batch_index": "批索引",
+            "decimation": "简化",
+            "discontinuity_threshold": "不连续阈值",
+            "confidence_threshold": "置信度阈值",
+            "use_sky_mask": "使用天空遮罩",
+            "texture": "纹理"
+        },
+        "outputs": {
+            "MESH": "网格"
+        },
+        "description": "将深度图转换为三角形3D网格。"
+    },
+    "SaveAudioAdvanced": {
+        "title": "保存音频(高级)",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "format": "格式"
+        },
+        "outputs": {
+            "audio": "音频"
+        },
+        "description": "将输入音频保存到你的ComfyUI输出目录。"
+    },
+    "BerniniConditioning": {
+        "title": "Bernini 条件设置",
+        "inputs": {
+            "positive": "正向提示",
+            "negative": "负向提示",
+            "vae": "VAE",
+            "source_video": "源视频",
+            "reference_video": "参考视频",
+            "reference_image_0": "参考图像 0"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "长度",
+            "batch_size": "批次大小",
+            "ref_max_size": "参考最大尺寸"
+        },
+        "outputs": {
+            "positive": "正向提示",
+            "negative": "负向提示",
+            "latent": "Latent"
+        },
+        "description": "用于贝尼尼（Bernini）上下文视频/图像条件生成的条件节点。可用于以下任务：t2v（文本到视频）、v2v（视频到视频）、rv2v（参考引导视频编辑）、r2v（参考到视频）、ads2v（将图像/视频插入视频）。作为上下文令牌注入的参考图像（r2v、rv2v）在各自的原始宽高比下独立编码（长边按最大参考尺寸截断）。"
+    },
+    "SCAIL2ColoredMask": {
+        "title": "创建 SCAIL-2 颜色遮罩",
+        "inputs": {
+            "driving_track_data": "驱动轨迹数据",
+            "ref_track_data": "参考轨迹数据"
+        },
+        "widgets": {
+            "object_indices": "对象索引",
+            "sort_by": "排序依据",
+            "replacement_mode": "替换模式"
+        },
+        "outputs": {
+            "pose_video_mask": "姿态视频遮罩",
+            "reference_image_mask": "参考图像遮罩"
+        },
+        "description": "根据驱动和参考轨迹数据生成彩色遮罩"
+    },
+    "RunwayAleph2KeyframeNode": {
+        "title": "Runway Aleph2 关键帧",
+        "inputs": {
+            "image": "图像",
+            "keyframes": "关键帧"
+        },
+        "widgets": {
+            "timing": "时间（秒）",
+            "seconds": "秒数"
+        },
+        "outputs": {
+            "keyframes": "关键帧"
+        },
+        "description": "将引导图像锚定到输入（源）视频的某个时刻，使Aleph2在该位置控制剪辑。将其连接到Runway Aleph2视频到视频节点的“关键帧”输入；通过下方可选的“关键帧”输入，串联多个节点（最多5个）。"
+    },
+    "RunwayAleph2PromptImageNode": {
+        "title": "Runway Aleph2 提示图像",
+        "inputs": {
+            "image": "图像",
+            "prompt_images": "提示图像"
+        },
+        "widgets": {
+            "position": "绝对时间（秒）",
+            "seconds": "秒"
+        },
+        "outputs": {
+            "prompt_images": "提示图像"
+        },
+        "description": "将引导图像锚定到输出（结果）视频的某个时刻，以指导该时间点剪辑视频的外观。将其连接到 Runway Aleph22 视频到视频节点的“提示图像”输入；通过下方可选的“提示图像”输入，可串联多个节点（最多5个）。"
+    },
+    "PreviewGaussianSplat": {
+        "title": "预览泼溅",
+        "inputs": {
+            "model_3d": "3D模型",
+            "model_3d_info": "3D模型信息",
+            "camera_info": "相机信息"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "model_3d": "3D模型",
+            "model_3d_info": "3D模型信息",
+            "camera_info": "相机信息",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": "预览3D溅射效果"
+    },
+    "PreviewPointCloud": {
+        "title": "预览点云",
+        "inputs": {
+            "model_3d": "模型3D",
+            "model_3d_info": "模型3D信息",
+            "camera_info": "相机信息"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "model_3d": "3D模型",
+            "model_3d_info": "3D模型信息",
+            "camera_info": "相机信息",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "description": "预览点云"
+    },
+    "TextEncodeBooguEdit": {
+        "title": "文本编码Boogu编辑",
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image_1": "图像_1"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "negative_prompt": "负面提示词"
+        },
+        "outputs": {
+            "positive": "正面提示词",
+            "negative": "负面提示词"
+        },
+        "description": "用于将文本编码并结合图像进行编辑的节点"
+    },
     "SaveImageWebsocket": {
         "title": "保存图像到网络接口",
         "inputs": {

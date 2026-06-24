@@ -4086,6 +4086,50 @@
             "retarget_task_id": "重定向任务ID"
         }
     },
+    "BriaVideoReplaceBackground": {
+        "title": "Bria 视频替换背景",
+        "inputs": {
+            "video": "视频",
+            "background_image": "背景图像",
+            "background_video": "背景视频"
+        },
+        "widgets": {
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "使用 Bria 将视频的背景替换为提供的图像或视频。输出结果会保留前景的分辨率和帧率；若背景具有不同的宽高比，则会进行拉伸以适应，因此请确保背景比例一致，以获得无失真的效果。"
+    },
+    "RunwayAleph2VideoToVideoNode": {
+        "title": "Runway Aleph2 视频到视频",
+        "inputs": {
+            "video": "视频",
+            "keyframes": "关键帧",
+            "prompt_images": "提示图像"
+        },
+        "widgets": {
+            "prompt": "提示",
+            "seed": "随机种子",
+            "generate_control": "生成控制",
+            "public_figure_threshold": "公众人物阈值"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "使用 Runway 的 Aleph2 模型编辑带有文字提示的视频。Aleph2在保持原始运动和节奏的同时，对你的视频进行转换（重新造型、重新照明、添加或删除元素、改变视角）；这个输出分辨率与输入视频一致，输入视频时长必须为2至30秒，帧率30fps或更低。可选择使用关键帧（锚定于输入视频）或提示图像（锚定于输出视频）来引导编辑——仅可使用其一，不可同时使用。"
+    },
+    "TripoImportModelNode": {
+        "title": "Tripo: 导入模型",
+        "inputs": {
+            "model_3d": "3D 模型文件路径"
+        },
+        "widgets": {},
+        "outputs": {
+            "model task_id": "模型任务 ID"
+        },
+        "description": "将外部3D模型（例如来自Rodin、Hunyuan3D或本地文件）导入Tripo，以便在Tripo的后处理节点中使用：纹理、骨骼、转换。建议使用GLB格式：当纹理仅嵌入文件中时，导入后仍可保留。请注意，对导入的模型进行纹理贴图时需要先设置纹理提示。"
+    },
     "TripoConversionNode": {
         "title": "Tripo：转换模型",
         "inputs": {
