@@ -1,4 +1,163 @@
 {
+    "FluxxKleinModelConfig_EditUtils": {
+        "title": "Fluxx Klein 模型配置编辑工具",
+        "inputs": {},
+        "widgets": {
+            "instruction": "指令"
+        },
+        "outputs": {
+            "model_config": "模型配置"
+        },
+        "description": ""
+    },
+    "BooguModelConfig_EditUtils": {
+        "title": "Boogu 模型配置编辑工具",
+        "inputs": {},
+        "widgets": {
+            "instruction": "指令"
+        },
+        "outputs": {
+            "model_config": "模型配置"
+        },
+        "description": ""
+    },
+    "FluxxKleinConfigPreparer_EditUtils": {
+        "title": "Fluxx Klein 配置准备编辑工具",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "configs": "配置",
+            "to_ref": "转引用",
+            "ref_main_image": "参考主图像",
+            "ref_longest_edge": "最长边参考",
+            "ref_crop": "裁剪参考",
+            "ref_upscale": "放大参考",
+            "ref_resize_mode": "参考调整模式"
+        },
+        "outputs": {
+            "configs": "配置",
+            "config": "配置"
+        },
+        "description": ""
+    },
+    "BooguConfigPreparer_EditUtils": {
+        "title": "Boogu 配置准备编辑工具",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "configs": "配置",
+            "to_ref": "转引用",
+            "ref_main_image": "参考主图像",
+            "ref_longest_edge": "最长边参考",
+            "ref_crop": "裁剪参考",
+            "ref_upscale": "放大参考",
+            "to_vl": "转视觉语言",
+            "vl_target_size": "视觉语言目标尺寸",
+            "vl_crop": "视觉语言裁剪",
+            "vl_upscale": "视觉语言放大",
+            "ref_resize_mode": "参考调整模式"
+        },
+        "outputs": {
+            "configs": "配置",
+            "config": "配置"
+        },
+        "description": ""
+    },
+    "FluxxKleinOutputExtractor_EditUtils": {
+        "title": "Fluxx Klein 输出提取编辑工具",
+        "inputs": {
+            "custom_output": "自定义输出"
+        },
+        "widgets": {},
+        "outputs": {
+            "pad_info": "填充信息",
+            "main_image": "主图像",
+            "vae_images": "VAE 图像",
+            "ref_latents": "参考Latent",
+            "full_prompt": "完整提示词",
+            "llama_template": "LLAMA 模板",
+            "no_refs_cond": "无参考条件",
+            "mask": "遮罩"
+        },
+        "description": ""
+    },
+    "BooguOutputExtractor_EditUtils": {
+        "title": "Boogu 输出提取编辑工具",
+        "inputs": {
+            "custom_output": "自定义输出"
+        },
+        "widgets": {},
+        "outputs": {
+            "negative_cond": "负向条件",
+            "vl_images": "视觉语言图像",
+            "main_image": "主图像",
+            "ref_latlatent": "参考Latent"
+        },
+        "description": ""
+    },
+    "ClearRefLatlatent_EditUtils": {
+        "title": "清除参考Latent编辑工具",
+        "inputs": {
+            "conditioning": "条件"
+        },
+        "widgets": {},
+        "outputs": {
+            "conditioning": "条件"
+        },
+        "description": ""
+    },
+    "FluxxKleinEditTextEncode_EditUtils": {
+        "title": "FluxxKlein文本编码编辑工具",
+        "inputs": {
+            "clip": "剪辑",
+            "vae": "VAE",
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "ref_longest_edge": "参考最长边"
+        },
+        "outputs": {
+            "conditioning": "条件",
+            "latent": "Latent",
+            "custom_output": "自定义输出",
+            "main_image": "主图像",
+            "mask": "遮罩"
+        },
+        "description": ""
+    },
+    "BooguEditTextEncode_EditUtils": {
+        "title": "Boogu文本编码编辑工具",
+        "inputs": {
+            "clip": "剪辑",
+            "vae": "VAE",
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "negative_prompt": "否定提示词",
+            "ref_longest_edge": "参考最长边",
+            "ref_resize_mode": "参考缩放模式"
+        },
+        "outputs": {
+            "positive": "正向",
+            "negative": "负向",
+            "latent": "Latent",
+            "custom_output": "自定义输出",
+            "main_image": "主图像"
+        },
+        "description": ""
+    },
     "LoadConditionFromLoras_EditUtils": {
         "title": "从Lora加载条件",
         "inputs": {},

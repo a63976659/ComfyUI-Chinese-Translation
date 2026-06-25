@@ -1,4 +1,979 @@
 {
+    "GeomPackExtractLargestComponent": {
+        "title": "GeomPack提取最大分量",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "trimesh": "三维网格",
+            "info": "信息"
+        },
+        "description": "从网格中提取最大的连通分量。\n\n移除所有较小的断开部分，仅保留面数最多的分量。\n\n支持批量处理：输入网格列表，输出结果列表。"
+    },
+    "GeomPackBoolean_BlenderExact": {
+        "title": "GeomPack布尔运算_Blender精确",
+        "inputs": {
+            "mesh_a": "网格A",
+            "mesh_b": "网格B"
+        },
+        "widgets": {
+            "operation": "操作"
+        },
+        "outputs": {
+            "result_mesh": "结果网格",
+            "info": "信息"
+        },
+        "description": "Blender EXACT求解器布尔运算后端。"
+    },
+    "GeomPackRemesh_BlenderBlocks": {
+        "title": "GeomPack重网格化_Blender块状",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "octree_depth": "八叉树深度",
+            "scale": "缩放"
+        },
+        "outputs": {
+            "remeshed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "Blender块状重网格化修改器后端。"
+    },
+    "GeomPackRemesh_BlenderSharp": {
+        "title": "GeomPack重网格化_Blender锐化",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "octree_depth": "八叉树深度",
+            "scale": "缩放",
+            "sharpness": "锐度"
+        },
+        "outputs": {
+            "remeshed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "Blender锐化重网格化修改器后端。"
+    },
+    "GeomPackRemesh_BlenderVoxel": {
+        "title": "GeomPack重网格化_Blender体素",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "voxel_size": "体素大小"
+        },
+        "outputs": {
+            "remeshed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "Blender体素重网格化后端。"
+    },
+    "GeomPackUV_BlenderCube": {
+        "title": "GeomPackUV_Blender立方体",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "cube_size": "立方体大小",
+            "scale_to_bounds": "缩放到边界"
+        },
+        "outputs": {
+            "unwrapped_mesh": "展开网格",
+            "info": "信息"
+        },
+        "description": "Blender立方体UV投影后端。"
+    },
+    "GeomPackRemesh_GPU": {
+        "title": "Remesh GPU（后端）",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "target_face_count": "目标面部数量",
+            "remesh_band": "重网格化频带"
+        },
+        "outputs": {
+            "remeshed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "Blender立方体UV投影后端。"
+    },
+    "GeomPackUV_BlenderCylinder": {
+        "title": "GeomPackUV_Blender圆柱体",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "cylinder_radius": "圆柱体半径",
+            "scale_to_bounds": "缩放到边界"
+        },
+        "outputs": {
+            "unwrapped_mesh": "展开网格",
+            "info": "信息"
+        },
+        "description": "Blender圆柱体UV投影后端。"
+    },
+    "GeomPackUV_BlenderSmart": {
+        "title": "GeomPackUV_Blender智能",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "angle_limit": "角度限制",
+            "island_margin": "岛边距",
+            "scale_to_bounds": "缩放到边界"
+        },
+        "outputs": {
+            "unwrapped_mesh": "展开网格",
+            "info": "信息"
+        },
+        "description": "Blender智能UV投影后端。"
+    },
+    "GeomPackUV_BlenderSphere": {
+        "title": "GeomPackUV_Blender球体",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "scale_to_bounds": "缩放到边界"
+        },
+        "outputs": {
+            "unwrapped_mesh": "展开网格",
+            "info": "信息"
+        },
+        "description": "Blender球体UV投影后端。"
+    },
+    "GeomPackBoolean": {
+        "title": "几何包布尔运算",
+        "inputs": {
+            "mesh_a": "网格A",
+            "mesh_b": "网格B"
+        },
+        "widgets": {
+            "operation": "运算类型",
+            "backend": "后端"
+        },
+        "outputs": {
+            "result_mesh": "结果网格",
+            "info": "信息"
+        },
+        "description": "布尔运算 - 统一的构造实体几何（CSG）操作，支持后端选择。\n\n通过节点扩展调度到隐藏的后端节点。后端支持多个隔离环境（主环境、Blender环境）。"
+    },
+    "GeomPackBoolean_LibiglCGAL": {
+        "title": "几何包布尔运算（Libigl+CGAL）",
+        "inputs": {
+            "mesh_a": "网格A",
+            "mesh_b": "网格B"
+        },
+        "widgets": {
+            "operation": "运算类型"
+        },
+        "outputs": {
+            "result_mesh": "结果网格",
+            "info": "信息"
+        },
+        "description": "libigl+CGAL布尔运算后端。"
+    },
+    "GeomPackDecimateMesh": {
+        "title": "几何包简化网格",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "backend": "后端",
+            "target_face_count": "目标面数",
+            "quality_threshold": "质量阈值",
+            "preserve_boundary": "保留边界",
+            "preserve_normal": "保留法线",
+            "preserve_topology": "保留拓扑",
+            "planar_quadric": "平面二次误差"
+        },
+        "outputs": {
+            "decimated_mesh": "削减网格",
+            "info": "信息"
+        },
+        "description": "简化网格 - 统一的网格简化，支持后端选择。\n\n通过节点扩展调度到隐藏的后端节点。"
+    },
+    "GeomPackDecimate_DecimatePro": {
+        "title": "几何包网格简化（DecimatePro）",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "target_reduction": "目标缩减率",
+            "feature_angle": "特征角度",
+            "preserve_topology": "保留拓扑结构"
+        },
+        "outputs": {
+            "decimated_mesh": "削减网格",
+            "info": "信息"
+        },
+        "description": "PyVista/VTK的DecimatePro后端。"
+    },
+    "GeomPackDecimate_FastSimplification": {
+        "title": "几何包网格简化（快速简化）",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "target_reduction": "目标缩减率",
+            "aggressiveness": "迭代强度"
+        },
+        "outputs": {
+            "decimated_mesh": "削减网格",
+            "info": "信息"
+        },
+        "description": "快速二次型网格简化后端。"
+    },
+    "GeomPackDecimate_QuadricEdgeCollapse": {
+        "title": "几何包网格简化（二次型边折叠）",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "target_face_count": "目标面数",
+            "quality_threshold": "质量阈值",
+            "preserve_boundary": "保留边界",
+            "preserve_normal": "保留法向量",
+            "preserve_topology": "保留拓扑结构",
+            "planar_quadric": "平面二次型"
+        },
+        "outputs": {
+            "decimated_mesh": "削减网格",
+            "info": "信息"
+        },
+        "description": "PyMeshLab的二次型边折叠简化后端。"
+    },
+    "GeomPackDecimate_VertexClustering": {
+        "title": "几何包网格简化（顶点聚类）",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "cluster_threshold": "聚类阈值"
+        },
+        "outputs": {
+            "decimated_mesh": "削减网格",
+            "info": "信息"
+        },
+        "description": "PyMeshLab的顶点聚类简化后端。"
+    },
+    "GeomPackDecimate_CGALEdgeCollapse": {
+        "title": "几何包网格简化（CGAL边折叠）",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "target_face_count": "目标面数",
+            "cost_strategy": "成本策略"
+        },
+        "outputs": {
+            "decimated_mesh": "削减网格",
+            "info": "信息"
+        },
+        "description": "CGAL Lindstrom-Turk边折叠简化后端。"
+    },
+    "GeomPackFillHoles_GPU": {
+        "title": "几何包填充孔洞（GPU）",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "perimeter": "周长"
+        },
+        "outputs": {
+            "filled_mesh": "填充网格",
+            "info": "信息"
+        },
+        "description": ""
+    },
+    "GeomPackReconstruct_AlphaShape": {
+        "title": "GeomPack Alpha形状重构",
+        "inputs": {
+            "points": "点集"
+        },
+        "widgets": {
+            "alpha": "透明度值"
+        },
+        "outputs": {
+            "reconstructed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "使用scipy Delaunay算法进行Alpha形状重构。"
+    },
+    "GeomPackReconstruct_BallPivoting": {
+        "title": "GeomPack球旋转重构",
+        "inputs": {
+            "points": "点集"
+        },
+        "widgets": {
+            "ball_radius": "球半径",
+            "estimate_normals": "估算法线",
+            "normal_radius": "法线半径"
+        },
+        "outputs": {
+            "reconstructed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "使用PyMeshLab的球旋转算法。"
+    },
+    "GeomPackReconstruct_ConvexHull": {
+        "title": "GeomPack凸包重构",
+        "inputs": {
+            "points": "点集"
+        },
+        "widgets": {},
+        "outputs": {
+            "reconstructed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "简单的凸包重构。"
+    },
+    "GeomPackReconstruct_Poisson": {
+        "title": "GeomPack泊松重构",
+        "inputs": {
+            "points": "点集"
+        },
+        "widgets": {
+            "poisson_depth": "泊松深度",
+            "poisson_scale": "泊松缩放",
+            "estimate_normals": "估算法线",
+            "normal_radius": "法线半径"
+        },
+        "outputs": {
+            "reconstructed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "使用Open3D或PyMeshLab的泊松曲面重构。"
+    },
+    "GeomPackRemesh_GeogramAniso": {
+        "title": "GeomPack Geogram各向异性重新网格化",
+        "inputs": {},
+        "widgets": {
+            "trimesh": "三维网格",
+            "nb_points_aniso": "各向异性点数",
+            "anisotropy": "各向异性"
+        },
+        "outputs": {
+            "remeshed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "Geogram曲率自适应CVT重新网格化后端。"
+    },
+    "GeomPackRemesh_GeogramSmooth": {
+        "title": "GeomPack Geogram平滑重新网格化",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "nb_points": "点数",
+            "nb_lloyd_iter": "Lloyd迭代次数",
+            "nb_newton_iter": "Newton迭代次数",
+            "newton_m": "Newton参数m"
+        },
+        "outputs": {
+            "remeshed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "Geogram CVT各向同性重新网格化后端。"
+    },
+    "GeomPackRemesh_CGAL": {
+        "title": "Remesh CGAL（后端）",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "target_edge_length": "目标边长",
+            "iterations": "迭代次数",
+            "protect_boundaries": "保护边界"
+        },
+        "outputs": {
+            "remeshed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "Geogram CVT各向同性重新网格化后端。"
+    },
+    "GeomPackRemesh_InstantMeshes": {
+        "title": "GeomPack Instant Meshes重新网格化",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "target_vertex_count": "目标顶点数",
+            "deterministic": "确定性",
+            "crease_angle": "折痕角度"
+        },
+        "outputs": {
+            "remeshed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "Instant Meshes场对齐重新网格化后端。"
+    },
+    "GeomPackRemesh_MMG": {
+        "title": "GeomPack MMG重新网格化",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "hausd": "豪斯多夫距离",
+            "hmin": "最小尺寸",
+            "hmax": "最大尺寸",
+            "hgrad": "梯度系数"
+        },
+        "outputs": {
+            "remeshed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "MMG曲率自适应表面重新网格化后端。"
+    },
+    "GeomPackRemesh_PMPAdaptive": {
+        "title": "GeomPack重网格化_PMP自适应",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "pmp_min_edge": "PMP最小边长度",
+            "pmp_max_edge": "PMP最大边长度",
+            "pmp_approx_error": "PMP近似误差",
+            "pmp_adaptive_iterations": "PMP自适应迭代次数",
+            "pmp_adaptive_projection": "PMP自适应投影"
+        },
+        "outputs": {
+            "remeshed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "PMP曲率驱动自适应重网格化后端"
+    },
+    "GeomPackRemesh_PMPUniform": {
+        "title": "GeomPack重网格化_PMP均匀",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "pmp_edge_length": "PMP边长度",
+            "pmp_iterations": "PMP迭代次数",
+            "pmp_use_projection": "PMP使用投影"
+        },
+        "outputs": {
+            "remeshed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "PMP均匀各向同性重网格化后端"
+    },
+    "GeomPackRemesh_PyMeshLab": {
+        "title": "GeomPack重网格化_PyMeshLab",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {
+            "target_edge_length": "目标边长度",
+            "iterations": "迭代次数",
+            "feature_angle": "特征角度",
+            "adaptive": "自适应"
+        },
+        "outputs": {
+            "remeshed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "PyMeshLab各向同性重网格化后端"
+    },
+    "GeomPackRemesh_QuadriFlow": {
+        "title": "GeomPack重网格化_Quadri流",
+        "inputs": {
+            "trimesh": "Trimesh三维模型"
+        },
+        "widgets": {
+            "target_face_count": "目标面数",
+            "preserve_sharp": "保留锐边",
+            "preserve_boundary": "保留边界"
+        },
+        "outputs": {
+            "remeshed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "QuadriFlow四边形重网格化后端"
+    },
+    "GeomPackRemesh_QuadWild": {
+        "title": "GeomPack重网格化_Quad自然",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "qw_sharp_angle": "QW锐边角度",
+            "qw_alpha": "QW Alpha值",
+            "qw_scale_factor": "QW缩放因子",
+            "qw_remesh": "QW重网格化",
+            "qw_smooth": "QW平滑"
+        },
+        "outputs": {
+            "remeshed_mesh": "重构网格",
+            "info": "信息"
+        },
+        "description": "QuadWild BiMDF三角转四边形重网格化后端"
+    },
+    "GeomPackFillHoles_IglFan": {
+        "title": "GeomPack填充孔洞（IglFan）",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "filled_mesh": "填充网格",
+            "info": "信息"
+        },
+        "description": ""
+    },
+    "GeomPackFillHoles_PyMeshFix": {
+        "title": "GeomPack填充孔洞（PyMeshFix）",
+        "inputs": {},
+        "widgets": {
+            "mesh": "网格",
+            "max_edges": "最大边数",
+            "refine": "优化"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "GeomPackFillHoles_PyMeshLab": {
+        "title": "GeomPack填充孔洞（PyMeshLab）",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "maxholesize": "最大孔洞尺寸"
+        },
+        "outputs": {
+            "filled_mesh": "填充网格",
+            "info": "信息"
+        }
+    },
+    "GeomPackFillHoles_Trimesh": {
+        "title": "GeomPack填充孔洞（Tri网格）",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "filled_mesh": "填充网格",
+            "info": "信息"
+        },
+        "description": ""
+    },
+    "GeomPackFixNormals_IglBfs": {
+        "title": "GeomPack修复法线（IglBfs）",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "fixed_mesh": "固定网格",
+            "info": "信息"
+        },
+        "description": ""
+    },
+    "GeomPackFixNormals_IglRaycast": {
+        "title": "GeomPack修复法线（IglRaycast）",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "fixed_mesh": "固定网格",
+            "info": "信息"
+        },
+        "description": ""
+    },
+    "GeomPackFixNormals_IglSignedDist": {
+        "title": "GeomPack修复法线（IglSignedDist）",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "fixed_mesh": "固定网格",
+            "info": "信息"
+        },
+        "description": ""
+    },
+    "GeomPackFixNormals_IglWinding": {
+        "title": "GeomPack修复法线（IglWinding）",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "fixed_mesh": "固定网格",
+            "info": "信息"
+        },
+        "description": ""
+    },
+    "GeomPackFixNormals_Trimesh": {
+        "title": "GeomPack修复法线（Tri网格）",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "fixed_mesh": "固定网格",
+            "info": "信息"
+        },
+        "description": ""
+    },
+    "GeomPackFillHoles_CGAL": {
+        "title": "GeomPack填充孔洞（CGAL）",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "quality": "质量"
+        },
+        "outputs": {
+            "filled_mesh": "填充网格",
+            "info": "信息"
+        },
+        "description": ""
+    },
+    "GeomPackSkeleton_EdgeCollapse": {
+        "title": "GeomPack骨架-边折叠",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "fix_mesh": "修复网格",
+            "normalize": "标准化",
+            "shape_weight": "形状权重",
+            "sample_weight": "采样权重"
+        },
+        "outputs": {
+            "skeleton": "骨架"
+        },
+        "description": "边折叠骨架化后端。"
+    },
+    "GeomPackSkeleton_Teasar": {
+        "title": "GeomPack骨架-TEASAR",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "fix_mesh": "修复网格",
+            "normalize": "标准化",
+            "inv_dist": "逆距离",
+            "min_length": "最小长度"
+        },
+        "outputs": {
+            "skeleton": "骨架"
+        },
+        "description": "TEASAR骨架化后端。"
+    },
+    "GeomPackSkeleton_VertexClusters": {
+        "title": "GeomPack骨架-顶点聚类",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "fix_mesh": "修复网格",
+            "normalize": "标准化",
+            "sampling_dist": "采样距离",
+            "cluster_pos": "聚类位置"
+        },
+        "outputs": {
+            "skeleton": "骨架"
+        },
+        "description": "顶点聚类骨架化后端。"
+    },
+    "GeomPackSkeleton_Wavefront": {
+        "title": "GeomPack波前骨架提取",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "fix_mesh": "修复网格",
+            "normalize": "标准化",
+            "waves": "波前",
+            "step_size": "步长"
+        },
+        "outputs": {
+            "skeleton": "骨架"
+        },
+        "description": "波前骨架提取后端。"
+    },
+    "GeomPackSharpenMesh": {
+        "title": "GeomPack网格锐化",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "backend": "后端",
+            "smooth_steps": "平滑步骤",
+            "normal_threshold": "正常阈值"
+        },
+        "outputs": {
+            "sharpened_mesh": "锐化网格",
+            "info": "信息"
+        },
+        "description": "网格锐化 - 支持后端选择的统一锐化功能。\n\n通过节点扩展调用隐藏的后端节点。"
+    },
+    "GeomPackSmoothMesh": {
+        "title": "GeomPack网格平滑",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "backend": "后端",
+            "iterations": "迭代"
+        },
+        "outputs": {
+            "smoothed_mesh": "平滑网格",
+            "info": "信息"
+        },
+        "description": "网格平滑 - 支持后端选择的统一平滑功能。\n\n通过节点扩展调用隐藏的后端节点。"
+    },
+    "GeomPackSharpen_FastEffective": {
+        "title": "GeomPack快速高效锐化",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "threshold_T": "阈值T",
+            "normal_iterations": "法线迭代次数",
+            "vertex_iterations": "顶点迭代次数"
+        },
+        "outputs": {
+            "sharpened_mesh": "锐化网格",
+            "info": "信息"
+        },
+        "description": "快速高效的特征保留型网格去噪后端。"
+    },
+    "GeomPackSharpen_GuidedNormal": {
+        "title": "GeomPack法线引导锐化",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "normal_iterations": "法线迭代次数",
+            "vertex_iterations": "顶点迭代次数",
+            "sigma_s": "空间σ",
+            "sigma_r": "值域σ"
+        },
+        "outputs": {
+            "sharpened_mesh": "锐化网格",
+            "info": "信息"
+        },
+        "description": "网格法线滤波引导的锐化后端。"
+    },
+    "GeomPackSharpen_L0Minimize": {
+        "title": "GeomPack L0最小化锐化",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "alpha": "透明度",
+            "beta": "测试",
+            "iterations": "迭代次数"
+        },
+        "outputs": {
+            "sharpened_mesh": "锐化网格",
+            "info": "信息"
+        },
+        "description": "L0法线最小化锐化后端。"
+    },
+    "GeomPackSharpen_LibiglUnsharp": {
+        "title": "GeomPack Libigl反锐化",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "weight": "权重",
+            "iterations": "迭代次数"
+        },
+        "outputs": {
+            "sharpened_mesh": "锐化网格",
+            "info": "信息"
+        },
+        "description": "余切加权几何反锐化遮罩后端（libigl）。"
+    },
+    "GeomPackSharpen_NonIterative": {
+        "title": "GeomPack非迭代锐化",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "sharpened_mesh": "锐化网格",
+            "info": "信息"
+        },
+        "description": "非迭代型特征保留网格平滑后端。"
+    },
+    "GeomPackSharpen_TwoStep": {
+        "title": "GeomPack两步式锐化",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "smooth_steps": "平滑步数",
+            "normal_threshold": "法线阈值"
+        },
+        "outputs": {
+            "sharpened_mesh": "锐化网格",
+            "info": "信息"
+        },
+        "description": "两步式双边法线锐化后端（py网格lab）。"
+    },
+    "GeomPackSharpen_UnsharpMask": {
+        "title": "GeomPack反锐化遮罩",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "weight": "权重",
+            "iterations": "迭代次数"
+        },
+        "outputs": {
+            "sharpened_mesh": "锐化网格",
+            "info": "信息"
+        },
+        "description": "几何反锐化遮罩锐化后端（py网格lab）。"
+    },
+    "GeomPackSmooth_HCLaplacian": {
+        "title": "GeomPack HC拉普拉斯平滑",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "smoothed_mesh": "平滑网格",
+            "info": "信息"
+        },
+        "description": "PyMeshLab HC拉普拉斯平滑后端。"
+    },
+    "GeomPackSmooth_Laplacian": {
+        "title": "GeomPack拉普拉斯平滑",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "iterations": "迭代次数",
+            "cotangent_weight": "余切权重"
+        },
+        "outputs": {
+            "smoothed_mesh": "平滑网格",
+            "info": "信息"
+        },
+        "description": "PyMeshLab拉普拉斯平滑后端。"
+    },
+    "GeomPackSmooth_Taubin": {
+        "title": "GeomPack Taubin平滑",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "trimesh": "三维网格",
+            "iterations": "迭代次数"
+        },
+        "outputs": {
+            "smoothed_mesh": "平滑网格",
+            "info": "信息"
+        },
+        "description": "PyMeshLab Taubin平滑后端。"
+    },
+    "GeomPackSmooth_TrimeshLaplacian": {
+        "title": "GeomPack Tri网格拉普拉斯平滑",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "iterations": "迭代次数"
+        },
+        "outputs": {
+            "smoothed_mesh": "平滑网格",
+            "info": "信息"
+        },
+        "description": "Tri网格拉普拉斯平滑后端。"
+    },
+    "GeomPackSmooth_TrimeshTaubin": {
+        "title": "GeomPack Tri网格 Taubin平滑",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "iterations": "迭代次数"
+        },
+        "outputs": {
+            "smoothed_mesh": "平滑网格",
+            "info": "信息"
+        },
+        "description": "Tri网格 Taubin平滑后端。"
+    },
+    "GeomPackUV_LibiglARAP": {
+        "title": "GeomPackUV Libigl ARAP",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "iterations": "迭代次数"
+        },
+        "outputs": {
+            "unwrapped_mesh": "展开网格",
+            "info": "信息"
+        },
+        "description": "libigl ARAP类参数化后端。"
+    },
+    "GeomPackUV_LibiglHarmonic": {
+        "title": "GeomPackUV Libigl 调和映射",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "unwrapped_mesh": "展开网格",
+            "info": "信息"
+        },
+        "description": "libigl 调和（拉普拉斯）映射后端。"
+    },
+    "GeomPackUV_LibiglLSCM": {
+        "title": "GeomPackUV Libigl LSCM",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "unwrapped_mesh": "展开网格",
+            "info": "信息"
+        },
+        "description": "libigl LSCM保角映射后端。"
+    },
+    "GeomPackUV_Xatlas": {
+        "title": "UV Xatlas (backend)",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "unwrapped_mesh": "展开网格",
+            "info": "信息"
+        },
+        "description": "XAtlas自动UV展开后端。"
+    },
+    "GeomPackUV_CuMesh": {
+        "title": "GeomPackUV Cu网格",
+        "inputs": {
+            "trimesh": "三维网格"
+        },
+        "widgets": {
+            "chart_cone_angle": "图表锥角",
+            "chart_refine_iterations": "图表细化迭代次数",
+            "chart_global_iterations": "图表全局迭代次数",
+            "chart_smooth_strength": "图表平滑强度"
+        },
+        "outputs": {
+            "unwrapped_mesh": "展开网格",
+            "info": "信息"
+        },
+        "description": "CuMesh GPU加速UV展开后端。"
+    },
     "GeomPackLoadMeshBlend": {
         "title": "从 Blender .blend 文件加载网格",
         "inputs": {},
@@ -7,12 +982,9 @@
         },
         "outputs": {
             "mesh": "网格",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "使用 bpy 加载 Blender .blend 文件。\n\n通过 bpy Python 模块直接从 .blend 文件提取网格数据。",
-        "api_version": "V1"
+        "description": "使用 bpy 加载 Blender .blend 文件。\n\n通过 bpy Python 模块直接从 .blend 文件提取网格数据。"
     },
     "GeomPackLoadMeshFBX": {
         "title": "从 FBX 文件加载网格",
@@ -22,12 +994,9 @@
         },
         "outputs": {
             "mesh": "网格",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "使用 bpy 加载 FBX 文件。\n\n通过 bpy Python 模块直接导入 FBX 文件并提取网格数据。",
-        "api_version": "V1"
+        "description": "使用 bpy 加载 FBX 文件。\n\n通过 bpy Python 模块直接导入 FBX 文件并提取网格数据。"
     },
     "GeomPackBooleanBlender": {
         "title": "Blender 布尔运算",
@@ -40,12 +1009,9 @@
         },
         "outputs": {
             "result_mesh": "结果网格",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "Blender 布尔运算 - 使用 Blender 的 EXACT 解算器执行布尔运算。\n\n执行构造实体几何学 (CSG) 操作：\n- 合并：将两个网格合并为一个\n- 减去：从网格 A 中减去网格 B\n- 交集：保留重叠部分\n\n使用 Blender 的 bpy 模块和 EXACT 布尔解算器。\n对于基于 CGAL 的布尔运算，请使用“CGAL 布尔”节点。",
-        "api_version": "V1"
+        "description": "Blender 布尔运算 - 使用 Blender 的 EXACT 解算器执行布尔运算。\n\n执行构造实体几何学 (CSG) 操作：\n- 合并：将两个网格合并为一个\n- 减去：从网格 A 中减去网格 B\n- 交集：保留重叠部分\n\n使用 Blender 的 bpy 模块和 EXACT 布尔解算器。\n对于基于 CGAL 的布尔运算，请使用“CGAL 布尔”节点。"
     },
     "GeomPackRemeshBlender": {
         "title": "Blender 基于的重新网格化",
@@ -61,12 +1027,9 @@
         },
         "outputs": {
             "remeshed_mesh": "重新网格化的网格",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "Blender 基于的重新网格化 - 使用 bpy 进行重新网格化。\n\n可用后端：\n- blender_voxel：基于体素的重新网格化（无缝输出\n- blender_smooth：平滑重新网格修饰符\n- blender_sharp：尖锐重新网格修饰符（保留边缘\n- blender_blocks：块状重新网格修饰符\n\n需要安装 bpy（Blender Python 模块）。",
-        "api_version": "V1"
+        "description": "Blender 基于的重新网格化 - 使用 bpy 进行重新网格化。\n\n可用后端：\n- blender_voxel：基于体素的重新网格化（无缝输出\n- blender_smooth：平滑重新网格修饰符\n- blender_sharp：尖锐重新网格修饰符（保留边缘\n- blender_blocks：块状重新网格修饰符\n\n需要安装 bpy（Blender Python 模块）。"
     },
     "GeomPackRemeshWithTexture": {
         "title": "带有纹理保存的重新网格化",
@@ -84,12 +1047,9 @@
             "remeshed_mesh": "重新网格化的网格",
             "baked_texture": "烘焙后的纹理",
             "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "IMAGE": "图像",
-            "STRING": "STRING"
+            "IMAGE": "图像"
         },
-        "description": "使用 Blender 烘焙保存纹理的重新网格化。\n\n工作流程：\n1. 使用选定算法重新网格化输入几何形状\n2. 为重新网格化的表面生成新的 UV 坐标\n3. 使用 Blender 将原始纹理烘焙到新 UV 上\n4. 返回具有烘焙纹理的重新网格化网格",
-        "api_version": "V1"
+        "description": "使用 Blender 烘焙保存纹理的重新网格化。\n\n工作流程：\n1. 使用选定算法重新网格化输入几何形状\n2. 为重新网格化的表面生成新的 UV 坐标\n3. 使用 Blender 将原始纹理烘焙到新 UV 上\n4. 返回具有烘焙纹理的重新网格化网格"
     },
     "GeomPackRemeshGPU": {
         "title": "GPU 加速的重新网格化",
@@ -102,12 +1062,9 @@
         },
         "outputs": {
             "remeshed_mesh": "重新网格化的网格",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "GPU 加速的双轮廓重新网格化 - 使用 CuMesh 实现。\n\n使用与 TRELLIS 相同的算法实现高质量网格生成。\n需要 CUDA 兼容 GPU、torch 和 cumesh 包。",
-        "api_version": "V1"
+        "description": "GPU 加速的双轮廓重新网格化 - 使用 CuMesh 实现。\n\n使用与 TRELLIS 相同的算法实现高质量网格生成。\n需要 CUDA 兼容 GPU、torch 和 cumesh 包。"
     },
     "GeomPackConnectedComponents": {
         "title": "连接组件标记",
@@ -117,12 +1074,9 @@
         "widgets": {},
         "outputs": {
             "trimesh": "Trimesh三维模型",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "用 part_id 面属性标记断开的网格组件。\n\n每个断开的部分都会获得一个唯一的整数 ID（(1, 2, 3, ...)。\ns_id 存储在可以使用基于场的网格预览节点可视化的面属性中。\n\n支持批量处理：输入一组网格，获取一组结果。",
-        "api_version": "V1"
+        "description": "用 part_id 面属性标记断开的网格组件。\n\n每个断开的部分都会获得一个唯一的整数 ID（(1, 2, 3, ...)。\ns_id 存储在可以使用基于场的网格预览节点可视化的面属性中。\n\n支持批量处理：输入一组网格，获取一组结果。"
     },
     "GeomPackDegenerateFaces": {
         "title": "检测退化面",
@@ -132,12 +1086,9 @@
         "widgets": {},
         "outputs": {
             "trimesh": "Trimesh三维模型",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "检测退化面并显示面积最小的面。\n\n真正退化的面具有：\n- 重复顶点（塌陷边\n- 面积为零（共线点\n\n还显示了按面积排序的前 30 个面以供检查。",
-        "api_version": "V1"
+        "description": "检测退化面并显示面积最小的面。\n\n真正退化的面具有：\n- 重复顶点（塌陷边\n- 面积为零（共线点\n\n还显示了按面积排序的前 30 个面以供检查。"
     },
     "GeomPackMeshInfo": {
         "title": "网格信息",
@@ -146,11 +1097,9 @@
             "trimesh": "Trimesh三维模型"
         },
         "outputs": {
-            "info": "信息",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "显示详细的网格信息和统计数据。\n现在使用 trimessh 提供增强的网格分析。",
-        "api_version": "V1"
+        "description": "显示详细的网格信息和统计数据。\n现在使用 trimessh 提供增强的网格分析。"
     },
     "GeomPackMeshQuality": {
         "title": "网格质量",
@@ -163,12 +1112,9 @@
         "outputs": {
             "min_quality": "最小质量",
             "mean_quality": "平均质量",
-            "info": "信息",
-            "FLOAT": "FLOAT",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "网格质量 - 计算用于网格分析的质量指标。\n\n分析网格的各种质量指标，包括：\n- 三角形质量（方面比、角度\n- 边长统计\n- 面积分布\n- 退化检测\n- 流形状态\n\n有助于识别在进一步处理之前的问题几何形状。",
-        "api_version": "V1"
+        "description": "网格质量 - 计算用于网格分析的质量指标。\n\n分析网格的各种质量指标，包括：\n- 三角形质量（方面比、角度\n- 边长统计\n- 面积分布\n- 退化检测\n- 流形状态\n\n有助于识别在进一步处理之前的问题几何形状。"
     },
     "GeomPackOpenEdges": {
         "title": "打开/边界边检测",
@@ -178,12 +1124,9 @@
         "widgets": {},
         "outputs": {
             "trimesh": "Trimesh三维模型",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "检测并标记包含开放/边界边的面。\n\n边界边是指只属于一个面而不共享的边。\n此节点查找所有此类边，并标记包含它们的面。\n\n支持批量处理：输入一组网格，获取一组结果。",
-        "api_version": "V1"
+        "description": "检测并标记包含开放/边界边的面。\n\n边界边是指只属于一个面而不共享的边。\n此节点查找所有此类边，并标记包含它们的面。\n\n支持批量处理：输入一组网格，获取一组结果。"
     },
     "ScrambleIntField": {
         "title": "扰乱整数字段",
@@ -195,11 +1138,9 @@
             "seed": "种子"
         },
         "outputs": {
-            "mesh": "网格",
-            "TRIMESH": "TRIMESH"
+            "mesh": "网格"
         },
-        "description": "重新分配整数字段值以最大化相邻面之间的对比度。\n适用于可视化分割结果，在 分割段之间可能因偶然性而具有相似标签编号的情况下。\n\n使用贪婪图着色法在片段邻接图上进行。",
-        "api_version": "V1"
+        "description": "重新分配整数字段值以最大化相邻面之间的对比度。\n适用于可视化分割结果，在 分割段之间可能因偶然性而具有相似标签编号的情况下。\n\n使用贪婪图着色法在片段邻接图上进行。"
     },
     "GeomPackBooleanCGAL": {
         "title": "CGAL布尔运算",
@@ -212,12 +1153,9 @@
         },
         "outputs": {
             "result_mesh": "结果网格",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "CGAL布尔运算 - 使用CGAL执行网格的联合、差集和交集。\n\n执行构造实体几何学(CSG) 操作:\n- 联合: 将两个网格合并为一个\n- 差集: 从mesh_a中减去mesh_b\n- 交集: 只保留重叠部分\n\n使用libigl与CGAL后端实现稳健的布尔运算。\n对于基于Blender的布尔运算，请使用“Blender布尔”节点。",
-        "api_version": "V1"
+        "description": "CGAL布尔运算 - 使用CGAL执行网格的联合、差集和交集。\n\n执行构造实体几何学(CSG) 操作:\n- 联合: 将两个网格合并为一个\n- 差集: 从mesh_a中减去mesh_b\n- 交集: 只保留重叠部分\n\n使用libigl与CGAL后端实现稳健的布尔运算。\n对于基于Blender的布尔运算，请使用“Blender布尔”节点。"
     },
     "GeomPackCombineMeshes": {
         "title": "合并网格",
@@ -230,12 +1168,9 @@
         "widgets": {},
         "outputs": {
             "combined_mesh": "组合网格",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "合并网格 - 将多个网格连接成一个。\n\n简单地连接顶点和面而不执行布尔运算。\n结果包含所有输入网格作为单独组件的所有几何体。\n适用于分组对象或准备批量操作。",
-        "api_version": "V1"
+        "description": "合并网格 - 将多个网格连接成一个。\n\n简单地连接顶点和面而不执行布尔运算。\n结果包含所有输入网格作为单独组件的所有几何体。\n适用于分组对象或准备批量操作。"
     },
     "GeomPackCombineMeshesBatch": {
         "title": "批量合并网格",
@@ -245,12 +1180,9 @@
         "widgets": {},
         "outputs": {
             "combined_mesh": "组合网格",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "将一批网格合并为单个网格。",
-        "api_version": "V1"
+        "description": "将一批网格合并为单个网格。"
     },
     "GeomPackSplitByField": {
         "title": "按字段分割网格",
@@ -262,12 +1194,9 @@
         },
         "outputs": {
             "geometries": "几何体",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "根据离散顶点属性字段分割点云或网格。\n\n适用于调试分割结果 - 分别提取每个簇。\n任何整数值顶点属性均可工作（例如标签、基本类型）。",
-        "api_version": "V1"
+        "description": "根据离散顶点属性字段分割点云或网格。\n\n适用于调试分割结果 - 分别提取每个簇。\n任何整数值顶点属性均可工作（例如标签、基本类型）。"
     },
     "GeomPackMeshToPointCloud": {
         "title": "网格转换为点云",
@@ -280,11 +1209,9 @@
             "include_normals": "包括法线"
         },
         "outputs": {
-            "point_cloud": "点云",
-            "TRIMESH": "TRIMESH"
+            "point_cloud": "点云"
         },
-        "description": "通过表面采样点将网格转换为点云。\n\n使用各种采样方法从网格表面采样点。\n可选地包括法线和颜色。",
-        "api_version": "V1"
+        "description": "通过表面采样点将网格转换为点云。\n\n使用各种采样方法从网格表面采样点。\n可选地包括法线和颜色。"
     },
     "GeomPackSubsamplePointCloud": {
         "title": "子采样点云",
@@ -297,11 +1224,9 @@
             "seed": "种子"
         },
         "outputs": {
-            "point_cloud": "点云",
-            "TRIMESH": "TRIMESH"
+            "point_cloud": "点云"
         },
-        "description": "减少点云的数量同时保留属性。\n\n支持多种采样方法并保留颜色、法线和其他顶点数据。",
-        "api_version": "V1"
+        "description": "减少点云的数量同时保留属性。\n\n支持多种采样方法并保留颜色、法线和其他顶点数据。"
     },
     "GeomPackMeshToMeshDistance": {
         "title": "网格到网格距离",
@@ -316,12 +1241,9 @@
         },
         "outputs": {
             "distance": "距离",
-            "info": "信息",
-            "FLOAT": "FLOAT",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "统一网格距离 - 使用多种度量标准比较两个网格。\n\n度量标准:\n- hausdorff: 最大距离（最坏情况偏差\n- chamfer: 平均平方距离（整体相似性\n\n这些度量标准从网格表面上采样点并计算距离。",
-        "api_version": "V1"
+        "description": "统一网格距离 - 使用多种度量标准比较两个网格。\n\n度量标准:\n- hausdorff: 最大距离（最坏情况偏差\n- chamfer: 平均平方距离（整体相似性\n\n这些度量标准从网格表面上采样点并计算距离。"
     },
     "GeomPackPointToMeshDistance": {
         "title": "点到网格距离",
@@ -337,8 +1259,7 @@
             "pointcloud": "点云",
             "info": "信息"
         },
-        "description": "点到网格距离 - 计算点云/网格到目标网格表面的距离场。\n\n对于输入中的每个顶点（（点云或网格），找到最近的目标网格表面顶点并计算距离。返回带有‘距离’字段添加到顶点属性的输入几何体。\n\n支持两种方式:\n- 无符号距离（使用trimesh：始终正值，测量表面接近程度\n- 带符号距离（使用igig.signed_distance：外部正数，内部负数\n\n适用于邻近分析、误差测量、基于距离的可视化以及隐式曲面表示（(SDF)。",
-        "api_version": "V1"
+        "description": "点到网格距离 - 计算点云/网格到目标网格表面的距离场。\n\n对于输入中的每个顶点（（点云或网格），找到最近的目标网格表面顶点并计算距离。返回带有‘距离’字段添加到顶点属性的输入几何体。\n\n支持两种方式:\n- 无符号距离（使用trimesh：始终正值，测量表面接近程度\n- 带符号距离（使用igig.signed_distance：外部正数，内部负数\n\n适用于邻近分析、误差测量、基于距离的可视化以及隐式曲面表示（(SDF)。"
     },
     "GeomPackGetMeshFilename": {
         "title": "获取网格文件名",
@@ -347,11 +1268,9 @@
         },
         "widgets": {},
         "outputs": {
-            "filename": "文件名",
-            "STRING": "STRING"
+            "filename": "文件名"
         },
-        "description": "从网格元数据中提取文件名（（不含扩展名）。\n\n返回加载网格文件时使用的原始文件名。\n适用于批处理以在输出中保留原始名称。\n\n支持批处理：输入网格列表，获得文件名列表。",
-        "api_version": "V1"
+        "description": "从网格元数据中提取文件名（（不含扩展名）。\n\n返回加载网格文件时使用的原始文件名。\n适用于批处理以在输出中保留原始名称。\n\n支持批处理：输入网格列表，获得文件名列表。"
     },
     "GeomPackLoadMesh": {
         "title": "加载网格",
@@ -362,11 +1281,9 @@
         "outputs": {
             "mesh": "网格",
             "texture": "纹理",
-            "TRIMESH": "TRIMESH",
             "IMAGE": "图像"
         },
-        "description": "从文件加载网格（（OBJ、PLY、STL、OFF等）\n现在返回trimesh.Trimesh对象以更好地处理网格。",
-        "api_version": "V1"
+        "description": "从文件加载网格（（OBJ、PLY、STL、OFF等）\n现在返回trimesh.Trimesh对象以更好地处理网格。"
     },
     "GeomPackLoadMeshBatch": {
         "title": "批量加载网格",
@@ -377,11 +1294,9 @@
             "max_meshes": "最大网格数量"
         },
         "outputs": {
-            "meshes": "网格",
-            "TRIMESH": "TRIMESH"
+            "meshes": "网格"
         },
-        "description": "从文件夹加载多个网格（（批量加载）。\n类似于ComfyUI的图像批量加载，具有起始索引和最大网格数量控制。",
-        "api_version": "V1"
+        "description": "从文件夹加载多个网格（（批量加载）。\n类似于ComfyUI的图像批量加载，具有起始索引和最大网格数量控制。"
     },
     "GeomPackLoadMeshGlob": {
         "title": "根据提示词加载网格",
@@ -394,12 +1309,9 @@
             "meshes": "网格",
             "textures": "纹理",
             "file_paths": "文件路径",
-            "TRIMESH": "TRIMESH",
-            "IMAGE": "图像",
-            "STRING": "STRING"
+            "IMAGE": "图像"
         },
-        "description": "加载匹配提示词模式的所有网格",
-        "api_version": "V1"
+        "description": "加载匹配提示词模式的所有网格"
     },
     "GeomPackLoadMeshPath": {
         "title": "从路径加载网格",
@@ -410,11 +1322,9 @@
         "outputs": {
             "mesh": "网格",
             "texture": "纹理",
-            "TRIMESH": "TRIMESH",
             "IMAGE": "图像"
         },
-        "description": "从路径加载网格（（支持批量路径，换行或逗号分隔）。",
-        "api_version": "V1"
+        "description": "从路径加载网格（（支持批量路径，换行或逗号分隔）。"
     },
     "GeomPackSaveMesh": {
         "title": "保存几何体到文件",
@@ -429,8 +1339,7 @@
             "file_path": "文件路径",
             "STRING": "字符串"
         },
-        "description": "将网格或点云保存到文件（OBJ, PLY, STL, OFF等格式。\n支持由trimesh提供的所有格式。\n点云（无面的顶点）可以以PLY格式保存。",
-        "api_version": "V1"
+        "description": "将网格或点云保存到文件（OBJ, PLY, STL, OFF等格式。\n支持由trimesh提供的所有格式。\n点云（无面的顶点）可以以PLY格式保存。"
     },
     "GeomPackSaveMeshBatch": {
         "title": "批量保存几何体到文件夹",
@@ -449,8 +1358,7 @@
             "STRING": "字符串",
             "INT": "整数"
         },
-        "description": "将多个网格按顺序编号保存到一个文件夹。\n\n文件命名方式：{基础名称}_{序号}.{格式}\n根据批次大小自动确定数字位数：\n- 1-9个网格：_1, _9, ...\n- 10-99个网格：_01, _09, ...\n- 100-999个网格：_001, _009, ...",
-        "api_version": "V1"
+        "description": "将多个网格按顺序编号保存到一个文件夹。\n\n文件命名方式：{基础名称}_{序号}.{格式}\n根据批次大小自动确定数字位数：\n- 1-9个网格：_1, _9, ...\n- 10-99个网格：_01, _09, ...\n- 100-999个网格：_001, _009, ..."
     },
     "GeomPackParaViewFilter": {
         "title": "使用PyVista应用VTK/ParaView分析滤镜",
@@ -468,8 +1376,7 @@
             "filtered_mesh": "过滤后的网格",
             "TRIMESH": "三角网格"
         },
-        "description": "使用PyVista在ParaView中应用VTK分析滤镜。\n\n生成用于预览网格（视图模式）的可视化标量场。",
-        "api_version": "V1"
+        "description": "使用PyVista在ParaView中应用VTK分析滤镜。\n\n生成用于预览网格（视图模式）的可视化标量场。"
     },
     "GeomPackCreatePrimitive": {
         "title": "创建基本几何体",
@@ -483,11 +1390,10 @@
             "mesh": "网格",
             "TRIMESH": "三角网格"
         },
-        "description": "创建基本几何体（立方体、球体、平面）\n使用trimessh创建函数生成高质量的基本几何体。",
-        "api_version": "V1"
+        "description": "创建基本几何体（立方体、球体、平面）\n使用trimessh创建函数生成高质量的基本几何体。"
     },
     "GeomPackReconstructSurface": {
-        "title": "表面重建",
+        "title": "表面重构",
         "inputs": {
             "points": "点"
         },
@@ -506,8 +1412,7 @@
             "TRIMESH": "三角网格",
             "STRING": "字符串"
         },
-        "description": "从点云重建表面。\n\n接受TRIMESH对象（包括来自Mesh To PointCloud节点的点云）。\n点云表示为只有顶点的TRIMESH（没有面）。\n\n多种重建算法可供选择：\n- poisson：经过平滑处理的水密式Poisson表面重建\n- ball_pivoting：球形定位算法（保留细节\n- alpha_shape：α形状重建\n- convex_hull：简单的凸包（粗糙但快速\n- delaunay_2d：二维Delaunay三角剖分（适用于高度场）\n\n需要Open3D或PyMeshLab来实现高级功能。",
-        "api_version": "V1"
+        "description": "从点云重构表面。\n\n接受TRIMESH对象（包括来自Mesh To PointCloud节点的点云）。\n点云表示为只有顶点的TRIMESH（没有面）。\n\n多种重构算法可供选择：\n- poisson：经过平滑处理的水密式Poisson表面重构\n- ball_pivoting：球形定位算法（保留细节\n- alpha_shape：α形状重构\n- convex_hull：简单的凸包（粗糙但快速\n- delaunay_2d：二维Delaunay三角剖分（适用于高度场）\n\n需要Open3D或PyMeshLab来实现高级功能。"
     },
     "GeomPackAlphaWrap": {
         "title": "Alpha包裹",
@@ -524,8 +1429,7 @@
             "TRIMESH": "三角网格",
             "STRING": "字符串"
         },
-        "description": "Alpha包裹 - 生成一个紧贴且封闭的包裹网格。\n\n使用PyMeshLab的CGAL Alpha Wrap算法来创建一个紧密包裹的封闭网格。\n\n适用于：\n- 点云\n- 非流形网格\n- 带孔洞的网格\n- 多边形杂烩（重叠/相交几何体）\n\n参数：\n- α：控制包裹的紧致度。数值越小，包裹越紧，细节越多。\n   相对于包围盒对角线的比例（例如0.01 表示1%的包围盒对角线长度）。\n- 偏移：表面偏移距离。数值越小，与原始表面的距离越近。\n   相对于包围盒对角线的比例。",
-        "api_version": "V1"
+        "description": "Alpha包裹 - 生成一个紧贴且封闭的包裹网格。\n\n使用PyMeshLab的CGAL Alpha Wrap算法来创建一个紧密包裹的封闭网格。\n\n适用于：\n- 点云\n- 非流形网格\n- 带孔洞的网格\n- 多边形杂烩（重叠/相交几何体）\n\n参数：\n- α：控制包裹的紧致度。数值越小，包裹越紧，细节越多。\n   相对于包围盒对角线的比例（例如0.01 表示1%的包围盒对角线长度）。\n- 偏移：表面偏移距离。数值越小，与原始表面的距离越近。\n   相对于包围盒对角线的比例。"
     },
     "RefineMesh": {
         "title": "细化网格",
@@ -546,8 +1450,7 @@
             "TRIMESH": "三角网格",
             "STRING": "字符串"
         },
-        "description": "统一非破坏性网格细化操作。\n\n整合了网格细化操作：\n- 降量化：减少面片数（四元误差指标）\n- 子细分环路：光滑子细分（环路算法）\n- 子细分中点：简单中点子细分\n- 拉普拉斯平滑：迭代拉普拉斯平滑\n\n参数针对特定操作而定；未使用的参数会被忽略。",
-        "api_version": "V1"
+        "description": "统一非破坏性网格细化操作。\n\n整合了网格细化操作：\n- 降量化：减少面片数（四元误差指标）\n- 子细分环路：光滑子细分（环路算法）\n- 子细分中点：简单中点子细分\n- 拉普拉斯平滑：迭代拉普拉斯平滑\n\n参数针对特定操作而定；未使用的参数会被忽略。"
     },
     "GeomPackRemesh": {
         "title": "重新网格化",
@@ -573,8 +1476,7 @@
             "TRIMESH": "三角网格",
             "STRING": "字符串"
         },
-        "description": "重新网格化 - 改变拓扑结构的重新网格化操作（主要后端）。\n\n可用后端：\n- pymeshlab_isotropic: PyMeshLab各向同性重新网格化（快速）\n- instant_meshes: 场向准方形重新网格化\n- quadriflow: 四流QuadriFlow重新网格化（良好拓扑）\n\n对于CGAL各向同性重新网格化，请使用“CGAL重新网格化”节点。\n对于Blender体素/修饰符重新网格化，请使用“Blender重新网格化”节点。\n对于GPU加速重新网格化，请使用“GPU重新网格化”节点。",
-        "api_version": "V1"
+        "description": "重新网格化 - 改变拓扑结构的重新网格化操作（主要后端）。\n\n可用后端：\n- pymeshlab_isotropic: PyMeshLab各向同性重新网格化（快速）\n- instant_meshes: 场向准方形重新网格化\n- quadriflow: 四流QuadriFlow重新网格化（良好拓扑）\n\n对于CGAL各向同性重新网格化，请使用“CGAL重新网格化”节点。\n对于Blender体素/修饰符重新网格化，请使用“Blender重新网格化”节点。\n对于GPU加速重新网格化，请使用“GPU重新网格化”节点。"
     },
     "GeomPackRemeshCGAL": {
         "title": "CGAL重新网格化",
@@ -592,8 +1494,7 @@
             "TRIMESH": "三角网格",
             "STRING": "字符串"
         },
-        "description": "高质各向同性重新网格化 - 使用CGAL进行高质量的各向同性重新网格化。\n\n需要安装CGAL Python绑定库。\n生成具有优良角度属性的高质量各向同性三角剖分。",
-        "api_version": "V1"
+        "description": "高质各向同性重新网格化 - 使用CGAL进行高质量的各向同性重新网格化。\n\n需要安装CGAL Python绑定库。\n生成具有优良角度属性的高质量各向同性三角剖分。"
     },
     "GeomPackAddNormalsToPointCloud": {
         "title": "在点云中添加法线",
@@ -614,8 +1515,7 @@
             "TRIMESH": "TRIMESH",
             "STRING": "字符串"
         },
-        "description": "使用Open3D或PyMeshLab方法估计并添加点云法线。",
-        "api_version": "V1"
+        "description": "使用Open3D或PyMeshLab方法估计并添加点云法线。"
     },
     "GeomPackCheckNormals": {
         "title": "检查网格法线",
@@ -627,8 +1527,7 @@
             "info": "信息",
             "STRING": "字符串"
         },
-        "description": "分析网格法线一致性及质量。\n\n检查面法线方向，报告不一致情况，并提供关于网格拓扑问题的诊断信息。",
-        "api_version": "V1"
+        "description": "分析网格法线一致性及质量。\n\n检查面法线方向，报告不一致情况，并提供关于网格拓扑问题的诊断信息。"
     },
     "GeomPackComputeNormals": {
         "title": "计算网格法线",
@@ -641,8 +1540,7 @@
             "mesh_with_normals": "带有法线的网格",
             "TRIMESH": "TRIMESH"
         },
-        "description": "根据自定义设置重新计算网格法线。\n\n重新计算面和顶点法线。适用于网格操作后、从无法线格式导入时或当法线看起来不正确时。",
-        "api_version": "V1"
+        "description": "根据自定义设置重新计算网格法线。\n\n重新计算面和顶点法线。适用于网格操作后、从无法线格式导入时或当法线看起来不正确时。"
     },
     "GeomPackFillHoles": {
         "title": "填充网格孔洞",
@@ -656,11 +1554,9 @@
         "outputs": {
             "filled_mesh": "填充后的网格",
             "info": "信息",
-            "TRIMESH": "TRIMESH",
             "STRING": "字符串"
         },
-        "description": "通过添加新三角形面片来填补网格中的孔洞。\n\n识别边界环（孔洞），然后用新的三角形面片填补它们。\n适用于网格修复、创建适合3D打印的封闭网格或闭合扫描几何体中的间隙。",
-        "api_version": "V1"
+        "description": "通过添加新三角形面片来填补网格中的孔洞。\n\n识别边界环（孔洞），然后用新的三角形面片填补它们。\n适用于网格修复、创建适合3D打印的封闭网格或闭合扫描几何体中的间隙。"
     },
     "GeomPackFixSelfIntersectionsByRemoval": {
         "title": "通过移除解决网格自我相交",
@@ -675,11 +1571,9 @@
         "outputs": {
             "fixed_mesh": "修复后的网格",
             "info": "信息",
-            "TRIMESH": "TRIMESH",
             "STRING": "字符串"
         },
-        "description": "通过移除相交面并填补孔洞来解决网格自我相交。\n\n移除标记为自我相交的面（来自DetectSelfIntersections节点），\n然后可选地填补结果孔洞并修正法线。这是一种简单但有效的处理孤立自我相交区域的方法。",
-        "api_version": "V1"
+        "description": "通过移除相交面并填补孔洞来解决网格自我相交。\n\n移除标记为自我相交的面（来自DetectSelfIntersections节点），\n然后可选地填补结果孔洞并修正法线。这是一种简单但有效的处理孤立自我相交区域的方法。"
     },
     "GeomPackFixNormals": {
         "title": "修正法线方向",
@@ -691,11 +1585,9 @@
         "outputs": {
             "fixed_mesh": "修复后的网格",
             "info": "信息",
-            "TRIMESH": "TRIMESH",
             "STRING": "字符串"
         },
-        "description": "修正不一致的法线方向。\n\n确保所有面法线指向一致（向外或向内）。使用图遍历来传播三角网格上的一致方向。\n对于正确的渲染和布尔运算至关重要。",
-        "api_version": "V1"
+        "description": "修正不一致的法线方向。\n\n确保所有面法线指向一致（向外或向内）。使用图遍历来传播三角网格上的一致方向。\n对于正确的渲染和布尔运算至关重要。"
     },
     "GeomPackMergeVertices": {
         "title": "合并网格顶点",
@@ -707,11 +1599,9 @@
         "outputs": {
             "merged_mesh": "合并后的网格",
             "info": "信息",
-            "TRIMESH": "TRIMESH",
             "STRING": "字符串"
         },
-        "description": "使用可配置容差 合并网格中的重复顶点。\n\n指定距离容差内的顶点被合并为单个顶点。\n这适用于：\n- 修复CAD网格化产生的断开连接网格组件（（OCC） - 修复由于浮点精度问题而产生近似重复顶点的网格 - 减少具有冗余顶点的网格的顶点数量\n\n容差以世界单位指定。例如： - 1e-8: 非常紧（（几乎只有精确匹配）  - 1e-5: 标准CAD网格推荐  - 1e-3: 松散（（粗略网格）",
-        "api_version": "V1"
+        "description": "使用可配置容差 合并网格中的重复顶点。\n\n指定距离容差内的顶点被合并为单个顶点。\n这适用于：\n- 修复CAD网格化产生的断开连接网格组件（（OCC） - 修复由于浮点精度问题而产生近似重复顶点的网格 - 减少具有冗余顶点的网格的顶点数量\n\n容差以世界单位指定。例如： - 1e-8: 非常紧（（几乎只有精确匹配）  - 1e-5: 标准CAD网格推荐  - 1e-3: 松散（（粗略网格）"
     },
     "GeomPackMeshFix": {
         "title": "自动网格修复",
@@ -731,11 +1621,9 @@
         "outputs": {
             "repaired_mesh": "修复后的网格",
             "info": "信息",
-            "TRIMESH": "TRIMESH",
             "STRING": "字符串"
         },
-        "description": "使用MeshFix算法进行轻触修复。\n\n执行轻微的修复操作：\n- 移除小的孤立部件\n - 连接附近分离的部分\n - 填充边界孔洞\n - 移除自我相交和退化面\n\n基于Marco Attene开发的MeshFix库。",
-        "api_version": "V1"
+        "description": "使用MeshFix算法进行轻触修复。\n\n执行轻微的修复操作：\n- 移除小的孤立部件\n - 连接附近分离的部分\n - 填充边界孔洞\n - 移除自我相交和退化面\n\n基于Marco Attene开发的MeshFix库。"
     },
     "GeomPackRemoveDegenerateFaces": {
         "title": "移除退化面",
@@ -748,11 +1636,9 @@
         "outputs": {
             "cleaned_mesh": "清理后的网格",
             "info": "信息",
-            "TRIMESH": "TRIMESH",
             "STRING": "字符串"
         },
-        "description": "移除网格中的退化面。\n\n一个面被认为是退化的如果：\n - 它具有重复的顶点索引（（例如，[ t,  t,  t])  - 其面积为零或接近零\n\n这适用于：\n - 在顶点合并操作后清理网格\n - 修复从CAD系统导入的网格中生成的细三角形",
-        "api_version": "V1"
+        "description": "移除网格中的退化面。\n\n一个面被认为是退化的如果：\n - 它具有重复的顶点索引（（例如，[ t,  t,  t])  - 其面积为零或接近零\n\n这适用于：\n - 在顶点合并操作后清理网格\n - 修复从CAD系统导入的网格中生成的细三角形"
     },
     "GeomPackVisualizeNormalField": {
         "title": "可视化法线场",
@@ -763,11 +1649,9 @@
         "outputs": {
             "mesh_with_fields": "带有场的网格",
             "info": "信息",
-            "TRIMESH": "TRIMESH",
             "STRING": "字符串"
         },
-        "description": "为VTK查看器创建法线场可视化。\n\n将顶点法线作为标量场（（X、Y、Z分量）添加到网格中，这些标量场可以在VTK查看器中使用颜色映射进行可视化。有助于调试法线方向问题或理解表面几何结构。",
-        "api_version": "V1"
+        "description": "为VTK查看器创建法线场可视化。\n\n将顶点法线作为标量场（（X、Y、Z分量）添加到网格中，这些标量场可以在VTK查看器中使用颜色映射进行可视化。有助于调试法线方向问题或理解表面几何结构。"
     },
     "GeomPackDetectSelfIntersections": {
         "title": "检测网格自我相交",
@@ -778,11 +1662,9 @@
         "outputs": {
             "mesh_with_field": "带有场的网格",
             "info": "信息",
-            "TRIMESH": "TRIMESH",
             "STRING": "字符串"
         },
-        "description": "检测网格中的自我相交面。\n\n分析网格以查找相互相交的面。\n创建标量场以可视化哪些面/顶点参与了自我相交。对于在布尔运算或3D打印之前检查网格质量至关重要。",
-        "api_version": "V1"
+        "description": "检测网格中的自我相交面。\n\n分析网格以查找相互相交的面。\n创建标量场以可视化哪些面/顶点参与了自我相交。对于在布尔运算或3D打印之前检查网格质量至关重要。"
     },
     "GeomPackFixSelfIntersectionsByPerturbation": {
         "title": "通过微调顶点修复自相交",
@@ -798,12 +1680,9 @@
         },
         "outputs": {
             "fixed_mesh": "修复后的网格",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "通过轻微移动顶点来修复自相交。\n\n通过对相邻于自相交面的顶点沿法线方向进行微调来修复自相交。这是一种非破坏性方法，可以保留网格拓扑结构但可能无法解决所有类型的相交。",
-        "api_version": "V1"
+        "description": "通过轻微移动顶点来修复自相交。\n\n通过对相邻于自相交面的顶点沿法线方向进行微调来修复自相交。这是一种非破坏性方法，可以保留网格拓扑结构但可能无法解决所有类型的相交。"
     },
     "GeomPackRemeshSelfIntersections": {
         "title": "通过重网格化移除自相交",
@@ -818,12 +1697,9 @@
         },
         "outputs": {
             "fixed_mesh": "修复后的网格",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "通过重网格化移除自相交。\n\n使用libigl CGAL细分自相交三角形，使得相交位于边线上。可选地提取外壳以获得干净的流形结果。适用于准备用于布尔运算或3D打印的网格。",
-        "api_version": "V1"
+        "description": "通过重网格化移除自相交。\n\n使用libigl CGAL细分自相交三角形，使得相交位于边线上。可选地提取外壳以获得干净的流形结果。适用于准备用于布尔运算或3D打印的网格。"
     },
     "GeomPackExtractSkeleton": {
         "title": "从3D网格提取骨架",
@@ -843,11 +1719,9 @@
             "min_length": "最小长度"
         },
         "outputs": {
-            "skeleton": "骨架",
-            "SKELETON": "SKELETON"
+            "skeleton": "骨架"
         },
-        "description": "使用Skeletor库从3D网格中提取骨架数据。\n\n输出带有可选标准化到[-1, 1]范围内的骨架数据（顶点+边）。默认情况下保留原始网格比例。",
-        "api_version": "V1"
+        "description": "使用Skeletor库从3D网格中提取骨架数据。\n\n输出带有可选标准化到[-1, 1]范围内的骨架数据（顶点+边）。默认情况下保留原始网格比例。"
     },
     "GeomPackMeshFromSkeleton": {
         "title": "从骨架生成网格",
@@ -859,11 +1733,9 @@
             "bone_radius": "骨骼半径"
         },
         "outputs": {
-            "trimesh": "Trimesh三维模型",
-            "TRIMESH": "TRIMESH"
+            "trimesh": "Trimesh三维模型"
         },
-        "description": "将骨架转换为具有圆柱（骨骼）和球体（关节）的实心网格。\n\n高质量可视化，几何参数可调节。",
-        "api_version": "V1"
+        "description": "将骨架转换为具有圆柱（骨骼）和球体（关节）的实心网格。\n\n高质量可视化，几何参数可调节。"
     },
     "GeomPackDepthNormalsToMesh": {
         "title": "深度法线转网格",
@@ -884,12 +1756,9 @@
         },
         "outputs": {
             "mesh": "网格",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "深度+法线转网格 - 将深度图和法线图转换为平滑3D网格。\n\n接受深度图（遮罩）和法线图（图像，R通道为Nx，G通道为Ny，并使用Poisson或Ball Pivoting算法重建表面。\n\n此方法通过使用定向点云的正确曲面重构消除了基于网格的高度图阶梯状伪影。\n\n适用于CAD光线追踪工作流程，其中深度和法线可用。",
-        "api_version": "V1"
+        "description": "深度+法线转网格 - 将深度图和法线图转换为平滑3D网格。\n\n接受深度图（遮罩）和法线图（图像，R通道为Nx，G通道为Ny，并使用Poisson或Ball Pivoting算法重构表面。\n\n此方法通过使用定向点云的正确曲面重构消除了基于网格的高度图阶梯状伪影。\n\n适用于CAD光线追踪工作流程，其中深度和法线可用。"
     },
     "GeomPackTextureToGeometry": {
         "title": "纹理转几何",
@@ -910,12 +1779,9 @@
         },
         "outputs": {
             "mesh": "网格",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "纹理转几何 - 将高度图纹理转换为3D网格几何。\n\n接受图像（高度图），并将其转换为3D网格。多种后端可供选择：\n- grid：快速基于网格的位移（可能会出现阶梯状伪影）\n- poisson_pymeshlab：PyMeshLab屏风Poisson重建（平滑）\n- poisson_open3d：Open3D Poisson重建（平滑，需要Open3D）\n- delaunay_2d：二维Delaunay三角剖分",
-        "api_version": "V1"
+        "description": "纹理转几何 - 将高度图纹理转换为3D网格几何。\n\n接受图像（高度图），并将其转换为3D网格。多种后端可供选择：\n- grid：快速基于网格的位移（可能会出现阶梯状伪影）\n- poisson_pymeshlab：PyMeshLab屏风Poisson重构（平滑）\n- poisson_open3d：Open3D Poisson重构（平滑，需要Open3D）\n- delaunay_2d：二维Delaunay三角剖分"
     },
     "GeomPackNormalizeMeshToBBox": {
         "title": "将网格规范化至包围盒",
@@ -927,12 +1793,9 @@
         },
         "outputs": {
             "normalized_mesh": "规范化后的网格",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "description": "将网格中心化并均匀缩放以适应目标包围盒。在估计TripoSF的法线之前使用。",
-        "api_version": "V1"
+        "description": "将网格中心化并均匀缩放以适应目标包围盒。在估计TripoSF的法线之前使用。"
     },
     "GeomPackTransformMesh": {
         "title": "统一变换网格",
@@ -958,12 +1821,9 @@
         },
         "outputs": {
             "transformed_mesh": "变换后的网格",
-            "info": "信息",
-            "TRIMESH": "TRIMESH",
-            "STRING": "STRING"
+            "info": "信息"
         },
-        "descriptionption": "统一变换 - 对网格应用各种变换。\n\n支持：\n- translate：通过偏移量移动网格\n- rotate：绕轴旋转（度数）\n- scale：均匀缩放或按轴缩放\n- mirror：沿轴镜像/反射\n- center：使网格在原点居中\n- align_to_axes：将主轴对齐到世界坐标轴\n- apply_matrix：应用自定义4x4变换矩阵",
-        "api_version": "V1"
+        "descriptionption": "统一变换 - 对网格应用各种变换。\n\n支持：\n- translate：通过偏移量移动网格\n- rotate：绕轴旋转（度数）\n- scale：均匀缩放或按轴缩放\n- mirror：沿轴镜像/反射\n- center：使网格在原点居中\n- align_to_axes：将主轴对齐到世界坐标轴\n- apply_matrix：应用自定义4x4变换矩阵"
     },
     "GeomPackUVUnwrap": {
         "title": "几何包裹UV展开",
@@ -983,13 +1843,12 @@
             "cylinder_radius": "圆柱半径"
         },
         "outputs": {
-            "unwrapped_mesh": "展开后的网格",
+            "unwrapped_mesh": "展开网格",
             "info": "信息",
             "TRIMESH": "三角网格",
             "STRING": "字符串"
         },
-        "description": "通用UV展开 - 统一的UV展开操作。\n\n将多个UV展开后端整合到一个节点中。\n参数根据具体方法而定；未使用的参数会被忽略。",
-        "api_version": "V1"
+        "description": "通用UV展开 - 统一的UV展开操作。\n\n将多个UV展开后端整合到一个节点中。\n参数根据具体方法而定；未使用的参数会被忽略。"
     },
     "GeomPackBackdraftView": {
         "title": "几何包裹背风视图",
@@ -1004,8 +1863,7 @@
             "backdraft_image": "背风图像",
             "IMAGE": "图像"
         },
-        "description": "从Z轴渲染网格并检测背风区域。\n\n背风 = 当从上方射出的光线击中超过一个面时。\n这表明存在会导致制造过程中材料被卡住的倒勾。",
-        "api_version": "V1"
+        "description": "从Z轴渲染网格并检测背风区域。\n\n背风 = 当从上方射出的光线击中超过一个面时。\n这表明存在会导致制造过程中材料被卡住的倒勾。"
     },
     "GeomPackPreviewGaussian": {
         "title": "几何包裹高斯预览",
@@ -1016,8 +1874,7 @@
         },
         "widgets": {},
         "outputs": {},
-        "description": "预览高斯点云文件。\n\n在交互式gsplat.js查看器中以3D方式显示高斯点，并带有旋转控制和实时渲染。",
-        "api_version": "V1"
+        "description": "预览高斯点云文件。\n\n在交互式gsplat.js查看器中以3D方式显示高斯点，并带有旋转控制和实时渲染。"
     },
     "GeomPackPreviewMesh": {
         "title": "几何包裹网格预览",
@@ -1026,8 +1883,7 @@
             "trimesh": "Trimesh三维模型"
         },
         "outputs": {},
-        "description": "使用交互式3D查看器预览网格。\n\n在具有旋转控制的Three.js查看器中显示网格。\n允许旋转、平移和缩放以检查网格几何形状。",
-        "api_version": "V1"
+        "description": "使用交互式3D查看器预览网格。\n\n在具有旋转控制的Three.js查看器中显示网格。\n允许旋转、平移和缩放以检查网格几何形状。"
     },
     "GeomPackPreviewMeshAnalysis": {
         "title": "几何包裹网格分析预览",
@@ -1036,8 +1892,7 @@
         },
         "widgets": {},
         "outputs": {},
-        "description": "使用分析按钮预览网格。\n\n在VTK.js查看器中显示网格，带有可点击的按钮来计算：\n- 开放边（边界顶点）\n- 连通组件（部分ID）\n- 自相交\n\n点击按钮以计算并可视化相应的分析。",
-        "api_version": "V1"
+        "description": "使用分析按钮预览网格。\n\n在VTK.js查看器中显示网格，带有可点击的按钮来计算：\n- 开放边（边界顶点）\n- 连通组件（部分ID）\n- 自相交\n\n点击按钮以计算并可视化相应的分析。"
     },
     "GeomPackPreviewMeshDual": {
         "title": "几何包裹双网格预览",
@@ -1052,8 +1907,7 @@
             "opacity_2": "透明度2"
         },
         "outputs": {},
-        "description": "统一的双网格预览 - 支持侧边并排和叠加布局。\n\n结合两个网格进行比较，支持完整的场可视化功能。\n选择同步的并边并排窗口或单个叠加窗口。",
-        "api_version": "V1"
+        "description": "统一的双网格预览 - 支持侧边并排和叠加布局。\n\n结合两个网格进行比较，支持完整的场可视化功能。\n选择同步的并边并排窗口或单个叠加窗口。"
     },
     "GeomPackPreviewMeshMulti": {
         "title": "几何包裹多网格预览",
@@ -1067,8 +1921,7 @@
             "mode": "模式"
         },
         "outputs": {},
-        "description": "使用VTK.js的多网格预览 - 显示最多四个网格的网格布局。\n\n网格布局：\n- 1个网格：1x1\n- 2个网格：1x2（并排排列\n- 3个网格：1x3（水平行\n- 4个网格：2x2\n\n支持与同步相机一起的标量场可视化。",
-        "api_version": "V1"
+        "description": "使用VTK.js的多网格预览 - 显示最多四个网格的网格布局。\n\n网格布局：\n- 1个网格：1x1\n- 2个网格：1x2（并排排列\n- 3个网格：1x3（水平行\n- 4个网格：2x2\n\n支持与同步相机一起的标量场可视化。"
     },
     "GeomPackPreviewMeshUV": {
         "title": "几何包裹网格UV预览",
@@ -1093,8 +1946,7 @@
             "mode": "模式"
         },
         "outputs": {},
-        "description": "使用VTK.js科学可视化查看器预览网格。\n\n在具有轨道球控制的交互式VTK.js查看器中显示网格。\n更适合于科学可视化、网格分析和大型数据集。",
-        "api_version": "V1"
+        "description": "使用VTK.js科学可视化查看器预览网格。\n\n在具有轨道球控制的交互式VTK.js查看器中显示网格。\n更适合于科学可视化、网格分析和大型数据集。"
     },
     "GeomPackPreviewMeshVTKBatch": {
         "title": "几何包裹批量网格VTK预览",
@@ -1106,7 +1958,6 @@
             "index": "索引"
         },
         "outputs": {},
-        "description": "使用VTK.js科学可视化查看器预览批量网格，带有索引导航。\n\n在具有轨道球控制的交互式VTK.js查看器中显示批量网格。\n包括循环浏览批量网格的导航按钮。\n更适合于科学可视化、网格分析和大型数据集。",
-        "api_version": "V1"
+        "description": "使用VTK.js科学可视化查看器预览批量网格，带有索引导航。\n\n在具有轨道球控制的交互式VTK.js查看器中显示批量网格。\n包括循环浏览批量网格的导航按钮。\n更适合于科学可视化、网格分析和大型数据集。"
     }
 }

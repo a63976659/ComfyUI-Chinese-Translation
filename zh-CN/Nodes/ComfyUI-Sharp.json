@@ -1,4 +1,179 @@
 {
+    "SharpImageAttrsToPLY": {
+        "title": "锐化图像属性转PLY",
+        "inputs": {
+            "gaussian_attrs": "高斯属性",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "widgets": {
+            "output_prefix": "输出前缀",
+            "focal_length_px": "焦距像素"
+        },
+        "outputs": {
+            "ply_path": "PLY文件路径",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "description": "从每个像素的14通道MULTIBAND_IMAGE（例如来自SharpPredictGaussianAttrs的第一层高斯属性输出）+ 匹配的相机外参/内参，并生成一个3D高斯点云PLY文件。多波段存储NDC位置；此节点通过SHARP的unproject_gaussians在保存之前将其转换到世界坐标系。"
+    },
+    "SharpPanoramaCubeSplit": {
+        "title": "Sharp全景立方体分割",
+        "inputs": {},
+        "widgets": {
+            "panorama": "全景图",
+            "image_w": "图像宽度",
+            "image_h": "图像高度",
+            "fov_x_deg": "X视野角度",
+            "fov_y_deg": "Y视野角度",
+            "rot_deg": "旋转角度",
+            "pitch_up": "向上俯仰角",
+            "pitch_down": "向下俯仰角"
+        },
+        "outputs": {
+            "face_images": "面图像",
+            "extrinsics": "外参",
+            "intrinsics": "内参",
+            "fov_x_deg": "X轴视场角",
+            "num_faces": "面数"
+        },
+        "description": "从宽高比为2:1的球形全景图中固定俯仰角和偏航角网格采样N个透视裁剪（默认为3个俯仰角x3个偏航角=27个视角）。与WorldStereoPanoramaCubeSplit的几何结构匹配——作为每面深度模型的输入阶段，其输出可以通过SharpDepthMerge拼接回去。\n\n不同于Sharp的SamplePanorama（（它根据FOV+重叠推导出网格，输出为正方形），此节点具有固定的俯仰角网格和矩形纵横比（默认为832x480），并且符合WorldStereo的pano_bank使用的相机/内参约定。"
+    },
+    "SharpPredictForeground": {
+        "title": "Sharp前景预测",
+        "inputs": {
+            "model": "模型",
+            "image": "图像",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "widgets": {
+            "mode": "模式",
+            "focal_length_mm": "焦距毫米",
+            "output_prefix": "输出前缀"
+        },
+        "outputs": {
+            "ply_path": "PLY文件路径",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "description": "使用Sharp从图像生成3D高斯点云PLY文件，仅保留可见表面的高斯点云，并丢弃被遮挡的部分。相对于SharpPredict，每个图像的高斯点云数量减半。批量输入创建一个编号的PLY文件文件夹。"
+    },
+    "SharpPredictGaussiansFromMetricDepth": {
+        "title": "从度量深度预测高斯点云",
+        "inputs": {
+            "model": "模型",
+            "image": "图像",
+            "metric_depth_layer0": "度量深度层0",
+            "metric_depth_layer1": "度量深度层1",
+            "extrinsics": "外参",
+            "intrinsics": "内参",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "focal_length_mm": "焦距毫米",
+            "output_prefix": "输出前缀",
+            "save_background_layer": "保存背景层",
+            "snap_to_external_depth": "对接外部深度",
+            "depth_convention": "深度约定",
+            "edge_crop": "边缘裁剪"
+        },
+        "outputs": {
+            "ply_path": "PLY文件路径",
+            "ply_folder": "PLY文件夹路径",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "description": "使用外部提供的度量深度作为对齐目标运行Sharp的高斯解码器。外部深度成为`init_模型`高斯基值的一致性几何骨架，因此高斯点云在多个视图之间共享一致的表面——修复了每个面的接缝问题。\n\n保存PLY文件（单张图像->一个.ply；批量->N个NNN.ply文件夹）。通过MergeGaussians管道组合成一个PLY文件。"
+    },
+    "SharpPredictGaussianAttrs": {
+        "title": "Sharp预测高斯属性",
+        "inputs": {
+            "model": "模型",
+            "image": "图像",
+            "extrinsics": "外参",
+            "intrinsics": "内参",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "focal_length_mm": "焦距毫米"
+        },
+        "outputs": {
+            "metric_depth": "公制深度",
+            "extrinsics_mdepth": "外参_公制深度",
+            "intrinsics_mdepth": "内参_公制深度",
+            "first_layer_depth_refined": "第一层深度优化",
+            "first_layer_gaussian_attrs": "第一层高斯属性",
+            "second_layer_depth_refined": "第二层深度优化",
+            "second_layer_gaussian_attrs": "第二层高斯属性",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "description": "运行Sharp推理并将每个像素的高斯解码器输出暴露为结构化的分层张量（深度+所有高斯属性的MULTIBAND_IMAGE）而不是扁平化为PLY文件。\n\n使用深度输出驱动AlignDepthMaps以恢复每个面的比例，然后将比例乘入多波段的位置通道，在重建PLY文件之前。"
+    },
+    "SharpPredictMetricDepth": {
+        "title": "Sharp预测度量深度",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "image": "图像",
+            "focal_length_mm": "焦距毫米",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "outputs": {
+            "layer_0_metric_depth": "第0层公制深度",
+            "layer_1_metric_depth": "第1层公制深度",
+            "extrinsics_mdepth": "外参_公制深度",
+            "intrinsics_mdepth": "内参_公制深度",
+            "layer_0_points_raw": "第0层原始点云",
+            "layer_1_points_raw": "第1层原始点云"
+        },
+        "description": "仅运行Sharp的编码器+位移头部（跳过高斯解码器）。输出每个像素的度量深度以及对应的外参/内参。当您只需要深度时，速度约为SharpPredictGaussianAttrs的两倍。连接至SharpDepthMerge以实现干净的球形深度合并。"
+    },
+    "SharpRefinedDepthFromGaussians": {
+        "title": "从高斯分布中获取锐化细化深度",
+        "inputs": {
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+
+        "widgets": {
+            "ply_path": "PLY路径",
+            "out_size": "输出尺寸"
+        },
+        "outputs": {
+            "depth_maps": "深度图",
+            "valid_mask": "有效遮罩",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "description": "将Sharp预测的PLY高斯点重新投影回每个面的相机空间，以恢复细化的每个像素深度（实际上是解码器产生的z值，而不是预细化的视差头）。每个像素的最小深度=层0（可见表面）。\n\n将深度图传递给AlignDepthMaps进行对数尺度对齐，然后应用结果的每个面比例因子回到高斯点之前再合并高斯点。"
+    },
+    "ScaleImageValues": {
+        "title": "调整图像值",
+        "inputs": {},
+        "widgets": {
+            "image": "图像"
+        },
+        "outputs": {},
+        "description": "线性地重新映射一个图像的所有值到[0, 1]区间。这在预览深度图时很有用（因为深度图可以包含米等单位，而ComfyUI的PreviewImage期望的是[0, 1]范围内的值）。每个批次项独立地根据其自身的(H, W, C)上的最小/最大值进行缩放。常数值图像变为全是零（而不是由于除零导致的NaN）。"
+    },
+    "SharpRayToPlanarDepth": {
+        "title": "锐射线到平面深度转换",
+        "inputs": {
+            "image": "图像",
+            "intrinsics": "内参",
+            "extrinsics": "外参"
+        },
+        "widgets": {},
+        "outputs": {
+            "image": "图像",
+            "intrinsics": "内参",
+            "extrinsics": "外参"
+        },
+        "description": "面深度惯例转换器。通过将射线距离深度乘以每个面的余弦映射(1 / sqrt(((u-cx)/fx)² + ((v-cy)/fy)² + 1)) 来生成 Sharp 高斯解码器和反投影期望的平面 Z 深度。放置在全景分割深度源（等轴深度全景上的 PanoramaSplit）和 Sharp 预测节点之间。如果内参是以标准化形式传递的，则会重新调整为像素 K 单位，以便所有下游节点看到一致的单位。"
+    },
     "AlignDepthMaps": {
         "title": "对齐深度图",
         "inputs": {
@@ -16,7 +191,7 @@
             "intrinsics": "内参",
             "alignment_info": "对齐信息"
         },
-        "description": "类别: SHARP"
+        "description": "类别: Sharp"
     },
     "LoadImageWithExif": {
         "title": "加载带EXIF信息的图像",
@@ -30,10 +205,10 @@
             "mask": "遮罩",
             "focal_length_mm": "焦距（毫米）"
         },
-        "description": "类别: SHARP"
+        "description": "类别: Sharp"
     },
     "LoadSharpModel": {
-        "title": "加载SHARP模型",
+        "title": "加载Sharp模型",
         "inputs": {},
         "widgets": {
             "precision": "精度",
@@ -42,7 +217,7 @@
         "outputs": {
             "model": "模型"
         },
-        "description": "类别: SHARP"
+        "description": "类别: Sharp"
     },
     "MergeGaussians": {
         "title": "合并高斯分布",
@@ -57,10 +232,10 @@
             "ply_path": "PLY路径",
             "num_gaussians": "高斯分布数量"
         },
-        "description": "类别: SHARP"
+        "description": "类别: Sharp"
     },
     "SharpPredict": {
-        "title": "SHARP预测",
+        "title": "Sharp预测",
         "inputs": {
             "model": "模型",
             "image": "图像",
@@ -76,10 +251,10 @@
             "extrinsics": "外参",
             "intrinsics": "内参"
         },
-        "description": "类别: SHARP"
+        "description": "类别: Sharp"
     },
     "SharpPredictDepth": {
-        "title": "SHARP预测深度",
+        "title": "Sharp预测深度",
         "inputs": {
             "model": "模型",
             "image": "图像",
@@ -94,7 +269,7 @@
             "intrinsics": "内参",
             "alignment_maps": "对齐图"
         },
-        "description": "类别: SHARP"
+        "description": "类别: Sharp"
     },
     "ProjectDepthToPanorama": {
         "title": "将深度投影到全景图",
@@ -115,7 +290,7 @@
             "debug_overlay": "调试叠加",
             "disagreement_heatmap": "分歧热图"
         },
-        "description": "类别: SHARP"
+        "description": "类别: Sharp"
     },
     "SamplePanorama": {
         "title": "采样全景图",
@@ -135,6 +310,6 @@
             "num_horizontal": "水平数量",
             "num_vertical": "垂直数量"
         },
-        "description": "类别: SHARP"
+        "description": "类别: Sharp"
     }
 }

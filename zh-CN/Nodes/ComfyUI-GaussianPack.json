@@ -1,0 +1,159 @@
+{
+    "GaussianAnalysis": {
+        "title": "高斯分析",
+        "inputs": {
+            "ply_path": "路径"
+        },
+        "widgets": {},
+        "outputs": {
+            "report": "报告"
+        },
+        "description": "检查一个3DGS PLY文件，并报告格式/SH阶数/精度/大小。"
+    },
+    "GaussianExport": {
+        "title": "高斯导出",
+        "inputs": {
+            "ply_path": "路径"
+        },
+        "widgets": {
+            "output_filename": "输出文件名",
+            "format": "格式"
+        },
+        "outputs": {
+            "out_path": "输出路径"
+        },
+        "description": "将一个3DGS PLY转换为另一种风味（PLY通过，SH剥离的PLY或SPZ）。"
+    },
+    "GaussiansFromPointCloud": {
+        "title": "点云中的高斯分布",
+        "inputs": {
+            "ply_path": "路径"
+        },
+        "widgets": {
+            "output_filename": "输出文件名",
+            "output_dir": "输出目录",
+            "init_scale": "初始尺度",
+            "init_opacity": "初始透明度",
+            "knn_k": "Knn K",
+            "subsample_max": "子采样最大值"
+        },
+        "outputs": {
+            "ply_path": "路径"
+        },
+        "description": "将点云PLY转换为具有KNN衍生尺度的3DGS PLY。"
+    },
+    "LoadPLY": {
+        "title": "加载`.ply`文件",
+        "inputs": {},
+        "widgets": {
+            "ply_file": "文件夹"
+        },
+        "outputs": {
+            "ply_path": "路径"
+        },
+        "description": "从ComfyUI的输入/目录浏览`.ply`文件。"
+    },
+    "LoadPLYOutput": {
+        "title": "加载`.ply`输出",
+        "inputs": {},
+        "widgets": {
+            "ply_file": "PLY文件"
+        },
+        "outputs": {
+            "ply_path": "PLY路径"
+        },
+        "description": "从ComfyUI的output/目录递归浏览`.ply`文件。"
+    },
+    "GaussianMerge": {
+        "title": "高斯合并",
+        "inputs": {
+            "ply_path": "PLY路径"
+        },
+        "widgets": {
+            "target_count": "目标数量",
+            "output_filename": "输出文件名",
+            "opacity_threshold": "透明度阈值",
+            "k": "k",
+            "backend": "后端"
+        },
+        "outputs": {
+            "ply_path": "PLY路径"
+        },
+        "description": "将3DGS PLY按配对方式合并至目标高斯计数。"
+    },
+    "PreviewGaussians": {
+        "title": "预览高斯分布",
+        "inputs": {
+            "ply_path": "PLY路径"
+        },
+        "widgets": {
+            "camera_mode": "相机模式",
+            "fov_degrees": "视场角度",
+            "renderer": "渲染器",
+            "transport_format": "传输格式"
+        },
+        "outputs": {},
+        "description": "交互式的高斯斑点查看器（gspalt.js）。\n\n支持轨道（旋转球体）和观察者（WASD飞行摄像机）两种相机模式。"
+    },
+    "PreviewGaussianCamera": {
+        "title": "预览高斯相机",
+        "inputs": {
+            "ply_path": "PLY路径",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "widgets": {
+            "image_width": "图像宽度",
+            "image_height": "图像高度",
+            "near_plane": "近裁剪平面",
+            "background": "背景",
+            "force_backend": "强制后端"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "根据给定的相机姿态渲染一个3DGS PLY到一个IMAGE批次。"
+    },
+    "PreviewGaussianDual": {
+        "title": "预览高斯双",
+        "inputs": {
+            "ply_path_1": "PLY路径1",
+            "ply_path_2": "PLY路径2"
+        },
+        "widgets": {
+            "camera_mode": "相机模式",
+            "fov_degrees": "视场角度",
+            "renderer": "渲染器",
+            "transport_format": "传输格式",
+            "layout": "布局"
+        },
+        "outputs": {},
+        "description": "侧边比较两个高斯斑点或将它们以滑块形式显示。"
+    },
+    "PreviewGaussianSharp": {
+        "title": "预览高斯锐化",
+        "inputs": {},
+        "widgets": {
+            "ply_path": "PLY路径",
+            "extrinsics": "外参",
+            "intrinsics": "内参"
+        },
+        "outputs": {},
+        "description": "预览SHARP高斯斑点Ply文件（gspalt.js查看器）。\n\n复制GeometryPack的预览高斯：接受EXTRINSICS/INTRINSICS并重新生成捕获的相机视角（相机位于外参推导的位置向下看+Z，FOV来自内参）。最适合SHARP /单目深度扇形高斯，这些高斯只有在捕获原点处才正确。"
+    },
+    "TransformGaussian": {
+        "title": "转换高斯",
+        "inputs": {
+            "ply_path": "PLY路径"
+        },
+        "widgets": {
+            "rotate_x": "绕X轴旋转",
+            "rotate_y": "绕Y轴旋转",
+            "rotate_z": "绕Z轴旋转"
+        },
+        "outputs": {
+            "ply_path": "PLY路径"
+        },
+        "description": "围绕XYZ轴旋转一个高斯斑点Ply（度数）。\n\n位置和每个斑点的四元数一起旋转；如果存在，则法线也旋转。SH AC系数未改变（正确的Wigner-D旋转是后续步骤）。"
+    }
+}
