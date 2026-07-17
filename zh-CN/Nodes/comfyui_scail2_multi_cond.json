@@ -1,0 +1,308 @@
+{
+    "SCAIL2SegmentPlanner": {
+        "title": "🎬 SCAIL-2 片段规划器",
+        "widgets": {
+            "segment_plan": "片段计划",
+            "max_frames": "最大帧数",
+            "pose_frame_count": "姿态视频帧数",
+            "max_chunk_frames": "最大块帧数",
+            "overlap_frames": "重叠帧数"
+        },
+        "outputs": {
+            "summary": "摘要"
+        }
+    },
+    "SCAIL2ChunkKeyframeExtractor": {
+        "title": "🎬 SCAIL-2 块关键帧提取器",
+        "inputs": {
+            "video": "视频",
+            "planner_summary": "规划器摘要"
+        },
+        "widgets": {
+            "mode": "模式",
+            "max_chunk_frames": "最大块帧数",
+            "overlap_frames": "重叠帧数",
+            "max_frames": "最大帧数",
+            "include_final_anchor": "包含最终锚点",
+            "contact_sheet_columns": "联系表列数",
+            "contact_sheet_thumbnail_width": "联系表缩略图宽度",
+            "boundary_anchor_mode": "边界锚点模式"
+        },
+        "outputs": {
+            "boundary_anchor_frames": "边界锚点帧",
+            "new_chunk_start_frames": "新块起始帧",
+            "paired_keyframes": "配对关键帧",
+            "contact_sheet": "联系表",
+            "summary": "摘要"
+        }
+    },
+    "SCAIL2SegmentPlanBuilder": {
+        "title": "🎬 SCAIL-2 片段计划构建器",
+        "widgets": {
+            "segment_count": "片段数量",
+            "segment_1_frames": "片段1帧数",
+            "segment_1_reference": "片段1参考编号",
+            "segment_1_prompt": "片段1提示词",
+            "segment_1_negative": "片段1负向提示词",
+            "segment_1_boundary_overlap": "片段1边界重叠",
+            "segment_2_frames": "片段2帧数",
+            "segment_2_reference": "片段2参考编号",
+            "segment_2_prompt": "片段2提示词",
+            "segment_2_negative": "片段2负向提示词",
+            "segment_2_boundary_overlap": "片段2边界重叠",
+            "segment_3_frames": "片段3帧数",
+            "segment_3_reference": "片段3参考编号",
+            "segment_3_prompt": "片段3提示词",
+            "segment_3_negative": "片段3负向提示词",
+            "segment_3_boundary_overlap": "片段3边界重叠",
+            "segment_4_frames": "片段4帧数",
+            "segment_4_reference": "片段4参考编号",
+            "segment_4_prompt": "片段4提示词",
+            "segment_4_negative": "片段4负向提示词",
+            "segment_4_boundary_overlap": "片段4边界重叠",
+            "segment_5_frames": "片段5帧数",
+            "segment_5_reference": "片段5参考编号",
+            "segment_5_prompt": "片段5提示词",
+            "segment_5_negative": "片段5负向提示词",
+            "segment_5_boundary_overlap": "片段5边界重叠",
+            "segment_6_frames": "片段6帧数",
+            "segment_6_reference": "片段6参考编号",
+            "segment_6_prompt": "片段6提示词",
+            "segment_6_negative": "片段6负向提示词",
+            "segment_6_boundary_overlap": "片段6边界重叠",
+            "segment_7_frames": "片段7帧数",
+            "segment_7_reference": "片段7参考编号",
+            "segment_7_prompt": "片段7提示词",
+            "segment_7_negative": "片段7负向提示词",
+            "segment_7_boundary_overlap": "片段7边界重叠",
+            "segment_8_frames": "片段8帧数",
+            "segment_8_reference": "片段8参考编号",
+            "segment_8_prompt": "片段8提示词",
+            "segment_8_negative": "片段8负向提示词",
+            "segment_8_boundary_overlap": "片段8边界重叠"
+        },
+        "outputs": {
+            "segment_plan": "片段计划",
+            "summary": "摘要"
+        }
+    },
+    "SCAIL2MultiReferenceColoredMask": {
+        "title": "🎬 SCAIL-2 多参考彩色遮罩",
+        "inputs": {
+            "driving_track_data": "驱动视频追踪数据",
+            "reference_1_track_data": "参考1追踪数据",
+            "reference_2_track_data": "参考2追踪数据",
+            "reference_3_track_data": "参考3追踪数据",
+            "reference_4_track_data": "参考4追踪数据",
+            "reference_5_track_data": "参考5追踪数据",
+            "reference_6_track_data": "参考6追踪数据",
+            "reference_7_track_data": "参考7追踪数据",
+            "reference_8_track_data": "参考8追踪数据"
+        },
+        "widgets": {
+            "reference_count": "参考数量",
+            "object_indices": "对象索引",
+            "sort_by": "排序方式",
+            "replacement_mode": "替换模式"
+        },
+        "outputs": {
+            "pose_video_mask": "姿态视频遮罩",
+            "reference_1_mask": "参考1遮罩",
+            "reference_2_mask": "参考2遮罩",
+            "reference_3_mask": "参考3遮罩",
+            "reference_4_mask": "参考4遮罩",
+            "reference_5_mask": "参考5遮罩",
+            "reference_6_mask": "参考6遮罩",
+            "reference_7_mask": "参考7遮罩",
+            "reference_8_mask": "参考8遮罩",
+            "summary": "摘要"
+        }
+    },
+    "SCAIL2ScheduledLongVideo": {
+        "title": "🎬 SCAIL-2 调度长视频生成",
+        "inputs": {
+            "model": "模型",
+            "clip": "CLIP文本编码器",
+            "vae": "VAE",
+            "sampler": "采样器",
+            "sigmas": "Sigma调度",
+            "clip_vision": "CLIP视觉编码器",
+            "pose_video": "姿态视频",
+            "pose_video_mask": "姿态视频遮罩",
+            "reference_1": "参考图像1",
+            "reference_1_mask": "参考遮罩1",
+            "reference_2": "参考图像2",
+            "reference_2_mask": "参考遮罩2",
+            "reference_3": "参考图像3",
+            "reference_3_mask": "参考遮罩3",
+            "reference_4": "参考图像4",
+            "reference_4_mask": "参考遮罩4",
+            "reference_5": "参考图像5",
+            "reference_5_mask": "参考遮罩5",
+            "reference_6": "参考图像6",
+            "reference_6_mask": "参考遮罩6",
+            "reference_7": "参考图像7",
+            "reference_7_mask": "参考遮罩7",
+            "reference_8": "参考图像8",
+            "reference_8_mask": "参考遮罩8"
+        },
+        "widgets": {
+            "segment_plan": "片段计划",
+            "seed": "种子",
+            "cfg": "CFG",
+            "mode": "模式",
+            "max_frames": "最大帧数",
+            "max_chunk_frames": "最大块帧数",
+            "overlap_frames": "重叠帧数",
+            "reference_count": "参考数量",
+            "color_correction": "色彩校正",
+            "cache_mode": "缓存模式"
+        },
+        "outputs": {
+            "frames": "输出帧",
+            "used_pose_video_mask": "使用的姿态视频遮罩",
+            "used_reference_mask_timeline": "使用的参考遮罩时间线",
+            "summary": "摘要"
+        }
+    },
+    "SCAIL2ScheduledLongVideoWithSAM": {
+        "title": "🎬 SCAIL-2 调度长视频生成（内置SAM）",
+        "inputs": {
+            "model": "模型",
+            "clip": "CLIP文本编码器",
+            "vae": "VAE",
+            "sampler": "采样器",
+            "sigmas": "Sigma调度",
+            "clip_vision": "CLIP视觉编码器",
+            "pose_video": "姿态视频",
+            "sam_model": "SAM模型",
+            "sam_conditioning": "SAM条件",
+            "reference_1": "参考图像1",
+            "reference_2": "参考图像2",
+            "reference_3": "参考图像3",
+            "reference_4": "参考图像4",
+            "reference_5": "参考图像5",
+            "reference_6": "参考图像6",
+            "reference_7": "参考图像7",
+            "reference_8": "参考图像8"
+        },
+        "widgets": {
+            "segment_plan": "片段计划",
+            "seed": "种子",
+            "cfg": "CFG",
+            "mode": "模式",
+            "max_frames": "最大帧数",
+            "max_chunk_frames": "最大块帧数",
+            "overlap_frames": "重叠帧数",
+            "reference_count": "参考数量",
+            "color_correction": "色彩校正",
+            "object_indices": "对象索引",
+            "reference_object_indices": "参考对象索引",
+            "sort_by": "排序方式",
+            "sam_detection_threshold": "SAM检测阈值",
+            "sam_max_objects": "SAM最大对象数",
+            "sam_detect_interval": "SAM检测间隔",
+            "cache_mode": "缓存模式"
+        },
+        "outputs": {
+            "frames": "输出帧",
+            "used_pose_video_mask": "使用的姿态视频遮罩",
+            "used_reference_mask_timeline": "使用的参考遮罩时间线",
+            "summary": "摘要"
+        }
+    },
+    "SCAIL2HeadTrackCrop": {
+        "title": "🎬 SCAIL-2 头部追踪裁剪",
+        "inputs": {
+            "full_body_video": "全身视频",
+            "head_masks": "头部遮罩",
+            "sam_model": "SAM模型",
+            "head_conditioning": "头部条件"
+        },
+        "widgets": {
+            "crop_padding_ratio": "裁剪填充比例",
+            "square_align": "方形对齐",
+            "temporal_smoothing": "时间平滑",
+            "mask_expand_px": "遮罩扩展像素",
+            "mask_blur_px": "遮罩模糊像素",
+            "sam_detection_threshold": "SAM检测阈值",
+            "sam_max_objects": "SAM最大对象数",
+            "sam_detect_interval": "SAM检测间隔",
+            "crop_mode": "裁剪模式",
+            "mask_component_mode": "遮罩组件模式"
+        },
+        "outputs": {
+            "face_crop_video": "面部裁剪视频",
+            "crop_masks": "裁剪遮罩",
+            "crop_manifest": "裁剪清单",
+            "debug_preview": "调试预览"
+        }
+    },
+    "SCAIL2AlignReferenceFaceToCrop": {
+        "title": "🎬 SCAIL-2 参考面部对齐裁剪",
+        "inputs": {
+            "face_crop_video": "面部裁剪视频",
+            "reference_image": "参考图像"
+        },
+        "widgets": {
+            "target_frame_index": "目标帧索引",
+            "face_scale": "面部缩放",
+            "x_offset_ratio": "X偏移比例",
+            "y_offset_ratio": "Y偏移比例",
+            "face_size_basis": "面部尺寸基准",
+            "target_face_select": "目标面部选择",
+            "reference_face_select": "参考面部选择",
+            "padding_mode": "填充模式",
+            "insightface_model": "InsightFace模型",
+            "provider": "运行设备",
+            "det_size": "检测尺寸",
+            "face_detector_backend": "面部检测后端",
+            "mediapipe_model_selection": "MediaPipe模型选择",
+            "mediapipe_min_detection_confidence": "MediaPipe最小检测置信度",
+            "window_fit_mode": "窗口适配模式"
+        },
+        "outputs": {
+            "aligned_reference_image": "对齐的参考图像",
+            "debug_preview": "调试预览",
+            "summary": "摘要"
+        }
+    },
+    "SCAIL2FaceCompositeBack": {
+        "title": "🎬 SCAIL-2 面部合成回贴",
+        "inputs": {
+            "full_body_video": "全身视频",
+            "refined_face_video": "精修面部视频",
+            "crop_masks": "裁剪遮罩",
+            "crop_manifest": "裁剪清单"
+        },
+        "widgets": {
+            "feather_px": "羽化像素",
+            "mask_contract_px": "遮罩收缩像素",
+            "color_correction": "色彩校正",
+            "color_match_method": "色彩匹配方法",
+            "face_fit_mode": "面部适配模式",
+            "frame_mismatch_mode": "帧不匹配处理",
+            "stitch_mask_expand_px": "缝合遮罩扩展像素",
+            "stitch_mask_resize_mode": "缝合遮罩缩放模式",
+            "stitch_offset_x_px": "缝合X偏移像素",
+            "stitch_offset_y_px": "缝合Y偏移像素"
+        },
+        "outputs": {
+            "frames": "输出帧",
+            "summary": "摘要",
+            "debug_preview": "调试预览"
+        }
+    },
+    "SCAIL2KeyframeMatrixViewer": {
+        "title": "🎬 SCAIL-2 关键帧矩阵查看器",
+        "inputs": {
+            "paired_keyframes": "配对关键帧",
+            "summary": "摘要"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "save_location": "保存位置",
+            "display_group": "显示分组"
+        }
+    }
+}
