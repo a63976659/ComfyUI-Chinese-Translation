@@ -24,6 +24,46 @@
         },
         "description": "ComfyUI上下文窗口的交互式可视化：窗口位置、重叠度、融合权重及逐帧混合，实时更新。可选择将设置应用于核心上下文窗口（手动）节点等模型。"
     },
+    "MiniMaxH3TokenCounter": {
+        "title": "MiniMaX H3 词元计数器",
+        "inputs": {
+            "samples": "采样",
+            "conditioning": "条件"
+        },
+        "widgets": {},
+        "outputs": {
+            "samples": "采样",
+            "conditioning": "条件",
+            "tokens": "词元",
+            "breakdown": "分解"
+        },
+        "description": "计算MiniMax H3生成时在不采样情况下运行的打包序列长度。根据AV潜在变量以及条件信息（包括文本长度、关键帧和参考块），构建与模型相同的[文本 | 关键帧/参考 | 音频 | 视频]布局。"
+    },
+    "MiniMaxLowVRAMAttention": {
+        "title": "MiniMaX H3 低显存注意力",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "head_chunks": "头块数量"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "在不改变计算逻辑的前提下，降低 MiniMax H3 注意力模块的峰值显存占用。将注意力调用拆分为多个头部组，使得内核内部的瞬态数据（如 int8 q/k 复制、fp32 累加器）在融合后的 qkv 缓冲区有效时随分块数量减少，同时在消费完毕后立即释放 qkv 缓冲区和归一化块输入。输出结果与未打补丁的模型完全一致。"
+    },
+    "MiniMaxChunkFeedForward": {
+        "title": "MiniMaX H3 分块前馈神经网络",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "chunks": "分块数",
+            "seq_threshold": "序列阈值"
+        },
+        "outputs": {},
+        "description": "将 MiniMax H3 的前馈（SwiGLU）按打包的令牌维度分块，以减少峰值显存使用。当模型量化时，每个分块仍会经过 ComfyUI 的融合 INT8 核心，由于激活值是按令牌进行量化的，因此输出与未分块的模型一致。"
+    },
     "Ideogram4PromptBuilderKJ": {
         "title": "Ideogram4提示词构建器 (KJ)",
         "inputs": {
