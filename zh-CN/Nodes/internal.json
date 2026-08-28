@@ -5434,7 +5434,9 @@
             "audio": "音频"
         },
         "widgets": {
-            "fps": "帧率"
+            "fps": "帧率",
+            "bit_depth": "位深度",
+            "color_space": "色彩空间"
         },
         "outputs": {
             "VIDEO": "视频"
@@ -5724,7 +5726,8 @@
             "image": "图像",
             "audio": "音频",
             "fps": "帧率",
-            "bit_depth": "位 深度"
+            "bit_depth": "位深度",
+            "color_space": "色彩空间"
         }
     },
     "USOStyleReference": {
@@ -8413,6 +8416,452 @@
             "video_frame_offset": "视频帧偏移"
         },
         "description": "使用视频在参考图像中为角色添加动画，有效复制视频中的面部表情、身体动作和手势。"
+    },
+    "ImageCropToMask": {
+        "title": "裁剪图像到遮罩",
+        "inputs": {
+            "images": "图像组",
+            "masks": "遮罩组"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "pad_factor": "填充系数",
+            "grow_mask": "扩大遮罩",
+            "background": "背景色"
+        },
+        "outputs": {
+            "images": "图像"
+        },
+        "description": "将图像裁剪为指定尺寸的遮罩，并可选择是否扩大遮罩区域。"
+    },
+    "MoGeGeometryToFOV": {
+        "title": "从 MoGe 几何获取视场角",
+        "inputs": {
+            "moge_geometry": "MoGe 几何"
+        },
+        "widgets": {
+            "axis": "轴",
+            "unit": "单位"
+        },
+        "outputs": {
+            "fov": "视场角",
+            "focal_pixels": "焦距像素"
+        },
+        "description": "从 MoGe 几何数据中推导出视角和焦距。"
+    },
+    "Pixal3DConditioning": {
+        "title": "Pixel3D 条件",
+        "inputs": {
+            "clip_vision_model": "CLIP 视觉模型",
+            "image": "图像"
+        },
+        "widgets": {
+            "fov": "水平视角（度）"
+        },
+        "outputs": {
+            "positive": "正向条件",
+            "negative": "负向条件"
+        },
+        "description": "水平视场（FOV）以度为单位。为每张图像设置 FoV，可使用 MoGeGeometryToFOV（轴='水平', 单位='度'），其默认值与上游一致。"
+    },
+    "Trellis2Conditioning": {
+        "title": "Trellis 2 条件",
+        "inputs": {
+            "clip_vision_model": "CLIP 视觉模型",
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "positive": "正向条件",
+            "negative": "负向条件"
+        },
+        "description": "将 Trellis 生成的条件映射到 CLIP 文本嵌入"
+    },
+    "EmptyTrellis2LatentStructure": {
+        "title": "空Latent Trellis2结构",
+        "inputs": {},
+        "widgets": {
+            "batch_size": "批次大小"
+        },
+        "outputs": {},
+        "description": "创建一个空的 Trellis 2 Latent结构。"
+    },
+    "VaeDecodeStructureTrellis2": {
+        "title": "Trellis2结构 Vae解码器",
+        "inputs": {
+            "samples": "采样",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "resolution": "分辨率"
+        },
+        "outputs": {
+            "voxel": "体素"
+        },
+        "description": "使用 Trellis 结构的 VAE 解码器对体素样本进行解码。"
+    },
+    "VaeDecodeTextureTrellis": {
+        "title": "Trellis纹理 Vae解码器",
+        "inputs": {
+            "samples": "采样",
+            "vae": "VAE",
+            "shape_subdivides": "形状细分"
+        },
+        "widgets": {},
+        "outputs": {
+            "voxel_colors": "体素颜色"
+        },
+        "description": "用于解码 Trellis 格式的 VAE 纹理的节点，通常用于 3D 生成流程中。"
+    },
+    "VaeDecodeShapeTrellis": {
+        "title": "Trellis形状 Vae解码器",
+        "inputs": {
+            "samples": "采样",
+            "vae": "VAE"
+        },
+        "widgets": {},
+        "outputs": {
+            "mesh": "网格",
+            "shape_subdivides": "形状细分"
+        },
+        "description": ""
+    },
+    "MeshToFile3D": {
+        "title": "创建 3D 文件 (从网格)",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "model_3d": "3D 模型"
+        },
+        "description": "将网格序列化为GLB文件3D对象，用于保存或预览3D节点，包含其UV、颜色、法线、纹理、法线/遮蔽/发光贴图以及材质信息。每批仅支持一个对象。"
+    },
+    "Trellis2ShapeStage": {
+        "title": "Trellis2 转形状阶段",
+        "inputs": {
+            "positive": "正向条件",
+            "negative": "负向条件",
+            "voxel": "体素"
+        },
+        "widgets": {},
+        "outputs": {
+            "positive": "正向条件",
+            "negative": "负向条件",
+            "Latent": "形状Latent"
+        },
+        "description": "将 Trellis 模型生成的体素数据转换为 Shape 阶段的Latent表示，并输出对应的正向和负向条件。"
+    },
+    "Trellis2UpsampleStage": {
+        "title": "Trellis2 放大采样阶段",
+        "inputs": {
+            "positive": "正向条件",
+            "negative": "负向条件",
+            "shape_latent": "Latent形状",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "target_resolution": "目标分辨率"
+        },
+        "outputs": {
+            "positive": "正向",
+            "negative": "负向",
+            "Latent": "Latent"
+        },
+        "description": "放大采样形状的体素分辨率。数值越高，细节越丰富，占用显存越多。"
+    },
+    "Trellis2TextureStage": {
+        "title": "Trellis2 纹理阶段",
+        "inputs": {
+            "positive": "正向条件",
+            "negative": "负向条件",
+            "shape_latent": "形状Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "positive": "正向条件",
+            "negative": "负向条件",
+            "Latent": "Latent"
+        },
+        "description": "将 Trellis 生成的形状Latent转换为纹理Latent。"
+    },
+    "GetMeshInfo": {
+        "title": "获取网格信息",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {},
+        "outputs": {
+            "mesh": "网格",
+            "info": "信息"
+        },
+        "description": "获取传入网格的详细信息"
+    },
+    "RemeshMesh": {
+        "title": "网格重采样 (窄带 DC)",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "sign_mode": "符号模式",
+            "drop_inverted_components": "丢弃倒置组件",
+            "drop_enclosed_components": "丢弃封闭组件",
+            "band": "带宽",
+            "project_back": "投影回",
+            "fix_poles": "修复极点",
+            "smooth_iters": "平滑迭代次数",
+            "drop_small_components": "丢弃小组件",
+            "precluster_max_verts": "预聚类最大顶点数"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": "使用窄带 DC 算法对网格进行重采样。"
+    },
+    "DecimateMesh": {
+        "title": "网格简化",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "target_face_count": "目标面数",
+            "placement_mode": "放置模式"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": "在活动计算设备上，使用QEM将网格简化为指定的面数。'midpoint' 是一种忠于网格的预设模式（最佳质量，保留细小特征/发丝）；'qem' 则通过线段/特征边缘控制，将顶点放置在QEM最优位置。输出结果保持焊接状态。"
+    },
+    "MeshSmoothNormals": {
+        "title": "网格法线平滑",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "crease_angle": "折痕角度"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": "计算平滑的顶点法向量并将其附加到网格上。没有法向量的网格在 glTF 视图中会以面为单位进行平面着色；这使得它们具有平滑的着色效果。当折痕角度小于 18° 时，沿边缘方向分割顶点，使比阈值更尖锐的边保持硬边。"
+    },
+    "PaintMesh": {
+        "title": "网格着色",
+        "inputs": {
+            "mesh": "网格",
+            "voxel_colors": "体素颜色"
+        },
+        "widgets": {},
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": "将每个网格顶点涂上输入体素场中最近的体素颜色。"
+    },
+    "UnwrapMesh": {
+        "title": "网格 展开UV",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "segmenter": "分割器",
+            "resolution": "分辨率",
+            "padding": "填充",
+            "weld_distance": "焊接距离"
+        },
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": "生成UV贴图：将表面分割为多个图表，对每个图表进行参数化，并打包成一个[0,1]范围的贴图集。图表接缝处的顶点会被复制（每个图表各有一份副本，位置相同，拥有独立的UV坐标），因此输出网格的顶点数会比输入更多。应在重新网格化/减量后、纹理烘焙前运行。"
+    },
+    "RenderUVAtlas": {
+        "title": "渲染 UV 图集",
+        "inputs": {
+            "mesh": "网格"
+        },
+        "widgets": {
+            "resolution": "分辨率"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "将网格的 UV 映射渲染为纹理图集"
+    },
+    "BakeTextureFromVoxel": {
+        "title": "从体素烘焙纹理",
+        "inputs": {
+            "mesh": "网格",
+            "voxel_colors": "体素颜色",
+            "reference_mesh": "参考网格"
+        },
+        "widgets": {
+            "resolution": "分辨率"
+        },
+        "outputs": {
+            "base_color": "基础颜色",
+            "metallic": "金属度",
+            "roughness": "粗糙度"
+        },
+        "description": "将PBR纹理贴附到网格现有的UV布局上（对稀疏的体素体积进行三线性采样）。不进行UV展开——上游连接一个UV展开节点。输出基础颜色+金属度/粗糙度的灰度图像（若无PBR则为黑色）；将其输入 应用纹理到网格（相同网格）以保存GLB文件。"
+    },
+    "BakeAmbientOcclusion": {
+        "title": "烘焙环境光遮蔽",
+        "inputs": {
+            "low_poly": "低多边形",
+            "high_poly": "高多边形",
+            "occlusion": "环境光遮蔽"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "samples": "采样数",
+            "max_distance": "最大距离",
+            "strength": "强度",
+            "bias": "偏差"
+        },
+        "outputs": {
+            "occlusion": "环境光遮蔽"
+        },
+        "description": "将高多边形网格生成的环境遮蔽贴图转换为低多边形的UV布局（白色=开放区域，深色=缝隙）。输入已展开UV的低多边形网格以及其原始的高多边形网格。输出灰度图像，用于“将纹理应用到网格”中的遮挡输入（打包至ORM贴图/遮挡纹理中）。"
+    },
+    "BakeNormalMapFromMesh": {
+        "title": "从网格烘焙法线贴图",
+        "inputs": {
+            "low_poly": "低模",
+            "high_poly": "高模"
+        },
+        "widgets": {
+            "resolution": "分辨率",
+            "cage_distance": "笼子距离",
+            "ignore_backfaces": "忽略背面"
+        },
+        "outputs": {
+            "normal_map": "法线贴图"
+        },
+        "description": "将高多边形网格的切空间法线贴图（glTF/OpenGL +Y）转换为低多边形的UV布局，捕捉在降采样过程中丢失的细节。输入为已去重的低多边形UV贴图以及其原始的高多边形网格。输出图像用于应用到“将纹理应用于网格”中的法线贴图输入。"
+    },
+    "ApplyTextureToMesh": {
+        "title": "将纹理应用到网格",
+        "inputs": {
+            "mesh": "网格",
+            "base_color": "基础颜色",
+            "metallic": "金属度",
+            "roughness": "粗糙度",
+            "occlusion": "遮挡",
+            "normal_map": "法线贴图"
+        },
+        "widgets": {},
+        "outputs": {
+            "mesh": "网格"
+        },
+        "description": "将烘焙纹理图像附加到网格的UV布局上，用于保存GLB文件。请使用你已烘焙的同一网格。"
+    },
+    "SAM3DBody_Loader": {
+        "title": "加载 SAM3D 人体模型",
+        "inputs": {},
+        "widgets": {
+            "model_file": "模型文件"
+        },
+        "outputs": {
+            "sam3d_body_model": "SAM3D 人体模型"
+        },
+        "description": "加载一个预训练的 SAM3D 人体模型，用于后续的人体姿态或结构分析。"
+    },
+    "SAM3DBody_Predict": {
+        "title": "运行 SAM3D 人体预测",
+        "inputs": {
+            "sam3d_body_model": "SAM3D 人体模型",
+            "image": "图像",
+            "track_data": "跟踪数据",
+            "bboxes": "边界框"
+        },
+        "widgets": {
+            "run_hand_refinement": "运行手部细化",
+            "fov": "视场角",
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "mhr_pose_data": "MHR 姿态数据"
+        },
+        "description": "运行 SAM3D 模型以预测人体姿态。"
+    },
+    "SAM3DBody_FaceExpression": {
+        "title": "面部表情到 SAM3D 身体",
+        "inputs": {
+            "sam3d_body_model": "SAM3D 身体模型",
+            "mhr_pose_data": "MHR 姿态数据",
+            "image": "图像"
+        },
+        "widgets": {
+            "strength": "强度",
+            "mouth_strength": "嘴部强度",
+            "eye_strength": "眼部强度",
+            "brow_strength": "眉毛强度",
+            "input_threshold": "输入阈值",
+            "blendshape_smooth_window": "混合形状平滑窗口"
+        },
+        "outputs": {
+            "mhr_pose_data": "MHR 姿态数据"
+        },
+        "description": "从核心媒体管道面部标记器中驱动MHR的混合形状。"
+    },
+    "SAM3DBody_Smooth": {
+        "title": "SAM3D 平滑人体姿态数据",
+        "inputs": {
+            "mhr_pose_data": "MHR 姿态数据"
+        },
+        "widgets": {
+            "strength": "强度",
+            "method": "方法",
+            "window": "窗口",
+            "rotation_threshold_degrees": "旋转阈值（度）"
+        },
+        "outputs": {
+            "mhr_pose_data": "MHR 姿态数据"
+        },
+        "description": "通过时间平滑减少帧间抖动。"
+    },
+    "SAM3DBody_Render": {
+        "title": "3D人体姿态渲染",
+        "inputs": {
+            "pose_data": "姿态数据",
+            "background": "背景",
+            "camera_info": "相机信息"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "render_style": "渲染风格",
+            "shader": "着色器",
+            "opacity": "透明度",
+            "person_palette_falloff": "人物调色板衰减",
+            "region": "区域"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "用于渲染3D人体姿态的节点，支持自定义渲染风格、着色器、透明度及渲染区域等参数。"
+    },
+    "BuildPoseFile": {
+        "title": "创建 3D 动画文件",
+        "inputs": {
+            "pose_data": "姿态数据",
+            "sam3d_body_model": "SAM3D 身体模型"
+        },
+        "widgets": {
+            "format": "格式",
+            "mesh_style": "网格样式",
+            "bone_vis": "骨骼可见性",
+            "shader": "着色器",
+            "bone_smooth_window": "骨骼平滑窗口",
+            "fps": "帧率",
+            "camera_translation": "相机平移",
+            "track_index": "追踪索引"
+        },
+        "outputs": {
+            "model_3d": "3D模型"
+        },
+        "description": "从姿势数据构建动画GLB文件，或保存BVH动作捕捉文件。"
     },
     "WanUni3CControlnetApply": {
         "title": "应用 WanUni3C ControlNet",
