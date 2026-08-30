@@ -35,6 +35,63 @@
         },
         "description": "使用ByteDance的Seed2.0模型生成文本响应。提供一个文本提示，并可选地附上一张或多张图片或视频以增强多模态上下文。"
     },
+    "ByteDance2ReferenceNodeV2": {
+        "title": "字节跳动 Seedance 2.5 视频参考",
+        "inputs": {
+            "image_1": "图像1",
+            "image_2": "图像2",
+            "image_3": "图像3",
+            "image_4": "图像4",
+            "image_5": "图像5",
+            "image_6": "图像6",
+            "image_7": "图像7",
+            "image_8": "图像8",
+            "image_9": "图像9",
+            "audio_1": "音频1",
+            "audio_2": "音频2",
+            "audio_3": "音频3",
+            "video_1": "视频1",
+            "video_2": "视频2",
+            "video_3": "视频3",
+            "asset_1": "资产1",
+            "asset_2": "资产2",
+            "asset_3": "资产3"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示词",
+            "resolution": "分辨率",
+            "ratio": "宽高比",
+            "generate_audio": "生成音频",
+            "duration": "时长",
+            "task_type": "任务类型",
+            "auto_downscale": "自动缩小",
+            "auto_upscale": "自动放大",
+            "output_format": "输出格式",
+            "seed": "种子",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "String": "字符串"
+        },
+        "description": "使用Seedance2.5或2.0生成、编辑或扩展视频，支持参考图像、视频和音频。支持多模态参考、视频编辑和视频扩展。"
+    },
+    "ByteDanceVideoEnhanceNode": {
+        "title": "字节跳动 vCube 视频增强",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "tool_version": "工具版本",
+            "scene": "场景",
+            "enhance_style": "增强风格",
+            "resolution": "分辨率",
+            "fps": "帧率",
+            "bitrate_level": "码率等级"
+        },
+        "outputs": {},
+        "description": "使用字节跳动vCube对视频进行放大和修复：支持最高8K的超分辨率，压缩、去除伪影与噪点，提升色彩与清晰度，并可选帧插值。"
+    },
     "GeminiNode": {
         "title": "谷歌 Gemini",
         "inputs": {
@@ -55,6 +112,68 @@
             "VIDEO": "视频",
             "video_id": "视频ID",
             "duration": "时长",
+            "STRING": "字符串"
+        }
+    },
+    "GeminiNodeV2": {
+        "title": "谷歌 GeminiV2",
+        "inputs": {
+            "image_1": "图像1",
+            "image_2": "图像2",
+            "image_3": "图像3",
+            "image_4": "图像4",
+            "image_5": "图像5",
+            "image_6": "图像6",
+            "image_7": "图像7",
+            "image_8": "图像8",
+            "image_9": "图像9",
+            "video_1": "视频1",
+            "audio_1": "音频1",
+            "files": "Gemini输入文件"
+        },
+        "widgets": {
+            "model": "模型",
+            "thinking_level": "思维等级",
+            "temperature": "温度",
+            "max_output_tokens": "最大输出词元数",
+            "seed": "种子",
+            "control_after_generate": "生成后控制",
+            "duration": "时长"
+        },
+        "outputs": {
+            "VIDEO": "视频",
+            "video_id": "视频ID",
+            "duration": "时长",
+            "STRING": "字符串"
+        }
+    },
+    "GeminiVideoOmniV2": {
+        "title": "谷歌视频 Gemini Omni",
+        "inputs": {
+            "image_1": "图像1",
+            "image_2": "图像2",
+            "image_3": "图像3",
+            "image_4": "图像4",
+            "image_5": "图像5",
+            "image_6": "图像6",
+            "image_7": "图像7",
+            "image_8": "图像8",
+            "image_9": "图像9",
+            "video_1": "视频1",
+            "video_2": "视频2",
+            "video_3": "视频3"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "aspect_ratio": "宽高比",
+            "duration": "时长",
+            "task_type": "任务类型",
+            "seed": "种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "视频",
             "STRING": "字符串"
         }
     },
@@ -124,12 +243,12 @@
         },
         "widgets": {
             "truncation": "截断",
-            "max_output_tokens": "最大输出令牌",
+            "max_output_tokens": "最大输出词元数",
             "quality": "质量",
             "n": "数量",
             "seed": "种子",
             "control_after_generate": "生成后控制",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "outputs": {
             "OPENAI_CHAT_CONFIG": "高级选项",
@@ -148,7 +267,7 @@
             "reasoning_effort": "努力推理",
             "seed": "种子",
             "control_after_generate": "生成后控制",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "outputs": {
             "OPENAI_CHAT_CONFIG": "高级选项",
@@ -506,7 +625,7 @@
             "mode": "模式",
             "aspect_ratio": "宽高比",
             "task_id": "任务ID",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "camera_control": "相机控制参数",
             "model_name": "模型名称",
             "duration": "时长"
@@ -532,7 +651,7 @@
             "mode": "模式",
             "aspect_ratio": "宽高比",
             "task_id": "任务ID",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "model_name": "模型名称",
             "duration": "时长"
         },
@@ -557,7 +676,7 @@
             "mode": "模式",
             "aspect_ratio": "宽高比",
             "task_id": "任务ID",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "model_name": "模型名称",
             "duration": "时长"
         },
@@ -580,7 +699,7 @@
             "mode": "模式",
             "aspect_ratio": "宽高比",
             "task_id": "任务ID",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "model_name": "模型名称",
             "duration": "时长"
         },
@@ -605,7 +724,7 @@
             "mode": "模式",
             "aspect_ratio": "宽高比",
             "task_id": "任务ID",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "model_name": "模型名称",
             "duration": "时长"
         },
@@ -630,7 +749,7 @@
             "mode": "模式",
             "aspect_ratio": "宽高比",
             "task_id": "任务ID",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "model_name": "模型名称",
             "duration": "时长"
         },
@@ -653,7 +772,7 @@
             "voice_speed": "语音速度",
             "mode": "模式",
             "task_id": "任务ID",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "model_name": "模型名称",
             "voice_id": "语音ID"
         },
@@ -676,7 +795,7 @@
             "voice_speed": "语音速度",
             "mode": "模式",
             "task_id": "任务ID",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "voice": "语音",
             "voice_id": "语音ID"
         },
@@ -699,7 +818,7 @@
             "mode": "模式",
             "aspect_ratio": "宽高比",
             "task_id": "任务ID",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "model_name": "模型名称",
             "duration": "时长"
         },
@@ -725,7 +844,7 @@
             "mode": "模式",
             "aspect_ratio": "宽高比",
             "task_id": "任务ID",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "model_name": "模型名称",
             "duration": "时长"
         },
@@ -744,7 +863,7 @@
         "widgets": {
             "model_name": "模型名称",
             "resolution": "分辨率",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "aspect_ratio": "宽高比",
             "n": "数量"
         },
@@ -826,7 +945,7 @@
             "mode": "模式",
             "aspect_ratio": "宽高比",
             "duration": "时长",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "generate_audio": "生成音频"
         },
         "outputs": {
@@ -889,7 +1008,7 @@
             "positive": "正向条件",
             "negative": "负面条件",
             "vae": "VAE编码器",
-            "image": "输入图像"
+            "image": "图像"
         },
         "widgets": {
             "model": "模型",
@@ -911,7 +1030,7 @@
             "positive": "正向条件",
             "negative": "负面条件",
             "vae": "VAE编码器",
-            "image": "输入图像"
+            "image": "图像"
         },
         "widgets": {
             "model": "模型",
@@ -924,6 +1043,60 @@
         },
         "outputs": {
             "video": "视频",
+            "VIDEO": "视频"
+        }
+    },
+    "LtxApi25TextToVideo": {
+        "title": "LTX 2.5 文生视频",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "duration": "时长(秒)",
+            "resolution": "分辨率",
+            "fps": "帧速率(fps)",
+            "generate_audio": "生成音频",
+            "prompt": "提示词",
+            "seed": "种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        }
+    },
+    "LtxApi25ImageToVideo": {
+        "title": "LTX 2.5 图生视频",
+        "inputs": {
+            "last_frame": "上一帧",
+            "image": "图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "duration": "时长(秒)",
+            "resolution": "分辨率",
+            "fps": "帧速率(fps)",
+            "generate_audio": "生成音频",
+            "prompt": "提示词",
+            "seed": "种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        }
+    },
+    "LtxApi25AudioToVideo": {
+        "title": "LTX 2.5 音频生视频",
+        "inputs": {
+            "audio": "音频",
+            "image": "图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "分辨率",
+            "prompt": "提示词",
+            "seed": "种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
             "VIDEO": "视频"
         }
     },
@@ -941,7 +1114,7 @@
             "loop": "循环",
             "seed": "种子",
             "control_after_generate": "生成后控制",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "weight": "权重"
         },
         "outputs": {
@@ -967,7 +1140,7 @@
             "loop": "循环",
             "seed": "种子",
             "control_after_generate": "生成后控制",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "weight": "权重"
         },
         "outputs": {
@@ -990,7 +1163,7 @@
             "concept2": "概念2",
             "concept3": "概念3",
             "concept4": "概念4",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "aspect_ratio": "宽高比",
             "n": "数量"
         },
@@ -1013,7 +1186,7 @@
             "subject": "主体",
             "seed": "种子",
             "control_after_generate": "生成后控制",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "weight": "权重"
         },
         "outputs": {
@@ -1037,7 +1210,7 @@
             "subject": "主体",
             "seed": "种子",
             "control_after_generate": "生成后控制",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "weight": "权重"
         },
         "outputs": {
@@ -1061,7 +1234,7 @@
             "subject": "主体",
             "seed": "种子",
             "control_after_generate": "生成后控制",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "weight": "权重"
         },
         "outputs": {
@@ -1087,7 +1260,7 @@
             "motion_mode": "运动模式",
             "seed": "种子",
             "control_after_generate": "生成后控制",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "outputs": {
             "VIDEO": "视频",
@@ -1110,7 +1283,7 @@
             "motion_mode": "运动模式",
             "seed": "种子",
             "control_after_generate": "生成后控制",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "outputs": {
             "VIDEO": "视频",
@@ -1133,7 +1306,7 @@
             "motion_mode": "运动模式",
             "seed": "种子",
             "control_after_generate": "生成后控制",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "outputs": {
             "VIDEO": "视频",
@@ -1289,7 +1462,7 @@
         "title": "谷歌 Veo2 视频生成",
         "inputs": {
             "image": "图像",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {
             "prompt": "提示词",
@@ -1310,7 +1483,7 @@
         "title": "谷歌 Veo3 视频生成",
         "inputs": {
             "image": "图像",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {
             "prompt": "提示词",
@@ -1355,7 +1528,7 @@
         "title": "Vidu 文本转视频",
         "inputs": {
             "image": "图像",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {
             "model": "模型",
@@ -1375,7 +1548,7 @@
         "title": "Vidu 图像转视频",
         "inputs": {
             "image": "图像",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {
             "model": "模型",
@@ -1395,7 +1568,7 @@
         "title": "Vidu 参考转视频",
         "inputs": {
             "images": "图像组",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {
             "model": "模型",
@@ -1829,7 +2002,7 @@
             "control_after_generate": "生成后控制",
             "aspect_ratio": "宽高比",
             "raw": "原始数据",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "image_prompt_strength": "图像提示词强度"
         },
         "outputs": {
@@ -1852,7 +2025,7 @@
             "steps": "步数",
             "seed": "种子",
             "raw": "原始数据",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "outputs": {
             "IMAGE": "图像",
@@ -1874,7 +2047,7 @@
             "steps": "步数",
             "seed": "种子",
             "raw": "原始数据",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "outputs": {
             "IMAGE": "图像",
@@ -1899,7 +2072,7 @@
             "steps": "步数",
             "seed": "种子",
             "raw": "原始数据",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "outputs": {
             "IMAGE": "图像",
@@ -1980,7 +2153,7 @@
             "image_1": "图像输入"
         },
         "widgets": {
-            "prompt": "提示词词",
+            "prompt": "提示词",
             "model": "模型",
             "width": "宽度",
             "height": "高度",
@@ -1991,6 +2164,89 @@
             "IMAGE": "图像"
         },
         "description": "使用 Flux.2 模型生成图像的节点"
+    },
+    "Flux3TextToVideoNode": {
+        "title": "Flux.3 文生视频",
+        "inputs": {},
+        "widgets": {
+            "prompt": "提示词",
+            "aspect_ratio": "宽高比",
+            "duration": "时长",
+            "resolution": "分辨率",
+            "generate_audio": "生成音频",
+            "safety_tolerance": "安全容差",
+            "seed": "随机种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "通过FLUX3从文本提示生成带有同步音频的视频。"
+    },
+    "Flux3ImageToVideoNode": {
+        "title": "Flux.3 图生视频",
+        "inputs": {
+            "image_0": "图像0",
+            "image_1": "图像1",
+            "image_2": "图像2",
+            "image_3": "图像3",
+            "image_4": "图像4",
+            "image_5": "图像5"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "placement": "布置",
+            "aspect_ratio": "宽高比",
+            "duration": "时长",
+            "resolution": "分辨率",
+            "generate_audio": "生成音频",
+            "safety_tolerance": "安全容差",
+            "seed": "随机种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "使用1 到 10 张图片生成FLUX3动画 。每张图片都成为片段的一个画面：一张图片打开它，  两张图片从第一张过渡到第二张，更多图片则被分散或固定在你选择的时间点上。"
+    },
+    "Flux3VideoContinuationNode": {
+        "title": "Flux.3 视频延长",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "aspect_ratio": "宽高比",
+            "duration": "时长",
+            "resolution": "分辨率",
+            "generate_audio": "生成音频",
+            "safety_tolerance": "安全容差",
+            "seed": "随机种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "FLUX 3继续视频：新片段延续你提供的视频的最后几帧。"
+    },
+    "FluxVideoUpscaleNode": {
+        "title": "Flux.3 视频放大",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {
+            "upscale_factor": "放大倍数",
+            "model": "模型",
+            "prompt": "提示词",
+            "auto_downscale": "自动缩放",
+            "safety_tolerance": "安全容差",
+            "seed": "随机种子",
+            "control_after_generate": "生成后控制"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "使用FLUX超分辨率技术，将视频放大1.5至3倍，既可精确保留原始画质，也能创意性地增强细节。"
     },
     "BriaImageEditNode": {
         "title": "Bria 图像编辑",
@@ -2265,7 +2521,7 @@
             "negative_prompt": "负面提示词",
             "seed": "种子",
             "num_images": "图像数量",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "outputs": {
             "IMAGE": "图像",
@@ -2288,7 +2544,7 @@
             "seed": "种子",
             "num_images": "图像数量",
             "color_palette": "调色板",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "outputs": {
             "IMAGE": "图像",
@@ -2315,7 +2571,7 @@
             "seed": "种子",
             "num_images": "图像数量",
             "color_palette": "调色板",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "outputs": {
             "IMAGE": "图像",
@@ -2350,7 +2606,7 @@
             "human_fidelity": "人物保真度",
             "model_name": "模型名称",
             "task_id": "任务ID",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "aspect_ratio": "宽高比",
             "n": "数量"
         },
@@ -2372,7 +2628,7 @@
             "human_fidelity": "人物保真度",
             "model_name": "模型名称",
             "task_id": "任务ID",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "aspect_ratio": "宽高比",
             "n": "数量"
         },
@@ -2389,7 +2645,7 @@
         "widgets": {
             "model_name": "模型名称",
             "resolution": "分辨率",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "aspect_ratio": "宽高比",
             "n": "数量"
         },
@@ -2445,7 +2701,7 @@
             "seed": "种子",
             "style_image_weight": "风格图像权重",
             "luma_ref": "Luma参考",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "max_refs": "最大参考数",
             "weight": "权重"
         },
@@ -2465,7 +2721,7 @@
             "image_weight": "图像权重",
             "seed": "种子",
             "control_after_generate": "生成后控制",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "weight": "权重"
         },
         "outputs": {
@@ -2485,7 +2741,7 @@
             "human_fidelity": "人物保真度",
             "model_name": "模型名称",
             "task_id": "任务ID",
-            "auth_token": "授权令牌",
+            "auth_token": "授权词元数",
             "aspect_ratio": "宽高比",
             "n": "数量"
         },
@@ -2625,7 +2881,7 @@
             "n": "数量",
             "seed": "种子",
             "control_after_generate": "生成后控制",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "outputs": {
             "IMAGE": "图像",
@@ -2646,7 +2902,7 @@
             "style": "风格",
             "seed": "种子",
             "control_after_generate": "生成后控制",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "outputs": {
             "IMAGE": "图像",
@@ -2667,7 +2923,7 @@
             "n": "数量",
             "seed": "种子",
             "control_after_generate": "生成后控制",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "outputs": {
             "IMAGE": "图像",
@@ -2693,7 +2949,7 @@
             "n": "数量",
             "seed": "种子",
             "control_after_generate": "生成后控制",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "outputs": {
             "IMAGE": "图像",
@@ -2765,7 +3021,7 @@
             "recraft_style": "Recraft重新创作 风格",
             "negative_prompt": "负面提示词",
             "recraft_controls": "Recraft重新创作 控制参数",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {
             "prompt": "提示词",
@@ -2785,7 +3041,7 @@
             "mask": "遮罩",
             "recraft_style": "Recraft重新创作 风格",
             "negative_prompt": "负面提示词",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {
             "prompt": "提示词",
@@ -2802,7 +3058,7 @@
         "inputs": {
             "recraft_controls": "Recraft重新创作 控制参数",
             "negative_prompt": "负面提示词",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {
             "prompt": "提示词",
@@ -2820,7 +3076,7 @@
         "title": "Recraft重新创作 图像矢量化",
         "inputs": {
             "image": "图像",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {},
         "outputs": {
@@ -2844,7 +3100,7 @@
             "image": "图像",
             "recraft_style": "Recraft重新创作 风格",
             "negative_prompt": "负面提示词",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {
             "prompt": "背景描述",
@@ -2860,7 +3116,7 @@
         "title": "Recraft重新创作 清晰放大图像",
         "inputs": {
             "image": "图像",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {},
         "outputs": {
@@ -2871,7 +3127,7 @@
         "title": "Recraft重新创作 创意放大图像",
         "inputs": {
             "image": "图像",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {},
         "outputs": {
@@ -3096,7 +3352,7 @@
         "inputs": {
             "image": "图像",
             "negative_prompt": "负面提示词",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {
             "prompt": "提示词",
@@ -3115,7 +3371,7 @@
         "inputs": {
             "image": "图像",
             "negative_prompt": "负面提示词",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {
             "model": "模型",
@@ -3136,7 +3392,7 @@
         "inputs": {
             "image": "图像",
             "negative_prompt": "负面提示词",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {
             "prompt": "提示词",
@@ -3153,7 +3409,7 @@
         "inputs": {
             "image": "图像",
             "negative_prompt": "负面提示词",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {
             "prompt": "提示词",
@@ -3170,7 +3426,7 @@
         "title": "Stability AI 极速放大",
         "inputs": {
             "image": "图像",
-            "auth_token": "授权令牌"
+            "auth_token": "授权词元数"
         },
         "widgets": {},
         "outputs": {

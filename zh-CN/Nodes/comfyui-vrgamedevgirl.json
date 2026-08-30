@@ -1,0 +1,3652 @@
+{
+    "VRGDG_LTXCFGSchedule": {
+        "title": "VRGDG_LTX CFG调度器",
+        "inputs": {
+            "sigmas": "σ值"
+        },
+        "widgets": {
+            "cfg_scale_start": "CFG值缩放起始值",
+            "cfg_scale_end": "CFG值缩放结束值",
+            "interpolation": "插值方式",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "cfg": "CFG值"
+        },
+        "description": "为连接的LTX σ调度中的每个过渡生成一个CFG值。所选百分比范围外的值为1.0。仅将其连接到VRGDG LTX调度CFG引导器。"
+    },
+    "VRGDG_LTXScheduledCFGGuider": {
+        "title": "VRGDG_LTX调度CFG引导器",
+        "inputs": {
+            "model": "模型",
+            "positive": "正向条件",
+            "negative": "负向条件",
+            "cfg": "CFG值"
+        },
+        "widgets": {},
+        "outputs": {
+            "guider": "引导器"
+        },
+        "description": "ComfyUI标量CFG引导器的调度感知替代方案。它为每个LTX σ过渡选择一个CFG值。"
+    },
+    "VRGDG_LTXSigmaAdvancedGuider": {
+        "title": "VRGDG_LTX Sigma高级引导器",
+        "inputs": {
+            "model": "模型",
+            "positive": "正向条件",
+            "negative": "负向条件",
+            "sigmas": "σ值"
+        },
+        "widgets": {
+            "cfg_start": "CFG值起始值",
+            "cfg_end": "CFG值结束值",
+            "stg_start": "stg起始值",
+            "stg_end": "stg结束值",
+            "rescale_start": "重缩放起始值",
+            "rescale_end": "重缩放结束值",
+            "interpolation": "插值方式",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比",
+            "stg_blocks": "stg块",
+            "guidance_mode": "引导模式",
+            "cfg_star": "cfg_star",
+            "apg_eta": "apg_eta",
+            "apg_norm_threshold": "apg 正常阈值",
+            "apg_momentum": "apg_动量"
+        },
+        "outputs": {
+            "guider": "引导器"
+        },
+        "description": "由ManualSigmas驱动的LTX引导器，支持调度CFG/APG、STG和方差重缩放。选中时APG会替换CFG向量，不会作为第二次引导过程叠加。在活动百分比范围外，CFG为1，STG/重缩放为0。"
+    },
+    "VRGDG_LTXSigmaGuideRelease": {
+        "title": "VRGDG_LTX Sigma引导释放",
+        "inputs": {
+            "model": "模型",
+            "sigmas": "σ值"
+        },
+        "widgets": {
+            "influence_start": "影响起始值",
+            "influence_end": "影响结束值",
+            "interpolation": "插值方式",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比",
+            "affect_latent_lock": "影响Latent锁定",
+            "affect_attention": "影响注意力"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "在连接的ManualSigmas上逐步提升LTX图像/视频引导的影响。它会缩放引导器的Latent去噪锁定以及每个引导器的注意力。起始值在起始百分比前保持，结束值在结束百分比后保持。值1保留原始引导强度；0则释放它。"
+    },
+    "VRGDG_LoadAudioSplit_General": {
+        "title": "VRGDG_通用音频拆分加载",
+        "inputs": {
+            "audio": "音频",
+            "trigger": "触发信号"
+        },
+        "widgets": {
+            "scene_duration_seconds": "场景时长（秒）",
+            "fps": "帧率",
+            "folder_path": "文件夹路径",
+            "enable_auto_queue": "启用自动队列",
+            "override_chunk_index": "覆盖分块索引",
+            "overwrite_mode": "覆盖模式",
+            "use_humo_alignment": "使用Humo对齐",
+            "List_of_Scene_durations": "场景时长列表",
+            "manual_total_sets": "手动总组数"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_BuildVideoOutputPath_General_SRT": {
+        "title": "VRGDG_通用SRT视频输出路径构建",
+        "inputs": {},
+        "widgets": {
+            "output_folder": "输出文件夹",
+            "chunk_index": "分块索引",
+            "base_name": "基础名称",
+            "overwrite_mode": "覆盖模式"
+        },
+        "outputs": {
+            "output_path": "输出路径"
+        },
+        "description": "计算视频合并的输出文件路径。处理覆盖与备份行为。不保存文件。"
+    },
+    "VRGDG_BuildVideoOutputPath_General": {
+        "title": "VRGDG_通用视频输出路径构建",
+        "inputs": {},
+        "widgets": {
+            "output_folder": "输出文件夹",
+            "chunk_index": "分块索引",
+            "base_name": "基础名称",
+            "overwrite_mode": "覆盖模式"
+        },
+        "outputs": {
+            "output_path": "输出路径"
+        },
+        "description": "计算视频合并的输出文件路径。处理覆盖与备份行为。不保存文件。"
+    },
+    "VRGDG_TrimFinalClip": {
+        "title": "VRGDG_修剪最终Clip",
+        "inputs": {
+            "trigger": "触发信号"
+        },
+        "widgets": {
+            "output_folder": "输出文件夹",
+            "base_name": "基础名称",
+            "frames_per_scene": "每场景帧数",
+            "audio_total_duration": "音频总时长",
+            "index": "索引",
+            "total_sets": "总组数",
+            "fps": "帧率",
+            "overwrite": "覆盖"
+        },
+        "outputs": {
+            "final_clip_path": "最终片段路径"
+        },
+        "description": "有条件地修剪最终填充的视频片段。仅在索引 == 总组数 -1时运行。由VHS_FILENAMES触发，以确保视频合并完成。"
+    },
+    "VRGDG_PromptSplitter_General": {
+        "title": "VRGDG_通用提示词拆分器",
+        "inputs": {},
+        "widgets": {
+            "json_string": "JSON字符串",
+            "index": "索引"
+        },
+        "outputs": {
+            "text_output": "文本输出"
+        },
+        "description": ""
+    },
+    "VRGDG_PadVideoWithLastFrame": {
+        "title": "VRGDG_用最后一帧填充视频",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "pad_frames": "填充帧数",
+            "pad_front": "前端填充"
+        },
+        "outputs": {
+            "images": "图像"
+        },
+        "description": ""
+    },
+    "VRGDG_DurationIndexFloat": {
+        "title": "VRGDG_时长索引浮点",
+        "inputs": {},
+        "widgets": {
+            "durations_text": "时长文本",
+            "index": "索引"
+        },
+        "outputs": {
+            "duration": "时长",
+            "num_scenes": "场景数量"
+        },
+        "description": ""
+    },
+    "VRGDG_TrimImageBatch": {
+        "title": "VRGDG_修剪图像批次",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "frames_per_scene": "每场景帧数",
+            "preroll_frames": "预卷帧数",
+            "chunk_index": "分块索引"
+        },
+        "outputs": {
+            "images": "图像"
+        },
+        "description": "将图像批次修剪为精确帧数。移除：- 前端的预卷帧（仅当分块索引>0时）- 后端的LTX尾损帧（始终）设计为在视频合并前运行。"
+    },
+    "BeatImpactAnalysisNode": {
+        "title": "节拍影响分析节点",
+        "inputs": {
+            "final_mix": "最终混音",
+            "drums": "鼓点",
+            "bass": "贝斯",
+            "vocals": "人声",
+            "other": "其他"
+        },
+        "widgets": {},
+        "outputs": {
+            "beat_data": "节拍数据"
+        },
+        "description": "节点A：节拍与影响分析 音频输入（非文件路径） 必需：最终混音 可选：鼓点、贝斯、人声、其他"
+    },
+    "BeatSceneDurationNode": {
+        "title": "节拍场景时长节点",
+        "inputs": {},
+        "widgets": {
+            "beat_data": "节拍数据",
+            "min_duration": "最小时长",
+            "max_duration": "最大时长",
+            "bias": "偏差",
+            "duration_preset": "时长预设",
+            "seed": "随机种子",
+            "output_filename": "输出文件名"
+        },
+        "outputs": {
+            "srt_text": "SRT文本",
+            "srt_path": "SRT路径"
+        },
+        "description": "节点B：节拍对齐场景时长生成器 输出有效的.srt字幕文件并返回文本。"
+    },
+    "IndexedImageFromFolder": {
+        "title": "按索引从文件夹加载图像",
+        "inputs": {},
+        "widgets": {
+            "folder_path": "文件夹路径",
+            "index": "索引",
+            "random_after_end": "结束后随机"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "根据索引从文件夹加载单张图像。图像按文件名中的数字进行数值排序。安全循环，支持结束后可选随机模式。随机模式会在显示另外2张图像前避免重复使用。"
+    },
+    "VRGDG_PromptSpitterWithIndex": {
+        "title": "VRGDG_带索引的提示输出器",
+        "inputs": {},
+        "widgets": {
+            "json_string": "JSON字符串",
+            "index": "索引"
+        },
+        "outputs": {
+            "text_output": "文本输出",
+            "image_index": "图像索引"
+        },
+        "description": ""
+    },
+    "IndexedImageFromFolder_ForRemakeMode": {
+        "title": "从文件夹中获取索引图像_重制模式专用",
+        "inputs": {},
+        "widgets": {
+            "folder_path": "文件夹路径",
+            "index": "索引"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "通过将文件名数字与（索引+1）匹配，从文件夹加载单张图像。示例：索引0 → 图像编号1 → 如images_00001_.png这类文件"
+    },
+    "VRGDG_LatestSRTAutoLoader": {
+        "title": "VRGDG_最新SRT字幕自动加载器",
+        "inputs": {},
+        "widgets": {
+            "trigger": "触发",
+            "refresh": "刷新"
+        },
+        "outputs": {
+            "srt_full_path": "SRT字幕完整路径",
+            "srt_file_name": "SRT字幕文件名"
+        },
+        "description": ""
+    },
+    "VRGDG_LoadAudioSplit_SRTOnly": {
+        "title": "VRGDG_仅SRT音频分割加载",
+        "inputs": {
+            "audio": "音频",
+            "trigger": "触发"
+        },
+        "widgets": {
+            "srt_file": "SRT字幕文件",
+            "fixed_duration": "固定时长",
+            "fps": "帧率",
+            "folder_path": "文件夹路径",
+            "enable_auto_queue": "启用自动队列",
+            "redo_prompt_number": "重做提示编号",
+            "use_remake_folder": "使用重制文件夹",
+            "overwrite_mode": "覆盖模式",
+            "tail_loss_frames": "尾部丢失帧数",
+            "pre_frames": "前置帧数"
+        },
+        "outputs": {},
+        "description": "仅SRT字幕的音频分割工具，具备：\n  - 创建/复用输出运行文件夹\n  - 创建临时状态目录\n  - 基于文件夹的块索引（普通模式）\n  - 按1为基准的提示编号重做\n  - 重做模式下覆盖/备份现有块输出\n  - 弹窗+说明输出\n  - 自动队列（普通+重做+恢复）\n  - 仅最终重采样至44100以适配LTX"
+    },
+    "VRGDG_TrimImageBatch_SRTOnly": {
+        "title": "VRGDG_仅SRT字幕图像批量裁剪",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "frames_per_scene": "每场景帧数",
+            "pre_frames": "前置帧数",
+            "chunk_index": "块索引",
+            "fps": "帧率"
+        },
+        "outputs": {
+            "images": "图像"
+        },
+        "description": ""
+    },
+    "VRGDG_AudioDelayByIndex": {
+        "title": "VRGDG_按索引延迟音频",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "chunk_index": "块索引",
+            "delay_ms": "延迟毫秒数"
+        },
+        "outputs": {
+            "audio": "音频"
+        },
+        "description": ""
+    },
+    "VRGDG_RunStateLogger_SRT": {
+        "title": "VRGDG_SRT字幕运行状态日志记录器",
+        "inputs": {
+            "trigger": "触发"
+        },
+        "widgets": {
+            "index": "索引",
+            "total_sets": "总组数",
+            "output_folder": "输出文件夹",
+            "note": "备注"
+        },
+        "outputs": {
+            "trigger": "触发"
+        },
+        "description": ""
+    },
+    "SRTLyricsMerger": {
+        "title": "SRT歌词合并器",
+        "inputs": {},
+        "widgets": {
+            "srt_text": "SRT字幕文本",
+            "lyrics_json": "歌词JSON"
+        },
+        "outputs": {
+            "merged_json": "合并后JSON"
+        },
+        "description": ""
+    },
+    "VRGDG_StoryBoardCreator": {
+        "title": "VRGDG_分镜创建器",
+        "inputs": {},
+        "widgets": {
+            "prompt_list": "提示列表",
+            "output_folder": "输出文件夹",
+            "trigger": "触发",
+            "use_remake_folder": "使用重制文件夹",
+            "auto_queue": "自动队列",
+            "redo_mode": "重做模式",
+            "redo_indexes": "重做索引",
+            "redo_prompt_overrides": "重做提示覆盖"
+        },
+        "outputs": {
+            "prompt": "提示",
+            "index": "索引",
+            "index_str": "索引字符串",
+            "total_prompts": "总提示数",
+            "output_folder_name": "输出文件夹名称",
+            "save_subpath": "保存子路径"
+        },
+        "description": "分镜提示运行器。\n- 从现有输出文件名追踪下一个索引。\n- 支持自动队列、重做列表、备份及提示覆盖。"
+    },
+    "VRGDG_CombinevideosV2": {
+        "title": "VRGDG_视频合并工具V2",
+        "inputs": {
+            "audio_meta": "音频元数据"
+        },
+        "widgets": {
+            "fps": "帧率"
+        },
+        "outputs": {
+            "blended_video_frames": "合成视频帧"
+        },
+        "description": ""
+    },
+    "VRGDG_PromptSplitter": {
+        "title": "VRGDG_提示分割器",
+        "inputs": {},
+        "widgets": {
+            "prompt_text": "提示文本",
+            "scene_count": "场景数"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_TimecodeFromIndex": {
+        "title": "VRGDG_从索引获取时间码",
+        "inputs": {},
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {
+            "start_time": "开始时间"
+        },
+        "description": ""
+    },
+    "VRGDG_ConditionalLoadVideos": {
+        "title": "VRGDG_条件加载视频",
+        "inputs": {
+            "trigger": "触发"
+        },
+        "widgets": {
+            "threshold": "阈值",
+            "video_folder": "视频文件夹",
+            "batch_size": "批大小"
+        },
+        "outputs": {
+            "video": "视频"
+        },
+        "description": ""
+    },
+    "VRGDG_CalculateSetsFromAudio": {
+        "title": "VRGDG_从音频计算组数",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {
+            "instructions": "说明",
+            "end_time": "结束时间",
+            "total_sets": "总组数"
+        },
+        "description": ""
+    },
+    "VRGDG_GetFilenamePrefix": {
+        "title": "VRGDG_获取文件名前缀",
+        "inputs": {},
+        "widgets": {
+            "folder_path": "文件夹路径"
+        },
+        "outputs": {
+            "Filename_Prefix": "文件名前缀"
+        },
+        "description": ""
+    },
+    "VRGDG_TriggerCounter": {
+        "title": "VRGDG_触发计数器",
+        "inputs": {},
+        "widgets": {
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "index": "索引"
+        },
+        "description": ""
+    },
+    "VRGDG_LoadAudioSplit_HUMO_TranscribeV2": {
+        "title": "VRGDG_HUMO转录V2音频分割加载",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "set_index": "组索引",
+            "language": "语言",
+            "enable_lyrics": "启用歌词",
+            "overlap_lyric_seconds": "歌词重叠秒数",
+            "fallback_words": "备用词汇"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_StringConcat": {
+        "title": "VRGDG_字符串拼接",
+        "inputs": {},
+        "widgets": {
+            "instructions": "说明",
+            "song_theme_style": "歌曲主题风格",
+            "pipe_separated_lyrics": "竖线分隔歌词"
+        },
+        "outputs": {
+            "concatenated_string": "拼接后字符串"
+        },
+        "description": ""
+    },
+    "VRGDG_AudioCrop": {
+        "title": "VRGDG_音频裁剪",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "start_time": "开始时间",
+            "end_time": "结束时间"
+        },
+        "outputs": {},
+        "description": "将音频裁剪至指定的开始和结束时间。"
+    },
+    "VRGDG_GetIndexNumber": {
+        "title": "VRGDG 获取索引编号",
+        "inputs": {},
+        "widgets": {
+            "trigger": "触发器",
+            "folder_path": "文件夹路径"
+        },
+        "outputs": {
+            "index": "索引"
+        },
+        "description": ""
+    },
+    "VRGDG_DisplayIndex": {
+        "title": "VRGDG 显示索引",
+        "inputs": {},
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {
+            "index_display": "索引显示"
+        },
+        "description": ""
+    },
+    "VRGDG_PromptSplitterV2": {
+        "title": "VRGDG 提示词拆分器V2",
+        "inputs": {},
+        "widgets": {
+            "prompt_text": "提示词文本"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_CombinevideosV3": {
+        "title": "VRGDG 合并视频V3",
+        "inputs": {
+            "audio_meta": "音频元数据"
+        },
+        "widgets": {
+            "fps": "帧率",
+            "duration": "时长",
+            "index": "索引",
+            "total_sets": "总组数",
+            "groups_in_last_set": "最后一组的组数"
+        },
+        "outputs": {
+            "blended_video_frames": "混合视频帧"
+        },
+        "description": ""
+    },
+    "VRGDG_QueueTriggerFromAudio": {
+        "title": "VRGDG 从音频触发队列",
+        "inputs": {
+            "signal": "信号"
+        },
+        "widgets": {
+            "mode": "模式",
+            "total_sets": "总组数",
+            "groups_in_last_set": "最后一组的组数",
+            "index": "索引"
+        },
+        "outputs": {
+            "signal_opt": "优化信号"
+        },
+        "description": ""
+    },
+    "VRGDG_ThemeSplitter": {
+        "title": "VRGDG 主题拆分器",
+        "inputs": {},
+        "widgets": {
+            "context_block": "上下文块"
+        },
+        "outputs": {
+            "character_description": "角色描述",
+            "song_theme_style": "歌曲主题风格",
+            "environment": "环境",
+            "lighting": "光照",
+            "camera_motion": "相机运动",
+            "physical_interaction": "物理交互",
+            "facial_expression": "面部表情",
+            "shots": "镜头",
+            "outfit_rules": "服装规则",
+            "character_visibility": "角色可见性"
+        },
+        "description": ""
+    },
+    "VRGDG_CalculateSetsFromAudio_Queue": {
+        "title": "VRGDG 从音频计算队列组数",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {
+            "instructions": "指令",
+            "end_time": "结束时间",
+            "total_sets": "总组数",
+            "groups_in_last_set": "最后一组的组数",
+            "frames_per_scene": "每场景帧数",
+            "audio_meta": "音频元数据"
+        },
+        "description": ""
+    },
+    "VRGDG_MusicVideoPromptCreator": {
+        "title": "VRGDG 音乐视频提示词创建器",
+        "inputs": {
+            "signal": "信号"
+        },
+        "widgets": {
+            "character_description": "角色描述",
+            "song_theme_style": "歌曲主题风格",
+            "pipe_separated_lyrics": "竖线分隔歌词",
+            "word_count_min": "最小词数",
+            "word_count_max": "最大词数",
+            "environment": "环境",
+            "lighting": "光照",
+            "camera_motion": "相机运动",
+            "physical_interaction": "物理交互",
+            "facial_expression": "面部表情",
+            "shots": "镜头",
+            "outfit_rules": "服装规则",
+            "character_visibility": "角色可见性"
+        },
+        "outputs": {
+            "concatenated_string": "拼接字符串"
+        },
+        "description": ""
+    },
+    "VRGDG_MusicVideoPromptCreatorV2": {
+        "title": "VRGDG 音乐视频提示词创建器V2",
+        "inputs": {
+            "signal": "信号"
+        },
+        "widgets": {
+            "character_description": "角色描述",
+            "song_theme_style": "歌曲主题风格",
+            "pipe_separated_lyrics": "竖线分隔歌词",
+            "word_count_min": "最小词数",
+            "word_count_max": "最大词数",
+            "list_handling_mode": "列表处理模式",
+            "environment": "环境",
+            "lighting": "光照",
+            "camera_motion": "相机运动",
+            "physical_interaction": "物理交互",
+            "facial_expression": "面部表情",
+            "shots": "镜头",
+            "outfit_rules": "服装规则",
+            "character_visibility": "角色可见性"
+        },
+        "outputs": {
+            "concatenated_string": "拼接字符串"
+        },
+        "description": ""
+    },
+    "VRGDG_PromptSplitterV3": {
+        "title": "VRGDG 提示词拆分器V3",
+        "inputs": {},
+        "widgets": {
+            "prompt_text": "提示词文本"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_LoadAudioSplit_HUMO_TranscribeV3": {
+        "title": "VRGDG 加载音频拆分_HUMO_转录V3",
+        "inputs": {
+            "audio": "音频",
+            "trigger": "触发器"
+        },
+        "widgets": {
+            "scene_duration_seconds": "场景时长(秒)",
+            "folder_path": "文件夹路径",
+            "enable_auto_queue": "启用自动队列",
+            "language": "语言",
+            "enable_lyrics": "启用歌词",
+            "use_context_only": "仅使用上下文",
+            "overlap_lyric_seconds": "歌词重叠时长(秒)",
+            "fallback_words": "备用词"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_HumoReminderNode": {
+        "title": "VRGDG_Humo 提醒节点",
+        "inputs": {
+            "trigger": "触发器"
+        },
+        "widgets": {
+            "enabled": "已启用"
+        },
+        "outputs": {
+            "trigger": "触发器"
+        },
+        "description": ""
+    },
+    "VRGDG_CleanAudio": {
+        "title": "VRGDG 清理音频",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_CreateFinalVideo": {
+        "title": "VRGDG 创建最终视频",
+        "inputs": {
+            "trigger": "触发器",
+            "audio": "音频"
+        },
+        "widgets": {
+            "threshold": "阈值",
+            "video_folder": "视频文件夹"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_CreateFinalVideo_SRT": {
+        "title": "VRGDG 创建最终视频_SRT字幕",
+        "inputs": {
+            "trigger": "触发器",
+            "audio": "音频"
+        },
+        "widgets": {
+            "threshold": "阈值",
+            "group_list": "组列表",
+            "video_folder": "视频文件夹"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_LoadAudioSplit_Wan22HumoFMML": {
+        "title": "VRGDG 加载音频拆分_Wan22HumoFMML",
+        "inputs": {
+            "audio": "音频",
+            "trigger": "触发器"
+        },
+        "widgets": {
+            "scene_duration_seconds": "场景时长(秒)",
+            "folder_path": "文件夹路径",
+            "enable_auto_queue": "启用自动队列"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_MusicVideoPromptCreatorV3": {
+        "title": "VRGDG 音乐视频提示词创建器V3",
+        "inputs": {
+            "signal": "信号"
+        },
+        "widgets": {
+            "character_description": "角色描述",
+            "song_theme_style": "歌曲主题风格",
+            "pipe_separated_lyrics": "竖线分隔歌词",
+            "word_count_min": "最小词数",
+            "word_count_max": "最大词数",
+            "list_handling_mode": "列表处理模式",
+            "prompt_structure_mode": "提示词结构模式",
+            "environment": "环境",
+            "lighting": "光照",
+            "camera_motion": "相机运动",
+            "physical_interaction": "物理交互",
+            "facial_expression": "面部表情",
+            "shots": "镜头",
+            "outfit_rules": "服装规则",
+            "character_visibility": "角色可见性",
+            "story_mode": "故事模式",
+            "custom_instructions": "自定义指令",
+            "Summary_File_Path": "摘要文件路径",
+            "summary_index": "摘要索引",
+            "total_sets": "总组数",
+            "groups_in_last_set": "最后一组的组数"
+        },
+        "outputs": {
+            "concatenated_string": "拼接字符串"
+        },
+        "description": ""
+    },
+    "VRGDG_PromptSplitterJson": {
+        "title": "VRGDG 提示词拆分器JSON",
+        "inputs": {},
+        "widgets": {
+            "prompt_text": "提示词文本",
+            "file_path": "文件路径",
+            "index": "索引"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_LLM_PromptBatcher": {
+        "title": "VRGDG_LLM提示词批处理工具",
+        "inputs": {
+            "style_theme_block": "风格主题块",
+            "story_summary": "故事摘要",
+            "story_groups_json": "故事组JSON",
+            "trigger": "触发条件",
+            "lyric_segments_json": "歌词片段JSON"
+        },
+        "widgets": {
+            "batch_size": "批处理大小",
+            "output_subfolder": "输出子文件夹",
+            "file_prefix": "文件前缀",
+            "manual_index": "手动索引",
+            "enable_auto_queue": "启用自动队列"
+        },
+        "outputs": {
+            "prompt": "提示词",
+            "batch_index": "批索引",
+            "total_batches": "总批数",
+            "is_final_batch": "是否为最后一批",
+            "output_folder": "输出文件夹",
+            "file_prefix": "文件前缀"
+        },
+        "description": "为大语言模型（LLM）生成单个批处理提示词字符串。批处理通过重复运行ComfyUI实现。"
+    },
+    "VRGDG_LLM_OutputSaver": {
+        "title": "VRGDG_LLM输出保存器",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "batch_index": "批索引",
+            "is_final_batch": "是否为最后一批",
+            "output_folder": "输出文件夹",
+            "base_filename": "基础文件名"
+        },
+        "outputs": {
+            "combined_text": "合并后文本"
+        },
+        "description": "按批次保存LLM输出，并在最后一批时自动合并。使用完整文件夹路径（绝对路径）。同时将合并后的JSON以字符串形式输出，供UI查看。重要提示：LLM常将JSON包裹在```json标记中或添加额外文本。本节点会在解析前从保存的批次文本中提取JSON对象。"
+    },
+    "VRGDG_ManualLyricsExtractor": {
+        "title": "VRGDG手动歌词提取器",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "scene_duration_seconds": "场景时长（秒）",
+            "language": "语言"
+        },
+        "outputs": {
+            "all_lyrics_combined": "合并后全部歌词"
+        },
+        "description": "转录整个音频文件，并将所有歌词以格式化字符串形式输出。"
+    },
+    "VRGDG_PromptSplitterForManual": {
+        "title": "VRGDG手动用提示词拆分器",
+        "inputs": {},
+        "widgets": {
+            "json_string": "JSON字符串",
+            "index": "索引"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_CombinevideosV5": {
+        "title": "VRGDG视频合并工具V5",
+        "inputs": {
+            "audio_meta": "音频元数据"
+        },
+        "widgets": {
+            "fps": "帧率",
+            "duration": "时长",
+            "index": "索引",
+            "total_sets": "总组数",
+            "groups_in_last_set": "最后一组的组数",
+            "folder_path": "文件夹路径",
+            "with_labels": "带标签"
+        },
+        "outputs": {
+            "blended_video_frames": "合成视频帧"
+        },
+        "description": ""
+    },
+    "VRGDG_PromptSplitterForFMML": {
+        "title": "VRGDG FMML用提示词拆分器",
+        "inputs": {},
+        "widgets": {
+            "json_string": "JSON字符串",
+            "index": "索引"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_PromptSplitter4": {
+        "title": "VRGDG提示词拆分器4",
+        "inputs": {},
+        "widgets": {
+            "json_string": "JSON字符串"
+        },
+        "outputs": {
+            "text_output_1": "文本输出1",
+            "text_output_2": "文本输出2",
+            "text_output_3": "文本输出3",
+            "text_output_4": "文本输出4"
+        },
+        "description": ""
+    },
+    "VRGDG_SpeechEmotionExtractor": {
+        "title": "VRGDG语音情感提取器",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "scene_duration_seconds": "场景时长（秒）"
+        },
+        "outputs": {
+            "emotion_timeline": "时间线情感"
+        },
+        "description": "对音频进行分段，并使用本地存储的基于对话的情感分类模型，提取每段的主导情感。"
+    },
+    "VRGDG_LyricsEmotionMerger": {
+        "title": "VRGDG歌词情感合并器",
+        "inputs": {},
+        "widgets": {
+            "lyrics_text": "歌词文本",
+            "emotion_text": "情感文本"
+        },
+        "outputs": {
+            "lyrics_with_emotions": "带情感的歌词"
+        },
+        "description": "将歌词片段和情感片段合并为单个对齐的输出。"
+    },
+    "VRGDG_PromptSplitter2": {
+        "title": "VRGDG提示词拆分器2",
+        "inputs": {},
+        "widgets": {
+            "json_string": "JSON字符串"
+        },
+        "outputs": {
+            "text_output_1": "文本输出1",
+            "text_output_2": "文本输出2"
+        },
+        "description": ""
+    },
+    "VRGDG_PromptSplitterForFL": {
+        "title": "VRGDG FL用提示词拆分器",
+        "inputs": {},
+        "widgets": {
+            "json_string": "JSON字符串",
+            "index": "索引"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_SplitPrompt_T2I_I2V": {
+        "title": "VRGDG 文生图/图生视频 提示词拆分器",
+        "inputs": {},
+        "widgets": {
+            "prompt_json": "提示词JSON"
+        },
+        "outputs": {
+            "t2i_prompt": "文生图提示词",
+            "i2v_prompt": "图生视频提示词"
+        },
+        "description": ""
+    },
+    "VRGDG_PromptTemplateBuilder": {
+        "title": "VRGDG提示词模板构建器",
+        "inputs": {
+            "section_1_type": "部分1类型",
+            "section_2_type": "部分2类型",
+            "section_3_type": "部分3类型",
+            "section_4_type": "部分4类型",
+            "section_5_type": "部分5类型"
+        },
+        "widgets": {
+            "section_1_text": "部分1文本",
+            "section_2_text": "部分2文本",
+            "section_3_text": "部分3文本",
+            "section_4_text": "部分4文本",
+            "section_5_text": "部分5文本"
+        },
+        "outputs": {
+            "formatted_prompt": "格式化提示词"
+        },
+        "description": ""
+    },
+    "VRGDG_SmartSplitTextTwo": {
+        "title": "VRGDG智能文本拆分工具2",
+        "inputs": {},
+        "widgets": {
+            "text": "文本"
+        },
+        "outputs": {
+            "part_1": "部分1",
+            "part_2": "部分2"
+        },
+        "description": ""
+    },
+    "VRGDG_ManualLyricsExtractor_SRT": {
+        "title": "VRGDG手动SRT歌词提取器",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "srt_path": "SRT字幕文件路径",
+            "fps": "帧率",
+            "scene_duration_seconds": "场景时长（秒）",
+            "use_ltx2": "使用LTX2",
+            "language": "语言"
+        },
+        "outputs": {
+            "all_lyrics_combined": "合并后全部歌词"
+        },
+        "description": "转录整个音频文件，并将所有歌词以格式化字符串形式输出。✅ 普通模式：- HuMo帧调整 开启 - 200字符截断 开启✅ LTX-2模式：- HuMo调整 关闭 - 无截断 - 每段强制限制为30.0秒（对话限制）"
+    },
+    "VRGDG_ManualLyricsExtractor_SRT_Advanced": {
+        "title": "VRGDG手动SRT歌词提取器（高级版）",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "scene_duration_seconds": "场景时长（秒）",
+            "fps": "帧率",
+            "srt_path": "SRT文件路径",
+            "reference_lyrics": "参考歌词",
+            "strict_reference_text": "严格参考文本",
+            "fill_aggressiveness": "填充强度",
+            "preserve_nonvocal_segments": "保留非人声片段",
+            "alignment_min_words": "对齐最小词数",
+            "model_name": "模型名称",
+            "language": "语言"
+        },
+        "outputs": {
+            "all_lyrics_combined": "合并后全部歌词"
+        },
+        "description": "使用stable-ts（stable_whisper）的高级歌词提取器。- 用stable-ts转录完整曲目一次。- 提供SRT字幕时间时使用该时间，否则采用固定大小分段。- 输出lyricSegmentN行，用于手动清理工作流。"
+    },
+    "VRGDG_ManualLyricsExtractor_SRT_Advanced_BeatV9": {
+        "title": "VRGDG手动SRT歌词提取器（高级版）BeatV9",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "scene_duration_seconds": "场景时长（秒）",
+            "fps": "帧率",
+            "srt_path": "SRT文件路径",
+            "reference_lyrics": "参考歌词",
+            "strict_reference_text": "严格参考文本",
+            "fill_aggressiveness": "填充强度",
+            "preserve_nonvocal_segments": "保留非人声片段",
+            "alignment_min_words": "对齐最小词数",
+            "model_name": "模型名称",
+            "language": "语言"
+        },
+        "outputs": {
+            "all_lyrics_combined": "合并后全部歌词"
+        },
+        "description": ""
+    },
+    "VRGDG_TimestampedLyricsExtractor": {
+        "title": "带时间戳歌词提取器",
+        "inputs": {
+            "audio": "音频",
+            "language": "语言"
+        },
+        "widgets": {
+            "reference_lyrics": "参考歌词",
+            "model_name": "模型名称",
+            "segment_mode": "分段模式",
+            "include_instrumental_gaps": "包含器乐间隙",
+            "instrumental_text": "器乐文本",
+            "min_gap_seconds": "最小间隙秒数",
+            "min_scene_seconds": "最小场景秒数",
+            "max_scene_seconds": "最大场景秒数",
+            "vocal_tail_padding_seconds": "人声尾部填充秒数"
+        },
+        "outputs": {
+            "timestamped_lyrics_json": "带时间戳歌词JSON"
+        },
+        "description": "转录或对齐完整音频，并将歌词时间戳保存为JSON。当UI需要在SRT文件存在前创建时间线场景时使用此节点。"
+    },
+    "VRGDG_NanoBananaPro": {
+        "title": "VRGDG纳米香蕉专业版",
+        "inputs": {
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "image4": "图像4"
+        },
+        "widgets": {
+            "api_key": "API密钥",
+            "prompt": "提示词",
+            "model": "模型"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "简单独立的Gemini Nano Banana节点 - API密钥直接输入节点 - 提示词框 - 最多4个可选图像输入 - 仅支持横向输出指令"
+    },
+    "VRGDG_LLM_Multi": {
+        "title": "VRGDG多提供商大语言模型",
+        "inputs": {
+            "provider": "提供商",
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "image4": "图像4"
+        },
+        "widgets": {
+            "api_key": "API密钥",
+            "model": "模型",
+            "prompt": "提示词",
+            "custom_model": "自定义模型"
+        },
+        "outputs": {
+            "text": "文本",
+            "used_provider": "使用的提供商",
+            "used_model": "使用的模型",
+            "status": "状态",
+            "image": "图像"
+        },
+        "description": "多提供商文本大语言模型节点。- API密钥输入 - 提供商下拉菜单 - 模型下拉菜单 - 提示词输入 - 文本输出"
+    },
+    "VRGDG_LocalLLM": {
+        "title": "VRGDG本地大语言模型",
+        "inputs": {
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "image4": "图像4"
+        },
+        "widgets": {
+            "backend": "后端",
+            "base_url": "基础URL",
+            "api_key": "API密钥",
+            "model": "模型",
+            "custom_model": "自定义模型",
+            "prompt": "提示词",
+            "system_prompt": "系统提示词",
+            "temperature": "温度",
+            "top_p": "核采样概率",
+            "max_tokens": "最大token数",
+            "request_timeout_sec": "请求超时秒数"
+        },
+        "outputs": {
+            "text": "文本",
+            "used_backend": "使用的后端",
+            "used_model": "使用的模型",
+            "status": "状态",
+            "image": "图像"
+        },
+        "description": "用于提示词创建/增强的本地大语言模型节点。支持的本地后端：- Ollama API - 兼容OpenAI的本地服务器（LM Studio、vLLM等）"
+    },
+    "VRGDG_Qwen3.5": {
+        "title": "VRGDG通义千问3.5",
+        "inputs": {},
+        "widgets": {
+            "model_preset": "模型预设",
+            "custom_model_id": "自定义模型ID",
+            "task_preset": "任务预设",
+            "custom_instructions": "自定义指令",
+            "user_input": "用户输入",
+            "trigger_word": "触发词",
+            "image_count": "图像数量",
+            "download_if_missing": "缺失时下载",
+            "device": "设备",
+            "dtype": "数据类型",
+            "temperature": "温度",
+            "top_p": "核采样概率",
+            "max_new_tokens": "最大新token数"
+        },
+        "outputs": {
+            "text": "文本",
+            "used_model": "使用的模型",
+            "status": "状态"
+        },
+        "description": "用于提示词创建和图像感知提示词编写的本地Hugging Face通义千问节点。- 支持手动下载的本地文件夹或Hugging Face仓库ID - 模型缺失时可选按需下载 - 动态图像输入由web/VRGDG_Qwen35_dynamic.js处理"
+    },
+    "VRGDG_GeneralVLM": {
+        "title": "VRGDG通用视觉语言模型",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_GeneralGGUF": {
+        "title": "VRGDG通用GGUF模型",
+        "inputs": {},
+        "widgets": {
+            "model_preset": "模型预设",
+            "custom_model_id": "自定义模型ID",
+            "gguf_filename": "GGUF文件名",
+            "mmproj_filename": "MMproj文件名",
+            "task_preset": "任务预设",
+            "custom_instructions": "自定义指令",
+            "user_input": "用户输入",
+            "trigger_word": "触发词",
+            "image_count": "图像数量",
+            "download_if_missing": "缺失时下载",
+            "advanced": "高级选项",
+            "unload_after_run": "运行后卸载",
+            "hf_token": "Hugging Face令牌",
+            "n_ctx": "上下文窗口大小",
+            "n_gpu_layers": "GPU层数",
+            "n_threads": "线程数",
+            "chat_format": "聊天格式",
+            "temperature": "温度",
+            "top_p": "核采样概率",
+            "max_new_tokens": "最大新token数"
+        },
+        "outputs": {
+            "text": "文本",
+            "used_model": "使用的模型",
+            "status": "状态"
+        },
+        "description": ""
+    },
+    "VRGDG_QwenGGUF": {
+        "title": "VRGDG通义千问GGUF模型",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": "用于文本和多模态llama.cpp模型的通义千问GGUF运行器。自定义选项有意接受任何本地GGUF文件/文件夹或Hugging Face仓库，因此更新的通义千问量化版本无需代码更新即可选择。"
+    },
+    "VRGDG_SuperGemmaGGUFChat": {
+        "title": "VRGDG超级Gemma GGUF聊天",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "text": "文本",
+            "used_model": "使用的模型",
+            "status": "状态"
+        },
+        "description": ""
+    },
+    "VRGDG_LlamaCppDoctor": {
+        "title": "VRGDG Llama.cpp诊断工具",
+        "inputs": {},
+        "widgets": {
+            "include_install_help": "包含安装帮助",
+            "include_nvidia_smi": "包含NVIDIA系统管理界面"
+        },
+        "outputs": {
+            "status": "状态",
+            "report": "报告",
+            "support_bundle": "支持包",
+            "install_hint": "安装提示",
+            "python_exe": "Python可执行文件"
+        },
+        "description": ""
+    },
+    "VRGDG_UnloadGemmaModels": {
+        "title": "VRGDG卸载Gemma模型",
+        "inputs": {},
+        "widgets": {
+            "clear_cuda_cache": "清除CUDA缓存",
+            "clear_hf_pipeline_cache": "清除Hugging Face流水线缓存"
+        },
+        "outputs": {
+            "status": "状态"
+        },
+        "description": "卸载缓存的VRGDG GGUF/Gemma llama.cpp模型，并可选清除CUDA缓存。"
+    },
+    "VRGDG_LTXLoraTrainChunk": {
+        "title": "VRGDG_LTXLora训练块",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "dataset_images_dir": "数据集图像目录",
+            "workspace_dir": "工作区目录",
+            "run_name": "运行名称",
+            "output_name": "输出名称",
+            "resolution_width": "分辨率宽度",
+            "resolution_height": "分辨率高度",
+            "steps_per_run": "每次运行step数",
+            "total_target_steps": "总目标step数",
+            "network_dim": "网络维度",
+            "network_alpha": "网络Alpha通道值",
+            "blocks_to_swap": "要交换的块",
+            "clear_memory_before_gemma": "在Gemma前清理内存",
+            "learning_rate_preset": "学习率预设",
+            "learning_rate": "学习率",
+            "num_repeats": "重复次数",
+            "cache_strategy": "缓存策略",
+            "copy_latest_to_comfy_loras": "复制最新到Comfy LoRAs",
+            "keep_only_comfy_lora": "仅保留Comfy LoRA",
+            "strength_model": "模型强度",
+            "create_captions": "生成标题",
+            "caption_text": "标题文本",
+            "add_trigger_word": "添加触发词",
+            "trigger_text": "触发文本",
+            "musubi_root": "musubi根目录",
+            "ltx2_checkpoint": "ltx2检查点",
+            "gemma_root": "gemma根目录",
+            "gemma_recovery_mode": "gemma恢复模式",
+            "gemma_load_in_4bit": "以4位加载gemma"
+        },
+        "outputs": {
+            "model": "模型",
+            "latest_state_path": "最新状态路径",
+            "log_path": "日志路径",
+            "video_filename_prefix": "视频文件名前缀",
+            "output_name": "输出名称",
+            "completed_steps": "已完成step数",
+            "total_target_steps": "总目标step数"
+        },
+        "description": "使用musubi-tuner运行一个LTX-2 LoRA训练块，可按需选择缓存，并能导出最新的Comfy兼容LoRA用于下游预览生成。"
+    },
+    "VRGDG_LTXAudioOnlyLoraTrainChunk": {
+        "title": "VRGDG_LTX仅音频LoRA训练块",
+        "inputs": {
+            "model": "模型",
+            "audio_profile": "音频配置文件",
+            "audio": "音频"
+        },
+        "widgets": {
+            "workspace_dir": "工作区目录",
+            "run_name": "运行名称",
+            "output_name": "输出名称",
+            "use_profile_defaults": "使用配置文件默认值",
+            "audio_only_target_resolution": "仅音频目标分辨率",
+            "audio_only_target_fps": "仅音频目标帧率",
+            "audio_only_sequence_resolution": "仅音频序列分辨率",
+            "steps_per_run": "每次运行step数",
+            "total_target_steps": "总目标step数",
+            "network_dim": "网络维度",
+            "network_alpha": "网络Alpha通道值",
+            "blocks_to_swap": "要交换的块",
+            "lora_target_preset": "LoRA目标预设",
+            "fp8_base": "fp8基础",
+            "fp8_scaled": "fp8缩放",
+            "ltx2_audio_only_model": "ltx2仅音频模型",
+            "clear_memory_before_gemma": "在Gemma前清理内存",
+            "gemma_recovery_mode": "gemma恢复模式",
+            "learning_rate_preset": "学习率预设",
+            "learning_rate": "学习率",
+            "num_repeats": "重复次数",
+            "audio_bucket_strategy": "音频分桶策略",
+            "audio_bucket_interval": "音频分桶间隔",
+            "cache_strategy": "缓存策略",
+            "copy_latest_to_comfy_loras": "复制最新到Comfy LoRAs",
+            "keep_only_comfy_lora": "仅保留Comfy LoRA",
+            "strength_model": "模型强度",
+            "create_captions": "生成标题",
+            "caption_text": "标题文本",
+            "add_trigger_word": "添加触发词",
+            "trigger_text": "触发文本",
+            "musubi_root": "musubi根目录",
+            "ltx2_checkpoint": "ltx2检查点",
+            "gemma_root": "gemma根目录",
+            "gemma_load_in_4bit": "以4位加载gemma",
+            "audio_directory": "音频目录"
+        },
+        "outputs": {
+            "model": "模型",
+            "latest_state_path": "最新状态路径",
+            "log_path": "日志路径",
+            "dataset_audio_dir": "数据集音频目录",
+            "output_name": "输出名称",
+            "completed_steps": "已完成step数",
+            "total_target_steps": "总目标step数"
+        },
+        "description": "使用musubi-tuner对口语对话或音乐片段运行一个LTX-2.3仅音频LoRA训练块。"
+    },
+    "VRGDG_LTXPreviewXYZPlot": {
+        "title": "VRGDG_LTX预览XYZ图",
+        "inputs": {
+            "vhs_filenames": "vhs文件名"
+        },
+        "widgets": {
+            "preview_folder": "预览文件夹",
+            "output_name": "输出名称",
+            "completed_steps": "已完成step数",
+            "total_target_steps": "总目标step数",
+            "cell_width": "单元格宽度",
+            "cell_height": "单元格高度",
+            "label_tiles": "标签图块",
+            "output_fps": "输出帧率",
+            "render_backend": "渲染后端"
+        },
+        "outputs": {
+            "xyz_video_path": "xyz视频路径",
+            "created": "创建时间",
+            "status": "状态"
+        },
+        "description": "当训练达到目标step时，从保存的预览视频创建最终的检查点对比视频。"
+    },
+    "VRGDG_SpeedCharacterLoraTraining": {
+        "title": "VRGDG快速角色LoRA训练",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "workspace_dir": "工作区目录",
+            "run_name": "运行名称",
+            "output_name": "输出名称",
+            "image_count": "图像数量",
+            "resolution_width": "分辨率宽度",
+            "resolution_height": "分辨率高度",
+            "blocks_to_swap": "要交换的块",
+            "clear_memory_before_gemma": "在Gemma前清理内存",
+            "cache_strategy": "缓存策略",
+            "strength_model": "模型强度",
+            "musubi_root": "musubi根目录",
+            "ltx2_checkpoint": "ltx2检查点",
+            "gemma_root": "gemma根目录",
+            "gemma_recovery_mode": "gemma恢复模式",
+            "gemma_load_in_4bit": "以4位加载gemma"
+        },
+        "outputs": {},
+        "description": "使用动态图像和标题输入，以快速角色LoRA预设运行LTX训练器。"
+    },
+    "VRGDG_LTXAudioVideoLoraTrainChunk": {
+        "title": "VRGDG_LTX音频视频LoRA训练块",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "dataset_videos_dir": "数据集视频目录",
+            "workspace_dir": "工作区目录",
+            "run_name": "运行名称",
+            "output_name": "输出名称",
+            "av_profile": "音视频配置文件",
+            "use_profile_defaults": "使用配置文件默认值",
+            "resolution_width": "分辨率宽度",
+            "resolution_height": "分辨率高度",
+            "target_frames": "目标帧数",
+            "frame_extraction": "帧提取",
+            "max_frames": "最大帧数",
+            "target_fps": "目标帧率",
+            "steps_per_run": "每次运行步数",
+            "total_target_steps": "总目标步数",
+            "network_dim": "网络维度",
+            "network_alpha": "网络Alpha",
+            "blocks_to_swap": "待交换块",
+            "separate_audio_buckets": "分离音频桶",
+            "clear_memory_before_gemma": "在Gemma前清理内存",
+            "lora_target_preset": "LoRA目标预设",
+            "fp8_base": "fp8基础",
+            "fp8_scaled": "fp8缩放",
+            "learning_rate_preset": "学习率预设",
+            "learning_rate": "学习率",
+            "num_repeats": "重复次数",
+            "cache_strategy": "缓存策略",
+            "copy_latest_to_comfy_loras": "复制最新到Comfy LoRAs",
+            "keep_only_comfy_lora": "仅保留Comfy LoRA",
+            "strength_model": "模型强度",
+            "create_captions": "创建字幕",
+            "caption_text": "字幕文本",
+            "add_trigger_word": "添加触发词",
+            "trigger_text": "触发文本",
+            "musubi_root": "Musubi根目录",
+            "ltx2_checkpoint": "LTX2检查点",
+            "gemma_root": "Gemma根目录",
+            "gemma_load_in_4bit": "Gemma以4位加载",
+            "gemma_recovery_mode": "Gemma恢复模式"
+        },
+        "outputs": {},
+        "description": "使用musubi-tuner对带有嵌入音频的短视频执行一次LTX-2.3音频视频LoRA训练块。"
+    },
+    "VRGDG_ZImageLoraTrainChunk": {
+        "title": "VRGDG_ZImage LoRA训练块",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "dataset_images_dir": "数据集图像目录",
+            "workspace_dir": "工作区目录",
+            "run_name": "运行名称",
+            "output_name": "输出名称",
+            "resolution_width": "分辨率宽度",
+            "resolution_height": "分辨率高度",
+            "steps_per_run": "每次运行步数",
+            "total_target_steps": "总目标步数",
+            "network_dim": "网络维度",
+            "network_alpha": "网络Alpha",
+            "blocks_to_swap": "待交换块",
+            "clear_memory_before_text_encoder": "在文本编码器前清理内存",
+            "learning_rate_preset": "学习率预设",
+            "learning_rate": "学习率",
+            "num_repeats": "重复次数",
+            "cache_strategy": "缓存策略",
+            "copy_latest_to_comfy_loras": "复制最新到Comfy LoRAs",
+            "keep_only_comfy_lora": "仅保留Comfy LoRA",
+            "strength_model": "模型强度",
+            "create_captions": "创建字幕",
+            "caption_text": "字幕文本",
+            "add_trigger_word": "添加触发词",
+            "trigger_text": "触发文本",
+            "musubi_root": "Musubi根目录",
+            "zimage_checkpoint": "ZImage检查点",
+            "vae": "VAE",
+            "text_encoder": "文本编码器",
+            "fp8_base": "fp8基础",
+            "fp8_scaled": "fp8缩放",
+            "fp8_llm": "fp8大语言模型",
+            "use_32bit_attention": "使用32位注意力机制"
+        },
+        "outputs": {
+            "model": "模型",
+            "latest_state_path": "最新状态路径",
+            "log_path": "日志路径",
+            "latest_comfy_lora_path": "最新Comfy LoRA路径",
+            "output_name": "输出名称",
+            "completed_steps": "已完成步数",
+            "total_target_steps": "总目标步数"
+        },
+        "description": "使用musubi-tuner执行一次Z-Image LoRA训练块，必要时可选择缓存，将最新LoRA转换为ComfyUI格式，并可将其应用于返回的模型。"
+    },
+    "VRGDG_Krea2LoraTrainChunk": {
+        "title": "VRGDG_Krea2 LoRA训练块",
+        "inputs": {},
+        "widgets": {
+            "dataset_images_dir": "数据集图像目录",
+            "workspace_dir": "工作区目录",
+            "run_name": "运行名称",
+            "output_name": "输出名称",
+            "resolution_width": "分辨率宽度",
+            "resolution_height": "分辨率高度",
+            "steps_per_run": "每次运行步数",
+            "total_target_steps": "总目标步数",
+            "network_dim": "网络维度",
+            "network_alpha": "网络Alpha",
+            "blocks_to_swap": "待交换块",
+            "clear_memory_before_text_encoder": "在文本编码器前清理内存",
+            "learning_rate_preset": "学习率预设",
+            "learning_rate": "学习率",
+            "num_repeats": "重复次数",
+            "cache_strategy": "缓存策略",
+            "copy_latest_to_comfy_loras": "复制最新到Comfy LoRAs",
+            "create_captions": "创建字幕",
+            "caption_text": "字幕文本",
+            "add_trigger_word": "添加触发词",
+            "trigger_text": "触发文本",
+            "musubi_root": "Musubi根目录",
+            "krea2_raw_dit": "Krea2原始DiT",
+            "vae": "VAE",
+            "text_encoder": "文本编码器",
+            "fp8_base": "fp8基础",
+            "fp8_scaled": "fp8缩放",
+            "timestep_sampling": "时间步采样",
+            "discrete_flow_shift": "离散流偏移"
+        },
+        "outputs": {
+            "latest_lora_path": "最新LoRA路径",
+            "latest_state_path": "最新状态路径",
+            "log_path": "日志路径",
+            "output_name": "输出名称",
+            "completed_steps": "已完成步数",
+            "total_target_steps": "总目标步数"
+        },
+        "description": "使用musubi-tuner执行一次Krea 2 LoRA训练块。输出原生Krea 2 LoRA的safetensors路径；不尝试转换为Comfy格式。"
+    },
+    "VRGDG_ZImageSpeedCharacterLoraTraining": {
+        "title": "VRGDG_ZImage快速角色LoRA训练",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "workspace_dir": "工作区目录",
+            "run_name": "运行名称",
+            "output_name": "输出名称",
+            "image_count": "图像数量",
+            "resolution_width": "分辨率宽度",
+            "resolution_height": "分辨率高度",
+            "blocks_to_swap": "待交换块",
+            "clear_memory_before_text_encoder": "在文本编码器前清理内存",
+            "cache_strategy": "缓存策略",
+            "strength_model": "模型强度",
+            "musubi_root": "Musubi根目录",
+            "zimage_checkpoint": "ZImage检查点",
+            "vae": "VAE",
+            "text_encoder": "文本编码器",
+            "fp8_base": "fp8基础",
+            "fp8_scaled": "fp8缩放",
+            "fp8_llm": "fp8大语言模型",
+            "use_32bit_attention": "使用32位注意力机制"
+        },
+        "outputs": {},
+        "description": "使用动态图像和字幕输入，以快速角色LoRA预设运行Z-Image训练器。"
+    },
+    "VRGDG_VideoFolderGridPlot": {
+        "title": "VRGDG视频文件夹网格图",
+        "inputs": {},
+        "widgets": {
+            "video_folder": "视频文件夹",
+            "output_name": "输出名称",
+            "filename_prefix": "文件名前缀",
+            "video_count": "视频数量",
+            "cell_width": "单元格宽度",
+            "cell_height": "单元格高度",
+            "label_tiles": "标注图块",
+            "output_fps": "输出帧率"
+        },
+        "outputs": {
+            "images": "图像",
+            "filename_prefix": "文件名前缀",
+            "output_fps": "输出帧率",
+            "status": "状态"
+        },
+        "description": "从文件夹中的视频或连接的输入创建简单的带标注网格图像序列。"
+    },
+    "VRGDG_MusubiTunerInstaller": {
+        "title": "VRGDG_MusubiTuner安装器",
+        "inputs": {},
+        "widgets": {
+            "target_root": "目标根目录",
+            "model_family": "模型系列"
+        },
+        "outputs": {
+            "install_root": "安装根目录",
+            "status": "状态",
+            "checkpoint_path": "检查点路径",
+            "assets_root": "资源根目录",
+            "report_path": "报告路径"
+        },
+        "description": "提供安装Musubi-Tuner、下载所选模型系列或同时执行这两项操作的按钮"
+    },
+    "VRGDG_Krea2MusubiInstaller": {
+        "title": "VRGDG_Krea2Musubi安装器",
+        "inputs": {},
+        "widgets": {
+            "target_root": "目标根目录",
+            "models_root": "模型根目录"
+        },
+        "outputs": {
+            "install_root": "安装根目录",
+            "status": "状态",
+            "raw_dit_path": "原始DiT路径",
+            "turbo_dit_path": "Turbo DiT路径",
+            "vae_path": "VAE路径",
+            "text_encoder_path": "文本编码器路径",
+            "models_root": "模型根目录",
+            "report_path": "报告路径"
+        },
+        "description": "安装原生适配Krea 2的Musubi-Tuner，还可下载Krea 2训练模型资源"
+    },
+    "VRGDG_Krea2LoraStudio": {
+        "title": "VRGDG_Krea2Lora工作室",
+        "inputs": {},
+        "widgets": {
+            "project_root": "项目根目录",
+            "project_name": "项目名称"
+        },
+        "outputs": {
+            "project_root": "项目根目录",
+            "project_name": "项目名称"
+        },
+        "description": "打开VRGDG Krea 2 LoRA工作室界面，用于基于预设的分块训练、采样及对比网格操作"
+    },
+    "VRGDG_Krea2AIToolkitInstaller": {
+        "title": "VRGDG_Krea2AI工具包安装器",
+        "inputs": {},
+        "widgets": {
+            "target_root": "目标根目录"
+        },
+        "outputs": {
+            "install_root": "安装根目录",
+            "python_path": "Python路径",
+            "status": "状态",
+            "report_path": "报告路径"
+        },
+        "description": "在隔离的虚拟环境中安装Ostris AI工具包，用于实验性配对Krea 2编辑LoRA训练"
+    },
+    "FastFilmGrain": {
+        "title": "快速胶片颗粒",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "grain_intensity": "颗粒强度",
+            "saturation_mix": "饱和度混合",
+            "batch_size": "批次大小"
+        },
+        "outputs": {},
+        "description": "添加轻量胶片颗粒"
+    },
+    "ColorMatchToReference": {
+        "title": "颜色匹配至参考图",
+        "inputs": {
+            "images": "图像",
+            "reference_image": "参考图像"
+        },
+        "widgets": {
+            "match_strength": "匹配强度",
+            "batch_size": "批次大小"
+        },
+        "outputs": {},
+        "description": "使用LAB均值/标准差对齐，将输入图像的色调匹配至参考图像"
+    },
+    "FastUnsharpSharpen": {
+        "title": "快速反锐化遮罩锐化",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "strength": "强度",
+            "use_gpu": "使用GPU"
+        },
+        "outputs": {},
+        "description": "反锐化遮罩（默认使用CPU，可选GPU路径）"
+    },
+    "FastLaplacianSharpen": {
+        "title": "快速拉普拉斯锐化",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "strength": "强度",
+            "use_gpu": "使用GPU"
+        },
+        "outputs": {},
+        "description": "拉普拉斯锐化（默认使用CPU，可选GPU）"
+    },
+    "FastSobelSharpen": {
+        "title": "快速索贝尔锐化",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "strength": "强度",
+            "use_gpu": "使用GPU"
+        },
+        "outputs": {},
+        "description": "索贝尔锐化（默认使用CPU，可选GPU）"
+    },
+    "VRGDG_LoadAudioSplitDynamic": {
+        "title": "VRGDG加载动态音频分割",
+        "inputs": {},
+        "widgets": {
+            "path": "路径",
+            "offset_seconds": "偏移秒数",
+            "scene_count": "场景数量",
+            "using_infinite_talk": "使用无限对话"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_LoadAudioSplit_HUMO": {
+        "title": "VRGDG加载HUMO音频分割",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "offset_seconds": "偏移秒数",
+            "scene_count": "场景数量"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_Extract_Frame_Number": {
+        "title": "VRGDG提取帧编号",
+        "inputs": {
+            "images": "图像",
+            "masks": "遮罩"
+        },
+        "widgets": {
+            "frame_number": "帧编号"
+        },
+        "outputs": {
+            "index_list": "索引列表",
+            "images": "图像",
+            "masks": "遮罩"
+        },
+        "description": ""
+    },
+    "VRGDG_VideoSplitter": {
+        "title": "VRGDG视频分割器",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "chunk_count": "块数量",
+            "frames_per_chunk": "每块帧数"
+        },
+        "outputs": {},
+        "description": "将图像批次分割为固定大小的块，未使用的输出将返回空图像批次"
+    },
+    "VRGDG_LoadAudioSplitUpload": {
+        "title": "VRGDG加载上传音频分割",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "offset_seconds": "偏移秒数",
+            "scene_count": "场景数量",
+            "using_infinite_talk": "使用无限对话"
+        },
+        "outputs": {},
+        "description": "音频分割器，接收音频输入并将其分割为多个块，总时长（第二个输出）= duration_1到duration_N的总和"
+    },
+    "VRGDG_TranscribeText": {
+        "title": "VRGDG文本转录",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "language": "语言"
+        },
+        "outputs": {
+            "transcription": "转录文本"
+        },
+        "description": ""
+    },
+    "VRGDG_LoadAudioSplit_HUMO_Transcribe": {
+        "title": "VRGDG加载HUMO音频分割并转录",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "offset_seconds": "偏移秒数",
+            "scene_count": "场景数量",
+            "language": "语言",
+            "enable_lyrics": "启用歌词"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_LoadVideos": {
+        "title": "VRGDG加载视频",
+        "inputs": {
+            "trigger": "触发"
+        },
+        "widgets": {
+            "video_folder": "视频文件夹",
+            "scene_count": "场景数量"
+        },
+        "outputs": {
+            "video": "视频"
+        },
+        "description": ""
+    },
+    "VRGDG_IndexedPromptChunker": {
+        "title": "VRGDG索引提示词分块器",
+        "inputs": {},
+        "widgets": {
+            "prompt_text": "提示词文本",
+            "scene_count": "场景数量",
+            "index": "索引",
+            "total_sets": "总组数"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_IndexedPromptChunkerV2": {
+        "title": "VRGDG索引提示词分块器V2",
+        "inputs": {},
+        "widgets": {
+            "prompt_text": "提示词文本",
+            "scene_count": "场景数量",
+            "index": "索引",
+            "total_sets": "总组数",
+            "any": "任意"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_PostRunIndexStepper": {
+        "title": "VRGDG运行后索引步进器",
+        "inputs": {
+            "trigger": "触发"
+        },
+        "widgets": {
+            "any": "任意",
+            "reset": "重置",
+            "increment": "增量",
+            "state_file_name": "状态文件名"
+        },
+        "outputs": {
+            "index": "索引",
+            "next_index": "下一个索引",
+            "trigger": "触发"
+        },
+        "description": ""
+    },
+    "VRGDG_GetRunIndexFromJson": {
+        "title": "VRGDG_从JSON获取运行索引",
+        "inputs": {},
+        "widgets": {
+            "any": "任意值"
+        },
+        "outputs": {
+            "index": "索引"
+        },
+        "description": ""
+    },
+    "VRGDG_AudioCropTime": {
+        "title": "VRGDG_音频裁剪时间",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "start_time": "开始时间",
+            "end_time": "结束时间"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_ImageSwitch4": {
+        "title": "VRGDG_图像切换4",
+        "inputs": {
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "image4": "图像4"
+        },
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "通过索引字符串选择一个或多个图像（例如：1,2,4）。若为无/0则不返回内容。"
+    },
+    "VRGDG_ImageSwitchMultiDynamic": {
+        "title": "VRGDG_动态多图像切换",
+        "inputs": {},
+        "widgets": {
+            "index": "索引",
+            "image_count": "图像数量"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "动态图像切换。设置图像数量，点击刷新输入，然后选择图像索引（例如：1,2,5 或全部）。"
+    },
+    "VRGDG_ImageSwitchMultiDynamic002": {
+        "title": "VRGDG_动态多图像切换002",
+        "inputs": {},
+        "widgets": {
+            "index": "索引",
+            "image_count": "图像数量"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "带空白索引0的动态图像切换。索引0返回1024x576的空白图像，多索引输入如1,2则返回一批图像。"
+    },
+    "VRGDG_ImageIndexMap": {
+        "title": "VRGDG_图像索引映射",
+        "inputs": {
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "image4": "图像4"
+        },
+        "widgets": {
+            "index": "索引",
+            "map": "映射",
+            "fallback": "备用值"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "使用映射选择一个或多个图像。支持无/全部/1-4、范围及逗号分隔的索引。"
+    },
+    "VRGDG_GetStems": {
+        "title": "VRGDG_获取音轨",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "model_name": "模型名称",
+            "device": "设备",
+            "audio_file_path": "音频文件路径"
+        },
+        "outputs": {
+            "vocals": "人声",
+            "drums": "鼓点",
+            "bass": "贝斯",
+            "other": "其他音轨"
+        },
+        "description": ""
+    },
+    "VRGDG_LoadAudioWithPath": {
+        "title": "VRGDG_按路径加载音频",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {},
+        "outputs": {
+            "audio": "音频",
+            "audio_file_path": "音频文件路径",
+            "audio_name_clean": "清理后的音频名称"
+        },
+        "description": ""
+    },
+    "VRGDG_CreateSilentAudio": {
+        "title": "VRGDG_创建静音音频",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "audio": "音频"
+        },
+        "description": ""
+    },
+    "VRGDG_SaveAudio": {
+        "title": "VRGDG_保存音频",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "source_audio_path": "源音频路径"
+        },
+        "outputs": {
+            "saved_audio_path": "已保存音频路径"
+        },
+        "description": ""
+    },
+    "VRGDG_GetAudioFilePath": {
+        "title": "VRGDG_获取音频文件路径",
+        "inputs": {},
+        "widgets": {
+            "refresh_trigger": "刷新触发"
+        },
+        "outputs": {
+            "audio_file_path": "音频文件路径",
+            "audio_name_clean": "清理后的音频名称"
+        },
+        "description": ""
+    },
+    "VRGDG_FlowBrowserImageEdit": {
+        "title": "VRGDG_Flow浏览器图像编辑",
+        "inputs": {},
+        "widgets": {
+            "prompt": "提示词",
+            "image_count": "图像数量",
+            "debug_port": "调试端口",
+            "timeout_seconds": "超时秒数"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "在Chrome中自动化Google Flow。可选动态图像输入会被上传并添加到提示词中；下载的结果将作为ComfyUI的图像返回。"
+    },
+    "VRGDG_FlowBrowserSetup": {
+        "title": "VRGDG_Flow浏览器设置",
+        "inputs": {},
+        "widgets": {
+            "install_portable_node": "安装便携节点",
+            "node_version": "节点版本",
+            "install_if_missing": "缺失则安装",
+            "strict_ssl": "严格SSL",
+            "timeout_seconds": "超时秒数"
+        },
+        "outputs": {
+            "status": "状态"
+        },
+        "description": "检查并可选安装便携Node.js以及VRGDG Flow浏览器节点使用的Playwright依赖项。"
+    },
+    "VRGDG_ChatGPTImagesBrowser": {
+        "title": "VRGDG_ChatGPT图像浏览器",
+        "inputs": {},
+        "widgets": {
+            "prompt": "提示词",
+            "image_count": "图像数量",
+            "debug_port": "调试端口",
+            "timeout_seconds": "超时秒数"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "在Chrome中自动化ChatGPT图像功能。可选动态图像输入会附加到提示词前；下载的图像将作为ComfyUI的图像返回。"
+    },
+    "VRGDG_MetaAIBrowserImage": {
+        "title": "VRGDG_Meta AI浏览器图像",
+        "inputs": {},
+        "widgets": {
+            "prompt": "提示词",
+            "image_count": "图像数量",
+            "debug_port": "调试端口",
+            "timeout_seconds": "超时秒数"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "在Chrome中自动化Meta AI图像生成。可选动态图像输入会附加到提示词前；下载的图像将作为ComfyUI的图像返回。"
+    },
+    "VRGDG_GeneralPromptBatcher": {
+        "title": "VRGDG_通用提示词批处理",
+        "inputs": {
+            "trigger": "触发",
+            "input_1": "输入1",
+            "global_input_1": "全局输入1",
+            "global_input_2": "全局输入2",
+            "input_2": "输入2",
+            "input_3": "输入3",
+            "input_4": "输入4"
+        },
+        "widgets": {
+            "batch_size": "批处理大小",
+            "file_path": "文件路径",
+            "file_prefix": "文件前缀",
+            "enable_auto_queue": "启用自动队列"
+        },
+        "outputs": {
+            "prompts": "提示词",
+            "batch_index": "批索引",
+            "total_batches": "总批数",
+            "is_final_batch": "是否为最终批",
+            "output_folder": "输出文件夹",
+            "file_prefix": "文件前缀"
+        },
+        "description": ""
+    },
+    "VRGDG_PythonCodeRunner": {
+        "title": "VRGDG_Python代码运行器",
+        "inputs": {
+            "input_text": "输入文本",
+            "input_json": "输入JSON"
+        },
+        "widgets": {
+            "python_code": "Python代码"
+        },
+        "outputs": {
+            "result_text": "结果文本",
+            "result_json": "结果JSON",
+            "has_error": "是否有错误"
+        },
+        "description": ""
+    },
+    "VRGDG_LoadLatestCombinedJsonText": {
+        "title": "VRGDG_加载最新合并JSON文本",
+        "inputs": {
+            "combined_json_file": "合并JSON文件"
+        },
+        "widgets": {
+            "batch_type": "批类型",
+            "refresh": "刷新"
+        },
+        "outputs": {
+            "text": "文本"
+        },
+        "description": ""
+    },
+    "VRGDG_UpdateLatestCombinedJsonPrompts": {
+        "title": "VRGDG_更新最新合并JSON提示词",
+        "inputs": {
+            "combined_json_file": "合并JSON文件",
+            "folder_path": "文件夹路径"
+        },
+        "widgets": {
+            "remake_mode": "重制模式",
+            "batch_type": "批类型",
+            "prompt_count": "提示词数量"
+        },
+        "outputs": {
+            "updated_json_text": "更新后的JSON文本",
+            "file_path": "文件路径",
+            "updated_count": "更新数量",
+            "ignored": "忽略项"
+        },
+        "description": ""
+    },
+    "VRGDG_UpdateLatestCombinedJsonPrompts_zimage": {
+        "title": "VRGDG_更新最新合并JSON提示词_z图像",
+        "inputs": {
+            "combined_json_file": "合并JSON文件",
+            "folder_path": "文件夹路径"
+        },
+        "widgets": {
+            "remake_mode": "重制模式",
+            "prompt_count": "提示词数量"
+        },
+        "outputs": {
+            "updated_json_text": "更新后的JSON文本",
+            "file_path": "文件路径",
+            "updated_count": "更新数量",
+            "ignored": "忽略项"
+        },
+        "description": ""
+    },
+    "VRGDG_SaveTextAdvanced": {
+        "title": "VRGDG高级文本保存",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "folder_name": "文件夹名称",
+            "file_name": "文件名称",
+            "overwrite": "覆盖",
+            "trigger": "触发"
+        },
+        "outputs": {
+            "text": "文本",
+            "file_path": "文件路径"
+        },
+        "description": ""
+    },
+    "VRGDG_LoadTextAdvanced": {
+        "title": "VRGDG高级文本加载",
+        "inputs": {
+            "folder_name": "文件夹名称",
+            "text_file": "文本文件"
+        },
+        "widgets": {
+            "use_most_recent": "使用最新的",
+            "folder_name_override": "覆盖文件夹名称",
+            "use_custom_base_path": "使用自定义基础路径",
+            "custom_base_path": "自定义基础路径"
+        },
+        "outputs": {
+            "text": "文本",
+            "file_path": "文件路径"
+        },
+        "description": ""
+    },
+    "VRGDG_SaveText": {
+        "title": "VRGDG文本保存",
+        "inputs": {
+            "text_type": "文本类型",
+            "text": "文本"
+        },
+        "widgets": {},
+        "outputs": {
+            "text": "文本",
+            "file_path": "文件路径"
+        },
+        "description": ""
+    },
+    "VRGDG_LoadText": {
+        "title": "VRGDG文本加载",
+        "inputs": {
+            "text_type": "文本类型",
+            "text_file": "文本文件"
+        },
+        "widgets": {},
+        "outputs": {
+            "text": "文本",
+            "file_path": "文件路径"
+        },
+        "description": ""
+    },
+    "VRGDG_SaveAudioFilePath": {
+        "title": "VRGDG音频文件路径保存",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "txt_name": "文本名称",
+            "overwrite": "覆盖"
+        },
+        "outputs": {
+            "audio_file_path": "音频文件路径",
+            "saved_txt_path": "已保存的文本路径"
+        },
+        "description": ""
+    },
+    "VRGDG_LoadAudioFilePath": {
+        "title": "VRGDG音频文件路径加载",
+        "inputs": {},
+        "widgets": {
+            "refresh": "刷新"
+        },
+        "outputs": {
+            "audio_file_path": "音频文件路径",
+            "audio_file_name": "音频文件名称"
+        },
+        "description": ""
+    },
+    "VRGDG_IntToString": {
+        "title": "VRGDG整数转字符串",
+        "inputs": {},
+        "widgets": {
+            "value": "值"
+        },
+        "outputs": {
+            "string": "字符串"
+        },
+        "description": ""
+    },
+    "VRGDG_ArchiveLlmBatchFolders": {
+        "title": "VRGDG归档LLM批量文件夹",
+        "inputs": {},
+        "widgets": {
+            "trigger": "触发"
+        },
+        "outputs": {
+            "trigger": "触发",
+            "details": "详情"
+        },
+        "description": ""
+    },
+    "VRGDG_CyclingTextPicker": {
+        "title": "VRGDG循环文本选择器",
+        "inputs": {},
+        "widgets": {
+            "index": "索引",
+            "items": "项目",
+            "label": "标签",
+            "max_items": "最大项目数",
+            "split_mode": "分割模式",
+            "selection_mode": "选择模式",
+            "seed": "随机种子",
+            "multi_format": "多格式",
+            "two_item_template": "双项模板",
+            "keep_empty": "保留空值",
+            "pick_count": "选择数量"
+        },
+        "outputs": {
+            "formatted_text": "格式化文本",
+            "selected_item": "选中项目",
+            "selected_items": "选中项目列表",
+            "wrapped_index": "包装索引",
+            "item_count": "项目数量"
+        },
+        "description": ""
+    },
+    "VRGDG_MultiCyclingTextPicker": {
+        "title": "VRGDG多循环文本选择器",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_SaveTextAdvancedConcat": {
+        "title": "VRGDG高级文本拼接保存",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "folder_name": "文件夹名称",
+            "file_name": "文件名称",
+            "overwrite": "覆盖",
+            "concat": "拼接",
+            "trigger": "触发"
+        },
+        "outputs": {
+            "text": "文本",
+            "file_path": "文件路径",
+            "json": "JSON",
+            "json_string": "JSON字符串"
+        },
+        "description": ""
+    },
+    "VRGDG_ShowText": {
+        "title": "VRGDG显示文本",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {},
+        "outputs": {
+            "text_output": "文本输出"
+        },
+        "description": ""
+    },
+    "VRGDG_ShowAny": {
+        "title": "VRGDG显示任意值",
+        "inputs": {
+            "value": "值"
+        },
+        "widgets": {},
+        "outputs": {
+            "text_output": "文本输出"
+        },
+        "description": ""
+    },
+    "VRGDG_TextBox": {
+        "title": "VRGDG文本框",
+        "inputs": {},
+        "widgets": {
+            "text": "文本",
+            "output_mode": "输出模式"
+        },
+        "outputs": {
+            "text_output": "文本输出",
+            "json_output": "JSON输出"
+        },
+        "description": ""
+    },
+    "VRGDG_String2Json": {
+        "title": "VRGDG字符串转JSON",
+        "inputs": {
+            "text": "文本"
+        },
+        "widgets": {
+            "auto_fix": "自动修复"
+        },
+        "outputs": {
+            "json_output": "JSON输出"
+        },
+        "description": ""
+    },
+    "VRGDG_Json2String": {
+        "title": "VRGDG JSON转字符串",
+        "inputs": {
+            "json_input": "JSON输入"
+        },
+        "widgets": {
+            "pretty": "美化"
+        },
+        "outputs": {
+            "text_output": "文本输出"
+        },
+        "description": ""
+    },
+    "VRGDG_ShowImage": {
+        "title": "VRGDG显示图像",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_BoxIT": {
+        "title": "VRGDG框选工具",
+        "inputs": {},
+        "widgets": {
+            "label": "标签"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_IntToFloat": {
+        "title": "VRGDG整数转浮点数",
+        "inputs": {},
+        "widgets": {
+            "value": "值"
+        },
+        "outputs": {
+            "value": "值"
+        },
+        "description": ""
+    },
+    "VRGDG_ImageIndex0HUMOEDIT": {
+        "title": "VRGDG图像索引0 HUMO编辑",
+        "inputs": {},
+        "widgets": {
+            "image_index": "图像索引",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "当逗号分隔的索引字符串包含0时，返回EmptyImage风格的图像。"
+    },
+    "VRGDG_OptionalMultiLoraModelOnly": {
+        "title": "VRGDG可选多LoRA仅模型",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "first_pass_model": "第一遍模型",
+            "second_pass_model": "第二遍模型",
+            "lora_names": "LoRA名称"
+        },
+        "description": "安全应用仅针对模型的可选LoRA，默认值为[无]，因此共享工作流不会因缺少LoRA文件而发出警告。"
+    },
+    "VRGDG_OptionalMultiLoraTwoPassStrengths": {
+        "title": "VRGDG可选多LoRA双遍强度",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": "安全应用仅针对模型的可选LoRA，每个LoRA分别设置第一遍和第二遍强度。"
+    },
+    "VRGDG_LoraFromPathModelOnly": {
+        "title": "VRGDG从路径加载LoRA仅模型",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "lora_path": "LoRA路径",
+            "strength_model": "模型强度"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "从直接文件系统路径向MODEL应用单个LoRA，并返回修改后的MODEL。"
+    },
+    "VRGDG_NoteBox": {
+        "title": "VRGDG注释框",
+        "inputs": {},
+        "widgets": {
+            "title": "标题",
+            "note": "注释内容",
+            "font_size": "字体大小"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_MultiStringConcat": {
+        "title": "VRGDG多字符串拼接",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "text": "文本"
+        },
+        "description": "将多个多行字符串组件拼接，可选择添加分隔符。"
+    },
+    "VRGDG_SetMuteStateMulti": {
+        "title": "VRGDG批量设置静音状态",
+        "inputs": {
+            "signal": "信号"
+        },
+        "widgets": {
+            "node_ids": "节点ID",
+            "set_state": "设置状态",
+            "off_mode": "关闭模式"
+        },
+        "outputs": {
+            "signal_opt": "可选信号"
+        },
+        "description": ""
+    },
+    "VRGDG_SetGroupStateMulti": {
+        "title": "VRGDG批量设置组状态",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "signal_opt": "可选信号"
+        },
+        "description": ""
+    },
+    "VRGDG_LyricSegmentJsonFixer": {
+        "title": "VRGDG歌词片段JSON修复工具",
+        "inputs": {},
+        "widgets": {
+            "text": "文本"
+        },
+        "outputs": {
+            "fixed_text": "修复后文本",
+            "json_output": "JSON输出",
+            "was_fixed": "是否已修复",
+            "notes": "备注"
+        },
+        "description": ""
+    },
+    "VRGDG_LyricSegmentTextCleaner": {
+        "title": "VRGDG歌词片段文本清理工具",
+        "inputs": {},
+        "widgets": {
+            "lyrics_text": "歌词文本",
+            "repeat_output_count": "重复输出次数",
+            "min_repeats_to_collapse": "需折叠的最小重复次数",
+            "bridge_single_word_segments": "连接单字片段",
+            "fill_empty_segments": "填充空白片段",
+            "empty_segment_text": "空白片段文本"
+        },
+        "outputs": {
+            "cleaned_lyrics_text": "清理后歌词文本",
+            "changed_count": "修改次数",
+            "notes": "备注"
+        },
+        "description": "清理提取的lyricSegmentN文本，包括填充空白、缩短重复的填充歌词，以及优化单字片段。"
+    },
+    "VRGDG_PromptMapJsonFixer": {
+        "title": "VRGDG提示词映射JSON修复工具",
+        "inputs": {
+            "srt_file": "SRT字幕文件"
+        },
+        "widgets": {
+            "text": "文本",
+            "use_srt_file": "使用SRT字幕文件"
+        },
+        "outputs": {
+            "fixed_text": "修复后文本",
+            "json_output": "JSON输出",
+            "was_fixed": "是否已修复",
+            "notes": "备注",
+            "prompt_count": "提示词数量"
+        },
+        "description": ""
+    },
+    "VRGDG_PromptJsonSubjectPrepender": {
+        "title": "VRGDG提示词JSON主题前置工具",
+        "inputs": {
+            "prompt_json": "提示词JSON"
+        },
+        "widgets": {
+            "subject": "主题",
+            "separator": "分隔符",
+            "skip_if_already_starts_with_subject": "若已以主题开头则跳过"
+        },
+        "outputs": {
+            "json_text": "JSON文本",
+            "json_output": "JSON输出",
+            "prompt_count": "提示词数量"
+        },
+        "description": "在提示词映射JSON中的每个提示词值前添加相同的主题文本。"
+    },
+    "VRGDG_LyricSegmentDurationMerger": {
+        "title": "VRGDG歌词片段时长合并工具",
+        "inputs": {},
+        "widgets": {
+            "srt_text": "SRT字幕文本",
+            "segments_json": "片段JSON",
+            "strict_count_match": "严格匹配数量",
+            "decimal_places": "小数位数",
+            "use_srt_durations": "使用SRT字幕时长"
+        },
+        "outputs": {
+            "merged_text": "合并后文本",
+            "merged_json": "合并后JSON",
+            "segment_count": "片段数量",
+            "duration_count": "时长数量"
+        },
+        "description": ""
+    },
+    "VRGDG_PromptCreatorUI": {
+        "title": "VRGDG提示词创建UI",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_T2IPromptsFromConcepts": {
+        "title": "VRGDG从概念生成图生提示词",
+        "inputs": {
+            "model_file": "模型文件"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_T2VPromptsFromConcepts": {
+        "title": "VRGDG从概念生成视频生提示词",
+        "inputs": {
+            "model_file": "模型文件"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_StoryGroupJsonFixer": {
+        "title": "VRGDG故事组JSON修复工具",
+        "inputs": {},
+        "widgets": {
+            "text": "文本"
+        },
+        "outputs": {
+            "fixed_text": "修复后文本",
+            "json_output": "JSON输出",
+            "was_fixed": "是否已修复",
+            "notes": "备注"
+        },
+        "description": ""
+    },
+    "VRGDG_MultiReferenceConditioning": {
+        "title": "VRGDG多参考条件控制",
+        "inputs": {
+            "positive": "正向",
+            "negative": "负向",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "image_count": "图像数量",
+            "upscale_method": "缩放方法",
+            "megapixels": "百万像素",
+            "resolution_steps": "分辨率步数"
+        },
+        "outputs": {
+            "positive": "正向",
+            "negative": "负向",
+            "IMAGE": "图像"
+        },
+        "description": "动态缩放每个连接的参考图像，通过VAE编码后，将生成的参考隐变量添加到正向和负向条件控制中。"
+    },
+    "VRGDG_MultiReferenceConditioningFromPaths": {
+        "title": "VRGDG从路径多参考条件控制",
+        "inputs": {
+            "positive": "正向",
+            "negative": "负向",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "image_paths": "图像路径",
+            "upscale_method": "缩放方法",
+            "megapixels": "百万像素",
+            "resolution_steps": "分辨率步数"
+        },
+        "outputs": {
+            "positive": "正向",
+            "negative": "负向",
+            "IMAGE": "图像"
+        },
+        "description": "UI友好的多参考条件控制节点，接收图像文件路径，加载并缩放每个图像，通过VAE编码后添加参考隐变量。"
+    },
+    "VRGDG_ImageBatchMultiFromPaths": {
+        "title": "VRGDG从路径生成多图像批次",
+        "inputs": {},
+        "widgets": {
+            "image_paths": "图像路径",
+            "upscale_method": "缩放方法"
+        },
+        "outputs": {
+            "images": "图像"
+        },
+        "description": "UI友好的多图像批次节点，从文本框接收图像文件路径，加载每个图像并返回单个图像批次，无需动态节点连接。"
+    },
+    "VRGDG_ImageCompare": {
+        "title": "VRGDG图像对比工具",
+        "inputs": {
+            "image_a": "图像A",
+            "image_b": "图像B"
+        },
+        "widgets": {
+            "mode": "模式",
+            "batch_index": "批次索引",
+            "slider_position": "滑块位置",
+            "overlay_opacity": "叠加透明度",
+            "blink_speed": "闪烁速度",
+            "show_labels": "显示标签"
+        },
+        "outputs": {
+            "image_a": "图像A",
+            "image_b": "图像B"
+        },
+        "description": ""
+    },
+    "VRGDG_ModernFaceCrop": {
+        "title": "VRGDG现代人脸裁剪",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "model_range": "模型范围",
+            "confidence": "置信度",
+            "crop_padding_factor": "裁剪填充系数",
+            "minimum_face_pixels": "最小人脸像素",
+            "face_selection": "人脸选择"
+        },
+        "outputs": {
+            "cropped_face": "裁剪后的人脸",
+            "crop_data": "裁剪数据",
+            "detection_confidence": "检测置信度"
+        },
+        "description": "采用置信度过滤、分块远程扫描的OpenCV DNN人脸检测，以及兼容WAS的CROP_DATA（裁剪数据）。"
+    },
+    "VRGDG_ImagePasteBack": {
+        "title": "VRGDG图像粘贴回",
+        "inputs": {
+            "original_image": "原始图像",
+            "enhanced_crop": "增强裁剪",
+            "crop_data": "裁剪数据",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "inset_padding": "内边距",
+            "feather_strength": "羽化强度",
+            "blend_shape": "混合形状",
+            "color_match": "颜色匹配"
+        },
+        "outputs": {
+            "image": "图像",
+            "blend_mask": "混合遮罩"
+        },
+        "description": "使用WAS人脸裁剪的CROP_DATA将增强后的裁剪区域粘贴回，再通过填充和羽化混合边缘。"
+    },
+    "VRGDG_LUTS": {
+        "title": "VRGDG LUTs滤镜预设",
+        "inputs": {
+            "image": "图像",
+            "lut_name": "滤镜预设名称"
+        },
+        "widgets": {
+            "device": "设备",
+            "strength": "强度"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": ""
+    },
+    "VRGDG_MakeLUT": {
+        "title": "VRGDG生成滤镜预设",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "colors": "颜色",
+            "name_suffix": "名称后缀",
+            "lut_size": "滤镜预设尺寸",
+            "device": "设备",
+            "strength": "强度"
+        },
+        "outputs": {
+            "image": "图像",
+            "lut_name": "滤镜预设名称",
+            "lut_path": "滤镜预设路径"
+        },
+        "description": ""
+    },
+    "VRGDG_LoraDatasetCreatorUI": {
+        "title": "VRGDG LoRA数据集创建器UI",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "status": "状态"
+        },
+        "description": "打开独立的VRGDG LoRA数据集创建器。"
+    },
+    "VRGDG_LTXFirstLastGuide": {
+        "title": "VRGDG LTX首尾引导",
+        "inputs": {
+            "positive": "正向",
+            "negative": "负向",
+            "vae": "VAE",
+            "latent": "隐变量",
+            "first_image": "首图像",
+            "last_image": "尾图像"
+        },
+        "widgets": {
+            "guide_strength": "引导强度",
+            "transition_start": "过渡起始",
+            "transition_end": "过渡结束",
+            "curve": "曲线"
+        },
+        "outputs": {
+            "positive": "正向",
+            "negative": "负向",
+            "latent": "隐变量"
+        },
+        "description": "从两张用户图像构建连续、低强度的时间引导。"
+    },
+    "VRGDG_LTXFirstLastEndpointGuide": {
+        "title": "VRGDG LTX首尾端点引导",
+        "inputs": {
+            "positive": "正向",
+            "negative": "负向",
+            "vae": "VAE",
+            "latent": "隐变量",
+            "first_image": "首图像",
+            "last_image": "尾图像"
+        },
+        "widgets": {
+            "first_strength": "首端强度",
+            "last_strength": "尾端强度"
+        },
+        "outputs": {
+            "positive": "正向",
+            "negative": "负向",
+            "latent": "隐变量"
+        },
+        "description": "万式FLF实验：固定两个端点，中间部分保留噪声。"
+    },
+    "VRGDG_LTXICIngredientsGrid": {
+        "title": "VRGDG LTX IC素材网格",
+        "inputs": {},
+        "widgets": {
+            "image_count": "图像数量",
+            "layout": "布局",
+            "output_width": "输出宽度",
+            "output_height": "输出高度",
+            "columns": "列数",
+            "gutter": "间距",
+            "outer_padding": "外部填充",
+            "corner_radius": "圆角半径",
+            "fit_mode": "适配模式",
+            "batch_mode": "批量模式",
+            "background_color": "背景颜色",
+            "cell_background_color": "单元格背景颜色"
+        },
+        "outputs": {
+            "reference_sheet": "参考表"
+        },
+        "description": "从动态图像输入构建LTX IC-LoRA素材风格的参考表。"
+    },
+    "VRGDG_LTXVLoopingSamplerAdvanced": {
+        "title": "VRGDG LTX V循环采样器（高级）",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": "LTXV循环采样器，支持为图像引导、隐变量引导和重叠条件设置逐时间块的调度。官方LTX节点不会被修改。"
+    },
+    "VRGDG_LTXMSRReferenceBuilder": {
+        "title": "VRGDG LTX MSR参考构建器",
+        "inputs": {
+            "subject_1": "主体1",
+            "subject_2": "主体2",
+            "subject_3": "主体3",
+            "subject_4": "主体4",
+            "background_image": "背景图像"
+        },
+        "widgets": {
+            "background_mode": "背景模式",
+            "width": "宽度",
+            "height": "高度",
+            "reference_strength": "参考强度"
+        },
+        "outputs": {
+            "output": "输出"
+        },
+        "description": ""
+    },
+    "VRGDG_LTX25MSRReferenceLoader": {
+        "title": "VRGDG LTX2.5 MSR参考加载器",
+        "inputs": {
+            "subject_1": "主体1",
+            "subject_2": "主体2",
+            "subject_3": "主体3",
+            "subject_4": "主体4",
+            "background_image": "背景图像"
+        },
+        "widgets": {
+            "background_mode": "背景模式",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "pic1": "图像1",
+            "pic2": "图像2",
+            "pic3": "图像3",
+            "pic4": "图像4",
+            "background": "背景"
+        },
+        "description": "为ComfyUI-LTX2.5-MSR多参考引导加载最多四个主体和可选背景，作为单独的静态图像。"
+    },
+    "VRGDG_MiniMaxH3AudioDrive": {
+        "title": "VRGDG MiniMax H3音频驱动",
+        "inputs": {
+            "av_latent": "音视频隐变量",
+            "source_audio": "源音频",
+            "audio_vae": "音频VAE"
+        },
+        "widgets": {},
+        "outputs": {
+            "audio_driven_av_latent": "音频驱动的音视频隐变量",
+            "original_audio": "原始音频"
+        },
+        "description": "用编码后的源音轨替换MiniMax H3的空白生成音频隐变量，用零降噪遮罩锁定该音频，并将原始音频原封不动传递给最终视频复用。请将同一音频连接到ref_audio_0，并在提示词中引用为<音频1>。"
+    },
+    "VRGDG_MiniMaxH3LatentUpscaleModelLoader": {
+        "title": "VRGDG MiniMax H3 隐变量放大模型加载器",
+        "inputs": {
+            "model_name": "模型名称"
+        },
+        "widgets": {
+            "device": "设备",
+            "precision": "精度"
+        },
+        "outputs": {
+            "upscale_model": "放大模型"
+        },
+        "description": ""
+    },
+    "VRGDG_MiniMaxH3UltimateUpscaleParams": {
+        "title": "VRGDG MiniMax H3终极放大参数",
+        "inputs": {
+            "model_name": "模型名称"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "device": "设备",
+            "precision": "精度"
+        },
+        "outputs": {
+            "latent_upscale_param": "隐变量放大参数"
+        },
+        "description": "用于上游MMH3终极放大节点的可靠H3参数节点。\n\n上游参数节点在导入时仅从一个模型目录构建其组合选项。此节点在执行时解析所有已注册目录，并在共享参数字典中输出绝对检查点路径，因此上游处理器可以加载所选文件，无论它位于哪个ComfyUI模型路径中。"
+    },
+    "VRGDG_MiniMaxH3LearnedLatentUpscale": {
+        "title": "VRGDG MiniMax H3学习型隐变量放大",
+        "inputs": {
+            "latent": "隐变量",
+            "upscale_model": "放大模型"
+        },
+        "widgets": {
+            "scale": "缩放比例"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDG_MiniMaxH3ReplaceUpscaledVideoLatent": {
+        "title": "VRGDG MiniMax H3替换放大后视频隐变量",
+        "inputs": {
+            "original_av_latent": "原始音视频隐变量",
+            "upscaled_video_latent": "放大后的视频隐变量"
+        },
+        "widgets": {},
+        "outputs": {
+            "upscaled_av_latent": "放大后的音视频隐变量"
+        },
+        "description": "仅替换联合H3音视频隐变量中的视频部分。"
+    },
+    "VRGDG_MiniMaxH3ReferenceMediaFromPaths": {
+        "title": "VRGDG_MiniMaxH3参考媒体路径加载器",
+        "inputs": {},
+        "widgets": {
+            "image_paths": "图像路径",
+            "video_references": "视频参考"
+        },
+        "outputs": {},
+        "description": "面向开发者的有序媒体加载器，适用于MiniMax H3。它接受项目/输入/输出路径，将每个图像和视频保存在各自的H3参考槽中，并为未使用的槽返回None。"
+    },
+    "VRGDG_Music3PromptBuilder": {
+        "title": "VRGDG_Music3提示词构建器",
+        "inputs": {
+            "preset": "预设",
+            "vocal_profile": "人声配置"
+        },
+        "widgets": {
+            "singer_name": "歌手姓名",
+            "style_name": "风格名称",
+            "genre_subgenre": "流派/子流派",
+            "mood_themes": "情绪主题",
+            "instruments": "乐器",
+            "vocal_qualities": "人声特质",
+            "production": "制作",
+            "tempo_range": "节奏范围",
+            "song_arc": "歌曲结构",
+            "avoid_characteristics": "需规避特征",
+            "extra_direction": "额外方向"
+        },
+        "outputs": {
+            "caption": "连接到MiniMax Music3文本编码 → 提示词",
+            "caption_breakdown": "字段使用情况的人类可读审计"
+        },
+        "description": "构建结构化的Music3提示词，包含可编辑的歌手、风格、流派、人声、乐器、制作、节奏、结构及需规避特征字段。"
+    },
+    "VRGDG_Music3TuningPreset": {
+        "title": "VRGDG_Music3调优预设",
+        "inputs": {
+            "preset": "预设"
+        },
+        "widgets": {},
+        "outputs": {
+            "ar_cfg_scale": "连接到Music3文本编码CFG缩放。生成AR计划时，值越高越严格遵循提示词/歌词；值越低则更灵活探索其他标记选项",
+            "ar_top_k": "连接到Music3文本编码Top_k。值越低则约束性越强、可重复性越高；值越高则会探索更多标记替代选项",
+            "sampler_cfg": "连接到KSampler的CFG值。控制声学计划与零值条件之间的降噪器引导",
+            "steps": "连接到KSampler的步数。更多步数可优化细节，但不保证生成更好的作品",
+            "conditioning_strength": "在文本编码后通过Music3条件强度连接。缩放提供给DiT的声学计划",
+            "notes": "预设专属说明与解释"
+        },
+        "description": "基于行为的预设，用于控制依从性、结构、变化、稳定性、计划强度、渲染细节及速度。这些预设与流派/风格提示词无关。"
+    },
+    "VRGDG_Music3LyricsPrepare": {
+        "title": "VRGDG_Music3歌词准备",
+        "inputs": {},
+        "widgets": {
+            "lyrics": "歌词",
+            "normalise_headers": "标准化标题",
+            "remove_metadata_lines": "移除元数据行"
+        },
+        "outputs": {
+            "lyrics": "歌词",
+            "validation_report": "验证报告",
+            "lyric_line_count": "歌词行数"
+        },
+        "description": "标准化已识别的歌曲段落标题，移除意外的元数据，并对Music3可能误判为歌词的括号文本发出警告。"
+    },
+    "VRGDG_Music3ConditioningStrength": {
+        "title": "VRGDG_Music3条件强度",
+        "inputs": {
+            "conditioning": "条件"
+        },
+        "widgets": {
+            "strength": "强度"
+        },
+        "outputs": {
+            "conditioning": "条件"
+        },
+        "description": "缩放Music3模型专属的conditioning_scale元数据，不修改AR计划张量。"
+    },
+    "VRGDG_Music3ConditioningBlend": {
+        "title": "VRGDG_Music3条件混合",
+        "inputs": {
+            "conditioning_a": "条件A",
+            "conditioning_b": "条件B"
+        },
+        "widgets": {
+            "blend_b": "混合B",
+            "length_mode": "长度模式"
+        },
+        "outputs": {
+            "conditioning": "条件",
+            "blend_report": "混合报告"
+        },
+        "description": "两个Music3声学隐藏计划的实验性线性混合。最适合用于受控的同歌词A/B提示词实验。"
+    },
+    "VRGDG_Music3SeedBank": {
+        "title": "VRGDG_Music3随机种子库",
+        "inputs": {},
+        "widgets": {
+            "base_seed": "基础随机种子",
+            "spacing": "间隔"
+        },
+        "outputs": {
+            "seed_a": "随机种子A",
+            "seed_b": "随机种子B",
+            "seed_c": "随机种子C",
+            "seed_d": "随机种子D",
+            "notes": "说明"
+        },
+        "description": "创建四个确定性随机种子候选。调优参数时保持一个随机种子固定；仅在探索其他作品方案时更换随机种子。"
+    },
+    "VRGDG_MusicVideoBuilderUI": {
+        "title": "VRGDG_Music视频构建器UI",
+        "inputs": {},
+        "widgets": {
+            "audio_path": "音频路径",
+            "project_folder": "项目文件夹",
+            "session_path": "会话路径",
+            "srt_path": "SRT字幕路径"
+        },
+        "outputs": {
+            "project_folder": "项目文件夹",
+            "session_path": "会话路径",
+            "srt_path": "SRT字幕路径"
+        },
+        "description": "用于从音频、时间分段、提示词及已批准的ZImage预览构建音乐视频的原型UI。"
+    },
+    "VRGDGFaceFixPrepare": {
+        "title": "VRGDGFaceFix准备",
+        "inputs": {
+            "video_frames": "视频帧",
+            "repair_distance": "修复距离",
+            "anchor_interval": "锚点间隔"
+        },
+        "widgets": {
+            "detection_confidence": "检测置信度",
+            "crop_padding": "裁剪填充",
+            "minimum_face_pixels": "最小人脸像素",
+            "rotation_assist": "旋转辅助",
+            "custom_distance_threshold": "自定义距离阈值",
+            "short_gap_tracking": "短间隔跟踪"
+        },
+        "outputs": {
+            "face_video_512": "人脸视频512",
+            "anchor_images": "锚点图像",
+            "anchor_count": "锚点数量",
+            "anchor_indices": "锚点索引",
+            "face_fix_context": "人脸修复上下文"
+        },
+        "description": "检测并跟踪加载视频中的一个主人脸，生成512×512人脸序列，选择安全的Z-Image锚点，并保留将修复后的人脸粘贴回原始帧所需的裁剪映射。"
+    },
+    "VRGDGFaceFixPrepareShotAware": {
+        "title": "VRGDGFaceFix准备（镜头感知）",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": "人脸准备，在硬镜头边界重置跟踪。"
+    },
+    "VRGDGFaceFixPrepareVideoShotAware": {
+        "title": "VRGDGFaceFix准备（视频镜头感知）",
+        "inputs": {
+            "video_frames": "视频帧"
+        },
+        "widgets": {
+            "detection_confidence": "检测置信度",
+            "crop_padding": "裁剪填充",
+            "minimum_face_pixels": "最小人脸像素",
+            "rotation_assist": "旋转辅助",
+            "short_gap_tracking": "短间隔跟踪",
+            "cut_sensitivity": "剪辑灵敏度",
+            "crop_smoothing": "裁剪平滑"
+        },
+        "outputs": {
+            "face_video_512": "人脸视频512",
+            "face_fix_context": "人脸修复上下文"
+        },
+        "description": "为LTX将每一帧准备为镜头感知的512px人脸视频；无传统Z-Image锚点控件。"
+    },
+    "VRGDGFaceFixLoadAnchorsMetaBatch": {
+        "title": "VRGDGFaceFix加载锚点元批次",
+        "inputs": {
+            "face_fix_context": "人脸修复上下文",
+            "meta_batch": "元批次"
+        },
+        "widgets": {},
+        "outputs": {
+            "anchor_images": "锚点图像",
+            "mask": "遮罩",
+            "batch_frame_count": "批次帧数",
+            "face_fix_context": "人脸修复上下文"
+        },
+        "description": "通过VHS元批次加载已准备的人脸修复锚点，无需手动选择文件夹。"
+    },
+    "VRGDGFaceFixStoreAnchors": {
+        "title": "VRGDG人脸修复存储锚点",
+        "inputs": {
+            "enhanced_anchors": "增强锚点",
+            "face_fix_context": "人脸修复上下文"
+        },
+        "widgets": {},
+        "outputs": {
+            "enhanced_anchor_folder": "增强锚点文件夹",
+            "anchor_indices": "锚点索引",
+            "anchor_count": "锚点数量",
+            "face_fix_context": "人脸修复上下文"
+        },
+        "description": "以确定性顺序存储增强的锚点批次，用于LTX条件设置"
+    },
+    "VRGDGFaceFixCreateCropVideo": {
+        "title": "VRGDG人脸修复创建裁剪视频",
+        "inputs": {
+            "face_video_512": "512像素人脸视频",
+            "face_fix_context": "人脸修复上下文",
+            "video_info": "视频信息"
+        },
+        "widgets": {
+            "fallback_fps": "备用帧率"
+        },
+        "outputs": {
+            "cropped_face_video_path": "裁剪后人脸视频路径",
+            "face_fix_context": "人脸修复上下文",
+            "fps": "帧率",
+            "frame_count": "帧数量"
+        },
+        "description": "将准备好的512像素人脸序列写入无声MP4，供LTX加载视频（路径）使用"
+    },
+    "VRGDGFaceFixComposite": {
+        "title": "VRGDG人脸修复合成",
+        "inputs": {
+            "ltx_face_frames": "LTX人脸帧",
+            "face_fix_context": "人脸修复上下文"
+        },
+        "widgets": {
+            "feather_pixels": "羽化像素",
+            "color_match": "颜色匹配"
+        },
+        "outputs": {
+            "repaired_video_frames": "修复后的视频帧",
+            "applied_face_mask": "应用的人脸遮罩",
+            "repaired_frame_count": "修复后的帧数量"
+        },
+        "description": "将LTX人脸帧羽化回原始视频帧；无人脸和短LTX尾部帧保持不变"
+    },
+    "VRGDGFaceFixCompositeOpaque": {
+        "title": "VRGDG人脸修复不透明合成",
+        "inputs": {
+            "ltx_face_frames": "LTX人脸帧",
+            "face_fix_context": "人脸修复上下文"
+        },
+        "widgets": {
+            "feather_pixels": "羽化像素"
+        },
+        "outputs": {
+            "repaired_video_frames": "修复后的视频帧",
+            "applied_face_mask": "应用的人脸遮罩",
+            "repaired_frame_count": "修复后的帧数量"
+        },
+        "description": "完全替换每个跟踪到的人脸裁剪区域；仅对外部边界进行羽化"
+    },
+    "VRGDGFaceFixCompositeLandmarkAligned": {
+        "title": "VRGDG人脸修复地标对齐合成",
+        "inputs": {
+            "ltx_face_frames": "LTX人脸帧",
+            "face_fix_context": "人脸修复上下文"
+        },
+        "widgets": {
+            "feather_pixels": "羽化像素",
+            "transform_smoothing": "变换平滑度"
+        },
+        "outputs": {
+            "repaired_video_frames": "修复后的视频帧",
+            "applied_face_mask": "应用的人脸遮罩",
+            "repaired_frame_count": "修复后的帧数量"
+        },
+        "description": "将LTX的眼睛/鼻子/嘴巴对齐到源裁剪区域，然后完全替换跟踪到的人脸"
+    },
+    "VRGDGFaceFixLTXInputs": {
+        "title": "VRGDG人脸修复LTX输入",
+        "inputs": {
+            "cropped_video_context": "裁剪视频上下文",
+            "enhanced_anchor_context": "增强锚点上下文"
+        },
+        "widgets": {},
+        "outputs": {
+            "cropped_face_video_path": "裁剪后人脸视频路径",
+            "enhanced_anchor_folder": "增强锚点文件夹",
+            "anchor_indices": "锚点索引",
+            "anchor_count": "锚点数量",
+            "face_fix_context": "人脸修复上下文"
+        },
+        "description": "执行屏障，用于验证并向LTX暴露已完成的裁剪视频和增强锚点"
+    },
+    "VRGDGFaceFixCopyVideo": {
+        "title": "VRGDG人脸修复复制视频",
+        "inputs": {},
+        "widgets": {
+            "source_video_path": "源视频路径",
+            "output_folder": "输出文件夹",
+            "filename": "文件名"
+        },
+        "outputs": {
+            "saved_video_path": "保存的视频路径"
+        },
+        "description": ""
+    },
+    "VRGDGFaceFixSaveFramesVideo": {
+        "title": "VRGDG人脸修复保存帧视频",
+        "inputs": {
+            "frames": "帧"
+        },
+        "widgets": {
+            "fps": "帧率",
+            "output_folder": "输出文件夹",
+            "filename": "文件名"
+        },
+        "outputs": {
+            "saved_video_path": "保存的视频路径"
+        },
+        "description": ""
+    },
+    "VRGDGStandaloneVideoEnhancer": {
+        "title": "VRGDG独立视频增强器",
+        "inputs": {},
+        "widgets": {
+            "output_path": "输出路径"
+        },
+        "outputs": {
+            "enhanced_video_path": "增强后的视频路径"
+        },
+        "description": "独立的批量2K–4K缩放、视频锐化、胶片颗粒以及前后对比UI"
+    },
+    "VRGDG_StartImageStoryboard": {
+        "title": "VRGDG_启动图像分镜",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {},
+        "description": "带浏览器AI的一键式独立启动图像分镜创建工具"
+    },
+    "VRGDG_StoryboardBuilderUI": {
+        "title": "VRGDG_分镜构建器UI",
+        "inputs": {},
+        "widgets": {
+            "project_folder": "项目文件夹"
+        },
+        "outputs": {
+            "project_folder": "项目文件夹"
+        },
+        "description": "用于在图像/视频创建前整理场景提示的分镜规划UI"
+    },
+    "VRGDG_VideoBuilderNodeCanvas": {
+        "title": "VRGDG_视频构建器节点画布",
+        "inputs": {},
+        "widgets": {
+            "notes": "备注"
+        },
+        "outputs": {
+            "notes": "备注"
+        },
+        "description": ""
+    },
+    "VRGDG_VideoCompareSlider": {
+        "title": "VRGDG_视频对比滑块",
+        "inputs": {
+            "before_images": "对比前图像",
+            "after_images": "对比后图像",
+            "before_video": "对比前视频",
+            "after_video": "对比后视频"
+        },
+        "widgets": {
+            "slider_position": "滑块位置",
+            "before_label": "对比前标签",
+            "after_label": "对比后标签",
+            "show_labels": "显示标签",
+            "loop": "循环",
+            "muted": "静音",
+            "record_duration": "录制时长",
+            "before_selected": "选中对比前",
+            "after_selected": "选中对比后"
+        },
+        "outputs": {
+            "before_video": "对比前视频",
+            "after_video": "对比后视频"
+        },
+        "description": ""
+    },
+    "VRGDG_VideoEditorUI": {
+        "title": "VRGDG_视频编辑器UI",
+        "inputs": {
+            "model_file": "模型文件",
+            "mmproj_file": "mmproj文件",
+            "i2v_model_file": "图像转视频模型文件"
+        },
+        "widgets": {
+            "output_folder": "输出文件夹",
+            "video_extensions": "视频扩展名",
+            "selected_clip_path": "选中的片段路径",
+            "session_path": "会话路径",
+            "captured_frame_path": "捕获的帧路径",
+            "generated_t2i_prompt": "生成的文本转图像提示词",
+            "generated_i2v_prompt": "生成的图像转视频提示词"
+        },
+        "outputs": {
+            "output_folder": "输出文件夹",
+            "session_path": "会话路径",
+            "captured_frame_path": "捕获的帧路径",
+            "generated_t2i_prompt": "生成的文本转图像提示词",
+            "generated_i2v_prompt": "生成的图像转视频提示词"
+        },
+        "description": ""
+    },
+    "VRGDG_VideoEditorSessionLoader": {
+        "title": "VRGDG_视频编辑器会话加载器",
+        "inputs": {},
+        "widgets": {
+            "session_path": "会话路径",
+            "clip_number": "片段编号",
+            "clip_path": "片段路径"
+        },
+        "outputs": {
+            "t2i_prompt": "文本转图像提示词",
+            "i2v_prompt": "图像转视频提示词",
+            "captured_frame_path": "捕获的帧路径",
+            "selected_for_remake": "选中用于重制",
+            "clip_name": "片段名称",
+            "clip_path": "片段路径"
+        },
+        "description": ""
+    },
+    "VRGDG_RemakeClipQueue": {
+        "title": "VRGDG_重制片段队列",
+        "inputs": {
+            "audio": "音频",
+            "trigger": "触发器"
+        },
+        "widgets": {
+            "session_path": "会话路径",
+            "srt_file": "SRT字幕文件",
+            "queue_index": "队列索引",
+            "fps": "帧率",
+            "enable_auto_queue": "启用自动队列",
+            "reset_queue": "重置队列",
+            "tail_loss_frames": "尾部丢失帧",
+            "pre_frames": "前置帧"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VRGDGVideoEnhancePrepare": {
+        "title": "VRGDG视频增强准备",
+        "inputs": {
+            "video_frames": "视频帧",
+            "video_info": "视频信息"
+        },
+        "widgets": {
+            "anchor_interval": "锚点间隔",
+            "anchor_width": "锚点宽度",
+            "anchor_height": "锚点高度",
+            "ltx_width": "ltx_width",
+            "ltx_height": "ltx_height",
+            "dimension_multiple": "尺寸倍数",
+            "fit_mode": "适配模式",
+            "resize_method": "缩放方法",
+            "fallback_fps": "备用帧率"
+        },
+        "outputs": {
+            "ltx_working_frames": "LTX工作帧",
+            "anchor_images": "锚点图像",
+            "anchor_count": "锚点数量",
+            "anchor_indices": "锚点索引",
+            "ltx_video_path": "LTX视频路径",
+            "ltx_width": "ltx_width",
+            "ltx_height": "ltx_height",
+            "fps": "帧率",
+            "video_enhance_context": "视频增强上下文"
+        },
+        "description": "创建独立的全帧视频增强任务、临时LTX视频以及定期间隔的Z-Image锚点，同时保留精确的源帧和元数据以用于最终恢复。"
+    },
+    "VRGDGVideoEnhanceLoadAnchorsMetaBatch": {
+        "title": "VRGDG加载锚点元数据批次",
+        "inputs": {
+            "video_enhance_context": "视频增强上下文",
+            "meta_batch": "元数据批次"
+        },
+        "widgets": {},
+        "outputs": {
+            "anchor_images": "锚点图像",
+            "mask": "遮罩",
+            "batch_frame_count": "批次帧数量",
+            "video_enhance_context": "视频增强上下文"
+        },
+        "description": "通过VHS元数据批次加载全帧视频增强锚点，用于顺序Z-Image增强。"
+    },
+    "VRGDGVideoEnhanceStoreAnchors": {
+        "title": "VRGDG存储锚点",
+        "inputs": {
+            "enhanced_anchors": "增强锚点",
+            "video_enhance_context": "视频增强上下文"
+        },
+        "widgets": {},
+        "outputs": {
+            "enhanced_anchor_folder": "增强锚点文件夹",
+            "anchor_indices": "锚点索引",
+            "anchor_count": "锚点数量",
+            "video_enhance_context": "视频增强上下文"
+        },
+        "description": "按确定性顺序存储增强的全帧锚点，用于LTX条件设置。"
+    },
+    "VRGDGVideoEnhanceCollectLTXInputs": {
+        "title": "VRGDG收集LTX输入",
+        "inputs": {
+            "prepared_video_context": "准备好的视频上下文",
+            "enhanced_anchor_context": "增强锚点上下文"
+        },
+        "widgets": {},
+        "outputs": {
+            "ltx_video_path": "LTX视频路径",
+            "enhanced_anchor_folder": "增强锚点文件夹",
+            "anchor_indices": "锚点索引",
+            "anchor_count": "锚点数量",
+            "ltx_width": "ltx_width",
+            "ltx_height": "ltx_height",
+            "video_enhance_context": "视频增强上下文"
+        },
+        "description": "验证两个视频增强分支，调整LTX不兼容的条件位置，并公开LTX工作流所需的路径和尺寸。"
+    },
+    "VRGDGVideoEnhanceRestoreOriginal": {
+        "title": "VRGDG恢复原始内容",
+        "inputs": {
+            "ltx_enhanced_frames": "LTX增强帧",
+            "video_enhance_context": "视频增强上下文"
+        },
+        "widgets": {
+            "resize_method": "缩放方法",
+            "enhancement_strength": "增强强度"
+        },
+        "outputs": {
+            "enhanced_video_frames": "增强视频帧",
+            "frame_count": "帧数量",
+            "original_width": "原始宽度",
+            "original_height": "原始高度",
+            "fps": "帧率"
+        },
+        "description": "将解码后的LTX输出恢复为精确的输入分辨率和帧数量，保留不匹配的源尾帧，并可选择与未修改的源视频混合。"
+    },
+    "VRGDG_VoxCPM2Generate": {
+        "title": "VRGDG_VoxCPM2生成",
+        "inputs": {
+            "reference_audio": "参考音频",
+            "prompt_audio": "提示音频"
+        },
+        "widgets": {
+            "text": "文本",
+            "mode": "模式",
+            "device": "设备",
+            "cfg_value": "CFG值",
+            "inference_timesteps": "推理时间步",
+            "load_denoiser": "加载去噪器",
+            "normalize_text": "标准化文本",
+            "retry_badcase": "重试异常案例",
+            "retry_badcase_max_times": "重试异常案例最大次数",
+            "retry_badcase_ratio_threshold": "重试异常案例比例阈值",
+            "min_len": "最小长度",
+            "max_len": "最大长度",
+            "save_filename_prefix": "保存文件名前缀",
+            "reference_audio_path": "参考音频路径",
+            "prompt_audio_path": "提示音频路径",
+            "prompt_text": "提示文本"
+        },
+        "outputs": {
+            "audio": "音频",
+            "saved_audio_path": "保存的音频路径",
+            "sample_rate": "采样率",
+            "status": "状态"
+        },
+        "description": ""
+    },
+    "VRGDG_MiniMaxH3TurboLoRACompat": {
+        "title": "VRGDG_MiniMaxH3TurboLoRA兼容",
+        "inputs": {
+            "model": "模型",
+            "lora_name": "LoRA名称"
+        },
+        "widgets": {
+            "strength": "强度"
+        },
+        "outputs": {},
+        "description": "带有剪枝模型参考音频条件兼容性的MiniMax-H3 Turbo LoRA适配器。"
+    },
+    "VRGDG_ZImageWorkflowRunnerUI": {
+        "title": "VRGDG_ZImage工作流运行器UI",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "status": "状态"
+        },
+        "description": "用于运行捆绑的Z-Image文生图工作流模板而无需打开它的画布UI。"
+    },
+    "VRGDG_MuteUnmute4PromptCreatorWF_1": {
+        "title": "静音/取消静音 4 提示词生成器 WF_1",
+        "inputs": {
+            "signal": "信号"
+        },
+        "widgets": {
+            "Refresh Groups": "刷新群组"
+        },
+        "outputs": {
+            "signal_opt": "可选信号"
+        },
+        "description": ""
+    },
+    "VRGDG_MuteUnmute4PromptCreatorWF_2": {
+        "title": "静音/取消静音 4 提示词生成器 WF_2",
+        "inputs": {
+            "signal": "信号"
+        },
+        "widgets": {
+            "Refresh Groups": "刷新群组"
+        },
+        "outputs": {
+            "signal_opt": "可选信号"
+        },
+        "description": ""
+    },
+    "VRGDG_MuteUnmute4PromptCreatorWF_0": {
+        "title": "静音/取消静音 4 提示词生成器 WF_0",
+        "inputs": {
+            "signal": "信号"
+        },
+        "widgets": {
+            "Refresh Groups": "刷新群组"
+        },
+        "outputs": {
+            "signal_opt": "可选信号"
+        },
+        "description": ""
+    },
+    "VRGDG_EasyMultiCyclingTextPicker": {
+        "title": "VRGDG 简易多循环文本选择器",
+        "inputs": {
+            "index_1": "索引_1",
+            "seed_1": "随机种子_1"
+        },
+        "widgets": {
+            "preset_1": "预设",
+            "label_1": "标签",
+            "mode_1": "模式",
+            "items_1": "项目数",
+            "template_1": "模板",
+            "add_list": "添加列表"
+        },
+        "outputs": {
+            "combined_formatted_text": "组合格式化文本",
+            "results_json": "结果 JSON",
+            "formatted_text_1": "格式化文本_1"
+        },
+        "description": "一个更友好的UI包装器，用于VRGDG多循环文本选择器。使用相同的拾取行为和输出。"
+    },
+    "VRGDG_ClearMemoryButtonUI": {
+        "title": "VRGDG清除内存按钮UI",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "status": "状态"
+        },
+        "description": "将捆绑的ClearMemory_API工作流加入队列的小型画布按钮。"
+    }
+}
