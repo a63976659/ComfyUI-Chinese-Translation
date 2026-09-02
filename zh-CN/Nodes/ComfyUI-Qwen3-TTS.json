@@ -1,0 +1,468 @@
+{
+    "FB_Qwen3TTSVoiceClone": {
+        "title": "🎭 Qwen3-TTS 语音克隆",
+        "description": "语音克隆: 从参考音频中克隆语音。",
+        "inputs": {
+            "ref_audio": "参考音频",
+            "voice_clone_prompt": "语音克隆提示",
+            "config": "设置"
+        },
+        "widgets": {
+            "model_choice": "模型选择",
+            "device": "设备",
+            "precision": "浮点精度",
+            "language": "语言",
+            "seed": "随机种子",
+            "max_new_tokens": "最大新令牌数",
+            "top_p": "核采样 ( top_p )",
+            "top_k": "候选词数 ( top_k )",
+            "temperature": "温度",
+            "repetition_penalty": "重复惩罚",
+            "x_vector_only": "仅输出声纹向量",
+            "attention": "注意力",
+            "unload_model_after_generate": "生成后卸载模型",
+            "custom_model_path": "自定义模型路径"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
+    },
+    "FB_Qwen3TTSVoiceDesign": {
+        "title": "🎨 Qwen3-TTS 语音设计",
+        "description": "语音设计：根据描述生成自定义语音。",
+        "inputs": {
+            "config": "设置"
+        },
+        "widgets": {
+            "model_choice": "模型选择",
+            "device": "设备",
+            "precision": "浮点精度",
+            "language": "语言",
+            "seed": "随机种子",
+            "max_new_tokens": "最大新令牌数",
+            "top_p": "核采样 ( top_p )",
+            "top_k": "候选词数 ( top_k )",
+            "temperature": "温度",
+            "repetition_penalty": "重复惩罚",
+            "attention": "注意力",
+            "unload_model_after_generate": "生成后卸载模型"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
+    },
+    "FB_Qwen3TTSCustomVoice": {
+        "title": "🎵 Qwen3-TTS 预定义语音",
+        "description": "预定义语音：使用预设扬声器生成语音。",
+        "inputs": {
+            "config": "设置"
+        },
+        "widgets": {
+            "speaker": "说话人",
+            "model_choice": "模型选择",
+            "device": "设备",
+            "precision": "浮点精度",
+            "language": "语言",
+            "seed": "随机种子",
+            "max_new_tokens": "最大新令牌数",
+            "top_p": "核采样 ( top_p )",
+            "top_k": "候选词数 ( top_k )",
+            "temperature": "温度",
+            "repetition_penalty": "重复惩罚",
+            "attention": "注意力",
+            "unload_model_after_generate": "生成后卸载模型",
+            "custom_model_path": "自定义模型路径",
+            "custom_speaker_name": "自定义角色名称"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
+    },
+    "FB_Qwen3TTSVoiceClonePrompt": {
+        "title": "🎭 Qwen3-TTS 声音特征提取与缓存",
+        "description": "声音特征提取与缓存: 提取并缓存语音特征以便在 VoiceClone 节点中重用。",
+        "inputs": {
+            "ref_audio": "参考音频"
+        },
+        "widgets": {
+            "model_choice": "模型选择",
+            "device": "设备",
+            "precision": "浮点精度",
+            "x_vector_only": "仅输出声纹向量",
+            "unload_model_after_generate": "生成后卸载模型",
+            "attention": "注意力权重"
+        },
+        "outputs": {
+            "voice_clone_prompt": "克隆参考音频"
+        }
+    },
+    "FB_Qwen3TTSRoleBank": {
+        "title": "📇 Qwen3-TTS 角色库",
+        "description": "角色库：将多个语音提示收集到一个数据库中，以生成对话。",
+        "inputs": {
+            "prompt_1": "参考文本_1",
+            "prompt_2": "参考文本_2",
+            "prompt_3": "参考文本_3",
+            "prompt_4": "参考文本_4",
+            "prompt_5": "参考文本_5",
+            "prompt_6": "参考文本_6",
+            "prompt_7": "参考文本_7",
+            "prompt_8": "参考文本_8"
+        },
+        "widgets": {
+            "role_name_1": "角色名称_1",
+            "role_name_2": "角色名称_2",
+            "role_name_3": "角色名称_3",
+            "role_name_4": "角色名称_4",
+            "role_name_5": "角色名称_5",
+            "role_name_6": "角色名称_6",
+            "role_name_7": "角色名称_7",
+            "role_name_8": "角色名称_8"
+        },
+        "outputs": {
+            "role_bank": "角色库"
+        }
+    },
+    "FB_Qwen3TTSDialogueInference": {
+        "title": "💬 Qwen3-TTS 对话推理",
+        "description": "对话推理: 执行具有多个角色的脚本并生成连续的语音。",
+        "inputs": {
+            "role_bank": "角色库"
+        },
+        "widgets": {
+            "model_choice": "模型选择",
+            "device": "设备",
+            "precision": "浮点精度",
+            "language": "语言",
+            "pause_linebreak": "换行停顿",
+            "period_pause": "句号停顿",
+            "comma_pause": "逗号停顿",
+            "question_pause": "问号停顿",
+            "merge_outputs": "合并音频",
+            "batch_size": "批次大小",
+            "hyphen_pause": "连字符停顿",
+            "seed": "随机种子",
+            "max_new_tokens_per_line": "每行最大新令牌数",
+            "top_p": "核采样 ( top_p )",
+            "top_k": "候选词数 ( top_k )",
+            "temperature": "温度",
+            "repetition_penalty": "重复惩罚",
+            "attention": "注意力",
+            "unload_model_after_generate": "生成后卸载模型"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
+    },
+    "FB_Qwen3TTSSaveVoice": {
+        "title": "💾 Qwen3-TTS 保存声音特征",
+        "description": "保存语音: 将声音克隆提示词特征保存至磁盘，以便日后使用。",
+        "inputs": {
+            "voice_clone_prompt": "克隆提示文本",
+            "audio": "音频"
+        },
+        "widgets": {
+            "filename": "文件名"
+        }
+    },
+    "FB_Qwen3TTSLoadSpeaker": {
+        "title": "🎙️ Qwen3-TTS 加载音色",
+        "description": "加载音色: 加载保存的WAV音频及其元数据。快速加载。qvp功能（如果可用）。",
+        "widgets": {
+            "filename": "文件名"
+        },
+        "outputs": {
+            "voice_clone_prompt": "提示文本",
+            "audio": "音频",
+            "ref_text": "参考文本"
+        }
+    },
+    "FB_Qwen3TTSConfig": {
+        "title": "Qwen3 TTS 配置 (暂停控制)",
+        "widgets": {
+            "pause_linebreak": "换行_停顿",
+            "period_pause": "句号_停顿",
+            "comma_pause": "逗号_停顿",
+            "question_pause": "问号_停顿",
+            "hyphen_pause": "连字符_停顿"
+        },
+        "outputs": {
+            "config": "设置"
+        }
+    },
+    "FB_Qwen3TTSTrain": {
+        "title": "🏋️ Qwen3-TTS 模型训练",
+        "description": "模型再训练 / 微调",
+        "widgets": {
+            "init_model": "初始模型",
+            "tokenizer": "分词器",
+            "audio_folder": "音频文件夹",
+            "speaker_name": "说话人姓名",
+            "language": "语言",
+            "learning_rate": "学习率",
+            "num_epochs": "训练轮数",
+            "batch_size": "批大小",
+            "gradient_accumulation_steps": "梯度累加步数",
+            "validate_every": "验证频率"
+        },
+        "outputs": {
+            "checkpoint_path": "大模型_路径"
+        }
+    },
+    "Qwen3Loader": {
+        "title": "📦 Qwen3-TTS 模型加载器",
+        "description": "加载 Qwen3-TTS 模型。支持从 HuggingFace/ModelScope 自动下载，或加载本地模型与微调检查点。",
+        "inputs": {
+            "local_model_path": "本地模型路径"
+        },
+        "widgets": {
+            "repo_id": "模型",
+            "source": "下载源",
+            "precision": "浮点精度",
+            "attention": "注意力机制",
+            "local_model_path": "本地模型路径",
+            "Path to local model or checkpoint. If checkpoint (no speech_tokenizer/), base model loads from repo_id first.": "本地模型或检查点路径。若为检查点（不含 speech_tokenizer/ 目录），将先按所选模型加载基础模型。"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "Qwen3CustomVoice": {
+        "title": "🎙️ Qwen3-TTS 预设音色合成",
+        "description": "使用 Qwen3-TTS 内置预设说话人合成语音，可附加风格指令。需加载 CustomVoice 模型。",
+        "inputs": {
+            "model": "模型",
+            "text": "合成文本",
+            "seed": "随机种子",
+            "instruct": "风格指令",
+            "custom_speaker_name": "自定义说话人名称",
+            "max_new_tokens": "最大生成令牌数"
+        },
+        "widgets": {
+            "text": "合成文本",
+            "language": "语言",
+            "speaker": "预设说话人",
+            "seed": "随机种子",
+            "instruct": "风格指令",
+            "custom_speaker_name": "自定义说话人名称",
+            "max_new_tokens": "最大生成令牌数"
+        },
+        "outputs": {
+            "AUDIO": "音频"
+        }
+    },
+    "Qwen3VoiceDesign": {
+        "title": "🎨 Qwen3-TTS 音色设计",
+        "description": "根据自然语言描述设计并生成全新的音色。需加载 VoiceDesign 模型。",
+        "inputs": {
+            "model": "模型",
+            "text": "合成文本",
+            "instruct": "音色描述",
+            "seed": "随机种子"
+        },
+        "widgets": {
+            "text": "合成文本",
+            "instruct": "音色描述",
+            "language": "语言",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "AUDIO": "音频"
+        }
+    },
+    "Qwen3PromptMaker": {
+        "title": "🧬 Qwen3-TTS 声音特征提取",
+        "description": "从参考音频中提取声音特征（声纹嵌入），供语音克隆节点重复使用。需加载 Base 模型。",
+        "inputs": {
+            "model": "模型",
+            "ref_audio": "参考音频",
+            "ref_text": "参考文本",
+            "ref_audio_max_seconds": "参考音频最大时长（秒）"
+        },
+        "widgets": {
+            "ref_text": "参考文本",
+            "ref_audio_max_seconds": "参考音频最大时长（秒）"
+        },
+        "outputs": {
+            "QWEN3_PROMPT": "声音特征"
+        }
+    },
+    "Qwen3SavePrompt": {
+        "title": "💾 Qwen3-TTS 保存声音特征",
+        "description": "将声音特征保存为 safetensors 文件，便于日后加载复用。",
+        "inputs": {
+            "prompt": "声音特征",
+            "filename": "文件名"
+        },
+        "widgets": {
+            "filename": "文件名"
+        },
+        "outputs": {
+            "filepath": "文件路径"
+        }
+    },
+    "Qwen3LoadPrompt": {
+        "title": "📂 Qwen3-TTS 加载声音特征",
+        "description": "从 models/Qwen3-TTS/prompts 目录加载已保存的声音特征文件。",
+        "inputs": {},
+        "widgets": {
+            "prompt_file": "特征文件"
+        },
+        "outputs": {
+            "prompt": "声音特征"
+        }
+    },
+    "Qwen3VoiceClone": {
+        "title": "🎭 Qwen3-TTS 语音克隆",
+        "description": "基于参考音频的语音克隆合成：可直接提供参考音频与参考文本，或输入预提取的声音特征。需加载 Base 模型。",
+        "inputs": {
+            "model": "模型",
+            "ref_audio": "参考音频",
+            "prompt": "声音特征",
+            "text": "合成文本",
+            "seed": "随机种子",
+            "ref_text": "参考文本",
+            "max_new_tokens": "最大生成令牌数",
+            "ref_audio_max_seconds": "参考音频最大时长（秒）"
+        },
+        "widgets": {
+            "text": "合成文本",
+            "seed": "随机种子",
+            "language": "语言",
+            "ref_text": "参考文本",
+            "max_new_tokens": "最大生成令牌数",
+            "ref_audio_max_seconds": "参考音频最大时长（秒）"
+        },
+        "outputs": {
+            "AUDIO": "音频"
+        }
+    },
+    "Qwen3DatasetFromFolder": {
+        "title": "📝 Qwen3-TTS 数据集制作",
+        "description": "扫描文件夹中的 wav 音频与同名 txt 文本，生成微调所需的 JSONL 数据集文件。",
+        "inputs": {
+            "folder_path": "音频文件夹路径",
+            "output_filename": "输出文件名",
+            "ref_audio_path": "参考音频路径"
+        },
+        "widgets": {
+            "folder_path": "音频文件夹路径",
+            "output_filename": "输出文件名",
+            "ref_audio_path": "参考音频路径"
+        },
+        "outputs": {
+            "jsonl_path": "数据集文件路径"
+        }
+    },
+    "Qwen3DataPrep": {
+        "title": "⚙️ Qwen3-TTS 数据预处理",
+        "description": "使用语音分词器将数据集中的音频编码为音频码，生成可训练的预处理数据（结果带缓存，重复执行不重复处理）。",
+        "inputs": {
+            "jsonl_path": "数据集文件路径",
+            "batch_size": "批大小"
+        },
+        "widgets": {
+            "jsonl_path": "数据集文件路径",
+            "tokenizer_repo": "分词器模型",
+            "source": "下载源",
+            "batch_size": "批大小",
+            "Number of audio files to process at once. Lower values use less VRAM.": "一次处理的音频文件数量，数值越小显存占用越低。"
+        },
+        "outputs": {
+            "processed_jsonl_path": "预处理数据路径"
+        }
+    },
+    "Qwen3FineTune": {
+        "title": "🏋️ Qwen3-TTS 模型微调",
+        "description": "微调 Qwen3-TTS Base 模型以训练自定义说话人音色，输出可直接用于推理的模型检查点。",
+        "inputs": {
+            "train_jsonl": "训练数据路径",
+            "output_dir": "输出目录",
+            "epochs": "训练轮数",
+            "batch_size": "批大小",
+            "lr": "学习率",
+            "speaker_name": "说话人名称",
+            "seed": "随机种子",
+            "resume_training": "断点续训",
+            "log_every_steps": "日志步数间隔",
+            "save_every_epochs": "每N轮保存",
+            "save_every_steps": "每N步保存",
+            "gradient_accumulation": "梯度累积步数",
+            "gradient_checkpointing": "梯度检查点",
+            "use_8bit_optimizer": "使用8位优化器",
+            "weight_decay": "权重衰减",
+            "max_grad_norm": "最大梯度范数",
+            "warmup_steps": "预热步数",
+            "warmup_ratio": "预热比例",
+            "save_optimizer_state": "保存优化器状态"
+        },
+        "widgets": {
+            "train_jsonl": "训练数据路径",
+            "init_model": "基础模型",
+            "source": "下载源",
+            "output_dir": "输出目录",
+            "epochs": "训练轮数",
+            "batch_size": "批大小",
+            "lr": "学习率",
+            "speaker_name": "说话人名称",
+            "seed": "随机种子",
+            "resume_training": "断点续训",
+            "log_every_steps": "日志步数间隔",
+            "save_every_epochs": "每N轮保存",
+            "save_every_steps": "每N步保存",
+            "mixed_precision": "混合精度",
+            "gradient_accumulation": "梯度累积步数",
+            "gradient_checkpointing": "梯度检查点",
+            "use_8bit_optimizer": "使用8位优化器",
+            "weight_decay": "权重衰减",
+            "max_grad_norm": "最大梯度范数",
+            "warmup_steps": "预热步数",
+            "warmup_ratio": "预热比例",
+            "save_optimizer_state": "保存优化器状态",
+            "Path to the preprocessed JSONL file containing training data with audio codes.": "预处理后的 JSONL 文件路径，其中需包含带音频码的训练数据。",
+            "Base model to fine-tune. Must be a 'Base' model variant.": "用于微调的基础模型，必须为 Base 变体。",
+            "Download source if model is not found locally.": "本地未找到模型时的下载来源。",
+            "Directory to save checkpoints and final model.": "保存检查点与最终模型的目录。",
+            "Number of training epochs to run.": "训练的总轮数。",
+            "Number of samples per batch. Lower values use less VRAM.": "每批样本数量，数值越小显存占用越低。",
+            "Learning rate. Qwen default (2e-5) is too aggressive for small batches, causing noise output. Defaults to 2e-6 for stability.": "学习率。Qwen 默认值 (2e-5) 对小批量过于激进，会导致噪声输出；默认 2e-6 以保证稳定。",
+            "Name for the custom speaker. Use this name when generating with the fine-tuned model.": "自定义说话人名称，使用微调模型生成语音时通过该名称指定音色。",
+            "Random seed for reproducibility.": "随机种子，用于结果复现。",
+            "Continue training from the latest checkpoint in output_dir.": "从输出目录中最新的检查点继续训练。",
+            "Log training progress every N steps.": "每 N 步记录一次训练日志。",
+            "Save checkpoint every N epochs. Set to 0 to only save final epoch. Ignored if save_every_steps > 0.": "每 N 轮保存一次检查点，设为 0 则仅在最终轮保存；当按步保存（save_every_steps > 0）时此项被忽略。",
+            "Save checkpoint every N steps. Set to 0 to use epoch-based saving instead.": "每 N 步保存一次检查点，设为 0 则改为按轮保存。",
+            "bf16 recommended. Use fp32 only if GPU doesn't support bf16 (pre-Ampere).": "推荐使用 bf16；仅当显卡不支持 bf16（安培架构之前）时改用 fp32。",
+            "Accumulate gradients over N steps before updating. Effective batch size = batch_size * gradient_accumulation.": "更新参数前累积 N 步梯度，等效批大小 = 批大小 × 梯度累积步数。",
+            "Trade compute for VRAM by recomputing activations. Saves ~30-40% VRAM.": "通过重算激活值以计算时间换取显存，可节省约 30-40% 显存。",
+            "Use 8-bit AdamW optimizer. Saves ~50% optimizer VRAM. Requires bitsandbytes.": "使用 8 位 AdamW 优化器，可节省约 50% 优化器显存，需安装 bitsandbytes。",
+            "L2 regularization strength to prevent overfitting.": "L2 正则化强度，用于防止过拟合。",
+            "Gradient clipping threshold to prevent exploding gradients.": "梯度裁剪阈值，用于防止梯度爆炸。",
+            "Number of warmup steps. Set to 0 to disable warmup. Recommended: 5-10% of total steps.": "预热步数，设为 0 关闭预热；建议设为总步数的 5-10%。",
+            "Warmup as ratio of total steps. Ignored if warmup_steps > 0. E.g., 0.1 = 10% warmup.": "按总步数比例预热，当 warmup_steps > 0 时此项被忽略，例如 0.1 表示预热 10%。",
+            "Save optimizer/scheduler state in checkpoints. Enables perfect resume but doubles checkpoint size.": "在检查点中保存优化器/调度器状态，可完美恢复训练，但检查点体积约翻倍。"
+        },
+        "outputs": {
+            "model_path": "模型路径",
+            "custom_speaker_name": "自定义说话人名称"
+        }
+    },
+    "Qwen3AudioCompare": {
+        "title": "📊 Qwen3-TTS 音频对比评测",
+        "description": "对比参考音频与生成音频，输出说话人相似度、梅尔频谱距离与语速等指标的评测报告。",
+        "inputs": {
+            "reference_audio": "参考音频",
+            "generated_audio": "生成音频",
+            "local_model_path": "本地模型路径"
+        },
+        "widgets": {
+            "speaker_encoder_model": "说话人编码器模型",
+            "local_model_path": "本地模型路径",
+            "Base model to load speaker encoder from (only loads ~76 weights, not the full model)": "加载说话人编码器所用的基础模型（仅加载约 76 个权重，不加载完整模型）",
+            "Optional custom path to model directory. If empty, uses default models/Qwen3-TTS/ location.": "可选的模型目录自定义路径，留空则使用默认的 models/Qwen3-TTS/ 目录。"
+        },
+        "outputs": {
+            "report": "评测报告"
+        }
+    }
+}
