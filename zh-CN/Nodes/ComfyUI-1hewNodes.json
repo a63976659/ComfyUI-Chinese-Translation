@@ -1,4 +1,109 @@
 {
+    "1hew_IntNumberCompare": {
+        "title": "整数比较",
+        "inputs": {
+            "a": "数值 a",
+            "operator": "运算符",
+            "b": "数值 b"
+        },
+        "widgets": {
+            "bool": "布尔值"
+        },
+        "outputs": {},
+        "description": "比较两个整数的大小关系"
+    },
+    "1hew_FloatNumberCompare": {
+        "title": "浮点数比较",
+        "inputs": {},
+        "widgets": {
+            "a": "数值 a",
+            "operator": "运算符",
+            "b": "数值 b"
+        },
+        "outputs": {
+            "bool": "布尔值"
+        },
+        "description": "比较两个浮点数的大小关系"
+    },
+    "1hew_ImageBWMatte": {
+        "title": "图像黑白磨边",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "gamma": "伽马",
+            "shrink_radius": "收缩半径",
+            "blur_radius": "模糊半径"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        }
+    },
+    "1hew_MaskStroke": {
+        "title": "描边遮罩",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "fill_hole": "填充孔洞",
+            "stroke_width": "描边宽度",
+            "include_mask": "包含遮罩"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        },
+        "description": "对遮罩进行描边处理"
+    },
+    "1hew_VideoToURL": {
+        "title": "视频转URL",
+        "inputs": {
+            "video": "视频文件路径"
+        },
+        "widgets": {
+            "timeout": "超时时间（秒）"
+        },
+        "outputs": {
+            "url": "生成的URL"
+        },
+        "description": "将视频文件转换为可访问的URL链接"
+    },
+    "1hew_VideoToImage": {
+        "title": "视频转图像",
+        "inputs": {
+            "video": "视频"
+        },
+        "widgets": {},
+        "outputs": {
+            "image": "图像",
+            "audio": "音频",
+            "fps": "帧率",
+            "frame_count": "帧数"
+        },
+        "description": "将视频转换为图像、音频、帧率和帧数"
+    },
+    "1hew_IntVideoCount": {
+        "title": "视频计数器",
+        "inputs": {
+            "video_1": "视频1"
+        },
+        "widgets": {},
+        "outputs": {
+            "int": "整数"
+        },
+        "description": "用于计数视频的节点"
+    },
+    "1hew_ImageToMask": {
+        "title": "图像转遮罩",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "mask": "遮罩"
+        },
+        "description": "将图像转换为遮罩"
+    },
     "1hew_ImageBatchIndex": {
         "title": "图像批次索引",
         "inputs": {
@@ -57,7 +162,6 @@
         "inputs": {
             "image_1": "图像1"
         },
-
         "widgets": {},
         "outputs": {
             "int": "整数"
