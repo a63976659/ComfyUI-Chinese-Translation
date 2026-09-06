@@ -559,12 +559,30 @@ function setupSearchBoxObserver() {
 let _treeDebounceTimer = null;
 
 /**
+ * 判断某个 .p-tree 是否属于“工作流”侧边栏。
+ * 工作流树渲染的是用户自定义的工作流文件名/文件夹名（可重命名、可拖拽），
+ * 属于用户命名内容，不应参与字典翻译；而节点库/模型库树没有该专属容器类名，
+ * 因此可精准区分：仅跳过工作流树，保留节点库子图分类名的翻译。
+ * @param {Element} el - .p-tree 元素（或其内部节点）
+ * @returns {boolean}
+ */
+function isWorkflowSidebarTree(el) {
+  try {
+    return !!el?.closest?.('.workflows-sidebar-tab, [data-testid="workflows-sidebar"]');
+  } catch (e) {
+    return false;
+  }
+}
+
+/**
  * 直接遍历 .p-tree 内的文本节点进行翻译，绕开 tSkip 的 p-tree 排除
  * 不经过 replaceText/tSkip，直接调用 texe.MT() 查询翻译并替换
  * @param {Element} treeRoot - .p-tree 根元素
  */
 function translateTreeLabels(treeRoot) {
   if (!treeRoot || !texe.T) return;
+  // 工作流侧边栏树内是用户命名的工作流文件/文件夹，跳过翻译（防御性二次校验）
+  if (isWorkflowSidebarTree(treeRoot)) return;
   try {
     const walker = document.createTreeWalker(treeRoot, NodeFilter.SHOW_TEXT, null, false);
     let textNode;
@@ -589,6 +607,9 @@ function translateTreeLabels(treeRoot) {
  */
 function setupTreeObserver(treeEl) {
   if (!treeEl || texe.observedTrees.has(treeEl)) return;
+  // 跳过工作流侧边栏树：其节点是用户命名的工作流文件/文件夹，无需翻译，
+  // 也不为其创建 Observer（避免展开/重命名时反复触发字典查表翻译）
+  if (isWorkflowSidebarTree(treeEl)) return;
   texe.observedTrees.add(treeEl);
 
   // 首次翻译

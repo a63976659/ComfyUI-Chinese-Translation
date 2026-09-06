@@ -84,11 +84,7 @@ ComfyUI-Chinese-Translation 是一个专为 ComfyUI 设计的中文汉化插件�
 
 <img width="900" height="180" alt="新版开" src="https://github.com/user-attachments/assets/0e6751fb-4196-4f09-9a64-818bda07f343" />
 
-<img width="900" height="180" alt="新版-关" src="https://github.com/user-attachments/assets/13810712-12df-4bea-bdfd-5e86f3d7686e" />
-
-<img width="900" height="180" alt="新增按钮位置" src="https://github.com/user-attachments/assets/3ce2f0c0-bad9-4d8b-99fb-ae2b37dcaa2e" />
-
-<img width="900" height="180" alt="新增按钮位置2" src="https://github.com/user-attachments/assets/f1ca599b-7611-4120-b05d-317aced6cb75" />
+<img width="1000" height="180" alt="新版-关" src="https://github.com/user-attachments/assets/13810712-12df-4bea-bdfd-5e86f3d7686e" />
 
 ### 界面效果
 
@@ -151,7 +147,9 @@ git clone https://github.com/a63976659/ComfyUI-Chinese-Translation.git
 | 设置项 | 说明 | 选项 |
 |-------|------|------|
 | 🌐 翻译语言设置 | 选择翻译语言 | zh-CN（默认）等 |
-| 🎨 翻译按钮样式 | 选择按钮外观 | 胶囊分段 / 七彩渐变 / 原生低调 |
+| 🎨 翻译开关样式 | 选择开关外观，切换后实时重绘无需刷新 | pill (胶囊分段) / gradient (七彩渐变) / plain (原生低调) |
+
+> 💡 **胶囊分段（推荐）**：圆角胶囊形态，蓝色高亮滑块覆盖当前状态分段。**点击蓝色滑块**即可滑动到另一侧完成切换，选择后立即保存到配置文件，重启 ComfyUI 后依然保持。
 
 ### 按钮样式说明
 
@@ -160,6 +158,8 @@ git clone https://github.com/a63976659/ComfyUI-Chinese-Translation.git
 | **胶囊分段** | 蓝色滑块覆盖"开启"段，白色粗体文字 | 蓝色滑块滑至"关闭"段，灰色文字 | 现代简洁，状态一目了然 |
 | **七彩渐变** | 彩虹流动动画，白色粗体 | 灰色流动动画，深色粗体 | 希望直观醒目 |
 | **原生低调** | ComfyUI 主题色背景 | 深色背景，灰色文字 | 希望融入界面 |
+
+> **胶囊分段交互说明**：仅蓝色高亮滑块是切换触发点——点击后滑块先播放滑动动画（约 300ms）再保存并刷新页面；灰色文字分段仅作状态标签，点击无反应属设计行为。
 
 ---
 
@@ -289,6 +289,10 @@ zh-CN/
 ---
 
 ## 更新记录
+
+### 2026-09-07
+
+- 修复侧边栏「工作流」列表里自己起的工作流名字被误翻译成中文的问题，现在会原样保留
 
 ### 2026-08-20
 
