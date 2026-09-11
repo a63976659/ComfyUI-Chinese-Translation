@@ -1,0 +1,73 @@
+{
+    "SelfLiftH3Sampler": {
+        "title": "🎬 SelfLift 渐进式采样器 (MiniMax H3)",
+        "description": "SelfLift 渐进式分辨率提升采样器：先在低分辨率前半段采样，通过 Artifact-Aware Consistency Lift 将干净的终点提升至全分辨率，再重新加噪完成后半段。适用于 MiniMax H3 嵌套 AV latent。",
+        "inputs": {
+            "model": "模型",
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "vae": "VAE",
+            "latent_image": "目标空 Latent",
+            "sampler": "采样器",
+            "sigmas": "sigmas 序列",
+            "highres_tiling": "高分辨率分块"
+        },
+        "widgets": {
+            "seed": "随机种子",
+            "cfg": "CFG 系数",
+            "transition_step": "分辨率过渡步数",
+            "lowres_scale": "低分辨率缩放",
+            "rho": "像素锚点校正比例",
+            "w_min": "校正强度下限",
+            "w_max": "校正强度上限",
+            "upscaler_model": "放大模型",
+            "highres_tiling": "高分辨率分块",
+            "Video VAE used for the pixel re-encode anchor at the resolution transition.": "分辨率过渡时像素重编码锚点所用的视频 VAE。",
+            "All-zero target-resolution latent (e.g. Empty MiniMax H3 AV Latent), defines size and duration. Encoded/init latents and noise masks are not supported; supply keyframes through conditioning.": "全零目标分辨率 latent（例如 Empty MiniMax H3 AV Latent），决定输出尺寸与时长。不支持编码后的 latent、初始化 latent 和噪声遮罩；关键帧请通过 conditioning 传入。",
+            "Standard Euler only; SelfLift reuses its transition-step prediction to keep the original NFE count.": "仅支持标准 Euler 采样器；SelfLift 复用其过渡步预测以保持原始 NFE 数不变。",
+            "Number of low-resolution denoiser evaluations. The paper uses 6 of 8 NFEs for its 8-step image model; H3 requires independent validation.": "低分辨率 denoiser 评估次数。原论文在 8 步图像模型中使用 6/8 的 NFE；H3 需要自行验证合适数值。",
+            "Spatial scale of the low-resolution prefix (paper: 0.5).": "低分辨率前缀的空间缩放比例（论文推荐值：0.5）。",
+            "Fraction of highest-risk spatiotemporal locations corrected toward the pixel-VAE anchor. The H3 default 0 uses only the external latent upscaler and skips the VAE round trip. For SelfLift-zero with upscaler_model=none, start near 0.6.": "向像素 VAE 锚点校正的高风险时空位置比例。H3 默认 0 仅使用外部 latent 上采样器，跳过 VAE 往返；若使用 SelfLift-zero（upscaler_model=none），建议从 0.6 附近开始试验。",
+            "Correction-strength floor. H3's widespread nearest-lift error can require 1.0; 0.5 is the paper's image-model setting.": "校正强度下限。H3 中普遍存在的 nearest-lift 误差可能需要 1.0；论文图像模型使用的默认值为 0.5。",
+            "Correction-strength ceiling. Keep at 1.0 for the H3 SelfLift-zero diagnostic.": "校正强度上限。在 H3 SelfLift-zero 诊断场景下保持为 1.0。",
+            "External H3 latent upscaler (models/latent_upscale_models). The first detected H3 model is selected by default; 'none' uses nearest-neighbor lifting.": "外部 H3 latent 上采样模型（位于 models/latent_upscale_models），默认选取检测到的第一个 H3 模型；'none' 则使用最近邻插值进行分辨率提升。",
+            "Experimental: select 1–8 spatial tiles from available memory at high-resolution preparation. Audio input and references remain complete; only the first tile's audio prediction is retained. Quality and speed may change.": "实验性：根据可用显存自动选择 1–8 个空间分块进行高分辨率预处理。音频输入和参考帧保持完整，仅保留首个分块的音频预测。画质与速度可能发生变化。"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "SelfLiftImageSampler": {
+        "title": "🖼️ SelfLift 渐进式采样器 (图像)",
+        "description": "SelfLift-zero 图像渐进式分辨率提升采样器：仅使用最近邻 latent 提升与可选的像素 VAE 校正。兼容 rectified-flow 图像模型。",
+        "inputs": {
+            "model": "模型",
+            "positive": "正向提示词",
+            "negative": "负向提示词",
+            "vae": "VAE",
+            "latent_image": "目标空 Latent",
+            "sampler": "采样器",
+            "sigmas": "sigmas 序列"
+        },
+        "widgets": {
+            "seed": "随机种子",
+            "cfg": "CFG 系数",
+            "transition_step": "分辨率过渡步数",
+            "lowres_scale": "低分辨率缩放",
+            "rho": "像素锚点校正比例",
+            "w_min": "校正强度下限",
+            "w_max": "校正强度上限",
+            "latent_upsample": "Latent 放大",
+            "VAE used for the pixel re-encode anchor at the resolution transition.": "分辨率过渡时像素重编码锚点所用的 VAE。",
+            "All-zero target-resolution latent (e.g. Empty Latent Image), defines the output size. Encoded/init latents and noise masks are not supported.": "全零目标分辨率 latent（例如 Empty Latent Image），决定输出尺寸。不支持编码后的 latent、初始化 latent 和噪声遮罩。",
+            "Standard Euler only; SelfLift reuses its transition-step prediction to keep the original NFE count.": "仅支持标准 Euler 采样器；SelfLift 复用其过渡步预测以保持原始 NFE 数不变。",
+            "Number of low-resolution denoiser evaluations. Paper: 3 of 4 for FLUX.2-Klein, 6 of 8 for Z-Image-Turbo.": "低分辨率 denoiser 评估次数。论文推荐：FLUX.2-Klein 使用 4 步中的 3 步；Z-Image-Turbo 使用 8 步中的 6 步。",
+            "Spatial scale of the low-resolution prefix (paper: 0.5).": "低分辨率前缀的空间缩放比例（论文推荐值：0.5）。",
+            "Fraction of locations corrected toward the pixel-VAE anchor. Paper: 0.4 for FLUX.2-Klein, 0.3 for Z-Image-Turbo.": "向像素 VAE 锚点校正的位置比例。论文推荐：FLUX.2-Klein 为 0.4，Z-Image-Turbo 为 0.3。",
+            "Interpolation for the direct latent lift (paper: nearest).": "直接 latent 提升使用的插值方式（论文推荐：最近邻）。"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    }
+}

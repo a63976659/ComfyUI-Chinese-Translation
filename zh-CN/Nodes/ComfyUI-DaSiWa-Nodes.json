@@ -118,8 +118,8 @@
             "system_prompt_preset": "系统提示预设",
             "system_prompt": "系统提示",
             "prompt": "提示词",
-            "max_new_tokens": "最大新令牌数",
-            "max_input_tokens": "最大输入令牌数",
+            "max_new_tokens": "最大新词元",
+            "max_input_tokens": "最大输入词元",
             "temperature": "温度",
             "top_p": "Top_p",
             "repetition_penalty": "重复惩罚",
@@ -146,9 +146,14 @@
         },
         "widgets": {
             "stack_data": "堆叠数据",
-            "model_type": "模型类型"
+            "model_type": "模型类型",
+            "use_cache": "启用 LoRA 文件缓存",
+            "available_loras": "可用 LoRA 列表"
         },
-        "outputs": {},
+        "outputs": {
+            "MODEL": "模型",
+            "CLIP": "CLIP"
+        },
         "description": "DaSiWa高级LoRA加载器：堆叠普通图像/视频LoRA或LTX-2.3视频/音频LoRA。音频分离仅适用于LTX-2.3。"
     },
     "DaSiWa_MetadataConfig": {
@@ -282,7 +287,9 @@
             "resize_type": "调整大小类型",
             "divisible_by": "可整除值",
             "ratio_preset": "比例预设",
-            "resize_method": "调整大小方法"
+            "resize_method": "调整大小方法",
+            "use_mmap": "使用磁盘映射",
+            "auto_unload_models": "自动卸载模型"
         },
         "outputs": {
             "images": "图像"
@@ -340,14 +347,7 @@
     },
     "DaSiWa_NodeStatusSwitch": {
         "title": "DaSiWa_节点状态切换",
-        "inputs": {
-            "target_01": "目标_01 ",
-            "target_02": "目标_02 ",
-            "target_03": "目标_03 ",
-            "target_04": "目标_04 ",
-            "target_05": "目标_05 ",
-            "target_06": "目标_06 "
-        },
+        "inputs": {},
         "widgets": {
             "enabled": "启用",
             "trigger_on": "触发条件",
@@ -402,5 +402,227 @@
             "negative_prompt": "负向提示词"
         },
         "description": "从内置的双风格提示词库构建正向和负向提示词。选择项及权重存储在工作流中"
+    },
+    "DaSiWa_SeedControl": {
+        "title": "DaSiWa_独立种子控制器",
+        "description": "独立的种子控制节点，复用 MiniMax H3 Director 的种子交互体验：随机/固定模式、64 位无符号种子、重新随机/恢复上次种子、近 10 次历史，以及输出 NOISE 对象供下游采样器直接使用。",
+        "inputs": {
+            "seed": "外部种子输入"
+        },
+        "widgets": {
+            "seed_value": "本地种子值",
+            "seed_control_state": "种子控制状态",
+            "Local seed value. The panel edits this; leave the native widget hidden.": "本地种子值，由前端面板编辑；原生控件保持隐藏即可。",
+            "Persisted seed-control state (JSON): mode, last_seed and recent seeds.": "持久化的种子控制状态（JSON）：模式、上次种子及历史种子列表。",
+            "Optional external seed. When linked, the local controls are disabled and this value is passed through.": "可选的外部种子输入：连接后本地控件被禁用，直接透传连接的值。"
+        },
+        "outputs": {
+            "seed": "种子",
+            "noise": "噪声"
+        }
+    },
+    "PathchComfyKitchenAttentionDaSiWa": {
+        "title": "🪛 DaSiWa_Comfy Kitchen INT8 注意力补丁",
+        "description": "为模型打补丁，运行时使用 Comfy Kitchen INT8 注意力实现以节省显存。若 Comfy Kitchen 不可用则回退到 ComfyUI 默认注意力。",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {},
+        "outputs": {
+            "MODEL": "模型"
+        }
+    },
+    "MiniMaxH3Director": {
+        "title": "🎬 DaSiWa_MiniMax H3 导演",
+        "description": "MiniMax H3 视频/音频生成导演节点：整合时间轴、参考媒体与提示词构建，输出包含完整指导信息的导演配置，供 MiniMax H3 Director Guide 节点使用。",
+        "inputs": {
+            "fl2va_model": "FL2VA 模型",
+            "ref2va_model": "REF2VA 模型",
+            "external_width_overwrite": "外部宽度覆盖",
+            "external_height_overwrite": "外部高度覆盖",
+            "external_prompt_overwrite": "外部提示词覆盖"
+        },
+        "widgets": {
+            "mode": "模式",
+            "prompt": "提示词",
+            "width": "宽度",
+            "height": "高度",
+            "duration": "时长",
+            "ref_image_size": "参考图尺寸",
+            "frame_rate": "帧率"
+        },
+        "outputs": {
+            "guide": "导演指南",
+            "duration": "时长",
+            "positive_prompt": "正向提示词",
+            "width": "宽度",
+            "height": "高度",
+            "model": "模型",
+            "fl2va_requested": "请求 FL2VA",
+            "inpaint_requested": "请求修复",
+            "frame_rate": "帧率"
+        },
+        "ui": {
+            "Model Mode:": "模型模式：",
+            "Image Inpaint": "图像修复",
+            "Prompt Mode:": "提示词模式：",
+            "Simple": "简易",
+            "Structured": "结构化",
+            "Use the simple prompt editor": "使用简易提示词编辑器",
+            "Use the structured prompt editor": "使用结构化提示词编辑器",
+            "One image reference; output exactly one frame through Get Image from Batch.": "单张图像参考；通过「从批次获取图像」恰好输出一帧。",
+            "Remove": "移除",
+            "Clear": "清空",
+            "Remove all media and prompts": "移除全部媒体与提示词",
+            "Nothing to clear yet": "暂无可清空的内容",
+            "Nothing to clear.": "暂无可清空的内容。",
+            "Open MiniMax H3 Director documentation on GitHub": "在 GitHub 上打开 MiniMax H3 导演文档",
+            "T2VA · no input frame": "T2VA · 无输入帧",
+            "I2VA · one opening-frame slot": "I2VA · 一个首帧槽位",
+            "FL2VA · opening and closing-frame slots": "FL2VA · 首帧与尾帧槽位",
+            "L2VA · one closing-frame slot": "L2VA · 一个尾帧槽位",
+            "Image Inpaint · exactly one image · outputs one frame through Get Image from Batch · no video/audio": "图像修复 · 恰好一张图像 · 通过「从批次获取图像」输出一帧 · 无视频/音频",
+            "REF2VA · up to 9 image, 3 video, and 3 audio slots · 12 combined files maximum": "REF2VA · 最多 9 个图像、3 个视频和 3 个音频槽位 · 合计最多 12 个文件",
+            "ASPECT": "画幅",
+            "RESOLUTION": "分辨率",
+            "INPUT SCALING": "输入缩放",
+            "Auto": "自动",
+            "CUSTOM": "自定义",
+            "Native (ShortEdge 768px)": "原生（短边 768px）",
+            "Off": "关闭",
+            "Native (ShortEdge 2048px)": "原生（短边 2048px）",
+            "Target · Selected Aspect & Resolution": "目标 · 所选画幅与分辨率",
+            "Fit": "适应",
+            "Fill and crop": "填充并裁剪",
+            "Fit and pad": "适应并补边",
+            "Long side with divisible crop": "长边对齐整除裁剪",
+            "0.26 MP - Preview": "0.26 MP - 预览",
+            "0.36 MP - Small": "0.36 MP - 小",
+            "0.52 MP - SD": "0.52 MP - 标清",
+            "0.65 MP - Balanced": "0.65 MP - 均衡",
+            "0.83 MP - HD": "0.83 MP - 高清",
+            "1.05 MP - HD+": "1.05 MP - 高清+",
+            "1.20 MP - HD++": "1.20 MP - 高清++",
+            "1.35 MP - 2K lite": "1.35 MP - 2K 轻量",
+            "1.75 MP - QHD": "1.75 MP - 超清",
+            "2.10 MP - FHD": "2.10 MP - 全高清",
+            "3.30 MP - QHD+": "3.30 MP - 超清+",
+            "4.75 MP - 2K Pro": "4.75 MP - 2K 专业",
+            "6.50 MP - Production": "6.50 MP - 制片",
+            "8.30 MP - UHD": "8.30 MP - 超高清",
+            "General": "常规",
+            "Horizontal": "横向",
+            "Square": "方形",
+            "Vertical": "竖向",
+            "Skip input scaling — references are sent to MiniMax at their original size.": "跳过输入缩放——参考素材以原始尺寸发送给 MiniMax。",
+            "Scale references down only when their short edge exceeds 2048 px; smaller inputs pass through untouched.": "仅在参考素材短边超过 2048 像素时缩小；更小的输入原样通过、不作处理。",
+            "Resize references to the selected Aspect & Resolution box (stretch, aspect not preserved).": "将参考素材调整到所选画幅与分辨率框（拉伸，不保持宽高比）。",
+            "Scale references to fit inside the target box while preserving their aspect ratio.": "缩放参考素材，使其在保持宽高比的前提下适配目标框。",
+            "Scale references to cover the target box, preserving aspect, then crop the overflow.": "在保持宽高比的前提下缩放参考素材以铺满目标框，然后裁剪溢出部分。",
+            "Scale references to fit inside the target box, preserving aspect, then pad the empty edges.": "在保持宽高比的前提下缩放参考素材以适配目标框，然后填充空白边缘。",
+            "Scale so the long side matches the target, then crop to an exact, divisible target size.": "缩放使长边与目标一致，然后裁剪为精确且可整除的目标尺寸。",
+            "RATIO W": "比例 宽",
+            "RATIO H": "比例 高",
+            "Megapixels": "百万像素",
+            "Fixed pixels": "固定像素",
+            "WIDTH": "宽度",
+            "HEIGHT": "高度",
+            "External width/height overwrite · Director sizing and input scaling disabled": "外部宽高覆盖 · 导演尺寸设定与输入缩放已禁用",
+            "Image/Video": "图像/视频",
+            "Image/Video · selected": "图像/视频 · 已选中",
+            "audio": "音频",
+            "audio · selected": "音频 · 已选中",
+            "Video only": "仅视频",
+            "Audio only": "仅音频",
+            "Video + embedded audio": "视频 + 内嵌音频",
+            "Full source-duration scale": "完整源时长缩放",
+            "Full audio waveform; crop markers show the selected reference window": "完整音频波形；裁剪标记标示所选参考区间",
+            "Decoding audio waveform…": "正在解码音频波形…",
+            "Open preview and details": "打开预览与详情",
+            "T2VA prompt builder": "T2VA 提示词构建器",
+            "I2VA prompt builder": "I2VA 提示词构建器",
+            "FL2VA prompt builder": "FL2VA 提示词构建器",
+            "L2VA prompt builder": "L2VA 提示词构建器",
+            "REF2VA prompt builder": "REF2VA 提示词构建器",
+            "Image Inpaint prompt builder": "图像修复提示词构建器",
+            "T2VA simple prompt": "T2VA 简易提示词",
+            "I2VA simple prompt": "I2VA 简易提示词",
+            "FL2VA simple prompt": "FL2VA 简易提示词",
+            "L2VA simple prompt": "L2VA 简易提示词",
+            "REF2VA simple prompt": "REF2VA 简易提示词",
+            "Image Inpaint simple prompt": "图像修复简易提示词",
+            "REF2VA prompt builder — write freely; headers are added automatically": "REF2VA 提示词构建器——自由书写即可，字段标题会自动添加",
+            "Prompt": "提示词",
+            "Insert [Shot N]": "插入 [镜头 N]",
+            "Prefill Labels & Summary": "预填标签与摘要",
+            "Generate Subject/Picture/Video/Audio labels from inserted media and fill summary template": "根据已插入的媒体生成主体/图像/视频/音频标签，并填充摘要模板",
+            "Preview Prompt": "预览提示词",
+            "Show the full prompt that will be sent upstream": "查看即将发送给上游的完整提示词",
+            "External prompt detected — builder fields are disabled.": "检测到外部提示词——构建器字段已禁用。",
+            "Write the complete MiniMax H3 prompt...": "在此编写完整的 MiniMax H3 提示词…",
+            "[Shot 1] Start your scene description here...": "[Shot 1] 在此开始描述你的场景…",
+            "Describe ambient sounds, dialogue, effects...": "描述环境音、对白、音效…",
+            "N/A or describe background score...": "填 N/A，或描述背景音乐…",
+            "<Subject 1> is the woman in <Picture 1>, with short dark hair and a red coat.\n<Picture 1> is the opening-frame anchor for [Shot 1].\n<Subject 2> is the walking motion taken from <Video 1>.\n<Video 1> provides the camera path and pacing structure.\n<Audio 1> is the voice-timbre reference for <Subject 1>.": "<Subject 1> 是 <Picture 1> 中的女性，留黑色短发、穿红色外套。\n<Picture 1> 是 [Shot 1] 的首帧锚点。\n<Subject 2> 是取自 <Video 1> 的行走动作。\n<Video 1> 提供镜头运镜路径与节奏结构。\n<Audio 1> 是 <Subject 1> 的音色参考。",
+            "[reference generation + audio reference] Use <Subject 1> from <Picture 1>, the motion and pacing of <Video 1>, and the voice character of <Audio 1>.": "[reference generation + audio reference] 使用 <Picture 1> 中的 <Subject 1>、<Video 1> 的动作与节奏，以及 <Audio 1> 的声音特征。",
+            "<Subject 1> (appears in [Shot 1], [Shot 2]): fully_preserved - identity and clothing remain consistent.\n<Picture 1> ([Shot 1] first frame): fully_preserved - opening composition anchor.\n<Subject 2> (motion transferred to <Subject 1>): attribute_transfer - walk rhythm is applied to <Subject 1>.\n<Video 1> (pacing structure): weak_reference - general timing and camera rhythm are retained.\n<Audio 1>: reference - timbre and delivery are followed without copying the signal.": "<Subject 1>（出现在 [Shot 1]、[Shot 2]）：fully_preserved - 身份与服装保持一致。\n<Picture 1>（[Shot 1] 首帧）：fully_preserved - 开场构图锚点。\n<Subject 2>（动作迁移到 <Subject 1>）：attribute_transfer - 步态节奏应用到 <Subject 1>。\n<Video 1>（节奏结构）：weak_reference - 保留大致时机与镜头节奏。\n<Audio 1>：reference - 遵循音色与表达方式，但不复制原始信号。",
+            "[Shot 1] ... [Shot 2] At 00:04.500, ...": "[Shot 1] …… [Shot 2] 在 00:04.500，……",
+            "Audio environment description...": "音频环境描述…",
+            "N/A or background score...": "填 N/A，或描述背景音乐…",
+            "Close and save (Escape or click outside)": "关闭并保存（Esc 或点击外部）",
+            "Start:": "起始：",
+            "End:": "结束：",
+            "▶ Play crop": "▶ 播放裁剪片段",
+            "Playing crop…": "裁剪片段播放中…",
+            "Play only the current crop range": "仅播放当前裁剪区间",
+            "Drag the highlighted crop to move it; drag either end marker to resize it.": "拖动高亮裁剪区可移动；拖动两端标记可调整大小。",
+            "Save": "保存",
+            "Cancel": "取消",
+            "Full media preview": "完整媒体预览",
+            "Done": "完成",
+            "Copy": "复制",
+            "All media and prompts cleared.": "已清空全部媒体与提示词。",
+            "FL2VA supports image references only; video and audio are unavailable.": "FL2VA 仅支持图像参考，视频与音频不可用。",
+            "This media type is not available in the selected MiniMax mode.": "所选 MiniMax 模式不支持此媒体类型。",
+            "FL2VA supports image references only; select the Image/Video lane.": "FL2VA 仅支持图像参考；请选择图像/视频轨道。",
+            "Upload failed": "上传失败",
+            "T2VA has no input lanes.": "T2VA 没有输入轨道。",
+            "This mode does not support audio references.": "此模式不支持音频参考。",
+            "Audio lane selected. Paste files here with Ctrl+V.": "已选择音频轨道。可用 Ctrl+V 在此粘贴文件。",
+            "Image/Video lane selected. Paste files here with Ctrl+V.": "已选择图像/视频轨道。可用 Ctrl+V 在此粘贴文件。"
+        }
+    },
+    "MiniMaxH3DirectorGuide": {
+        "title": "🎬 DaSiWa_MiniMax H3 导演执行器",
+        "description": "将导演指南转换为原生 MiniMax H3 节点调用：根据指南的模式，调用 MiniMaxH3ImageToVideo 或 MiniMaxH3ReferenceToVideo，生成 conditioning 与 latent。",
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "guide": "导演指南",
+            "audio_vae": "音频 VAE"
+        },
+        "widgets": {},
+        "outputs": {
+            "positive": "正向 conditioning",
+            "latent": "Latent"
+        }
+    },
+    "MiniMaxH3Cache": {
+        "title": "⚡ DaSiWa_MiniMax H3 残差缓存",
+        "description": "为 MiniMax H3 模型添加近似整块残差缓存：在选定的步数范围内复用上一次的 block-stack 输出，跳过昂贵的重计算以提升速度。阈值越高跳过越多，可能降低保真度。",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "reuse_threshold": "复用阈值",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比",
+            "max_steps": "最大跳过步数",
+            "device": "设备",
+            "verbose": "详细日志"
+        },
+        "outputs": {
+            "MODEL": "模型"
+        }
     }
 }
