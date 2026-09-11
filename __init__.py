@@ -50,6 +50,24 @@ def try_get_json(path: Path):
     return {}
 
 
+# ============================================================
+# 【石头(Q:34720803)优化更新】翻译数据递归深合并
+# 解决不同翻译文件含同名节点类时子字典被整体覆盖的问题
+# ============================================================
+def deep_merge_translation(base, incoming):
+    """递归合并翻译字典。
+    不同翻译文件可能包含同一个节点类名（同一节点的不同实现/分支很常见），
+    若整体 update 会让后加载的文件把先加载文件的 inputs/widgets/outputs/ui
+    等子字典全部冲掉。这里对子字典按键互补合并；title/description 等字符串
+    仍以后加载者为准。扁平的字符串字典走此函数时行为与 update 完全一致。"""
+    for key, value in incoming.items():
+        if isinstance(value, dict) and isinstance(base.get(key), dict):
+            deep_merge_translation(base[key], value)
+        else:
+            base[key] = value
+    return base
+
+
 def get_nodes_translation(locale, disabled_plugins=None):
     path = CUR_PATH.joinpath(locale, "Nodes")
     if not path.exists():
@@ -61,7 +79,8 @@ def get_nodes_translation(locale, disabled_plugins=None):
     for jpath in path.glob("*.json"):
         if jpath.stem in disabled:
             continue
-        translations.update(try_get_json(jpath))
+        # 【石头(Q:34720803)优化更新】由浅合并 update 改为递归深合并
+        deep_merge_translation(translations, try_get_json(jpath))
     return translations
 
 

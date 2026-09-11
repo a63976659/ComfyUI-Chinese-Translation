@@ -24,12 +24,20 @@ export class TUtils {
     NodeCategory: {},
   };
 
+  // ===== 【石头(Q:34720803)优化更新】自定义DOM面板翻译支持 开始 =====
+  // 所有节点 ui 字典的汇总，用于翻译挂到 body 下的弹窗等节点外 DOM
+  static globalUiDict = {};
+  // 已挂载翻译观察器的 DOMWidget 根元素
+  static domObserved = new WeakSet();
+  // ===== 【石头(Q:34720803)优化更新】自定义DOM面板翻译支持 结束 =====
+
   static async syncTranslation(OnFinished = () => {}) {
     try {
       translatedValueSet.clear();
       
       if (!isTranslationEnabled()) {
         TUtils.T = { Menu: {}, Nodes: {}, NodeCategory: {} };
+        TUtils.globalUiDict = {}; // 【石头(Q:34720803)优化更新】关闭翻译时同步清空 ui 字典
         OnFinished();
         return;
       }
@@ -83,7 +91,22 @@ export class TUtils {
             }
           }
         }
-        
+
+        // 【石头(Q:34720803)优化更新】
+        // 汇总各节点的 ui 自定义界面字典（英文原文 -> 中文），供节点 DOM 面板及 body 弹层翻译使用
+        TUtils.globalUiDict = {};
+        for (const nodeKey in TUtils.T.Nodes) {
+          const ui = TUtils.T.Nodes[nodeKey]?.["ui"];
+          if (ui && typeof ui === "object") {
+            for (const [k, val] of Object.entries(ui)) {
+              if (val && typeof val === "string" && val !== k) {
+                TUtils.globalUiDict[k] = val;
+                translatedValueSet.add(val);
+              }
+            }
+          }
+        }
+
       } catch (e) {
         error("获取翻译数据失败:", e);
       }
@@ -252,10 +275,17 @@ export class TUtils {
         
         node[key].forEach((item) => {
           if (!item || !item.name) return;
-          if (item.name in t[key]) {
+          // 【石头(Q:34720803)优化更新】
+          // 控件被“转换为输入”后会作为 input 槽位从工作流恢复，
+          // inputs 字典查不到时回退到 widgets 字典（与动态 addInput 路径行为一致）
+          let trans = t[key][item.name];
+          if (trans === undefined && key === "inputs" && t["widgets"]) {
+            trans = t["widgets"][item.name];
+          }
+          if (trans !== undefined) {
             const hasNativeTranslation = item.label && isAlreadyTranslatedText(item.label) && !item._original_name;
             if (!hasNativeTranslation) {
-              this.safeApplyTranslation(item, t[key][item.name]);
+              this.safeApplyTranslation(item, trans);
             }
           }
         });
@@ -326,10 +356,173 @@ export class TUtils {
         };
         node._addWidget_translated = true; // 防止重复拦截
       }
+
+      // 【石头(Q:34720803)优化更新】
+      // 第三方节点通过 addDOMWidget 挂载的自定义 HTML 面板不在 canvas 翻译范围内，
+      // 在这里为其安装 DOM 子树翻译
+      this.installNodeDomTranslation(node);
     } catch (e) {
       error(`为节点 ${node?.title || '未知'} 应用翻译失败:`, e);
     }
   }
+
+  // ============================================================
+  // 【石头(Q:34720803)优化更新】自定义 DOM 面板翻译（通用机制）区块 开始
+  // 节点翻译条目支持 "ui": { "英文原文": "中文" }，可翻译该节点通过
+  // addDOMWidget 等方式创建的 HTML 界面中的文本节点及 placeholder/title 等属性。
+  // ============================================================
+
+  // 【石头(Q:34720803)优化更新】支持翻译的元素属性白名单
+  static DOM_TEXT_ATTRIBUTES = ["placeholder", "title", "aria-label"];
+
+  // 【石头(Q:34720803)优化更新】翻译一个 DOM 子树：全等匹配文本节点与白名单属性
+  static translateDomSubtree(root, dict) {
+    if (!root || root.nodeType !== 1 || !dict) return;
+    const has = Object.prototype.hasOwnProperty;
+    // 1) 文本节点：仅当整个文本（去除首尾空白后）与字典键完全一致时替换，
+    //    保留原有首尾空白；含变量拼接的动态文本因不能全等匹配而自然跳过
+    try {
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode(n) {
+          const key = n.nodeValue && n.nodeValue.trim();
+          return key && has.call(dict, key) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+        }
+      });
+      const targets = [];
+      let cur;
+      while ((cur = walker.nextNode())) targets.push(cur);
+      for (const tn of targets) {
+        const key = tn.nodeValue.trim();
+        const translated = dict[key];
+        if (typeof translated === "string" && translated !== key) {
+          tn.nodeValue = tn.nodeValue.replace(key, translated);
+        }
+      }
+    } catch (e) {
+      error("翻译DOM文本节点失败:", e);
+    }
+    // 2) 常见可翻译属性（输入框 placeholder、悬浮提示 title 等），同样要求完全一致
+    try {
+      const els = root.querySelectorAll ? [root, ...root.querySelectorAll("*")] : [root];
+      for (const el of els) {
+        if (el.nodeType !== 1) continue;
+        for (const attr of this.DOM_TEXT_ATTRIBUTES) {
+          const v = el.getAttribute(attr);
+          if (v && has.call(dict, v) && typeof dict[v] === "string" && dict[v] !== v) {
+            el.setAttribute(attr, dict[v]);
+          }
+        }
+      }
+    } catch (e) {
+      error("翻译DOM属性失败:", e);
+    }
+  }
+
+  // 【石头(Q:34720803)优化更新】为节点的 DOMWidget 根元素安装翻译与重绘监听
+  static installNodeDomTranslation(node) {
+    try {
+      if (!isTranslationEnabled() || !node || !Array.isArray(node.widgets)) return;
+      const class_type = node.constructor?.comfyClass ? node.constructor.comfyClass : node.constructor?.type;
+      if (!class_type || !this.T.Nodes[class_type]?.["ui"]) return;
+      for (const w of node.widgets) {
+        const el = w.element || w.domElement;
+        if (!el || el.nodeType !== 1 || this.domObserved.has(el)) continue;
+        this.domObserved.add(el);
+        // 字典在重新同步翻译后可能整体替换，回调时按类名现取
+        const repaint = () => {
+          const ui = this.T.Nodes[class_type]?.["ui"];
+          if (ui) this.translateDomSubtree(el, ui);
+        };
+        repaint();
+        // 自定义面板常在交互后整体重建（replaceChildren），监听子树变化并按帧合并后幂等重翻
+        const observer = new MutationObserver(() => {
+          if (el._translationUiRaf) return;
+          el._translationUiRaf = requestAnimationFrame(() => {
+            el._translationUiRaf = null;
+            repaint();
+          });
+        });
+        observer.observe(el, { childList: true, subtree: true });
+      }
+    } catch (e) {
+      error(`为节点 ${node?.title || '未知'} 安装DOM翻译失败:`, e);
+    }
+  }
+
+  // 【石头(Q:34720803)优化更新】兜底补刷被第三方扩展覆盖/重建的节点槽位标签
+  static refreshNodeSlotLabels(node) {
+    try {
+      const class_type = node.constructor?.comfyClass ? node.constructor.comfyClass : node.constructor?.type;
+      const t = class_type && this.T.Nodes[class_type];
+      if (!t) return;
+      // 兜底：第三方节点可能在本插件应用翻译之后直接改名或重建输入/输出槽位，
+      // 周期性补刷可覆盖所有此类时序问题；safeApplyTranslation 本身幂等，不会重复翻译
+      for (const key of ["inputs", "outputs", "widgets"]) {
+        const dict = t[key];
+        const arr = node[key];
+        if (!Array.isArray(arr)) continue;
+        for (const item of arr) {
+          if (!item || !item.name) continue;
+          // 【石头(Q:34720803)优化更新】同上：转换为输入的控件在 inputs 中但译文在 widgets 字典里
+          let trans = dict ? dict[item.name] : undefined;
+          if (trans === undefined && key === "inputs" && t["widgets"]) {
+            trans = t["widgets"][item.name];
+          }
+          if (trans !== undefined) {
+            this.safeApplyTranslation(item, trans);
+          }
+        }
+      }
+    } catch (e) {
+      error("补刷节点槽位翻译失败:", e);
+    }
+  }
+
+  // 【石头(Q:34720803)优化更新】监听 body 顶层新增元素，翻译节点挂到节点子树外的弹窗
+  static installGlobalUiObserver() {
+    if (this._globalUiObserverInstalled || typeof document === "undefined" || !document.body) return;
+    this._globalUiObserverInstalled = true;
+    try {
+      // 部分节点把预览/编辑弹窗直接挂到 body（位于节点 DOM 子树之外），
+      // 监听 body 顶层新增元素，用全部节点 ui 字典的汇总翻译
+      const observer = new MutationObserver((mutations) => {
+        if (!isTranslationEnabled()) return;
+        for (const m of mutations) {
+          for (const added of m.addedNodes) {
+            if (added.nodeType === 1) this.translateDomSubtree(added, this.globalUiDict);
+          }
+        }
+      });
+      observer.observe(document.body, { childList: true });
+    } catch (e) {
+      error("安装全局UI翻译监听失败:", e);
+    }
+  }
+
+  // 【石头(Q:34720803)优化更新】低频守护轮询：补挂 DOMWidget 观察器并补刷槽位名
+  static startTranslationGuard(app) {
+    if (this._guardStarted) return;
+    this._guardStarted = true;
+    try {
+      // 低频守护轮询：发现晚于翻译创建的 DOMWidget 根元素并补挂观察器，
+      // 同时补刷被第三方扩展覆盖的槽位名
+      setInterval(() => {
+        if (!isTranslationEnabled()) return;
+        const nodes = app?.graph?._nodes;
+        if (!Array.isArray(nodes)) return;
+        for (const node of nodes) {
+          if (!node || !node.constructor) continue;
+          this.installNodeDomTranslation(node);
+          this.refreshNodeSlotLabels(node);
+        }
+      }, 1000);
+    } catch (e) {
+      error("启动翻译守护轮询失败:", e);
+    }
+  }
+  // ============================================================
+  // 【石头(Q:34720803)优化更新】自定义 DOM 面板翻译（通用机制）区块 结束
+  // ============================================================
 
   static applyNodeDescTranslation(nodeType, nodeData, app) {
     try {
@@ -565,6 +758,10 @@ const ext = {
         TUtils.addRegisterNodeDefCB(app);
       }
       
+      // 【石头(Q:34720803)优化更新】启动自定义DOM面板翻译：body 弹层监听 + 守护轮询
+      TUtils.installGlobalUiObserver();
+      TUtils.startTranslationGuard(app);
+
       addPanelButtons(app);
       setupPluginManager();
     } catch (e) {
