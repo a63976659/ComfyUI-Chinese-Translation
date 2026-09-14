@@ -8879,6 +8879,44 @@
         "outputs": {},
         "description": "应用 WanUni3C ControlNet 节点"
     },
+    "MiniMaxH3AddGuide": {
+        "title": "MiniMax H3 添加引导",
+        "inputs": {
+            "positive": "正向提示词",
+            "latent": "Latent",
+            "vae": "VAE",
+            "audio_vae": "音频VAE",
+            "image": "图像",
+            "audio": "音频"
+        },
+        "widgets": {
+            "frame_idx": "帧索引"
+        },
+        "outputs": {
+            "positive": "正向提示词"
+        },
+        "description": "在MiniMaxH3视频的任意帧上锚定图像、短片段、音频或带原声的片段。通过链接多个节点来锚定多个帧。"
+    },
+    "MiniMaxH3FunControlNetApply": {
+        "title": "应用 MiniMax H3 Fun ControlNet",
+        "inputs": {
+            "model": "模型",
+            "model_patch": "模型补丁",
+            "vae": "VAE",
+            "control_video": "控制视频",
+            "mask": "遮罩",
+            "source_video": "源视频"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "将 MiniMax H3 Fun ControlNet 作为模型补丁应用于文本到视频模型。"
+    },
     "SaveImageWebsocket": {
         "title": "保存图像到网络接口",
         "inputs": {

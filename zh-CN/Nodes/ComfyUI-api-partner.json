@@ -4739,6 +4739,57 @@
         "outputs": {},
         "description": "将文本转换为语音的节点"
     },
+    "ComfyCloudMiniMaxH3TextToVideoNode": {
+        "title": "Comfy 云 MiniMax H3 文本转视频",
+        "inputs": {
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "seed": "随机种子",
+            "aspect_ratio": "宽高比",
+            "resolution": "分辨率",
+            "duration_seconds": "时长 (秒)"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "Comfy 云 节点集仍在持续更新：选项可能会增加或删除，某些工作流也可能被停用。使用 MiniMax H3 从文本提示生成包含匹配配乐的视频。图像和音频来自同一处理流程，而非后期配音。  \n 运行在 Comfy Cloud 的 GPU 上，按运行时长计费，每 GPU 秒为 $0.001295（0.27 信用点）。  \n 以信用点支付，无需订阅云服务。"
+    },
+    "ComfyCloudMiniMaxH3ImageToVideoNode": {
+        "title": "Comfy 云 MiniMax H3 图像转视频",
+        "inputs": {
+            "first_frame": "首帧",
+            "prompt": "提示词"
+        },
+        "widgets": {
+            "seed": "随机种子",
+            "aspect_ratio": "宽高比",
+            "resolution": "分辨率",
+            "duration_seconds": "持续时间"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "Comfy 云 节点集仍在持续更新：选项可能会增加或删除，某些工作流也可能被停用。使用 MiniMax H3 从文本提示生成包含匹配配乐的视频。图像和音频来自同一处理流程，而非后期配音。  \n 运行在 Comfy Cloud 的 GPU 上，按运行时长计费，每 GPU 秒为 $0.001295（0.27 信用点）。  \n 以信用点支付，无需订阅云服务。"
+    },
+    "ComfyCloudMiniMaxH3FirstLastFrameToVideoNode": {
+        "title": "Comfy 云 MiniMax H3 首尾帧转视频",
+        "inputs": {
+            "first_frame": "首帧",
+            "last_frame": "尾帧"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "seed": "随机种子",
+            "aspect_ratio": "宽高比",
+            "resolution": "分辨率",
+            "duration_seconds": "持续时间(秒)"
+        },
+        "outputs": {
+            "VIDEO": "视频"
+        },
+        "description": "Comfy 云 节点集仍在持续更新：选项可能会增加或删除，某些工作流也可能被停用。使用 MiniMax H3 从文本提示生成包含匹配配乐的视频。图像和音频来自同一处理流程，而非后期配音。  \n 运行在 Comfy Cloud 的 GPU 上，按运行时长计费，每 GPU 秒为 $0.001295（0.27 信用点）。  \n 以信用点支付，无需订阅云服务。"
+    },
     "TripoConversionNode": {
         "title": "Tripo转换模型",
         "inputs": {
