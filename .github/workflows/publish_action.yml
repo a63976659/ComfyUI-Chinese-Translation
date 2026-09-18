@@ -4,16 +4,91 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "pyproject.toml"
+    tags:
+      - "v*"    # 语义化标签，如 v2.1.0 / v2.1.0-beta.1
+      - "[0-9]*" # 也支持不带 v 前缀，如 2.1.0
 
 jobs:
   publish-node:
     name: Publish Custom Node to registry
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Check out code
         uses: actions/checkout@v4
+        with:
+          # 拉取全部历史与标签，供 git describe / rev-list / tag 计算版本号
+          fetch-depth: 0
+
+      - name: Resolve version from git (tag / commit count)
+        id: version
+        run: |
+          # 从 pyproject.toml 读取当前 version，作为无 tag 时 major.minor 的兜底
+          CURRENT=$(python3 - <<'PY'
+          import re
+          with open('pyproject.toml', encoding='utf-8') as f:
+              m = re.search(r'(?m)^version\s*=\s*"([^"]+)"', f.read())
+          print(m.group(1) if m else '0.0.0')
+          PY
+          )
+
+          # 1) tag 事件触发：直接用 tag 名（去掉 v 前缀）
+          # 2) 当前 commit 上恰好有 tag：也用该 tag
+          # 3) 普通 push 到 main：保留 nearest tag / pyproject 的 major.minor，patch = commit 总数（严格递增）
+          EXACT_TAG=$(git tag --points-at HEAD --sort=-v:refname 2>/dev/null | head -n1 || true)
+
+          if [ "${GITHUB_REF_TYPE:-}" = "tag" ]; then
+            VERSION="${GITHUB_REF_NAME#v}"
+            SOURCE="tag (${GITHUB_REF_NAME})"
+          elif [ -n "$EXACT_TAG" ]; then
+            VERSION="${EXACT_TAG#v}"
+            SOURCE="tag-on-commit ($EXACT_TAG)"
+          else
+            NEAREST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || true)
+            BASE="${NEAREST_TAG#v}"
+            if ! printf '%s' "$BASE" | grep -Eq '^[0-9]+\.[0-9]+'; then
+              BASE="$CURRENT"
+            fi
+            MAJOR=$(printf '%s' "$BASE" | cut -d. -f1)
+            MINOR=$(printf '%s' "$BASE" | cut -d. -f2)
+            COMMITS=$(git rev-list --count HEAD)
+            VERSION="${MAJOR}.${MINOR}.${COMMITS}"
+            SOURCE="commit-count (${COMMITS} commits)"
+          fi
+
+          # 校验为合法 semver，避免 Registry 拒绝
+          if ! printf '%s' "$VERSION" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+([.-].*)?$'; then
+            echo "Computed version '$VERSION' is not valid semver" >&2
+            exit 1
+          fi
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "source=$SOURCE" >> "$GITHUB_OUTPUT"
+          echo "Resolved version: $VERSION  (source: $SOURCE)"
+
+      - name: Write version into pyproject.toml (local, not committed)
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          python3 - <<'PY'
+          import os, re
+          v = os.environ['VERSION']
+          path = 'pyproject.toml'
+          with open(path, encoding='utf-8') as f:
+              text = f.read()
+          new_text, n = re.subn(
+              r'(?m)^(version\s*=\s*)"[^"]*"',
+              lambda m: m.group(1) + '"' + v + '"',
+              text, count=1,
+          )
+          if n == 0:
+              raise SystemExit('No version field found under [project] to update')
+          with open(path, 'w', encoding='utf-8') as f:
+              f.write(new_text)
+          print(f'pyproject.toml version -> {v}')
+          PY
+
       - name: Publish Custom Node
         uses: Comfy-Org/publish-node-action@main
         with:
