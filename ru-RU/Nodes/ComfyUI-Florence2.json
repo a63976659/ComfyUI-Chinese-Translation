@@ -1,0 +1,78 @@
+{
+    "DownloadAndLoadFlorence2Model": {
+        "title": "Скачать и загрузить модель Florence2",
+        "inputs": {
+            "model": "модель",
+            "precision": "точность",
+            "attention": "внимание",
+            "lora": "lora",
+            "convert_to_safetensors": "конвертировать в safetensors"
+        },
+        "widgets": {},
+        "outputs": {
+            "florence2_model": "florence2_model",
+            "FL2MODEL": "FL2MODEL"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "DownloadAndLoadFlorence2Lora": {
+        "title": "Скачать и загрузить lora Florence2",
+        "inputs": {
+            "model": "модель"
+        },
+        "widgets": {},
+        "outputs": {
+            "lora": "lora",
+            "PEFTLORA": "PEFTLORA"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Florence2ModelLoader": {
+        "title": "Загрузчик модели Florence2",
+        "inputs": {
+            "model": "модель",
+            "precision": "точность",
+            "attention": "внимание",
+            "lora": "lora",
+            "convert_to_safetensors": "конвертировать в safetensors"
+        },
+        "widgets": {},
+        "outputs": {
+            "florence2_model": "florence2_model",
+            "FL2MODEL": "FL2MODEL"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Florence2Run": {
+        "title": "Запуск Florence2",
+        "inputs": {
+            "image": "изображение",
+            "florence2_model": "модель Florence2",
+            "text_input": "входной текст",
+            "task": "задача",
+            "fill_mask": "заполнить маску",
+            "keep_model_loaded": "сохранить модель загруженной",
+            "max_new_tokens": "максимальное количество новых токенов",
+            "num_beams": "количество беамов",
+            "do_sample": "выполнять выборку",
+            "output_mask_select": "выборка маски вывода",
+            "seed": "семя"
+        },
+        "widgets": {},
+        "outputs": {
+            "image": "изображение",
+            "mask": "маска",
+            "caption": "описание",
+            "data": "данные",
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА",
+            "STRING": "СТРОКА",
+            "JSON": "JSON"
+        },
+        "description": "",
+        "api_version": "V1"
+    }
+}

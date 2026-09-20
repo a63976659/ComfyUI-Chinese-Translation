@@ -1,0 +1,161 @@
+{
+    "Qwen3ASRLoader": {
+        "title": "Qwen3ASRLoader",
+        "inputs": {
+            "repo_id": "repo_id",
+            "source": "источник",
+            "precision": "точность",
+            "attention": "внимание",
+            "max_new_tokens": "максимальное количество новых токенов",
+            "forced_aligner": "принудительный альгинер",
+            "local_model_path_asr": "локальный путь модели ASR",
+            "local_model_path_fa": "локальный путь модели FA"
+        },
+        "widgets": {},
+        "outputs": {
+            "model_key": "ключ модели",
+            "MODEL_KEY": "MODEL_KEY"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Qwen3ASRTranscribe": {
+        "title": "Qwen3ASRTranscribe",
+        "inputs": {
+            "model_key": "ключ модели",
+            "audio": "аудио",
+            "language": "язык",
+            "context": "контекст",
+            "return_timestamps": "вернуть временные метки"
+        },
+        "widgets": {},
+        "outputs": {
+            "forced_aligns": "принудительные выравнивания",
+            "text": "текст",
+            "language": "язык",
+            "timestamps": "временные метки",
+            "LIST": "СПИСОК",
+            "STRING": "Строка"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Qwen3TTSLoader": {
+        "title": "Qwen3TTSLoader",
+        "inputs": {
+            "repo_id": "repo_id",
+            "source": "источник",
+            "precision": "точность",
+            "attention": "внимание",
+            "local_model_path": "локальный путь модели"
+        },
+        "widgets": {},
+        "outputs": {
+            "model_key": "ключ модели",
+            "MODEL_KEY": "MODEL_KEY"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "VoiceClonePrompt": {
+        "title": "VoiceClonePrompt",
+        "inputs": {
+            "model_key": "ключ модели",
+            "ref_audio": "отсылочный аудиофайл",
+            "ref_text": "отсылочный текст"
+        },
+        "widgets": {},
+        "outputs": {
+            "voice_clone_prompt": "параметры копирования голоса",
+            "VOICE_CLONE_PROMPT": "VOICE_CLONE_PROMPT"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "SRTToAudio": {
+        "title": "SRTToAudio",
+        "inputs": {
+            "model_key": "ключ модели",
+            "srt_string": "строка SRT",
+            "voice_clone_prompt": "параметры копирования голоса",
+            "language": "язык",
+            "tempo_limit": "ограничение темпа",
+            "mini_gap_ms": "минимальный интервал в миллисекундах",
+            "batch_size": "размер батча"
+        },
+        "widgets": {},
+        "outputs": {
+            "audio": "аудио",
+            "adjusted_srt": "исправленная SRT",
+            "AUDIO": "AUDIO",
+            "STRING": "Строка"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "GenerateSRT": {
+        "title": "GenerateSRT",
+        "inputs": {
+            "forced_aligns": "принудительные выравнивания",
+            "text": "текст",
+            "language": "язык",
+            "save_srt": "сохранить SRT",
+            "filename_prefix": "префикс имени файла"
+        },
+        "widgets": {},
+        "outputs": {
+            "srt_string": "строка SRT",
+            "STRING": "Строка"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "SaveSRTFromString": {
+        "title": "SaveSRTFromString",
+        "inputs": {
+            "srt_string": "строка SRT",
+            "filename_prefix": "префикс имени файла"
+        },
+        "widgets": {},
+        "outputs": {
+            "save_path": "путь сохранения",
+            "STRING": "Строка"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "OpenAIAPI": {
+        "title": "OpenAIAPI",
+        "inputs": {
+            "model": "модель",
+            "base_url": "основной URL",
+            "api_key": "ключ API",
+            "system_prompt": "системный промпт",
+            "prompt": "промпт",
+            "max_tokens": "максимальное количество токенов",
+            "temperature": "температура",
+            "top_p": "top_p"
+        },
+        "widgets": {},
+        "outputs": {
+            "response": "ответ",
+            "STRING": "Строка"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "UnloadModel": {
+        "title": "UnloadModel",
+        "inputs": {
+            "anything": "любое",
+            "Unload_ASR_Model": "Освободить модель ASR",
+            "Unload_TTS_Model": "Освободить модель TTS"
+        },
+        "widgets": {},
+        "outputs": {
+            "any": "любое"
+        },
+        "description": "",
+        "api_version": "V1"
+    }
+}

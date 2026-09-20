@@ -1,0 +1,335 @@
+{
+    "AddAudio": {
+        "title": "Добавление аудио",
+        "inputs": {
+            "video_path": "video_path",
+            "audio_from": "источник аудио",
+            "file_path": "путь к файлу",
+            "delay_play": "задержка воспроизведения",
+            "output_path": "путь к выходному файлу"
+        },
+        "widgets": {},
+        "outputs": {
+            "video_complete_path": "полный путь к видео",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "AddImgWatermark": {
+        "title": "Добавление изображения в водяной знак",
+        "inputs": {
+            "video_path": "video_path",
+            "output_path": "путь к выходному файлу",
+            "watermark_image": "изображение водяного знака",
+            "watermark_img_width": "ширина изображения водяного знака",
+            "position_x": "позиция X",
+            "position_y": "позиция Y"
+        },
+        "widgets": {},
+        "outputs": {
+            "video_complete_path": "полный путь к видео",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "AddTextWatermark": {
+        "title": "Добавление текста в водяной знак",
+        "inputs": {
+            "video_path": "video_path",
+            "output_path": "путь к выходному файлу",
+            "font_file": "шрифт",
+            "font_size": "размер шрифта",
+            "font_color": "цвет шрифта",
+            "text": "текст",
+            "position_x": "позиция X",
+            "position_y": "позиция Y"
+        },
+        "widgets": {},
+        "outputs": {
+            "video_path": "video_path",
+            "output_path": "путь к выходному файлу",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "ExtractAudio": {
+        "title": "Извлечение аудио",
+        "inputs": {
+            "video_path": "video_path",
+            "output_path": "путь к выходному файлу",
+            "audio_format": "формат аудио"
+        },
+        "widgets": {},
+        "outputs": {
+            "audio_complete_path": "полный путь к аудио",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Frames2Video": {
+        "title": "Кадры в видео",
+        "inputs": {
+            "frame_path": "путь к кадрам",
+            "fps": "кадры в секунду",
+            "video_name": "название видео",
+            "output_path": "путь к выходному файлу",
+            "device": "устройство",
+            "audio_path": "путь к аудио"
+        },
+        "widgets": {},
+        "outputs": {
+            "frame_path": "путь к кадрам",
+            "output_path": "путь к выходному файлу",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "ImageCopy": {
+        "title": "Копирование изображений",
+        "inputs": {
+            "image_paths": "путь к изображениям",
+            "output_path": "путь к выходному файлу"
+        },
+        "widgets": {},
+        "outputs": {
+            "image_paths": "путь к изображениям",
+            "image_length": "длина изображений",
+            "output_path": "путь к выходному файлу",
+            "LIST": "Список",
+            "INT": "Целое число",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "ImagePath2Tensor": {
+        "title": "Путь к изображению в тензор",
+        "inputs": {
+            "image_paths": "путь к изображениям"
+        },
+        "widgets": {},
+        "outputs": {
+            "image": "изображение",
+            "image_count": "количество изображений",
+            "IMAGE": "Изображение",
+            "INT": "Целое число"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "ImagesSave": {
+        "title": "Сохранение изображений",
+        "inputs": {
+            "images": "изображения",
+            "output_path": "путь к выходному файлу"
+        },
+        "widgets": {},
+        "outputs": {
+            "images_length": "длина изображений",
+            "INT": "Целое число"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "LoadImageFromDir": {
+        "title": "Загрузка изображений из директории",
+        "inputs": {
+            "images_path": "путь к изображениям",
+            "start_index": "начальный индекс",
+            "length": "длина"
+        },
+        "widgets": {},
+        "outputs": {
+            "image_paths": "путь к изображениям",
+            "LIST": "Список"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "MergingVideoByPlenty": {
+        "title": "Объединение видео",
+        "inputs": {
+            "video_path": "video_path",
+            "output_path": "путь к выходному файлу"
+        },
+        "widgets": {},
+        "outputs": {
+            "video_complete_path": "полный путь к видео",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "MergingVideoByTwo": {
+        "title": "Объединение видео по двум",
+        "inputs": {
+            "video1_path": "путь к видео 1",
+            "video2_path": "путь к видео 2",
+            "device": "устройство",
+            "resolution_reference": "рекомендованное разрешение",
+            "output_path": "путь к выходному файлу"
+        },
+        "widgets": {},
+        "outputs": {
+            "video_complete_path": "полный путь к видео",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "MultiCuttingVideo": {
+        "title": "Многокадровое вырезание видео",
+        "inputs": {
+            "video_path": "video_path",
+            "output_path": "путь к выходному файлу",
+            "segment_time": "время сегмента"
+        },
+        "widgets": {},
+        "outputs": {
+            "video_complete_path": "полный путь к видео",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "PipVideo": {
+        "title": "Панорамное видео",
+        "inputs": {
+            "video1_path": "путь к видео 1",
+            "video2_path": "путь к видео 2",
+            "device": "устройство",
+            "use_audio": "использовать аудио",
+            "use_duration": "использовать длительность",
+            "align_type": "тип выравнивания",
+            "pip_fg_zoom": "масштабирование переднего плана",
+            "output_path": "путь к выходному файлу",
+            "scale_and_crop": "масштабирование и обрезка",
+            "fps": "кадры в секунду",
+            "is_chromakey": "использовать зелёный экран"
+        },
+        "widgets": {},
+        "outputs": {
+            "video_complete_paths": "полный путь к видео",
+            "width": "ширина",
+            "height": "высота",
+            "duration": "длительность",
+            "fps": "кадры в секунду",
+            "STRING": "STRING",
+            "INT": "Целое число",
+            "FLOAT": "Число с плавающей точкой"
+        },
+        "description": "Два видео стекаются в одно видео с изображением в изображении, можно контролировать положение изображения video2 на изображении video1, \n                     можно настроить коэффициент масштабирования изображения и удаление зелёного фона и т.д.",
+        "api_version": "V1"
+    },
+    "SingleCuttingVideo": {
+        "title": "Однокадровое вырезание видео",
+        "inputs": {
+            "video_path": "video_path",
+            "output_path": "путь к выходному файлу",
+            "start_time": "начальное время",
+            "end_time": "конечное время"
+        },
+        "widgets": {},
+        "outputs": {
+            "video_complete_path": "полный путь к видео",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "StitchingVideo": {
+        "title": "Сборка видео",
+        "inputs": {
+            "video1_path": "путь к видео 1",
+            "video2_path": "путь к видео 2",
+            "device": "устройство",
+            "use_audio": "использовать аудио",
+            "stitching_type": "тип сборки",
+            "output_path": "путь к выходному файлу",
+            "scale_and_crop": "масштабирование и обрезка"
+        },
+        "widgets": {},
+        "outputs": {
+            "video_complete_path": "полный путь к видео",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Video2Frames": {
+        "title": "Кадры из видео",
+        "inputs": {
+            "video_path": "путь к видео",
+            "output_path": "путь к выходу",
+            "frames_max_width": "максимальная ширина кадра"
+        },
+        "widgets": {},
+        "outputs": {
+            "frame_path": "путь к кадру",
+            "fps": "кадры в секунду",
+            "audio_path": "путь к аудио",
+            "total_frames": "общее количество кадров",
+            "output_path": "путь к выходу",
+            "STRING": "STRING",
+            "FLOAT": "FLOAT",
+            "INT": "INT"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "VideoFlip": {
+        "title": "Перевернуть видео",
+        "inputs": {
+            "video_path": "путь к видео",
+            "output_path": "путь к выходу",
+            "flip_type": "тип переворота"
+        },
+        "widgets": {},
+        "outputs": {
+            "video_complete_path": "полный путь к видео",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "VideoPlayback": {
+        "title": "Проигрывание видео",
+        "inputs": {
+            "video_path": "путь к видео",
+            "output_path": "путь к выходу",
+            "reverse_audio": "воспроизвести аудио в обратном порядке"
+        },
+        "widgets": {},
+        "outputs": {
+            "video_complete_path": "полный путь к видео",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "VideoTransition": {
+        "title": "Переход между видео",
+        "inputs": {
+            "video1_path": "путь к видео 1",
+            "video2_path": "путь к видео 2",
+            "reference_video": "рекференсное видео",
+            "device": "устройство",
+            "transition": "переход",
+            "transition_duration": "продолжительность перехода",
+            "offset": "смещение",
+            "output_path": "путь к выходу"
+        },
+        "widgets": {},
+        "outputs": {
+            "video_complete_path": "полный путь к видео",
+            "STRING": "STRING"
+        },
+        "description": "",
+        "api_version": "V1"
+    }
+}

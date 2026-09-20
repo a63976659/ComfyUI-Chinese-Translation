@@ -1,0 +1,79 @@
+{
+    "DownloadAndLoadFlorence2Model": {
+        "title": "Télécharger et charger le modèle Florence2",
+        "inputs": {},
+        "widgets": {
+            "model": "model",
+            "precision": "précision",
+            "attention": "attention",
+            "lora": "lora",
+            "convert_to_safetensors": "converger en safetensors"
+        },
+        "outputs": {
+            "florence2_model": "florence2_model",
+            "FL2MODEL": "FL2MODEL"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "DownloadAndLoadFlorence2Lora": {
+        "title": "Télécharger et charger l'adaptateur de prédiction adaptative Florence2 (LoRA)",
+        "inputs": {},
+        "widgets": {
+            "model": "model"
+        },
+        "outputs": {
+            "lora": "lora",
+            "PEFTLORA": "PEFTLORA"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Florence2ModelLoader": {
+        "title": "Chargementeur de modèle Florence2",
+        "inputs": {},
+        "widgets": {
+            "model": "model",
+            "precision": "précision",
+            "attention": "attention",
+            "lora": "lora",
+            "convert_to_safetensors": "converger en safetensors"
+        },
+        "outputs": {
+            "florence2_model": "florence2_model",
+            "FL2MODEL": "FL2MODEL"
+        },
+        "description": "",
+        "api_version": "Vv"
+    },
+    "Florence2Run": {
+        "title": "Exécuter Florence2",
+        "inputs": {
+            "image": "image"
+        },
+        "widgets": {
+            "florence2_model": "florence2_ modèle",
+            "text_input": "entrée de texte",
+            "task": "tâche",
+            "fill_mask": "remplir le masque",
+            "keep_model_loaded": "garder le modèle chargé",
+            "max_new_tokens": "tokens nouveaux max",
+            "num_beams": "nombre de piliers",
+            "do_sample": "faire un échantillonnage",
+            "output_mask_select": "sélectionner le masque d'output",
+            "seed": "semence"
+        },
+        "outputs": {
+            "image": "image",
+            "mask": "masque",
+            "caption": "captions",
+            "data": "données",
+            "IMAGE": "IMAGE",
+            "MASK": "MASQUE",
+            "STRING": "CHAÎNE",
+            "JSON": "JSON"
+        },
+        "description": "",
+        "api_version": "Vv"
+    }
+}

@@ -1,0 +1,4810 @@
+{
+    "ClaudeNode": {
+        "title": "Anthropic Claude",
+        "inputs": {
+            "source": "Исходный путь",
+            "image_1": "Изображение_1"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "model": "Модель",
+            "max_tokens": "Максимальное число токенов",
+            "temperature": "Температура",
+            "reasoning_effort": "Усилие рассуждений",
+            "seed": "Зерно"
+        },
+        "outputs": {
+            "String": "Строка"
+        },
+        "description": "Генерирует текстовый ответ моделью Claude от Anthropic. Укажите текстовый промпт и при желании одно или несколько изображений, чтобы задать мультимодальный контекст."
+    },
+    "ByteDanceSeedNode": {
+        "title": "ByteDance Seedance2.0",
+        "inputs": {
+            "video_1": "Видео_1",
+            "image_1": "Изображение_1"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "model": "Модель",
+            "temperature": "Температура",
+            "seed": "Зерно"
+        },
+        "outputs": {
+            "String": "Строка"
+        },
+        "description": "Генерирует текстовый ответ моделью Seed2.0 от ByteDance. Укажите текстовый промпт и при желании одно или несколько изображений либо видео, чтобы расширить мультимодальный контекст."
+    },
+    "ByteDance2ReferenceNodeV2": {
+        "title": "ByteDance Seedance 2.5 видеореференс",
+        "inputs": {
+            "image_1": "Изображение1",
+            "image_2": "Изображение2",
+            "image_3": "Изображение3",
+            "image_4": "Изображение4",
+            "image_5": "Изображение5",
+            "image_6": "Изображение6",
+            "image_7": "Изображение7",
+            "image_8": "Изображение8",
+            "image_9": "Изображение9",
+            "audio_1": "Аудио1",
+            "audio_2": "Аудио2",
+            "audio_3": "Аудио3",
+            "video_1": "Видео1",
+            "video_2": "Видео2",
+            "video_3": "Видео3",
+            "asset_1": "Ассет1",
+            "asset_2": "Ассет2",
+            "asset_3": "Ассет3"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "resolution": "Разрешение",
+            "ratio": "Соотношение сторон",
+            "generate_audio": "Генерировать аудио",
+            "duration": "Длительность",
+            "task_type": "Тип задачи",
+            "auto_downscale": "Автоуменьшение",
+            "auto_upscale": "Автоувеличение",
+            "output_format": "Формат вывода",
+            "seed": "Зерно",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "String": "Строка"
+        },
+        "description": "Генерирует, редактирует или продлевает видео с помощью Seedance2.5 или 2.0 на основе опорных изображений, видео и аудио. Поддерживает мультимодальные референсы, редактирование видео и его продление."
+    },
+    "ByteDanceVideoEnhanceNode": {
+        "title": "ByteDance vCube улучшение видео",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "tool_version": "Версия инструмента",
+            "scene": "Сцена",
+            "enhance_style": "Стиль улучшения",
+            "resolution": "Разрешение",
+            "fps": "Частота кадров",
+            "bitrate_level": "Уровень битрейта"
+        },
+        "outputs": {},
+        "description": "Увеличивает и восстанавливает видео средствами ByteDance vCube: суперразрешение вплоть до 8K, устранение компрессии, артефактов и шума, улучшение цвета и чёткости, а также опциональная интерполяция кадров."
+    },
+    "GeminiNode": {
+        "title": "Google Gemini",
+        "inputs": {
+            "images": "Группа изображений",
+            "audio": "Аудио",
+            "video": "Видео",
+            "files": "Входные файлы Gemini",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "ratio": "Соотношение сторон",
+            "duration": "Длительность",
+            "model": "Модель"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "STRING": "Строка"
+        }
+    },
+    "GeminiNodeV2": {
+        "title": "Google GeminiV2",
+        "inputs": {
+            "image_1": "Изображение1",
+            "image_2": "Изображение2",
+            "image_3": "Изображение3",
+            "image_4": "Изображение4",
+            "image_5": "Изображение5",
+            "image_6": "Изображение6",
+            "image_7": "Изображение7",
+            "image_8": "Изображение8",
+            "image_9": "Изображение9",
+            "video_1": "Видео1",
+            "audio_1": "Аудио1",
+            "files": "Входные файлы Gemini"
+        },
+        "widgets": {
+            "model": "Модель",
+            "thinking_level": "Уровень мышления",
+            "temperature": "Температура",
+            "max_output_tokens": "Максимальное число выходных токенов",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "duration": "Длительность"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "STRING": "Строка"
+        }
+    },
+    "GeminiVideoOmniV2": {
+        "title": "Google Gemini Omni видео",
+        "inputs": {
+            "image_1": "Изображение1",
+            "image_2": "Изображение2",
+            "image_3": "Изображение3",
+            "image_4": "Изображение4",
+            "image_5": "Изображение5",
+            "image_6": "Изображение6",
+            "image_7": "Изображение7",
+            "image_8": "Изображение8",
+            "image_9": "Изображение9",
+            "video_1": "Видео1",
+            "video_2": "Видео2",
+            "video_3": "Видео3"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "aspect_ratio": "Соотношение сторон",
+            "duration": "Длительность",
+            "task_type": "Тип задачи",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "STRING": "Строка"
+        }
+    },
+    "GeminiInputFiles": {
+        "title": "Входные файлы Google Gemini",
+        "inputs": {
+            "GEMINI_INPUT_FILES": "Входные файлы Gemini",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "file": "Файл",
+            "model": "Модель"
+        },
+        "outputs": {
+            "GEMINI_INPUT_FILES": "Входные файлы Gemini",
+            "STRING": "Строка"
+        }
+    },
+    "OpenAIChatNode": {
+        "title": "Чат OpenAI",
+        "inputs": {
+            "images": "Группа изображений",
+            "audio": "Аудио",
+            "advanced_options": "Расширенные параметры",
+            "files": "Входные файлы OpenAI",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "persist_context": "Постоянный контекст",
+            "duration": "Длительность",
+            "model": "Модель"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "STRING": "Строка"
+        }
+    },
+    "OpenAIInputFiles": {
+        "title": "Входные файлы чата OpenAI",
+        "inputs": {
+            "OPENAI_INPUT_FILES": "Входные файлы OpenAI",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "file": "Файл",
+            "model": "Модель"
+        },
+        "outputs": {
+            "OPENAI_INPUT_FILES": "Входные файлы OpenAI",
+            "STRING": "Строка"
+        }
+    },
+    "OpenAIChatConfig": {
+        "title": "Расширенные параметры чата OpenAI",
+        "inputs": {
+            "image": "Изображение",
+            "mask": "Маска",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "truncation": "Усечение",
+            "max_output_tokens": "Максимальное число выходных токенов",
+            "quality": "Качество",
+            "n": "Количество",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "auth_token": "Токен авторизации"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "Расширенные параметры",
+            "string": "Строка"
+        }
+    },
+    "OpenRouterLLMNode": {
+        "title": "Большая языковая модель OpenRouter",
+        "inputs": {
+            "image_1": "Изображение1",
+            "image_2": "Изображение2",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "reasoning_effort": "Усилие рассуждений",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "auth_token": "Токен авторизации"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "Расширенные параметры",
+            "string": "Строка"
+        }
+    },
+    "BeebleSwitchXVideoEdit": {
+        "title": "Beeble SwitchX редактирование видео",
+        "inputs": {
+            "video": "Видео",
+            "reference_image": "Опорное изображение"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "alpha_mode": "Альфа-режим",
+            "max_resolution": "Максимальное разрешение",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "video": "Видео",
+            "alpha": "Alpha"
+        },
+        "description": "Редактирует видео с помощью BeebleSwitchX. Можно менять любой элемент сцены (фон, освещение, одежду), сохраняя пиксели и движения исходного объекта. Укажите опорное изображение и/или текстовый промпт с описанием нового визуального стиля. Доступно до 240 кадров при максимальном разрешении около 2.77 Мп на кадр."
+    },
+    "BriaRemoveVideoBackground": {
+        "title": "Bria удаление фона видео",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "background_color": "Цвет фона",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        }
+    },
+    "BriaVideoGreenScreen": {
+        "title": "Bria зелёный экран для видео",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "green_shade": "Цвет хромакея",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Заменяет фон видео на однотонный хромакей-экран с помощью Bria."
+    },
+    "BriaTransparentVideoBackground": {
+        "title": "Bria удаление фона видео (прозрачный)",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "images": "Изображение",
+            "mask": "Маска"
+        },
+        "description": "Удаляет фон из видео с помощью Bria и возвращает обрезанные кадры и альфа-маску. Подключите оба к узлу композитинга либо подайте в «Сохранить WEBM», чтобы получить прозрачное видео."
+    },
+    "ByteDanceTextToVideoNode": {
+        "title": "ByteDance текст в видео",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "aspect_ratio": "Соотношение сторон",
+            "duration": "Длительность",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "camera_fixed": "Фиксированная камера",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "video": "Видео",
+            "VIDEO": "Видео"
+        }
+    },
+    "ByteDanceImageToVideoNode": {
+        "title": "ByteDance изображение в видео",
+        "inputs": {
+            "image": "Изображение",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "aspect_ratio": "Соотношение сторон",
+            "duration": "Длительность",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "camera_fixed": "Фиксированная камера",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "video": "Видео",
+            "VIDEO": "Видео"
+        }
+    },
+    "ByteDanceFirstLastFrameNode": {
+        "title": "ByteDance первый и последний кадр в видео",
+        "inputs": {
+            "first_frame": "Изображение первого кадра",
+            "last_frame": "Изображение последнего кадра",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "aspect_ratio": "Соотношение сторон",
+            "duration": "Длительность",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "camera_fixed": "Фиксированная камера",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "video": "Видео",
+            "VIDEO": "Видео"
+        }
+    },
+    "ByteDanceImageReferenceNode": {
+        "title": "ByteDance опорное изображение в видео",
+        "inputs": {
+            "images": "Группа изображений",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "aspect_ratio": "Соотношение сторон",
+            "duration": "Длительность",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "camera_fixed": "Фиксированная камера",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "video": "Видео",
+            "VIDEO": "Видео"
+        }
+    },
+    "ByteDance2TextToVideoNode": {
+        "title": "ByteDance2.0 текст в видео",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "ratio": "Соотношение сторон",
+            "generate_audio": "Генерировать аудио",
+            "duration": "Длительность",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "camera_fixed": "Фиксированная камера",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "video": "Видео",
+            "VIDEO": "Видео"
+        }
+    },
+    "ByteDance2FirstLastFrameNode": {
+        "title": "ByteDance2.0 первый и последний кадр в видео",
+        "inputs": {
+            "first_frame": "Изображение первого кадра",
+            "last_frame": "Изображение последнего кадра",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "ratio": "Соотношение сторон",
+            "generate_audio": "Генерировать аудио",
+            "duration": "Длительность",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "video": "Видео",
+            "VIDEO": "Видео"
+        }
+    },
+    "ByteDance2ReferenceNode": {
+        "title": "ByteDance2.0 референс в видео",
+        "inputs": {
+            "image_1": "Изображение1",
+            "image_2": "Изображение2",
+            "image_3": "Изображение3",
+            "image_4": "Изображение4",
+            "image_5": "Изображение5",
+            "image_6": "Изображение6",
+            "image_7": "Изображение7",
+            "image_8": "Изображение8",
+            "image_9": "Изображение9",
+            "video_1": "Видео1",
+            "video_2": "Видео2",
+            "video_3": "Видео3",
+            "audio_1": "Аудио1",
+            "audio_2": "Аудио2",
+            "audio_3": "Аудио3",
+            "asset_1": "Ассет1",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "ratio": "Соотношение сторон",
+            "generate_audio": "Генерировать аудио",
+            "duration": "Длительность",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "camera_fixed": "Фиксированная камера",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "video": "Видео",
+            "VIDEO": "Видео"
+        }
+    },
+    "ByteDanceCreateVideoAsset": {
+        "title": "ByteDance создание видеоматериала",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "group_id": "ID группы"
+        },
+        "outputs": {
+            "asset_id": "ID ассета",
+            "group_id": "ID группы"
+        },
+        "description": "Создаёт персональный видеоресурс Seedance2.0. Загружает входное видео и регистрирует его в указанной группе ресурсов.\n Если идентификатор ресурса пуст, выполняется реальный процесс персональной H5-аутентификации для создания новой группы, после чего ресурс добавляется."
+    },
+    "GrokVideoNode": {
+        "title": "Grok видео",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {
+            "model": "Модель",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "duration": "Длительность"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        }
+    },
+    "GrokVideoReferenceNode": {
+        "title": "Grok видео из референсов",
+        "inputs": {
+            "reference_0": "Референс0",
+            "reference_1": "Референс1",
+            "reference_2": "Референс2",
+            "reference_3": "Референс3",
+            "reference_4": "Референс4",
+            "reference_5": "Референс5",
+            "reference_6": "Референс6"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "aspect_ratio": "Соотношение сторон",
+            "duration": "Длительность",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        }
+    },
+    "GrokVideoEditNode": {
+        "title": "Grok редактирование видео",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "model": "Модель",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "duration": "Длительность"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        }
+    },
+    "GrokVideoExtendNode": {
+        "title": "Grok продление видео",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "model": "Модель",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "duration": "Длительность"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        }
+    },
+    "HitPawVideoEnhance": {
+        "title": "HitPaw улучшение видео",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        }
+    },
+    "KlingCameraControls": {
+        "title": "Kling управление камерой",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "camera_control_type": "Тип управления камерой",
+            "horizontal_movement": "Горизонтальное движение",
+            "vertical_movement": "Вертикальное движение",
+            "pan": "Панорамирование",
+            "tilt": "Наклон",
+            "roll": "Поворот",
+            "zoom": "Масштаб"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "camera_control": "Параметры управления камерой"
+        }
+    },
+    "KlingTextToVideoNode": {
+        "title": "Kling текст в видео",
+        "inputs": {},
+        "widgets": {
+            "cfg_scale": "Коэффициент CFG",
+            "mode": "Режим",
+            "aspect_ratio": "Соотношение сторон",
+            "task_id": "ID задачи",
+            "auth_token": "Токен авторизации",
+            "camera_control": "Параметры управления камерой",
+            "model_name": "Название модели",
+            "duration": "Длительность"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "KlingImage2VideoNode": {
+        "title": "Kling изображение в видео",
+        "inputs": {
+            "start_frame": "Начальный кадр",
+            "end_frame": "Конечный кадр",
+            "camera_control": "Параметры управления камерой",
+            "prompt": "Промпт",
+            "negative_prompt": "Негативный промпт"
+        },
+        "widgets": {
+            "cfg_scale": "Коэффициент CFG",
+            "mode": "Режим",
+            "aspect_ratio": "Соотношение сторон",
+            "task_id": "ID задачи",
+            "auth_token": "Токен авторизации",
+            "model_name": "Название модели",
+            "duration": "Длительность"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "KlingCameraControlI2VNode": {
+        "title": "Kling изображение в видео (управление камерой)",
+        "inputs": {
+            "start_frame": "Начальный кадр",
+            "end_frame": "Конечный кадр",
+            "camera_control": "Параметры управления камерой",
+            "prompt": "Промпт",
+            "negative_prompt": "Негативный промпт"
+        },
+        "widgets": {
+            "cfg_scale": "Коэффициент CFG",
+            "mode": "Режим",
+            "aspect_ratio": "Соотношение сторон",
+            "task_id": "ID задачи",
+            "auth_token": "Токен авторизации",
+            "model_name": "Название модели",
+            "duration": "Длительность"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "KlingCameraControlT2VNode": {
+        "title": "Kling текст в видео (управление камерой)",
+        "inputs": {
+            "camera_control": "Параметры управления камерой",
+            "prompt": "Промпт",
+            "negative_prompt": "Негативный промпт"
+        },
+        "widgets": {
+            "cfg_scale": "Коэффициент CFG",
+            "mode": "Режим",
+            "aspect_ratio": "Соотношение сторон",
+            "task_id": "ID задачи",
+            "auth_token": "Токен авторизации",
+            "model_name": "Название модели",
+            "duration": "Длительность"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "KlingStartEndFrameNode": {
+        "title": "Kling первый и последний кадр в видео",
+        "inputs": {
+            "start_frame": "Начальный кадр",
+            "end_frame": "Конечный кадр",
+            "camera_control": "Параметры управления камерой",
+            "prompt": "Промпт",
+            "negative_prompt": "Негативный промпт"
+        },
+        "widgets": {
+            "cfg_scale": "Коэффициент CFG",
+            "mode": "Режим",
+            "aspect_ratio": "Соотношение сторон",
+            "task_id": "ID задачи",
+            "auth_token": "Токен авторизации",
+            "model_name": "Название модели",
+            "duration": "Длительность"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "KlingVideoExtendNode": {
+        "title": "Kling продление видео",
+        "inputs": {
+            "start_frame": "Начальный кадр",
+            "end_frame": "Конечный кадр",
+            "video_id": "ID видео",
+            "prompt": "Промпт",
+            "negative_prompt": "Негативный промпт"
+        },
+        "widgets": {
+            "cfg_scale": "Коэффициент CFG",
+            "mode": "Режим",
+            "aspect_ratio": "Соотношение сторон",
+            "task_id": "ID задачи",
+            "auth_token": "Токен авторизации",
+            "model_name": "Название модели",
+            "duration": "Длительность"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "KlingLipSyncAudioToVideoNode": {
+        "title": "Kling синхронизация губ по аудио",
+        "inputs": {
+            "audio": "Аудио",
+            "text": "Текст",
+            "video": "Видео"
+        },
+        "widgets": {
+            "voice_language": "Язык речи",
+            "voice_speed": "Скорость речи",
+            "mode": "Режим",
+            "task_id": "ID задачи",
+            "auth_token": "Токен авторизации",
+            "model_name": "Название модели",
+            "voice_id": "ID голоса"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "KlingLipSyncTextToVideoNode": {
+        "title": "Kling синхронизация губ по тексту",
+        "inputs": {
+            "audio": "Аудио",
+            "text": "Текст",
+            "video": "Видео"
+        },
+        "widgets": {
+            "voice_language": "Язык речи",
+            "voice_speed": "Скорость речи",
+            "mode": "Режим",
+            "task_id": "ID задачи",
+            "auth_token": "Токен авторизации",
+            "voice": "Голос",
+            "voice_id": "ID голоса"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "KlingSingleImageVideoEffectNode": {
+        "title": "Kling спецэффект видео для одного персонажа",
+        "inputs": {
+            "image": "Изображение",
+            "video_id": "ID видео"
+        },
+        "widgets": {
+            "dual_character": "Два персонажа",
+            "effect_scene": "Сцена эффекта",
+            "mode": "Режим",
+            "aspect_ratio": "Соотношение сторон",
+            "task_id": "ID задачи",
+            "auth_token": "Токен авторизации",
+            "model_name": "Название модели",
+            "duration": "Длительность"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "KlingDualCharacterVideoEffectNode": {
+        "title": "Kling спецэффект видео для двух персонажей",
+        "inputs": {
+            "image_1": "Изображение1",
+            "image_2": "Изображение2",
+            "video_id": "ID видео",
+            "image_left": "Левое изображение",
+            "image_right": "Правое изображение"
+        },
+        "widgets": {
+            "dual_character": "Два персонажа",
+            "effect_scene": "Сцена эффекта",
+            "mode": "Режим",
+            "aspect_ratio": "Соотношение сторон",
+            "task_id": "ID задачи",
+            "auth_token": "Токен авторизации",
+            "model_name": "Название модели",
+            "duration": "Длительность"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "KlingOmniProTextToVideoNode": {
+        "title": "Узел Kling Omni текст в видео (профи)",
+        "inputs": {
+            "reference_images": "Опорные изображения"
+        },
+        "widgets": {
+            "model_name": "Название модели",
+            "resolution": "Разрешение",
+            "auth_token": "Токен авторизации",
+            "aspect_ratio": "Соотношение сторон",
+            "n": "Количество"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "string": "Строка"
+        }
+    },
+    "KlingOmniProFirstLastFrameNode": {
+        "title": "Kling Omni первый и последний кадр в видео (профи)",
+        "inputs": {
+            "first_frame": "Изображение первого кадра",
+            "end_frame": "Изображение последнего кадра",
+            "reference_images": "Опорные изображения"
+        },
+        "widgets": {
+            "model_name": "Название модели",
+            "resolution": "Разрешение",
+            "duration": "Длительность",
+            "aspect_ratio": "Соотношение сторон"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "string": "Строка"
+        }
+    },
+    "KlingOmniProImageToVideoNode": {
+        "title": "Kling Omni изображение в видео (профи)",
+        "inputs": {
+            "reference_images": "Опорные изображения"
+        },
+        "widgets": {
+            "model_name": "Название модели",
+            "resolution": "Разрешение",
+            "duration": "Длительность",
+            "aspect_ratio": "Соотношение сторон"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "string": "Строка"
+        }
+    },
+    "KlingOmniProVideoToVideoNode": {
+        "title": "Kling Omni видео в видео (профи)",
+        "inputs": {
+            "reference_video": "Опорное видео",
+            "reference_images": "Опорное изображение"
+        },
+        "widgets": {
+            "model_name": "Название модели",
+            "keep_original_sound": "Использовать исходное аудио",
+            "duration": "Длительность",
+            "aspect_ratio": "Соотношение сторон"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "string": "Строка"
+        }
+    },
+    "KlingOmniProEditVideoNode": {
+        "title": "Kling Omni редактирование видео (профи)",
+        "inputs": {
+            "video": "Видео",
+            "reference_images": "Опорное изображение"
+        },
+        "widgets": {
+            "model_name": "Название модели",
+            "keep_original_sound": "Сохранять оригинальный звук"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        }
+    },
+    "KlingTextToVideoWithAudio": {
+        "title": "Kling текст в видео (со звуком)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "Название модели",
+            "mode": "Режим",
+            "aspect_ratio": "Соотношение сторон",
+            "duration": "Длительность",
+            "auth_token": "Токен авторизации",
+            "generate_audio": "Генерировать аудио"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "KlingImageToVideoWithAudio": {
+        "title": "Kling изображение в видео (со звуком)",
+        "inputs": {
+            "start_frame": "Начальный кадр"
+        },
+        "widgets": {
+            "model_name": "Название модели",
+            "mode": "Режим",
+            "generate_audio": "Генерировать аудио",
+            "duration": "Длительность"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "KlingMotionControl": {
+        "title": "Kling управление движением",
+        "inputs": {
+            "reference_video": "Опорное видео",
+            "reference_image": "Опорное изображение"
+        },
+        "widgets": {
+            "mode": "Режим",
+            "character_orientation": "Ориентация персонажа",
+            "keep_original_sound": "Сохранять оригинальный звук"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        }
+    },
+    "KlingAvatarNode": {
+        "title": "Kling Avatar 2",
+        "inputs": {
+            "image": "Изображение",
+            "sound_file": "Файл голоса"
+        },
+        "widgets": {
+            "mode": "Режим",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        }
+    },
+    "LtxvApiTextToVideo": {
+        "title": "LTXV текст в видео",
+        "inputs": {
+            "positive": "Положительное условие",
+            "negative": "Отрицательное условие",
+            "vae": "VAE-энкодер",
+            "image": "Изображение"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "resolution": "Разрешение",
+            "duration": "Длительность (сек)",
+            "fps": "Частота кадров (fps)",
+            "control_after_generate": "Управление после генерации",
+            "generate_audio": "Генерировать аудио"
+        },
+        "outputs": {
+            "video": "Видео",
+            "VIDEO": "Видео"
+        }
+    },
+    "LtxvApiImageToVideo": {
+        "title": "LTXV изображение в видео",
+        "inputs": {
+            "positive": "Положительное условие",
+            "negative": "Отрицательное условие",
+            "vae": "VAE-энкодер",
+            "image": "Изображение"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "resolution": "Разрешение",
+            "duration": "Длительность (сек)",
+            "fps": "Частота кадров (fps)",
+            "control_after_generate": "Управление после генерации",
+            "generate_audio": "Генерировать аудио"
+        },
+        "outputs": {
+            "video": "Видео",
+            "VIDEO": "Видео"
+        }
+    },
+    "LtxApi25TextToVideo": {
+        "title": "LTX 2.5 текст в видео",
+        "inputs": {},
+        "widgets": {
+            "model": "Модель",
+            "duration": "Длительность (сек)",
+            "resolution": "Разрешение",
+            "fps": "Частота кадров (fps)",
+            "generate_audio": "Генерировать аудио",
+            "prompt": "Промпт",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        }
+    },
+    "LtxApi25ImageToVideo": {
+        "title": "LTX 2.5 изображение в видео",
+        "inputs": {
+            "last_frame": "Предыдущий кадр",
+            "image": "Изображение"
+        },
+        "widgets": {
+            "model": "Модель",
+            "duration": "Длительность (сек)",
+            "resolution": "Разрешение",
+            "fps": "Частота кадров (fps)",
+            "generate_audio": "Генерировать аудио",
+            "prompt": "Промпт",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        }
+    },
+    "LtxApi25AudioToVideo": {
+        "title": "LTX 2.5 аудио в видео",
+        "inputs": {
+            "audio": "Аудио",
+            "image": "Изображение"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "prompt": "Промпт",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        }
+    },
+    "LumaVideoNode": {
+        "title": "Luma текст в видео",
+        "inputs": {
+            "luma_concepts": "Концепты Luma",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "duration": "Длительность",
+            "loop": "Цикл",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "auth_token": "Токен авторизации",
+            "weight": "Вес"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "luma_concepts": "Концепты Luma",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "LumaImageToVideoNode": {
+        "title": "Luma изображение в видео",
+        "inputs": {
+            "first_image": "Изображение первого кадра",
+            "last_image": "Изображение последнего кадра",
+            "luma_concepts": "Концепты Luma",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "duration": "Длительность",
+            "loop": "Цикл",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "auth_token": "Токен авторизации",
+            "weight": "Вес"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "luma_concepts": "Концепты Luma",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "LumaConceptsNode": {
+        "title": "Концепты Luma",
+        "inputs": {
+            "image": "Изображение",
+            "prompt": "Промпт",
+            "luma_concepts": "Концепты Luma"
+        },
+        "widgets": {
+            "image_type": "Тип изображения",
+            "concept1": "Концепт1",
+            "concept2": "Концепт2",
+            "concept3": "Концепт3",
+            "concept4": "Концепт4",
+            "auth_token": "Токен авторизации",
+            "aspect_ratio": "Соотношение сторон",
+            "n": "Количество"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "luma_concepts": "Концепты Luma"
+        }
+    },
+    "MinimaxTextToVideoNode": {
+        "title": "MiniMax текст в видео",
+        "inputs": {
+            "image": "Изображение",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "duration": "Длительность",
+            "subject": "Субъект",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "auth_token": "Токен авторизации",
+            "weight": "Вес"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "luma_concepts": "Концепты Luma",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "MinimaxImageToVideoNode": {
+        "title": "MiniMax изображение в видео",
+        "inputs": {
+            "image": "Изображение",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "duration": "Длительность",
+            "subject": "Субъект",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "auth_token": "Токен авторизации",
+            "weight": "Вес"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "luma_concepts": "Концепты Luma",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "MinimaxHailuoVideoNode": {
+        "title": "MiniMax видео Hailuo",
+        "inputs": {
+            "first_frame_image": "Изображение первого кадра",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "prompt_optimizer": "Оптимизация промпта",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "duration": "Длительность",
+            "subject": "Субъект",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "auth_token": "Токен авторизации",
+            "weight": "Вес"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "luma_concepts": "Концепты Luma",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "PixverseTextToVideoNode": {
+        "title": "PixVerse текст в видео",
+        "inputs": {
+            "video": "Видео",
+            "image": "Изображение",
+            "pixverse_template": "Шаблон PixVerse",
+            "prompt_text": "Текст промпта",
+            "negative_prompt": "Негативный промпт"
+        },
+        "widgets": {
+            "aspect_ratio": "Соотношение сторон",
+            "quality": "Качество",
+            "duration_seconds": "Длительность (сек)",
+            "motion_mode": "Режим движения",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "auth_token": "Токен авторизации"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "string": "Строка"
+        }
+    },
+    "PixverseImageToVideoNode": {
+        "title": "PixVerse видео из изображения",
+        "inputs": {
+            "video": "Видео",
+            "image": "Изображение",
+            "pixverse_template": "Шаблон PixVerse",
+            "prompt_text": "Текст промпта",
+            "negative_prompt": "Негативный промпт"
+        },
+        "widgets": {
+            "aspect_ratio": "Соотношение сторон",
+            "quality": "Качество",
+            "duration_seconds": "Длительность (сек)",
+            "motion_mode": "Режим движения",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "auth_token": "Токен авторизации"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "string": "Строка"
+        }
+    },
+    "PixverseTransitionVideoNode": {
+        "title": "PixVerse видео с переходом",
+        "inputs": {
+            "first_frame": "Первый кадр",
+            "last_frame": "Последний кадр",
+            "pixverse_template": "Шаблон PixVerse",
+            "prompt_text": "Текст промпта",
+            "negative_prompt": "Негативный промпт"
+        },
+        "widgets": {
+            "aspect_ratio": "Соотношение сторон",
+            "quality": "Качество",
+            "duration_seconds": "Длительность (сек)",
+            "motion_mode": "Режим движения",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "auth_token": "Токен авторизации"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "string": "Строка"
+        }
+    },
+    "PixverseTemplateNode": {
+        "title": "Шаблон PixVerse",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "template": "Шаблон"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "pixverse_template": "Шаблон PixVerse"
+        }
+    },
+    "RunwayFirstLastFrameNode": {
+        "title": "Runway видео по первому и последнему кадру",
+        "inputs": {
+            "positive": "Положительное условие",
+            "negative": "Отрицательное условие",
+            "camera_conditions": "Условие камеры",
+            "start_frame": "Начальный кадр",
+            "end_frame": "Конечный кадр"
+        },
+        "widgets": {
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "ratio": "Соотношение сторон",
+            "duration": "Длительность",
+            "batch_size": "Размер пакета"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "RunwayImageToVideoNodeGen3a": {
+        "title": "Runway видео из изображения (Gen3a Turbo)",
+        "inputs": {
+            "positive": "Положительное условие",
+            "negative": "Отрицательное условие",
+            "camera_conditions": "Условие камеры",
+            "start_frame": "Начальный кадр",
+            "end_frame": "Конечный кадр"
+        },
+        "widgets": {
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "ratio": "Соотношение сторон",
+            "duration": "Длительность",
+            "batch_size": "Размер пакета"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "RunwayImageToVideoNodeGen4": {
+        "title": "Runway видео из изображения (Gen4 Turbo)",
+        "inputs": {
+            "positive": "Положительное условие",
+            "negative": "Отрицательное условие",
+            "camera_conditions": "Условие камеры",
+            "start_frame": "Начальный кадр",
+            "end_frame": "Конечный кадр"
+        },
+        "widgets": {
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "ratio": "Соотношение сторон",
+            "duration": "Длительность",
+            "batch_size": "Размер пакета"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video_id": "ID видео",
+            "duration": "Длительность",
+            "string": "Строка"
+        }
+    },
+    "OpenAIVideoSora2": {
+        "title": "OpenAI Sora2 — видео",
+        "inputs": {
+            "image": "Изображение",
+            "audio": "Аудио"
+        },
+        "widgets": {
+            "model": "Модель",
+            "size": "Размер",
+            "resolution": "Разрешение",
+            "duration": "Длительность (сек)",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "generate_audio": "Генерировать аудио",
+            "prompt_extend": "Расширение промпта",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "TopazVideoEnhance": {
+        "title": "Topaz усилитель видео",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "upscaler_enabled": "Включить усилитель",
+            "upscaler_model": "Модель усиления",
+            "upscaler_resolution": "Повышение разрешения",
+            "upscaler_creativity": "Повышение длительности",
+            "interpolation_enabled": "Включить интерполяцию",
+            "interpolation_model": "Модель интерполяции",
+            "interpolation_slowmo": "Интерполяция слоу-мо",
+            "interpolation_frame_rate": "Частота кадров интерполяции",
+            "interpolation_duplicate": "Интерполяция дубликатов",
+            "interpolation_duplicate_threshold": "Порог дублирования интерполяции",
+            "dynamic_compression_level": "Уровень динамической компрессии"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video": "Видео"
+        }
+    },
+    "TopazVideoEnhanceV2": {
+        "title": "Topaz усилитель видео V2",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "upscaler_model": "Модель усиления",
+            "upscaler_resolution": "Повышение разрешения",
+            "creativity": "Длительность",
+            "sharp:": "Резкость",
+            "realism:": "Фотореализм",
+            "interpolation_model": "Модель интерполяции",
+            "dynamic_compression_level": "Уровень динамической компрессии"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video": "Видео"
+        }
+    },
+    "VeoVideoGenerationNode": {
+        "title": "Google Veo2 генерация видео",
+        "inputs": {
+            "image": "Изображение",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "negative_prompt": "Негативный промпт",
+            "aspect_ratio": "Соотношение сторон",
+            "duration_seconds": "Длительность видео (сек)",
+            "enhance_prompt": "Улучшение промпта",
+            "person_generation": "Режим генерации людей",
+            "seed": "Случайное зерно",
+            "model": "Модель",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "Veo3VideoGenerationNode": {
+        "title": "Google Veo3 генерация видео",
+        "inputs": {
+            "image": "Изображение",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "negative_prompt": "Негативный промпт",
+            "aspect_ratio": "Соотношение сторон",
+            "duration_seconds": "Длительность видео (сек)",
+            "enhance_prompt": "Улучшение промпта",
+            "person_generation": "Режим генерации людей",
+            "seed": "Случайное зерно",
+            "model": "Модель",
+            "generate_audio": "Генерировать аудио",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "Veo3FirstLastFrameNode": {
+        "title": "Google Veo3 генерация видео по первому и последнему кадру",
+        "inputs": {
+            "first_frame": "Изображение первого кадра",
+            "last_frame": "Изображение последнего кадра"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "negative_prompt": "Негативный промпт",
+            "resolution": "Разрешение",
+            "aspect_ratio": "Соотношение сторон",
+            "duration": "Длительность (сек)",
+            "enhance_prompt": "Улучшение промпта",
+            "person_generation": "Режим генерации людей",
+            "seed": "Случайное зерно",
+            "model": "Модель",
+            "generate_audio": "Генерировать аудио",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "ViduTextToVideoNode": {
+        "title": "Vidu видео из текста",
+        "inputs": {
+            "image": "Изображение",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "duration": "Длительность (сек)",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "movement_amplitude": "Амплитуда движения"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "ViduImageToVideoNode": {
+        "title": "Vidu видео из изображения",
+        "inputs": {
+            "image": "Изображение",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "duration": "Длительность (сек)",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "movement_amplitude": "Амплитуда движения"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "ViduReferenceVideoNode": {
+        "title": "Vidu видео по референсу",
+        "inputs": {
+            "images": "Группа изображений",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "duration": "Длительность (сек)",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "movement_amplitude": "Амплитуда движения"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "ViduStartEndToVideoNode": {
+        "title": "Vidu генерация видео по первому и последнему кадру",
+        "inputs": {
+            "first_frame": "Изображение первого кадра",
+            "end_frame": "Изображение последнего кадра"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "duration": "Длительность (сек)",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "movement_amplitude": "Амплитуда движения"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "ViduExtendVideoNode": {
+        "title": "Vidu продление видео",
+        "inputs": {
+            "video": "Видео",
+            "end_frame": "Конечный кадр"
+        },
+        "widgets": {
+            "model": "Модель",
+            "duration": "Длительность (сек)",
+            "resolution": "Разрешение",
+            "prompt": "Промпт",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        }
+    },
+    "ViduMultiFrameVideoNode": {
+        "title": "Vidu генерация видео по нескольким кадрам",
+        "inputs": {
+            "start_image": "Начальное изображение",
+            "end_image1": "Конечное изображение 1",
+            "end_image2": "Конечное изображение 2"
+        },
+        "widgets": {
+            "model": "Модель",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "resolution": "Разрешение",
+            "frames": "Несколько кадров",
+            "duration:": "Длительность (сек)",
+            "duration1:": "Длительность 1 (сек)",
+            "duration2:": "Длительность 2 (сек)"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "Vidu3TextToVideoNode": {
+        "title": "Vidu Q3 видео из текста",
+        "inputs": {},
+        "widgets": {
+            "model": "Модель",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "duration:": "Длительность (сек)",
+            "duration": "Длительность (сек)",
+            "audio": "Аудио",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "Vidu3ImageToVideoNode": {
+        "title": "Vidu Q3 видео из изображения",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "duration": "Длительность (сек)",
+            "audio": "Аудио",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "Vidu3StartEndToVideoNode": {
+        "title": "Vidu3 видео по первому и последнему кадру",
+        "inputs": {
+            "first_frame": "Изображение первого кадра",
+            "end_frame": "Изображение последнего кадра"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "duration": "Длительность (сек)",
+            "audio": "Аудио",
+            "prompt": "Промпт",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "movement_amplitude": "Амплитуда движения"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "WanTextToVideoApi": {
+        "title": "Wan видео из текста",
+        "inputs": {
+            "audio": "Аудио"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "size": "Размер",
+            "resolution": "Разрешение",
+            "duration": "Длительность (сек)",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "generate_audio": "Генерировать аудио",
+            "prompt_extend": "Расширение промпта",
+            "watermark": "Водяной знак",
+            "shot_type": "Тип съёмки"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "WanImageToVideoApi": {
+        "title": "Wan видео из изображения",
+        "inputs": {
+            "image": "Изображение",
+            "audio": "Аудио"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "resolution": "Разрешение",
+            "duration": "Длительность (сек)",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "generate_audio": "Генерировать аудио",
+            "prompt_extend": "Расширение промпта",
+            "watermark": "Водяной знак",
+            "shot_type": "Тип съёмки"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "WanReferenceVideoApi": {
+        "title": "Wan видео по референсу",
+        "inputs": {
+            "character1": "Признак 1",
+            "audio": "Аудио",
+            "VIDEO": "Видео",
+            "video": "Видео"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "size": "Размер",
+            "duration": "Длительность (сек)",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "generate_audio": "Генерировать аудио",
+            "prompt_extend": "Расширение промпта",
+            "watermark": "Водяной знак",
+            "shot_type": "Тип съёмки"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        }
+    },
+    "Wan2TextToVideoApi": {
+        "title": "Wan2.7 видео из текста",
+        "inputs": {
+            "positive": "Положительное условие",
+            "negative": "Отрицательное условие",
+            "audio": "Аудио"
+        },
+        "widgets": {
+            "resolution": "Разрешение",
+            "ratio": "Соотношение сторон",
+            "seed": "Случайное зерно",
+            "duration": "Длительность (сек)",
+            "prompt_extend": "Расширение промпта",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "Wan2ImageToVideoApi": {
+        "title": "Wan2.7 видео из изображения",
+        "inputs": {
+            "first_frame": "Изображение первого кадра",
+            "last_frame": "Изображение последнего кадра",
+            "audio": "Аудио"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "duration": "Длительность (сек)",
+            "ratio": "Соотношение сторон",
+            "seed": "Случайное зерно",
+            "prompt_extend": "Расширение промпта",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "Wan2VideoContinuationApi": {
+        "title": "Wan2.7 продление видео",
+        "inputs": {
+            "first_clip": "Первый фрагмент",
+            "last_frame": "Изображение последнего кадра",
+            "audio": "Аудио"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "duration": "Длительность (сек)",
+            "ratio": "Соотношение сторон",
+            "seed": "Случайное зерно",
+            "prompt_extend": "Расширение промпта",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "Wan2VideoEditApi": {
+        "title": "Wan2.7 редактирование видео",
+        "inputs": {
+            "video": "Видео",
+            "image1": "Изображение1",
+            "image2": "Изображение2",
+            "image3": "Изображение3",
+            "image4": "Изображение4"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "ratio": "Соотношение сторон",
+            "duration": "Длительность (сек)",
+            "seed": "Случайное зерно",
+            "audio_setting": "Настройки аудио",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "Wan2ReferenceVideoApi": {
+        "title": "Wan2.7 видео по референсу",
+        "inputs": {
+            "video1": "Видео1",
+            "video2": "Видео2",
+            "video3": "Видео3",
+            "image1": "Изображение1",
+            "image2": "Изображение2",
+            "image3": "Изображение3",
+            "image4": "Изображение4"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "ratio": "Соотношение сторон",
+            "duration": "Длительность (сек)",
+            "seed": "Случайное зерно",
+            "audio_setting": "Настройки аудио",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        }
+    },
+    "HappyHorseTextToVideoApi": {
+        "title": "HappyHorse видео из текста",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "ratio": "Соотношение сторон",
+            "duration": "Длительность (сек)",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Генерирует видеоролик моделью «HappyHorse» по текстовому промпту."
+    },
+    "HappyHorse Image to Video": {
+        "title": "HappyHorse видео из изображения",
+        "inputs": {
+            "first_frame": "Изображение первого кадра"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "duration": "Длительность (сек)",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        },
+        "description": "Генерирует видеоролик моделью «HappyHorse» из начального кадра-изображения."
+    },
+    "HappyHorseVideoEditApi": {
+        "title": "HappyHorse редактирование видео",
+        "inputs": {
+            "video": "Видео",
+            "image1": "Изображение1",
+            "image2": "Изображение2",
+            "image3": "Изображение3",
+            "image4": "Изображение4",
+            "image5": "Изображение5"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "ratio": "Соотношение сторон",
+            "duration": "Длительность (сек)",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        },
+        "description": "Редактирует видео моделью «HappyHorse» по текстовому описанию или референсному изображению./nДлительность выходного видео — от 3 до 15 секунд и совпадает с длительностью входного; входное видео длиннее 15 секунд будет обрезано."
+    },
+    "HappyHorseReferenceVideoApi": {
+        "title": "HappyHorse видео по референсу",
+        "inputs": {
+            "video": "Видео",
+            "image1": "Изображение1",
+            "image2": "Изображение2",
+            "image3": "Изображение3",
+            "image4": "Изображение4",
+            "image5": "Изображение5",
+            "image6": "Изображение6",
+            "image7": "Изображение7",
+            "image8": "Изображение8",
+            "image9": "Изображение9"
+        },
+        "widgets": {
+            "model": "Модель",
+            "resolution": "Разрешение",
+            "ratio": "Соотношение сторон",
+            "duration": "Длительность (сек)",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "VIDEO": "Генерация видео"
+        },
+        "description": "Генерирует с помощью модели «HappyHorse» видео с людьми или объектами на основе референсных материалов./nПоддерживает показ одного персонажа и взаимодействие нескольких персонажей."
+    },
+    "WavespeedFlashVSRNode": {
+        "title": "WaveSpeed FlashVSR увеличение видео",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "target_resolution": "Целевое разрешение"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        }
+    },
+    "BeebleSwitchXImageEdit": {
+        "title": "Beeble SwitchX редактирование изображения",
+        "inputs": {
+            "image": "Изображение",
+            "reference_image": "Опорное изображение"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "alpha_mode": "Альфа-режим",
+            "max_resolution": "Максимальное разрешение",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "image": "Изображение",
+            "alpha": "Альфа-канал"
+        },
+        "description": "Редактирует одно изображение с помощью BeebleSwitchX. Можно менять любой элемент сцены (фон, освещение, одежду), сохраняя исходный объект без изменений. Укажите референсное изображение и/или текстовый промпт с описанием нового эффекта. Максимальное разрешение — около 2,77 Мп."
+    },
+    "FluxProUltraImageNode": {
+        "title": "Flux 1.1 [pro] изображение сверхвысокой чёткости",
+        "inputs": {
+            "image_prompt": "Промпт изображения",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "prompt_upsampling": "Апсемплинг промпта",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "aspect_ratio": "Соотношение сторон",
+            "raw": "Необработанные данные",
+            "auth_token": "Токен авторизации",
+            "image_prompt_strength": "Сила промпта изображения"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска"
+        }
+    },
+    "FluxKontextProImageNode": {
+        "title": "Flux.1 контекст изображения [pro]",
+        "inputs": {
+            "input_image": "Входное изображение",
+            "mask": "Маска",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "prompt_upsampling": "Апсемплинг промпта",
+            "aspect_ratio": "Соотношение сторон",
+            "guidance": "Сила гайда",
+            "control_after_generate": "Управление после генерации",
+            "steps": "Количество шагов",
+            "seed": "Зерно",
+            "raw": "Необработанные данные",
+            "auth_token": "Токен авторизации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска"
+        }
+    },
+    "FluxKontextMaxImageNode": {
+        "title": "Flux.1 контекст изображения [max]",
+        "inputs": {
+            "input_image": "Входное изображение",
+            "mask": "Маска",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "prompt_upsampling": "Апсемплинг промпта",
+            "aspect_ratio": "Соотношение сторон",
+            "guidance": "Сила гайда",
+            "control_after_generate": "Управление после генерации",
+            "steps": "Количество шагов",
+            "seed": "Зерно",
+            "raw": "Необработанные данные",
+            "auth_token": "Токен авторизации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска"
+        }
+    },
+    "FluxProFillNode": {
+        "title": "Flux.1 заполнение изображения",
+        "inputs": {
+            "image": "Изображение",
+            "mask": "Маска",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "prompt_upsampling": "Апсемплинг промпта",
+            "top": "Расширение вверх",
+            "bottom": "Расширение вниз",
+            "left": "Расширение влево",
+            "right": "Расширение вправо",
+            "guidance": "Сила гайда",
+            "control_after_generate": "Управление после генерации",
+            "steps": "Количество шагов",
+            "seed": "Зерно",
+            "raw": "Необработанные данные",
+            "auth_token": "Токен авторизации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска"
+        }
+    },
+    "FluxEraseNode": {
+        "title": "Flux стирание изображения",
+        "inputs": {
+            "image": "Изображение",
+            "mask": "Маска"
+        },
+        "widgets": {
+            "dilate_pixels": "Расширение пикселей",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        },
+        "description": "Удаляет выделенные маской объекты с изображения и восстанавливает фон. Нарисуйте маску на области, которую хотите стереть."
+    },
+    "FluxVTONode": {
+        "title": "Flux виртуальная примерка",
+        "inputs": {
+            "person": "Человек",
+            "garment": "Одежда"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        },
+        "description": "Виртуальная примерка: надевает на человека предоставленную одежду."
+    },
+    "Flux2ProImageNode": {
+        "title": "Flux 2 поколение изображение сверхвысокой чёткости [Pro]",
+        "inputs": {
+            "images": "Группа изображений",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "prompt_upsampling": "Апсемплинг промпта",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "width": "Ширина",
+            "height": "Высота"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска"
+        }
+    },
+    "Flux2MaxImageNode": {
+        "title": "Flux.2 узел изображения (max)",
+        "inputs": {
+            "images": "Изображение",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "width": "Ширина",
+            "height": "Высота",
+            "prompt_upsampling": "Апсемплинг промпта",
+            "control_after_generate": "Управление после генерации",
+            "seed": "Зерно"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска"
+        }
+    },
+    "Flux2ImageNode": {
+        "title": "Flux.2 генерация изображения",
+        "inputs": {
+            "image_1": "Вход изображения"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "model": "Модель",
+            "width": "Ширина",
+            "height": "Высота",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        },
+        "description": "Узел генерации изображений моделью Flux.2."
+    },
+    "Flux3TextToVideoNode": {
+        "title": "Flux.3 видео из текста",
+        "inputs": {},
+        "widgets": {
+            "prompt": "Промпт",
+            "aspect_ratio": "Соотношение сторон",
+            "duration": "Длительность",
+            "resolution": "Разрешение",
+            "generate_audio": "Генерировать аудио",
+            "safety_tolerance": "Допуск безопасности",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Генерирует с помощью FLUX3 видео с синхронным аудио из текстового промпта."
+    },
+    "Flux3ImageToVideoNode": {
+        "title": "Flux.3 видео из изображения",
+        "inputs": {
+            "image_0": "Изображение 0",
+            "image_1": "Изображение1",
+            "image_2": "Изображение2",
+            "image_3": "Изображение3",
+            "image_4": "Изображение4",
+            "image_5": "Изображение5"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "placement": "Размещение",
+            "aspect_ratio": "Соотношение сторон",
+            "duration": "Длительность",
+            "resolution": "Разрешение",
+            "generate_audio": "Генерировать аудио",
+            "safety_tolerance": "Допуск безопасности",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Создаёт анимацию FLUX3 из 1–10 изображений. Каждое изображение становится кадром ролика: одно изображение открывает его, два — переход от первого ко второму, а большее число распределяется или закрепляется за выбранными вами моментами времени."
+    },
+    "Flux3VideoContinuationNode": {
+        "title": "Flux.3 продление видео",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "aspect_ratio": "Соотношение сторон",
+            "duration": "Длительность",
+            "resolution": "Разрешение",
+            "generate_audio": "Генерировать аудио",
+            "safety_tolerance": "Допуск безопасности",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Продолжение видео FLUX 3: новый фрагмент продолжает последние кадры предоставленного вами видео."
+    },
+    "FluxVideoUpscaleNode": {
+        "title": "Flux.3 увеличение видео",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "upscale_factor": "Кратность увеличения",
+            "model": "Модель",
+            "prompt": "Промпт",
+            "auto_downscale": "Автомасштабирование",
+            "safety_tolerance": "Допуск безопасности",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Увеличивает видео в 1,5–3 раза с помощью технологии суперразрешения FLUX: можно точно сохранить исходное качество или творчески усилить детали."
+    },
+    "BriaImageEditNode": {
+        "title": "Bria редактирование изображения",
+        "inputs": {
+            "image": "Изображение",
+            "mask": "Маска"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "guidance_scale": "Сила гайда",
+            "steps": "Количество шагов",
+            "moderation": "Модерация",
+            "prompt_content_moderation": "Модерация содержания промпта",
+            "visual_input_moderation": "Модерация визуального ввода",
+            "visual_output_moderation": "Модерация визуального вывода"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "structured_prompt": "Структурированный промпт"
+        }
+    },
+    "BriaRemoveImageBackground": {
+        "title": "Bria удаление фона изображения",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {
+            "moderation": "Модерация",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "images": "Группа изображений"
+        }
+    },
+    "ByteDanceImageNode": {
+        "title": "ByteDance изображение",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "size_preset": "Значение пресета размера",
+            "width": "Ширина",
+            "height": "Высота",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "guidance_scale": "Масштаб направления",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "image": "Изображение",
+            "IMAGE": "Изображение"
+        }
+    },
+    "ByteDanceSeedreamNode": {
+        "title": "ByteDance Seedream 4.0",
+        "inputs": {
+            "image": "Изображение",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "size_preset": "Значение пресета размера",
+            "width": "Ширина",
+            "height": "Высота",
+            "sequential_image_generation": "Генерация серии изображений",
+            "max_images": "Максимальное число изображений",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "guidance_scale": "Масштаб направления",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "image": "Изображение",
+            "IMAGE": "Изображение"
+        }
+    },
+    "ByteDanceSeedreamNodeV2": {
+        "title": "ByteDance Seedream 4.5 и 5.0",
+        "inputs": {
+            "image_1": "Изображение 1"
+        },
+        "widgets": {
+            "model": "Модель",
+            "size_preset": "Пресет размера",
+            "width": "Ширина",
+            "height": "Высота",
+            "max_images": "Максимальное число изображений",
+            "fail_on_partial": "Остановить при частичном сбое",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "image": "Изображение"
+        },
+        "description": "Единая генерация изображений из текста и точное редактирование одним предложением с разрешением до 4K."
+    },
+    "ByteDanceCreateImageAsset": {
+        "title": "ByteDance создание ассета изображения",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {
+            "group_id": "ID группы"
+        },
+        "outputs": {
+            "asset_id": "ID ассета",
+            "group_id": "ID группы"
+        },
+        "description": "Создаёт персональный ресурс изображения Seedance2.0. Загружает входное изображение и регистрирует его в указанной группе ресурсов.\n Если идентификатор ресурса пуст, выполняется реальный процесс персональной H5-аутентификации, создающий новую группу перед добавлением ресурса."
+    },
+    "GeminiImageNode": {
+        "title": "Google Gemini изображение",
+        "inputs": {
+            "images": "Изображение",
+            "files": "Входные файлы Gemini"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "aspect_ratio": "Соотношение сторон",
+            "seed": "Случайное зерно",
+            "model": "Модель",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "STRING": "Строка"
+        }
+    },
+    "GeminiImage2Node": {
+        "title": "Nano Banana Pro (изображение Google Gemini)",
+        "inputs": {
+            "images": "Группа изображений",
+            "files": "Файл"
+        },
+        "widgets": {
+            "model": "Модель",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "response_modalities": "Способ ответа"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска"
+        }
+    },
+    "GeminiNanoBanana2": {
+        "title": "Nano Banana Pro (изображение Google Gemini)",
+        "inputs": {
+            "images": "Группа изображений",
+            "files": "Файл"
+        },
+        "widgets": {
+            "model": "Модель",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "response_modalities": "Способ ответа",
+            "thinking_level": "Глубина мышления"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "STRING": "Строка"
+        },
+        "description": "Синхронно генерирует или редактирует изображения через API Google Vertex."
+    },
+    "GeminiNanoBanana2V2": {
+        "title": "Nano Banana 2",
+        "inputs": {
+            "image_1": "Изображение1",
+            "files": "Файл"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "model": "Модель",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "thinking_level": "Уровень мышления",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "response_modalities": "Модальность ответа",
+            "system_prompt": "Системный промпт"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "STRING": "Строка",
+            "thought_image": "Изображение"
+        },
+        "description": "Узел Nano Banana 2 для генерации изображений."
+    },
+    "GrokImageNode": {
+        "title": "Grok изображение",
+        "inputs": {},
+        "widgets": {
+            "model": "Модель",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "aspect_ratio": "Соотношение сторон",
+            "number_of_images": "Количество изображений"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "GrokImageEditNode": {
+        "title": "Grok редактирование изображения",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {
+            "model": "Модель",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "number_of_images": "Количество изображений"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "GrokImageEditNodeV2": {
+        "title": "Grok редактирование изображения",
+        "inputs": {
+            "image_1": "Изображение1",
+            "image_2": "Изображение2"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "model": "Модель",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "number_of_images": "Количество изображений"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "HitPawGeneralImageEnhance": {
+        "title": "HitPaw общее улучшение изображения",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {
+            "model": "Модель",
+            "upscale_factor": "Пропорция увеличения",
+            "auto_downscale": "Автомасштабирование"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "IdeogramV1": {
+        "title": "Ideogram изображение из текста V1",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "turbo": "Режим ускорения",
+            "aspect_ratio": "Соотношение сторон",
+            "magic_prompt_option": "Параметр волшебного промпта",
+            "control_after_generate": "Управление после генерации",
+            "negative_prompt": "Негативный промпт",
+            "seed": "Зерно",
+            "num_images": "Количество изображений",
+            "auth_token": "Токен авторизации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска"
+        }
+    },
+    "IdeogramV2": {
+        "title": "Ideogram изображение из текста V2",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "turbo": "Режим ускорения",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "magic_prompt_option": "Параметр волшебного промпта",
+            "control_after_generate": "Управление после генерации",
+            "negative_prompt": "Негативный промпт",
+            "style_type": "Тип стиля",
+            "seed": "Зерно",
+            "num_images": "Количество изображений",
+            "color_palette": "Палитра",
+            "auth_token": "Токен авторизации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска"
+        }
+    },
+    "IdeogramV3": {
+        "title": "Ideogram изображение из текста V3",
+        "inputs": {
+            "image": "Изображение",
+            "mask": "Маска",
+            "prompt": "Промпт",
+            "character_image": "Изображение персонажа",
+            "character_mask": "Маска персонажа"
+        },
+        "widgets": {
+            "turbo": "Режим ускорения",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "magic_prompt_option": "Параметр волшебного промпта",
+            "control_after_generate": "Управление после генерации",
+            "rendering_speed": "Скорость рендеринга",
+            "style_type": "Тип стиля",
+            "seed": "Зерно",
+            "num_images": "Количество изображений",
+            "color_palette": "Палитра",
+            "auth_token": "Токен авторизации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска"
+        }
+    },
+    "IdeogramV4": {
+        "title": "Ideogram изображение из текста V4",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "resolution": "Разрешение",
+            "rendering_speed": "Скорость рендеринга",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "KlingVirtualTryOnNode": {
+        "title": "Kling виртуальная примерка",
+        "inputs": {
+            "image": "Изображение",
+            "human_image": "Изображение человека",
+            "cloth_image": "Изображение одежды"
+        },
+        "widgets": {
+            "image_type": "Тип изображения",
+            "image_fidelity": "Точность изображения",
+            "human_fidelity": "Точность персонажа",
+            "model_name": "Название модели",
+            "task_id": "ID задачи",
+            "auth_token": "Токен авторизации",
+            "aspect_ratio": "Соотношение сторон",
+            "n": "Количество"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "string": "Строка"
+        }
+    },
+    "KlingImageGenerationNode": {
+        "title": "Kling генерация изображения",
+        "inputs": {
+            "image": "Изображение",
+            "prompt": "Промпт",
+            "negative_prompt": "Негативный промпт"
+        },
+        "widgets": {
+            "image_type": "Тип изображения",
+            "image_fidelity": "Точность изображения",
+            "human_fidelity": "Точность персонажа",
+            "model_name": "Название модели",
+            "task_id": "ID задачи",
+            "auth_token": "Токен авторизации",
+            "aspect_ratio": "Соотношение сторон",
+            "n": "Количество"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "string": "Строка"
+        }
+    },
+    "KlingOmniProImageNode": {
+        "title": "Kling Omni изображение (Pro)",
+        "inputs": {
+            "reference_images": "Опорные изображения"
+        },
+        "widgets": {
+            "model_name": "Название модели",
+            "resolution": "Разрешение",
+            "auth_token": "Токен авторизации",
+            "aspect_ratio": "Соотношение сторон",
+            "n": "Количество"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "string": "Строка"
+        }
+    },
+    "Krea2ImageNode": {
+        "title": "Krea 2 изображение",
+        "inputs": {
+            "style_reference": "Референс стиля",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "creativity": "Творчество",
+            "moodboard_id": "ID мудборда",
+            "moodboard_strength": "Интенсивность мудборда",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {},
+        "description": "Генерация изображений через Krea2: выберите средний (выразительная иллюстрация) или большой (реалистичный стиль с сильной экспрессией) размер. Поддерживаются необязательный мудборд и до 10 связанных референсов стиля изображений."
+    },
+    "Krea2StyleReferenceNode": {
+        "title": "Krea 2 референс стиля",
+        "inputs": {
+            "image": "Изображение",
+            "style_reference": "Референс стиля"
+        },
+        "widgets": {
+            "strength": "Интенсивность"
+        },
+        "outputs": {
+            "style_reference": "Референс стиля"
+        },
+        "description": "Добавляет референс стиля изображения в генератор Krea2. Связывайте последовательно несколько узлов референсов стиля Krea2 (до 10) и подавайте итоговый вывод `референс стиля` в узел Krea2 Изображение. Каждое изображение загружается в хранилище ComfyAPI и передаётся в виде URL."
+    },
+    "LumaImageNode": {
+        "title": "Luma изображение из текста",
+        "inputs": {
+            "image_luma_ref": "Luma референс изображения",
+            "style_image": "Изображение стиля",
+            "prompt": "Промпт",
+            "character_image": "Изображение человека"
+        },
+        "widgets": {
+            "model": "Модель",
+            "aspect_ratio": "Соотношение сторон",
+            "seed": "Зерно",
+            "style_image_weight": "Вес изображения стиля",
+            "luma_ref": "Luma референс",
+            "auth_token": "Токен авторизации",
+            "max_refs": "Максимальное число референсов",
+            "weight": "Вес"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "luma_concepts": "Концепты Luma"
+        }
+    },
+    "LumaImageModifyNode": {
+        "title": "Luma изображение в изображение",
+        "inputs": {
+            "image": "Изображение",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "image_weight": "Вес изображения",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "auth_token": "Токен авторизации",
+            "weight": "Вес"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "LumaReferenceNode": {
+        "title": "Luma референс",
+        "inputs": {
+            "image": "Изображение",
+            "prompt": "Промпт",
+            "luma_ref": "Luma референс"
+        },
+        "widgets": {
+            "image_type": "Тип изображения",
+            "weight": "Вес",
+            "human_fidelity": "Точность персонажа",
+            "model_name": "Название модели",
+            "task_id": "ID задачи",
+            "auth_token": "Токен авторизации",
+            "aspect_ratio": "Соотношение сторон",
+            "n": "Количество"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "luma_ref": "Luma референс"
+        }
+    },
+    "LumaImageNode2": {
+        "title": "Luma UNI-1 изображение",
+        "inputs": {
+            "image_1": "Изображение 1"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "model": "Модель",
+            "aspect_ratio": "Соотношение сторон",
+            "style": "Стиль",
+            "web_search": "Веб-поиск",
+            "seed": "Зерно"
+        },
+        "outputs": {},
+        "description": "Генерирует изображения из текста моделью Luma UNI-1."
+    },
+    "LumaImageEditNode2": {
+        "title": "Luma UNI-1 редактирование изображения",
+        "inputs": {
+            "source": "Исходный путь",
+            "image_1": "Изображение 1"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "model": "Модель",
+            "style": "Стиль",
+            "web_search": "Веб-поиск",
+            "seed": "Зерно"
+        },
+        "outputs": {},
+        "description": "Редактирует существующее изображение по текстовому промпту моделью Luma UNI-1."
+    },
+    "MagnificImageUpscalerCreativeNode": {
+        "title": "Magnific увеличение изображения (креативный режим)",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {
+            "scale_factor": "Коэффициент масштабирования",
+            "optimized_for": "Цель оптимизации",
+            "creativity": "Творчество",
+            "hdr": "HDR высокий динамический диапазон",
+            "resemblance": "Сходство",
+            "fractality": "Фрактальность",
+            "engine": "Движок",
+            "auto_downscale": "Автодаунсэмплинг"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "MagnificImageUpscalerPreciseV2Node": {
+        "title": "Magnific увеличение изображения V2",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {
+            "scale_factor": "Коэффициент масштабирования",
+            "flavor": "Стиль",
+            "sharpen": "Резкость",
+            "smart_grain": "Интеллектуальное зерно",
+            "ultra_detail": "Ультрамелкие детали",
+            "auto_downscale": "Автодаунсэмплинг"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "MagnificImageStyleTransferNode": {
+        "title": "Magnific преобразование стиля изображения",
+        "inputs": {
+            "image": "Изображение",
+            "reference_image": "Опорное изображение"
+        },
+        "widgets": {
+            "style_strength": "Интенсивность стиля",
+            "structure_strength": "Интенсивность структуры",
+            "flavor": "Стиль",
+            "engine": "Движок",
+            "portrait_mode": "Портретный режим",
+            "fixed_generation": "Фиксированная генерация"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "MagnificImageRelightNode": {
+        "title": "Magnific изменение освещения изображения",
+        "inputs": {
+            "image": "Изображение",
+            "reference_image": "Опорное изображение"
+        },
+        "widgets": {
+            "light_transfer_strength": "Интенсивность освещения",
+            "style": "Стиль",
+            "interpolate_from_original": "Интерполяция от исходных данных",
+            "change_background": "Изменить фон",
+            "preserve_details": "Сохранение деталей",
+            "advanced_settings": "Расширенные настройки"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "MagnificImageSkinEnhancerNode": {
+        "title": "Magnific улучшение кожи на изображении",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {
+            "sharpen": "Резкость",
+            "smart_grain": "Интеллектуальное зерно",
+            "mode": "Режим"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "OpenAIDalle2": {
+        "title": "OpenAI DALL·E 2",
+        "inputs": {
+            "image": "Изображение",
+            "mask": "Маска",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "size": "Размер",
+            "n": "Количество",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "auth_token": "Токен авторизации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "string": "Строка"
+        }
+    },
+    "OpenAIDalle3": {
+        "title": "OpenAI DALL·E 3",
+        "inputs": {
+            "image": "Изображение",
+            "mask": "Маска",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "size": "Размер",
+            "quality": "Качество",
+            "style": "Стиль",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "auth_token": "Токен авторизации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "string": "Строка"
+        }
+    },
+    "OpenAIGPTImage1": {
+        "title": "OpenAI GPT Изображение 1",
+        "inputs": {
+            "image": "Изображение",
+            "mask": "Маска",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "background": "Фон",
+            "size": "Размер",
+            "quality": "Качество",
+            "n": "Количество",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "auth_token": "Токен авторизации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "string": "Строка"
+        }
+    },
+    "OpenAIGPTImageNodeV2": {
+        "title": "OpenAI GPT Изображение 2",
+        "inputs": {
+            "image_1": "Изображение1",
+            "image_2": "Изображение2",
+            "image_3": "Изображение3",
+            "mask": "Маска",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "size": "Размер",
+            "custom_width": "Установить ширину",
+            "custom_height": "Установить высоту",
+            "background": "Фон",
+            "quality": "Качество",
+            "n": "Количество",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "auth_token": "Токен авторизации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "string": "Строка"
+        }
+    },
+    "QuiverTextToSVGNode": {
+        "title": "Векторное изображение SVG из текста",
+        "inputs": {
+            "ref_0": "Референс",
+            "ref_1": "Референс1",
+            "ref_2": "Референс2",
+            "ref_3": "Референс3"
+        },
+        "widgets": {
+            "model": "Модель",
+            "temperature": "Температура",
+            "top_p": "Максимальная доля вероятности",
+            "presence_penalty": "Штраф за присутствие",
+            "control_after_generate": "Управление после генерации",
+            "seed": "Зерно"
+        },
+        "outputs": {
+            "SVG": "Векторное изображение"
+        }
+    },
+    "QuiverImageToSVGNode": {
+        "title": "Векторное изображение SVG из изображения",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {
+            "auto_crop": "Автообрезка",
+            "model": "Модель",
+            "target_size": "Целевой размер",
+            "temperature": "Температура",
+            "top_p": "Максимальная доля вероятности",
+            "presence_penalty": "Штраф за присутствие",
+            "control_after_generate": "Управление после генерации",
+            "seed": "Зерно"
+        },
+        "outputs": {
+            "SVG": "Векторное изображение"
+        }
+    },
+    "RecraftTextToImageNode": {
+        "title": "Recraft изображение из текста",
+        "inputs": {
+            "recraft_style": "Recraft стиль",
+            "negative_prompt": "Негативный промпт",
+            "recraft_controls": "Recraft управляющие параметры"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "size": "Размер",
+            "n": "Количество",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "string": "Строка"
+        }
+    },
+    "RecraftImageToImageNode": {
+        "title": "Recraft изображение из изображения",
+        "inputs": {
+            "image": "Входное изображение",
+            "recraft_style": "Recraft стиль",
+            "negative_prompt": "Негативный промпт",
+            "recraft_controls": "Recraft управляющие параметры",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "n": "Количество генераций",
+            "strength": "Интенсивность перерисовки",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "RecraftImageInpaintingNode": {
+        "title": "Recraft восстановление изображения",
+        "inputs": {
+            "image": "Изображение",
+            "mask": "Маска",
+            "recraft_style": "Recraft стиль",
+            "negative_prompt": "Негативный промпт",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "n": "Количество генераций",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "RecraftTextToVectorNode": {
+        "title": "Recraft векторное изображение из текста",
+        "inputs": {
+            "recraft_controls": "Recraft управляющие параметры",
+            "negative_prompt": "Негативный промпт",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "substyle": "Тип подстиля",
+            "size": "Выходной размер",
+            "n": "Количество генераций",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "VECTOR": "Векторная графика"
+        }
+    },
+    "RecraftVectorizeImageNode": {
+        "title": "Recraft векторизация изображения",
+        "inputs": {
+            "image": "Изображение",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {},
+        "outputs": {
+            "VECTOR": "Векторная графика"
+        }
+    },
+    "RecraftRemoveBackgroundNode": {
+        "title": "Recraft удаление фона",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска"
+        }
+    },
+    "RecraftReplaceBackgroundNode": {
+        "title": "Recraft замена фона",
+        "inputs": {
+            "image": "Изображение",
+            "recraft_style": "Recraft стиль",
+            "negative_prompt": "Негативный промпт",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {
+            "prompt": "Описание фона",
+            "n": "Количество генераций",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "RecraftCrispUpscaleNode": {
+        "title": "Recraft чёткое увеличение изображения",
+        "inputs": {
+            "image": "Изображение",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "RecraftCreativeUpscaleNode": {
+        "title": "Recraft творческое увеличение изображения",
+        "inputs": {
+            "image": "Изображение",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "RecraftStyleV3RealisticImage": {
+        "title": "Recraft стиль — реалистичное изображение",
+        "inputs": {
+            "colors": "Цвет",
+            "background_color": "Цвет фона"
+        },
+        "widgets": {
+            "substyle": "Подстиль"
+        },
+        "outputs": {
+            "recraft_style": "Recraft стиль"
+        }
+    },
+    "RecraftStyleV3DigitalIllustration": {
+        "title": "Recraft стиль — цифровая иллюстрация",
+        "inputs": {
+            "colors": "Цвет",
+            "background_color": "Цвет фона"
+        },
+        "widgets": {
+            "substyle": "Подстиль"
+        },
+        "outputs": {
+            "recraft_style": "Recraft стиль"
+        }
+    },
+    "RecraftStyleV3LogoRaster": {
+        "title": "Recraft стиль — растровый логотип",
+        "inputs": {
+            "colors": "Цвет",
+            "background_color": "Цвет фона"
+        },
+        "widgets": {
+            "substyle": "Подстиль"
+        },
+        "outputs": {
+            "recraft_style": "Recraft стиль"
+        }
+    },
+    "RecraftStyleV3InfiniteStyleLibrary": {
+        "title": "Recraft стиль — бесконечная библиотека стилей",
+        "inputs": {
+            "colors": "Цвет",
+            "background_color": "Цвет фона"
+        },
+        "widgets": {
+            "style_id": "ID стиля"
+        },
+        "outputs": {
+            "recraft_style": "Recraft стиль"
+        }
+    },
+    "RecraftCreateStyleNode": {
+        "title": "Recraft стиль дизайна",
+        "inputs": {
+            "image0": "Изображение 0",
+            "image1": "Изображение1"
+        },
+        "widgets": {
+            "style": "Стиль"
+        },
+        "outputs": {
+            "style": "Стиль",
+            "style_id": "ID стиля"
+        }
+    },
+    "RecraftColorRGB": {
+        "title": "Recraft цвет RGB",
+        "inputs": {
+            "recraft_color": "Recraft цвет"
+        },
+        "widgets": {
+            "r": "Значение красного",
+            "g": "Значение зелёного",
+            "b": "Значение синего"
+        },
+        "outputs": {
+            "recraft_color": "Recraft цвет",
+            "string": "Строка"
+        }
+    },
+    "RecraftControls": {
+        "title": "Recraft управляющие параметры",
+        "inputs": {
+            "colors": "Цвет",
+            "background_color": "Цвет фона"
+        },
+        "widgets": {
+            "r": "Значение красного",
+            "g": "Значение зелёного",
+            "b": "Значение синего"
+        },
+        "outputs": {
+            "recraft_controls": "Recraft управляющие параметры",
+            "string": "Строка"
+        }
+    },
+    "RecraftV4TextToImageNode": {
+        "title": "Recraft изображение из текста V4",
+        "inputs": {
+            "recraft_controls": "Recraft управляющие параметры"
+        },
+        "widgets": {
+            "model": "Модель",
+            "size": "Размер",
+            "n": "Количество",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "string": "Строка"
+        }
+    },
+    "RecraftV4TextToVectorNode": {
+        "title": "Recraft векторное изображение из текста V4",
+        "inputs": {
+            "recraft_controls": "Recraft управляющие параметры"
+        },
+        "widgets": {
+            "model": "Модель",
+            "size": "Размер",
+            "n": "Количество",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "SVG": "Векторный формат SVG"
+        }
+    },
+    "ReveImageCreateNode": {
+        "title": "Reve изображение из текста",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "aspect_ratio": "Соотношение сторон",
+            "test_time_scaling": "Тест временного масштабирования",
+            "upscale": "Апскейл",
+            "remove_background": "Удаление фона",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "string": "Строка"
+        }
+    },
+    "ReveImageEditNode": {
+        "title": "Reve редактирование изображения",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {
+            "model": "Модель",
+            "aspect_ratio": "Соотношение сторон",
+            "test_time_scaling": "Тест временного масштабирования",
+            "upscale": "Апскейл",
+            "remove_background": "Удаление фона",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "string": "Строка"
+        }
+    },
+    "ReveImageRemixNode": {
+        "title": "Reve ремикс изображения",
+        "inputs": {
+            "image_0": "Изображение 0",
+            "image_1": "Изображение1",
+            "image_2": "Изображение2",
+            "image_3": "Изображение3",
+            "image_4": "Изображение4",
+            "image_5": "Изображение5"
+        },
+        "widgets": {
+            "model": "Модель",
+            "aspect_ratio": "Соотношение сторон",
+            "test_time_scaling": "Тест временного масштабирования",
+            "upscale": "Апскейл",
+            "remove_background": "Удаление фона",
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "string": "Строка"
+        }
+    },
+    "RunwayTextToImageNode": {
+        "title": "Runway изображение из текста",
+        "inputs": {
+            "positive": "Положительное условие",
+            "negative": "Отрицательное условие",
+            "reference_image": "Референсное изображение",
+            "start_frame": "Начальный кадр",
+            "end_frame": "Конечный кадр"
+        },
+        "widgets": {
+            "seed": "Зерно",
+            "control_after_generate": "Управление после генерации",
+            "ratio": "Соотношение сторон",
+            "duration": "Длительность",
+            "batch_size": "Размер пакета"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "string": "Строка"
+        }
+    },
+    "StabilityStableImageUltraNode": {
+        "title": "Stability AI изображение сверхвысокой чёткости",
+        "inputs": {
+            "image": "Изображение",
+            "negative_prompt": "Негативный промпт",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "aspect_ratio": "Соотношение сторон",
+            "style_preset": "Пресет стиля",
+            "seed": "Случайное зерно",
+            "image_denoise": "Интенсивность шумоподавления",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "StabilityStableImageSD_3_5Node": {
+        "title": "Stability AI SD 3.5 изображение",
+        "inputs": {
+            "image": "Изображение",
+            "negative_prompt": "Негативный промпт",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "aspect_ratio": "Соотношение сторон",
+            "style_preset": "Пресет стиля",
+            "cfg_scale": "Коэффициент CFG",
+            "seed": "Случайное зерно",
+            "image_denoise": "Интенсивность шумоподавления",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "StabilityUpscaleConservativeNode": {
+        "title": "Stability AI консервативное увеличение",
+        "inputs": {
+            "image": "Изображение",
+            "negative_prompt": "Негативный промпт",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "creativity": "Интенсивность креативности",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "StabilityUpscaleCreativeNode": {
+        "title": "Stability AI творческое увеличение",
+        "inputs": {
+            "image": "Изображение",
+            "negative_prompt": "Негативный промпт",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "creativity": "Интенсивность креативности",
+            "style_preset": "Пресет стиля",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "StabilityUpscaleFastNode": {
+        "title": "Stability AI мгновенное увеличение",
+        "inputs": {
+            "image": "Изображение",
+            "auth_token": "Токен авторизации"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "TopazImageEnhance": {
+        "title": "Topaz усилитель изображения",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {
+            "model": "Модель",
+            "subject_detection": "Обнаружение объектов",
+            "face_enhancement": "Улучшение лица",
+            "face_enhancement_creativity": "Креативность улучшения лиц",
+            "face_enhancement_strength": "Интенсивность улучшения лица",
+            "crop_to_fill": "Обрезать по заполнению",
+            "output_width": "Ширина вывода",
+            "output_height": "Высота вывода",
+            "creativity": "Творчество",
+            "face_preservation": "Защита лиц",
+            "color_preservation": "Защита цвета"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "video": "Видео"
+        }
+    },
+    "WanTextToImageApi": {
+        "title": "Wan изображение из текста",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "width": "Ширина",
+            "height": "Высота",
+            "resolution": "Разрешение",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "prompt_extend": "Расширение промпта",
+            "watermark": "Водяной знак",
+            "shot_type": "Тип съёмки"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "WanImageToImageApi": {
+        "title": "Wan изображение из изображения",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "width": "Ширина",
+            "height": "Высота",
+            "resolution": "Разрешение",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "prompt_extend": "Расширение промпта",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "WavespeedImageUpscaleNode": {
+        "title": "WaveSpeed увеличение изображения",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {
+            "model": "Модель",
+            "target_resolution": "Целевое разрешение"
+        },
+        "outputs": {
+            "IMAGE": "Изображение"
+        }
+    },
+    "ElevenLabsSpeechToText": {
+        "title": "ElevenLabs речь в текст",
+        "inputs": {
+            "audio": "Аудио"
+        },
+        "widgets": {
+            "model": "Модель",
+            "tag_audio_events": "Отметка аудио-событий",
+            "diarize": "Идентификация говорящего",
+            "diarization_threshold": "Порог идентификации говорящего",
+            "temperature": "Температура",
+            "timestamps_granularity": "Гранулярность временных меток",
+            "language_code": "Код языка",
+            "num_speakers": "Число говорящих",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "language_code": "Код языка",
+            "text": "Текст",
+            "seed": "JSON-данные по словам"
+        }
+    },
+    "ElevenLabsVoiceSelector": {
+        "title": "ElevenLabs селектор голоса",
+        "inputs": {},
+        "widgets": {
+            "voice": "Голос"
+        },
+        "outputs": {
+            "voice": "Голос"
+        }
+    },
+    "ElevenLabsTextToSpeech": {
+        "title": "ElevenLabs речь из текста",
+        "inputs": {
+            "voice": "Голос"
+        },
+        "widgets": {
+            "stabillity": "Стабильность",
+            "apply_text_normalization": "Применить нормализацию текста",
+            "model": "Модель",
+            "speed": "Скорость",
+            "similarity_boost": "Повышение сходства",
+            "use_speaker_boost": "Улучшение говорящего",
+            "style": "Стиль",
+            "language_code": "Код языка",
+            "output_format": "Формат вывода",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "AUDIO": "Аудио"
+        }
+    },
+    "ElevenLabsAudioIsolation": {
+        "title": "ElevenLabs разделение речи",
+        "inputs": {
+            "audio": "Аудио"
+        },
+        "widgets": {},
+        "outputs": {
+            "AUDIO": "Аудио"
+        }
+    },
+    "ElevenLabsTextToSoundEffects": {
+        "title": "ElevenLabs звуковые эффекты из текста",
+        "inputs": {
+            "text": "Текст"
+        },
+        "widgets": {
+            "model": "Модель",
+            "duration": "Длительность (сек)",
+            "loop": "Цикл",
+            "prompt_influence": "Влияние промпта",
+            "output_format": "Формат вывода"
+        },
+        "outputs": {
+            "AUDIO": "Аудио"
+        }
+    },
+    "ElevenLabsInstantVoiceClone": {
+        "title": "ElevenLabs мгновенное клонирование голоса",
+        "inputs": {
+            "audio0": "Аудио 0",
+            "audio1": "Аудио1",
+            "audio2": "Аудио2",
+            "audio3": "Аудио3",
+            "audio4": "Аудио 4",
+            "audio5": "Аудио 5",
+            "audio6": "Аудио 6"
+        },
+        "widgets": {
+            "remove_background_noise": "Удаление фонового шума"
+        },
+        "outputs": {
+            "voice": "Голос"
+        }
+    },
+    "ElevenLabsSpeechToSpeech": {
+        "title": "ElevenLabs преобразование речи",
+        "inputs": {
+            "voice": "Голос",
+            "audio": "Аудио"
+        },
+        "widgets": {
+            "stabillity": "Стабильность",
+            "model": "Модель",
+            "speed": "Скорость",
+            "similarity_boost": "Повышение сходства",
+            "use_speaker_boost": "Улучшение говорящего",
+            "style": "Стиль",
+            "output_format": "Формат вывода",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "remove_background_noise": "Удаление фонового шума"
+        },
+        "outputs": {
+            "AUDIO": "Аудио"
+        }
+    },
+    "ElevenLabsTextToDialogue": {
+        "title": "ElevenLabs текст в диалог",
+        "inputs": {
+            "voice1": "Голос 1",
+            "voice2": "Голос 2",
+            "voice3": "Голос 3",
+            "voice4": "Голос 4",
+            "voice5": "Голос 5",
+            "voice6": "Голос 6",
+            "voice7": "Голос 7",
+            "voice8": "Голос 8",
+            "voice9": "Голос 9",
+            "voice10": "Голос 10"
+        },
+        "widgets": {
+            "stabillity": "Стабильность",
+            "apply_text_normalization": "Применить нормализацию текста",
+            "model": "Модель",
+            "inputs": "Количество входов",
+            "language_code": "Код языка",
+            "output_format": "Формат вывода",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "AUDIO": "Аудио"
+        }
+    },
+    "SoniloVideoToMusic": {
+        "title": "Sonilo музыка из видео",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "duration": "Длительность (сек)",
+            "model": "Модель",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "AIDEO": "Аудио"
+        }
+    },
+    "SoniloTextToMusic": {
+        "title": "Sonilo музыка из текста",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "AIDEO": "Аудио"
+        }
+    },
+    "StabilityTextToAudio": {
+        "title": "Stability AI речь из текста",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "duration": "Длительность",
+            "steps": "Количество шагов",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "audio": "Аудио",
+            "AUDIO": "Аудио"
+        }
+    },
+    "StabilityAudioToAudio": {
+        "title": "Stability AI аудио в аудио",
+        "inputs": {
+            "audio": "Аудио",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "duration": "Длительность",
+            "steps": "Количество шагов",
+            "seed": "Случайное зерно",
+            "strength": "Интенсивность",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "audio": "Аудио",
+            "AUDIO": "Аудио"
+        }
+    },
+    "StabilityAudioInpaint": {
+        "title": "Stability AI перерисовка аудио (Inpaint)",
+        "inputs": {
+            "audio": "Аудио",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "duration": "Длительность",
+            "steps": "Количество шагов",
+            "seed": "Случайное зерно",
+            "mask_start": "Начальная маска",
+            "mask_end": "Конечная маска",
+            "control_after_generate": "Управление после генерации"
+        },
+        "outputs": {
+            "audio": "Аудио",
+            "AUDIO": "Аудио"
+        }
+    },
+    "TencentTextToModelNode": {
+        "title": "Hunyuan 3D: модель из текста (Pro)",
+        "inputs": {},
+        "widgets": {
+            "model": "Модель",
+            "face_count": "Количество лиц",
+            "pbr": "Физически корректный рендеринг",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "texture_image": "Текстурное изображение",
+            "GLB": "Формат GLB",
+            "OBJ": "Формат OBJ"
+        }
+    },
+    "TencentImageToModelNode": {
+        "title": "Hunyuan 3D: модель из изображения (Pro)",
+        "inputs": {
+            "image": "Изображение",
+            "image_left": "Изображение слева",
+            "image_right": "Изображение справа",
+            "image_back": "Изображение сзади"
+        },
+        "widgets": {
+            "model": "Модель",
+            "face_count": "Количество лиц",
+            "generate_type": "Тип генерации",
+            "pbr": "Физически корректный рендеринг",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "texture_image": "Текстурное изображение",
+            "GLB": "Формат GLB",
+            "OBJ": "Формат OBJ",
+            "optional_metallic": "Металл (необязательно)",
+            "optional_normal": "Нормаль (необязательно)",
+            "optional_roughness": "Шероховатость (необязательно)"
+        }
+    },
+    "TencentModelTo3DUVNode": {
+        "title": "Hunyuan 3D: развёртка модели в UV",
+        "inputs": {
+            "model_3d": "3D-модель"
+        },
+        "widgets": {
+            "model": "Модель",
+            "face_count": "Количество лиц",
+            "pbr": "Физически корректный рендеринг",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "GLB": "Формат GLB",
+            "OBJ": "Формат OBJ"
+        }
+    },
+    "Tencent3DTextureEditNode": {
+        "title": "Hunyuan 3D: редактирование 3D-текстур",
+        "inputs": {
+            "model_3d": "3D-модель"
+        },
+        "widgets": {
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "texture_image": "Текстурное изображение",
+            "GLB": "Формат GLB",
+            "OBJ": "Формат OBJ",
+            "uv_image": "UV-изображение"
+        }
+    },
+    "Tencent3DPartNode": {
+        "title": "Hunyuan 3D: 3D-компоненты",
+        "inputs": {
+            "model_3d": "3D-модель"
+        },
+        "widgets": {
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "FBX": "Формат FBX"
+        }
+    },
+    "TencentSmartTopologyNode": {
+        "title": "Hunyuan 3D: интеллектуальная топология",
+        "inputs": {
+            "model_3d": "3D-модель"
+        },
+        "widgets": {
+            "model": "Модель",
+            "polygon_type": "Тип полигонов",
+            "face_level": "Уровень граней",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "GLB": "Формат GLB",
+            "OBJ": "Формат OBJ"
+        }
+    },
+    "MeshyTextToModelNode": {
+        "title": "Meshy: модель из текста",
+        "inputs": {},
+        "widgets": {
+            "model": "Модель",
+            "style": "Стиль",
+            "should_remesh": "Пересетка",
+            "topology": "Топология",
+            "target_polycount": "Целевое число полигонов",
+            "symmetry_mode": "Режим симметрии",
+            "pose_mode": "Режим позы",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "meshy_task_id": "Meshy номер задачи",
+            "GLB": "Формат GLB",
+            "FBX": "Формат FBX"
+        }
+    },
+    "MeshyRefineNode": {
+        "title": "Meshy: улучшение модели эскиза",
+        "inputs": {
+            "meshy_task_id": "Meshy номер задачи",
+            "texture_image": "Текстурное изображение"
+        },
+        "widgets": {
+            "model": "Модель",
+            "enable_pbr": "Включить физически корректный рендеринг PBR",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "meshy_task_id": "Meshy номер задачи",
+            "GLB": "Формат GLB",
+            "FBX": "Формат FBX"
+        }
+    },
+    "MeshyImageToModelNode": {
+        "title": "Meshy: модель из изображения",
+        "inputs": {
+            "image": "Изображение",
+            "texture_image": "Текстурное изображение"
+        },
+        "widgets": {
+            "model": "Модель",
+            "should_remesh": "Пересетка",
+            "topology": "Топология",
+            "target_polycount": "Целевое число полигонов",
+            "symmetry_mode": "Режим симметрии",
+            "should_texture": "Применить текстуры",
+            "enable_pbr": "Включить физически корректный рендеринг PBR",
+            "pose_mode": "Режим позы",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "meshy_task_id": "Meshy номер задачи",
+            "GLB": "Формат GLB",
+            "FBX": "Формат FBX"
+        }
+    },
+    "MeshyMultiImageToModelNode": {
+        "title": "Meshy: модель из нескольких изображений",
+        "inputs": {
+            "image": "Изображение",
+            "image0": "Изображение 0",
+            "image1": "Изображение1",
+            "texture_image": "Текстурное изображение"
+        },
+        "widgets": {
+            "model": "Модель",
+            "should_remesh": "Пересетка",
+            "topology": "Топология",
+            "target_polycount": "Целевое число полигонов",
+            "symmetry_mode": "Режим симметрии",
+            "should_texture": "Применить текстуры",
+            "enable_pbr": "Включить физически корректный рендеринг PBR",
+            "pose_mode": "Режим позы",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "meshy_task_id": "Meshy номер задачи",
+            "GLB": "Формат GLB",
+            "FBX": "Формат FBX"
+        }
+    },
+    "MeshyRigModelNode": {
+        "title": "Meshy: скелетная модель",
+        "inputs": {
+            "meshy_task_id": "Meshy номер задачи",
+            "texture_image": "Текстурное изображение"
+        },
+        "widgets": {
+            "height_meters": "Высота (м)"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "meshy_task_id": "Meshy номер задачи",
+            "GLB": "Формат GLB",
+            "FBX": "Формат FBX"
+        }
+    },
+    "MeshyAnimateModelNode": {
+        "title": "Meshy: анимирование модели",
+        "inputs": {
+            "rig_task_id": "Номер задачи скелета",
+            "texture_image": "Текстурное изображение"
+        },
+        "widgets": {
+            "action_id": "ID действия"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "meshy_task_id": "Meshy номер задачи",
+            "GLB": "Формат GLB",
+            "FBX": "Формат FBX"
+        }
+    },
+    "MeshyTextureNode": {
+        "title": "Meshy: текстурирование модели",
+        "inputs": {
+            "meshy_task_id": "Meshy номер задачи",
+            "image_style": "Стиль изображения"
+        },
+        "widgets": {
+            "model": "Модель",
+            "enable_original_uv": "Использовать исходную UV-развёртку",
+            "pbr": "Физически корректный рендеринг PBR"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "meshy_task_id": "Meshy номер задачи",
+            "GLB": "Формат GLB",
+            "FBX": "Формат FBX"
+        }
+    },
+    "Rodin3D_Regular": {
+        "title": "Rodin 3D: стандартная генерация",
+        "inputs": {
+            "images": "Группа изображений"
+        },
+        "widgets": {
+            "Seed": "Случайное зерно",
+            "Material_Type": "Тип материала",
+            "Polygon_count": "Число полигонов"
+        },
+        "outputs": {
+            "3D_Model_Path": "Путь к 3D-модели",
+            "3D Model Path": "Путь к 3D-модели"
+        }
+    },
+    "Rodin3D_Detail": {
+        "title": "Rodin 3D: генерация деталей",
+        "inputs": {
+            "images": "Группа изображений"
+        },
+        "widgets": {
+            "Seed": "Случайное зерно",
+            "Material_Type": "Тип материала",
+            "Polygon_count": "Число полигонов"
+        },
+        "outputs": {
+            "3D_Model_Path": "Путь к 3D-модели",
+            "3D Model Path": "Путь к 3D-модели"
+        }
+    },
+    "Rodin3D_Smooth": {
+        "title": "Rodin 3D: генерация сглаживания",
+        "inputs": {
+            "images": "Группа изображений"
+        },
+        "widgets": {
+            "Seed": "Случайное зерно",
+            "Material_Type": "Тип материала",
+            "Polygon_count": "Число полигонов"
+        },
+        "outputs": {
+            "3D_Model_Path": "Путь к 3D-модели",
+            "3D Model Path": "Путь к 3D-модели"
+        }
+    },
+    "Rodin3D_Sketch": {
+        "title": "Rodin 3D: генерация из эскиза",
+        "inputs": {
+            "images": "Группа изображений"
+        },
+        "widgets": {
+            "Seed": "Случайное зерно",
+            "Material_Type": "Тип материала",
+            "Polygon_count": "Число полигонов"
+        },
+        "outputs": {
+            "3D_Model_Path": "Путь к 3D-модели",
+            "3D Model Path": "Путь к 3D-модели"
+        }
+    },
+    "Rodin3D_Gen2": {
+        "title": "Rodin 3D: генератор Gen-2",
+        "inputs": {
+            "images": "Группа изображений",
+            "Images": "Группа изображений"
+        },
+        "widgets": {
+            "Seed": "Случайное зерно",
+            "Material_Type": "Тип материала",
+            "Polygon_count": "Число полигонов",
+            "TAPose": "Поза TA"
+        },
+        "outputs": {
+            "3D_Model_Path": "Путь к 3D-модели",
+            "3D Model Path": "Путь к 3D-модели"
+        }
+    },
+    "Rodin3D_Gen25_Image": {
+        "title": "Rodin 3D Gen-2.5: изображение в 3D",
+        "inputs": {
+            "image0": "Вход изображения 0",
+            "image1": "Вход изображения 1"
+        },
+        "widgets": {
+            "mode": "Режим",
+            "tier": "Ранг",
+            "polygon_count": "Количество полигонов",
+            "creative": "Креативность",
+            "material": "Материал",
+            "geometry_file_format": "Формат геометрического файла",
+            "texture_mode": "Режим текстур",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "TAPose": "Поза TA",
+            "hd_texture": "Текстуры высокого разрешения",
+            "texture_delight": "Улучшение текстур",
+            "use_original_alpha": "Использовать исходный Alpha",
+            "addon_highpack": "Плагин большой ёмкости",
+            "bbox_width": "Ширина ограничивающей рамки",
+            "bbox_height": "Высота ограничивающей рамки",
+            "bbox_length": "Длина ограничивающей рамки",
+            "height_cm": "Высота (см)"
+        },
+        "outputs": {
+            "model_file": "Файл модели"
+        },
+        "description": "Преобразует 2D-изображение в 3D-модель"
+    },
+    "Rodin3D_Gen25_Text": {
+        "title": "Rodin 3D Gen-2.5 — текст в 3D",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "mode": "Режим",
+            "tier": "Уровни",
+            "polygon_count": "Количество полигонов",
+            "creative": "Креативность",
+            "material": "Материал",
+            "geometry_file_format": "Формат геометрического файла",
+            "texture_mode": "Режим текстур",
+            "seed": "Случайное зерно",
+            "control_after_generate": "Управление после генерации",
+            "TAPose": "Поза TA",
+            "hd_texture": "Текстуры высокого разрешения",
+            "texture_delight": "Улучшение текстур",
+            "addon_highpack": "Плагин большой ёмкости",
+            "bbox_width": "Ширина ограничивающей рамки",
+            "bbox_height": "Высота ограничивающей рамки",
+            "bbox_length": "Длина ограничивающей рамки",
+            "height_cm": "Высота (см)"
+        },
+        "outputs": {
+            "model_file": "Файл модели"
+        },
+        "description": "Узел Rodin 3D Gen-2.5 «текст в 3D» для генерации 3D-моделей по текстовым промптам."
+    },
+    "TripoTextToModelNode": {
+        "title": "Tripo: текст в модель",
+        "inputs": {
+            "images": "Группа изображений"
+        },
+        "widgets": {
+            "model_version": "Версии моделей",
+            "style": "Стиль",
+            "texture": "Текстура",
+            "pbr": "PBR-материалы",
+            "image_seed": "Зерно изображения",
+            "model_seed": "Зерно модели",
+            "texture_seed": "Зерно текстуры",
+            "texture_quality": "Качество текстуры",
+            "face_limit": "Ограничение числа граней",
+            "quad": "Четырёхугольная сетка"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "model task_id": "ID задачи модели",
+            "model_task_id": "ID задачи модели"
+        }
+    },
+    "TripoImageToModelNode": {
+        "title": "Tripo: изображение в модель",
+        "inputs": {
+            "image": "Изображение",
+            "images": "Группа изображений"
+        },
+        "widgets": {
+            "model_version": "Версии моделей",
+            "style": "Стиль",
+            "texture": "Текстура",
+            "pbr": "PBR-материалы",
+            "image_seed": "Зерно изображения",
+            "model_seed": "Зерно модели",
+            "orientation": "Ориентация",
+            "texture_seed": "Зерно текстуры",
+            "texture_quality": "Качество текстуры",
+            "texture_alignment": "Выравнивание текстур",
+            "face_limit": "Ограничение числа граней",
+            "quad": "Четырёхугольная сетка"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "model task_id": "ID задачи модели",
+            "model_task_id": "ID задачи модели"
+        }
+    },
+    "TripoMultiviewToModelNode": {
+        "title": "Tripo: несколько видов в модель",
+        "inputs": {
+            "image": "Изображение",
+            "images": "Группа изображений",
+            "image_left": "Вид слева",
+            "image_back": "Вид сзади",
+            "image_right": "Вид справа"
+        },
+        "widgets": {
+            "model_version": "Версии моделей",
+            "orientation": "Ориентация",
+            "style": "Стиль",
+            "texture": "Текстура",
+            "pbr": "PBR-материалы",
+            "image_seed": "Зерно изображения",
+            "model_seed": "Зерно модели",
+            "texture_seed": "Зерно текстуры",
+            "texture_quality": "Качество текстуры",
+            "texture_alignment": "Выравнивание текстур",
+            "face_limit": "Ограничение числа граней",
+            "quad": "Четырёхугольная сетка"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "model task_id": "ID задачи модели",
+            "model_task_id": "ID задачи модели"
+        }
+    },
+    "TripoP1TextToModelNode": {
+        "title": "Tripo P1: текст в модель",
+        "inputs": {
+            "prompt": "Промпт",
+            "negative_prompt": "Негативный промпт"
+        },
+        "widgets": {
+            "output_mode": "Режим вывода",
+            "image_seed": "Случайное зерно изображения",
+            "face_limit": "Лимит граней",
+            "model_seed": "Случайное зерно модели",
+            "auto_size": "Автоматический размер",
+            "export_uv": "Экспорт UV",
+            "compress_geometry": "Сжатие геометрии"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "model task_id": "ID задачи модели"
+        },
+        "description": "Преобразует текстовый промпт в 3D-модель"
+    },
+    "TripoP1ImageToModelNode": {
+        "title": "Tripo P1: изображение в модель",
+        "inputs": {
+            "image": "Изображение"
+        },
+        "widgets": {
+            "output_mode": "Режим вывода",
+            "enable_image_autofix": "Включить автоматическое восстановление изображения",
+            "face_limit": "Лимит граней",
+            "model_seed": "Случайное зерно модели",
+            "auto_size": "Автоматический размер",
+            "export_uv": "Экспорт UV",
+            "compress_geometry": "Сжатие геометрии"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "model_task_id": "ID задачи модели"
+        },
+        "description": "TripoP1: изображение в 3D. Оптимизировано для низкополигональных сеток игрового уровня."
+    },
+    "TripoP1MultiviewToModelNode": {
+        "title": "Tripo P1: несколько видов в модель",
+        "inputs": {
+            "image": "Изображение",
+            "image_left": "Изображение вида слева",
+            "image_back": "Изображение вида сзади",
+            "image_right": "Изображение вида справа"
+        },
+        "widgets": {
+            "output_mode": "Режим вывода",
+            "face_limit": "Ограничение числа граней",
+            "model_seed": "Случайное зерно модели",
+            "auto_size": "Автоматический размер",
+            "export_uv": "Экспорт UV",
+            "compress_geometry": "Сжатие геометрии"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "model_task_id": "ID задачи модели"
+        },
+        "description": "TripoP1: несколько видов в 3D — преобразование от 2 до 4 опорных изображений в порядке [перед, лево, зад, право]. Фронтальное изображение обязательно; любую комбинацию из трёх остальных можно опустить."
+    },
+    "TripoTextureNode": {
+        "title": "Tripo: текстурирование модели",
+        "inputs": {
+            "model task_id": "ID задачи модели",
+            "model_task_id": "ID задачи модели"
+        },
+        "widgets": {
+            "model_version": "Версии моделей",
+            "style": "Стиль",
+            "texture": "Текстура",
+            "pbr": "PBR-материалы",
+            "image_seed": "Зерно изображения",
+            "model_seed": "Зерно модели",
+            "orientation": "Ориентация",
+            "texture_seed": "Зерно текстуры",
+            "texture_quality": "Качество текстуры",
+            "texture_alignment": "Выравнивание текстур",
+            "face_limit": "Ограничение числа граней",
+            "quad": "Четырёхугольная сетка"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "model_task_id": "ID задачи модели"
+        }
+    },
+    "TripoRefineNode": {
+        "title": "Tripo: доработка черновой модели",
+        "inputs": {
+            "model task_id": "ID задачи модели",
+            "model_task_id": "ID задачи модели"
+        },
+        "widgets": {
+            "format": "Формат",
+            "face_limittexture_size": "Ограничение размера текстуры граней",
+            "texture_format": "Формат текстур",
+            "quad": "Четырёхугольная сетка"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "model task_id": "ID задачи модели",
+            "model_task_id": "ID задачи модели"
+        }
+    },
+    "TripoRigNode": {
+        "title": "Tripo: риггинг модели",
+        "inputs": {
+            "original model task id": "ID задачи исходной модели",
+            "original_model_task_id": "ID задачи исходной модели"
+        },
+        "widgets": {
+            "format": "Формат",
+            "face_limittexture_size": "Ограничение размера текстуры граней",
+            "texture_format": "Формат текстур",
+            "quad": "Четырёхугольная сетка"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "rig task_id": "ID задачи риггинга",
+            "rig_task_id": "ID задачи риггинга"
+        }
+    },
+    "TripoRetargetNode": {
+        "title": "Tripo: ретаргетинг модели",
+        "inputs": {
+            "original model task id": "ID задачи исходной модели",
+            "original_model_task_id": "ID задачи исходной модели"
+        },
+        "widgets": {
+            "animation": "Анимация",
+            "face_limittexture_size": "Ограничение размера текстуры граней",
+            "texture_format": "Формат текстур",
+            "quad": "Четырёхугольная сетка"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "retarget task_id": "ID задачи ретаргетинга",
+            "retarget_task_id": "ID задачи ретаргетинга"
+        }
+    },
+    "BriaVideoReplaceBackground": {
+        "title": "Bria: замена фона видео",
+        "inputs": {
+            "video": "Видео",
+            "background_image": "Фоновое изображение",
+            "background_video": "Фоновое видео"
+        },
+        "widgets": {
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Замените фон видео на предоставленное изображение или видео с помощью Bria. Результат сохраняет разрешение и частоту кадров переднего плана; если фон имеет другое соотношение сторон, он будет растянут по размеру, поэтому держите пропорции фона одинаковыми, чтобы избежать искажений."
+    },
+    "RunwayAleph2VideoToVideoNode": {
+        "title": "Runway Aleph2: видео в видео",
+        "inputs": {
+            "video": "Видео",
+            "keyframes": "Ключевой кадр",
+            "prompt_images": "Направляющее изображение"
+        },
+        "widgets": {
+            "prompt": "Подсказка",
+            "seed": "Случайное зерно",
+            "generate_control": "Управление генерацией",
+            "public_figure_threshold": "Порог публичных персон"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Редактирует видео с текстовым промптом моделью Aleph2 от Runway. Aleph2 преобразует ваше видео (рестайлинг, пересвет, добавление или удаление элементов, смена ракурса), сохраняя исходное движение и ритм; разрешение вывода совпадает с исходным видео, длительность входного видео — от 2 до 30 секунд, частота кадров 30 к/с или ниже. Направлять редактирование можно либо ключевыми кадрами (привязаны к входному видео), либо изображениями промпта (привязаны к выходному видео) — только чем-то одним, не вместе."
+    },
+    "TripoImportModelNode": {
+        "title": "Tripo: импорт модели",
+        "inputs": {
+            "model_3d": "Путь к файлу 3D-модели"
+        },
+        "widgets": {},
+        "outputs": {
+            "model task_id": "ID задачи модели"
+        },
+        "description": "Импортирует внешнюю 3D-модель (например, из Rodin, Hunyuan3D или локального файла) в Tripo, чтобы она стала доступна в пост-обработочных узлах Tripo: текстурирование, риггинг, преобразование. Рекомендуется формат GLB: если текстуры вшиты только в файл, они сохранятся после импорта. Учтите, что для текстурирования импортированной модели сначала нужно задать промпт текстуры."
+    },
+    "GeminiVideoOmni": {
+        "title": "Google Gemini Omni (видео)",
+        "inputs": {
+            "image_1": "Изображение_1",
+            "video_1": "Видео_1"
+        },
+        "widgets": {
+            "model": "Модель",
+            "model_prompt": "Промпт модели",
+            "temperature": "Температура",
+            "seed": "Зерно",
+            "generate_after_control": "Управление после генерации"
+        },
+        "outputs": {},
+        "description": "Генерирует видео со звуком моделью GeminiOmniFlash от Google по текстовому промпту. При желании можно предоставить опорные изображения или видео, чтобы направить или отредактировать генерацию. Требуемую длительность (3–10 секунд) и соотношение сторон (16:9 или 9:16) указывайте прямо в промпте."
+    },
+    "LumaRay32TextToVideoNode": {
+        "title": "Luma Ray 3.2: текст в видео",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "duration": "Длительность",
+            "seed": "Зерно",
+            "loop": "Цикл"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "generation_id": "ID генерации"
+        },
+        "description": "Генерирует видео из текстового промпта моделью Ray3.2 от Luma."
+    },
+    "LumaRay32ImageToVideoNode": {
+        "title": "Luma Ray 3.2: изображение в видео",
+        "inputs": {
+            "start_frame": "Начальный кадр",
+            "end_frame": "Конечный кадр",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "resolution": "Разрешение",
+            "loop": "Цикл",
+            "seed": "Случайное зерно",
+            "generate_after_control": "Управление после генерации"
+        },
+        "outputs": {
+            "video": "Видео",
+            "generation_id": "ID генерации"
+        },
+        "description": "Генерирует видео моделью Ray3.2 от Luma по начальному и/или конечному кадру. Генерация с опорой на изображение всегда длится 5 секунд."
+    },
+    "LumaRay32KeyframesToVideoNode": {
+        "title": "Luma Ray 3.2: ключевые кадры в видео",
+        "inputs": {
+            "keyframes": "Ключевой кадр",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "resolution": "Разрешение",
+            "duration": "Длительность",
+            "seed": "Зерно",
+            "generate_after_control": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "generation_id": "ID генерации"
+        },
+        "description": "Преобразует ключевые кадры в видео"
+    },
+    "LumaRay32VideoEditNode": {
+        "title": "Luma Ray 3.2: редактирование видео",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "resolution": "Разрешение",
+            "strength": "Интенсивность",
+            "seed": "Зерно",
+            "generate_after_control": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "generation_id": "ID генерации"
+        },
+        "description": "Перерендеривает существующее видео по новому промпту (LumaRay3.2) — рестайлинг, пересвет, добавление или удаление элементов — с сохранением исходного движения. Исходное видео длиной до 18 секунд; отредактированное видео сохраняет длительность исходного."
+    },
+    "LumaRay32VideoReframeNode": {
+        "title": "Luma Ray 3.2: изменение кадра видео",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "strength": "Интенсивность",
+            "seed": "Зерно",
+            "generate_after_control": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "generation_id": "ID генерации"
+        },
+        "description": "Меняет соотношение сторон существующего видео (LumaRay3.2), достраивая вновь открытые области холста. Исходное видео длиной до 30 секунд. Оплата за каждую секунду вывода."
+    },
+    "LumaRay32ExtendVideoNode": {
+        "title": "Luma Ray 3.2: расширение видео",
+        "inputs": {},
+        "widgets": {
+            "source_generation_id": "ID исходной генерации",
+            "direction": "Направление",
+            "loop": "Цикл",
+            "prompt": "Промпт",
+            "resolution": "Разрешение",
+            "seed": "Зерно",
+            "generate_after_control": "Управление после генерации"
+        },
+        "outputs": {
+            "VIDEO": "Видео",
+            "generation_id": "ID генерации"
+        },
+        "description": "Продлевает предыдущую генерацию Ray3.2 вперёд (продолжение после неё) или назад (добавление перед ней). Подключите выход ID исходной генерации предыдущего узла LumaRay3.2. Длина расширения всегда 5 секунд."
+    },
+    "HeyGenTalkingPhotoNode": {
+        "title": "HeyGen: говорящее фото",
+        "inputs": {
+            "image": "Изображение",
+            "speech_source": "Источник голоса",
+            "speech_text": "Текст речи"
+        },
+        "widgets": {
+            "speech_source": "Источник голоса",
+            "voice": "Голос",
+            "custom_voice_id": "Пользовательский ID голоса",
+            "voice_speed": "Скорость речи",
+            "resolution": "Разрешение",
+            "aspect_ratio": "Соотношение сторон",
+            "expressiveness": "Экспрессивность",
+            "seed": "Зерно",
+            "speech_text": "Текст речи"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Анимирует любое изображение человека в видео с синхронизированной по речи артикуляцией губ (HeyGenAvatarIV). Управляется текстовым сценарием или собственным аудио."
+    },
+    "HeyGenAvatarVideoNode": {
+        "title": "HeyGen: анимированное видео аватара",
+        "inputs": {},
+        "widgets": {
+            "engine": "Движок",
+            "avatar": "Аватар",
+            "speech source": "Источник голоса",
+            "voice": "Голос",
+            "custom_voice_id": "Пользовательский ID голоса",
+            "voice_speed": "Скорость речи",
+            "custom_avatar_id": "Пользовательский ID аватара",
+            "resolution": "Разрешение",
+            "aspect_ratio": "Соотношение сторон",
+            "background_color": "Цвет фона",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Генерирует видео с говорящим ведущим на основе аватара HeyGen. Включает самых популярных публичных аватаров HeyGen; любой ID внешности можно передать как переопределение."
+    },
+    "HeyGenCreateAvatarNode": {
+        "title": "HeyGen: создание аватара",
+        "inputs": {
+            "ref_image_1": "Опорное изображение 1"
+        },
+        "widgets": {
+            "source": "Исходный файл"
+        },
+        "outputs": {
+            "avatar_id": "ID аватара",
+            "preview": "Изображение предпросмотра"
+        },
+        "description": "Узел создания аватара по исходному изображению и промпту"
+    },
+    "HeyGenVideoTranslateNode": {
+        "title": "HeyGen: перевод видео",
+        "inputs": {
+            "video": "Видео"
+        },
+        "widgets": {
+            "output_language": "Язык вывода",
+            "mode": "Режим",
+            "translate_audio_only": "Переводить только аудио",
+            "speaker_count": "Количество говорящих",
+            "seed": "Случайное зерно"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Узел перевода видео HeyGen"
+    },
+    "MinimaxHailuo03TextToVideoNode": {
+        "title": "MiniMax Hailuo H3: текст в видео",
+        "inputs": {},
+        "widgets": {
+            "model": "Модель",
+            "model_prompt": "Промпт модели",
+            "resolution": "Разрешение",
+            "ratio": "Пропорция",
+            "seed": "Зерно",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {},
+        "description": "Генерирует видео из текстового промпта моделью MiniMaxH3."
+    },
+    "MinimaxHailuo03FirstLastFrameNode": {
+        "title": "MiniMax Hailuo H3: первый и последний кадр в видео",
+        "inputs": {
+            "first_frame": "Первый кадр",
+            "last_frame": "Последний кадр"
+        },
+        "widgets": {
+            "model": "Модель",
+            "model_prompt": "Промпт модели",
+            "resolution": "Разрешение",
+            "duration": "Длительность",
+            "seed": "Случайное зерно",
+            "generate_control": "Управление генерацией",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Генерирует видео по первому и последнему кадру"
+    },
+    "MinimaxHailuo03ReferenceNode": {
+        "title": "MiniMax Hailuo H3: видео по референсам",
+        "inputs": {
+            "image_1": "Изображение1",
+            "video_1": "Видео1",
+            "audio_1": "Аудио1"
+        },
+        "widgets": {
+            "model": "Модель",
+            "prompt": "Промпт",
+            "resolution": "Разрешение",
+            "ratio": "Пропорция",
+            "seed": "Случайное зерно",
+            "watermark": "Водяной знак"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Генерирует новое видео моделью MiniMax H3, используя изображения, видео и аудио в качестве референсов."
+    },
+    "SyncLipSyncNode": {
+        "title": "sync.so: синхронизация губ",
+        "inputs": {
+            "video": "Видео",
+            "audio": "Аудио"
+        },
+        "widgets": {
+            "seed": "Случайное зерно",
+            "generate_after_control": "Управление после генерации",
+            "model": "Модель",
+            "sync_mode": "Режим синхронизации",
+            "speaker_selection": "Выбор говорящего",
+            "speaker_frame": "Кадр говорящего",
+            "speaker_x": "Координата X говорящего",
+            "speaker_y": "Координата Y говорящего"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Синхронизирует движения губ в видео с аудио"
+    },
+    "SyncTalkingImageNode": {
+        "title": "sync.so: говорящее изображение",
+        "inputs": {
+            "image": "Изображение",
+            "audio": "Аудио"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "seed": "Зерно",
+            "generate_after_control": "Управление после генерации",
+            "model": "Модель",
+            "speaker_selection": "Выбор говорящего",
+            "speaker_x": "Координата X говорящего",
+            "speaker_y": "Координата Y говорящего",
+            "auto_downscale": "Автодаунсэмплинг"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Объединяет изображение и аудио, создавая говорящее изображение"
+    },
+    "IdeogramPImage": {
+        "title": "Ideogram P: изображение",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "quality": "Качество",
+            "resolution": "Разрешение",
+            "aspect_ratio": "Соотношение сторон",
+            "prompt_upsampling": "Апсемплинг промпта",
+            "seed": "Зерно",
+            "generate_after_control": "Управление после генерации"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "final_prompt": "Итоговый промпт"
+        },
+        "description": "Узел генерации изображений"
+    },
+    "ByteDanceSeedAudio": {
+        "title": "ByteDance Seed Audio 1.0",
+        "inputs": {},
+        "widgets": {
+            "text_prompt": "Текстовый промпт",
+            "reference_mode": "Режим референса",
+            "sample_rate": "Частота дискретизации",
+            "speech_rate": "Скорость речи",
+            "loudness_rate": "Громкость",
+            "pitch_rate": "Высота тона",
+            "seed": "Зерно",
+            "model": "Модель",
+            "generate_after_control": "Управление после генерации"
+        },
+        "outputs": {
+            "AUDIO": "Видео"
+        },
+        "description": "Узел ByteDance Seed Audio 1.0"
+    },
+    "HeyGenTextToSpeechNode": {
+        "title": "HeyGen: текст в речь",
+        "inputs": {},
+        "widgets": {
+            "text": "Текст",
+            "voice": "Голос",
+            "custom_voice_id": "Пользовательский ID голоса",
+            "speed": "Скорость речи",
+            "ssml": "SSML-теги управления",
+            "seed": "Зерно",
+            "generate_after_control": "Управление после генерации"
+        },
+        "outputs": {},
+        "description": "Узел преобразования текста в речь"
+    },
+    "ComfyCloudMiniMaxH3TextToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3: текст в видео",
+        "inputs": {
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "seed": "Случайное зерно",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "duration_seconds": "Длительность (с)"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Набор узлов Comfy Cloud продолжает обновляться: опции могут добавляться или удаляться, а некоторые рабочие процессы могут быть отключены. Используйте MiniMax H3 для генерации видео с соответствующим музыкальным сопровождением из текстового промпта. Изображение и аудио создаются в одном процессе, а не озвучиваются постфактум.  \n Работает на GPU в Comfy Cloud, оплата по времени выполнения: $0.001295 (0,27 кредитов) за GPU-секунду.  \n Оплата кредитами, подписка на облачный сервис не требуется."
+    },
+    "ComfyCloudMiniMaxH3ImageToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3: изображение в видео",
+        "inputs": {
+            "first_frame": "Первый кадр",
+            "prompt": "Промпт"
+        },
+        "widgets": {
+            "seed": "Случайное зерно",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "duration_seconds": "Длительность"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Набор узлов Comfy Cloud продолжает обновляться: опции могут добавляться или удаляться, а некоторые рабочие процессы могут быть отключены. Используйте MiniMax H3 для генерации видео с соответствующим музыкальным сопровождением из текстового промпта. Изображение и аудио создаются в одном процессе, а не озвучиваются постфактум.  \n Работает на GPU в Comfy Cloud, оплата по времени выполнения: $0.001295 (0,27 кредитов) за GPU-секунду.  \n Оплата кредитами, подписка на облачный сервис не требуется."
+    },
+    "ComfyCloudMiniMaxH3FirstLastFrameToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3: первый и последний кадр в видео",
+        "inputs": {
+            "first_frame": "Первый кадр",
+            "last_frame": "Последний кадр"
+        },
+        "widgets": {
+            "prompt": "Промпт",
+            "seed": "Случайное зерно",
+            "aspect_ratio": "Соотношение сторон",
+            "resolution": "Разрешение",
+            "duration_seconds": "Длительность (с)"
+        },
+        "outputs": {
+            "VIDEO": "Видео"
+        },
+        "description": "Набор узлов Comfy Cloud продолжает обновляться: опции могут добавляться или удаляться, а некоторые рабочие процессы могут быть отключены. Используйте MiniMax H3 для генерации видео с соответствующим музыкальным сопровождением из текстового промпта. Изображение и аудио создаются в одном процессе, а не озвучиваются постфактум.  \n Работает на GPU в Comfy Cloud, оплата по времени выполнения: $0.001295 (0,27 кредитов) за GPU-секунду.  \n Оплата кредитами, подписка на облачный сервис не требуется."
+    },
+    "TripoConversionNode": {
+        "title": "Tripo: преобразование модели",
+        "inputs": {
+            "original model task id": "ID задачи исходной модели",
+            "original_model_task_id": "ID задачи исходной модели"
+        },
+        "widgets": {
+            "format": "Формат",
+            "face_limittexture_size": "Ограничение размера текстуры граней",
+            "face_limit": "Лимит граней",
+            "texture_size": "Размер текстур",
+            "texture_format": "Формат текстур",
+            "quad": "Четырёхугольная сетка"
+        },
+        "outputs": {
+            "model_file": "Файл модели",
+            "model task_id": "ID задачи модели",
+            "model_task_id": "ID задачи модели"
+        }
+    }
+}

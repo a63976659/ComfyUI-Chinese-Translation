@@ -1,0 +1,816 @@
+{
+    "BiRefNetRMBG": {
+        "title": "BiRefNetRMBG",
+        "inputs": {
+            "image": "изображение",
+            "model": "модель",
+            "background": "фон",
+            "background_color": "цвет фона"
+        },
+        "widgets": {
+            "mask_blur": "размывание маски",
+            "mask_offset": "смещение маски",
+            "invert_output": "инвертировать выход",
+            "refine_foreground": "улучшить передний план"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА",
+            "MASK_IMAGE": "МАСКА_ИЗОБРАЖЕНИЕ"
+        },
+        "description": ""
+    },
+    "BodySegment": {
+        "title": "BodySegment",
+        "inputs": {
+            "images": "изображения",
+            "background": "фон",
+            "background_color": "цвет фона"
+        },
+        "widgets": {
+            "mask_blur": "размывание маски",
+            "mask_offset": "смещение маски",
+            "invert_output": "инвертировать выход"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА",
+            "MASK_IMAGE": "МАСКА_ИЗОБРАЖЕНИЕ"
+        },
+        "description": ""
+    },
+    "ClothesSegment": {
+        "title": "ClothesSegment",
+        "inputs": {
+            "images": "изображения",
+            "background": "фон",
+            "background_color": "цвет фона"
+        },
+        "widgets": {
+            "process_res": "разрешение обработки",
+            "mask_blur": "размывание маски",
+            "mask_offset": "смещение маски",
+            "invert_output": "инвертировать выход"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА",
+            "MASK_IMAGE": "МАСКА_ИЗОБРАЖЕНИЕ"
+        },
+        "description": ""
+    },
+    "AILab_ColorToMask": {
+        "title": "AILab_ColorToMask",
+        "inputs": {
+            "images": "изображения",
+            "mask_color": "цвет маски"
+        },
+        "widgets": {
+            "invert": "инвертировать",
+            "threshold": "порог"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "FaceSegment": {
+        "title": "FaceSegment",
+        "inputs": {
+            "images": "изображения",
+            "background": "фон",
+            "background_color": "цвет фона"
+        },
+        "widgets": {
+            "process_res": "разрешение обработки",
+            "mask_blur": "размывание маски",
+            "mask_offset": "смещение маски",
+            "invert_output": "инвертировать выход"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА",
+            "MASK_IMAGE": "МАСКА_ИЗОБРАЖЕНИЕ"
+        },
+        "description": ""
+    },
+    "FashionSegmentAccessories": {
+        "title": "FashionSegmentAccessories",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "accessories_options": "варианты аксессуаров"
+        },
+        "description": ""
+    },
+    "FashionSegmentClothing": {
+        "title": "FashionSegmentClothing",
+        "inputs": {
+            "images": "изображения",
+            "accessories_options": "варианты аксессуаров",
+            "background": "фон",
+            "background_color": "цвет фона"
+        },
+        "widgets": {
+            "process_res": "разрешение обработки",
+            "mask_blur": "размывание маски",
+            "mask_offset": "смещение маски",
+            "invert_output": "инвертировать выход"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА",
+            "MASK_IMAGE": "МАСКА_ИЗОБРАЖЕНИЕ"
+        },
+        "description": ""
+    },
+    "AILab_Florence2": {
+        "title": "AILab_Florence2",
+        "inputs": {
+            "image": "изображение",
+            "model_name": "имя модели",
+            "task": "задача",
+            "precision": "точность",
+            "attention": "внимание"
+        },
+        "widgets": {
+            "fill_mask": "заполнить маску",
+            "output_mask_select": "выбрать маску вывода",
+            "keep_model_loaded": "сохранять модель загруженной",
+            "text_prompt": "текстовый промпт"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА",
+            "DATA": "ДАННЫЕ"
+        },
+        "description": ""
+    },
+    "AILab_Florence2ToCoordinates": {
+        "title": "AILab_Florence2ToCoordinates",
+        "inputs": {
+            "data": "данные",
+            "image": "изображение"
+        },
+        "widgets": {
+            "index": "индекс",
+            "batch": "группа"
+        },
+        "outputs": {
+            "CENTER_COORDINATES": "СЕРДЦЕВЫЕ КООРДИНАТЫ",
+            "BBOXES": "ОБЛАСТИ",
+            "MASK": "МАСКА"
+        },
+        "description": ""
+    },
+    "AILab_Preview": {
+        "title": "AILab_Preview",
+        "inputs": {
+            "image": "изображение",
+            "mask": "маска"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА"
+        },
+        "description": ""
+    },
+    "AILab_MaskOverlay": {
+        "title": "AILab_MaskOverlay",
+        "inputs": {
+            "mask_color": "цвет маски",
+            "image": "изображение",
+            "mask": "маска"
+        },
+        "widgets": {
+            "mask_opacity": "прозрачность маски"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА"
+        },
+        "description": ""
+    },
+    "AILab_MaskPreview": {
+        "title": "AILab_MaskPreview",
+        "inputs": {
+            "mask": "маска"
+        },
+        "widgets": {},
+        "outputs": {
+            "MASK": "МАСКА"
+        },
+        "description": ""
+    },
+    "AILab_ImagePreview": {
+        "title": "AILab_ImagePreview",
+        "inputs": {
+            "image": "изображение"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ"
+        },
+        "description": ""
+    },
+    "AILab_ImageMaskConvert": {
+        "title": "AILab_ImageMaskConvert",
+        "inputs": {
+            "image": "изображение",
+            "mask": "маска",
+            "mask_channel": "канал маски"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА"
+        },
+        "description": ""
+    },
+    "AILab_MaskEnhancer": {
+        "title": "AILab_MaskEnhancer",
+        "inputs": {
+            "mask": "маска"
+        },
+        "widgets": {
+            "sensitivity": "чувствительность",
+            "mask_blur": "размывание маски",
+            "mask_offset": "смещение маски",
+            "smooth": "гладкость",
+            "fill_holes": "заполнить отверстия",
+            "invert_output": "инвертировать выход"
+        },
+        "outputs": {
+            "MASK": "МАСКА"
+        },
+        "description": ""
+    },
+    "AILab_MaskCombiner": {
+        "title": "AILab_MaskCombiner",
+        "inputs": {
+            "mask_1": "маска_1",
+            "mode": "режим",
+            "mask_2": "маска_2",
+            "mask_3": "маска_3",
+            "mask_4": "маска_4"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "AILab_LoadImageSimple": {
+        "title": "AILab_LoadImageSimple",
+        "inputs": {
+            "image": "изображение"
+        },
+        "widgets": {
+            "image_path_or_URL": "путь_или_URL_изображения"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА",
+            "WIDTH": "ШИРИНА",
+            "HEIGHT": "ВЫСОТА"
+        },
+        "description": ""
+    },
+    "AILab_LoadImage": {
+        "title": "AILab_LoadImage",
+        "inputs": {
+            "image": "изображение",
+            "upscale_method": "метод_усиления",
+            "resize_mode": "режим_изменения_размера"
+        },
+        "widgets": {
+            "image_path_or_URL": "путь_или_URL_изображения",
+            "megapixels": "мегапиксели",
+            "scale_by": "масштабировать_по",
+            "size": "размер"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА",
+            "WIDTH": "ШИРИНА",
+            "HEIGHT": "ВЫСОТА"
+        },
+        "description": ""
+    },
+    "AILab_LoadImageAdvanced": {
+        "title": "AILab_LoadImageAdvanced",
+        "inputs": {
+            "image": "изображение",
+            "mask_channel": "канал_маски",
+            "upscale_method": "метод_усиления",
+            "resize_mode": "режим_изменения_размера"
+        },
+        "widgets": {
+            "image_path_or_URL": "путь_или_URL_изображения",
+            "megapixels": "мегапиксели",
+            "scale_by": "масштабировать_по",
+            "size": "размер"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА",
+            "MASK_IMAGE": "ИЗОБРАЖЕНИЕ_МАСКИ",
+            "WIDTH": "ШИРИНА",
+            "HEIGHT": "ВЫСОТА",
+            "METADATA": "МЕТАДАННЫЕ"
+        },
+        "description": ""
+    },
+    "AILab_LoadImageBatch": {
+        "title": "AILab_LoadImageBatch",
+        "inputs": {
+            "upscale_method": "метод_усиления",
+            "resize_mode": "режим_изменения_размера",
+            "sort_method": "метод_сортировки"
+        },
+        "widgets": {
+            "path_or_urls": "путь_или_URL_изображений",
+            "megapixels": "мегапиксели",
+            "scale_by": "масштабировать_по",
+            "size": "размер",
+            "batch_size": "размер_группы",
+            "start_from": "начать_с"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА",
+            "WIDTH": "ШИРИНА",
+            "HEIGHT": "ВЫСОТА"
+        },
+        "description": ""
+    },
+    "AILab_ImageCombiner": {
+        "title": "AILab_ImageCombiner",
+        "inputs": {
+            "foreground": "передний_план",
+            "background": "фон",
+            "mode": "режим",
+            "foreground_mask": "маска_переднего_плана"
+        },
+        "widgets": {
+            "foreground_opacity": "прозрачность_переднего_плана",
+            "foreground_scale": "масштаб_переднего_плана",
+            "position_x": "позиция_x",
+            "position_y": "позиция_y"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "WIDTH": "ШИРИНА",
+            "HEIGHT": "ВЫСОТА"
+        },
+        "description": ""
+    },
+    "AILab_MaskExtractor": {
+        "title": "AILab_MaskExtractor",
+        "inputs": {
+            "image": "изображение",
+            "mode": "режим",
+            "background": "фон",
+            "background_color": "цвет_фона",
+            "mask": "маска"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    },
+    "AILab_ImageStitch": {
+        "title": "AILab_ImageStitch",
+        "inputs": {
+            "image1": "изображение1",
+            "stitch_mode": "режим_склеивания",
+            "upscale_method": "метод_усиления",
+            "background_color": "цвет_фона",
+            "image2": "изображение2",
+            "image3": "изображение3",
+            "image4": "изображение4"
+        },
+        "widgets": {
+            "match_image_size": "соответствовать_размеру_изображения",
+            "megapixels": "мегапиксели",
+            "max_width": "макс_ширина",
+            "max_height": "макс_высота",
+            "spacing_width": "интервал_ширины"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "WIDTH": "ШИРИНА",
+            "HEIGHT": "ВЫСОТА"
+        },
+        "description": ""
+    },
+    "AILab_ImageCrop": {
+        "title": "AILab_ImageCrop",
+        "inputs": {
+            "image": "изображение",
+            "position": "позиция"
+        },
+        "widgets": {
+            "width": "ширина",
+            "height": "высота",
+            "x_offset": "смещение_x",
+            "y_offset": "смещение_y",
+            "split": "разделить"
+        },
+        "outputs": {
+            "CROP": "ОТРЕЗОК",
+            "REST": "ОСТАТОК"
+        },
+        "description": ""
+    },
+    "AILab_ICLoRAConcat": {
+        "title": "AILab_ICLoRAConcat",
+        "inputs": {
+            "object_image": "изображение_объекта",
+            "layout": "расположение",
+            "object_mask": "маска_объекта",
+            "base_image": "основное_изображение",
+            "base_mask": "основная_маска"
+        },
+        "widgets": {
+            "custom_size": "настроить_размер"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "OBJECT_MASK": "МАСКА_ОБЪЕКТА",
+            "BASE_MASK": "МАСКА_ОСНОВА",
+            "WIDTH": "ШИРИНА",
+            "HEIGHT": "ВЫСОТА",
+            "X": "X",
+            "Y": "Y"
+        },
+        "description": ""
+    },
+    "AILab_CropObject": {
+        "title": "AILab_CropObject",
+        "inputs": {
+            "image": "изображение",
+            "mask": "маска"
+        },
+        "widgets": {
+            "padding": "зазор"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА"
+        },
+        "description": ""
+    },
+    "AILab_ImageCompare": {
+        "title": "AILab_ImageCompare",
+        "inputs": {
+            "size_base": "основной_размер",
+            "text_color": "цвет_текста",
+            "bg_color": "цвет_фона",
+            "image1": "изображение1",
+            "image2": "изображение2",
+            "image3": "изображение3"
+        },
+        "widgets": {
+            "text1": "текст1",
+            "text2": "текст2",
+            "text3": "текст3"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "AILab_ColorInput": {
+        "title": "AILab_ColorInput",
+        "inputs": {
+            "preset": "шаблон"
+        },
+        "widgets": {
+            "color": "цвет"
+        },
+        "outputs": {
+            "COLOR": "ЦВЕТ"
+        },
+        "description": ""
+    },
+    "AILab_ImageResize": {
+        "title": "AILab_ImageResize",
+        "inputs": {
+            "image": "изображение",
+            "resize_mode": "режим_изменения_размера",
+            "upscale_method": "метод_усиления",
+            "device": "устройство",
+            "output_mode": "режим_вывода",
+            "crop_position": "позиция_обрезки",
+            "pad_color": "цвет_заполнения",
+            "mask": "маска"
+        },
+        "widgets": {
+            "custom_width": "назначить_ширина",
+            "custom_height": "назначить_высота",
+            "megapixels": "мегапиксели",
+            "scale_by": "масштабировать_по",
+            "resize_value": "значение_изменения",
+            "divisible_by": "делимое_на"
+        },
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "MASK": "МАСКА",
+            "WIDTH": "ШИРИНА",
+            "HEIGHT": "ВЫСОТА"
+        },
+        "description": ""
+    },
+    "AILab_ImageToList": {
+        "title": "AILab_ImageToList",
+        "inputs": {
+            "image_1": "изображение_1",
+            "image_2": "изображение_2",
+            "image_3": "изображение_3",
+            "image_4": "изображение_4",
+            "image_5": "изображение_5",
+            "image_6": "изображение_6",
+            "resize_mode": "режим_изменения_размера"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "ИЗОБРАЖЕНИЕ",
+            "WIDTH": "ШИРИНА",
+            "HEIGHT": "ВЫСОТА",
+            "BATCH_SIZE": "РАЗМЕР_ГРУППЫ"
+        },
+        "description": ""
+    },
+    "AILab_MaskToList": {
+        "title": "AILab_MaskToList",
+        "inputs": {
+            "mask_1": "маска_1",
+            "mask_2": "маска_2",
+            "mask_3": "маска_3",
+            "mask_4": "маска_4",
+            "mask_5": "маска_5",
+            "mask_6": "маска_6",
+            "resize_mode": "режим_переформатирования"
+        },
+        "widgets": {},
+        "outputs": {
+            "MASK": "Маска"
+        },
+        "description": ""
+    },
+    "AILab_ImageMaskToList": {
+        "title": "AILab_ImageMaskToList",
+        "inputs": {
+            "image_1": "изображение_1",
+            "mask_1": "маска_1",
+            "image_2": "изображение_2",
+            "mask_2": "маска_2",
+            "image_3": "изображение_3",
+            "mask_3": "маска_3",
+            "image_4": "изображение_4",
+            "mask_4": "маска_4",
+            "image_5": "изображение_5",
+            "mask_5": "маска_5",
+            "image_6": "изображение_6",
+            "mask_6": "маска_6",
+            "resize_mode": "режим_переформатирования"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска",
+            "WIDTH": "Ширина",
+            "HEIGHT": "Высота",
+            "BATCH_SIZE": "Размер_группы"
+        },
+        "description": ""
+    },
+    "AILab_UnbatchImages": {
+        "title": "AILab_UnbatchImages",
+        "inputs": {
+            "images": "изображения"
+        },
+        "widgets": {},
+        "outputs": {
+            "image_1": "изображение_1",
+            "image_2": "изображение_2",
+            "image_3": "изображение_3",
+            "image_4": "изображение_4",
+            "image_5": "изображение_5",
+            "image_6": "изображение_6",
+            "image_7": "изображение_7",
+            "image_8": "изображение_8"
+        },
+        "description": ""
+    },
+    "AILab_ReferenceLatentMask": {
+        "title": "AILab_ReferenceLatentMask",
+        "inputs": {
+            "conditioning": "conditioning",
+            "latent": "latent",
+            "mask": "mask"
+        },
+        "widgets": {
+            "expand": "расширить",
+            "blur": "размазать",
+            "mask_only": "только_маска"
+        },
+        "outputs": {
+            "CONDITIONING": "CONDITIONING",
+            "LATENT": "LATENT",
+            "MASK": "MASK"
+        },
+        "description": ""
+    },
+    "AILab_LamaRemover": {
+        "title": "AILab_LamaRemover",
+        "inputs": {
+            "images": "изображения",
+            "masks": "маски"
+        },
+        "widgets": {
+            "removal_strength": "сила_удаления",
+            "edge_smoothness": "гладкость_границ"
+        },
+        "outputs": {
+            "images": "изображения"
+        },
+        "description": ""
+    },
+    "RMBG": {
+        "title": "RMBG",
+        "inputs": {
+            "image": "изображение",
+            "model": "модель",
+            "background": "фон",
+            "background_color": "цвет_фона"
+        },
+        "widgets": {
+            "sensitivity": "чувствительность",
+            "process_res": "разрешение_обработки",
+            "mask_blur": "размазать_маску",
+            "mask_offset": "смещение_маски",
+            "invert_output": "инвертировать_вывод",
+            "refine_foreground": "улучшить_фон"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска",
+            "MASK_IMAGE": "Изображение_маски"
+        },
+        "description": ""
+    },
+    "SAM2Segment": {
+        "title": "SAM2Segment",
+        "inputs": {
+            "image": "изображение",
+            "sam2_model": "модель_sam2",
+            "dino_model": "модель_dino",
+            "device": "устройство",
+            "background": "фон",
+            "background_color": "цвет_фона"
+        },
+        "widgets": {
+            "prompt": "подсказка",
+            "threshold": "порог",
+            "mask_blur": "размазать_маску",
+            "mask_offset": "смещение_маски",
+            "invert_output": "инвертировать_вывод"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска",
+            "MASK_IMAGE": "Изображение_маски"
+        },
+        "description": ""
+    },
+    "SAM3Segment": {
+        "title": "SAM3Segment",
+        "inputs": {
+            "image": "изображение",
+            "output_mode": "режим_вывода",
+            "device": "устройство",
+            "background": "фон",
+            "background_color": "цвет_фона"
+        },
+        "widgets": {
+            "prompt": "подсказка",
+            "confidence_threshold": "порог_доверия",
+            "max_segments": "макс_сегментов",
+            "segment_pick": "выбор_сегмента",
+            "mask_blur": "размазать_маску",
+            "mask_offset": "смещение_маски",
+            "invert_output": "инвертировать_вывод",
+            "unload_model": "выгрузить_модель"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска",
+            "MASK_IMAGE": "Изображение_маски"
+        },
+        "description": ""
+    },
+    "AILab_SDMatte": {
+        "title": "AILab_SDMatte",
+        "inputs": {
+            "image": "изображение",
+            "model": "модель",
+            "device": "устройство",
+            "mask": "маска",
+            "background": "фон",
+            "background_color": "цвет_фона"
+        },
+        "widgets": {
+            "process_res": "разрешение_обработки",
+            "transparent_object": "прозрачный_объект",
+            "mask_refine": "уточнение_маски",
+            "sensitivity": "чувствительность",
+            "mask_blur": "размазать_маску",
+            "mask_offset": "смещение_маски",
+            "invert_output": "инвертировать_вывод"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска",
+            "MASK_IMAGE": "Изображение_маски"
+        },
+        "description": ""
+    },
+    "Segment": {
+        "title": "Segment",
+        "inputs": {
+            "image": "изображение",
+            "sam_model": "модель_sam",
+            "dino_model": "модель_dino",
+            "background": "фон",
+            "background_color": "цвет_фона"
+        },
+        "widgets": {
+            "prompt": "подсказка",
+            "threshold": "порог",
+            "mask_blur": "размазать_маску",
+            "mask_offset": "смещение_маски",
+            "invert_output": "инвертировать_вывод"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска",
+            "MASK_IMAGE": "Изображение_маски"
+        },
+        "description": ""
+    },
+    "SegmentV2": {
+        "title": "SegmentV2",
+        "inputs": {
+            "image": "изображение",
+            "sam_model": "модель_sam",
+            "dino_model": "модель_dino",
+            "background": "фон",
+            "background_color": "цвет_фона"
+        },
+        "widgets": {
+            "prompt": "подсказка",
+            "threshold": "порог",
+            "mask_blur": "размазать_маску",
+            "mask_offset": "смещение_маски",
+            "invert_output": "инвертировать_вывод"
+        },
+        "outputs": {
+            "IMAGE": "Изображение",
+            "MASK": "Маска",
+            "MASK_IMAGE": "Изображение_маски"
+        },
+        "description": ""
+    },
+    "AILab_YoloV8Adv": {
+        "title": "AILab_YoloV8Adv",
+        "inputs": {
+            "images": "изображения",
+            "yolo_model": "модель_yolo",
+            "mask_count": "количество_масок",
+            "select_mask_index": "индекс_выбора_маски",
+            "device": "устройство"
+        },
+        "widgets": {
+            "conf": "уровень_доверия",
+            "iou": "IOU",
+            "classes": "классы",
+            "max_det": "макс_объектов",
+            "retina_masks": "маски_ретиной",
+            "agnostic_nms": "агностичный_NMS"
+        },
+        "outputs": {
+            "ANNOTATED_IMAGE": "Аннотированное_изображение",
+            "MASK": "Маска",
+            "MASK_LIST": "Список_масок"
+        },
+        "description": ""
+    },
+    "AILab_YoloV8": {
+        "title": "AILab_YoloV8",
+        "inputs": {
+            "images": "изображения",
+            "yolo_model": "модель_yolo",
+            "mask_count": "количество_масок",
+            "select_mask_index": "индекс_выбора_маски"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": ""
+    }
+}
