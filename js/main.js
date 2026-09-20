@@ -12,6 +12,8 @@ import {
   isTranslationEnabled,
   isOptionTranslationEnabled,
   initConfig,
+  syncWithComfyLocale,
+  watchComfyLocale,
   currentConfig,
   translatedValueSet,
   error
@@ -738,6 +740,10 @@ const ext = {
   async init(app) {
     try {
       await initConfig();
+      // 默认开启：读取 ComfyUI 官方语言(Comfy.Locale)决定本次会话的翻译语言
+      await syncWithComfyLocale(app);
+      // 用户在设置中切换 Comfy.Locale 后自动刷新页面，使翻译与配置界面立即生效
+      watchComfyLocale(app);
       await registerSettings(app);
 
       TUtils.enhandeDrawNodeWidgets();

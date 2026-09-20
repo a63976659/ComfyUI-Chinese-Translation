@@ -8,15 +8,17 @@ import {
   toggleTranslation,
   currentConfig,
   saveConfig,
+  syncWithComfyLocale,
   error
 } from "./utils.js";
 
 // ─── 设置项注册 ───────────────────────────────────────────
 
-// 设置项 ID（注册与同步共用）
-const SETTING_ID_LANG = "🌐Language翻译语言.Language";
-const SETTING_ID_STYLE = "🌐Language翻译语言.ButtonStyle";
-const SETTING_ID_OPTS = "🌐Language翻译语言.TranslateOptions";
+// 设置项 ID（注册与同步共用，仅作设置商店键，不参与布局）
+// 分组与表头由 addSetting 的 category 数组控制（[分类, 小节]，随语言本地化），
+// 小节顺序由 sortOrder 控制（前端按 sortOrder 降序排组，与语言无关）。
+const SETTING_ID_STYLE = "🌐 Translation.ToggleStyle";
+const SETTING_ID_OPTS = "🌐 Translation.COMBOOptions";
 
 let registeredApp = null;
 // 程序性同步防护标志：防止同步写入设置商店时触发 onChange 把值再写回磁盘
@@ -52,7 +54,6 @@ function syncSettingsFromConfig(app) {
   if (!setter) return;
   applyingConfig = true;
   try {
-    setter(SETTING_ID_LANG, currentConfig.locale);
     setter(SETTING_ID_STYLE, styleLabelOf(currentConfig.button_style));
     setter(SETTING_ID_OPTS, currentConfig.translate_options);
   } finally {
@@ -68,6 +69,8 @@ function syncSettingsDialogIfOpen() {
   dialogEl.dataset.tlSynced = "1";
   (async () => {
     await refreshCurrentConfig();
+    // 语言始终跟随 Comfy.Locale：重新推导本次会话语言（覆盖磁盘上的上次保存值）。
+    await syncWithComfyLocale(registeredApp);
     syncSettingsFromConfig(registeredApp);
   })();
 }
@@ -78,41 +81,20 @@ function syncSettingsDialogIfOpen() {
  * @returns {Promise<void>}
  */
 export async function registerSettings(app) {
-  let availableLocales = ["zh-CN", "en_US"];
-  try {
-    const locRes = await fetch("./translation_node/get_locales");
-    if (locRes.ok) availableLocales = await locRes.json();
-  } catch (e) {}
-
   let isSettingsRegistered = false;
   registeredApp = app;
 
-  // 1. 语言设置
-  app.ui.settings.addSetting({
-    id: SETTING_ID_LANG,
-    name: "🌐 Language settings for translation (翻译语言设置)",
-    type: "combo",
-    options: availableLocales,
-    defaultValue: currentConfig.locale,
-    onChange: async (newVal) => {
-      if (applyingConfig) return;
-      if (!isSettingsRegistered) return;
-      // 忽略设置商店 hydration（服务器端 userdata 旧值）等非用户操作，防止覆盖 config.json
-      if (!isSettingsDialogOpen()) return;
-      if (newVal && newVal !== currentConfig.locale) {
-        await saveConfig(currentConfig.translation_enabled, newVal, currentConfig.button_style);
-        alert(`Language set to ${newVal}. The page will reload.`);
-        location.reload();
-      }
-    }
-  });
+  // 行标签/表头/提示按当前语言（跟随 Comfy.Locale）本地化；ID 固定为商店键，布局由 category+sortOrder 保证跨语言统一
+  const t = getPanelI18n(currentConfig.locale);
 
-  // 2. UI 风格设置（多样式开关，持久化到 config.json，切换后实时重绘无需刷新）
+  // 1. UI 风格设置（多样式开关，持久化到 config.json，切换后实时重绘无需刷新）
   app.ui.settings.addSetting({
     id: SETTING_ID_STYLE,
-    name: "🎨 Toggle Style (翻译开关样式)",
+    name: t.styleName,
+    category: [t.cat, t.styleTitle],
+    sortOrder: 2,
     type: "combo",
-    options: STYLE_OPTIONS,
+    options: styleOptions(currentConfig.locale),
     defaultValue: styleLabelOf(currentConfig.button_style),
     onChange: async (newVal) => {
       if (applyingConfig) return;
@@ -126,11 +108,13 @@ export async function registerSettings(app) {
     }
   });
 
-  // 3. COMBO 下拉选项翻译开关
+  // 2. COMBO 下拉选项翻译开关
   app.ui.settings.addSetting({
     id: SETTING_ID_OPTS,
-    name: "📋 Translate COMBO Options (下拉选项 翻译开关)",
-    tooltip: "开启或关闭，节点中 COMBO 下拉框选项的翻译。关闭后下拉选项保持英文原文。修改后刷新页面生效。",
+    name: t.optionsName,
+    category: [t.cat, t.optionsTitle],
+    sortOrder: 1,
+    tooltip: t.optionsTip,
     type: "boolean",
     defaultValue: currentConfig.translate_options,
     onChange: async (newVal) => {
@@ -166,8 +150,7 @@ function startStoreConvergence(app) {
   const timer = setInterval(() => {
     checks++;
     try {
-      const diverged = getter(SETTING_ID_LANG) !== currentConfig.locale
-        || getter(SETTING_ID_STYLE) !== styleLabelOf(currentConfig.button_style)
+      const diverged = getter(SETTING_ID_STYLE) !== styleLabelOf(currentConfig.button_style)
         || getter(SETTING_ID_OPTS) !== currentConfig.translate_options;
       if (diverged && !isSettingsDialogOpen()) {
         syncSettingsFromConfig(app);
@@ -182,12 +165,20 @@ function startStoreConvergence(app) {
 // 开关文字多语言表（按 get_locales 返回的语言代码匹配）
 const TOGGLE_I18N = {
   "zh-CN": { onFull: "翻译开启", offFull: "翻译关闭", switchOn: "开启", switchOff: "关闭", tipOn: "已开启翻译效果", tipOff: "已使用原生语言" },
+  "zh-TW": { onFull: "翻譯開啟", offFull: "翻譯關閉", switchOn: "開啟", switchOff: "關閉", tipOn: "已開啟翻譯效果", tipOff: "已使用原生語言" },
   "en-US": { onFull: "Translation On", offFull: "Translation Off", switchOn: "On", switchOff: "Off", tipOn: "Translation enabled", tipOff: "Using native language" },
   "de-DE": { onFull: "Übersetzung An", offFull: "Übersetzung Aus", switchOn: "An", switchOff: "Aus", tipOn: "Übersetzung aktiviert", tipOff: "Originalsprache aktiv" },
   "fr-FR": { onFull: "Traduction On", offFull: "Traduction Off", switchOn: "On", switchOff: "Off", tipOn: "Traduction activée", tipOff: "Langue native utilisée" },
+  "es-ES": { onFull: "Traducción Activada", offFull: "Traducción Desactivada", switchOn: "Activar", switchOff: "Desactivar", tipOn: "Traducción activada", tipOff: "Usando el idioma original" },
+  "it-IT": { onFull: "Traduzione Attiva", offFull: "Traduzione Disattiva", switchOn: "Attiva", switchOff: "Disattiva", tipOn: "Traduzione attivata", tipOff: "Viene usata la lingua originale" },
+  "pt-BR": { onFull: "Tradução Ativada", offFull: "Tradução Desativada", switchOn: "Ativar", switchOff: "Desativar", tipOn: "Tradução ativada", tipOff: "Usando o idioma original" },
   "ja-JP": { onFull: "翻訳オン", offFull: "翻訳オフ", switchOn: "オン", switchOff: "オフ", tipOn: "翻訳が有効です", tipOff: "元の言語を使用しています" },
   "ko-KR": { onFull: "번역 켜짐", offFull: "번역 꺼짐", switchOn: "켜기", switchOff: "끄기", tipOn: "번역이 활성화되었습니다", tipOff: "원본 언어를 사용 중입니다" },
   "ru-RU": { onFull: "Перевод вкл", offFull: "Перевод выкл", switchOn: "вкл", switchOff: "выкл", tipOn: "Перевод включён", tipOff: "Используется исходный язык" },
+  "tr-TR": { onFull: "Çeviri Açık", offFull: "Çeviri Kapalı", switchOn: "Aç", switchOff: "Kapat", tipOn: "Çeviri etkin", tipOff: "Orijinal dil kullanılıyor" },
+  "ar-SA": { onFull: "الترجمة مفعّلة", offFull: "الترجمة معطّلة", switchOn: "تفعيل", switchOff: "تعطيل", tipOn: "تم تفعيل الترجمة", tipOff: "تُستخدم اللغة الأصلية" },
+  "fa-IR": { onFull: "ترجمه روشن", offFull: "ترجمه خاموش", switchOn: "روشن", switchOff: "خاموش", tipOn: "ترجمه فعال شد", tipOff: "از زبان اصلی استفاده می‌شود" },
+  "he-IL": { onFull: "תרגום מופעל", offFull: "תרגום כבוי", switchOn: "הפעל", switchOff: "כבה", tipOn: "התרגום פעיל", tipOff: "נעשה שימוש בשפת המקור" },
 };
 
 /**
@@ -198,11 +189,186 @@ function getToggleI18n(locale) {
   if (TOGGLE_I18N[locale]) return TOGGLE_I18N[locale];
   const prefix = String(locale || "").slice(0, 2).toLowerCase();
   const matched = Object.keys(TOGGLE_I18N).find(k => k.toLowerCase().startsWith(prefix + "-"));
-  return (matched && TOGGLE_I18N[matched]) || TOGGLE_I18N["zh-CN"];
+  return (matched && TOGGLE_I18N[matched]) || TOGGLE_I18N["en-US"];
 }
 
-// 支持的开关样式：pill 胶囊分段 / gradient 旧版七彩渐变 / plain 旧版原生低调
-const STYLE_OPTIONS = ["pill (胶囊分段)", "gradient (七彩渐变)", "plain (原生低调)"];
+// 配置界面文案多语言表（单一语言，跟随 Comfy.Locale；未知语言回退英文）
+// 覆盖 ComfyUI 官方支持的全部语言 + de-DE；只含展示文案，不含设置项 ID（ID 语言无关）
+const PANEL_I18N = {
+  "zh-CN": {
+    cat: "🌐 翻译设置", styleTitle: "开关样式", optionsTitle: "下拉选项",
+    styleName: "🎨 开关外观", optionsName: "📋 翻译下拉选项",
+    optionsTip: "开启或关闭节点中 COMBO 下拉框选项的翻译。关闭后下拉选项保持原文。修改后刷新页面生效。",
+    styleOptions: ["pill (胶囊分段)", "gradient (七彩渐变)", "plain (原生低调)"],
+    panel: {
+      title: "🚫 插件翻译管理", hint: "取消勾选可禁用对应插件的节点翻译。修改后点击「保存并刷新」生效。",
+      search: "搜索插件...", selectAll: "全选", deselectAll: "全不选", save: "保存并刷新",
+      loading: "正在加载插件列表...", loaded: "共 {n} 个翻译文件，已禁用 {d} 个", loadFailed: "加载插件列表失败",
+    },
+  },
+  "zh-TW": {
+    cat: "🌐 翻譯設定", styleTitle: "開關樣式", optionsTitle: "下拉選項",
+    styleName: "🎨 開關外觀", optionsName: "📋 翻譯下拉選項",
+    optionsTip: "開啟或關閉節點中 COMBO 下拉框選項的翻譯。關閉後下拉選項保持原文。修改後重新整理頁面生效。",
+    styleOptions: ["pill (膠囊分段)", "gradient (七彩漸層)", "plain (原生低調)"],
+    panel: {
+      title: "🚫 外掛翻譯管理", hint: "取消勾選可停用對應外掛的節點翻譯。修改後點擊「儲存並重新整理」生效。",
+      search: "搜尋外掛...", selectAll: "全選", deselectAll: "全不選", save: "儲存並重新整理",
+      loading: "正在載入外掛清單...", loaded: "共 {n} 個翻譯檔案，已停用 {d} 個", loadFailed: "載入外掛清單失敗",
+    },
+  },
+  "en-US": {
+    cat: "🌐 Translation", styleTitle: "Toggle Style", optionsTitle: "COMBO Options",
+    styleName: "🎨 Toggle Appearance", optionsName: "📋 Translate COMBO Options",
+    optionsTip: "Enable or disable translation of COMBO dropdown options in nodes. When off, options stay in the original text. Reload the page to apply.",
+    styleOptions: ["pill", "gradient", "plain"],
+    panel: {
+      title: "🚫 Plugin Translation Manager", hint: "Uncheck a plugin to disable its node translation. Click \"Save & Reload\" to apply.",
+      search: "Search plugins...", selectAll: "Select All", deselectAll: "Select None", save: "Save & Reload",
+      loading: "Loading plugin list...", loaded: "{n} translation files, {d} disabled", loadFailed: "Failed to load plugin list",
+    },
+  },
+  "de-DE": {
+    cat: "🌐 Übersetzung", styleTitle: "Schaltflächenstil", optionsTitle: "COMBO-Optionen",
+    styleName: "🎨 Aussehen der Schaltfläche", optionsName: "📋 Dropdown-Optionen übersetzen",
+    optionsTip: "Aktiviert oder deaktiviert die Übersetzung der COMBO-Dropdown-Optionen in Knoten. Aus bleibt der Originaltext. Seite neu laden zum Anwenden.",
+    styleOptions: ["pill (Kapsel)", "gradient (Farbverlauf)", "plain (schlicht)"],
+    panel: {
+      title: "🚫 Plugin-Übersetzungsverwaltung", hint: "Deaktivieren Sie das Ankreuzfeld, um die Knotenübersetzung eines Plugins zu deaktivieren. Klicken Sie auf „Speichern & neu laden“, um anzuwenden.",
+      search: "Plugins durchsuchen...", selectAll: "Alle auswählen", deselectAll: "Keine auswählen", save: "Speichern & neu laden",
+      loading: "Plugin-Liste wird geladen...", loaded: "{n} Übersetzungsdateien, {d} deaktiviert", loadFailed: "Laden der Plugin-Liste fehlgeschlagen",
+    },
+  },
+  "fr-FR": {
+    cat: "🌐 Traduction", styleTitle: "Style du bouton", optionsTitle: "Options COMBO",
+    styleName: "🎨 Apparence du bouton", optionsName: "📋 Traduire les options déroulantes",
+    optionsTip: "Active ou désactive la traduction des options déroulantes COMBO des nœuds. Désactivé, les options restent en texte d'origine. Recharger la page pour appliquer.",
+    styleOptions: ["pill (capsule)", "gradient (dégradé)", "plain (simple)"],
+    panel: {
+      title: "🚫 Gestion des traductions de plugins", hint: "Décochez un plugin pour désactiver la traduction de ses nœuds. Cliquez sur « Enregistrer et recharger » pour appliquer.",
+      search: "Rechercher des plugins...", selectAll: "Tout sélectionner", deselectAll: "Tout désélectionner", save: "Enregistrer et recharger",
+      loading: "Chargement de la liste des plugins...", loaded: "{n} fichiers de traduction, {d} désactivés", loadFailed: "Échec du chargement de la liste",
+    },
+  },
+  "es-ES": {
+    cat: "🌐 Traducción", styleTitle: "Estilo del botón", optionsTitle: "Opciones COMBO",
+    styleName: "🎨 Apariencia del botón", optionsName: "📋 Traducir opciones desplegables",
+    optionsTip: "Activa o desactiva la traducción de las opciones desplegables COMBO de los nodos. Al desactivarlo, las opciones se mantienen en el texto original. Recarga la página para aplicar.",
+    styleOptions: ["pill (pastilla)", "gradient (degradado)", "plain (simple)"],
+    panel: {
+      title: "🚫 Gestión de traducción de plugins", hint: "Desmarca un plugin para desactivar la traducción de sus nodos. Pulsa «Guardar y recargar» para aplicar.",
+      search: "Buscar plugins...", selectAll: "Seleccionar todo", deselectAll: "Deseleccionar todo", save: "Guardar y recargar",
+      loading: "Cargando lista de plugins...", loaded: "{n} archivos de traducción, {d} desactivados", loadFailed: "No se pudo cargar la lista de plugins",
+    },
+  },
+  "it-IT": {
+    cat: "🌐 Traduzione", styleTitle: "Stile del pulsante", optionsTitle: "Opzioni COMBO",
+    styleName: "🎨 Aspetto del pulsante", optionsName: "📋 Traduci opzioni a tendina",
+    optionsTip: "Attiva o disattiva la traduzione delle opzioni a tendina COMBO nei nodi. Se disattivo, le opzioni restano nel testo originale. Ricarica la pagina per applicare.",
+    styleOptions: ["pill (pillola)", "gradient (gradiente)", "plain (semplice)"],
+    panel: {
+      title: "🚫 Gestione traduzione plugin", hint: "Deseleziona un plugin per disattivare la traduzione dei suoi nodi. Fai clic su \"Salva e ricarica\" per applicare.",
+      search: "Cerca plugin...", selectAll: "Seleziona tutto", deselectAll: "Deseleziona tutto", save: "Salva e ricarica",
+      loading: "Caricamento elenco plugin...", loaded: "{n} file di traduzione, {d} disattivati", loadFailed: "Impossibile caricare l'elenco dei plugin",
+    },
+  },
+  "pt-BR": {
+    cat: "🌐 Tradução", styleTitle: "Estilo do botão", optionsTitle: "Opções COMBO",
+    styleName: "🎨 Aparência do botão", optionsName: "📋 Traduzir opções suspensas",
+    optionsTip: "Ativa ou desativa a tradução das opções suspensas COMBO dos nós. Desativado, as opções permanecem no texto original. Recarregue a página para aplicar.",
+    styleOptions: ["pill (pílula)", "gradient (gradiente)", "plain (simples)"],
+    panel: {
+      title: "🚫 Gerenciador de tradução de plugins", hint: "Desmarque um plugin para desativar a tradução de seus nós. Clique em \"Salvar e recarregar\" para aplicar.",
+      search: "Pesquisar plugins...", selectAll: "Selecionar tudo", deselectAll: "Limpar seleção", save: "Salvar e recarregar",
+      loading: "Carregando lista de plugins...", loaded: "{n} arquivos de tradução, {d} desativados", loadFailed: "Falha ao carregar a lista de plugins",
+    },
+  },
+  "ja-JP": {
+    cat: "🌐 翻訳設定", styleTitle: "トグルスタイル", optionsTitle: "ドロップダウン",
+    styleName: "🎨 トグルの外観", optionsName: "📋 ドロップダウン項目を翻訳",
+    optionsTip: "ノード内のCOMBOドロップダウン項目の翻訳を有効/無効にします。無効にすると項目は原文のままになります。変更後はページを再読み込みしてください。",
+    styleOptions: ["pill (カプセル)", "gradient (グラデーション)", "plain (シンプル)"],
+    panel: {
+      title: "🚫 プラグイン翻訳管理", hint: "チェックを外すとそのプラグインのノード翻訳が無効になります。「保存して再読み込み」で反映。",
+      search: "プラグインを検索...", selectAll: "すべて選択", deselectAll: "すべて解除", save: "保存して再読み込み",
+      loading: "プラグイン一覧を読み込み中...", loaded: "{n} 件の翻訳ファイル、{d} 件が無効", loadFailed: "プラグイン一覧の読み込みに失敗",
+    },
+  },
+  "ko-KR": {
+    cat: "🌐 번역 설정", styleTitle: "토글 스타일", optionsTitle: "드롭다운",
+    styleName: "🎨 토글 외형", optionsName: "📋 드롭다운 항목 번역",
+    optionsTip: "노드의 COMBO 드롭다운 항목 번역을 켜거나 끕니다. 끄면 항목이 원문으로 유지됩니다. 변경 후 페이지를 새로고침하세요.",
+    styleOptions: ["pill (알약형)", "gradient (그라데이션)", "plain (단순)"],
+    panel: {
+      title: "🚫 플러그인 번역 관리", hint: "체크를 해제하면 해당 플러그인의 노드 번역이 비활성화됩니다. 「저장 후 새로고침」을 누르면 적용됩니다.",
+      search: "플러그인 검색...", selectAll: "모두 선택", deselectAll: "모두 해제", save: "저장 후 새로고침",
+      loading: "플러그인 목록 불러오는 중...", loaded: "번역 파일 {n}개, 비활성화 {d}개", loadFailed: "플러그인 목록 불러오기 실패",
+    },
+  },
+  "ru-RU": {
+    cat: "🌐 Перевод", styleTitle: "Стиль переключателя", optionsTitle: "Опции COMBO",
+    styleName: "🎨 Вид кнопки", optionsName: "📋 Перевод выпадающих опций",
+    optionsTip: "Включает или отключает перевод выпадающих опций COMBO в узлах. Если отключено, опции остаются в исходном тексте. Перезагрузите страницу для применения.",
+    styleOptions: ["pill (капсула)", "gradient (градиент)", "plain (просто)"],
+    panel: {
+      title: "🚫 Управление переводом плагинов", hint: "Снимите отметку, чтобы отключить перевод узлов плагина. Нажмите «Сохранить и перезагрузить» для применения.",
+      search: "Поиск плагинов...", selectAll: "Выбрать все", deselectAll: "Снять все", save: "Сохранить и перезагрузить",
+      loading: "Загрузка списка плагинов...", loaded: "Файлов перевода: {n}, отключено: {d}", loadFailed: "Не удалось загрузить список плагинов",
+    },
+  },
+  "tr-TR": {
+    cat: "🌐 Çeviri", styleTitle: "Anahtar stili", optionsTitle: "COMBO seçenekleri",
+    styleName: "🎨 Anahtar görünümü", optionsName: "📋 Açılır menü seçeneklerini çevir",
+    optionsTip: "Düğümlerdeki COMBO açılır menü seçeneklerinin çevirisini açar veya kapatır. Kapalıyken seçenekler özgün metinde kalır. Uygulamak için sayfayı yeniden yükleyin.",
+    styleOptions: ["pill (hap)", "gradient (gradyan)", "plain (sade)"],
+    panel: {
+      title: "🚫 Eklenti çeviri yönetimi", hint: "Bir eklentinin düğüm çevirisini kapatmak için işaretini kaldırın. Uygulamak için «Kaydet ve yenile» düğmesine basın.",
+      search: "Eklenti ara...", selectAll: "Tümünü seç", deselectAll: "Hiçbirini seçme", save: "Kaydet ve yenile",
+      loading: "Eklenti listesi yükleniyor...", loaded: "{n} çeviri dosyası, {d} kapalı", loadFailed: "Eklenti listesi yüklenemedi",
+    },
+  },
+  "ar-SA": {
+    cat: "🌐 الترجمة", styleTitle: "نمط المفتاح", optionsTitle: "خيارات COMBO",
+    styleName: "🎨 مظهر المفتاح", optionsName: "📋 ترجمة خيارات القائمة المنسدلة",
+    optionsTip: "تشغيل أو إيقاف ترجمة خيارات COMBO المنسدلة في العقد. عند الإيقاف تبقى الخيارات بالنص الأصلي. أعد تحميل الصفحة للتطبيق.",
+    styleOptions: ["pill (كبسولة)", "gradient (تدرج)", "plain (بسيط)"],
+    panel: {
+      title: "🚫 إدارة ترجمة الإضافات", hint: "ألغِ تحديد الإضافة لإيقاف ترجمة عقدها. انقر «حفظ وإعادة تحميل» للتطبيق.",
+      search: "البحث في الإضافات...", selectAll: "تحديد الكل", deselectAll: "إلغاء تحديد الكل", save: "حفظ وإعادة تحميل",
+      loading: "جارٍ تحميل قائمة الإضافات...", loaded: "{n} ملفات ترجمة، {d} معطّلة", loadFailed: "فشل تحميل قائمة الإضافات",
+    },
+  },
+  "fa-IR": {
+    cat: "🌐 ترجمه", styleTitle: "سبک کلید", optionsTitle: "گزینه‌های COMBO",
+    styleName: "🎨 ظاهر کلید", optionsName: "📋 ترجمه گزینه‌های کشویی",
+    optionsTip: "ترجمه گزینه‌های کشویی COMBO در گره‌ها را روشن یا خاموش می‌کند. وقتی خاموش باشد، گزینه‌ها با متن اصلی می‌مانند. برای اعمال، صفحه را دوباره بارگذاری کنید.",
+    styleOptions: ["pill (کپسولی)", "gradient (گرادیان)", "plain (ساده)"],
+    panel: {
+      title: "🚫 مدیریت ترجمه افزونه‌ها", hint: "تیک یک افزونه را بردارید تا ترجمه گره‌هایش غیرفعال شود. برای اعمال روی «ذخیره و بارگذاری مجدد» کلیک کنید.",
+      search: "جستجوی افزونه‌ها...", selectAll: "انتخاب همه", deselectAll: "لغو انتخاب همه", save: "ذخیره و بارگذاری مجدد",
+      loading: "در حال بارگذاری فهرست افزونه‌ها...", loaded: "{n} فایل ترجمه، {d} غیرفعال", loadFailed: "بارگذاری فهرست افزونه‌ها ناموفق بود",
+    },
+  },
+  "he-IL": {
+    cat: "🌐 תרגום", styleTitle: "סגנון המתג", optionsTitle: "אפשרויות COMBO",
+    styleName: "🎨 מראה המתג", optionsName: "📋 תרגם אפשרויות נפתחות",
+    optionsTip: "הפעל או השבת תרגום של אפשרויות COMBO הנפתחות בצמתים. כשהוא מושבת, האפשרויות נשארות בטקסט המקורי. טען מחדש את הדף ליישום.",
+    styleOptions: ["pill (גלולה)", "gradient (מדרג)", "plain (פשוט)"],
+    panel: {
+      title: "🚫 ניהול תרגום תוספים", hint: "בטל הסימון של תוסף כדי להשבית את תרגום הצמתים שלו. לחץ על «שמירה וטעינה מחדש» ליישום.",
+      search: "חיפוש תוספים...", selectAll: "בחר הכל", deselectAll: "בטל בחירה", save: "שמור וטען מחדש",
+      loading: "טוען רשימת תוספים...", loaded: "{n} קובצי תרגום, {d} מושבתים", loadFailed: "טעינת רשימת התוספים נכשלה",
+    },
+  },
+};
+
+/** 按语言代码获取配置界面文案，支持宽松前缀匹配，未知语言回退英文 */
+function getPanelI18n(locale) {
+  if (PANEL_I18N[locale]) return PANEL_I18N[locale];
+  const prefix = String(locale || "").slice(0, 2).toLowerCase();
+  const matched = Object.keys(PANEL_I18N).find(k => k.toLowerCase().startsWith(prefix + "-"));
+  return (matched && PANEL_I18N[matched]) || PANEL_I18N["en-US"];
+}
 
 /** 从设置选项文本解析样式键，未知值回退 gradient（兼容旧配置） */
 function parseStyleKey(val) {
@@ -212,10 +378,16 @@ function parseStyleKey(val) {
   return "gradient";
 }
 
-/** 样式键 → 设置选项显示文本 */
-function styleLabelOf(key) {
+/** 当前语言的开关样式选项（pill/gradient/plain 为固定标识，括号内说明随语言本地化） */
+function styleOptions(locale = currentConfig.locale) {
+  return getPanelI18n(locale).styleOptions;
+}
+
+/** 样式键 → 当前语言的选项显示文本 */
+function styleLabelOf(key, locale = currentConfig.locale) {
   const k = parseStyleKey(key);
-  return STYLE_OPTIONS.find(o => o.startsWith(k)) || STYLE_OPTIONS[0];
+  const opts = styleOptions(locale);
+  return opts.find(o => o.startsWith(k)) || opts[0];
 }
 
 /** 判断元素及其父容器是否真实可见（排除 display:none 的隐藏容器） */
@@ -367,7 +539,7 @@ function buildToggle() {
   const activeClass = isPlain ? "translation-active-plain" : "translation-active-gradient";
   const inactiveClass = isPlain ? "translation-inactive-plain" : "translation-inactive-gradient";
   btn.classList.add(translationEnabled ? activeClass : inactiveClass);
-  btn.textContent = translationEnabled ? `${i18n.onFull} (${locale})` : i18n.offFull;
+  btn.textContent = translationEnabled ? i18n.onFull : i18n.offFull;
   btn.style.fontWeight = isPlain ? "normal" : "bold";
   btn.style.margin = "2px";
   btn.title = tooltip;
@@ -474,23 +646,27 @@ function buildPluginPanel(parentEl) {
   if (existing) return;
 
   const disabled = new Set(currentConfig.disabled_plugins || []);
+  const p = getPanelI18n(currentConfig.locale).panel;
 
   // 先创建面板 DOM 并设置 ID，确保去重检查能正确工作
   const panel = document.createElement("div");
   panel.id = PANEL_ID;
+  // 标记为免翻译：面板文案已由 PANEL_I18N 按当前语言本地化，
+  // 需屏蔽菜单/节点翻译引擎（tSkip 黑名单）对本模块的二次翻译
+  panel.classList.add("tl-no-translate");
   panel.style.cssText = "margin-top:12px;padding:10px;border:1px solid #444;border-radius:6px;background:#1e1e1e;font-size:13px;";
   panel.innerHTML = `
-    <div style="font-weight:bold;font-size:14px;margin-bottom:6px;">🚫 插件翻译管理</div>
-    <div style="margin-bottom:6px;color:#aaa;font-size:12px;">取消勾选可禁用对应插件的节点翻译。修改后点击「保存并刷新」生效。</div>
-    <input type="text" placeholder="搜索插件..." id="tl-plugin-search"
+    <div style="font-weight:bold;font-size:14px;margin-bottom:6px;">${p.title}</div>
+    <div style="margin-bottom:6px;color:#aaa;font-size:12px;">${p.hint}</div>
+    <input type="text" placeholder="${p.search}" id="tl-plugin-search"
       style="width:100%;padding:5px 8px;margin-bottom:6px;border:1px solid #555;border-radius:4px;background:#2a2a2a;color:#ddd;box-sizing:border-box;outline:none;" />
     <div style="display:flex;gap:6px;margin-bottom:6px;">
-      <button id="tl-select-all" style="flex:1;padding:3px;border:1px solid #555;border-radius:4px;background:#333;color:#ddd;cursor:pointer;font-size:12px;">全选</button>
-      <button id="tl-deselect-all" style="flex:1;padding:3px;border:1px solid #555;border-radius:4px;background:#333;color:#ddd;cursor:pointer;font-size:12px;">全不选</button>
+      <button id="tl-select-all" style="flex:1;padding:3px;border:1px solid #555;border-radius:4px;background:#333;color:#ddd;cursor:pointer;font-size:12px;">${p.selectAll}</button>
+      <button id="tl-deselect-all" style="flex:1;padding:3px;border:1px solid #555;border-radius:4px;background:#333;color:#ddd;cursor:pointer;font-size:12px;">${p.deselectAll}</button>
     </div>
     <div id="tl-plugin-list" style="height:300px;overflow-y:auto;border:1px solid #444;border-radius:4px;padding:4px;"></div>
     <div style="margin-top:8px;display:flex;align-items:center;gap:8px;">
-      <button id="tl-save-plugins" style="padding:6px 20px;border:none;border-radius:4px;background:#4a9eff;color:#fff;cursor:pointer;font-weight:bold;">保存并刷新</button>
+      <button id="tl-save-plugins" style="padding:6px 20px;border:none;border-radius:4px;background:#4a9eff;color:#fff;cursor:pointer;font-weight:bold;">${p.save}</button>
       <span id="tl-status" style="font-size:11px;color:#888;"></span>
     </div>
   `;
@@ -500,14 +676,14 @@ function buildPluginPanel(parentEl) {
   const statusEl = panel.querySelector("#tl-status");
 
   // 先显示加载状态
-  statusEl.textContent = "正在加载插件列表...";
+  statusEl.textContent = p.loading;
 
   // 异步加载插件列表并填充内容
-  fetch("./translation_node/get_plugin_list")
+  fetch(`./translation_node/get_plugin_list?locale=${encodeURIComponent(currentConfig.locale)}`)
     .then(resp => resp.json())
     .then(plugins => {
       plugins = plugins.filter(n => n !== SELF_NAME && n !== "internal");
-      statusEl.textContent = `共 ${plugins.length} 个翻译文件，已禁用 ${disabled.size} 个`;
+      statusEl.textContent = p.loaded.replace("{n}", plugins.length).replace("{d}", disabled.size);
       
       plugins.forEach(name => {
         const checked = !disabled.has(name);
@@ -521,7 +697,7 @@ function buildPluginPanel(parentEl) {
     })
     .catch(e => {
       error("获取插件列表失败:", e);
-      statusEl.textContent = "加载插件列表失败";
+      statusEl.textContent = p.loadFailed;
     });
 
   // 搜索过滤
@@ -569,9 +745,10 @@ function tryInjectPluginPanel() {
     if (document.getElementById(PANEL_ID)) return;
 
     // 新版 UI
+    // 锚点用「📋」表情：它在所有语言的 optionsName 中保持一致，避免本地化后文案匹配失效
     const allSettingItems = document.querySelectorAll('[class*="setting-item"], [class*="SettingItem"], .p-fieldset, .p-panel');
     for (const item of allSettingItems) {
-      if (item.textContent?.includes("Translate COMBO Options") || item.textContent?.includes("翻译下拉选项")) {
+      if (item.textContent?.includes("📋")) {
         const container = item.closest('[class*="group"], [class*="category"], .p-fieldset-content, .p-panel-content') || item.parentElement;
         if (container) buildPluginPanel(container);
         return;
@@ -585,7 +762,7 @@ function tryInjectPluginPanel() {
       if (tbody) {
         const rows = tbody.querySelectorAll("tr");
         for (const row of rows) {
-          if (row.textContent?.includes("Translate COMBO") || row.textContent?.includes("翻译下拉")) {
+          if (row.textContent?.includes("📋")) {
             buildPluginPanel(tbody);
             return;
           }

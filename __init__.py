@@ -152,10 +152,8 @@ async def get_translation(request: web.Request):
     json_data = "{}"
     headers = {}
 
-    current_enabled = GLOBAL_CONFIG.get("translation_enabled", True)
-    if not current_enabled:
-        return web.Response(status=200, body=json_data, headers=headers)
-
+    # 翻译的启用/停用由前端决定：默认不翻译，前端在跟随 Comfy.Locale 或用户手动开启时才会请求本接口。
+    # 因此服务端不再按 translation_enabled 拦截，仅按请求的 locale 返回对应译文。
     disabled_plugins = GLOBAL_CONFIG.get("disabled_plugins", [])
 
     try:
@@ -184,7 +182,9 @@ async def get_plugin_list(request: web.Request):
     API端点: 获取当前语言的插件翻译文件列表
     返回所有 JSON 文件名（不含扩展名）
     """
-    locale = GLOBAL_CONFIG.get("locale", "zh-CN")
+    # 优先用前端传入的实际翻译语言（与 get_translation 同源），回退磁盘配置，
+    # 避免语言改为跟随 Comfy.Locale 后磁盘 locale 滞后导致列表与实际翻译语言不一致
+    locale = request.query.get("locale") or GLOBAL_CONFIG.get("locale", "zh-CN")
     path = CUR_PATH.joinpath(locale, "Nodes")
     plugins = sorted([f.stem for f in path.glob("*.json")]) if path.exists() else []
     return web.Response(status=200, body=json.dumps(plugins, ensure_ascii=False), headers={"Content-Type": "application/json"})

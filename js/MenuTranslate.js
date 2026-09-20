@@ -24,7 +24,8 @@ class TExe {
       "lite-search-item-type",
       "p-tree",            // 拦截扩展节点组 (Vue Tree)
       "p-virtualscroller", // 拦截模版搜索中的虚拟滚动列表
-      "p-listbox"          // 拦截 PrimeVue 列表容器
+      "p-listbox",         // 拦截 PrimeVue 列表容器
+      "tl-no-translate"    // 拦截插件自身配置面板中的「插件翻译管理」模块（已由 PANEL_I18N 本地化）
     ];
     this.observers = [];
     
