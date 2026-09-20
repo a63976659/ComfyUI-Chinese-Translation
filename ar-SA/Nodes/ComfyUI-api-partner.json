@@ -1,0 +1,4810 @@
+{
+    "ClaudeNode": {
+        "title": "Anthropic Claude",
+        "inputs": {
+            "source": "مسار المصدر",
+            "image_1": "صورة_1"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "model": "النموذج",
+            "max_tokens": "الحد الأقصى للرموز",
+            "temperature": "الحرارة",
+            "reasoning_effort": "جهد الاستدلال",
+            "seed": "البذرة"
+        },
+        "outputs": {
+            "String": "نص"
+        },
+        "description": "يولّد استجابات نصية باستخدام نموذج Claude من Anthropic. قدّم موجّهًا نصيًا، وأرفق اختياريًا صورة أو أكثر لبناء سياق متعدّد الوسائط."
+    },
+    "ByteDanceSeedNode": {
+        "title": "Seedance2.0 من بايت دانس",
+        "inputs": {
+            "video_1": "فيديو_1",
+            "image_1": "صورة_1"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "model": "النموذج",
+            "temperature": "الحرارة",
+            "seed": "البذرة"
+        },
+        "outputs": {
+            "String": "نص"
+        },
+        "description": "يولّد استجابات نصية باستخدام نموذج Seed2.0 من ByteDance. قدّم موجّهًا نصيًا، وأرفق اختياريًا صورة أو أكثر أو فيديو لإثراء السياق متعدّد الوسائط."
+    },
+    "ByteDance2ReferenceNodeV2": {
+        "title": "مرجع فيديو Seedance 2.5 من بايت دانس",
+        "inputs": {
+            "image_1": "صورة1",
+            "image_2": "صورة2",
+            "image_3": "صورة3",
+            "image_4": "صورة4",
+            "image_5": "صورة5",
+            "image_6": "صورة6",
+            "image_7": "صورة7",
+            "image_8": "صورة8",
+            "image_9": "صورة9",
+            "audio_1": "صوت1",
+            "audio_2": "صوت2",
+            "audio_3": "صوت3",
+            "video_1": "فيديو1",
+            "video_2": "فيديو2",
+            "video_3": "فيديو3",
+            "asset_1": "أصل1",
+            "asset_2": "أصل2",
+            "asset_3": "أصل3"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "resolution": "الدقّة",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "generate_audio": "توليد الصوت",
+            "duration": "المدة",
+            "task_type": "نوع المهمة",
+            "auto_downscale": "تصغير تلقائي",
+            "auto_upscale": "تكبير تلقائي",
+            "output_format": "تنسيق الخرج",
+            "seed": "البذرة",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "String": "نص"
+        },
+        "description": "توليد أو تحرير أو تمديد الفيديو باستخدام Seedance2.5 أو 2.0، مع دعم صور وفيديوهات وصوت للمرجع. يدعم المراجع متعددة الوسائط وتحرير الفيديو وتمديد الفيديو."
+    },
+    "ByteDanceVideoEnhanceNode": {
+        "title": "تعزيز الفيديو vCube من بايت دانس",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "tool_version": "إصدار الأداة",
+            "scene": "المشهد",
+            "enhance_style": "نمط التعزيز",
+            "resolution": "الدقّة",
+            "fps": "معدّل الإطارات",
+            "bitrate_level": "مستوى معدّل البتات"
+        },
+        "outputs": {},
+        "description": "تكبير وترميم الفيديو باستخدام vCube من بايت دانس: يدعم دقّة فائقة حتى 8K، والضغط، وإزالة التشوهات والضجيج، وتحسين الألوان والوضوح، مع استيفاء إطارات اختياري."
+    },
+    "GeminiNode": {
+        "title": "Gemini من Google",
+        "inputs": {
+            "images": "مجموعة صور",
+            "audio": "الصوت",
+            "video": "فيديو",
+            "files": "ملفات إدخال Gemini",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة",
+            "model": "النموذج"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "STRING": "نص"
+        }
+    },
+    "GeminiNodeV2": {
+        "title": "GeminiV2 من Google",
+        "inputs": {
+            "image_1": "صورة1",
+            "image_2": "صورة2",
+            "image_3": "صورة3",
+            "image_4": "صورة4",
+            "image_5": "صورة5",
+            "image_6": "صورة6",
+            "image_7": "صورة7",
+            "image_8": "صورة8",
+            "image_9": "صورة9",
+            "video_1": "فيديو1",
+            "audio_1": "صوت1",
+            "files": "ملفات إدخال Gemini"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "thinking_level": "مستوى التفكير",
+            "temperature": "الحرارة",
+            "max_output_tokens": "الحد الأقصى لرموز الخرج",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "duration": "المدة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "STRING": "نص"
+        }
+    },
+    "GeminiVideoOmniV2": {
+        "title": "Gemini Omni للفيديو من Google",
+        "inputs": {
+            "image_1": "صورة1",
+            "image_2": "صورة2",
+            "image_3": "صورة3",
+            "image_4": "صورة4",
+            "image_5": "صورة5",
+            "image_6": "صورة6",
+            "image_7": "صورة7",
+            "image_8": "صورة8",
+            "image_9": "صورة9",
+            "video_1": "فيديو1",
+            "video_2": "فيديو2",
+            "video_3": "فيديو3"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة",
+            "task_type": "نوع المهمة",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "STRING": "نص"
+        }
+    },
+    "GeminiInputFiles": {
+        "title": "ملفات إدخال Gemini من Google",
+        "inputs": {
+            "GEMINI_INPUT_FILES": "ملفات إدخال Gemini",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "file": "ملف",
+            "model": "النموذج"
+        },
+        "outputs": {
+            "GEMINI_INPUT_FILES": "ملفات إدخال Gemini",
+            "STRING": "نص"
+        }
+    },
+    "OpenAIChatNode": {
+        "title": "محادثة OpenAI",
+        "inputs": {
+            "images": "مجموعة صور",
+            "audio": "الصوت",
+            "advanced_options": "خيارات متقدّمة",
+            "files": "ملفات إدخال OpenAI",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "persist_context": "سياق دائم",
+            "duration": "المدة",
+            "model": "النموذج"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "STRING": "نص"
+        }
+    },
+    "OpenAIInputFiles": {
+        "title": "ملفات إدخال محادثة OpenAI",
+        "inputs": {
+            "OPENAI_INPUT_FILES": "ملفات إدخال OpenAI",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "file": "ملف",
+            "model": "النموذج"
+        },
+        "outputs": {
+            "OPENAI_INPUT_FILES": "ملفات إدخال OpenAI",
+            "STRING": "نص"
+        }
+    },
+    "OpenAIChatConfig": {
+        "title": "الخيارات المتقدّمة لمحادثة OpenAI",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "truncation": "اقتطاع",
+            "max_output_tokens": "الحد الأقصى لرموز الخرج",
+            "quality": "الجودة",
+            "n": "العدد",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "auth_token": "رمز التفويض"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "خيارات متقدّمة",
+            "string": "نص"
+        }
+    },
+    "OpenRouterLLMNode": {
+        "title": "نموذج OpenRouter اللغوي الكبير",
+        "inputs": {
+            "image_1": "صورة1",
+            "image_2": "صورة2",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "reasoning_effort": "جهد الاستدلال",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "auth_token": "رمز التفويض"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "خيارات متقدّمة",
+            "string": "نص"
+        }
+    },
+    "BeebleSwitchXVideoEdit": {
+        "title": "تحرير فيديو Beeble SwitchX",
+        "inputs": {
+            "video": "فيديو",
+            "reference_image": "صورة مرجعية"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "alpha_mode": "وضع Alpha",
+            "max_resolution": "أقصى دقّة",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "video": "فيديو",
+            "alpha": "Alpha"
+        },
+        "description": "تحرير فيديو باستخدام BeebleSwitchX. يمكنك تبديل أي عنصر في المشهد (الخلفية، الإضاءة، الملابس) مع إبقاء بكسلات الحركة الأصلية كما هي. قدّم صورة مرجعية و/أو موجّهًا نصيًا لوصف المظهر الجديد. حتى 240 إطارًا، بحد أقصى دقّة ~2.77MP لكل إطار."
+    },
+    "BriaRemoveVideoBackground": {
+        "title": "Bria إزالة خلفية الفيديو",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "background_color": "لون الخلفية",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        }
+    },
+    "BriaVideoGreenScreen": {
+        "title": "البكرة الخضراء لفيديو Bria",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "green_shade": "لون الشاشة الخضراء",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "استبدل Bria خلفية الفيديو بشاشة تنقّي بلون صلب."
+    },
+    "BriaTransparentVideoBackground": {
+        "title": "Bria إزالة خلفية الفيديو (شفاف)",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "images": "صورة",
+            "mask": "قناع"
+        },
+        "description": "يزيل Bria الخلفية من الفيديو ويُعيد الإطارات المقتنعة وأقنعة Alpha. وصِل كليهما بعقدة تركيب، أو أدخِلها إلى حفظ WEBM لتوليد فيديو شفاف."
+    },
+    "ByteDanceTextToVideoNode": {
+        "title": "تحويل نص إلى فيديو من بايت دانس",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "camera_fixed": "كاميرا ثابتة",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "video": "فيديو",
+            "VIDEO": "فيديو"
+        }
+    },
+    "ByteDanceImageToVideoNode": {
+        "title": "تحويل صورة إلى فيديو من بايت دانس",
+        "inputs": {
+            "image": "صورة",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "camera_fixed": "كاميرا ثابتة",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "video": "فيديو",
+            "VIDEO": "فيديو"
+        }
+    },
+    "ByteDanceFirstLastFrameNode": {
+        "title": "تحويل الإطارَين الأول والأخير إلى فيديو من بايت دانس",
+        "inputs": {
+            "first_frame": "صورة الإطار الأول",
+            "last_frame": "صورة الإطار الأخير",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "camera_fixed": "كاميرا ثابتة",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "video": "فيديو",
+            "VIDEO": "فيديو"
+        }
+    },
+    "ByteDanceImageReferenceNode": {
+        "title": "تحويل صورة مرجعية إلى فيديو من بايت دانس",
+        "inputs": {
+            "images": "مجموعة صور",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "camera_fixed": "كاميرا ثابتة",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "video": "فيديو",
+            "VIDEO": "فيديو"
+        }
+    },
+    "ByteDance2TextToVideoNode": {
+        "title": "تحويل نص إلى فيديو 2.0 من بايت دانس",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "generate_audio": "توليد الصوت",
+            "duration": "المدة",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "camera_fixed": "كاميرا ثابتة",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "video": "فيديو",
+            "VIDEO": "فيديو"
+        }
+    },
+    "ByteDance2FirstLastFrameNode": {
+        "title": "تحويل الإطارَين الأول والأخير إلى فيديو 2.0 من بايت دانس",
+        "inputs": {
+            "first_frame": "صورة الإطار الأول",
+            "last_frame": "صورة الإطار الأخير",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "generate_audio": "توليد الصوت",
+            "duration": "المدة",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "video": "فيديو",
+            "VIDEO": "فيديو"
+        }
+    },
+    "ByteDance2ReferenceNode": {
+        "title": "تحويل مرجع إلى فيديو 2.0 من بايت دانس",
+        "inputs": {
+            "image_1": "صورة1",
+            "image_2": "صورة2",
+            "image_3": "صورة3",
+            "image_4": "صورة4",
+            "image_5": "صورة5",
+            "image_6": "صورة6",
+            "image_7": "صورة7",
+            "image_8": "صورة8",
+            "image_9": "صورة9",
+            "video_1": "فيديو1",
+            "video_2": "فيديو2",
+            "video_3": "فيديو3",
+            "audio_1": "صوت1",
+            "audio_2": "صوت2",
+            "audio_3": "صوت3",
+            "asset_1": "أصل1",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "generate_audio": "توليد الصوت",
+            "duration": "المدة",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "camera_fixed": "كاميرا ثابتة",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "video": "فيديو",
+            "VIDEO": "فيديو"
+        }
+    },
+    "ByteDanceCreateVideoAsset": {
+        "title": "إنشاء مادة فيديو من بايت دانس",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "group_id": "معرّف المجموعة"
+        },
+        "outputs": {
+            "asset_id": "معرّف الأصل",
+            "group_id": "معرّف المجموعة"
+        },
+        "description": "ينشئ أصل فيديو شخصيًا لـ Seedance2.0. حمّل الفيديو المدخل وسجّله في مجموعة الأصول المحدّدة.\n إذا كان معرّف الأصل فارغًا، فسيشغّل تدفّق المصادقة H5 الشخصي الحقيقي لإنشاء مجموعة جديدة قبل إضافة الأصل."
+    },
+    "GrokVideoNode": {
+        "title": "فيديو Grok",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "duration": "المدة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        }
+    },
+    "GrokVideoReferenceNode": {
+        "title": "توليد فيديو Grok من مرجع",
+        "inputs": {
+            "reference_0": "مرجع0",
+            "reference_1": "مرجع1",
+            "reference_2": "مرجع2",
+            "reference_3": "مرجع3",
+            "reference_4": "مرجع4",
+            "reference_5": "مرجع5",
+            "reference_6": "مرجع6"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        }
+    },
+    "GrokVideoEditNode": {
+        "title": "تحرير فيديو Grok",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "duration": "المدة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        }
+    },
+    "GrokVideoExtendNode": {
+        "title": "تمديد فيديو Grok",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "duration": "المدة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        }
+    },
+    "HitPawVideoEnhance": {
+        "title": "تعزيز فيديو HitPaw",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        }
+    },
+    "KlingCameraControls": {
+        "title": "التحكم بالكاميرا Kling",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "camera_control_type": "نوع التحكم بالكاميرا",
+            "horizontal_movement": "حركة أفقية",
+            "vertical_movement": "حركة رأسية",
+            "pan": "تحريك أفقي (pan)",
+            "tilt": "إمالة",
+            "roll": "تدوير",
+            "zoom": "تقريب/تبعيد"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "camera_control": "معاملات التحكم بالكاميرا"
+        }
+    },
+    "KlingTextToVideoNode": {
+        "title": "تحويل نص إلى فيديو Kling",
+        "inputs": {},
+        "widgets": {
+            "cfg_scale": "نسبة CFG",
+            "mode": "الوضع",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "task_id": "معرّف المهمة",
+            "auth_token": "رمز التفويض",
+            "camera_control": "معاملات التحكم بالكاميرا",
+            "model_name": "اسم النموذج",
+            "duration": "المدة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "KlingImage2VideoNode": {
+        "title": "تحويل صورة إلى فيديو Kling",
+        "inputs": {
+            "start_frame": "الإطار البدئي",
+            "end_frame": "الإطار الختامي",
+            "camera_control": "معاملات التحكم بالكاميرا",
+            "prompt": "الموجّه",
+            "negative_prompt": "الموجّه السلبي"
+        },
+        "widgets": {
+            "cfg_scale": "نسبة CFG",
+            "mode": "الوضع",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "task_id": "معرّف المهمة",
+            "auth_token": "رمز التفويض",
+            "model_name": "اسم النموذج",
+            "duration": "المدة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "KlingCameraControlI2VNode": {
+        "title": "تحويل صورة إلى فيديو Kling (بتحكم بالكاميرا)",
+        "inputs": {
+            "start_frame": "الإطار البدئي",
+            "end_frame": "الإطار الختامي",
+            "camera_control": "معاملات التحكم بالكاميرا",
+            "prompt": "الموجّه",
+            "negative_prompt": "الموجّه السلبي"
+        },
+        "widgets": {
+            "cfg_scale": "نسبة CFG",
+            "mode": "الوضع",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "task_id": "معرّف المهمة",
+            "auth_token": "رمز التفويض",
+            "model_name": "اسم النموذج",
+            "duration": "المدة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "KlingCameraControlT2VNode": {
+        "title": "تحويل نص إلى فيديو Kling (بتحكم بالكاميرا)",
+        "inputs": {
+            "camera_control": "معاملات التحكم بالكاميرا",
+            "prompt": "الموجّه",
+            "negative_prompt": "الموجّه السلبي"
+        },
+        "widgets": {
+            "cfg_scale": "نسبة CFG",
+            "mode": "الوضع",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "task_id": "معرّف المهمة",
+            "auth_token": "رمز التفويض",
+            "model_name": "اسم النموذج",
+            "duration": "المدة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "KlingStartEndFrameNode": {
+        "title": "توليد فيديو Kling من الإطارَين الأول والأخير",
+        "inputs": {
+            "start_frame": "الإطار البدئي",
+            "end_frame": "الإطار الختامي",
+            "camera_control": "معاملات التحكم بالكاميرا",
+            "prompt": "الموجّه",
+            "negative_prompt": "الموجّه السلبي"
+        },
+        "widgets": {
+            "cfg_scale": "نسبة CFG",
+            "mode": "الوضع",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "task_id": "معرّف المهمة",
+            "auth_token": "رمز التفويض",
+            "model_name": "اسم النموذج",
+            "duration": "المدة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "KlingVideoExtendNode": {
+        "title": "تمديد فيديو Kling",
+        "inputs": {
+            "start_frame": "الإطار البدئي",
+            "end_frame": "الإطار الختامي",
+            "video_id": "معرّف الفيديو",
+            "prompt": "الموجّه",
+            "negative_prompt": "الموجّه السلبي"
+        },
+        "widgets": {
+            "cfg_scale": "نسبة CFG",
+            "mode": "الوضع",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "task_id": "معرّف المهمة",
+            "auth_token": "رمز التفويض",
+            "model_name": "اسم النموذج",
+            "duration": "المدة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "KlingLipSyncAudioToVideoNode": {
+        "title": "مزامنة الشفاه لفيديو Kling مدفوعة بالصوت",
+        "inputs": {
+            "audio": "الصوت",
+            "text": "نص",
+            "video": "فيديو"
+        },
+        "widgets": {
+            "voice_language": "لغة الكلام",
+            "voice_speed": "سرعة الكلام",
+            "mode": "الوضع",
+            "task_id": "معرّف المهمة",
+            "auth_token": "رمز التفويض",
+            "model_name": "اسم النموذج",
+            "voice_id": "معرّف الصوت"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "KlingLipSyncTextToVideoNode": {
+        "title": "توليد فيديو مزامنة الشفاه Kling نصيًا",
+        "inputs": {
+            "audio": "الصوت",
+            "text": "نص",
+            "video": "فيديو"
+        },
+        "widgets": {
+            "voice_language": "لغة الكلام",
+            "voice_speed": "سرعة الكلام",
+            "mode": "الوضع",
+            "task_id": "معرّف المهمة",
+            "auth_token": "رمز التفويض",
+            "voice": "كلام",
+            "voice_id": "معرّف الصوت"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "KlingSingleImageVideoEffectNode": {
+        "title": "مؤثّرات فيديو Kling لشخصية واحدة",
+        "inputs": {
+            "image": "صورة",
+            "video_id": "معرّف الفيديو"
+        },
+        "widgets": {
+            "dual_character": "شخصيتان",
+            "effect_scene": "مشهد المؤثّر",
+            "mode": "الوضع",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "task_id": "معرّف المهمة",
+            "auth_token": "رمز التفويض",
+            "model_name": "اسم النموذج",
+            "duration": "المدة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "KlingDualCharacterVideoEffectNode": {
+        "title": "مؤثّرات فيديو Kling لشخصيتين",
+        "inputs": {
+            "image_1": "صورة1",
+            "image_2": "صورة2",
+            "video_id": "معرّف الفيديو",
+            "image_left": "صورة اليسار",
+            "image_right": "صورة اليمين"
+        },
+        "widgets": {
+            "dual_character": "شخصيتان",
+            "effect_scene": "مشهد المؤثّر",
+            "mode": "الوضع",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "task_id": "معرّف المهمة",
+            "auth_token": "رمز التفويض",
+            "model_name": "اسم النموذج",
+            "duration": "المدة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "KlingOmniProTextToVideoNode": {
+        "title": "عقدة Omni لتحويل نص إلى فيديو من Kling (النسخة الاحترافية)",
+        "inputs": {
+            "reference_images": "صورة مرجعية"
+        },
+        "widgets": {
+            "model_name": "اسم النموذج",
+            "resolution": "الدقّة",
+            "auth_token": "رمز التفويض",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "n": "العدد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "string": "نص"
+        }
+    },
+    "KlingOmniProFirstLastFrameNode": {
+        "title": "Omni لتحويل الإطارَين الأول والأخير إلى فيديو من Kling (النسخة الاحترافية)",
+        "inputs": {
+            "first_frame": "صورة الإطار الأول",
+            "end_frame": "صورة الإطار الأخير",
+            "reference_images": "صورة مرجعية"
+        },
+        "widgets": {
+            "model_name": "اسم النموذج",
+            "resolution": "الدقّة",
+            "duration": "المدة",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "string": "نص"
+        }
+    },
+    "KlingOmniProImageToVideoNode": {
+        "title": "Omni لتحويل صورة إلى فيديو من Kling (النسخة الاحترافية)",
+        "inputs": {
+            "reference_images": "صورة مرجعية"
+        },
+        "widgets": {
+            "model_name": "اسم النموذج",
+            "resolution": "الدقّة",
+            "duration": "المدة",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "string": "نص"
+        }
+    },
+    "KlingOmniProVideoToVideoNode": {
+        "title": "Omni لتحويل فيديو إلى فيديو من Kling (النسخة الاحترافية)",
+        "inputs": {
+            "reference_video": "فيديو مرجعي",
+            "reference_images": "صورة مرجعية"
+        },
+        "widgets": {
+            "model_name": "اسم النموذج",
+            "keep_original_sound": "استخدام الصوت الأصلي",
+            "duration": "المدة",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "string": "نص"
+        }
+    },
+    "KlingOmniProEditVideoNode": {
+        "title": "Omni لتحرير فيديو Kling (النسخة الاحترافية)",
+        "inputs": {
+            "video": "فيديو",
+            "reference_images": "صورة مرجعية"
+        },
+        "widgets": {
+            "model_name": "اسم النموذج",
+            "keep_original_sound": "الحفاظ على الصوت الأصلي"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        }
+    },
+    "KlingTextToVideoWithAudio": {
+        "title": "تحويل نص إلى فيديو Kling (مع الصوت)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "اسم النموذج",
+            "mode": "الوضع",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة",
+            "auth_token": "رمز التفويض",
+            "generate_audio": "توليد الصوت"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "KlingImageToVideoWithAudio": {
+        "title": "تحويل صورة إلى فيديو Kling (مع الصوت)",
+        "inputs": {
+            "start_frame": "الإطار البدئي"
+        },
+        "widgets": {
+            "model_name": "اسم النموذج",
+            "mode": "الوضع",
+            "generate_audio": "توليد الصوت",
+            "duration": "المدة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "KlingMotionControl": {
+        "title": "التحكم بالحركة Kling",
+        "inputs": {
+            "reference_video": "فيديو مرجعي",
+            "reference_image": "صورة مرجعية"
+        },
+        "widgets": {
+            "mode": "الوضع",
+            "character_orientation": "تحديد موضع الشخصية",
+            "keep_original_sound": "الحفاظ على الصوت الأصلي"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        }
+    },
+    "KlingAvatarNode": {
+        "title": "Avatar 2 من Kling",
+        "inputs": {
+            "image": "صورة",
+            "sound_file": "ملف صوتي"
+        },
+        "widgets": {
+            "mode": "الوضع",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        }
+    },
+    "LtxvApiTextToVideo": {
+        "title": "LTXV تحويل نص إلى فيديو",
+        "inputs": {
+            "positive": "الشرط الإيجابي",
+            "negative": "الشرط السلبي",
+            "vae": "مُرمِّز VAE",
+            "image": "صورة"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "resolution": "الدقّة",
+            "duration": "المدة (ثوانٍ)",
+            "fps": "معدّل الإطارات (fps)",
+            "control_after_generate": "التحكم بعد التوليد",
+            "generate_audio": "توليد الصوت"
+        },
+        "outputs": {
+            "video": "فيديو",
+            "VIDEO": "فيديو"
+        }
+    },
+    "LtxvApiImageToVideo": {
+        "title": "LTXV تحويل صورة إلى فيديو",
+        "inputs": {
+            "positive": "الشرط الإيجابي",
+            "negative": "الشرط السلبي",
+            "vae": "مُرمِّز VAE",
+            "image": "صورة"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "resolution": "الدقّة",
+            "duration": "المدة (ثوانٍ)",
+            "fps": "معدّل الإطارات (fps)",
+            "control_after_generate": "التحكم بعد التوليد",
+            "generate_audio": "توليد الصوت"
+        },
+        "outputs": {
+            "video": "فيديو",
+            "VIDEO": "فيديو"
+        }
+    },
+    "LtxApi25TextToVideo": {
+        "title": "LTX 2.5 تحويل نص إلى فيديو",
+        "inputs": {},
+        "widgets": {
+            "model": "النموذج",
+            "duration": "المدة (ثوانٍ)",
+            "resolution": "الدقّة",
+            "fps": "معدّل الإطارات (fps)",
+            "generate_audio": "توليد الصوت",
+            "prompt": "الموجّه",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        }
+    },
+    "LtxApi25ImageToVideo": {
+        "title": "LTX 2.5 تحويل صورة إلى فيديو",
+        "inputs": {
+            "last_frame": "الإطار السابق",
+            "image": "صورة"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "duration": "المدة (ثوانٍ)",
+            "resolution": "الدقّة",
+            "fps": "معدّل الإطارات (fps)",
+            "generate_audio": "توليد الصوت",
+            "prompt": "الموجّه",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        }
+    },
+    "LtxApi25AudioToVideo": {
+        "title": "LTX 2.5 توليد فيديو من الصوت",
+        "inputs": {
+            "audio": "الصوت",
+            "image": "صورة"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "prompt": "الموجّه",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        }
+    },
+    "LumaVideoNode": {
+        "title": "Luma تحويل نص إلى فيديو",
+        "inputs": {
+            "luma_concepts": "مفهوم Luma",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "duration": "المدة",
+            "loop": "تكرار",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "auth_token": "رمز التفويض",
+            "weight": "الوزن"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "luma_concepts": "مفهوم Luma",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "LumaImageToVideoNode": {
+        "title": "Luma تحويل صورة إلى فيديو",
+        "inputs": {
+            "first_image": "صورة الإطار الأول",
+            "last_image": "صورة الإطار الأخير",
+            "luma_concepts": "مفهوم Luma",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "duration": "المدة",
+            "loop": "تكرار",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "auth_token": "رمز التفويض",
+            "weight": "الوزن"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "luma_concepts": "مفهوم Luma",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "LumaConceptsNode": {
+        "title": "مفهوم Luma",
+        "inputs": {
+            "image": "صورة",
+            "prompt": "الموجّه",
+            "luma_concepts": "مفهوم Luma"
+        },
+        "widgets": {
+            "image_type": "نوع الصورة",
+            "concept1": "مفهوم1",
+            "concept2": "مفهوم2",
+            "concept3": "مفهوم3",
+            "concept4": "مفهوم4",
+            "auth_token": "رمز التفويض",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "n": "العدد"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "luma_concepts": "مفهوم Luma"
+        }
+    },
+    "MinimaxTextToVideoNode": {
+        "title": "MiniMax تحويل نص إلى فيديو",
+        "inputs": {
+            "image": "صورة",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "duration": "المدة",
+            "subject": "الموضوع",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "auth_token": "رمز التفويض",
+            "weight": "الوزن"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "luma_concepts": "مفهوم Luma",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "MinimaxImageToVideoNode": {
+        "title": "MiniMax تحويل صورة إلى فيديو",
+        "inputs": {
+            "image": "صورة",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "duration": "المدة",
+            "subject": "الموضوع",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "auth_token": "رمز التفويض",
+            "weight": "الوزن"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "luma_concepts": "مفهوم Luma",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "MinimaxHailuoVideoNode": {
+        "title": "فيديو MiniMax Hailuo",
+        "inputs": {
+            "first_frame_image": "صورة الإطار الأول",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "prompt_optimizer": "تحسين الموجّه",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "duration": "المدة",
+            "subject": "الموضوع",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "auth_token": "رمز التفويض",
+            "weight": "الوزن"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "luma_concepts": "مفهوم Luma",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "PixverseTextToVideoNode": {
+        "title": "PixVerse تحويل نص إلى فيديو",
+        "inputs": {
+            "video": "فيديو",
+            "image": "صورة",
+            "pixverse_template": "قالب PixVerse",
+            "prompt_text": "نص الموجّه",
+            "negative_prompt": "الموجّه السلبي"
+        },
+        "widgets": {
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "quality": "الجودة",
+            "duration_seconds": "المدة (ثوانٍ)",
+            "motion_mode": "وضع الحركة",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "auth_token": "رمز التفويض"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "string": "نص"
+        }
+    },
+    "PixverseImageToVideoNode": {
+        "title": "PixVerse تحويل صورة إلى فيديو",
+        "inputs": {
+            "video": "فيديو",
+            "image": "صورة",
+            "pixverse_template": "قالب PixVerse",
+            "prompt_text": "نص الموجّه",
+            "negative_prompt": "الموجّه السلبي"
+        },
+        "widgets": {
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "quality": "الجودة",
+            "duration_seconds": "المدة (ثوانٍ)",
+            "motion_mode": "وضع الحركة",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "auth_token": "رمز التفويض"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "string": "نص"
+        }
+    },
+    "PixverseTransitionVideoNode": {
+        "title": "فيديو انتقال PixVerse",
+        "inputs": {
+            "first_frame": "الإطار الأول",
+            "last_frame": "الإطار الأخير",
+            "pixverse_template": "قالب PixVerse",
+            "prompt_text": "نص الموجّه",
+            "negative_prompt": "الموجّه السلبي"
+        },
+        "widgets": {
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "quality": "الجودة",
+            "duration_seconds": "المدة (ثوانٍ)",
+            "motion_mode": "وضع الحركة",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "auth_token": "رمز التفويض"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "string": "نص"
+        }
+    },
+    "PixverseTemplateNode": {
+        "title": "قالب PixVerse",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "template": "قالب"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "pixverse_template": "قالب PixVerse"
+        }
+    },
+    "RunwayFirstLastFrameNode": {
+        "title": "فيديو Runway من الإطارَين الأول والأخير",
+        "inputs": {
+            "positive": "الشرط الإيجابي",
+            "negative": "الشرط السلبي",
+            "camera_conditions": "شرط الكاميرا",
+            "start_frame": "الإطار البدئي",
+            "end_frame": "الإطار الختامي"
+        },
+        "widgets": {
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة",
+            "batch_size": "حجم الدفعة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "RunwayImageToVideoNodeGen3a": {
+        "title": "Runway تحويل صورة إلى فيديو (Gen3a Turbo)",
+        "inputs": {
+            "positive": "الشرط الإيجابي",
+            "negative": "الشرط السلبي",
+            "camera_conditions": "شرط الكاميرا",
+            "start_frame": "الإطار البدئي",
+            "end_frame": "الإطار الختامي"
+        },
+        "widgets": {
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة",
+            "batch_size": "حجم الدفعة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "RunwayImageToVideoNodeGen4": {
+        "title": "Runway تحويل صورة إلى فيديو (Gen4 Turbo)",
+        "inputs": {
+            "positive": "الشرط الإيجابي",
+            "negative": "الشرط السلبي",
+            "camera_conditions": "شرط الكاميرا",
+            "start_frame": "الإطار البدئي",
+            "end_frame": "الإطار الختامي"
+        },
+        "widgets": {
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة",
+            "batch_size": "حجم الدفعة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video_id": "معرّف الفيديو",
+            "duration": "المدة",
+            "string": "نص"
+        }
+    },
+    "OpenAIVideoSora2": {
+        "title": "OpenAI Sora2 - فيديو",
+        "inputs": {
+            "image": "صورة",
+            "audio": "الصوت"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "size": "الأبعاد",
+            "resolution": "الدقّة",
+            "duration": "المدة (ثوانٍ)",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "generate_audio": "توليد الصوت",
+            "prompt_extend": "توسيع الموجّه",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "TopazVideoEnhance": {
+        "title": "معزّز فيديو Topaz",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "upscaler_enabled": "تفعيل المعزّز",
+            "upscaler_model": "نموذج التعزيز",
+            "upscaler_resolution": "رفع الدقّة",
+            "upscaler_creativity": "زيادة المدة",
+            "interpolation_enabled": "تفعيل الاستيفاء",
+            "interpolation_model": "نموذج الاستيفاء",
+            "interpolation_slowmo": "استيفاء الحركة البطيئة",
+            "interpolation_frame_rate": "معدّل إطارات الاستيفاء",
+            "interpolation_duplicate": "عناصر الاستيفاء المكرّرة",
+            "interpolation_duplicate_threshold": "عتبة تكرار الاستيفاء",
+            "dynamic_compression_level": "مستوى الضغط الديناميكي"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video": "فيديو"
+        }
+    },
+    "TopazVideoEnhanceV2": {
+        "title": "معزّز فيديو Topaz V2",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "upscaler_model": "نموذج التعزيز",
+            "upscaler_resolution": "رفع الدقّة",
+            "creativity": "المدة",
+            "sharp:": "حادّ",
+            "realism:": "واقعي",
+            "interpolation_model": "نموذج الاستيفاء",
+            "dynamic_compression_level": "مستوى الضغط الديناميكي"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video": "فيديو"
+        }
+    },
+    "VeoVideoGenerationNode": {
+        "title": "توليد فيديو Veo2 من Google",
+        "inputs": {
+            "image": "صورة",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "negative_prompt": "الموجّه السلبي",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "duration_seconds": "مدة الفيديو (ثوانٍ)",
+            "enhance_prompt": "تعزيز الموجّه",
+            "person_generation": "وضع توليد الأشخاص",
+            "seed": "بذرة عشوائية",
+            "model": "النموذج",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "Veo3VideoGenerationNode": {
+        "title": "توليد فيديو Veo3 من Google",
+        "inputs": {
+            "image": "صورة",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "negative_prompt": "الموجّه السلبي",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "duration_seconds": "مدة الفيديو (ثوانٍ)",
+            "enhance_prompt": "تعزيز الموجّه",
+            "person_generation": "وضع توليد الأشخاص",
+            "seed": "بذرة عشوائية",
+            "model": "النموذج",
+            "generate_audio": "توليد الصوت",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "Veo3FirstLastFrameNode": {
+        "title": "توليد فيديو Veo3 من Google من الإطارَين الأول والأخير",
+        "inputs": {
+            "first_frame": "صورة الإطار الأول",
+            "last_frame": "صورة الإطار الأخير"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "negative_prompt": "الموجّه السلبي",
+            "resolution": "الدقّة",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة (ثوانٍ)",
+            "enhance_prompt": "تعزيز الموجّه",
+            "person_generation": "وضع توليد الأشخاص",
+            "seed": "بذرة عشوائية",
+            "model": "النموذج",
+            "generate_audio": "توليد الصوت",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "ViduTextToVideoNode": {
+        "title": "Vidu تحويل نص إلى فيديو",
+        "inputs": {
+            "image": "صورة",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "duration": "المدة (ثوانٍ)",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "movement_amplitude": "مدى الحركة"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "ViduImageToVideoNode": {
+        "title": "Vidu تحويل صورة إلى فيديو",
+        "inputs": {
+            "image": "صورة",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "duration": "المدة (ثوانٍ)",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "movement_amplitude": "مدى الحركة"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "ViduReferenceVideoNode": {
+        "title": "Vidu تحويل مرجع إلى فيديو",
+        "inputs": {
+            "images": "مجموعة صور",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "duration": "المدة (ثوانٍ)",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "movement_amplitude": "مدى الحركة"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "ViduStartEndToVideoNode": {
+        "title": "Vidu توليد فيديو من الإطارَين الأول والأخير",
+        "inputs": {
+            "first_frame": "صورة الإطار الأول",
+            "end_frame": "صورة الإطار الأخير"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "duration": "المدة (ثوانٍ)",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "movement_amplitude": "مدى الحركة"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "ViduExtendVideoNode": {
+        "title": "تمديد فيديو Vidu",
+        "inputs": {
+            "video": "فيديو",
+            "end_frame": "الإطار الختامي"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "duration": "المدة (ثوانٍ)",
+            "resolution": "الدقّة",
+            "prompt": "الموجّه",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        }
+    },
+    "ViduMultiFrameVideoNode": {
+        "title": "Vidu توليد فيديو متعدّد الإطارات",
+        "inputs": {
+            "start_image": "صورة البداية",
+            "end_image1": "صورة النهاية1",
+            "end_image2": "صورة النهاية2"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "resolution": "الدقّة",
+            "frames": "متعدّد الإطارات",
+            "duration:": "المدة (ثوانٍ)",
+            "duration1:": "مدة1 (ثوانٍ)",
+            "duration2:": "مدة2 (ثوانٍ)"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "Vidu3TextToVideoNode": {
+        "title": "Vidu Q3 تحويل نص إلى فيديو",
+        "inputs": {},
+        "widgets": {
+            "model": "النموذج",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "duration:": "المدة (ثوانٍ)",
+            "duration": "المدة (ثوانٍ)",
+            "audio": "الصوت",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "Vidu3ImageToVideoNode": {
+        "title": "Vidu Q3 تحويل صورة إلى فيديو",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "duration": "المدة (ثوانٍ)",
+            "audio": "الصوت",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "Vidu3StartEndToVideoNode": {
+        "title": "Vidu3 تحويل الإطارَين الأول والأخير إلى فيديو",
+        "inputs": {
+            "first_frame": "صورة الإطار الأول",
+            "end_frame": "صورة الإطار الأخير"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "duration": "المدة (ثوانٍ)",
+            "audio": "الصوت",
+            "prompt": "الموجّه",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "movement_amplitude": "مدى الحركة"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "WanTextToVideoApi": {
+        "title": "Wan تحويل نص إلى فيديو",
+        "inputs": {
+            "audio": "الصوت"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "size": "الأبعاد",
+            "resolution": "الدقّة",
+            "duration": "المدة (ثوانٍ)",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "generate_audio": "توليد الصوت",
+            "prompt_extend": "توسيع الموجّه",
+            "watermark": "علامة مائية",
+            "shot_type": "نوع التصوير"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "WanImageToVideoApi": {
+        "title": "Wan تحويل صورة إلى فيديو",
+        "inputs": {
+            "image": "صورة",
+            "audio": "الصوت"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "resolution": "الدقّة",
+            "duration": "المدة (ثوانٍ)",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "generate_audio": "توليد الصوت",
+            "prompt_extend": "توسيع الموجّه",
+            "watermark": "علامة مائية",
+            "shot_type": "نوع التصوير"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "WanReferenceVideoApi": {
+        "title": "Wan توليد فيديو من مرجع",
+        "inputs": {
+            "character1": "سمة1",
+            "audio": "الصوت",
+            "VIDEO": "فيديو",
+            "video": "فيديو"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "size": "الأبعاد",
+            "duration": "المدة (ثوانٍ)",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "generate_audio": "توليد الصوت",
+            "prompt_extend": "توسيع الموجّه",
+            "watermark": "علامة مائية",
+            "shot_type": "نوع التصوير"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        }
+    },
+    "Wan2TextToVideoApi": {
+        "title": "Wan2.7 تحويل نص إلى فيديو",
+        "inputs": {
+            "positive": "الشرط الإيجابي",
+            "negative": "الشرط السلبي",
+            "audio": "الصوت"
+        },
+        "widgets": {
+            "resolution": "الدقّة",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "seed": "بذرة عشوائية",
+            "duration": "المدة (ثوانٍ)",
+            "prompt_extend": "توسيع الموجّه",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "Wan2ImageToVideoApi": {
+        "title": "Wan2.7 تحويل صورة إلى فيديو",
+        "inputs": {
+            "first_frame": "صورة الإطار الأول",
+            "last_frame": "صورة الإطار الأخير",
+            "audio": "الصوت"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "duration": "المدة (ثوانٍ)",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "seed": "بذرة عشوائية",
+            "prompt_extend": "توسيع الموجّه",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "Wan2VideoContinuationApi": {
+        "title": "تمديد فيديو Wan2.7",
+        "inputs": {
+            "first_clip": "المقطع الأول",
+            "last_frame": "صورة الإطار الأخير",
+            "audio": "الصوت"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "duration": "المدة (ثوانٍ)",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "seed": "بذرة عشوائية",
+            "prompt_extend": "توسيع الموجّه",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "Wan2VideoEditApi": {
+        "title": "تحرير فيديو Wan2.7",
+        "inputs": {
+            "video": "فيديو",
+            "image1": "صورة1",
+            "image2": "صورة2",
+            "image3": "صورة3",
+            "image4": "صورة4"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة (ثوانٍ)",
+            "seed": "بذرة عشوائية",
+            "audio_setting": "إعدادات الصوت",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "Wan2ReferenceVideoApi": {
+        "title": "Wan2.7 توليد فيديو من مرجع",
+        "inputs": {
+            "video1": "فيديو1",
+            "video2": "فيديو2",
+            "video3": "فيديو3",
+            "image1": "صورة1",
+            "image2": "صورة2",
+            "image3": "صورة3",
+            "image4": "صورة4"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة (ثوانٍ)",
+            "seed": "بذرة عشوائية",
+            "audio_setting": "إعدادات الصوت",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        }
+    },
+    "HappyHorseTextToVideoApi": {
+        "title": "HappyHorse تحويل نص إلى فيديو",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة (ثوانٍ)",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "يولّد مقطع فيديو من موجّه نصي باستخدام نموذج HappyHorse."
+    },
+    "HappyHorse Image to Video": {
+        "title": "HappyHorse تحويل صورة إلى فيديو",
+        "inputs": {
+            "first_frame": "صورة الإطار الأول"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "duration": "المدة (ثوانٍ)",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        },
+        "description": "يولّد مقطع فيديو من صورة الإطار الأول باستخدام نموذج HappyHorse."
+    },
+    "HappyHorseVideoEditApi": {
+        "title": "تحرير فيديو HappyHorse",
+        "inputs": {
+            "video": "فيديو",
+            "image1": "صورة1",
+            "image2": "صورة2",
+            "image3": "صورة3",
+            "image4": "صورة4",
+            "image5": "صورة5"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة (ثوانٍ)",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        },
+        "description": "يحرّر الفيديو باستخدام نموذج HappyHorse عبر تعليمات نصية أو صور مرجعية.\n مدة الفيديو الناتج من 3 إلى 15 ثانية، مطابقة لمدة الفيديو المدخل؛ تُقتَص الفيديوهات التي تتجاوز 15 ثانية."
+    },
+    "HappyHorseReferenceVideoApi": {
+        "title": "HappyHorse توليد فيديو من مرجع",
+        "inputs": {
+            "video": "فيديو",
+            "image1": "صورة1",
+            "image2": "صورة2",
+            "image3": "صورة3",
+            "image4": "صورة4",
+            "image5": "صورة5",
+            "image6": "صورة6",
+            "image7": "صورة7",
+            "image8": "صورة8",
+            "image9": "صورة9"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "resolution": "الدقّة",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة (ثوانٍ)",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "VIDEO": "توليد الفيديو"
+        },
+        "description": "يولّد فيديو يحتوي على أشخاص أو أشياء اعتمادًا على مواد مرجعية باستخدام نموذج HappyHorse.\n يدعم عرض شخصية واحدة وتفاعل عدة شخصيات."
+    },
+    "WavespeedFlashVSRNode": {
+        "title": "تكبير فيديو FlashVSR من WaveSpeed",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "target_resolution": "الدقّة المستهدفة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        }
+    },
+    "BeebleSwitchXImageEdit": {
+        "title": "تحرير صورة Beeble SwitchX",
+        "inputs": {
+            "image": "صورة",
+            "reference_image": "صورة مرجعية"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "alpha_mode": "وضع Alpha",
+            "max_resolution": "أقصى دقّة",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "image": "صورة",
+            "alpha": "قناة Alpha"
+        },
+        "description": "يحرّر صورة مفردة باستخدام BeebleSwitchX. يمكنك تبديل أي عنصر في المشهد (الخلفية، الإضاءة، الملابس) مع إبقاء بكسلات الموضوع الأصلي كما هي. قدّم صورة مرجعية و/أو موجّهًا نصيًا لوصف المظهر الجديد. أقصى دقّة ~2.77MP."
+    },
+    "FluxProUltraImageNode": {
+        "title": "صورة Flux 1.1 [pro] فائقة الوضوح",
+        "inputs": {
+            "image_prompt": "موجّه الصورة",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "prompt_upsampling": "تكبير الموجّه",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "raw": "البيانات الخام",
+            "auth_token": "رمز التفويض",
+            "image_prompt_strength": "قوة موجّه الصورة"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "FluxKontextProImageNode": {
+        "title": "سياق صورة Flux.1 [pro]",
+        "inputs": {
+            "input_image": "صورة الإدخال",
+            "mask": "قناع",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "prompt_upsampling": "تكبير الموجّه",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "guidance": "قوة التوجيه",
+            "control_after_generate": "التحكم بعد التوليد",
+            "steps": "عدد الخطوات",
+            "seed": "البذرة",
+            "raw": "البيانات الخام",
+            "auth_token": "رمز التفويض"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "FluxKontextMaxImageNode": {
+        "title": "سياق صورة Flux.1 [max]",
+        "inputs": {
+            "input_image": "صورة الإدخال",
+            "mask": "قناع",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "prompt_upsampling": "تكبير الموجّه",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "guidance": "قوة التوجيه",
+            "control_after_generate": "التحكم بعد التوليد",
+            "steps": "عدد الخطوات",
+            "seed": "البذرة",
+            "raw": "البيانات الخام",
+            "auth_token": "رمز التفويض"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "FluxProFillNode": {
+        "title": "تعبئة صورة Flux.1",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "prompt_upsampling": "تكبير الموجّه",
+            "top": "توسيع للأعلى",
+            "bottom": "توسيع للأسفل",
+            "left": "توسيع لليسار",
+            "right": "توسيع لليمين",
+            "guidance": "قوة التوجيه",
+            "control_after_generate": "التحكم بعد التوليد",
+            "steps": "عدد الخطوات",
+            "seed": "البذرة",
+            "raw": "البيانات الخام",
+            "auth_token": "رمز التفويض"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "FluxEraseNode": {
+        "title": "محو صورة Flux",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع"
+        },
+        "widgets": {
+            "dilate_pixels": "بكسلات التمديد",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "يزيل الكائنات المقنَّعة من الصورة ويعيد بناء الخلفية. ارسم قناعًا فوق المناطق التي تريد محوها."
+    },
+    "FluxVTONode": {
+        "title": "تجربة ملابس افتراضية Flux",
+        "inputs": {
+            "person": "الشخص",
+            "garment": "الملابس"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "تجربة افتراضية: يُلبِس الشخص الملابس المُقدَّمة."
+    },
+    "Flux2ProImageNode": {
+        "title": "صورة Flux الجيل الثاني فائقة الوضوح [النسخة الاحترافية]",
+        "inputs": {
+            "images": "مجموعة صور",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "prompt_upsampling": "تكبير الموجّه",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "width": "العرض",
+            "height": "الارتفاع"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "Flux2MaxImageNode": {
+        "title": "عقدة صورة Flux.2 (القصوى)",
+        "inputs": {
+            "images": "صورة",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "width": "العرض",
+            "height": "الارتفاع",
+            "prompt_upsampling": "تكبير الموجّه",
+            "control_after_generate": "التحكم بعد التوليد",
+            "seed": "البذرة"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "Flux2ImageNode": {
+        "title": "توليد صور Flux.2",
+        "inputs": {
+            "image_1": "إدخال صورة"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "model": "النموذج",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "عقدة توليد الصور باستخدام نموذج Flux.2"
+    },
+    "Flux3TextToVideoNode": {
+        "title": "Flux.3 تحويل نص إلى فيديو",
+        "inputs": {},
+        "widgets": {
+            "prompt": "الموجّه",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة",
+            "resolution": "الدقّة",
+            "generate_audio": "توليد الصوت",
+            "safety_tolerance": "هامش الأمان",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "يولّد فيديو مع صوت متزامن من موجّه نصي عبر FLUX3."
+    },
+    "Flux3ImageToVideoNode": {
+        "title": "Flux.3 تحويل صورة إلى فيديو",
+        "inputs": {
+            "image_0": "صورة0",
+            "image_1": "صورة1",
+            "image_2": "صورة2",
+            "image_3": "صورة3",
+            "image_4": "صورة4",
+            "image_5": "صورة5"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "placement": "التخطيط",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة",
+            "resolution": "الدقّة",
+            "generate_audio": "توليد الصوت",
+            "safety_tolerance": "هامش الأمان",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "يولّد رسوم FLUX3 المتحركة من 1 إلى 10 صور. تصبح كل صورة لقطة من المقطع: صورة واحدة تفتحه، صورتان تنتقلان من الأولى إلى الثانية، والمزيد من الصور تُوزَّع أو تُثبَّت على نقاط زمنية تختارها."
+    },
+    "Flux3VideoContinuationNode": {
+        "title": "تمديد فيديو Flux.3",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة",
+            "resolution": "الدقّة",
+            "generate_audio": "توليد الصوت",
+            "safety_tolerance": "هامش الأمان",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "استمرار فيديو FLUX 3: يمتدّ المقطع الجديد من آخر إطارات الفيديو الذي توفّره."
+    },
+    "FluxVideoUpscaleNode": {
+        "title": "تكبير فيديو Flux.3",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "upscale_factor": "معامل التكبير",
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "auto_downscale": "تحجيم تلقائي",
+            "safety_tolerance": "هامش الأمان",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "يكبّر الفيديو 1.5 إلى 3 أضعاف بتقنية الدقّة الفائقة FLUX، مع الحفاظ على الجودة الأصلية بدقة أو تعزيز التفاصيل بإبداع."
+    },
+    "BriaImageEditNode": {
+        "title": "تحرير صورة Bria",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "guidance_scale": "قوة التوجيه",
+            "steps": "عدد الخطوات",
+            "moderation": "مراجعة المحتوى",
+            "prompt_content_moderation": "مراجعة محتوى الموجّه",
+            "visual_input_moderation": "مراجعة الإدخال البصري",
+            "visual_output_moderation": "مراجعة الخرج البصري"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "structured_prompt": "موجّه مُهيكل"
+        }
+    },
+    "BriaRemoveImageBackground": {
+        "title": "Bria إزالة خلفية الصورة",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "moderation": "مراجعة المحتوى",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "images": "مجموعة صور"
+        }
+    },
+    "ByteDanceImageNode": {
+        "title": "صورة بايت دانس",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "size_preset": "قيمة الدقّة المبدئية",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "guidance_scale": "نسبة التوجيه",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "image": "صورة",
+            "IMAGE": "صورة"
+        }
+    },
+    "ByteDanceSeedreamNode": {
+        "title": "Jimeng 4.0 من بايت دانس",
+        "inputs": {
+            "image": "صورة",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "size_preset": "قيمة الدقّة المبدئية",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "sequential_image_generation": "توليد صور متسلسلة",
+            "max_images": "الحد الأقصى للصور",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "guidance_scale": "نسبة التوجيه",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "image": "صورة",
+            "IMAGE": "صورة"
+        }
+    },
+    "ByteDanceSeedreamNodeV2": {
+        "title": "Seedream 4.5 و5.0 من بايت دانس",
+        "inputs": {
+            "image_1": "صورة 1"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "size_preset": "إعداد الدقّة المسبق",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "max_images": "الحد الأقصى للصور",
+            "fail_on_partial": "الإيقاف عند الفشل الجزئي",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "image": "صورة"
+        },
+        "description": "توليد موحّد من النص إلى الصورة وتحرير دقيق بجملة واحدة بدقة تصل إلى 4K."
+    },
+    "ByteDanceCreateImageAsset": {
+        "title": "إنشاء مادة صورة من بايت دانس",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "group_id": "معرّف المجموعة"
+        },
+        "outputs": {
+            "asset_id": "معرّف الأصل",
+            "group_id": "معرّف المجموعة"
+        },
+        "description": "ينشئ أصل صورة شخصيًا لـ Seedance2.0. حمّل الصورة المدخلة وسجّلها في مجموعة الأصول المحدّدة.\n إذا كان معرّف الأصل فارغًا، فسيشغّل تدفّق المصادقة H5 الشخصي الحقيقي، ويُنشئ مجموعة جديدة قبل إضافة الأصل."
+    },
+    "GeminiImageNode": {
+        "title": "صورة Gemini من Google",
+        "inputs": {
+            "images": "صورة",
+            "files": "ملفات إدخال Gemini"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "seed": "بذرة عشوائية",
+            "model": "النموذج",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "STRING": "نص"
+        }
+    },
+    "GeminiImage2Node": {
+        "title": "Nano Banana Pro (صور Gemini من Google)",
+        "inputs": {
+            "images": "مجموعة صور",
+            "files": "ملف"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "response_modalities": "طريقة الاستجابة"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "GeminiNanoBanana2": {
+        "title": "Nano Banana Pro (صور Gemini من Google)",
+        "inputs": {
+            "images": "مجموعة صور",
+            "files": "ملف"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "response_modalities": "طريقة الاستجابة",
+            "thinking_level": "مستوى التفكير"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "STRING": "نص"
+        },
+        "description": "يولّد أو يحرّر الصور بشكل متزامن عبر واجهة Google Vertex API."
+    },
+    "GeminiNanoBanana2V2": {
+        "title": "Nano Banana 2",
+        "inputs": {
+            "image_1": "صورة1",
+            "files": "ملف"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "model": "النموذج",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "thinking_level": "مستوى التفكير",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "response_modalities": "نمط الاستجابة",
+            "system_prompt": "الموجّه النظامي"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "STRING": "نص",
+            "thought_image": "صورة"
+        },
+        "description": "عقدة Nano Banana 2 لتوليد الصور."
+    },
+    "GrokImageNode": {
+        "title": "صورة Grok",
+        "inputs": {},
+        "widgets": {
+            "model": "النموذج",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "number_of_images": "عدد الصور"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "GrokImageEditNode": {
+        "title": "تحرير صورة Grok",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "number_of_images": "عدد الصور"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "GrokImageEditNodeV2": {
+        "title": "تحرير صورة Grok",
+        "inputs": {
+            "image_1": "صورة1",
+            "image_2": "صورة2"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "model": "النموذج",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "number_of_images": "عدد الصور"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "HitPawGeneralImageEnhance": {
+        "title": "تعزيز شامل لصورة HitPaw",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "upscale_factor": "نسبة التكبير",
+            "auto_downscale": "تحجيم تلقائي"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "IdeogramV1": {
+        "title": "Ideogram تحويل نص إلى صورة V1",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "turbo": "وضع التسريع",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "magic_prompt_option": "خيارات الموجّه السحري",
+            "control_after_generate": "التحكم بعد التوليد",
+            "negative_prompt": "الموجّه السلبي",
+            "seed": "البذرة",
+            "num_images": "عدد الصور",
+            "auth_token": "رمز التفويض"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "IdeogramV2": {
+        "title": "Ideogram تحويل نص إلى صورة V2",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "turbo": "وضع التسريع",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "magic_prompt_option": "خيارات الموجّه السحري",
+            "control_after_generate": "التحكم بعد التوليد",
+            "negative_prompt": "الموجّه السلبي",
+            "style_type": "نوع النمط",
+            "seed": "البذرة",
+            "num_images": "عدد الصور",
+            "color_palette": "لوحة الألوان",
+            "auth_token": "رمز التفويض"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "IdeogramV3": {
+        "title": "Ideogram تحويل نص إلى صورة V3",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع",
+            "prompt": "الموجّه",
+            "character_image": "صورة الشخصية",
+            "character_mask": "قناع الشخصية"
+        },
+        "widgets": {
+            "turbo": "وضع التسريع",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "magic_prompt_option": "خيارات الموجّه السحري",
+            "control_after_generate": "التحكم بعد التوليد",
+            "rendering_speed": "سرعة العرض",
+            "style_type": "نوع النمط",
+            "seed": "البذرة",
+            "num_images": "عدد الصور",
+            "color_palette": "لوحة الألوان",
+            "auth_token": "رمز التفويض"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "IdeogramV4": {
+        "title": "Ideogram تحويل نص إلى صورة V4",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "resolution": "الدقّة",
+            "rendering_speed": "سرعة العرض",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "KlingVirtualTryOnNode": {
+        "title": "تجربة ملابس افتراضية Kling",
+        "inputs": {
+            "image": "صورة",
+            "human_image": "صورة الشخص",
+            "cloth_image": "صورة الملابس"
+        },
+        "widgets": {
+            "image_type": "نوع الصورة",
+            "image_fidelity": "دقّة الصورة",
+            "human_fidelity": "دقّة الشخص",
+            "model_name": "اسم النموذج",
+            "task_id": "معرّف المهمة",
+            "auth_token": "رمز التفويض",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "n": "العدد"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "string": "نص"
+        }
+    },
+    "KlingImageGenerationNode": {
+        "title": "توليد صور Kling",
+        "inputs": {
+            "image": "صورة",
+            "prompt": "الموجّه",
+            "negative_prompt": "الموجّه السلبي"
+        },
+        "widgets": {
+            "image_type": "نوع الصورة",
+            "image_fidelity": "دقّة الصورة",
+            "human_fidelity": "دقّة الشخص",
+            "model_name": "اسم النموذج",
+            "task_id": "معرّف المهمة",
+            "auth_token": "رمز التفويض",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "n": "العدد"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "string": "نص"
+        }
+    },
+    "KlingOmniProImageNode": {
+        "title": "Omni صور Kling (النسخة الاحترافية)",
+        "inputs": {
+            "reference_images": "صورة مرجعية"
+        },
+        "widgets": {
+            "model_name": "اسم النموذج",
+            "resolution": "الدقّة",
+            "auth_token": "رمز التفويض",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "n": "العدد"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "string": "نص"
+        }
+    },
+    "Krea2ImageNode": {
+        "title": "صورة Krea 2",
+        "inputs": {
+            "style_reference": "مرجع النمط",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "creativity": "الإبداع",
+            "moodboard_id": "معرّف لوحة المزاج",
+            "moodboard_strength": "قوة لوحة المزاج",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {},
+        "description": "تولّد صورًا عبر Krea2 — اختر الحجم المتوسط (رسوم توضيحية تعبيرية) أو الكبير (أسلوب واقعي معبّر). يدعم لوحات المزاج الاختيارية وحتى 10 مراجع أنماط مترابطة."
+    },
+    "Krea2StyleReferenceNode": {
+        "title": "مرجع نمط Krea 2",
+        "inputs": {
+            "image": "صورة",
+            "style_reference": "مرجع النمط"
+        },
+        "widgets": {
+            "strength": "القوة"
+        },
+        "outputs": {
+            "style_reference": "مرجع النمط"
+        },
+        "description": "يضيف مرجع نمط صورة إلى مولّد Krea2. اربط عدة عقد Krea2 Style Reference معًا (حتى 10) ومرّر خرج «مرجع النمط» النهائي إلى Krea2 Image. تُرفَع كل صورة إلى مخزن ComfyAPI وتُمرَّر كعنوان URL."
+    },
+    "LumaImageNode": {
+        "title": "Luma تحويل نص إلى صورة",
+        "inputs": {
+            "image_luma_ref": "مرجع صورة Luma",
+            "style_image": "صورة النمط",
+            "prompt": "الموجّه",
+            "character_image": "صورة الشخص"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "seed": "البذرة",
+            "style_image_weight": "وزن صورة النمط",
+            "luma_ref": "مرجع Luma",
+            "auth_token": "رمز التفويض",
+            "max_refs": "الحد الأقصى للمراجع",
+            "weight": "الوزن"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "luma_concepts": "مفهوم Luma"
+        }
+    },
+    "LumaImageModifyNode": {
+        "title": "Luma تحويل صورة إلى صورة",
+        "inputs": {
+            "image": "صورة",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "image_weight": "وزن الصورة",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "auth_token": "رمز التفويض",
+            "weight": "الوزن"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "LumaReferenceNode": {
+        "title": "مرجع Luma",
+        "inputs": {
+            "image": "صورة",
+            "prompt": "الموجّه",
+            "luma_ref": "مرجع Luma"
+        },
+        "widgets": {
+            "image_type": "نوع الصورة",
+            "weight": "الوزن",
+            "human_fidelity": "دقّة الشخص",
+            "model_name": "اسم النموذج",
+            "task_id": "معرّف المهمة",
+            "auth_token": "رمز التفويض",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "n": "العدد"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "luma_ref": "مرجع Luma"
+        }
+    },
+    "LumaImageNode2": {
+        "title": "صورة Luma UNI-1",
+        "inputs": {
+            "image_1": "صورة 1"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "model": "النموذج",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "style": "النمط",
+            "web_search": "البحث في الويب",
+            "seed": "البذرة"
+        },
+        "outputs": {},
+        "description": "يولّد صورًا من النص باستخدام نموذج Luma UNI-1."
+    },
+    "LumaImageEditNode2": {
+        "title": "تحرير صورة Luma UNI-1",
+        "inputs": {
+            "source": "مسار المصدر",
+            "image_1": "صورة 1"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "model": "النموذج",
+            "style": "النمط",
+            "web_search": "البحث في الويب",
+            "seed": "البذرة"
+        },
+        "outputs": {},
+        "description": "يحرّر صورة قائمة وفق موجّه نصي باستخدام نموذج Luma UNI-1."
+    },
+    "MagnificImageUpscalerCreativeNode": {
+        "title": "تكبير صورة Magnific (الوضع الإبداعي)",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "scale_factor": "معامل التحجيم",
+            "optimized_for": "هدف التحسين",
+            "creativity": "الإبداع",
+            "hdr": "نطاق ديناميكي عالٍ HDR",
+            "resemblance": "التشابه",
+            "fractality": "درجة التجزّؤ",
+            "engine": "المحرك",
+            "auto_downscale": "خفض عيّنة تلقائي"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "MagnificImageUpscalerPreciseV2Node": {
+        "title": "تكبير صورة Magnific V2",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "scale_factor": "معامل التحجيم",
+            "flavor": "النمط",
+            "sharpen": "التحديد",
+            "smart_grain": "حبيبات ذكية",
+            "ultra_detail": "تفاصيل فائقة الدقّة",
+            "auto_downscale": "خفض عيّنة تلقائي"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "MagnificImageStyleTransferNode": {
+        "title": "تحويل نمط صورة Magnific",
+        "inputs": {
+            "image": "صورة",
+            "reference_image": "صورة مرجعية"
+        },
+        "widgets": {
+            "style_strength": "قوة النمط",
+            "structure_strength": "قوة البنية",
+            "flavor": "النمط",
+            "engine": "المحرك",
+            "portrait_mode": "وضع البورتريه",
+            "fixed_generation": "توليد ثابت"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "MagnificImageRelightNode": {
+        "title": "إعادة إضاءة صورة Magnific",
+        "inputs": {
+            "image": "صورة",
+            "reference_image": "صورة مرجعية"
+        },
+        "widgets": {
+            "light_transfer_strength": "قوة الإضاءة",
+            "style": "النمط",
+            "interpolate_from_original": "الاستيفاء من البيانات الخام",
+            "change_background": "تغيير الخلفية",
+            "preserve_details": "الحفاظ على التفاصيل",
+            "advanced_settings": "إعدادات متقدّمة"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "MagnificImageSkinEnhancerNode": {
+        "title": "معزّز بشرة صورة Magnific",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "sharpen": "التحديد",
+            "smart_grain": "حبيبات ذكية",
+            "mode": "الوضع"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "OpenAIDalle2": {
+        "title": "OpenAI DALL·E 2",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "size": "الأبعاد",
+            "n": "العدد",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "auth_token": "رمز التفويض"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "string": "نص"
+        }
+    },
+    "OpenAIDalle3": {
+        "title": "OpenAI DALL·E 3",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "size": "الأبعاد",
+            "quality": "الجودة",
+            "style": "النمط",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "auth_token": "رمز التفويض"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "string": "نص"
+        }
+    },
+    "OpenAIGPTImage1": {
+        "title": "صورة OpenAI GPT 1",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "background": "الخلفية",
+            "size": "الأبعاد",
+            "quality": "الجودة",
+            "n": "العدد",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "auth_token": "رمز التفويض"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "string": "نص"
+        }
+    },
+    "OpenAIGPTImageNodeV2": {
+        "title": "صورة OpenAI GPT 2",
+        "inputs": {
+            "image_1": "صورة1",
+            "image_2": "صورة2",
+            "image_3": "صورة3",
+            "mask": "قناع",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "size": "الأبعاد",
+            "custom_width": "ضبط العرض",
+            "custom_height": "ضبط الارتفاع",
+            "background": "الخلفية",
+            "quality": "الجودة",
+            "n": "العدد",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "auth_token": "رمز التفويض"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "string": "نص"
+        }
+    },
+    "QuiverTextToSVGNode": {
+        "title": "تحويل نص إلى صورة متجهية SVG",
+        "inputs": {
+            "ref_0": "مرجع",
+            "ref_1": "مرجع1",
+            "ref_2": "مرجع2",
+            "ref_3": "مرجع3"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "temperature": "الحرارة",
+            "top_p": "أعلى نسبة احتمال",
+            "presence_penalty": "عقاب الوجود",
+            "control_after_generate": "التحكم بعد التوليد",
+            "seed": "البذرة"
+        },
+        "outputs": {
+            "SVG": "صورة متجهية"
+        }
+    },
+    "QuiverImageToSVGNode": {
+        "title": "تحويل صورة إلى صورة متجهية SVG",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "auto_crop": "اقتصاص تلقائي",
+            "model": "النموذج",
+            "target_size": "الأبعاد المستهدفة",
+            "temperature": "الحرارة",
+            "top_p": "أعلى نسبة احتمال",
+            "presence_penalty": "عقاب الوجود",
+            "control_after_generate": "التحكم بعد التوليد",
+            "seed": "البذرة"
+        },
+        "outputs": {
+            "SVG": "صورة متجهية"
+        }
+    },
+    "RecraftTextToImageNode": {
+        "title": "Recraft تحويل نص إلى صورة",
+        "inputs": {
+            "recraft_style": "نمط Recraft",
+            "negative_prompt": "الموجّه السلبي",
+            "recraft_controls": "معاملات تحكم Recraft"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "size": "الأبعاد",
+            "n": "العدد",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "string": "نص"
+        }
+    },
+    "RecraftImageToImageNode": {
+        "title": "Recraft تحويل صورة إلى صورة",
+        "inputs": {
+            "image": "صورة الإدخال",
+            "recraft_style": "نمط Recraft",
+            "negative_prompt": "الموجّه السلبي",
+            "recraft_controls": "معاملات تحكم Recraft",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "n": "عدد التوليدات",
+            "strength": "قوة إعادة الرسم",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "RecraftImageInpaintingNode": {
+        "title": "ترميم صورة Recraft",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع",
+            "recraft_style": "نمط Recraft",
+            "negative_prompt": "الموجّه السلبي",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "n": "عدد التوليدات",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "RecraftTextToVectorNode": {
+        "title": "Recraft تحويل نص إلى رسم متجهي",
+        "inputs": {
+            "recraft_controls": "معاملات تحكم Recraft",
+            "negative_prompt": "الموجّه السلبي",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "substyle": "نوع النمط الفرعي",
+            "size": "أبعاد الخرج",
+            "n": "عدد التوليدات",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VECTOR": "رسم متجهي"
+        }
+    },
+    "RecraftVectorizeImageNode": {
+        "title": "تحويل صورة Recraft إلى متجهات",
+        "inputs": {
+            "image": "صورة",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {},
+        "outputs": {
+            "VECTOR": "رسم متجهي"
+        }
+    },
+    "RecraftRemoveBackgroundNode": {
+        "title": "Recraft إزالة الخلفية",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "RecraftReplaceBackgroundNode": {
+        "title": "Recraft تغيير الخلفية",
+        "inputs": {
+            "image": "صورة",
+            "recraft_style": "نمط Recraft",
+            "negative_prompt": "الموجّه السلبي",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {
+            "prompt": "وصف الخلفية",
+            "n": "عدد التوليدات",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "RecraftCrispUpscaleNode": {
+        "title": "تكبير صورة Recraft واضح",
+        "inputs": {
+            "image": "صورة",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "RecraftCreativeUpscaleNode": {
+        "title": "تكبير صورة Recraft إبداعي",
+        "inputs": {
+            "image": "صورة",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "RecraftStyleV3RealisticImage": {
+        "title": "نمط Recraft - صورة واقعية",
+        "inputs": {
+            "colors": "الألوان",
+            "background_color": "لون الخلفية"
+        },
+        "widgets": {
+            "substyle": "النمط الفرعي"
+        },
+        "outputs": {
+            "recraft_style": "نمط Recraft"
+        }
+    },
+    "RecraftStyleV3DigitalIllustration": {
+        "title": "نمط Recraft - رسم رقمي",
+        "inputs": {
+            "colors": "الألوان",
+            "background_color": "لون الخلفية"
+        },
+        "widgets": {
+            "substyle": "النمط الفرعي"
+        },
+        "outputs": {
+            "recraft_style": "نمط Recraft"
+        }
+    },
+    "RecraftStyleV3LogoRaster": {
+        "title": "نمط Recraft - شعار نقطّي",
+        "inputs": {
+            "colors": "الألوان",
+            "background_color": "لون الخلفية"
+        },
+        "widgets": {
+            "substyle": "النمط الفرعي"
+        },
+        "outputs": {
+            "recraft_style": "نمط Recraft"
+        }
+    },
+    "RecraftStyleV3InfiniteStyleLibrary": {
+        "title": "نمط Recraft - مكتبة الأنماط اللانهائية",
+        "inputs": {
+            "colors": "الألوان",
+            "background_color": "لون الخلفية"
+        },
+        "widgets": {
+            "style_id": "معرّف النمط"
+        },
+        "outputs": {
+            "recraft_style": "نمط Recraft"
+        }
+    },
+    "RecraftCreateStyleNode": {
+        "title": "تصميم نمط Recraft",
+        "inputs": {
+            "image0": "صورة0",
+            "image1": "صورة1"
+        },
+        "widgets": {
+            "style": "النمط"
+        },
+        "outputs": {
+            "style": "النمط",
+            "style_id": "معرّف النمط"
+        }
+    },
+    "RecraftColorRGB": {
+        "title": "لون Recraft RGB",
+        "inputs": {
+            "recraft_color": "لون Recraft"
+        },
+        "widgets": {
+            "r": "قيمة الأحمر",
+            "g": "قيمة الأخضر",
+            "b": "قيمة الأزرق"
+        },
+        "outputs": {
+            "recraft_color": "لون Recraft",
+            "string": "نص"
+        }
+    },
+    "RecraftControls": {
+        "title": "معاملات تحكم Recraft",
+        "inputs": {
+            "colors": "الألوان",
+            "background_color": "لون الخلفية"
+        },
+        "widgets": {
+            "r": "قيمة الأحمر",
+            "g": "قيمة الأخضر",
+            "b": "قيمة الأزرق"
+        },
+        "outputs": {
+            "recraft_controls": "معاملات تحكم Recraft",
+            "string": "نص"
+        }
+    },
+    "RecraftV4TextToImageNode": {
+        "title": "Recraft تحويل نص إلى صورة V4",
+        "inputs": {
+            "recraft_controls": "معاملات تحكم Recraft"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "size": "الأبعاد",
+            "n": "العدد",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "string": "نص"
+        }
+    },
+    "RecraftV4TextToVectorNode": {
+        "title": "Recraft تحويل نص إلى رسم متجهي V4",
+        "inputs": {
+            "recraft_controls": "معاملات تحكم Recraft"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "size": "الأبعاد",
+            "n": "العدد",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "SVG": "تنسيق SVG المتجهي"
+        }
+    },
+    "ReveImageCreateNode": {
+        "title": "Reve تحويل نص إلى صورة",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "test_time_scaling": "اختبار تحجيم الزمن",
+            "upscale": "تكبير",
+            "remove_background": "إزالة الخلفية",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "string": "نص"
+        }
+    },
+    "ReveImageEditNode": {
+        "title": "تحرير صورة Reve",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "test_time_scaling": "اختبار تحجيم الزمن",
+            "upscale": "تكبير",
+            "remove_background": "إزالة الخلفية",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "string": "نص"
+        }
+    },
+    "ReveImageRemixNode": {
+        "title": "إعادة إنشاء صورة Reve",
+        "inputs": {
+            "image_0": "صورة0",
+            "image_1": "صورة1",
+            "image_2": "صورة2",
+            "image_3": "صورة3",
+            "image_4": "صورة4",
+            "image_5": "صورة5"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "test_time_scaling": "اختبار تحجيم الزمن",
+            "upscale": "تكبير",
+            "remove_background": "إزالة الخلفية",
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "string": "نص"
+        }
+    },
+    "RunwayTextToImageNode": {
+        "title": "Runway تحويل نص إلى صورة",
+        "inputs": {
+            "positive": "الشرط الإيجابي",
+            "negative": "الشرط السلبي",
+            "reference_image": "صورة مرجعية",
+            "start_frame": "الإطار البدئي",
+            "end_frame": "الإطار الختامي"
+        },
+        "widgets": {
+            "seed": "البذرة",
+            "control_after_generate": "التحكم بعد التوليد",
+            "ratio": "نسبة العرض إلى الارتفاع",
+            "duration": "المدة",
+            "batch_size": "حجم الدفعة"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "string": "نص"
+        }
+    },
+    "StabilityStableImageUltraNode": {
+        "title": "صورة Stability AI فائقة الوضوح",
+        "inputs": {
+            "image": "صورة",
+            "negative_prompt": "الموجّه السلبي",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "style_preset": "إعداد النمط المسبق",
+            "seed": "بذرة عشوائية",
+            "image_denoise": "قوة إزالة الضجيج",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "StabilityStableImageSD_3_5Node": {
+        "title": "صورة Stability AI SD 3.5",
+        "inputs": {
+            "image": "صورة",
+            "negative_prompt": "الموجّه السلبي",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "style_preset": "إعداد النمط المسبق",
+            "cfg_scale": "معامل توجيه CFG",
+            "seed": "بذرة عشوائية",
+            "image_denoise": "قوة إزالة الضجيج",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "StabilityUpscaleConservativeNode": {
+        "title": "تكبير محافظ Stability AI",
+        "inputs": {
+            "image": "صورة",
+            "negative_prompt": "الموجّه السلبي",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "creativity": "قوة الإبداع",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "StabilityUpscaleCreativeNode": {
+        "title": "تكبير إبداعي Stability AI",
+        "inputs": {
+            "image": "صورة",
+            "negative_prompt": "الموجّه السلبي",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "creativity": "قوة الإبداع",
+            "style_preset": "إعداد النمط المسبق",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "StabilityUpscaleFastNode": {
+        "title": "تكبير فائق السرعة Stability AI",
+        "inputs": {
+            "image": "صورة",
+            "auth_token": "رمز التفويض"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "TopazImageEnhance": {
+        "title": "معزّز صورة Topaz",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "subject_detection": "كشف الأشياء",
+            "face_enhancement": "تعزيز الوجه",
+            "face_enhancement_creativity": "إبداع تعزيز الوجه",
+            "face_enhancement_strength": "قوة تعزيز الوجه",
+            "crop_to_fill": "اقتصاص للتعبئة",
+            "output_width": "عرض الخرج",
+            "output_height": "ارتفاع الخرج",
+            "creativity": "الإبداع",
+            "face_preservation": "حماية الوجه",
+            "color_preservation": "حماية الألوان"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "video": "فيديو"
+        }
+    },
+    "WanTextToImageApi": {
+        "title": "Wan تحويل نص إلى صورة",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "resolution": "الدقّة",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "prompt_extend": "توسيع الموجّه",
+            "watermark": "علامة مائية",
+            "shot_type": "نوع التصوير"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "WanImageToImageApi": {
+        "title": "Wan توليد صورة من صورة",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "resolution": "الدقّة",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "prompt_extend": "توسيع الموجّه",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "WavespeedImageUpscaleNode": {
+        "title": "تكبير صورة WaveSpeed",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "target_resolution": "الدقّة المستهدفة"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "ElevenLabsSpeechToText": {
+        "title": "Eleven Labs تحويل كلام إلى نص",
+        "inputs": {
+            "audio": "الصوت"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "tag_audio_events": "وسم الأحداث الصوتية",
+            "diarize": "التعرّف على المتحدثين",
+            "diarization_threshold": "عتبة التعرّف على المتحدثين",
+            "temperature": "الحرارة",
+            "timestamps_granularity": "دقّة الطوابع الزمنية",
+            "language_code": "رمز اللغة",
+            "num_speakers": "عدد المتحدثين",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "language_code": "رمز اللغة",
+            "text": "نص",
+            "seed": "بيانات JSON للكلمات"
+        }
+    },
+    "ElevenLabsVoiceSelector": {
+        "title": "مُنتقي أصوات Eleven Labs",
+        "inputs": {},
+        "widgets": {
+            "voice": "الصوت"
+        },
+        "outputs": {
+            "voice": "الصوت"
+        }
+    },
+    "ElevenLabsTextToSpeech": {
+        "title": "Eleven Labs تحويل نص إلى كلام",
+        "inputs": {
+            "voice": "الصوت"
+        },
+        "widgets": {
+            "stabillity": "الثبات",
+            "apply_text_normalization": "تطبيق توحيد النص",
+            "model": "النموذج",
+            "speed": "السرعة",
+            "similarity_boost": "تعزيز التشابه",
+            "use_speaker_boost": "استخدام تعزيز المتحدث",
+            "style": "النمط",
+            "language_code": "رمز اللغة",
+            "output_format": "تنسيق الخرج",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "AUDIO": "الصوت"
+        }
+    },
+    "ElevenLabsAudioIsolation": {
+        "title": "Eleven Labs فصل الصوت",
+        "inputs": {
+            "audio": "الصوت"
+        },
+        "widgets": {},
+        "outputs": {
+            "AUDIO": "الصوت"
+        }
+    },
+    "ElevenLabsTextToSoundEffects": {
+        "title": "Eleven Labs تحويل نص إلى مؤثّر صوتي",
+        "inputs": {
+            "text": "نص"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "duration": "المدة (ثوانٍ)",
+            "loop": "تكرار",
+            "prompt_influence": "مدى تأثير الموجّه",
+            "output_format": "تنسيق الخرج"
+        },
+        "outputs": {
+            "AUDIO": "الصوت"
+        }
+    },
+    "ElevenLabsInstantVoiceClone": {
+        "title": "Eleven Labs استنساخ صوتي فوري",
+        "inputs": {
+            "audio0": "صوت0",
+            "audio1": "صوت1",
+            "audio2": "صوت2",
+            "audio3": "صوت3",
+            "audio4": "صوت4",
+            "audio5": "صوت5",
+            "audio6": "صوت6"
+        },
+        "widgets": {
+            "remove_background_noise": "إزالة الضجيج الخلفي"
+        },
+        "outputs": {
+            "voice": "الصوت"
+        }
+    },
+    "ElevenLabsSpeechToSpeech": {
+        "title": "Eleven Labs تحويل كلام إلى كلام",
+        "inputs": {
+            "voice": "الصوت",
+            "audio": "الصوت"
+        },
+        "widgets": {
+            "stabillity": "الثبات",
+            "model": "النموذج",
+            "speed": "السرعة",
+            "similarity_boost": "تعزيز التشابه",
+            "use_speaker_boost": "استخدام تعزيز المتحدث",
+            "style": "النمط",
+            "output_format": "تنسيق الخرج",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "remove_background_noise": "إزالة الضجيج الخلفي"
+        },
+        "outputs": {
+            "AUDIO": "الصوت"
+        }
+    },
+    "ElevenLabsTextToDialogue": {
+        "title": "Eleven Labs تحويل نص إلى حوار",
+        "inputs": {
+            "voice1": "صوت1",
+            "voice2": "صوت2",
+            "voice3": "صوت3",
+            "voice4": "صوت4",
+            "voice5": "صوت5",
+            "voice6": "صوت6",
+            "voice7": "صوت7",
+            "voice8": "صوت8",
+            "voice9": "صوت9",
+            "voice10": "صوت10"
+        },
+        "widgets": {
+            "stabillity": "الثبات",
+            "apply_text_normalization": "تطبيق توحيد النص",
+            "model": "النموذج",
+            "inputs": "عدد المدخلات",
+            "language_code": "رمز اللغة",
+            "output_format": "تنسيق الخرج",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "AUDIO": "الصوت"
+        }
+    },
+    "SoniloVideoToMusic": {
+        "title": "Sonilo توليد موسيقى من فيديو",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "duration": "المدة (ثوانٍ)",
+            "model": "النموذج",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "AIDEO": "الصوت"
+        }
+    },
+    "SoniloTextToMusic": {
+        "title": "Sonilo توليد موسيقى من نص",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "AIDEO": "الصوت"
+        }
+    },
+    "StabilityTextToAudio": {
+        "title": "Stability AI تحويل نص إلى كلام",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "duration": "المدة",
+            "steps": "عدد الخطوات",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "audio": "الصوت",
+            "AUDIO": "الصوت"
+        }
+    },
+    "StabilityAudioToAudio": {
+        "title": "Stability AI تحويل صوت إلى صوت",
+        "inputs": {
+            "audio": "الصوت",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "duration": "المدة",
+            "steps": "عدد الخطوات",
+            "seed": "بذرة عشوائية",
+            "strength": "القوة",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "audio": "الصوت",
+            "AUDIO": "الصوت"
+        }
+    },
+    "StabilityAudioInpaint": {
+        "title": "Stability AI إعادة رسم الصوت (Inpaint)",
+        "inputs": {
+            "audio": "الصوت",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "duration": "المدة",
+            "steps": "عدد الخطوات",
+            "seed": "بذرة عشوائية",
+            "mask_start": "قناع البداية",
+            "mask_end": "قناع النهاية",
+            "control_after_generate": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "audio": "الصوت",
+            "AUDIO": "الصوت"
+        }
+    },
+    "TencentTextToModelNode": {
+        "title": "Hunyuan3D: توليد نموذج من نص (النسخة الاحترافية)",
+        "inputs": {},
+        "widgets": {
+            "model": "النموذج",
+            "face_count": "عدد الأوجه",
+            "pbr": "عرض PBR معزّز فيزيائيًا",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "texture_image": "صورة الملمس",
+            "GLB": "تنسيق GLB",
+            "OBJ": "تنسيق OBJ"
+        }
+    },
+    "TencentImageToModelNode": {
+        "title": "Hunyuan3D: توليد نموذج من صورة (النسخة الاحترافية)",
+        "inputs": {
+            "image": "صورة",
+            "image_left": "صورة اليسار",
+            "image_right": "صورة اليمين",
+            "image_back": "صورة الخلف"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "face_count": "عدد الأوجه",
+            "generate_type": "نوع التوليد",
+            "pbr": "عرض PBR معزّز فيزيائيًا",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "texture_image": "صورة الملمس",
+            "GLB": "تنسيق GLB",
+            "OBJ": "تنسيق OBJ",
+            "optional_metallic": "فلزّي (اختياري)",
+            "optional_normal": "عادي (اختياري)",
+            "optional_roughness": "خشونة (اختياري)"
+        }
+    },
+    "TencentModelTo3DUVNode": {
+        "title": "Hunyuan3D: تحويل نموذج إلى خريطة UV",
+        "inputs": {
+            "model_3d": "نموذج ثلاثي الأبعاد"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "face_count": "عدد الأوجه",
+            "pbr": "عرض PBR معزّز فيزيائيًا",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "GLB": "تنسيق GLB",
+            "OBJ": "تنسيق OBJ"
+        }
+    },
+    "Tencent3DTextureEditNode": {
+        "title": "Hunyuan3D: تحرير ملمس ثلاثي الأبعاد",
+        "inputs": {
+            "model_3d": "نموذج ثلاثي الأبعاد"
+        },
+        "widgets": {
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "texture_image": "صورة الملمس",
+            "GLB": "تنسيق GLB",
+            "OBJ": "تنسيق OBJ",
+            "uv_image": "صورة UV"
+        }
+    },
+    "Tencent3DPartNode": {
+        "title": "Hunyuan3D: أجزاء ثلاثية الأبعاد",
+        "inputs": {
+            "model_3d": "نموذج ثلاثي الأبعاد"
+        },
+        "widgets": {
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "FBX": "تنسيق FBX"
+        }
+    },
+    "TencentSmartTopologyNode": {
+        "title": "Hunyuan3D: طوبولوجيا ذكية",
+        "inputs": {
+            "model_3d": "نموذج ثلاثي الأبعاد"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "polygon_type": "نوع المضلّعات",
+            "face_level": "مستوى الأوجه",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "GLB": "تنسيق GLB",
+            "OBJ": "تنسيق OBJ"
+        }
+    },
+    "MeshyTextToModelNode": {
+        "title": "Meshy: توليد نموذج من نص",
+        "inputs": {},
+        "widgets": {
+            "model": "النموذج",
+            "style": "النمط",
+            "should_remesh": "إعادة الشبك",
+            "topology": "الطوبولوجيا",
+            "target_polycount": "عدد المضلّعات المستهدف",
+            "symmetry_mode": "وضع التناظر",
+            "pose_mode": "وضع الوضعية",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "meshy_task_id": "معرّف مهمة Meshy",
+            "GLB": "تنسيق GLB",
+            "FBX": "تنسيق FBX"
+        }
+    },
+    "MeshyRefineNode": {
+        "title": "Meshy: تحسين نموذج المسوّدة",
+        "inputs": {
+            "meshy_task_id": "معرّف مهمة Meshy",
+            "texture_image": "صورة الملمس"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "enable_pbr": "تفعيل عرض PBR المعزّز فيزيائيًا",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "meshy_task_id": "معرّف مهمة Meshy",
+            "GLB": "تنسيق GLB",
+            "FBX": "تنسيق FBX"
+        }
+    },
+    "MeshyImageToModelNode": {
+        "title": "Meshy: توليد نموذج من صورة",
+        "inputs": {
+            "image": "صورة",
+            "texture_image": "صورة الملمس"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "should_remesh": "إعادة الشبك",
+            "topology": "الطوبولوجيا",
+            "target_polycount": "عدد المضلّعات المستهدف",
+            "symmetry_mode": "وضع التناظر",
+            "should_texture": "تطبيق الملمس",
+            "enable_pbr": "تفعيل عرض PBR المعزّز فيزيائيًا",
+            "pose_mode": "وضع الوضعية",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "meshy_task_id": "معرّف مهمة Meshy",
+            "GLB": "تنسيق GLB",
+            "FBX": "تنسيق FBX"
+        }
+    },
+    "MeshyMultiImageToModelNode": {
+        "title": "Meshy: توليد نموذج من صور متعدّدة",
+        "inputs": {
+            "image": "صورة",
+            "image0": "صورة0",
+            "image1": "صورة1",
+            "texture_image": "صورة الملمس"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "should_remesh": "إعادة الشبك",
+            "topology": "الطوبولوجيا",
+            "target_polycount": "عدد المضلّعات المستهدف",
+            "symmetry_mode": "وضع التناظر",
+            "should_texture": "تطبيق الملمس",
+            "enable_pbr": "تفعيل عرض PBR المعزّز فيزيائيًا",
+            "pose_mode": "وضع الوضعية",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "meshy_task_id": "معرّف مهمة Meshy",
+            "GLB": "تنسيق GLB",
+            "FBX": "تنسيق FBX"
+        }
+    },
+    "MeshyRigModelNode": {
+        "title": "Meshy: هيكل عظمي للنموذج",
+        "inputs": {
+            "meshy_task_id": "معرّف مهمة Meshy",
+            "texture_image": "صورة الملمس"
+        },
+        "widgets": {
+            "height_meters": "الارتفاع (متر)"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "meshy_task_id": "معرّف مهمة Meshy",
+            "GLB": "تنسيق GLB",
+            "FBX": "تنسيق FBX"
+        }
+    },
+    "MeshyAnimateModelNode": {
+        "title": "Meshy: تحريك النموذج",
+        "inputs": {
+            "rig_task_id": "معرّف مهمة الهيكل",
+            "texture_image": "صورة الملمس"
+        },
+        "widgets": {
+            "action_id": "معرّف الحركة"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "meshy_task_id": "معرّف مهمة Meshy",
+            "GLB": "تنسيق GLB",
+            "FBX": "تنسيق FBX"
+        }
+    },
+    "MeshyTextureNode": {
+        "title": "Meshy: ملمس النموذج",
+        "inputs": {
+            "meshy_task_id": "معرّف مهمة Meshy",
+            "image_style": "نمط الصورة"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "enable_original_uv": "تفعيل UV الأصلي",
+            "pbr": "عرض PBR المعزّز فيزيائيًا"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "meshy_task_id": "معرّف مهمة Meshy",
+            "GLB": "تنسيق GLB",
+            "FBX": "تنسيق FBX"
+        }
+    },
+    "Rodin3D_Regular": {
+        "title": "توليد Rodin 3D - التوليد العادي",
+        "inputs": {
+            "images": "مجموعة صور"
+        },
+        "widgets": {
+            "Seed": "بذرة عشوائية",
+            "Material_Type": "نوع المادة",
+            "Polygon_count": "عدد المضلّعات"
+        },
+        "outputs": {
+            "3D_Model_Path": "مسار النموذج ثلاثي الأبعاد",
+            "3D Model Path": "مسار النموذج ثلاثي الأبعاد"
+        }
+    },
+    "Rodin3D_Detail": {
+        "title": "توليد Rodin 3D - توليد التفاصيل",
+        "inputs": {
+            "images": "مجموعة صور"
+        },
+        "widgets": {
+            "Seed": "بذرة عشوائية",
+            "Material_Type": "نوع المادة",
+            "Polygon_count": "عدد المضلّعات"
+        },
+        "outputs": {
+            "3D_Model_Path": "مسار النموذج ثلاثي الأبعاد",
+            "3D Model Path": "مسار النموذج ثلاثي الأبعاد"
+        }
+    },
+    "Rodin3D_Smooth": {
+        "title": "توليد Rodin 3D - التوليد الأملس",
+        "inputs": {
+            "images": "مجموعة صور"
+        },
+        "widgets": {
+            "Seed": "بذرة عشوائية",
+            "Material_Type": "نوع المادة",
+            "Polygon_count": "عدد المضلّعات"
+        },
+        "outputs": {
+            "3D_Model_Path": "مسار النموذج ثلاثي الأبعاد",
+            "3D Model Path": "مسار النموذج ثلاثي الأبعاد"
+        }
+    },
+    "Rodin3D_Sketch": {
+        "title": "توليد Rodin 3D - توليد الرسم التخطيطي",
+        "inputs": {
+            "images": "مجموعة صور"
+        },
+        "widgets": {
+            "Seed": "بذرة عشوائية",
+            "Material_Type": "نوع المادة",
+            "Polygon_count": "عدد المضلّعات"
+        },
+        "outputs": {
+            "3D_Model_Path": "مسار النموذج ثلاثي الأبعاد",
+            "3D Model Path": "مسار النموذج ثلاثي الأبعاد"
+        }
+    },
+    "Rodin3D_Gen2": {
+        "title": "توليد Rodin 3D - مولّد Gen-2",
+        "inputs": {
+            "images": "مجموعة صور",
+            "Images": "مجموعة صور"
+        },
+        "widgets": {
+            "Seed": "بذرة عشوائية",
+            "Material_Type": "نوع المادة",
+            "Polygon_count": "عدد المضلّعات",
+            "TAPose": "وضعية TA"
+        },
+        "outputs": {
+            "3D_Model_Path": "مسار النموذج ثلاثي الأبعاد",
+            "3D Model Path": "مسار النموذج ثلاثي الأبعاد"
+        }
+    },
+    "Rodin3D_Gen25_Image": {
+        "title": "Rodin 3D Gen-2.5 - صورة إلى ثلاثي الأبعاد",
+        "inputs": {
+            "image0": "إدخال صورة 0",
+            "image1": "إدخال صورة 1"
+        },
+        "widgets": {
+            "mode": "الوضع",
+            "tier": "المستوى",
+            "polygon_count": "عدد المضلّعات",
+            "creative": "الإبداع",
+            "material": "المادة",
+            "geometry_file_format": "تنسيق ملف الهندسة",
+            "texture_mode": "وضع الملمس",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "TAPose": "وضعية TA",
+            "hd_texture": "ملمس عالي الوضوح",
+            "texture_delight": "تحسين الملمس",
+            "use_original_alpha": "استخدام Alpha الأصلي",
+            "addon_highpack": "إضافة عالية السعة",
+            "bbox_width": "عرض مربّع الإحاطة",
+            "bbox_height": "ارتفاع مربّع الإحاطة",
+            "bbox_length": "طول مربّع الإحاطة",
+            "height_cm": "الارتفاع (سم)"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج"
+        },
+        "description": "يحوّل صورة ثنائية الأبعاد إلى نموذج ثلاثي الأبعاد"
+    },
+    "Rodin3D_Gen25_Text": {
+        "title": "Rodin 3D Gen-2.5 - نص إلى ثلاثي الأبعاد",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "mode": "الوضع",
+            "tier": "الطبقات",
+            "polygon_count": "عدد المضلّعات",
+            "creative": "الإبداع",
+            "material": "المادة",
+            "geometry_file_format": "تنسيق ملف الهندسة",
+            "texture_mode": "وضع الملمس",
+            "seed": "بذرة عشوائية",
+            "control_after_generate": "التحكم بعد التوليد",
+            "TAPose": "وضعية TA",
+            "hd_texture": "ملمس عالي الوضوح",
+            "texture_delight": "تحسين الملمس",
+            "addon_highpack": "إضافة عالية السعة",
+            "bbox_width": "عرض مربّع الإحاطة",
+            "bbox_height": "ارتفاع مربّع الإحاطة",
+            "bbox_length": "طول مربّع الإحاطة",
+            "height_cm": "الارتفاع (سم)"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج"
+        },
+        "description": "عقدة Rodin 3D Gen-2.5 لتحويل النص إلى ثلاثي الأبعاد، لتوليد نماذج ثلاثية الأبعاد من الموجّهات النصية."
+    },
+    "TripoTextToModelNode": {
+        "title": "Tripo: من النص إلى النموذج",
+        "inputs": {
+            "images": "مجموعة صور"
+        },
+        "widgets": {
+            "model_version": "إصدار النموذج",
+            "style": "النمط",
+            "texture": "الملمس",
+            "pbr": "مادة PBR",
+            "image_seed": "بذرة الصورة",
+            "model_seed": "بذرة النموذج",
+            "texture_seed": "بذرة الملمس",
+            "texture_quality": "جودة الملمس",
+            "face_limit": "حدّ الأوجه",
+            "quad": "شبك رباعي"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "model task_id": "معرّف مهمة النموذج",
+            "model_task_id": "معرّف مهمة النموذج"
+        }
+    },
+    "TripoImageToModelNode": {
+        "title": "Tripo: من الصورة إلى النموذج",
+        "inputs": {
+            "image": "صورة",
+            "images": "مجموعة صور"
+        },
+        "widgets": {
+            "model_version": "إصدار النموذج",
+            "style": "النمط",
+            "texture": "الملمس",
+            "pbr": "مادة PBR",
+            "image_seed": "بذرة الصورة",
+            "model_seed": "بذرة النموذج",
+            "orientation": "التوجّه",
+            "texture_seed": "بذرة الملمس",
+            "texture_quality": "جودة الملمس",
+            "texture_alignment": "محاذاة الملمس",
+            "face_limit": "حدّ الأوجه",
+            "quad": "شبك رباعي"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "model task_id": "معرّف مهمة النموذج",
+            "model_task_id": "معرّف مهمة النموذج"
+        }
+    },
+    "TripoMultiviewToModelNode": {
+        "title": "Tripo: من مناظير متعدّدة إلى النموذج",
+        "inputs": {
+            "image": "صورة",
+            "images": "مجموعة صور",
+            "image_left": "منظور أيسر",
+            "image_back": "منظور خلفي",
+            "image_right": "منظور أيمن"
+        },
+        "widgets": {
+            "model_version": "إصدار النموذج",
+            "orientation": "التوجّه",
+            "style": "النمط",
+            "texture": "الملمس",
+            "pbr": "مادة PBR",
+            "image_seed": "بذرة الصورة",
+            "model_seed": "بذرة النموذج",
+            "texture_seed": "بذرة الملمس",
+            "texture_quality": "جودة الملمس",
+            "texture_alignment": "محاذاة الملمس",
+            "face_limit": "حدّ الأوجه",
+            "quad": "شبك رباعي"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "model task_id": "معرّف مهمة النموذج",
+            "model_task_id": "معرّف مهمة النموذج"
+        }
+    },
+    "TripoP1TextToModelNode": {
+        "title": "Tripo P1: تحويل نص إلى نموذج",
+        "inputs": {
+            "prompt": "الموجّه",
+            "negative_prompt": "الموجّه السلبي"
+        },
+        "widgets": {
+            "output_mode": "وضع الخرج",
+            "image_seed": "بذرة الصورة العشوائية",
+            "face_limit": "حدّ الأوجه",
+            "model_seed": "بذرة النموذج العشوائية",
+            "auto_size": "أبعاد تلقائية",
+            "export_uv": "تصدير UV",
+            "compress_geometry": "ضغط الهندسة"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "model task_id": "معرّف مهمة النموذج"
+        },
+        "description": "يحوّل الموجّه النصي إلى نموذج ثلاثي الأبعاد"
+    },
+    "TripoP1ImageToModelNode": {
+        "title": "Tripo P1: تحويل صورة إلى نموذج",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "output_mode": "وضع الخرج",
+            "enable_image_autofix": "تفعيل الترميم التلقائي للصورة",
+            "face_limit": "حدّ الأوجه",
+            "model_seed": "بذرة النموذج العشوائية",
+            "auto_size": "أبعاد تلقائية",
+            "export_uv": "تصدير UV",
+            "compress_geometry": "ضغط الهندسة"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "model_task_id": "معرّف مهمة النموذج"
+        },
+        "description": "Tripo P1 تحويل صورة إلى ثلاثي الأبعاد، مُحسَّن للشِبَك منخفضة المضلّعات بجودة الألعاب."
+    },
+    "TripoP1MultiviewToModelNode": {
+        "title": "Tripo P1: من مناظير متعدّدة إلى النموذج",
+        "inputs": {
+            "image": "صورة",
+            "image_left": "صورة المنظور الأيسر",
+            "image_back": "صورة المنظور الخلفي",
+            "image_right": "صورة المنظور الأيمن"
+        },
+        "widgets": {
+            "output_mode": "وضع الخرج",
+            "face_limit": "حدّ الأوجه",
+            "model_seed": "بذرة النموذج العشوائية",
+            "auto_size": "أبعاد تلقائية",
+            "export_uv": "تصدير UV",
+            "compress_geometry": "ضغط الهندسة"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "model_task_id": "معرّف مهمة النموذج"
+        },
+        "description": "Tripo P1 من مناظير متعدّدة إلى ثلاثي الأبعاد، يحوّل من 2 إلى 4 صور مرجعية بترتيب [أمام، يسار، خلف، يمين]. يجب تضمين الأمام؛ يمكن تجاهل أي توليفة من الثلاثة الأخرى."
+    },
+    "TripoTextureNode": {
+        "title": "Tripo: ملمس النموذج",
+        "inputs": {
+            "model task_id": "معرّف مهمة النموذج",
+            "model_task_id": "معرّف مهمة النموذج"
+        },
+        "widgets": {
+            "model_version": "إصدار النموذج",
+            "style": "النمط",
+            "texture": "الملمس",
+            "pbr": "مادة PBR",
+            "image_seed": "بذرة الصورة",
+            "model_seed": "بذرة النموذج",
+            "orientation": "التوجّه",
+            "texture_seed": "بذرة الملمس",
+            "texture_quality": "جودة الملمس",
+            "texture_alignment": "محاذاة الملمس",
+            "face_limit": "حدّ الأوجه",
+            "quad": "شبك رباعي"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "model_task_id": "معرّف مهمة النموذج"
+        }
+    },
+    "TripoRefineNode": {
+        "title": "Tripo: تحسين نموذج المسوّدة",
+        "inputs": {
+            "model task_id": "معرّف مهمة النموذج",
+            "model_task_id": "معرّف مهمة النموذج"
+        },
+        "widgets": {
+            "format": "التنسيق",
+            "face_limittexture_size": "حدّ حجم ملمس الأوجه",
+            "texture_format": "تنسيق الملمس",
+            "quad": "شبك رباعي"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "model task_id": "معرّف مهمة النموذج",
+            "model_task_id": "معرّف مهمة النموذج"
+        }
+    },
+    "TripoRigNode": {
+        "title": "Tripo: تجهيز النموذج بالهيكل العظمي",
+        "inputs": {
+            "original model task id": "معرّف مهمة النموذج الأصلي",
+            "original_model_task_id": "معرّف مهمة النموذج الأصلي"
+        },
+        "widgets": {
+            "format": "التنسيق",
+            "face_limittexture_size": "حدّ حجم ملمس الأوجه",
+            "texture_format": "تنسيق الملمس",
+            "quad": "شبك رباعي"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "rig task_id": "معرّف مهمة التجهيز",
+            "rig_task_id": "معرّف مهمة التجهيز"
+        }
+    },
+    "TripoRetargetNode": {
+        "title": "Tripo: إعادة توجيه النموذج",
+        "inputs": {
+            "original model task id": "معرّف مهمة النموذج الأصلي",
+            "original_model_task_id": "معرّف مهمة النموذج الأصلي"
+        },
+        "widgets": {
+            "animation": "تحريك",
+            "face_limittexture_size": "حدّ حجم ملمس الأوجه",
+            "texture_format": "تنسيق الملمس",
+            "quad": "شبك رباعي"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "retarget task_id": "معرّف مهمة إعادة التوجيه",
+            "retarget_task_id": "معرّف مهمة إعادة التوجيه"
+        }
+    },
+    "BriaVideoReplaceBackground": {
+        "title": "Bria استبدال خلفية الفيديو",
+        "inputs": {
+            "video": "فيديو",
+            "background_image": "صورة الخلفية",
+            "background_video": "فيديو الخلفية"
+        },
+        "widgets": {
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "يستبدل Bria خلفية الفيديو بصورة أو فيديو مُقدَّم. يحافظ الخرج على دقّة ومعدّل إطارات المقدّمة؛ إذا اختلفت نسبة العرض إلى الارتفاع للخلفية فسيتم تمديدها لتناسب، لذا ضمن تطابق نسبة الخلفية للحصول على نتيجة بلا تشوّه."
+    },
+    "RunwayAleph2VideoToVideoNode": {
+        "title": "Runway Aleph2 تحويل فيديو إلى فيديو",
+        "inputs": {
+            "video": "فيديو",
+            "keyframes": "الإطار الرئيسي",
+            "prompt_images": "صورة الموجّه"
+        },
+        "widgets": {
+            "prompt": "موجّه",
+            "seed": "بذرة عشوائية",
+            "generate_control": "التحكم بالتوليد",
+            "public_figure_threshold": "عتبة الشخصيات العامة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "يحرّر فيديو بموجّه نصي باستخدام نموذج Aleph2 من Runway. يحوّل Aleph2 الفيديو مع الحفاظ على الحركة والإيقاع الأصليين (إعادة التنميط، إعادة الإضاءة، إضافة أو إزالة عناصر، تغيير المنظور)؛ دقّة الخرج مطابقة لفيديو الإدخال، ويجب أن تكون مدة فيديو الإدخال من 2 إلى 30 ثانية بمعدّل 30 إطارًا/ثانية أو أقل. يمكنك اختيارًا استخدام إطارات رئيسية (مرساة بفيديو الإدخال) أو صور موجّه (مرساة بفيديو الخرج) لتوجيه التحرير — أحدهما فقط، لا كلاهما."
+    },
+    "TripoImportModelNode": {
+        "title": "Tripo: استيراد نموذج",
+        "inputs": {
+            "model_3d": "مسار ملف النموذج ثلاثي الأبعاد"
+        },
+        "widgets": {},
+        "outputs": {
+            "model task_id": "معرّف مهمة النموذج"
+        },
+        "description": "يستورد نماذج ثلاثية الأبعاد خارجية (مثلًا من Rodin أو Hunyuan3D أو ملفات محلية) إلى Tripo لاستخدامها في عقد ما بعد المعالجة: الملمس، الهيكل العظمي، التحويل. يُنصح بتنسيق GLB: تبقى الملمس إذا كانت مضمّنة في الملف فقط بعد الاستيراد. لاحظ أن وضع الملمس على نموذج مستورد يتطلّب ضبط موجّه الملمس أولًا."
+    },
+    "GeminiVideoOmni": {
+        "title": "Gemini Omni (فيديو) من Google",
+        "inputs": {
+            "image_1": "صورة_1",
+            "video_1": "فيديو_1"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "model_prompt": "موجّه النموذج",
+            "temperature": "الحرارة",
+            "seed": "البذرة",
+            "generate_after_control": "التحكم بعد التوليد"
+        },
+        "outputs": {},
+        "description": "يولّد فيديو مع صوت من موجّه نصي باستخدام نموذج Gemini Omni Flash من Google. يمكنك اختيارًا تقديم صور أو فيديوهات مرجعية لتوجيه أو تحرير الناتج. حدّد المدة (3-10 ثوانٍ) ونسبة العرض إلى الارتفاع (16:9 أو 9:16) مباشرة في الموجّه."
+    },
+    "LumaRay32TextToVideoNode": {
+        "title": "Luma Ray 3.2 تحويل نص إلى فيديو",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "duration": "المدة",
+            "seed": "البذرة",
+            "loop": "تكرار"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "generation_id": "معرّف التوليد"
+        },
+        "description": "يولّد فيديو من موجّه نصي باستخدام نموذج Ray3.2 من Luma."
+    },
+    "LumaRay32ImageToVideoNode": {
+        "title": "Luma Ray 3.2 تحويل صورة إلى فيديو",
+        "inputs": {
+            "start_frame": "إطار البداية",
+            "end_frame": "الإطار الختامي",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "resolution": "الدقّة",
+            "loop": "تكرار",
+            "seed": "بذرة عشوائية",
+            "generate_after_control": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "video": "فيديو",
+            "generation_id": "معرّف التوليد"
+        },
+        "description": "يولّد فيديو من إطار بداية و/أو نهاية باستخدام نموذج Ray3.2 من Luma. التوليد المرتبط بالصورة دائمًا 5 ثوانٍ."
+    },
+    "LumaRay32KeyframesToVideoNode": {
+        "title": "Luma Ray 3.2 تحويل الإطارات الرئيسية إلى فيديو",
+        "inputs": {
+            "keyframes": "الإطار الرئيسي",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "resolution": "الدقّة",
+            "duration": "المدة",
+            "seed": "البذرة",
+            "generate_after_control": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "generation_id": "معرّف التوليد"
+        },
+        "description": "يحوّل الإطارات الرئيسية إلى فيديو"
+    },
+    "LumaRay32VideoEditNode": {
+        "title": "Luma Ray 3.2 تحرير الفيديو",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "resolution": "الدقّة",
+            "strength": "القوة",
+            "seed": "البذرة",
+            "generate_after_control": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "generation_id": "معرّف التوليد"
+        },
+        "description": "يعيد عرض فيديو قائم وفق موجّه جديد (إعادة التصميم، إعادة الإضاءة، إضافة أو إزالة عناصر) مع الحفاظ على الحركة الأصلية باستخدام Luma Ray 3.2. يصل فيديو المصدر حتى 18 ثانية؛ ويحافظ الفيديو المحرَّر على طول المصدر."
+    },
+    "LumaRay32VideoReframeNode": {
+        "title": "Luma Ray 3.2 إعادة ضبط الفيديو",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "strength": "القوة",
+            "seed": "البذرة",
+            "generate_after_control": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "generation_id": "معرّف التوليد"
+        },
+        "description": "يغيّر نسبة العرض إلى الارتفاع لفيديو قائم لملء مناطق اللوحة المكشوفة حديثًا باستخدام Luma Ray 3.2. يصل فيديو المصدر حتى 30 ثانية. يُحتسَب الرسم لكل ثانية من الخرج."
+    },
+    "LumaRay32ExtendVideoNode": {
+        "title": "Luma Ray 3.2 تمديد الفيديو",
+        "inputs": {},
+        "widgets": {
+            "source_generation_id": "معرّف التوليد المصدر",
+            "direction": "الاتجاه",
+            "loop": "تكرار",
+            "prompt": "الموجّه",
+            "resolution": "الدقّة",
+            "seed": "البذرة",
+            "generate_after_control": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "VIDEO": "فيديو",
+            "generation_id": "معرّف التوليد"
+        },
+        "description": "يمدّد توليد Ray3.2 السابق للأمام (يستمر بعده) أو للخلف (يقدّم قبله). وصِل خرج معرّف التوليد المصدر من عقدة Luma Ray 3.2 السابقة. التمديد دائمًا 5 ثوانٍ."
+    },
+    "HeyGenTalkingPhotoNode": {
+        "title": "HeyGen صورة تتحدث",
+        "inputs": {
+            "image": "صورة",
+            "speech_source": "مصدر الكلام",
+            "speech_text": "نص الكلام"
+        },
+        "widgets": {
+            "speech_source": "مصدر الكلام",
+            "voice": "كلام",
+            "custom_voice_id": "معرّف صوت مخصّص",
+            "voice_speed": "سرعة الكلام",
+            "resolution": "الدقّة",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "expressiveness": "التعبير",
+            "seed": "البذرة",
+            "speech_text": "نص الكلام"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "يحرّك أي صورة شخص إلى فيديو حوار بمزامنة شفاه (HeyGen Avatar IV). يمكن القيادة بنص نصّي أو صوت مخصّص."
+    },
+    "HeyGenAvatarVideoNode": {
+        "title": "HeyGen فيديو صورة رمزية متحرّك",
+        "inputs": {},
+        "widgets": {
+            "engine": "المحرك",
+            "avatar": "الصورة الرمزية",
+            "speech source": "مصدر الكلام",
+            "voice": "كلام",
+            "custom_voice_id": "معرّف صوت مخصّص",
+            "voice_speed": "سرعة الكلام",
+            "custom_avatar_id": "معرّف صورة رمزية مخصّص",
+            "resolution": "الدقّة",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "background_color": "لون الخلفية",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "يولّد فيديو مقدّم متحدث من صور HeyGen الرمزية. يتضمّن أشهر الصور الرمزية العامة لدى HeyGen؛ يمكن توفير أي معرّف مظهر كإعداد تجاوز."
+    },
+    "HeyGenCreateAvatarNode": {
+        "title": "HeyGen إنشاء صورة رمزية",
+        "inputs": {
+            "ref_image_1": "صورة مرجعية1"
+        },
+        "widgets": {
+            "source": "ملف المصدر"
+        },
+        "outputs": {
+            "avatar_id": "معرّف الصورة الرمزية",
+            "preview": "صورة معاينة"
+        },
+        "description": "لإنشاء صورة رمزية اعتمادًا على صورة المصدر والموجّه"
+    },
+    "HeyGenVideoTranslateNode": {
+        "title": "HeyGen ترجمة الفيديو",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "output_language": "لغة الخرج",
+            "mode": "الوضع",
+            "translate_audio_only": "ترجمة الصوت فقط",
+            "speaker_count": "عدد المتحدثين",
+            "seed": "بذرة عشوائية"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "عقدة HeyGen لترجمة الفيديو"
+    },
+    "MinimaxHailuo03TextToVideoNode": {
+        "title": "MiniMax Hailuo H3 تحويل نص إلى فيديو",
+        "inputs": {},
+        "widgets": {
+            "model": "النموذج",
+            "model_prompt": "موجّه النموذج",
+            "resolution": "الدقّة",
+            "ratio": "النسبة",
+            "seed": "البذرة",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {},
+        "description": "يولّد فيديو من موجّه نصي باستخدام نموذج MiniMax H3."
+    },
+    "MinimaxHailuo03FirstLastFrameNode": {
+        "title": "MiniMax Hailuo H3 تحويل الإطارَين الأول والأخير إلى فيديو",
+        "inputs": {
+            "first_frame": "الإطار الأول",
+            "last_frame": "الإطار الأخير"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "model_prompt": "موجّه النموذج",
+            "resolution": "الدقّة",
+            "duration": "المدة",
+            "seed": "بذرة عشوائية",
+            "generate_control": "التحكم بالتوليد",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "يولّد فيديو من الإطارَين الأول والأخير"
+    },
+    "MinimaxHailuo03ReferenceNode": {
+        "title": "MiniMax Hailuo H3 توليد فيديو من مرجع",
+        "inputs": {
+            "image_1": "صورة1",
+            "video_1": "فيديو1",
+            "audio_1": "صوت1"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "prompt": "الموجّه",
+            "resolution": "الدقّة",
+            "ratio": "النسبة",
+            "seed": "بذرة عشوائية",
+            "watermark": "علامة مائية"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "يولّد فيديو جديدًا مستخدمًا الصور والفيديو والصوت كمراجع عبر نموذج MiniMax H3."
+    },
+    "SyncLipSyncNode": {
+        "title": "sync.so مزامنة الشفاه",
+        "inputs": {
+            "video": "فيديو",
+            "audio": "الصوت"
+        },
+        "widgets": {
+            "seed": "بذرة عشوائية",
+            "generate_after_control": "التحكم بعد التوليد",
+            "model": "النموذج",
+            "sync_mode": "وضع المزامنة",
+            "speaker_selection": "اختيار المتحدث",
+            "speaker_frame": "إطار المتحدث",
+            "speaker_x": "الإحداثي X للمتحدث",
+            "speaker_y": "الإحداثي Y للمتحدث"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "يزامن الصوت مع حركة الشفاه في الفيديو"
+    },
+    "SyncTalkingImageNode": {
+        "title": "sync.so صورة متحدّثة",
+        "inputs": {
+            "image": "صورة",
+            "audio": "الصوت"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "seed": "البذرة",
+            "generate_after_control": "التحكم بعد التوليد",
+            "model": "النموذج",
+            "speaker_selection": "اختيار المتحدث",
+            "speaker_x": "الإحداثي X للمتحدث",
+            "speaker_y": "الإحداثي Y للمتحدث",
+            "auto_downscale": "خفض عيّنة تلقائي"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "يجمع الصورة والصوت لتوليد صورة متحدّثة"
+    },
+    "IdeogramPImage": {
+        "title": "صورة Ideogram P",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "quality": "الجودة",
+            "resolution": "الدقّة",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "prompt_upsampling": "رفع عيّنة الموجّه",
+            "seed": "البذرة",
+            "generate_after_control": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "final_prompt": "الموجّه النهائي"
+        },
+        "description": "عقدة توليد الصور"
+    },
+    "ByteDanceSeedAudio": {
+        "title": "صوت Seed من بايت دانس 1.0",
+        "inputs": {},
+        "widgets": {
+            "text_prompt": "موجّه نصي",
+            "reference_mode": "وضع المرجع",
+            "sample_rate": "معدّل العيّنة",
+            "speech_rate": "سرعة الكلام",
+            "loudness_rate": "الجهر",
+            "pitch_rate": "حِدّة الصوت",
+            "seed": "البذرة",
+            "model": "النموذج",
+            "generate_after_control": "التحكم بعد التوليد"
+        },
+        "outputs": {
+            "AUDIO": "فيديو"
+        },
+        "description": "عقدة صوت Seed من بايت دانس 1.0"
+    },
+    "HeyGenTextToSpeechNode": {
+        "title": "HeyGen تحويل نص إلى كلام",
+        "inputs": {},
+        "widgets": {
+            "text": "نص",
+            "voice": "كلام",
+            "custom_voice_id": "معرّف صوت مخصّص",
+            "speed": "سرعة الكلام",
+            "ssml": "وسوم تحكم SSML",
+            "seed": "البذرة",
+            "generate_after_control": "التحكم بعد التوليد"
+        },
+        "outputs": {},
+        "description": "عقدة تحويل النص إلى كلام"
+    },
+    "ComfyCloudMiniMaxH3TextToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3 تحويل نص إلى فيديو",
+        "inputs": {
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "seed": "بذرة عشوائية",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "duration_seconds": "المدة (ثوانٍ)"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "مجموعة عقد Comfy Cloud قيد التحديث المستمر: قد تُضاف خيارات أو تُحذف، وقد يُوقَف بعض سير العمل. يولّد فيديو مع موسيقى مطابقة من موجّه نصي باستخدام MiniMax H3. الصور والصوت من نفس مسار المعالجة، لا دبلجة لاحقة.  \n يعمل على وحدات معالجة رسومات Comfy Cloud، ويُحتسَب الرسم حسب مدة التشغيل بـ 0.001295 دولار (0.27 رصيد) لكل ثانية GPU.  \n الدفع بالأرصدة، دون اشتراك في خدمة سحابية."
+    },
+    "ComfyCloudMiniMaxH3ImageToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3 تحويل صورة إلى فيديو",
+        "inputs": {
+            "first_frame": "الإطار الأول",
+            "prompt": "الموجّه"
+        },
+        "widgets": {
+            "seed": "بذرة عشوائية",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "duration_seconds": "المدة"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "مجموعة عقد Comfy Cloud قيد التحديث المستمر: قد تُضاف خيارات أو تُحذف، وقد يُوقَف بعض سير العمل. يولّد فيديو مع موسيقى مطابقة من موجّه نصي باستخدام MiniMax H3. الصور والصوت من نفس مسار المعالجة، لا دبلجة لاحقة.  \n يعمل على وحدات معالجة رسومات Comfy Cloud، ويُحتسَب الرسم حسب مدة التشغيل بـ 0.001295 دولار (0.27 رصيد) لكل ثانية GPU.  \n الدفع بالأرصدة، دون اشتراك في خدمة سحابية."
+    },
+    "ComfyCloudMiniMaxH3FirstLastFrameToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3 تحويل الإطارَين الأول والأخير إلى فيديو",
+        "inputs": {
+            "first_frame": "الإطار الأول",
+            "last_frame": "الإطار الأخير"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "seed": "بذرة عشوائية",
+            "aspect_ratio": "نسبة العرض إلى الارتفاع",
+            "resolution": "الدقّة",
+            "duration_seconds": "المدة (ثوانٍ)"
+        },
+        "outputs": {
+            "VIDEO": "فيديو"
+        },
+        "description": "مجموعة عقد Comfy Cloud قيد التحديث المستمر: قد تُضاف خيارات أو تُحذف، وقد يُوقَف بعض سير العمل. يولّد فيديو مع موسيقى مطابقة من موجّه نصي باستخدام MiniMax H3. الصور والصوت من نفس مسار المعالجة، لا دبلجة لاحقة.  \n يعمل على وحدات معالجة رسومات Comfy Cloud، ويُحتسَب الرسم حسب مدة التشغيل بـ 0.001295 دولار (0.27 رصيد) لكل ثانية GPU.  \n الدفع بالأرصدة، دون اشتراك في خدمة سحابية."
+    },
+    "TripoConversionNode": {
+        "title": "تحويل نموذج Tripo",
+        "inputs": {
+            "original model task id": "معرّف مهمة النموذج الأصلي",
+            "original_model_task_id": "معرّف مهمة النموذج الأصلي"
+        },
+        "widgets": {
+            "format": "التنسيق",
+            "face_limittexture_size": "حدّ حجم ملمس الأوجه",
+            "face_limit": "حدّ الأوجه",
+            "texture_size": "حجم الملمس",
+            "texture_format": "تنسيق الملمس",
+            "quad": "شبك رباعي"
+        },
+        "outputs": {
+            "model_file": "ملف النموذج",
+            "model task_id": "معرّف مهمة النموذج",
+            "model_task_id": "معرّف مهمة النموذج"
+        }
+    }
+}

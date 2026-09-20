@@ -1,0 +1,551 @@
+{
+    "Context Big (rgthree)": {
+        "title": "السياق (كبير)",
+        "inputs": {
+            "base_ctx": "السياق",
+            "model": "النموذج",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "الشرط الإيجابي",
+            "negative": "الشرط السلبي",
+            "latent": "Latent",
+            "images": "الصور",
+            "seed": "البذرة",
+            "steps": "الخطوات",
+            "step_refiner": "خطوات Refiner",
+            "cfg": "CFG",
+            "ckpt_name": "اسم النموذج",
+            "sampler": "العيّان",
+            "scheduler": "الجدول",
+            "clip_width": "عرض CLIP",
+            "clip_height": "ارتفاع CLIP",
+            "text_pos_g": "النص الإيجابي G",
+            "text_pos_l": "النص الإيجابي L",
+            "text_neg_g": "النص السلبي G",
+            "text_neg_l": "النص السلبي L",
+            "mask": "القناع",
+            "control_net": "ControlNet"
+        },
+        "outputs": {
+            "CONTEXT": "السياق",
+            "MODEL": "النموذج",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "الشرط الإيجابي",
+            "NEGATIVE": "الشرط السلبي",
+            "LATENT": "Latent",
+            "IMAGE": "الصور",
+            "SEED": "البذرة",
+            "STEPS": "الخطوات",
+            "STEP_REFINER": "خطوات Refiner",
+            "CFG": "CFG",
+            "CKPT_NAME": "اسم النموذج",
+            "SAMPLER": "العيّان",
+            "SCHEDULER": "الجدول",
+            "CLIP_WIDTH": "عرض CLIP",
+            "CLIP_HEIGHT": "ارتفاع CLIP",
+            "TEXT_POS_G": "النص الإيجابي G",
+            "TEXT_POS_L": "النص الإيجابي L",
+            "TEXT_NEG_G": "النص السلبي G",
+            "TEXT_NEG_L": "النص السلبي L",
+            "MASK": "القناع",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+    "Context (rgthree)": {
+        "title": "السياق",
+        "inputs": {
+            "base_ctx": "السياق",
+            "model": "النموذج",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "الشرط الإيجابي",
+            "negative": "الشرط السلبي",
+            "latent": "Latent",
+            "images": "الصور",
+            "seed": "البذرة"
+        },
+        "outputs": {
+            "CONTEXT": "السياق",
+            "MODEL": "النموذج",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "الشرط الإيجابي",
+            "NEGATIVE": "الشرط السلبي",
+            "LATENT": "Latent",
+            "IMAGE": "الصور",
+            "SEED": "البذرة"
+        }
+    },
+    "Context Switch (rgthree)": {
+        "title": "تبديل السياق",
+        "inputs": {
+            "ctx_01": "السياق_01",
+            "ctx_02": "السياق_02",
+            "ctx_03": "السياق_03",
+            "ctx_04": "السياق_04",
+            "ctx_05": "السياق_05"
+        },
+        "outputs": {
+            "CONTEXT": "السياق",
+            "MODEL": "النموذج",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "الشرط الإيجابي",
+            "NEGATIVE": "الشرط السلبي",
+            "LATENT": "Latent",
+            "IMAGE": "الصور",
+            "SEED": "البذرة"
+        }
+    },
+    "Context Switch Big (rgthree)": {
+        "title": "تبديل السياق (كبير)",
+        "inputs": {
+            "ctx_01": "السياق_01",
+            "ctx_02": "السياق_02",
+            "ctx_03": "السياق_03",
+            "ctx_04": "السياق_04",
+            "ctx_05": "السياق_05"
+        },
+        "outputs": {
+            "CONTEXT": "السياق",
+            "MODEL": "النموذج",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "الشرط الإيجابي",
+            "NEGATIVE": "الشرط السلبي",
+            "LATENT": "Latent",
+            "IMAGE": "الصور",
+            "STEPS": "الخطوات",
+            "SEED": "البذرة",
+            "STEP_REFINER": "خطوات Refiner",
+            "CFG": "CFG",
+            "CKPT_NAME": "اسم النموذج",
+            "SAMPLER": "العيّان",
+            "SCHEDULER": "الجدول",
+            "CLIP_WIDTH": "عرض CLIP",
+            "CLIP_HEIGHT": "ارتفاع CLIP",
+            "TEXT_POS_G": "النص الإيجابي G",
+            "TEXT_POS_L": "النص الإيجابي L",
+            "TEXT_NEG_G": "النص السلبي G",
+            "TEXT_NEG_L": "النص السلبي L",
+            "MASK": "القناع",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+
+
+
+    "Display Int (rgthree)": {
+        "title": "عرض عدد صحيح",
+        "widgets": {
+            "input": "المدخل"
+        }
+    },
+    "Display Any (rgthree)": {
+        "title": "عرض أي شيء",
+        "inputs": {
+            "source": "المدخل"
+        }
+    },
+    
+
+    "Lora Loader Stack (rgthree)": {
+        "title": "مكدّس محمّلات LoRA",
+        "inputs": {
+            "model": "النموذج",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "lora_01": "LoRA_01",
+            "lora_02": "LoRA_02",
+            "lora_03": "LoRA_03",
+            "lora_04": "LoRA_04",
+            "strength_01": "القوة_01",
+            "strength_02": "القوة_02",
+            "strength_03": "القوة_03",
+            "strength_04": "القوة_04"
+        },
+        "outputs": {
+            "MODEL": "النموذج",
+            "CLIP": "CLIP"
+        }
+    },
+    "Seed (rgthree)": {
+        "title": "البذرة العشوائية",
+        "widgets": {
+            "🎲 Randomize Each Time": "🎲تغيير عشوائي كل مرة",
+            "🎲 New Fixed Random": "🎲ثابت عشوائي جديد",
+            "♻️ (Use Last Queued Seed)": "♻️استخدام آخر بذرة في القائمة",
+            "seed": "البذرة"
+        },
+        "outputs": {
+            "SEED": "البذرة"
+        }
+    },
+    "Image Inset Crop (rgthree)": {
+        "title": "اقتصاص داخلي للصورة",
+        "inputs": {
+            "image": "الصورة"
+        },
+        "widgets": {
+            "measurement": "الوضع",
+            "bottom": "أسفل",
+            "top": "أعلى",
+            "left": "يسار",
+            "right": "يمين"
+        },
+        "outputs": {
+            "IMAGE": "الصورة"
+        }
+    },
+    "Power Prompt (rgthree)": {
+        "title": "الموجّه",
+        "inputs": {
+            "opt_model": "النموذج",
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "insert_lora": "إدراج LoRA",
+            "insert_embedding": "إدراج التضمين",
+            "insert_saved": "إدراج مخصص"
+        },
+        "outputs": {
+            "CONDITIONING": "الشرط",
+            "MODEL": "النموذج",
+            "CLIP": "CLIP",
+            "TEXT": "النص"
+        }
+    },
+    "Power Prompt - Simple (rgthree)": {
+        "title": "الموجّه (بسيط)",
+        "inputs": {
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "insert_embedding": "إدراج التضمين",
+            "insert_saved": "إدراج مخصص"
+        },
+        "outputs": {
+            "CONDITIONING": "الشرط",
+            "TEXT": "النص"
+        }
+    },
+    "KSampler Config (rgthree)": {
+        "title": "إعدادات الكسّام K",
+        "widgets": {
+            "steps_total": "إجمالي الخطوات",
+            "refiner_step": "خطوات Refiner",
+            "cfg": "CFG",
+            "sampler": "العيّان",
+            "sampler_name": "اسم العيّان",
+            "scheduler": "الجدول"
+        },
+        "outputs": {
+            "STEPS": "الخطوات",
+            "REFINER_STEP": "خطوات Refiner",
+            "CFG": "CFG",
+            "SAMPLER": "العيّان",
+            "SCHEDULER": "الجدول"
+        }
+    },
+    "SDXL Empty Latent Image (rgthree)": {
+        "title": "صورة Latent فارغة SDXL",
+        "widgets": {
+            "dimensions": "الأبعاد",
+            "clip_scale": "مقياس CLIP",
+            "batch_size": "حجم الدفعة"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "CLIP_WIDTH": "عرض CLIP",
+            "CLIP_HEIGHT": "ارتفاع CLIP"
+        }
+    },
+    "SDXL Power Prompt - Positive (rgthree)": {
+        "title": "موجّه SDXL (إيجابي)",
+        "inputs": {
+            "opt_model": "النموذج",
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt_g": "الموجّه G",
+            "prompt_l": "الموجّه L",
+            "opt_clip_width": "عرض CLIP",
+            "opt_clip_height": "ارتفاع CLIP",
+            "insert_lora": "إدراج LoRA",
+            "insert_embedding": "إدراج التضمين",
+            "insert_saved": "إدراج مخصص",
+            "target_width": "العرض المستهدف",
+            "target_height": "الارتفاع المستهدف",
+            "crop_width": "عرض الاقتصاص",
+            "crop_height": "ارتفاع الاقتصاص"
+        },
+        "outputs": {
+            "CONDITIONING": "الشرط",
+            "MODEL": "النموذج",
+            "CLIP": "CLIP",
+            "TEXT_G": "النص G",
+            "TEXT_L": "النص L"
+        }
+    },
+    "SDXL Power Prompt - Simple / Negative (rgthree)": {
+        "title": "موجّه SDXL (بسيط/سلبي)",
+        "inputs": {
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt_g": "الموجّه G",
+            "prompt_l": "الموجّه L",
+            "opt_clip_width": "عرض CLIP",
+            "opt_clip_height": "ارتفاع CLIP",
+            "insert_lora": "إدراج LoRA",
+            "insert_embedding": "إدراج التضمين",
+            "insert_saved": "إدراج مخصص",
+            "target_width": "العرض المستهدف",
+            "target_height": "الارتفاع المستهدف",
+            "crop_width": "عرض الاقتصاص",
+            "crop_height": "ارتفاع الاقتصاص"
+        },
+        "outputs": {
+            "CONDITIONING": "الشرط",
+            "TEXT_G": "النص G",
+            "TEXT_L": "النص L"
+        }
+    },
+
+
+
+    "Any Switch (rgthree)": {
+        "title": "تبديل أي شيء",
+        "inputs": {
+            "any_01": "المدخل_01",
+            "any_02": "المدخل_02",
+            "any_03": "المدخل_03",
+            "any_04": "المدخل_04",
+            "any_05": "المدخل_05"
+        },
+        "outputs": {
+            "*": "الخرج"
+        }
+    },
+    "Context Merge (rgthree)": {
+        "title": "دمج السياق",
+        "inputs": {
+            "ctx_01": "السياق_01",
+            "ctx_02": "السياق_02",
+            "ctx_03": "السياق_03",
+            "ctx_04": "السياق_04",
+            "ctx_05": "السياق_05"
+        },
+        "outputs": {
+            "CONTEXT": "السياق",
+            "MODEL": "النموذج",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "الشرط الإيجابي",
+            "NEGATIVE": "الشرط السلبي",
+            "LATENT": "Latent",
+            "IMAGE": "الصور",
+            "STEPS": "الخطوات"
+        }
+    },
+    "Context Merge Big (rgthree)": {
+        "title": "دمج السياق (كبير)",
+        "inputs": {
+            "ctx_01": "السياق_01",
+            "ctx_02": "السياق_02",
+            "ctx_03": "السياق_03",
+            "ctx_04": "السياق_04",
+            "ctx_05": "السياق_05"
+        },
+        "outputs": {
+            "CONTEXT": "السياق",
+            "MODEL": "النموذج",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "الشرط الإيجابي",
+            "NEGATIVE": "الشرط السلبي",
+            "LATENT": "Latent",
+            "IMAGE": "الصور",
+            "STEPS": "الخطوات",
+            "SEED": "البذرة",
+            "STEP_REFINER": "خطوات Refiner",
+            "CFG": "CFG",
+            "CKPT_NAME": "اسم النموذج",
+            "SAMPLER": "العيّان",
+            "SCHEDULER": "الجدول",
+            "CLIP_WIDTH": "عرض CLIP",
+            "CLIP_HEIGHT": "ارتفاع CLIP",
+            "TEXT_POS_G": "النص الإيجابي G",
+            "TEXT_POS_L": "النص الإيجابي L",
+            "TEXT_NEG_G": "النص السلبي G",
+            "TEXT_NEG_L": "النص السلبي L",
+            "MASK": "القناع",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+    "Reroute (rgthree)": {
+        "title": "إعادة التوجيه"
+    },
+    "Node Collector (rgthree)": {
+        "title": "جامعة العقد"
+    },
+    "Fast Muter (rgthree)": {
+        "title": "كتم العقد",
+        "outputs": {
+            "OPT_CONNECTION": "اتصال اختياري"
+        }
+    },
+    "Fast Bypasser (rgthree)": {
+        "title": "تجاوز العقد",
+        "outputs": {
+            "OPT_CONNECTION": "اتصال اختياري"
+        }
+    },
+    "Mute / Bypass Repeater (rgthree)": {
+        "title": "كتم/تجاوز العقد (مكرر)",
+        "outputs": {
+            "OPT_CONNECTION": "اتصال اختياري"
+        }
+    },
+    "Mute / Bypass Relay (rgthree)": {
+        "title": "كتم/تجاوز العقد (مرسل)",
+        "outputs": {
+            "OPT_CONNECTION": "اتصال اختياري"
+        }
+    },
+    "Fast Group Bypasser (rgthree)": {
+        "title": "تجاوز عدة مجموعات",
+        "outputs": {
+            "OPT_CONNECTION": "اتصال اختياري"
+        }
+    },
+    "Fast Groups Bypasser (rgthree)": {
+        "title": "تجاوز عدة مجموعات",
+        "outputs": {
+            "OPT_CONNECTION": "اتصال اختياري"
+        }
+    },
+    "Fast Actions Button (rgthree)": {
+        "title": "زر الإجراءات",
+        "widgets": {
+            "🎬 Action!": "🎬ابدأ!"
+        }
+    },
+    "Bookmark (rgthree)": {
+        "title": "🔖علامة مرجعية",
+        "widgets": {
+            "shortcut_key": "مفتاح الاختصار",
+            "zoom": "التكبير"
+        }
+    },
+    "Random Unmuter (rgthree)": {
+        "title": "إلغاء الكتم العشوائي"
+    },
+    "Fast Groups Muter (rgthree)": {
+        "title": "كتم عدة مجموعات",
+        "outputs": {
+            "OPT_CONNECTION": "اتصال اختياري"
+        }
+    },
+    "Label (rgthree)": {
+        "title": "تسمية"
+    },
+    "Image Comparer (rgthree)": {
+        "title": "مقارنة الصور",
+        "inputs": {
+            "image_a": "الصورة_A",
+            "image_b": "الصورة_B"
+        }
+    },
+    "Node Combiner (rgthree)": {
+        "title": "جامع العقد",
+        "inputs": {
+            "image_a": "الصورة_A",
+            "image_b": "الصورة_B"
+        },
+        "outputs": {
+            "Output": "الخرج",
+            "clip": "CLIP"
+        }
+    },
+    "Power Primitive (rgthree)": {
+        "title": "أداة القيم متعددة الوظائف",
+        "inputs": {},
+        "widgets": {
+            "value": "القيمة",
+            "type": "النوع"
+        },
+        "outputs": {
+            "INT": "عدد صحيح",
+            "FLOAT": "عدد عشري",
+            "BOOLEAN": "منطقي",
+            "STRING": "نص"
+        }
+    },
+    "Power Puter (rgthree)": {
+        "title": "الحاسب المتقدم",
+        "inputs": {
+            "outputs": "الخرج",
+            "STRING": "نص"
+        },
+        "widgets": {
+            "outputs": "الخرج",
+            "STRING": "نص"
+        },
+        "outputs": {
+            "INT": "عدد صحيح",
+            "FLOAT": "عدد عشري",
+            "BOOLEAN": "منطقي",
+            "STRING": "نص"
+        }
+    },
+    "Image or Latent Size (rgthree)": {
+        "title": "حجم الصورة أو Latent",
+        "inputs": {
+            "input": "المدخل"
+        },
+        "widgets": {
+            "STRING": "نص"
+        },
+        "outputs": {
+            "WIDTH": "العرض",
+            "HEIGHT": "الارتفاع"
+        }
+    },
+    "Image Resize (rgthree)": {
+        "title": "تغيير حجم الصورة",
+        "inputs": {
+            "image": "الصورة"
+        },
+        "widgets": {
+            "measurement": "الوضع",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "fit": "ملاءمة",
+            "method": "الطريقة"
+        },
+        "outputs": {
+            "IMAGE": "الصورة",
+            "WIDTH": "العرض",
+            "HEIGHT": "الارتفاع"
+        }
+    },
+    "Power Lora Loader (rgthree)": {
+        "title": "محمّل LoRA المتقدم",
+        "inputs": {
+            "model": "النموذج",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "➕ Add Lora": "➕إضافة LoRA"
+        },
+        "outputs": {
+            "MODEL": "النموذج",
+            "clip": "CLIP"
+        }
+    }
+}

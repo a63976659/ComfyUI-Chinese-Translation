@@ -1,0 +1,4810 @@
+{
+    "ClaudeNode": {
+        "title": "Anthropic Claude",
+        "inputs": {
+            "source": "來源路徑",
+            "image_1": "圖像_1"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "model": "模型",
+            "max_tokens": "最大詞元數",
+            "temperature": "溫度",
+            "reasoning_effort": "推理動力",
+            "seed": "種子"
+        },
+        "outputs": {
+            "String": "字串"
+        },
+        "description": "使用Anthropic的Claude模型產生文字回應。提供一個文字提示，並可選地附上一張或多張圖像以建立多模態上下文。"
+    },
+    "ByteDanceSeedNode": {
+        "title": "位元組跳動 Seedance2.0",
+        "inputs": {
+            "video_1": "影片_1",
+            "image_1": "圖像_1"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "model": "模型",
+            "temperature": "溫度",
+            "seed": "種子"
+        },
+        "outputs": {
+            "String": "字串"
+        },
+        "description": "使用ByteDance的Seed2.0模型產生文字回應。提供一個文字提示，並可選地附上一張或多張圖片或影片以增強多模態上下文。"
+    },
+    "ByteDance2ReferenceNodeV2": {
+        "title": "位元組跳動 Seedance 2.5 影片參考",
+        "inputs": {
+            "image_1": "影像1",
+            "image_2": "影像2",
+            "image_3": "影像3",
+            "image_4": "影像4",
+            "image_5": "影像5",
+            "image_6": "影像6",
+            "image_7": "影像7",
+            "image_8": "影像8",
+            "image_9": "影像9",
+            "audio_1": "音訊1",
+            "audio_2": "音訊2",
+            "audio_3": "音訊3",
+            "video_1": "影片1",
+            "video_2": "影片2",
+            "video_3": "影片3",
+            "asset_1": "資產1",
+            "asset_2": "資產2",
+            "asset_3": "資產3"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "resolution": "解析度",
+            "ratio": "寬高比",
+            "generate_audio": "產生音訊",
+            "duration": "時長",
+            "task_type": "任務類型",
+            "auto_downscale": "自動縮小",
+            "auto_upscale": "自動放大",
+            "output_format": "輸出格式",
+            "seed": "種子",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "String": "字串"
+        },
+        "description": "使用Seedance2.5或2.0生成、編輯或擴展視頻，支援參考圖像、視頻和音頻。支援多模態參考、影片編輯和影片擴充。"
+    },
+    "ByteDanceVideoEnhanceNode": {
+        "title": "位元組跳動 vCube 影片增強",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "tool_version": "工具版本",
+            "scene": "場景",
+            "enhance_style": "增強風格",
+            "resolution": "解析度",
+            "fps": "幀率",
+            "bitrate_level": "碼率等級"
+        },
+        "outputs": {},
+        "description": "使用位元組跳動vCube對影片進行放大與修復：支援最高8K的超分辨率，壓縮、去除偽影與雜訊，提升色彩與清晰度，並可選幀插值。"
+    },
+    "GeminiNode": {
+        "title": "Google Gemini",
+        "inputs": {
+            "images": "影像組",
+            "audio": "音訊",
+            "video": "影片",
+            "files": "Gemini輸入文件",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "ratio": "寬高比",
+            "duration": "時長",
+            "model": "模型"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "STRING": "字串"
+        }
+    },
+    "GeminiNodeV2": {
+        "title": "Google GeminiV2",
+        "inputs": {
+            "image_1": "影像1",
+            "image_2": "影像2",
+            "image_3": "影像3",
+            "image_4": "影像4",
+            "image_5": "影像5",
+            "image_6": "影像6",
+            "image_7": "影像7",
+            "image_8": "影像8",
+            "image_9": "影像9",
+            "video_1": "影片1",
+            "audio_1": "音訊1",
+            "files": "Gemini輸入文件"
+        },
+        "widgets": {
+            "model": "模型",
+            "thinking_level": "思維等級",
+            "temperature": "溫度",
+            "max_output_tokens": "最大輸出詞元數",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "duration": "時長"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "STRING": "字串"
+        }
+    },
+    "GeminiVideoOmniV2": {
+        "title": "谷歌影片 Gemini Omni",
+        "inputs": {
+            "image_1": "影像1",
+            "image_2": "影像2",
+            "image_3": "影像3",
+            "image_4": "影像4",
+            "image_5": "影像5",
+            "image_6": "影像6",
+            "image_7": "影像7",
+            "image_8": "影像8",
+            "image_9": "影像9",
+            "video_1": "影片1",
+            "video_2": "影片2",
+            "video_3": "影片3"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "aspect_ratio": "寬高比",
+            "duration": "時長",
+            "task_type": "任務類型",
+            "seed": "種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "STRING": "字串"
+        }
+    },
+    "GeminiInputFiles": {
+        "title": "谷歌 Gemini輸入文件",
+        "inputs": {
+            "GEMINI_INPUT_FILES": "Gemini輸入文件",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "file": "文件",
+            "model": "模型"
+        },
+        "outputs": {
+            "GEMINI_INPUT_FILES": "Gemini輸入文件",
+            "STRING": "字串"
+        }
+    },
+    "OpenAIChatNode": {
+        "title": "OpenAI聊天",
+        "inputs": {
+            "images": "影像組",
+            "audio": "音訊",
+            "advanced_options": "進階選項",
+            "files": "OpenAI 輸入文件",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "persist_context": "持久化情境",
+            "duration": "時長",
+            "model": "模型"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "STRING": "字串"
+        }
+    },
+    "OpenAIInputFiles": {
+        "title": "OpenAI聊天輸入文件",
+        "inputs": {
+            "OPENAI_INPUT_FILES": "OpenAI 輸入文件",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "file": "文件",
+            "model": "模型"
+        },
+        "outputs": {
+            "OPENAI_INPUT_FILES": "OpenAI 輸入文件",
+            "STRING": "字串"
+        }
+    },
+    "OpenAIChatConfig": {
+        "title": "OpenAI聊天進階選項",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "truncation": "截斷",
+            "max_output_tokens": "最大輸出詞元數",
+            "quality": "品質",
+            "n": "數量",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "auth_token": "授權詞元數"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "進階選項",
+            "string": "字串"
+        }
+    },
+    "OpenRouterLLMNode": {
+        "title": "OpenRouter大語言模型",
+        "inputs": {
+            "image_1": "影像1",
+            "image_2": "影像2",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "reasoning_effort": "努力推理",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "auth_token": "授權詞元數"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "進階選項",
+            "string": "字串"
+        }
+    },
+    "BeebleSwitchXVideoEdit": {
+        "title": "Beeble SwitchX 影片編輯",
+        "inputs": {
+            "video": "影片",
+            "reference_image": "參考影像"
+        },
+        "widgets": {
+            "prompt": "提示詞詞",
+            "alpha_mode": "Alpha 模式",
+            "max_resolution": "最大解析度",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "video": "影片",
+            "alpha": "Alpha"
+        },
+        "description": "使用BeebleSwitchX编辑一段视频。可在保持原始主體像素和動作不變的同時，對場景中的任何元素（背景、照明、服裝）進行切換。請提供一張參考圖像和/或文字提示，以描述新的視覺效果。最多可使用240個幀數，每幀最大解析度為約2.77MP。"
+    },
+    "BriaRemoveVideoBackground": {
+        "title": "Bria移除視訊背景",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "background_color": "背景顏色",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        }
+    },
+    "BriaVideoGreenScreen": {
+        "title": "Bria 視訊綠幕",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "green_shade": "綠幕顏色",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "使用 Bria 將影片的背景替換為純色摳像螢幕。"
+    },
+    "BriaTransparentVideoBackground": {
+        "title": "Bria 移除視訊背景 (透明)",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "images": "影像",
+            "mask": "遮罩"
+        },
+        "description": "使用Bria從影片中移除背景，並傳回裁剪幀和Alpha蒙版。將兩者連接到合成節點，或將它們輸入保存WEBM以產生透明視訊."
+    },
+    "ByteDanceTextToVideoNode": {
+        "title": "位元組跳動 文生視頻",
+        "inputs": {
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "aspect_ratio": "寬高比",
+            "duration": "時長",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "camera_fixed": "固定鏡頭",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "video": "影片",
+            "VIDEO": "影片"
+        }
+    },
+    "ByteDanceImageToVideoNode": {
+        "title": "位元組跳動 圖生視頻",
+        "inputs": {
+            "image": "影像",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "aspect_ratio": "寬高比",
+            "duration": "時長",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "camera_fixed": "固定鏡頭",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "video": "影片",
+            "VIDEO": "影片"
+        }
+    },
+    "ByteDanceFirstLastFrameNode": {
+        "title": "位元組跳動 首尾幀轉視頻",
+        "inputs": {
+            "first_frame": "首格影像",
+            "last_frame": "尾影畫面影像",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "aspect_ratio": "寬高比",
+            "duration": "時長",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "camera_fixed": "固定鏡頭",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "video": "影片",
+            "VIDEO": "影片"
+        }
+    },
+    "ByteDanceImageReferenceNode": {
+        "title": "位元組跳動 參考影像轉視頻",
+        "inputs": {
+            "images": "影像組",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "aspect_ratio": "寬高比",
+            "duration": "時長",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "camera_fixed": "固定鏡頭",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "video": "影片",
+            "VIDEO": "影片"
+        }
+    },
+    "ByteDance2TextToVideoNode": {
+        "title": "位元組跳動2.0 文生視頻",
+        "inputs": {
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "ratio": "寬高比",
+            "generate_audio": "產生音訊",
+            "duration": "時長",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "camera_fixed": "固定鏡頭",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "video": "影片",
+            "VIDEO": "影片"
+        }
+    },
+    "ByteDance2FirstLastFrameNode": {
+        "title": "位元組跳動2.0 首尾幀轉視頻",
+        "inputs": {
+            "first_frame": "首格影像",
+            "last_frame": "尾影畫面影像",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "ratio": "寬高比",
+            "generate_audio": "產生音訊",
+            "duration": "時長",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "video": "影片",
+            "VIDEO": "影片"
+        }
+    },
+    "ByteDance2ReferenceNode": {
+        "title": "位元組跳動2.0 參考轉視頻",
+        "inputs": {
+            "image_1": "影像1",
+            "image_2": "影像2",
+            "image_3": "影像3",
+            "image_4": "影像4",
+            "image_5": "影像5",
+            "image_6": "影像6",
+            "image_7": "影像7",
+            "image_8": "影像8",
+            "image_9": "影像9",
+            "video_1": "影片1",
+            "video_2": "影片2",
+            "video_3": "影片3",
+            "audio_1": "音訊1",
+            "audio_2": "音訊2",
+            "audio_3": "音訊3",
+            "asset_1": "資產1",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "ratio": "寬高比",
+            "generate_audio": "產生音訊",
+            "duration": "時長",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "camera_fixed": "固定鏡頭",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "video": "影片",
+            "VIDEO": "影片"
+        }
+    },
+    "ByteDanceCreateVideoAsset": {
+        "title": "位元組跳動 創建視訊素材",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "group_id": "組ID"
+        },
+        "outputs": {
+            "asset_id": "資產ID",
+            "group_id": "組ID"
+        },
+        "description": "創建一個Seedance2.0個人影片資產。上傳輸入影片並將其註冊到指定的資產組。\n 如果資產ID為空，則執行真實個人H5認證流程以建立新群組，隨後再新增該資產。"
+    },
+    "GrokVideoNode": {
+        "title": "Grok 影片",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "duration": "時長"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        }
+    },
+    "GrokVideoReferenceNode": {
+        "title": "Grok 參考生視頻",
+        "inputs": {
+            "reference_0": "參考0",
+            "reference_1": "參考1",
+            "reference_2": "參考2",
+            "reference_3": "參考3",
+            "reference_4": "參考4",
+            "reference_5": "參考5",
+            "reference_6": "參考6"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "aspect_ratio": "寬高比",
+            "duration": "時長",
+            "seed": "種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        }
+    },
+    "GrokVideoEditNode": {
+        "title": "Grok 影片編輯",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "duration": "時長"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        }
+    },
+    "GrokVideoExtendNode": {
+        "title": "Grok 影片延長",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "duration": "時長"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        }
+    },
+    "HitPawVideoEnhance": {
+        "title": "HitPaw 影片增強功能",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        }
+    },
+    "KlingCameraControls": {
+        "title": "可靈 相機控制",
+        "inputs": {
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "camera_control_type": "相機控制類型",
+            "horizontal_movement": "水平移動",
+            "vertical_movement": "垂直移動",
+            "pan": "平移",
+            "tilt": "傾斜",
+            "roll": "旋轉",
+            "zoom": "縮放"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "camera_control": "相機控制參數"
+        }
+    },
+    "KlingTextToVideoNode": {
+        "title": "可靈 文生視頻",
+        "inputs": {},
+        "widgets": {
+            "cfg_scale": "CFG比例",
+            "mode": "模式",
+            "aspect_ratio": "寬高比",
+            "task_id": "任務ID",
+            "auth_token": "授權詞元數",
+            "camera_control": "相機控制參數",
+            "model_name": "模型名稱",
+            "duration": "時長"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "KlingImage2VideoNode": {
+        "title": "可靈 圖像轉視頻",
+        "inputs": {
+            "start_frame": "起始畫面",
+            "end_frame": "結束幀",
+            "camera_control": "相機控制參數",
+            "prompt": "提示詞",
+            "negative_prompt": "負面提示詞"
+        },
+        "widgets": {
+            "cfg_scale": "CFG比例",
+            "mode": "模式",
+            "aspect_ratio": "寬高比",
+            "task_id": "任務ID",
+            "auth_token": "授權詞元數",
+            "model_name": "模型名稱",
+            "duration": "時長"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "KlingCameraControlI2VNode": {
+        "title": "可靈 影像轉影片（相機控制）",
+        "inputs": {
+            "start_frame": "起始畫面",
+            "end_frame": "結束幀",
+            "camera_control": "相機控制參數",
+            "prompt": "提示詞",
+            "negative_prompt": "負面提示詞"
+        },
+        "widgets": {
+            "cfg_scale": "CFG比例",
+            "mode": "模式",
+            "aspect_ratio": "寬高比",
+            "task_id": "任務ID",
+            "auth_token": "授權詞元數",
+            "model_name": "模型名稱",
+            "duration": "時長"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "KlingCameraControlT2VNode": {
+        "title": "可靈 文生視訊（攝影機控制）",
+        "inputs": {
+            "camera_control": "相機控制參數",
+            "prompt": "提示詞",
+            "negative_prompt": "負面提示詞"
+        },
+        "widgets": {
+            "cfg_scale": "CFG比例",
+            "mode": "模式",
+            "aspect_ratio": "寬高比",
+            "task_id": "任務ID",
+            "auth_token": "授權詞元數",
+            "model_name": "模型名稱",
+            "duration": "時長"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "KlingStartEndFrameNode": {
+        "title": "可靈 首尾幀生成視頻",
+        "inputs": {
+            "start_frame": "起始畫面",
+            "end_frame": "結束幀",
+            "camera_control": "相機控制參數",
+            "prompt": "提示詞",
+            "negative_prompt": "負面提示詞"
+        },
+        "widgets": {
+            "cfg_scale": "CFG比例",
+            "mode": "模式",
+            "aspect_ratio": "寬高比",
+            "task_id": "任務ID",
+            "auth_token": "授權詞元數",
+            "model_name": "模型名稱",
+            "duration": "時長"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "KlingVideoExtendNode": {
+        "title": "可靈 視訊擴展",
+        "inputs": {
+            "start_frame": "起始畫面",
+            "end_frame": "結束幀",
+            "video_id": "視訊ID",
+            "prompt": "提示詞",
+            "negative_prompt": "負面提示詞"
+        },
+        "widgets": {
+            "cfg_scale": "CFG比例",
+            "mode": "模式",
+            "aspect_ratio": "寬高比",
+            "task_id": "任務ID",
+            "auth_token": "授權詞元數",
+            "model_name": "模型名稱",
+            "duration": "時長"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "KlingLipSyncAudioToVideoNode": {
+        "title": "可靈 音訊驅動視訊口型同步",
+        "inputs": {
+            "audio": "音訊",
+            "text": "文字",
+            "video": "影片"
+        },
+        "widgets": {
+            "voice_language": "語音語言",
+            "voice_speed": "語音速度",
+            "mode": "模式",
+            "task_id": "任務ID",
+            "auth_token": "授權詞元數",
+            "model_name": "模型名稱",
+            "voice_id": "語音ID"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "KlingLipSyncTextToVideoNode": {
+        "title": "可靈 文字驅動口型同步視頻",
+        "inputs": {
+            "audio": "音訊",
+            "text": "文字",
+            "video": "影片"
+        },
+        "widgets": {
+            "voice_language": "語音語言",
+            "voice_speed": "語音速度",
+            "mode": "模式",
+            "task_id": "任務ID",
+            "auth_token": "授權詞元數",
+            "voice": "語音",
+            "voice_id": "語音ID"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "KlingSingleImageVideoEffectNode": {
+        "title": "可靈 單角色影片特效",
+        "inputs": {
+            "image": "影像",
+            "video_id": "視訊ID"
+        },
+        "widgets": {
+            "dual_character": "雙角色",
+            "effect_scene": "效果場景",
+            "mode": "模式",
+            "aspect_ratio": "寬高比",
+            "task_id": "任務ID",
+            "auth_token": "授權詞元數",
+            "model_name": "模型名稱",
+            "duration": "時長"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "KlingDualCharacterVideoEffectNode": {
+        "title": "可靈 雙角色影片特效",
+        "inputs": {
+            "image_1": "影像1",
+            "image_2": "影像2",
+            "video_id": "視訊ID",
+            "image_left": "左側影像",
+            "image_right": "右側影像"
+        },
+        "widgets": {
+            "dual_character": "雙角色",
+            "effect_scene": "效果場景",
+            "mode": "模式",
+            "aspect_ratio": "寬高比",
+            "task_id": "任務ID",
+            "auth_token": "授權詞元數",
+            "model_name": "模型名稱",
+            "duration": "時長"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "KlingOmniProTextToVideoNode": {
+        "title": "可靈 Omni文字轉視訊節點(專業版)",
+        "inputs": {
+            "reference_images": "參考 影像"
+        },
+        "widgets": {
+            "model_name": "模型名稱",
+            "resolution": "解析度",
+            "auth_token": "授權詞元數",
+            "aspect_ratio": "寬高比",
+            "n": "數量"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "string": "字串"
+        }
+    },
+    "KlingOmniProFirstLastFrameNode": {
+        "title": "可靈 Omni首尾幀轉影片(專業版)",
+        "inputs": {
+            "first_frame": "首格影像",
+            "end_frame": "尾影畫面影像",
+            "reference_images": "參考 影像"
+        },
+        "widgets": {
+            "model_name": "模型名稱",
+            "resolution": "解析度",
+            "duration": "持續時間",
+            "aspect_ratio": "寬高比"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "string": "字串"
+        }
+    },
+    "KlingOmniProImageToVideoNode": {
+        "title": "可靈 Omni圖生影片(專業版)",
+        "inputs": {
+            "reference_images": "參考 影像"
+        },
+        "widgets": {
+            "model_name": "模型名稱",
+            "resolution": "解析度",
+            "duration": "持續時間",
+            "aspect_ratio": "寬高比"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "string": "字串"
+        }
+    },
+    "KlingOmniProVideoToVideoNode": {
+        "title": "可靈 Omni視訊轉影片(專業版)",
+        "inputs": {
+            "reference_video": "參考影片",
+            "reference_images": "參考影像"
+        },
+        "widgets": {
+            "model_name": "模型名稱",
+            "keep_original_sound": "使用原始音訊",
+            "duration": "持續時間",
+            "aspect_ratio": "寬高比"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "string": "字串"
+        }
+    },
+    "KlingOmniProEditVideoNode": {
+        "title": "可靈 Omni影片編輯（專業版）",
+        "inputs": {
+            "video": "影片",
+            "reference_images": "參考影像"
+        },
+        "widgets": {
+            "model_name": "模型名稱",
+            "keep_original_sound": "保持原始聲音"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        }
+    },
+    "KlingTextToVideoWithAudio": {
+        "title": "可靈 文字轉視訊（附音訊）",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名稱",
+            "mode": "模式",
+            "aspect_ratio": "寬高比",
+            "duration": "時長",
+            "auth_token": "授權詞元數",
+            "generate_audio": "產生音訊"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "KlingImageToVideoWithAudio": {
+        "title": "可靈 影像轉視訊（附音訊）",
+        "inputs": {
+            "start_frame": "起始畫面"
+        },
+        "widgets": {
+            "model_name": "模型名稱",
+            "mode": "模式",
+            "generate_audio": "產生音訊",
+            "duration": "時長"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "KlingMotionControl": {
+        "title": "可靈 運動控制",
+        "inputs": {
+            "reference_video": "參考影片",
+            "reference_image": "參考影像"
+        },
+        "widgets": {
+            "mode": "模式",
+            "character_orientation": "角色定位",
+            "keep_original_sound": "保持原始聲音"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        }
+    },
+    "KlingAvatarNode": {
+        "title": "可靈 Avatar 2",
+        "inputs": {
+            "image": "影像",
+            "sound_file": "聲音檔案"
+        },
+        "widgets": {
+            "mode": "模式",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        }
+    },
+    "LtxvApiTextToVideo": {
+        "title": "LTXV文字轉視頻",
+        "inputs": {
+            "positive": "正向條件",
+            "negative": "負面條件",
+            "vae": "VAE編碼器",
+            "image": "影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "resolution": "解析度",
+            "duration": "時長(秒)",
+            "fps": "幀速率(fps)",
+            "control_after_generate": "生成後控制",
+            "generate_audio": "產生音訊"
+        },
+        "outputs": {
+            "video": "影片",
+            "VIDEO": "影片"
+        }
+    },
+    "LtxvApiImageToVideo": {
+        "title": "LTXV影像轉視頻",
+        "inputs": {
+            "positive": "正向條件",
+            "negative": "負面條件",
+            "vae": "VAE編碼器",
+            "image": "影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "resolution": "解析度",
+            "duration": "時長(秒)",
+            "fps": "幀速率(fps)",
+            "control_after_generate": "生成後控制",
+            "generate_audio": "產生音訊"
+        },
+        "outputs": {
+            "video": "影片",
+            "VIDEO": "影片"
+        }
+    },
+    "LtxApi25TextToVideo": {
+        "title": "LTX 2.5 文生視頻",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "duration": "時長(秒)",
+            "resolution": "解析度",
+            "fps": "幀速率(fps)",
+            "generate_audio": "產生音訊",
+            "prompt": "提示詞",
+            "seed": "種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        }
+    },
+    "LtxApi25ImageToVideo": {
+        "title": "LTX 2.5 圖生視頻",
+        "inputs": {
+            "last_frame": "上一幀",
+            "image": "影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "duration": "時長(秒)",
+            "resolution": "解析度",
+            "fps": "幀速率(fps)",
+            "generate_audio": "產生音訊",
+            "prompt": "提示詞",
+            "seed": "種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        }
+    },
+    "LtxApi25AudioToVideo": {
+        "title": "LTX 2.5 音頻生視頻",
+        "inputs": {
+            "audio": "音訊",
+            "image": "影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "prompt": "提示詞",
+            "seed": "種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        }
+    },
+    "LumaVideoNode": {
+        "title": "Luma文本轉視頻",
+        "inputs": {
+            "luma_concepts": "Luma概念",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "duration": "時長",
+            "loop": "循環",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "auth_token": "授權詞元數",
+            "weight": "權重"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "luma_concepts": "Luma概念",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "LumaImageToVideoNode": {
+        "title": "Luma圖像轉視頻",
+        "inputs": {
+            "first_image": "第一幀影像",
+            "last_image": "最後一幀影像",
+            "luma_concepts": "Luma概念",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "duration": "時長",
+            "loop": "循環",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "auth_token": "授權詞元數",
+            "weight": "權重"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "luma_concepts": "Luma概念",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "LumaConceptsNode": {
+        "title": "Luma概念",
+        "inputs": {
+            "image": "影像",
+            "prompt": "提示詞",
+            "luma_concepts": "Luma概念"
+        },
+        "widgets": {
+            "image_type": "影像類型",
+            "concept1": "概念1",
+            "concept2": "概念2",
+            "concept3": "概念3",
+            "concept4": "概念4",
+            "auth_token": "授權詞元數",
+            "aspect_ratio": "寬高比",
+            "n": "數量"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "luma_concepts": "Luma概念"
+        }
+    },
+    "MinimaxTextToVideoNode": {
+        "title": "MiniMax文字轉視頻",
+        "inputs": {
+            "image": "影像",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "duration": "時長",
+            "subject": "主體",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "auth_token": "授權詞元數",
+            "weight": "權重"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "luma_concepts": "Luma概念",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "MinimaxImageToVideoNode": {
+        "title": "MiniMax影像轉視頻",
+        "inputs": {
+            "image": "影像",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "duration": "時長",
+            "subject": "主體",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "auth_token": "授權詞元數",
+            "weight": "權重"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "luma_concepts": "Luma概念",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "MinimaxHailuoVideoNode": {
+        "title": "MiniMax海螺視頻",
+        "inputs": {
+            "first_frame_image": "首格影像",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "prompt_optimizer": "提示詞優化",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "duration": "時長",
+            "subject": "主體",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "auth_token": "授權詞元數",
+            "weight": "權重"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "luma_concepts": "Luma概念",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "PixverseTextToVideoNode": {
+        "title": "PixVerse 文字轉視頻",
+        "inputs": {
+            "video": "影片",
+            "image": "影像",
+            "pixverse_template": "PixVerse模板",
+            "prompt_text": "提示文字",
+            "negative_prompt": "負面提示詞"
+        },
+        "widgets": {
+            "aspect_ratio": "寬高比",
+            "quality": "品質",
+            "duration_seconds": "時長（秒）",
+            "motion_mode": "運動模式",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "auth_token": "授權詞元數"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "string": "字串"
+        }
+    },
+    "PixverseImageToVideoNode": {
+        "title": "PixVerse 影像轉視頻",
+        "inputs": {
+            "video": "影片",
+            "image": "影像",
+            "pixverse_template": "PixVerse模板",
+            "prompt_text": "提示文字",
+            "negative_prompt": "負面提示詞"
+        },
+        "widgets": {
+            "aspect_ratio": "寬高比",
+            "quality": "品質",
+            "duration_seconds": "時長（秒）",
+            "motion_mode": "運動模式",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "auth_token": "授權詞元數"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "string": "字串"
+        }
+    },
+    "PixverseTransitionVideoNode": {
+        "title": "PixVerse 轉場影片",
+        "inputs": {
+            "first_frame": "第一幀",
+            "last_frame": "最後一幀",
+            "pixverse_template": "PixVerse模板",
+            "prompt_text": "提示文字",
+            "negative_prompt": "負面提示詞"
+        },
+        "widgets": {
+            "aspect_ratio": "寬高比",
+            "quality": "品質",
+            "duration_seconds": "時長（秒）",
+            "motion_mode": "運動模式",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "auth_token": "授權詞元數"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "string": "字串"
+        }
+    },
+    "PixverseTemplateNode": {
+        "title": "PixVerse 模板",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "template": "範本"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "pixverse_template": "PixVerse模板"
+        }
+    },
+    "RunwayFirstLastFrameNode": {
+        "title": "Runway首尾幀視頻",
+        "inputs": {
+            "positive": "正向條件",
+            "negative": "負面條件",
+            "camera_conditions": "相機條件",
+            "start_frame": "起始畫面",
+            "end_frame": "結束幀"
+        },
+        "widgets": {
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "ratio": "寬高比",
+            "duration": "時長",
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "RunwayImageToVideoNodeGen3a": {
+        "title": "Runway影像轉視訊(Gen3a Turbo)",
+        "inputs": {
+            "positive": "正向條件",
+            "negative": "負面條件",
+            "camera_conditions": "相機條件",
+            "start_frame": "起始畫面",
+            "end_frame": "結束幀"
+        },
+        "widgets": {
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "ratio": "寬高比",
+            "duration": "時長",
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "RunwayImageToVideoNodeGen4": {
+        "title": "Runway影像轉視訊(Gen4 Turbo)",
+        "inputs": {
+            "positive": "正向條件",
+            "negative": "負面條件",
+            "camera_conditions": "相機條件",
+            "start_frame": "起始畫面",
+            "end_frame": "結束幀"
+        },
+        "widgets": {
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "ratio": "寬高比",
+            "duration": "時長",
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video_id": "視訊ID",
+            "duration": "時長",
+            "string": "字串"
+        }
+    },
+    "OpenAIVideoSora2": {
+        "title": "OpenAI Sora2 - 視頻",
+        "inputs": {
+            "image": "影像",
+            "audio": "音訊"
+        },
+        "widgets": {
+            "model": "模型",
+            "size": "尺寸",
+            "resolution": "解析度",
+            "duration": "時長(秒)",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "generate_audio": "產生音訊",
+            "prompt_extend": "擴展提示詞",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "TopazVideoEnhance": {
+        "title": "Topaz影片增強器",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "upscaler_enabled": "啟用增強器",
+            "upscaler_model": "增強模型",
+            "upscaler_resolution": "提升解析度",
+            "upscaler_creativity": "提升時長",
+            "interpolation_enabled": "啟用插值",
+            "interpolation_model": "插值模型",
+            "interpolation_slowmo": "插值慢動作",
+            "interpolation_frame_rate": "插值幀率",
+            "interpolation_duplicate": "插值重複項",
+            "interpolation_duplicate_threshold": "內插重複閾值",
+            "dynamic_compression_level": "動態壓縮等級"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video": "影片"
+        }
+    },
+    "TopazVideoEnhanceV2": {
+        "title": "Topaz影片增強器V2",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "upscaler_model": "增強模型",
+            "upscaler_resolution": "提升解析度",
+            "creativity": "時長",
+            "sharp:": "銳利",
+            "realism:": "寫實",
+            "interpolation_model": "插值模型",
+            "dynamic_compression_level": "動態壓縮等級"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video": "影片"
+        }
+    },
+    "VeoVideoGenerationNode": {
+        "title": "谷歌 Veo2 視訊生成",
+        "inputs": {
+            "image": "影像",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "negative_prompt": "負面提示詞",
+            "aspect_ratio": "寬高比",
+            "duration_seconds": "影片長度(秒)",
+            "enhance_prompt": "提示詞增強",
+            "person_generation": "人物生成模式",
+            "seed": "隨機種子",
+            "model": "模型",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "Veo3VideoGenerationNode": {
+        "title": "谷歌 Veo3 視訊生成",
+        "inputs": {
+            "image": "影像",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "negative_prompt": "負面提示詞",
+            "aspect_ratio": "寬高比",
+            "duration_seconds": "影片長度(秒)",
+            "enhance_prompt": "提示詞增強",
+            "person_generation": "人物生成模式",
+            "seed": "隨機種子",
+            "model": "模型",
+            "generate_audio": "產生音訊",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "Veo3FirstLastFrameNode": {
+        "title": "谷歌 Veo3 首尾影格影片生成",
+        "inputs": {
+            "first_frame": "首格影像",
+            "last_frame": "尾影畫面影像"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "negative_prompt": "負面提示詞",
+            "resolution": "解析度",
+            "aspect_ratio": "寬高比",
+            "duration": "時長(秒)",
+            "enhance_prompt": "提示詞增強",
+            "person_generation": "人物生成模式",
+            "seed": "隨機種子",
+            "model": "模型",
+            "generate_audio": "產生音訊",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "ViduTextToVideoNode": {
+        "title": "Vidu 文字轉視頻",
+        "inputs": {
+            "image": "影像",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "duration": "時長(秒)",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "movement_amplitude": "運動幅度"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "ViduImageToVideoNode": {
+        "title": "Vidu 影像轉視頻",
+        "inputs": {
+            "image": "影像",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "duration": "時長(秒)",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "movement_amplitude": "運動幅度"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "ViduReferenceVideoNode": {
+        "title": "Vidu 參考轉視頻",
+        "inputs": {
+            "images": "影像組",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "duration": "時長(秒)",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "movement_amplitude": "運動幅度"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "ViduStartEndToVideoNode": {
+        "title": "Vidu 首尾幀轉影片生成",
+        "inputs": {
+            "first_frame": "首格影像",
+            "end_frame": "尾影畫面影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "duration": "時長(秒)",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "movement_amplitude": "運動幅度"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "ViduExtendVideoNode": {
+        "title": "Vidu 影片延長",
+        "inputs": {
+            "video": "影片",
+            "end_frame": "結束幀"
+        },
+        "widgets": {
+            "model": "模型",
+            "duration": "時長(秒)",
+            "resolution": "解析度",
+            "prompt": "提示詞",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        }
+    },
+    "ViduMultiFrameVideoNode": {
+        "title": "Vidu 多幀影片生成",
+        "inputs": {
+            "start_image": "開始影像",
+            "end_image1": "結束影像1",
+            "end_image2": "結束影像2"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "resolution": "解析度",
+            "frames": "多幀",
+            "duration:": "時長(秒)",
+            "duration1:": "1時長(秒)",
+            "duration2:": "2時長(秒)"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "Vidu3TextToVideoNode": {
+        "title": "Vidu Q3 文生視頻",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "duration:": "時長(秒)",
+            "duration": "時長(秒)",
+            "audio": "音訊",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "Vidu3ImageToVideoNode": {
+        "title": "Vidu Q3 圖生視頻",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "duration": "時長(秒)",
+            "audio": "音訊",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "Vidu3StartEndToVideoNode": {
+        "title": "Vidu3 首尾幀轉視頻",
+        "inputs": {
+            "first_frame": "首格影像",
+            "end_frame": "尾影畫面影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "duration": "時長(秒)",
+            "audio": "音訊",
+            "prompt": "提示詞",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "movement_amplitude": "運動幅度"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "WanTextToVideoApi": {
+        "title": "Wan 文字轉視頻",
+        "inputs": {
+            "audio": "音訊"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "size": "尺寸",
+            "resolution": "解析度",
+            "duration": "時長(秒)",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "generate_audio": "產生音訊",
+            "prompt_extend": "擴展提示詞",
+            "watermark": "水印",
+            "shot_type": "拍攝類型"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "WanImageToVideoApi": {
+        "title": "Wan 圖像轉視頻",
+        "inputs": {
+            "image": "影像",
+            "audio": "音訊"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "resolution": "解析度",
+            "duration": "時長(秒)",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "generate_audio": "產生音訊",
+            "prompt_extend": "擴展提示詞",
+            "watermark": "水印",
+            "shot_type": "拍攝類型"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "WanReferenceVideoApi": {
+        "title": "Wan 參考生視頻",
+        "inputs": {
+            "character1": "特徵1",
+            "audio": "音訊",
+            "VIDEO": "影片",
+            "video": "影片"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "size": "尺寸",
+            "duration": "時長(秒)",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "generate_audio": "產生音訊",
+            "prompt_extend": "擴展提示詞",
+            "watermark": "水印",
+            "shot_type": "拍攝類型"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        }
+    },
+    "Wan2TextToVideoApi": {
+        "title": "Wan2.7 文生視頻",
+        "inputs": {
+            "positive": "正向條件",
+            "negative": "負面條件",
+            "audio": "音訊"
+        },
+        "widgets": {
+            "resolution": "解析度",
+            "ratio": "寬高比",
+            "seed": "隨機種子",
+            "duration": "時長(秒)",
+            "prompt_extend": "擴展提示詞",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "Wan2ImageToVideoApi": {
+        "title": "Wan2.7 圖生視頻",
+        "inputs": {
+            "first_frame": "首格影像",
+            "last_frame": "尾影畫面影像",
+            "audio": "音訊"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "duration": "時長(秒)",
+            "ratio": "寬高比",
+            "seed": "隨機種子",
+            "prompt_extend": "擴展提示詞",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "Wan2VideoContinuationApi": {
+        "title": "Wan2.7 影片延長",
+        "inputs": {
+            "first_clip": "第一段剪輯",
+            "last_frame": "尾影畫面影像",
+            "audio": "音訊"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "duration": "時長(秒)",
+            "ratio": "寬高比",
+            "seed": "隨機種子",
+            "prompt_extend": "擴展提示詞",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "Wan2VideoEditApi": {
+        "title": "Wan2.7 影片編輯",
+        "inputs": {
+            "video": "影片",
+            "image1": "影像1",
+            "image2": "影像2",
+            "image3": "影像3",
+            "image4": "影像4"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "ratio": "寬高比",
+            "duration": "時長(秒)",
+            "seed": "隨機種子",
+            "audio_setting": "音訊設定",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "Wan2ReferenceVideoApi": {
+        "title": "Wan2.7 參考生視頻",
+        "inputs": {
+            "video1": "影片1",
+            "video2": "影片2",
+            "video3": "影片3",
+            "image1": "影像1",
+            "image2": "影像2",
+            "image3": "影像3",
+            "image4": "影像4"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "ratio": "寬高比",
+            "duration": "時長(秒)",
+            "seed": "隨機種子",
+            "audio_setting": "音訊設定",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        }
+    },
+    "HappyHorseTextToVideoApi": {
+        "title": "快樂馬 文生視頻",
+        "inputs": {
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "ratio": "寬高比",
+            "duration": "時長(秒)",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "使用“HappyHorse”模型根據文字提示產生一段影片。"
+    },
+    "HappyHorse Image to Video": {
+        "title": "快樂馬 圖生視頻",
+        "inputs": {
+            "first_frame": "首格影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "duration": "時長(秒)",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        },
+        "description": "使用“HappyHorse”模型從第一幀圖像生成一段影片。"
+    },
+    "HappyHorseVideoEditApi": {
+        "title": "快樂馬 影片編輯",
+        "inputs": {
+            "video": "影片",
+            "image1": "影像1",
+            "image2": "影像2",
+            "image3": "影像3",
+            "image4": "影像4",
+            "image5": "影像5"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "ratio": "寬高比",
+            "duration": "時長(秒)",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        },
+        "description": "使用“快樂馬”模型透過文字說明或參考圖像來編輯影片。 /n輸出影片長度為 3 至 15 秒，與輸入影片長度一致；輸入時長超過 15 秒的將被截取。"
+    },
+    "HappyHorseReferenceVideoApi": {
+        "title": "快樂馬 參考生視頻",
+        "inputs": {
+            "video": "影片",
+            "image1": "影像1",
+            "image2": "影像2",
+            "image3": "影像3",
+            "image4": "影像4",
+            "image5": "影像5",
+            "image6": "影像6",
+            "image7": "影像7",
+            "image8": "影像8",
+            "image9": "影像9"
+        },
+        "widgets": {
+            "model": "模型",
+            "resolution": "解析度",
+            "ratio": "寬高比",
+            "duration": "時長(秒)",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "產生影片"
+        },
+        "description": "使用“HappyHorse”模型，根據參考材料產生一個包含人物或物件的影片。 /n支援單一字元的展示以及多個字元之間的互動。"
+    },
+    "WavespeedFlashVSRNode": {
+        "title": "WaveSpeed波速 FlashVSR 影片放大功能",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "target_resolution": "目標解析度"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        }
+    },
+    "BeebleSwitchXImageEdit": {
+        "title": "Beeble SwitchX 影像編輯",
+        "inputs": {
+            "image": "影像",
+            "reference_image": "參考影像"
+        },
+        "widgets": {
+            "prompt": "提示詞詞",
+            "alpha_mode": "Alpha 模式",
+            "max_resolution": "最大解析度",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "image": "影像",
+            "alpha": "Alpha 通道"
+        },
+        "description": "使用BeebleSwitchX编辑一张单幅图像。可在保持原始主體像素不變的同時，對場景中的任何元素（背景、光線、服飾）進行切換。提供一張參考圖像和/或文字提示以描述新的視覺效果。最大分辨率约为2.77MP。"
+    },
+    "FluxProUltraImageNode": {
+        "title": "Flux 1.1 [pro] 超高清影像",
+        "inputs": {
+            "image_prompt": "圖像提示詞",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "prompt_upsampling": "提示詞放大",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "aspect_ratio": "寬高比",
+            "raw": "原始數據",
+            "auth_token": "授權詞元數",
+            "image_prompt_strength": "圖像提示詞強度"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "FluxKontextProImageNode": {
+        "title": "Flux.1影像上下文[pro]",
+        "inputs": {
+            "input_image": "輸入影像",
+            "mask": "遮罩",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "prompt_upsampling": "提示詞放大",
+            "aspect_ratio": "長寬比",
+            "guidance": "引導強度",
+            "control_after_generate": "生成後控制",
+            "steps": "步數",
+            "seed": "種子",
+            "raw": "原始數據",
+            "auth_token": "授權詞元數"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "FluxKontextMaxImageNode": {
+        "title": "Flux.1影像上下文[max]",
+        "inputs": {
+            "input_image": "輸入影像",
+            "mask": "遮罩",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "prompt_upsampling": "提示詞放大",
+            "aspect_ratio": "長寬比",
+            "guidance": "引導強度",
+            "control_after_generate": "生成後控制",
+            "steps": "步數",
+            "seed": "種子",
+            "raw": "原始數據",
+            "auth_token": "授權詞元數"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "FluxProFillNode": {
+        "title": "Flux.1 填滿影像",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "prompt_upsampling": "提示詞放大",
+            "top": "上擴展",
+            "bottom": "下擴展",
+            "left": "左擴展",
+            "right": "右擴展",
+            "guidance": "引導強度",
+            "control_after_generate": "生成後控制",
+            "steps": "步數",
+            "seed": "種子",
+            "raw": "原始數據",
+            "auth_token": "授權詞元數"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "FluxEraseNode": {
+        "title": "Flux 抹除影像",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "dilate_pixels": "膨脹像素",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "從影像中移除遮罩物件並重建背景。在你想擦除的區域上繪製遮罩。"
+    },
+    "FluxVTONode": {
+        "title": "Flux 虛擬試穿",
+        "inputs": {
+            "person": "人物",
+            "garment": "服裝"
+        },
+        "widgets": {
+            "prompt": "提示詞詞",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "虛擬試穿：將人物裝扮成提供的服裝。"
+    },
+    "Flux2ProImageNode": {
+        "title": "Flux 2代 超高畫質影像[專業版]",
+        "inputs": {
+            "images": "影像組",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "prompt_upsampling": "提示詞放大",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "width": "寬度",
+            "height": "高度"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "Flux2MaxImageNode": {
+        "title": "Flux.2 影像節點(最大)",
+        "inputs": {
+            "images": "影像",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "width": "寬度",
+            "height": "高度",
+            "prompt_upsampling": "提示詞放大",
+            "control_after_generate": "生成後控制",
+            "seed": "種子"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "Flux2ImageNode": {
+        "title": "Flux.2 影像生成",
+        "inputs": {
+            "image_1": "影像輸入"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "model": "模型",
+            "width": "寬度",
+            "height": "高度",
+            "seed": "隨機隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "使用 Flux.2 模型生成图像的节点"
+    },
+    "Flux3TextToVideoNode": {
+        "title": "Flux.3 文生視頻",
+        "inputs": {},
+        "widgets": {
+            "prompt": "提示詞",
+            "aspect_ratio": "寬高比",
+            "duration": "時長",
+            "resolution": "解析度",
+            "generate_audio": "產生音訊",
+            "safety_tolerance": "安全容差",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "透過FLUX3從文字提示產生具有同步音訊的影片。"
+    },
+    "Flux3ImageToVideoNode": {
+        "title": "Flux.3 圖生視頻",
+        "inputs": {
+            "image_0": "影像0",
+            "image_1": "影像1",
+            "image_2": "影像2",
+            "image_3": "影像3",
+            "image_4": "影像4",
+            "image_5": "影像5"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "placement": "佈置",
+            "aspect_ratio": "寬高比",
+            "duration": "時長",
+            "resolution": "解析度",
+            "generate_audio": "產生音訊",
+            "safety_tolerance": "安全容差",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "使用1 到 10 张图片生成FLUX3动画 。每張圖片都成為片段的一個畫面：一張圖片打開它， 兩張圖片從第一張過渡到第二張，更多圖片則被分散或固定在你選擇的時間點上。"
+    },
+    "Flux3VideoContinuationNode": {
+        "title": "Flux.3 影片延長",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "aspect_ratio": "寬高比",
+            "duration": "時長",
+            "resolution": "解析度",
+            "generate_audio": "產生音訊",
+            "safety_tolerance": "安全容差",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "FLUX 3繼續影片：新片段延續你提供的影片的最後幾幀。"
+    },
+    "FluxVideoUpscaleNode": {
+        "title": "Flux.3 影片放大",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "upscale_factor": "放大倍率",
+            "model": "模型",
+            "prompt": "提示詞",
+            "auto_downscale": "自動縮放",
+            "safety_tolerance": "安全容差",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "使用FLUX超解析度技術，將影片放大1.5至3倍，既可精確保留原始畫質，也能創意性地增強細節。"
+    },
+    "BriaImageEditNode": {
+        "title": "Bria 圖像編輯",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "guidance_scale": "引導強度",
+            "steps": "步數",
+            "moderation": "審核",
+            "prompt_content_moderation": "提示內容審核",
+            "visual_input_moderation": "視覺輸入審核",
+            "visual_output_moderation": "視覺輸出審核"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "structured_prompt": "結構化提示語"
+        }
+    },
+    "BriaRemoveImageBackground": {
+        "title": "Bria 移除影像背景",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "moderation": "審核",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "images": "影像組"
+        }
+    },
+    "ByteDanceImageNode": {
+        "title": "位元組跳動 圖像",
+        "inputs": {
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "size_preset": "尺寸預設值",
+            "width": "寬度",
+            "height": "高度",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "guidance_scale": "引導比例",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "image": "影像",
+            "IMAGE": "影像"
+        }
+    },
+    "ByteDanceSeedreamNode": {
+        "title": "位元組跳動 即夢4.0",
+        "inputs": {
+            "image": "影像",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "size_preset": "尺寸預設值",
+            "width": "寬度",
+            "height": "高度",
+            "sequential_image_generation": "序列影像生成",
+            "max_images": "最大影像數",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "guidance_scale": "引導比例",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "image": "影像",
+            "IMAGE": "影像"
+        }
+    },
+    "ByteDanceSeedreamNodeV2": {
+        "title": "位元組跳動 Seedream 4.5 和 5.0",
+        "inputs": {
+            "image_1": "影像 1"
+        },
+        "widgets": {
+            "model": "模型",
+            "size_preset": "尺寸預設",
+            "width": "寬度",
+            "height": "高度",
+            "max_images": "最大影像數",
+            "fail_on_partial": "部分失敗時停止",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "image": "影像"
+        },
+        "description": "統一的文字到影像生成和最高達4K解析度的精確單句編輯。"
+    },
+    "ByteDanceCreateImageAsset": {
+        "title": "位元組跳動 創建圖像素材",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "group_id": "組ID"
+        },
+        "outputs": {
+            "asset_id": "資產ID",
+            "group_id": "組ID"
+        },
+        "description": "建立一個Seedance2.0個人圖像資產。上傳輸入圖像並將其註冊到指定的資產組。\n 如果資產ID為空，則執行真實個人H5認證流程，在新增資產之前建立新的群組。"
+    },
+    "GeminiImageNode": {
+        "title": "谷歌 Gemini 影像",
+        "inputs": {
+            "images": "影像",
+            "files": "Gemini輸入文件"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "aspect_ratio": "寬高比",
+            "seed": "隨機種子",
+            "model": "模型",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "STRING": "字串"
+        }
+    },
+    "GeminiImage2Node": {
+        "title": "納米香蕉 Pro（GoogleGemini圖片）",
+        "inputs": {
+            "images": "影像組",
+            "files": "文件"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "response_modalities": "回應方式"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "GeminiNanoBanana2": {
+        "title": "納米香蕉 Pro（GoogleGemini圖片）",
+        "inputs": {
+            "images": "影像組",
+            "files": "文件"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "response_modalities": "回應方式",
+            "thinking_level": "思維層次"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "STRING": "字串"
+        },
+        "description": "透過谷歌 Vertex API 同步產生或編輯圖像。"
+    },
+    "GeminiNanoBanana2V2": {
+        "title": "奈米香蕉 2",
+        "inputs": {
+            "image_1": "影像1",
+            "files": "文件"
+        },
+        "widgets": {
+            "prompt": "提示詞詞",
+            "model": "模型",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "thinking_level": "思考等級",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "response_modalities": "響應模態",
+            "system_prompt": "系統提示詞詞"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "STRING": "字串",
+            "thought_image": "影像"
+        },
+        "description": "Nano Banana 2 節點，用於產生影像。"
+    },
+    "GrokImageNode": {
+        "title": "Grok 影像",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "aspect_ratio": "寬高比",
+            "number_of_images": "影像數量"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "GrokImageEditNode": {
+        "title": "Grok 影像編輯",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "number_of_images": "影像數量"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "GrokImageEditNodeV2": {
+        "title": "Grok 影像編輯",
+        "inputs": {
+            "image_1": "影像1",
+            "image_2": "影像2"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "model": "模型",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "number_of_images": "影像數量"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "HitPawGeneralImageEnhance": {
+        "title": "HitPaw 影像整體增強功能",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "upscale_factor": "放大比例",
+            "auto_downscale": "自動縮放"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "IdeogramV1": {
+        "title": "Ideogram文生圖V1",
+        "inputs": {
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "turbo": "加速模式",
+            "aspect_ratio": "寬高比",
+            "magic_prompt_option": "魔法提示選項",
+            "control_after_generate": "生成後控制",
+            "negative_prompt": "負面提示詞",
+            "seed": "種子",
+            "num_images": "影像數量",
+            "auth_token": "授權詞元數"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "IdeogramV2": {
+        "title": "Ideogram文生圖V2",
+        "inputs": {
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "turbo": "加速模式",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "magic_prompt_option": "魔法提示選項",
+            "control_after_generate": "生成後控制",
+            "negative_prompt": "負面提示詞",
+            "style_type": "風格類型",
+            "seed": "種子",
+            "num_images": "影像數量",
+            "color_palette": "調色盤",
+            "auth_token": "授權詞元數"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "IdeogramV3": {
+        "title": "Ideogram文生圖V3",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩",
+            "prompt": "提示詞",
+            "character_image": "角色影像",
+            "character_mask": "角色遮罩"
+        },
+        "widgets": {
+            "turbo": "加速模式",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "magic_prompt_option": "魔法提示選項",
+            "control_after_generate": "生成後控制",
+            "rendering_speed": "渲染速度",
+            "style_type": "風格類型",
+            "seed": "種子",
+            "num_images": "影像數量",
+            "color_palette": "調色盤",
+            "auth_token": "授權詞元數"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "IdeogramV4": {
+        "title": "Ideogram文生圖V4",
+        "inputs": {
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "resolution": "解析度",
+            "rendering_speed": "渲染速度",
+            "seed": "種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "KlingVirtualTryOnNode": {
+        "title": "可靈 虛擬試穿",
+        "inputs": {
+            "image": "影像",
+            "human_image": "人物影像",
+            "cloth_image": "衣物影像"
+        },
+        "widgets": {
+            "image_type": "影像類型",
+            "image_fidelity": "影像保真度",
+            "human_fidelity": "人物保真度",
+            "model_name": "模型名稱",
+            "task_id": "任務ID",
+            "auth_token": "授權詞元數",
+            "aspect_ratio": "寬高比",
+            "n": "數量"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "string": "字串"
+        }
+    },
+    "KlingImageGenerationNode": {
+        "title": "可靈 圖像生成",
+        "inputs": {
+            "image": "影像",
+            "prompt": "提示詞",
+            "negative_prompt": "負面提示詞"
+        },
+        "widgets": {
+            "image_type": "影像類型",
+            "image_fidelity": "影像保真度",
+            "human_fidelity": "人物保真度",
+            "model_name": "模型名稱",
+            "task_id": "任務ID",
+            "auth_token": "授權詞元數",
+            "aspect_ratio": "寬高比",
+            "n": "數量"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "string": "字串"
+        }
+    },
+    "KlingOmniProImageNode": {
+        "title": "可靈 Omni圖像(專業版)",
+        "inputs": {
+            "reference_images": "參考 影像"
+        },
+        "widgets": {
+            "model_name": "模型名稱",
+            "resolution": "解析度",
+            "auth_token": "授權詞元數",
+            "aspect_ratio": "寬高比",
+            "n": "數量"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "string": "字串"
+        }
+    },
+    "Krea2ImageNode": {
+        "title": "Krea 2 圖像",
+        "inputs": {
+            "style_reference": "風格參考",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "creativity": "創造力",
+            "moodboard_id": "情緒板 ID",
+            "moodboard_strength": "情緒板強度",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {},
+        "description": "透過Krea2產生圖像一一選擇中等（表達性插圖）或大尺寸（表現力強的寫實風格）。支援可選的氛圍板和最多10個鍊式影像風格參考。"
+    },
+    "Krea2StyleReferenceNode": {
+        "title": "Krea 2 風格參考",
+        "inputs": {
+            "image": "影像",
+            "style_reference": "風格參考"
+        },
+        "widgets": {
+            "strength": "強度"
+        },
+        "outputs": {
+            "style_reference": "風格參考"
+        },
+        "description": "將一種影像風格參考新增至Krea2產生器。串聯多個Krea2風格參考節點（最多10個），並將最終的`風格參考｀輸出輸入到Krea2圖像中。每張圖像都會上傳到ComfyAPI存儲，並以URL的形式傳遞。"
+    },
+    "LumaImageNode": {
+        "title": "Luma文生圖",
+        "inputs": {
+            "image_luma_ref": "Luma影像參考",
+            "style_image": "風格圖像",
+            "prompt": "提示詞",
+            "character_image": "人物影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "aspect_ratio": "寬高比",
+            "seed": "種子",
+            "style_image_weight": "風格圖像權重",
+            "luma_ref": "Luma參考",
+            "auth_token": "授權詞元數",
+            "max_refs": "最大參考數",
+            "weight": "權重"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "luma_concepts": "Luma概念"
+        }
+    },
+    "LumaImageModifyNode": {
+        "title": "Luma影像到影像",
+        "inputs": {
+            "image": "影像",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "image_weight": "影像權重",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "auth_token": "授權詞元數",
+            "weight": "權重"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "LumaReferenceNode": {
+        "title": "Luma參考",
+        "inputs": {
+            "image": "影像",
+            "prompt": "提示詞",
+            "luma_ref": "Luma參考"
+        },
+        "widgets": {
+            "image_type": "影像類型",
+            "weight": "權重",
+            "human_fidelity": "人物保真度",
+            "model_name": "模型名稱",
+            "task_id": "任務ID",
+            "auth_token": "授權詞元數",
+            "aspect_ratio": "寬高比",
+            "n": "數量"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "luma_ref": "Luma參考"
+        }
+    },
+    "LumaImageNode2": {
+        "title": "Luma UNI-1 影像",
+        "inputs": {
+            "image_1": "影像 1"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "model": "模型",
+            "aspect_ratio": "寬高比",
+            "style": "風格",
+            "web_search": "網路搜尋",
+            "seed": "種子"
+        },
+        "outputs": {},
+        "description": "使用 Luma UNl-1 模型从文本生成图像。"
+    },
+    "LumaImageEditNode2": {
+        "title": "Luma UNI-1 影像編輯",
+        "inputs": {
+            "source": "來源路徑",
+            "image_1": "影像 1"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "model": "模型",
+            "style": "風格",
+            "web_search": "網路搜尋",
+            "seed": "種子"
+        },
+        "outputs": {},
+        "description": "使用 Luma UNl-1 模型根據文字提示對現有圖像進行編輯。"
+    },
+    "MagnificImageUpscalerCreativeNode": {
+        "title": "Magnific輝煌 影像放大（創意模式）",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "scale_factor": "縮放係數",
+            "optimized_for": "優化目標",
+            "creativity": "創造力",
+            "hdr": "HDR高動態範圍",
+            "resemblance": "相似度",
+            "fractality": "分形度",
+            "engine": "引擎",
+            "auto_downscale": "自動降採樣"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "MagnificImageUpscalerPreciseV2Node": {
+        "title": "Magnific輝煌 影像放大 V2",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "scale_factor": "縮放係數",
+            "flavor": "風格",
+            "sharpen": "銳化",
+            "smart_grain": "智慧顆粒",
+            "ultra_detail": "超精細細節",
+            "auto_downscale": "自動降採樣"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "MagnificImageStyleTransferNode": {
+        "title": "Magnific輝煌 影像風格轉換",
+        "inputs": {
+            "image": "影像",
+            "reference_image": "參考影像"
+        },
+        "widgets": {
+            "style_strength": "風格強度",
+            "structure_strength": "結構強度",
+            "flavor": "風格",
+            "engine": "引擎",
+            "portrait_mode": "肖像模式",
+            "fixed_generation": "固定生成"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "MagnificImageRelightNode": {
+        "title": "Magnific輝煌 影像重新打光",
+        "inputs": {
+            "image": "影像",
+            "reference_image": "參考影像"
+        },
+        "widgets": {
+            "light_transfer_strength": "光照強度",
+            "style": "風格",
+            "interpolate_from_original": "從原始資料中進行插值",
+            "change_background": "更改背景",
+            "preserve_details": "保留細節",
+            "advanced_settings": "進階設定"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "MagnificImageSkinEnhancerNode": {
+        "title": "Magnific輝煌 影像皮膚增強器",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "sharpen": "銳化",
+            "smart_grain": "智能 顆粒",
+            "mode": "模式"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "OpenAIDalle2": {
+        "title": "OpenAI DALL·E 2",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "size": "尺寸",
+            "n": "數量",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "auth_token": "授權詞元數"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "string": "字串"
+        }
+    },
+    "OpenAIDalle3": {
+        "title": "OpenAI DALL·E 3",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "size": "尺寸",
+            "quality": "品質",
+            "style": "風格",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "auth_token": "授權詞元數"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "string": "字串"
+        }
+    },
+    "OpenAIGPTImage1": {
+        "title": "OpenAI GPT 影像 1",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "background": "背景",
+            "size": "尺寸",
+            "quality": "品質",
+            "n": "數量",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "auth_token": "授權詞元數"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "string": "字串"
+        }
+    },
+    "OpenAIGPTImageNodeV2": {
+        "title": "OpenAI GPT 影像 2",
+        "inputs": {
+            "image_1": "影像1",
+            "image_2": "影像2",
+            "image_3": "影像3",
+            "mask": "遮罩",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "size": "尺寸",
+            "custom_width": "設定寬度",
+            "custom_height": "設定高度",
+            "background": "背景",
+            "quality": "品質",
+            "n": "數量",
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "auth_token": "授權詞元數"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "string": "字串"
+        }
+    },
+    "QuiverTextToSVGNode": {
+        "title": "文生向量圖SVG",
+        "inputs": {
+            "ref_0": "參考",
+            "ref_1": "參考1",
+            "ref_2": "參考2",
+            "ref_3": "參考3"
+        },
+        "widgets": {
+            "model": "模型",
+            "temperature": "溫度",
+            "top_p": "最高機率比例",
+            "presence_penalty": "存在性懲罰",
+            "control_after_generate": "生成後控制",
+            "seed": "種子"
+        },
+        "outputs": {
+            "SVG": "向量圖像"
+        }
+    },
+    "QuiverImageToSVGNode": {
+        "title": "圖生向量影像SVG",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "auto_crop": "自動裁切",
+            "model": "模型",
+            "target_size": "目標尺寸",
+            "temperature": "溫度",
+            "top_p": "最高機率比例",
+            "presence_penalty": "存在性懲罰",
+            "control_after_generate": "生成後控制",
+            "seed": "種子"
+        },
+        "outputs": {
+            "SVG": "向量圖像"
+        }
+    },
+    "RecraftTextToImageNode": {
+        "title": "Recraft重新創作 文生圖",
+        "inputs": {
+            "recraft_style": "Recraft重新創作 風格",
+            "negative_prompt": "負面提示詞",
+            "recraft_controls": "Recraft重新創作 控制參數"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "size": "尺寸",
+            "n": "數量",
+            "seed": "種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "string": "字串"
+        }
+    },
+    "RecraftImageToImageNode": {
+        "title": "Recraft重新創作 圖生圖",
+        "inputs": {
+            "image": "輸入影像",
+            "recraft_style": "Recraft重新創作 風格",
+            "negative_prompt": "負面提示詞",
+            "recraft_controls": "Recraft重新創作 控制參數",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "n": "生成數量",
+            "strength": "重繪強度",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "RecraftImageInpaintingNode": {
+        "title": "Recraft重新創作 圖像修復",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩",
+            "recraft_style": "Recraft重新創作 風格",
+            "negative_prompt": "負面提示詞",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "n": "生成數量",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "RecraftTextToVectorNode": {
+        "title": "Recraft重新創作 文生向量圖",
+        "inputs": {
+            "recraft_controls": "Recraft重新創作 控制參數",
+            "negative_prompt": "負面提示詞",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "substyle": "子風格類型",
+            "size": "輸出尺寸",
+            "n": "生成數量",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "VECTOR": "向量圖形"
+        }
+    },
+    "RecraftVectorizeImageNode": {
+        "title": "Recraft重新創作 圖像向量化",
+        "inputs": {
+            "image": "影像",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {},
+        "outputs": {
+            "VECTOR": "向量圖形"
+        }
+    },
+    "RecraftRemoveBackgroundNode": {
+        "title": "Recraft重新創作 移除背景",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "RecraftReplaceBackgroundNode": {
+        "title": "Recraft重新創作 更換背景",
+        "inputs": {
+            "image": "影像",
+            "recraft_style": "Recraft重新創作 風格",
+            "negative_prompt": "負面提示詞",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {
+            "prompt": "背景描述",
+            "n": "生成數量",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "RecraftCrispUpscaleNode": {
+        "title": "Recraft重新創作 清晰放大影像",
+        "inputs": {
+            "image": "影像",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "RecraftCreativeUpscaleNode": {
+        "title": "Recraft重新創作 創意放大圖像",
+        "inputs": {
+            "image": "影像",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "RecraftStyleV3RealisticImage": {
+        "title": "Recraft重新創作 風格 - 真實圖像",
+        "inputs": {
+            "colors": "顏色",
+            "background_color": "背景顏色"
+        },
+        "widgets": {
+            "substyle": "子風格"
+        },
+        "outputs": {
+            "recraft_style": "Recraft重新創作 風格"
+        }
+    },
+    "RecraftStyleV3DigitalIllustration": {
+        "title": "Recraft重新創作 風格 - 數位插畫",
+        "inputs": {
+            "colors": "顏色",
+            "background_color": "背景顏色"
+        },
+        "widgets": {
+            "substyle": "子風格"
+        },
+        "outputs": {
+            "recraft_style": "Recraft重新創作 風格"
+        }
+    },
+    "RecraftStyleV3LogoRaster": {
+        "title": "Recraft重新創作 風格 - 光柵logo",
+        "inputs": {
+            "colors": "顏色",
+            "background_color": "背景顏色"
+        },
+        "widgets": {
+            "substyle": "子風格"
+        },
+        "outputs": {
+            "recraft_style": "Recraft重新創作 風格"
+        }
+    },
+    "RecraftStyleV3InfiniteStyleLibrary": {
+        "title": "Recraft重新創作 風格 - 無限風格庫",
+        "inputs": {
+            "colors": "顏色",
+            "background_color": "背景顏色"
+        },
+        "widgets": {
+            "style_id": "風格ID"
+        },
+        "outputs": {
+            "recraft_style": "Recraft重新創作 風格"
+        }
+    },
+    "RecraftCreateStyleNode": {
+        "title": "Recraft重新創作 設計風格",
+        "inputs": {
+            "image0": "影像0",
+            "image1": "影像1"
+        },
+        "widgets": {
+            "style": "風格"
+        },
+        "outputs": {
+            "style": "風格",
+            "style_id": "風格ID"
+        }
+    },
+    "RecraftColorRGB": {
+        "title": "Recraft重新創作 顏色 RGB",
+        "inputs": {
+            "recraft_color": "Recraft重新創作 顏色"
+        },
+        "widgets": {
+            "r": "紅色值",
+            "g": "綠色值",
+            "b": "藍色值"
+        },
+        "outputs": {
+            "recraft_color": "Recraft重新創作 顏色",
+            "string": "字串"
+        }
+    },
+    "RecraftControls": {
+        "title": "Recraft重新創作 控制參數",
+        "inputs": {
+            "colors": "顏色",
+            "background_color": "背景顏色"
+        },
+        "widgets": {
+            "r": "紅色值",
+            "g": "綠色值",
+            "b": "藍色值"
+        },
+        "outputs": {
+            "recraft_controls": "Recraft重新創作 控制參數",
+            "string": "字串"
+        }
+    },
+    "RecraftV4TextToImageNode": {
+        "title": "Recraft重新創作 文生圖V4",
+        "inputs": {
+            "recraft_controls": "Recraft重新創作 控制參數"
+        },
+        "widgets": {
+            "model": "模型",
+            "size": "尺寸",
+            "n": "數量",
+            "seed": "種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "string": "字串"
+        }
+    },
+    "RecraftV4TextToVectorNode": {
+        "title": "Recraft重新創作 文生向量圖V4",
+        "inputs": {
+            "recraft_controls": "Recraft重新創作 控制參數"
+        },
+        "widgets": {
+            "model": "模型",
+            "size": "尺寸",
+            "n": "數量",
+            "seed": "種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "SVG": "SVG向量格式"
+        }
+    },
+    "ReveImageCreateNode": {
+        "title": "Reve 文生圖",
+        "inputs": {
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "aspect_ratio": "寬高比",
+            "test_time_scaling": "測試時間縮放",
+            "upscale": "放大",
+            "remove_background": "去除背景",
+            "seed": "種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "string": "字串"
+        }
+    },
+    "ReveImageEditNode": {
+        "title": "Reve 影像編輯",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "aspect_ratio": "寬高比",
+            "test_time_scaling": "測試時間縮放",
+            "upscale": "放大",
+            "remove_background": "去除背景",
+            "seed": "種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "string": "字串"
+        }
+    },
+    "ReveImageRemixNode": {
+        "title": "Reve 圖像二創",
+        "inputs": {
+            "image_0": "影像0",
+            "image_1": "影像1",
+            "image_2": "影像2",
+            "image_3": "影像3",
+            "image_4": "影像4",
+            "image_5": "影像5"
+        },
+        "widgets": {
+            "model": "模型",
+            "aspect_ratio": "寬高比",
+            "test_time_scaling": "測試時間縮放",
+            "upscale": "放大",
+            "remove_background": "去除背景",
+            "seed": "種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "string": "字串"
+        }
+    },
+    "RunwayTextToImageNode": {
+        "title": "Runway文字到圖像",
+        "inputs": {
+            "positive": "正向條件",
+            "negative": "負面條件",
+            "reference_image": "參考圖片",
+            "start_frame": "起始畫面",
+            "end_frame": "結束幀"
+        },
+        "widgets": {
+            "seed": "種子",
+            "control_after_generate": "生成後控制",
+            "ratio": "寬高比",
+            "duration": "時長",
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "string": "字串"
+        }
+    },
+    "StabilityStableImageUltraNode": {
+        "title": "Stability AI 超清影像",
+        "inputs": {
+            "image": "影像",
+            "negative_prompt": "負面提示詞",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "aspect_ratio": "寬高比",
+            "style_preset": "風格預設",
+            "seed": "隨機種子",
+            "image_denoise": "降噪強度",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "StabilityStableImageSD_3_5Node": {
+        "title": "Stability AI SD 3.5影像",
+        "inputs": {
+            "image": "影像",
+            "negative_prompt": "負面提示詞",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "aspect_ratio": "寬高比",
+            "style_preset": "風格預設",
+            "cfg_scale": "CFG引導係數",
+            "seed": "隨機種子",
+            "image_denoise": "降噪強度",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "StabilityUpscaleConservativeNode": {
+        "title": "Stability AI 保守放大",
+        "inputs": {
+            "image": "影像",
+            "negative_prompt": "負面提示詞",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "creativity": "創意強度",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "StabilityUpscaleCreativeNode": {
+        "title": "Stability AI 創意放大",
+        "inputs": {
+            "image": "影像",
+            "negative_prompt": "負面提示詞",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "creativity": "創意強度",
+            "style_preset": "風格預設",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "StabilityUpscaleFastNode": {
+        "title": "Stability AI 極速放大",
+        "inputs": {
+            "image": "影像",
+            "auth_token": "授權詞元數"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "TopazImageEnhance": {
+        "title": "Topaz影像增強器",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "subject_detection": "目標偵測",
+            "face_enhancement": "臉部增強",
+            "face_enhancement_creativity": "臉部增強創意",
+            "face_enhancement_strength": "臉部增強強度",
+            "crop_to_fill": "裁切至填滿",
+            "output_width": "輸出寬度",
+            "output_height": "輸出高度",
+            "creativity": "創造力",
+            "face_preservation": "臉部保護",
+            "color_preservation": "色彩保護"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "video": "影片"
+        }
+    },
+    "WanTextToImageApi": {
+        "title": "Wan 文字轉圖像",
+        "inputs": {
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "width": "寬度",
+            "height": "高度",
+            "resolution": "解析度",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "prompt_extend": "擴展提示詞",
+            "watermark": "水印",
+            "shot_type": "拍攝類型"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "WanImageToImageApi": {
+        "title": "Wan 影像生成影像",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "width": "寬度",
+            "height": "高度",
+            "resolution": "解析度",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "prompt_extend": "擴展提示詞",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "WavespeedImageUpscaleNode": {
+        "title": "WaveSpeed波速 影像放大",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "target_resolution": "目標解析度"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "ElevenLabsSpeechToText": {
+        "title": "Eleven Labs 語音轉文本",
+        "inputs": {
+            "audio": "音訊"
+        },
+        "widgets": {
+            "model": "模型",
+            "tag_audio_events": "標記音訊事件",
+            "diarize": "說話者識別",
+            "diarization_threshold": "說話者辨識閾值",
+            "temperature": "溫度",
+            "timestamps_granularity": "時間戳粒度",
+            "language_code": "語言程式碼",
+            "num_speakers": "說話人數",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "language_code": "語言程式碼",
+            "text": "文字",
+            "seed": "單字 JSON 數據"
+        }
+    },
+    "ElevenLabsVoiceSelector": {
+        "title": "Eleven Labs 語音選擇器",
+        "inputs": {},
+        "widgets": {
+            "voice": "聲音"
+        },
+        "outputs": {
+            "voice": "聲音"
+        }
+    },
+    "ElevenLabsTextToSpeech": {
+        "title": "Eleven Labs 文字轉語音",
+        "inputs": {
+            "voice": "聲音"
+        },
+        "widgets": {
+            "stabillity": "穩定性",
+            "apply_text_normalization": "應用文字標準化",
+            "model": "模型",
+            "speed": "速度",
+            "similarity_boost": "相似度增強",
+            "use_speaker_boost": "使用說話者增強",
+            "style": "風格",
+            "language_code": "語言程式碼",
+            "output_format": "輸出格式",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "AUDIO": "音訊"
+        }
+    },
+    "ElevenLabsAudioIsolation": {
+        "title": "Eleven Labs 語音分離技術",
+        "inputs": {
+            "audio": "音訊"
+        },
+        "widgets": {},
+        "outputs": {
+            "AUDIO": "音訊"
+        }
+    },
+    "ElevenLabsTextToSoundEffects": {
+        "title": "Eleven Labs 文字轉音效",
+        "inputs": {
+            "text": "文字"
+        },
+        "widgets": {
+            "model": "模型",
+            "duration": "時長(秒)",
+            "loop": "循環",
+            "prompt_influence": "提示詞影響度",
+            "output_format": "輸出格式"
+        },
+        "outputs": {
+            "AUDIO": "音訊"
+        }
+    },
+    "ElevenLabsInstantVoiceClone": {
+        "title": "Eleven Labs 即時語音克隆",
+        "inputs": {
+            "audio0": "音訊0",
+            "audio1": "音訊1",
+            "audio2": "音訊2",
+            "audio3": "音訊3",
+            "audio4": "音訊4",
+            "audio5": "音訊5",
+            "audio6": "音訊6"
+        },
+        "widgets": {
+            "remove_background_noise": "去除背景噪音"
+        },
+        "outputs": {
+            "voice": "聲音"
+        }
+    },
+    "ElevenLabsSpeechToSpeech": {
+        "title": "Eleven Labs 語音轉語音",
+        "inputs": {
+            "voice": "聲音",
+            "audio": "音訊"
+        },
+        "widgets": {
+            "stabillity": "穩定性",
+            "model": "模型",
+            "speed": "速度",
+            "similarity_boost": "相似度增強",
+            "use_speaker_boost": "使用說話者增強",
+            "style": "風格",
+            "output_format": "輸出格式",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "remove_background_noise": "去除背景噪音"
+        },
+        "outputs": {
+            "AUDIO": "音訊"
+        }
+    },
+    "ElevenLabsTextToDialogue": {
+        "title": "Eleven Labs 文字轉對話",
+        "inputs": {
+            "voice1": "聲音1",
+            "voice2": "聲音2",
+            "voice3": "聲音3",
+            "voice4": "聲音4",
+            "voice5": "聲音5",
+            "voice6": "聲音6",
+            "voice7": "聲音7",
+            "voice8": "聲音8",
+            "voice9": "聲音9",
+            "voice10": "聲音10"
+        },
+        "widgets": {
+            "stabillity": "穩定性",
+            "apply_text_normalization": "應用文字標準化",
+            "model": "模型",
+            "inputs": "輸入數量",
+            "language_code": "語言程式碼",
+            "output_format": "輸出格式",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "AUDIO": "音訊"
+        }
+    },
+    "SoniloVideoToMusic": {
+        "title": "Sonilo 影片生音樂",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "duration": "時長(秒)",
+            "model": "模型",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "AIDEO": "音訊"
+        }
+    },
+    "SoniloTextToMusic": {
+        "title": "Sonilo 文生音樂",
+        "inputs": {
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "AIDEO": "音訊"
+        }
+    },
+    "StabilityTextToAudio": {
+        "title": "Stability AI 文字轉語音",
+        "inputs": {
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "duration": "時長",
+            "steps": "步數",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "audio": "音訊",
+            "AUDIO": "音訊"
+        }
+    },
+    "StabilityAudioToAudio": {
+        "title": "Stability AI 音訊轉音頻",
+        "inputs": {
+            "audio": "音訊",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "duration": "時長",
+            "steps": "步數",
+            "seed": "隨機種子",
+            "strength": "強度",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "audio": "音訊",
+            "AUDIO": "音訊"
+        }
+    },
+    "StabilityAudioInpaint": {
+        "title": "Stability AI 音訊重繪(Inpaint)",
+        "inputs": {
+            "audio": "音訊",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "duration": "時長",
+            "steps": "步數",
+            "seed": "隨機種子",
+            "mask_start": "開始遮罩",
+            "mask_end": "結束遮罩",
+            "control_after_generate": "生成後控制"
+        },
+        "outputs": {
+            "audio": "音訊",
+            "AUDIO": "音訊"
+        }
+    },
+    "TencentTextToModelNode": {
+        "title": "Hunyuan混元3D：文生模型（專業版）",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "face_count": "臉部數量",
+            "pbr": "物理增強渲染",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "texture_image": "紋理影像",
+            "GLB": "GLB 格式",
+            "OBJ": "OBJ 格式"
+        }
+    },
+    "TencentImageToModelNode": {
+        "title": "Hunyuan混元3D：圖生模型（專業版）",
+        "inputs": {
+            "image": "影像",
+            "image_left": "左側圖片",
+            "image_right": "右側圖片",
+            "image_back": "背面圖片"
+        },
+        "widgets": {
+            "model": "模型",
+            "face_count": "臉部數量",
+            "generate_type": "生成類型",
+            "pbr": "物理增強渲染",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "texture_image": "紋理影像",
+            "GLB": "GLB 格式",
+            "OBJ": "OBJ 格式",
+            "optional_metallic": "金屬(可選)",
+            "optional_normal": "普通(可選)",
+            "optional_roughness": "粗糙度(可選)"
+        }
+    },
+    "TencentModelTo3DUVNode": {
+        "title": "Hunyuan混元3D：模型轉UV貼圖",
+        "inputs": {
+            "model_3d": "3D模型"
+        },
+        "widgets": {
+            "model": "模型",
+            "face_count": "臉部數量",
+            "pbr": "物理增強渲染",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "GLB": "GLB 格式",
+            "OBJ": "OBJ 格式"
+        }
+    },
+    "Tencent3DTextureEditNode": {
+        "title": "Hunyuan混元3D：3D紋理編輯",
+        "inputs": {
+            "model_3d": "3D模型"
+        },
+        "widgets": {
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "texture_image": "紋理影像",
+            "GLB": "GLB 格式",
+            "OBJ": "OBJ 格式",
+            "uv_image": "UV影像"
+        }
+    },
+    "Tencent3DPartNode": {
+        "title": "Hunyuan混元3D：3D 零件",
+        "inputs": {
+            "model_3d": "3D模型"
+        },
+        "widgets": {
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "FBX": "FBX 格式"
+        }
+    },
+    "TencentSmartTopologyNode": {
+        "title": "Hunyuan混元3D：智慧拓樸結構",
+        "inputs": {
+            "model_3d": "3D模型"
+        },
+        "widgets": {
+            "model": "模型",
+            "polygon_type": "多邊形類型",
+            "face_level": "面級別",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "GLB": "GLB 格式",
+            "OBJ": "OBJ 格式"
+        }
+    },
+    "MeshyTextToModelNode": {
+        "title": "Meshy影眸：文生模型",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "style": "風格",
+            "should_remesh": "重新網格化",
+            "topology": "拓樸結構",
+            "target_polycount": "目標多邊形數量",
+            "symmetry_mode": "對稱模式",
+            "pose_mode": "姿態模式",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "meshy_task_id": "Meshy影眸任務編號",
+            "GLB": "GLB 格式",
+            "FBX": "FBX 格式"
+        }
+    },
+    "MeshyRefineNode": {
+        "title": "Meshy影眸：完善草圖模型",
+        "inputs": {
+            "meshy_task_id": "Meshy影眸任務編號",
+            "texture_image": "紋理影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "enable_pbr": "啟用 PBR物理增強渲染",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "meshy_task_id": "Meshy影眸任務編號",
+            "GLB": "GLB 格式",
+            "FBX": "FBX 格式"
+        }
+    },
+    "MeshyImageToModelNode": {
+        "title": "Meshy影眸：圖生模型",
+        "inputs": {
+            "image": "影像",
+            "texture_image": "紋理影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "should_remesh": "重新網格化",
+            "topology": "拓樸結構",
+            "target_polycount": "目標多邊形數量",
+            "symmetry_mode": "對稱模式",
+            "should_texture": "應用紋理",
+            "enable_pbr": "啟用 PBR物理增強渲染",
+            "pose_mode": "姿態模式",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "meshy_task_id": "Meshy影眸任務編號",
+            "GLB": "GLB 格式",
+            "FBX": "FBX 格式"
+        }
+    },
+    "MeshyMultiImageToModelNode": {
+        "title": "Meshy影眸：多圖生模型",
+        "inputs": {
+            "image": "影像",
+            "image0": "影像0",
+            "image1": "影像1",
+            "texture_image": "紋理影像"
+        },
+        "widgets": {
+            "model": "模型",
+            "should_remesh": "重新網格化",
+            "topology": "拓樸結構",
+            "target_polycount": "目標多邊形數量",
+            "symmetry_mode": "對稱模式",
+            "should_texture": "應用紋理",
+            "enable_pbr": "啟用 PBR物理增強渲染",
+            "pose_mode": "姿態模式",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "meshy_task_id": "Meshy影眸任務編號",
+            "GLB": "GLB 格式",
+            "FBX": "FBX 格式"
+        }
+    },
+    "MeshyRigModelNode": {
+        "title": "Meshy影眸：骨骼模型",
+        "inputs": {
+            "meshy_task_id": "Meshy影眸任務編號",
+            "texture_image": "紋理影像"
+        },
+        "widgets": {
+            "height_meters": "高度（公尺）"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "meshy_task_id": "Meshy影眸任務編號",
+            "GLB": "GLB 格式",
+            "FBX": "FBX 格式"
+        }
+    },
+    "MeshyAnimateModelNode": {
+        "title": "Meshy影眸：動畫模型",
+        "inputs": {
+            "rig_task_id": "骨骼任務編號",
+            "texture_image": "紋理影像"
+        },
+        "widgets": {
+            "action_id": "動作ID"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "meshy_task_id": "Meshy影眸任務編號",
+            "GLB": "GLB 格式",
+            "FBX": "FBX 格式"
+        }
+    },
+    "MeshyTextureNode": {
+        "title": "Meshy影眼：紋理模型",
+        "inputs": {
+            "meshy_task_id": "Meshy影眸任務編號",
+            "image_style": "圖像風格"
+        },
+        "widgets": {
+            "model": "模型",
+            "enable_original_uv": "啟用 原先UV",
+            "pbr": "PBR物理增強渲染"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "meshy_task_id": "Meshy影眸任務編號",
+            "GLB": "GLB 格式",
+            "FBX": "FBX 格式"
+        }
+    },
+    "Rodin3D_Regular": {
+        "title": "Rodin 3D 生成-常規生成",
+        "inputs": {
+            "images": "影像組"
+        },
+        "widgets": {
+            "Seed": "隨機種子",
+            "Material_Type": "材料類型",
+            "Polygon_count": "多邊形數"
+        },
+        "outputs": {
+            "3D_Model_Path": "3D模型路徑",
+            "3D Model Path": "3D模型路徑"
+        }
+    },
+    "Rodin3D_Detail": {
+        "title": "Rodin 3D 生成-細節生成",
+        "inputs": {
+            "images": "影像組"
+        },
+        "widgets": {
+            "Seed": "隨機種子",
+            "Material_Type": "材料類型",
+            "Polygon_count": "多邊形數"
+        },
+        "outputs": {
+            "3D_Model_Path": "3D模型路徑",
+            "3D Model Path": "3D模型路徑"
+        }
+    },
+    "Rodin3D_Smooth": {
+        "title": "Rodin 3D 生成-平滑生成",
+        "inputs": {
+            "images": "影像組"
+        },
+        "widgets": {
+            "Seed": "隨機種子",
+            "Material_Type": "材料類型",
+            "Polygon_count": "多邊形數"
+        },
+        "outputs": {
+            "3D_Model_Path": "3D模型路徑",
+            "3D Model Path": "3D模型路徑"
+        }
+    },
+    "Rodin3D_Sketch": {
+        "title": "Rodin 3D 生成-素描生成",
+        "inputs": {
+            "images": "影像組"
+        },
+        "widgets": {
+            "Seed": "隨機種子",
+            "Material_Type": "材料類型",
+            "Polygon_count": "多邊形數"
+        },
+        "outputs": {
+            "3D_Model_Path": "3D模型路徑",
+            "3D Model Path": "3D模型路徑"
+        }
+    },
+    "Rodin3D_Gen2": {
+        "title": "Rodin 3D 生成-Gen-2生成器",
+        "inputs": {
+            "images": "影像組",
+            "Images": "影像組"
+        },
+        "widgets": {
+            "Seed": "隨機種子",
+            "Material_Type": "材料類型",
+            "Polygon_count": "多邊形數",
+            "TAPose": "TA姿態"
+        },
+        "outputs": {
+            "3D_Model_Path": "3D模型路徑",
+            "3D Model Path": "3D模型路徑"
+        }
+    },
+    "Rodin3D_Gen25_Image": {
+        "title": "Rodin 3D Gen-2.5 - 影像轉 3D",
+        "inputs": {
+            "image0": "影像輸入 0",
+            "image1": "影像輸入 1"
+        },
+        "widgets": {
+            "mode": "模式",
+            "tier": "等級",
+            "polygon_count": "多邊形數量",
+            "creative": "創意",
+            "material": "材質",
+            "geometry_file_format": "幾何文件格式",
+            "texture_mode": "紋理模式",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "TAPose": "TA 姿態",
+            "hd_texture": "高畫質紋理",
+            "texture_delight": "紋理美化",
+            "use_original_alpha": "使用原始 Alpha",
+            "addon_highpack": "高容量插件",
+            "bbox_width": "邊界框寬度",
+            "bbox_height": "邊界框高度",
+            "bbox_length": "邊界框長度",
+            "height_cm": "高度 (公分)"
+        },
+        "outputs": {
+            "model_file": "模型文件"
+        },
+        "description": "將 2D 影像轉換為 3D 模型"
+    },
+    "Rodin3D_Gen25_Text": {
+        "title": "Rodin 3D Gen-2.5 - 文本轉3D",
+        "inputs": {
+            "prompt": "提示詞詞"
+        },
+        "widgets": {
+            "mode": "模式",
+            "tier": "層級",
+            "polygon_count": "多邊形數量",
+            "creative": "創意",
+            "material": "材質",
+            "geometry_file_format": "幾何文件格式",
+            "texture_mode": "紋理模式",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "TAPose": "TA姿態",
+            "hd_texture": "高畫質紋理",
+            "texture_delight": "紋理美化",
+            "addon_highpack": "高容量插件",
+            "bbox_width": "邊界框寬度",
+            "bbox_height": "邊界框高度",
+            "bbox_length": "邊界框長度",
+            "height_cm": "高度 (公分)"
+        },
+        "outputs": {
+            "model_file": "模型文件"
+        },
+        "description": "Rodin 3D Gen-2.5 文本轉3D節點，用於根據文本提示詞詞產生3D模型。"
+    },
+    "TripoTextToModelNode": {
+        "title": "Tripo：文本到模型",
+        "inputs": {
+            "images": "影像組"
+        },
+        "widgets": {
+            "model_version": "模型版本",
+            "style": "風格",
+            "texture": "貼圖",
+            "pbr": "PBR材質",
+            "image_seed": "影像種子",
+            "model_seed": "模型種子",
+            "texture_seed": "貼圖種子",
+            "texture_quality": "貼圖品質",
+            "face_limit": "面數限制",
+            "quad": "四邊形網格"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "model task_id": "模型任務ID",
+            "model_task_id": "模型任務ID"
+        }
+    },
+    "TripoImageToModelNode": {
+        "title": "Tripo：影像到模型",
+        "inputs": {
+            "image": "影像",
+            "images": "影像組"
+        },
+        "widgets": {
+            "model_version": "模型版本",
+            "style": "風格",
+            "texture": "貼圖",
+            "pbr": "PBR材質",
+            "image_seed": "影像種子",
+            "model_seed": "模型種子",
+            "orientation": "取向",
+            "texture_seed": "貼圖種子",
+            "texture_quality": "貼圖品質",
+            "texture_alignment": "紋理對齊",
+            "face_limit": "面數限制",
+            "quad": "四邊形網格"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "model task_id": "模型任務ID",
+            "model_task_id": "模型任務ID"
+        }
+    },
+    "TripoMultiviewToModelNode": {
+        "title": "Tripo：多視圖到模型",
+        "inputs": {
+            "image": "影像",
+            "images": "影像組",
+            "image_left": "左視圖",
+            "image_back": "後視圖",
+            "image_right": "右視圖"
+        },
+        "widgets": {
+            "model_version": "模型版本",
+            "orientation": "取向",
+            "style": "風格",
+            "texture": "貼圖",
+            "pbr": "PBR材質",
+            "image_seed": "影像種子",
+            "model_seed": "模型種子",
+            "texture_seed": "貼圖種子",
+            "texture_quality": "貼圖品質",
+            "texture_alignment": "紋理對齊",
+            "face_limit": "面數限制",
+            "quad": "四邊形網格"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "model task_id": "模型任務ID",
+            "model_task_id": "模型任務ID"
+        }
+    },
+    "TripoP1TextToModelNode": {
+        "title": "Tripo P1: 文本轉模型",
+        "inputs": {
+            "prompt": "提示詞詞",
+            "negative_prompt": "負向提示詞"
+        },
+        "widgets": {
+            "output_mode": "輸出模式",
+            "image_seed": "影像隨機種子",
+            "face_limit": "臉部限制",
+            "model_seed": "模型隨機種子",
+            "auto_size": "自動尺寸",
+            "export_uv": "匯出UV",
+            "compress_geometry": "壓縮幾何"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "model task_id": "模型任務ID"
+        },
+        "description": "將文字提示詞詞轉換為 3D 模型"
+    },
+    "TripoP1ImageToModelNode": {
+        "title": "Tripo P1：影像轉模型",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "output_mode": "輸出模式",
+            "enable_image_autofix": "啟用圖片自動修復",
+            "face_limit": "臉部限制",
+            "model_seed": "模型隨機種子",
+            "auto_size": "自動尺寸",
+            "export_uv": "匯出 UV",
+            "compress_geometry": "壓縮幾何"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "model_task_id": "模型任務 ID"
+        },
+        "description": "TripoP1影像轉3D。專為低多邊形、遊戲級網格優化。"
+    },
+    "TripoP1MultiviewToModelNode": {
+        "title": "Tripo P1: 多視圖轉模型",
+        "inputs": {
+            "image": "影像",
+            "image_left": "左視圖影像",
+            "image_back": "後視圖影像",
+            "image_right": "右視圖影像"
+        },
+        "widgets": {
+            "output_mode": "輸出模式",
+            "face_limit": "面數限制",
+            "model_seed": "模型隨機種子",
+            "auto_size": "自動尺寸",
+            "export_uv": "匯出 UV",
+            "compress_geometry": "壓縮幾何"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "model_task_id": "模型任務ID"
+        },
+        "description": "TripoP1多視角到三維，從2至4張參考影像中轉換，順序為[前、左、後、右]。必須包含正面圖；其餘三個中的任意組合可省略。"
+    },
+    "TripoTextureNode": {
+        "title": "Tripo：紋理模型",
+        "inputs": {
+            "model task_id": "模型任務ID",
+            "model_task_id": "模型任務ID"
+        },
+        "widgets": {
+            "model_version": "模型版本",
+            "style": "風格",
+            "texture": "貼圖",
+            "pbr": "PBR材質",
+            "image_seed": "影像種子",
+            "model_seed": "模型種子",
+            "orientation": "取向",
+            "texture_seed": "貼圖種子",
+            "texture_quality": "貼圖品質",
+            "texture_alignment": "紋理對齊",
+            "face_limit": "面數限制",
+            "quad": "四邊形網格"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "model_task_id": "模型任務ID"
+        }
+    },
+    "TripoRefineNode": {
+        "title": "Tripo：完善草稿模型",
+        "inputs": {
+            "model task_id": "模型任務ID",
+            "model_task_id": "模型任務ID"
+        },
+        "widgets": {
+            "format": "格式",
+            "face_limittexture_size": "臉部紋理尺寸限制",
+            "texture_format": "紋理格式",
+            "quad": "四邊形網格"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "model task_id": "模型任務ID",
+            "model_task_id": "模型任務ID"
+        }
+    },
+    "TripoRigNode": {
+        "title": "Tripo：鑽孔機模型",
+        "inputs": {
+            "original model task id": "原始模型任務ID",
+            "original_model_task_id": "原始模型任務ID"
+        },
+        "widgets": {
+            "format": "格式",
+            "face_limittexture_size": "臉部紋理尺寸限制",
+            "texture_format": "紋理格式",
+            "quad": "四邊形網格"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "rig task_id": "鑽孔機任務ID",
+            "rig_task_id": "鑽孔機任務ID"
+        }
+    },
+    "TripoRetargetNode": {
+        "title": "Tripo：重瞄準操縱模型",
+        "inputs": {
+            "original model task id": "原始模型任務ID",
+            "original_model_task_id": "原始模型任務ID"
+        },
+        "widgets": {
+            "animation": "動畫",
+            "face_limittexture_size": "臉部紋理尺寸限制",
+            "texture_format": "紋理格式",
+            "quad": "四邊形網格"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "retarget task_id": "重定向任務ID",
+            "retarget_task_id": "重定向任務ID"
+        }
+    },
+    "BriaVideoReplaceBackground": {
+        "title": "Bria 影片替換背景",
+        "inputs": {
+            "video": "影片",
+            "background_image": "背景影像",
+            "background_video": "背景影片"
+        },
+        "widgets": {
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "使用 Bria 將影片的背景替換為提供的圖像或影片。輸出結果會保留前景的解析度和幀率；如果背景具有不同的寬高比，則會進行拉伸以適應，因此請確保背景比例一致，以獲得無失真的效果。"
+    },
+    "RunwayAleph2VideoToVideoNode": {
+        "title": "Runway Aleph2 視頻到視頻",
+        "inputs": {
+            "video": "影片",
+            "keyframes": "關鍵影格",
+            "prompt_images": "提示影像"
+        },
+        "widgets": {
+            "prompt": "提示",
+            "seed": "隨機種子",
+            "generate_control": "生成控制",
+            "public_figure_threshold": "公眾人物門檻"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "使用 Runway 的 Aleph2 模型編輯帶有文字提示的影片。 Aleph2在保持原始運動和節奏的同時，對你的影片進行轉換（重新造型、重新照明、添加或刪除元素、改變視角）；這個輸出解析度與輸入影片一致，輸入影片時長必須為2至30秒，幀率30fps或更低。可選擇使用關鍵影格（錨定於輸入影片）或提示影像（錨定於輸出影片）來引導編輯－僅可使用其一，不可同時使用。"
+    },
+    "TripoImportModelNode": {
+        "title": "Tripo: 導入模型",
+        "inputs": {
+            "model_3d": "3D 模型檔案路徑"
+        },
+        "widgets": {},
+        "outputs": {
+            "model task_id": "模型任務 ID"
+        },
+        "description": "將外部3D模型（例如來自Rodin、Hunyuan3D或本地檔案）匯入Tripo，以便在Tripo的後處理節點中使用：紋理、骨骼、轉換。建議使用GLB格式：當紋理僅嵌入檔案時，匯入後仍可保留。請注意，對匯入的模型進行紋理貼圖時需要先設定紋理提示。"
+    },
+    "GeminiVideoOmni": {
+        "title": "Google Gemini Omni（影片）",
+        "inputs": {
+            "image_1": "圖像_1",
+            "video_1": "影片_1"
+        },
+        "widgets": {
+            "model": "模型",
+            "model_prompt": "模型提示",
+            "temperature": "溫度",
+            "seed": "種子",
+            "generate_after_control": "生成後控制"
+        },
+        "outputs": {},
+        "description": "使用Google的GeminiOmniFlash模型根據文字提示產生帶有音訊的視訊。可選擇提供參考影像或影片以指導或編輯生成結果。直接在提示中說明所需時長（3-10秒）和縱橫比（16:9或9：16）。"
+    },
+    "LumaRay32TextToVideoNode": {
+        "title": "Luma Ray 3.2 文生視頻",
+        "inputs": {
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "duration": "時長",
+            "seed": "種子",
+            "loop": "循環"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "generation_id": "產生ID"
+        },
+        "description": "使用Luma的Ray3.2模型從文字提示產生影片。"
+    },
+    "LumaRay32ImageToVideoNode": {
+        "title": "Luma Ray 3.2 圖生視頻",
+        "inputs": {
+            "start_frame": "開始幀",
+            "end_frame": "結束幀",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "resolution": "解析度",
+            "loop": "循環",
+            "seed": "隨機種子",
+            "generate_after_control": "生成後控制"
+        },
+        "outputs": {
+            "video": "影片",
+            "generation_id": "產生ID"
+        },
+        "description": "使用Luma的Ray3.2模型從起始和/或結束幀產生影片。影像錨定生成始終為5秒。"
+    },
+    "LumaRay32KeyframesToVideoNode": {
+        "title": "Luma Ray 3.2 關鍵幀轉視頻",
+        "inputs": {
+            "keyframes": "關鍵影格",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "resolution": "解析度",
+            "duration": "持續時間",
+            "seed": "種子",
+            "generate_after_control": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "generation_id": "產生ID"
+        },
+        "description": "將關鍵影格轉換為視頻"
+    },
+    "LumaRay32VideoEditNode": {
+        "title": "Luma Ray 3.2 影片編輯",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "resolution": "解析度",
+            "strength": "強度",
+            "seed": "種子",
+            "generate_after_control": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "generation_id": "產生ID"
+        },
+        "description": "使用LumaRay3.2軟體根據新的提示重新渲染現有影片（重新設計、重新佈光、新增或移除元素）的同時保持原始動作不變。來源影片最長可達18秒；而編輯後的影片則保持來源影片的長度。"
+    },
+    "LumaRay32VideoReframeNode": {
+        "title": "Luma Ray 3.2 影片重置",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "strength": "強度",
+            "seed": "種子",
+            "generate_after_control": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "generation_id": "產生ID"
+        },
+        "description": "使用LumaRay3.2更改現有影片的寬高比，以填滿新暴露的畫布區域。來源影片最長可達30秒。按輸出每秒計費。"
+    },
+    "LumaRay32ExtendVideoNode": {
+        "title": "Luma Ray 3.2 影片擴充",
+        "inputs": {},
+        "widgets": {
+            "source_generation_id": "來源產生ID",
+            "direction": "方向",
+            "loop": "循環",
+            "prompt": "提示詞",
+            "resolution": "解析度",
+            "seed": "種子",
+            "generate_after_control": "生成後控制"
+        },
+        "outputs": {
+            "VIDEO": "影片",
+            "generation_id": "產生ID"
+        },
+        "description": "向前擴展之前的Ray3.2生成（在之後繼續）或向後擴展（在之前引入）。連接先前LumaRay3.2節點的來源產生ID輸出。擴充始終為5秒。"
+    },
+    "HeyGenTalkingPhotoNode": {
+        "title": "HeyGen 照片說話",
+        "inputs": {
+            "image": "影像",
+            "speech_source": "語音來源",
+            "speech_text": "語音文字"
+        },
+        "widgets": {
+            "speech_source": "語音來源",
+            "voice": "語音",
+            "custom_voice_id": "自訂語音ID",
+            "voice_speed": "語音速度",
+            "resolution": "解析度",
+            "aspect_ratio": "寬高比",
+            "expressiveness": "表現力",
+            "seed": "種子",
+            "speech_text": "語音文字"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "任意人物圖像動畫化為唇形同步的對話影片（HeyGenAvatarIV）。可透過文字腳本或自訂音訊驅動。"
+    },
+    "HeyGenAvatarVideoNode": {
+        "title": "HeyGen 動態頭像視頻",
+        "inputs": {},
+        "widgets": {
+            "engine": "引擎",
+            "avatar": "頭像",
+            "speech source": "語音來源",
+            "voice": "語音",
+            "custom_voice_id": "自訂語音ID",
+            "voice_speed": "語音速度",
+            "custom_avatar_id": "自訂頭像ID",
+            "resolution": "解析度",
+            "aspect_ratio": "寬高比",
+            "background_color": "背景顏色",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "從HeyGen虛擬形象產生一個會說話的演示者影片。包含HeyGen最受歡迎的公共虛擬形象；任何外觀ID都可以作為覆蓋設定提供。"
+    },
+    "HeyGenCreateAvatarNode": {
+        "title": "HeyGen 創建頭像",
+        "inputs": {
+            "ref_image_1": "參考影像1"
+        },
+        "widgets": {
+            "source": "原始檔"
+        },
+        "outputs": {
+            "avatar_id": "頭像ID",
+            "preview": "預覽圖"
+        },
+        "description": "用於根據來源圖像和提示單字建立頭像"
+    },
+    "HeyGenVideoTranslateNode": {
+        "title": "HeyGen 視訊翻譯",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "output_language": "輸出語言",
+            "mode": "模式",
+            "translate_audio_only": "僅翻譯音訊",
+            "speaker_count": "說話人數",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "HeyGen 視訊翻譯節點"
+    },
+    "MinimaxHailuo03TextToVideoNode": {
+        "title": "MiniMax海螺 H3 文生視頻",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "model_prompt": "模型提示詞",
+            "resolution": "解析度",
+            "ratio": "比例",
+            "seed": "種子",
+            "watermark": "水印"
+        },
+        "outputs": {},
+        "description": "使用MiniMaxH3模型從文字提示字產生影片。"
+    },
+    "MinimaxHailuo03FirstLastFrameNode": {
+        "title": "MiniMax海螺 H3 首尾幀轉視頻",
+        "inputs": {
+            "first_frame": "首格",
+            "last_frame": "尾幀"
+        },
+        "widgets": {
+            "model": "模型",
+            "model_prompt": "模型提示詞",
+            "resolution": "解析度",
+            "duration": "持續時間",
+            "seed": "隨機種子",
+            "generate_control": "生成控制",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "將首幀和尾幀生成視頻"
+    },
+    "MinimaxHailuo03ReferenceNode": {
+        "title": "MiniMax海螺 H3 參考生視頻",
+        "inputs": {
+            "image_1": "影像1",
+            "video_1": "影片1",
+            "audio_1": "音訊1"
+        },
+        "widgets": {
+            "model": "模型",
+            "prompt": "提示詞",
+            "resolution": "解析度",
+            "ratio": "比例",
+            "seed": "隨機種子",
+            "watermark": "水印"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "使用 MiniMax H3 模型將影像、視訊和音訊作為參考來產生新視訊。"
+    },
+    "SyncLipSyncNode": {
+        "title": "sync.so 嘴型同步",
+        "inputs": {
+            "video": "影片",
+            "audio": "音訊"
+        },
+        "widgets": {
+            "seed": "隨機種子",
+            "generate_after_control": "生成後控制",
+            "model": "模型",
+            "sync_mode": "同步模式",
+            "speaker_selection": "說話者選擇",
+            "speaker_frame": "說話者幀",
+            "speaker_x": "說話人X座標",
+            "speaker_y": "說話人Y座標"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "同步音訊與影片中的嘴型動作"
+    },
+    "SyncTalkingImageNode": {
+        "title": "sync.so 談話影像",
+        "inputs": {
+            "image": "影像",
+            "audio": "音訊"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "seed": "種子",
+            "generate_after_control": "生成後控制",
+            "model": "模型",
+            "speaker_selection": "說話者選擇",
+            "speaker_x": "說話人X座標",
+            "speaker_y": "說話人Y座標",
+            "auto_downscale": "自動降採樣"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "將圖像和音訊結合生成說話圖像"
+    },
+    "IdeogramPImage": {
+        "title": "象形文字 P 影像",
+        "inputs": {
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "quality": "品質",
+            "resolution": "解析度",
+            "aspect_ratio": "寬高比",
+            "prompt_upsampling": "提示詞上採樣",
+            "seed": "種子",
+            "generate_after_control": "生成後控制"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "final_prompt": "最終提示詞"
+        },
+        "description": "生成圖像的節點"
+    },
+    "ByteDanceSeedAudio": {
+        "title": "位元組跳動 種子音訊 1.0",
+        "inputs": {},
+        "widgets": {
+            "text_prompt": "文字提示",
+            "reference_mode": "參考模式",
+            "sample_rate": "取樣率",
+            "speech_rate": "語速",
+            "loudness_rate": "響度",
+            "pitch_rate": "音高",
+            "seed": "種子",
+            "model": "模型",
+            "generate_after_control": "生成後控制"
+        },
+        "outputs": {
+            "AUDIO": "影片"
+        },
+        "description": "位元組跳動種子音訊 1.0 節點"
+    },
+    "HeyGenTextToSpeechNode": {
+        "title": "HeyGen 文字轉語音",
+        "inputs": {},
+        "widgets": {
+            "text": "文字",
+            "voice": "語音",
+            "custom_voice_id": "自訂語音ID",
+            "speed": "語速",
+            "ssml": "SSML控制標籤",
+            "seed": "種子",
+            "generate_after_control": "生成後控制"
+        },
+        "outputs": {},
+        "description": "將文字轉換為語音的節點"
+    },
+    "ComfyCloudMiniMaxH3TextToVideoNode": {
+        "title": "Comfy 雲端 MiniMax H3 文字轉視頻",
+        "inputs": {
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "seed": "隨機種子",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "duration_seconds": "時長 (秒)"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "Comfy 雲 節點集仍在持續更新：選項可能會增加或刪除，某些工作流程也可能停用。使用 MiniMax H3 從文字提示產生包含配對配樂的影片。影像和音訊來自同一處理流程，而非後製配音。  \n 運行在 Comfy Cloud 的 GPU 上，按運行時長計費，每 GPU 秒為 $0.001295（0.27 信用點）。  \n 以信用點支付，無需訂閱雲端服務。"
+    },
+    "ComfyCloudMiniMaxH3ImageToVideoNode": {
+        "title": "Comfy 雲 MiniMax H3 影像轉視頻",
+        "inputs": {
+            "first_frame": "首格",
+            "prompt": "提示詞"
+        },
+        "widgets": {
+            "seed": "隨機種子",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "duration_seconds": "持續時間"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "Comfy 雲 節點集仍在持續更新：選項可能會增加或刪除，某些工作流程也可能停用。使用 MiniMax H3 從文字提示產生包含配對配樂的影片。影像和音訊來自同一處理流程，而非後製配音。  \n 運行在 Comfy Cloud 的 GPU 上，按運行時長計費，每 GPU 秒為 $0.001295（0.27 信用點）。  \n 以信用點支付，無需訂閱雲端服務。"
+    },
+    "ComfyCloudMiniMaxH3FirstLastFrameToVideoNode": {
+        "title": "Comfy 雲端 MiniMax H3 首尾幀轉視頻",
+        "inputs": {
+            "first_frame": "首格",
+            "last_frame": "尾幀"
+        },
+        "widgets": {
+            "prompt": "提示詞",
+            "seed": "隨機種子",
+            "aspect_ratio": "寬高比",
+            "resolution": "解析度",
+            "duration_seconds": "持續時間(秒)"
+        },
+        "outputs": {
+            "VIDEO": "影片"
+        },
+        "description": "Comfy 雲 節點集仍在持續更新：選項可能會增加或刪除，某些工作流程也可能停用。使用 MiniMax H3 從文字提示產生包含配對配樂的影片。影像和音訊來自同一處理流程，而非後製配音。  \n 運行在 Comfy Cloud 的 GPU 上，按運行時長計費，每 GPU 秒為 $0.001295（0.27 信用點）。  \n 以信用點支付，無需訂閱雲端服務。"
+    },
+    "TripoConversionNode": {
+        "title": "Tripo轉換模型",
+        "inputs": {
+            "original model task id": "原始模型任務ID",
+            "original_model_task_id": "原始模型任務ID"
+        },
+        "widgets": {
+            "format": "格式",
+            "face_limittexture_size": "臉部紋理尺寸限制",
+            "face_limit": "臉部限制",
+            "texture_size": "紋理尺寸",
+            "texture_format": "紋理格式",
+            "quad": "四邊形網格"
+        },
+        "outputs": {
+            "model_file": "模型文件",
+            "model task_id": "模型任務ID",
+            "model_task_id": "模型任務ID"
+        }
+    }
+}

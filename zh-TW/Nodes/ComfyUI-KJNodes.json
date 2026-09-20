@@ -1,0 +1,4219 @@
+{
+    "ContextWindowsVisualizerKJ": {
+        "title": "上下文視窗視覺化工具 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "frame_units": "幀單位",
+            "dim": "維度",
+            "temporal_downscale": "時間下取樣率",
+            "num_frames": "幀數",
+            "context_length": "上下文長度",
+            "context_overlap": "上下文重疊",
+            "context_schedule": "情境調度",
+            "context_stride": "內容步長",
+            "closed_loop": "閉環",
+            "fuse_method": "融合方法",
+            "causal_window_fix": "因果視窗修復",
+            "freenoise": "自由噪音",
+            "cond_retain_index_list": "條件保留索引列表"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "ComfyUI上下文視窗的互動式視覺化：視窗位置、重疊度、融合權重及逐幀混合，即時更新。可選擇將設定套用於核心上下文視窗（手動）節點等模型。"
+    },
+    "MiniMaxH3TokenCounter": {
+        "title": "MiniMaX H3 詞元計數器",
+        "inputs": {
+            "samples": "取樣",
+            "conditioning": "條件"
+        },
+        "widgets": {},
+        "outputs": {
+            "samples": "取樣",
+            "conditioning": "條件",
+            "tokens": "詞元",
+            "breakdown": "分解"
+        },
+        "description": "計算MiniMax H3產生時在不取樣情況下運行的打包序列長度。根據AV潛在變數以及條件資訊（包括文字長度、關鍵影格和參考區塊），建立與模型相同的[文字 | 關鍵影格/參考 | 音訊 | 影片]佈局。"
+    },
+    "MiniMaxLowVRAMAttention": {
+        "title": "MiniMaX H3 低顯存注意力",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "head_chunks": "頭塊數量"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "在不改變運算邏輯的前提下，降低 MiniMax H3 注意力模組的峰值顯存佔用。將注意力呼叫拆分為多個頭部組，使得內核內部的瞬態資料（如 int8 q/k 複製、fp32 累加器）在融合後的 qkv 緩衝區有效時隨分塊數量減少，同時在消費完畢後立即釋放 qkv 緩衝區和歸一化塊輸入。輸出結果與未打補丁的模型完全一致。"
+    },
+    "MiniMaxChunkFeedForward": {
+        "title": "MiniMaX H3 分塊前饋神經網絡",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "chunks": "分塊數",
+            "seq_threshold": "序列閾值"
+        },
+        "outputs": {},
+        "description": "將 MiniMax H3 的前饋（SwiGLU）依打包的令牌維度分塊，以減少峰值顯存使用。當模型量化時，每個分塊仍會經過 ComfyUI 的融合 INT8 核心，由於活化值是按令牌進行量化的，因此輸出與未分塊的模型一致。"
+    },
+    "Ideogram4PromptBuilderKJ": {
+        "title": "Ideogram4提示字建構器 (KJ)",
+        "inputs": {
+            "image": "影像",
+            "import_json": "導入JSON",
+            "bboxes": "邊界框"
+        },
+        "widgets": {
+            "width": "寬度",
+            "height": "高度",
+            "high_level_description": "進階描述",
+            "background": "背景",
+            "style": "風格",
+            "aesthetics": "美學",
+            "lighting": "光照",
+            "medium": "媒介",
+            "style_palette_data": "風格調色板數據",
+            "elements_data": "元素數據",
+            "bg_brightness": "背景亮度",
+            "import_mode": "導入模式",
+            "output_format": "輸出格式",
+            "coord_mode": "座標模式",
+            "bbox_order": "邊界框順序"
+        },
+        "outputs": {
+            "prompt": "提示詞",
+            "preview": "預覽",
+            "bboxes": "邊界框",
+            "width": "寬度",
+            "height": "高度"
+        },
+        "description": "用於Ideogram 4結構化JSON字幕格式的視覺化提示字建構器。\n\n在畫布上拖曳以繪製區域；選擇區域可設定其類型（物件/文字）、描述、文字和調色板。將背景和可選風格欄位設為小部件。輸出組裝後的字幕JSON字串。\n\nbboX軸偏移標準化為0-1000網格，格式為[Y軸偏移最小值, X軸偏移最小值, Y軸偏移最大值, X軸偏移最大值]；寬度/高度設定畫布的寬高比。\n\n畫布控制：\n- 拖曳：繪製新區域\n- Ctrl/Cmd+拖曳：即使在現有區域上方也強制繪製新區域\n- 點選：選擇區域 · Alt+點擊：循環重疊區域\n- 雙擊：內嵌編輯描述\n- 右鍵點選：區域清單（選擇/刪除/複製/重新排序，頂部為最前面）\n- Del/Backspace：刪除選取區域\n- Ctrl/Cmd + C/V/D：複製/貼上/複製選取區域\n- obj/文字旁的bboX軸偏移欄位（像素/輸出）可編輯\n\n顏色樣本：\n- 點選：編輯 · 拖曳：重新排序 · 右鍵點選：刪除\n- 懸停+Ctrl/Cmd + C/V：複製/貼上十六進位顏色值\n- \"+\"：新增顏色（若剪貼簿為顏色則使用該顏色）\n\n工具列：\n- 即時：使用即時取樣預覽作為背景（並抓取最終結果）\n- 抓取背景/清除背景：使用最後產生的圖像作為背景\n- 亮度滑桿、令牌估算，以及複製/貼上/全部清除"
+    },
+    "RandomImageFromBatch": {
+        "title": "從批次隨機選取影像 (KJ)",
+        "inputs": {
+            "input": "輸入"
+        },
+        "widgets": {
+            "start_index": "起始索引",
+            "end_index": "結束索引",
+            "num_frames": "幀數",
+            "randomness": "隨機性",
+            "min_distance": "最小間距",
+            "max_distance": "最大間距",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "output": "輸出"
+        },
+        "description": "從影像或遮罩批次的選定索引範圍內選取一系列影格。當隨機性=0時，選取的幀在範圍內均勻分佈；當隨機性=1時，它們是無重複的均勻隨機；中間值則是線性混合。輸出始終按批次索引排序。負索引從末尾開始計數（-1 = 最後一個）。"
+    },
+    "FastPreviewBatch": {
+        "title": "快速預覽批次 (KJ)",
+        "inputs": {
+            "input": "輸入"
+        },
+        "widgets": {
+            "max_thumb_size": "最大縮圖尺寸",
+            "crf": "限制畫面質量",
+            "max_grid_frames": "最大網格幀數"
+        },
+        "outputs": {},
+        "description": "將影像批次編碼為全I幀的H.264 MP4縮圖條，並顯示為互動式網格。點擊圖塊放大並前後瀏覽。避免產生N個PNG檔案。"
+    },
+    "BBOXToBoundingBoxKJ": {
+        "title": "BBOX轉邊界框 (KJ)",
+        "inputs": {
+            "bbox": "邊界框"
+        },
+        "widgets": {
+            "bbox_format": "邊界框格式",
+            "index": "索引"
+        },
+        "outputs": {
+            "bounding_box": "邊界框"
+        },
+        "description": "將KJNodes的BBOX轉換為核心節點（如裁切影像）所使用的原生BOUNDING_BOX字典。"
+    },
+    "WanVideoMemoryEfficientSageAttentionPatch": {
+        "title": "Wan影片 記憶體高效能Sage注意力補丁 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "實驗性功能！在WanVideo自註意力上啟用自訂sageattention以降低峰值VRAM佔用，覆蓋注意力模式。需要最新版本的sageattention。"
+    },
+    "MiniMaxH3MemoryEfficientSageAttentionPatch": {
+        "title": "MiniMaX H3記憶體高效能Sage注意力補丁 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "實驗性功能！在MiniMaX座標座標 H3自註意力上啟用自訂sageattention以降低峰值VRAM佔用，覆蓋注意力模式。需要最新版本的sageattention。"
+    },
+    "PatchFlashAttentionKJ": {
+        "title": "修補Flash注意力 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "allow_compile": "允許編譯"
+        },
+        "outputs": {},
+        "description": "用於修補注意力以使用Flash注意力的實驗節點，不使用ComfY座標座標UI預設的靜默SDPA回退。修補通過該節點的模型的注意力；若要停用，需旁路或斷開此節點。需安裝flash_attn函式庫。"
+    },
+    "TorchCompileModelAdvanced": {
+        "title": "Torch編譯模型高級版 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "backend": "後端",
+            "fullgraph": "全圖模式",
+            "mode": "模式",
+            "dynamic": "動態",
+            "compile_transformer_blocks_only": "僅編譯Transformer區塊",
+            "dynamo_cache_size_limit": "D垂直偏移namo快取大小限制",
+            "debug_compile_keys": "偵錯編譯鍵",
+            "disable_dynamic_vram": "禁用動態VRAM"
+        },
+        "outputs": {},
+        "description": "針對擴散模型的高階 torch.compile 修補。"
+    },
+    "Krea2PromptWeight": {
+        "title": "Krea2提示字權重 (KJ)",
+        "inputs": {
+            "clip": "CLIP",
+            "model": "模型"
+        },
+        "widgets": {
+            "text": "文字",
+            "strength": "強度"
+        },
+        "outputs": {
+            "model": "模型",
+            "conditioning": "條件"
+        },
+        "description": "透過注意力值縮放為Krea2（K2）實現按 token 的提示詞權重。使用 (詞:-1) 可移除某個概念，(詞:1.5) 可強調此概念－此功能適用於Qwen3-VL編碼器，普通權重設定無法實現。輸出修補後的模型與條件；將採樣器CFG設定為1.0。"
+    },
+    "Ideogram4OptimizationsKJ": {
+        "title": "Ideogram4優化 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "chunk_ffn": "分塊前饋",
+            "ffn_chunks": "前饋分塊數",
+            "ffn_seq_threshold": "前饋序列閾值",
+            "bf16_rope": "bf16_位置編碼"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "實驗性功能，可能會改變模型輸出！ ！降低Ideogram4前向傳播的峰值VRAM。 chunk_ffn將SwiGLU活化以token維度拆分；bf16_rope以模型資料型別套用RoPE，而非上轉換為fp32。兩者均針對區塊中兩個最大的瞬態張量。"
+    },
+    "PiDColorBiasCorrection": {
+        "title": "PiD顏色偏差校正 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "strength": "強度",
+            "backbone": "骨幹網路"
+        },
+        "outputs": {},
+        "description": "PiD四步解碼器顏色/亮度漂移校正器。在第一個取樣步驟中，使用針對模型系統性漂移校準的小型線性模型，從水平偏移0_p紅色中減去逐通道偏差（模型傾向於提亮暗場景並添加藍色色調）"
+    },
+    "LeapfusionHunyuanI2V": {
+        "title": "Leapfusion混元圖生影片 (KJ)",
+        "inputs": {
+            "model": "模型",
+            "latent": "隱變數"
+        },
+        "widgets": {
+            "index": "索引",
+            "start_percent": "起始百分比",
+            "end_percent": "結束百分比",
+            "strength": "強度"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VAEMergeKJ": {
+        "title": "VAE合併 (KJ)",
+        "inputs": {
+            "vae_1": "VAE1",
+            "vae_2": "VAE2"
+        },
+        "widgets": {
+            "ratio": "比例"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "透過加權平均合併兩個VAE的權重。比例是偏向VAE_2的權重（0.0 = 純VAE_1，1.0 = 純VAE_2）。兩個VAE必須共享相同的架構（匹配的狀態字典鍵和形狀）"
+    },
+    "LatentInpaintTTM": {
+        "title": "Latent遮罩修復TTM (KJ)",
+        "inputs": {
+            "model": "模型",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "steps": "步數"
+        },
+        "outputs": {},
+        "description": "https://github.com/time-to-move/TTM"
+    },
+    "DeprecatedCompileNodeKJ": {
+        "title": "已棄用編譯節點 (KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "此節點已被TorchCompileModelAdvanced節點取代，請使用該節點"
+    },
+    "ModelPreviewOverrideKJ": {
+        "title": "模型預覽覆蓋 (KJ)",
+        "inputs": {
+            "model": "模型",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "max_resolution": "最大解析度",
+            "jpeg_quality": "JPEG質量",
+            "suppress_default_preview": "禁用預設預覽",
+            "preview_frames": "預覽幀",
+            "preview_fps": "預覽幀率",
+            "tiny_vae": "微型VAE"
+        },
+        "outputs": {},
+        "description": "在此節點上新增專用的即時預覽幀，可覆蓋最大解析度。 Comf垂直偏移UI預設預覽上限為512p水平偏移；此節點將自身預覽直接傳送至節點上的DOM元件，因此像素空間模型（Chroma Radiance、ZImage、HiDream-O1等）可在完整取樣器解析度下預覽。"
+    },
+    "GetPreviewOverrideFramesKJ": {
+        "title": "取得預覽覆蓋幀 (KJ)",
+        "inputs": {
+            "model": "模型",
+            "after_sample": "採樣後"
+        },
+        "widgets": {},
+        "outputs": {
+            "frames": "視訊畫面"
+        },
+        "description": "返回最近一次採樣期間由模型預覽覆蓋捕獲的幀。連接來自模型預覽覆蓋的'模型'（與供給採樣器的模型相同）和來自採樣器之後的'after_sample'（Latent/IMAGE）以確保正確的執行順序。"
+    },
+    "PatchTritonVAE": {
+        "title": "修補Triton VAE (KJ)",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "fuse_norm_silu": "融合標準化 SiLU激活函數",
+            "channels_last": "通道優先",
+            "int8_conv": "INT8卷積",
+            "autotune": "自動調優"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "透過融合Triton norm+SiLU核心和通道優先卷積佈局，加快VAE的解碼/編碼速度。支援的VAE（自動檢測）：Wan 2.1/2.2視訊VAE（含Qwen-Image，RMSNorm，約1.4水平偏移/1.15水平偏移）、Flu水平偏移/Flu水平偏移2、SDXL和SD1.5等KL影像VA E（GroupNorm，2048p水平偏移時約1.6-1.8水平偏移），以及LTXV/LTX2視訊VAE（Pi水平偏移elNorm；時間步長條件的解碼器區塊僅進行標準化融合）。其他架構不支援。作為物件補丁應用於克隆的修補器，因此僅在該VAE載入時存在。"
+    },
+    "ImageTransformKJ": {
+        "title": "影像變換 (KJ)",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "target_width": "目標寬度",
+            "target_height": "目標高度",
+            "upscale_method": "放大方法",
+            "keep_proportion": "保持比例",
+            "divisible_by": "可整除數",
+            "extra_padding": "額外填充",
+            "invert_crop": "反轉裁剪",
+            "grid_size": "網格大小"
+        },
+        "outputs": {
+            "width": "寬度",
+            "height": "高度",
+            "output": "輸出影像",
+            "output_mask": "輸出遮罩"
+        },
+        "description": "這是一個用於影像變換的節點，支援調整影像尺寸、放大方法、保持比例等參數，並支援對遮罩進行同步變換。"
+    },
+    "ScreencapStream": {
+        "title": "螢幕擷取串流 (KJ)",
+        "inputs": {},
+        "widgets": {
+            "crop_width": "裁切寬度",
+            "crop_height": "裁剪高度",
+            "Start capture": "開始捕獲",
+            "Hide preview": "隱藏預覽"
+        },
+        "outputs": {
+            "image": "影像"
+        },
+        "description": "此節點用於即時擷取螢幕畫面。它允許使用者自訂捕獲區域的寬度和高度，並提供開始和停止捕獲的控制按鈕。擷取的即時畫面會顯示在預覽視窗中，方便使用者監控螢幕錄製狀況。"
+    },
+    "DecodeAndSaveVideo": {
+        "title": "解码并保存视频 (KJ)",
+        "inputs": {
+            "video_latent": "影片Latent",
+            "video_vae": "視訊 VAE 模型",
+            "audio_latent": "音訊Latent",
+            "audio_vae": "音訊 VAE 模型"
+        },
+        "widgets": {
+            "fps": "幀率",
+            "filename_prefix": "檔名前綴",
+            "format": "格式",
+            "codec": "編解碼器",
+            "tiling": "分塊處理"
+        },
+        "outputs": {
+            "video": "解碼後的視頻",
+            "filename": "儲存後的檔案名"
+        },
+        "description": "該節點用於將視訊潛在空間（Video Latent）解碼為實際視訊檔案並保存。它支援同時解碼音訊。使用者可以在這裡配置幀率（FPS）、檔案名稱前綴、輸出格式（如 MP4, MOV 等）、視訊編解碼器（如 H.264, H.265）以及是否啟用分塊處理（Tiling）以處理大視訊。"
+    },
+    "EncodeVideoComponents": {
+        "title": "編碼視訊組件 (KJ)",
+        "inputs": {
+            "video": "影片",
+            "vae": "VAE 模型"
+        },
+        "widgets": {
+            "width": "寬度",
+            "height": "高度",
+            "max_frames": "最大幀數",
+            "upscale_method": "放大方法",
+            "Keep Proportion": "保持比例"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "audio": "音訊",
+            "fps": "幀率",
+            "frame_count": "幀數"
+        },
+        "description": "此節點用於將視訊幀編碼為潛在空間（Latent）表示，通常用於視訊生成或處理流程中。它接受視訊串流和 VAE 模型作為輸入，並輸出編碼後的潛在空間資料、音訊串流、幀率資訊以及總幀數。使用者還可以在此設定輸出的解析度（寬度和高度）、限制最大幀數、選擇影像放大方法（如 Lanczos）以及是否保持原始寬高比。"
+    },
+    "ColorMatchV2": {
+        "title": "顏色匹配 V2 (KJ)",
+        "inputs": {
+            "image_target": "目標影像",
+            "image_ref": "參考影像"
+        },
+        "widgets": {
+            "method": "方法",
+            "strength": "強度",
+            "multithread": "多執行緒"
+        },
+        "outputs": {
+            "image": "影像"
+        },
+        "description": "用於將參考影像的色彩風格套用到目標影像上的節點。支援多種匹配演算法（如 mkl），可調節匹配強度，並支援多執行緒處理以提高效率。"
+    },
+    "PreviewImageOrMask": {
+        "title": "預覽影像或遮罩 (KJ)",
+        "inputs": {
+            "input": "輸入影像或遮罩"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "此節點用於在 ComfyUI 介面中直接顯示輸入的影像或遮罩，主要用於偵錯和檢視處理過程中的中間結果。它通常不輸出資料流，僅作為視覺化預覽使用。"
+    },
+    "ImageSharpenKJ": {
+        "title": "影像銳化 (KJ)",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "method": "方法",
+            "strength": "強度"
+        },
+        "outputs": {
+            "output": "輸出影像"
+        },
+        "description": "此節點用於對輸入影像進行銳化處理。它允許使用者選擇不同的銳化演算法（如 rcas）並調整銳化的強度，從而增強影像的清晰度和細節。"
+    },
+    "PlaySoundKJ": {
+        "title": "播放聲音",
+        "inputs": {
+            "any_input": "任意輸入",
+            "audio": "音訊"
+        },
+        "widgets": {
+            "audio_path": "音訊路徑",
+            "mode": "模式",
+            "volume": "音量",
+            "duration": "持續時間"
+        },
+        "outputs": {
+            "any_output": "任意輸出"
+        },
+        "description": "播放指定音訊文件，支援設定播放模式、音量和持續時間。"
+    },
+    "NormalizedAmplitudeToMask": {
+        "title": "標準化振幅到遮罩",
+        "inputs": {
+            "normalized_amp": "標準化幅度"
+        },
+        "widgets": {
+            "width": "寬度",
+            "height": "高度",
+            "frame_offset": "幀偏移",
+            "location_x": "位置_X",
+            "location_y": "位置_Y",
+            "size": "大小",
+            "shape": "形狀",
+            "color": "顏色"
+        },
+        "outputs": {
+            "MASK": "遮罩"
+        },
+        "description": "用於橋接 AudioScheduler 插件的節點：\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\n基於標準化振幅建立遮罩。"
+    },
+    "NormalizedAmplitudeToFloatList": {
+        "title": "標準化振幅到浮點列表",
+        "inputs": {
+            "normalized_amp": "標準化幅度"
+        },
+        "outputs": {
+            "FLOAT": "浮點"
+        },
+        "description": "用於橋接 AudioScheduler 插件的節點：\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\n基於標準化振幅建立浮點清單。"
+    },
+    "OffsetMaskByNormalizedAmplitude": {
+        "title": "按標準化幅度偏移遮罩",
+        "inputs": {
+            "normalized_amp": "標準化幅度",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "rotate": "旋轉",
+            "angle_multiplier": "角度倍數"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        },
+        "description": "用於橋接 AudioScheduler 插件的節點：\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\n基於標準化振幅偏移遮罩。"
+    },
+    "ImageTransformByNormalizedAmplitude": {
+        "title": "按標準化振幅變換影像",
+        "inputs": {
+            "normalized_amp": "標準化幅度",
+            "image": "影像"
+        },
+        "widgets": {
+            "zoom_scale": "縮放",
+            "x_offset": "x抵消",
+            "y_offset": "y抵消",
+            "cumulative": "累加"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "用於橋接 AudioScheduler 插件的節點：\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\n基於標準化振幅變換影像。"
+    },
+    "BatchCropFromMask": {
+        "title": "遮罩裁剪",
+        "inputs": {
+            "original_images": "影像",
+            "masks": "遮罩"
+        },
+        "widgets": {
+            "crop_size_mult": "裁剪係數",
+            "bbox_smooth_alpha": "BBox平滑透明"
+        },
+        "outputs": {
+            "original_images": "原始影像",
+            "cropped_images": "裁切影像",
+            "bboxes": "BBox",
+            "width": "寬度",
+            "height": "高度"
+        }
+    },
+    "BatchUncrop": {
+        "title": "反裁剪（批次）",
+        "inputs": {
+            "original_images": "原始影像",
+            "cropped_images": "裁切影像",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "border_blending": "邊框融合",
+            "crop_rescale": "重縮放",
+            "border_bottom": "下邊界",
+            "border_top": "上邊界",
+            "border_left": "左邊界",
+            "border_right": "右邊界"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "BatchCropFromMaskAdvanced": {
+        "title": "遮罩裁剪(進階)",
+        "inputs": {
+            "original_images": "影像",
+            "masks": "遮罩"
+        },
+        "widgets": {
+            "crop_size_mult": "裁剪係數",
+            "bbox_smooth_alpha": "BBox平滑透明"
+        },
+        "outputs": {
+            "original_images": "原始影像",
+            "cropped_images": "裁切影像",
+            "cropped_masks": "裁剪遮罩",
+            "combined_crop_image": "合併裁切影像",
+            "combined_crop_masks": "合併裁切遮罩",
+            "bboxes": "BBox",
+            "combined_bounding_box": "合併BBox",
+            "bbox_width": "BBox寬度",
+            "bbox_height": "BBox高度"
+        }
+    },
+    "FilterZeroMasksAndCorrespondingImages": {
+        "title": "過濾零遮罩和影像",
+        "inputs": {
+            "masks": "遮罩",
+            "original_images": "影像"
+        },
+        "outputs": {
+            "non_zero_masks_out": "非零遮罩",
+            "non_zero_mask_images_out": "非零影像",
+            "zero_mask_images_out": "零影像",
+            "zero_mask_images_out_indexes": "非零遮罩影像索引"
+        },
+        "description": "過濾掉mask中的所有空掩碼（即全部為零）\n如果提供的話，也可以透過索引過濾掉\n original_images中所有對應的圖像\n original_images（可選）：如果提供，需要具有與mask相同的長度。"
+    },
+    "InsertImageBatchByIndexes": {
+        "title": "按索引插入影像批次",
+        "inputs": {
+            "images": "影像",
+            "images_to_insert": "插入影像",
+            "insert_indexes": "插入索引"
+        },
+        "outputs": {
+            "images_after_insert": "影像"
+        },
+        "description": "此節點需與 FilterZeroMasksAndCorrespondingImages 節點搭配使用，\n_根據 insert_indexes 將 images_to_insert 插入 images 中。\n_傳回值：images_after_insert - 依原始順序更新後的影像序列。"
+    },
+    "BatchUncropAdvanced": {
+        "title": "Uncrop(進階)",
+        "inputs": {
+            "original_images": "原始影像",
+            "cropped_images": "裁切影像",
+            "cropped_masks": "裁剪遮罩",
+            "combined_crop_mask": "合併裁切遮罩",
+            "bboxes": "BBox",
+            "combined_bounding_box": "合併BBox"
+        },
+        "widgets": {
+            "border_blending": "邊框融合",
+            "crop_rescale": "重縮放",
+            "use_combined_mask": "使用合併遮罩",
+            "use_square_mask": "使用方形遮罩"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "SplitBboxes": {
+        "title": "分離BBox",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {
+            "bboxes_a": "BBox_A",
+            "bboxes_b": "BBox_B"
+        },
+        "description": "將設定索引處的指定bbox列表拆分為兩個列表"
+    },
+    "BboxToInt": {
+        "title": "BBox到整數",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {
+            "x_min": "X最小值",
+            "y_min": "Y最大值",
+            "width": "寬度",
+            "height": "高度",
+            "center_x": "X中心",
+            "center_y": "Y中心"
+        },
+        "description": "將從邊界框清單中選擇的索引傳回為整數"
+    },
+    "BboxVisualize": {
+        "title": "BBox預覽",
+        "inputs": {
+            "images": "影像",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "line_width": "線寬"
+        },
+        "outputs": {
+            "images": "影像"
+        },
+        "description": "在影像上顯示指定的bbox"
+    },
+    "PlotCoordinates": {
+        "title": "座標圖",
+        "inputs": {
+            "coordinates": "座標",
+            "size_multiplier": "尺寸乘數"
+        },
+        "widgets": {
+            "text": "文字",
+            "width": "寬度",
+            "height": "高度",
+            "bbox_width": "BBox寬度",
+            "bbox_height": "BBox高度"
+        },
+        "outputs": {
+            "images": "影像",
+            "width": "寬度",
+            "height": "高度",
+            "bbox_height": "BBox高度",
+            "bbox_width": "BBox寬度"
+        },
+        "description": "使用 Matplotlib 制作坐标图表序列。"
+    },
+    "SplineEditor": {
+        "title": "曲線編輯器",
+        "inputs": {
+            "bg_image": "背景影像"
+        },
+        "widgets": {
+            "points_store": "點位置",
+            "mask_width": "遮罩寬度",
+            "mask_height": "遮罩高度",
+            "points_to_sample": "採樣精度",
+            "sampling_method": "採樣方法",
+            "interpolation": "插值方式",
+            "tension": "張力",
+            "repeat_output": "重複輸出",
+            "float_output_type": "浮點數輸出類型",
+            "min_value": "最小值",
+            "max_value": "最大值",
+            "New spline": "新曲線",
+            "New canvas": "新建畫布"
+        },
+        "outputs": {
+            "mask": "遮罩",
+            "coord_str": "座標",
+            "float": "浮點",
+            "count": "數量",
+            "normalized_str": "標準化字串"
+        },
+        "description": "# 開發中\n盡量不要在工作流程中使用這個節點，可能會遇到大量bug且不穩定！ ！ \n \n##用於建立各類值調度的圖形化編輯器\n\n**Shift+左鍵點擊** 新增控制點，**Ctrl+左鍵點擊** 建立中間控制點，**右鍵點擊** 移除控制點。\n不能刪除端點。\n\n 右鍵背景會調出選單：一些視覺設置，不影響輸出效果：\n - 控制柄可見性\n - 顯示採樣點\n\n**採樣精度** 設定採樣點數量，從樣條線本身返回採樣點，和實際控制點無關，由插值類型決定。\n採樣方法：\n - 時間：沿時間軸採樣，用於調度\n - 路徑：沿曲線路徑取樣，用於座標\n\n 輸出：\n - 遮罩批次\n 適用於任何接收遮罩的節點\n - 浮點列表\n 適用於 IPAdapter權重組\n - pandas series\n 適用於 適用於接收 Fizz批次調度 節點 的節點\n - torch tensor\n 適用於不明節點"
+    },
+    "CreateShapeMaskOnPath": {
+        "title": "建立形狀遮罩",
+        "inputs": {
+            "coordinates": "座標",
+            "size_multiplier": "尺寸乘數"
+        },
+        "widgets": {
+            "shape": "形狀",
+            "frame_height": "高度",
+            "frame_width": "寬度",
+            "shape_height": "形狀高度",
+            "shape_width": "形狀寬度",
+            "shape_color": "形狀顏色",
+            "bg_color": "背景顏色",
+            "blur_radius": "模糊半徑",
+            "intensity": "強度"
+        },
+        "outputs": {
+            "mask": "遮罩",
+            "mask_inverted": "反轉遮罩"
+        },
+        "description": "產生指定形狀的遮罩或遮罩批次，位置參數為中心位置。"
+    },
+    "CreateShapeImageOnPath": {
+        "title": "建立形狀影像",
+        "inputs": {
+            "coordinates": "座標",
+            "size_multiplier": "尺寸乘數"
+        },
+        "widgets": {
+            "shape": "形狀",
+            "frame_height": "高度",
+            "frame_width": "寬度",
+            "shape_height": "形狀高度",
+            "shape_width": "形狀寬度",
+            "shape_color": "形狀顏色",
+            "bg_color": "背景顏色",
+            "blur_radius": "模糊半徑",
+            "intensity": "強度",
+            "trailing": "尾隨",
+            "border_width": "邊框寬度",
+            "border_color": "邊框顏色"
+        },
+        "outputs": {
+            "image": "影像",
+            "mask": "遮罩"
+        },
+        "description": "產生指定形狀的影像或影像批次，位置參數為中心位置。"
+    },
+    "CreateTextOnPath": {
+        "title": "建立文字",
+        "inputs": {
+            "coordinates": "座標",
+            "size_multiplier": "尺寸乘數"
+        },
+        "widgets": {
+            "text": "文字",
+            "frame_height": "高度",
+            "frame_width": "寬度",
+            "font": "字體",
+            "font_size": "字體大小",
+            "alignment": "對齊到",
+            "text_color": "文字顏色"
+        },
+        "outputs": {
+            "image": "影像",
+            "mask": "遮罩",
+            "mask_inverted": "反轉遮罩"
+        },
+        "description": "建立一個遮罩或一批具有指定文字的遮罩。位置是中心位置。"
+    },
+    "CreateGradientFromCoords": {
+        "title": "從座標創建漸變圖像",
+        "inputs": {
+            "coordinates": "座標"
+        },
+        "widgets": {
+            "frame_height": "高度",
+            "frame_width": "寬度",
+            "start_color": "起始色",
+            "end_color": "結束色",
+            "multiplier": "倍數"
+        },
+        "outputs": {
+            "image": "影像"
+        },
+        "description": "在座標位置建立漸變影像。"
+    },
+    "GradientToFloat": {
+        "title": "漸層到浮點",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "steps": "步數"
+        },
+        "outputs": {
+            "float_x": "浮點_X",
+            "float_y": "浮點_Y"
+        },
+        "description": "計算圖像浮點列表"
+    },
+    "MaskOrImageToWeight": {
+        "title": "遮罩或影像到權重",
+        "inputs": {
+            "images": "影像",
+            "masks": "遮罩"
+        },
+        "widgets": {
+            "output_type": "輸出類型"
+        },
+        "outputs": {
+            "FLOAT": "浮點",
+            "STRING": "浮點"
+        },
+        "description": "取得遮罩或影像批次的平均值，並按 輸出類型 輸出結果。"
+    },
+    "WeightScheduleConvert": {
+        "title": "權重調度轉換",
+        "inputs": {
+            "input_values": "輸入值",
+            "interpolation_curve": "插值曲線"
+        },
+        "widgets": {
+            "output_type": "輸出類型",
+            "invert": "反轉",
+            "repeat": "重複",
+            "remap_to_frames": "重映射到幀",
+            "interpolation_curve": "插值曲線",
+            "remap_values": "重映射值",
+            "remap_min": "重映射最小值",
+            "remap_max": "重映射最大值"
+        },
+        "outputs": {
+            "FLOAT": "浮點",
+            "STRING": "浮點",
+            "INT": "整數"
+        },
+        "description": "將不同的值列表/序列轉換為另一種類型。"
+    },
+    "FloatToMask": {
+        "title": "浮點到遮罩",
+        "inputs": {
+            "input_values": "輸入值"
+        },
+        "widgets": {
+            "width": "寬度",
+            "height": "高度"
+        },
+        "outputs": {
+            "MASK": "遮罩"
+        },
+        "description": "根据输入的浮点数值生成一批遮罩。批大小由输入浮点值的长度决定。每个遮罩都以指定的宽度和高度生成。"
+    },
+    "WeightScheduleExtend": {
+        "title": "權重調度擴展",
+        "inputs": {
+            "input_values_1": "輸入值_1",
+            "input_values_2": "輸入值_2"
+        },
+        "widgets": {
+            "output_type": "輸出類型"
+        },
+        "outputs": {
+            "FLOAT": "浮點"
+        },
+        "description": "擴展不同的值列表/系列，並根據需要進行轉換"
+    },
+    "FloatToSigmas": {
+        "title": "浮點到Sigmas",
+        "inputs": {
+            "float_list": "浮點列表"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        },
+        "description": "從浮點清單建立sigmas tensor"
+    },
+    "SigmasToFloat": {
+        "title": "Sigmas到浮點",
+        "inputs": {
+            "sigmas": "sigmas"
+        },
+        "outputs": {
+            "float": "浮點"
+        },
+        "description": "從sigma張量建立浮點清單。"
+    },
+    "GLIGENTextBoxApplyBatchCoords": {
+        "title": "GLIGEN文字方塊應用(批次座標)",
+        "inputs": {
+            "conditioning_to": "條件",
+            "latents": "Latent",
+            "clip": "CLIP",
+            "gligen_textbox_model": "GLIGEN模型",
+            "coordinates": "座標",
+            "size_multiplier": "尺寸乘數"
+        },
+        "widgets": {
+            "text": "文字",
+            "width": "寬度",
+            "height": "高度"
+        },
+        "outputs": {
+            "conditioning": "條件",
+            "coord_preview": "座標預覽"
+        },
+        "description": "這個節點允許在批次中調度 GLIGEN 文字方塊的位置，和 AnimateDiff-Evolved 一起使用。建議和 曲線編輯器 節點一起使用。\n\n GLIGEN模型可以在 管理員 的 '安裝模型' 中下載。或直接在：https://huggingface.co/comfyanonymous/GLIGEN_pruned_safetensors/tree/main 下載。 \n \n 輸入：\n- **Latent** 輸入用於計算批次大小\n- **CLIP** 是文字編碼器，與其他CLIP輸入相同\n- **GLIGEN模型** 連接到 GLIGEN載入器 節點\n- **座標** 接收座標點json字串，和 曲線編輯器 節點相容。 \n- **文字** 文字方塊位置的提示詞\n- **寬度** 和 **高度** 設定 GLIGEN文字方塊 的尺寸\n \n輸出：\n- **條件** 連接到 CLIP文字編碼 和 採樣器 中間\n- **座標預覽** 用於預覽座標和BBox"
+    },
+    "CreateInstanceDiffusionTracking": {
+        "title": "建立實例擴散追蹤",
+        "inputs": {
+            "coordinates": "座標",
+            "size_multiplier": "尺寸乘數"
+        },
+        "widgets": {
+            "width": "寬度",
+            "height": "高度",
+            "bbox_width": "BBox寬度",
+            "bbox_height": "BBox高度",
+            "class_name": "類別名",
+            "class_id": "類別ID",
+            "prompt": "提示詞",
+            "fit_in_frame": "適應框架"
+        },
+        "outputs": {
+            "tracking": "追蹤",
+            "prompt": "提示",
+            "width": "寬度",
+            "height": "高度",
+            "bbox_width": "bbox寬度",
+            "bbox_height": "bbox高度",
+            "int": "整數"
+        },
+        "description": "產生用於 InstanceDiffusion 的追蹤資料：\nhttps://github.com/logtd/ComfyUI-InstanceDiffusion\n\nInstanceDiffusion 提示字格式：\n`\"class_id.class_name\": \"prompt\"`\n範例：\n`\"1.head\": \"((head))\"`"
+    },
+    "AppendInstanceDiffusionTracking": {
+        "title": "附加實例擴散跟踪",
+        "inputs": {
+            "tracking_1": "跟蹤_1",
+            "tracking_2": "跟蹤_2",
+            "prompt_1": "提示詞_1",
+            "prompt_2": "提示詞_2"
+        },
+        "outputs": {
+            "tracking": "追蹤",
+            "prompt": "提示"
+        },
+        "description": "附加追蹤資料與實例擴散使用：https://github.com/logtd/ComfyUI-InstanceDiffusion"
+    },
+    "InterpolateCoords": {
+        "title": "座標插值",
+        "inputs": {
+            "coordinates": "座標",
+            "interpolation_curve": "插值曲線"
+        },
+        "outputs": {
+            "coordinates": "座標"
+        },
+        "description": "依據曲線插入座標"
+    },
+    "DrawInstanceDiffusionTracking": {
+        "title": "繪製實例擴散跟踪",
+        "inputs": {
+            "image": "影像",
+            "tracking": "追蹤"
+        },
+        "widgets": {
+            "box_line_width": "框線寬度",
+            "draw_text": "繪製文字",
+            "font": "字體",
+            "font_size": "字體大小"
+        },
+        "outputs": {
+            "image": "影像"
+        },
+        "description": "呼叫來自 CreateInstanceDiffusionTracking 節點的追蹤資料進行繪製"
+    },
+    "PointsEditor": {
+        "title": "點編輯器",
+        "inputs": {
+            "bg_image": "背景圖"
+        },
+        "widgets": {
+            "points_store": "點位置",
+            "bbox_store": "BBox位置",
+            "bbox_format": "BBox格式",
+            "width": "寬度",
+            "height": "高度",
+            "normalize": "標準化",
+            "New canvs": "新畫布",
+            "Load Image": "載入圖片",
+            "Clear Image": "清除影像",
+            "New canvas": "新建畫布"
+        },
+        "outputs": {
+            "positive_coords": "正面座標",
+            "negative_coords": "負面座標",
+            "bbox": "BBox",
+            "bbox_mask": "BBox遮罩",
+            "cropped_image": "裁切影像"
+        },
+        "description": "# 開發中\n盡量不要在工作流程中使用這個節點，可能會遇到大量bug且不穩定！ ！  \n\n## 建立座標的圖形編輯器\n\n**Shift + 左鍵** 新增正面（綠色）的座標點。\n\n**Shift + 右鍵** 新增負面（紅色）的座標點。\n\n**Ctrl + 左鍵** 繪製方塊。\n\n**右鍵座標點** 刪除該點，不能刪除點數組的起點/終點。\n\n要新增圖像，選擇節點並貼上或拖入圖像。\n\n或從 背景圖 介面輸入，使用輸入影像的第一幀。\n\n**影像會儲存到節點和工作流程**\n右鍵選單可以清除影像。"
+    },
+    "CutAndDragOnPath": {
+        "title": "路徑剪切拖曳",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩",
+            "bg_image": "背景影像",
+            "coordinates": "座標"
+        },
+        "widgets": {
+            "frame_width": "框架寬度",
+            "frame_height": "框架高度",
+            "inpaint": "修復"
+        },
+        "outputs": {
+            "image": "影像",
+            "mask": "遮罩"
+        },
+        "description": "從影像中切除掩膜區域，並沿路徑拖曳該區域。若啟用修復且未提供背景圖，則使用 OpenCV TELEA 演算法填充切除區域。"
+    },
+    "ImagePass": {
+        "title": "影像橋接",
+        "inputs": {
+            "image": "影像"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "傳遞圖像到下一個節點"
+    },
+    "ColorMatch": {
+        "title": "影像調色",
+        "inputs": {
+            "image_ref": "參考影像",
+            "image_target": "目標影像"
+        },
+        "widgets": {
+            "method": "方法",
+            "strength": "強度",
+            "multithread": "多執行緒"
+        },
+        "outputs": {
+            "image": "影像"
+        },
+        "description": "color-matcher（影像調色）可以在轉換影像之間的色彩樣式，用於照片、繪畫、序列幀的自動調色以及光場定格修正。\n\n基於 Reinhard 等演算法，Pitie 等人提出的 Monge-Kantorovich Linearization (MKL) 演算法以及我們結合經典直方圖匹配對 Multi-Variate Gaussian Distribution (MVGD)演算法的分析解決方案。如下圖所示，我們的 HM-MVGD-HM 符合方法優於現有方法。\n\nhttps://github.com/hahnec/color-matcher/"
+    },
+    "SaveImageWithAlpha": {
+        "title": "保存帶Alpha通道影像",
+        "inputs": {
+            "images": "影像",
+            "mask": "遮罩",
+            "filename_prefix": "檔名前綴",
+            "prompt": "提示詞",
+            "extra_pnginfo": "額外PNG訊息"
+        },
+        "outputs": {}
+    },
+    "ImageConcanate": {
+        "title": "影像合併",
+        "inputs": {
+            "image1": "圖像_1",
+            "image2": "圖像_2"
+        },
+        "widgets": {
+            "direction": "方向",
+            "match_image_size": "匹配影像大小"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "按方向合併兩個影像。"
+    },
+    "ImageConcatFromBatch": {
+        "title": "影像合併（批次）",
+        "inputs": {
+            "images": "影像"
+        },
+        "widgets": {
+            "num_columns": "列數",
+            "match_image_size": "匹配尺寸",
+            "max_resolution": "最大解析度"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "從影像批次中取得影像，然後按照列數排列為單一影像。"
+    },
+    "ImageGridComposite2x2": {
+        "title": "影像柵格合併2x2",
+        "inputs": {
+            "image1": "圖像_1",
+            "image2": "圖像_2",
+            "image3": "圖像_3",
+            "image4": "圖像_4"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "將 4 個輸入影像合併為 2x2 表格。"
+    },
+    "ImageGridComposite3x3": {
+        "title": "影像柵格合併3x3",
+        "inputs": {
+            "image1": "圖像_1",
+            "image2": "圖像_2",
+            "image3": "圖像_3",
+            "image4": "圖像_4",
+            "image5": "圖像_5",
+            "image6": "圖像_6",
+            "image7": "圖像_7",
+            "image8": "圖像_8",
+            "image9": "圖像_9"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "將 9 個輸入影像合併為 3x3 表格。"
+    },
+    "ImageBatchTestPattern": {
+        "title": "影像批次圖案",
+        "widgets": {
+            "batch_size": "批次大小",
+            "start_from": "起始值",
+            "text_x": "文字x",
+            "text_y": "文字y",
+            "width": "寬度",
+            "height": "高度",
+            "font": "字體",
+            "font_size": "字體大小"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "ImageGrabPIL": {
+        "title": "PIL畫面捕捉",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "寬度",
+            "height": "高度",
+            "num_frames": "幀數",
+            "delay": "延遲"
+        },
+        "outputs": {
+            "image": "影像"
+        },
+        "description": "按螢幕座標捕捉區域。\n\n用於即時採樣。"
+    },
+    "Screencap_mss": {
+        "title": "螢幕捕捉MSS",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "寬度",
+            "height": "高度",
+            "num_frames": "幀數",
+            "delay": "延遲"
+        },
+        "outputs": {
+            "images": "影像"
+        },
+        "description": "按螢幕座標捕捉區域。\n\n用於即時採樣。"
+    },
+    "WebcamCaptureCV2": {
+        "title": "相機捕捉CV2",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "寬度",
+            "height": "高度",
+            "cam_index": "相機序號",
+            "release": "釋放"
+        },
+        "outputs": {
+            "image": "影像"
+        },
+        "description": "使用 CV2 呼叫網頁相機捕捉螢幕。\n\n用於即時採樣。"
+    },
+    "AddLabel": {
+        "title": "添加標籤",
+        "inputs": {
+            "image": "影像",
+            "caption": "標題"
+        },
+        "widgets": {
+            "text_x": "位置_X",
+            "text_y": "位置_Y",
+            "height": "高度",
+            "font_size": "字體大小",
+            "font_color": "字體顏色",
+            "label_color": "背景顏色",
+            "font": "字體",
+            "text": "文字",
+            "direction": "方向"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "GetImageSizeAndCount": {
+        "title": "取得影像尺寸數量",
+        "inputs": {
+            "image": "影像"
+        },
+        "outputs": {
+            "image": "影像",
+            "width": "寬度",
+            "height": "高度",
+            "count": "數量"
+        },
+        "description": "輸出影像的寬度、高度、批次大小"
+    },
+    "ImageBatchRepeatInterleaving": {
+        "title": "複製影像批次",
+        "inputs": {
+            "images": "影像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "repeats": "次數"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "依指定次數複製批次中的影像。\n\n例如包含 5 個影像的批次：0,1,2,3,4\n\n重複 2 次後變為：0,0,1,1,2,2,3,3,4,4"
+    },
+    "ImageUpscaleWithModelBatched": {
+        "title": "影像批次透過模型放大",
+        "inputs": {
+            "upscale_model": "放大模型",
+            "images": "影像"
+        },
+        "widgets": {
+            "per_batch": "每批次"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "功能与 ComfyUI 原生模型超分节点相同，但支持设置分批，以降低显存占用。"
+    },
+    "ImageNormalize_Neg1_To_1": {
+        "title": "圖像標準化-1到1",
+        "inputs": {
+            "images": "影像"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "標準化影像到 [-1,1]"
+    },
+    "RemapImageRange": {
+        "title": "重映射影像範圍",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "min": "最小值",
+            "max": "最大值",
+            "clamp": "箝制"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "將圖像值重新對應到指定的範圍。"
+    },
+    "SplitImageChannels": {
+        "title": "分離影像頻道",
+        "inputs": {
+            "image": "影像"
+        },
+        "outputs": {
+            "red": "紅色",
+            "green": "綠色",
+            "blue": "藍色",
+            "mask": "遮罩"
+        },
+        "description": "分离图像为单通道图像，alpha通道分离为遮罩。"
+    },
+    "MergeImageChannels": {
+        "title": "合併影像頻道",
+        "inputs": {
+            "red": "紅色",
+            "green": "綠色",
+            "blue": "藍色",
+            "alpha": "alpha透明通道"
+        },
+        "outputs": {
+            "image": "影像"
+        },
+        "description": "合併通道為影像"
+    },
+    "ImagePadForOutpaintMasked": {
+        "title": "外補畫板（遮罩）",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "left": "左",
+            "top": "上",
+            "right": "右",
+            "bottom": "下",
+            "feathering": "羽化"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "ImagePadForOutpaintTargetSize": {
+        "title": "外補畫板（尺寸）",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "target_width": "目標寬度",
+            "target_height": "目標高度",
+            "feathering": "羽化",
+            "upscale_method": "縮放方法"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "ImagePrepForICLora": {
+        "title": "ICLora影像準備",
+        "inputs": {
+            "reference_image": "參考影像",
+            "latent_image": "Latent影像",
+            "latent_mask": "Latent遮罩",
+            "reference_mask": "參考遮罩"
+        },
+        "widgets": {
+            "output_width": "輸出寬度",
+            "output_height": "輸出高度",
+            "border_width": "邊框寬度"
+        },
+        "outputs": {
+            "image": "影像",
+            "mask": "遮罩"
+        }
+    },
+    "ImageAndMaskPreview": {
+        "title": "影像與遮罩預覽",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "mask_opacity": "遮罩不透明",
+            "mask_color": "遮罩顏色",
+            "pass_through": "穿透"
+        },
+        "outputs": {
+            "composite": "影像"
+        },
+        "description": "預覽影像或遮罩，同時輸入影像和遮罩時會合併遮罩到影像上。\n當 穿透 開啟時將停用合成，用於透過合併為視訊節點的預覽。"
+    },
+    "CrossFadeImages": {
+        "title": "交叉漸隱影像",
+        "inputs": {
+            "images_1": "圖像_1",
+            "images_2": "圖像_2"
+        },
+        "widgets": {
+            "interpolation": "插值方式",
+            "transition_start_index": "開始過渡序號",
+            "transitioning_frames": "過渡期幀數",
+            "start_level": "起始色值",
+            "end_level": "最終色值"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "CrossFadeImagesMulti": {
+        "title": "多重交叉漸隱影像",
+        "inputs": {
+            "image_1": "圖像_1",
+            "image_2": "圖像_2"
+        },
+        "widgets": {
+            "inputcount": "輸入數量",
+            "interpolation": "插值方式",
+            "Update inputs": "更新輸入",
+            "transitioning_frames": "過渡期幀數"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "TransitionImagesMulti": {
+        "title": "多重過渡影像",
+        "inputs": {
+            "image_1": "圖像_1",
+            "image_2": "圖像_2"
+        },
+        "widgets": {
+            "inputcount": "輸入數量",
+            "interpolation": "插值方式",
+            "transition_type": "過渡類型",
+            "transitioning_frames": "過渡期幀數",
+            "blur_radius": "模糊半徑",
+            "reverse": "反向",
+            "device": "裝置",
+            "Update inputs": "更新輸入"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        },
+        "description": "創建影像之間的過渡。"
+    },
+    "TransitionImagesInBatch": {
+        "title": "批次過渡影像",
+        "inputs": {
+            "images": "影像"
+        },
+        "widgets": {
+            "interpolation": "插值方式",
+            "transition_type": "過渡類型",
+            "transitioning_frames": "過渡期幀數",
+            "blur_radius": "模糊半徑",
+            "reverse": "反向",
+            "device": "裝置"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        },
+        "description": "在批次影像之間建立過渡"
+    },
+    "ShuffleImageBatch": {
+        "title": "打亂影像批次",
+        "inputs": {
+            "images": "影像"
+        },
+        "widgets": {
+            "seed": "隨機種"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "GetImageRangeFromBatch": {
+        "title": "取得影像範圍",
+        "inputs": {
+            "images": "影像",
+            "masks": "遮罩"
+        },
+        "widgets": {
+            "start_index": "起始編號",
+            "num_frames": "幀數"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        },
+        "description": "根据输入图像批次以及参数，创建新图像批次。"
+    },
+    "GetLatentRangeFromBatch": {
+        "title": "取得Latent範圍",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "start_index": "起始編號",
+            "num_frames": "幀數"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "Insert_Latent_To_Index": {
+        "title": "插入Latent到索引",
+        "inputs": {
+            "source": "來源",
+            "destination": "目標"
+        },
+        "widgets": {
+            "index": "索引"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "GetImagesFromBatchIndexed": {
+        "title": "從批次取得影像",
+        "inputs": {
+            "images": "影像"
+        },
+        "widgets": {
+            "indexes": "序號"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "依索引編號選擇影像。"
+    },
+    "InsertImagesToBatchIndexed": {
+        "title": "插入圖像到索引批次",
+        "inputs": {
+            "original_images": "原始影像",
+            "images_to_insert": "插入影像"
+        },
+        "widgets": {
+            "indexes": "索引"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "將指定索引處的影像插入原始影像批次中。"
+    },
+    "PadImageBatchInterleaved": {
+        "title": "影像批次交錯填充",
+        "inputs": {
+            "images": "影像"
+        },
+        "widgets": {
+            "empty_frames_per_image": "每影像空幀數",
+            "pad_frame_value": "填充幀值",
+            "add_after_last": "在末尾添加"
+        },
+        "outputs": {
+            "images": "影像",
+            "masks": "遮罩"
+        },
+        "description": "在批次中的影像之間插入空幀。"
+    },
+    "ReplaceImagesInBatch": {
+        "title": "替換影像批次",
+        "inputs": {
+            "original_images": "原始影像",
+            "replacement_images": "替換影像",
+            "original_masks": "原遮罩",
+            "replacement_masks": "替換遮罩"
+        },
+        "widgets": {
+            "start_index": "起始編號"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "從指定的起始索引開始，取代批次中的影像。用替換圖像。"
+    },
+    "ReverseImageBatch": {
+        "title": "反轉影像批次",
+        "inputs": {
+            "images": "影像"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "反轉批次中影像的順序。"
+    },
+    "ImageBatchMulti": {
+        "title": "影像組合批次（多重）",
+        "inputs": {
+            "image_1": "圖像_1",
+            "image_2": "圖像_2",
+            "image_3": "圖像_3",
+            "image_4": "圖像_4",
+            "image_5": "圖像_5",
+            "image_6": "圖像_6",
+            "image_7": "圖像_7",
+            "image_8": "圖像_8",
+            "image_9": "圖像_9",
+            "image_10": "圖像_10"
+        },
+        "widgets": {
+            "inputcount": "輸入數量",
+            "blending": "混合方式",
+            "Update inputs": "更新輸入"
+        },
+        "outputs": {
+            "images": "影像"
+        },
+        "description": "合併多個影像為影像批次。可透過\"輸入數量\"設定輸入介面數量，點選更新刷新介面。"
+    },
+    "ImageTensorList": {
+        "title": "影像張量列表",
+        "inputs": {
+            "image1": "影像1",
+            "image2": "影像2"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "從輸入影像建立影像清單。"
+    },
+    "ImageBatchExtendWithOverlap": {
+        "title": "影像批次擴展（帶重疊部分）",
+        "inputs": {
+            "source_images": "來源影像",
+            "new_images": "新影像"
+        },
+        "widgets": {
+            "overlap": "重疊",
+            "overlap_side": "側邊重疊",
+            "overlap_mode": "模式重疊"
+        },
+        "outputs": {
+            "source_images": "來源影像",
+            "start_images": "起始影像",
+            "extended_images": "擴充影像"
+        },
+        "description": "影片產生擴展的輔助節點\n 首先取得輸入來源和重疊量以取得擴充的起始幀。\n 然後在該節點的另一個副本\n 提供新產生的幀，並選擇如何進行重疊。"
+    },
+    "ImageAddMulti": {
+        "title": "影像混合（多重）",
+        "inputs": {
+            "image_1": "圖像_1",
+            "image_2": "圖像_2",
+            "image_3": "圖像_3",
+            "image_4": "圖像_4",
+            "image_5": "圖像_5",
+            "image_6": "圖像_6",
+            "image_7": "圖像_7",
+            "image_8": "圖像_8",
+            "image_9": "圖像_9",
+            "image_10": "圖像_10"
+        },
+        "widgets": {
+            "inputcount": "輸入數量",
+            "blending": "混合方式",
+            "blend_amount": "混合量",
+            "Update inputs": "更新輸入"
+        },
+        "outputs": {
+            "images": "影像"
+        },
+        "description": "混合多個影像。可透過\"輸入數量\"設定輸入介面數量，點選更新刷新介面。"
+    },
+    "ImageConcatMulti": {
+        "title": "影像合併（多個）",
+        "inputs": {
+            "image_1": "圖像_1",
+            "image_2": "圖像_2"
+        },
+        "widgets": {
+            "inputcount": "輸入數量",
+            "direction": "方向",
+            "match_image_size": "匹配尺寸",
+            "Update inputs": "更新輸入"
+        },
+        "outputs": {
+            "images": "影像"
+        },
+        "description": "按方向合併多個影像。點擊更新以更新輸入數量。"
+    },
+    "PreviewAnimation": {
+        "title": "預覽動畫",
+        "inputs": {
+            "images": "影像",
+            "masks": "遮罩"
+        },
+        "widgets": {
+            "fps": "幀率"
+        }
+    },
+    "ImageResizeKJ": {
+        "title": "圖像縮放（KJ）",
+        "inputs": {
+            "image": "影像",
+            "get_image_size": "參考影像",
+            "width_input": "寬度",
+            "height_input": "高度"
+        },
+        "widgets": {
+            "width": "寬度",
+            "height": "高度",
+            "upscale_method": "縮放方法",
+            "keep_proportions": "固定寬高比",
+            "keep_proportion": "固定寬高比",
+            "divisible_by": "被整除數",
+            "crop": "裁切",
+            "per_batch": "批次"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "width": "寬度",
+            "height": "高度"
+        },
+        "description": "依指定寬高縮放影像。尺寸可由輸入指定，最終輸出優先順序依下列規則排列：\n- 參考影像尺寸\n- 寬度-輸入 和 高度-輸入\n- 寬度 和 高度\n \n固定寬高比會以最高尺寸固定寬高比。"
+    },
+    "LoadAndResizeImage": {
+        "title": "載入並縮放圖像",
+        "widgets": {
+            "image": "影像",
+            "resize": "縮放",
+            "width": "寬度",
+            "height": "高度",
+            "repeat": "複製",
+            "keep_proportion": "固定寬高比",
+            "divisible_by": "因數",
+            "mask_channel": "遮罩通道",
+            "background_color": "背景色",
+            "upload": "上傳"
+        },
+        "outputs": {
+            "image": "影像",
+            "mask": "遮罩",
+            "width": "寬度",
+            "height": "高度",
+            "image_path": "圖片路徑"
+        }
+    },
+    "LoadImagesFromFolderKJ": {
+        "title": "載入圖片資料夾(KJ)",
+        "widgets": {
+            "folder": "資料夾",
+            "width": "寬度",
+            "height": "高度",
+            "keep_aspect_ratio": "維持縱橫比",
+            "image_load_cap": "載入上限",
+            "start_index": "起始編號",
+            "include_subfolders": "包括子資料夾"
+        },
+        "outputs": {
+            "image": "影像",
+            "mask": "遮罩",
+            "count": "數量",
+            "image_path": "影像路徑"
+        },
+        "description": "將圖像從資料夾載入到批次中，圖像被調整大小並載入到批次中。"
+    },
+    "ImageGridtoBatch": {
+        "title": "圖像表格到批次",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "columns": "列數",
+            "The number of columns in the grid.": "表格的列數。",
+            "rows": "行數",
+            "The number of rows in the grid. Set to 0 for automatic calculation.": "表格的行數，0為自動。"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "將圖表轉換為單一影像批次。"
+    },
+    "SaveImageKJ": {
+        "title": "儲存影像(KJ)",
+        "inputs": {
+            "images": "影像",
+            "caption": "標註"
+        },
+        "widgets": {
+            "filename_prefix": "檔名前綴",
+            "output_folder": "輸出資料夾",
+            "caption_file_extension": "標註檔案副檔名",
+            "prompt": "提示詞",
+            "extra_pnginfo": "額外PNG訊息"
+        },
+        "outputs": {
+            "filename": "檔案名稱"
+        },
+        "description": "將輸入影像儲存至ComfyUI輸出目錄。"
+    },
+    "SaveStringKJ": {
+        "title": "保存字串(KJ)",
+        "inputs": {
+            "string": "字串"
+        },
+        "widgets": {
+            "filename_prefix": "檔名前綴",
+            "output_folder": "輸出資料夾",
+            "file_extension": "檔案副檔名"
+        },
+        "outputs": {
+            "filename": "檔案名稱"
+        }
+    },
+    "FastPreview": {
+        "title": "快速預覽",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "format": "格式",
+            "quality": "品質"
+        },
+        "outputs": {}
+    },
+    "ImageCropByMaskAndResize": {
+        "title": "按遮罩裁剪並縮放",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "base_resolution": "基礎解析度",
+            "padding": "填充",
+            "min_crop_resolution": "最小裁剪分辨率",
+            "max_crop_resolution": "最大裁剪分辨率"
+        },
+        "outputs": {
+            "images": "影像",
+            "masks": "遮罩",
+            "BBox": "BBox"
+        }
+    },
+    "ImageCropByMask": {
+        "title": "按遮罩裁剪",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩"
+        },
+        "outputs": {
+            "image": "影像"
+        },
+        "description": "根據所提供的遮罩裁剪輸入影像"
+    },
+    "ImageUncropByMask": {
+        "title": "按遮罩反裁剪",
+        "inputs": {
+            "destination": "目標影像",
+            "source": "來源影像",
+            "mask": "遮罩",
+            "bbox": "BBox"
+        },
+        "outputs": {
+            "image": "影像"
+        }
+    },
+    "ImageCropByMaskBatch": {
+        "title": "按遮罩批次裁剪",
+        "inputs": {
+            "image": "影像",
+            "masks": "遮罩"
+        },
+        "widgets": {
+            "width": "寬度",
+            "height": "高度",
+            "padding": "填充",
+            "preserve_size": "保留尺寸",
+            "bg_color": "背景顏色"
+        },
+        "outputs": {
+            "images": "影像",
+            "masks": "遮罩"
+        }
+    },
+    "ImagePadKJ": {
+        "title": "影像填充(KJ)",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "left": "左填充",
+            "right": "右填充",
+            "top": "上填充",
+            "bottom": "下填充",
+            "extra_padding": "額外填充",
+            "pad_mode": "填充模式",
+            "color": "顏色",
+            "target_width": "目標寬度",
+            "target_height": "目標高度"
+        },
+        "outputs": {
+            "images": "影像",
+            "masks": "遮罩"
+        },
+        "description": "填滿輸入影像，並可選擇使用指定的填充進行遮罩。"
+    },
+    "ImageBatchJoinWithTransition": {
+        "title": "影像批量連接（帶過渡效果）",
+        "inputs": {
+            "images_1": "影像1",
+            "images_2": "影像2"
+        },
+        "widgets": {
+            "start_index": "起始索引",
+            "interpolation": "插值",
+            "transition_type": "過渡類型",
+            "transitioning_frames": "過渡期",
+            "blur_radius": "模糊半徑",
+            "reverse": "反轉",
+            "device": "裝置"
+        },
+        "outputs": {
+            "images": "影像",
+            "masks": "遮罩"
+        },
+        "description": "輸入影像"
+    },
+    "Intrinsic_lora_sampling": {
+        "title": "IntrinsicLoRA採樣",
+        "inputs": {
+            "model": "模型",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image": "影像",
+            "optional_latent": "Latent(可選)"
+        },
+        "widgets": {
+            "lora_name": "LoRA名稱",
+            "task": "任務",
+            "text": "文字",
+            "per_batch": "每批次"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "IMAGE": "影像"
+        },
+        "description": "採樣器使用的內在lora：https://github.com/duxiaodan/intrinsic-lora這些lora很小，因此包含在這個節點包中。"
+    },
+    "BatchCLIPSeg": {
+        "title": "CLIP語意分割",
+        "inputs": {
+            "images": "影像",
+            "opt_model": "選擇模型",
+            "prev_mask": "上一個遮罩"
+        },
+        "widgets": {
+            "text": "文字",
+            "threshold": "閾值",
+            "binary_mask": "二值遮罩",
+            "combine_mask": "合併遮罩",
+            "use_cuda": "使用CUDA",
+            "blur_sigma": "模糊強度",
+            "image_bg_Ievel": "影像背景水平",
+            "invert": "反向"
+        },
+        "outputs": {
+            "Image": "影像",
+            "Mask": "遮罩"
+        },
+        "description": "使用CLIPSeg分割一個影像或一批影像。"
+    },
+    "DownloadAndLoadCLIPSeg": {
+        "title": "加載CLIPSeg",
+        "widgets": {
+            "model": "模型"
+        },
+        "outputs": {
+            "clipseg_model": "CLIPSeg模型"
+        },
+        "description": "使用 huggingface_hub 下載 CLIPSeg 模型到 Comfy/models/clip_seg"
+    },
+    "CreateTextMask": {
+        "title": "文字遮罩",
+        "widgets": {
+            "invert": "反轉",
+            "frames": "幀數",
+            "text_x": "位置_X",
+            "text_y": "位置_Y",
+            "font_size": "字體大小",
+            "font_color": "字體顏色",
+            "text": "文字",
+            "font": "字體",
+            "width": "寬度",
+            "height": "高度",
+            "start_rotation": "起始旋轉",
+            "end_rotation": "最終旋轉"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "ColorToMask": {
+        "title": "影像顏色到遮罩",
+        "inputs": {
+            "images": "影像"
+        },
+        "widgets": {
+            "invert": "反轉",
+            "red": "紅色",
+            "green": "綠色",
+            "blue": "藍色",
+            "threshold": "閾值",
+            "per_batch": "每批"
+        },
+        "outputs": {
+            "MASK": "遮罩"
+        },
+        "description": "將選定的RGB值轉換為遮罩。對於批次輸入，**per_batch**控制一次處理的影像數量。"
+    },
+    "CreateFluidMask": {
+        "title": "流體遮罩",
+        "widgets": {
+            "invert": "反轉",
+            "frames": "幀數",
+            "width": "寬度",
+            "height": "高度",
+            "inflow_count": "流入數量",
+            "inflow_velocity": "流入速度",
+            "inflow_radius": "流入半徑",
+            "inflow_padding": "流入填充",
+            "inflow_duration": "流入時間"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "CreateAudioMask": {
+        "title": "音訊遮罩",
+        "widgets": {
+            "invert": "反轉",
+            "frames": "幀數",
+            "scale": "縮放",
+            "audio_path": "音訊路徑",
+            "width": "寬度",
+            "height": "高度"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "MASK": "遮罩"
+        }
+    },
+    "CreateGradientMask": {
+        "title": "漸層遮罩",
+        "widgets": {
+            "invert": "反轉",
+            "frames": "幀數",
+            "width": "寬度",
+            "height": "高度"
+        },
+        "outputs": {
+            "MASK": "遮罩"
+        }
+    },
+    "CreateFadeMask": {
+        "title": "漸隱遮罩",
+        "widgets": {
+            "invert": "反轉",
+            "frames": "幀數",
+            "width": "寬度",
+            "height": "高度",
+            "interpolation": "插值方式",
+            "start_level": "起始色值",
+            "midpoint_level": "中點色值",
+            "end_level": "最終色值",
+            "midpoint_frame": "中點訊框編號"
+        },
+        "outputs": {
+            "MASK": "遮罩"
+        },
+        "description": "创建一组在给定帧和值之间插值的掩码。使用与 Fizz的 BatchValueSchedule 相同的语法。第一个值是帧索引(不是从0开始，而是从1开始)括号内的第二个值是掩码在0.0-1.0范围内的浮点数值。\n例如，預設值:\n0:(0.0)\n7:(1.0)\n15:(0.0)\n將創建一個16幀的遮罩批次，從黑色開始，透過選擇曲線插值到第8幀完全白色，然後從那裡插值到第16完全黑色。"
+    },
+    "CreateFadeMaskAdvanced": {
+        "title": "漸隱遮罩(高階)",
+        "widgets": {
+            "points_string": "色值點",
+            "invert": "反轉",
+            "frames": "幀數",
+            "width": "寬度",
+            "height": "高度",
+            "interpolation": "插值方式"
+        },
+        "outputs": {
+            "MASK": "遮罩"
+        }
+    },
+    "CreateMagicMask": {
+        "title": "迷幻遮罩",
+        "widgets": {
+            "frames": "幀數",
+            "depth": "深度",
+            "distortion": "畸變",
+            "seed": "隨機種",
+            "control_after_generate": "運行後操作",
+            "fixed": "固定",
+            "increment": "增加",
+            "decrement": "減少",
+            "randomize": "隨機",
+            "transitions": "過渡",
+            "frame_height": "高度",
+            "frame_width": "寬度"
+        },
+        "outputs": {
+            "mask": "遮罩",
+            "mask_inverted": "反轉遮罩"
+        }
+    },
+    "CreateShapeMask": {
+        "title": "形狀遮罩",
+        "widgets": {
+            "shape": "形狀",
+            "circle": "圓形",
+            "square": "方塊",
+            "triangle": "三角形",
+            "frames": "幀數",
+            "location_x": "位置_X",
+            "location_y": "位置_Y",
+            "size": "大小",
+            "grow": "生長",
+            "frame_width": "寬度",
+            "frame_height": "高度",
+            "shape_width": "形狀的寬度",
+            "shape_height": "形狀的高度"
+        },
+        "outputs": {
+            "mask": "遮罩",
+            "mask_inverted": "反轉遮罩"
+        },
+        "description": "建立具有指定形狀的遮罩或一組遮罩。位置是中心位置。生長值是在每個畫面上生長形狀的量，創建動畫遮罩。"
+    },
+    "CreateVoronoiMask": {
+        "title": "沃洛諾伊遮罩",
+        "widgets": {
+            "frames": "幀數",
+            "num_points": "點數",
+            "line_width": "線寬",
+            "speed": "速度",
+            "frame_width": "寬度",
+            "frame_height": "高度"
+        },
+        "outputs": {
+            "mask": "遮罩",
+            "mask_inverted": "反轉遮罩"
+        }
+    },
+    "GetMaskSizeAndCount": {
+        "title": "取得遮罩尺寸數量",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "outputs": {
+            "mask": "遮罩",
+            "width": "寬度",
+            "height": "高度",
+            "count": "數量"
+        },
+        "description": "輸出遮罩的寬度、高度、批次大小"
+    },
+    "GrowMaskWithBlur": {
+        "title": "遮罩模糊生長",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "expand": "擴充",
+            "incremental_expandrate": "擴充增量",
+            "tapered_corners": "倒角",
+            "flip_input": "反轉輸入",
+            "use_cuda": "使用CUDA",
+            "blur_radius": "模糊半徑",
+            "sigma": "Sigma",
+            "lerp_alpha": "線性透明",
+            "decay_factor": "腐蝕係數",
+            "fill_holes": "填補"
+        },
+        "outputs": {
+            "mask": "遮罩",
+            "mask_inverted": "反轉遮罩"
+        },
+        "description": "# 遮罩模糊生長\n- 遮罩: 輸入遮罩或批次遮罩\n- 擴展:以設定的數值，擴展或收縮遮罩或批量遮罩\n- 擴展增量:每幀增加設定數值的擴展率\n- 倒角:使用錐形角\n- 反轉輸入:翻轉輸入遮罩\n- 模糊半徑:值大於0將模糊遮罩\n- 線性透明:幀之間的內插alpha值\n- 衰減係數: 幀之間插值的衰減值\n- 填補: 填滿遮罩中的孔(慢)"
+    },
+    "MaskBatchMulti": {
+        "title": "遮罩組合批次（多重）",
+        "inputs": {
+            "mask_1": "遮罩_1",
+            "mask_2": "遮罩_2",
+            "mask_3": "遮罩_3",
+            "mask_4": "遮罩_4",
+            "mask_5": "遮罩_5",
+            "mask_6": "遮罩_6",
+            "mask_7": "遮罩_7",
+            "mask_8": "遮罩_8",
+            "mask_9": "遮罩_9",
+            "mask_10": "遮罩_10"
+        },
+        "widgets": {
+            "inputcount": "輸入數量",
+            "Update inputs": "更新輸入"
+        },
+        "outputs": {
+            "masks": "遮罩"
+        },
+        "description": "合併多個遮罩為遮罩批次。可透過\"輸入數量\"設定輸入介面數量，點選更新刷新介面。"
+    },
+    "OffsetMask": {
+        "title": "偏移遮罩",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "angle": "角度",
+            "duplication_factor": "重複次數",
+            "roll": "使用滾動",
+            "incremental": "使用增量",
+            "padding_mode": "填充模式",
+            "empty": "空",
+            "border": "邊界",
+            "reflection": "反射"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        },
+        "description": "# 將遮罩伸縮指定的量\n- 遮罩: 輸入遮罩或批次遮罩\n- x：水平伸縮量\n- y：垂直伸縮量\n- 重複次數：批次複製遮罩的次數\n- 使用滾動：捲邊包裝"
+    },
+    "RoundMask": {
+        "title": "捨入遮罩",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "outputs": {
+            "MASK": "遮罩"
+        }
+    },
+    "ResizeMask": {
+        "title": "縮放遮罩",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "width": "寬度",
+            "height": "高度",
+            "keep_proportions": "固定寬高比",
+            "upscale_method": "高級插值",
+            "crop": "裁切"
+        },
+        "outputs": {
+            "mask": "遮罩",
+            "width": "寬度",
+            "height": "高度"
+        },
+        "description": "將遮罩或批量遮罩調整為指定的寬度和高度。"
+    },
+    "RemapMaskRange": {
+        "title": "重映射遮罩範圍",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "min": "最小值",
+            "max": "最大值"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        },
+        "description": "為遮罩設定新的最小值和最大值。"
+    },
+    "SeparateMasks": {
+        "title": "分離遮罩",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "size_threshold_width": "寬度尺寸閾值",
+            "size_threshold_height": "高度尺寸閾值",
+            "mode": "分離模式",
+            "max_poly_points": "最大多邊形點數",
+            "polygon": "多邊形",
+            "shape": "形狀",
+            "mask_np": "Numpy遮罩",
+            "max_points": "最大點數"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        }
+    },
+    "PathchSageAttentionKJ": {
+        "title": "SAGE注意力補丁(KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "allow_compile": "允許編譯",
+            "sage_attention": "SAGE注意力"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "CheckpointLoaderKJ": {
+        "title": "大模型載入器(KJ)",
+        "inputs": {},
+        "widgets": {
+            "ckpt_name": "模型名稱",
+            "weight_dtype": "權重資料類型",
+            "compute_dtype": "計算資料類型",
+            "patch_cublaslinear": "CUBlas線性補丁",
+            "sage_attention": "SAGE注意力",
+            "enable_fp16_accumulation": "啟用FP16累積"
+        },
+        "outputs": {
+            "model": "模型",
+            "clip": "CLIP",
+            "vae": "VAE"
+        }
+    },
+    "DiffusionModelLoaderKJ": {
+        "title": "擴散模型載入器(KJ)",
+        "inputs": {
+            "extra_state_dict": "額外的狀態字典"
+        },
+        "widgets": {
+            "model_name": "模型名稱",
+            "weight_dtype": "權重資料類型",
+            "compute_dtype": "計算資料類型",
+            "patch_cublaslinear": "CUBlas線性補丁",
+            "sage_attention": "SAGE注意力",
+            "enable_fp16_accumulation": "啟用FP16累積"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "PatchModelPatcherOrder": {
+        "title": "模型補丁順序調整",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "patch_order": "補丁順序",
+            "full_load": "完整載入"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "TorchCompileModelFluxAdvanced": {
+        "title": "Flux模型Torch編譯(高階)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "backend": "後端",
+            "fullgraph": "完整圖",
+            "mode": "模式",
+            "double_blocks": "雙區塊",
+            "single_blocks": "單區塊",
+            "dynamic": "動態",
+            "dynamo_cache_size_limit": "動態快取大小限制",
+            "blocks_str": "區塊字串"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "TorchCompileModelFluxAdvancedV2": {
+        "title": "Flux模型Torch編譯(高階)V2",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "backend": "後端",
+            "fullgraph": "完整圖",
+            "mode": "模式",
+            "double_blocks": "雙區塊",
+            "single_blocks": "單區塊",
+            "dynamic": "動態",
+            "dynamo_cache_size_limit": "動態快取大小限制",
+            "blocks_str": "區塊字串"
+        },
+        "outputs": {
+            "MODEL": "模型",
+            "model": "模型"
+        }
+    },
+    "TorchCompileModelHyVideo": {
+        "title": "Torch編譯混合視訊模型",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "backend": "後端",
+            "fullgraph": "完整圖",
+            "mode": "模式",
+            "dynamic": "動態",
+            "dynamo_cache_size_limit": "動態快取大小限制",
+            "compile_single_blocks": "編譯單區塊",
+            "compile_double_blocks": "編譯雙區塊",
+            "compile_txt_in": "編譯文字輸入",
+            "compile_vector_in": "編譯向量輸入",
+            "compile_final_layer": "編譯最終層"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "TorchCompileModelWanVideo": {
+        "title": "Torch編譯Wan視訊模型",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "backend": "後端",
+            "fullgraph": "完整圖",
+            "mode": "模式",
+            "dynamic": "動態",
+            "dynamo_cache_size_limit": "動態快取大小限制",
+            "compile_transformer_blocks_only": "僅編譯Transformer區塊"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "TorchCompileModelWanVideoV2": {
+        "title": "Wan視訊 Torch編譯模型V2",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "backend": "後端",
+            "fullgraph": "完整圖",
+            "mode": "模式",
+            "dynamic": "動態",
+            "dynamo_cache_size_limit": "動態快取大小限制",
+            "compile_transformer_blocks_only": "僅編譯Transformer區塊"
+        },
+        "outputs": {
+            "MODEL": "模型",
+            "model": "模型"
+        }
+    },
+    "TorchCompileVAE": {
+        "title": "Torch編譯VAE",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "backend": "後端",
+            "fullgraph": "完整圖",
+            "mode": "模式",
+            "compile_encoder": "編譯編碼器",
+            "compile_decoder": "編譯解碼器"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "TorchCompileControlNet": {
+        "title": "Torch編譯ControlNet",
+        "inputs": {
+            "controlnet": "ControlNet"
+        },
+        "widgets": {
+            "backend": "後端",
+            "fullgraph": "完整圖",
+            "mode": "模式"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "TorchCompileLTXModel": {
+        "title": "Torch編譯LTX模型",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "backend": "後端",
+            "fullgraph": "完整圖",
+            "mode": "模式",
+            "dynamic": "動態"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "TorchCompileCosmosModel": {
+        "title": "Torch編譯Cosmos模型",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "backend": "後端",
+            "fullgraph": "完整圖",
+            "mode": "模式",
+            "dynamic": "動態",
+            "dynamo_cache_size_limit": "動態快取大小限制"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "WanVideoTeaCacheKJ": {
+        "title": "Wan視訊快取優化(KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "rel_l1_thresh": "相對L1閾值",
+            "start_percent": "起始百分比",
+            "end_percent": "結束百分比",
+            "cache_device": "快取設備",
+            "coefficients": "係數"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "WanVideoEnhanceAVideoKJ": {
+        "title": "Wan影片增強(KJ)",
+        "inputs": {
+            "model": "模型",
+            "latent": "latent"
+        },
+        "widgets": {
+            "weight": "權重"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "WanVideoNAG": {
+        "title": "Wan視訊自然梯度",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "conditioning": "條件",
+            "nag_scale": "網路_縮放",
+            "nag_alpha": "網路_alpha",
+            "nag_tau": "網路_tau",
+            "input_type": "輸入類型"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "SkipLayerGuidanceWanVideo": {
+        "title": "Wan影片層跳過引導",
+        "inputs": {
+            "model": "模型",
+            "blocks": "區塊",
+            "start_percent": "起始百分比",
+            "end_percent": "結束百分比"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "CFGZeroStarAndInit": {
+        "title": "CFG零星初始化",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "use_zero_init": "使用零初始化",
+            "zero_init_steps": "零初始化步數"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "SetNode": {
+        "title": "設定點",
+        "inputs": {
+            "*": "輸入"
+        },
+        "widgets": {
+            "Constant": "常量"
+        },
+        "outputs": {
+            "*": "輸出"
+        }
+    },
+    "GetNode": {
+        "title": "獲取點",
+        "inputs": {
+            "*": "輸入"
+        },
+        "widgets": {
+            "Constant": "常量"
+        },
+        "outputs": {
+            "*": "輸出"
+        }
+    },
+    "BOOLConstant": {
+        "title": "布林值常數",
+        "inputs": {
+            "value": "值"
+        },
+        "widgets": {
+            "value": "值"
+        },
+        "outputs": {
+            "value": "值"
+        }
+    },
+    "INTConstant": {
+        "title": "整數常數",
+        "widgets": {
+            "value": "值"
+        },
+        "outputs": {
+            "value": "值"
+        }
+    },
+    "FloatConstant": {
+        "title": "浮點常數",
+        "widgets": {
+            "value": "值"
+        },
+        "outputs": {
+            "value": "值"
+        }
+    },
+    "StringConstant": {
+        "title": "字串常數",
+        "widgets": {
+            "string": "字串"
+        },
+        "outputs": {
+            "STRING": "字串"
+        }
+    },
+    "StringConstantMultiline": {
+        "title": "字串常數(文字方塊)",
+        "widgets": {
+            "string": "字串",
+            "strip_newlines": "帶換行符"
+        },
+        "outputs": {
+            "STRING": "字串"
+        }
+    },
+    "ScaleBatchPromptSchedule": {
+        "title": "縮放提示詞批次調度",
+        "inputs": {
+            "input_str": "字串",
+            "old_frame_count": "舊幀數",
+            "new_frame_count": "新幀數"
+        },
+        "outputs": {
+            "STRING": "字串"
+        }
+    },
+    "GetLatentsFromBatchIndexed": {
+        "title": "按索引取得Latent",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "latent_format": "latent格式"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "ConditioningMultiCombine": {
+        "title": "條件合併(多重)",
+        "inputs": {
+            "conditioning_1": "條件_1",
+            "conditioning_2": "條件_2",
+            "conditioning_3": "條件_3",
+            "conditioning_4": "條件_4",
+            "conditioning_5": "條件_5",
+            "conditioning_6": "條件_6",
+            "conditioning_7": "條件_7",
+            "conditioning_8": "條件_8",
+            "conditioning_9": "條件_9",
+            "conditioning_10": "條件_10",
+            "conditioning_11": "條件_11",
+            "conditioning_12": "條件_12",
+            "conditioning_13": "條件_13",
+            "conditioning_14": "條件_14",
+            "conditioning_15": "條件_15",
+            "conditioning_16": "條件_16",
+            "conditioning_17": "條件_17",
+            "conditioning_18": "條件_18",
+            "conditioning_19": "條件_19",
+            "conditioning_20": "條件_20"
+        },
+        "widgets": {
+            "inputcount": "輸入數量",
+            "operation": "操作",
+            "Update inputs": "更新輸入"
+        },
+        "outputs": {
+            "combined": "條件",
+            "inputcount": "輸入數量"
+        },
+        "description": "將多個條件節點合併為一個"
+    },
+    "AppendStringsToList": {
+        "title": "追加字串到列表",
+        "inputs": {
+            "string1": "字串1",
+            "string2": "字串2"
+        },
+        "outputs": {
+            "STRING": "字串"
+        }
+    },
+    "JoinStrings": {
+        "title": "合併字串",
+        "inputs": {
+            "string1": "字串1",
+            "string2": "字串2"
+        },
+        "widgets": {
+            "delimiter": "分隔符"
+        },
+        "outputs": {
+            "STRING": "字串"
+        }
+    },
+    "JoinStringMulti": {
+        "title": "合併字串（多重）",
+        "inputs": {
+            "string_1": "字串_1",
+            "string_2": "字串_2",
+            "string_3": "字串_3",
+            "string_4": "字串_4",
+            "string_5": "字串_5",
+            "string_6": "字串_6",
+            "string_7": "字串_7",
+            "string_8": "字串_8",
+            "string_9": "字串_9",
+            "string_10": "字串_10"
+        },
+        "widgets": {
+            "inputcount": "輸入數量",
+            "delimiter": "分隔符",
+            "return_list": "輸出為列表",
+            "Update inputs": "更新輸入"
+        },
+        "outputs": {
+            "string": "字串"
+        },
+        "description": "合併多個字串為字串批次或字串清單。可透過\"輸入數量\"設定輸入介面數量，點選更新刷新介面。"
+    },
+    "CondPassThrough": {
+        "title": "條件傳遞",
+        "inputs": {
+            "positive": "正面條件",
+            "negative": "負面條件"
+        },
+        "outputs": {
+            "positive": "正面條件",
+            "negative": "負面條件"
+        }
+    },
+    "ModelPassThrough": {
+        "title": "模型橋接",
+        "inputs": {
+            "model": "模型"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "將模型傳遞到下一個節點"
+    },
+    "ConditioningSetMaskAndCombine": {
+        "title": "條件設定遮罩(合併2)",
+        "inputs": {
+            "positive_1": "正面條件_1",
+            "negative_1": "負面條件_1",
+            "positive_2": "正面條件_2",
+            "negative_2": "負面條件_2",
+            "mask_1": "遮罩_1",
+            "mask_2": "遮罩_2"
+        },
+        "widgets": {
+            "mask_1_strength": "遮罩_1_強度",
+            "mask_2_strength": "遮罩_2_強度",
+            "set_cond_area": "設定條件區域",
+            "default": "預設",
+            "mask bounds": "遮罩邊界"
+        },
+        "outputs": {
+            "combined_positive": "正面條件",
+            "combined_negative": "負面條件"
+        },
+        "description": "捆綁多個調理遮罩並將節點組合成一個，功能是與ComfyUI本地節點相同"
+    },
+    "ConditioningSetMaskAndCombine3": {
+        "title": "條件設定遮罩(合併3)",
+        "inputs": {
+            "positive_1": "正面條件_1",
+            "negative_1": "負面條件_1",
+            "positive_2": "正面條件_2",
+            "negative_2": "負面條件_2",
+            "positive_3": "正面條件_3",
+            "negative_3": "負面條件_3",
+            "mask_1": "遮罩_1",
+            "mask_2": "遮罩_2",
+            "mask_3": "遮罩_3"
+        },
+        "widgets": {
+            "mask_1_strength": "遮罩_1_強度",
+            "mask_2_strength": "遮罩_2_強度",
+            "mask_3_strength": "遮罩_3_強度",
+            "set_cond_area": "設定條件區域",
+            "default": "預設",
+            "mask bounds": "遮罩邊界"
+        },
+        "outputs": {
+            "combined_positive": "正面條件",
+            "combined_negative": "負面條件"
+        },
+        "description": "捆綁多個調理遮罩並將節點組合成一個，功能是與ComfyUI本地節點相同"
+    },
+    "ConditioningSetMaskAndCombine4": {
+        "title": "條件設定遮罩(合併4)",
+        "inputs": {
+            "positive_1": "正面條件_1",
+            "negative_1": "負面條件_1",
+            "positive_2": "正面條件_2",
+            "negative_2": "負面條件_2",
+            "positive_3": "正面條件_3",
+            "negative_3": "負面條件_3",
+            "positive_4": "正面條件_4",
+            "negative_4": "負面條件_4",
+            "mask_1": "遮罩_1",
+            "mask_2": "遮罩_2",
+            "mask_3": "遮罩_3",
+            "mask_4": "遮罩_4"
+        },
+        "widgets": {
+            "mask_1_strength": "遮罩_1_強度",
+            "mask_2_strength": "遮罩_2_強度",
+            "mask_3_strength": "遮罩_3_強度",
+            "mask_4_strength": "遮罩_4_強度",
+            "set_cond_area": "設定條件區域",
+            "default": "預設",
+            "mask bounds": "遮罩邊界"
+        },
+        "outputs": {
+            "combined_positive": "合併正面條件",
+            "combined_negative": "合併負面條件"
+        },
+        "description": "捆綁多個調理遮罩並將節點組合成一個，功能是與ComfyUI本地節點相同"
+    },
+    "ConditioningSetMaskAndCombine5": {
+        "title": "條件設定遮罩(合併5)",
+        "inputs": {
+            "positive_1": "正面條件_1",
+            "negative_1": "負面條件_1",
+            "positive_2": "正面條件_2",
+            "negative_2": "負面條件_2",
+            "positive_3": "正面條件_3",
+            "negative_3": "負面條件_3",
+            "positive_4": "正面條件_4",
+            "negative_4": "負面條件_4",
+            "positive_5": "正面條件_5",
+            "negative_5": "負面條件_5",
+            "mask_1": "遮罩_1",
+            "mask_2": "遮罩_2",
+            "mask_3": "遮罩_3",
+            "mask_4": "遮罩_4",
+            "mask_5": "遮罩_5"
+        },
+        "widgets": {
+            "mask_1_strength": "遮罩_1_強度",
+            "mask_2_strength": "遮罩_2_強度",
+            "mask_3_strength": "遮罩_3_強度",
+            "mask_4_strength": "遮罩_4_強度",
+            "mask_5_strength": "遮罩_5_強度",
+            "set_cond_area": "設定條件區域",
+            "default": "預設",
+            "mask bounds": "遮罩邊界"
+        },
+        "outputs": {
+            "combined_positive": "合併正面條件",
+            "combined_negative": "合併負面條件"
+        },
+        "description": "捆綁多個調理遮罩並將節點組合成一個，功能是與ComfyUI本地節點相同"
+    },
+    "VRAM_Debug": {
+        "title": "VRAM清理",
+        "inputs": {
+            "any_input": "任何輸入",
+            "image_pass": "影像透過",
+            "model_pass": "模型透過"
+        },
+        "widgets": {
+            "empty_cache": "清空快取",
+            "gc_collect": "垃圾回收",
+            "unload_all_models": "卸載所有模型"
+        },
+        "outputs": {
+            "any_output": "任何輸出",
+            "image_pass": "影像透過",
+            "model_pass": "模型透過",
+            "freemem_before": "清理前剩餘內存",
+            "freemem_after": "清理後剩餘內存"
+        },
+        "description": "原樣返回輸入資料（僅作為觸發訊號使用），同時執行 Comfy 模型管理功能及垃圾回收，並在操作前後報告記憶體（VRAM）剩餘情況。"
+    },
+    "SomethingToString": {
+        "title": "任意到字串",
+        "inputs": {
+            "input": "輸入"
+        },
+        "widgets": {
+            "prefix": "前綴",
+            "suffix": "後綴"
+        },
+        "outputs": {
+            "STRING": "字串"
+        }
+    },
+    "Sleep": {
+        "title": "休眠",
+        "inputs": {
+            "input": "輸入"
+        },
+        "widgets": {
+            "minutes": "分分鐘",
+            "seconds": "秒"
+        },
+        "outputs": {
+            "*": "*"
+        }
+    },
+    "EmptyLatentImagePresets": {
+        "title": "空Latent影像預設",
+        "widgets": {
+            "dimensions": "尺寸",
+            "invert": "反轉",
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "寬度",
+            "Height": "高度"
+        }
+    },
+    "EmptyLatentImageCustomPresets": {
+        "title": "自訂Latent影像預設",
+        "widgets": {
+            "dimensions": "尺寸",
+            "invert": "反轉",
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "寬度",
+            "Height": "高度"
+        },
+        "description": "根據指定的尺寸產生一個空白的隱式影像.\n 這些選項是從“節點資料夾”中的“'custom_dimensions. json”檔案中載入的。"
+    },
+    "WidgetToString": {
+        "title": "組件到字串",
+        "inputs": {
+            "any_input": "任意輸入"
+        },
+        "widgets": {
+            "id": "節點ID",
+            "widget_name": "組件名稱",
+            "return_all": "返回全部",
+            "node_title": "節點標題",
+            "allowed_float_decimals": "允許浮點小數"
+        },
+        "outputs": {
+            "STRING": "字串"
+        }
+    },
+    "DummyOut": {
+        "title": "虛擬Latent輸出",
+        "inputs": {
+            "any_input": "任何輸入"
+        },
+        "outputs": {
+            "*": "輸出"
+        }
+    },
+    "FlipSigmasAdjusted": {
+        "title": "調整反轉Sigmas",
+        "inputs": {
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "divide_by_last_sigma": "除以最後一個Sigma",
+            "divide_by": "除以",
+            "offset_by": "偏移量"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas",
+            "sigmas_string": "sigmas字串"
+        }
+    },
+    "CustomSigmas": {
+        "title": "自訂Sigmas",
+        "widgets": {
+            "sigmas_string": "Sigmas字串",
+            "interpolate_to_steps": "插值步數",
+            "t_steps": "T步數",
+            "num_steps": "步數"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        }
+    },
+    "StringToFloatList": {
+        "title": "字串到浮點列表",
+        "inputs": {
+            "string": "字串"
+        },
+        "outputs": {
+            "FLOAT": "浮點"
+        }
+    },
+    "InjectNoiseToLatent": {
+        "title": "注入雜訊到Latent",
+        "inputs": {
+            "latents": "Latent",
+            "noise": "噪音",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "strength": "強度",
+            "normalize": "標準化",
+            "average": "平均",
+            "mix_randn_amount": "隨機噪音混合強度",
+            "seed": "種子"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "SoundReactive": {
+        "title": "音頻反應",
+        "inputs": {
+            "audio": "音訊"
+        },
+        "widgets": {
+            "sound_level": "音量等級",
+            "start_range_hz": "起始Hz範圍",
+            "end_range_hz": "結束Hz範圍",
+            "multiplier": "乘數",
+            "smoothing_factor": "平滑因子",
+            "normalize": "標準化",
+            "Start mic capture": "開始麥克風捕捉",
+            "Start_mic_capture": "開始麥克風捕捉",
+            "Stop mic capture": "停止麥克風捕捉",
+            "Stop_mic_capture": "停止麥克風捕捉"
+        },
+        "outputs": {
+            "sound_level": "音量等級",
+            "sound_level_int": "音量等級整數"
+        },
+        "description": "回饋輸入音訊的音量。\n\n使用瀏覽器音訊輸入。\n\n用於即時採樣。"
+    },
+    "GenerateNoise": {
+        "title": "生成噪音",
+        "inputs": {
+            "model": "模型",
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "width": "寬度",
+            "height": "高度",
+            "batch_size": "批次大小",
+            "seed": "隨機種子",
+            "control_after_generate": "生成後控制",
+            "fixed": "固定",
+            "increment": "增加",
+            "decrement": "減少",
+            "randomize": "隨機",
+            "multiplier": "乘數",
+            "constant_batch_noise": "恆定批次噪聲",
+            "normalize": "標準化",
+            "latent_channels": "latent頻道",
+            "shape": "形狀"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        },
+        "description": "在註入時產生噪聲，或在添加噪聲關閉時用作採樣器上的空電位"
+    },
+    "StableZero123_BatchSchedule": {
+        "title": "Stable零123 多元視角批量生成",
+        "inputs": {
+            "clip_vision": "CLIP視覺",
+            "init_image": "初始影像",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "寬度",
+            "height": "高度",
+            "batch_size": "批次大小",
+            "interpolation": "插值方式",
+            "linear": "線性",
+            "ease_in": "緩入",
+            "ease_out": "緩出",
+            "ease_in_out": "緩入緩出",
+            "azimuth_points_string": "方位角點",
+            "elevation_points_string": "仰角點"
+        },
+        "outputs": {
+            "positive": "正面條件",
+            "negative": "負面條件",
+            "latent": "Latent"
+        },
+        "description": "輸入單張圖片，批量產生多視角一致影像（如0°、90°、180°），支援顯存最佳化調度."
+    },
+    "SV3D_BatchSchedule": {
+        "title": "SV3D批次調度",
+        "inputs": {
+            "clip_vision": "CLIP視覺",
+            "init_image": "初始影像",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "寬度",
+            "height": "高度",
+            "batch_size": "批次大小",
+            "interpolation": "插值方式",
+            "azimuth_points_string": "方位角點",
+            "elevation_points_string": "仰角點"
+        },
+        "outputs": {
+            "positive": "正面條件",
+            "negative": "負面條件",
+            "latent": "Latent"
+        },
+        "description": "使用內插調度安排 SV3D 的方位角和仰角數值。\n\n注意 SV3D 是視訊模型，所以調度值必須遞進。\n\nhttps://huggingface.co/stabilityai/sv3d"
+    },
+    "LoadResAdapterNormalization": {
+        "title": "加載ResAdapter標準化",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "resadapter_path": "ResAdapter路徑"
+        },
+        "outputs": {
+            "MODEL": "模型"
+        }
+    },
+    "Superprompt": {
+        "title": "超提示",
+        "inputs": {
+            "prompt": "提示"
+        },
+        "widgets": {
+            "instruction_prompt": "指令提示",
+            "max_new_tokens": "最大新令牌數"
+        },
+        "outputs": {
+            "STRING": "字串"
+        },
+        "description": "對超級提示資料集進行微調的T5模型。\n\n向上採樣文字提示更詳細的描述。\n\n用於文字到圖像的生成前步驟\n\n從更詳細的提示中受益的模型。 \n\nhttps://huggingface.co/roborovski/superprompt-v1"
+    },
+    "CameraPoseVisualizer": {
+        "title": "相機姿態可視化",
+        "inputs": {
+            "cameractrl_poses": "相機控制姿態"
+        },
+        "widgets": {
+            "pose_file_path": "姿態檔案路徑",
+            "base_xval": "基礎X值",
+            "zval": "Z值",
+            "scale": "縮放",
+            "use_exact_fx": "使用精確特效",
+            "relative_c2w": "相對相機到世界座標",
+            "use_viewer": "使用檢視器",
+            "cameractrl_poses": "相機控制姿態",
+            "extrinsic": "外部",
+            "color_map": "色彩映射",
+            "hw_ratio": "高寬比",
+            "list_label": "清單標籤",
+            "w2cs": "世界到相機",
+            "transform_matrix": "變換矩陣"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "可視化相機位姿\n\n（來自 Animatediff Evolved 的 Camera Ctrl Pose 模組，或透過包含 RealEstate 資料集相機內參及座標的 .txt 文件，在 3D 圖中呈現）"
+    },
+    "StabilityAPI_SD3": {
+        "title": "StabilityAPI SD3",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "prompt": "提示",
+            "n_prompt": "負面提示",
+            "seed": "隨機種子",
+            "control_before_generate": "生成前控制",
+            "model": "模型",
+            "aspect_ratio": "寬高比",
+            "output_format": "輸出格式",
+            "api_key": "API金鑰",
+            "img2img_strength": "圖生圖強度",
+            "disable_metadata": "停用元數據"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        },
+        "description": "# 呼叫 Stability API\n\n盡量使用同一個key呼叫API，無論帳號有多少個key。\n\n在 https://platform.stability.ai/account/keys 取得key，推薦建立包含key的 config.json 檔案然後放到外掛目錄下。\n\n# 警告：\n\n即使開啟了 disable_metadata（停用元資料），如果工作流程中包含與此節點不同的儲存節點，API 金鑰也可能會儲存到元資料中。\n\nSD3 每次產生需要 6.5 點數\n\nSD3-Turbo 每次產生需要 4 點數\n\n如果不連接影像輸入，則使用 文生圖 模式"
+    },
+    "CheckpointPerturbWeights": {
+        "title": "Checkpoint大模型擾動權重",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "joint_blocks": "聯合區塊",
+            "final_layer": "最終層",
+            "rest_of_the_blocks": "其餘塊",
+            "seed": "隨機種子",
+            "control_before_generate": "生成前控制"
+        },
+        "outputs": {
+            "MODEL": "模型"
+        }
+    },
+    "DifferentialDiffusionAdvanced": {
+        "title": "差異擴散(高階)",
+        "inputs": {
+            "model": "模型",
+            "samples": "取樣",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "multiplier": "乘數"
+        },
+        "outputs": {
+            "MODEL": "模型",
+            "LATENT": "Latent"
+        }
+    },
+    "FluxBlockLoraSelect": {
+        "title": "Flux塊LoRA選擇",
+        "inputs": {},
+        "outputs": {
+            "blocks": "區塊"
+        },
+        "description": "載入ICLightUnet：載入一個 ICLightUnet 模型。 （實驗性）開發中\n 另一種不好用但可以用的方法是在 https://huggingface.co/Kijai/iclight-comfy/blob/main/iclight_fc_converted.safetensors 下載模型，然後和 InstructPixToPix條件 節點一起使用。"
+    },
+    "HunyuanVideoBlockLoraSelect": {
+        "title": "混元影片 塊LoRA選擇",
+        "inputs": {},
+        "outputs": {
+            "blocks": "區塊"
+        },
+        "description": "選擇單一區塊alpha值，值為0將整個區塊移除"
+    },
+    "FluxBlockLoraLoader": {
+        "title": "Flux塊LoRA載入器",
+        "inputs": {
+            "model": "模型",
+            "blocks": "區塊",
+            "opt_lora_path": "LoRA路徑(可選)"
+        },
+        "widgets": {
+            "strength_model": "模型強度",
+            "lora_name": "LoRA名稱"
+        },
+        "outputs": {
+            "model": "模型",
+            "rank": "等級"
+        }
+    },
+    "CustomControlNetWeightsFluxFromList": {
+        "title": "自訂ControlNet權重Flux從列表",
+        "inputs": {
+            "cn_extras": "ControlNet額外",
+            "list_of_floats": "浮點列表"
+        },
+        "widgets": {
+            "uncond_multiplier": "無條件乘數",
+            "autosize": "自動大小"
+        },
+        "outputs": {
+            "CN_WEIGHTS": "ControlNet權重",
+            "TK_SHORTCUT": "TK快捷方式"
+        },
+        "description": "將浮點數清單轉為 ControlNet 權重（用於 Advanced-ControlNet）"
+    },
+    "SetShakkerLabsUnionControlNetType": {
+        "title": "设置ShakkerLabs联合ControlNet类型",
+        "inputs": {
+            "control_net": "ControlNet",
+            "type": "類型"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "ModelSaveKJ": {
+        "title": "保存模型(KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "filename_prefix": "檔名前綴",
+            "model_key_prefix": "模型鍵前綴"
+        }
+    },
+    "StyleModelApplyAdvanced": {
+        "title": "高級風格模型應用器",
+        "inputs": {
+            "conditioning": "條件引導",
+            "style_model": "風格模型",
+            "clip_vision_output": "CLIP視覺輸出"
+        },
+        "widgets": {
+            "strength": "強度"
+        },
+        "outputs": {
+            "conditioning": "條件引導"
+        },
+        "description": "風格模型應用，但需設定強度參數"
+    },
+    "AudioConcatenate": {
+        "title": "音訊拼接",
+        "inputs": {
+            "audio1": "音訊1",
+            "audio2": "音訊2"
+        },
+        "widgets": {
+            "direction": "方向"
+        },
+        "outputs": {
+            "AUDIO": "音訊"
+        },
+        "description": "依指定方向將音訊1連接到音訊2。"
+    },
+    "ImageNoiseAugmentation": {
+        "title": "影像雜訊增強",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "noise_aug_strength": "噪音增強強度",
+            "seed": "隨機種子"
+        },
+        "outputs": {
+            "image": "影像"
+        }
+    },
+    "VAELoaderKJ": {
+        "title": "VAE載入程式(KJ)",
+        "inputs": {},
+        "widgets": {
+            "vae_name": "VAE名稱",
+            "device": "裝置",
+            "weight_dtype": "權重資料類型"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "ScheduledCFGGuidance": {
+        "title": "調度式CFG引導",
+        "inputs": {
+            "model": "模型",
+            "positive": "正向提示",
+            "negative": "負向提示"
+        },
+        "widgets": {
+            "cfg": "CFG值",
+            "start_percent": "起始百分比",
+            "end_percent": "結束百分比"
+        },
+        "outputs": {
+            "GUIDER": "引導器"
+        }
+    },
+    "ApplyRifleXRoPE_WanVideo": {
+        "title": "Wan影片 應用RifleX RoPE",
+        "inputs": {
+            "model": "模型",
+            "latent": "Latent",
+            "k": "k值"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "ApplyRifleXRoPE_HunuyanVideo": {
+        "title": "混元視訊 應用RifleX RoPE",
+        "inputs": {
+            "model": "模型",
+            "latent": "Latent",
+            "k": "k值"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "TimerNodeKJ": {
+        "title": "計時器(KJ)",
+        "inputs": {
+            "any_input": "任意輸入",
+            "timer": "計時器"
+        },
+        "widgets": {
+            "mode": "模式",
+            "name": "名稱"
+        },
+        "outputs": {
+            "any_output": "任意輸出",
+            "timer": "計時器",
+            "time": "時間"
+        }
+    },
+    "ImageBatchFilter": {
+        "title": "影像批次濾波器",
+        "inputs": {
+            "images": "影像",
+            "replacement_image": "更換圖片"
+        },
+        "widgets": {
+            "empty_color": "空白區域顏色設定",
+            "empty_threshold": "判定區域是否為空白區域強度臨界值"
+        },
+        "outputs": {
+            "images": "影像",
+            "IMAGES": "影像",
+            "removed_indices": "刪除索引"
+        },
+        "description": "從批次中刪除空白影像"
+    },
+    "ImageResizeKJv2": {
+        "title": "影像縮放 v2(KJ)",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "width": "寬度",
+            "height": "高度",
+            "upscale_method": "縮放方法",
+            "keep_proportions": "固定寬高比",
+            "keep_proportion": "固定寬高比",
+            "pad_color": "填滿顏色",
+            "crop_position": "裁剪位置",
+            "divisible_by": "被整除數",
+            "device": "裝置",
+            "per_batch": "批次"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "width": "寬度",
+            "height": "高度",
+            "mask": "遮罩"
+        },
+        "description": "影像縮放2代。尺寸可由輸入指定，最終輸出優先順序依下列規則排列：\n- 參考影像尺寸\n- 寬度-輸入 和 高度-輸入\n- 寬度 和 高度\n \n固定寬高比會以最高尺寸固定寬高比。"
+    },
+    "InsertLatentToIndexed": {
+        "title": "插入Latent索引",
+        "inputs": {
+            "source": "來源",
+            "destination": "目標"
+        },
+        "widgets": {
+            "index": "係數"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "latent": "Latent"
+        },
+        "description": "將指定索引處的Latent插入到原始Latent批次中。"
+    },
+    "DiTBlockLoraLoader": {
+        "title": "DiT塊Lora載入器",
+        "inputs": {
+            "model": "模型",
+            "opt_lora_path": "選擇Lora路徑",
+            "blocks": "區塊"
+        },
+        "widgets": {
+            "strength_model": "模型強度",
+            "lora_name": "Lora名稱",
+            "overlap": "重疊量"
+        },
+        "outputs": {
+            "model": "模型",
+            "rank": "排名"
+        },
+        "description": "新添加內容。"
+    },
+    "LeapfusionHunyuanI2VPatcher": {
+        "title": "快速融合混元圖生視訊補丁",
+        "inputs": {
+            "model": "模型",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "index": "係數",
+            "start_percent": "開始百分比",
+            "end_percent": "結束百分比",
+            "strength": "強度"
+        },
+        "outputs": {
+            "MODEL": "模型",
+            "model": "模型"
+        },
+        "description": "新添加內容。"
+    },
+    "ModelPatchTorchSettings": {
+        "title": "模型貼片Torch設置",
+        "inputs": {
+            "model": "模型",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "啟用FP16累加",
+            "start_percent": "開始百分比",
+            "end_percent": "結束百分比",
+            "strength": "強度"
+        },
+        "outputs": {
+            "MODEL": "模型",
+            "model": "模型"
+        },
+        "description": "減少GPU顯存佔用\n加速矩陣乘累積加運算\n提升能源效率比\n可能出現；數值溢出、精度損失。"
+    },
+    "LoraExtractKJ": {
+        "title": "Lora提取 (KJ)",
+        "inputs": {
+            "finetuned_model": "微調模型",
+            "original_model": "原始模型"
+        },
+        "widgets": {
+            "filename_prefix": "檔名前綴",
+            "rank": "等級",
+            "lora_type": "Lora類型",
+            "algorithm": "演算法",
+            "lowrank_iters": "低秩迭代次數",
+            "output_dtype": "輸出資料類型",
+            "bias_diff": "偏差差值",
+            "adaptive_param": "自適應參數",
+            "clamp_quantile": "克拉普分位數"
+        },
+        "outputs": {
+            "images": "影像",
+            "masks": "遮罩"
+        },
+        "description": "LoraExtract"
+    },
+    "Wan21BlockLoraSelect": {
+        "title": "Wan2.1區塊式LoRA選擇器",
+        "inputs": {
+            "model": "模型",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "啟用FP16累加",
+            "start_percent": "開始百分比",
+            "end_percent": "結束百分比",
+            "strength": "強度"
+        },
+        "outputs": {
+            "BLOCKS": "區塊",
+            "blocks": "區塊"
+        },
+        "description": "選擇單一區塊alpha值，值為0將整個區塊移除。"
+    },
+    "LoadVideosFromFolder": {
+        "title": "從資料夾加載視頻",
+        "inputs": {
+            "video": "影片"
+        },
+        "widgets": {
+            "video": "影片",
+            "force_rate": "強制幀率",
+            "custom_width": "自訂寬度",
+            "custom_height": "自訂高度",
+            "frame_load_cap": "幀數讀取上限",
+            "skip_first_frames": "跳過前X幀",
+            "select_every_nth": "間隔",
+            "output_type": "輸出類型",
+            "grid_max_columns": "網格最大列數",
+            "add_label": "添加標籤"
+        },
+        "outputs": {
+            "IMAGE": "影像"
+        }
+    },
+    "TorchCompileModelQwenImage": {
+        "title": "千問圖像 Torch 編譯模型",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "backend": "後端",
+            "fullgraph": "全圖",
+            "mode": "模式",
+            "dynamic": "動態",
+            "compile_transformer_blocks_only": "僅編譯轉換器模組",
+            "dynamo_cache_size_limit": "動態記憶體快取大小限制"
+        },
+        "outputs": {
+            "MODEL": "模型",
+            "model": "模型"
+        }
+    },
+    "LazySwitchKJ": {
+        "title": "輕鬆開關 (KJ)",
+        "inputs": {
+            "on_false": "錯誤的",
+            "on_true": "正確的"
+        },
+        "widgets": {
+            "switch": "開關"
+        },
+        "outputs": {
+            "*": "任意"
+        }
+    },
+    "GetLatentSizeAndCount": {
+        "title": "取得Latent大小及數量",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "latent": "Latent",
+            "batch_size": "批次大小",
+            "channels": "頻道",
+            "frames": "影格",
+            "width": "寬度",
+            "height": "高度"
+        }
+    },
+    "DiffusionModelSelector": {
+        "title": "擴散模型選擇器",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名稱"
+        },
+        "outputs": {
+            "model_path": "模型路徑"
+        }
+    },
+    "LoraReduceRankKJ": {
+        "title": "Lora降低排名(KJ)",
+        "inputs": {},
+        "widgets": {
+            "lora_name": "Lora名稱",
+            "new_rank": "新等級",
+            "dynamic_method": "動態方法",
+            "dynamic_param": "動態參數",
+            "output_dtype": "輸出資料類型",
+            "verbose": "詳細模式"
+        },
+        "outputs": {
+            "model_path": "模型路徑"
+        },
+        "description": "透過降低模型的排名，來調整 LoRA 模型的大小。\n 參考基於 kohya 的 sd-scripts：https://github.com/kohya-ss/sd-scripts/blob/main/networks/resize_lora.py"
+    },
+    "DrawMaskOnImage": {
+        "title": "合併影像與遮罩",
+        "inputs": {
+            "image": "影像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "mask_opacity": "遮罩不透明",
+            "mask_color": "遮罩顏色",
+            "color": "顏色"
+        },
+        "outputs": {
+            "images": "影像"
+        },
+        "description": "同時輸入影像和遮罩時會合併遮罩到影像上。"
+    },
+    "BlockifyMask": {
+        "title": "分塊遮罩",
+        "inputs": {
+            "image": "影像",
+            "masks": "遮罩"
+        },
+        "widgets": {
+            "block_size": "區塊大小"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        },
+        "description": "透過將每個遮罩的邊界框劃分為指定大小的區塊，並填入包含原始遮罩任何部分的區塊，從而建立區塊遮罩。"
+    },
+    "ConsolidateMasksKJ": {
+        "title": "整合遮罩(KJ)",
+        "inputs": {
+            "mask": "遮罩",
+            "masks": "遮罩"
+        },
+        "widgets": {
+            "padding": "填充",
+            "width": "寬度",
+            "height": "高度"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        },
+        "description": "透過找出能完全容納在給定寬度和高度（包括填充部分）的矩形區域內的一組最大數量的單獨遮罩，然後重複此過程直至不再有遮罩可以合併，從而將一批單獨的遮罩進行整合。"
+    },
+    "GGUFLoaderKJ": {
+        "title": "GGUF 模型載入器(KJ)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "模型名稱",
+            "extra_model_name": "額外模型名稱",
+            "dequant_dtype": "去量化資料類型",
+            "patch_dtype": "補丁資料類型",
+            "patch_on_device": "設備上的補丁",
+            "attention_override": "注意力優先模式",
+            "enable_fp16_accumulation": "啟用FP16累積"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "載入具有進階選項的 GGUF 模型，需要先安裝 ComfyUI-GGUF 軟體。"
+    },
+    "EndRecordCUDAMemoryHistory": {
+        "title": "結束記錄 CUDA 記憶體歷史記錄(KJ)",
+        "inputs": {
+            "input": "輸入"
+        },
+        "widgets": {
+            "output_path": "輸出路徑"
+        },
+        "outputs": {
+            "input": "輸入",
+            "output_path": "輸出路徑"
+        },
+        "description": "記錄 CUDA 記憶體分配的起始和結束之間的歷史情況，並將其儲存到一個檔案中，該檔案可在此處進行分析： https://docs.pytorch.org/memory_viz 或使用「視覺化 CUDA 記憶體歷史記錄」節點。"
+    },
+    "VisualizeCUDAMemoryHistory": {
+        "title": "可視化 CUDA 記憶體歷史記錄(KJ)",
+        "inputs": {
+            "input": "輸入"
+        },
+        "widgets": {
+            "snapshot_path": "快照路徑"
+        },
+        "outputs": {
+            "input": "輸入",
+            "output_path": "輸出路徑"
+        },
+        "description": "以視覺化方式展示 CUDA 記憶體分配歷史文件，並在瀏覽器中開啟"
+    },
+    "StartRecordCUDAMemoryHistory": {
+        "title": "開始記錄 CUDA 記憶體歷史記錄(KJ)",
+        "inputs": {
+            "input": "輸入"
+        },
+        "widgets": {
+            "enabled": "開啟",
+            "context": "背景",
+            "stacks": "堆疊",
+            "max_entries": "最大條目數"
+        },
+        "outputs": {
+            "input": "輸入"
+        }
+    },
+    "NABLA_AttentionKJ": {
+        "title": "NABLA 注意力(KJ)",
+        "inputs": {
+            "model": "模型",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "window_time": "視窗時間",
+            "window_width": "視窗寬度",
+            "window_height": "視窗高度",
+            "sparsity": "稀疏度",
+            "torch_compile": "torch 編譯"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "SimpleCalculatorKJ": {
+        "title": "簡易計算器(KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "FLOAT": "浮點",
+            "STRING": "浮點",
+            "INT": "整數"
+        }
+    },
+    "VAEDecodeLoopKJ": {
+        "title": "VAE 循環解碼(KJ)",
+        "inputs": {
+            "samples": "取樣",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "overlap_latent_frames": "重複Latent影像"
+        },
+        "outputs": {
+            "IMAGE": "影像",
+            "STRING": "浮點",
+            "INT": "整數"
+        }
+    },
+    "GetTrackRange": {
+        "title": "取得軌跡範圍(KJ)",
+        "inputs": {
+            "tracks": "軌跡"
+        },
+        "widgets": {
+            "start_index": "起始索引",
+            "num_frames": "幀數"
+        },
+        "outputs": {
+            "TRACKS": "軌跡"
+        }
+    },
+    "AddNoiseToTrackPath": {
+        "title": "新增雜訊到軌跡路徑(KJ)",
+        "inputs": {
+            "tracks": "軌跡"
+        },
+        "widgets": {
+            "strength": "強度",
+            "seed": "種子",
+            "noise_x_ratio": "噪音x 比率",
+            "noise_y_ratio": "噪音y 比率",
+            "noise_temporal_ratio": "噪音時間 比率"
+        },
+        "outputs": {
+            "TRACKS": "軌跡"
+        }
+    },
+    "WanImageToVideoSVIPro": {
+        "title": "Wan 圖轉影片SVI專業版(KJ)",
+        "inputs": {
+            "positive": "正向提示",
+            "negative": "負向提示",
+            "anchor_samples": "錨點 取樣",
+            "prev_samples": "前 採樣"
+        },
+        "widgets": {
+            "length": "長度",
+            "motion_latent_count": "運動Latent 次數"
+        },
+        "outputs": {
+            "positive": "正向提示",
+            "negative": "負向提示",
+            "latent": "Latent"
+        }
+    },
+    "ModelMemoryUseReportPatch": {
+        "title": "模型記憶體使用報告補丁(KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "model": "模型"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "向模型中新增回調函數，以便在採樣完成後報告記憶體使用情況"
+    },
+    "ModelMemoryUsageFactorOverride": {
+        "title": "模型記憶體使用率因素自訂值(KJ)",
+        "inputs": {
+            "model": "模型",
+            "memory_usage_factor": "記憶體使用因子"
+        },
+        "widgets": {
+            "model": "模型",
+            "memory_usage_factor": "記憶體使用因子"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "在取樣過程中會覆蓋模型的記憶體使用係數。"
+    },
+    "LTXVEnhanceAVideoKJ": {
+        "title": "LTX視訊增強(KJ)",
+        "inputs": {
+            "model": "模型",
+            "latent": "Latent",
+            "weight": "權重"
+        },
+        "widgets": {
+            "model": "模型",
+            "latent": "Latent",
+            "weight": "權重"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "LTX2BlockLoraSelect": {
+        "title": "LTX2塊Lora選擇器(KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "selectedditblocks": "選擇的DIT區塊"
+        },
+        "description": "向模型中新增回調函數，以便在採樣完成後報告記憶體使用情況"
+    },
+    "VisualizeSigmasKJ": {
+        "title": "可視化sigma值(KJ)",
+        "inputs": {
+            "sigmas": "sigma值"
+        },
+        "widgets": {
+            "start_step": "起始步數",
+            "end_step": "結束步數"
+        },
+        "outputs": {
+            "sigmas_out": "sigma輸出",
+            "image": "影像"
+        },
+        "description": ""
+    },
+    "LTX2SamplingPreviewOverride": {
+        "title": "LTX2採樣預覽覆蓋(KJ)",
+        "inputs": {
+            "model": "模型",
+            "latent_upscale_model": "Latent放大模型",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "preview_rate": "預覽速率"
+        },
+        "outputs": {},
+        "description": "暫時停用了 LTX2 取樣預覽功能，這項措施將持續到預覽功能在穩定的核心版本中得以完善為止。"
+    },
+    "LTXVAddGuidesFromBatch": {
+        "title": "從批次新增引導影像(KJ)",
+        "inputs": {
+            "positive": "正向引導",
+            "negative": "負面引導",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images": "影像"
+        },
+        "widgets": {
+            "strength": "強度"
+        },
+        "outputs": {
+            "positive": "正向引導",
+            "negative": "負面引導",
+            "latent": "Latent"
+        },
+        "description": "會將一批中的多個引導影像依照對應的幀索引加入Latent影像中。批次中的非黑色影像將用作引導影像。"
+    },
+    "LTX2AudioLatentNormalizingSampling": {
+        "title": "LTX2音頻Latent標準化採樣(KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "audio_normalization_factors": "音頻標準化因素"
+        },
+        "outputs": {},
+        "description": "透過在指定的採樣步驟對音訊Latent進行標準化處理，提高了 LTX2 產生的音訊品質。"
+    },
+    "PreviewLatentNoiseMask": {
+        "title": "預覽Latent噪音遮罩(KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "mask": "遮罩"
+        },
+        "description": "預覽Latent噪音遮罩"
+    },
+    "WanChunkFeedForward": {
+        "title": "Wan視訊 分塊前饋(KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "chunks": "區塊數",
+            "dim_threshold": "維度閾值"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "實驗性功能，可能會改變模型輸出！ ！透過分塊前饋（神經網路中的概念）活化來減少峰值顯存使用量。"
+    },
+    "SamplerSelfRefineVideo": {
+        "title": "採樣器自我精煉視頻(KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {
+            "input_mode": "輸入模式",
+            "start_step1": "開始步驟1",
+            "end_step1": "結束步驟1",
+            "start_step2": "開始步驟2",
+            "end_step2": "結束步驟2",
+            "steps_1": "步驟1",
+            "steps_2": "步驟2",
+            "certain_percentage": "確定百分比",
+            "uncertainty_threshold": "不確定性閾值",
+            "verbose": "詳細",
+            "seed": "隨機種子"
+        },
+        "outputs": {},
+        "description": "嘗試實作 https://github.com/agwmon/self-refine-video，僅供測試，可能無法如預期般運作。"
+    },
+    "LTXVAddGuideMulti": {
+        "title": "LTX影片 新增多個引導影像(KJ)",
+        "inputs": {
+            "positive": "正向引導",
+            "negative": "負面引導",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "影像1"
+        },
+        "widgets": {
+            "Number of Guides": "引導數量",
+            "frame_idx_1": "幀索引 1",
+            "strength_1": "強度 1"
+        },
+        "outputs": {
+            "positive": "正向引導",
+            "negative": "負面引導",
+            "latent": "Latent"
+        },
+        "description": "在指定的影格索引處新增多個引導影像，並設定其強度，使用「動態組合」功能，此功能需要 ComfyUI 0.8.1 版本及前端 1.33.4 或更高版本。"
+    },
+    "LTXVImgToVideoInplaceKJ": {
+        "title": "LTX影片 將影像轉換為影片(KJ)",
+        "inputs": {
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "影像1"
+        },
+        "widgets": {
+            "Number of Guides": "引導數量",
+            "index_1": "索引 1",
+            "strength_1": "強度 1"
+        },
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "將影片的Latent影格替換為編碼後的輸入影像，使用 動態組合 功能，此功能需要 ComfyUI 0.8.1 版本及前端 1.33.4 或更高版本。"
+    },
+    "LTXVAudioVideoMask": {
+        "title": "音訊和視訊遮罩(KJ)",
+        "inputs": {
+            "video_latent": "影片Latent",
+            "audio_latent": "音訊Latent"
+        },
+        "widgets": {
+            "video_fps": "視訊幀率",
+            "video_start_time": "影片開始時間",
+            "video_end_time": "影片結束時間",
+            "audio_start_time": "音訊開始時間",
+            "audio_end_time": "音訊結束時間",
+            "max_length": "最大長度"
+        },
+        "outputs": {
+            "video_latent": "影片Latent",
+            "audio_latent": "音訊Latent"
+        },
+        "description": "根據指定的時間範圍為視訊和音訊的Latent內容建立噪音遮罩。在這些被遮罩的區域中會產生新的內容。"
+    },
+    "LTX2AttentionTunerPatch": {
+        "title": "LTX2 注意力調整補丁(KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "blocks": "區塊",
+            "video_scale": "影片縮放",
+            "audio_scale": "音訊縮放",
+            "audio_to_video_scale": "音訊到視訊縮放",
+            "video_to_audio_scale": "視訊到音訊縮放"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "實驗性！根據不同模態設定注意力縮放因子的自訂 LTX2 前向傳遞，同時也降低了峰值 顯存 使用量。"
+    },
+    "LTX2_NAG": {
+        "title": "LTX2標準化注意力引導(KJ)",
+        "inputs": {
+            "model": "模型",
+            "nag_cond_video": "視訊條件",
+            "nag_cond_audio": "音頻條件"
+        },
+        "widgets": {
+            "nag_scale": "NAG縮放",
+            "nag_alpha": "NAG alpha",
+            "nag_tau": "NAG tau",
+            "inplace": "原地操作"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "https://github.com/ChenDarYen/Normalized-Attention-Guidance"
+    },
+    "LTX2MemoryEfficientSageAttentionPatch": {
+        "title": "LTX2高效能記憶體Sage注意力補丁(KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "實驗性！啟動自訂Sage注意力以減少峰值顯存使用量，覆蓋注意力模式。需要最新版本的Sage注意力。"
+    },
+    "LTXVChunkFeedForward": {
+        "title": "LTX視頻 分塊前饋激活(KJ)",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "chunks": "分塊",
+            "dim_threshold": "維度閾值"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "description": "實驗性且可能改變模型輸出！分塊前饋（神經網路中的概念）活化可降低虛擬記憶體峰值使用量。"
+    },
+    "LTX2LoraLoaderAdvanced": {
+        "title": "LTX2高級Lora載入器(KJ)",
+        "inputs": {
+            "model": "模型",
+            "opt_lora_path": "優化LoRA路徑",
+            "blocks": "區塊"
+        },
+        "widgets": {
+            "lora_name": "LoRA名稱",
+            "strength_model": "模型強度",
+            "video": "影片",
+            "video_to_audio": "視訊轉音訊",
+            "audio": "音訊",
+            "audio_to_video": "音訊轉視頻",
+            "other": "其他"
+        },
+        "outputs": {
+            "model": "模型",
+            "loaded_keys_info": "載入密鑰資訊",
+            "rank": "等級"
+        },
+        "description": "具有針對LTX2模型的每個區塊強度控制的高階LoRA載入器"
+    },
+    "HDRPreviewKJ": {
+        "title": "HDR 預覽 (KJ)",
+        "inputs": {
+            "image": "影像"
+        },
+        "widgets": {
+            "exposure": "曝光",
+            "saturation": "飽和度",
+            "fps": "幀率",
+            "input_space": "輸入空間"
+        },
+        "outputs": {
+            "image": "影像"
+        },
+        "description": "高動態範圍壓縮影像的即時曝光預覽。\n輸入：經過 LogC3 壓縮的[0,1]範圍內的影像/視訊批次（例如，HDR IC-LoRA 工作流程中經過 VAE 解碼後的輸出，尚未進行 HDR 解壓縮）。\n在瀏覽器的 WebGL 片段著色器中，透過減壓、曝光、飽和度、雷納德色調映射以及 sRGB 處理實現了即時滑桿回饋功能。同樣的數學運算在伺服器端運行，以產生烘焙後的 sRGB 影像輸出。\n滑桿的改變會立即更新預覽；而影像輸出則在工作流程重新排隊時才進行更新。"
+    },
+    "HunyuanVideoEncodeKeyframesToCond": {
+        "title": "混元視訊 首尾幀編碼到條件(KJ)",
+        "inputs": {
+            "model": "模型",
+            "positive": "正向提示",
+            "vae": "VAE",
+            "start_frame": "起始畫面",
+            "end_frame": "結束幀",
+            "negative": "負向提示"
+        },
+        "widgets": {
+            "num_frames": "幀數",
+            "tile_size": "分塊大小",
+            "overlap": "重疊量",
+            "temporal_size": "時間維度大小",
+            "temporal_overlap": "時間維度重疊量"
+        },
+        "outputs": {
+            "model": "模型",
+            "positive": "正向提示詞",
+            "negative": "負面提示詞",
+            "latent": "Latent"
+        }
+    }
+}

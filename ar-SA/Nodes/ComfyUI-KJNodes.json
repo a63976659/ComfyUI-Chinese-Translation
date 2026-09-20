@@ -1,0 +1,4219 @@
+{
+    "ContextWindowsVisualizerKJ": {
+        "title": "أداة تصوير مرئي لنافذة السياق (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "frame_units": "وحدة الإطارات",
+            "dim": "الأبعاد",
+            "temporal_downscale": "معدّل انخفاض العيّنة الزمني",
+            "num_frames": "عدد الإطارات",
+            "context_length": "طول السياق",
+            "context_overlap": "تداخل السياق",
+            "context_schedule": "جدولة السياق",
+            "context_stride": "خطوة السياق",
+            "closed_loop": "حلقة مغلقة",
+            "fuse_method": "طريقة الدمج",
+            "causal_window_fix": "إصلاح نافذة السببية",
+            "freenoise": "ضوضاء حرة",
+            "cond_retain_index_list": "قائمة فهارس الاحتفاظ بالشرط"
+        },
+        "outputs": {
+            "model": "النموذج"
+        },
+        "description": "تصوير مرئي تفاعلي لنافذة سياق ComfyUI: موضع النافذة، والتداخل، وأوزان المزج، والخلط لكل إطار، بتحديث فوري. يمكن اختيار تطبيق الإعدادات على عقدة نافذة السياق الأساسية (يدويًا) ونماذج أخرى."
+    },
+    "MiniMaxH3TokenCounter": {
+        "title": "عدّاد كلمات MiniMax H3",
+        "inputs": {
+            "samples": "عيّنة",
+            "conditioning": "شرط"
+        },
+        "widgets": {},
+        "outputs": {
+            "samples": "عيّنة",
+            "conditioning": "شرط",
+            "tokens": "كلمة/رمز",
+            "breakdown": "تفكيك"
+        },
+        "description": "احسب طول التسلسل المحزّم الذي يشغّله MiniMax H3 عند التوليد بدون عيّنة. بناءً على المتغيّرات الكامنة الصوتية ومعلومات الشرط (تشمل طول النص والإطارات المفتاحية والكتل المرجعية)، يبني نفس تخطيط النموذج [نص | إطار مفتاحي/مرجع | صوت | فيديو]."
+    },
+    "MiniMaxLowVRAMAttention": {
+        "title": "انتباه موفّر للذاكرة MiniMax H3",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "head_chunks": "عدد كتل الرأس"
+        },
+        "outputs": {
+            "model": "النموذج"
+        },
+        "description": "مع عدم تغيير منطق الحساب، يخفض استخدام الذروة لذاكرة VRAM في وحدة انتباه MiniMax H3. يقسّم استدعاءات الانتباه إلى عدة مجموعات رؤوس، ما يقلّل البيانات العابرة داخل النواة (مثل نسخ q/k بـ int8 والمجمّعات بـ fp32) حسب عدد الكتل عندما تكون منطقة qkv المدمجة صالحة، ويحرّر منطقة qkv ومدخلات كتلة التطبيع فور استهلاكها. نتائج المخرجات مطابقة تمامًا للنموذج غير المرقَّع."
+    },
+    "MiniMaxChunkFeedForward": {
+        "title": "شبكة أمامية مُجزّأة MiniMax H3",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "chunks": "عدد الكتل",
+            "seq_threshold": "عتبة التسلسل"
+        },
+        "outputs": {},
+        "description": "يقسّم الشبكة الأمامية (SwiGLU) في MiniMax H3 حسب بُعد الرموز المحزّمة لتقليل استخدام ذكرة VRAM الذروة. عند تكميم النموذج، لا تزال كل كتلة تمرّ عبر نواة INT8 المدمجة في ComfyUI، وبما أن التنشيطات تُكمَّم لكل رمز، فإن المخرجات تتطابق مع النموذج غير المجزّأ."
+    },
+    "Ideogram4PromptBuilderKJ": {
+        "title": "بانِي موجّهات Ideogram4 (KJ)",
+        "inputs": {
+            "image": "صورة",
+            "import_json": "استيراد JSON",
+            "bboxes": "إطار حدودي"
+        },
+        "widgets": {
+            "width": "العرض",
+            "height": "الارتفاع",
+            "high_level_description": "وصف متقدّم",
+            "background": "خلفية",
+            "style": "نمط",
+            "aesthetics": "جماليات",
+            "lighting": "إضاءة",
+            "medium": "وسيط",
+            "style_palette_data": "بيانات لوحة ألوان النمط",
+            "elements_data": "بيانات العناصر",
+            "bg_brightness": "سطوع الخلفية",
+            "import_mode": "وضع الاستيراد",
+            "output_format": "تنسيق الإخراج",
+            "coord_mode": "وضع الإحداثيات",
+            "bbox_order": "ترتيب الإطارات الحدودية"
+        },
+        "outputs": {
+            "prompt": "الموجّه",
+            "preview": "معاينة",
+            "bboxes": "إطار حدودي",
+            "width": "العرض",
+            "height": "الارتفاع"
+        },
+        "description": "\nبانِي موجّهات مرئي لتنسيق وصف Ideogram 4 بالـ JSON المنظّم.\n\nاسحب على اللوحة لرسم مناطق؛ حدّد منطقة لضبط نوعها (كائن/نص) ووصفها ونصها ولوحة ألوانها. اضبط الخلفية والحقول النمطية الاختيارية كويدجتات. يُخرج سلسلة JSON الوصف المجمَّعة.\n\nإزاحة محور bboX معيارية إلى شبكة 0-1000، بالصيغة [أدنى إزاحة Y، أدنى إزاحة X، أقصى إزاحة Y، أقصى إزاحة X]؛ العرض/الارتفاع يضبطان نسبة أبعاد اللوحة.\n\nأدوات اللوحة:\n- سحب: رسم منطقة جديدة\n- Ctrl/Cmd+سحب: فرض رسم منطقة جديدة حتى فوق منطقة قائمة\n- نقر: تحديد منطقة · Alt+نقر: التنقّل بين المناطق المتراكبة\n- نقر مزدوج: تحرير الوصف مضمّنًا\n- نقر يمين: قائمة المناطق (تحديد/حذف/نسخ/إعادة ترتيب، الأعلى هو الأمام)\n- Del/Backspace: حذف المنطقة المحدّدة\n- Ctrl/Cmd + C/V/D: نسخ/لصق/تكرار المنطقة المحدّدة\n- حقول إزاحة محور bboX بجانب obj/النص (بكسل/إخراج) قابلة للتحرير\n\nعيّنات الألوان:\n- نقر: تحرير · سحب: إعادة ترتيب · نقر يمين: حذف\n- تمرير+Ctrl/Cmd + C/V: نسخ/لصق قيمة لون hex\n- \"+\": إضافة لون (يستخدم لون الحافظة إن وُجد)\n\nشريط الأدوات:\n- مباشر: استخدام معاينة العيّنة المباشرة كخلفية (ويلتقط النتيجة النهائية)\n- التقاط خلفية/مسح خلفية: استخدام آخر صورة مولّدة كخلفية\n- شريط تمرير السطوع، وتقدير الرموز، ونسخ/لصق/مسح الكل"
+    },
+    "RandomImageFromBatch": {
+        "title": "اختيار صورة عشوائية من الدفعة (KJ)",
+        "inputs": {
+            "input": "إدخال"
+        },
+        "widgets": {
+            "start_index": "الفهرس البداية",
+            "end_index": "الفهرس النهاية",
+            "num_frames": "عدد الإطارات",
+            "randomness": "عشوائية",
+            "min_distance": "أدنى تباعد",
+            "max_distance": "أقصى تباعد",
+            "seed": "البذرة العشوائية"
+        },
+        "outputs": {
+            "output": "إخراج"
+        },
+        "description": "اختر سلسلة إطارات من نطاق فهارس محدّد من دفعة صور أو أقنعة. عند العشوائية=0 تُختار الإطارات موزّعة بالتساوي داخل النطاق؛ عند العشوائية=1 تكون عشوائية موحّدة بلا تكرار؛ والقيم الوسطى تمزج خطيًا بينهما. المخرجات مرتّبة دائمًا حسب فهرس الدفعة. الفهارس السالبة تُحتسب من النهاية (-1 = الأخير)."
+    },
+    "FastPreviewBatch": {
+        "title": "معاينة سريعة للدفعة (KJ)",
+        "inputs": {
+            "input": "إدخال"
+        },
+        "widgets": {
+            "max_thumb_size": "أقصى حجم مصغّرة",
+            "crf": "تقييد جودة العرض",
+            "max_grid_frames": "أقصى إطارات للشبكة"
+        },
+        "outputs": {},
+        "description": "يُرمّز دفعة الصور إلى شريط مصغّرات MP4 بترميز H.264 بالكامل إطارات-I، ويعرضها كشبكة تفاعلية. انقر على بلاطة للتكبير والتنقّل ذهابًا وإيابًا. يتجنّب إنشاء ملفات PNG عددها N."
+    },
+    "BBOXToBoundingBoxKJ": {
+        "title": "BBOX إلى إطار حدودي (KJ)",
+        "inputs": {
+            "bbox": "إطار حدودي"
+        },
+        "widgets": {
+            "bbox_format": "تنسيق الإطار الحدودي",
+            "index": "الفهرس"
+        },
+        "outputs": {
+            "bounding_box": "إطار حدودي"
+        },
+        "description": "حوّل BBOX في KJNodes إلى قواميس BOUNDING_BOX الأصلية التي تستخدمها العقد الأساسية (مثل قصّ الصورة)."
+    },
+    "WanVideoMemoryEfficientSageAttentionPatch": {
+        "title": "ترقيع انتباه Sage الموفّر للذاكرة Wan Video (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "النموذج"
+        },
+        "description": "ميزة تجريبية! تفعّل sageattention مخصّصًا على الانتباه الذاتي في WanVideo لتقليل استخدام ذكرة VRAM الذروة، وتجاوز نمط الانتباه. يتطلب أحدث إصدار من sageattention."
+    },
+    "MiniMaxH3MemoryEfficientSageAttentionPatch": {
+        "title": "ترقيع انتباه Sage الموفّر للذاكرة MiniMax H3 (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "النموذج"
+        },
+        "description": "ميزة تجريبية! تفعّل sageattention مخصّصًا على الانتباه الذاتي في MiniMax H3 لتقليل استخدام ذكرة VRAM الذروة، وتجاوز نمط الانتباه. يتطلب أحدث إصدار من sageattention."
+    },
+    "PatchFlashAttentionKJ": {
+        "title": "ترقيع Flash Attention (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "allow_compile": "السماح بالتجميع"
+        },
+        "outputs": {},
+        "description": "عقدة تجريبية لترقيع الانتباه لاستخدام Flash Attention، دون التراجع الصامت إلى SDPA الافتراضي في واجهة ComfyUI. يرقّع الانتباه في النماذج المارّة عبر هذه العقدة؛ لتعطيله يجب تجاوز العقدة أو فصلها. يتطلب تثبيت مكتبة flash_attn."
+    },
+    "TorchCompileModelAdvanced": {
+        "title": "تجميع نموذج Torch متقدّم (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "backend": "الخلفية",
+            "fullgraph": "وضع الرسم الكامل",
+            "mode": "الوضع",
+            "dynamic": "ديناميكي",
+            "compile_transformer_blocks_only": "تجميع كتل المحوّل فقط",
+            "dynamo_cache_size_limit": "حد حجم ذاكرة التخزين المؤقت للإزاحة الرأسية Dnamo",
+            "debug_compile_keys": "مفاتيح تجميع للتصحيح",
+            "disable_dynamic_vram": "تعطيل VRAM الديناميكي"
+        },
+        "outputs": {},
+        "description": "ترقيع torch.compile متقدّم لنماذج الانتشار."
+    },
+    "Krea2PromptWeight": {
+        "title": "أوزان موجّه Krea2 (KJ)",
+        "inputs": {
+            "clip": "CLIP",
+            "model": "النموذج"
+        },
+        "widgets": {
+            "text": "نص",
+            "strength": "قوة"
+        },
+        "outputs": {
+            "model": "النموذج",
+            "conditioning": "شرط"
+        },
+        "description": "يحقّق أوزان موجّهات لكل رمز لـ Krea2 (K2) عبر تحجيم قيم الانتباه. استخدم (كلمة:-1) لإزالة مفهوم، و(كلمة:1.5) للتأكيد عليه — هذه الميزة تعمل مع مُرمِّز Qwen3-VL ولا يمكن تحقيقها بإعدادات الأوزان العادية. يُخرج نموذجًا مرقَّعًا وشرطًا؛ اضبط CFG في العيّان على 1.0."
+    },
+    "Ideogram4OptimizationsKJ": {
+        "title": "تحسين Ideogram4 (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "chunk_ffn": "شبكة أمامية مجزّأة",
+            "ffn_chunks": "عدد كتل الشبكة الأمامية",
+            "ffn_seq_threshold": "عتبة تسلسل الشبكة الأمامية",
+            "bf16_rope": "ترميز الموضع bf16"
+        },
+        "outputs": {
+            "model": "النموذج"
+        },
+        "description": "ميزة تجريبية قد تغيّر مخرجات النموذج!! تقلّل ذروة VRAM في التمرير الأمامي لـ Ideogram4. يقسّم chunk_ffn تنشيطات SwiGLU حسب بُعد الرمز، ويطبّق bf16_rope ترميز RoPE بنوع بيانات النموذج بدل الترقية إلى fp32. كلاهما يستهدف أكبر متّجهين عابرين في الكتلة."
+    },
+    "PiDColorBiasCorrection": {
+        "title": "تصحيح انحراف اللون PiD (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "strength": "قوة",
+            "backbone": "الشبكة العصبية الأساسية"
+        },
+        "outputs": {},
+        "description": "مصحّح انحراف اللون/السطوع لمفكّك PiD بأربع خطوات. في خطوة العيّنة الأولى، يطرح انحرافًا لكل قناة من الإزاحة الأفقية 0_p red باستخدام نموذج خطّي صغير مُعاير للانحراف المنهجي للنموذج (يميل النموذج إلى تفتيح المشاهد الداكنة وإضافة لون أزرق)."
+    },
+    "LeapfusionHunyuanI2V": {
+        "title": "Leapfusion Hunyuan صورة إلى فيديو (KJ)",
+        "inputs": {
+            "model": "النموذج",
+            "latent": "متغيّر كامن"
+        },
+        "widgets": {
+            "index": "الفهرس",
+            "start_percent": "النسبة المئوية البداية",
+            "end_percent": "النسبة المئوية النهاية",
+            "strength": "قوة"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VAEMergeKJ": {
+        "title": "دمج VAE (KJ)",
+        "inputs": {
+            "vae_1": "VAE1",
+            "vae_2": "VAE2"
+        },
+        "widgets": {
+            "ratio": "نسبة"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "يدمج أوزان VAE-ين بمتوسط مرجّح. النسبة هي الوزن الموجّه نحو VAE_2 (0.0 = VAE_1 نقي، 1.0 = VAE_2 نقي). يجب أن يتشارك الـ VAE-ان نفس البنية (مفاتيح وأشكال قاموس الحالة متطابقة)."
+    },
+    "LatentInpaintTTM": {
+        "title": "إصلاح قناع Latent TTM (KJ)",
+        "inputs": {
+            "model": "النموذج",
+            "mask": "قناع"
+        },
+        "widgets": {
+            "steps": "عدد الخطوات"
+        },
+        "outputs": {},
+        "description": "https://github.com/time-to-move/TTM"
+    },
+    "DeprecatedCompileNodeKJ": {
+        "title": "عقدة تجميع مهملة (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "استُبدلت هذه العقدة بعقدة TorchCompileModelAdvanced، يرجى استخدام تلك العقدة"
+    },
+    "ModelPreviewOverrideKJ": {
+        "title": "تجاوز معاينة النموذج (KJ)",
+        "inputs": {
+            "model": "النموذج",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "max_resolution": "أقصى دقّة",
+            "jpeg_quality": "جودة JPEG",
+            "suppress_default_preview": "تعطيل المعاينة الافتراضي",
+            "preview_frames": "إطار المعاينة",
+            "preview_fps": "معدّل إطارات المعاينة",
+            "tiny_vae": "VAE مصغّر"
+        },
+        "outputs": {},
+        "description": "أضف إطار معاينة مباشرة مخصّصًا لهذه العقدة، يمكنه تجاوز أقصى دقّة. حدّ المعاينة الافتراضي في ComfyUI هو 512p أفقيًا؛ ترسل هذه العقدة معاينتها مباشرة إلى مكوّن DOM على العقدة، لذا يمكن معاينة نماذج فضاء البكسل (Chroma Radiance وZImage وHiDream-O1 وغيرها) بدقّة العيّان الكاملة."
+    },
+    "GetPreviewOverrideFramesKJ": {
+        "title": "الحصول على إطار تجاوز المعاينة (KJ)",
+        "inputs": {
+            "model": "النموذج",
+            "after_sample": "بعد العيّنة"
+        },
+        "widgets": {},
+        "outputs": {
+            "frames": "إطارات الفيديو"
+        },
+        "description": "يُعيد الإطارات التي التقطتها تجاوز معاينة النموذج أثناء آخر عملية عيّنة. وصِل 'النموذج' من تجاوز معاينة النموذج (نفس النموذج المغذّي للعيّان) و'after_sample' من ما بعد العيّان (Latent/IMAGE) لضمان الترتيب الصحيح للتنفيذ."
+    },
+    "PatchTritonVAE": {
+        "title": "ترقيع Triton VAE (KJ)",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "fuse_norm_silu": "دمج تنشيط SiLU مع التطبيع",
+            "channels_last": "القناة أولًا",
+            "int8_conv": "التفاف INT8",
+            "autotune": "ضبط تلقائي"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "يسرّع فك/ترميز التشفير في VAE عبر دمج نواة norm+SiLU في Triton وتخطيط التفاف القناة أولًا. نماذج VAE المدعومة (كشف تلقائي): فيديوهات Wan 2.1/2.2 VAE (يشمل Qwen-Image، RMSNorm، نحو 1.4/1.15 أفقيًا)، وFlux/Flux2، وVAE الصور KL مثل SDXL وSD1.5 (GroupNorm، نحو 1.6-1.8 أفقيًا عند 2048p أفقيًا)، وVAE الفيديو LTXV/LTX2 (Pi elNorm؛ تُدمج كتل المفكّك المشروطة بالخطوة الزمنية التطبيع فقط). البنى الأخرى غير مدعومة. يُطبَّق كترقيع كائن على مُرقِّع مستنسخ، لذا يوجد فقط عند تحميل ذلك الـ VAE."
+    },
+    "ImageTransformKJ": {
+        "title": "تحويل الصورة (KJ)",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع"
+        },
+        "widgets": {
+            "target_width": "العرض الهدف",
+            "target_height": "الارتفاع الهدف",
+            "upscale_method": "طريقة التكبير",
+            "keep_proportion": "الحفاظ على النسبة",
+            "divisible_by": "رقم قابل للقسمة",
+            "extra_padding": "حشو إضافي",
+            "invert_crop": "عكس القصّ",
+            "grid_size": "حجم الشبكة"
+        },
+        "outputs": {
+            "width": "العرض",
+            "height": "الارتفاع",
+            "output": "صورة الإخراج",
+            "output_mask": "قناع الإخراج"
+        },
+        "description": "هذه العقدة لتحويلات الصور، تدعم تغيير حجم الصورة وطرق التكبير والحفاظ على النسبة وغيرها من المعاملات، وتدعم إجراء تحويلات متزامنة على الأقنعة."
+    },
+    "ScreencapStream": {
+        "title": "بثّ التقاط الشاشة (KJ)",
+        "inputs": {},
+        "widgets": {
+            "crop_width": "عرض القصّ",
+            "crop_height": "ارتفاع القصّ",
+            "Start capture": "بدء الالتقاط",
+            "Hide preview": "إخفاء المعاينة"
+        },
+        "outputs": {
+            "image": "صورة"
+        },
+        "description": "تلتقط هذه العقدة شاشة العرض في الوقت الفعلي. تتيح للمستخدم تخصيص عرض ومنطقة الالتقاط، وتوفّر أزرار تحكّم لبدء وإيقاف الالتقاط. تُعرض اللقطة الحيّة الملتقطة في نافذة معاينة لسهولة مراقبة تسجيل الشاشة."
+    },
+    "DecodeAndSaveVideo": {
+        "title": "فك تشفير وحفظ الفيديو (KJ)",
+        "inputs": {
+            "video_latent": "فيديو كامن Latent",
+            "video_vae": "نموذج VAE للفيديو",
+            "audio_latent": "صوت كامن Latent",
+            "audio_vae": "نموذج VAE للصوت"
+        },
+        "widgets": {
+            "fps": "معدّل الإطارات",
+            "filename_prefix": "بادئة اسم الملف",
+            "format": "التنسيق",
+            "codec": "مرمّز/فكّ ترميز",
+            "tiling": "معالجة مجزّأة"
+        },
+        "outputs": {
+            "video": "الفيديو المفكَّك",
+            "filename": "اسم الملف المحفوظ"
+        },
+        "description": "تفكّ هذه العقدة الفضاء الكامن للفيديو (Video Latent) إلى ملف فيديو فعلي وتحفظه. تدعم فك تشفير الصوت في الوقت نفسه. يمكن للمستخدم إعداد معدّل الإطارات (FPS) وبادئة اسم الملف وتنسيق الإخراج (مثل MP4 وMOV وغيرها) ومرمّز الفيديو (مثل H.264 وH.265) وما إذا كان تفعيل المعالجة المجزّأة (Tiling) للفيديوهات الكبيرة."
+    },
+    "EncodeVideoComponents": {
+        "title": "تشفير مكوّنات الفيديو (KJ)",
+        "inputs": {
+            "video": "فيديو",
+            "vae": "نموذج VAE"
+        },
+        "widgets": {
+            "width": "العرض",
+            "height": "الارتفاع",
+            "max_frames": "أقصى عدد إطارات",
+            "upscale_method": "طريقة التكبير",
+            "Keep Proportion": "الحفاظ على النسبة"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "audio": "صوت",
+            "fps": "معدّل الإطارات",
+            "frame_count": "عدد الإطارات"
+        },
+        "description": "تُشفّر هذه العقدة إطارات الفيديو إلى تمثيل الفضاء الكامن (Latent)، وتُستخدم عادةً في سير توليد أو معالجة الفيديو. تقبل تدفّق فيديو ونموذج VAE كمدخلات، وتُخرج بيانات الفضاء الكامن المشفَّرة وتدفّق الصوت ومعلومات معدّل الإطارات وإجمالي عدد الإطارات. يمكن أيضًا ضبط دقّة الإخراج (العرض والارتفاع)، وتحديد أقصى عدد إطارات، واختيار طريقة تكبير الصورة (مثل Lanczos)، وما إذا كان الحفاظ على نسبة الأبعاد الأصلية."
+    },
+    "ColorMatchV2": {
+        "title": "مطابقة الألوان V2 (KJ)",
+        "inputs": {
+            "image_target": "الصورة الهدف",
+            "image_ref": "الصورة المرجعية"
+        },
+        "widgets": {
+            "method": "الطريقة",
+            "strength": "قوة",
+            "multithread": "خيوط متعدّدة"
+        },
+        "outputs": {
+            "image": "صورة"
+        },
+        "description": "عقدة تطبّق نمط ألوان صورة مرجعية على صورة هدف. تدعم خوارزميات مطابقة متعددة (مثل mkl)، وتتيح ضبط قوة المطابقة، وتدعم المعالجة بخيوط متعدّدة لرفع الكفاءة."
+    },
+    "PreviewImageOrMask": {
+        "title": "معاينة صورة أو قناع (KJ)",
+        "inputs": {
+            "input": "صورة أو قناع الإدخال"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "تعرض هذه العقدة الصورة أو القناع المُدخَل مباشرة في واجهة ComfyUI، وتُستخدم أساسًا لتصحيح الأخطاء ومعاينة النتائج الوسيطة أثناء المعالجة. عادةً لا تُخرج تدفّق بيانات، بل تُستخدم كمعاينة مرئية فقط."
+    },
+    "ImageSharpenKJ": {
+        "title": "تحديد الصورة (KJ)",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "method": "الطريقة",
+            "strength": "قوة"
+        },
+        "outputs": {
+            "output": "صورة الإخراج"
+        },
+        "description": "تحدّد هذه العقدة الصورة المُدخلة. تتيح للمستخدم اختيار خوارزميات تحديد مختلفة (مثل rcas) وضبط قوة التحديد، لتعزيز وضوصوح الصورة وتفاصيلها."
+    },
+    "PlaySoundKJ": {
+        "title": "تشغيل صوت",
+        "inputs": {
+            "any_input": "إدخال عشوائي",
+            "audio": "صوت"
+        },
+        "widgets": {
+            "audio_path": "مسار الصوت",
+            "mode": "الوضع",
+            "volume": "مستوى الصوت",
+            "duration": "المدة"
+        },
+        "outputs": {
+            "any_output": "إخراج عشوائي"
+        },
+        "description": "يشغّل ملف صوتي محدّد، ويدعم ضبط وضع التشغيل ومستوى الصوت والمدة."
+    },
+    "NormalizedAmplitudeToMask": {
+        "title": "تطبيع السعة إلى قناع",
+        "inputs": {
+            "normalized_amp": "سعة مطبَّعة"
+        },
+        "widgets": {
+            "width": "العرض",
+            "height": "الارتفاع",
+            "frame_offset": "إزاحة الإطار",
+            "location_x": "الموضع_X",
+            "location_y": "الموضع_Y",
+            "size": "الحجم",
+            "shape": "الشكل",
+            "color": "اللون"
+        },
+        "outputs": {
+            "MASK": "قناع"
+        },
+        "description": "عقدة جسور لإضافة AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nتُنشئ قناعًا بناءً على السعة المطبَّعة."
+    },
+    "NormalizedAmplitudeToFloatList": {
+        "title": "تطبيع السعة إلى قائمة أعداد عشرية",
+        "inputs": {
+            "normalized_amp": "سعة مطبَّعة"
+        },
+        "outputs": {
+            "FLOAT": "عدد عشري"
+        },
+        "description": "عقدة جسور لإضافة AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nتُنشئ قائمة أعداد عشرية بناءً على السعة المطبَّعة."
+    },
+    "OffsetMaskByNormalizedAmplitude": {
+        "title": "إزاحة القناع حسب السعة المطبَّعة",
+        "inputs": {
+            "normalized_amp": "سعة مطبَّعة",
+            "mask": "قناع"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "rotate": "تدوير",
+            "angle_multiplier": "مضاعف الزاوية"
+        },
+        "outputs": {
+            "mask": "قناع"
+        },
+        "description": "عقدة جسور لإضافة AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nتُزيح قناعًا بناءً على السعة المطبَّعة."
+    },
+    "ImageTransformByNormalizedAmplitude": {
+        "title": "تحويل الصورة حسب السعة المطبَّعة",
+        "inputs": {
+            "normalized_amp": "سعة مطبَّعة",
+            "image": "صورة"
+        },
+        "widgets": {
+            "zoom_scale": "تحجيم",
+            "x_offset": "إزاحة x",
+            "y_offset": "إزاحة y",
+            "cumulative": "تراكم"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "عقدة جسور لإضافة AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nتحوّل صورة بناءً على السعة المطبَّعة."
+    },
+    "BatchCropFromMask": {
+        "title": "قصّ القناع",
+        "inputs": {
+            "original_images": "صورة",
+            "masks": "قناع"
+        },
+        "widgets": {
+            "crop_size_mult": "معامل القصّ",
+            "bbox_smooth_alpha": "شفافية BBox الأملسة"
+        },
+        "outputs": {
+            "original_images": "الصورة الأصلية",
+            "cropped_images": "الصورة المقصوصة",
+            "bboxes": "BBox",
+            "width": "العرض",
+            "height": "الارتفاع"
+        }
+    },
+    "BatchUncrop": {
+        "title": "إلغاء القصّ (دفعة)",
+        "inputs": {
+            "original_images": "الصورة الأصلية",
+            "cropped_images": "الصورة المقصوصة",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "border_blending": "دمج الحدود",
+            "crop_rescale": "إعادة التحجيم",
+            "border_bottom": "الحدّ السفلي",
+            "border_top": "الحدّ العلوي",
+            "border_left": "الحدّ الأيسر",
+            "border_right": "الحدّ الأيمن"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "BatchCropFromMaskAdvanced": {
+        "title": "قصّ القناع (متقدّم)",
+        "inputs": {
+            "original_images": "صورة",
+            "masks": "قناع"
+        },
+        "widgets": {
+            "crop_size_mult": "معامل القصّ",
+            "bbox_smooth_alpha": "شفافية BBox الأملسة"
+        },
+        "outputs": {
+            "original_images": "الصورة الأصلية",
+            "cropped_images": "الصورة المقصوصة",
+            "cropped_masks": "قناع القصّ",
+            "combined_crop_image": "دمج الصور المقصوصة",
+            "combined_crop_masks": "دمج الأقنعة المقصوصة",
+            "bboxes": "BBox",
+            "combined_bounding_box": "دمج BBox",
+            "bbox_width": "عرض BBox",
+            "bbox_height": "ارتفاع BBox"
+        }
+    },
+    "FilterZeroMasksAndCorrespondingImages": {
+        "title": "تصفية الأقنعة والصور الصفرية",
+        "inputs": {
+            "masks": "قناع",
+            "original_images": "صورة"
+        },
+        "outputs": {
+            "non_zero_masks_out": "أقنعة غير صفرية",
+            "non_zero_mask_images_out": "صور غير صفرية",
+            "zero_mask_images_out": "صور صفرية",
+            "zero_mask_images_out_indexes": "فهارس صور الأقنعة غير الصفرية"
+        },
+        "description": "يُزيل كل الأقنعة الفارغة (أي كلّها أصفار) من قناع\nوإن وُفّرت، يمكن أيضًا التصفية عبر الفهرس\n original_images (اختياري): إن وُفّرت يجب أن تكون بنفس طول القناع."
+    },
+    "InsertImageBatchByIndexes": {
+        "title": "إدراج صور في دفعة حسب الفهرس",
+        "inputs": {
+            "images": "صورة",
+            "images_to_insert": "الصور المُدخلة",
+            "insert_indexes": "فهارس الإدراج"
+        },
+        "outputs": {
+            "images_after_insert": "صورة"
+        },
+        "description": "يجب استخدام هذه العقدة مع عقدة FilterZeroMasksAndCorrespondingImages،\nتُدخل images_to_insert في images حسب insert_indexes.\nالقيمة المُعادة: images_after_insert - تسلسل الصور المُحدَّث بالترتيب الأصلي."
+    },
+    "BatchUncropAdvanced": {
+        "title": "إلغاء القصّ (متقدّم)",
+        "inputs": {
+            "original_images": "الصورة الأصلية",
+            "cropped_images": "الصورة المقصوصة",
+            "cropped_masks": "قناع القصّ",
+            "combined_crop_mask": "دمج الأقنعة المقصوصة",
+            "bboxes": "BBox",
+            "combined_bounding_box": "دمج BBox"
+        },
+        "widgets": {
+            "border_blending": "دمج الحدود",
+            "crop_rescale": "إعادة التحجيم",
+            "use_combined_mask": "استخدام القناع المدمج",
+            "use_square_mask": "استخدام قناع مربّع"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "SplitBboxes": {
+        "title": "فصل BBox",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "الفهرس"
+        },
+        "outputs": {
+            "bboxes_a": "BBox_A",
+            "bboxes_b": "BBox_B"
+        },
+        "description": "قسّم قائمة bbox المحدّدة عند الفهرس المضبوط إلى قائمتين"
+    },
+    "BboxToInt": {
+        "title": "BBox إلى عدد صحيح",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "الفهرس"
+        },
+        "outputs": {
+            "x_min": "أدنى X",
+            "y_min": "أقصى Y",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "center_x": "مركز X",
+            "center_y": "مركز Y"
+        },
+        "description": "يُعيد الفهرس المحدّد من قائمة الإطارات الحدودية كعدد صحيح"
+    },
+    "BboxVisualize": {
+        "title": "معاينة BBox",
+        "inputs": {
+            "images": "صورة",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "line_width": "سماكة الخط"
+        },
+        "outputs": {
+            "images": "صورة"
+        },
+        "description": "اعرض bbox المحدّد على الصورة"
+    },
+    "PlotCoordinates": {
+        "title": "مخطط إحداثيات",
+        "inputs": {
+            "coordinates": "إحداثيات",
+            "size_multiplier": "مضاعف الأبعاد"
+        },
+        "widgets": {
+            "text": "نص",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "bbox_width": "عرض BBox",
+            "bbox_height": "ارتفاع BBox"
+        },
+        "outputs": {
+            "images": "صورة",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "bbox_height": "ارتفاع BBox",
+            "bbox_width": "عرض BBox"
+        },
+        "description": "اصنع سلسلة مخططات إحداثيات باستخدام Matplotlib."
+    },
+    "SplineEditor": {
+        "title": "محرّر المنحنيات",
+        "inputs": {
+            "bg_image": "صورة الخلفية"
+        },
+        "widgets": {
+            "points_store": "موضع النقاط",
+            "mask_width": "عرض القناع",
+            "mask_height": "ارتفاع القناع",
+            "points_to_sample": "دقّة العيّنة",
+            "sampling_method": "طريقة العيّنة",
+            "interpolation": "طريقة الاستيفاء",
+            "tension": "توتّر",
+            "repeat_output": "تكرار الإخراج",
+            "float_output_type": "نوع إخراج العدد العشري",
+            "min_value": "الحدّ الأدنى",
+            "max_value": "الحدّ الأقصى",
+            "New spline": "منحنى جديد",
+            "New canvas": "لوحة جديدة"
+        },
+        "outputs": {
+            "mask": "قناع",
+            "coord_str": "إحداثيات",
+            "float": "عدد عشري",
+            "count": "الكمية",
+            "normalized_str": "نص مطبَّع"
+        },
+        "description": "# قيد التطوير \nحاول ألا تستخدم هذه العقدة في سير العمل، قد تواجه الكثير من الأخطاء وعدم استقرار!! \n \n##محرّر مرئي لإنشاء جدولة قيم متنوعة \n\n**Shift+نقر يسار** إضافة نقطة تحكّم جديدة، **Ctrl+نقر يسار** إنشاء نقطة تحكّم وسطية، **نقر يمين** إزالة نقطة التحكّم.\nلا يمكن إزالة النقطتين الطرفيتين.\n\nالنقر بزر الفأرة الأيمن على الخلفية يستدعي قائمة: بعض الإعدادات المرئية، لا تؤثر على نتيجة الإخراج:\n - وضوح مقابض التحكّم \n - إظهار نقاط العيّنة \n\n**دقّة العيّنة** تضبط عدد نقاط العيّنة، وتُعيد نقاط عيّنة من المنحنى الطولي نفسه، بغضّ النظر عن نقاط التحكّم الفعلية، يحدّدها نوع الاستيفاء.\nطريقة العيّنة:\n - زمن: عيّنة على المحور الزمني، تُستخدم للجدولة \n - مسار: عيّنة على مسار المنحنى، تُستخدم للإحداثيات \n\n المخرجات:\n - دفعة أقنعة \n تناسب أي عقدة تستقبل قناعًا \n - قائمة أعداد عشرية \n تناسب مجموعات أوزان IPAdapter \n - سلسلة pandas \n تناسب عقدة Fizz BatchValue Schedule \n - متّجه torch \n يناسب عقدًا غير محدّدة"
+    },
+    "CreateShapeMaskOnPath": {
+        "title": "إنشاء قناع شكل",
+        "inputs": {
+            "coordinates": "إحداثيات",
+            "size_multiplier": "مضاعف الأبعاد"
+        },
+        "widgets": {
+            "shape": "الشكل",
+            "frame_height": "الارتفاع",
+            "frame_width": "العرض",
+            "shape_height": "ارتفاع الشكل",
+            "shape_width": "عرض الشكل",
+            "shape_color": "لون الشكل",
+            "bg_color": "لون الخلفية",
+            "blur_radius": "نصف قطر التمويه",
+            "intensity": "قوة"
+        },
+        "outputs": {
+            "mask": "قناع",
+            "mask_inverted": "عكس القناع"
+        },
+        "description": "يُنشئ قناعًا أو دفعة أقنعة بالشكل المحدّد، ومعامل الموضع هو الموضع المركزي."
+    },
+    "CreateShapeImageOnPath": {
+        "title": "إنشاء صورة شكل",
+        "inputs": {
+            "coordinates": "إحداثيات",
+            "size_multiplier": "مضاعف الأبعاد"
+        },
+        "widgets": {
+            "shape": "الشكل",
+            "frame_height": "الارتفاع",
+            "frame_width": "العرض",
+            "shape_height": "ارتفاع الشكل",
+            "shape_width": "عرض الشكل",
+            "shape_color": "لون الشكل",
+            "bg_color": "لون الخلفية",
+            "blur_radius": "نصف قطر التمويه",
+            "intensity": "قوة",
+            "trailing": "لاحق",
+            "border_width": "سماكة الحدود",
+            "border_color": "لون الحدود"
+        },
+        "outputs": {
+            "image": "صورة",
+            "mask": "قناع"
+        },
+        "description": "يُنشئ صورة أو دفعة صور بالشكل المحدّد، ومعامل الموضع هو الموضع المركزي."
+    },
+    "CreateTextOnPath": {
+        "title": "إنشاء نص",
+        "inputs": {
+            "coordinates": "إحداثيات",
+            "size_multiplier": "مضاعف الأبعاد"
+        },
+        "widgets": {
+            "text": "نص",
+            "frame_height": "الارتفاع",
+            "frame_width": "العرض",
+            "font": "الخط",
+            "font_size": "حجم الخط",
+            "alignment": "المحاذاة إلى",
+            "text_color": "لون النص"
+        },
+        "outputs": {
+            "image": "صورة",
+            "mask": "قناع",
+            "mask_inverted": "عكس القناع"
+        },
+        "description": "يُنشئ قناعًا أو دفعة أقنعة بالنص المحدّد. الموضع هو الموضع المركزي."
+    },
+    "CreateGradientFromCoords": {
+        "title": "إنشاء صورة متدرّجة من إحداثيات",
+        "inputs": {
+            "coordinates": "إحداثيات"
+        },
+        "widgets": {
+            "frame_height": "الارتفاع",
+            "frame_width": "العرض",
+            "start_color": "اللون البداية",
+            "end_color": "اللون النهاية",
+            "multiplier": "مضاعف"
+        },
+        "outputs": {
+            "image": "صورة"
+        },
+        "description": "أنشئ صورة متدرّجة عند الإحداثيات."
+    },
+    "GradientToFloat": {
+        "title": "تدرّج إلى عدد عشري",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "steps": "عدد الخطوات"
+        },
+        "outputs": {
+            "float_x": "عدد عشري_X",
+            "float_y": "عدد عشري_Y"
+        },
+        "description": "احسب قائمة أعداد عشرية للصورة"
+    },
+    "MaskOrImageToWeight": {
+        "title": "قناع أو صورة إلى أوزان",
+        "inputs": {
+            "images": "صورة",
+            "masks": "قناع"
+        },
+        "widgets": {
+            "output_type": "نوع الإخراج"
+        },
+        "outputs": {
+            "FLOAT": "عدد عشري",
+            "STRING": "عدد عشري"
+        },
+        "description": "احصل على متوسط دفعة أقنعة أو صور، وأخرج النتيجة حسب نوع الإخراج."
+    },
+    "WeightScheduleConvert": {
+        "title": "تحويل جدولة الأوزان",
+        "inputs": {
+            "input_values": "قيم الإدخال",
+            "interpolation_curve": "منحنى الاستيفاء"
+        },
+        "widgets": {
+            "output_type": "نوع الإخراج",
+            "invert": "عكس",
+            "repeat": "تكرار",
+            "remap_to_frames": "إعادة تعيين إلى إطارات",
+            "interpolation_curve": "منحنى الاستيفاء",
+            "remap_values": "إعادة تعيين القيم",
+            "remap_min": "إعادة تعيين الحدّ الأدنى",
+            "remap_max": "إعادة تعيين الحدّ الأقصى"
+        },
+        "outputs": {
+            "FLOAT": "عدد عشري",
+            "STRING": "عدد عشري",
+            "INT": "عدد صحيح"
+        },
+        "description": "حوّل قوائم/سلاسل قيم مختلفة إلى نوع آخر."
+    },
+    "FloatToMask": {
+        "title": "عدد عشري إلى قناع",
+        "inputs": {
+            "input_values": "قيم الإدخال"
+        },
+        "widgets": {
+            "width": "العرض",
+            "height": "الارتفاع"
+        },
+        "outputs": {
+            "MASK": "قناع"
+        },
+        "description": "يُنشئ دفعة أقنعة اعتمادًا على قيم عشرية مُدخلة. يُحدّد حجم الدفعة بطول القيم العشرية المُدخلة. يُنشأ كل قناع بالعرض والارتفاع المحدّدين."
+    },
+    "WeightScheduleExtend": {
+        "title": "تمديد جدولة الأوزان",
+        "inputs": {
+            "input_values_1": "قيم_الإدخال_1",
+            "input_values_2": "قيم_الإدخال_2"
+        },
+        "widgets": {
+            "output_type": "نوع الإخراج"
+        },
+        "outputs": {
+            "FLOAT": "عدد عشري"
+        },
+        "description": "مدّد قوائم/سلاسل قيم مختلفة وحوّلها عند الحاجة"
+    },
+    "FloatToSigmas": {
+        "title": "عدد عشري إلى Sigmas",
+        "inputs": {
+            "float_list": "قائمة أعداد عشرية"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        },
+        "description": "أنشئ متّجه sigmas من قائمة أعداد عشرية"
+    },
+    "SigmasToFloat": {
+        "title": "Sigmas إلى عدد عشري",
+        "inputs": {
+            "sigmas": "sigmas"
+        },
+        "outputs": {
+            "float": "عدد عشري"
+        },
+        "description": "أنشئ قائمة أعداد عشرية من متّجه sigma."
+    },
+    "GLIGENTextBoxApplyBatchCoords": {
+        "title": "تطبيق صناديق نص GLIGEN (إحداثيات دفعة)",
+        "inputs": {
+            "conditioning_to": "شرط",
+            "latents": "Latent",
+            "clip": "CLIP",
+            "gligen_textbox_model": "نموذج GLIGEN",
+            "coordinates": "إحداثيات",
+            "size_multiplier": "مضاعف الأبعاد"
+        },
+        "widgets": {
+            "text": "نص",
+            "width": "العرض",
+            "height": "الارتفاع"
+        },
+        "outputs": {
+            "conditioning": "شرط",
+            "coord_preview": "معاينة الإحداثيات"
+        },
+        "description": "تتيح هذه العقدة جدولة مواضع صناديق نص GLIGEN داخل دفعة، وتُستخدم مع AnimateDiff-Evolved. يُنصح باستخدامها مع عقدة محرّر المنحنيات.\n\n يمكن تنزيل نموذج GLIGEN من 'تنزيل النماذج' في المدير. أو مباشرة من: https://huggingface.co/comfyanonymous/GLIGEN_pruned_safetensors/tree/main . \n \n المداخل: \n- **Latent** الإدخال يُستخدم لحساب حجم الدفعة \n- **CLIP** هو مُرمِّز النص، كبقية مداخل CLIP \n- **نموذج GLIGEN** يُوصل بعقدة محمّل GLIGEN \n- **الإحداثيات** تستقبل سلسلة json لإحداثيات النقاط، متوافقة مع عقدة محرّر المنحنيات. \n- **النص** موجّه مواضع صندوق النص \n- **العرض** و **الارتفاع** يضبطان أبعاد صندوق نص GLIGEN \n \nالمخرجات:\n- **الشرط** يُوصل بين ترميز نص CLIP والعيّان \n- **معاينة الإحداثيات** لمعاينة الإحداثيات وBBox \n\n"
+    },
+    "CreateInstanceDiffusionTracking": {
+        "title": "إنشاء تتبّع Instance Diffusion",
+        "inputs": {
+            "coordinates": "إحداثيات",
+            "size_multiplier": "مضاعف الأبعاد"
+        },
+        "widgets": {
+            "width": "العرض",
+            "height": "الارتفاع",
+            "bbox_width": "عرض BBox",
+            "bbox_height": "ارتفاع BBox",
+            "class_name": "اسم الفئة",
+            "class_id": "معرّف الفئة",
+            "prompt": "الموجّه",
+            "fit_in_frame": "ملاءنة للإطار"
+        },
+        "outputs": {
+            "tracking": "تتبّع",
+            "prompt": "تلميح",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "bbox_width": "عرض bbox",
+            "bbox_height": "ارتفاع bbox",
+            "int": "عدد صحيح"
+        },
+        "description": "يُنشئ بيانات تتبّع لـ InstanceDiffusion:\nhttps://github.com/logtd/ComfyUI-InstanceDiffusion\n\nتنسيق موجّه InstanceDiffusion:\n`\"class_id.class_name\": \"prompt\"`\nمثال:\n`\"1.head\": \"((head))\"`"
+    },
+    "AppendInstanceDiffusionTracking": {
+        "title": "إلحاق تتبّع Instance Diffusion",
+        "inputs": {
+            "tracking_1": "تتبّع_1",
+            "tracking_2": "تتبّع_2",
+            "prompt_1": "موجّه_1",
+            "prompt_2": "موجّه_2"
+        },
+        "outputs": {
+            "tracking": "تتبّع",
+            "prompt": "تلميح"
+        },
+        "description": "إلحاق بيانات التتبّع للاستخدام مع InstanceDiffusion: https://github.com/logtd/ComfyUI-InstanceDiffusion"
+    },
+    "InterpolateCoords": {
+        "title": "استيفاء الإحداثيات",
+        "inputs": {
+            "coordinates": "إحداثيات",
+            "interpolation_curve": "منحنى الاستيفاء"
+        },
+        "outputs": {
+            "coordinates": "إحداثيات"
+        },
+        "description": "إدراج إحداثيات حسب منحنى"
+    },
+    "DrawInstanceDiffusionTracking": {
+        "title": "رسم تتبّع Instance Diffusion",
+        "inputs": {
+            "image": "صورة",
+            "tracking": "تتبّع"
+        },
+        "widgets": {
+            "box_line_width": "سماكة الخط",
+            "draw_text": "رسم النص",
+            "font": "الخط",
+            "font_size": "حجم الخط"
+        },
+        "outputs": {
+            "image": "صورة"
+        },
+        "description": "استدعاء بيانات التتبّع من عقدة CreateInstanceDiffusionTracking لرسمها "
+    },
+    "PointsEditor": {
+        "title": "محرّر النقاط",
+        "inputs": {
+            "bg_image": "صورة الخلفية"
+        },
+        "widgets": {
+            "points_store": "موضع النقاط",
+            "bbox_store": "موضع BBox",
+            "bbox_format": "تنسيق BBox",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "normalize": "تطبيع",
+            "New canvs": "لوحة جديدة",
+            "Load Image": "تحميل صورة",
+            "Clear Image": "مسح الصورة",
+            "New canvas": "لوحة جديدة"
+        },
+        "outputs": {
+            "positive_coords": "إحداثيات موجبة",
+            "negative_coords": "إحداثيات سالبة",
+            "bbox": "BBox",
+            "bbox_mask": "قناع BBox",
+            "cropped_image": "الصورة المقصوصة"
+        },
+        "description": "# قيد التطوير  \nحاول ألا تستخدم هذه العقدة في سير العمل، قد تواجه الكثير من الأخطاء وعدم استقرار!!  \n\n## محرّر مرئي لإنشاء الإحداثيات\n\n**Shift + نقر يسار** إضافة نقطة إحداثيات موجبة (خضراء).\n\n**Shift + نقر يمين** إضافة نقطة إحداثيات سالبة (حمراء).\n\n**Ctrl + نقر يسار** رسم مربع.\n\n**نقر يمين على نقطة إحداثيات** حذفها، لا يمكن حذف نقطة البداية/النهاية لمصفوفة النقاط.\n\nلإضافة صورة، حدّد العقدة والصق أو أفلت صورة.\n\nأو أغذِ من واجهة صورة الخلفية، باستخدام الإطار الأول من صورة الإدخال.\n\n**تُحفظ الصورة في العقدة وسير العمل**\nيمكن مسح الصورة من القائمة المنبثقة بالزر الأيمن.\n"
+    },
+    "CutAndDragOnPath": {
+        "title": "قصّ وسحب المسار",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع",
+            "bg_image": "صورة الخلفية",
+            "coordinates": "إحداثيات"
+        },
+        "widgets": {
+            "frame_width": "عرض الإطار",
+            "frame_height": "ارتفاع الإطار",
+            "inpaint": "إصلاح"
+        },
+        "outputs": {
+            "image": "صورة",
+            "mask": "قناع"
+        },
+        "description": "اقطع منطقة القناع من الصورة واسحب تلك المنطقة على طول مسار. إذا فُعّل الإصلاح ولم تُوفَّر صورة خلفية، تُملأ المنطقة المقصوصة بخوارزمية OpenCV TELEA."
+    },
+    "ImagePass": {
+        "title": "جسر الصورة",
+        "inputs": {
+            "image": "صورة"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "مرّر الصورة إلى العقدة التالية"
+    },
+    "ColorMatch": {
+        "title": "تلوين الصورة",
+        "inputs": {
+            "image_ref": "الصورة المرجعية",
+            "image_target": "الصورة الهدف"
+        },
+        "widgets": {
+            "method": "الطريقة",
+            "strength": "قوة",
+            "multithread": "خيوط متعدّدة"
+        },
+        "outputs": {
+            "image": "صورة"
+        },
+        "description": "يمكن لمطابقة الألوان (color-matcher) تحويل أنماط الألوان بين الصور، ويُستخدم للتلوين التلقائي للصور الفوتوغرافية واللوحات وسلاسل الإطارات وتصحيح الإضاءة الثابتة.\n\nمبني على خوارزميات Reinland وغيرها، وخوارزمية Monge-Kantorovich Linearization (MKL) التي اقترحها Pitie وزملاؤه، وحلنا التحليلي المدمج لمطابقة المدرّج الكلاسيكي لخوارزمية Multi-Variate Gaussian Distribution (MVGD). كما هو موضح، أسلوبنا HM-MVGD-HM يتفوّق على الأساليب الحالية.\n\nhttps://github.com/hahnec/color-matcher/"
+    },
+    "SaveImageWithAlpha": {
+        "title": "حفظ صورة بقناة Alpha",
+        "inputs": {
+            "images": "صورة",
+            "mask": "قناع",
+            "filename_prefix": "بادئة اسم الملف",
+            "prompt": "الموجّه",
+            "extra_pnginfo": "معلومات PNG إضافية"
+        },
+        "outputs": {}
+    },
+    "ImageConcanate": {
+        "title": "دمج الصور",
+        "inputs": {
+            "image1": "الصورة_1",
+            "image2": "الصورة_2"
+        },
+        "widgets": {
+            "direction": "الاتّجاه",
+            "match_image_size": "مطابقة حجم الصورة"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "ادمج صورتين حسب الاتّجاه."
+    },
+    "ImageConcatFromBatch": {
+        "title": "دمج الصور (دفعة)",
+        "inputs": {
+            "images": "صورة"
+        },
+        "widgets": {
+            "num_columns": "عدد الأعمدة",
+            "match_image_size": "مطابقة الأبعاد",
+            "max_resolution": "أقصى دقّة"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "احصل على الصور من دفعة صور ورتّبها كصورة واحدة حسب عدد الأعمدة."
+    },
+    "ImageGridComposite2x2": {
+        "title": "دمج شبكة صور 2x2",
+        "inputs": {
+            "image1": "الصورة_1",
+            "image2": "الصورة_2",
+            "image3": "الصورة_3",
+            "image4": "الصورة_4"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "ادمج 4 صور مدخلة في جدول 2x2."
+    },
+    "ImageGridComposite3x3": {
+        "title": "دمج شبكة صور 3x3",
+        "inputs": {
+            "image1": "الصورة_1",
+            "image2": "الصورة_2",
+            "image3": "الصورة_3",
+            "image4": "الصورة_4",
+            "image5": "الصورة_5",
+            "image6": "الصورة_6",
+            "image7": "الصورة_7",
+            "image8": "الصورة_8",
+            "image9": "الصورة_9"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "ادمج 9 صور مدخلة في جدول 3x3."
+    },
+    "ImageBatchTestPattern": {
+        "title": "نمط دفعة الصور",
+        "widgets": {
+            "batch_size": "حجم الدفعة",
+            "start_from": "القيمة البداية",
+            "text_x": "نص x",
+            "text_y": "نص y",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "font": "الخط",
+            "font_size": "حجم الخط"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "ImageGrabPIL": {
+        "title": "التقاط شاشة PIL",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "num_frames": "عدد الإطارات",
+            "delay": "تأخير"
+        },
+        "outputs": {
+            "image": "صورة"
+        },
+        "description": "التقط منطقة حسب إحداثيات الشاشة.\n\nيُستخدم للعيّنة المباشرة."
+    },
+    "Screencap_mss": {
+        "title": "التقاط شاشة MSS",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "num_frames": "عدد الإطارات",
+            "delay": "تأخير"
+        },
+        "outputs": {
+            "images": "صورة"
+        },
+        "description": "التقط منطقة حسب إحداثيات الشاشة.\n\nيُستخدم للعيّنة المباشرة."
+    },
+    "WebcamCaptureCV2": {
+        "title": "التقاط كاميرا CV2",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "cam_index": "رقم الكاميرا",
+            "release": "تحرير"
+        },
+        "outputs": {
+            "image": "صورة"
+        },
+        "description": "استخدم CV2 لاستدعاء كاميرا الويب والتقاط الشاشة.\n\nيُستخدم للعيّنة المباشرة."
+    },
+    "AddLabel": {
+        "title": "إضافة وسم",
+        "inputs": {
+            "image": "صورة",
+            "caption": "العنوان"
+        },
+        "widgets": {
+            "text_x": "الموضع_X",
+            "text_y": "الموضع_Y",
+            "height": "الارتفاع",
+            "font_size": "حجم الخط",
+            "font_color": "لون الخط",
+            "label_color": "لون الخلفية",
+            "font": "الخط",
+            "text": "نص",
+            "direction": "الاتّجاه"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "GetImageSizeAndCount": {
+        "title": "الحصول على أبعاد وكمّية الصورة",
+        "inputs": {
+            "image": "صورة"
+        },
+        "outputs": {
+            "image": "صورة",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "count": "الكمية"
+        },
+        "description": "أخرج عرض وارتفاع وحجم دفعة الصورة"
+    },
+    "ImageBatchRepeatInterleaving": {
+        "title": "تكرار دفعة الصور",
+        "inputs": {
+            "images": "صورة",
+            "mask": "قناع"
+        },
+        "widgets": {
+            "repeats": "عدد المرّات"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "كرّر الصور في الدفعة حسب العدد المحدّد من المرّات.\n\nمثال دفعة تحوي 5 صور: 0,1,2,3,4\n\nبعد التكرار مرّتين تصبح: 0,0,1,1,2,2,3,3,4,4"
+    },
+    "ImageUpscaleWithModelBatched": {
+        "title": "تكبير دفعة الصور عبر نموذج",
+        "inputs": {
+            "upscale_model": "نموذج التكبير",
+            "images": "صورة"
+        },
+        "widgets": {
+            "per_batch": "لكل دفعة"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "الوظيفة مطابقة لعقدة فائق الدقة بالنموذج الأصلية في ComfyUI، لكنها تدعم ضبط الدفعات لتقليل استخدام ذكرة VRAM."
+    },
+    "ImageNormalize_Neg1_To_1": {
+        "title": "تطبيع الصور من -1 إلى 1",
+        "inputs": {
+            "images": "صورة"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "طبّع الصور إلى [-1,1]"
+    },
+    "RemapImageRange": {
+        "title": "إعادة تعيين نطاق الصورة",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "min": "الحدّ الأدنى",
+            "max": "الحدّ الأقصى",
+            "clamp": "تقييد"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "أعد تعيين قيم الصورة إلى النطاق المحدّد."
+    },
+    "SplitImageChannels": {
+        "title": "فصل قنوات الصورة",
+        "inputs": {
+            "image": "صورة"
+        },
+        "outputs": {
+            "red": "أحمر",
+            "green": "أخضر",
+            "blue": "أزرق",
+            "mask": "قناع"
+        },
+        "description": "افصل الصورة إلى صور أحادية القناة، وافصل قناة alpha إلى قناع."
+    },
+    "MergeImageChannels": {
+        "title": "دمج قنوات الصورة",
+        "inputs": {
+            "red": "أحمر",
+            "green": "أخضر",
+            "blue": "أزرق",
+            "alpha": "قناة ألفا الشفافة"
+        },
+        "outputs": {
+            "image": "صورة"
+        },
+        "description": "ادمج القنوات في صورة"
+    },
+    "ImagePadForOutpaintMasked": {
+        "title": "تمديد اللوحة خارجيًا (قناع)",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع"
+        },
+        "widgets": {
+            "left": "يسار",
+            "top": "أعلى",
+            "right": "يمين",
+            "bottom": "أسفل",
+            "feathering": "تنعيم الحواف"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "ImagePadForOutpaintTargetSize": {
+        "title": "تمديد اللوحة خارجيًا (أبعاد)",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع"
+        },
+        "widgets": {
+            "target_width": "العرض الهدف",
+            "target_height": "الارتفاع الهدف",
+            "feathering": "تنعيم الحواف",
+            "upscale_method": "طريقة التحجيم"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "ImagePrepForICLora": {
+        "title": "تجهيز صورة ICLora",
+        "inputs": {
+            "reference_image": "الصورة المرجعية",
+            "latent_image": "صورة كامنة Latent",
+            "latent_mask": "قناع Latent",
+            "reference_mask": "قناع مرجعي"
+        },
+        "widgets": {
+            "output_width": "عرض الإخراج",
+            "output_height": "ارتفاع الإخراج",
+            "border_width": "سماكة الحدود"
+        },
+        "outputs": {
+            "image": "صورة",
+            "mask": "قناع"
+        }
+    },
+    "ImageAndMaskPreview": {
+        "title": "معاينة الصورة والقناع",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع"
+        },
+        "widgets": {
+            "mask_opacity": "تعتيم القناع",
+            "mask_color": "لون القناع",
+            "pass_through": "اختراق"
+        },
+        "outputs": {
+            "composite": "صورة"
+        },
+        "description": "عاين صورة أو قناعًا، وعند إدخال صورة وقناع معًا يُدمج القناع فوق الصورة.\nعند تفعيل الاختراق يُعطَّل التركيب، ويُستخدم للمعاينة عبر الدمج في عقدة الفيديو."
+    },
+    "CrossFadeImages": {
+        "title": "تلاشٍ متقاطع للصور",
+        "inputs": {
+            "images_1": "الصورة_1",
+            "images_2": "الصورة_2"
+        },
+        "widgets": {
+            "interpolation": "طريقة الاستيفاء",
+            "transition_start_index": "فهرس بداية الانتقال",
+            "transitioning_frames": "عدد إطارات الانتقال",
+            "start_level": "قيمة اللون البداية",
+            "end_level": "قيمة اللون النهائية"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "CrossFadeImagesMulti": {
+        "title": "تلاشٍ متقاطع متعدّد للصور",
+        "inputs": {
+            "image_1": "الصورة_1",
+            "image_2": "الصورة_2"
+        },
+        "widgets": {
+            "inputcount": "عدد المداخل",
+            "interpolation": "طريقة الاستيفاء",
+            "Update inputs": "تحديث المداخل",
+            "transitioning_frames": "عدد إطارات الانتقال"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "TransitionImagesMulti": {
+        "title": "صور انتقال متعدّدة",
+        "inputs": {
+            "image_1": "الصورة_1",
+            "image_2": "الصورة_2"
+        },
+        "widgets": {
+            "inputcount": "عدد المداخل",
+            "interpolation": "طريقة الاستيفاء",
+            "transition_type": "نوع الانتقال",
+            "transitioning_frames": "عدد إطارات الانتقال",
+            "blur_radius": "نصف قطر التمويه",
+            "reverse": "عكسي",
+            "device": "الجهاز",
+            "Update inputs": "تحديث المداخل"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        },
+        "description": "أنشئ انتقالًا بين الصور."
+    },
+    "TransitionImagesInBatch": {
+        "title": "صور انتقال الدفعة",
+        "inputs": {
+            "images": "صورة"
+        },
+        "widgets": {
+            "interpolation": "طريقة الاستيفاء",
+            "transition_type": "نوع الانتقال",
+            "transitioning_frames": "عدد إطارات الانتقال",
+            "blur_radius": "نصف قطر التمويه",
+            "reverse": "عكسي",
+            "device": "الجهاز"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        },
+        "description": "أنشئ انتقالًا بين الصور في معالجة دفعية"
+    },
+    "ShuffleImageBatch": {
+        "title": "خلط دفعة الصور",
+        "inputs": {
+            "images": "صورة"
+        },
+        "widgets": {
+            "seed": "البذرة"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "GetImageRangeFromBatch": {
+        "title": "الحصول على نطاق الصور",
+        "inputs": {
+            "images": "صورة",
+            "masks": "قناع"
+        },
+        "widgets": {
+            "start_index": "الرقم البداية",
+            "num_frames": "عدد الإطارات"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        },
+        "description": "أنشئ دفعة صور جديدة اعتمادًا على دفعة الصور المُدخلة والمعاملات."
+    },
+    "GetLatentRangeFromBatch": {
+        "title": "الحصول على نطاق Latent",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "start_index": "الرقم البداية",
+            "num_frames": "عدد الإطارات"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "Insert_Latent_To_Index": {
+        "title": "إدراج Latent إلى الفهرس",
+        "inputs": {
+            "source": "المصدر",
+            "destination": "الهدف"
+        },
+        "widgets": {
+            "index": "الفهرس"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "GetImagesFromBatchIndexed": {
+        "title": "الحصول على صورة من الدفعة",
+        "inputs": {
+            "images": "صورة"
+        },
+        "widgets": {
+            "indexes": "الترقيم"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "اختر الصور حسب رقم الفهرس."
+    },
+    "InsertImagesToBatchIndexed": {
+        "title": "إدراج صورة في الدفعة حسب الفهرس",
+        "inputs": {
+            "original_images": "الصورة الأصلية",
+            "images_to_insert": "الصور المُدخلة"
+        },
+        "widgets": {
+            "indexes": "الفهرس"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "أدخل الصورة عند الفهرس المحدّد في دفعة الصور الأصلية."
+    },
+    "PadImageBatchInterleaved": {
+        "title": "حشو متداخل لدفعة الصور",
+        "inputs": {
+            "images": "صورة"
+        },
+        "widgets": {
+            "empty_frames_per_image": "عدد الإطارات الفارغة لكل صورة",
+            "pad_frame_value": "قيمة الإطار الحاشد",
+            "add_after_last": "إضافة في النهاية"
+        },
+        "outputs": {
+            "images": "صورة",
+            "masks": "قناع"
+        },
+        "description": "أدخل إطارات فارغة بين الصور في المعالجة الدفعية."
+    },
+    "ReplaceImagesInBatch": {
+        "title": "استبدال دفعة الصور",
+        "inputs": {
+            "original_images": "الصورة الأصلية",
+            "replacement_images": "الصور البديلة",
+            "original_masks": "القناع الأصلي",
+            "replacement_masks": "قناع الاستبدال"
+        },
+        "widgets": {
+            "start_index": "الرقم البداية"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "بدءًا من فهرس البداية المحدّد، استبدل الصور في المعالجة الدفعية بصور بديلة."
+    },
+    "ReverseImageBatch": {
+        "title": "عكس ترتيب دفعة الصور",
+        "inputs": {
+            "images": "صورة"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "اعكس ترتيب الصور في المعالجة الدفعية."
+    },
+    "ImageBatchMulti": {
+        "title": "دمج دفعات الصور (متعدّد)",
+        "inputs": {
+            "image_1": "الصورة_1",
+            "image_2": "الصورة_2",
+            "image_3": "الصورة_3",
+            "image_4": "الصورة_4",
+            "image_5": "الصورة_5",
+            "image_6": "الصورة_6",
+            "image_7": "الصورة_7",
+            "image_8": "الصورة_8",
+            "image_9": "الصورة_9",
+            "image_10": "الصورة_10"
+        },
+        "widgets": {
+            "inputcount": "عدد المداخل",
+            "blending": "طريقة المزج",
+            "Update inputs": "تحديث المداخل"
+        },
+        "outputs": {
+            "images": "صورة"
+        },
+        "description": "ادمج عدة صور في دفعة صور. يمكن ضبط عدد واجهات الإدخال عبر «عدد المداخل»، انقر تحديث لإنعاش الواجهات."
+    },
+    "ImageTensorList": {
+        "title": "قائمة متّجهات الصور",
+        "inputs": {
+            "image1": "الصورة1",
+            "image2": "الصورة2"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "أنشئ قائمة صور من صور الإدخال."
+    },
+    "ImageBatchExtendWithOverlap": {
+        "title": "توسيع دفعة الصور (بأجزاء متراكبة)",
+        "inputs": {
+            "source_images": "الصورة المصدر",
+            "new_images": "الصورة الجديدة"
+        },
+        "widgets": {
+            "overlap": "تراكب",
+            "overlap_side": "تراكب جانبي",
+            "overlap_mode": "تراكب النمط"
+        },
+        "outputs": {
+            "source_images": "الصورة المصدر",
+            "start_images": "الصورة البداية",
+            "extended_images": "الصورة الموسَّعة"
+        },
+        "description": "عقدة مساعدة لتوسيع توليد الفيديو\n أولاً احصل على المصدر والتراكب للحصول على إطار بداية التوسيع.\n ثم في نسخة أخرى من هذه العقدة\n قدّم الإطارات المولَّدة حديثًا، واختر كيفية التراكب."
+    },
+    "ImageAddMulti": {
+        "title": "مزج الصور (متعدّد)",
+        "inputs": {
+            "image_1": "الصورة_1",
+            "image_2": "الصورة_2",
+            "image_3": "الصورة_3",
+            "image_4": "الصورة_4",
+            "image_5": "الصورة_5",
+            "image_6": "الصورة_6",
+            "image_7": "الصورة_7",
+            "image_8": "الصورة_8",
+            "image_9": "الصورة_9",
+            "image_10": "الصورة_10"
+        },
+        "widgets": {
+            "inputcount": "عدد المداخل",
+            "blending": "طريقة المزج",
+            "blend_amount": "كمّية المزج",
+            "Update inputs": "تحديث المداخل"
+        },
+        "outputs": {
+            "images": "صورة"
+        },
+        "description": "امزج عدة صور. يمكن ضبط عدد واجهات الإدخال عبر «عدد المداخل»، انقر تحديث لإنعاش الواجهات."
+    },
+    "ImageConcatMulti": {
+        "title": "دمج الصور (متعدّد)",
+        "inputs": {
+            "image_1": "الصورة_1",
+            "image_2": "الصورة_2"
+        },
+        "widgets": {
+            "inputcount": "عدد المداخل",
+            "direction": "الاتّجاه",
+            "match_image_size": "مطابقة الأبعاد",
+            "Update inputs": "تحديث المداخل"
+        },
+        "outputs": {
+            "images": "صورة"
+        },
+        "description": "ادمج عدة صور حسب الاتّجاه. انقر تحديث لتحديث عدد المداخل."
+    },
+    "PreviewAnimation": {
+        "title": "معاينة متحرّكة",
+        "inputs": {
+            "images": "صورة",
+            "masks": "قناع"
+        },
+        "widgets": {
+            "fps": "معدّل الإطارات"
+        }
+    },
+    "ImageResizeKJ": {
+        "title": "تحجيم الصورة (KJ)",
+        "inputs": {
+            "image": "صورة",
+            "get_image_size": "الصورة المرجعية",
+            "width_input": "العرض",
+            "height_input": "الارتفاع"
+        },
+        "widgets": {
+            "width": "العرض",
+            "height": "الارتفاع",
+            "upscale_method": "طريقة التحجيم",
+            "keep_proportions": "نسبة أبعاد ثابتة",
+            "keep_proportion": "نسبة أبعاد ثابتة",
+            "divisible_by": "عدد قابل للقسمة",
+            "crop": "قصّ",
+            "per_batch": "دفعة"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "width": "العرض",
+            "height": "الارتفاع"
+        },
+        "description": "اقبل الصورة بالعرض والارتفاع المحدّدين. يمكن تحديد الأبعاد عبر الإدخال، وأولوية الإخراج النهائية وفق القواعد التالية:\n- أبعاد الصورة المرجعية \n- العرض-الإدخال والارتفاع-الإدخال \n- العرض والارتفاع \n \nنسبة الأبعاد الثابتة تُثبّت النسبة حسب أعلى بُعد."
+    },
+    "LoadAndResizeImage": {
+        "title": "تحميل وتحجيم الصورة",
+        "widgets": {
+            "image": "صورة",
+            "resize": "تحجيم",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "repeat": "تكرار",
+            "keep_proportion": "نسبة أبعاد ثابتة",
+            "divisible_by": "معامل",
+            "mask_channel": "قناة القناع",
+            "background_color": "لون الخلفية",
+            "upload": "رفع"
+        },
+        "outputs": {
+            "image": "صورة",
+            "mask": "قناع",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "image_path": "مسار الصورة"
+        }
+    },
+    "LoadImagesFromFolderKJ": {
+        "title": "تحميل مجلد الصور (KJ)",
+        "widgets": {
+            "folder": "المجلد",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "keep_aspect_ratio": "الحفاظ على نسبة الأبعاد",
+            "image_load_cap": "حدّ التحميل",
+            "start_index": "الرقم البداية",
+            "include_subfolders": "تضمين المجلدات الفرعية"
+        },
+        "outputs": {
+            "image": "صورة",
+            "mask": "قناع",
+            "count": "الكمية",
+            "image_path": "مسار الصورة"
+        },
+        "description": "حمّل الصور من مجلد إلى معالجة دفعية، وتُحجَّم الصور وتُحمَّل ضمن دفعة."
+    },
+    "ImageGridtoBatch": {
+        "title": "جدول الصور إلى دفعة",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "columns": "عدد الأعمدة",
+            "The number of columns in the grid.": "عدد أعمدة الجدول.",
+            "rows": "عدد الصفوف",
+            "The number of rows in the grid. Set to 0 for automatic calculation.": "عدد صفوف الجدول، 0 يعني تلقائي."
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "حوّل المخطط إلى دفعة صور مفردة."
+    },
+    "SaveImageKJ": {
+        "title": "حفظ الصورة (KJ)",
+        "inputs": {
+            "images": "صورة",
+            "caption": "تدوين"
+        },
+        "widgets": {
+            "filename_prefix": "بادئة اسم الملف",
+            "output_folder": "مجلد الإخراج",
+            "caption_file_extension": "امتداد ملف التدوين",
+            "prompt": "الموجّه",
+            "extra_pnginfo": "معلومات PNG إضافية"
+        },
+        "outputs": {
+            "filename": "اسم الملف"
+        },
+        "description": "احفظ صور الإدخال في مجلد إخراج ComfyUI."
+    },
+    "SaveStringKJ": {
+        "title": "حفظ نص (KJ)",
+        "inputs": {
+            "string": "نص"
+        },
+        "widgets": {
+            "filename_prefix": "بادئة اسم الملف",
+            "output_folder": "مجلد الإخراج",
+            "file_extension": "امتداد الملف"
+        },
+        "outputs": {
+            "filename": "اسم الملف"
+        }
+    },
+    "FastPreview": {
+        "title": "معاينة سريعة",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "format": "التنسيق",
+            "quality": "الجودة"
+        },
+        "outputs": {}
+    },
+    "ImageCropByMaskAndResize": {
+        "title": "قصّ وتحجيم حسب القناع",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع"
+        },
+        "widgets": {
+            "base_resolution": "الدقّة الأساسية",
+            "padding": "حشو",
+            "min_crop_resolution": "أدنى دقّة للقصّ",
+            "max_crop_resolution": "أقصى دقّة للقصّ"
+        },
+        "outputs": {
+            "images": "صورة",
+            "masks": "قناع",
+            "BBox": "BBox"
+        }
+    },
+    "ImageCropByMask": {
+        "title": "قصّ حسب القناع",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع"
+        },
+        "outputs": {
+            "image": "صورة"
+        },
+        "description": "اقطع صورة الإدخال حسب القناع المُقدَّم"
+    },
+    "ImageUncropByMask": {
+        "title": "إلغاء قصّ حسب القناع",
+        "inputs": {
+            "destination": "الصورة الهدف",
+            "source": "الصورة المصدر",
+            "mask": "قناع",
+            "bbox": "BBox"
+        },
+        "outputs": {
+            "image": "صورة"
+        }
+    },
+    "ImageCropByMaskBatch": {
+        "title": "قصّ دفعة حسب القناع",
+        "inputs": {
+            "image": "صورة",
+            "masks": "قناع"
+        },
+        "widgets": {
+            "width": "العرض",
+            "height": "الارتفاع",
+            "padding": "حشو",
+            "preserve_size": "الحفاظ على الأبعاد",
+            "bg_color": "لون الخلفية"
+        },
+        "outputs": {
+            "images": "صورة",
+            "masks": "قناع"
+        }
+    },
+    "ImagePadKJ": {
+        "title": "حشو الصورة (KJ)",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع"
+        },
+        "widgets": {
+            "left": "حشو يسار",
+            "right": "حشو يمين",
+            "top": "حشو أعلى",
+            "bottom": "حشو أسفل",
+            "extra_padding": "حشو إضافي",
+            "pad_mode": "وضع الحشو",
+            "color": "اللون",
+            "target_width": "العرض الهدف",
+            "target_height": "الارتفاع الهدف"
+        },
+        "outputs": {
+            "images": "صورة",
+            "masks": "قناع"
+        },
+        "description": "احشو صورة الإدخال، مع خيار القناع بحشو محدّد."
+    },
+    "ImageBatchJoinWithTransition": {
+        "title": "وصل دفعة الصور (بتأثير انتقال)",
+        "inputs": {
+            "images_1": "الصورة1",
+            "images_2": "الصورة2"
+        },
+        "widgets": {
+            "start_index": "الفهرس البداية",
+            "interpolation": "استيفاء",
+            "transition_type": "نوع الانتقال",
+            "transitioning_frames": "إطارات الانتقال",
+            "blur_radius": "نصف قطر التمويه",
+            "reverse": "عكس",
+            "device": "الجهاز"
+        },
+        "outputs": {
+            "images": "صورة",
+            "masks": "قناع"
+        },
+        "description": "صور الإدخال"
+    },
+    "Intrinsic_lora_sampling": {
+        "title": "عيّنة IntrinsicLoRA",
+        "inputs": {
+            "model": "النموذج",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image": "صورة",
+            "optional_latent": "Latent (اختياري)"
+        },
+        "widgets": {
+            "lora_name": "اسم LoRA",
+            "task": "المهمّة",
+            "text": "نص",
+            "per_batch": "لكل دفعة"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "IMAGE": "صورة"
+        },
+        "description": "lora الداخلية التي يستخدمها العيّان: https://github.com/duxiaodan/intrinsic-lora هذه الـ lora صغيرة جدًا، لذا هي مضمّنة في هذه الحزمة."
+    },
+    "BatchCLIPSeg": {
+        "title": "تقسيم دلالي بـ CLIP",
+        "inputs": {
+            "images": "صورة",
+            "opt_model": "اختيار النموذج",
+            "prev_mask": "القناع السابق"
+        },
+        "widgets": {
+            "text": "نص",
+            "threshold": "العتبة",
+            "binary_mask": "قناع ثنائي",
+            "combine_mask": "دمج القناع",
+            "use_cuda": "استخدام CUDA",
+            "blur_sigma": "قوة التمويه",
+            "image_bg_Ievel": "مستوى خلفية الصورة",
+            "invert": "عكسي"
+        },
+        "outputs": {
+            "Image": "صورة",
+            "Mask": "قناع"
+        },
+        "description": "استخدم CLIPSeg لتقسيم صورة أو دفعة صور."
+    },
+    "DownloadAndLoadCLIPSeg": {
+        "title": "تحميل CLIPSeg",
+        "widgets": {
+            "model": "النموذج"
+        },
+        "outputs": {
+            "clipseg_model": "نموذج CLIPSeg"
+        },
+        "description": "حمّل نموذج CLIPSeg إلى Comfy/models/clip_seg باستخدام huggingface_hub"
+    },
+    "CreateTextMask": {
+        "title": "قناع نصي",
+        "widgets": {
+            "invert": "عكس",
+            "frames": "عدد الإطارات",
+            "text_x": "الموضع_X",
+            "text_y": "الموضع_Y",
+            "font_size": "حجم الخط",
+            "font_color": "لون الخط",
+            "text": "نص",
+            "font": "الخط",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "start_rotation": "تدوير البداية",
+            "end_rotation": "تدوير النهاية"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "ColorToMask": {
+        "title": "لون الصورة إلى قناع",
+        "inputs": {
+            "images": "صورة"
+        },
+        "widgets": {
+            "invert": "عكس",
+            "red": "أحمر",
+            "green": "أخضر",
+            "blue": "أزرق",
+            "threshold": "العتبة",
+            "per_batch": "لكل دفعة"
+        },
+        "outputs": {
+            "MASK": "قناع"
+        },
+        "description": "حوّل قيم RGB المحدّدة إلى قناع. للمداخل الدفعية، يتحكّم **per_batch** بعدد الصور المعالَجة في كلّ مرة."
+    },
+    "CreateFluidMask": {
+        "title": "قناع سائل",
+        "widgets": {
+            "invert": "عكس",
+            "frames": "عدد الإطارات",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "inflow_count": "كمّية التدفّق",
+            "inflow_velocity": "سرعة التدفّق",
+            "inflow_radius": "نصف قطر التدفّق",
+            "inflow_padding": "حشو التدفّق",
+            "inflow_duration": "زمن التدفّق"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "CreateAudioMask": {
+        "title": "قناع صوتي",
+        "widgets": {
+            "invert": "عكس",
+            "frames": "عدد الإطارات",
+            "scale": "تحجيم",
+            "audio_path": "مسار الصوت",
+            "width": "العرض",
+            "height": "الارتفاع"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "MASK": "قناع"
+        }
+    },
+    "CreateGradientMask": {
+        "title": "قناع متدرّج",
+        "widgets": {
+            "invert": "عكس",
+            "frames": "عدد الإطارات",
+            "width": "العرض",
+            "height": "الارتفاع"
+        },
+        "outputs": {
+            "MASK": "قناع"
+        }
+    },
+    "CreateFadeMask": {
+        "title": "قناع تلاشٍ",
+        "widgets": {
+            "invert": "عكس",
+            "frames": "عدد الإطارات",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "interpolation": "طريقة الاستيفاء",
+            "start_level": "قيمة اللون البداية",
+            "midpoint_level": "قيمة اللون الوسطية",
+            "end_level": "قيمة اللون النهائية",
+            "midpoint_frame": "رقم الإطار الوسطي"
+        },
+        "outputs": {
+            "MASK": "قناع"
+        },
+        "description": "أنشئ مجموعة أقنعة مستوفاة بين الإطارات والقيم المعطاة. تستخدم نفس صياغة BatchValueSchedule لدى Fizz. القيمة الأولى هي فهرس الإطار (يبدأ من 1 لا من 0)، والقيمة الثانية داخل القوسين هي قيمة القناع العشرية في المدى 0.0-1.0.\nمثلًا، القيم الافتراضية:\n0:(0.0)\n7:(1.0)\n15:(0.0)\nستنشئ دفعة أقنعة من 16 إطارًا تبدأ بالأسود، وتستوفي إلى أبيض كامل عند الإطار الثامن عبر منحنى الاستيفاء المحدّد، ثم تستوفي من هناك إلى أسود كامل عند الإطار السادس عشر."
+    },
+    "CreateFadeMaskAdvanced": {
+        "title": "قناع تلاشٍ (متقدّم)",
+        "widgets": {
+            "points_string": "نقطة قيمة اللون",
+            "invert": "عكس",
+            "frames": "عدد الإطارات",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "interpolation": "طريقة الاستيفاء"
+        },
+        "outputs": {
+            "MASK": "قناع"
+        }
+    },
+    "CreateMagicMask": {
+        "title": "قناع مهلوس",
+        "widgets": {
+            "frames": "عدد الإطارات",
+            "depth": "عمق",
+            "distortion": "تشوّه",
+            "seed": "البذرة",
+            "control_after_generate": "عملية بعد التشغيل",
+            "fixed": "ثابت",
+            "increment": "زيادة",
+            "decrement": "إنقاص",
+            "randomize": "عشوائي",
+            "transitions": "انتقال",
+            "frame_height": "الارتفاع",
+            "frame_width": "العرض"
+        },
+        "outputs": {
+            "mask": "قناع",
+            "mask_inverted": "عكس القناع"
+        }
+    },
+    "CreateShapeMask": {
+        "title": "قناع شكل",
+        "widgets": {
+            "shape": "الشكل",
+            "circle": "دائري",
+            "square": "مربّع",
+            "triangle": "مثلّث",
+            "frames": "عدد الإطارات",
+            "location_x": "الموضع_X",
+            "location_y": "الموضع_Y",
+            "size": "الحجم",
+            "grow": "نمو",
+            "frame_width": "العرض",
+            "frame_height": "الارتفاع",
+            "shape_width": "عرض الشكل",
+            "shape_height": "ارتفاع الشكل"
+        },
+        "outputs": {
+            "mask": "قناع",
+            "mask_inverted": "عكس القناع"
+        },
+        "description": "أنشئ قناعًا أو مجموعة أقنعة بالشكل المحدّد. الموضع هو الموضع المركزي. قيمة النمو هي مقدار نمو الشكل في كل إطار، ما يُنشئ قناعًا متحرّكًا."
+    },
+    "CreateVoronoiMask": {
+        "title": "قناع فورونوي",
+        "widgets": {
+            "frames": "عدد الإطارات",
+            "num_points": "عدد النقاط",
+            "line_width": "سماكة الخط",
+            "speed": "سرعة",
+            "frame_width": "العرض",
+            "frame_height": "الارتفاع"
+        },
+        "outputs": {
+            "mask": "قناع",
+            "mask_inverted": "عكس القناع"
+        }
+    },
+    "GetMaskSizeAndCount": {
+        "title": "الحصول على أبعاد وكمّية القناع",
+        "inputs": {
+            "mask": "قناع"
+        },
+        "outputs": {
+            "mask": "قناع",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "count": "الكمية"
+        },
+        "description": "أخرج عرض القناع وارتفاعه وحجم الدفعة"
+    },
+    "GrowMaskWithBlur": {
+        "title": "نموّ وتمويه القناع",
+        "inputs": {
+            "mask": "قناع"
+        },
+        "widgets": {
+            "expand": "توسيع",
+            "incremental_expandrate": "متزايد التوسيع",
+            "tapered_corners": "شطف",
+            "flip_input": "عكس الإدخال",
+            "use_cuda": "استخدام CUDA",
+            "blur_radius": "نصف قطر التمويه",
+            "sigma": "Sigma",
+            "lerp_alpha": "شفافية خطّية",
+            "decay_factor": "معامل التآكل",
+            "fill_holes": "تعبئة"
+        },
+        "outputs": {
+            "mask": "قناع",
+            "mask_inverted": "عكس القناع"
+        },
+        "description": "# نموّ وتمويه القناع\n- القناع: قناع إدخال أو أقنعة دفعية\n- التوسيع: وسّع أو قلّص القناع أو الأقنعة الدفعية بالقيمة المضبوطة\n- متزايد التوسيع: يزيد معدّل التوسيع بالقيمة المضبوطة لكل إطار\n- الشطف: استخدام زوايا مخروطية\n- عكس الإدخال: اقلب القناع المُدخل\n- نصف قطر التمويه: قيمة أكبر من 0 تموّه القناع\n- الشفافية الخطّية: قيم ألفا المستوفاة بين الإطارات\n- معامل التلاشي: قيمة الاضمحلال المستوفاة بين الإطارات\n- التعبئة: املأ الثقوب في القناع (بطيء)"
+    },
+    "MaskBatchMulti": {
+        "title": "دمج دفعات الأقنعة (متعدّد)",
+        "inputs": {
+            "mask_1": "القناع_1",
+            "mask_2": "القناع_2",
+            "mask_3": "القناع_3",
+            "mask_4": "القناع_4",
+            "mask_5": "القناع_5",
+            "mask_6": "القناع_6",
+            "mask_7": "القناع_7",
+            "mask_8": "القناع_8",
+            "mask_9": "القناع_9",
+            "mask_10": "القناع_10"
+        },
+        "widgets": {
+            "inputcount": "عدد المداخل",
+            "Update inputs": "تحديث المداخل"
+        },
+        "outputs": {
+            "masks": "قناع"
+        },
+        "description": "ادمج عدة أقنعة في دفعة أقنعة. يمكن ضبط عدد واجهات الإدخال عبر «عدد المداخل»، انقر تحديث لإنعاش الواجهات."
+    },
+    "OffsetMask": {
+        "title": "إزاحة القناع",
+        "inputs": {
+            "mask": "قناع"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "angle": "الزاوية",
+            "duplication_factor": "عدد التكرارات",
+            "roll": "استخدام التدحرج",
+            "incremental": "استخدام الزيادة",
+            "padding_mode": "وضع الحشو",
+            "empty": "فارغ",
+            "border": "الحدود",
+            "reflection": "انعكاس"
+        },
+        "outputs": {
+            "mask": "قناع"
+        },
+        "description": "# وسّع/قلّص القناع بالكمّية المحدّدة\n- القناع: قناع إدخال أو أقنعة دفعية\n- x: مقدار التمدّد الأفقي\n- y: مقدار التمدّد الرأسي\n- عدد التكرارات: عدد مرات تكرار القناع في الدفعة\n- استخدام التدحرج: لفّ الحواف"
+    },
+    "RoundMask": {
+        "title": "تقريب القناع",
+        "inputs": {
+            "mask": "قناع"
+        },
+        "outputs": {
+            "MASK": "قناع"
+        }
+    },
+    "ResizeMask": {
+        "title": "تحجيم القناع",
+        "inputs": {
+            "mask": "قناع"
+        },
+        "widgets": {
+            "width": "العرض",
+            "height": "الارتفاع",
+            "keep_proportions": "نسبة أبعاد ثابتة",
+            "upscale_method": "استيفاء متقدّم",
+            "crop": "قصّ"
+        },
+        "outputs": {
+            "mask": "قناع",
+            "width": "العرض",
+            "height": "الارتفاع"
+        },
+        "description": "اضبط القناع أو الأقنعة الدفعية على العرض والارتفاع المحدّدين."
+    },
+    "RemapMaskRange": {
+        "title": "إعادة تعيين نطاق القناع",
+        "inputs": {
+            "mask": "قناع"
+        },
+        "widgets": {
+            "min": "الحدّ الأدنى",
+            "max": "الحدّ الأقصى"
+        },
+        "outputs": {
+            "mask": "قناع"
+        },
+        "description": "اضبط حدًّا أدنى وأعلى جديدين للقناع."
+    },
+    "SeparateMasks": {
+        "title": "فصل القناع",
+        "inputs": {
+            "mask": "قناع"
+        },
+        "widgets": {
+            "size_threshold_width": "عتبة حدّ العرض",
+            "size_threshold_height": "عتبة حدّ الارتفاع",
+            "mode": "وضع الفصل",
+            "max_poly_points": "أقصى عدد نقاط المضلّع",
+            "polygon": "مضلّع",
+            "shape": "الشكل",
+            "mask_np": "قناع Numpy",
+            "max_points": "أقصى عدد النقاط"
+        },
+        "outputs": {
+            "mask": "قناع"
+        }
+    },
+    "PathchSageAttentionKJ": {
+        "title": "ترقيع انتباه SAGE (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "allow_compile": "السماح بالتجميع",
+            "sage_attention": "انتباه SAGE"
+        },
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "CheckpointLoaderKJ": {
+        "title": "محمّل النماذج الكبيرة (KJ)",
+        "inputs": {},
+        "widgets": {
+            "ckpt_name": "اسم النموذج",
+            "weight_dtype": "نوع بيانات الأوزان",
+            "compute_dtype": "نوع بيانات الحساب",
+            "patch_cublaslinear": "ترقيع خطّي CUBlas",
+            "sage_attention": "انتباه SAGE",
+            "enable_fp16_accumulation": "تفعيل تجميع FP16"
+        },
+        "outputs": {
+            "model": "النموذج",
+            "clip": "CLIP",
+            "vae": "VAE"
+        }
+    },
+    "DiffusionModelLoaderKJ": {
+        "title": "محمّل نموذج الانتشار (KJ)",
+        "inputs": {
+            "extra_state_dict": "قاموس حالة إضافي"
+        },
+        "widgets": {
+            "model_name": "اسم النموذج",
+            "weight_dtype": "نوع بيانات الأوزان",
+            "compute_dtype": "نوع بيانات الحساب",
+            "patch_cublaslinear": "ترقيع خطّي CUBlas",
+            "sage_attention": "انتباه SAGE",
+            "enable_fp16_accumulation": "تفعيل تجميع FP16"
+        },
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "PatchModelPatcherOrder": {
+        "title": "ضبط ترتيب ترقيع النموذج",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "patch_order": "ترتيب الترقيع",
+            "full_load": "تحميل كامل"
+        },
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "TorchCompileModelFluxAdvanced": {
+        "title": "تجميع Torch لنموذج Flux (متقدّم)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "backend": "الخلفية",
+            "fullgraph": "رسم كامل",
+            "mode": "الوضع",
+            "double_blocks": "كتلة مزدوجة",
+            "single_blocks": "كتلة مفردة",
+            "dynamic": "ديناميكي",
+            "dynamo_cache_size_limit": "حدّ حجم التخزين المؤقت الديناميكي",
+            "blocks_str": "سلسلة الكتلة"
+        },
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "TorchCompileModelFluxAdvancedV2": {
+        "title": "تجميع Torch لنموذج Flux (متقدّم) V2",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "backend": "الخلفية",
+            "fullgraph": "رسم كامل",
+            "mode": "الوضع",
+            "double_blocks": "كتلة مزدوجة",
+            "single_blocks": "كتلة مفردة",
+            "dynamic": "ديناميكي",
+            "dynamo_cache_size_limit": "حدّ حجم التخزين المؤقت الديناميكي",
+            "blocks_str": "سلسلة الكتلة"
+        },
+        "outputs": {
+            "MODEL": "النموذج",
+            "model": "النموذج"
+        }
+    },
+    "TorchCompileModelHyVideo": {
+        "title": "تجميع Torch للنموذج الهجين للفيديو",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "backend": "الخلفية",
+            "fullgraph": "رسم كامل",
+            "mode": "الوضع",
+            "dynamic": "ديناميكي",
+            "dynamo_cache_size_limit": "حدّ حجم التخزين المؤقت الديناميكي",
+            "compile_single_blocks": "تجميع الكتلة المفردة",
+            "compile_double_blocks": "تجميع الكتلة المزدوجة",
+            "compile_txt_in": "تجميع إدخال النص",
+            "compile_vector_in": "تجميع إدخال المتّجه",
+            "compile_final_layer": "تجميع الطبقة الأخيرة"
+        },
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "TorchCompileModelWanVideo": {
+        "title": "تجميع Torch لنموذج فيديو Wan",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "backend": "الخلفية",
+            "fullgraph": "رسم كامل",
+            "mode": "الوضع",
+            "dynamic": "ديناميكي",
+            "dynamo_cache_size_limit": "حدّ حجم التخزين المؤقت الديناميكي",
+            "compile_transformer_blocks_only": "تجميع كتل المحوّل فقط"
+        },
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "TorchCompileModelWanVideoV2": {
+        "title": "نموذج فيديو Wan تجميع Torch V2",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "backend": "الخلفية",
+            "fullgraph": "رسم كامل",
+            "mode": "الوضع",
+            "dynamic": "ديناميكي",
+            "dynamo_cache_size_limit": "حدّ حجم التخزين المؤقت الديناميكي",
+            "compile_transformer_blocks_only": "تجميع كتل المحوّل فقط"
+        },
+        "outputs": {
+            "MODEL": "النموذج",
+            "model": "النموذج"
+        }
+    },
+    "TorchCompileVAE": {
+        "title": "تجميع Torch لـ VAE",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "backend": "الخلفية",
+            "fullgraph": "رسم كامل",
+            "mode": "الوضع",
+            "compile_encoder": "تجميع المرمّز",
+            "compile_decoder": "تجميع المفكّك"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "TorchCompileControlNet": {
+        "title": "تجميع Torch لـ ControlNet",
+        "inputs": {
+            "controlnet": "ControlNet"
+        },
+        "widgets": {
+            "backend": "الخلفية",
+            "fullgraph": "رسم كامل",
+            "mode": "الوضع"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "TorchCompileLTXModel": {
+        "title": "تجميع Torch لنموذج LTX",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "backend": "الخلفية",
+            "fullgraph": "رسم كامل",
+            "mode": "الوضع",
+            "dynamic": "ديناميكي"
+        },
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "TorchCompileCosmosModel": {
+        "title": "تجميع Torch لنموذج Cosmos",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "backend": "الخلفية",
+            "fullgraph": "رسم كامل",
+            "mode": "الوضع",
+            "dynamic": "ديناميكي",
+            "dynamo_cache_size_limit": "حدّ حجم التخزين المؤقت الديناميكي"
+        },
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "WanVideoTeaCacheKJ": {
+        "title": "تحسين ذاكرة فيديو Wan المؤقّتة (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "rel_l1_thresh": "عتبة L1 النسبية",
+            "start_percent": "النسبة المئوية البداية",
+            "end_percent": "النسبة المئوية النهاية",
+            "cache_device": "جهاز التخزين المؤقت",
+            "coefficients": "المعامل"
+        },
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "WanVideoEnhanceAVideoKJ": {
+        "title": "تعزيز فيديو Wan (KJ)",
+        "inputs": {
+            "model": "النموذج",
+            "latent": "latent"
+        },
+        "widgets": {
+            "weight": "الوزن"
+        },
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "WanVideoNAG": {
+        "title": "التدرّج الطبيعي لفيديو Wan",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "conditioning": "شرط",
+            "nag_scale": "تحجيم_الشبكة",
+            "nag_alpha": "ألفا_الشبكة",
+            "nag_tau": "تاو_الشبكة",
+            "input_type": "نوع الإدخال"
+        },
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "SkipLayerGuidanceWanVideo": {
+        "title": "إرشاد تخطّي الطبقات في فيديو Wan",
+        "inputs": {
+            "model": "النموذج",
+            "blocks": "الكتلة",
+            "start_percent": "النسبة المئوية البداية",
+            "end_percent": "النسبة المئوية النهاية"
+        },
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "CFGZeroStarAndInit": {
+        "title": "تهيئة CFG متناثرة",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "use_zero_init": "استخدام التهيئة الصفرية",
+            "zero_init_steps": "خطوات التهيئة الصفرية"
+        },
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "SetNode": {
+        "title": "نقطة الضبط",
+        "inputs": {
+            "*": "إدخال"
+        },
+        "widgets": {
+            "Constant": "ثابت"
+        },
+        "outputs": {
+            "*": "إخراج"
+        }
+    },
+    "GetNode": {
+        "title": "نقطة الحصول",
+        "inputs": {
+            "*": "إدخال"
+        },
+        "widgets": {
+            "Constant": "ثابت"
+        },
+        "outputs": {
+            "*": "إخراج"
+        }
+    },
+    "BOOLConstant": {
+        "title": "ثابت منطقي",
+        "inputs": {
+            "value": "القيمة"
+        },
+        "widgets": {
+            "value": "القيمة"
+        },
+        "outputs": {
+            "value": "القيمة"
+        }
+    },
+    "INTConstant": {
+        "title": "ثابت صحيح",
+        "widgets": {
+            "value": "القيمة"
+        },
+        "outputs": {
+            "value": "القيمة"
+        }
+    },
+    "FloatConstant": {
+        "title": "ثابت عشري",
+        "widgets": {
+            "value": "القيمة"
+        },
+        "outputs": {
+            "value": "القيمة"
+        }
+    },
+    "StringConstant": {
+        "title": "ثابت نصي",
+        "widgets": {
+            "string": "نص"
+        },
+        "outputs": {
+            "STRING": "نص"
+        }
+    },
+    "StringConstantMultiline": {
+        "title": "ثابت نصي (مربع نص)",
+        "widgets": {
+            "string": "نص",
+            "strip_newlines": "مع فواصل الأسطر"
+        },
+        "outputs": {
+            "STRING": "نص"
+        }
+    },
+    "ScaleBatchPromptSchedule": {
+        "title": "جدولة دفعات الموجّهات الموسَّعة",
+        "inputs": {
+            "input_str": "نص",
+            "old_frame_count": "عدد الإطارات القديمة",
+            "new_frame_count": "عدد الإطارات الجديدة"
+        },
+        "outputs": {
+            "STRING": "نص"
+        }
+    },
+    "GetLatentsFromBatchIndexed": {
+        "title": "الحصول على Latent حسب الفهرس",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "latent_format": "تنسيق latent"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "ConditioningMultiCombine": {
+        "title": "دمج الشروط (متعدّد)",
+        "inputs": {
+            "conditioning_1": "الشرط_1",
+            "conditioning_2": "الشرط_2",
+            "conditioning_3": "الشرط_3",
+            "conditioning_4": "الشرط_4",
+            "conditioning_5": "الشرط_5",
+            "conditioning_6": "الشرط_6",
+            "conditioning_7": "الشرط_7",
+            "conditioning_8": "الشرط_8",
+            "conditioning_9": "الشرط_9",
+            "conditioning_10": "الشرط_10",
+            "conditioning_11": "الشرط_11",
+            "conditioning_12": "الشرط_12",
+            "conditioning_13": "الشرط_13",
+            "conditioning_14": "الشرط_14",
+            "conditioning_15": "الشرط_15",
+            "conditioning_16": "الشرط_16",
+            "conditioning_17": "الشرط_17",
+            "conditioning_18": "الشرط_18",
+            "conditioning_19": "الشرط_19",
+            "conditioning_20": "الشرط_20"
+        },
+        "widgets": {
+            "inputcount": "عدد المداخل",
+            "operation": "العملية",
+            "Update inputs": "تحديث المداخل"
+        },
+        "outputs": {
+            "combined": "شرط",
+            "inputcount": "عدد المداخل"
+        },
+        "description": "ادمج عدة عقد شروط في واحدة"
+    },
+    "AppendStringsToList": {
+        "title": "ألحق نصًا إلى قائمة",
+        "inputs": {
+            "string1": "النص1",
+            "string2": "النص2"
+        },
+        "outputs": {
+            "STRING": "نص"
+        }
+    },
+    "JoinStrings": {
+        "title": "دمج النصوص",
+        "inputs": {
+            "string1": "النص1",
+            "string2": "النص2"
+        },
+        "widgets": {
+            "delimiter": "الفاصل"
+        },
+        "outputs": {
+            "STRING": "نص"
+        }
+    },
+    "JoinStringMulti": {
+        "title": "دمج النصوص (متعدّد)",
+        "inputs": {
+            "string_1": "النص_1",
+            "string_2": "النص_2",
+            "string_3": "النص_3",
+            "string_4": "النص_4",
+            "string_5": "النص_5",
+            "string_6": "النص_6",
+            "string_7": "النص_7",
+            "string_8": "النص_8",
+            "string_9": "النص_9",
+            "string_10": "النص_10"
+        },
+        "widgets": {
+            "inputcount": "عدد المداخل",
+            "delimiter": "الفاصل",
+            "return_list": "أخرج كقائمة",
+            "Update inputs": "تحديث المداخل"
+        },
+        "outputs": {
+            "string": "نص"
+        },
+        "description": "ادمج عدة نصوص في دفعة نصوص أو قائمة نصوص. يمكن ضبط عدد واجهات الإدخال عبر «عدد المداخل»، انقر تحديث لإنعاش الواجهات."
+    },
+    "CondPassThrough": {
+        "title": "مرور الشرط",
+        "inputs": {
+            "positive": "الشرط الإيجابي",
+            "negative": "الشرط السلبي"
+        },
+        "outputs": {
+            "positive": "الشرط الإيجابي",
+            "negative": "الشرط السلبي"
+        }
+    },
+    "ModelPassThrough": {
+        "title": "جسر النموذج",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "outputs": {
+            "model": "النموذج"
+        },
+        "description": "مرّر النموذج إلى العقدة التالية"
+    },
+    "ConditioningSetMaskAndCombine": {
+        "title": "قناع ضبط الشرط (دمج 2)",
+        "inputs": {
+            "positive_1": "الشرط الإيجابي_1",
+            "negative_1": "الشرط السلبي_1",
+            "positive_2": "الشرط الإيجابي_2",
+            "negative_2": "الشرط السلبي_2",
+            "mask_1": "القناع_1",
+            "mask_2": "القناع_2"
+        },
+        "widgets": {
+            "mask_1_strength": "القناع_1_القوة",
+            "mask_2_strength": "القناع_2_القوة",
+            "set_cond_area": "ضبط منطقة الشرط",
+            "default": "افتراضي",
+            "mask bounds": "حدود القناع"
+        },
+        "outputs": {
+            "combined_positive": "الشرط الإيجابي",
+            "combined_negative": "الشرط السلبي"
+        },
+        "description": "اربط عدة أقنعة تضخيم وادمج العقد في واحدة، الوظيفة مطابقة للعقدة الأصلية في ComfyUI"
+    },
+    "ConditioningSetMaskAndCombine3": {
+        "title": "قناع ضبط الشرط (دمج 3)",
+        "inputs": {
+            "positive_1": "الشرط الإيجابي_1",
+            "negative_1": "الشرط السلبي_1",
+            "positive_2": "الشرط الإيجابي_2",
+            "negative_2": "الشرط السلبي_2",
+            "positive_3": "الشرط الإيجابي_3",
+            "negative_3": "الشرط السلبي_3",
+            "mask_1": "القناع_1",
+            "mask_2": "القناع_2",
+            "mask_3": "القناع_3"
+        },
+        "widgets": {
+            "mask_1_strength": "القناع_1_القوة",
+            "mask_2_strength": "القناع_2_القوة",
+            "mask_3_strength": "القناع_3_القوة",
+            "set_cond_area": "ضبط منطقة الشرط",
+            "default": "افتراضي",
+            "mask bounds": "حدود القناع"
+        },
+        "outputs": {
+            "combined_positive": "الشرط الإيجابي",
+            "combined_negative": "الشرط السلبي"
+        },
+        "description": "اربط عدة أقنعة تضخيم وادمج العقد في واحدة، الوظيفة مطابقة للعقدة الأصلية في ComfyUI"
+    },
+    "ConditioningSetMaskAndCombine4": {
+        "title": "قناع ضبط الشرط (دمج 4)",
+        "inputs": {
+            "positive_1": "الشرط الإيجابي_1",
+            "negative_1": "الشرط السلبي_1",
+            "positive_2": "الشرط الإيجابي_2",
+            "negative_2": "الشرط السلبي_2",
+            "positive_3": "الشرط الإيجابي_3",
+            "negative_3": "الشرط السلبي_3",
+            "positive_4": "الشرط الإيجابي_4",
+            "negative_4": "الشرط السلبي_4",
+            "mask_1": "القناع_1",
+            "mask_2": "القناع_2",
+            "mask_3": "القناع_3",
+            "mask_4": "القناع_4"
+        },
+        "widgets": {
+            "mask_1_strength": "القناع_1_القوة",
+            "mask_2_strength": "القناع_2_القوة",
+            "mask_3_strength": "القناع_3_القوة",
+            "mask_4_strength": "القناع_4_القوة",
+            "set_cond_area": "ضبط منطقة الشرط",
+            "default": "افتراضي",
+            "mask bounds": "حدود القناع"
+        },
+        "outputs": {
+            "combined_positive": "دمج الشرط الإيجابي",
+            "combined_negative": "دمج الشرط السلبي"
+        },
+        "description": "اربط عدة أقنعة تضخيم وادمج العقد في واحدة، الوظيفة مطابقة للعقدة الأصلية في ComfyUI"
+    },
+    "ConditioningSetMaskAndCombine5": {
+        "title": "قناع ضبط الشرط (دمج 5)",
+        "inputs": {
+            "positive_1": "الشرط الإيجابي_1",
+            "negative_1": "الشرط السلبي_1",
+            "positive_2": "الشرط الإيجابي_2",
+            "negative_2": "الشرط السلبي_2",
+            "positive_3": "الشرط الإيجابي_3",
+            "negative_3": "الشرط السلبي_3",
+            "positive_4": "الشرط الإيجابي_4",
+            "negative_4": "الشرط السلبي_4",
+            "positive_5": "الشرط الإيجابي_5",
+            "negative_5": "الشرط السلبي_5",
+            "mask_1": "القناع_1",
+            "mask_2": "القناع_2",
+            "mask_3": "القناع_3",
+            "mask_4": "القناع_4",
+            "mask_5": "القناع_5"
+        },
+        "widgets": {
+            "mask_1_strength": "القناع_1_القوة",
+            "mask_2_strength": "القناع_2_القوة",
+            "mask_3_strength": "القناع_3_القوة",
+            "mask_4_strength": "القناع_4_القوة",
+            "mask_5_strength": "القناع_5_القوة",
+            "set_cond_area": "ضبط منطقة الشرط",
+            "default": "افتراضي",
+            "mask bounds": "حدود القناع"
+        },
+        "outputs": {
+            "combined_positive": "دمج الشرط الإيجابي",
+            "combined_negative": "دمج الشرط السلبي"
+        },
+        "description": "اربط عدة أقنعة تضخيم وادمج العقد في واحدة، الوظيفة مطابقة للعقدة الأصلية في ComfyUI"
+    },
+    "VRAM_Debug": {
+        "title": "تنظيف VRAM",
+        "inputs": {
+            "any_input": "إدخال عشوائي",
+            "image_pass": "مرور الصورة",
+            "model_pass": "مرور النموذج"
+        },
+        "widgets": {
+            "empty_cache": "إفراغ التخزين المؤقت",
+            "gc_collect": "جمع المهملات",
+            "unload_all_models": "إلغاء تحميل كل النماذج"
+        },
+        "outputs": {
+            "any_output": "إخراج عشوائي",
+            "image_pass": "مرور الصورة",
+            "model_pass": "مرور النموذج",
+            "freemem_before": "الذاكرة المتبقية قبل التنظيف",
+            "freemem_after": "الذاكرة المتبقية بعد التنظيف"
+        },
+        "description": "يُعيد بيانات الإدخال كما هي (تُستخدم كإشارة تشغيل فقط)، وينفّذ في الوقت نفسه وظائف إدارة النماذج في Comfy وجمع المهملات، ويبلّغ عن الذاكرة المتبقية (VRAM) قبل وبعد العملية."
+    },
+    "SomethingToString": {
+        "title": "عشوائي إلى نص",
+        "inputs": {
+            "input": "إدخال"
+        },
+        "widgets": {
+            "prefix": "بادئة",
+            "suffix": "لاحقة"
+        },
+        "outputs": {
+            "STRING": "نص"
+        }
+    },
+    "Sleep": {
+        "title": "سكون",
+        "inputs": {
+            "input": "إدخال"
+        },
+        "widgets": {
+            "minutes": "دقيقة",
+            "seconds": "ثانية"
+        },
+        "outputs": {
+            "*": "*"
+        }
+    },
+    "EmptyLatentImagePresets": {
+        "title": "إعداد مسبق لصورة Latent فارغة",
+        "widgets": {
+            "dimensions": "الأبعاد",
+            "invert": "عكس",
+            "batch_size": "حجم الدفعة"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "العرض",
+            "Height": "الارتفاع"
+        }
+    },
+    "EmptyLatentImageCustomPresets": {
+        "title": "إعداد مسبق مخصّص لصورة Latent",
+        "widgets": {
+            "dimensions": "الأبعاد",
+            "invert": "عكس",
+            "batch_size": "حجم الدفعة"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "العرض",
+            "Height": "الارتفاع"
+        },
+        "description": "أنشئ صورة كامنة فارغة بالأبعاد المحدّدة. \n تُحمَّل هذه الخيارات من ملف 'custom_dimensions.json' في «مجلد العقد»."
+    },
+    "WidgetToString": {
+        "title": "مكوّن إلى نص",
+        "inputs": {
+            "any_input": "إدخال عشوائي"
+        },
+        "widgets": {
+            "id": "معرّف العقدة",
+            "widget_name": "اسم المكوّن",
+            "return_all": "أرجع الكل",
+            "node_title": "عنوان العقدة",
+            "allowed_float_decimals": "السماح بالكسور العشرية"
+        },
+        "outputs": {
+            "STRING": "نص"
+        }
+    },
+    "DummyOut": {
+        "title": "إخراج Latent افتراضي",
+        "inputs": {
+            "any_input": "إدخال عشوائي"
+        },
+        "outputs": {
+            "*": "إخراج"
+        }
+    },
+    "FlipSigmasAdjusted": {
+        "title": "ضبط sigmas المعكوسة",
+        "inputs": {
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "divide_by_last_sigma": "قسمة على Sigma الأخير",
+            "divide_by": "قسمة على",
+            "offset_by": "الإزاحة"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas",
+            "sigmas_string": "سلسلة sigmas"
+        }
+    },
+    "CustomSigmas": {
+        "title": "Sigmas مخصّصة",
+        "widgets": {
+            "sigmas_string": "سلسلة Sigmas",
+            "interpolate_to_steps": "خطوات الاستيفاء",
+            "t_steps": "خطوات T",
+            "num_steps": "عدد الخطوات"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        }
+    },
+    "StringToFloatList": {
+        "title": "نص إلى قائمة أعداد عشرية",
+        "inputs": {
+            "string": "نص"
+        },
+        "outputs": {
+            "FLOAT": "عدد عشري"
+        }
+    },
+    "InjectNoiseToLatent": {
+        "title": "حقن ضوضاء في Latent",
+        "inputs": {
+            "latents": "Latent",
+            "noise": "ضوضاء",
+            "mask": "قناع"
+        },
+        "widgets": {
+            "strength": "قوة",
+            "normalize": "تطبيع",
+            "average": "متوسط",
+            "mix_randn_amount": "قوة مزج الضوضاء العشوائية",
+            "seed": "البذرة"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "SoundReactive": {
+        "title": "تفاعل صوتي",
+        "inputs": {
+            "audio": "صوت"
+        },
+        "widgets": {
+            "sound_level": "مستوى الصوت",
+            "start_range_hz": "نطاق Hz البداية",
+            "end_range_hz": "نطاق Hz النهاية",
+            "multiplier": "مضاعف",
+            "smoothing_factor": "معامل التنعيم",
+            "normalize": "تطبيع",
+            "Start mic capture": "بدء التقاط الميكروفون",
+            "Start_mic_capture": "بدء التقاط الميكروفون",
+            "Stop mic capture": "إيقاف التقاط الميكروفون",
+            "Stop_mic_capture": "إيقاف التقاط الميكروفون"
+        },
+        "outputs": {
+            "sound_level": "مستوى الصوت",
+            "sound_level_int": "عدد صحيح لمستوى الصوت"
+        },
+        "description": "يُعيد تغذية مستوى صوت الصوت المُدخل.\n\nيستخدم إدخال الصوت في المتصفّح.\n\nيُستخدم للعيّنة المباشرة."
+    },
+    "GenerateNoise": {
+        "title": "توليد الضوضاء",
+        "inputs": {
+            "model": "النموذج",
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "width": "العرض",
+            "height": "الارتفاع",
+            "batch_size": "حجم الدفعة",
+            "seed": "البذرة العشوائية",
+            "control_after_generate": "تحكّم بعد التوليد",
+            "fixed": "ثابت",
+            "increment": "زيادة",
+            "decrement": "إنقاص",
+            "randomize": "عشوائي",
+            "multiplier": "مضاعف",
+            "constant_batch_noise": "ضوضاء دفعة ثابتة",
+            "normalize": "تطبيع",
+            "latent_channels": "قناة latent",
+            "shape": "الشكل"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        },
+        "description": "تولّد ضوضاء عند الحقن، أو تُستخدم كإمكان فارغ على العيّان عندما تكون إضافة الضوضاء مغلقة"
+    },
+    "StableZero123_BatchSchedule": {
+        "title": "توليد دفعي متعدد الزوايا Stable Zero123",
+        "inputs": {
+            "clip_vision": "رؤية CLIP",
+            "init_image": "الصورة الأولية",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "العرض",
+            "height": "الارتفاع",
+            "batch_size": "حجم الدفعة",
+            "interpolation": "طريقة الاستيفاء",
+            "linear": "خطّي",
+            "ease_in": "تباطؤ الدخول",
+            "ease_out": "تباطؤ الخروج",
+            "ease_in_out": "تباطؤ الدخول والخروج",
+            "azimuth_points_string": "نقطة السمت",
+            "elevation_points_string": "نقطة الارتفاع"
+        },
+        "outputs": {
+            "positive": "الشرط الإيجابي",
+            "negative": "الشرط السلبي",
+            "latent": "Latent"
+        },
+        "description": "أدخل صورة واحدة لتوليد دفعة صور متناسقة بزوايا متعددة (مثل 0° و90° و180°)، مع دعم جدولة تحسين VRAM."
+    },
+    "SV3D_BatchSchedule": {
+        "title": "جدولة دفعات SV3D",
+        "inputs": {
+            "clip_vision": "رؤية CLIP",
+            "init_image": "الصورة الأولية",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "العرض",
+            "height": "الارتفاع",
+            "batch_size": "حجم الدفعة",
+            "interpolation": "طريقة الاستيفاء",
+            "azimuth_points_string": "نقطة السمت",
+            "elevation_points_string": "نقطة الارتفاع"
+        },
+        "outputs": {
+            "positive": "الشرط الإيجابي",
+            "negative": "الشرط السلبي",
+            "latent": "Latent"
+        },
+        "description": "جدولة قيم السمت والارتفاع لـ SV3D عبر الاستيفاء.\n\nلاحظ أن SV3D نموذج فيديو، لذا يجب أن تتقدّم قيم الجدولة تدريجيًا.\n\nhttps://huggingface.co/stabilityai/sv3d"
+    },
+    "LoadResAdapterNormalization": {
+        "title": "تحميل تطبيع ResAdapter",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "resadapter_path": "مسار ResAdapter"
+        },
+        "outputs": {
+            "MODEL": "النموذج"
+        }
+    },
+    "Superprompt": {
+        "title": "موجّه فائق",
+        "inputs": {
+            "prompt": "تلميح"
+        },
+        "widgets": {
+            "instruction_prompt": "موجّه تعليمات",
+            "max_new_tokens": "أقصى عدد رموز جديدة"
+        },
+        "outputs": {
+            "STRING": "نص"
+        },
+        "description": "نموذج T5 مُهذَّب على مجموعة بيانات الموجّهات الفائقة.\n\nيرقّي موجّهًا نصيًا إلى وصف أكثر تفصيلًا.\n\nيُستخدم كخطوة قبل التوليد من النص إلى صورة\n\nالنماذج التي تستفيد من موجّهات أكثر تفصيلًا. \n\nhttps://huggingface.co/roborovski/superprompt-v1"
+    },
+    "CameraPoseVisualizer": {
+        "title": "تصوير مرئي لوضعية الكاميرا",
+        "inputs": {
+            "cameractrl_poses": "وضعية تحكّم الكاميرا"
+        },
+        "widgets": {
+            "pose_file_path": "مسار ملف الوضعية",
+            "base_xval": "قيمة X الأساسية",
+            "zval": "قيمة Z",
+            "scale": "تحجيم",
+            "use_exact_fx": "استخدام مؤثرات دقيقة",
+            "relative_c2w": "من الكاميرا النسبية إلى إحداثيات العالم",
+            "use_viewer": "استخدام العارض",
+            "cameractrl_poses": "وضعية تحكّم الكاميرا",
+            "extrinsic": "خارجي",
+            "color_map": "تعيين الألوان",
+            "hw_ratio": "نسبة الارتفاع إلى العرض",
+            "list_label": "وسم القائمة",
+            "w2cs": "من العالم إلى الكاميرا",
+            "transform_matrix": "مصفوفة التحويل"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "صوّر وضعية الكاميرا مرئيًا\n\n (من وحدة Camera Ctrl Pose في Animatediff Evolved، أو عبر ملف ‎.txt يحوي المعلمات الداخلية للكاميرا والإحداثيات من مجموعة بيانات RealEstate، معروضًا في مخطّط ثلاثي الأبعاد)"
+    },
+    "StabilityAPI_SD3": {
+        "title": "StabilityAPI SD3",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "prompt": "تلميح",
+            "n_prompt": "موجّه سلبي",
+            "seed": "البذرة العشوائية",
+            "control_before_generate": "تحكّم قبل التوليد",
+            "model": "النموذج",
+            "aspect_ratio": "نسبة الأبعاد",
+            "output_format": "تنسيق الإخراج",
+            "api_key": "مفتاح API",
+            "img2img_strength": "قوة صورة إلى صورة",
+            "disable_metadata": "تعطيل البيانات الوصفية"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        },
+        "description": "# استدعاء Stability API\n\nاستخدم نفس المفتاح لاستدعاء API مهما كان عدد المفاتيح في الحساب.\n\nاحصل على مفتاح من https://platform.stability.ai/account/keys ، يُنصح بإنشاء ملف config.json يحوي المفتاح ووضعه في مجلد الإضافة.\n\n# تحذير:\n\nحتى لو فُعّل disable_metadata (تعطيل البيانات الوصفية)، فقد يُحفظ مفتاح API في البيانات الوصفية إذا تضمّن سير العمل عقدة حفظ مختلفة عن هذه العقدة.\n\nيتطلّب SD3 عدد 6.5 نقطة لكل توليد\n\nيتطلّب SD3-Turbo عدد 4 نقاط لكل توليد\n\nإن لم تُوصَل صورة إدخال، يُستخدم وضع النص إلى صورة"
+    },
+    "CheckpointPerturbWeights": {
+        "title": "إزعاج أوزان نقطة التفتيش للنموذج الكبير",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "joint_blocks": "الكتلة المشتركة",
+            "final_layer": "الطبقة الأخيرة",
+            "rest_of_the_blocks": "الكتل الأخرى",
+            "seed": "البذرة العشوائية",
+            "control_before_generate": "تحكّم قبل التوليد"
+        },
+        "outputs": {
+            "MODEL": "النموذج"
+        }
+    },
+    "DifferentialDiffusionAdvanced": {
+        "title": "انتشار تفاضلي (متقدّم)",
+        "inputs": {
+            "model": "النموذج",
+            "samples": "عيّنة",
+            "mask": "قناع"
+        },
+        "widgets": {
+            "multiplier": "مضاعف"
+        },
+        "outputs": {
+            "MODEL": "النموذج",
+            "LATENT": "Latent"
+        }
+    },
+    "FluxBlockLoraSelect": {
+        "title": "اختيار LoRA كتلة Flux",
+        "inputs": {},
+        "outputs": {
+            "blocks": "الكتلة"
+        },
+        "description": "حمّل ICLightUnet: تحميل نموذج ICLightUnet. (تجريبي) قيد التطوير \n طريقة أخرى غير مريحة لكنها تعمل هي تنزيل النموذج من https://huggingface.co/Kijai/iclight-comfy/blob/main/iclight_fc_converted.safetensors ثم استخدامه مع عقدة InstructPixToPix شرط."
+    },
+    "HunyuanVideoBlockLoraSelect": {
+        "title": "اختيار LoRA كتلة فيديو Hunyuan",
+        "inputs": {},
+        "outputs": {
+            "blocks": "الكتلة"
+        },
+        "description": "اختر قيمة ألفا لكتلة مفردة، القيمة 0 تُزيل الكتلة بالكامل"
+    },
+    "FluxBlockLoraLoader": {
+        "title": "محمّل LoRA كتلة Flux",
+        "inputs": {
+            "model": "النموذج",
+            "blocks": "الكتلة",
+            "opt_lora_path": "مسار LoRA (اختياري)"
+        },
+        "widgets": {
+            "strength_model": "قوة النموذج",
+            "lora_name": "اسم LoRA"
+        },
+        "outputs": {
+            "model": "النموذج",
+            "rank": "الرتبة"
+        }
+    },
+    "CustomControlNetWeightsFluxFromList": {
+        "title": "أوزان ControlNet مخصّصة لـ Flux من قائمة",
+        "inputs": {
+            "cn_extras": "ControlNet إضافي",
+            "list_of_floats": "قائمة أعداد عشرية"
+        },
+        "widgets": {
+            "uncond_multiplier": "مضاعف بلا شرط",
+            "autosize": "حجم تلقائي"
+        },
+        "outputs": {
+            "CN_WEIGHTS": "أوزان ControlNet",
+            "TK_SHORTCUT": "اختصار TK"
+        },
+        "description": "حوّل قائمة أعداد عشرية إلى أوزان ControlNet (لـ Advanced-ControlNet)"
+    },
+    "SetShakkerLabsUnionControlNetType": {
+        "title": "اضبط نوع ControlNet المشترك لـ ShakkerLabs",
+        "inputs": {
+            "control_net": "ControlNet",
+            "type": "النوع"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "ModelSaveKJ": {
+        "title": "حفظ النموذج (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "filename_prefix": "بادئة اسم الملف",
+            "model_key_prefix": "بادئة مفتاح النموذج"
+        }
+    },
+    "StyleModelApplyAdvanced": {
+        "title": "مُطبِّق نموذج النمط المتقدّم",
+        "inputs": {
+            "conditioning": "إرشاد الشرط",
+            "style_model": "نموذج النمط",
+            "clip_vision_output": "إخراج رؤية CLIP"
+        },
+        "widgets": {
+            "strength": "قوة"
+        },
+        "outputs": {
+            "conditioning": "إرشاد الشرط"
+        },
+        "description": "تطبيق نموذج النمط، لكن يتطلب ضبط معامل القوة"
+    },
+    "AudioConcatenate": {
+        "title": "لصق الصوت",
+        "inputs": {
+            "audio1": "الصوت1",
+            "audio2": "الصوت2"
+        },
+        "widgets": {
+            "direction": "الاتّجاه"
+        },
+        "outputs": {
+            "AUDIO": "صوت"
+        },
+        "description": "وصِل الصوت1 بالصوت2 حسب الاتّجاه المحدّد."
+    },
+    "ImageNoiseAugmentation": {
+        "title": "تعزيز ضوضاء الصورة",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "noise_aug_strength": "قوة تعزيز الضوضاء",
+            "seed": "البذرة العشوائية"
+        },
+        "outputs": {
+            "image": "صورة"
+        }
+    },
+    "VAELoaderKJ": {
+        "title": "محمّل VAE (KJ)",
+        "inputs": {},
+        "widgets": {
+            "vae_name": "اسم VAE",
+            "device": "الجهاز",
+            "weight_dtype": "نوع بيانات الأوزان"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "ScheduledCFGGuidance": {
+        "title": "إرشاد CFG مجدوَل",
+        "inputs": {
+            "model": "النموذج",
+            "positive": "موجّه موجب",
+            "negative": "موجّه سالب"
+        },
+        "widgets": {
+            "cfg": "قيمة CFG",
+            "start_percent": "النسبة المئوية البداية",
+            "end_percent": "النسبة المئوية النهاية"
+        },
+        "outputs": {
+            "GUIDER": "المُرشِد"
+        }
+    },
+    "ApplyRifleXRoPE_WanVideo": {
+        "title": "تطبيق RifleX RoPE لفيديو Wan",
+        "inputs": {
+            "model": "النموذج",
+            "latent": "Latent",
+            "k": "قيمة k"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "ApplyRifleXRoPE_HunuyanVideo": {
+        "title": "تطبيق RifleX RoPE لفيديو Hunyuan",
+        "inputs": {
+            "model": "النموذج",
+            "latent": "Latent",
+            "k": "قيمة k"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "TimerNodeKJ": {
+        "title": "المؤقّت (KJ)",
+        "inputs": {
+            "any_input": "إدخال عشوائي",
+            "timer": "المؤقّت"
+        },
+        "widgets": {
+            "mode": "الوضع",
+            "name": "الاسم"
+        },
+        "outputs": {
+            "any_output": "إخراج عشوائي",
+            "timer": "المؤقّت",
+            "time": "الوقت"
+        }
+    },
+    "ImageBatchFilter": {
+        "title": "مرشّح المعالجة الدفعية للصور",
+        "inputs": {
+            "images": "صورة",
+            "replacement_image": "استبدال الصورة"
+        },
+        "widgets": {
+            "empty_color": "إعداد لون المناطق الفارغة",
+            "empty_threshold": "القيمة الحرجة لتحديد ما إذا كانت المنطقة فارغة بقوة"
+        },
+        "outputs": {
+            "images": "صورة",
+            "IMAGES": "صورة",
+            "removed_indices": "فهرس الحذف"
+        },
+        "description": "احذف الصور الفارغة من المعالجة الدفعية"
+    },
+    "ImageResizeKJv2": {
+        "title": "تحجيم الصورة v2 (KJ)",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع"
+        },
+        "widgets": {
+            "width": "العرض",
+            "height": "الارتفاع",
+            "upscale_method": "طريقة التحجيم",
+            "keep_proportions": "نسبة أبعاد ثابتة",
+            "keep_proportion": "نسبة أبعاد ثابتة",
+            "pad_color": "لون التعبئة",
+            "crop_position": "موضع القصّ",
+            "divisible_by": "عدد قابل للقسمة",
+            "device": "الجهاز",
+            "per_batch": "دفعة"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "width": "العرض",
+            "height": "الارتفاع",
+            "mask": "قناع"
+        },
+        "description": "تحجيم الصورة الجيل 2. يمكن تحديد الأبعاد عبر الإدخال، وأولوية الإخراج النهائية وفق القواعد التالية:\n- أبعاد الصورة المرجعية \n- العرض-الإدخال والارتفاع-الإدخال \n- العرض والارتفاع \n \nنسبة الأبعاد الثابتة تُثبّت النسبة حسب أعلى بُعد."
+    },
+    "InsertLatentToIndexed": {
+        "title": "إدراج Latent حسب الفهرس",
+        "inputs": {
+            "source": "المصدر",
+            "destination": "الهدف"
+        },
+        "widgets": {
+            "index": "المعامل"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "latent": "Latent"
+        },
+        "description": "أدخل الـ Latent عند الفهرس المحدّد في دفعة الـ Latent الأصلية."
+    },
+    "DiTBlockLoraLoader": {
+        "title": "محمّل Lora كتلة DiT",
+        "inputs": {
+            "model": "النموذج",
+            "opt_lora_path": "اختر مسار Lora",
+            "blocks": "الكتلة"
+        },
+        "widgets": {
+            "strength_model": "قوة النموذج",
+            "lora_name": "اسم Lora",
+            "overlap": "مقدار التراكب"
+        },
+        "outputs": {
+            "model": "النموذج",
+            "rank": "الترتيب"
+        },
+        "description": "محتوى مضاف جديد."
+    },
+    "LeapfusionHunyuanI2VPatcher": {
+        "title": "ترقيع Leapfusion Hunyuan صورة إلى فيديو",
+        "inputs": {
+            "model": "النموذج",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "index": "المعامل",
+            "start_percent": "النسبة المئوية البداية",
+            "end_percent": "النسبة المئوية النهاية",
+            "strength": "قوة"
+        },
+        "outputs": {
+            "MODEL": "النموذج",
+            "model": "النموذج"
+        },
+        "description": "محتوى مضاف جديد."
+    },
+    "ModelPatchTorchSettings": {
+        "title": "إعدادات ترقيع نموذج Torch",
+        "inputs": {
+            "model": "النموذج",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "تفعيل تجميع FP16",
+            "start_percent": "النسبة المئوية البداية",
+            "end_percent": "النسبة المئوية النهاية",
+            "strength": "قوة"
+        },
+        "outputs": {
+            "MODEL": "النموذج",
+            "model": "النموذج"
+        },
+        "description": "يقلّل استخدام ذاكرة GPU\nيسرّع عمليات ضرب المجمّع للمصفوفات\nيرفع كفاءة الطاقة\nقد يحدث: فيضان عددي، وفقدان دقّة."
+    },
+    "LoraExtractKJ": {
+        "title": "استخراج Lora (KJ)",
+        "inputs": {
+            "finetuned_model": "النموذج المُهذَّب",
+            "original_model": "النموذج الأصلي"
+        },
+        "widgets": {
+            "filename_prefix": "بادئة اسم الملف",
+            "rank": "الرتبة",
+            "lora_type": "نوع Lora",
+            "algorithm": "الخوارزمية",
+            "lowrank_iters": "عدد تكرارات الرتبة المنخفضة",
+            "output_dtype": "نوع بيانات الإخراج",
+            "bias_diff": "فرق الانحياز",
+            "adaptive_param": "المعامل التكيّفي",
+            "clamp_quantile": "كمّية Clamp"
+        },
+        "outputs": {
+            "images": "صورة",
+            "masks": "قناع"
+        },
+        "description": "LoraExtract"
+    },
+    "Wan21BlockLoraSelect": {
+        "title": "مُنتقي LoRA الكتلي Wan2.1",
+        "inputs": {
+            "model": "النموذج",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "تفعيل تجميع FP16",
+            "start_percent": "النسبة المئوية البداية",
+            "end_percent": "النسبة المئوية النهاية",
+            "strength": "قوة"
+        },
+        "outputs": {
+            "BLOCKS": "الكتلة",
+            "blocks": "الكتلة"
+        },
+        "description": "اختر قيمة ألفا لكتلة مفردة، القيمة 0 تُزيل الكتلة بالكامل."
+    },
+    "LoadVideosFromFolder": {
+        "title": "تحميل فيديو من مجلد",
+        "inputs": {
+            "video": "فيديو"
+        },
+        "widgets": {
+            "video": "فيديو",
+            "force_rate": "فرض معدّل الإطارات",
+            "custom_width": "عرض مخصّص",
+            "custom_height": "ارتفاع مخصّص",
+            "frame_load_cap": "حدّ قراءة عدد الإطارات",
+            "skip_first_frames": "تخطّي أول X إطار",
+            "select_every_nth": "الفاصل",
+            "output_type": "نوع الإخراج",
+            "grid_max_columns": "أقصى أعمدة الشبكة",
+            "add_label": "إضافة وسم"
+        },
+        "outputs": {
+            "IMAGE": "صورة"
+        }
+    },
+    "TorchCompileModelQwenImage": {
+        "title": "نموذج Qwen Image تجميع Torch",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "backend": "الخلفية",
+            "fullgraph": "الرسم الكامل",
+            "mode": "الوضع",
+            "dynamic": "ديناميكي",
+            "compile_transformer_blocks_only": "تجميع وحدة المحوّل فقط",
+            "dynamo_cache_size_limit": "حدّ حجم تخزين الذاكرة الديناميكي المؤقّت"
+        },
+        "outputs": {
+            "MODEL": "النموذج",
+            "model": "النموذج"
+        }
+    },
+    "LazySwitchKJ": {
+        "title": "مفتاح تبديل سهل (KJ)",
+        "inputs": {
+            "on_false": "خطأ",
+            "on_true": "صحيح"
+        },
+        "widgets": {
+            "switch": "المفتاح"
+        },
+        "outputs": {
+            "*": "عشوائي"
+        }
+    },
+    "GetLatentSizeAndCount": {
+        "title": "الحصول على حجم وكمّية Latent",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "latent": "Latent",
+            "batch_size": "حجم الدفعة",
+            "channels": "القنوات",
+            "frames": "إطار",
+            "width": "العرض",
+            "height": "الارتفاع"
+        }
+    },
+    "DiffusionModelSelector": {
+        "title": "مُنتقي نموذج الانتشار",
+        "inputs": {},
+        "widgets": {
+            "model_name": "اسم النموذج"
+        },
+        "outputs": {
+            "model_path": "مسار النموذج"
+        }
+    },
+    "LoraReduceRankKJ": {
+        "title": "خفض رتبة Lora (KJ)",
+        "inputs": {},
+        "widgets": {
+            "lora_name": "اسم Lora",
+            "new_rank": "الرتبة الجديدة",
+            "dynamic_method": "الطريقة الديناميكية",
+            "dynamic_param": "المعامل الديناميكي",
+            "output_dtype": "نوع بيانات الإخراج",
+            "verbose": "الوضع التفصيلي"
+        },
+        "outputs": {
+            "model_path": "مسار النموذج"
+        },
+        "description": "اضبط حجم نموذج LoRA عبر خفض رتبة النموذج.\n راجع sd-scripts القائم على kohya: https://github.com/kohya-ss/sd-scripts/blob/main/networks/resize_lora.py"
+    },
+    "DrawMaskOnImage": {
+        "title": "دمج الصورة والقناع",
+        "inputs": {
+            "image": "صورة",
+            "mask": "قناع"
+        },
+        "widgets": {
+            "mask_opacity": "تعتيم القناع",
+            "mask_color": "لون القناع",
+            "color": "اللون"
+        },
+        "outputs": {
+            "images": "صورة"
+        },
+        "description": "عند إدخال صورة وقناع معًا يُدمج القناع فوق الصورة."
+    },
+    "BlockifyMask": {
+        "title": "قناع مجزّأ",
+        "inputs": {
+            "image": "صورة",
+            "masks": "قناع"
+        },
+        "widgets": {
+            "block_size": "حجم الكتلة"
+        },
+        "outputs": {
+            "mask": "قناع"
+        },
+        "description": "أنشئ قناعًا كتليًا بتقسيم الإطار الحدودي لكل قناع إلى كتل بالحجم المحدّد، وملء الكتل التي تحتوي أي جزء من القناع الأصلي."
+    },
+    "ConsolidateMasksKJ": {
+        "title": "توحيد الأقنعة (KJ)",
+        "inputs": {
+            "mask": "قناع",
+            "masks": "قناع"
+        },
+        "widgets": {
+            "padding": "حشو",
+            "width": "العرض",
+            "height": "الارتفاع"
+        },
+        "outputs": {
+            "mask": "قناع"
+        },
+        "description": "وحّد دفعة أقنعة منفصلة عبر إيجاد أكبر عدد ممكن من الأقنعة المنفردة التي تتّسع بالكامل داخل منطقة مستطيلة بالعرض والارتفاع المعطيين (بما في الحشو)، ثم كرّر العملية حتى لا يبقى قناع قابل للدمج."
+    },
+    "GGUFLoaderKJ": {
+        "title": "محمّل نماذج GGUF (KJ)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "اسم النموذج",
+            "extra_model_name": "اسم نموذج إضافي",
+            "dequant_dtype": "نوع بيانات إزالة التكميم",
+            "patch_dtype": "نوع بيانات الترقيع",
+            "patch_on_device": "ترقيع على الجهاز",
+            "attention_override": "وضع الأولوية للانتباه",
+            "enable_fp16_accumulation": "تفعيل تجميع FP16"
+        },
+        "outputs": {
+            "model": "النموذج"
+        },
+        "description": "حمّل نماذج GGUF بخيارات متقدّمة، يتطلّب تثبيت برمجية ComfyUI-GGUF أولًا."
+    },
+    "EndRecordCUDAMemoryHistory": {
+        "title": "إنهاء تسجيل سجل ذاكرة CUDA (KJ)",
+        "inputs": {
+            "input": "إدخال"
+        },
+        "widgets": {
+            "output_path": "مسار الإخراج"
+        },
+        "outputs": {
+            "input": "إدخال",
+            "output_path": "مسار الإخراج"
+        },
+        "description": "سجّل تاريخ تخصيص ذاكرة CUDA بين البداية والنهاية واحفظه في ملف، يمكن تحليله هنا: https://docs.pytorch.org/memory_viz أو باستخدام عقدة «تصوير مرئي لسجل ذاكرة CUDA»."
+    },
+    "VisualizeCUDAMemoryHistory": {
+        "title": "تصوير مرئي لسجل ذاكرة CUDA (KJ)",
+        "inputs": {
+            "input": "إدخال"
+        },
+        "widgets": {
+            "snapshot_path": "مسار اللقطة"
+        },
+        "outputs": {
+            "input": "إدخال",
+            "output_path": "مسار الإخراج"
+        },
+        "description": "اعرض ملف تاريخ تخصيص ذاكرة CUDA مرئيًا وافتحه في المتصفّح"
+    },
+    "StartRecordCUDAMemoryHistory": {
+        "title": "بدء تسجيل سجل ذاكرة CUDA (KJ)",
+        "inputs": {
+            "input": "إدخال"
+        },
+        "widgets": {
+            "enabled": "تفعيل",
+            "context": "خلفية",
+            "stacks": "المكدّس",
+            "max_entries": "أقصى عدد الإدخالات"
+        },
+        "outputs": {
+            "input": "إدخال"
+        }
+    },
+    "NABLA_AttentionKJ": {
+        "title": "انتباه NABLA (KJ)",
+        "inputs": {
+            "model": "النموذج",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "window_time": "زمن النافذة",
+            "window_width": "عرض النافذة",
+            "window_height": "ارتفاع النافذة",
+            "sparsity": "التباعد",
+            "torch_compile": "تجميع torch"
+        },
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "SimpleCalculatorKJ": {
+        "title": "حاسبة مبسّطة (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "FLOAT": "عدد عشري",
+            "STRING": "عدد عشري",
+            "INT": "عدد صحيح"
+        }
+    },
+    "VAEDecodeLoopKJ": {
+        "title": "فك تشفير VAE الحلقي (KJ)",
+        "inputs": {
+            "samples": "عيّنة",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "overlap_latent_frames": "تكرار صورة Latent"
+        },
+        "outputs": {
+            "IMAGE": "صورة",
+            "STRING": "عدد عشري",
+            "INT": "عدد صحيح"
+        }
+    },
+    "GetTrackRange": {
+        "title": "الحصول على نطاق المسار (KJ)",
+        "inputs": {
+            "tracks": "المسار"
+        },
+        "widgets": {
+            "start_index": "الفهرس البداية",
+            "num_frames": "عدد الإطارات"
+        },
+        "outputs": {
+            "TRACKS": "المسار"
+        }
+    },
+    "AddNoiseToTrackPath": {
+        "title": "إضافة ضوضاء إلى مسار المسار (KJ)",
+        "inputs": {
+            "tracks": "المسار"
+        },
+        "widgets": {
+            "strength": "قوة",
+            "seed": "البذرة",
+            "noise_x_ratio": "نسبة الضوضاء x",
+            "noise_y_ratio": "نسبة الضوضاء y",
+            "noise_temporal_ratio": "نسبة الضوضاء الزمنية"
+        },
+        "outputs": {
+            "TRACKS": "المسار"
+        }
+    },
+    "WanImageToVideoSVIPro": {
+        "title": "Wan صورة إلى فيديو SVI الاحترافي (KJ)",
+        "inputs": {
+            "positive": "موجّه موجب",
+            "negative": "موجّه سالب",
+            "anchor_samples": "عيّنة المرساة",
+            "prev_samples": "عيّنة سابقة"
+        },
+        "widgets": {
+            "length": "الطول",
+            "motion_latent_count": "عدد مرّات حركة Latent"
+        },
+        "outputs": {
+            "positive": "موجّه موجب",
+            "negative": "موجّه سالب",
+            "latent": "Latent"
+        }
+    },
+    "ModelMemoryUseReportPatch": {
+        "title": "ترقيع تقرير استخدام ذاكرة النموذج (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "model": "النموذج"
+        },
+        "outputs": {
+            "model": "النموذج"
+        },
+        "description": "أضف دالّة استدعاء إلى النموذج لتبلّغ عن استخدام الذاكرة بعد اكتمال العيّنة"
+    },
+    "ModelMemoryUsageFactorOverride": {
+        "title": "قيمة مخصّصة لمعامل استخدام ذاكرة النموذج (KJ)",
+        "inputs": {
+            "model": "النموذج",
+            "memory_usage_factor": "معامل استخدام الذاكرة"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "memory_usage_factor": "معامل استخدام الذاكرة"
+        },
+        "outputs": {
+            "model": "النموذج"
+        },
+        "description": "يتجاوز معامل استخدام ذاكرة النموذج أثناء العيّنة."
+    },
+    "LTXVEnhanceAVideoKJ": {
+        "title": "تعزيز فيديو LTX (KJ)",
+        "inputs": {
+            "model": "النموذج",
+            "latent": "Latent",
+            "weight": "الوزن"
+        },
+        "widgets": {
+            "model": "النموذج",
+            "latent": "Latent",
+            "weight": "الوزن"
+        },
+        "outputs": {
+            "model": "النموذج"
+        }
+    },
+    "LTX2BlockLoraSelect": {
+        "title": "مُنتقي Lora كتلة LTX2 (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "selectedditblocks": "كتلة DIT المختارة"
+        },
+        "description": "أضف دالّة استدعاء إلى النموذج لتبلّغ عن استخدام الذاكرة بعد اكتمال العيّنة"
+    },
+    "VisualizeSigmasKJ": {
+        "title": "تصوير مرئي لقيمة sigma (KJ)",
+        "inputs": {
+            "sigmas": "قيم sigma"
+        },
+        "widgets": {
+            "start_step": "خطوات البداية",
+            "end_step": "خطوات النهاية"
+        },
+        "outputs": {
+            "sigmas_out": "إخراج sigma",
+            "image": "صورة"
+        },
+        "description": ""
+    },
+    "LTX2SamplingPreviewOverride": {
+        "title": "تجاوز معاينة عيّنة LTX2 (KJ)",
+        "inputs": {
+            "model": "النموذج",
+            "latent_upscale_model": "نموذج تكبير Latent",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "preview_rate": "معدّل المعاينة"
+        },
+        "outputs": {},
+        "description": "عُطّلت ميزة معاينة عيّنة LTX2 مؤقتًا، ويستمر ذلك حتى تكتمل ميزة المعاينة في إصدار نواة مستقر."
+    },
+    "LTXVAddGuidesFromBatch": {
+        "title": "إضافة صور إرشادية من الدفعة (KJ)",
+        "inputs": {
+            "positive": "إرشاد موجب",
+            "negative": "إرشاد سالب",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images": "صورة"
+        },
+        "widgets": {
+            "strength": "قوة"
+        },
+        "outputs": {
+            "positive": "إرشاد موجب",
+            "negative": "إرشاد سالب",
+            "latent": "Latent"
+        },
+        "description": "يضيف عدة صور إرشادية من دفعة إلى صورة Latent حسب فهرس الإطار المقابل. الصور غير السوداء في الدفعة تُستخدم كصور إرشادية."
+    },
+    "LTX2AudioLatentNormalizingSampling": {
+        "title": "عيّنة تطبيع صوت Latent LTX2 (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "audio_normalization_factors": "معامل تطبيع الصوت"
+        },
+        "outputs": {},
+        "description": "يحسّن جودة الصوت المولّد في LTX2 عبر تطبيع صوت Latent في خطوات العيّنة المحدّدة."
+    },
+    "PreviewLatentNoiseMask": {
+        "title": "معاينة قناع ضوضاء Latent (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "mask": "قناع"
+        },
+        "description": "معاينة قناع ضوضاء Latent"
+    },
+    "WanChunkFeedForward": {
+        "title": "شبكة أمامية مجزّأة لفيديو Wan (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "chunks": "عدد الكتل",
+            "dim_threshold": "عتبة البعد"
+        },
+        "outputs": {
+            "model": "النموذج"
+        },
+        "description": "ميزة تجريبية قد تغيّر مخرجات النموذج!! تقلّل استخدام ذكرة VRAM الذروة عبر تنشيط الشبكة الأمامية المجزّأة (مفهوم في الشبكات العصبية)."
+    },
+    "SamplerSelfRefineVideo": {
+        "title": "عيّان التنقية الذاتية للفيديو (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {
+            "input_mode": "وضع الإدخال",
+            "start_step1": "خطوة البداية 1",
+            "end_step1": "خطوة النهاية 1",
+            "start_step2": "خطوة البداية 2",
+            "end_step2": "خطوة النهاية 2",
+            "steps_1": "الخطوة 1",
+            "steps_2": "الخطوة 2",
+            "certain_percentage": "النسبة المئوية للتحقّق",
+            "uncertainty_threshold": "عتبة عدم اليقين",
+            "verbose": "تفصيلي",
+            "seed": "البذرة العشوائية"
+        },
+        "outputs": {},
+        "description": "محاولة تنفيذ https://github.com/agwmon/self-refine-video، للاختبار فقط، قد لا يعمل كما هو متوقّع."
+    },
+    "LTXVAddGuideMulti": {
+        "title": "فيديو LTX إضافة عدة صور إرشادية (KJ)",
+        "inputs": {
+            "positive": "إرشاد موجب",
+            "negative": "إرشاد سالب",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "الصورة1"
+        },
+        "widgets": {
+            "Number of Guides": "عدد الصور الإرشادية",
+            "frame_idx_1": "فهرس الإطار 1",
+            "strength_1": "القوة 1"
+        },
+        "outputs": {
+            "positive": "إرشاد موجب",
+            "negative": "إرشاد سالب",
+            "latent": "Latent"
+        },
+        "description": "أضف عدة صور إرشادية عند فهارس الإطارات المحدّدة واضبط قوّتها، باستخدام ميزة «التركيب الديناميكي»، التي تتطلّب ComfyUI إصدار 0.8.1 وواجهة أمامية 1.33.4 أو أحدث."
+    },
+    "LTXVImgToVideoInplaceKJ": {
+        "title": "فيديو LTX تحويل الصور إلى فيديو (KJ)",
+        "inputs": {
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "الصورة1"
+        },
+        "widgets": {
+            "Number of Guides": "عدد الصور الإرشادية",
+            "index_1": "الفهرس 1",
+            "strength_1": "القوة 1"
+        },
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "استبدل إطارات الـ Latent للفيديو بصور الإدخال المشفَّرة، باستخدام ميزة «التركيب الديناميكي»، التي تتطلّب ComfyUI إصدار 0.8.1 وواجهة أمامية 1.33.4 أو أحدث."
+    },
+    "LTXVAudioVideoMask": {
+        "title": "قناع الصوت والفيديو (KJ)",
+        "inputs": {
+            "video_latent": "فيديو كامن Latent",
+            "audio_latent": "صوت كامن Latent"
+        },
+        "widgets": {
+            "video_fps": "معدّل إطارات الفيديو",
+            "video_start_time": "زمن بداية الفيديو",
+            "video_end_time": "زمن نهاية الفيديو",
+            "audio_start_time": "زمن بداية الصوت",
+            "audio_end_time": "زمن نهاية الصوت",
+            "max_length": "أقصى طول"
+        },
+        "outputs": {
+            "video_latent": "فيديو كامن Latent",
+            "audio_latent": "صوت كامن Latent"
+        },
+        "description": "أنشئ قناع ضوضاء لمحتوى Latent للفيديو والصوت حسب المدى الزمني المحدّد. ستُولَّد محتويات جديدة في هذه المناطق المقنّعة."
+    },
+    "LTX2AttentionTunerPatch": {
+        "title": "ترقيع ضبط انتباه LTX2 (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "blocks": "الكتلة",
+            "video_scale": "تحجيم الفيديو",
+            "audio_scale": "تحجيم الصوت",
+            "audio_to_video_scale": "تحجيم من الصوت إلى الفيديو",
+            "video_to_audio_scale": "تحجيم من الفيديو إلى الصوت"
+        },
+        "outputs": {
+            "model": "النموذج"
+        },
+        "description": "تجريبي! تمرير أمامي مخصّص لـ LTX2 يضبط معاملات تحجيم الانتباه حسب كل وسيط مختلف، مع تقليل استخدام ذكرة VRAM الذروة أيضًا."
+    },
+    "LTX2_NAG": {
+        "title": "إرشاد انتباه مطبَّع LTX2 (KJ)",
+        "inputs": {
+            "model": "النموذج",
+            "nag_cond_video": "شرط الفيديو",
+            "nag_cond_audio": "شرط الصوت"
+        },
+        "widgets": {
+            "nag_scale": "تحجيم NAG",
+            "nag_alpha": "NAG alpha",
+            "nag_tau": "NAG tau",
+            "inplace": "عملية مضمّنة"
+        },
+        "outputs": {
+            "model": "النموذج"
+        },
+        "description": "https://github.com/ChenDarYen/Normalized-Attention-Guidance"
+    },
+    "LTX2MemoryEfficientSageAttentionPatch": {
+        "title": "ترقيع انتباه Sage الموفّر للذاكرة LTX2 (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "النموذج"
+        },
+        "description": "تجريبي! يفعّل انتباه Sage مخصّصًا لتقليل استخدام ذكرة VRAM الذروة، ويتجاوز نمط الانتباه. يتطلب أحدث إصدار من Sage Attention."
+    },
+    "LTXVChunkFeedForward": {
+        "title": "فيديو LTX تنشيط الشبكة الأمامية المجزّأة (KJ)",
+        "inputs": {
+            "model": "النموذج"
+        },
+        "widgets": {
+            "chunks": "التجزئة",
+            "dim_threshold": "عتبة البعد"
+        },
+        "outputs": {
+            "model": "النموذج"
+        },
+        "description": "تجريبي وقد يغيّر مخرجات النموذج! خفض استخدام ذكرة الذاكرة الافتراضية عبر تنشيط الشبكة الأمامية المجزّأة (مفهوم في الشبكات العصبية)."
+    },
+    "LTX2LoraLoaderAdvanced": {
+        "title": "محمّل Lora متقدّم LTX2 (KJ)",
+        "inputs": {
+            "model": "النموذج",
+            "opt_lora_path": "تحسين مسار LoRA",
+            "blocks": "الكتلة"
+        },
+        "widgets": {
+            "lora_name": "اسم LoRA",
+            "strength_model": "قوة النموذج",
+            "video": "فيديو",
+            "video_to_audio": "من الفيديو إلى الصوت",
+            "audio": "صوت",
+            "audio_to_video": "من الصوت إلى الفيديو",
+            "other": "أخرى"
+        },
+        "outputs": {
+            "model": "النموذج",
+            "loaded_keys_info": "تحميل معلومات المفتاح",
+            "rank": "الرتبة"
+        },
+        "description": "محمّل LoRA متقدّم مع تحكّم بالقوة لكل كتلة لنماذج LTX2"
+    },
+    "HDRPreviewKJ": {
+        "title": "معاينة HDR (KJ)",
+        "inputs": {
+            "image": "صورة"
+        },
+        "widgets": {
+            "exposure": "التعريض",
+            "saturation": "التشبّع",
+            "fps": "معدّل الإطارات",
+            "input_space": "فضاء الإدخال"
+        },
+        "outputs": {
+            "image": "صورة"
+        },
+        "description": "معاينة تعريض مباشرة للصور المضغوطة عالية المدى الديناميكي.\nالإدخال: دفعة صور/فيديو مضغوطة بـ LogC3 في المدى [0,1] (مثل مخرجات VAE بعد فك التشفير في سير عمل HDR IC-LoRA، دون فك ضغط HDR).\nيُحقَّق تغذية راجعة مباشرة للأشرطة عبر فك الضغط والتعريض والتشبّع وتعيين درجات ألوان Reinhard ومعالجة sRGB في مُظلّل مجزّأ WebGL في المتصفّح. تُشغَّل نفس العمليات الحسابية على الخادم لإخراج صور sRGB مخبوزة.\nتُحدِّث تغييرات الأشرطة المعاينة فورًا؛ بينما يُحدَّث إخراج الصورة فقط عند إعادة سير العمل إلى الطابور. "
+    },
+    "HunyuanVideoEncodeKeyframesToCond": {
+        "title": "فيديو Hunyuan ترميز إطاري البداية/النهاية إلى شرط (KJ)",
+        "inputs": {
+            "model": "النموذج",
+            "positive": "موجّه موجب",
+            "vae": "VAE",
+            "start_frame": "الإطار البداية",
+            "end_frame": "الإطار النهاية",
+            "negative": "موجّه سالب"
+        },
+        "widgets": {
+            "num_frames": "عدد الإطارات",
+            "tile_size": "حجم التجزئة",
+            "overlap": "مقدار التراكب",
+            "temporal_size": "حجم البُعد الزمني",
+            "temporal_overlap": "مقدار التراكب في البُعد الزمني"
+        },
+        "outputs": {
+            "model": "النموذج",
+            "positive": "الموجّه الموجب",
+            "negative": "الموجّه السالب",
+            "latent": "Latent"
+        }
+    }
+}
