@@ -1,0 +1,4813 @@
+{
+    "ClaudeNode": {
+        "title": "Anthropic Claude",
+        "inputs": {
+            "source": "Kaynak yolu",
+            "image_1": "Görsel_1"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "model": "Model",
+            "max_tokens": "Maks jeton sayısı",
+            "temperature": "Sıcaklık",
+            "reasoning_effort": "Akıl yürütme çabası",
+            "seed": "Tohum"
+        },
+        "outputs": {
+            "String": "Dize"
+        },
+        "description": "Anthropic'ın Claude modeliyle metin yanıtı üretir. Bir metin istemi sağlayın ve çok modlu bağlam oluşturmak için isteğe bağlı olarak bir veya daha fazla görsel ekleyin."
+    },
+    "ByteDanceSeedNode": {
+        "title": "ByteDance Seedance2.0",
+        "inputs": {
+            "video_1": "Video_1",
+            "image_1": "Görsel_1"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "model": "Model",
+            "temperature": "Sıcaklık",
+            "seed": "Tohum"
+        },
+        "outputs": {
+            "String": "Dize"
+        },
+        "description": "ByteDance'ın Seed2.0 modeliyle metin yanıtı üretir. Bir metin istemi sağlayın ve çok modlu bağlamı zenginleştirmek için isteğe bağlı olarak bir veya daha fazla görsel ya da video ekleyin."
+    },
+    "ByteDance2ReferenceNodeV2": {
+        "title": "ByteDance Seedance 2.5 Video Referansı",
+        "inputs": {
+            "image_1": "Görsel1",
+            "image_2": "Görsel2",
+            "image_3": "Görsel3",
+            "image_4": "Görsel4",
+            "image_5": "Görsel5",
+            "image_6": "Görsel6",
+            "image_7": "Görsel7",
+            "image_8": "Görsel8",
+            "image_9": "Görsel9",
+            "audio_1": "Ses1",
+            "audio_2": "Ses2",
+            "audio_3": "Ses3",
+            "video_1": "Video1",
+            "video_2": "Video2",
+            "video_3": "Video3",
+            "asset_1": "Varlık1",
+            "asset_2": "Varlık2",
+            "asset_3": "Varlık3"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "resolution": "Çözünürlük",
+            "ratio": "En-boy oranı",
+            "generate_audio": "Ses üret",
+            "duration": "Süre",
+            "task_type": "Görev türü",
+            "auto_downscale": "Otomatik küçültme",
+            "auto_upscale": "Otomatik büyütme",
+            "output_format": "Çıkış biçimi",
+            "seed": "Tohum",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "String": "Dize"
+        },
+        "description": "Seedance2.5 veya 2.0 ile video üretme, düzenleme veya genişletme; referans görsel, video ve ses destekler. Çok modlu referans, video düzenleme ve video genişletme desteklenir."
+    },
+    "ByteDanceVideoEnhanceNode": {
+        "title": "ByteDance vCube Video İyileştirme",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "tool_version": "Araç sürümü",
+            "scene": "Sahne",
+            "enhance_style": "İyileştirme stili",
+            "resolution": "Çözünürlük",
+            "fps": "Kare hızı",
+            "bitrate_level": "Bit hızı seviyesi"
+        },
+        "outputs": {},
+        "description": "ByteDance vCube ile videoyu büyütün ve onarın: 8K'ya kadar süper çözünürlük, sıkıştırma, artefakt ve gürültü giderme, renk ve netlik iyileştirme, isteğe bağlı kare girişimi desteklenir."
+    },
+    "GeminiNode": {
+        "title": "Google Gemini",
+        "inputs": {
+            "images": "Görsel grubu",
+            "audio": "Ses",
+            "video": "Video",
+            "files": "Gemini girdi dosyası",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "ratio": "En-boy oranı",
+            "duration": "Süre",
+            "model": "Model"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "STRING": "Dize"
+        }
+    },
+    "GeminiNodeV2": {
+        "title": "Google GeminiV2",
+        "inputs": {
+            "image_1": "Görsel1",
+            "image_2": "Görsel2",
+            "image_3": "Görsel3",
+            "image_4": "Görsel4",
+            "image_5": "Görsel5",
+            "image_6": "Görsel6",
+            "image_7": "Görsel7",
+            "image_8": "Görsel8",
+            "image_9": "Görsel9",
+            "video_1": "Video1",
+            "audio_1": "Ses1",
+            "files": "Gemini girdi dosyası"
+        },
+        "widgets": {
+            "model": "Model",
+            "thinking_level": "Düşünce seviyesi",
+            "temperature": "Sıcaklık",
+            "max_output_tokens": "Maks çıkış jeton sayısı",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "duration": "Süre"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "STRING": "Dize"
+        }
+    },
+    "GeminiVideoOmniV2": {
+        "title": "Google Video Gemini Omni",
+        "inputs": {
+            "image_1": "Görsel1",
+            "image_2": "Görsel2",
+            "image_3": "Görsel3",
+            "image_4": "Görsel4",
+            "image_5": "Görsel5",
+            "image_6": "Görsel6",
+            "image_7": "Görsel7",
+            "image_8": "Görsel8",
+            "image_9": "Görsel9",
+            "video_1": "Video1",
+            "video_2": "Video2",
+            "video_3": "Video3"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "aspect_ratio": "En-boy oranı",
+            "duration": "Süre",
+            "task_type": "Görev türü",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "STRING": "Dize"
+        }
+    },
+    "GeminiInputFiles": {
+        "title": "Google Gemini girdi dosyası",
+        "inputs": {
+            "GEMINI_INPUT_FILES": "Gemini girdi dosyası",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "file": "Dosya",
+            "model": "Model"
+        },
+        "outputs": {
+            "GEMINI_INPUT_FILES": "Gemini girdi dosyası",
+            "STRING": "Dize"
+        }
+    },
+    "OpenAIChatNode": {
+        "title": "OpenAI Sohbet",
+        "inputs": {
+            "images": "Görsel grubu",
+            "audio": "Ses",
+            "advanced_options": "Gelişmiş seçenekler",
+            "files": "OpenAI girdi dosyası",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "persist_context": "Kalıcı bağlam",
+            "duration": "Süre",
+            "model": "Model"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "STRING": "Dize"
+        }
+    },
+    "OpenAIInputFiles": {
+        "title": "OpenAI Sohbet girdi dosyası",
+        "inputs": {
+            "OPENAI_INPUT_FILES": "OpenAI girdi dosyası",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "file": "Dosya",
+            "model": "Model"
+        },
+        "outputs": {
+            "OPENAI_INPUT_FILES": "OpenAI girdi dosyası",
+            "STRING": "Dize"
+        }
+    },
+    "OpenAIChatConfig": {
+        "title": "OpenAI Sohbet gelişmiş seçenekleri",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "truncation": "Kesme",
+            "max_output_tokens": "Maks çıkış jeton sayısı",
+            "quality": "Kalite",
+            "n": "Adet",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "Gelişmiş seçenekler",
+            "string": "Dize"
+        }
+    },
+    "OpenRouterLLMNode": {
+        "title": "OpenRouter büyük dil modeli",
+        "inputs": {
+            "image_1": "Görsel1",
+            "image_2": "Görsel2",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "reasoning_effort": "Yüksek akıl yürütme çabası",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "Gelişmiş seçenekler",
+            "string": "Dize"
+        }
+    },
+    "BeebleSwitchXVideoEdit": {
+        "title": "Beeble SwitchX Video Düzenleme",
+        "inputs": {
+            "video": "Video",
+            "reference_image": "Referans görsel"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "alpha_mode": "Alpha modu",
+            "max_resolution": "Maks çözünürlük",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "video": "Video",
+            "alpha": "Alpha"
+        },
+        "description": "BeebleSwitchX ile bir videoyu düzenleyin. Orijinal öznenin piksellerini ve hareketini korurken sahnendeki herhangi bir öğeyi (arka plan, aydınlatma, kıyafet) değiştirebilirsiniz. Yeni görsel efekti tanımlayan bir referans görsel ve/veya metin istemi sağlayın. Maks 240 kare, kare başına yaklaşık 2.77MP çözünürlük."
+    },
+    "BriaRemoveVideoBackground": {
+        "title": "Bria Video Arka Planını Kaldır",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "background_color": "Arka plan rengi",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        }
+    },
+    "BriaVideoGreenScreen": {
+        "title": "Bria Video Yeşil Ekranı",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "green_shade": "Yeşil ekran rengi",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "Bria ile videonun arka planını düz renk ekranla değiştirin."
+    },
+    "BriaTransparentVideoBackground": {
+        "title": "Bria Video Arka Planını Kaldır (şeffaf)",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "images": "Görsel",
+            "mask": "Maske"
+        },
+        "description": "Bria ile videodan arka planı kaldırın ve kırpılmış kareler ile alfa maskesi döndürün. İkisini bir kompozisyon düğümüne bağlayın veya şeffaf video üretmek için WEBM'e kaydedin."
+    },
+    "ByteDanceTextToVideoNode": {
+        "title": "ByteDance Metinden Videoya",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "aspect_ratio": "En-boy oranı",
+            "duration": "Süre",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "camera_fixed": "Sabit kamera",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "video": "Video",
+            "VIDEO": "Video"
+        }
+    },
+    "ByteDanceImageToVideoNode": {
+        "title": "ByteDance Görselden Videoya",
+        "inputs": {
+            "image": "Görsel",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "aspect_ratio": "En-boy oranı",
+            "duration": "Süre",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "camera_fixed": "Sabit kamera",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "video": "Video",
+            "VIDEO": "Video"
+        }
+    },
+    "ByteDanceFirstLastFrameNode": {
+        "title": "ByteDance İlk-Son Karede Videoya",
+        "inputs": {
+            "first_frame": "İlk kare görseli",
+            "last_frame": "Son kare görseli",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "aspect_ratio": "En-boy oranı",
+            "duration": "Süre",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "camera_fixed": "Sabit kamera",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "video": "Video",
+            "VIDEO": "Video"
+        }
+    },
+    "ByteDanceImageReferenceNode": {
+        "title": "ByteDance Referans Görselden Videoya",
+        "inputs": {
+            "images": "Görsel grubu",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "aspect_ratio": "En-boy oranı",
+            "duration": "Süre",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "camera_fixed": "Sabit kamera",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "video": "Video",
+            "VIDEO": "Video"
+        }
+    },
+    "ByteDance2TextToVideoNode": {
+        "title": "ByteDance2.0 Metinden Videoya",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "ratio": "En-boy oranı",
+            "generate_audio": "Ses üret",
+            "duration": "Süre",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "camera_fixed": "Sabit kamera",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "video": "Video",
+            "VIDEO": "Video"
+        }
+    },
+    "ByteDance2FirstLastFrameNode": {
+        "title": "ByteDance2.0 İlk-Son Karede Videoya",
+        "inputs": {
+            "first_frame": "İlk kare görseli",
+            "last_frame": "Son kare görseli",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "ratio": "En-boy oranı",
+            "generate_audio": "Ses üret",
+            "duration": "Süre",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "video": "Video",
+            "VIDEO": "Video"
+        }
+    },
+    "ByteDance2ReferenceNode": {
+        "title": "ByteDance2.0 Referanstan Videoya",
+        "inputs": {
+            "image_1": "Görsel1",
+            "image_2": "Görsel2",
+            "image_3": "Görsel3",
+            "image_4": "Görsel4",
+            "image_5": "Görsel5",
+            "image_6": "Görsel6",
+            "image_7": "Görsel7",
+            "image_8": "Görsel8",
+            "image_9": "Görsel9",
+            "video_1": "Video1",
+            "video_2": "Video2",
+            "video_3": "Video3",
+            "audio_1": "Ses1",
+            "audio_2": "Ses2",
+            "audio_3": "Ses3",
+            "asset_1": "Varlık1",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "ratio": "En-boy oranı",
+            "generate_audio": "Ses üret",
+            "duration": "Süre",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "camera_fixed": "Sabit kamera",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "video": "Video",
+            "VIDEO": "Video"
+        }
+    },
+    "ByteDanceCreateVideoAsset": {
+        "title": "ByteDance Video Varlığı Oluştur",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "group_id": "Grup Kimliği"
+        },
+        "outputs": {
+            "asset_id": "Varlık Kimliği",
+            "group_id": "Grup Kimliği"
+        },
+        "description": "Bir Seedance2.0 kişisel video varlığı oluşturur. Girdi videosunu yükler ve belirtilen varlık grubuna kaydeder. Varlık Kimliği boşsa, yeni bir grup oluşturmak için gerçek kişisel H5 doğrulama akışını çalıştırır, ardından varlığı ekler."
+    },
+    "GrokVideoNode": {
+        "title": "Grok Video",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "model": "Model",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "duration": "Süre"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        }
+    },
+    "GrokVideoReferenceNode": {
+        "title": "Grok Referanstan Videoya",
+        "inputs": {
+            "reference_0": "Referans0",
+            "reference_1": "Referans1",
+            "reference_2": "Referans2",
+            "reference_3": "Referans3",
+            "reference_4": "Referans4",
+            "reference_5": "Referans5",
+            "reference_6": "Referans6"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "aspect_ratio": "En-boy oranı",
+            "duration": "Süre",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        }
+    },
+    "GrokVideoEditNode": {
+        "title": "Grok Video Düzenleme",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "model": "Model",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "duration": "Süre"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        }
+    },
+    "GrokVideoExtendNode": {
+        "title": "Grok Video Uzatma",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "model": "Model",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "duration": "Süre"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        }
+    },
+    "HitPawVideoEnhance": {
+        "title": "HitPaw Video İyileştirme",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        }
+    },
+    "KlingCameraControls": {
+        "title": "Kling Kamera Kontrolü",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "camera_control_type": "Kamera kontrol türü",
+            "horizontal_movement": "Yatay hareket",
+            "vertical_movement": "Dikey hareket",
+            "pan": "Kaydırma",
+            "tilt": "Eğim",
+            "roll": "Döndürme",
+            "zoom": "Yakınlaştırma"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "camera_control": "Kamera kontrol parametreleri"
+        }
+    },
+    "KlingTextToVideoNode": {
+        "title": "Kling Metinden Videoya",
+        "inputs": {},
+        "widgets": {
+            "cfg_scale": "CFG oranı",
+            "mode": "Mod",
+            "aspect_ratio": "En-boy oranı",
+            "task_id": "Görev Kimliği",
+            "auth_token": "İzin verilen jeton sayısı",
+            "camera_control": "Kamera kontrol parametreleri",
+            "model_name": "Model adı",
+            "duration": "Süre"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "KlingImage2VideoNode": {
+        "title": "Kling Görselden Videoya",
+        "inputs": {
+            "start_frame": "Başlangıç karesi",
+            "end_frame": "Bitiş karesi",
+            "camera_control": "Kamera kontrol parametreleri",
+            "prompt": "İstem",
+            "negative_prompt": "Negatif istem"
+        },
+        "widgets": {
+            "cfg_scale": "CFG oranı",
+            "mode": "Mod",
+            "aspect_ratio": "En-boy oranı",
+            "task_id": "Görev Kimliği",
+            "auth_token": "İzin verilen jeton sayısı",
+            "model_name": "Model adı",
+            "duration": "Süre"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "KlingCameraControlI2VNode": {
+        "title": "Kling Görselden Videoya (kamera kontrolü)",
+        "inputs": {
+            "start_frame": "Başlangıç karesi",
+            "end_frame": "Bitiş karesi",
+            "camera_control": "Kamera kontrol parametreleri",
+            "prompt": "İstem",
+            "negative_prompt": "Negatif istem"
+        },
+        "widgets": {
+            "cfg_scale": "CFG oranı",
+            "mode": "Mod",
+            "aspect_ratio": "En-boy oranı",
+            "task_id": "Görev Kimliği",
+            "auth_token": "İzin verilen jeton sayısı",
+            "model_name": "Model adı",
+            "duration": "Süre"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "KlingCameraControlT2VNode": {
+        "title": "Kling Metinden Videoya (kamera kontrolü)",
+        "inputs": {
+            "camera_control": "Kamera kontrol parametreleri",
+            "prompt": "İstem",
+            "negative_prompt": "Negatif istem"
+        },
+        "widgets": {
+            "cfg_scale": "CFG oranı",
+            "mode": "Mod",
+            "aspect_ratio": "En-boy oranı",
+            "task_id": "Görev Kimliği",
+            "auth_token": "İzin verilen jeton sayısı",
+            "model_name": "Model adı",
+            "duration": "Süre"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "KlingStartEndFrameNode": {
+        "title": "Kling İlk-Son Karede Video",
+        "inputs": {
+            "start_frame": "Başlangıç karesi",
+            "end_frame": "Bitiş karesi",
+            "camera_control": "Kamera kontrol parametreleri",
+            "prompt": "İstem",
+            "negative_prompt": "Negatif istem"
+        },
+        "widgets": {
+            "cfg_scale": "CFG oranı",
+            "mode": "Mod",
+            "aspect_ratio": "En-boy oranı",
+            "task_id": "Görev Kimliği",
+            "auth_token": "İzin verilen jeton sayısı",
+            "model_name": "Model adı",
+            "duration": "Süre"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "KlingVideoExtendNode": {
+        "title": "Kling Video Genişletme",
+        "inputs": {
+            "start_frame": "Başlangıç karesi",
+            "end_frame": "Bitiş karesi",
+            "video_id": "Video Kimliği",
+            "prompt": "İstem",
+            "negative_prompt": "Negatif istem"
+        },
+        "widgets": {
+            "cfg_scale": "CFG oranı",
+            "mode": "Mod",
+            "aspect_ratio": "En-boy oranı",
+            "task_id": "Görev Kimliği",
+            "auth_token": "İzin verilen jeton sayısı",
+            "model_name": "Model adı",
+            "duration": "Süre"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "KlingLipSyncAudioToVideoNode": {
+        "title": "Kling Ses Güdümlü Video Dudak Senkronu",
+        "inputs": {
+            "audio": "Ses",
+            "text": "Metin",
+            "video": "Video"
+        },
+        "widgets": {
+            "voice_language": "Konuşma dili",
+            "voice_speed": "Konuşma hızı",
+            "mode": "Mod",
+            "task_id": "Görev Kimliği",
+            "auth_token": "İzin verilen jeton sayısı",
+            "model_name": "Model adı",
+            "voice_id": "Ses Kimliği"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "KlingLipSyncTextToVideoNode": {
+        "title": "Kling Metin Güdümlü Dudak Senkronu Videosu",
+        "inputs": {
+            "audio": "Ses",
+            "text": "Metin",
+            "video": "Video"
+        },
+        "widgets": {
+            "voice_language": "Konuşma dili",
+            "voice_speed": "Konuşma hızı",
+            "mode": "Mod",
+            "task_id": "Görev Kimliği",
+            "auth_token": "İzin verilen jeton sayısı",
+            "voice": "Ses",
+            "voice_id": "Ses Kimliği"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "KlingSingleImageVideoEffectNode": {
+        "title": "Kling Tek Karakter Video Efekti",
+        "inputs": {
+            "image": "Görsel",
+            "video_id": "Video Kimliği"
+        },
+        "widgets": {
+            "dual_character": "Çift karakter",
+            "effect_scene": "Efekt sahnesi",
+            "mode": "Mod",
+            "aspect_ratio": "En-boy oranı",
+            "task_id": "Görev Kimliği",
+            "auth_token": "İzin verilen jeton sayısı",
+            "model_name": "Model adı",
+            "duration": "Süre"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "KlingDualCharacterVideoEffectNode": {
+        "title": "Kling Çift Karakter Video Efekti",
+        "inputs": {
+            "image_1": "Görsel1",
+            "image_2": "Görsel2",
+            "video_id": "Video Kimliği",
+            "image_left": "Sol görsel",
+            "image_right": "Sağ görsel"
+        },
+        "widgets": {
+            "dual_character": "Çift karakter",
+            "effect_scene": "Efekt sahnesi",
+            "mode": "Mod",
+            "aspect_ratio": "En-boy oranı",
+            "task_id": "Görev Kimliği",
+            "auth_token": "İzin verilen jeton sayısı",
+            "model_name": "Model adı",
+            "duration": "Süre"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "KlingOmniProTextToVideoNode": {
+        "title": "Kling Omni Metinden Videoya Düğümü (profesyonel sürüm)",
+        "inputs": {
+            "reference_images": "Referans görsel"
+        },
+        "widgets": {
+            "model_name": "Model adı",
+            "resolution": "Çözünürlük",
+            "auth_token": "İzin verilen jeton sayısı",
+            "aspect_ratio": "En-boy oranı",
+            "n": "Adet"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "string": "Dize"
+        }
+    },
+    "KlingOmniProFirstLastFrameNode": {
+        "title": "Kling Omni İlk-Son Karede Videoya (profesyonel sürüm)",
+        "inputs": {
+            "first_frame": "İlk kare görseli",
+            "end_frame": "Son kare görseli",
+            "reference_images": "Referans görsel"
+        },
+        "widgets": {
+            "model_name": "Model adı",
+            "resolution": "Çözünürlük",
+            "duration": "Süre",
+            "aspect_ratio": "En-boy oranı"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "string": "Dize"
+        }
+    },
+    "KlingOmniProImageToVideoNode": {
+        "title": "Kling Omni Görselden Videoya (profesyonel sürüm)",
+        "inputs": {
+            "reference_images": "Referans görsel"
+        },
+        "widgets": {
+            "model_name": "Model adı",
+            "resolution": "Çözünürlük",
+            "duration": "Süre",
+            "aspect_ratio": "En-boy oranı"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "string": "Dize"
+        }
+    },
+    "KlingOmniProVideoToVideoNode": {
+        "title": "Kling Omni Videodan Videoya (profesyonel sürüm)",
+        "inputs": {
+            "reference_video": "Referans video",
+            "reference_images": "Referans görsel"
+        },
+        "widgets": {
+            "model_name": "Model adı",
+            "keep_original_sound": "Orijinal sesi kullan",
+            "duration": "Süre",
+            "aspect_ratio": "En-boy oranı"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "string": "Dize"
+        }
+    },
+    "KlingOmniProEditVideoNode": {
+        "title": "Kling Omni Video Düzenleme (profesyonel sürüm)",
+        "inputs": {
+            "video": "Video",
+            "reference_images": "Referans görsel"
+        },
+        "widgets": {
+            "model_name": "Model adı",
+            "keep_original_sound": "Orijinal sesi koru"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        }
+    },
+    "KlingTextToVideoWithAudio": {
+        "title": "Kling Metinden Videoya (sesli)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "Model adı",
+            "mode": "Mod",
+            "aspect_ratio": "En-boy oranı",
+            "duration": "Süre",
+            "auth_token": "İzin verilen jeton sayısı",
+            "generate_audio": "Ses üret"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "KlingImageToVideoWithAudio": {
+        "title": "Kling Görselden Videoya (sesli)",
+        "inputs": {
+            "start_frame": "Başlangıç karesi"
+        },
+        "widgets": {
+            "model_name": "Model adı",
+            "mode": "Mod",
+            "generate_audio": "Ses üret",
+            "duration": "Süre"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "KlingMotionControl": {
+        "title": "Kling Hareket Kontrolü",
+        "inputs": {
+            "reference_video": "Referans video",
+            "reference_image": "Referans görsel"
+        },
+        "widgets": {
+            "mode": "Mod",
+            "character_orientation": "Karakter konumlandırma",
+            "keep_original_sound": "Orijinal sesi koru"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        }
+    },
+    "KlingAvatarNode": {
+        "title": "Kling Avatar 2",
+        "inputs": {
+            "image": "Görsel",
+            "sound_file": "Ses dosyası"
+        },
+        "widgets": {
+            "mode": "Mod",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        }
+    },
+    "LtxvApiTextToVideo": {
+        "title": "LTXV Metinden Videoya",
+        "inputs": {
+            "positive": "Olumlu koşullandırma",
+            "negative": "Olumsuz koşullandırma",
+            "vae": "VAE kodlayıcı",
+            "image": "Görsel"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "resolution": "Çözünürlük",
+            "duration": "Süre (saniye)",
+            "fps": "Kare hızı (fps)",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "generate_audio": "Ses üret"
+        },
+        "outputs": {
+            "video": "Video",
+            "VIDEO": "Video"
+        }
+    },
+    "LtxvApiImageToVideo": {
+        "title": "LTXV Görselden Videoya",
+        "inputs": {
+            "positive": "Olumlu koşullandırma",
+            "negative": "Olumsuz koşullandırma",
+            "vae": "VAE kodlayıcı",
+            "image": "Görsel"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "resolution": "Çözünürlük",
+            "duration": "Süre (saniye)",
+            "fps": "Kare hızı (fps)",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "generate_audio": "Ses üret"
+        },
+        "outputs": {
+            "video": "Video",
+            "VIDEO": "Video"
+        }
+    },
+    "LtxApi25TextToVideo": {
+        "title": "LTX 2.5 Metinden Videoya",
+        "inputs": {},
+        "widgets": {
+            "model": "Model",
+            "duration": "Süre (saniye)",
+            "resolution": "Çözünürlük",
+            "fps": "Kare hızı (fps)",
+            "generate_audio": "Ses üret",
+            "prompt": "İstem",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        }
+    },
+    "LtxApi25ImageToVideo": {
+        "title": "LTX 2.5 Görselden Videoya",
+        "inputs": {
+            "last_frame": "Önceki kare",
+            "image": "Görsel"
+        },
+        "widgets": {
+            "model": "Model",
+            "duration": "Süre (saniye)",
+            "resolution": "Çözünürlük",
+            "fps": "Kare hızı (fps)",
+            "generate_audio": "Ses üret",
+            "prompt": "İstem",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        }
+    },
+    "LtxApi25AudioToVideo": {
+        "title": "LTX 2.5 Sesten Videoya",
+        "inputs": {
+            "audio": "Ses",
+            "image": "Görsel"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "prompt": "İstem",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        }
+    },
+    "LumaVideoNode": {
+        "title": "Luma Metinden Videoya",
+        "inputs": {
+            "luma_concepts": "Luma Konsept",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "duration": "Süre",
+            "loop": "Döngü",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "auth_token": "İzin verilen jeton sayısı",
+            "weight": "Ağırlık"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "luma_concepts": "Luma Konsept",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "LumaImageToVideoNode": {
+        "title": "Luma Görselden Videoya",
+        "inputs": {
+            "first_image": "İlk kare görseli",
+            "last_image": "Son kare görseli",
+            "luma_concepts": "Luma Konsept",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "duration": "Süre",
+            "loop": "Döngü",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "auth_token": "İzin verilen jeton sayısı",
+            "weight": "Ağırlık"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "luma_concepts": "Luma Konsept",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "LumaConceptsNode": {
+        "title": "Luma Konsept",
+        "inputs": {
+            "image": "Görsel",
+            "prompt": "İstem",
+            "luma_concepts": "Luma Konsept"
+        },
+        "widgets": {
+            "image_type": "Görsel türü",
+            "concept1": "Konsept1",
+            "concept2": "Konsept2",
+            "concept3": "Konsept3",
+            "concept4": "Konsept4",
+            "auth_token": "İzin verilen jeton sayısı",
+            "aspect_ratio": "En-boy oranı",
+            "n": "Adet"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "luma_concepts": "Luma Konsept"
+        }
+    },
+    "MinimaxTextToVideoNode": {
+        "title": "MiniMax Metinden Videoya",
+        "inputs": {
+            "image": "Görsel",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "duration": "Süre",
+            "subject": "Özne",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "auth_token": "İzin verilen jeton sayısı",
+            "weight": "Ağırlık"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "luma_concepts": "Luma Konsept",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "MinimaxImageToVideoNode": {
+        "title": "MiniMax Görselden Videoya",
+        "inputs": {
+            "image": "Görsel",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "duration": "Süre",
+            "subject": "Özne",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "auth_token": "İzin verilen jeton sayısı",
+            "weight": "Ağırlık"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "luma_concepts": "Luma Konsept",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "MinimaxHailuoVideoNode": {
+        "title": "MiniMax Hailuo Video",
+        "inputs": {
+            "first_frame_image": "İlk kare görseli",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "prompt_optimizer": "İstem iyileştirme",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "duration": "Süre",
+            "subject": "Özne",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "auth_token": "İzin verilen jeton sayısı",
+            "weight": "Ağırlık"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "luma_concepts": "Luma Konsept",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "PixverseTextToVideoNode": {
+        "title": "PixVerse Metinden Videoya",
+        "inputs": {
+            "video": "Video",
+            "image": "Görsel",
+            "pixverse_template": "PixVerse Şablonu",
+            "prompt_text": "İstem metni",
+            "negative_prompt": "Negatif istem"
+        },
+        "widgets": {
+            "aspect_ratio": "En-boy oranı",
+            "quality": "Kalite",
+            "duration_seconds": "Süre (saniye)",
+            "motion_mode": "Hareket modu",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "string": "Dize"
+        }
+    },
+    "PixverseImageToVideoNode": {
+        "title": "PixVerse Görselden Videoya",
+        "inputs": {
+            "video": "Video",
+            "image": "Görsel",
+            "pixverse_template": "PixVerse Şablonu",
+            "prompt_text": "İstem metni",
+            "negative_prompt": "Negatif istem"
+        },
+        "widgets": {
+            "aspect_ratio": "En-boy oranı",
+            "quality": "Kalite",
+            "duration_seconds": "Süre (saniye)",
+            "motion_mode": "Hareket modu",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "string": "Dize"
+        }
+    },
+    "PixverseTransitionVideoNode": {
+        "title": "PixVerse Geçiş Videosu",
+        "inputs": {
+            "first_frame": "İlk kare",
+            "last_frame": "Son kare",
+            "pixverse_template": "PixVerse Şablonu",
+            "prompt_text": "İstem metni",
+            "negative_prompt": "Negatif istem"
+        },
+        "widgets": {
+            "aspect_ratio": "En-boy oranı",
+            "quality": "Kalite",
+            "duration_seconds": "Süre (saniye)",
+            "motion_mode": "Hareket modu",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "string": "Dize"
+        }
+    },
+    "PixverseTemplateNode": {
+        "title": "PixVerse Şablonu",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "template": "Şablon"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "pixverse_template": "PixVerse Şablonu"
+        }
+    },
+    "RunwayFirstLastFrameNode": {
+        "title": "Runway İlk-Son Kare Videosu",
+        "inputs": {
+            "positive": "Olumlu koşullandırma",
+            "negative": "Olumsuz koşullandırma",
+            "camera_conditions": "Kamera koşullandırması",
+            "start_frame": "Başlangıç karesi",
+            "end_frame": "Bitiş karesi"
+        },
+        "widgets": {
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "ratio": "En-boy oranı",
+            "duration": "Süre",
+            "batch_size": "Yığın boyutu"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "RunwayImageToVideoNodeGen3a": {
+        "title": "Runway Görselden Videoya (Gen3a Turbo)",
+        "inputs": {
+            "positive": "Olumlu koşullandırma",
+            "negative": "Olumsuz koşullandırma",
+            "camera_conditions": "Kamera koşullandırması",
+            "start_frame": "Başlangıç karesi",
+            "end_frame": "Bitiş karesi"
+        },
+        "widgets": {
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "ratio": "En-boy oranı",
+            "duration": "Süre",
+            "batch_size": "Yığın boyutu"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "RunwayImageToVideoNodeGen4": {
+        "title": "Runway Görselden Videoya (Gen4 Turbo)",
+        "inputs": {
+            "positive": "Olumlu koşullandırma",
+            "negative": "Olumsuz koşullandırma",
+            "camera_conditions": "Kamera koşullandırması",
+            "start_frame": "Başlangıç karesi",
+            "end_frame": "Bitiş karesi"
+        },
+        "widgets": {
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "ratio": "En-boy oranı",
+            "duration": "Süre",
+            "batch_size": "Yığın boyutu"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video_id": "Video Kimliği",
+            "duration": "Süre",
+            "string": "Dize"
+        }
+    },
+    "OpenAIVideoSora2": {
+        "title": "OpenAI Sora2 - Video",
+        "inputs": {
+            "image": "Görsel",
+            "audio": "Ses"
+        },
+        "widgets": {
+            "model": "Model",
+            "size": "Boyut",
+            "resolution": "Çözünürlük",
+            "duration": "Süre (saniye)",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "generate_audio": "Ses üret",
+            "prompt_extend": "İstemi genişlet",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "TopazVideoEnhance": {
+        "title": "Topaz Video İyileştirici",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "upscaler_enabled": "İyileştiriciyi etkinleştir",
+            "upscaler_model": "İyileştirme modeli",
+            "upscaler_resolution": "Çözünürlüğü artır",
+            "upscaler_creativity": "Süreyi artır",
+            "interpolation_enabled": "Girişimi etkinleştir",
+            "interpolation_model": "Girişim modeli",
+            "interpolation_slowmo": "Girişim ağır çekim",
+            "interpolation_frame_rate": "Girişim kare hızı",
+            "interpolation_duplicate": "Girişim yinelemeleri",
+            "interpolation_duplicate_threshold": "Girişim yineleme eşiği",
+            "dynamic_compression_level": "Dinamik sıkıştırma seviyesi"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video": "Video"
+        }
+    },
+    "TopazVideoEnhanceV2": {
+        "title": "Topaz Video İyileştirici V2",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "upscaler_model": "İyileştirme modeli",
+            "upscaler_resolution": "Çözünürlüğü artır",
+            "creativity": "Süre",
+            "sharp:": "Keskinlik",
+            "realism:": "Gerçekçilik",
+            "interpolation_model": "Girişim modeli",
+            "dynamic_compression_level": "Dinamik sıkıştırma seviyesi"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video": "Video"
+        }
+    },
+    "VeoVideoGenerationNode": {
+        "title": "Google Veo2 Video Üretimi",
+        "inputs": {
+            "image": "Görsel",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "negative_prompt": "Negatif istem",
+            "aspect_ratio": "En-boy oranı",
+            "duration_seconds": "Video süresi (saniye)",
+            "enhance_prompt": "İstem iyileştirme",
+            "person_generation": "İnsan üretme modu",
+            "seed": "Rastgele tohum",
+            "model": "Model",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "Veo3VideoGenerationNode": {
+        "title": "Google Veo3 Video Üretimi",
+        "inputs": {
+            "image": "Görsel",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "negative_prompt": "Negatif istem",
+            "aspect_ratio": "En-boy oranı",
+            "duration_seconds": "Video süresi (saniye)",
+            "enhance_prompt": "İstem iyileştirme",
+            "person_generation": "İnsan üretme modu",
+            "seed": "Rastgele tohum",
+            "model": "Model",
+            "generate_audio": "Ses üret",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "Veo3FirstLastFrameNode": {
+        "title": "Google Veo3 İlk-Son Kare Video Üretimi",
+        "inputs": {
+            "first_frame": "İlk kare görseli",
+            "last_frame": "Son kare görseli"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "negative_prompt": "Negatif istem",
+            "resolution": "Çözünürlük",
+            "aspect_ratio": "En-boy oranı",
+            "duration": "Süre (saniye)",
+            "enhance_prompt": "İstem iyileştirme",
+            "person_generation": "İnsan üretme modu",
+            "seed": "Rastgele tohum",
+            "model": "Model",
+            "generate_audio": "Ses üret",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "ViduTextToVideoNode": {
+        "title": "Vidu Metinden Videoya",
+        "inputs": {
+            "image": "Görsel",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "duration": "Süre (saniye)",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "movement_amplitude": "Hareket büyüklüğü"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "ViduImageToVideoNode": {
+        "title": "Vidu Görselden Videoya",
+        "inputs": {
+            "image": "Görsel",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "duration": "Süre (saniye)",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "movement_amplitude": "Hareket büyüklüğü"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "ViduReferenceVideoNode": {
+        "title": "Vidu Referanstan Videoya",
+        "inputs": {
+            "images": "Görsel grubu",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "duration": "Süre (saniye)",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "movement_amplitude": "Hareket büyüklüğü"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "ViduStartEndToVideoNode": {
+        "title": "Vidu İlk-Son Karede Video Üretimi",
+        "inputs": {
+            "first_frame": "İlk kare görseli",
+            "end_frame": "Son kare görseli"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "duration": "Süre (saniye)",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "movement_amplitude": "Hareket büyüklüğü"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "ViduExtendVideoNode": {
+        "title": "Vidu Video Uzatma",
+        "inputs": {
+            "video": "Video",
+            "end_frame": "Bitiş karesi"
+        },
+        "widgets": {
+            "model": "Model",
+            "duration": "Süre (saniye)",
+            "resolution": "Çözünürlük",
+            "prompt": "İstem",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        }
+    },
+    "ViduMultiFrameVideoNode": {
+        "title": "Vidu Çoklu Kare Video Üretimi",
+        "inputs": {
+            "start_image": "Başlangıç görseli",
+            "end_image1": "Bitiş görseli1",
+            "end_image2": "Bitiş görseli2"
+        },
+        "widgets": {
+            "model": "Model",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "resolution": "Çözünürlük",
+            "frames": "Çoklu kare",
+            "duration:": "Süre (saniye)",
+            "duration1:": "1 süre (saniye)",
+            "duration2:": "2 süre (saniye)"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "Vidu3TextToVideoNode": {
+        "title": "Vidu Q3 Metinden Videoya",
+        "inputs": {},
+        "widgets": {
+            "model": "Model",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "duration:": "Süre (saniye)",
+            "duration": "Süre (saniye)",
+            "audio": "Ses",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "Vidu3ImageToVideoNode": {
+        "title": "Vidu Q3 Görselden Videoya",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "duration": "Süre (saniye)",
+            "audio": "Ses",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "Vidu3StartEndToVideoNode": {
+        "title": "Vidu3 İlk-Son Karede Videoya",
+        "inputs": {
+            "first_frame": "İlk kare görseli",
+            "end_frame": "Son kare görseli"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "duration": "Süre (saniye)",
+            "audio": "Ses",
+            "prompt": "İstem",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "movement_amplitude": "Hareket büyüklüğü"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "WanTextToVideoApi": {
+        "title": "Wan Metinden Videoya",
+        "inputs": {
+            "audio": "Ses"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "size": "Boyut",
+            "resolution": "Çözünürlük",
+            "duration": "Süre (saniye)",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "generate_audio": "Ses üret",
+            "prompt_extend": "İstemi genişlet",
+            "watermark": "Filigran",
+            "shot_type": "Çekim türü"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "WanImageToVideoApi": {
+        "title": "Wan Görselden Videoya",
+        "inputs": {
+            "image": "Görsel",
+            "audio": "Ses"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "resolution": "Çözünürlük",
+            "duration": "Süre (saniye)",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "generate_audio": "Ses üret",
+            "prompt_extend": "İstemi genişlet",
+            "watermark": "Filigran",
+            "shot_type": "Çekim türü"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "WanReferenceVideoApi": {
+        "title": "Wan Referanstan Videoya",
+        "inputs": {
+            "character1": "Özellik1",
+            "audio": "Ses",
+            "VIDEO": "Video",
+            "video": "Video"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "size": "Boyut",
+            "duration": "Süre (saniye)",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "generate_audio": "Ses üret",
+            "prompt_extend": "İstemi genişlet",
+            "watermark": "Filigran",
+            "shot_type": "Çekim türü"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        }
+    },
+    "Wan2TextToVideoApi": {
+        "title": "Wan2.7 Metinden Videoya",
+        "inputs": {
+            "positive": "Olumlu koşullandırma",
+            "negative": "Olumsuz koşullandırma",
+            "audio": "Ses"
+        },
+        "widgets": {
+            "resolution": "Çözünürlük",
+            "ratio": "En-boy oranı",
+            "seed": "Rastgele tohum",
+            "duration": "Süre (saniye)",
+            "prompt_extend": "İstemi genişlet",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "Wan2ImageToVideoApi": {
+        "title": "Wan2.7 Görselden Videoya",
+        "inputs": {
+            "first_frame": "İlk kare görseli",
+            "last_frame": "Son kare görseli",
+            "audio": "Ses"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "duration": "Süre (saniye)",
+            "ratio": "En-boy oranı",
+            "seed": "Rastgele tohum",
+            "prompt_extend": "İstemi genişlet",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "Wan2VideoContinuationApi": {
+        "title": "Wan2.7 Video Uzatma",
+        "inputs": {
+            "first_clip": "İlk klip",
+            "last_frame": "Son kare görseli",
+            "audio": "Ses"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "duration": "Süre (saniye)",
+            "ratio": "En-boy oranı",
+            "seed": "Rastgele tohum",
+            "prompt_extend": "İstemi genişlet",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "Wan2VideoEditApi": {
+        "title": "Wan2.7 Video Düzenleme",
+        "inputs": {
+            "video": "Video",
+            "image1": "Görsel1",
+            "image2": "Görsel2",
+            "image3": "Görsel3",
+            "image4": "Görsel4"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "ratio": "En-boy oranı",
+            "duration": "Süre (saniye)",
+            "seed": "Rastgele tohum",
+            "audio_setting": "Ses ayarları",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "Wan2ReferenceVideoApi": {
+        "title": "Wan2.7 Referanstan Videoya",
+        "inputs": {
+            "video1": "Video1",
+            "video2": "Video2",
+            "video3": "Video3",
+            "image1": "Görsel1",
+            "image2": "Görsel2",
+            "image3": "Görsel3",
+            "image4": "Görsel4"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "ratio": "En-boy oranı",
+            "duration": "Süre (saniye)",
+            "seed": "Rastgele tohum",
+            "audio_setting": "Ses ayarları",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        }
+    },
+    "HappyHorseTextToVideoApi": {
+        "title": "HappyHorse Metinden Videoya",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "ratio": "En-boy oranı",
+            "duration": "Süre (saniye)",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "'HappyHorse' modeliyle bir metin isteminden bir video üretir."
+    },
+    "HappyHorse Image to Video": {
+        "title": "HappyHorse Görselden Videoya",
+        "inputs": {
+            "first_frame": "İlk kare görseli"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "duration": "Süre (saniye)",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        },
+        "description": "'HappyHorse' modeliyle ilk kare görselinden bir video üretir."
+    },
+    "HappyHorseVideoEditApi": {
+        "title": "HappyHorse Video Düzenleme",
+        "inputs": {
+            "video": "Video",
+            "image1": "Görsel1",
+            "image2": "Görsel2",
+            "image3": "Görsel3",
+            "image4": "Görsel4",
+            "image5": "Görsel5"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "ratio": "En-boy oranı",
+            "duration": "Süre (saniye)",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        },
+        "description": "'HappyHorse' modeliyle bir metin açıklaması veya referans görsel yoluyla video düzenler. /n Çıktı videosu 3-15 saniye arasıdır ve girdi videosunun süresiyle eşleşir; 15 saniyeyi aşan girdiler kırpılır."
+    },
+    "HappyHorseReferenceVideoApi": {
+        "title": "HappyHorse Referanstan Videoya",
+        "inputs": {
+            "video": "Video",
+            "image1": "Görsel1",
+            "image2": "Görsel2",
+            "image3": "Görsel3",
+            "image4": "Görsel4",
+            "image5": "Görsel5",
+            "image6": "Görsel6",
+            "image7": "Görsel7",
+            "image8": "Görsel8",
+            "image9": "Görsel9"
+        },
+        "widgets": {
+            "model": "Model",
+            "resolution": "Çözünürlük",
+            "ratio": "En-boy oranı",
+            "duration": "Süre (saniye)",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "VIDEO": "Video üret"
+        },
+        "description": "'HappyHorse' modeliyle, referans materyallere dayanarak bir kişi veya nesne içeren bir video üretir. /n Tek bir karakterin sergilenmesini ve birden fazla karakter arasındaki etkileşimi destekler."
+    },
+    "WavespeedFlashVSRNode": {
+        "title": "WaveSpeed FlashVSR Video Büyütme",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "target_resolution": "Hedef çözünürlük"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        }
+    },
+    "BeebleSwitchXImageEdit": {
+        "title": "Beeble SwitchX Görsel Düzenleme",
+        "inputs": {
+            "image": "Görsel",
+            "reference_image": "Referans görsel"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "alpha_mode": "Alpha modu",
+            "max_resolution": "Maks çözünürlük",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "image": "Görsel",
+            "alpha": "Alpha kanalı"
+        },
+        "description": "BeebleSwitchX ile tek bir görseli düzenleyin. Orijinal öznenin piksellerini korurken sahnendeki herhangi bir öğeyi (arka plan, aydınlatma, kıyafet) değiştirebilirsiniz. Yeni görsel efekti tanımlayan bir referans görsel ve/veya metin istemi sağlayın. Maks çözünürlük yaklaşık 2.77MP."
+    },
+    "FluxProUltraImageNode": {
+        "title": "Flux 1.1 [pro] Ultra HD Görsel",
+        "inputs": {
+            "image_prompt": "Görsel istemi",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "prompt_upsampling": "İstem büyütme",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "aspect_ratio": "En-boy oranı",
+            "raw": "Ham veri",
+            "auth_token": "İzin verilen jeton sayısı",
+            "image_prompt_strength": "Görsel istemi şiddeti"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "FluxKontextProImageNode": {
+        "title": "Flux.1 Görsel Bağlam [pro]",
+        "inputs": {
+            "input_image": "Girdi görseli",
+            "mask": "Maske",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "prompt_upsampling": "İstem büyütme",
+            "aspect_ratio": "En-boy oranı",
+            "guidance": "Yönlendirme şiddeti",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "steps": "Adım",
+            "seed": "Tohum",
+            "raw": "Ham veri",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "FluxKontextMaxImageNode": {
+        "title": "Flux.1 Görsel Bağlam [max]",
+        "inputs": {
+            "input_image": "Girdi görseli",
+            "mask": "Maske",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "prompt_upsampling": "İstem büyütme",
+            "aspect_ratio": "En-boy oranı",
+            "guidance": "Yönlendirme şiddeti",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "steps": "Adım",
+            "seed": "Tohum",
+            "raw": "Ham veri",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "FluxProFillNode": {
+        "title": "Flux.1 Görsel Doldurma",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "prompt_upsampling": "İstem büyütme",
+            "top": "Yukarı genişlet",
+            "bottom": "Aşağı genişlet",
+            "left": "Sola genişlet",
+            "right": "Sağa genişlet",
+            "guidance": "Yönlendirme şiddeti",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "steps": "Adım",
+            "seed": "Tohum",
+            "raw": "Ham veri",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "FluxEraseNode": {
+        "title": "Flux Görsel Silme",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "dilate_pixels": "Genişletilen piksel",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "Maskeledeki nesneleri görselden kaldırır ve arka planı yeniden oluşturur. Silmek istediğiniz alanın üzerine maske çizin."
+    },
+    "FluxVTONode": {
+        "title": "Flux Sanal Deneme",
+        "inputs": {
+            "person": "Kişi",
+            "garment": "Kıyafet"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "Sanal deneme: kişiyi sağlanan kıyafetle giydirir."
+    },
+    "Flux2ProImageNode": {
+        "title": "Flux 2. Nesil Ultra HD Görsel [profesyonel sürüm]",
+        "inputs": {
+            "images": "Görsel grubu",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "prompt_upsampling": "İstem büyütme",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "width": "Genişlik",
+            "height": "Yükseklik"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "Flux2MaxImageNode": {
+        "title": "Flux.2 Görsel Düğümü (maks)",
+        "inputs": {
+            "images": "Görsel",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "prompt_upsampling": "İstem büyütme",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "seed": "Tohum"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "Flux2ImageNode": {
+        "title": "Flux.2 Görsel Üretimi",
+        "inputs": {
+            "image_1": "Görsel girişi"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "model": "Model",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "seed": "Rastgele rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "Flux.2 modelini kullanarak görsel üreten düğüm"
+    },
+    "Flux3TextToVideoNode": {
+        "title": "Flux.3 Metinden Videoya",
+        "inputs": {},
+        "widgets": {
+            "prompt": "İstem",
+            "aspect_ratio": "En-boy oranı",
+            "duration": "Süre",
+            "resolution": "Çözünürlük",
+            "generate_audio": "Ses üret",
+            "safety_tolerance": "Güvenlik toleransı",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "FLUX3 ile bir metin isteminden senkronize ses içeren bir video üretir."
+    },
+    "Flux3ImageToVideoNode": {
+        "title": "Flux.3 Görselden Videoya",
+        "inputs": {
+            "image_0": "Görsel0",
+            "image_1": "Görsel1",
+            "image_2": "Görsel2",
+            "image_3": "Görsel3",
+            "image_4": "Görsel4",
+            "image_5": "Görsel5"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "placement": "Düzen",
+            "aspect_ratio": "En-boy oranı",
+            "duration": "Süre",
+            "resolution": "Çözünürlük",
+            "generate_audio": "Ses üret",
+            "safety_tolerance": "Güvenlik toleransı",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "1 ila 10 görsel kullanarak bir FLUX3 animasyonu üretin. Her görsel klipte bir sahne olur: bir görsel onu açar, iki görsel birinciden ikincisine geçer, daha fazla görsel ise seçtiğiniz zaman noktalarına dağıtılır veya sabitlenir."
+    },
+    "Flux3VideoContinuationNode": {
+        "title": "Flux.3 Video Uzatma",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "aspect_ratio": "En-boy oranı",
+            "duration": "Süre",
+            "resolution": "Çözünürlük",
+            "generate_audio": "Ses üret",
+            "safety_tolerance": "Güvenlik toleransı",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "FLUX 3 video devam ettirme: yeni klip, sağladığınız videonun son karelerini sürdürür."
+    },
+    "FluxVideoUpscaleNode": {
+        "title": "Flux.3 Video Büyütme",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "upscale_factor": "Büyütme çarpanı",
+            "model": "Model",
+            "prompt": "İstem",
+            "auto_downscale": "Otomatik ölçekleme",
+            "safety_tolerance": "Güvenlik toleransı",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "FLUX süper çözünürlük teknolojisiyle videoyu 1,5-3 kat büyütün; hem orijinal kaliteyi tam koruyun hem de ayrıntıları yaratıcı şekilde iyileştirin."
+    },
+    "BriaImageEditNode": {
+        "title": "Bria Görsel Düzenleme",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "guidance_scale": "Yönlendirme şiddeti",
+            "steps": "Adım",
+            "moderation": "Moderasyon",
+            "prompt_content_moderation": "İstem içeriği moderasyonu",
+            "visual_input_moderation": "Görsel girdi moderasyonu",
+            "visual_output_moderation": "Görsel çıktı moderasyonu"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "structured_prompt": "Yapılandırılmış istem"
+        }
+    },
+    "BriaRemoveImageBackground": {
+        "title": "Bria Görsel Arka Planını Kaldır",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "moderation": "Moderasyon",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "images": "Görsel grubu"
+        }
+    },
+    "ByteDanceImageNode": {
+        "title": "ByteDance Görsel",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "size_preset": "Boyut ön ayarı değeri",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "guidance_scale": "Yönlendirme oranı",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "image": "Görsel",
+            "IMAGE": "Görsel"
+        }
+    },
+    "ByteDanceSeedreamNode": {
+        "title": "ByteDance Jimeng 4.0",
+        "inputs": {
+            "image": "Görsel",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "size_preset": "Boyut ön ayarı değeri",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "sequential_image_generation": "Dizili görsel üretimi",
+            "max_images": "Maks görsel sayısı",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "guidance_scale": "Yönlendirme oranı",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "image": "Görsel",
+            "IMAGE": "Görsel"
+        }
+    },
+    "ByteDanceSeedreamNodeV2": {
+        "title": "ByteDance Seedream 4.5 ve 5.0",
+        "inputs": {
+            "image_1": "Görsel 1"
+        },
+        "widgets": {
+            "model": "Model",
+            "size_preset": "Boyut ön ayarı",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "max_images": "Maks görsel sayısı",
+            "fail_on_partial": "Kısmi başarısızlıkta dur",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "image": "Görsel"
+        },
+        "description": "Metinden görsele üretim ile 4K'ya kadar çözünürlükte hassas tek cümle düzenlemeyi birleştirir."
+    },
+    "ByteDanceCreateImageAsset": {
+        "title": "ByteDance Görsel Varlığı Oluştur",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "group_id": "Grup Kimliği"
+        },
+        "outputs": {
+            "asset_id": "Varlık Kimliği",
+            "group_id": "Grup Kimliği"
+        },
+        "description": "Bir Seedance2.0 kişisel görsel varlığı oluşturur. Girdi görselini yükler ve belirtilen varlık grubuna kaydeder. Varlık Kimliği boşsa, varlığı eklemeden önce yeni bir grup oluşturmak için gerçek kişisel H5 doğrulama akışını çalıştırır."
+    },
+    "GeminiImageNode": {
+        "title": "Google Gemini Görsel",
+        "inputs": {
+            "images": "Görsel",
+            "files": "Gemini girdi dosyası"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "aspect_ratio": "En-boy oranı",
+            "seed": "Rastgele tohum",
+            "model": "Model",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "STRING": "Dize"
+        }
+    },
+    "GeminiImage2Node": {
+        "title": "Nano Banana Pro (Google Gemini Görsel)",
+        "inputs": {
+            "images": "Görsel grubu",
+            "files": "Dosya"
+        },
+        "widgets": {
+            "model": "Model",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "response_modalities": "Yanıt biçimi"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "GeminiNanoBanana2": {
+        "title": "Nano Banana Pro (Google Gemini Görsel)",
+        "inputs": {
+            "images": "Görsel grubu",
+            "files": "Dosya"
+        },
+        "widgets": {
+            "model": "Model",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "response_modalities": "Yanıt biçimi",
+            "thinking_level": "Düşünce seviyesi"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "STRING": "Dize"
+        },
+        "description": "Google Vertex API üzerinden senkron olarak görsel üretir veya düzenler."
+    },
+    "GeminiNanoBanana2V2": {
+        "title": "Nano Banana 2",
+        "inputs": {
+            "image_1": "Görsel1",
+            "files": "Dosya"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "model": "Model",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "thinking_level": "Düşünme seviyesi",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "response_modalities": "Yanıt modalitesi",
+            "system_prompt": "Sistem istemi"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "STRING": "Dize",
+            "thought_image": "Görsel"
+        },
+        "description": "Görsel üretmek için Nano Banana 2 düğümü."
+    },
+    "GrokImageNode": {
+        "title": "Grok Görsel",
+        "inputs": {},
+        "widgets": {
+            "model": "Model",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "aspect_ratio": "En-boy oranı",
+            "number_of_images": "Görsel sayısı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "GrokImageEditNode": {
+        "title": "Grok Görsel Düzenleme",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "model": "Model",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "number_of_images": "Görsel sayısı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "GrokImageEditNodeV2": {
+        "title": "Grok Görsel Düzenleme",
+        "inputs": {
+            "image_1": "Görsel1",
+            "image_2": "Görsel2"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "model": "Model",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "number_of_images": "Görsel sayısı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "HitPawGeneralImageEnhance": {
+        "title": "HitPaw Görsel Genel İyileştirme",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "model": "Model",
+            "upscale_factor": "Büyütme oranı",
+            "auto_downscale": "Otomatik ölçekleme"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "IdeogramV1": {
+        "title": "Ideogram Metinden Görsele V1",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "turbo": "Hızlandırma modu",
+            "aspect_ratio": "En-boy oranı",
+            "magic_prompt_option": "Sihirli istem seçeneği",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "negative_prompt": "Negatif istem",
+            "seed": "Tohum",
+            "num_images": "Görsel sayısı",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "IdeogramV2": {
+        "title": "Ideogram Metinden Görsele V2",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "turbo": "Hızlandırma modu",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "magic_prompt_option": "Sihirli istem seçeneği",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "negative_prompt": "Negatif istem",
+            "style_type": "Stil türü",
+            "seed": "Tohum",
+            "num_images": "Görsel sayısı",
+            "color_palette": "Renk paleti",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "IdeogramV3": {
+        "title": "Ideogram Metinden Görsele V3",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske",
+            "prompt": "İstem",
+            "character_image": "Karakter görseli",
+            "character_mask": "Karakter maskesi"
+        },
+        "widgets": {
+            "turbo": "Hızlandırma modu",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "magic_prompt_option": "Sihirli istem seçeneği",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "rendering_speed": "Render hızı",
+            "style_type": "Stil türü",
+            "seed": "Tohum",
+            "num_images": "Görsel sayısı",
+            "color_palette": "Renk paleti",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "IdeogramV4": {
+        "title": "Ideogram Metinden Görsele V4",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "resolution": "Çözünürlük",
+            "rendering_speed": "Render hızı",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "KlingVirtualTryOnNode": {
+        "title": "Kling Sanal Deneme",
+        "inputs": {
+            "image": "Görsel",
+            "human_image": "Kişi görseli",
+            "cloth_image": "Giysi görseli"
+        },
+        "widgets": {
+            "image_type": "Görsel türü",
+            "image_fidelity": "Görsel sadakati",
+            "human_fidelity": "Kişi sadakati",
+            "model_name": "Model adı",
+            "task_id": "Görev Kimliği",
+            "auth_token": "İzin verilen jeton sayısı",
+            "aspect_ratio": "En-boy oranı",
+            "n": "Adet"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "string": "Dize"
+        }
+    },
+    "KlingImageGenerationNode": {
+        "title": "Kling Görsel Üretimi",
+        "inputs": {
+            "image": "Görsel",
+            "prompt": "İstem",
+            "negative_prompt": "Negatif istem"
+        },
+        "widgets": {
+            "image_type": "Görsel türü",
+            "image_fidelity": "Görsel sadakati",
+            "human_fidelity": "Kişi sadakati",
+            "model_name": "Model adı",
+            "task_id": "Görev Kimliği",
+            "auth_token": "İzin verilen jeton sayısı",
+            "aspect_ratio": "En-boy oranı",
+            "n": "Adet"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "string": "Dize"
+        }
+    },
+    "KlingOmniProImageNode": {
+        "title": "Kling Omni Görsel (profesyonel sürüm)",
+        "inputs": {
+            "reference_images": "Referans görsel"
+        },
+        "widgets": {
+            "model_name": "Model adı",
+            "resolution": "Çözünürlük",
+            "auth_token": "İzin verilen jeton sayısı",
+            "aspect_ratio": "En-boy oranı",
+            "n": "Adet"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "string": "Dize"
+        }
+    },
+    "Krea2ImageNode": {
+        "title": "Krea 2 Görsel",
+        "inputs": {
+            "style_reference": "Stil referansı",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "creativity": "Yaratıcılık",
+            "moodboard_id": "Moodboard Kimliği",
+            "moodboard_strength": "Moodboard şiddeti",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {},
+        "description": "Krea2 ile görsel üretin — orta (ifadesel illüstrasyon) veya büyük (güçlü gerçekçi stil) boyutu seçin. İsteğe bağlı moodboard ve 10'a kadar zincirli görsel stil referansı destekler."
+    },
+    "Krea2StyleReferenceNode": {
+        "title": "Krea 2 Stil Referansı",
+        "inputs": {
+            "image": "Görsel",
+            "style_reference": "Stil referansı"
+        },
+        "widgets": {
+            "strength": "Şiddet"
+        },
+        "outputs": {
+            "style_reference": "Stil referansı"
+        },
+        "description": "Krea2 üreticisine bir görsel stil referansı ekler. Birden fazla Krea2 Stil Referansı düğümünü zincirleyin (en fazla 10) ve son 'stil referansı' çıktısını Krea2 Görsel'e besleyin. Her görsel ComfyAPI deposuna yüklenir ve bir URL olarak geçirilir."
+    },
+    "LumaImageNode": {
+        "title": "Luma Metinden Görsele",
+        "inputs": {
+            "image_luma_ref": "Luma Görsel Referansı",
+            "style_image": "Stil görseli",
+            "prompt": "İstem",
+            "character_image": "Kişi görseli"
+        },
+        "widgets": {
+            "model": "Model",
+            "aspect_ratio": "En-boy oranı",
+            "seed": "Tohum",
+            "style_image_weight": "Stil görseli ağırlığı",
+            "luma_ref": "Luma Referansı",
+            "auth_token": "İzin verilen jeton sayısı",
+            "max_refs": "Maks referans sayısı",
+            "weight": "Ağırlık"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "luma_concepts": "Luma Konsept"
+        }
+    },
+    "LumaImageModifyNode": {
+        "title": "Luma Görselden Görsele",
+        "inputs": {
+            "image": "Görsel",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "image_weight": "Görsel ağırlığı",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "auth_token": "İzin verilen jeton sayısı",
+            "weight": "Ağırlık"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "LumaReferenceNode": {
+        "title": "Luma Referansı",
+        "inputs": {
+            "image": "Görsel",
+            "prompt": "İstem",
+            "luma_ref": "Luma Referansı"
+        },
+        "widgets": {
+            "image_type": "Görsel türü",
+            "weight": "Ağırlık",
+            "human_fidelity": "Kişi sadakati",
+            "model_name": "Model adı",
+            "task_id": "Görev Kimliği",
+            "auth_token": "İzin verilen jeton sayısı",
+            "aspect_ratio": "En-boy oranı",
+            "n": "Adet"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "luma_ref": "Luma Referansı"
+        }
+    },
+    "LumaImageNode2": {
+        "title": "Luma UNI-1 Görsel",
+        "inputs": {
+            "image_1": "Görsel 1"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "model": "Model",
+            "aspect_ratio": "En-boy oranı",
+            "style": "Stil",
+            "web_search": "Web araması",
+            "seed": "Tohum"
+        },
+        "outputs": {},
+        "description": "Luma UNI-1 modeliyle metinden görsel üretir."
+    },
+    "LumaImageEditNode2": {
+        "title": "Luma UNI-1 Görsel Düzenleme",
+        "inputs": {
+            "source": "Kaynak yolu",
+            "image_1": "Görsel 1"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "model": "Model",
+            "style": "Stil",
+            "web_search": "Web araması",
+            "seed": "Tohum"
+        },
+        "outputs": {},
+        "description": "Luma UNI-1 modeliyle mevcut bir görseli bir metin istemine göre düzenler."
+    },
+    "MagnificImageUpscalerCreativeNode": {
+        "title": "Magnific Görsel Büyütme (yaratıcı mod)",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "scale_factor": "Ölçek çarpanı",
+            "optimized_for": "Optimizasyon hedefi",
+            "creativity": "Yaratıcılık",
+            "hdr": "HDR yüksek dinamik aralık",
+            "resemblance": "Benzerlik",
+            "fractality": "Fraktallık",
+            "engine": "Motor",
+            "auto_downscale": "Otomatik alt örnekleme"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "MagnificImageUpscalerPreciseV2Node": {
+        "title": "Magnific Görsel Büyütme V2",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "scale_factor": "Ölçek çarpanı",
+            "flavor": "Stil",
+            "sharpen": "Keskinleştirme",
+            "smart_grain": "Akıllı tane",
+            "ultra_detail": "Ultra ince ayrıntı",
+            "auto_downscale": "Otomatik alt örnekleme"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "MagnificImageStyleTransferNode": {
+        "title": "Magnific Görsel Stil Dönüşümü",
+        "inputs": {
+            "image": "Görsel",
+            "reference_image": "Referans görsel"
+        },
+        "widgets": {
+            "style_strength": "Stil şiddeti",
+            "structure_strength": "Yapı şiddeti",
+            "flavor": "Stil",
+            "engine": "Motor",
+            "portrait_mode": "Portre modu",
+            "fixed_generation": "Sabit üretim"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "MagnificImageRelightNode": {
+        "title": "Magnific Görsel Yeniden Işıklandırma",
+        "inputs": {
+            "image": "Görsel",
+            "reference_image": "Referans görsel"
+        },
+        "widgets": {
+            "light_transfer_strength": "Işıklandırma şiddeti",
+            "style": "Stil",
+            "interpolate_from_original": "Ham veriden girişim yap",
+            "change_background": "Arka planı değiştir",
+            "preserve_details": "Ayrıntıları koru",
+            "advanced_settings": "Gelişmiş ayarlar"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "MagnificImageSkinEnhancerNode": {
+        "title": "Magnific Görsel Cilt İyileştirici",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "sharpen": "Keskinleştirme",
+            "smart_grain": "Akıllı tane",
+            "mode": "Mod"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "OpenAIDalle2": {
+        "title": "OpenAI DALL·E 2",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "size": "Boyut",
+            "n": "Adet",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "string": "Dize"
+        }
+    },
+    "OpenAIDalle3": {
+        "title": "OpenAI DALL·E 3",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "size": "Boyut",
+            "quality": "Kalite",
+            "style": "Stil",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "string": "Dize"
+        }
+    },
+    "OpenAIGPTImage1": {
+        "title": "OpenAI GPT Görsel 1",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "background": "Arka plan",
+            "size": "Boyut",
+            "quality": "Kalite",
+            "n": "Adet",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "string": "Dize"
+        }
+    },
+    "OpenAIGPTImageNodeV2": {
+        "title": "OpenAI GPT Görsel 2",
+        "inputs": {
+            "image_1": "Görsel1",
+            "image_2": "Görsel2",
+            "image_3": "Görsel3",
+            "mask": "Maske",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "size": "Boyut",
+            "custom_width": "Genişliği ayarla",
+            "custom_height": "Yüksekliği ayarla",
+            "background": "Arka plan",
+            "quality": "Kalite",
+            "n": "Adet",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "string": "Dize"
+        }
+    },
+    "QuiverTextToSVGNode": {
+        "title": "Metinden Vektör Görsel SVG",
+        "inputs": {
+            "ref_0": "Referans",
+            "ref_1": "Referans1",
+            "ref_2": "Referans2",
+            "ref_3": "Referans3"
+        },
+        "widgets": {
+            "model": "Model",
+            "temperature": "Sıcaklık",
+            "top_p": "En olası oran",
+            "presence_penalty": "Varlık cezası",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "seed": "Tohum"
+        },
+        "outputs": {
+            "SVG": "Vektör görsel"
+        }
+    },
+    "QuiverImageToSVGNode": {
+        "title": "Görselden Vektör Görsel SVG",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "auto_crop": "Otomatik kırpma",
+            "model": "Model",
+            "target_size": "Hedef boyut",
+            "temperature": "Sıcaklık",
+            "top_p": "En olası oran",
+            "presence_penalty": "Varlık cezası",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "seed": "Tohum"
+        },
+        "outputs": {
+            "SVG": "Vektör görsel"
+        }
+    },
+    "RecraftTextToImageNode": {
+        "title": "Recraft Metinden Görsele",
+        "inputs": {
+            "recraft_style": "Recraft Stil",
+            "negative_prompt": "Negatif istem",
+            "recraft_controls": "Recraft Kontrol Parametreleri"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "size": "Boyut",
+            "n": "Adet",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "string": "Dize"
+        }
+    },
+    "RecraftImageToImageNode": {
+        "title": "Recraft Görselden Görsele",
+        "inputs": {
+            "image": "Girdi görseli",
+            "recraft_style": "Recraft Stil",
+            "negative_prompt": "Negatif istem",
+            "recraft_controls": "Recraft Kontrol Parametreleri",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "n": "Üretim adedi",
+            "strength": "Yeniden çizim şiddeti",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "RecraftImageInpaintingNode": {
+        "title": "Recraft Görsel Onarımı",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske",
+            "recraft_style": "Recraft Stil",
+            "negative_prompt": "Negatif istem",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "n": "Üretim adedi",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "RecraftTextToVectorNode": {
+        "title": "Recraft Metinden Vektöre",
+        "inputs": {
+            "recraft_controls": "Recraft Kontrol Parametreleri",
+            "negative_prompt": "Negatif istem",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "substyle": "Alt stil türü",
+            "size": "Çıkış boyutu",
+            "n": "Üretim adedi",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VECTOR": "Vektör grafiği"
+        }
+    },
+    "RecraftVectorizeImageNode": {
+        "title": "Recraft Görsel Vektörleştirme",
+        "inputs": {
+            "image": "Görsel",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {},
+        "outputs": {
+            "VECTOR": "Vektör grafiği"
+        }
+    },
+    "RecraftRemoveBackgroundNode": {
+        "title": "Recraft Arka Planı Kaldırma",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "RecraftReplaceBackgroundNode": {
+        "title": "Recraft Arka Planı Değiştirme",
+        "inputs": {
+            "image": "Görsel",
+            "recraft_style": "Recraft Stil",
+            "negative_prompt": "Negatif istem",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {
+            "prompt": "Arka plan açıklaması",
+            "n": "Üretim adedi",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "RecraftCrispUpscaleNode": {
+        "title": "Recraft Görseli Net Büyütme",
+        "inputs": {
+            "image": "Görsel",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "RecraftCreativeUpscaleNode": {
+        "title": "Recraft Görseli Yaratıcı Büyütme",
+        "inputs": {
+            "image": "Görsel",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "RecraftStyleV3RealisticImage": {
+        "title": "Recraft Stil - Gerçekçi Görsel",
+        "inputs": {
+            "colors": "Renk",
+            "background_color": "Arka plan rengi"
+        },
+        "widgets": {
+            "substyle": "Alt stil"
+        },
+        "outputs": {
+            "recraft_style": "Recraft Stil"
+        }
+    },
+    "RecraftStyleV3DigitalIllustration": {
+        "title": "Recraft Stil - Dijital İllüstrasyon",
+        "inputs": {
+            "colors": "Renk",
+            "background_color": "Arka plan rengi"
+        },
+        "widgets": {
+            "substyle": "Alt stil"
+        },
+        "outputs": {
+            "recraft_style": "Recraft Stil"
+        }
+    },
+    "RecraftStyleV3LogoRaster": {
+        "title": "Recraft Stil - Raster Logo",
+        "inputs": {
+            "colors": "Renk",
+            "background_color": "Arka plan rengi"
+        },
+        "widgets": {
+            "substyle": "Alt stil"
+        },
+        "outputs": {
+            "recraft_style": "Recraft Stil"
+        }
+    },
+    "RecraftStyleV3InfiniteStyleLibrary": {
+        "title": "Recraft Stil - Sınırsız Stil Kütüphanesi",
+        "inputs": {
+            "colors": "Renk",
+            "background_color": "Arka plan rengi"
+        },
+        "widgets": {
+            "style_id": "Stil Kimliği"
+        },
+        "outputs": {
+            "recraft_style": "Recraft Stil"
+        }
+    },
+    "RecraftCreateStyleNode": {
+        "title": "Recraft Tasarım Stili",
+        "inputs": {
+            "image0": "Görsel0",
+            "image1": "Görsel1"
+        },
+        "widgets": {
+            "style": "Stil"
+        },
+        "outputs": {
+            "style": "Stil",
+            "style_id": "Stil Kimliği"
+        }
+    },
+    "RecraftColorRGB": {
+        "title": "Recraft Renk RGB",
+        "inputs": {
+            "recraft_color": "Recraft Renk"
+        },
+        "widgets": {
+            "r": "Kırmızı değeri",
+            "g": "Yeşil değeri",
+            "b": "Mavi değeri"
+        },
+        "outputs": {
+            "recraft_color": "Recraft Renk",
+            "string": "Dize"
+        }
+    },
+    "RecraftControls": {
+        "title": "Recraft Kontrol Parametreleri",
+        "inputs": {
+            "colors": "Renk",
+            "background_color": "Arka plan rengi"
+        },
+        "widgets": {
+            "r": "Kırmızı değeri",
+            "g": "Yeşil değeri",
+            "b": "Mavi değeri"
+        },
+        "outputs": {
+            "recraft_controls": "Recraft Kontrol Parametreleri",
+            "string": "Dize"
+        }
+    },
+    "RecraftV4TextToImageNode": {
+        "title": "Recraft Metinden Görsele V4",
+        "inputs": {
+            "recraft_controls": "Recraft Kontrol Parametreleri"
+        },
+        "widgets": {
+            "model": "Model",
+            "size": "Boyut",
+            "n": "Adet",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "string": "Dize"
+        }
+    },
+    "RecraftV4TextToVectorNode": {
+        "title": "Recraft Metinden Vektöre V4",
+        "inputs": {
+            "recraft_controls": "Recraft Kontrol Parametreleri"
+        },
+        "widgets": {
+            "model": "Model",
+            "size": "Boyut",
+            "n": "Adet",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "SVG": "SVG vektör biçimi"
+        }
+    },
+    "ReveImageCreateNode": {
+        "title": "Reve Metinden Görsele",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "aspect_ratio": "En-boy oranı",
+            "test_time_scaling": "Zaman ölçeklemeyi test et",
+            "upscale": "Büyütme",
+            "remove_background": "Arka planı kaldır",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "string": "Dize"
+        }
+    },
+    "ReveImageEditNode": {
+        "title": "Reve Görsel Düzenleme",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "model": "Model",
+            "aspect_ratio": "En-boy oranı",
+            "test_time_scaling": "Zaman ölçeklemeyi test et",
+            "upscale": "Büyütme",
+            "remove_background": "Arka planı kaldır",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "string": "Dize"
+        }
+    },
+    "ReveImageRemixNode": {
+        "title": "Reve Görsel Remix",
+        "inputs": {
+            "image_0": "Görsel0",
+            "image_1": "Görsel1",
+            "image_2": "Görsel2",
+            "image_3": "Görsel3",
+            "image_4": "Görsel4",
+            "image_5": "Görsel5"
+        },
+        "widgets": {
+            "model": "Model",
+            "aspect_ratio": "En-boy oranı",
+            "test_time_scaling": "Zaman ölçeklemeyi test et",
+            "upscale": "Büyütme",
+            "remove_background": "Arka planı kaldır",
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "string": "Dize"
+        }
+    },
+    "RunwayTextToImageNode": {
+        "title": "Runway Metinden Görsele",
+        "inputs": {
+            "positive": "Olumlu koşullandırma",
+            "negative": "Olumsuz koşullandırma",
+            "reference_image": "Referans görsel",
+            "start_frame": "Başlangıç karesi",
+            "end_frame": "Bitiş karesi"
+        },
+        "widgets": {
+            "seed": "Tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "ratio": "En-boy oranı",
+            "duration": "Süre",
+            "batch_size": "Yığın boyutu"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "string": "Dize"
+        }
+    },
+    "StabilityStableImageUltraNode": {
+        "title": "Stability AI Ultra HD Görsel",
+        "inputs": {
+            "image": "Görsel",
+            "negative_prompt": "Negatif istem",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "aspect_ratio": "En-boy oranı",
+            "style_preset": "Stil ön ayarı",
+            "seed": "Rastgele tohum",
+            "image_denoise": "Gürültü azaltma şiddeti",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "StabilityStableImageSD_3_5Node": {
+        "title": "Stability AI SD 3.5 Görsel",
+        "inputs": {
+            "image": "Görsel",
+            "negative_prompt": "Negatif istem",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "aspect_ratio": "En-boy oranı",
+            "style_preset": "Stil ön ayarı",
+            "cfg_scale": "CFG yönlendirme katsayısı",
+            "seed": "Rastgele tohum",
+            "image_denoise": "Gürültü azaltma şiddeti",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "StabilityUpscaleConservativeNode": {
+        "title": "Stability AI Muhafazakâr Büyütme",
+        "inputs": {
+            "image": "Görsel",
+            "negative_prompt": "Negatif istem",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "creativity": "Yaratıcılık şiddeti",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "StabilityUpscaleCreativeNode": {
+        "title": "Stability AI Yaratıcı Büyütme",
+        "inputs": {
+            "image": "Görsel",
+            "negative_prompt": "Negatif istem",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "creativity": "Yaratıcılık şiddeti",
+            "style_preset": "Stil ön ayarı",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "StabilityUpscaleFastNode": {
+        "title": "Stability AI Hızlı Büyütme",
+        "inputs": {
+            "image": "Görsel",
+            "auth_token": "İzin verilen jeton sayısı"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "TopazImageEnhance": {
+        "title": "Topaz Görsel İyileştirici",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "model": "Model",
+            "subject_detection": "Hedef algılama",
+            "face_enhancement": "Yüz iyileştirme",
+            "face_enhancement_creativity": "Yüz iyileştirme yaratıcılığı",
+            "face_enhancement_strength": "Yüz iyileştirme şiddeti",
+            "crop_to_fill": "Doldurmak için kırp",
+            "output_width": "Çıkış genişliği",
+            "output_height": "Çıkış yüksekliği",
+            "creativity": "Yaratıcılık",
+            "face_preservation": "Yüz koruması",
+            "color_preservation": "Renk koruması"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "video": "Video"
+        }
+    },
+    "WanTextToImageApi": {
+        "title": "Wan Metinden Görsele",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "resolution": "Çözünürlük",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "prompt_extend": "İstemi genişlet",
+            "watermark": "Filigran",
+            "shot_type": "Çekim türü"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "WanImageToImageApi": {
+        "title": "Wan Görselden Görsele",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "resolution": "Çözünürlük",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "prompt_extend": "İstemi genişlet",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "WavespeedImageUpscaleNode": {
+        "title": "WaveSpeed Görsel Büyütme",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "model": "Model",
+            "target_resolution": "Hedef çözünürlük"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "ElevenLabsSpeechToText": {
+        "title": "Eleven Labs Sesten Metne",
+        "inputs": {
+            "audio": "Ses"
+        },
+        "widgets": {
+            "model": "Model",
+            "tag_audio_events": "Ses olaylarını işaretle",
+            "diarize": "Konuşmacı tanıma",
+            "diarization_threshold": "Konuşmacı tanıma eşiği",
+            "temperature": "Sıcaklık",
+            "timestamps_granularity": "Zaman damgası hassasiyeti",
+            "language_code": "Dil kodu",
+            "num_speakers": "Konuşmacı sayısı",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "language_code": "Dil kodu",
+            "text": "Metin",
+            "seed": "Kelime JSON verisi"
+        }
+    },
+    "ElevenLabsVoiceSelector": {
+        "title": "Eleven Labs Ses Seçici",
+        "inputs": {},
+        "widgets": {
+            "voice": "Ses"
+        },
+        "outputs": {
+            "voice": "Ses"
+        }
+    },
+    "ElevenLabsTextToSpeech": {
+        "title": "Eleven Labs Metinden Sese",
+        "inputs": {
+            "voice": "Ses"
+        },
+        "widgets": {
+            "stabillity": "Kararlılık",
+            "apply_text_normalization": "Metin normalizasyonunu uygula",
+            "model": "Model",
+            "speed": "Hız",
+            "similarity_boost": "Benzerlik artırma",
+            "use_speaker_boost": "Konuşmacı güçlendirme kullan",
+            "style": "Stil",
+            "language_code": "Dil kodu",
+            "output_format": "Çıkış biçimi",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "AUDIO": "Ses"
+        }
+    },
+    "ElevenLabsAudioIsolation": {
+        "title": "Eleven Labs Ses Ayırma",
+        "inputs": {
+            "audio": "Ses"
+        },
+        "widgets": {},
+        "outputs": {
+            "AUDIO": "Ses"
+        }
+    },
+    "ElevenLabsTextToSoundEffects": {
+        "title": "Eleven Labs Metinden Ses Efektine",
+        "inputs": {
+            "text": "Metin"
+        },
+        "widgets": {
+            "model": "Model",
+            "duration": "Süre (saniye)",
+            "loop": "Döngü",
+            "prompt_influence": "İstem etkisi",
+            "output_format": "Çıkış biçimi"
+        },
+        "outputs": {
+            "AUDIO": "Ses"
+        }
+    },
+    "ElevenLabsInstantVoiceClone": {
+        "title": "Eleven Labs Anında Ses Klonlama",
+        "inputs": {
+            "audio0": "Ses0",
+            "audio1": "Ses1",
+            "audio2": "Ses2",
+            "audio3": "Ses3",
+            "audio4": "Ses4",
+            "audio5": "Ses5",
+            "audio6": "Ses6"
+        },
+        "widgets": {
+            "remove_background_noise": "Arka plan gürültüsünü gider"
+        },
+        "outputs": {
+            "voice": "Ses"
+        }
+    },
+    "ElevenLabsSpeechToSpeech": {
+        "title": "Eleven Labs Sesten Sese",
+        "inputs": {
+            "voice": "Ses",
+            "audio": "Ses"
+        },
+        "widgets": {
+            "stabillity": "Kararlılık",
+            "model": "Model",
+            "speed": "Hız",
+            "similarity_boost": "Benzerlik artırma",
+            "use_speaker_boost": "Konuşmacı güçlendirme kullan",
+            "style": "Stil",
+            "output_format": "Çıkış biçimi",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "remove_background_noise": "Arka plan gürültüsünü gider"
+        },
+        "outputs": {
+            "AUDIO": "Ses"
+        }
+    },
+    "ElevenLabsTextToDialogue": {
+        "title": "Eleven Labs Metinden Diyaloğa",
+        "inputs": {
+            "voice1": "Ses1",
+            "voice2": "Ses2",
+            "voice3": "Ses3",
+            "voice4": "Ses4",
+            "voice5": "Ses5",
+            "voice6": "Ses6",
+            "voice7": "Ses7",
+            "voice8": "Ses8",
+            "voice9": "Ses9",
+            "voice10": "Ses10"
+        },
+        "widgets": {
+            "stabillity": "Kararlılık",
+            "apply_text_normalization": "Metin normalizasyonunu uygula",
+            "model": "Model",
+            "inputs": "Girdi sayısı",
+            "language_code": "Dil kodu",
+            "output_format": "Çıkış biçimi",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "AUDIO": "Ses"
+        }
+    },
+    "SoniloVideoToMusic": {
+        "title": "Sonilo Videodan Müziğe",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "duration": "Süre (saniye)",
+            "model": "Model",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "AIDEO": "Ses"
+        }
+    },
+    "SoniloTextToMusic": {
+        "title": "Sonilo Metinden Müziğe",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "AIDEO": "Ses"
+        }
+    },
+    "StabilityTextToAudio": {
+        "title": "Stability AI Metinden Sese",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "duration": "Süre",
+            "steps": "Adım",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "audio": "Ses",
+            "AUDIO": "Ses"
+        }
+    },
+    "StabilityAudioToAudio": {
+        "title": "Stability AI Sesten Sese",
+        "inputs": {
+            "audio": "Ses",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "duration": "Süre",
+            "steps": "Adım",
+            "seed": "Rastgele tohum",
+            "strength": "Şiddet",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "audio": "Ses",
+            "AUDIO": "Ses"
+        }
+    },
+    "StabilityAudioInpaint": {
+        "title": "Stability AI Ses Yeniden Çizim (Inpaint)",
+        "inputs": {
+            "audio": "Ses",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "duration": "Süre",
+            "steps": "Adım",
+            "seed": "Rastgele tohum",
+            "mask_start": "Başlangıç maskesi",
+            "mask_end": "Bitiş maskesi",
+            "control_after_generate": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "audio": "Ses",
+            "AUDIO": "Ses"
+        }
+    },
+    "TencentTextToModelNode": {
+        "title": "Hunyuan 3D: Metinden Modele (profesyonel sürüm)",
+        "inputs": {},
+        "widgets": {
+            "model": "Model",
+            "face_count": "Yüz sayısı",
+            "pbr": "Fizik tabanlı iyileştirmeli render",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "texture_image": "Doku görseli",
+            "GLB": "GLB biçimi",
+            "OBJ": "OBJ biçimi"
+        }
+    },
+    "TencentImageToModelNode": {
+        "title": "Hunyuan 3D: Görselden Modele (profesyonel sürüm)",
+        "inputs": {
+            "image": "Görsel",
+            "image_left": "Sol görsel",
+            "image_right": "Sağ görsel",
+            "image_back": "Arka görsel"
+        },
+        "widgets": {
+            "model": "Model",
+            "face_count": "Yüz sayısı",
+            "generate_type": "Üretim türü",
+            "pbr": "Fizik tabanlı iyileştirmeli render",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "texture_image": "Doku görseli",
+            "GLB": "GLB biçimi",
+            "OBJ": "OBJ biçimi",
+            "optional_metallic": "Metal (isteğe bağlı)",
+            "optional_normal": "Diffuse (isteğe bağlı)",
+            "optional_roughness": "Pürüzlülük (isteğe bağlı)"
+        }
+    },
+    "TencentModelTo3DUVNode": {
+        "title": "Hunyuan 3D: Modelden UV Haritasına",
+        "inputs": {
+            "model_3d": "3D Model"
+        },
+        "widgets": {
+            "model": "Model",
+            "face_count": "Yüz sayısı",
+            "pbr": "Fizik tabanlı iyileştirmeli render",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "GLB": "GLB biçimi",
+            "OBJ": "OBJ biçimi"
+        }
+    },
+    "Tencent3DTextureEditNode": {
+        "title": "Hunyuan 3D: 3D Doku Düzenleme",
+        "inputs": {
+            "model_3d": "3D Model"
+        },
+        "widgets": {
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "texture_image": "Doku görseli",
+            "GLB": "GLB biçimi",
+            "OBJ": "OBJ biçimi",
+            "uv_image": "UV görseli"
+        }
+    },
+    "Tencent3DPartNode": {
+        "title": "Hunyuan 3D: 3D Parçalar",
+        "inputs": {
+            "model_3d": "3D Model"
+        },
+        "widgets": {
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "FBX": "FBX biçimi"
+        }
+    },
+    "TencentSmartTopologyNode": {
+        "title": "Hunyuan 3D: Akıllı Topoloji",
+        "inputs": {
+            "model_3d": "3D Model"
+        },
+        "widgets": {
+            "model": "Model",
+            "polygon_type": "Çokgen türü",
+            "face_level": "Yüzey seviyesi",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "GLB": "GLB biçimi",
+            "OBJ": "OBJ biçimi"
+        }
+    },
+    "MeshyTextToModelNode": {
+        "title": "Meshy: Metinden Modele",
+        "inputs": {},
+        "widgets": {
+            "model": "Model",
+            "style": "Stil",
+            "should_remesh": "Yeniden ağ oluşturma",
+            "topology": "Topoloji",
+            "target_polycount": "Hedef çokgen sayısı",
+            "symmetry_mode": "Simetri modu",
+            "pose_mode": "Poz modu",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "meshy_task_id": "Meshy Görev Numarası",
+            "GLB": "GLB biçimi",
+            "FBX": "FBX biçimi"
+        }
+    },
+    "MeshyRefineNode": {
+        "title": "Meshy: Taslak Modeli İyileştirme",
+        "inputs": {
+            "meshy_task_id": "Meshy Görev Numarası",
+            "texture_image": "Doku görseli"
+        },
+        "widgets": {
+            "model": "Model",
+            "enable_pbr": "PBR fizik tabanlı iyileştirmeli render'ı etkinleştir",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "meshy_task_id": "Meshy Görev Numarası",
+            "GLB": "GLB biçimi",
+            "FBX": "FBX biçimi"
+        }
+    },
+    "MeshyImageToModelNode": {
+        "title": "Meshy: Görselden Modele",
+        "inputs": {
+            "image": "Görsel",
+            "texture_image": "Doku görseli"
+        },
+        "widgets": {
+            "model": "Model",
+            "should_remesh": "Yeniden ağ oluşturma",
+            "topology": "Topoloji",
+            "target_polycount": "Hedef çokgen sayısı",
+            "symmetry_mode": "Simetri modu",
+            "should_texture": "Doku uygula",
+            "enable_pbr": "PBR fizik tabanlı iyileştirmeli render'ı etkinleştir",
+            "pose_mode": "Poz modu",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "meshy_task_id": "Meshy Görev Numarası",
+            "GLB": "GLB biçimi",
+            "FBX": "FBX biçimi"
+        }
+    },
+    "MeshyMultiImageToModelNode": {
+        "title": "Meshy: Çoklu Görselden Modele",
+        "inputs": {
+            "image": "Görsel",
+            "image0": "Görsel0",
+            "image1": "Görsel1",
+            "texture_image": "Doku görseli"
+        },
+        "widgets": {
+            "model": "Model",
+            "should_remesh": "Yeniden ağ oluşturma",
+            "topology": "Topoloji",
+            "target_polycount": "Hedef çokgen sayısı",
+            "symmetry_mode": "Simetri modu",
+            "should_texture": "Doku uygula",
+            "enable_pbr": "PBR fizik tabanlı iyileştirmeli render'ı etkinleştir",
+            "pose_mode": "Poz modu",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "meshy_task_id": "Meshy Görev Numarası",
+            "GLB": "GLB biçimi",
+            "FBX": "FBX biçimi"
+        }
+    },
+    "MeshyRigModelNode": {
+        "title": "Meshy: İskelet Modeli",
+        "inputs": {
+            "meshy_task_id": "Meshy Görev Numarası",
+            "texture_image": "Doku görseli"
+        },
+        "widgets": {
+            "height_meters": "Yükseklik (metre)"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "meshy_task_id": "Meshy Görev Numarası",
+            "GLB": "GLB biçimi",
+            "FBX": "FBX biçimi"
+        }
+    },
+    "MeshyAnimateModelNode": {
+        "title": "Meshy: Animasyon Modeli",
+        "inputs": {
+            "rig_task_id": "İskelet görev numarası",
+            "texture_image": "Doku görseli"
+        },
+        "widgets": {
+            "action_id": "Eylem Kimliği"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "meshy_task_id": "Meshy Görev Numarası",
+            "GLB": "GLB biçimi",
+            "FBX": "FBX biçimi"
+        }
+    },
+    "MeshyTextureNode": {
+        "title": "Meshy: Doku Modeli",
+        "inputs": {
+            "meshy_task_id": "Meshy Görev Numarası",
+            "image_style": "Görsel stili"
+        },
+        "widgets": {
+            "model": "Model",
+            "enable_original_uv": "Orijinal UV'yi etkinleştir",
+            "pbr": "PBR fizik tabanlı iyileştirmeli render"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "meshy_task_id": "Meshy Görev Numarası",
+            "GLB": "GLB biçimi",
+            "FBX": "FBX biçimi"
+        }
+    },
+    "Rodin3D_Regular": {
+        "title": "Rodin 3D Üretim - Standart Üretim",
+        "inputs": {
+            "images": "Görsel grubu"
+        },
+        "widgets": {
+            "Seed": "Rastgele tohum",
+            "Material_Type": "Malzeme türü",
+            "Polygon_count": "Çokgen sayısı"
+        },
+        "outputs": {
+            "3D_Model_Path": "3D model yolu",
+            "3D Model Path": "3D model yolu"
+        }
+    },
+    "Rodin3D_Detail": {
+        "title": "Rodin 3D Üretim - Ayrıntı Üretimi",
+        "inputs": {
+            "images": "Görsel grubu"
+        },
+        "widgets": {
+            "Seed": "Rastgele tohum",
+            "Material_Type": "Malzeme türü",
+            "Polygon_count": "Çokgen sayısı"
+        },
+        "outputs": {
+            "3D_Model_Path": "3D model yolu",
+            "3D Model Path": "3D model yolu"
+        }
+    },
+    "Rodin3D_Smooth": {
+        "title": "Rodin 3D Üretim - Düzgünleştirme Üretimi",
+        "inputs": {
+            "images": "Görsel grubu"
+        },
+        "widgets": {
+            "Seed": "Rastgele tohum",
+            "Material_Type": "Malzeme türü",
+            "Polygon_count": "Çokgen sayısı"
+        },
+        "outputs": {
+            "3D_Model_Path": "3D model yolu",
+            "3D Model Path": "3D model yolu"
+        }
+    },
+    "Rodin3D_Sketch": {
+        "title": "Rodin 3D Üretim - Eskiz Üretimi",
+        "inputs": {
+            "images": "Görsel grubu"
+        },
+        "widgets": {
+            "Seed": "Rastgele tohum",
+            "Material_Type": "Malzeme türü",
+            "Polygon_count": "Çokgen sayısı"
+        },
+        "outputs": {
+            "3D_Model_Path": "3D model yolu",
+            "3D Model Path": "3D model yolu"
+        }
+    },
+    "Rodin3D_Gen2": {
+        "title": "Rodin 3D Üretim - Gen-2 Üretici",
+        "inputs": {
+            "images": "Görsel grubu",
+            "Images": "Görsel grubu"
+        },
+        "widgets": {
+            "Seed": "Rastgele tohum",
+            "Material_Type": "Malzeme türü",
+            "Polygon_count": "Çokgen sayısı",
+            "TAPose": "TA pozu"
+        },
+        "outputs": {
+            "3D_Model_Path": "3D model yolu",
+            "3D Model Path": "3D model yolu"
+        }
+    },
+    "Rodin3D_Gen25_Image": {
+        "title": "Rodin 3D Gen-2.5 - Görselden 3D'ye",
+        "inputs": {
+            "image0": "Görsel girişi 0",
+            "image1": "Görsel girişi 1"
+        },
+        "widgets": {
+            "mode": "Mod",
+            "tier": "Seviye",
+            "polygon_count": "Çokgen sayısı",
+            "creative": "Yaratıcılık",
+            "material": "Malzeme",
+            "geometry_file_format": "Geometri dosya biçimi",
+            "texture_mode": "Doku modu",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "TAPose": "TA pozu",
+            "hd_texture": "HD doku",
+            "texture_delight": "Doku iyileştirme",
+            "use_original_alpha": "Orijinal Alpha'yı kullan",
+            "addon_highpack": "Yüksek kapasiteli eklenti",
+            "bbox_width": "Sınır kutusu genişliği",
+            "bbox_height": "Sınır kutusu yüksekliği",
+            "bbox_length": "Sınır kutusu uzunluğu",
+            "height_cm": "Yükseklik (cm)"
+        },
+        "outputs": {
+            "model_file": "Model dosyası"
+        },
+        "description": "2D görseli 3D modele dönüştürür"
+    },
+    "Rodin3D_Gen25_Text": {
+        "title": "Rodin 3D Gen-2.5 - Metinden 3D'ye",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "mode": "Mod",
+            "tier": "Seviye",
+            "polygon_count": "Çokgen sayısı",
+            "creative": "Yaratıcılık",
+            "material": "Malzeme",
+            "geometry_file_format": "Geometri dosya biçimi",
+            "texture_mode": "Doku modu",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası kontrol",
+            "TAPose": "TA pozu",
+            "hd_texture": "HD doku",
+            "texture_delight": "Doku iyileştirme",
+            "addon_highpack": "Yüksek kapasiteli eklenti",
+            "bbox_width": "Sınır kutusu genişliği",
+            "bbox_height": "Sınır kutusu yüksekliği",
+            "bbox_length": "Sınır kutusu uzunluğu",
+            "height_cm": "Yükseklik (cm)"
+        },
+        "outputs": {
+            "model_file": "Model dosyası"
+        },
+        "description": "Metin istemine göre 3D model üretmek için Rodin 3D Gen-2.5 Metinden 3D'ye düğümü."
+    },
+    "TripoTextToModelNode": {
+        "title": "Tripo: Metinden Modele",
+        "inputs": {
+            "images": "Görsel grubu"
+        },
+        "widgets": {
+            "model_version": "Model sürümü",
+            "style": "Stil",
+            "texture": "Doku haritası",
+            "pbr": "PBR malzeme",
+            "image_seed": "Görsel tohumu",
+            "model_seed": "Model tohumu",
+            "texture_seed": "Doku tohumu",
+            "texture_quality": "Doku kalitesi",
+            "face_limit": "Yüzey sayısı sınırı",
+            "quad": "Dörtlügen ağ"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "model task_id": "Model görev kimliği",
+            "model_task_id": "Model görev kimliği"
+        }
+    },
+    "TripoImageToModelNode": {
+        "title": "Tripo: Görselden Modele",
+        "inputs": {
+            "image": "Görsel",
+            "images": "Görsel grubu"
+        },
+        "widgets": {
+            "model_version": "Model sürümü",
+            "style": "Stil",
+            "texture": "Doku haritası",
+            "pbr": "PBR malzeme",
+            "image_seed": "Görsel tohumu",
+            "model_seed": "Model tohumu",
+            "orientation": "Yönlendirme",
+            "texture_seed": "Doku tohumu",
+            "texture_quality": "Doku kalitesi",
+            "texture_alignment": "Doku hizalama",
+            "face_limit": "Yüzey sayısı sınırı",
+            "quad": "Dörtlügen ağ"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "model task_id": "Model görev kimliği",
+            "model_task_id": "Model görev kimliği"
+        }
+    },
+    "TripoMultiviewToModelNode": {
+        "title": "Tripo: Çoklu Görünümden Modele",
+        "inputs": {
+            "image": "Görsel",
+            "images": "Görsel grubu",
+            "image_left": "Sol görünüm",
+            "image_back": "Arka görünüm",
+            "image_right": "Sağ görünüm"
+        },
+        "widgets": {
+            "model_version": "Model sürümü",
+            "orientation": "Yönlendirme",
+            "style": "Stil",
+            "texture": "Doku haritası",
+            "pbr": "PBR malzeme",
+            "image_seed": "Görsel tohumu",
+            "model_seed": "Model tohumu",
+            "texture_seed": "Doku tohumu",
+            "texture_quality": "Doku kalitesi",
+            "texture_alignment": "Doku hizalama",
+            "face_limit": "Yüzey sayısı sınırı",
+            "quad": "Dörtlügen ağ"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "model task_id": "Model görev kimliği",
+            "model_task_id": "Model görev kimliği"
+        }
+    },
+    "TripoP1TextToModelNode": {
+        "title": "Tripo P1: Metinden Modele",
+        "inputs": {
+            "prompt": "İstem",
+            "negative_prompt": "Olumsuz istem"
+        },
+        "widgets": {
+            "output_mode": "Çıkış modu",
+            "image_seed": "Görsel rastgele tohum",
+            "face_limit": "Yüzey sınırı",
+            "model_seed": "Model rastgele tohum",
+            "auto_size": "Otomatik boyut",
+            "export_uv": "UV dışa aktar",
+            "compress_geometry": "Geometriyi sıkıştır"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "model task_id": "Model görev kimliği"
+        },
+        "description": "Metin istemini 3D modele dönüştürür"
+    },
+    "TripoP1ImageToModelNode": {
+        "title": "Tripo P1: Görselden Modele",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "output_mode": "Çıkış modu",
+            "enable_image_autofix": "Otomatik görsel onarımını etkinleştir",
+            "face_limit": "Yüzey sınırı",
+            "model_seed": "Model rastgele tohum",
+            "auto_size": "Otomatik boyut",
+            "export_uv": "UV dışa aktar",
+            "compress_geometry": "Geometriyi sıkıştır"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "model_task_id": "Model görev kimliği"
+        },
+        "description": "TripoP1 görselden 3D'ye. Düşük çokgenli, oyun düzeyi ağlar için optimize edilmiştir."
+    },
+    "TripoP1MultiviewToModelNode": {
+        "title": "Tripo P1: Çoklu Görünümden Modele",
+        "inputs": {
+            "image": "Görsel",
+            "image_left": "Sol görünüm görseli",
+            "image_back": "Arka görünüm görseli",
+            "image_right": "Sağ görünüm görseli"
+        },
+        "widgets": {
+            "output_mode": "Çıkış modu",
+            "face_limit": "Yüzey sayısı sınırı",
+            "model_seed": "Model rastgele tohum",
+            "auto_size": "Otomatik boyut",
+            "export_uv": "UV dışa aktar",
+            "compress_geometry": "Geometriyi sıkıştır"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "model_task_id": "Model görev kimliği"
+
+        },
+        "description": "TripoP1 çoklu görünümden 3D'ye, 2 ila 4 referans görselden dönüştürür; sıra [ön, sol, arka, sağ]. Ön görsel zorunludur; diğer üçünün herhangi bir kombinasyonu atlanabilir."
+    },
+    "TripoTextureNode": {
+        "title": "Tripo: Doku Modeli",
+        "inputs": {
+            "model task_id": "Model görev kimliği",
+            "model_task_id": "Model görev kimliği"
+        },
+        "widgets": {
+            "model_version": "Model sürümü",
+            "style": "Stil",
+            "texture": "Doku haritası",
+            "pbr": "PBR malzeme",
+            "image_seed": "Görsel tohumu",
+            "model_seed": "Model tohumu",
+            "orientation": "Yönlendirme",
+            "texture_seed": "Doku tohumu",
+            "texture_quality": "Doku kalitesi",
+            "texture_alignment": "Doku hizalama",
+            "face_limit": "Yüzey sayısı sınırı",
+            "quad": "Dörtlügen ağ"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "model_task_id": "Model görev kimliği"
+        }
+    },
+    "TripoRefineNode": {
+        "title": "Tripo: Taslak Modeli İyileştirme",
+        "inputs": {
+            "model task_id": "Model görev kimliği",
+            "model_task_id": "Model görev kimliği"
+        },
+        "widgets": {
+            "format": "Biçim",
+            "face_limittexture_size": "Yüzey doku boyutu sınırı",
+            "texture_format": "Doku biçimi",
+            "quad": "Dörtlügen ağ"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "model task_id": "Model görev kimliği",
+            "model_task_id": "Model görev kimliği"
+        }
+    },
+    "TripoRigNode": {
+        "title": "Tripo: Rig Modeli",
+        "inputs": {
+            "original model task id": "Orijinal model görev kimliği",
+            "original_model_task_id": "Orijinal model görev kimliği"
+        },
+        "widgets": {
+            "format": "Biçim",
+            "face_limittexture_size": "Yüzey doku boyutu sınırı",
+            "texture_format": "Doku biçimi",
+            "quad": "Dörtlügen ağ"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "rig task_id": "Rig görev kimliği",
+            "rig_task_id": "Rig görev kimliği"
+        }
+    },
+    "TripoRetargetNode": {
+        "title": "Tripo: Yönü Değiştirilmiş Model",
+        "inputs": {
+            "original model task id": "Orijinal model görev kimliği",
+            "original_model_task_id": "Orijinal model görev kimliği"
+        },
+        "widgets": {
+            "animation": "Animasyon",
+            "face_limittexture_size": "Yüzey doku boyutu sınırı",
+            "texture_format": "Doku biçimi",
+            "quad": "Dörtlügen ağ"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "retarget task_id": "Yönlendirme görev kimliği",
+            "retarget_task_id": "Yönlendirme görev kimliği"
+        }
+    },
+    "BriaVideoReplaceBackground": {
+        "title": "Bria Video Arka Planını Değiştirme",
+        "inputs": {
+            "video": "Video",
+            "background_image": "Arka plan görseli",
+            "background_video": "Arka plan videosu"
+        },
+        "widgets": {
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "Bria ile videonun arka planını sağlanan görsel veya videoyla değiştirir. Çıktı, ön planın çözünürlüğünü ve kare hızını korur; arka plan farklı bir en-boy oranına sahipse sığdırmak için gerilir, bu nedenle bozulmasız sonuç için arka plan oranının tutarlı olduğundan emin olun."
+    },
+    "RunwayAleph2VideoToVideoNode": {
+        "title": "Runway Aleph2 Videodan Videoya",
+        "inputs": {
+            "video": "Video",
+            "keyframes": "Anahtar kare",
+            "prompt_images": "İstem görseli"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "seed": "Rastgele tohum",
+            "generate_control": "Üretim kontrolü",
+            "public_figure_threshold": "Tanınmış kişi eşiği"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "Runway'ın Aleph2 modeliyle bir metin istemi içeren videoyu düzenler. Aleph2, videonuzu orijinal hareketi ve ritmi korurken dönüştürür (yeniden stilize eder, ışığı değiştirir, öğe ekler/çıkarır, bakış açısını değiştirir); çıktı çözünürlüğü girdi videosuyla eşleşir, girdi videosu 2-30 saniye olmalı ve kare hızı 30fps veya altıdır. İsteğe bağlı olarak düzenlemeyi yönlendirmek için anahtar kareler (girdi videosuna sabitlenmiş) veya istem görseli (çıktı videosuna sabitlenmiş) kullanılabilir — yalnızca biri, aynı anda değil."
+    },
+    "TripoImportModelNode": {
+        "title": "Tripo: Model İçe Aktar",
+        "inputs": {
+            "model_3d": "3D model dosya yolu"
+        },
+        "widgets": {},
+        "outputs": {
+            "model task_id": "Model görev kimliği"
+        },
+        "description": "Harici 3D modelleri (örn. Rodin, Hunyuan3D veya yerel dosyalardan) Tripo'ya içe aktarın ki Tripo'nun art işleme düğümlerinde kullanılabilsin: doku, iskelet, dönüşüm. GLB biçimi önerilir: dokular yalnızca dosyaya gömülü olduğunda içe aktarma sonrası korunabilir. Not: içe aktarılan bir modele doku eşlemek için önce bir doku istemi ayarlanmalıdır."
+    },
+    "GeminiVideoOmni": {
+        "title": "Google Gemini Omni (video)",
+        "inputs": {
+            "image_1": "Görsel_1",
+            "video_1": "Video_1"
+        },
+        "widgets": {
+            "model": "Model",
+            "model_prompt": "Model istemi",
+            "temperature": "Sıcaklık",
+            "seed": "Tohum",
+            "generate_after_control": "Üretim sonrası kontrol"
+        },
+        "outputs": {},
+        "description": "Google'ın Gemini Omni Flash modeliyle bir metin isteminden ses içeren bir video üretir. İsteğe bağlı olarak üretim sonucunu yönlendirmek veya düzenlemek için referans görsel ya da video sağlayın. İstenen süreyi (3-10 saniye) ve en-boy oranını (16:9 veya 9:16) doğrudan istemde belirtin."
+    },
+    "LumaRay32TextToVideoNode": {
+        "title": "Luma Ray 3.2 Metinden Videoya",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "duration": "Süre",
+            "seed": "Tohum",
+            "loop": "Döngü"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "generation_id": "Üretim Kimliği"
+        },
+        "description": "Luma'nın Ray3.2 modeliyle bir metin isteminden video üretir."
+    },
+    "LumaRay32ImageToVideoNode": {
+        "title": "Luma Ray 3.2 Görselden Videoya",
+        "inputs": {
+            "start_frame": "Başlangıç karesi",
+            "end_frame": "Bitiş karesi",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "resolution": "Çözünürlük",
+            "loop": "Döngü",
+            "seed": "Rastgele tohum",
+            "generate_after_control": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "video": "Video",
+            "generation_id": "Üretim Kimliği"
+        },
+        "description": "Luma'nın Ray3.2 modeliyle başlangıç ve/veya bitiş karesinden video üretir. Görsel sabitlemeli üretim her zaman 5 saniyedir."
+    },
+    "LumaRay32KeyframesToVideoNode": {
+        "title": "Luma Ray 3.2 Anahtar Karede Videoya",
+        "inputs": {
+            "keyframes": "Anahtar kare",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "resolution": "Çözünürlük",
+            "duration": "Süre",
+            "seed": "Tohum",
+            "generate_after_control": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "generation_id": "Üretim Kimliği"
+        },
+        "description": "Anahtar kareleri videoya dönüştürür"
+    },
+    "LumaRay32VideoEditNode": {
+        "title": "Luma Ray 3.2 Video Düzenleme",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "resolution": "Çözünürlük",
+            "strength": "Şiddet",
+            "seed": "Tohum",
+            "generate_after_control": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "generation_id": "Üretim Kimliği"
+        },
+        "description": "LumaRay3.2 ile mevcut bir videoyu orijinal hareketi korurken yeni bir isteme göre yeniden render eder (yeniden tasarlar, ışığı değiştirir, öğe ekler/çıkarır). Kaynak video en fazla 18 saniye; düzenlenen video kaynak uzunluğunu korur."
+    },
+    "LumaRay32VideoReframeNode": {
+        "title": "Luma Ray 3.2 Video Yeniden Çerçeveleme",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "strength": "Şiddet",
+            "seed": "Tohum",
+            "generate_after_control": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "generation_id": "Üretim Kimliği"
+        },
+        "description": "LumaRay3.2 ile mevcut videonun en-boy oranını değiştirir ve yeni açılan tuval alanlarını doldurur. Kaynak video en fazla 30 saniye. Çıktı saniyesi başına ücretlendirilir."
+    },
+    "LumaRay32ExtendVideoNode": {
+        "title": "Luma Ray 3.2 Video Genişletme",
+        "inputs": {},
+        "widgets": {
+            "source_generation_id": "Kaynak üretim kimliği",
+            "direction": "Yön",
+            "loop": "Döngü",
+            "prompt": "İstem",
+            "resolution": "Çözünürlük",
+            "seed": "Tohum",
+            "generate_after_control": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "VIDEO": "Video",
+            "generation_id": "Üretim Kimliği"
+        },
+        "description": "Önceki bir Ray3.2 üretimini ileri (sonrasına devam) veya geri (öncesine ekle) doğru genişletir. Önceki LumaRay3.2 düğümünün Kaynak Üretim Kimliği çıktısını bağlayın. Genişletme her zaman 5 saniyedir."
+    },
+    "HeyGenTalkingPhotoNode": {
+        "title": "HeyGen Konuşan Fotoğraf",
+        "inputs": {
+            "image": "Görsel",
+            "speech_source": "Ses kaynağı",
+            "speech_text": "Ses metni"
+        },
+        "widgets": {
+            "speech_source": "Ses kaynağı",
+            "voice": "Ses",
+            "custom_voice_id": "Özel ses kimliği",
+            "voice_speed": "Konuşma hızı",
+            "resolution": "Çözünürlük",
+            "aspect_ratio": "En-boy oranı",
+            "expressiveness": "İfade gücü",
+            "seed": "Tohum",
+            "speech_text": "Ses metni"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "Herhangi bir kişi görselini dudak senkronlu konuşma videosuna dönüştürür (HeyGen Avatar IV). Metin senaryosuyla veya özel sesle sürülebilir."
+    },
+    "HeyGenAvatarVideoNode": {
+        "title": "HeyGen Konuşan Sunucu Videosu",
+        "inputs": {
+
+        },
+        "widgets": {
+            "engine": "Motor",
+            "avatar": "Sanal karakter",
+            "speech source": "Ses kaynağı",
+            "voice": "Ses",
+            "custom_voice_id": "Özel ses kimliği",
+            "voice_speed": "Konuşma hızı",
+            "custom_avatar_id": "Özel karakter kimliği",
+            "resolution": "Çözünürlük",
+            "aspect_ratio": "En-boy oranı",
+            "background_color": "Arka plan rengi",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "HeyGen sanal karakterlerinden konuşan bir sunucu videosu üretir. HeyGen'ın en popüler ortak karakterlerini içerir; herhangi bir görünüm kimliği geçersiz kılma olarak sağlanabilir."
+    },
+    "HeyGenCreateAvatarNode": {
+        "title": "HeyGen Karakter Oluşturma",
+        "inputs": {
+            "ref_image_1": "Referans görsel1"
+        },
+        "widgets": {
+            "source": "Kaynak dosya"
+        },
+        "outputs": {
+            "avatar_id": "Karakter Kimliği",
+            "preview": "Önizleme görseli"
+        },
+        "description": "Kaynak görseller ve istem kullanarak bir sanal karakter oluşturmak için"
+    },
+    "HeyGenVideoTranslateNode": {
+        "title": "HeyGen Video Çevirisi",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "output_language": "Çıkış dili",
+            "mode": "Mod",
+            "translate_audio_only": "Yalnızca sesi çevir",
+            "speaker_count": "Konuşmacı sayısı",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "HeyGen Video Çevirisi düğümü"
+    },
+    "MinimaxHailuo03TextToVideoNode": {
+        "title": "MiniMax H3 Metinden Videoya",
+        "inputs": {},
+        "widgets": {
+            "model": "Model",
+            "model_prompt": "Model istemi",
+            "resolution": "Çözünürlük",
+            "ratio": "Oran",
+            "seed": "Tohum",
+            "watermark": "Filigran"
+        },
+        "outputs": {},
+        "description": "MiniMaxH3 modeliyle bir metin isteminden video üretir."
+    },
+    "MinimaxHailuo03FirstLastFrameNode": {
+        "title": "MiniMax H3 İlk-Son Karede Videoya",
+        "inputs": {
+            "first_frame": "İlk kare",
+            "last_frame": "Son kare"
+        },
+        "widgets": {
+            "model": "Model",
+            "model_prompt": "Model istemi",
+            "resolution": "Çözünürlük",
+            "duration": "Süre",
+            "seed": "Rastgele tohum",
+            "generate_control": "Üretim kontrolü",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "İlk ve son kareden video üretir"
+    },
+    "MinimaxHailuo03ReferenceNode": {
+        "title": "MiniMax H3 Referanstan Videoya",
+        "inputs": {
+            "image_1": "Görsel1",
+            "video_1": "Video1",
+            "audio_1": "Ses1"
+        },
+        "widgets": {
+            "model": "Model",
+            "prompt": "İstem",
+            "resolution": "Çözünürlük",
+            "ratio": "Oran",
+            "seed": "Rastgele tohum",
+            "watermark": "Filigran"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "MiniMax H3 modeliyle görsel, video ve sesi referans alarak yeni bir video üretir."
+    },
+    "SyncLipSyncNode": {
+        "title": "sync.so Dudak Senkronu",
+        "inputs": {
+            "video": "Video",
+            "audio": "Ses"
+        },
+        "widgets": {
+            "seed": "Rastgele tohum",
+            "generate_after_control": "Üretim sonrası kontrol",
+            "model": "Model",
+            "sync_mode": "Senkron modu",
+            "speaker_selection": "Konuşmacı seçimi",
+            "speaker_frame": "Konuşmacı karesi",
+            "speaker_x": "Konuşmacı X koordinatı",
+            "speaker_y": "Konuşmacı Y koordinatı"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "Ses ile videodaki dudak hareketlerini senkronize eder"
+    },
+    "SyncTalkingImageNode": {
+        "title": "sync.so Konuşan Görsel",
+        "inputs": {
+            "image": "Görsel",
+            "audio": "Ses"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "seed": "Tohum",
+            "generate_after_control": "Üretim sonrası kontrol",
+            "model": "Model",
+            "speaker_selection": "Konuşmacı seçimi",
+            "speaker_x": "Konuşmacı X koordinatı",
+            "speaker_y": "Konuşmacı Y koordinatı",
+            "auto_downscale": "Otomatik alt örnekleme"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "Görsel ve sesi birleştirerek konuşan bir görsel üretir"
+    },
+    "IdeogramPImage": {
+        "title": "Ideogram P Görsel",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "quality": "Kalite",
+            "resolution": "Çözünürlük",
+            "aspect_ratio": "En-boy oranı",
+            "prompt_upsampling": "İstem yükseltme",
+            "seed": "Tohum",
+            "generate_after_control": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "final_prompt": "Nihai istem"
+        },
+        "description": "Görsel üreten düğüm"
+    },
+    "ByteDanceSeedAudio": {
+        "title": "ByteDance Seed Audio 1.0",
+        "inputs": {},
+        "widgets": {
+            "text_prompt": "Metin istemi",
+            "reference_mode": "Referans modu",
+            "sample_rate": "Örnekleme hızı",
+            "speech_rate": "Konuşma hızı",
+            "loudness_rate": "Ses şiddeti",
+            "pitch_rate": "Perde",
+            "seed": "Tohum",
+            "model": "Model",
+            "generate_after_control": "Üretim sonrası kontrol"
+        },
+        "outputs": {
+            "AUDIO": "Video"
+        },
+        "description": "ByteDance Seed Audio 1.0 düğümü"
+    },
+    "HeyGenTextToSpeechNode": {
+        "title": "HeyGen Metinden Sese",
+        "inputs": {},
+        "widgets": {
+            "text": "Metin",
+            "voice": "Ses",
+            "custom_voice_id": "Özel ses kimliği",
+            "speed": "Konuşma hızı",
+            "ssml": "SSML kontrol etiketi",
+            "seed": "Tohum",
+            "generate_after_control": "Üretim sonrası kontrol"
+        },
+        "outputs": {},
+        "description": "Metni sese dönüştüren düğüm"
+    },
+    "ComfyCloudMiniMaxH3TextToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3 Metinden Videoya",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "seed": "Rastgele tohum",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "duration_seconds": "Süre (saniye)"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "Comfy Cloud düğüm kümesi hâlâ güncellenmektedir: seçenekler eklenebilir veya kaldırılabilir, bazı akışlar devre dışı bırakılabilir. MiniMax H3 ile bir metin isteminden eşleşen müzik içeren bir video üretin. Görsel ve ses aynı iş akışından gelir, sonradan dublaj değildir. Comfy Cloud'un GPU'larında çalışır, çalışma süresine göre ücretlendirilir, GPU saniyesi başına $0.001295 (0.27 kredi). Krediyle ödeyin, abonelik gerekmez."
+    },
+    "ComfyCloudMiniMaxH3ImageToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3 Görselden Videoya",
+        "inputs": {
+            "first_frame": "İlk kare",
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "seed": "Rastgele tohum",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "duration_seconds": "Süre"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "Comfy Cloud düğüm kümesi hâlâ güncellenmektedir: seçenekler eklenebilir veya kaldırılabilir, bazı akışlar devre dışı bırakılabilir. MiniMax H3 ile bir metin isteminden eşleşen müzik içeren bir video üretin. Görsel ve ses aynı iş akışından gelir, sonradan dublaj değildir. Comfy Cloud'un GPU'larında çalışır, çalışma süresine göre ücretlendirilir, GPU saniyesi başına $0.001295 (0.27 kredi). Krediyle ödeyin, abonelik gerekmez."
+    },
+    "ComfyCloudMiniMaxH3FirstLastFrameToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3 İlk-Son Karede Videoya",
+        "inputs": {
+            "first_frame": "İlk kare",
+            "last_frame": "Son kare"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "seed": "Rastgele tohum",
+            "aspect_ratio": "En-boy oranı",
+            "resolution": "Çözünürlük",
+            "duration_seconds": "Süre (saniye)"
+        },
+        "outputs": {
+            "VIDEO": "Video"
+        },
+        "description": "Comfy Cloud düğüm kümesi hâlâ güncellenmektedir: seçenekler eklenebilir veya kaldırılabilir, bazı akışlar devre dışı bırakılabilir. MiniMax H3 ile bir metin isteminden eşleşen müzik içeren bir video üretin. Görsel ve ses aynı iş akışından gelir, sonradan dublaj değildir. Comfy Cloud'un GPU'larında çalışır, çalışma süresine göre ücretlendirilir, GPU saniyesi başına $0.001295 (0.27 kredi). Krediyle ödeyin, abonelik gerekmez."
+    },
+    "TripoConversionNode": {
+        "title": "Tripo Model Dönüştürme",
+        "inputs": {
+            "original model task id": "Orijinal model görev kimliği",
+            "original_model_task_id": "Orijinal model görev kimliği"
+        },
+        "widgets": {
+            "format": "Biçim",
+            "face_limittexture_size": "Yüzey doku boyutu sınırı",
+            "face_limit": "Yüzey sınırı",
+            "texture_size": "Doku boyutu",
+            "texture_format": "Doku biçimi",
+            "quad": "Dörtlügen ağ"
+        },
+        "outputs": {
+            "model_file": "Model dosyası",
+            "model task_id": "Model görev kimliği",
+            "model_task_id": "Model görev kimliği"
+        }
+    }
+}

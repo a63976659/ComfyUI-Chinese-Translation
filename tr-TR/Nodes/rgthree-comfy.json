@@ -1,0 +1,552 @@
+{
+    "Context Big (rgthree)": {
+        "title": "Bağlam (büyük)",
+        "inputs": {
+            "base_ctx": "Bağlam",
+            "model": "Model",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "Pozitif koşullandırma",
+            "negative": "Negatif koşullandırma",
+            "latent": "Latent",
+            "images": "Görsel",
+            "seed": "Tohum",
+            "steps": "Adım",
+            "step_refiner": "Refiner adımı",
+            "cfg": "CFG",
+            "ckpt_name": "Model adı",
+            "sampler": "Örneklemeleyici",
+            "scheduler": "Zamanlayıcı",
+            "clip_width": "CLIP genişliği",
+            "clip_height": "CLIP yüksekliği",
+            "text_pos_g": "Pozitif metin G",
+            "text_pos_l": "Pozitif metin L",
+            "text_neg_g": "Negatif metin G",
+            "text_neg_l": "Negatif metin L",
+            "mask": "Maske",
+            "control_net": "ControlNet"
+        },
+        "outputs": {
+            "CONTEXT": "Bağlam",
+            "MODEL": "Model",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "Pozitif koşullandırma",
+            "NEGATIVE": "Negatif koşullandırma",
+            "LATENT": "Latent",
+            "IMAGE": "Görsel",
+            "SEED": "Tohum",
+            "STEPS": "Adım",
+            "STEP_REFINER": "Refiner adımı",
+            "CFG": "CFG",
+            "CKPT_NAME": "Model adı",
+            "SAMPLER": "Örneklemeleyici",
+            "SCHEDULER": "Zamanlayıcı",
+            "CLIP_WIDTH": "CLIP genişliği",
+            "CLIP_HEIGHT": "CLIP yüksekliği",
+            "TEXT_POS_G": "Pozitif metin G",
+            "TEXT_POS_L": "Pozitif metin L",
+            "TEXT_NEG_G": "Negatif metin G",
+            "TEXT_NEG_L": "Negatif metin L",
+            "MASK": "Maske",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+    "Context (rgthree)": {
+        "title": "Bağlam",
+        "inputs": {
+            "base_ctx": "Bağlam",
+            "model": "Model",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "Pozitif koşullandırma",
+            "negative": "Negatif koşullandırma",
+            "latent": "Latent",
+            "images": "Görsel",
+            "seed": "Tohum"
+        },
+        "outputs": {
+            "CONTEXT": "Bağlam",
+            "MODEL": "Model",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "Pozitif koşullandırma",
+            "NEGATIVE": "Negatif koşullandırma",
+            "LATENT": "Latent",
+            "IMAGE": "Görsel",
+            "SEED": "Tohum"
+        }
+    },
+    "Context Switch (rgthree)": {
+        "title": "Bağlam geçişi",
+        "inputs": {
+            "ctx_01": "Bağlam_01",
+            "ctx_02": "Bağlam_02",
+            "ctx_03": "Bağlam_03",
+            "ctx_04": "Bağlam_04",
+            "ctx_05": "Bağlam_05"
+        },
+        "outputs": {
+            "CONTEXT": "Bağlam",
+            "MODEL": "Model",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "Pozitif koşullandırma",
+            "NEGATIVE": "Negatif koşullandırma",
+            "LATENT": "Latent",
+            "IMAGE": "Görsel",
+            "SEED": "Tohum"
+        }
+    },
+    "Context Switch Big (rgthree)": {
+        "title": "Bağlam geçişi (büyük)",
+        "inputs": {
+            "ctx_01": "Bağlam_01",
+            "ctx_02": "Bağlam_02",
+            "ctx_03": "Bağlam_03",
+            "ctx_04": "Bağlam_04",
+            "ctx_05": "Bağlam_05"
+        },
+        "outputs": {
+            "CONTEXT": "Bağlam",
+            "MODEL": "Model",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "Pozitif koşullandırma",
+            "NEGATIVE": "Negatif koşullandırma",
+            "LATENT": "Latent",
+            "IMAGE": "Görsel",
+            "STEPS": "Adım",
+            "SEED": "Tohum",
+            "STEP_REFINER": "Refiner adımı",
+            "CFG": "CFG",
+            "CKPT_NAME": "Model adı",
+            "SAMPLER": "Örneklemeleyici",
+            "SCHEDULER": "Zamanlayıcı",
+            "CLIP_WIDTH": "CLIP genişliği",
+            "CLIP_HEIGHT": "CLIP yüksekliği",
+            "TEXT_POS_G": "Pozitif metin G",
+            "TEXT_POS_L": "Pozitif metin L",
+            "TEXT_NEG_G": "Negatif metin G",
+            "TEXT_NEG_L": "Negatif metin L",
+            "MASK": "Maske",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+
+
+
+    "Display Int (rgthree)": {
+        "title": "Tamsayı göster",
+        "widgets": {
+            "input": "Girdi"
+        }
+    },
+    "Display Any (rgthree)": {
+        "title": "Herhangi bir değeri göster",
+        "inputs": {
+            "source": "Girdi"
+        }
+    },
+    
+    
+
+    "Lora Loader Stack (rgthree)": {
+        "title": "LoRA yığını yükleyici",
+        "inputs": {
+            "model": "Model",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "lora_01": "LoRA_01",
+            "lora_02": "LoRA_02",
+            "lora_03": "LoRA_03",
+            "lora_04": "LoRA_04",
+            "strength_01": "Güç_01",
+            "strength_02": "Güç_02",
+            "strength_03": "Güç_03",
+            "strength_04": "Güç_04"
+        },
+        "outputs": {
+            "MODEL": "Model",
+            "CLIP": "CLIP"
+        }
+    },
+    "Seed (rgthree)": {
+        "title": "Rastgele tohum",
+        "widgets": {
+            "🎲 Randomize Each Time": "🎲Her seferinde rastgele",
+            "🎲 New Fixed Random": "🎲Yeni sabit rastgele",
+            "♻️ (Use Last Queued Seed)": "♻️Son kuyruğa alınan tohumu kullan",
+            "seed": "Tohum"
+        },
+        "outputs": {
+            "SEED": "Tohum"
+        }
+    },
+    "Image Inset Crop (rgthree)": {
+        "title": "Görsel iç kırpma",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "measurement": "Ölçüm",
+            "bottom": "Alt",
+            "top": "Üst",
+            "left": "Sol",
+            "right": "Sağ"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "Power Prompt (rgthree)": {
+        "title": "İstem",
+        "inputs": {
+            "opt_model": "Model",
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "insert_lora": "LoRA ekle",
+            "insert_embedding": "Gömü (embedding) ekle",
+            "insert_saved": "Özel kaydı ekle"
+        },
+        "outputs": {
+            "CONDITIONING": "Koşullandırma",
+            "MODEL": "Model",
+            "CLIP": "CLIP",
+            "TEXT": "Metin"
+        }
+    },
+    "Power Prompt - Simple (rgthree)": {
+        "title": "İstem (basit)",
+        "inputs": {
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "insert_embedding": "Gömü (embedding) ekle",
+            "insert_saved": "Özel kaydı ekle"
+        },
+        "outputs": {
+            "CONDITIONING": "Koşullandırma",
+            "TEXT": "Metin"
+        }
+    },
+    "KSampler Config (rgthree)": {
+        "title": "K örneklemeleyici ayarı",
+        "widgets": {
+            "steps_total": "Toplam adım",
+            "refiner_step": "Refiner adımı",
+            "cfg": "CFG",
+            "sampler": "Örneklemeleyici",
+            "sampler_name": "Örneklemeleyici adı",
+            "scheduler": "Zamanlayıcı"
+        },
+        "outputs": {
+            "STEPS": "Adım",
+            "REFINER_STEP": "Refiner adımı",
+            "CFG": "CFG",
+            "SAMPLER": "Örneklemeleyici",
+            "SCHEDULER": "Zamanlayıcı"
+        }
+    },
+    "SDXL Empty Latent Image (rgthree)": {
+        "title": "SDXL boş Latent görseli",
+        "widgets": {
+            "dimensions": "Boyutlar",
+            "clip_scale": "CLIP ölçeği",
+            "batch_size": "Yığın boyutu"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "CLIP_WIDTH": "CLIP genişliği",
+            "CLIP_HEIGHT": "CLIP yüksekliği"
+        }
+    },
+    "SDXL Power Prompt - Positive (rgthree)": {
+        "title": "SDXL İstem (pozitif)",
+        "inputs": {
+            "opt_model": "Model",
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt_g": "İstem G",
+            "prompt_l": "İstem L",
+            "opt_clip_width": "CLIP genişliği",
+            "opt_clip_height": "CLIP yüksekliği",
+            "insert_lora": "LoRA ekle",
+            "insert_embedding": "Gömü (embedding) ekle",
+            "insert_saved": "Özel kaydı ekle",
+            "target_width": "Hedef genişlik",
+            "target_height": "Hedef yükseklik",
+            "crop_width": "Kırpma genişliği",
+            "crop_height": "Kırpma yüksekliği"
+        },
+        "outputs": {
+            "CONDITIONING": "Koşullandırma",
+            "MODEL": "Model",
+            "CLIP": "CLIP",
+            "TEXT_G": "Metin G",
+            "TEXT_L": "Metin L"
+        }
+    },
+    "SDXL Power Prompt - Simple / Negative (rgthree)": {
+        "title": "SDXL İstem (basit/negatif)",
+        "inputs": {
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt_g": "İstem G",
+            "prompt_l": "İstem L",
+            "opt_clip_width": "CLIP genişliği",
+            "opt_clip_height": "CLIP yüksekliği",
+            "insert_lora": "LoRA ekle",
+            "insert_embedding": "Gömü (embedding) ekle",
+            "insert_saved": "Özel kaydı ekle",
+            "target_width": "Hedef genişlik",
+            "target_height": "Hedef yükseklik",
+            "crop_width": "Kırpma genişliği",
+            "crop_height": "Kırpma yüksekliği"
+        },
+        "outputs": {
+            "CONDITIONING": "Koşullandırma",
+            "TEXT_G": "Metin G",
+            "TEXT_L": "Metin L"
+        }
+    },
+
+
+
+    "Any Switch (rgthree)": {
+        "title": "Herhangi geçiş",
+        "inputs": {
+            "any_01": "Girdi_01",
+            "any_02": "Girdi_02",
+            "any_03": "Girdi_03",
+            "any_04": "Girdi_04",
+            "any_05": "Girdi_05"
+        },
+        "outputs": {
+            "*": "Çıkış"
+        }
+    },
+    "Context Merge (rgthree)": {
+        "title": "Bağlam birleştirme",
+        "inputs": {
+            "ctx_01": "Bağlam_01",
+            "ctx_02": "Bağlam_02",
+            "ctx_03": "Bağlam_03",
+            "ctx_04": "Bağlam_04",
+            "ctx_05": "Bağlam_05"
+        },
+        "outputs": {
+            "CONTEXT": "Bağlam",
+            "MODEL": "Model",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "Pozitif koşullandırma",
+            "NEGATIVE": "Negatif koşullandırma",
+            "LATENT": "Latent",
+            "IMAGE": "Görsel",
+            "STEPS": "Adım"
+        }
+    },
+    "Context Merge Big (rgthree)": {
+        "title": "Bağlam birleştirme (büyük)",
+        "inputs": {
+            "ctx_01": "Bağlam_01",
+            "ctx_02": "Bağlam_02",
+            "ctx_03": "Bağlam_03",
+            "ctx_04": "Bağlam_04",
+            "ctx_05": "Bağlam_05"
+        },
+        "outputs": {
+            "CONTEXT": "Bağlam",
+            "MODEL": "Model",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "Pozitif koşullandırma",
+            "NEGATIVE": "Negatif koşullandırma",
+            "LATENT": "Latent",
+            "IMAGE": "Görsel",
+            "STEPS": "Adım",
+            "SEED": "Tohum",
+            "STEP_REFINER": "Refiner adımı",
+            "CFG": "CFG",
+            "CKPT_NAME": "Model adı",
+            "SAMPLER": "Örneklemeleyici",
+            "SCHEDULER": "Zamanlayıcı",
+            "CLIP_WIDTH": "CLIP genişliği",
+            "CLIP_HEIGHT": "CLIP yüksekliği",
+            "TEXT_POS_G": "Pozitif metin G",
+            "TEXT_POS_L": "Pozitif metin L",
+            "TEXT_NEG_G": "Negatif metin G",
+            "TEXT_NEG_L": "Negatif metin L",
+            "MASK": "Maske",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+    "Reroute (rgthree)": {
+        "title": "Yönlendirme noktası"
+    },
+    "Node Collector (rgthree)": {
+        "title": "Düğüm toplayıcı"
+    },
+    "Fast Muter (rgthree)": {
+        "title": "Düğümü devre dışı bırak",
+        "outputs": {
+            "OPT_CONNECTION": "İsteğe bağlı bağlantı"
+        }
+    },
+    "Fast Bypasser (rgthree)": {
+        "title": "Düğümü atla",
+        "outputs": {
+            "OPT_CONNECTION": "İsteğe bağlı bağlantı"
+        }
+    },
+    "Mute / Bypass Repeater (rgthree)": {
+        "title": "Düğüm sustur/atla (tekrarlayıcı)",
+        "outputs": {
+            "OPT_CONNECTION": "İsteğe bağlı bağlantı"
+        }
+    },
+    "Mute / Bypass Relay (rgthree)": {
+        "title": "Düğüm sustur/atla (raktif)",
+        "outputs": {
+            "OPT_CONNECTION": "İsteğe bağlı bağlantı"
+        }
+    },
+    "Fast Group Bypasser (rgthree)": {
+        "title": "Grupları atla",
+        "outputs": {
+            "OPT_CONNECTION": "İsteğe bağlı bağlantı"
+        }
+    },
+    "Fast Groups Bypasser (rgthree)": {
+        "title": "Grupları atla",
+        "outputs": {
+            "OPT_CONNECTION": "İsteğe bağlı bağlantı"
+        }
+    },
+    "Fast Actions Button (rgthree)": {
+        "title": "Eylem düğmesi",
+        "widgets": {
+            "🎬 Action!": "🎬Başlat!"
+        }
+    },
+    "Bookmark (rgthree)": {
+        "title": "🔖Yer imi",
+        "widgets": {
+            "shortcut_key": "Kısayol tuşu",
+            "zoom": "Yakınlaştırma"
+        }
+    },
+    "Random Unmuter (rgthree)": {
+        "title": "Rastgele etkinleştir"
+    },
+    "Fast Groups Muter (rgthree)": {
+        "title": "Grupları sustur",
+        "outputs": {
+            "OPT_CONNECTION": "İsteğe bağlı bağlantı"
+        }
+    },
+    "Label (rgthree)": {
+        "title": "Etiket"
+    },
+    "Image Comparer (rgthree)": {
+        "title": "Görsel karşılaştırma",
+        "inputs": {
+            "image_a": "Görsel_A",
+            "image_b": "Görsel_B"
+        }
+    },
+    "Node Combiner (rgthree)": {
+        "title": "Düğüm birleştirici",
+        "inputs": {
+            "image_a": "Görsel_A",
+            "image_b": "Görsel_B"
+        },
+        "outputs": {
+            "Output": "Çıkış",
+            "clip": "CLIP"
+        }
+    },
+    "Power Primitive (rgthree)": {
+        "title": "Güçlü ilkel değer",
+        "inputs": {},
+        "widgets": {
+            "value": "Değer",
+            "type": "Tür"
+        },
+        "outputs": {
+            "INT": "Tamsayı",
+            "FLOAT": "Ondalık",
+            "BOOLEAN": "Mantıksal",
+            "STRING": "Metin"
+        }
+    },
+    "Power Puter (rgthree)": {
+        "title": "Güç hesaplayıcı",
+        "inputs": {
+            "outputs": "Çıkış",
+            "STRING": "Metin"
+        },
+        "widgets": {
+            "outputs": "Çıkış",
+            "STRING": "Metin"
+        },
+        "outputs": {
+            "INT": "Tamsayı",
+            "FLOAT": "Ondalık",
+            "BOOLEAN": "Mantıksal",
+            "STRING": "Metin"
+        }
+    },
+    "Image or Latent Size (rgthree)": {
+        "title": "Görsel veya Latent boyutu",
+        "inputs": {
+            "input": "Girdi"
+        },
+        "widgets": {
+            "STRING": "Metin"
+        },
+        "outputs": {
+            "WIDTH": "Genişlik",
+            "HEIGHT": "Yükseklik"
+        }
+    },
+    "Image Resize (rgthree)": {
+        "title": "Görsel yeniden boyutlama",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "measurement": "Ölçüm",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "fit": "Sığdır",
+            "method": "Yöntem"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "WIDTH": "Genişlik",
+            "HEIGHT": "Yükseklik"
+        }
+    },
+    "Power Lora Loader (rgthree)": {
+        "title": "Güç LoRA yükleyici",
+        "inputs": {
+            "model": "Model",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "➕ Add Lora": "➕LoRA ekle"
+        },
+        "outputs": {
+            "MODEL": "Model",
+            "clip": "CLIP"
+        }
+    }
+}

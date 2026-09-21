@@ -1,0 +1,4219 @@
+{
+    "ContextWindowsVisualizerKJ": {
+        "title": "Bağlam penceresi görselleştirme aracı (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "frame_units": "Kare birimi",
+            "dim": "Boyutlar",
+            "temporal_downscale": "Zamansal indirgeme oranı",
+            "num_frames": "Kare sayısı",
+            "context_length": "Bağlam uzunluğu",
+            "context_overlap": "Bağlam örtüşmesi",
+            "context_schedule": "Bağlam zamanlaması",
+            "context_stride": "Bağlam adım boyutu",
+            "closed_loop": "Kapalı döngü",
+            "fuse_method": "Harmanlama yöntemi",
+            "causal_window_fix": "Nedensel pencere düzeltmesi",
+            "freenoise": "Serbest gürültü",
+            "cond_retain_index_list": "Korunacak koşullandırma dizin listesi"
+        },
+        "outputs": {
+            "model": "Model"
+        },
+        "description": "ComfyUI bağlam penceresinin etkileşimli görselleştirmesi: pencere konumu, örtüşme derecesi, harmanlama ağırlıkları ve kare bazlı karışım gerçek zamanlı güncellenir. Ayarları çekirdek 'Bağlam Penceresi (Manuel)' düğümü gibi modellere uygulama seçeneği mevcuttur."
+    },
+    "MiniMaxH3TokenCounter": {
+        "title": "MiniMax H3 jeton sayacı",
+        "inputs": {
+            "samples": "Örnekleme",
+            "conditioning": "Koşullandırma"
+        },
+        "widgets": {},
+        "outputs": {
+            "samples": "Örnekleme",
+            "conditioning": "Koşullandırma",
+            "tokens": "Jeton",
+            "breakdown": "Ayrıştırma"
+        },
+        "description": "MiniMax H3 üretiminde, örnekleme yapılmadan çalıştırılan paketlenmiş dizi uzunluğunu hesaplar. AV potansiyelleri ve koşullandırma bilgilerine (metin uzunluğu, anahtar kareler ve referans bloklar dahil) dayanarak modelle aynı [metin | anahtar kare/referans | ses | video] düzenini kurar."
+    },
+    "MiniMaxLowVRAMAttention": {
+        "title": "MiniMax H3 düşük VRAM dikkati",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "head_chunks": "Kafa blok sayısı"
+        },
+        "outputs": {
+            "model": "Model"
+        },
+        "description": "Hesaplama mantığını değiştirmeden MiniMax H3 dikkat modülünün tepe VRAM kullanımını azaltır. Dikkat çağrılarını birden fazla kafa grubuna böler; böylece birleşik qkv tamponu geçerliyken kernel içi geçici veriler (int8 q/k kopyaları, fp32 biriktiriciler vb.) blok sayısıyla orantılı olarak küçülür ve tüketim tamamlandığında qkv tamponu ile normalize blok girdileri hemen serbest bırakılır. Çıktı, yamasız modelle tamamen birebir aynıdır."
+    },
+    "MiniMaxChunkFeedForward": {
+        "title": "MiniMax H3 bloklu ileri beslemeli sinir ağı",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "chunks": "Blok sayısı",
+            "seq_threshold": "Dizi eşiği"
+        },
+        "outputs": {},
+        "description": "MiniMax H3'ün ileri beslemesini (SwiGLU) paketlenmiş jeton boyutu boyunca bloklayarak tepe VRAM kullanımını azaltır. Model kuantalandığında her blok ComfyUI'nin birleşik INT8 çekirdeğinden geçmeye devam eder; aktivasyonlar jeton bazında kuantalandığı için çıktı bloklanmamış modelle tutarlıdır."
+    },
+    "Ideogram4PromptBuilderKJ": {
+        "title": "Ideogram4 istem oluşturucu (KJ)",
+        "inputs": {
+            "image": "Görsel",
+            "import_json": "JSON içe aktar",
+            "bboxes": "Sınır kutusu"
+        },
+        "widgets": {
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "high_level_description": "Gelişmiş açıklama",
+            "background": "Arka plan",
+            "style": "Stil",
+            "aesthetics": "Estetik",
+            "lighting": "Işıklandırma",
+            "medium": "Medya",
+            "style_palette_data": "Stil paleti verisi",
+            "elements_data": "Öğe verisi",
+            "bg_brightness": "Arka plan parlaklığı",
+            "import_mode": "İçe aktarma modu",
+            "output_format": "Çıkış biçimi",
+            "coord_mode": "Koordinat modu",
+            "bbox_order": "Sınır kutusu sırası"
+        },
+        "outputs": {
+            "prompt": "İstem",
+            "preview": "Önizleme",
+            "bboxes": "Sınır kutusu",
+            "width": "Genişlik",
+            "height": "Yükseklik"
+        },
+        "description": "\nIdeogram 4 yapılandırılmış JSON altyazı biçimi için görsel istem oluşturucu.\n\nTuval üzerinde sürükleyerek bölgeler çizin; bir bölgeyi seçtiğinizde türünü (nesne/metin), açıklamasını, metnini ve paletini ayarlayabilirsiniz. Arka planı ve isteğe bağlı stil alanlarını widget olarak ayarlayın. Birleştirilmiş altyazı JSON dizesini çıktı verir.\n\nbbox eksen ofsetleri [Y_min, X_min, Y_max, X_max] biçiminde 0-1000 ızgarasına normalize edilir; genişlik/yükseklik tuvalin en-boy oranını ayarlar.\n\nTuval kontrolleri:\n- Sürükle: yeni bölge çiz\n- Ctrl/Cmd+sürükle: mevcut bir bölgenin üstünde olsa bile yeni bölge çizmeye zorla\n- Tıkla: bölge seç · Alt+tık: örtüşen bölgeler arasında dolaş\n- Çift tık: açıklamayı satır içi düzenle\n- Sağ tık: bölge listesi (seç/sil/kopyala/yeniden sırala, üstteki en önde)\n- Del/Backspace: seçili bölgeyi sil\n- Ctrl/Cmd + C/V/D: seçili bölgeyi kopyala/yapıştır/çoğalt\n- obj/metin yanındaki bbox eksen ofset alanları (piksel/çıkış) düzenlenebilir\n\nRenk örnekleri:\n- Tıkla: düzenle · Sürükle: yeniden sırala · Sağ tık: sil\n- Üzerinde durma+Ctrl/Cmd + C/V: hex renk değerini kopyala/yapıştır\n- \"+\": renk ekle (panoda renk varsa o renk kullanılır)\n\nAraç çubuğu:\n- Canlı: canlı örnekleme önizlemesini arka plan olarak kullan (ve nihai sonucu yakala)\n- Arka planı yakala/temizle: son üretilen görseli arka plan olarak kullan\n- Parlaklık kaydırıcısı, jeton tahmini ve kopyala/yapıştır/hepsini temizle"
+    },
+    "RandomImageFromBatch": {
+        "title": "Yığından rastgele görsel seç (KJ)",
+        "inputs": {
+            "input": "Girdi"
+        },
+        "widgets": {
+            "start_index": "Başlangıç dizini",
+            "end_index": "Bitiş dizini",
+            "num_frames": "Kare sayısı",
+            "randomness": "Rastgelelik",
+            "min_distance": "En küçük aralık",
+            "max_distance": "En büyük aralık",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "output": "Çıkış"
+        },
+        "description": "Görsel veya maske yığınının seçili dizin aralığından bir kare dizisi seçer. Rastgelelik=0 iken seçilen kareler aralık içinde eşit dağılır; Rastgelelik=1 iken tekrarsız düzgün rastgeledir; ara değerler doğrusal harmanlanır. Çıkış her zaman yığın dizinine göre sıralıdır. Negatif dizinler sondan sayılır (-1 = son kare)."
+    },
+    "FastPreviewBatch": {
+        "title": "Hızlı önizleme yığını (KJ)",
+        "inputs": {
+            "input": "Girdi"
+        },
+        "widgets": {
+            "max_thumb_size": "Maks küçük görsel boyutu",
+            "crf": "Görüntü kalitesini sınırla",
+            "max_grid_frames": "Maks ızgara karesi"
+        },
+        "outputs": {},
+        "description": "Görsel yığınını, tümü I-karesi olan H.264 MP4 küçük görsel şeridine kodlar ve etkileşimli bir ızgara olarak görüntüler. Karoya tıklayarak yakınlaştırılabilir ve öne/arkaya gezinilebilir. N adet PNG dosyası üretiminden kaçının."
+    },
+    "BBOXToBoundingBoxKJ": {
+        "title": "BBOX'u sınır kutusuna çevir (KJ)",
+        "inputs": {
+            "bbox": "Sınır kutusu"
+        },
+        "widgets": {
+            "bbox_format": "Sınır kutusu biçimi",
+            "index": "Dizin"
+        },
+        "outputs": {
+            "bounding_box": "Sınır kutusu"
+        },
+        "description": "KJNodes BBOX'unu çekirdek düğümlerin (Görseli kırp gibi) kullandığı yerel BOUNDING_BOX sözlüğüne dönüştürür."
+    },
+    "WanVideoMemoryEfficientSageAttentionPatch": {
+        "title": "Wan video bellek verimli Sage dikkat yaması (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Model"
+        },
+        "description": "Deneysel! WanVideo öz-dikkatinde tepe VRAM kullanımını azaltmak için özel sageattention'ı etkinleştirir ve dikkat modunu geçersiz kılar. sageattention'ın en son sürümünü gerektirir."
+    },
+    "MiniMaxH3MemoryEfficientSageAttentionPatch": {
+        "title": "MiniMax H3 bellek verimli Sage dikkat yaması (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Model"
+        },
+        "description": "Deneysel! MiniMax H3 öz-dikkatinde tepe VRAM kullanımını azaltmak için özel sageattention'ı etkinleştirir ve dikkat modunu geçersiz kılar. sageattention'ın en son sürümünü gerektirir."
+    },
+    "PatchFlashAttentionKJ": {
+        "title": "Flash Attention yamala (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "allow_compile": "Derlemeye izin ver"
+        },
+        "outputs": {},
+        "description": "Dikkati Flash Attention kullanacak şekilde yamalamak için deneysel düğüm; ComfyUI arayüzünün varsayılan sessiz SDPA geri dönüşünü kullanmaz. Bu düğümden geçen modellerin dikkatini yamar; devre dışı bırakmak için bu düğümü atlayın veya bağlantısını kesin. flash_attn kitabının kurulumu gerekir."
+    },
+    "TorchCompileModelAdvanced": {
+        "title": "Torch derleme modeli gelişmiş sürüm (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "backend": "Arka uç",
+            "fullgraph": "Tam grafik modu",
+            "mode": "Mod",
+            "dynamic": "Dinamik",
+            "compile_transformer_blocks_only": "Yalnızca Transformer bloklarını derle",
+            "dynamo_cache_size_limit": "Dinamik önbellek boyutu sınırı",
+            "debug_compile_keys": "Derleme anahtarlarında hata ayıkla",
+            "disable_dynamic_vram": "Dinamik VRAM'i devre dışı bırak"
+        },
+        "outputs": {},
+        "description": "Yayılma (diffusion) modelleri için gelişmiş torch.compile yamalaması."
+    },
+    "Krea2PromptWeight": {
+        "title": "Krea2 istem ağırlıkları (KJ)",
+        "inputs": {
+            "clip": "CLIP",
+            "model": "Model"
+        },
+        "widgets": {
+            "text": "Metin",
+            "strength": "Şiddet"
+        },
+        "outputs": {
+            "model": "Model",
+            "conditioning": "Koşullandırma"
+        },
+        "description": "Dikkat değeri ölçeklemesiyle Krea2'ye (K2) jeton bazlı istem ağırlıkları getirir. (söz:-1) bir kavramı kaldırır, (söz:1.5) vurgular — Qwen3-VL kodlayıcısında düz ağırlık ayarlarının yapamadığı bu özellik. Yamalanmış model ve koşullandırma çıktı verir; örnekleyici CFG'sini 1.0'a ayarlayın."
+    },
+    "Ideogram4OptimizationsKJ": {
+        "title": "Ideogram4 optimizasyonu (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "chunk_ffn": "Bloklu ileri besleme",
+            "ffn_chunks": "İleri besleme blok sayısı",
+            "ffn_seq_threshold": "İleri besleme dizi eşiği",
+            "bf16_rope": "bf16_konumsal kodlama"
+        },
+        "outputs": {
+            "model": "Model"
+        },
+        "description": "Deneysel, model çıktısını değiştirebilir!! Ideogram4 ileri geçişinde tepe VRAM'i azaltır. chunk_ffn, SwiGLU aktivasyonlarını jeton boyutu boyunca böler; bf16_rope ise RoPE'yi fp32'ye yükseltmek yerine modelin veri türünde uygular. İkisi de blok içindeki en büyük iki geçici gerilimi hedefler."
+    },
+    "PiDColorBiasCorrection": {
+        "title": "PiD renk kayması düzeltmesi (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "strength": "Şiddet",
+            "backbone": "Ana gövde"
+        },
+        "outputs": {},
+        "description": "PiD dört adımlı kod çözücünün renk/parlaklık sürüklenmesi düzelticisi. İlk örnekleme adımında, modelin sistematik sürüklenmesine kalibre edilmiş küçük bir doğrusal modelle kanal başına sapmayı çıkarır (model karanlık sahneleri aydınlatma ve mavi ton ekleme eğilimindedir)."
+    },
+    "LeapfusionHunyuanI2V": {
+        "title": "Leapfusion Hunyuan görselden videoya (KJ)",
+        "inputs": {
+            "model": "Model",
+            "latent": "Gizil değişken"
+        },
+        "widgets": {
+            "index": "Dizin",
+            "start_percent": "Başlangıç yüzdesi",
+            "end_percent": "Bitiş yüzdesi",
+            "strength": "Şiddet"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VAEMergeKJ": {
+        "title": "VAE birleştirme (KJ)",
+        "inputs": {
+            "vae_1": "VAE1",
+            "vae_2": "VAE2"
+        },
+        "widgets": {
+            "ratio": "Oran"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "İki VAE'nin ağırlıklarını ağırlıklı ortalamayla birleştirir. Oran, VAE_2 lehindeki ağırlıktır (0.0 = saf VAE_1, 1.0 = saf VAE_2). İki VAE aynı mimariyi paylaşmalıdır (eşleşen state dict anahtarları ve şekilleri)."
+    },
+    "LatentInpaintTTM": {
+        "title": "Latent maske onarımı TTM (KJ)",
+        "inputs": {
+            "model": "Model",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "steps": "Adım"
+        },
+        "outputs": {},
+        "description": "https://github.com/time-to-move/TTM"
+    },
+    "DeprecatedCompileNodeKJ": {
+        "title": "Kullanım dışı derleme düğümü (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "Bu düğüm TorchCompileModelAdvanced düğümüyle değiştirildi, lütfen onu kullanın"
+    },
+    "ModelPreviewOverrideKJ": {
+        "title": "Model önizleme geçersiz kılma (KJ)",
+        "inputs": {
+            "model": "Model",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "max_resolution": "Maks çözünürlük",
+            "jpeg_quality": "JPEG kalitesi",
+            "suppress_default_preview": "Varsayılan önizlemeyi devre dışı bırak",
+            "preview_frames": "Önizleme karesi",
+            "preview_fps": "Önizleme kare hızı",
+            "tiny_vae": "Mikro VAE"
+        },
+        "outputs": {},
+        "description": "Bu düğüme tam çözünürlüklü özel önizleme kareleri ekler; azami çözünürlük geçersiz kılınabilir. ComfyUI varsayılan önizleme sınırı 512p'dir; bu düğüm önizlemesini doğrudan düğüm üzerindeki DOM bileşenine gönderdiğinden piksel uzaylı modeller (Chroma Radiance, ZImage, HiDream-O1 vb.) tam örnekleyici çözünürlüğünde önizlenebilir."
+    },
+    "GetPreviewOverrideFramesKJ": {
+        "title": "Önizleme geçersiz kılma karesini al (KJ)",
+        "inputs": {
+            "model": "Model",
+            "after_sample": "Örnekleme sonrası"
+        },
+        "widgets": {},
+        "outputs": {
+            "frames": "Video karesi"
+        },
+        "description": "Son örnekleme sırasında Model Preview Override tarafından yakalanan kareleri döndürür. Doğru yürütme sırası için Model Preview Override'dan gelen 'model' (örnekleyiciye verilenle aynı model) ve örnekleyici sonrasından gelen 'after_sample' (Latent/IMAGE) bağlantılarını bağlayın."
+    },
+    "PatchTritonVAE": {
+        "title": "Triton VAE yamala (KJ)",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "fuse_norm_silu": "Kaynaştırılmış normalize SiLU aktivasyonu",
+            "channels_last": "Kanal öncelikli",
+            "int8_conv": "INT8 evrişim",
+            "autotune": "Otomatik ayar"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "Kaynaştırılmış Triton norm+SiLU çekirdekleri ve kanal-öncelikli evrişim düzeniyle VAE kod çözme/kodlama hızını artırır. Desteklenen VAE'ler (otomatik algılanır): Wan 2.1/2.2 video VAE (Qwen-Image dahil, RMSNorm, ~1.4x/1.15x), Flux/Flux2, SDXL ve SD1.5 gibi KL görüntü VAE'leri (GroupNorm, 2048px'de ~1.6-1.8x) ve LTXV/LTX2 video VAE'leri (PixelNorm; zamana bağlı koşullu kod çözücü blokları yalnızca normalize kaynaştırması yapar). Diğer mimariler desteklenmez. Klonlanan yamacıya nesne yaması olarak uygulanır, bu nedenle yalnızca o VAE yüklenirken mevcuttur."
+    },
+    "ImageTransformKJ": {
+        "title": "Görsel dönüşüm (KJ)",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "target_width": "Hedef genişlik",
+            "target_height": "Hedef yükseklik",
+            "upscale_method": "Büyütme yöntemi",
+            "keep_proportion": "Oranı koru",
+            "divisible_by": "Bölünebilirlik katı",
+            "extra_padding": "Ek dolgu",
+            "invert_crop": "Kırpmayı ters çevir",
+            "grid_size": "Izgara boyutu"
+        },
+        "outputs": {
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "output": "Çıkış görseli",
+            "output_mask": "Çıkış maskesi"
+        },
+        "description": "Bu, görsel dönüştürme düğümüdür; görüntü yeniden boyutlandırma, büyütme yöntemi, oranı koruma gibi parametreleri ve maskenin eş zamanlı dönüştürülmesini destekler."
+    },
+    "ScreencapStream": {
+        "title": "Ekran yakalama akışı (KJ)",
+        "inputs": {},
+        "widgets": {
+            "crop_width": "KırpmA genişliği",
+            "crop_height": "KırpmA yüksekliği",
+            "Start capture": "Yakalamayı başlat",
+            "Hide preview": "Önizlemeyi gizle"
+        },
+        "outputs": {
+            "image": "Görsel"
+        },
+        "description": "Bu düğüm ekranı gerçek zamanlı yakalamak içindir. Yakalanacak bölgenin genişliğini ve yüksekliğini özelleştirmenizi sağlar ve yakalamayı başlat/durdur düğmeleri sunar. Yakalanan canlı görüntü, ekran kaydını izlemek için önizleme penceresinde gösterilir."
+    },
+    "DecodeAndSaveVideo": {
+        "title": "Videoyu çöz ve kaydet (KJ)",
+        "inputs": {
+            "video_latent": "Video Latent",
+            "video_vae": "Video VAE modeli",
+            "audio_latent": "Ses Latent'i",
+            "audio_vae": "Ses VAE modeli"
+        },
+        "widgets": {
+            "fps": "Kare hızı",
+            "filename_prefix": "Dosya adı ön eki",
+            "format": "Biçim",
+            "codec": "Kodek",
+            "tiling": "Parçalı işleme"
+        },
+        "outputs": {
+            "video": "Çözülmüş video",
+            "filename": "Kaydedilen dosya adı"
+        },
+        "description": "Bu düğüm video potansiyel uzayını (Video Latent) gerçek bir video dosyasına çözüp kaydetmek içindir. Aynı anda ses çözümlemeyi de destekler. Kare hızı (FPS), dosya adı ön eki, çıkış biçimi (MP4, MOV vb.), video kodeği (H.264, H.265) ve büyük videolar için parçalı işleme (Tiling) seçeneklerini burada yapılandırabilirsiniz."
+    },
+    "EncodeVideoComponents": {
+        "title": "Video bileşenlerini kodla (KJ)",
+        "inputs": {
+            "video": "Video",
+            "vae": "VAE modeli"
+        },
+        "widgets": {
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "max_frames": "Maks kare sayısı",
+            "upscale_method": "Büyütme yöntemi",
+            "Keep Proportion": "Oranı koru"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "audio": "Ses",
+            "fps": "Kare hızı",
+            "frame_count": "Kare sayısı"
+        },
+        "description": "Bu düğüm video karelerini potansiyel (Latent) temsile kodlar; genellikle video üretim veya işleme akışlarında kullanılır. Video akışını ve VAE modelini girdi olarak alır; kodlanmış potansiyel verileri, ses akışını, kare hızı bilgisi ile toplam kare sayısını çıktı verir. Ayrıca çıkış çözünürlüğünü (genişlik ve yükseklik), en fazla kare sayısını, görüntü büyütme yöntemini (Lanczos gibi) ve özgün en-boy oranını koruyup korumayacağınızı ayarlayabilirsiniz."
+    },
+    "ColorMatchV2": {
+        "title": "Renk eşleştirme V2 (KJ)",
+        "inputs": {
+            "image_target": "Hedef görsel",
+            "image_ref": "Referans görsel"
+        },
+        "widgets": {
+            "method": "Yöntem",
+            "strength": "Şiddet",
+            "multithread": "Çoklu iş parçacığı"
+        },
+        "outputs": {
+            "image": "Görsel"
+        },
+        "description": "Referans görselin renk stilini hedef görsele uygulayan düğüm. Çeşitli eşleştirme algoritmalarını (mkl gibi) destekler, eşleştirme şiddeti ayarlanabilir ve verimliliği artırmak için çoklu iş parçacığı kullanılabilir."
+    },
+    "PreviewImageOrMask": {
+        "title": "Görsel veya maske önizle (KJ)",
+        "inputs": {
+            "input": "Girdi görseli veya maskesi"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "Bu düğüm girdi görselini veya maskesini ComfyUI arayüzünde doğrudan gösterir; esas olarak hata ayıklama ve işleme ara sonuçlarını görüntülemek için kullanılır. Genellikle veri akışı üretmez, yalnızca görsel önizleme amaçlıdır."
+    },
+    "ImageSharpenKJ": {
+        "title": "Görsel keskinleştirme (KJ)",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "method": "Yöntem",
+            "strength": "Şiddet"
+        },
+        "outputs": {
+            "output": "Çıkış görseli"
+        },
+        "description": "Bu düğüm girdi görselini keskinleştirmek içindir. rcas gibi farklı keskinleştirme algoritmaları seçmenize ve keskinlik şiddetini ayarlamanıza olanak tanıyarak görselin netliğini ve detaylarını güçlendirir."
+    },
+    "PlaySoundKJ": {
+        "title": "Ses çal",
+        "inputs": {
+            "any_input": "Herhangi bir girdi",
+            "audio": "Ses"
+        },
+        "widgets": {
+            "audio_path": "Ses dosya yolu",
+            "mode": "Mod",
+            "volume": "Ses düzeyi",
+            "duration": "Süre"
+        },
+        "outputs": {
+            "any_output": "Herhangi bir çıkış"
+        },
+        "description": "Çalma modu, ses düzeyi ve süre ayarlarını destekleyerek belirtilen ses dosyasını çalar."
+    },
+    "NormalizedAmplitudeToMask": {
+        "title": "Genliği maskeye normalize et",
+        "inputs": {
+            "normalized_amp": "Genliği normalize et"
+        },
+        "widgets": {
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "frame_offset": "Kare ofseti",
+            "location_x": "Konum_X",
+            "location_y": "Konum_Y",
+            "size": "Boyut",
+            "shape": "Şekil",
+            "color": "Renk"
+        },
+        "outputs": {
+            "MASK": "Maske"
+        },
+        "description": "AudioScheduler eklentisiyle köprü kurmak için kullanılan düğüm:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nNormalize genliğe dayanarak maske oluşturur."
+    },
+    "NormalizedAmplitudeToFloatList": {
+        "title": "Genliği float listesine normalize et",
+        "inputs": {
+            "normalized_amp": "Genliği normalize et"
+        },
+        "outputs": {
+            "FLOAT": "Ondalık"
+        },
+        "description": "AudioScheduler eklentisiyle köprü kurmak için kullanılan düğüm:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nNormalize genliğe dayanarak float listesi oluşturur."
+    },
+    "OffsetMaskByNormalizedAmplitude": {
+        "title": "Maskeyi normalize genliğe göre kaydır",
+        "inputs": {
+            "normalized_amp": "Genliği normalize et",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "rotate": "Döndürme",
+            "angle_multiplier": "Açı çarpanı"
+        },
+        "outputs": {
+            "mask": "Maske"
+        },
+        "description": "AudioScheduler eklentisiyle köprü kurmak için kullanılan düğüm:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nNormalize genliğe dayanarak maskeyi kaydrr."
+    },
+    "ImageTransformByNormalizedAmplitude": {
+        "title": "Görseli normalize genliğe göre dönüştür",
+        "inputs": {
+            "normalized_amp": "Genliği normalize et",
+            "image": "Görsel"
+        },
+        "widgets": {
+            "zoom_scale": "Ölçekle",
+            "x_offset": "x ofseti",
+            "y_offset": "y ofseti",
+            "cumulative": "Birikim"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "AudioScheduler eklentisiyle köprü kurmak için kullanılan düğüm:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nNormalize genliğe dayanarak görseli dönüştürür."
+    },
+    "BatchCropFromMask": {
+        "title": "Maske kırpma",
+        "inputs": {
+            "original_images": "Görsel",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "crop_size_mult": "KırpmA katsayısı",
+            "bbox_smooth_alpha": "BBox yumuşak saydamlık"
+        },
+        "outputs": {
+            "original_images": "Orijinal görsel",
+            "cropped_images": "Kırpmış görsel",
+            "bboxes": "BBox",
+            "width": "Genişlik",
+            "height": "Yükseklik"
+        }
+    },
+    "BatchUncrop": {
+        "title": "Kırpmayı geri ekle (yığın)",
+        "inputs": {
+            "original_images": "Orijinal görsel",
+            "cropped_images": "Kırpmış görsel",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "border_blending": "Kenar harmanlama",
+            "crop_rescale": "Yeniden ölçekle",
+            "border_bottom": "Alt sınır",
+            "border_top": "Üst sınır",
+            "border_left": "Sol sınır",
+            "border_right": "Sağ sınır"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "BatchCropFromMaskAdvanced": {
+        "title": "Maske kırpma (gelişmiş)",
+        "inputs": {
+            "original_images": "Görsel",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "crop_size_mult": "KırpmA katsayısı",
+            "bbox_smooth_alpha": "BBox yumuşak saydamlık"
+        },
+        "outputs": {
+            "original_images": "Orijinal görsel",
+            "cropped_images": "Kırpmış görsel",
+            "cropped_masks": "Maskeyi kırp",
+            "combined_crop_image": "Kırpmış görselleri birleştir",
+            "combined_crop_masks": "Kırpmış maskeleri birleştir",
+            "bboxes": "BBox",
+            "combined_bounding_box": "BBox'ları birleştir",
+            "bbox_width": "BBox genişliği",
+            "bbox_height": "BBox yüksekliği"
+        }
+    },
+    "FilterZeroMasksAndCorrespondingImages": {
+        "title": "Sıfır maske ve görselleri ayıkla",
+        "inputs": {
+            "masks": "Maske",
+            "original_images": "Görsel"
+        },
+        "outputs": {
+            "non_zero_masks_out": "Sıfır olmayan maske",
+            "non_zero_mask_images_out": "Sıfır olmayan görsel",
+            "zero_mask_images_out": "Sıfır görsel",
+            "zero_mask_images_out_indexes": "Sıfır olmayan maske görsel dizini"
+        },
+        "description": "Maskeler içindeki tüm boş (tamamen sıfır olan) maskeleri ayıklar\nSağlanırsa dizin üzerinden de ayıklama yapılabilir\n original_images (isteğe bağlı): sağlanırsa maskelerle aynı uzunlukta olmalıdır."
+    },
+    "InsertImageBatchByIndexes": {
+        "title": "Dizinle görsel yığını ekle",
+        "inputs": {
+            "images": "Görsel",
+            "images_to_insert": "Eklenecek görsel",
+            "insert_indexes": "Ekleme dizini"
+        },
+        "outputs": {
+            "images_after_insert": "Görsel"
+        },
+        "description": "Bu düğüm FilterZeroMasksAndCorrespondingImages düğümüyle birlikte kullanılır,\n_ insert_indexes'e göre images_to_insert öğelerini images içine ekler.\n_ Dönen değer: images_after_insert - özgün sırayla güncellenmiş görsel dizisi."
+    },
+    "BatchUncropAdvanced": {
+        "title": "Kırpmayı geri ekle (gelişmiş)",
+        "inputs": {
+            "original_images": "Orijinal görsel",
+            "cropped_images": "Kırpmış görsel",
+            "cropped_masks": "Maskeyi kırp",
+            "combined_crop_mask": "Kırpmış maskeleri birleştir",
+            "bboxes": "BBox",
+            "combined_bounding_box": "BBox'ları birleştir"
+        },
+        "widgets": {
+            "border_blending": "Kenar harmanlama",
+            "crop_rescale": "Yeniden ölçekle",
+            "use_combined_mask": "Birleştirilmiş maskeyi kullan",
+            "use_square_mask": "Kare maske kullan"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "SplitBboxes": {
+        "title": "BBox'ları ayır",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "Dizin"
+        },
+        "outputs": {
+            "bboxes_a": "BBox_A",
+            "bboxes_b": "BBox_B"
+        },
+        "description": "Belirtilen dizindeki bbox listesini iki listeye böler"
+    },
+    "BboxToInt": {
+        "title": "BBox'tan tam sayıya",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "Dizin"
+        },
+        "outputs": {
+            "x_min": "X min",
+            "y_min": "Y maks",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "center_x": "X merkezi",
+            "center_y": "Y merkezi"
+        },
+        "description": "Sınır kutusu listesinden seçilen dizini tam sayı olarak döndürür"
+    },
+    "BboxVisualize": {
+        "title": "BBox önizleme",
+        "inputs": {
+            "images": "Görsel",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "line_width": "Çizgi kalınlığı"
+        },
+        "outputs": {
+            "images": "Görsel"
+        },
+        "description": "Belirtilen bbox'u görsel üzerinde gösterir"
+    },
+    "PlotCoordinates": {
+        "title": "Koordinat grafiği",
+        "inputs": {
+            "coordinates": "Koordinatlar",
+            "size_multiplier": "Boyut çarpanı"
+        },
+        "widgets": {
+            "text": "Metin",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "bbox_width": "BBox genişliği",
+            "bbox_height": "BBox yüksekliği"
+        },
+        "outputs": {
+            "images": "Görsel",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "bbox_height": "BBox yüksekliği",
+            "bbox_width": "BBox genişliği"
+        },
+        "description": "Matplotlib ile bir koordinat grafiği serisi üretir."
+    },
+    "SplineEditor": {
+        "title": "Eğri düzenleyici",
+        "inputs": {
+            "bg_image": "Arka plan görseli"
+        },
+        "widgets": {
+            "points_store": "Nokta konumları",
+            "mask_width": "Maske genişliği",
+            "mask_height": "Maske yüksekliği",
+            "points_to_sample": "Örnekleme hassasiyeti",
+            "sampling_method": "Örnekleme yöntemi",
+            "interpolation": "Enterpolasyon yöntemi",
+            "tension": "Gerilim",
+            "repeat_output": "Çıkışı yinele",
+            "float_output_type": "Ondalık çıkış türü",
+            "min_value": "En küçük değer",
+            "max_value": "En büyük değer",
+            "New spline": "Yeni eğri",
+            "New canvas": "Yeni tuval"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "coord_str": "Koordinatlar",
+            "float": "Ondalık",
+            "count": "Miktar",
+            "normalized_str": "Dizeyi normalize et"
+        },
+        "description": "# Geliştiriliyor \nBu düğümü iş akışında kullanmamaya çalışın; çok sayıda hata ve kararsızlıkla karşılaşabilirsiniz!! \n \n##Çeşitli değer zamanlamaları oluşturmak için grafiksel düzenleyici \n\n**Shift+sol tık** yeni kontrol noktası ekler, **Ctrl+sol tık** ara kontrol noktası oluşturur, **sağ tık** kontrol noktasını kaldırır.\nUç noktalar silinemez.\n\n Arka plana sağ tık bir menü açar: bazı görsel ayarlar, çıktıyı etkilemez:\n - Kontrol kollarının görünürlüğü \n - Örnekleme noktalarını göster \n\n**Örnekleme hassasiyeti** örneklem noktası sayısını ayarlar; noktalar spline'ın kendisinden döndürülür, gerçek kontrol noktalarından bağımsızdır ve enterpolasyon türüne bağlıdır.\nÖrnekleme yöntemi:\n - Zaman: zaman ekseni boyunca örnekleme, zamanlamalar için \n - Yol: eğri yolu boyunca örnekleme, koordinatlar için \n\n Çıkışlar:\n - Maske yığını \n Maske alan herhangi bir düğüm için uygundur \n - Float listesi \n IPAdapter ağırlık kümeleri için uygundur \n - pandas serisi \n 'Fizz yığın zamanlaması' düğümünü kabul eden düğümler için uygundur \n - torch tensörü \n Belirsiz düğümler için uygundur"
+    },
+    "CreateShapeMaskOnPath": {
+        "title": "Şekil maskesi oluştur",
+        "inputs": {
+            "coordinates": "Koordinatlar",
+            "size_multiplier": "Boyut çarpanı"
+        },
+        "widgets": {
+            "shape": "Şekil",
+            "frame_height": "Yükseklik",
+            "frame_width": "Genişlik",
+            "shape_height": "Şekil yüksekliği",
+            "shape_width": "Şekil genişliği",
+            "shape_color": "Şekil rengi",
+            "bg_color": "Arka plan rengi",
+            "blur_radius": "Bulanıklık yarıçapı",
+            "intensity": "Şiddet"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "mask_inverted": "Maskeyi ters çevir"
+        },
+        "description": "Belirtilen şekilde bir maske veya maske yığını üretir; konum parametreleri merkez konumudur."
+    },
+    "CreateShapeImageOnPath": {
+        "title": "Şekil görseli oluştur",
+        "inputs": {
+            "coordinates": "Koordinatlar",
+            "size_multiplier": "Boyut çarpanı"
+        },
+        "widgets": {
+            "shape": "Şekil",
+            "frame_height": "Yükseklik",
+            "frame_width": "Genişlik",
+            "shape_height": "Şekil yüksekliği",
+            "shape_width": "Şekil genişliği",
+            "shape_color": "Şekil rengi",
+            "bg_color": "Arka plan rengi",
+            "blur_radius": "Bulanıklık yarıçapı",
+            "intensity": "Şiddet",
+            "trailing": "Sonuna ekle",
+            "border_width": "Kenarlık kalınlığı",
+            "border_color": "Kenarlık rengi"
+        },
+        "outputs": {
+            "image": "Görsel",
+            "mask": "Maske"
+        },
+        "description": "Belirtilen şekilde bir görsel veya görsel yığını üretir; konum parametreleri merkez konumudur."
+    },
+    "CreateTextOnPath": {
+        "title": "Metin oluştur",
+        "inputs": {
+            "coordinates": "Koordinatlar",
+            "size_multiplier": "Boyut çarpanı"
+        },
+        "widgets": {
+            "text": "Metin",
+            "frame_height": "Yükseklik",
+            "frame_width": "Genişlik",
+            "font": "Yazı tipi",
+            "font_size": "Yazı tipi boyutu",
+            "alignment": "Hizalama",
+            "text_color": "Metin rengi"
+        },
+        "outputs": {
+            "image": "Görsel",
+            "mask": "Maske",
+            "mask_inverted": "Maskeyi ters çevir"
+        },
+        "description": "Belirtilen metinle bir maske veya maske yığını oluşturur. Konum, merkez konumudur."
+    },
+    "CreateGradientFromCoords": {
+        "title": "Koordinatlardan degrade görsel oluştur",
+        "inputs": {
+            "coordinates": "Koordinatlar"
+        },
+        "widgets": {
+            "frame_height": "Yükseklik",
+            "frame_width": "Genişlik",
+            "start_color": "Başlangıç rengi",
+            "end_color": "Bitiş rengi",
+            "multiplier": "Çarpan"
+        },
+        "outputs": {
+            "image": "Görsel"
+        },
+        "description": "Koordinat konumunda degrade bir görsel oluşturur."
+    },
+    "GradientToFloat": {
+        "title": "Degrade'den float'a",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "steps": "Adım"
+        },
+        "outputs": {
+            "float_x": "Ondalık_X",
+            "float_y": "Ondalık_Y"
+        },
+        "description": "Görsel float listesini hesapla"
+    },
+    "MaskOrImageToWeight": {
+        "title": "Maske veya görselden ağırlıklara",
+        "inputs": {
+            "images": "Görsel",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "output_type": "Çıkış türü"
+        },
+        "outputs": {
+            "FLOAT": "Ondalık",
+            "STRING": "Ondalık"
+        },
+        "description": "Maske veya görsel yığınının ortalamasını alır ve Çıkış türü ile sonuçlandırır."
+    },
+    "WeightScheduleConvert": {
+        "title": "Ağırlık zamanlaması dönüşümü",
+        "inputs": {
+            "input_values": "Girdi değerleri",
+            "interpolation_curve": "Enterpolasyon eğrisi"
+        },
+        "widgets": {
+            "output_type": "Çıkış türü",
+            "invert": "Ters çevir",
+            "repeat": "Yinele",
+            "remap_to_frames": "Karelere yeniden eşle",
+            "interpolation_curve": "Enterpolasyon eğrisi",
+            "remap_values": "Yeniden eşleme değer sayısı",
+            "remap_min": "Yeniden eşleme min",
+            "remap_max": "Yeniden eşleme maks"
+        },
+        "outputs": {
+            "FLOAT": "Ondalık",
+            "STRING": "Ondalık",
+            "INT": "Tam sayı"
+        },
+        "description": "Farklı değer listelerini/dizilerini başka bir türe dönüştürür."
+    },
+    "FloatToMask": {
+        "title": "Float'tan maskeye",
+        "inputs": {
+            "input_values": "Girdi değerleri"
+        },
+        "widgets": {
+            "width": "Genişlik",
+            "height": "Yükseklik"
+        },
+        "outputs": {
+            "MASK": "Maske"
+        },
+        "description": "Girdi float değerlerine dayanarak bir maske yığını üretir. Yığın boyutu, girdi float değerlerinin uzunluğuyla belirlenir. Her maske belirtilen genişlik ve yükseklikte üretilir."
+    },
+    "WeightScheduleExtend": {
+        "title": "Ağırlık zamanlaması genişletme",
+        "inputs": {
+            "input_values_1": "Girdi değerleri_1",
+            "input_values_2": "Girdi değerleri_2"
+        },
+        "widgets": {
+            "output_type": "Çıkış türü"
+        },
+        "outputs": {
+            "FLOAT": "Ondalık"
+        },
+        "description": "Farklı değer listelerini/dizilerini genişletir ve gerektiğinde dönüştürür"
+    },
+    "FloatToSigmas": {
+        "title": "Float'tan Sigmas'a",
+        "inputs": {
+            "float_list": "Ondalık listesi"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        },
+        "description": "Float listesinden bir sigmas tensörü oluşturur"
+    },
+    "SigmasToFloat": {
+        "title": "Sigmas'tan float'a",
+        "inputs": {
+            "sigmas": "sigmas"
+        },
+        "outputs": {
+            "float": "Ondalık"
+        },
+        "description": "Sigma tensöründen bir float listesi oluşturur."
+    },
+    "GLIGENTextBoxApplyBatchCoords": {
+        "title": "GLIGEN metin kutusu uygula (yığın koordinatları)",
+        "inputs": {
+            "conditioning_to": "Koşullandırma",
+            "latents": "Latent",
+            "clip": "CLIP",
+            "gligen_textbox_model": "GLIGEN modeli",
+            "coordinates": "Koordinatlar",
+            "size_multiplier": "Boyut çarpanı"
+        },
+        "widgets": {
+            "text": "Metin",
+            "width": "Genişlik",
+            "height": "Yükseklik"
+        },
+        "outputs": {
+            "conditioning": "Koşullandırma",
+            "coord_preview": "Koordinat önizlemesi"
+        },
+        "description": "Bu düğüm, AnimateDiff-Evolved ile birlikte GLIGEN metin kutusu konumlarını yığın içinde zamanlamanıza olanak tanır. Eğri düzenleyici düğümüyle birlikte kullanmanız önerilir.\n\n GLIGEN modeli, Yönetici içindeki 'Model Kur' bölümünden veya doğrudan şuradan indirilebilir: https://huggingface.co/comfyanonymous/GLIGEN_pruned_safetensors/tree/main . \n \n Girdiler: \n- **Latent** girdisi yığın boyutunu hesaplamak için kullanılır \n- **CLIP** bir metin kodlayıcıdır, diğer CLIP girdileriyle aynı \n- **GLIGEN modeli** GLIGEN yükleyici düğümüne bağlanır \n- **Koordinatlar** koordinat json dizesini alır ve eğri düzenleyici düğümüyle uyumludur. \n- **Metin** metin kutusu konumlarının istemi \n- **Genişlik** ve **Yükseklik** GLIGEN metin kutusunun boyutunu ayarlar \n \nÇıkışlar:\n- **Koşullandırma** CLIP metin kodlama ile örnekleyici arasına bağlanır \n- **Koordinat önizleme** koordinatları ve BBox'u önizlemek için\n\n"
+    },
+    "CreateInstanceDiffusionTracking": {
+        "title": "InstanceDiffusion takibi oluştur",
+        "inputs": {
+            "coordinates": "Koordinatlar",
+            "size_multiplier": "Boyut çarpanı"
+        },
+        "widgets": {
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "bbox_width": "BBox genişliği",
+            "bbox_height": "BBox yüksekliği",
+            "class_name": "Sınıf adı",
+            "class_id": "Sınıf Kimliği",
+            "prompt": "İstem",
+            "fit_in_frame": "Kareye uyarla"
+        },
+        "outputs": {
+            "tracking": "Takip",
+            "prompt": "İstem",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "bbox_width": "bbox genişliği",
+            "bbox_height": "bbox yüksekliği",
+            "int": "Tam sayı"
+        },
+        "description": "InstanceDiffusion için takip verisi üretir:\nhttps://github.com/logtd/ComfyUI-InstanceDiffusion\n\nInstanceDiffusion istem biçimi:\n`\"sinif_kimligi.sinif_adi\": \"istem\"`\nÖrnek:\n`\"1.head\": \"((head))\"`"
+    },
+    "AppendInstanceDiffusionTracking": {
+        "title": "InstanceDiffusion takibi ekle",
+        "inputs": {
+            "tracking_1": "Takip_1",
+            "tracking_2": "Takip_2",
+            "prompt_1": "İstem_1",
+            "prompt_2": "İstem_2"
+        },
+        "outputs": {
+            "tracking": "Takip",
+            "prompt": "İstem"
+        },
+        "description": "InstanceDiffusion ile kullanmak üzere takip verilerini birleştirir: https://github.com/logtd/ComfyUI-InstanceDiffusion"
+    },
+    "InterpolateCoords": {
+        "title": "Koordinat enterpolasyonu",
+        "inputs": {
+            "coordinates": "Koordinatlar",
+            "interpolation_curve": "Enterpolasyon eğrisi"
+        },
+        "outputs": {
+            "coordinates": "Koordinatlar"
+        },
+        "description": "Eğriye göre koordinat ekle"
+    },
+    "DrawInstanceDiffusionTracking": {
+        "title": "InstanceDiffusion takibini çiz",
+        "inputs": {
+            "image": "Görsel",
+            "tracking": "Takip"
+        },
+        "widgets": {
+            "box_line_width": "Çerçeve çizgi kalınlığı",
+            "draw_text": "Metni çiz",
+            "font": "Yazı tipi",
+            "font_size": "Yazı tipi boyutu"
+        },
+        "outputs": {
+            "image": "Görsel"
+        },
+        "description": "CreateInstanceDiffusionTracking düğümünden gelen takip verilerini çizmek için kullanır"
+    },
+    "PointsEditor": {
+        "title": "Nokta düzenleyici",
+        "inputs": {
+            "bg_image": "Arka plan görseli"
+        },
+        "widgets": {
+            "points_store": "Nokta konumları",
+            "bbox_store": "BBox konumları",
+            "bbox_format": "BBox biçimi",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "normalize": "Normalize et",
+            "New canvs": "Yeni tuval",
+            "Load Image": "Görsel yükle",
+            "Clear Image": "Görseli temizle",
+            "New canvas": "Yeni tuval"
+        },
+        "outputs": {
+            "positive_coords": "Olumlu koordinatlar",
+            "negative_coords": "Olumsuz koordinatlar",
+            "bbox": "BBox",
+            "bbox_mask": "BBox maskesi",
+            "cropped_image": "Kırpmış görsel"
+        },
+        "description": "# Geliştiriliyor  \nBu düğümü iş akışında kullanmamaya çalışın; çok sayıda hata ve kararsızlıkla karşılaşabilirsiniz!!  \n\n## Koordinatlar için grafiksel düzenleyici oluşturur\n\n**Shift + Sol tık** olumlu (yeşil) koordinat noktası ekler.\n\n**Shift + Sağ tık** olumsuz (kırmızı) koordinat noktası ekler.\n\n**Ctrl + Sol tık** kutu çizer.\n\n**Noktaya sağ tık** o noktayı siler; nokta dizisinin başlangıç/bitiş noktaları silinemez.\n\nGörsel eklemek için düğümü seçip görseli yapıştırın veya sürükleyip bırakın.\n\nVeya arka plan görseli arayüzünden girin; girdi görselinin ilk karesi kullanılır.\n\n**Görsel düğüme ve iş akışına kaydedilir**\nSağ tık menüsünden görsel temizlenebilir.\n"
+    },
+    "CutAndDragOnPath": {
+        "title": "Yolu kes ve sürükle",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske",
+            "bg_image": "Arka plan görseli",
+            "coordinates": "Koordinatlar"
+        },
+        "widgets": {
+            "frame_width": "Çerçeve genişliği",
+            "frame_height": "Çerçeve yüksekliği",
+            "inpaint": "Onar"
+        },
+        "outputs": {
+            "image": "Görsel",
+            "mask": "Maske"
+        },
+        "description": "Görselden maskelenmiş bölgeyi keser ve o bölgeyi bir yol boyunca sürükler. Onarma etkinleştirilip arka plan görseli sağlanmadığında kesilen bölge OpenCV TELEA algoritmasıyla doldurulur."
+    },
+    "ImagePass": {
+        "title": "Görsel köprüsü",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "Görseli bir sonraki düğüme ilet"
+    },
+    "ColorMatch": {
+        "title": "Görsel renk düzenleme",
+        "inputs": {
+            "image_ref": "Referans görsel",
+            "image_target": "Hedef görsel"
+        },
+        "widgets": {
+            "method": "Yöntem",
+            "strength": "Şiddet",
+            "multithread": "Çoklu iş parçacığı"
+        },
+        "outputs": {
+            "image": "Görsel"
+        },
+        "description": "color-matcher (görsel renk düzenleme) görseller arasındaki renk stilini dönüştürebilir; fotoğraflar, resimler ve ardışık kareler için otomatik renk düzenleme ile ışık alanı düzeltmesi sağlar.\n\nReinhard vb. algoritmalar, Pitie ve diğerlerinin Monge-Kantorovich Doğrusallaştırma (MKL) algoritması ve klasik histogram eşleştirmeyi Çok Değişkenli Gauss Dağılımı (MVGD) algoritmasının analitik çözümüyle birleştiren çalışmamıza dayanır. Aşağıda görüldüğü gibi HM-MVGD-HM yaklaşımımız mevcut yöntemlerden üstündür.\n\nhttps://github.com/hahnec/color-matcher/"
+    },
+    "SaveImageWithAlpha": {
+        "title": "Alfa kanallı görsel kaydet",
+        "inputs": {
+            "images": "Görsel",
+            "mask": "Maske",
+            "filename_prefix": "Dosya adı ön eki",
+            "prompt": "İstem",
+            "extra_pnginfo": "Ek PNG bilgisi"
+        },
+        "outputs": {}
+    },
+    "ImageConcanate": {
+        "title": "Görsel birleştirme",
+        "inputs": {
+            "image1": "Görsel_1",
+            "image2": "Görsel_2"
+        },
+        "widgets": {
+            "direction": "Yön",
+            "match_image_size": "Görsel boyutlarını eşle"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "İki görseli yöne göre birleştirir."
+    },
+    "ImageConcatFromBatch": {
+        "title": "Görsel birleştirme (yığın)",
+        "inputs": {
+            "images": "Görsel"
+        },
+        "widgets": {
+            "num_columns": "Sütun sayısı",
+            "match_image_size": "Boyutları eşle",
+            "max_resolution": "Maks çözünürlük"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "Görsel yığından görselleri alır ve sütun sayısına göre tek bir görselde dizer."
+    },
+    "ImageGridComposite2x2": {
+        "title": "Görsel ızgara birleştirme 2x2",
+        "inputs": {
+            "image1": "Görsel_1",
+            "image2": "Görsel_2",
+            "image3": "Görsel_3",
+            "image4": "Görsel_4"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "4 girdi görseli 2x2 tabloda birleştirir."
+    },
+    "ImageGridComposite3x3": {
+        "title": "Görsel ızgara birleştirme 3x3",
+        "inputs": {
+            "image1": "Görsel_1",
+            "image2": "Görsel_2",
+            "image3": "Görsel_3",
+            "image4": "Görsel_4",
+            "image5": "Görsel_5",
+            "image6": "Görsel_6",
+            "image7": "Görsel_7",
+            "image8": "Görsel_8",
+            "image9": "Görsel_9"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "9 girdi görseli 3x3 tabloda birleştirir."
+    },
+    "ImageBatchTestPattern": {
+        "title": "Görsel yığını deseni",
+        "widgets": {
+            "batch_size": "Yığın boyutu",
+            "start_from": "Başlangıç değeri",
+            "text_x": "Metin x",
+            "text_y": "Metin y",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "font": "Yazı tipi",
+            "font_size": "Yazı tipi boyutu"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "ImageGrabPIL": {
+        "title": "PIL ekran yakalama",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "num_frames": "Kare sayısı",
+            "delay": "Gecikme"
+        },
+        "outputs": {
+            "image": "Görsel"
+        },
+        "description": "Ekran koordinatlarına göre bölgeyi yakalar.\n\nGerçek zamanlı örnekleme için kullanılır."
+    },
+    "Screencap_mss": {
+        "title": "Ekran yakalama MSS",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "num_frames": "Kare sayısı",
+            "delay": "Gecikme"
+        },
+        "outputs": {
+            "images": "Görsel"
+        },
+        "description": "Ekran koordinatlarına göre bölgeyi yakalar.\n\nGerçek zamanlı örnekleme için kullanılır."
+    },
+    "WebcamCaptureCV2": {
+        "title": "Kamera yakalama CV2",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "cam_index": "Kamera numarası",
+            "release": "Bırak"
+        },
+        "outputs": {
+            "image": "Görsel"
+        },
+        "description": "CV2 ile web kamerasını çağırarak ekranı yakalar.\n\nGerçek zamanlı örnekleme için kullanılır."
+    },
+    "AddLabel": {
+        "title": "Etiket ekle",
+        "inputs": {
+            "image": "Görsel",
+            "caption": "Başlık"
+        },
+        "widgets": {
+            "text_x": "Konum_X",
+            "text_y": "Konum_Y",
+            "height": "Yükseklik",
+            "font_size": "Yazı tipi boyutu",
+            "font_color": "Yazı tipi rengi",
+            "label_color": "Arka plan rengi",
+            "font": "Yazı tipi",
+            "text": "Metin",
+            "direction": "Yön"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "GetImageSizeAndCount": {
+        "title": "Görsel boyutu değerlerini al",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "outputs": {
+            "image": "Görsel",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "count": "Miktar"
+        },
+        "description": "Çıkış görselinin genişliğini, yüksekliğini ve yığın boyutunu"
+    },
+    "ImageBatchRepeatInterleaving": {
+        "title": "Görsel yığınınu kopyala",
+        "inputs": {
+            "images": "Görsel",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "repeats": "Sayı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "Yığındaki görselleri belirtilen sayı kadar kopyalar.\n\nÖrneğin 5 görsellik bir yığın: 0,1,2,3,4\n\n2 kez tekrarlandığında: 0,0,1,1,2,2,3,3,4,4"
+    },
+    "ImageUpscaleWithModelBatched": {
+        "title": "Görsel yığınınu modelle büyüt",
+        "inputs": {
+            "upscale_model": "Büyütme modeli",
+            "images": "Görsel"
+        },
+        "widgets": {
+            "per_batch": "Yığın başına"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "İşlevi ComfyUI'nin yerel model büyütme düğümüyle aynıdır, ancak VRAM kullanımını azaltmak için parçalı işlem ayarlamayı destekler."
+    },
+    "ImageNormalize_Neg1_To_1": {
+        "title": "Görseli -1 ile 1 arasında normalize et",
+        "inputs": {
+            "images": "Görsel"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "Görseli [-1,1] aralığına normalize et"
+    },
+    "RemapImageRange": {
+        "title": "Görsel aralığını yeniden eşle",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "min": "En küçük değer",
+            "max": "En büyük değer",
+            "clamp": "Sınırla"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "Görsel değerlerini belirtilen aralığa yeniden eşler."
+    },
+    "SplitImageChannels": {
+        "title": "Görsel kanallarını ayır",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "outputs": {
+            "red": "Kırmızı",
+            "green": "Yeşil",
+            "blue": "Mavi",
+            "mask": "Maske"
+        },
+        "description": "Görseli tek kanallı görsellere ayırır; alfa kanalı maske olarak ayrılır."
+    },
+    "MergeImageChannels": {
+        "title": "Görsel kanallarını birleştir",
+        "inputs": {
+            "red": "Kırmızı",
+            "green": "Yeşil",
+            "blue": "Mavi",
+            "alpha": "Alfa saydamlık kanalı"
+        },
+        "outputs": {
+            "image": "Görsel"
+        },
+        "description": "Kanalları görsele birleştir"
+    },
+    "ImagePadForOutpaintMasked": {
+        "title": "Dışa uzatma tuvali (maske)",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "left": "Sol",
+            "top": "Üst",
+            "right": "Sağ",
+            "bottom": "Alt",
+            "feathering": "Tüyleme"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "ImagePadForOutpaintTargetSize": {
+        "title": "Dışa uzatma tuvali (boyut)",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "target_width": "Hedef genişlik",
+            "target_height": "Hedef yükseklik",
+            "feathering": "Tüyleme",
+            "upscale_method": "Ölçekleme yöntemi"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "ImagePrepForICLora": {
+        "title": "ICLora görsel hazırlama",
+        "inputs": {
+            "reference_image": "Referans görsel",
+            "latent_image": "Latent görsel",
+            "latent_mask": "Latent maske",
+            "reference_mask": "Referans maskesi"
+        },
+        "widgets": {
+            "output_width": "Çıkış genişliği",
+            "output_height": "Çıkış yüksekliği",
+            "border_width": "Kenarlık kalınlığı"
+        },
+        "outputs": {
+            "image": "Görsel",
+            "mask": "Maske"
+        }
+    },
+    "ImageAndMaskPreview": {
+        "title": "Görsel ve maske önizlemesi",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "mask_opacity": "Maske opaklığı",
+            "mask_color": "Maske rengi",
+            "pass_through": "İçinden geçir"
+        },
+        "outputs": {
+            "composite": "Görsel"
+        },
+        "description": "Görsel veya maskeyi önizler; hem görsel hem maske girildiğinde maskeyi görsele bindirir.\nİçinden geçir açıkken birleştirme devre dışı bırakılır; videoya birleştiren düğümlerin önizlemesi için kullanılır."
+    },
+    "CrossFadeImages": {
+        "title": "Görselleri çapraz geçişle karıştır",
+        "inputs": {
+            "images_1": "Görsel_1",
+            "images_2": "Görsel_2"
+        },
+        "widgets": {
+            "interpolation": "Enterpolasyon yöntemi",
+            "transition_start_index": "Geçiş başlangıç numarası",
+            "transitioning_frames": "Geçiş kare sayısı",
+            "start_level": "Başlangıç renk değeri",
+            "end_level": "Bitiş renk değeri"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "CrossFadeImagesMulti": {
+        "title": "Çoklu çapraz geçişli görseller",
+        "inputs": {
+            "image_1": "Görsel_1",
+            "image_2": "Görsel_2"
+        },
+        "widgets": {
+            "inputcount": "Girdi sayısı",
+            "interpolation": "Enterpolasyon yöntemi",
+            "Update inputs": "Girdileri güncelle",
+            "transitioning_frames": "Geçiş kare sayısı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "TransitionImagesMulti": {
+        "title": "Çoklu geçiş görselleri",
+        "inputs": {
+            "image_1": "Görsel_1",
+            "image_2": "Görsel_2"
+        },
+        "widgets": {
+            "inputcount": "Girdi sayısı",
+            "interpolation": "Enterpolasyon yöntemi",
+            "transition_type": "Geçiş türü",
+            "transitioning_frames": "Geçiş kare sayısı",
+            "blur_radius": "Bulanıklık yarıçapı",
+            "reverse": "Ters çevir",
+            "device": "Aygıt",
+            "Update inputs": "Girdileri güncelle"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        },
+        "description": "Görseller arasında geçiş oluşturur."
+    },
+    "TransitionImagesInBatch": {
+        "title": "Yığın geçiş görselleri",
+        "inputs": {
+            "images": "Görsel"
+        },
+        "widgets": {
+            "interpolation": "Enterpolasyon yöntemi",
+            "transition_type": "Geçiş türü",
+            "transitioning_frames": "Geçiş kare sayısı",
+            "blur_radius": "Bulanıklık yarıçapı",
+            "reverse": "Ters çevir",
+            "device": "Aygıt"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        },
+        "description": "Yığındaki görseller arasında geçiş oluşturur"
+    },
+    "ShuffleImageBatch": {
+        "title": "Görsel yığınınu karıştır",
+        "inputs": {
+            "images": "Görsel"
+        },
+        "widgets": {
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "GetImageRangeFromBatch": {
+        "title": "Görsel aralığı al",
+        "inputs": {
+            "images": "Görsel",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "start_index": "Başlangıç numarası",
+            "num_frames": "Kare sayısı"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        },
+        "description": "Girdi görsel yığınına ve parametrelere dayanarak yeni bir görsel yığını oluşturur."
+    },
+    "GetLatentRangeFromBatch": {
+        "title": "Latent aralığı al",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "start_index": "Başlangıç numarası",
+            "num_frames": "Kare sayısı"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "Insert_Latent_To_Index": {
+        "title": "Latent'i dizine ekle",
+        "inputs": {
+            "source": "Kaynak",
+            "destination": "Hedef"
+        },
+        "widgets": {
+            "index": "Dizin"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "GetImagesFromBatchIndexed": {
+        "title": "Yığından görsel al",
+        "inputs": {
+            "images": "Görsel"
+        },
+        "widgets": {
+            "indexes": "Sıra numarası"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "Görselleri sıra numarasına göre seçer."
+    },
+    "InsertImagesToBatchIndexed": {
+        "title": "Görseli dizine yığın olarak ekle",
+        "inputs": {
+            "original_images": "Orijinal görsel",
+            "images_to_insert": "Eklenecek görsel"
+        },
+        "widgets": {
+            "indexes": "Dizin"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "Belirtilen dizindeki görseli orijinal görsel yığınına ekler."
+    },
+    "PadImageBatchInterleaved": {
+        "title": "Görsel yığınınu aralıklı doldur",
+        "inputs": {
+            "images": "Görsel"
+        },
+        "widgets": {
+            "empty_frames_per_image": "Görsel başına boş kare",
+            "pad_frame_value": "Dolgu kare değeri",
+            "add_after_last": "Sonuna ekle"
+        },
+        "outputs": {
+            "images": "Görsel",
+            "masks": "Maske"
+        },
+        "description": "Yığındaki görseller arasına boş kareler ekler."
+    },
+    "ReplaceImagesInBatch": {
+        "title": "Görsel yığınınu değiştir",
+        "inputs": {
+            "original_images": "Orijinal görsel",
+            "replacement_images": "Değiştirme görseli",
+            "original_masks": "Orijinal maske",
+            "replacement_masks": "Değiştirme maskesi"
+        },
+        "widgets": {
+            "start_index": "Başlangıç numarası"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "Belirtilen başlangıç dizininden itibaren yığındaki görselleri değiştirme görselleriyle değiştirir."
+    },
+    "ReverseImageBatch": {
+        "title": "Görsel yığınınu ters çevir",
+        "inputs": {
+            "images": "Görsel"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "Yığındaki görsellerin sırasını ters çevirir."
+    },
+    "ImageBatchMulti": {
+        "title": "Görselleri yığında birleştir (çoklu)",
+        "inputs": {
+            "image_1": "Görsel_1",
+            "image_2": "Görsel_2",
+            "image_3": "Görsel_3",
+            "image_4": "Görsel_4",
+            "image_5": "Görsel_5",
+            "image_6": "Görsel_6",
+            "image_7": "Görsel_7",
+            "image_8": "Görsel_8",
+            "image_9": "Görsel_9",
+            "image_10": "Görsel_10"
+        },
+        "widgets": {
+            "inputcount": "Girdi sayısı",
+            "blending": "Karıştırma yöntemi",
+            "Update inputs": "Girdileri güncelle"
+        },
+        "outputs": {
+            "images": "Görsel"
+        },
+        "description": "Birden fazla görseli tek bir görsel yığınında birleştirir. Girdi arayüzü sayısı \"Girdi sayısı\" ile ayarlanabilir; arayüzleri yenilemek için Güncelle'ye tıklayın."
+    },
+    "ImageTensorList": {
+        "title": "Görsel tensör listesi",
+        "inputs": {
+            "image1": "Görsel 1",
+            "image2": "Görsel 2"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "Girdi görsellerinden bir görsel listesi oluşturur."
+    },
+    "ImageBatchExtendWithOverlap": {
+        "title": "Görsel yığını genişletme (örtüşme ile)",
+        "inputs": {
+            "source_images": "Kaynak görsel",
+            "new_images": "Yeni görsel"
+        },
+        "widgets": {
+            "overlap": "Örtüşme",
+            "overlap_side": "Yan örtüşme",
+            "overlap_mode": "Desen örtüşmesi"
+        },
+        "outputs": {
+            "source_images": "Kaynak görsel",
+            "start_images": "Başlangıç görseli",
+            "extended_images": "Genişletilmiş görsel"
+        },
+        "description": "Video üretimi genişletme için yardımcı düğüm\n Önce girdi kaynağını ve örtüşme miktarını alarak genişletmenin başlangıç karesini elde eder.\n Ardından bu düğümün başka bir kopyasına\n yeni üretilen kareyi sağlar ve örtüşmenin nasıl yapılacağını seçer."
+    },
+    "ImageAddMulti": {
+        "title": "Görsel karıştırma (çoklu)",
+        "inputs": {
+            "image_1": "Görsel_1",
+            "image_2": "Görsel_2",
+            "image_3": "Görsel_3",
+            "image_4": "Görsel_4",
+            "image_5": "Görsel_5",
+            "image_6": "Görsel_6",
+            "image_7": "Görsel_7",
+            "image_8": "Görsel_8",
+            "image_9": "Görsel_9",
+            "image_10": "Görsel_10"
+        },
+        "widgets": {
+            "inputcount": "Girdi sayısı",
+            "blending": "Karıştırma yöntemi",
+            "blend_amount": "Karışım miktarı",
+            "Update inputs": "Girdileri güncelle"
+        },
+        "outputs": {
+            "images": "Görsel"
+        },
+        "description": "Birden fazla görseli karıştırır. Girdi arayüzü sayısı \"Girdi sayısı\" ile ayarlanabilir; arayüzleri yenilemek için Güncelle'ye tıklayın."
+    },
+    "ImageConcatMulti": {
+        "title": "Görsel birleştirme (çoklu)",
+        "inputs": {
+            "image_1": "Görsel_1",
+            "image_2": "Görsel_2"
+        },
+        "widgets": {
+            "inputcount": "Girdi sayısı",
+            "direction": "Yön",
+            "match_image_size": "Boyutları eşle",
+            "Update inputs": "Girdileri güncelle"
+        },
+        "outputs": {
+            "images": "Görsel"
+        },
+        "description": "Birden çok görseli yöne göre birleştirir. Girdi sayısını güncellemek için Güncelle'ye tıklayın."
+    },
+    "PreviewAnimation": {
+        "title": "Animasyon önizleme",
+        "inputs": {
+            "images": "Görsel",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "fps": "Kare hızı"
+        }
+    },
+    "ImageResizeKJ": {
+        "title": "Görsel ölçekleme (KJ)",
+        "inputs": {
+            "image": "Görsel",
+            "get_image_size": "Referans görsel",
+            "width_input": "Genişlik",
+            "height_input": "Yükseklik"
+        },
+        "widgets": {
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "upscale_method": "Ölçekleme yöntemi",
+            "keep_proportions": "Sabit en-boy oranı",
+            "keep_proportion": "Sabit en-boy oranı",
+            "divisible_by": "Bölünebilirlik katı",
+            "crop": "Kırp",
+            "per_batch": "Yığın"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "width": "Genişlik",
+            "height": "Yükseklik"
+        },
+        "description": "Görseli belirtilen genişlik ve yüksekliğe göre ölçekler. Boyutlar girdiyle belirtilebilir; nihai çıkış önceliği şu sıraya göre dizilir:\n- Referans görsel boyutu \n- Genişlik-girdisi ve Yükseklik-girdisi \n- Genişlik ve Yükseklik \n \nSabit en-boy oranı, oranı en yüksek boyuta göre sabitler."
+    },
+    "LoadAndResizeImage": {
+        "title": "Görseli yükle ve ölçekle",
+        "widgets": {
+            "image": "Görsel",
+            "resize": "Ölçekle",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "repeat": "Kopyala",
+            "keep_proportion": "Sabit en-boy oranı",
+            "divisible_by": "Çarpan",
+            "mask_channel": "Maske kanalı",
+            "background_color": "Arka plan rengi",
+            "upload": "Yükle"
+        },
+        "outputs": {
+            "image": "Görsel",
+            "mask": "Maske",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "image_path": "Görsel yolu"
+        }
+    },
+    "LoadImagesFromFolderKJ": {
+        "title": "Görsel klasörü yükle (KJ)",
+        "widgets": {
+            "folder": "Klasör",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "keep_aspect_ratio": "En-boy oranını koru",
+            "image_load_cap": "Yükleme üst sınırı",
+            "start_index": "Başlangıç numarası",
+            "include_subfolders": "Alt klasörleri dahil et"
+        },
+        "outputs": {
+            "image": "Görsel",
+            "mask": "Maske",
+            "count": "Miktar",
+            "image_path": "Görsel yolu"
+        },
+        "description": "Görselleri klasörden yığına yükler; görseller yeniden boyutlandırılıp yığına alınır."
+    },
+    "ImageGridtoBatch": {
+        "title": "Görsel tablosundan yığına",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "columns": "Sütun sayısı",
+            "The number of columns in the grid.": "Tablonun sütun sayısı.",
+            "rows": "Satır sayısı",
+            "The number of rows in the grid. Set to 0 for automatic calculation.": "Tablonun satır sayısı; 0 otomatiktir."
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "Izgarayı tek bir görsel yığınına dönüştürür."
+    },
+    "SaveImageKJ": {
+        "title": "Görsel kaydet (KJ)",
+        "inputs": {
+            "images": "Görsel",
+            "caption": "Etiket"
+        },
+        "widgets": {
+            "filename_prefix": "Dosya adı ön eki",
+            "output_folder": "Çıkış klasörü",
+            "caption_file_extension": "Etiket dosya uzantısı",
+            "prompt": "İstem",
+            "extra_pnginfo": "Ek PNG bilgisi"
+        },
+        "outputs": {
+            "filename": "Dosya adı"
+        },
+        "description": "Girdi görsellerini ComfyUI çıkış dizinine kaydeder."
+    },
+    "SaveStringKJ": {
+        "title": "Dize kaydet (KJ)",
+        "inputs": {
+            "string": "Dize"
+        },
+        "widgets": {
+            "filename_prefix": "Dosya adı ön eki",
+            "output_folder": "Çıkış klasörü",
+            "file_extension": "Dosya uzantısı"
+        },
+        "outputs": {
+            "filename": "Dosya adı"
+        }
+    },
+    "FastPreview": {
+        "title": "Hızlı önizleme",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "format": "Biçim",
+            "quality": "Kalite"
+        },
+        "outputs": {}
+    },
+    "ImageCropByMaskAndResize": {
+        "title": "Maskeye göre kırp ve ölçekle",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "base_resolution": "Temel çözünürlük",
+            "padding": "Dolgu",
+            "min_crop_resolution": "En küçük kırpma çözünürlüğü",
+            "max_crop_resolution": "En büyük kırpma çözünürlüğü"
+        },
+        "outputs": {
+            "images": "Görsel",
+            "masks": "Maske",
+            "BBox": "BBox"
+        }
+    },
+    "ImageCropByMask": {
+        "title": "Maskeye göre kırp",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske"
+        },
+        "outputs": {
+            "image": "Görsel"
+        },
+        "description": "Sağlanan maskelere göre girdi görsellerini kırpar"
+    },
+    "ImageUncropByMask": {
+        "title": "Maskeye göre kırpılmamış alanı geri ekle",
+        "inputs": {
+            "destination": "Hedef görsel",
+            "source": "Kaynak görsel",
+            "mask": "Maske",
+            "bbox": "BBox"
+        },
+        "outputs": {
+            "image": "Görsel"
+        }
+    },
+    "ImageCropByMaskBatch": {
+        "title": "Maske yığınlarına göre kırp",
+        "inputs": {
+            "image": "Görsel",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "padding": "Dolgu",
+            "preserve_size": "Boyutu koru",
+            "bg_color": "Arka plan rengi"
+        },
+        "outputs": {
+            "images": "Görsel",
+            "masks": "Maske"
+        }
+    },
+    "ImagePadKJ": {
+        "title": "Görsel doldurma (KJ)",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "left": "Sol dolgu",
+            "right": "Sağ dolgu",
+            "top": "Üst dolgu",
+            "bottom": "Alt dolgu",
+            "extra_padding": "Ek dolgu",
+            "pad_mode": "Dolgu modu",
+            "color": "Renk",
+            "target_width": "Hedef genişlik",
+            "target_height": "Hedef yükseklik"
+        },
+        "outputs": {
+            "images": "Görsel",
+            "masks": "Maske"
+        },
+        "description": "Girdi görselini doldurur ve isteğe bağlı olarak belirtilen dolguyla maske üretir."
+    },
+    "ImageBatchJoinWithTransition": {
+        "title": "Görsel yığınlarını dizme (geçiş efektli)",
+        "inputs": {
+            "images_1": "Görsel 1",
+            "images_2": "Görsel 2"
+        },
+        "widgets": {
+            "start_index": "Başlangıç dizini",
+            "interpolation": "Enterpolasyon",
+            "transition_type": "Geçiş türü",
+            "transitioning_frames": "Geçiş kareleri",
+            "blur_radius": "Bulanıklık yarıçapı",
+            "reverse": "Ters çevir",
+            "device": "Aygıt"
+        },
+        "outputs": {
+            "images": "Görsel",
+            "masks": "Maske"
+        },
+        "description": "Girdi görseli"
+    },
+    "Intrinsic_lora_sampling": {
+        "title": "IntrinsicLoRA örnekleme",
+        "inputs": {
+            "model": "Model",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image": "Görsel",
+            "optional_latent": "Latent (isteğe bağlı)"
+        },
+        "widgets": {
+            "lora_name": "LoRA adı",
+            "task": "Görev",
+            "text": "Metin",
+            "per_batch": "Yığın başına"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "IMAGE": "Görsel"
+        },
+        "description": "Örnekleyicinin kullandığı intrinsic lora: https://github.com/duxiaodan/intrinsic-lora Bu lora'lar çok küçük olduğundan bu düğüm paketine dahil edilmiştir."
+    },
+    "BatchCLIPSeg": {
+        "title": "CLIP anlamsal bölümleme",
+        "inputs": {
+            "images": "Görsel",
+            "opt_model": "Model seç",
+            "prev_mask": "Önceki maske"
+        },
+        "widgets": {
+            "text": "Metin",
+            "threshold": "Eşik",
+            "binary_mask": "İkili maske",
+            "combine_mask": "Birleştirilmiş maske",
+            "use_cuda": "CUDA kullan",
+            "blur_sigma": "Bulanıklık şiddeti",
+            "image_bg_Ievel": "Görsel arka plan düzeyi",
+            "invert": "Ters çevir"
+        },
+        "outputs": {
+            "Image": "Görsel",
+            "Mask": "Maske"
+        },
+        "description": "CLIPSeg ile tek bir görseli veya görsel yığınını bölümle."
+    },
+    "DownloadAndLoadCLIPSeg": {
+        "title": "CLIPSeg yükle",
+        "widgets": {
+            "model": "Model"
+        },
+        "outputs": {
+            "clipseg_model": "CLIPSeg modeli"
+        },
+        "description": "huggingface_hub kullanarak CLIPSeg modelini Comfy/models/clip_seg konumuna indirir"
+    },
+    "CreateTextMask": {
+        "title": "Metin maskesi",
+        "widgets": {
+            "invert": "Ters çevir",
+            "frames": "Kare sayısı",
+            "text_x": "Konum_X",
+            "text_y": "Konum_Y",
+            "font_size": "Yazı tipi boyutu",
+            "font_color": "Yazı tipi rengi",
+            "text": "Metin",
+            "font": "Yazı tipi",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "start_rotation": "Başlangıç dönüşü",
+            "end_rotation": "Bitiş dönüşü"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "ColorToMask": {
+        "title": "Görsel renginden maskeye",
+        "inputs": {
+            "images": "Görsel"
+        },
+        "widgets": {
+            "invert": "Ters çevir",
+            "red": "Kırmızı",
+            "green": "Yeşil",
+            "blue": "Mavi",
+            "threshold": "Eşik",
+            "per_batch": "Yığın başına"
+        },
+        "outputs": {
+            "MASK": "Maske"
+        },
+        "description": "Seçilen RGB değerini maskeye dönüştürür. Yığın girdilerinde **per_batch**, bir seferde işlenen görsel sayısını kontrol eder."
+    },
+    "CreateFluidMask": {
+        "title": "Akışkan maske",
+        "widgets": {
+            "invert": "Ters çevir",
+            "frames": "Kare sayısı",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "inflow_count": "Akış miktarı",
+            "inflow_velocity": "Akış hızı",
+            "inflow_radius": "Akış yarıçapı",
+            "inflow_padding": "Akış dolgusu",
+            "inflow_duration": "Akış süresi"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "CreateAudioMask": {
+        "title": "Ses maskesi",
+        "widgets": {
+            "invert": "Ters çevir",
+            "frames": "Kare sayısı",
+            "scale": "Ölçekle",
+            "audio_path": "Ses dosya yolu",
+            "width": "Genişlik",
+            "height": "Yükseklik"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "MASK": "Maske"
+        }
+    },
+    "CreateGradientMask": {
+        "title": "Degrade maskesi",
+        "widgets": {
+            "invert": "Ters çevir",
+            "frames": "Kare sayısı",
+            "width": "Genişlik",
+            "height": "Yükseklik"
+        },
+        "outputs": {
+            "MASK": "Maske"
+        }
+    },
+    "CreateFadeMask": {
+        "title": "Solma maskesi",
+        "widgets": {
+            "invert": "Ters çevir",
+            "frames": "Kare sayısı",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "interpolation": "Enterpolasyon yöntemi",
+            "start_level": "Başlangıç renk değeri",
+            "midpoint_level": "Orta nokta renk değeri",
+            "end_level": "Bitiş renk değeri",
+            "midpoint_frame": "Orta nokta kare numarası"
+        },
+        "outputs": {
+            "MASK": "Maske"
+        },
+        "description": "Verilen kareler ve değerler arasında enterpolasyon yapan bir maske kümesi oluşturur. Fizz'in BatchValueSchedule sözdizimiyle aynı sözdizimini kullanır. İlk değer kare dizinidir (0'dan değil 1'den başlar); parantez içindeki ikinci değer, maskenin 0.0-1.0 aralığındaki float değeridir.\nÖrneğin varsayılan değerler:\n0:(0.0)\n7:(1.0)\n15:(0.0)\nsiyahla başlayıp seçilen eğri enterpolasyonuyla 8. karede tamamen beyaza, oradan 16. karede tamamen siyaha enterpole olan 16 karelik bir maske yığını oluşturur."
+    },
+    "CreateFadeMaskAdvanced": {
+        "title": "Solma maskesi (gelişmiş)",
+        "widgets": {
+            "points_string": "Renk değeri noktaları",
+            "invert": "Ters çevir",
+            "frames": "Kare sayısı",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "interpolation": "Enterpolasyon yöntemi"
+        },
+        "outputs": {
+            "MASK": "Maske"
+        }
+    },
+    "CreateMagicMask": {
+        "title": "Psikedelik maske",
+        "widgets": {
+            "frames": "Kare sayısı",
+            "depth": "Derinlik",
+            "distortion": "Çarpıtma",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Çalıştırma sonrası eylem",
+            "fixed": "Sabit",
+            "increment": "Artır",
+            "decrement": "Azalt",
+            "randomize": "Rastgele",
+            "transitions": "Geçiş",
+            "frame_height": "Yükseklik",
+            "frame_width": "Genişlik"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "mask_inverted": "Maskeyi ters çevir"
+        }
+    },
+    "CreateShapeMask": {
+        "title": "Şekil maskesi",
+        "widgets": {
+            "shape": "Şekil",
+            "circle": "Daire",
+            "square": "Kare",
+            "triangle": "Üçgen",
+            "frames": "Kare sayısı",
+            "location_x": "Konum_X",
+            "location_y": "Konum_Y",
+            "size": "Boyut",
+            "grow": "Büyüme",
+            "frame_width": "Genişlik",
+            "frame_height": "Yükseklik",
+            "shape_width": "Şeklin genişliği",
+            "shape_height": "Şeklin yüksekliği"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "mask_inverted": "Maskeyi ters çevir"
+        },
+        "description": "Belirtilen şekilde bir maske veya maske kümesi oluşturur. Konum, merkez konumudur. Büyüme değeri her karede şeklin ne kadar büyüyeceğidir; animasyonlu maske oluşturur."
+    },
+    "CreateVoronoiMask": {
+        "title": "Voronoi maskesi",
+        "widgets": {
+            "frames": "Kare sayısı",
+            "num_points": "Nokta sayısı",
+            "line_width": "Çizgi kalınlığı",
+            "speed": "Hız",
+            "frame_width": "Genişlik",
+            "frame_height": "Yükseklik"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "mask_inverted": "Maskeyi ters çevir"
+        }
+    },
+    "GetMaskSizeAndCount": {
+        "title": "Maske boyutu değerlerini al",
+        "inputs": {
+            "mask": "Maske"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "count": "Miktar"
+        },
+        "description": "Çıkış maskesinin genişliğini, yüksekliğini ve yığın boyutunu"
+    },
+    "GrowMaskWithBlur": {
+        "title": "Maske bulanık büyümesi",
+        "inputs": {
+            "mask": "Maske"
+        },
+        "widgets": {
+            "expand": "Genişletme",
+            "incremental_expandrate": "Genişletme artımı",
+            "tapered_corners": "Pah",
+            "flip_input": "Girdiyi ters çevir",
+            "use_cuda": "CUDA kullan",
+            "blur_radius": "Bulanıklık yarıçapı",
+            "sigma": "Sigma",
+            "lerp_alpha": "Doğrusal saydamlık",
+            "decay_factor": "Aşındırma katsayısı",
+            "fill_holes": "Doldur"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "mask_inverted": "Maskeyi ters çevir"
+        },
+        "description": "# Maske bulanık büyümesi\n- Maske: girdi maskesi veya maske yığını\n- Genişletme: maskeleri ayarlanan miktarda genişletir veya daraltır\n- Genişletme artımı: kare başına ayarlanan miktarda genişletme oranı artışı\n- Pah: konik köşe kullanımı\n- Girdiyi ters çevir: girdi maskesini ters çevirir\n- Bulanıklık yarıçapı: 0'dan büyük değer maskeyi bulanıklaştırır\n- Doğrusal saydamlık: kareler arasında alfa değeri enterpolasyonu\n- Sönüm katsayısı: kareler arası enterpolasyon sönüm değeri\n- Doldur: maske içindeki delikleri doldurur (yavaş)"
+    },
+    "MaskBatchMulti": {
+        "title": "Maskeleri yığında birleştir (çoklu)",
+        "inputs": {
+            "mask_1": "Maske_1",
+            "mask_2": "Maske_2",
+            "mask_3": "Maske_3",
+            "mask_4": "Maske_4",
+            "mask_5": "Maske_5",
+            "mask_6": "Maske_6",
+            "mask_7": "Maske_7",
+            "mask_8": "Maske_8",
+            "mask_9": "Maske_9",
+            "mask_10": "Maske_10"
+        },
+        "widgets": {
+            "inputcount": "Girdi sayısı",
+            "Update inputs": "Girdileri güncelle"
+        },
+        "outputs": {
+            "masks": "Maske"
+        },
+        "description": "Birden çok maskeyi tek bir maske yığında birleştirir. Girdi arayüzü sayısı \"Girdi sayısı\" ile ayarlanabilir; arayüzleri yenilemek için Güncelle'ye tıklayın."
+    },
+    "OffsetMask": {
+        "title": "Maskeyi kaydır",
+        "inputs": {
+            "mask": "Maske"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "angle": "Açı",
+            "duplication_factor": "Yineleme sayısı",
+            "roll": "Kaydırmayı kullan",
+            "incremental": "Artımı kullan",
+            "padding_mode": "Dolgu modu",
+            "empty": "Boş",
+            "border": "Sınır",
+            "reflection": "Yansıma"
+        },
+        "outputs": {
+            "mask": "Maske"
+        },
+        "description": "# Maskeyi belirtilen miktarda uzat\n- Maske: girdi maskesi veya maske yığını\n- x: yatay uzatma miktarı\n- y: dikey uzatma miktarı\n- Yineleme sayısı: maskenin yığın olarak kopyalanma sayısı\n- Kaydırmayı kullan: kenar kaydırarak sarma"
+    },
+    "RoundMask": {
+        "title": "Maskeyi yuvarlat",
+        "inputs": {
+            "mask": "Maske"
+        },
+        "outputs": {
+            "MASK": "Maske"
+        }
+    },
+    "ResizeMask": {
+        "title": "Maskeyi ölçekle",
+        "inputs": {
+            "mask": "Maske"
+        },
+        "widgets": {
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "keep_proportions": "Sabit en-boy oranı",
+            "upscale_method": "Gelişmiş enterpolasyon",
+            "crop": "Kırp"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "width": "Genişlik",
+            "height": "Yükseklik"
+        },
+        "description": "Maskeyi veya maske yığınını belirtilen genişlik ve yüksekliğe getirir."
+    },
+    "RemapMaskRange": {
+        "title": "Maske aralığını yeniden eşle",
+        "inputs": {
+            "mask": "Maske"
+        },
+        "widgets": {
+            "min": "En küçük değer",
+            "max": "En büyük değer"
+        },
+        "outputs": {
+            "mask": "Maske"
+        },
+        "description": "Maske için yeni en küçük ve en büyük değerleri ayarlar."
+    },
+    "SeparateMasks": {
+        "title": "Maskeyi ayır",
+        "inputs": {
+            "mask": "Maske"
+        },
+        "widgets": {
+            "size_threshold_width": "Genişlik boyut eşiği",
+            "size_threshold_height": "Yükseklik boyut eşiği",
+            "mode": "Ayırma modu",
+            "max_poly_points": "Maks çokgen nokta sayısı",
+            "polygon": "Çokgen",
+            "shape": "Şekil",
+            "mask_np": "Numpy maskesi",
+            "max_points": "Maks nokta sayısı"
+        },
+        "outputs": {
+            "mask": "Maske"
+        }
+    },
+    "PathchSageAttentionKJ": {
+        "title": "SAGE dikkat yaması (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "allow_compile": "Derlemeye izin ver",
+            "sage_attention": "SAGE dikkati"
+        },
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "CheckpointLoaderKJ": {
+        "title": "Büyük model yükleyici (KJ)",
+        "inputs": {},
+        "widgets": {
+            "ckpt_name": "Model adı",
+            "weight_dtype": "Ağırlık veri türü",
+            "compute_dtype": "Hesaplama veri türü",
+            "patch_cublaslinear": "CUBlas doğrusal yaması",
+            "sage_attention": "SAGE dikkati",
+            "enable_fp16_accumulation": "FP16 biriktirmeyi etkinleştir"
+        },
+        "outputs": {
+            "model": "Model",
+            "clip": "CLIP",
+            "vae": "VAE"
+        }
+    },
+    "DiffusionModelLoaderKJ": {
+        "title": "Yayılma modeli yükleyici (KJ)",
+        "inputs": {
+            "extra_state_dict": "Ek durum sözlüğü (state dict)"
+        },
+        "widgets": {
+            "model_name": "Model adı",
+            "weight_dtype": "Ağırlık veri türü",
+            "compute_dtype": "Hesaplama veri türü",
+            "patch_cublaslinear": "CUBlas doğrusal yaması",
+            "sage_attention": "SAGE dikkati",
+            "enable_fp16_accumulation": "FP16 biriktirmeyi etkinleştir"
+        },
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "PatchModelPatcherOrder": {
+        "title": "Model yama sırası ayarı",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "patch_order": "Yama sırası",
+            "full_load": "Tam yükleme"
+        },
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "TorchCompileModelFluxAdvanced": {
+        "title": "Flux modeli Torch derleme (gelişmiş)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "backend": "Arka uç",
+            "fullgraph": "Tam grafik",
+            "mode": "Mod",
+            "double_blocks": "Çift blok",
+            "single_blocks": "Tek blok",
+            "dynamic": "Dinamik",
+            "dynamo_cache_size_limit": "Dinamik önbellek boyutu sınırı",
+            "blocks_str": "Blok dizesi"
+        },
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "TorchCompileModelFluxAdvancedV2": {
+        "title": "Flux modeli Torch derleme (gelişmiş) V2",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "backend": "Arka uç",
+            "fullgraph": "Tam grafik",
+            "mode": "Mod",
+            "double_blocks": "Çift blok",
+            "single_blocks": "Tek blok",
+            "dynamic": "Dinamik",
+            "dynamo_cache_size_limit": "Dinamik önbellek boyutu sınırı",
+            "blocks_str": "Blok dizesi"
+        },
+        "outputs": {
+            "MODEL": "Model",
+            "model": "Model"
+        }
+    },
+    "TorchCompileModelHyVideo": {
+        "title": "Torch derleme Hunyuan video modeli",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "backend": "Arka uç",
+            "fullgraph": "Tam grafik",
+            "mode": "Mod",
+            "dynamic": "Dinamik",
+            "dynamo_cache_size_limit": "Dinamik önbellek boyutu sınırı",
+            "compile_single_blocks": "Tek bloğu derle",
+            "compile_double_blocks": "Çift bloğu derle",
+            "compile_txt_in": "Metin girdisini derle",
+            "compile_vector_in": "Vektör girdisini derle",
+            "compile_final_layer": "Son katmanı derle"
+        },
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "TorchCompileModelWanVideo": {
+        "title": "Torch derleme Wan video modeli",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "backend": "Arka uç",
+            "fullgraph": "Tam grafik",
+            "mode": "Mod",
+            "dynamic": "Dinamik",
+            "dynamo_cache_size_limit": "Dinamik önbellek boyutu sınırı",
+            "compile_transformer_blocks_only": "Yalnızca Transformer bloklarını derle"
+        },
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "TorchCompileModelWanVideoV2": {
+        "title": "Wan video Torch derleme modeli V2",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "backend": "Arka uç",
+            "fullgraph": "Tam grafik",
+            "mode": "Mod",
+            "dynamic": "Dinamik",
+            "dynamo_cache_size_limit": "Dinamik önbellek boyutu sınırı",
+            "compile_transformer_blocks_only": "Yalnızca Transformer bloklarını derle"
+        },
+        "outputs": {
+            "MODEL": "Model",
+            "model": "Model"
+        }
+    },
+    "TorchCompileVAE": {
+        "title": "Torch derleme VAE",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "backend": "Arka uç",
+            "fullgraph": "Tam grafik",
+            "mode": "Mod",
+            "compile_encoder": "Kodlayıcıyı derle",
+            "compile_decoder": "Kod çözücüyü derle"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "TorchCompileControlNet": {
+        "title": "Torch derleme ControlNet",
+        "inputs": {
+            "controlnet": "ControlNet"
+        },
+        "widgets": {
+            "backend": "Arka uç",
+            "fullgraph": "Tam grafik",
+            "mode": "Mod"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "TorchCompileLTXModel": {
+        "title": "Torch derleme LTX modeli",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "backend": "Arka uç",
+            "fullgraph": "Tam grafik",
+            "mode": "Mod",
+            "dynamic": "Dinamik"
+        },
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "TorchCompileCosmosModel": {
+        "title": "Torch derleme Cosmos modeli",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "backend": "Arka uç",
+            "fullgraph": "Tam grafik",
+            "mode": "Mod",
+            "dynamic": "Dinamik",
+            "dynamo_cache_size_limit": "Dinamik önbellek boyutu sınırı"
+        },
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "WanVideoTeaCacheKJ": {
+        "title": "Wan video önbellek optimizasyonu (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "rel_l1_thresh": "Göreceli L1 eşiği",
+            "start_percent": "Başlangıç yüzdesi",
+            "end_percent": "Bitiş yüzdesi",
+            "cache_device": "Önbellek aygıtı",
+            "coefficients": "Katsayı"
+        },
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "WanVideoEnhanceAVideoKJ": {
+        "title": "Wan video güçlendirme (KJ)",
+        "inputs": {
+            "model": "Model",
+            "latent": "latent"
+        },
+        "widgets": {
+            "weight": "Ağırlık"
+        },
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "WanVideoNAG": {
+        "title": "Wan video doğal gradyan",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "conditioning": "Koşullandırma",
+            "nag_scale": "Ağ_ölçekleme",
+            "nag_alpha": "Ağ_alpha",
+            "nag_tau": "Ağ_tau",
+            "input_type": "Girdi türü"
+        },
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "SkipLayerGuidanceWanVideo": {
+        "title": "Wan video katman atlama güdülemesi",
+        "inputs": {
+            "model": "Model",
+            "blocks": "Blok",
+            "start_percent": "Başlangıç yüzdesi",
+            "end_percent": "Bitiş yüzdesi"
+        },
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "CFGZeroStarAndInit": {
+        "title": "CFG seyrek başlatma",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "use_zero_init": "Sıfır başlatma kullan",
+            "zero_init_steps": "Sıfır başlatma adım sayısı"
+        },
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "SetNode": {
+        "title": "Nokta ayarla",
+        "inputs": {
+            "*": "Girdi"
+        },
+        "widgets": {
+            "Constant": "Sabit"
+        },
+        "outputs": {
+            "*": "Çıkış"
+        }
+    },
+    "GetNode": {
+        "title": "Nokta al",
+        "inputs": {
+            "*": "Girdi"
+        },
+        "widgets": {
+            "Constant": "Sabit"
+        },
+        "outputs": {
+            "*": "Çıkış"
+        }
+    },
+    "BOOLConstant": {
+        "title": "Boolean sabiti",
+        "inputs": {
+            "value": "Değer"
+        },
+        "widgets": {
+            "value": "Değer"
+        },
+        "outputs": {
+            "value": "Değer"
+        }
+    },
+    "INTConstant": {
+        "title": "Tam sayı sabiti",
+        "widgets": {
+            "value": "Değer"
+        },
+        "outputs": {
+            "value": "Değer"
+        }
+    },
+    "FloatConstant": {
+        "title": "Ondalık sabiti",
+        "widgets": {
+            "value": "Değer"
+        },
+        "outputs": {
+            "value": "Değer"
+        }
+    },
+    "StringConstant": {
+        "title": "Dize sabiti",
+        "widgets": {
+            "string": "Dize"
+        },
+        "outputs": {
+            "STRING": "Dize"
+        }
+    },
+    "StringConstantMultiline": {
+        "title": "Dize sabiti (metin kutusu)",
+        "widgets": {
+            "string": "Dize",
+            "strip_newlines": "Satır sonu karakteriyle"
+        },
+        "outputs": {
+            "STRING": "Dize"
+        }
+    },
+    "ScaleBatchPromptSchedule": {
+        "title": "İstem yığını zamanlamasını ölçekle",
+        "inputs": {
+            "input_str": "Dize",
+            "old_frame_count": "Eski kare sayısı",
+            "new_frame_count": "Yeni kare sayısı"
+        },
+        "outputs": {
+            "STRING": "Dize"
+        }
+    },
+    "GetLatentsFromBatchIndexed": {
+        "title": "Dizine göre Latent al",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "latent_format": "latent biçimi"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "ConditioningMultiCombine": {
+        "title": "Koşullandırma birleştirme (çoklu)",
+        "inputs": {
+            "conditioning_1": "Koşullandırma_1",
+            "conditioning_2": "Koşullandırma_2",
+            "conditioning_3": "Koşullandırma_3",
+            "conditioning_4": "Koşullandırma_4",
+            "conditioning_5": "Koşullandırma_5",
+            "conditioning_6": "Koşullandırma_6",
+            "conditioning_7": "Koşullandırma_7",
+            "conditioning_8": "Koşullandırma_8",
+            "conditioning_9": "Koşullandırma_9",
+            "conditioning_10": "Koşullandırma_10",
+            "conditioning_11": "Koşullandırma_11",
+            "conditioning_12": "Koşullandırma_12",
+            "conditioning_13": "Koşullandırma_13",
+            "conditioning_14": "Koşullandırma_14",
+            "conditioning_15": "Koşullandırma_15",
+            "conditioning_16": "Koşullandırma_16",
+            "conditioning_17": "Koşullandırma_17",
+            "conditioning_18": "Koşullandırma_18",
+            "conditioning_19": "Koşullandırma_19",
+            "conditioning_20": "Koşullandırma_20"
+        },
+        "widgets": {
+            "inputcount": "Girdi sayısı",
+            "operation": "İşlem",
+            "Update inputs": "Girdileri güncelle"
+        },
+        "outputs": {
+            "combined": "Koşullandırma",
+            "inputcount": "Girdi sayısı"
+        },
+        "description": "Birden çok koşullandırma düğümünü tek bir düğümde birleştirir"
+    },
+    "AppendStringsToList": {
+        "title": "Listeye dize ekle",
+        "inputs": {
+            "string1": "Dize 1",
+            "string2": "Dize 2"
+        },
+        "outputs": {
+            "STRING": "Dize"
+        }
+    },
+    "JoinStrings": {
+        "title": "Dizeleri birleştir",
+        "inputs": {
+            "string1": "Dize 1",
+            "string2": "Dize 2"
+        },
+        "widgets": {
+            "delimiter": "Ayırıcı"
+        },
+        "outputs": {
+            "STRING": "Dize"
+        }
+    },
+    "JoinStringMulti": {
+        "title": "Dizeleri birleştir (çoklu)",
+        "inputs": {
+            "string_1": "Dize_1",
+            "string_2": "Dize_2",
+            "string_3": "Dize_3",
+            "string_4": "Dize_4",
+            "string_5": "Dize_5",
+            "string_6": "Dize_6",
+            "string_7": "Dize_7",
+            "string_8": "Dize_8",
+            "string_9": "Dize_9",
+            "string_10": "Dize_10"
+        },
+        "widgets": {
+            "inputcount": "Girdi sayısı",
+            "delimiter": "Ayırıcı",
+            "return_list": "Liste olarak çıktı ver",
+            "Update inputs": "Girdileri güncelle"
+        },
+        "outputs": {
+            "string": "Dize"
+        },
+        "description": "Birden çok dizeyi bir dize yığınına veya dize listesine birleştirir. Girdi arayüzü sayısı \"Girdi sayısı\" ile ayarlanabilir; arayüzleri yenilemek için Güncelle'ye tıklayın."
+    },
+    "CondPassThrough": {
+        "title": "Koşullandırmayı ilet",
+        "inputs": {
+            "positive": "Olumlu koşullandırma",
+            "negative": "Olumsuz koşullandırma"
+        },
+        "outputs": {
+            "positive": "Olumlu koşullandırma",
+            "negative": "Olumsuz koşullandırma"
+        }
+    },
+    "ModelPassThrough": {
+        "title": "Model köprüsü",
+        "inputs": {
+            "model": "Model"
+        },
+        "outputs": {
+            "model": "Model"
+        },
+        "description": "Modeli bir sonraki düğüme ilet"
+    },
+    "ConditioningSetMaskAndCombine": {
+        "title": "Koşullandırmaya maske ayarla (birleştirme 2)",
+        "inputs": {
+            "positive_1": "Olumlu koşullandırma_1",
+            "negative_1": "Olumsuz koşullandırma_1",
+            "positive_2": "Olumlu koşullandırma_2",
+            "negative_2": "Olumsuz koşullandırma_2",
+            "mask_1": "Maske_1",
+            "mask_2": "Maske_2"
+        },
+        "widgets": {
+            "mask_1_strength": "Maske_1_şiddeti",
+            "mask_2_strength": "Maske_2_şiddeti",
+            "set_cond_area": "Koşullandırma bölgesini ayarla",
+            "default": "Varsayılan",
+            "mask bounds": "Maske sınırı"
+        },
+        "outputs": {
+            "combined_positive": "Olumlu koşullandırma",
+            "combined_negative": "Olumsuz koşullandırma"
+        },
+        "description": "Birden çok koşullandırma maskesini tek bir düğümde demetler; işlevi ComfyUI'nin yerel düğümüyle aynıdır"
+    },
+    "ConditioningSetMaskAndCombine3": {
+        "title": "Koşullandırmaya maske ayarla (birleştirme 3)",
+        "inputs": {
+            "positive_1": "Olumlu koşullandırma_1",
+            "negative_1": "Olumsuz koşullandırma_1",
+            "positive_2": "Olumlu koşullandırma_2",
+            "negative_2": "Olumsuz koşullandırma_2",
+            "positive_3": "Olumlu koşullandırma_3",
+            "negative_3": "Olumsuz koşullandırma_3",
+            "mask_1": "Maske_1",
+            "mask_2": "Maske_2",
+            "mask_3": "Maske_3"
+        },
+        "widgets": {
+            "mask_1_strength": "Maske_1_şiddeti",
+            "mask_2_strength": "Maske_2_şiddeti",
+            "mask_3_strength": "Maske_3_şiddeti",
+            "set_cond_area": "Koşullandırma bölgesini ayarla",
+            "default": "Varsayılan",
+            "mask bounds": "Maske sınırı"
+        },
+        "outputs": {
+            "combined_positive": "Olumlu koşullandırma",
+            "combined_negative": "Olumsuz koşullandırma"
+        },
+        "description": "Birden çok koşullandırma maskesini tek bir düğümde demetler; işlevi ComfyUI'nin yerel düğümüyle aynıdır"
+    },
+    "ConditioningSetMaskAndCombine4": {
+        "title": "Koşullandırmaya maske ayarla (birleştirme 4)",
+        "inputs": {
+            "positive_1": "Olumlu koşullandırma_1",
+            "negative_1": "Olumsuz koşullandırma_1",
+            "positive_2": "Olumlu koşullandırma_2",
+            "negative_2": "Olumsuz koşullandırma_2",
+            "positive_3": "Olumlu koşullandırma_3",
+            "negative_3": "Olumsuz koşullandırma_3",
+            "positive_4": "Olumlu koşullandırma_4",
+            "negative_4": "Olumsuz koşullandırma_4",
+            "mask_1": "Maske_1",
+            "mask_2": "Maske_2",
+            "mask_3": "Maske_3",
+            "mask_4": "Maske_4"
+        },
+        "widgets": {
+            "mask_1_strength": "Maske_1_şiddeti",
+            "mask_2_strength": "Maske_2_şiddeti",
+            "mask_3_strength": "Maske_3_şiddeti",
+            "mask_4_strength": "Maske_4_şiddeti",
+            "set_cond_area": "Koşullandırma bölgesini ayarla",
+            "default": "Varsayılan",
+            "mask bounds": "Maske sınırı"
+        },
+        "outputs": {
+            "combined_positive": "Olumlu koşullandırmaları birleştir",
+            "combined_negative": "Olumsuz koşullandırmaları birleştir"
+        },
+        "description": "Birden çok koşullandırma maskesini tek bir düğümde demetler; işlevi ComfyUI'nin yerel düğümüyle aynıdır"
+    },
+    "ConditioningSetMaskAndCombine5": {
+        "title": "Koşullandırmaya maske ayarla (birleştirme 5)",
+        "inputs": {
+            "positive_1": "Olumlu koşullandırma_1",
+            "negative_1": "Olumsuz koşullandırma_1",
+            "positive_2": "Olumlu koşullandırma_2",
+            "negative_2": "Olumsuz koşullandırma_2",
+            "positive_3": "Olumlu koşullandırma_3",
+            "negative_3": "Olumsuz koşullandırma_3",
+            "positive_4": "Olumlu koşullandırma_4",
+            "negative_4": "Olumsuz koşullandırma_4",
+            "positive_5": "Olumlu koşullandırma_5",
+            "negative_5": "Olumsuz koşullandırma_5",
+            "mask_1": "Maske_1",
+            "mask_2": "Maske_2",
+            "mask_3": "Maske_3",
+            "mask_4": "Maske_4",
+            "mask_5": "Maske_5"
+        },
+        "widgets": {
+            "mask_1_strength": "Maske_1_şiddeti",
+            "mask_2_strength": "Maske_2_şiddeti",
+            "mask_3_strength": "Maske_3_şiddeti",
+            "mask_4_strength": "Maske_4_şiddeti",
+            "mask_5_strength": "Maske_5_şiddeti",
+            "set_cond_area": "Koşullandırma bölgesini ayarla",
+            "default": "Varsayılan",
+            "mask bounds": "Maske sınırı"
+        },
+        "outputs": {
+            "combined_positive": "Olumlu koşullandırmaları birleştir",
+            "combined_negative": "Olumsuz koşullandırmaları birleştir"
+        },
+        "description": "Birden çok koşullandırma maskesini tek bir düğümde demetler; işlevi ComfyUI'nin yerel düğümüyle aynıdır"
+    },
+    "VRAM_Debug": {
+        "title": "VRAM temizliği",
+        "inputs": {
+            "any_input": "Herhangi bir girdi",
+            "image_pass": "Görsel geçişi",
+            "model_pass": "Model geçişi"
+        },
+        "widgets": {
+            "empty_cache": "Önbelleği temizle",
+            "gc_collect": "Çöp toplama",
+            "unload_all_models": "Tüm modelleri kaldır"
+        },
+        "outputs": {
+            "any_output": "Herhangi bir çıkış",
+            "image_pass": "Görsel geçişi",
+            "model_pass": "Model geçişi",
+            "freemem_before": "Temizlemeden önce kalan bellek",
+            "freemem_after": "Temizledikten sonra kalan bellek"
+        },
+        "description": "Girdi verilerini olduğu gibi döndürür (yalnızca tetik sinyali olarak kullanılır); aynı anda Comfy model yönetimi işlevlerini ve çöp toplamayı yürütür ve işlem öncesinde/sonrasında VRAM kalan miktarını bildirir."
+    },
+    "SomethingToString": {
+        "title": "Herhangi birinden dizeye",
+        "inputs": {
+            "input": "Girdi"
+        },
+        "widgets": {
+            "prefix": "Ön ek",
+            "suffix": "Son ek"
+        },
+        "outputs": {
+            "STRING": "Dize"
+        }
+    },
+    "Sleep": {
+        "title": "Uyu",
+        "inputs": {
+            "input": "Girdi"
+        },
+        "widgets": {
+            "minutes": "Dakika",
+            "seconds": "Saniye"
+        },
+        "outputs": {
+            "*": "*"
+        }
+    },
+    "EmptyLatentImagePresets": {
+        "title": "Boş Latent görsel ön ayarı",
+        "widgets": {
+            "dimensions": "Boyut",
+            "invert": "Ters çevir",
+            "batch_size": "Yığın boyutu"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "Genişlik",
+            "Height": "Yükseklik"
+        }
+    },
+    "EmptyLatentImageCustomPresets": {
+        "title": "Özel Latent görsel ön ayarı",
+        "widgets": {
+            "dimensions": "Boyut",
+            "invert": "Ters çevir",
+            "batch_size": "Yığın boyutu"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "Genişlik",
+            "Height": "Yükseklik"
+        },
+        "description": "Belirtilen boyutta boş bir potansiyel (latent) görsel üretir. \n Bu seçenekler düğüm klasöründeki custom_dimensions.json dosyasından yüklenir."
+    },
+    "WidgetToString": {
+        "title": "Bileşenden dizeye",
+        "inputs": {
+            "any_input": "Herhangi bir girdi"
+        },
+        "widgets": {
+            "id": "Düğüm Kimliği",
+            "widget_name": "Bileşen adı",
+            "return_all": "Tümünü döndür",
+            "node_title": "Düğüm başlığı",
+            "allowed_float_decimals": "Ondalık basamaklarına izin ver"
+        },
+        "outputs": {
+            "STRING": "Dize"
+        }
+    },
+    "DummyOut": {
+        "title": "Sanal Latent çıkışı",
+        "inputs": {
+            "any_input": "Herhangi bir girdi"
+        },
+        "outputs": {
+            "*": "Çıkış"
+        }
+    },
+    "FlipSigmasAdjusted": {
+        "title": "Ters çevrilmiş Sigmas'ı ayarla",
+        "inputs": {
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "divide_by_last_sigma": "Son Sigma'ya böl",
+            "divide_by": "Şuna böl",
+            "offset_by": "Ofset"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas",
+            "sigmas_string": "sigmas dizesi"
+        }
+    },
+    "CustomSigmas": {
+        "title": "Özel Sigmas",
+        "widgets": {
+            "sigmas_string": "Sigmas dizesi",
+            "interpolate_to_steps": "Enterpolasyon adımı",
+            "t_steps": "T adımı",
+            "num_steps": "Adım"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        }
+    },
+    "StringToFloatList": {
+        "title": "Dizeden float listesine",
+        "inputs": {
+            "string": "Dize"
+        },
+        "outputs": {
+            "FLOAT": "Ondalık"
+        }
+    },
+    "InjectNoiseToLatent": {
+        "title": "Latent'e gürültü enjekte et",
+        "inputs": {
+            "latents": "Latent",
+            "noise": "Gürültü",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "strength": "Şiddet",
+            "normalize": "Normalize et",
+            "average": "Ortalama",
+            "mix_randn_amount": "Rastgele gürültü karışım şiddeti",
+            "seed": "Tohum"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "SoundReactive": {
+        "title": "Ses tepkisi",
+        "inputs": {
+            "audio": "Ses"
+        },
+        "widgets": {
+            "sound_level": "Ses düzeyi",
+            "start_range_hz": "Başlangıç Hz aralığı",
+            "end_range_hz": "Bitiş Hz aralığı",
+            "multiplier": "Çarpan",
+            "smoothing_factor": "Yumuşatma faktörü",
+            "normalize": "Normalize et",
+            "Start mic capture": "Mikrofon yakalamayı başlat",
+            "Start_mic_capture": "Mikrofon yakalamayı başlat",
+            "Stop mic capture": "Mikrofon yakalamayı durdur",
+            "Stop_mic_capture": "Mikrofon yakalamayı durdur"
+        },
+        "outputs": {
+            "sound_level": "Ses düzeyi",
+            "sound_level_int": "Ses düzeyi tam sayısı"
+        },
+        "description": "Girdi sesinin ses düzeyini geri besler.\n\nTarayıcı ses girişini kullanır.\n\nGerçek zamanlı örnekleme için kullanılır."
+    },
+    "GenerateNoise": {
+        "title": "Gürültü üret",
+        "inputs": {
+            "model": "Model",
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "batch_size": "Yığın boyutu",
+            "seed": "Rastgele tohum",
+            "control_after_generate": "Üretim sonrası denetim",
+            "fixed": "Sabit",
+            "increment": "Artır",
+            "decrement": "Azalt",
+            "randomize": "Rastgele",
+            "multiplier": "Çarpan",
+            "constant_batch_noise": "Sabit yığın gürültüsü",
+            "normalize": "Normalize et",
+            "latent_channels": "latent kanalı",
+            "shape": "Şekil"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        },
+        "description": "Enjeksiyon sırasında gürültü üretir; gürültü ekleme kapalıyken örnekleyicide boş potansiyel olarak kullanılır"
+    },
+    "StableZero123_BatchSchedule": {
+        "title": "Stable Zero123 çoklu görünüm toplu üretimi",
+        "inputs": {
+            "clip_vision": "CLIP Vision",
+            "init_image": "İlk görsel",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "batch_size": "Yığın boyutu",
+            "interpolation": "Enterpolasyon yöntemi",
+            "linear": "Doğrusal",
+            "ease_in": "Yavaş giriş",
+            "ease_out": "Yavaş çıkış",
+            "ease_in_out": "Yavaş giriş/çıkış",
+            "azimuth_points_string": "Azimut noktaları",
+            "elevation_points_string": "Eğim noktaları"
+        },
+        "outputs": {
+            "positive": "Olumlu koşullandırma",
+            "negative": "Olumsuz koşullandırma",
+            "latent": "Latent"
+        },
+        "description": "Tek bir görsel girerek tutarlı çoklu görünüm görsellerini (0°, 90°, 180° vb.) toplu üretir; VRAM verimli zamanlamayı destekler."
+    },
+    "SV3D_BatchSchedule": {
+        "title": "SV3D yığın zamanlaması",
+        "inputs": {
+            "clip_vision": "CLIP Vision",
+            "init_image": "İlk görsel",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "batch_size": "Yığın boyutu",
+            "interpolation": "Enterpolasyon yöntemi",
+            "azimuth_points_string": "Azimut noktaları",
+            "elevation_points_string": "Eğim noktaları"
+        },
+        "outputs": {
+            "positive": "Olumlu koşullandırma",
+            "negative": "Olumsuz koşullandırma",
+            "latent": "Latent"
+        },
+        "description": "SV3D'nin azimut ve eğim değerlerini enterpolasyonlu bir zamanlamayla planlar.\n\nSV3D bir video modelidir, bu yüzden zamanlama değerleri kademeli olmalıdır.\n\nhttps://huggingface.co/stabilityai/sv3d"
+    },
+    "LoadResAdapterNormalization": {
+        "title": "ResAdapter normalizasyon yükle",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "resadapter_path": "ResAdapter yolu"
+        },
+        "outputs": {
+            "MODEL": "Model"
+        }
+    },
+    "Superprompt": {
+        "title": "Süper istem",
+        "inputs": {
+            "prompt": "İstem"
+        },
+        "widgets": {
+            "instruction_prompt": "Talimat istemi",
+            "max_new_tokens": "Maks yeni jeton sayısı"
+        },
+        "outputs": {
+            "STRING": "Dize"
+        },
+        "description": "Süper istem veri kümesiyle ince ayar yapılmış T5 modeli.\n\nMetin istemini daha ayrıntılı açıklamalarla yükseltir (upscale).\n\nMetinden görsel üretim öncesi adımda kullanılır\n\nDaha ayrıntılı istemlerden yararlanan modeller için. \n\nhttps://huggingface.co/roborovski/superprompt-v1"
+    },
+    "CameraPoseVisualizer": {
+        "title": "Kamera posu görselleştirmesi",
+        "inputs": {
+            "cameractrl_poses": "Kamera kontrol posu"
+        },
+        "widgets": {
+            "pose_file_path": "Pos dosyası yolu",
+            "base_xval": "Temel X değeri",
+            "zval": "Z değeri",
+            "scale": "Ölçekle",
+            "use_exact_fx": "Kesin efektleri kullan",
+            "relative_c2w": "Göreceli kameradan dünya koordinatlarına",
+            "use_viewer": "Görüntüleyici kullan",
+            "cameractrl_poses": "Kamera kontrol posu",
+            "extrinsic": "Harici",
+            "color_map": "Renk eşlemesi",
+            "hw_ratio": "En-boy oranı",
+            "list_label": "Liste etiketi",
+            "w2cs": "Dünyadan kameraya",
+            "transform_matrix": "Dönüşüm matrisi"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "Kamera pozlarını görselleştirir\n\n (Animatediff Evolved'ın Camera Ctrl Pose modülünden veya RealEstate veri kümesi kamera iç parametrelerini ve koordinatlarını içeren .txt dosyası üzerinden, 3B grafikte sunulur)"
+    },
+    "StabilityAPI_SD3": {
+        "title": "StabilityAPI SD3",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "n_prompt": "Olumsuz istem",
+            "seed": "Rastgele tohum",
+            "control_before_generate": "Üretim öncesi denetim",
+            "model": "Model",
+            "aspect_ratio": "En-boy oranı",
+            "output_format": "Çıkış biçimi",
+            "api_key": "API anahtarı",
+            "img2img_strength": "Görselden görsele şiddeti",
+            "disable_metadata": "Üstveriyi devre dışı bırak"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        },
+        "description": "# Stability API'sini çağırır\n\nHesapta kaç anahtar olursa olsun, API'yi mümkün olduğunca tek bir anahtarla çağırın.\n\nAnahtarı https://platform.stability.ai/account/keys adresinden alın; anahtarı içeren bir config.json dosyası oluşturup eklenti dizinine koymanız önerilir.\n\n# Uyarı:\n\ndisable_metadata (üstveriyi devre dışı bırak) açık olsa bile, iş akışında bu düğümden farklı kaydetme düğümleri varsa API anahtarı üstveriye kaydedilebilir.\n\nSD3 üretim başına 6,5 kredi harcar\n\nSD3-Turbo üretim başına 4 kredi harcar\n\nGörsel girdisi bağlanmazsa metinden görsel modu kullanılır"
+    },
+    "CheckpointPerturbWeights": {
+        "title": "Checkpoint büyük model ağırlık müdahalesi",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "joint_blocks": "Birleşik blok",
+            "final_layer": "Son katman",
+            "rest_of_the_blocks": "Diğer bloklar",
+            "seed": "Rastgele tohum",
+            "control_before_generate": "Üretim öncesi denetim"
+        },
+        "outputs": {
+            "MODEL": "Model"
+        }
+    },
+    "DifferentialDiffusionAdvanced": {
+        "title": "Diferansiyel Difüzyon (gelişmiş)",
+        "inputs": {
+            "model": "Model",
+            "samples": "Örnekleme",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "multiplier": "Çarpan"
+        },
+        "outputs": {
+            "MODEL": "Model",
+            "LATENT": "Latent"
+        }
+    },
+    "FluxBlockLoraSelect": {
+        "title": "Flux bloğu LoRA seçimi",
+        "inputs": {},
+        "outputs": {
+            "blocks": "Blok"
+        },
+        "description": "ICLightUnet yükler: bir ICLightUnet modeli yükler. (Deneysel) Geliştiriliyor \n Daha zahmetli ama çalışan alternatif yöntem, https://huggingface.co/Kijai/iclight-comfy/blob/main/iclight_fc_converted.safetensors adresinden modeli indirmek ve InstructPixToPix koşullandırma düğümüyle birlikte kullanmaktır."
+    },
+    "HunyuanVideoBlockLoraSelect": {
+        "title": "Hunyuan video bloğu LoRA seçimi",
+        "inputs": {},
+        "outputs": {
+            "blocks": "Blok"
+        },
+        "description": "Tek bir blok için alfa değerini seçin; değer 0 ise blok tamamen kaldırılır"
+    },
+    "FluxBlockLoraLoader": {
+        "title": "Flux bloğu LoRA yükleyici",
+        "inputs": {
+            "model": "Model",
+            "blocks": "Blok",
+            "opt_lora_path": "LoRA yolu (isteğe bağlı)"
+        },
+        "widgets": {
+            "strength_model": "Model şiddeti",
+            "lora_name": "LoRA adı"
+        },
+        "outputs": {
+            "model": "Model",
+            "rank": "Seviye"
+        }
+    },
+    "CustomControlNetWeightsFluxFromList": {
+        "title": "Özel ControlNet ağırlıkları Flux listeden",
+        "inputs": {
+            "cn_extras": "ControlNet ek",
+            "list_of_floats": "Ondalık listesi"
+        },
+        "widgets": {
+            "uncond_multiplier": "Koşulsuz çarpan",
+            "autosize": "Otomatik boyut"
+        },
+        "outputs": {
+            "CN_WEIGHTS": "ControlNet ağırlıkları",
+            "TK_SHORTCUT": "TK kısayolu"
+        },
+        "description": "Float listesini ControlNet ağırlıklarına dönüştürür (Advanced-ControlNet için)"
+    },
+    "SetShakkerLabsUnionControlNetType": {
+        "title": "ShakkerLabs birleşik ControlNet türünü ayarla",
+        "inputs": {
+            "control_net": "ControlNet",
+            "type": "Tür"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "ModelSaveKJ": {
+        "title": "Model kaydet (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "filename_prefix": "Dosya adı ön eki",
+            "model_key_prefix": "Model anahtar ön eki"
+        }
+    },
+    "StyleModelApplyAdvanced": {
+        "title": "Gelişmiş stil modeli uygulayıcı",
+        "inputs": {
+            "conditioning": "Koşullandırma güdülemesi",
+            "style_model": "Stil modeli",
+            "clip_vision_output": "CLIP Vision çıkışı"
+        },
+        "widgets": {
+            "strength": "Şiddet"
+        },
+        "outputs": {
+            "conditioning": "Koşullandırma güdülemesi"
+        },
+        "description": "Stil modeli uygulaması, ancak şiddet parametresi ayarlanmalı"
+    },
+    "AudioConcatenate": {
+        "title": "Ses dizme",
+        "inputs": {
+            "audio1": "Ses 1",
+            "audio2": "Ses 2"
+        },
+        "widgets": {
+            "direction": "Yön"
+        },
+        "outputs": {
+            "AUDIO": "Ses"
+        },
+        "description": "Ses 1'i Ses 2'ye belirtilen yönde bağlar."
+    },
+    "ImageNoiseAugmentation": {
+        "title": "Görsel gürültü artırma",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "noise_aug_strength": "Gürültü artırma şiddeti",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {
+            "image": "Görsel"
+        }
+    },
+    "VAELoaderKJ": {
+        "title": "VAE yükleyici (KJ)",
+        "inputs": {},
+        "widgets": {
+            "vae_name": "VAE adı",
+            "device": "Aygıt",
+            "weight_dtype": "Ağırlık veri türü"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "ScheduledCFGGuidance": {
+        "title": "Zamanlamalı CFG güdüleme",
+        "inputs": {
+            "model": "Model",
+            "positive": "Olumlu istem",
+            "negative": "Olumsuz istem"
+        },
+        "widgets": {
+            "cfg": "CFG değeri",
+            "start_percent": "Başlangıç yüzdesi",
+            "end_percent": "Bitiş yüzdesi"
+        },
+        "outputs": {
+            "GUIDER": "Güdüleyici"
+        }
+    },
+    "ApplyRifleXRoPE_WanVideo": {
+        "title": "Wan video RifleX RoPE uygula",
+        "inputs": {
+            "model": "Model",
+            "latent": "Latent",
+            "k": "k değeri"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "ApplyRifleXRoPE_HunuyanVideo": {
+        "title": "Hunyuan video RifleX RoPE uygula",
+        "inputs": {
+            "model": "Model",
+            "latent": "Latent",
+            "k": "k değeri"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "TimerNodeKJ": {
+        "title": "Zamanlayıcı (KJ)",
+        "inputs": {
+            "any_input": "Herhangi bir girdi",
+            "timer": "Zamanlayıcı"
+        },
+        "widgets": {
+            "mode": "Mod",
+            "name": "Ad"
+        },
+        "outputs": {
+            "any_output": "Herhangi bir çıkış",
+            "timer": "Zamanlayıcı",
+            "time": "Zaman"
+        }
+    },
+    "ImageBatchFilter": {
+        "title": "Görsel yığını filtresi",
+        "inputs": {
+            "images": "Görsel",
+            "replacement_image": "Görseli değiştir"
+        },
+        "widgets": {
+            "empty_color": "Boş alan renk ayarı",
+            "empty_threshold": "Bir alanın boş sayılması için şiddet kritik değeri"
+        },
+        "outputs": {
+            "images": "Görsel",
+            "IMAGES": "Görsel",
+            "removed_indices": "Dizini sil"
+        },
+        "description": "Yığından boş görselleri siler"
+    },
+    "ImageResizeKJv2": {
+        "title": "Görsel ölçekleme v2 (KJ)",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "upscale_method": "Ölçekleme yöntemi",
+            "keep_proportions": "Sabit en-boy oranı",
+            "keep_proportion": "Sabit en-boy oranı",
+            "pad_color": "Dolgu rengi",
+            "crop_position": "KırpmA konumu",
+            "divisible_by": "Bölünebilirlik katı",
+            "device": "Aygıt",
+            "per_batch": "Yığın"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "width": "Genişlik",
+            "height": "Yükseklik",
+            "mask": "Maske"
+        },
+        "description": "Görsel ölçeklemenin 2. sürümü. Boyutlar girdiyle belirtilebilir; nihai çıkış önceliği şu sıraya göre dizilir:\n- Referans görsel boyutu \n- Genişlik-girdisi ve Yükseklik-girdisi \n- Genişlik ve Yükseklik \n \nSabit en-boy oranı, oranı en yüksek boyuta göre sabitler."
+    },
+    "InsertLatentToIndexed": {
+        "title": "Latent dizini ekle",
+        "inputs": {
+            "source": "Kaynak",
+            "destination": "Hedef"
+        },
+        "widgets": {
+            "index": "Katsayı"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "latent": "Latent"
+        },
+        "description": "Belirtilen dizindeki Latent'i orijinal Latent yığınına ekler."
+    },
+    "DiTBlockLoraLoader": {
+        "title": "DiT bloğu LoRA yükleyici",
+        "inputs": {
+            "model": "Model",
+            "opt_lora_path": "LoRA yolunu seç",
+            "blocks": "Blok"
+        },
+        "widgets": {
+            "strength_model": "Model şiddeti",
+            "lora_name": "LoRA adı",
+            "overlap": "Örtüşme miktarı"
+        },
+        "outputs": {
+            "model": "Model",
+            "rank": "Rütbe"
+        },
+        "description": "Yeni eklenen içerik."
+    },
+    "LeapfusionHunyuanI2VPatcher": {
+        "title": "Hızlı füzyon Hunyuan görselden videoya yaması",
+        "inputs": {
+            "model": "Model",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "index": "Katsayı",
+            "start_percent": "Başlangıç yüzdesi",
+            "end_percent": "Bitiş yüzdesi",
+            "strength": "Şiddet"
+        },
+        "outputs": {
+            "MODEL": "Model",
+            "model": "Model"
+        },
+        "description": "Yeni eklenen içerik."
+    },
+    "ModelPatchTorchSettings": {
+        "title": "Model yaması Torch ayarları",
+        "inputs": {
+            "model": "Model",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "FP16 biriktirmeyi etkinleştir",
+            "start_percent": "Başlangıç yüzdesi",
+            "end_percent": "Bitiş yüzdesi",
+            "strength": "Şiddet"
+        },
+        "outputs": {
+            "MODEL": "Model",
+            "model": "Model"
+        },
+        "description": "GPU VRAM kullanımını azaltır\nMatris çarpımı toplama işlemlerini hızlandırır\nEnerji verimliliğini artırır\nŞunlar görülebilir: sayısal taşma, doğruluk kaybı."
+    },
+    "LoraExtractKJ": {
+        "title": "LoRA çıkarımı (KJ)",
+        "inputs": {
+            "finetuned_model": "İnce ayarlı model",
+            "original_model": "Orijinal model"
+        },
+        "widgets": {
+            "filename_prefix": "Dosya adı ön eki",
+            "rank": "Seviye",
+            "lora_type": "LoRA türü",
+            "algorithm": "Algoritma",
+            "lowrank_iters": "Düşük rütbe yineleme sayısı",
+            "output_dtype": "Çıkış veri türü",
+            "bias_diff": "Sapma farkı",
+            "adaptive_param": "Uyarlanabilir parametre",
+            "clamp_quantile": "Kırpma yüzdeliği"
+        },
+        "outputs": {
+            "images": "Görsel",
+            "masks": "Maske"
+        },
+        "description": "LoraExtract"
+    },
+    "Wan21BlockLoraSelect": {
+        "title": "Wan2.1 blok bazlı LoRA seçici",
+        "inputs": {
+            "model": "Model",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "FP16 biriktirmeyi etkinleştir",
+            "start_percent": "Başlangıç yüzdesi",
+            "end_percent": "Bitiş yüzdesi",
+            "strength": "Şiddet"
+        },
+        "outputs": {
+            "BLOCKS": "Blok",
+            "blocks": "Blok"
+        },
+        "description": "Tek bir blok için alfa değerini seçin; değer 0 ise blok tamamen kaldırılır."
+    },
+    "LoadVideosFromFolder": {
+        "title": "Klasörden video yükle",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "video": "Video",
+            "force_rate": "Kare hızını zorla",
+            "custom_width": "Özel genişlik",
+            "custom_height": "Özel yükseklik",
+            "frame_load_cap": "Kare okuma üst sınırı",
+            "skip_first_frames": "İlk X kareyi atla",
+            "select_every_nth": "Aralık",
+            "output_type": "Çıkış türü",
+            "grid_max_columns": "Izgarada maks sütun sayısı",
+            "add_label": "Etiket ekle"
+        },
+        "outputs": {
+            "IMAGE": "Görsel"
+        }
+    },
+    "TorchCompileModelQwenImage": {
+        "title": "Qwen görüntü Torch derleme modeli",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "backend": "Arka uç",
+            "fullgraph": "Tam grafik",
+            "mode": "Mod",
+            "dynamic": "Dinamik",
+            "compile_transformer_blocks_only": "Yalnızca dönüştürücü modüllerini derle",
+            "dynamo_cache_size_limit": "Dinamik bellek önbellek boyutu sınırı"
+        },
+        "outputs": {
+            "MODEL": "Model",
+            "model": "Model"
+        }
+    },
+    "LazySwitchKJ": {
+        "title": "Kolay aç/kapa (KJ)",
+        "inputs": {
+            "on_false": "Hatalı",
+            "on_true": "Doğru"
+        },
+        "widgets": {
+            "switch": "Aç/kapa"
+        },
+        "outputs": {
+            "*": "Herhangi"
+        }
+    },
+    "GetLatentSizeAndCount": {
+        "title": "Latent boyutunu ve sayısını al",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "latent": "Latent",
+            "batch_size": "Yığın boyutu",
+            "channels": "Kanal",
+            "frames": "Kare",
+            "width": "Genişlik",
+            "height": "Yükseklik"
+        }
+    },
+    "DiffusionModelSelector": {
+        "title": "Yayılma modeli seçici",
+        "inputs": {},
+        "widgets": {
+            "model_name": "Model adı"
+        },
+        "outputs": {
+            "model_path": "Model yolu"
+        }
+    },
+    "LoraReduceRankKJ": {
+        "title": "LoRA rütbe düşürme (KJ)",
+        "inputs": {},
+        "widgets": {
+            "lora_name": "LoRA adı",
+            "new_rank": "Yeni seviye",
+            "dynamic_method": "Dinamik yöntem",
+            "dynamic_param": "Dinamik parametre",
+            "output_dtype": "Çıkış veri türü",
+            "verbose": "Ayrıntı modu"
+        },
+        "outputs": {
+            "model_path": "Model yolu"
+        },
+        "description": "Modelin rütbesini düşürerek LoRA modelinin boyutunu ayarlar.\n kohya tabanlı sd-scripts referansı: https://github.com/kohya-ss/sd-scripts/blob/main/networks/resize_lora.py"
+    },
+    "DrawMaskOnImage": {
+        "title": "Görsel ve maskeyi birleştir",
+        "inputs": {
+            "image": "Görsel",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "mask_opacity": "Maske opaklığı",
+            "mask_color": "Maske rengi",
+            "color": "Renk"
+        },
+        "outputs": {
+            "images": "Görsel"
+        },
+        "description": "Hem görsel hem maske girildiğinde maskeyi görsele bindirir."
+    },
+    "BlockifyMask": {
+        "title": "Blok maskesi",
+        "inputs": {
+            "image": "Görsel",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "block_size": "Blok boyutu"
+        },
+        "outputs": {
+            "mask": "Maske"
+        },
+        "description": "Her maskenin sınır kutusunu belirtilen boyutta bloklara bölerek orijinal maskenin bir bölümünü içeren blokları doldurur ve bir blok maskesi oluşturur."
+    },
+    "ConsolidateMasksKJ": {
+        "title": "Maskeleri bütünleştir (KJ)",
+        "inputs": {
+            "mask": "Maske",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "padding": "Dolgu",
+            "width": "Genişlik",
+            "height": "Yükseklik"
+        },
+        "outputs": {
+            "mask": "Maske"
+        },
+        "description": "Belirtilen genişlik ve yüksekliğe (dolgu dahil) tamamen sığabilecek en fazla sayıda ayrı maskeyi bularak, artık birleştirilecek maske kalmayana kadar bu işlemi yineler ve ayrı maske yığınlarını bütünleştirir."
+    },
+    "GGUFLoaderKJ": {
+        "title": "GGUF model yükleyici (KJ)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "Model adı",
+            "extra_model_name": "Ek model adı",
+            "dequant_dtype": "Kuantum açma veri türü",
+            "patch_dtype": "Yama veri türü",
+            "patch_on_device": "Aygıt üstünde yama",
+            "attention_override": "Dikkat öncelikli mod",
+            "enable_fp16_accumulation": "FP16 biriktirmeyi etkinleştir"
+        },
+        "outputs": {
+            "model": "Model"
+        },
+        "description": "Gelişmiş seçeneklerle GGUF modeli yükler; öncelikle ComfyUI-GGUF yazılımının kurulu olması gerekir."
+    },
+    "EndRecordCUDAMemoryHistory": {
+        "title": "CUDA bellek geçmişi kaydını bitir (KJ)",
+        "inputs": {
+            "input": "Girdi"
+        },
+        "widgets": {
+            "output_path": "Çıkış yolu"
+        },
+        "outputs": {
+            "input": "Girdi",
+            "output_path": "Çıkış yolu"
+        },
+        "description": "CUDA bellek tahsisinin kayıt başlangıcı ile bitişi arasındaki geçmişini yakalar ve şurada analiz edilebilecek bir dosyaya kaydeder: https://docs.pytorch.org/memory_viz veya 'CUDA bellek geçmişini görselleştir' düğümüyle."
+    },
+    "VisualizeCUDAMemoryHistory": {
+        "title": "CUDA bellek geçmişini görselleştir (KJ)",
+        "inputs": {
+            "input": "Girdi"
+        },
+        "widgets": {
+            "snapshot_path": "Anlık görüntü yolu"
+        },
+        "outputs": {
+            "input": "Girdi",
+            "output_path": "Çıkış yolu"
+        },
+        "description": "CUDA bellek tahsisi geçmişi dosyasını görselleştirir ve tarayıcıda açar"
+    },
+    "StartRecordCUDAMemoryHistory": {
+        "title": "CUDA bellek geçmişi kaydını başlat (KJ)",
+        "inputs": {
+            "input": "Girdi"
+        },
+        "widgets": {
+            "enabled": "Aç",
+            "context": "Arka plan",
+            "stacks": "Yığın",
+            "max_entries": "Maks girdi sayısı"
+        },
+        "outputs": {
+            "input": "Girdi"
+        }
+    },
+    "NABLA_AttentionKJ": {
+        "title": "NABLA dikkati (KJ)",
+        "inputs": {
+            "model": "Model",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "window_time": "Pencere zamanı",
+            "window_width": "Pencere genişliği",
+            "window_height": "Pencere yüksekliği",
+            "sparsity": "Seyreklilik",
+            "torch_compile": "torch derleme"
+        },
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "SimpleCalculatorKJ": {
+        "title": "Basit hesap makinesi (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "FLOAT": "Ondalık",
+            "STRING": "Ondalık",
+            "INT": "Tam sayı"
+        }
+    },
+    "VAEDecodeLoopKJ": {
+        "title": "VAE döngülü kod çözme (KJ)",
+        "inputs": {
+            "samples": "Örnekleme",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "overlap_latent_frames": "Latent görseli yinele"
+        },
+        "outputs": {
+            "IMAGE": "Görsel",
+            "STRING": "Ondalık",
+            "INT": "Tam sayı"
+        }
+    },
+    "GetTrackRange": {
+        "title": "Yörünge aralığını al (KJ)",
+        "inputs": {
+            "tracks": "Yörünge"
+        },
+        "widgets": {
+            "start_index": "Başlangıç dizini",
+            "num_frames": "Kare sayısı"
+        },
+        "outputs": {
+            "TRACKS": "Yörünge"
+        }
+    },
+    "AddNoiseToTrackPath": {
+        "title": "Yörünge yoluna gürültü ekle (KJ)",
+        "inputs": {
+            "tracks": "Yörünge"
+        },
+        "widgets": {
+            "strength": "Şiddet",
+            "seed": "Tohum",
+            "noise_x_ratio": "Gürültü x oranı",
+            "noise_y_ratio": "Gürültü y oranı",
+            "noise_temporal_ratio": "Gürültü zaman oranı"
+        },
+        "outputs": {
+            "TRACKS": "Yörünge"
+        }
+    },
+    "WanImageToVideoSVIPro": {
+        "title": "Wan görselden videoya SVI profesyonel sürüm (KJ)",
+        "inputs": {
+            "positive": "Olumlu istem",
+            "negative": "Olumsuz istem",
+            "anchor_samples": "Çapa örnekleme",
+            "prev_samples": "Ön örnekleme"
+        },
+        "widgets": {
+            "length": "Uzunluk",
+            "motion_latent_count": "Hareket Latent sayısı"
+        },
+        "outputs": {
+            "positive": "Olumlu istem",
+            "negative": "Olumsuz istem",
+            "latent": "Latent"
+        }
+    },
+    "ModelMemoryUseReportPatch": {
+        "title": "Model bellek kullanımı raporu yaması (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "model": "Model"
+        },
+        "outputs": {
+            "model": "Model"
+        },
+        "description": "Örnekleme tamamlandığında bellek kullanımını bildirmek için modele geri çağırma (callback) ekler"
+    },
+    "ModelMemoryUsageFactorOverride": {
+        "title": "Model bellek kullanım katsayısı özel değeri (KJ)",
+        "inputs": {
+            "model": "Model",
+            "memory_usage_factor": "Bellek kullanım katsayısı"
+        },
+        "widgets": {
+            "model": "Model",
+            "memory_usage_factor": "Bellek kullanım katsayısı"
+        },
+        "outputs": {
+            "model": "Model"
+        },
+        "description": "Örnekleme sırasında modelin bellek kullanım katsayısını geçersiz kılar."
+    },
+    "LTXVEnhanceAVideoKJ": {
+        "title": "LTX video güçlendirme (KJ)",
+        "inputs": {
+            "model": "Model",
+            "latent": "Latent",
+            "weight": "Ağırlık"
+        },
+        "widgets": {
+            "model": "Model",
+            "latent": "Latent",
+            "weight": "Ağırlık"
+        },
+        "outputs": {
+            "model": "Model"
+        }
+    },
+    "LTX2BlockLoraSelect": {
+        "title": "LTX2 blok LoRA seçici (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "selectedditblocks": "Seçilen DiT blokları"
+        },
+        "description": "Örnekleme tamamlandığında bellek kullanımını bildirmek için modele geri çağırma (callback) ekler"
+    },
+    "VisualizeSigmasKJ": {
+        "title": "Sigma değerlerini görselleştir (KJ)",
+        "inputs": {
+            "sigmas": "sigma değeri"
+        },
+        "widgets": {
+            "start_step": "Başlangıç adımı",
+            "end_step": "Bitiş adımı"
+        },
+        "outputs": {
+            "sigmas_out": "sigma çıkışı",
+            "image": "Görsel"
+        },
+        "description": ""
+    },
+    "LTX2SamplingPreviewOverride": {
+        "title": "LTX2 örnekleme önizleme geçersiz kılma (KJ)",
+        "inputs": {
+            "model": "Model",
+            "latent_upscale_model": "Latent büyütme modeli",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "preview_rate": "Önizleme hızı"
+        },
+        "outputs": {},
+        "description": "LTX2 örnekleme önizlemesi, önizleme işlevi kararlı çekirdek sürümünde tamamlanana kadar geçici olarak devre dışı bırakılmıştır."
+    },
+    "LTXVAddGuidesFromBatch": {
+        "title": "Yığından güdüme görselleri ekle (KJ)",
+        "inputs": {
+            "positive": "Olumlu güdüme",
+            "negative": "Olumsuz güdüme",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images": "Görsel"
+        },
+        "widgets": {
+            "strength": "Şiddet"
+        },
+        "outputs": {
+            "positive": "Olumlu güdüme",
+            "negative": "Olumsuz güdüme",
+            "latent": "Latent"
+        },
+        "description": "Bir yığındaki birden çok güdüme görselini ilgili kare dizinlerine Latent görsele ekler. Yığındaki siyah olmayan görseller güdüme görseli olarak kullanılır."
+    },
+    "LTX2AudioLatentNormalizingSampling": {
+        "title": "LTX2 ses Latent normalizasyon örnekleme (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "audio_normalization_factors": "Ses normalizasyon katsayısı"
+        },
+        "outputs": {},
+        "description": "Ses Latent'ini belirtilen örnekleme adımlarında normalize ederek LTX2'nin ürettiği sesin kalitesini artırır."
+    },
+    "PreviewLatentNoiseMask": {
+        "title": "Latent gürültü maskesini önizle (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "mask": "Maske"
+        },
+        "description": "Latent gürültü maskesi önizlemesi"
+    },
+    "WanChunkFeedForward": {
+        "title": "Wan video bloklu ileri besleme (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "chunks": "Blok sayısı",
+            "dim_threshold": "Boyut eşiği"
+        },
+        "outputs": {
+            "model": "Model"
+        },
+        "description": "Deneysel, model çıktısını değiştirebilir!! Bloklu ileri besleme (sinir ağlarında bir kavram) aktivasyonlarıyla tepe VRAM kullanımını azaltır."
+    },
+    "SamplerSelfRefineVideo": {
+        "title": "Örnekleyici öz-düzeltmeli (self-refine) video (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {
+            "input_mode": "Girdi modu",
+            "start_step1": "Başlangıç adımı 1",
+            "end_step1": "Bitiş adımı 1",
+            "start_step2": "Başlangıç adımı 2",
+            "end_step2": "Bitiş adımı 2",
+            "steps_1": "Adım 1",
+            "steps_2": "Adım 2",
+            "certain_percentage": "Kesinlik yüzdesi",
+            "uncertainty_threshold": "Belirsizlik eşiği",
+            "verbose": "Ayrıntılı",
+            "seed": "Rastgele tohum"
+        },
+        "outputs": {},
+        "description": "https://github.com/agwmon/self-refine-video uygulamasının bir denemesi; yalnızca test içindir, beklendiği gibi çalışmayabilir."
+    },
+    "LTXVAddGuideMulti": {
+        "title": "LTX video çoklu güdüme görseli ekle (KJ)",
+        "inputs": {
+            "positive": "Olumlu güdüme",
+            "negative": "Olumsuz güdüme",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "Görsel 1"
+        },
+        "widgets": {
+            "Number of Guides": "Güdüme görseli sayısı",
+            "frame_idx_1": "Kare dizini 1",
+            "strength_1": "Şiddet 1"
+        },
+        "outputs": {
+            "positive": "Olumlu güdüme",
+            "negative": "Olumsuz güdüme",
+            "latent": "Latent"
+        },
+        "description": "Belirtilen kare dizinlerinde 'dinamik kombinasyon' özelliğiyle birden çok güdüme görseli ekler ve şiddetlerini ayarlar; bu özellik ComfyUI 0.8.1 ve ön uç 1.33.4 veya üstü gerektirir."
+    },
+    "LTXVImgToVideoInplaceKJ": {
+        "title": "LTX video görselden videoya (KJ)",
+        "inputs": {
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "Görsel 1"
+        },
+        "widgets": {
+            "Number of Guides": "Güdüme görseli sayısı",
+            "index_1": "Dizin 1",
+            "strength_1": "Şiddet 1"
+        },
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "Videonun Latent karelerini kodlanmış girdi görselleriyle değiştirir; dinamik kombinasyon özelliğini kullanır ve bu özellik ComfyUI 0.8.1 ile ön uç 1.33.4 veya üstünü gerektirir."
+    },
+    "LTXVAudioVideoMask": {
+        "title": "Ses ve video maskesi (KJ)",
+        "inputs": {
+            "video_latent": "Video Latent",
+            "audio_latent": "Ses Latent'i"
+        },
+        "widgets": {
+            "video_fps": "Video kare hızı",
+            "video_start_time": "Video başlangıç zamanı",
+            "video_end_time": "Video bitiş zamanı",
+            "audio_start_time": "Ses başlangıç zamanı",
+            "audio_end_time": "Ses bitiş zamanı",
+            "max_length": "Maks uzunluk"
+        },
+        "outputs": {
+            "video_latent": "Video Latent",
+            "audio_latent": "Ses Latent'i"
+        },
+        "description": "Belirtilen zaman aralıkları için video ve ses Latent içeriklerinin gürültü maskelerini oluşturur. Maskelenen bu bölgelerde yeni içerik üretilir."
+    },
+    "LTX2AttentionTunerPatch": {
+        "title": "LTX2 dikkat ayar yaması (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "blocks": "Blok",
+            "video_scale": "Video ölçeklemesi",
+            "audio_scale": "Ses ölçeklemesi",
+            "audio_to_video_scale": "Sesten videoya ölçekleme",
+            "video_to_audio_scale": "Videodan sese ölçekleme"
+        },
+        "outputs": {
+            "model": "Model"
+        },
+        "description": "Deneysel! Farklı modlar için dikkat ölçek katsayılarını ayarlayan özel LTX2 ileri geçişi; ayrıca tepe VRAM kullanımını azaltır."
+    },
+    "LTX2_NAG": {
+        "title": "LTX2 normalize edilmiş dikkat güdülemesi (KJ)",
+        "inputs": {
+            "model": "Model",
+            "nag_cond_video": "Video koşullandırması",
+            "nag_cond_audio": "Ses koşullandırması"
+        },
+        "widgets": {
+            "nag_scale": "NAG ölçekleme",
+            "nag_alpha": "NAG alpha",
+            "nag_tau": "NAG tau",
+            "inplace": "Yerinde işlem"
+        },
+        "outputs": {
+            "model": "Model"
+        },
+        "description": "https://github.com/ChenDarYen/Normalized-Attention-Guidance"
+    },
+    "LTX2MemoryEfficientSageAttentionPatch": {
+        "title": "LTX2 bellek verimli Sage dikkat yaması (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Model"
+        },
+        "description": "Deneysel! Tepe VRAM kullanımını azaltmak için özel Sage dikkatini etkinleştirir ve dikkat modunu geçersiz kılar. Sage dikkatinin en son sürümünü gerektirir."
+    },
+    "LTXVChunkFeedForward": {
+        "title": "LTX video bloklu ileri besleme aktivasyonu (KJ)",
+        "inputs": {
+            "model": "Model"
+        },
+        "widgets": {
+            "chunks": "Bloklama",
+            "dim_threshold": "Boyut eşiği"
+        },
+        "outputs": {
+            "model": "Model"
+        },
+        "description": "Deneyseldir ve model çıktısını değiştirebilir! Bloklu ileri besleme (sinir ağlarında bir kavram) aktivasyonu tepe bellek kullanımını azaltır."
+    },
+    "LTX2LoraLoaderAdvanced": {
+        "title": "LTX2 gelişmiş LoRA yükleyici (KJ)",
+        "inputs": {
+            "model": "Model",
+            "opt_lora_path": "Optimize LoRA yolu",
+            "blocks": "Blok"
+        },
+        "widgets": {
+            "lora_name": "LoRA adı",
+            "strength_model": "Model şiddeti",
+            "video": "Video",
+            "video_to_audio": "Videodan sese",
+            "audio": "Ses",
+            "audio_to_video": "Sesten videoya",
+            "other": "Diğer"
+        },
+        "outputs": {
+            "model": "Model",
+            "loaded_keys_info": "Anahtar bilgisini yükle",
+            "rank": "Seviye"
+        },
+        "description": "LTX2 modelleri için blok bazlı şiddet kontrolü sunan gelişmiş LoRA yükleyici"
+    },
+    "HDRPreviewKJ": {
+        "title": "HDR önizleme (KJ)",
+        "inputs": {
+            "image": "Görsel"
+        },
+        "widgets": {
+            "exposure": "Pozlama",
+            "saturation": "Doygunluk",
+            "fps": "Kare hızı",
+            "input_space": "Girdi uzayı"
+        },
+        "outputs": {
+            "image": "Görsel"
+        },
+        "description": "Sıkıştırılmış yüksek dinamik aralıklı görüntülerin gerçek zamanlı pozlama önizlemesi.\nGirdi: LogC3 ile sıkıştırılmış [0,1] aralığında görsel/video yığını (ör. HDR IC-LoRA iş akışında VAE kod çözüm sonrası çıktı, henüz HDR açımı yapılmamış).\nTarayıcıda WebGL parça boyayıcısı üzerinden açım, pozlama, doygunluk, Reinhard ton eşleme ve sRGB işlemiyle gerçek zamanlı kaydırıcı geri bildirimi sağlanır. Aynı matematik sunucu tarafında çalıştırılıp fırınlanmış sRGB görsel çıktısı üretilir.\nKaydırıcı değişiklikleri önizlemeyi anında günceller; görsel çıkış ise iş akışı yeniden sıraya alındığında güncellenir. "
+    },
+    "HunyuanVideoEncodeKeyframesToCond": {
+        "title": "Hunyuan video ilk-son kare kodlamadan koşullandırmaya (KJ)",
+        "inputs": {
+            "model": "Model",
+            "positive": "Olumlu istem",
+            "vae": "VAE",
+            "start_frame": "Başlangıç karesi",
+            "end_frame": "Bitiş karesi",
+            "negative": "Olumsuz istem"
+        },
+        "widgets": {
+            "num_frames": "Kare sayısı",
+            "tile_size": "Parça boyutu",
+            "overlap": "Örtüşme miktarı",
+            "temporal_size": "Zamsal boyut büyüklüğü",
+            "temporal_overlap": "Zamsal boyut örtüşme miktarı"
+        },
+        "outputs": {
+            "model": "Model",
+            "positive": "Olumlu istem",
+            "negative": "Olumsuz istem",
+            "latent": "Latent"
+        }
+    }
+}
