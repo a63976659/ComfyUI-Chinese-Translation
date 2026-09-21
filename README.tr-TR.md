@@ -328,6 +328,10 @@ tr-TR/
 
 - Sağdan sola yazılan (RTL) üç dil için düğümleri, kategorileri, menüleri ve ayar panelini kapsayan çeviri paketleri tamamlandı; otomatik olarak etkinleştirmek için ComfyUI'nin resmi dilini `ar-SA` / `fa-IR` / `he-IL` olarak ayarlayın
 
+**Yeni ComfyUI'de çeviri anahtarı konumu iyileştirildi**
+
+- Anahtar artık öncelikle komut çubuğuna (ComfyUI-Manager ayar düğmesiyle aynı satıra) eklenir; başlangıçta çapa hazır değilse bekçi, hazır olduğunda onu otomatik olarak taşır. Montaj öncesi titreme koruması ve montaj sonrası kapsül kaydırıcı konumunun otomatik yeniden hesaplanması eklendi
+
 ### 2026-09-20
 
 **Japonca (ja-JP) çevirisi eklendi**

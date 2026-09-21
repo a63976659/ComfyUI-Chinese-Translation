@@ -328,6 +328,10 @@ Erstellen Sie eine JSON-Datei unter `de-DE/Menus/`, um Menüübersetzungen hinzu
 
 - Übersetzungspakete für drei RTL-Sprachen (rechts-nach-links) fertiggestellt, die Knoten, Kategorien, Menüs und das Einstellungsfenster abdecken; stellen Sie die offizielle ComfyUI-Sprache auf `ar-SA` / `fa-IR` / `he-IL`, um sie automatisch zu aktivieren
 
+**Platzierung des Übersetzungsschalters im neuen ComfyUI verbessert**
+
+- Der Schalter wird nun vorrangig in die Befehlsleiste eingesetzt (gleiche Zeile wie der Einstellungs-Button von ComfyUI-Manager); ist der Anker beim Start noch nicht bereit, versetzt ihn der Watchdog automatisch, sobald er verfügbar ist. Zusätzlich Schutz vor Flackern vor dem Mounting und automatische Neuberechnung der Position des Kapsel-Reglers nach dem Mounting
+
 ### 2026-09-20
 
 **Japanisch (ja-JP) hinzugefügt**

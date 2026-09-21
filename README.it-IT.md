@@ -328,6 +328,10 @@ Crea un file JSON sotto `it-IT/Menus/` per aggiungere traduzioni dei menu:
 
 - Traduzioni completate per tre lingue RTL (da destra a sinistra) che coprono nodi, categorie, menu e pannello delle impostazioni; imposta la lingua ufficiale di ComfyUI su `ar-SA` / `fa-IR` / `he-IL` per attivarle automaticamente
 
+**Posizionamento del toggle di traduzione migliorato nel nuovo ComfyUI**
+
+- Il toggle ora viene inserito in priorità nella barra dei comandi (nella stessa riga del pulsante delle impostazioni di ComfyUI-Manager); se all'avvio l'ancora non è pronta, il watchdog lo sposta automaticamente quando disponibile. Aggiunti protezione dallo sfarfallio prima del montaggio e ricalcolo automatico della posizione del cursore della capsula dopo il montaggio
+
 ### 2026-09-20
 
 **Aggiunto giapponese (ja-JP)**

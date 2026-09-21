@@ -328,6 +328,10 @@ Create a JSON file under `en-US/Menus/` to add menu translations:
 
 - Completed translation packs for three RTL (right-to-left) languages covering nodes, categories, menus and the settings panel; set the official ComfyUI language to `ar-SA` / `fa-IR` / `he-IL` to enable them automatically
 
+**Translation toggle placement upgrade on new ComfyUI**
+
+- The toggle now prefers insertion into the command bar, on the same row as the ComfyUI-Manager settings button; if the anchor isn't ready at startup, the watchdog relocates it automatically once available. Added anti-jitter protection during the unmounted phase and automatic pill-slider repositioning after mounting
+
 ### 2026-09-20
 
 **Added Japanese (ja-JP) translation**

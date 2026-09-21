@@ -328,6 +328,10 @@ Cree un archivo JSON bajo `es-ES/Menus/` para añadir traducciones de menús:
 
 - Traducciones completadas para tres idiomas RTL (de derecha a izquierda) que cubren nodos, categorías, menús y panel de ajustes; establezca el idioma oficial de ComfyUI en `ar-SA` / `fa-IR` / `he-IL` para activarlos automáticamente
 
+**Ubicación del interruptor de traducción mejorada en el nuevo ComfyUI**
+
+- El interruptor ahora se inserta con prioridad en la barra de comandos (en la misma fila que el botón de ajustes de ComfyUI-Manager); si el ancla no está lista al iniciar, el watchdog lo reubica automáticamente cuando esté disponible. Se añadieron anti-parpadeo previo al montaje y recálculo automático de la posición del control deslizante de la cápsula tras el montaje
+
 ### 2026-09-20
 
 **Añadido japonés (ja-JP)**
