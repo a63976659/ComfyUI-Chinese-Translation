@@ -548,20 +548,23 @@ function buildToggle() {
 }
 
 /**
- * 查找可见的插入锚点：旧版可见菜单 → settingsGroup → 新版 Vue 顶栏右侧按钮区
+ * 查找插入锚点：旧版可见菜单 → settingsGroup（与管理器同排） → 新版 Vue 顶栏右侧
  * 新版 ComfyUI 中 .comfy-menu 及 menuContainer 被隐藏（display:none），
- * 必须检测锚点与父容器的可见性后再插入
+ * 策略1 需检测可见性；策略2 与 ComfyUI-Manager 一致，只要元素存在即插入。
+ * 返回值：'preferred' = 插入到命令栏；true = 插入到备选位置；false = 失败
  */
 function insertToggle(app, el) {
   const comfyMenu = document.querySelector(".comfy-menu");
   if (comfyMenu && isVisibleEl(comfyMenu) && app.ui?.menuContainer && isVisibleEl(app.ui.menuContainer)) {
     app.ui.menuContainer.appendChild(el);
-    return true;
+    return "preferred";
   }
+  // 与 ComfyUI-Manager 同策略：只要 settingsGroup.element 存在即插入，
+  // 无需等待其挂载到可见 DOM（Vue watchEffect 稍后会将父容器整体追加到命令栏）
   const settingsGroupEl = app.menu?.settingsGroup?.element;
-  if (settingsGroupEl && isVisibleEl(settingsGroupEl)) {
+  if (settingsGroupEl) {
     settingsGroupEl.before(el);
-    return true;
+    return "preferred";
   }
   const topRight = document.querySelector(".workflow-tabs-container .ml-auto");
   if (topRight && isVisibleEl(topRight)) {
@@ -579,14 +582,39 @@ function insertToggle(app, el) {
 const TOGGLE_ID = "toggle-translation-button";
 let toggleWatchdog = null;
 
-/** 低频看门狗：开关节点被顶栏重渲染移除、或插入位置不可见时自动修复 */
-function startWatchdog(app, el) {
+/** 低频看门狗：开关节点被顶栏重渲染移除、或插入位置不可见时自动修复；
+ *  若初始仅插入到备选位置（顶栏），则持续等待命令栏 settingsGroup 就绪后搬迁 */
+function startWatchdog(app, el, needsRelocate) {
   if (toggleWatchdog) clearInterval(toggleWatchdog);
+  let wasConnected = el.isConnected;
   toggleWatchdog = setInterval(() => {
+    // 已插入 settingsGroup 同父容器但尚未挂载到文档（等待 Vue watchEffect）——跳过
+    if (!el.isConnected && el.parentElement === app.menu?.settingsGroup?.element?.parentElement) {
+      return;
+    }
     if (!el.isConnected || !isVisibleEl(el)) {
       el.remove();
-      insertToggle(app, el);
+      const result = insertToggle(app, el);
+      if (result === "preferred") needsRelocate = false;
       el.initThumb?.(false);
+      wasConnected = el.isConnected;
+      return;
+    }
+    // 元素刚从“未挂载”变为“已挂载”，重新计算滑块位置
+    if (!wasConnected && el.isConnected) {
+      el.initThumb?.(false);
+    }
+    wasConnected = true;
+    // 开关在备选位置（顶栏），尝试搬迁到命令栏（与管理器同排）
+    if (needsRelocate) {
+      const settingsGroupEl = app.menu?.settingsGroup?.element;
+      if (settingsGroupEl) {
+        el.remove();
+        settingsGroupEl.before(el);
+        needsRelocate = false;
+        // 搬迁后若仍未挂载，下次 tick 再重算
+        if (el.isConnected) el.initThumb?.(false);
+      }
     }
   }, 2000);
 }
@@ -600,9 +628,10 @@ function renderToggle(app) {
     const el = buildToggle();
     el.id = TOGGLE_ID;
 
-    if (insertToggle(app, el)) {
+    const result = insertToggle(app, el);
+    if (result) {
       el.initThumb?.(false);
-      startWatchdog(app, el);
+      startWatchdog(app, el, result !== "preferred");
       return;
     }
 
@@ -610,10 +639,11 @@ function renderToggle(app) {
     let tries = 0;
     const timer = setInterval(() => {
       tries++;
-      if (insertToggle(app, el)) {
+      const res = insertToggle(app, el);
+      if (res) {
         clearInterval(timer);
         el.initThumb?.(false);
-        startWatchdog(app, el);
+        startWatchdog(app, el, res !== "preferred");
       } else if (tries >= 60) {
         clearInterval(timer);
         error("未找到可用的顶栏锚点，翻译开关未插入");
