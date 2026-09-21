@@ -18,7 +18,7 @@ from pathlib import Path
 # 插件版本信息
 VERSION = "2.0"
 # 插件名称
-ADDON_NAME = "ComfyUI-Chinese-Translation"
+ADDON_NAME = "ComfyUI-Global-Translation"
 # ComfyUI 主程序路径
 COMFY_PATH = Path(folder_paths.__file__).parent
 # 当前插件路径

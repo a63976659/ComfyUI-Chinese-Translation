@@ -1,14 +1,24 @@
-# ComfyUI-Chinese-Translation
+<div align="center">
 
-**ComfyUI 中文汉化插件** — 全面、智能、兼容的 ComfyUI 界面中文翻译解决方案。
+# 🌐 ComfyUI-Global-Translation
 
-[![GitHub](https://img.shields.io/github/stars/a63976659/ComfyUI-Chinese-Translation?style=flat&logo=github)](https://github.com/a63976659/ComfyUI-Chinese-Translation)
+**全面、智能、兼容的 ComfyUI 界面多国语言翻译解决方案**
+
+> 前后端协同的实时翻译插件，覆盖节点、菜单、设置面板、管理器等所有可见文本，与 ComfyUI 官方原生翻译完美兼容。
+
+[![Stars](https://img.shields.io/github/stars/a63976659/ComfyUI-Global-Translation?style=social&logo=github)](https://github.com/a63976659/ComfyUI-Global-Translation)
+[![Version](https://img.shields.io/badge/version-3.0.1-2f74c0)](pyproject.toml)
+[![License](https://img.shields.io/badge/license-MIT-3da92f)](LICENSE)
+[![Languages](https://img.shields.io/badge/languages-15-8a2be2)](#使用说明)
 [![Bilibili](https://img.shields.io/badge/bilibili-猪的飞行梦-00A1D6?logo=bilibili&logoColor=white)](https://space.bilibili.com/2114638644)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-> 作者：**猪的飞行梦**
->
-> 本项目基于 [AIGODLIKE-ComfyUI-Translation](https://github.com/AIGODLIKE/AIGODLIKE-ComfyUI-Translation) 和 [ComfyUI-DD-Translation](https://github.com/Dontdrunk/ComfyUI-DD-Translation) 进行的修改，特别感谢大佬们对开源社区的杰出贡献。此项目将持续保持开源。
+### 🌍 语言 · Language
+
+**简体中文** · [English](README.en-US.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja-JP.md) · [한국어](README.ko-KR.md) · [Русский](README.ru-RU.md) · [Français](README.fr-FR.md) · [Deutsch](README.de-DE.md) · [Español](README.es-ES.md) · [Italiano](README.it-IT.md) · [Português](README.pt-BR.md) · [العربية](README.ar-SA.md) · [Türkçe](README.tr-TR.md) · [فارسی](README.fa-IR.md) · [עברית](README.he-IL.md)
+
+> 作者：**猪的飞行梦** — 本项目基于 [AIGODLIKE-ComfyUI-Translation](https://github.com/AIGODLIKE/AIGODLIKE-ComfyUI-Translation) 和 [ComfyUI-DD-Translation](https://github.com/Dontdrunk/ComfyUI-DD-Translation) 进行的修改，特别感谢大佬们对开源社区的杰出贡献。此项目将持续保持开源。
+
+</div>
 
 ---
 
@@ -31,7 +41,7 @@
 
 ## 插件简介
 
-ComfyUI-Chinese-Translation 是一个专为 ComfyUI 设计的汉化插件。通过前后端协同工作，实现界面元素的实时中文翻译，覆盖节点、菜单、设置面板、管理器等所有可见文本，同时与 ComfyUI 官方原生翻译完美兼容。翻译语言自动跟随 ComfyUI 官方语言设置（设置 → 通用 → Comfy.Locale），插件自身的界面文案支持 15 种语言。
+ComfyUI-Global-Translation 是一个专为 ComfyUI 设计的汉化插件。通过前后端协同工作，实现界面元素的实时中文翻译，覆盖节点、菜单、设置面板、管理器等所有可见文本，同时与 ComfyUI 官方原生翻译完美兼容。翻译语言自动跟随 ComfyUI 官方语言设置（设置 → 通用 → Comfy.Locale），插件自身的界面文案支持 15 种语言。
 
 ### 为什么选择本插件？
 
@@ -103,7 +113,7 @@ ComfyUI-Chinese-Translation 是一个专为 ComfyUI 设计的汉化插件。通�
 
 ```bash
 cd ComfyUI/custom_nodes
-git clone https://github.com/a63976659/ComfyUI-Chinese-Translation.git
+git clone https://github.com/a63976659/ComfyUI-Global-Translation.git
 ```
 
 安装完成后重启 ComfyUI。
@@ -113,7 +123,7 @@ git clone https://github.com/a63976659/ComfyUI-Chinese-Translation.git
 1. 打开插件文件夹ComfyUI\Custom_nodes
 2. Win11系统空白处右键，选择在终端中打开。Win10系统地址栏输入cmd回车。
 3. 点击此网页右上角的code展开，复制地址。（也可以直接复制网址）
-4. 在命令窗口输入git空格clone空格，粘贴地址并回车。输入参考`git clone https://github.com/a63976659/ComfyUI-Chinese-Translation.git`
+4. 在命令窗口输入git空格clone空格，粘贴地址并回车。输入参考`git clone https://github.com/a63976659/ComfyUI-Global-Translation.git`
 5. 安装完成，重启ComfyUI。（安装失败，开启科学上网并重试）
 
 
@@ -129,7 +139,7 @@ git clone https://github.com/a63976659/ComfyUI-Chinese-Translation.git
 ### 方法 3：手动下载（不推荐，无法更新）
 
 1. 在 GitHub 页面点击 **Code → Download ZIP**
-2. 解压到 `ComfyUI/custom_nodes/ComfyUI-Chinese-Translation`
+2. 解压到 `ComfyUI/custom_nodes/ComfyUI-Global-Translation`
 3. 重启 ComfyUI
 
 ---
@@ -309,6 +319,42 @@ zh-CN/
 
 ## 更新记录
 
+### 2026-09-21
+
+**新增阿拉伯语（ar-SA）、波斯语（fa-IR）、希伯来语（he-IL）翻译**
+
+- 完成三种 RTL（从右到左）语言的翻译包，覆盖节点、分类、菜单与设置面板；将 ComfyUI 官方语言设为 `ar-SA` / `fa-IR` / `he-IL` 即可自动启用对应界面
+
+### 2026-09-20
+
+**新增日语（ja-JP）翻译**
+
+- 完成日语翻译包，覆盖节点、分类、菜单与设置面板；将 ComfyUI 官方语言设为 `ja-JP` 即可自动启用日语界面
+
+**新增西班牙语（es-ES）翻译**
+
+- 完成西班牙语翻译包，覆盖节点、分类、菜单与设置面板；将 ComfyUI 官方语言设为 `es-ES` 即可自动启用西语界面
+
+**新增韩语（ko-KR）翻译**
+
+- 完成韩语翻译包，覆盖节点、分类、菜单与设置面板；将 ComfyUI 官方语言设为 `ko-KR` 即可自动启用韩语界面
+
+**新增土耳其语（tr-TR）翻译**
+
+- 完成土耳其语翻译包，覆盖节点、分类、菜单与设置面板；将 ComfyUI 官方语言设为 `tr-TR` 即可自动启用土耳其语界面
+
+**新增意大利语（it-IT）翻译**
+
+- 完成意大利语翻译包，覆盖节点、分类、菜单与设置面板；将 ComfyUI 官方语言设为 `it-IT` 即可自动启用意大利语界面
+
+**新增巴西葡萄牙语（pt-BR）翻译**
+
+- 完成巴西葡萄牙语翻译包，覆盖节点、分类、菜单与设置面板；将 ComfyUI 官方语言设为 `pt-BR` 即可自动启用葡语界面
+
+**新增德语（de-DE）翻译**
+
+- 完成德语翻译包，覆盖节点、分类、菜单与设置面板；将 ComfyUI 官方语言设为 `de-DE` 即可自动启用德语界面
+
 ### 2026-09-19
 
 **语言跟随官方设置**
@@ -404,14 +450,17 @@ zh-CN/
 
 **反馈与贡献**
 
-- **问题反馈**：[GitHub Issues](https://github.com/a63976659/ComfyUI-Chinese-Translation/issues)
+- **问题反馈**：[GitHub Issues](https://github.com/a63976659/ComfyUI-Global-Translation/issues)
 - **贡献翻译**：欢迎提交 PR 补充翻译文件
 
 **支持作者**
 
 如果觉得插件不错，欢迎点个 ⭐ Star 和支持作者：
 
-![赞赏码](https://github.com/user-attachments/assets/0b1f7fc4-7820-4964-a521-8e2370642e26)
+- **赞助**：
+<img width="400" height="500" alt="微信图片_20260920163034" src="https://github.com/user-attachments/assets/47f64c6e-cc45-4395-9b9e-29f464d12df2" />
+<img width="400" height="500" alt="微信图片_20260920163043" src="https://github.com/user-attachments/assets/7bfb521a-6f24-4104-89c0-016dcf74834b" />
+
 
 ---
 
