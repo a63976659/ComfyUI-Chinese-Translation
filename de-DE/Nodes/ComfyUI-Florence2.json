@@ -1,0 +1,79 @@
+{
+    "DownloadAndLoadFlorence0Model": {
+        "title": "Herunterladen und Laden des Florence0-Modells",
+        "inputs": {},
+        "widgets": {
+            "model": "modell",
+            "precision": "Genauigkeit",
+            "attention": "Aufmermerksamkeit",
+            "lora": "LoRA",
+            "convert_to_safetensors": "in Safetensors konvertieren"
+        },
+        "outputs": {
+            "florence00 model": "Florence0 Modell",
+            "FL2MODEL": "FL2MODEL"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "DownloadAndLoadFlorence0Lora": {
+        "title": "Herunterladen und Laden von Florencelora",
+        "inputs": {},
+        "widgets": {
+            "model": "modell"
+        },
+        "outputs": {
+            "lora": "LoRA",
+            "PEFTLORA": "PEFT LoRA"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Florence0ModelLoader": {
+        "title": "Florence0 Modell-Loader",
+        "inputs": {},
+        "widgets": {
+            "model": "modell",
+            "precision": "Genauigkeit",
+            "attention": "Aufmermerksamkeit",
+            "lora": "LoRA",
+            "convert_to_safetensors": "in Safetensors konvertieren"
+        },
+        "outputs": {
+            "florence0 model": "Florence0 Modell",
+            "FL2MODEL": "FL2MODEL"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Florence0Run": {
+        "title": "Ausführen von Florence",
+        "inputs": {
+            "image": "Bild"
+        },
+        "widgets": {
+            "florence0 model": "Florence0 Modell",
+            "text_input": "Texteingabe",
+            "task": "Aufgabe",
+            "fill_mask": "Masken fllen",
+            "keep_model_loaded": "Modell beladen beibehalten",
+            "max_new_tokens": "Maximale neue Tokens",
+            "num_beams": "Anzahl der Bäume",
+            "do_sample": "Proben ziehen",
+            "output_mask_select": "Ausgabe-Masken auswählen",
+            "seed": "Zufallszahl"
+        },
+        "outputs": {
+            "image": "Bild",
+            "mask": "Maske",
+            "caption": "Beschreibung",
+            "data": "Daten",
+            "IMAGE": "BILD",
+            "MASK": "MASKE",
+            "STRING": "ZEICHENKETE",
+            "JSON": "JSON"
+        },
+        "description": "",
+        "api_version": "V1"
+    }
+}

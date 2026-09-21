@@ -1,0 +1,4219 @@
+{
+    "ContextWindowsVisualizerKJ": {
+        "title": "Kontextfenster-Visualisierer (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "frame_units": "Frame-Einheit",
+            "dim": "Dimension",
+            "temporal_downscale": "Zeit-Downsampling-Rate",
+            "num_frames": "Anzahl der Frames",
+            "context_length": "Kontextlänge",
+            "context_overlap": "Kontext-Überlappung",
+            "context_schedule": "Kontext-Zeitplan",
+            "context_stride": "Kontext-Schrittweite",
+            "closed_loop": "Geschlossene Schleife",
+            "fuse_method": "Fusionsmethode",
+            "causal_window_fix": "Kausale Fensterkorrektur",
+            "freenoise": "freies Rauschen",
+            "cond_retain_index_list": "Liste der behaltenen Bedingungs-Indizes"
+        },
+        "outputs": {
+            "model": "Modell"
+        },
+        "description": "Interaktive Visualisierung des Kontextfensters von ComfyUI: Fensterposition, Überlappung, Verschmelzungsgewichte und Frame-für-Frame-Mischung, in Echtzeit aktualisiert. Die Einstellungen können optional auf Modelle wie den Kern-Kontextfenster-Knoten (manuell) angewendet werden."
+    },
+    "MiniMaxH3TokenCounter": {
+        "title": "MiniMaX H3 Token-Zähler",
+        "inputs": {
+            "samples": "Sampling",
+            "conditioning": "Bedingung"
+        },
+        "widgets": {},
+        "outputs": {
+            "samples": "Sampling",
+            "conditioning": "Bedingung",
+            "tokens": "Token",
+            "breakdown": "Zerlegung"
+        },
+        "description": "Berechnet die gepackte Sequenzlänge, die MiniMax H3 bei der Generierung ohne Sampling durchläuft. Baut anhand der AV-Latents und der Bedingungsinformationen (einschließlich Textlänge, Keyframes und Referenzblöcke) dasselbe [Text | Keyframe/Referenz | Audio | Video]-Layout wie das Modell auf."
+    },
+    "MiniMaxLowVRAMAttention": {
+        "title": "MiniMaX H3 VRAM-arme Attention",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "head_chunks": "Anzahl der Head-Blöcke"
+        },
+        "outputs": {
+            "model": "Modell"
+        },
+        "description": "Reduziert die peak VRAM-Nutzung des MiniMax-H3-Attention-Moduls, ohne die Berechnungslogik zu ändern. Die Attention-Aufrufe werden in mehrere Head-Gruppen aufgeteilt, sodass transiente Daten im Kernel (z. B. int8 q/k-Kopien, fp32-Akkumulatoren) mit der Anzahl der Blöcke kleiner werden, solange der fusionierte qkv-Puffer gültig ist; zugleich werden der qkv-Puffer und die normalisierten Blockeingaben sofort nach dem Verbrauch freigegeben. Das Ergebnis ist identisch mit dem des ungepatchten Modells."
+    },
+    "MiniMaxChunkFeedForward": {
+        "title": "MiniMaX H3 blockweise Feed-Forward",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "chunks": "Blockanzahl",
+            "seq_threshold": "Sequenzschwelle"
+        },
+        "outputs": {},
+        "description": "Blockt das Feed-Forward (SwiGLU) von MiniMax H3 entlang der gepackten Token-Dimension, um die peak VRAM-Nutzung zu senken. Wenn das Modell quantisiert ist, durchläuft jeder Block weiterhin ComfyUIs fusionierten INT8-Kern; da die Aktivierungswerte tokenweise quantisiert werden, ist die Ausgabe mit dem ungeblockten Modell identisch."
+    },
+    "Ideogram4PromptBuilderKJ": {
+        "title": "Ideogram4-Prompt-Builder (KJ)",
+        "inputs": {
+            "image": "Bild",
+            "import_json": "JSON importieren",
+            "bboxes": "Begrenzungsrechteck"
+        },
+        "widgets": {
+            "width": "Breite",
+            "height": "Höhe",
+            "high_level_description": "Erweiterte Beschreibung",
+            "background": "Hintergrund",
+            "style": "Stil",
+            "aesthetics": "Ästhetik",
+            "lighting": "Beleuchtung",
+            "medium": "Medium",
+            "style_palette_data": "Stilpalette-Daten",
+            "elements_data": "Elementdaten",
+            "bg_brightness": "Hintergrundhelligkeit",
+            "import_mode": "Importmodus",
+            "output_format": "Ausgabeformat",
+            "coord_mode": "Koordinatenmodus",
+            "bbox_order": "Begrenzungsrahmen-Reihenfolge"
+        },
+        "outputs": {
+            "prompt": "Prompt",
+            "preview": "Vorschau",
+            "bboxes": "Begrenzungsrechteck",
+            "width": "Breite",
+            "height": "Höhe"
+        },
+        "description": "\nVisueller Prompt-Builder für das strukturierte JSON-Untertitelformat von Ideogram 4.\n\nAuf der Leinwand ziehen, um Bereiche zu zeichnen; ein ausgewählter Bereich legt dessen Typ (Objekt/Text), Beschreibung, Text und Farbpalette fest. Hintergrund und optionale Stilfelder sind als Widgets ausgeführt. Ausgabe ist die zusammengesetzte Untertitel-JSON-Zeichenkette.\n\nDie bbo-X-Achsen-Versätze sind auf ein 0-1000-Raster normalisiert, im Format [Y-Versatz Min, X-Versatz Min, Y-Versatz Max, X-Versatz Max]; Breite/Höhe setzen das Seitenverhältnis der Leinwand.\n\nLeinwandsteuerung:\n- Ziehen: neuen Bereich zeichnen\n- Strg/Cmd+Ziehen: neuen Bereich auch über vorhandenen Bereichen erzwingen\n- Klick: Bereich auswählen · Alt+Klick: durch überlappende Bereiche blättern\n- Doppelklick: Beschreibung inline bearbeiten\n- Rechtsklick: Bereichsliste (Auswählen/Löschen/Kopieren/Neu anordnen, oben ist Vordergrund)\n- Entf/Rücktaste: ausgewählten Bereich löschen\n- Strg/Cmd + C/V/D: ausgewählten Bereich kopieren/einfügen/duplizieren\n- Die bbo-X-Achsen-Versatzfelder (Pixel/Ausgabe) neben obj/Text sind editierbar\n\nFarbmuster:\n- Klick: bearbeiten · Ziehen: neu anordnen · Rechtsklick: löschen\n- Hover+Strg/Cmd + C/V: HEX-Farbwerte kopieren/einfügen\n- \"+\": Farbe hinzufügen (falls die Zwischenablage eine Farbe enthält, diese verwenden)\n\nSymbolleiste:\n- Live: Live-Sampling-Vorschau als Hintergrund verwenden (und Endergebnis übernehmen)\n- Hintergrund übernehmen/Hintergrund löschen: zuletzt generiertes Bild als Hintergrund verwenden\n- Helligkeitsregler, Token-Schätzung sowie Kopieren/Einfügen/Alles löschen"
+    },
+    "RandomImageFromBatch": {
+        "title": "Zufälliges Bild aus Stapel wählen (KJ)",
+        "inputs": {
+            "input": "Eingang"
+        },
+        "widgets": {
+            "start_index": "Startindex",
+            "end_index": "Endindex",
+            "num_frames": "Anzahl der Frames",
+            "randomness": "Zufälligkeit",
+            "min_distance": "Mindestabstand",
+            "max_distance": "Maximaler Abstand",
+            "seed": "Zufalls-Seed"
+        },
+        "outputs": {
+            "output": "Ausgabe"
+        },
+        "description": "Wählt eine Reihe von Frames aus dem ausgewählten Indexbereich eines Bild- oder Masken-Stapels. Bei Zufälligkeit=0 sind die gewählten Frames gleichmäßig im Bereich verteilt; bei Zufälligkeit=1 sind es gleichmäßige Zufallsauswahlen ohne Wiederholung; Zwischenwerte mischen linear. Die Ausgabe ist stets nach Stapelindex sortiert. Negative Indizes zählen vom Ende (-1 = letzter)."
+    },
+    "FastPreviewBatch": {
+        "title": "Schnellvorschau-Stapel (KJ)",
+        "inputs": {
+            "input": "Eingang"
+        },
+        "widgets": {
+            "max_thumb_size": "Maximale Miniaturbildgröße",
+            "crf": "Bildqualität begrenzen",
+            "max_grid_frames": "Maximale Raster-Frame-Anzahl"
+        },
+        "outputs": {},
+        "description": "Kodiert den Bild-Stapel als H.264-MP4-Miniaturbildstreifen mit ausschließlich I-Frames und zeigt ihn als interaktives Raster. Klicke auf eine Kachel, um zu zoomen und vor/zurück zu blättern. Vermeidet die Erzeugung von N PNG-Dateien."
+    },
+    "BBOXToBoundingBoxKJ": {
+        "title": "BBOX zu Begrenzungsrahmen (KJ)",
+        "inputs": {
+            "bbox": "Begrenzungsrechteck"
+        },
+        "widgets": {
+            "bbox_format": "Begrenzungsrahmen-Format",
+            "index": "Index"
+        },
+        "outputs": {
+            "bounding_box": "Begrenzungsrechteck"
+        },
+        "description": "Wandelt die BBOX von KJNodes in das native BOUNDING_BOX-Wörterbuch um, das Kernknoten (wie Bild zuschneiden) verwenden."
+    },
+    "WanVideoMemoryEfficientSageAttentionPatch": {
+        "title": "Wan-Video speichereffizienter Sage-Attention-Patch (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Modell"
+        },
+        "description": "Experimentelle Funktion! Aktiviert benutzerdefiniertes sageattention auf der WanVideo-Selbst-Attention, um die peak VRAM-Nutzung zu senken, und überschreibt den Attention-Modus. Erfordert die neueste Version von sageattention."
+    },
+    "MiniMaxH3MemoryEfficientSageAttentionPatch": {
+        "title": "MiniMaX H3 speichereffizienter Sage-Attention-Patch (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Modell"
+        },
+        "description": "Experimentelle Funktion! Aktiviert benutzerdefiniertes sageattention auf der MiniMaX-Koordinaten-Koordinaten-H3-Selbst-Attention, um die peak VRAM-Nutzung zu senken, und überschreibt den Attention-Modus. Erfordert die neueste Version von sageattention."
+    },
+    "PatchFlashAttentionKJ": {
+        "title": "Flash-Attention-Patch (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "allow_compile": "Kompilierung zulassen"
+        },
+        "outputs": {},
+        "description": "Experimenteller Knoten zum Patchen der Attention auf Nutzung von Flash-Attention, ohne den stillen SDPA-Fallback der ComfY-Koordinaten-Koordinaten-UI. Patcht die Attention der Modelle, die durch diesen Knoten laufen; zum Deaktivieren muss der Knoten umgangen oder getrennt werden. Erfordert die Installation der flash_attn-Bibliothek."
+    },
+    "TorchCompileModelAdvanced": {
+        "title": "Torch-kompiliertes Modell Erweitert (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Ganzbildmodus",
+            "mode": "Modus",
+            "dynamic": "Bewegung",
+            "compile_transformer_blocks_only": "Nur Transformer-Block kompilieren",
+            "dynamo_cache_size_limit": "D-Vertikalversatz-namo-Cache-Größenlimit",
+            "debug_compile_keys": "Kompilierungsschlüssel debuggen",
+            "disable_dynamic_vram": "dynamisches VRAM deaktivieren"
+        },
+        "outputs": {},
+        "description": "Erweitertes torch.compile-Patching für Diffusionsmodelle."
+    },
+    "Krea2PromptWeight": {
+        "title": "Krea2-Prompt-Gewichte (KJ)",
+        "inputs": {
+            "clip": "CLIP",
+            "model": "Modell"
+        },
+        "widgets": {
+            "text": "Text",
+            "strength": "Intensität"
+        },
+        "outputs": {
+            "model": "Modell",
+            "conditioning": "Bedingung"
+        },
+        "description": "Tokenweise Prompt-Gewichte für Krea2 (K2) über Attention-Wert-Skalierung. Verwende (wort:-1), um ein Konzept zu entfernen, (wort:1.5), um es zu betonen – dies funktioniert mit dem Qwen3-VL-Encoder, den normale Gewichtungseinstellungen nicht erreichen. Gibt das gepatchte Modell und die Bedingung aus; stelle den Sampler-CFG auf 1,0."
+    },
+    "Ideogram4OptimizationsKJ": {
+        "title": "Ideogram4-Optimierung (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "chunk_ffn": "Blockweise Feed-Forward",
+            "ffn_chunks": "Feed-Forward-Blockanzahl",
+            "ffn_seq_threshold": "Feed-Forward-Sequenzschwelle",
+            "bf16_rope": "bf16_Positionscodierung"
+        },
+        "outputs": {
+            "model": "Modell"
+        },
+        "description": "Experimentelle Funktion, kann die Modellausgabe verändern!! Senkt das peak VRAM des Ideogram4-Vorwärtsdurchlaufs. chunk_ffn teilt die SwiGLU-Aktivierung entlang der Token-Dimension auf; bf16_rope wendet RoPE im Modell-Datentyp an, statt in fp32 hochzuskalieren. Beide zielen auf die beiden größten transienten Tensoren im Block."
+    },
+    "PiDColorBiasCorrection": {
+        "title": "PiD-Farbversatz-Korrektur (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "strength": "Intensität",
+            "backbone": "Backbone-Netzwerk"
+        },
+        "outputs": {},
+        "description": "PiD Vier-Schritt-Decoder Farb-/Helligkeits-Driftkorrektor. Im ersten Sampling-Schritt wird mit einem kleinen, auf die systematische Drift des Modells kalibrierten linearen Modell ein kanalweiser Versatz vom horizontalen Versatz 0_p Rot subtrahiert (das Modell neigt dazu, dunkle Szenen aufzuhellen und einen Blaustich hinzuzufügen)"
+    },
+    "LeapfusionHunyuanI2V": {
+        "title": "Leapfusion Hunyuan Bild-zu-Video (KJ)",
+        "inputs": {
+            "model": "Modell",
+            "latent": "Latent-Variable"
+        },
+        "widgets": {
+            "index": "Index",
+            "start_percent": "Start-Prozent",
+            "end_percent": "Ende-Prozent",
+            "strength": "Intensität"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VAEMergeKJ": {
+        "title": "VAE-Zusammenführung (KJ)",
+        "inputs": {
+            "vae_1": "VAE1",
+            "vae_2": "VAE2"
+        },
+        "widgets": {
+            "ratio": "Anteil"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "Führt die Gewichte zweier VAE über gewichteten Mittelwert zusammen. Das Verhältnis gewichtet zugunsten von VAE_2 (0,0 = nur VAE_1, 1,0 = nur VAE_2). Beide VAE müssen dieselbe Architektur haben (übereinstimmende state_dict-Schlüssel und -Formen)"
+    },
+    "LatentInpaintTTM": {
+        "title": "Latent-Maskenreparatur TTM (KJ)",
+        "inputs": {
+            "model": "Modell",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "steps": "Schritte"
+        },
+        "outputs": {},
+        "description": "https://github.com/time-to-move/TTM"
+    },
+    "DeprecatedCompileNodeKJ": {
+        "title": "Veralteter Kompilierknoten (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "Dieser Knoten wurde durch den TorchCompileModelAdvanced-Knoten ersetzt; bitte verwende diesen."
+    },
+    "ModelPreviewOverrideKJ": {
+        "title": "Modell-Vorschauüberschreibung (KJ)",
+        "inputs": {
+            "model": "Modell",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "max_resolution": "Maximale Auflösung",
+            "jpeg_quality": "JPEG-Qualität",
+            "suppress_default_preview": "Standardvorschau deaktivieren",
+            "preview_frames": "Vorschau-Frame",
+            "preview_fps": "Vorschau-Framerate",
+            "tiny_vae": "Mikro-VAE"
+        },
+        "outputs": {},
+        "description": "Fügt auf diesem Knoten einen dedizierten Live-Vorschau-Frame hinzu, der die maximale Auflösung überschreiben kann. Die Standard-Vorschau-Obergrenze der Comf-Vertikalversatz-UI beträgt 512p-Horizontalversatz; dieser Knoten sendet seine Vorschau direkt an die DOM-Komponente auf dem Knoten, sodass Pixel-Raum-Modelle (Chroma Radiance, ZImage, HiDream-O1 usw.) mit voller Sampler-Auflösung in der Vorschau dargestellt werden können."
+    },
+    "GetPreviewOverrideFramesKJ": {
+        "title": "Vorschauüberschreibungs-Frames abrufen (KJ)",
+        "inputs": {
+            "model": "Modell",
+            "after_sample": "nach dem Sampling"
+        },
+        "widgets": {},
+        "outputs": {
+            "frames": "Videoframes"
+        },
+        "description": "Gibt die während des letzten Samplings vom Modell-Vorschauüberschreiber erfassten Frames zurück. Verbinde das vom Modell-Vorschauüberschreiber stammende 'Modell' (dasselbe, das den Sampler speist) und das nach dem Sampler stammende 'after_sample' (Latent/IMAGE), um die korrekte Ausführungsreihenfolge sicherzustellen."
+    },
+    "PatchTritonVAE": {
+        "title": "Triton-VAE-Patch (KJ)",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "fuse_norm_silu": "fusionierte normalisierte SiLU-Aktivierung",
+            "channels_last": "Kanal-zuerst",
+            "int8_conv": "INT8-Faltung",
+            "autotune": "automatisches Tuning"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "Beschleunigt das Dekodieren/Kodieren des VAE durch Fusion von Triton-Norm+SiLU-Kerneln und Channel-First-Konvolutionslayout. Unterstützte VAE (automatisch erkannt): Wan 2.1/2.2 Video-VAE (einschließlich Qwen-Image, RMSNorm, ca. 1,4-Horizontalversatz/1,15-Horizontalversatz), Flu-Horizontalversatz/Flu-Horizontalversatz2, KL-Bild-VAE wie SDXL und SD1.5 (GroupNorm, ca. 1,6-1,8-Horizontalversatz bei 2048p-Horizontalversatz) sowie LTXV/LTX2 Video-VAE (Pi-HorizontalversatzelNorm; zeitschrittbedingte Decoder-Blöcke führen nur die Norm-Fusion aus). Andere Architekturen werden nicht unterstützt. Wird als Objekt-Patch auf einen geklonten Patcher angewendet, existiert also nur, solange dieses VAE geladen ist."
+    },
+    "ImageTransformKJ": {
+        "title": "Bildtransformation (KJ)",
+        "inputs": {
+            "image": "Bild",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "target_width": "Zielbreite",
+            "target_height": "Zielhöhe",
+            "upscale_method": "Upscale-Methode",
+            "keep_proportion": "Seitenverhältnis beibehalten",
+            "divisible_by": "Teilbare Zahl",
+            "extra_padding": "zusätzliche Polsterung",
+            "invert_crop": "Zuschneiden umkehren",
+            "grid_size": "Rastergröße"
+        },
+        "outputs": {
+            "width": "Breite",
+            "height": "Höhe",
+            "output": "Ausgabebild",
+            "output_mask": "Maske ausgeben"
+        },
+        "description": "Dies ist ein Knoten zur Bildtransformation; er unterstützt das Anpassen von Bildgröße, Hochskalierungsmethode und Seitenverhältnis-Haltung sowie die synchrone Transformation der Maske."
+    },
+    "ScreencapStream": {
+        "title": "Bildschirm-Erfassungsstrom (KJ)",
+        "inputs": {},
+        "widgets": {
+            "crop_width": "Zuschnittbreite",
+            "crop_height": "Zuschnichthöhe",
+            "Start capture": "Erfassung starten",
+            "Hide preview": "Vorschau ausblenden"
+        },
+        "outputs": {
+            "image": "Bild"
+        },
+        "description": "Dieser Knoten erfasst den Bildschirm in Echtzeit. Er ermöglicht es, Breite und Höhe des Erfassungsbereichs anzupassen, und bietet Schaltflächen zum Starten und Stoppen der Erfassung. Das erfasste Live-Bild wird im Vorschaufenster angezeigt, damit der Nutzer die Bildschirmaufzeichnung überwachen kann."
+    },
+    "DecodeAndSaveVideo": {
+        "title": "Video dekodieren und speichern (KJ)",
+        "inputs": {
+            "video_latent": "Video-Latent",
+            "video_vae": "Video-VAE-Modell",
+            "audio_latent": "Audio-Latent",
+            "audio_vae": "Audio-VAE-Modell"
+        },
+        "widgets": {
+            "fps": "Bildrate",
+            "filename_prefix": "Dateiname-Präfix",
+            "format": "Format",
+            "codec": "Codec",
+            "tiling": "Blockverarbeitung"
+        },
+        "outputs": {
+            "video": "dekodiertes Video",
+            "filename": "Dateiname nach dem Speichern"
+        },
+        "description": "Dieser Knoten dekodiert das Video-Latent in eine tatsächliche Videodatei und speichert sie. Er unterstützt gleichzeitiges Dekodieren von Audio. Hier können Bildrate (FPS), Dateinamen-Präfix, Ausgabeformat (z. B. MP4, MOV usw.), Video-Codec (z. B. H.264, H.265) sowie die Aktivierung der Blockverarbeitung (Tiling) für große Videos konfiguriert werden."
+    },
+    "EncodeVideoComponents": {
+        "title": "Videokomponenten kodieren (KJ)",
+        "inputs": {
+            "video": "Video",
+            "vae": "VAE-Modell"
+        },
+        "widgets": {
+            "width": "Breite",
+            "height": "Höhe",
+            "max_frames": "Maximale Frame-Anzahl",
+            "upscale_method": "Upscale-Methode",
+            "Keep Proportion": "Seitenverhältnis beibehalten"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "audio": "Audio",
+            "fps": "Bildrate",
+            "frame_count": "Anzahl der Frames"
+        },
+        "description": "Dieser Knoten kodiert Video-Frames in eine Latent-Darstellung und wird üblicherweise in Video-Generierungs- oder -Verarbeitungsabläufen verwendet. Er akzeptiert einen Videostrom und ein VAE-Modell als Eingang und gibt die kodierten Latent-Daten, den Audiostream, die Framerate-Information sowie die Gesamtanzahl der Frames aus. Zudem kann hier die Ausgabeauflösung (Breite und Höhe) eingestellt, die maximale Frame-Anzahl begrenzt, die Bildhochskalierungsmethode (z. B. Lanczos) gewählt und festgelegt werden, ob das ursprüngliche Seitenverhältnis beibehalten wird."
+    },
+    "ColorMatchV2": {
+        "title": "Farbabgleich V2 (KJ)",
+        "inputs": {
+            "image_target": "Zielbild",
+            "image_ref": "Referenzbild"
+        },
+        "widgets": {
+            "method": "Methode",
+            "strength": "Intensität",
+            "multithread": "Multithreading"
+        },
+        "outputs": {
+            "image": "Bild"
+        },
+        "description": "Knoten, der den Farbstil eines Referenzbildes auf ein Zielbild anwendet. Unterstützt mehrere Abgleichsalgorithmen (z. B. mkl), einstellbare Abgleichsintensität und Multithreading zur Effizienzsteigerung."
+    },
+    "PreviewImageOrMask": {
+        "title": "Bild oder Maske Vorschau (KJ)",
+        "inputs": {
+            "input": "Bild oder Maske eingeben"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "Dieser Knoten zeigt das eingegebene Bild oder die Maske direkt in der ComfyUI-Oberfläche an, hauptsächlich zum Debuggen und Anzeigen von Zwischenergebnissen während der Verarbeitung. Er gibt in der Regel keinen Datenstrom aus und dient nur als visuelle Vorschau."
+    },
+    "ImageSharpenKJ": {
+        "title": "Bildschärfung (KJ)",
+        "inputs": {
+            "image": "Bild"
+        },
+        "widgets": {
+            "method": "Methode",
+            "strength": "Intensität"
+        },
+        "outputs": {
+            "output": "Ausgabebild"
+        },
+        "description": "Dieser Knoten schärft das Eingabebild. Er ermöglicht die Wahl verschiedener Schärfungsalgorithmen (z. B. rcas) und die Anpassung der Schärfungsintensität, um Klarheit und Details des Bildes zu verbessern."
+    },
+    "PlaySoundKJ": {
+        "title": "Ton abspielen",
+        "inputs": {
+            "any_input": "Beliebiger Eingang",
+            "audio": "Audio"
+        },
+        "widgets": {
+            "audio_path": "Audiopfad",
+            "mode": "Modus",
+            "volume": "Lautstärke",
+            "duration": "Dauer"
+        },
+        "outputs": {
+            "any_output": "Beliebige Ausgabe"
+        },
+        "description": "Spielt die angegebene Audiodatei ab und unterstützt Wiedergabemodus, Lautstärke und Dauer."
+    },
+    "NormalizedAmplitudeToMask": {
+        "title": "Normalisierte Amplitude zu Maske",
+        "inputs": {
+            "normalized_amp": "Normalisierte Amplitude"
+        },
+        "widgets": {
+            "width": "Breite",
+            "height": "Höhe",
+            "frame_offset": "Frame-Versatz",
+            "location_x": "Position_X",
+            "location_y": "Position_Y",
+            "size": "Größe",
+            "shape": "Form",
+            "color": "Farbe"
+        },
+        "outputs": {
+            "MASK": "Maske"
+        },
+        "description": "Knoten zur Brücke des AudioScheduler-Plugins:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nErstellt eine Maske basierend auf der normalisierten Amplitude."
+    },
+    "NormalizedAmplitudeToFloatList": {
+        "title": "Normalisierte Amplitude zu Float-Liste",
+        "inputs": {
+            "normalized_amp": "Normalisierte Amplitude"
+        },
+        "outputs": {
+            "FLOAT": "Gleitkommazahl"
+        },
+        "description": "Knoten zur Brücke des AudioScheduler-Plugins:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nErstellt eine Float-Liste basierend auf der normalisierten Amplitude."
+    },
+    "OffsetMaskByNormalizedAmplitude": {
+        "title": "Maske nach normalisierter Amplitude verschieben",
+        "inputs": {
+            "normalized_amp": "Normalisierte Amplitude",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "rotate": "Drehen",
+            "angle_multiplier": "Winkel-Multiplikator"
+        },
+        "outputs": {
+            "mask": "Maske"
+        },
+        "description": "Knoten zur Brücke des AudioScheduler-Plugins:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nVerschiebt die Maske basierend auf der normalisierten Amplitude."
+    },
+    "ImageTransformByNormalizedAmplitude": {
+        "title": "Bild nach normalisierter Amplitude transformieren",
+        "inputs": {
+            "normalized_amp": "Normalisierte Amplitude",
+            "image": "Bild"
+        },
+        "widgets": {
+            "zoom_scale": "Zoom",
+            "x_offset": "x-Kompensation",
+            "y_offset": "y-Kompensation",
+            "cumulative": "Akkumulation"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Knoten zur Brücke des AudioScheduler-Plugins:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nTransformiert das Bild basierend auf der normalisierten Amplitude."
+    },
+    "BatchCropFromMask": {
+        "title": "Maske zuschneiden",
+        "inputs": {
+            "original_images": "Bild",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "crop_size_mult": "Zuschnittsfaktor",
+            "bbox_smooth_alpha": "BBox-weiche Transparenz"
+        },
+        "outputs": {
+            "original_images": "Originalbild",
+            "cropped_images": "Bild zuschneiden",
+            "bboxes": "BBox",
+            "width": "Breite",
+            "height": "Höhe"
+        }
+    },
+    "BatchUncrop": {
+        "title": "Uncrop (Stapel)",
+        "inputs": {
+            "original_images": "Originalbild",
+            "cropped_images": "Bild zuschneiden",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "border_blending": "Rahmenverschmelzung",
+            "crop_rescale": "Erneut skalieren",
+            "border_bottom": "unterer Rand",
+            "border_top": "oberer Rand",
+            "border_left": "linker Rand",
+            "border_right": "rechter Rand"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        }
+    },
+    "BatchCropFromMaskAdvanced": {
+        "title": "Maskenzuschnitt (Erweitert)",
+        "inputs": {
+            "original_images": "Bild",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "crop_size_mult": "Zuschnittsfaktor",
+            "bbox_smooth_alpha": "BBox-weiche Transparenz"
+        },
+        "outputs": {
+            "original_images": "Originalbild",
+            "cropped_images": "Bild zuschneiden",
+            "cropped_masks": "Maske zuschneiden",
+            "combined_crop_image": "Zugeschnittenes Bild zusammenführen",
+            "combined_crop_masks": "Zugeschnittene Maske zusammenführen",
+            "bboxes": "BBox",
+            "combined_bounding_box": "BBox zusammenführen",
+            "bbox_width": "BBox-Breite",
+            "bbox_height": "BBox-Höhe"
+        }
+    },
+    "FilterZeroMasksAndCorrespondingImages": {
+        "title": "Null-Masken und Bilder filtern",
+        "inputs": {
+            "masks": "Maske",
+            "original_images": "Bild"
+        },
+        "outputs": {
+            "non_zero_masks_out": "Nicht-Null-Maske",
+            "non_zero_mask_images_out": "Nicht-Null-Bild",
+            "zero_mask_images_out": "Null-Bild",
+            "zero_mask_images_out_indexes": "Nicht-Null-Masken-Bildindex"
+        },
+        "description": "Filtert alle leeren Masken in der Maske heraus (d. h. alle Null)\nWenn angegeben, werden auch alle zugehörigen Bilder\n in original_images über den Index herausgefiltert\n original_images (optional): falls angegeben, muss dieselbe Länge wie die Maske haben."
+    },
+    "InsertImageBatchByIndexes": {
+        "title": "Bild-Stapel nach Index einfügen",
+        "inputs": {
+            "images": "Bild",
+            "images_to_insert": "Bild einfügen",
+            "insert_indexes": "Index einfügen"
+        },
+        "outputs": {
+            "images_after_insert": "Bild"
+        },
+        "description": "Dieser Knoten muss zusammen mit dem FilterZeroMasksAndCorrespondingImages-Knoten verwendet werden.\n_Fügt images_to_insert gemäß insert_indexes in images ein.\n_Rückgabewert: images_after_insert – die in der ursprünglichen Reihenfolge aktualisierte Bildsequenz."
+    },
+    "BatchUncropAdvanced": {
+        "title": "Uncrop (Erweitert)",
+        "inputs": {
+            "original_images": "Originalbild",
+            "cropped_images": "Bild zuschneiden",
+            "cropped_masks": "Maske zuschneiden",
+            "combined_crop_mask": "Zugeschnittene Maske zusammenführen",
+            "bboxes": "BBox",
+            "combined_bounding_box": "BBox zusammenführen"
+        },
+        "widgets": {
+            "border_blending": "Rahmenverschmelzung",
+            "crop_rescale": "Erneut skalieren",
+            "use_combined_mask": "Kombinierte Maske verwenden",
+            "use_square_mask": "Quadratische Maske verwenden"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        }
+    },
+    "SplitBboxes": {
+        "title": "BBox trennen",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "Index"
+        },
+        "outputs": {
+            "bboxes_a": "BBox_A",
+            "bboxes_b": "BBox_B"
+        },
+        "description": "Teilt die angegebene bbox-Liste am eingestellten Index in zwei Listen"
+    },
+    "BboxToInt": {
+        "title": "BBox zu Ganzzahl",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "Index"
+        },
+        "outputs": {
+            "x_min": "X-Minimum",
+            "y_min": "Y-Maximum",
+            "width": "Breite",
+            "height": "Höhe",
+            "center_x": "X-Mittelpunkt",
+            "center_y": "Y-Mittelpunkt"
+        },
+        "description": "Gibt den aus der Begrenzungsrahmen-Liste gewählten Index als Ganzzahl zurück"
+    },
+    "BboxVisualize": {
+        "title": "BBox-Vorschau",
+        "inputs": {
+            "images": "Bild",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "line_width": "Linienbreite"
+        },
+        "outputs": {
+            "images": "Bild"
+        },
+        "description": "Angezeigten bbox auf dem Bild anzeigen"
+    },
+    "PlotCoordinates": {
+        "title": "Koordinatendiagramm",
+        "inputs": {
+            "coordinates": "Koordinaten",
+            "size_multiplier": "Größenmultiplikator"
+        },
+        "widgets": {
+            "text": "Text",
+            "width": "Breite",
+            "height": "Höhe",
+            "bbox_width": "BBox-Breite",
+            "bbox_height": "BBox-Höhe"
+        },
+        "outputs": {
+            "images": "Bild",
+            "width": "Breite",
+            "height": "Höhe",
+            "bbox_height": "BBox-Höhe",
+            "bbox_width": "BBox-Breite"
+        },
+        "description": "Erstellt mit Matplotlib eine Koordinaten-Diagrammsequenz."
+    },
+    "SplineEditor": {
+        "title": "Kurveneditor",
+        "inputs": {
+            "bg_image": "Hintergrundbild"
+        },
+        "widgets": {
+            "points_store": "Punktposition",
+            "mask_width": "Maskenbreite",
+            "mask_height": "Maskenhöhe",
+            "points_to_sample": "Sampling-Genauigkeit",
+            "sampling_method": "Sampling-Methode",
+            "interpolation": "Interpolationsmethode",
+            "tension": "Spannung",
+            "repeat_output": "Ausgabe wiederholen",
+            "float_output_type": "Float-Ausgabetyp",
+            "min_value": "Minimum",
+            "max_value": "Maximum",
+            "New spline": "Neue Kurve",
+            "New canvas": "Neues Canvas"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "coord_str": "Koordinaten",
+            "float": "Gleitkommazahl",
+            "count": "Anzahl",
+            "normalized_str": "Zeichenkette normalisieren"
+        },
+        "description": "# In Entwicklung \nVerwende diesen Knoten nach Möglichkeit nicht in Workflows – er kann viele Bugs haben und ist instabil!! \n \n## Grafischer Editor zum Erstellen verschiedener Wert-Schedules \n\n**Umschalt+Linksklick** fügt einen neuen Stützpunkt hinzu, **Strg+Linksklick** erstellt einen mittleren Stützpunkt, **Rechtsklick** entfernt einen Stützpunkt.\nEndpunkte können nicht gelöscht werden.\n\n Rechtsklick auf den Hintergrund öffnet ein Menü: einige visuelle Einstellungen, die die Ausgabe nicht beeinflussen:\n - Griffsichtbarkeit \n - Stützpunkte anzeigen \n\n**Abtastgenauigkeit** legt die Anzahl der Stützpunkte fest; die Stützpunkte werden aus der Spline selbst zurückgegeben, unabhängig von den tatsächlichen Stützpunkten, bestimmt durch den Interpolationstyp.\nAbtastmethode:\n - Zeit: entlang der Zeitachse abtasten, für Schedules \n - Pfad: entlang des Kurvenpfads abtasten, für Koordinaten \n\n Ausgabe:\n - Masken-Stapel \n für jeden Knoten, der Masken empfängt \n - Float-Liste \n für IPAdapter-Gewichtsgruppen \n - pandas-Serie \n für Knoten, die den Fizz-Batch-Schedule-Knoten empfangen \n - torch-Tensor \n für unbekannte Knoten"
+    },
+    "CreateShapeMaskOnPath": {
+        "title": "Formmaske erstellen",
+        "inputs": {
+            "coordinates": "Koordinaten",
+            "size_multiplier": "Größenmultiplikator"
+        },
+        "widgets": {
+            "shape": "Form",
+            "frame_height": "Höhe",
+            "frame_width": "Breite",
+            "shape_height": "Formhöhe",
+            "shape_width": "Formbreite",
+            "shape_color": "Formfarbe",
+            "bg_color": "Hintergrundfarbe",
+            "blur_radius": "Unschärferadius",
+            "intensity": "Intensität"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "mask_inverted": "Maske umkehren"
+        },
+        "description": "Erzeugt eine Maske oder einen Masken-Stapel mit der angegebenen Form; der Positionsparameter ist die Mittelpunktsposition."
+    },
+    "CreateShapeImageOnPath": {
+        "title": "Formbild erstellen",
+        "inputs": {
+            "coordinates": "Koordinaten",
+            "size_multiplier": "Größenmultiplikator"
+        },
+        "widgets": {
+            "shape": "Form",
+            "frame_height": "Höhe",
+            "frame_width": "Breite",
+            "shape_height": "Formhöhe",
+            "shape_width": "Formbreite",
+            "shape_color": "Formfarbe",
+            "bg_color": "Hintergrundfarbe",
+            "blur_radius": "Unschärferadius",
+            "intensity": "Intensität",
+            "trailing": "Anhängend",
+            "border_width": "Rahmenbreite",
+            "border_color": "Rahmenfarbe"
+        },
+        "outputs": {
+            "image": "Bild",
+            "mask": "Maske"
+        },
+        "description": "Erzeugt ein Bild oder einen Bild-Stapel mit der angegebenen Form; der Positionsparameter ist die Mittelpunktsposition."
+    },
+    "CreateTextOnPath": {
+        "title": "Text erstellen",
+        "inputs": {
+            "coordinates": "Koordinaten",
+            "size_multiplier": "Größenmultiplikator"
+        },
+        "widgets": {
+            "text": "Text",
+            "frame_height": "Höhe",
+            "frame_width": "Breite",
+            "font": "Schriftart",
+            "font_size": "Schriftgröße",
+            "alignment": "Ausrichten an",
+            "text_color": "Textfarbe"
+        },
+        "outputs": {
+            "image": "Bild",
+            "mask": "Maske",
+            "mask_inverted": "Maske umkehren"
+        },
+        "description": "Erstellt eine Maske oder einen Stapel von Masken mit dem angegebenen Text. Die Position ist die Mittelpunktsposition."
+    },
+    "CreateGradientFromCoords": {
+        "title": "Gradientenbild aus Koordinaten erstellen",
+        "inputs": {
+            "coordinates": "Koordinaten"
+        },
+        "widgets": {
+            "frame_height": "Höhe",
+            "frame_width": "Breite",
+            "start_color": "Startfarbe",
+            "end_color": "Endfarbe",
+            "multiplier": "Multiplikator"
+        },
+        "outputs": {
+            "image": "Bild"
+        },
+        "description": "Erstellt ein Gradientenbild an der Koordinatenposition."
+    },
+    "GradientToFloat": {
+        "title": "Gradient zu Float",
+        "inputs": {
+            "image": "Bild"
+        },
+        "widgets": {
+            "steps": "Schritte"
+        },
+        "outputs": {
+            "float_x": "Float_X",
+            "float_y": "Float_Y"
+        },
+        "description": "Bild-Float-Liste berechnen"
+    },
+    "MaskOrImageToWeight": {
+        "title": "Maske oder Bild zu Gewichten",
+        "inputs": {
+            "images": "Bild",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "output_type": "Ausgabetyp"
+        },
+        "outputs": {
+            "FLOAT": "Gleitkommazahl",
+            "STRING": "Gleitkommazahl"
+        },
+        "description": "Ermittelt den Durchschnittswert einer Maske oder eines Bild-Stapels und gibt das Ergebnis gemäß Ausgabetyp aus."
+    },
+    "WeightScheduleConvert": {
+        "title": "Gewichts-Schedule-Konvertierung",
+        "inputs": {
+            "input_values": "Eingangswert",
+            "interpolation_curve": "Interpolationskurve"
+        },
+        "widgets": {
+            "output_type": "Ausgabetyp",
+            "invert": "Umkehren",
+            "repeat": "Duplizieren",
+            "remap_to_frames": "auf Frame remappen",
+            "interpolation_curve": "Interpolationskurve",
+            "remap_values": "Wert remappen",
+            "remap_min": "Minimum remappen",
+            "remap_max": "Maximum remappen"
+        },
+        "outputs": {
+            "FLOAT": "Gleitkommazahl",
+            "STRING": "Gleitkommazahl",
+            "INT": "Ganzzahl"
+        },
+        "description": "Wandelt verschiedene Wertelisten/-sequenzen in einen anderen Typ um."
+    },
+    "FloatToMask": {
+        "title": "Float zu Maske",
+        "inputs": {
+            "input_values": "Eingangswert"
+        },
+        "widgets": {
+            "width": "Breite",
+            "height": "Höhe"
+        },
+        "outputs": {
+            "MASK": "Maske"
+        },
+        "description": "Erzeugt einen Stapel von Masken aus den eingegebenen Float-Werten. Die Stapelgröße wird durch die Länge der Eingabe-Float-Werte bestimmt. Jede Maske wird mit der angegebenen Breite und Höhe erzeugt."
+    },
+    "WeightScheduleExtend": {
+        "title": "Gewichts-Schedule-Erweiterung",
+        "inputs": {
+            "input_values_1": "Eingangswert_1",
+            "input_values_2": "Eingangswert_2"
+        },
+        "widgets": {
+            "output_type": "Ausgabetyp"
+        },
+        "outputs": {
+            "FLOAT": "Gleitkommazahl"
+        },
+        "description": "Erweitert verschiedene Wertelisten/-serien und konvertiert sie bei Bedarf"
+    },
+    "FloatToSigmas": {
+        "title": "Float zu Sigmas",
+        "inputs": {
+            "float_list": "Float-Liste"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        },
+        "description": "sigmas-Tensor aus Float-Liste erstellen"
+    },
+    "SigmasToFloat": {
+        "title": "Sigmas zu Float",
+        "inputs": {
+            "sigmas": "sigmas"
+        },
+        "outputs": {
+            "float": "Gleitkommazahl"
+        },
+        "description": "Erstellt eine Float-Liste aus einem Sigma-Tensor."
+    },
+    "GLIGENTextBoxApplyBatchCoords": {
+        "title": "GLIGEN-Textfeld-Anwendung (Stapelkoordinaten)",
+        "inputs": {
+            "conditioning_to": "Bedingung",
+            "latents": "Latent",
+            "clip": "CLIP",
+            "gligen_textbox_model": "GLIGEN-Modell",
+            "coordinates": "Koordinaten",
+            "size_multiplier": "Größenmultiplikator"
+        },
+        "widgets": {
+            "text": "Text",
+            "width": "Breite",
+            "height": "Höhe"
+        },
+        "outputs": {
+            "conditioning": "Bedingung",
+            "coord_preview": "Koordinatenvorschau"
+        },
+        "description": "Dieser Knoten ermöglicht es, die Position der GLIGEN-Textfelder im Stapel zu schedule; Verwendung zusammen mit AnimateDiff-Evolved. Empfohlen wird die Nutzung zusammen mit dem Kurveneditor-Knoten.\n\n Die GLIGEN-Modelle können im 'Modelle installieren' des Managers heruntergeladen werden, oder direkt unter: https://huggingface.co/comfyanonymous/GLIGEN_pruned_safetensors/tree/main herunterladen. \n \n Eingang: \n- **Latent**-Eingang zur Berechnung der Stapelgröße \n- **CLIP** ist der Text-Encoder, wie andere CLIP-Eingänge \n- **GLIGEN-Modell** verbunden mit dem GLIGEN-Lader-Knoten \n- **Koordinaten** empfängt den Koordinatenpunkt-JSON-String, kompatibel mit dem Kurveneditor-Knoten. \n- **Text** der Prompt für die Textfeldposition \n- **Breite** und **Höhe** setzen die Größe des GLIGEN-Textfelds \n \n Ausgabe:\n- **Bedingung** zwischen CLIP-Text-Encoding und Sampler verbinden \n- **Koordinatenvorschau** zur Vorschau von Koordinaten und BBox \n\n"
+    },
+    "CreateInstanceDiffusionTracking": {
+        "title": "Instanz-Diffusion-Tracking erstellen",
+        "inputs": {
+            "coordinates": "Koordinaten",
+            "size_multiplier": "Größenmultiplikator"
+        },
+        "widgets": {
+            "width": "Breite",
+            "height": "Höhe",
+            "bbox_width": "BBox-Breite",
+            "bbox_height": "BBox-Höhe",
+            "class_name": "Klassenname",
+            "class_id": "Klassen-ID",
+            "prompt": "Prompt",
+            "fit_in_frame": "an Rahmen anpassen"
+        },
+        "outputs": {
+            "tracking": "Tracking",
+            "prompt": "Hinweis",
+            "width": "Breite",
+            "height": "Höhe",
+            "bbox_width": "bbox-Breite",
+            "bbox_height": "bbox-Höhe",
+            "int": "Ganzzahl"
+        },
+        "description": "Erzeugt Tracking-Daten für InstanceDiffusion:\nhttps://github.com/logtd/ComfyUI-InstanceDiffusion\n\nInstanceDiffusion-Prompt-Format:\n`\"class_id.class_name\": \"prompt\"`\nBeispiel:\n`\"1.head\": \"((head))\"`"
+    },
+    "AppendInstanceDiffusionTracking": {
+        "title": "Instanz-Diffusion-Tracking anhängen",
+        "inputs": {
+            "tracking_1": "Tracking_1",
+            "tracking_2": "Tracking_2",
+            "prompt_1": "Prompt_1",
+            "prompt_2": "Prompt_2"
+        },
+        "outputs": {
+            "tracking": "Tracking",
+            "prompt": "Hinweis"
+        },
+        "description": "Hängt Tracking-Daten für die Verwendung mit InstanceDiffusion an: https://github.com/logtd/ComfyUI-InstanceDiffusion"
+    },
+    "InterpolateCoords": {
+        "title": "Koordinaten-Interpolation",
+        "inputs": {
+            "coordinates": "Koordinaten",
+            "interpolation_curve": "Interpolationskurve"
+        },
+        "outputs": {
+            "coordinates": "Koordinaten"
+        },
+        "description": "Koordinaten gemäß Kurve interpolieren"
+    },
+    "DrawInstanceDiffusionTracking": {
+        "title": "Instanz-Diffusion-Tracking zeichnen",
+        "inputs": {
+            "image": "Bild",
+            "tracking": "Tracking"
+        },
+        "widgets": {
+            "box_line_width": "Linienbreite des Rahmens",
+            "draw_text": "Text zeichnen",
+            "font": "Schriftart",
+            "font_size": "Schriftgröße"
+        },
+        "outputs": {
+            "image": "Bild"
+        },
+        "description": "Ruft die Tracking-Daten des CreateInstanceDiffusionTracking-Knotens zum Zeichnen ab "
+    },
+    "PointsEditor": {
+        "title": "Punkt-Editor",
+        "inputs": {
+            "bg_image": "Hintergrundbild"
+        },
+        "widgets": {
+            "points_store": "Punktposition",
+            "bbox_store": "BBox-Position",
+            "bbox_format": "BBox-Format",
+            "width": "Breite",
+            "height": "Höhe",
+            "normalize": "Normalisieren",
+            "New canvs": "Neue Leinwand",
+            "Load Image": "Bild laden",
+            "Clear Image": "Bild löschen",
+            "New canvas": "Neues Canvas"
+        },
+        "outputs": {
+            "positive_coords": "Positive Koordinaten",
+            "negative_coords": "Negative Koordinaten",
+            "bbox": "BBox",
+            "bbox_mask": "BBox-Maske",
+            "cropped_image": "Bild zuschneiden"
+        },
+        "description": "# In Entwicklung  \nVerwende diesen Knoten nach Möglichkeit nicht in Workflows – er kann viele Bugs haben und ist instabil!!  \n\n## Grafischer Editor zum Erstellen von Koordinaten\n\n**Umschalt + Linksklick** fügt einen positiven (grünen) Koordinatenpunkt hinzu.\n\n**Umschalt + Rechtsklick** fügt einen negativen (roten) Koordinatenpunkt hinzu.\n\n**Strg + Linksklick** zeichnet ein Rechteck.\n\n**Rechtsklick auf Punkt** löscht ihn; Start-/Endpunkt des Punktarays können nicht gelöscht werden.\n\nUm ein Bild hinzuzufügen, wähle den Knoten und füge ein Bild ein oder ziehe es hinein.\n\nOder gib es über das Interface „Hintergrundbild“ ein; dabei wird der erste Frame des Eingabebildes verwendet.\n\n**Das Bild wird im Knoten und im Workflow gespeichert**\nÜber das Rechtsklickmenü kann das Bild gelöscht werden.\n"
+    },
+    "CutAndDragOnPath": {
+        "title": "Pfad-Ausschnitt-Ziehen",
+        "inputs": {
+            "image": "Bild",
+            "mask": "Maske",
+            "bg_image": "Hintergrundbild",
+            "coordinates": "Koordinaten"
+        },
+        "widgets": {
+            "frame_width": "Rahmenbreite",
+            "frame_height": "Rahmenhöhe",
+            "inpaint": "Reparatur"
+        },
+        "outputs": {
+            "image": "Bild",
+            "mask": "Maske"
+        },
+        "description": "Schneidet den Maskenbereich aus dem Bild aus und zieht diesen entlang eines Pfads. Wenn Reparatur aktiviert ist und kein Hintergrundbild angegeben wurde, wird der ausgeschnittene Bereich mit dem OpenCV-TELEA-Algorithmus gefüllt."
+    },
+    "ImagePass": {
+        "title": "Bild-Brücke",
+        "inputs": {
+            "image": "Bild"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Bild an den nächsten Knoten weitergeben"
+    },
+    "ColorMatch": {
+        "title": "Bild-Farbgebung",
+        "inputs": {
+            "image_ref": "Referenzbild",
+            "image_target": "Zielbild"
+        },
+        "widgets": {
+            "method": "Methode",
+            "strength": "Intensität",
+            "multithread": "Multithreading"
+        },
+        "outputs": {
+            "image": "Bild"
+        },
+        "description": "color-matcher (Bild-Farbgebung) kann Farbstile zwischen Bilddateien übertragen und dient der automatischen Farbkorrektur von Fotos, Gemälden, Sequenz-Frames sowie der Light-Field-Fixierung.\n\nBasierend auf dem Algorithmus von Reinhard et al., dem von Pitie et al. vorgeschlagenen Monge-Kantorovich-Linearization-(MKL)-Algorithmus sowie unserer analytischen Lösung des Multi-Variate-Gaussian-Distribution-(MVGD)-Algorithmus in Kombination mit klassischem Histogrammausgleich. Wie gezeigt, übertrifft unsere HM-MVGD-HM-Methode bestehende Verfahren.\n\nhttps://github.com/hahnec/color-matcher/"
+    },
+    "SaveImageWithAlpha": {
+        "title": "Bild mit Alpha-Kanal speichern",
+        "inputs": {
+            "images": "Bild",
+            "mask": "Maske",
+            "filename_prefix": "Dateiname-Präfix",
+            "prompt": "Prompt",
+            "extra_pnginfo": "Zusätzliche PNG-Info"
+        },
+        "outputs": {}
+    },
+    "ImageConcanate": {
+        "title": "Bild zusammenführen",
+        "inputs": {
+            "image1": "Bild_1",
+            "image2": "Bild_2"
+        },
+        "widgets": {
+            "direction": "Richtung",
+            "match_image_size": "Bildgröße anpassen"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Führt zwei Bilder nach Richtung zusammen."
+    },
+    "ImageConcatFromBatch": {
+        "title": "Bild zusammenführen (Stapel)",
+        "inputs": {
+            "images": "Bild"
+        },
+        "widgets": {
+            "num_columns": "Spaltenanzahl",
+            "match_image_size": "Größe anpassen",
+            "max_resolution": "Maximale Auflösung"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Nimmt Bilder aus einem Bild-Stapel und ordnet sie nach Spaltenanzahl zu einem einzelnen Bild."
+    },
+    "ImageGridComposite2x2": {
+        "title": "Bildraster zusammenführen 2x2",
+        "inputs": {
+            "image1": "Bild_1",
+            "image2": "Bild_2",
+            "image3": "Bild_3",
+            "image4": "Bild_4"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Fügt 4 Eingabebilder zu einer 2x2-Tafel zusammen."
+    },
+    "ImageGridComposite3x3": {
+        "title": "Bildraster zusammenführen 3x3",
+        "inputs": {
+            "image1": "Bild_1",
+            "image2": "Bild_2",
+            "image3": "Bild_3",
+            "image4": "Bild_4",
+            "image5": "Bild_5",
+            "image6": "Bild_6",
+            "image7": "Bild_7",
+            "image8": "Bild_8",
+            "image9": "Bild_9"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Fügt 9 Eingabebilder zu einer 3x3-Tafel zusammen."
+    },
+    "ImageBatchTestPattern": {
+        "title": "Bild-Stapel-Muster",
+        "widgets": {
+            "batch_size": "Stapelgröße",
+            "start_from": "Anfangswert",
+            "text_x": "Text x",
+            "text_y": "Text y",
+            "width": "Breite",
+            "height": "Höhe",
+            "font": "Schriftart",
+            "font_size": "Schriftgröße"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        }
+    },
+    "ImageGrabPIL": {
+        "title": "PIL-Bilderfassung",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "Breite",
+            "height": "Höhe",
+            "num_frames": "Anzahl der Frames",
+            "delay": "Verzögerung"
+        },
+        "outputs": {
+            "image": "Bild"
+        },
+        "description": "Erfasst einen Bereich nach Bildschirmkoordinaten.\n\nFür Live-Sampling."
+    },
+    "Screencap_mss": {
+        "title": "Bildschirmfassung MSS",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "Breite",
+            "height": "Höhe",
+            "num_frames": "Anzahl der Frames",
+            "delay": "Verzögerung"
+        },
+        "outputs": {
+            "images": "Bild"
+        },
+        "description": "Erfasst einen Bereich nach Bildschirmkoordinaten.\n\nFür Live-Sampling."
+    },
+    "WebcamCaptureCV2": {
+        "title": "Kameraerfassung CV2",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "Breite",
+            "height": "Höhe",
+            "cam_index": "Kamera-Ordnungsnummer",
+            "release": "Freigabe"
+        },
+        "outputs": {
+            "image": "Bild"
+        },
+        "description": "Erfasst den Bildschirm über die Webcam mit CV2.\n\nFür Live-Sampling."
+    },
+    "AddLabel": {
+        "title": "Tag hinzufügen",
+        "inputs": {
+            "image": "Bild",
+            "caption": "Titel"
+        },
+        "widgets": {
+            "text_x": "Position_X",
+            "text_y": "Position_Y",
+            "height": "Höhe",
+            "font_size": "Schriftgröße",
+            "font_color": "Schriftfarbe",
+            "label_color": "Hintergrundfarbe",
+            "font": "Schriftart",
+            "text": "Text",
+            "direction": "Richtung"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        }
+    },
+    "GetImageSizeAndCount": {
+        "title": "Bildgrößen und -anzahl abrufen",
+        "inputs": {
+            "image": "Bild"
+        },
+        "outputs": {
+            "image": "Bild",
+            "width": "Breite",
+            "height": "Höhe",
+            "count": "Anzahl"
+        },
+        "description": "Breite, Höhe und Stapelgröße des Ausgabebildes"
+    },
+    "ImageBatchRepeatInterleaving": {
+        "title": "Bild-Batch wiederholen",
+        "inputs": {
+            "images": "Bild",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "repeats": "Anzahl"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Kopiert die Bilder im Stapel die angegebene Anzahl von Malen.\n\nBeispiel: ein Stapel mit 5 Bildern: 0,1,2,3,4\n\nnach 2 Wiederholungen: 0,0,1,1,2,2,3,3,4,4"
+    },
+    "ImageUpscaleWithModelBatched": {
+        "title": "Bild-Stapel-Modellhochskalierung",
+        "inputs": {
+            "upscale_model": "Hochskalierungsmodell",
+            "images": "Bild"
+        },
+        "widgets": {
+            "per_batch": "pro Stapel"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Gleiche Funktion wie der native Modell-Upscale-Knoten von ComfyUI, unterstützt aber die Stapelverarbeitung zur Verringerung der VRAM-Nutzung."
+    },
+    "ImageNormalize_Neg1_To_1": {
+        "title": "Bild-Normalisierung -1 bis 1",
+        "inputs": {
+            "images": "Bild"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Bild auf [-1,1] normalisieren"
+    },
+    "RemapImageRange": {
+        "title": "Bildbereich remappen",
+        "inputs": {
+            "image": "Bild"
+        },
+        "widgets": {
+            "min": "Minimum",
+            "max": "Maximum",
+            "clamp": "Clamp"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Remappt die Bildwerte auf den angegebenen Bereich."
+    },
+    "SplitImageChannels": {
+        "title": "Bildkanäle trennen",
+        "inputs": {
+            "image": "Bild"
+        },
+        "outputs": {
+            "red": "Rot",
+            "green": "Grün",
+            "blue": "Blau",
+            "mask": "Maske"
+        },
+        "description": "Trennt das Bild in Einzelkanalbilder; der Alpha-Kanal wird als Maske getrennt."
+    },
+    "MergeImageChannels": {
+        "title": "Bildkanäle zusammenführen",
+        "inputs": {
+            "red": "Rot",
+            "green": "Grün",
+            "blue": "Blau",
+            "alpha": "Alpha-Transparenzkanal"
+        },
+        "outputs": {
+            "image": "Bild"
+        },
+        "description": "Kanäle zu Bild zusammenführen"
+    },
+    "ImagePadForOutpaintMasked": {
+        "title": "Erweiterungs-Leinwand (Maske)",
+        "inputs": {
+            "image": "Bild",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "left": "Links",
+            "top": "Oben",
+            "right": "Rechts",
+            "bottom": "Unten",
+            "feathering": "Kantenweichzeichnung"
+        },
+        "outputs": {
+            "IMAGE": "Bild",
+            "MASK": "Maske"
+        }
+    },
+    "ImagePadForOutpaintTargetSize": {
+        "title": "Erweiterungs-Leinwand (Größe)",
+        "inputs": {
+            "image": "Bild",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "target_width": "Zielbreite",
+            "target_height": "Zielhöhe",
+            "feathering": "Kantenweichzeichnung",
+            "upscale_method": "Skalierungsmethode"
+        },
+        "outputs": {
+            "IMAGE": "Bild",
+            "MASK": "Maske"
+        }
+    },
+    "ImagePrepForICLora": {
+        "title": "ICLora-Bildvorbereitung",
+        "inputs": {
+            "reference_image": "Referenzbild",
+            "latent_image": "Latent-Bild",
+            "latent_mask": "Latent-Maske",
+            "reference_mask": "Referenzmaske"
+        },
+        "widgets": {
+            "output_width": "Ausgabebreite",
+            "output_height": "Ausgabehöhe",
+            "border_width": "Rahmenbreite"
+        },
+        "outputs": {
+            "image": "Bild",
+            "mask": "Maske"
+        }
+    },
+    "ImageAndMaskPreview": {
+        "title": "Bild- und Maskenvorschau",
+        "inputs": {
+            "image": "Bild",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "mask_opacity": "Masken-Opazität",
+            "mask_color": "Maskenfarbe",
+            "pass_through": "Durchreichen"
+        },
+        "outputs": {
+            "composite": "Bild"
+        },
+        "description": "Zeigt eine Vorschau von Bild oder Maske; werden gleichzeitig Bild und Maske eingegeben, wird die Maske in das Bild eingefügt.\nWenn Durchreichen aktiviert ist, wird die Komposition deaktiviert, für die Vorschau über den zu Video zusammengeführten Knoten."
+    },
+    "CrossFadeImages": {
+        "title": "Überblendetes Bild",
+        "inputs": {
+            "images_1": "Bild_1",
+            "images_2": "Bild_2"
+        },
+        "widgets": {
+            "interpolation": "Interpolationsmethode",
+            "transition_start_index": "Übergangs-Ordnungsnummer starten",
+            "transitioning_frames": "Anzahl der Übergangsframes",
+            "start_level": "Startfarbwert",
+            "end_level": "Finaler Farbwert"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        }
+    },
+    "CrossFadeImagesMulti": {
+        "title": "Mehrfach überblendete Bilder",
+        "inputs": {
+            "image_1": "Bild_1",
+            "image_2": "Bild_2"
+        },
+        "widgets": {
+            "inputcount": "Eingabemenge",
+            "interpolation": "Interpolationsmethode",
+            "Update inputs": "Eingang aktualisieren",
+            "transitioning_frames": "Anzahl der Übergangsframes"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        }
+    },
+    "TransitionImagesMulti": {
+        "title": "Mehrfache Übergangsbilder",
+        "inputs": {
+            "image_1": "Bild_1",
+            "image_2": "Bild_2"
+        },
+        "widgets": {
+            "inputcount": "Eingabemenge",
+            "interpolation": "Interpolationsmethode",
+            "transition_type": "Übergangstyp",
+            "transitioning_frames": "Anzahl der Übergangsframes",
+            "blur_radius": "Unschärferadius",
+            "reverse": "Rückwärts",
+            "device": "Gerät",
+            "Update inputs": "Eingang aktualisieren"
+        },
+        "outputs": {
+            "IMAGE": "Bild",
+            "MASK": "Maske"
+        },
+        "description": "Erstellt Übergänge zwischen Bildern."
+    },
+    "TransitionImagesInBatch": {
+        "title": "Stapel-Übergangsbild",
+        "inputs": {
+            "images": "Bild"
+        },
+        "widgets": {
+            "interpolation": "Interpolationsmethode",
+            "transition_type": "Übergangstyp",
+            "transitioning_frames": "Anzahl der Übergangsframes",
+            "blur_radius": "Unschärferadius",
+            "reverse": "Rückwärts",
+            "device": "Gerät"
+        },
+        "outputs": {
+            "IMAGE": "Bild",
+            "MASK": "Maske"
+        },
+        "description": "Übergänge zwischen Stapelbildern erstellen"
+    },
+    "ShuffleImageBatch": {
+        "title": "Bild-Stapel mischen",
+        "inputs": {
+            "images": "Bild"
+        },
+        "widgets": {
+            "seed": "Seed"
+        },
+        "outputs": {
+            "IMAGE": "Bild",
+            "MASK": "Maske"
+        }
+    },
+    "GetImageRangeFromBatch": {
+        "title": "Bildbereich abrufen",
+        "inputs": {
+            "images": "Bild",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "start_index": "Startnummer",
+            "num_frames": "Anzahl der Frames"
+        },
+        "outputs": {
+            "IMAGE": "Bild",
+            "MASK": "Maske"
+        },
+        "description": "Erstellt einen neuen Bild-Stapel aus dem Eingabebild-Stapel und den Parametern."
+    },
+    "GetLatentRangeFromBatch": {
+        "title": "Latent-Bereich abrufen",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "start_index": "Startnummer",
+            "num_frames": "Anzahl der Frames"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "Insert_Latent_To_Index": {
+        "title": "Latent in Index einfügen",
+        "inputs": {
+            "source": "Quelle",
+            "destination": "Ziel"
+        },
+        "widgets": {
+            "index": "Index"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "GetImagesFromBatchIndexed": {
+        "title": "Bild aus Batch holen",
+        "inputs": {
+            "images": "Bild"
+        },
+        "widgets": {
+            "indexes": "Ordnungsnummer"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Wählt Bilder nach Indexnummer aus."
+    },
+    "InsertImagesToBatchIndexed": {
+        "title": "Bild in Index-Stapel einfügen",
+        "inputs": {
+            "original_images": "Originalbild",
+            "images_to_insert": "Bild einfügen"
+        },
+        "widgets": {
+            "indexes": "Index"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Fügt das Bild am angegebenen Index in den ursprünglichen Bild-Stapel ein."
+    },
+    "PadImageBatchInterleaved": {
+        "title": "Bild-Stapel-Interleave-Polsterung",
+        "inputs": {
+            "images": "Bild"
+        },
+        "widgets": {
+            "empty_frames_per_image": "Leere Frames pro Bild",
+            "pad_frame_value": "Auffüll-Frame-Wert",
+            "add_after_last": "Am Ende hinzufügen"
+        },
+        "outputs": {
+            "images": "Bild",
+            "masks": "Maske"
+        },
+        "description": "Fügt leere Frames zwischen den Bildern im Stapel ein."
+    },
+    "ReplaceImagesInBatch": {
+        "title": "Bild-Stapel ersetzen",
+        "inputs": {
+            "original_images": "Originalbild",
+            "replacement_images": "Bild ersetzen",
+            "original_masks": "Ursprungsmaske",
+            "replacement_masks": "Maske ersetzen"
+        },
+        "widgets": {
+            "start_index": "Startnummer"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Ersetzt Bilder im Stapel ab dem angegebenen Startindex. Durch Ersatzbilder."
+    },
+    "ReverseImageBatch": {
+        "title": "Bild-Stapel umkehren",
+        "inputs": {
+            "images": "Bild"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Kehrt die Reihenfolge der Bilder im Stapel um."
+    },
+    "ImageBatchMulti": {
+        "title": "Bild-Kombistapel (mehrfach)",
+        "inputs": {
+            "image_1": "Bild_1",
+            "image_2": "Bild_2",
+            "image_3": "Bild_3",
+            "image_4": "Bild_4",
+            "image_5": "Bild_5",
+            "image_6": "Bild_6",
+            "image_7": "Bild_7",
+            "image_8": "Bild_8",
+            "image_9": "Bild_9",
+            "image_10": "Bild_10"
+        },
+        "widgets": {
+            "inputcount": "Eingabemenge",
+            "blending": "Mischungsweise",
+            "Update inputs": "Eingang aktualisieren"
+        },
+        "outputs": {
+            "images": "Bild"
+        },
+        "description": "Führt mehrere Bilder zu einem Bild-Stapel zusammen. Die Anzahl der Eingangs-Schnittstellen kann über „Eingabemenge“ eingestellt werden; klicke auf Aktualisieren, um die Schnittstellen zu aktualisieren."
+    },
+    "ImageTensorList": {
+        "title": "Bild-Tensorliste",
+        "inputs": {
+            "image1": "Bild 1",
+            "image2": "Bild 2"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Erstellt eine Bildliste aus den Eingabebildern."
+    },
+    "ImageBatchExtendWithOverlap": {
+        "title": "Bild-Stapel-Erweiterung (mit Überlappung)",
+        "inputs": {
+            "source_images": "Quellbild",
+            "new_images": "Neues Bild"
+        },
+        "widgets": {
+            "overlap": "Überlappung",
+            "overlap_side": "seitliche Überlappung",
+            "overlap_mode": "Modusüberlappung"
+        },
+        "outputs": {
+            "source_images": "Quellbild",
+            "start_images": "Startbild",
+            "extended_images": "Bild erweitern"
+        },
+        "description": "Hilfsknoten für die Erweiterung der Videogenerierung\n Ermittelt zuerst die Eingangsquelle und die Überlappungsmenge, um den Start-Frame der Erweiterung zu erhalten.\n Stellt dann in einer weiteren Kopie dieses Knotens\n die neu generierten Frames bereit und wählt, wie überlappt wird."
+    },
+    "ImageAddMulti": {
+        "title": "Bildmischung (mehrfach)",
+        "inputs": {
+            "image_1": "Bild_1",
+            "image_2": "Bild_2",
+            "image_3": "Bild_3",
+            "image_4": "Bild_4",
+            "image_5": "Bild_5",
+            "image_6": "Bild_6",
+            "image_7": "Bild_7",
+            "image_8": "Bild_8",
+            "image_9": "Bild_9",
+            "image_10": "Bild_10"
+        },
+        "widgets": {
+            "inputcount": "Eingabemenge",
+            "blending": "Mischungsweise",
+            "blend_amount": "Mischmenge",
+            "Update inputs": "Eingang aktualisieren"
+        },
+        "outputs": {
+            "images": "Bild"
+        },
+        "description": "Mischt mehrere Bilder. Die Anzahl der Eingangs-Schnittstellen kann über „Eingabemenge“ eingestellt werden; klicke auf Aktualisieren, um die Schnittstellen zu aktualisieren."
+    },
+    "ImageConcatMulti": {
+        "title": "Bild zusammenführen (mehrere)",
+        "inputs": {
+            "image_1": "Bild_1",
+            "image_2": "Bild_2"
+        },
+        "widgets": {
+            "inputcount": "Eingabemenge",
+            "direction": "Richtung",
+            "match_image_size": "Größe anpassen",
+            "Update inputs": "Eingang aktualisieren"
+        },
+        "outputs": {
+            "images": "Bild"
+        },
+        "description": "Führt mehrere Bilder nach Richtung zusammen. Klicke auf Aktualisieren, um die Eingabemenge zu aktualisieren."
+    },
+    "PreviewAnimation": {
+        "title": "Vorschauanimation",
+        "inputs": {
+            "images": "Bild",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "fps": "Bildrate"
+        }
+    },
+    "ImageResizeKJ": {
+        "title": "Bildskalierung (KJ)",
+        "inputs": {
+            "image": "Bild",
+            "get_image_size": "Referenzbild",
+            "width_input": "Breite",
+            "height_input": "Höhe"
+        },
+        "widgets": {
+            "width": "Breite",
+            "height": "Höhe",
+            "upscale_method": "Skalierungsmethode",
+            "keep_proportions": "Festes Seitenverhältnis",
+            "keep_proportion": "Festes Seitenverhältnis",
+            "divisible_by": "Teilbarkeit",
+            "crop": "Schneiden",
+            "per_batch": "Stapel"
+        },
+        "outputs": {
+            "IMAGE": "Bild",
+            "width": "Breite",
+            "height": "Höhe"
+        },
+        "description": "Skaliert das Bild auf die angegebene Breite und Höhe. Die Größe kann über Eingaben angegeben werden; die Priorität der finalen Ausgabe folgt diesen Regeln:\n- Referenzbildgröße \n- Breite-Eingang und Höhe-Eingang \n- Breite und Höhe \n \nEin festes Seitenverhältnis wird anhand der höchsten Größe festgelegt."
+    },
+    "LoadAndResizeImage": {
+        "title": "Bild laden und skalieren",
+        "widgets": {
+            "image": "Bild",
+            "resize": "Zoom",
+            "width": "Breite",
+            "height": "Höhe",
+            "repeat": "Kopieren",
+            "keep_proportion": "Festes Seitenverhältnis",
+            "divisible_by": "Faktor",
+            "mask_channel": "Maskenkanal",
+            "background_color": "Hintergrundfarbe",
+            "upload": "Hochladen"
+        },
+        "outputs": {
+            "image": "Bild",
+            "mask": "Maske",
+            "width": "Breite",
+            "height": "Höhe",
+            "image_path": "Bildpfad"
+        }
+    },
+    "LoadImagesFromFolderKJ": {
+        "title": "Bildordner laden (KJ)",
+        "widgets": {
+            "folder": "Ordner",
+            "width": "Breite",
+            "height": "Höhe",
+            "keep_aspect_ratio": "Seitenverhältnis beibehalten",
+            "image_load_cap": "Ladeobergrenze",
+            "start_index": "Startnummer",
+            "include_subfolders": "Unterordner einbeziehen"
+        },
+        "outputs": {
+            "image": "Bild",
+            "mask": "Maske",
+            "count": "Anzahl",
+            "image_path": "Bildpfad"
+        },
+        "description": "Lädt Bilder aus einem Ordner in einen Stapel; die Bilder werden skaliert und in den Stapel geladen."
+    },
+    "ImageGridtoBatch": {
+        "title": "Bildtabelle zu Stapel",
+        "inputs": {
+            "image": "Bild"
+        },
+        "widgets": {
+            "columns": "Spaltenanzahl",
+            "The number of columns in the grid.": "Anzahl der Spalten der Tafel.",
+            "rows": "Zeilenanzahl",
+            "The number of rows in the grid. Set to 0 for automatic calculation.": "Anzahl der Zeilen der Tafel, 0 ist automatisch."
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Wandelt Diagramme in einen einzelnen Bild-Stapel um."
+    },
+    "SaveImageKJ": {
+        "title": "Bild speichern (KJ)",
+        "inputs": {
+            "images": "Bild",
+            "caption": "Annotation"
+        },
+        "widgets": {
+            "filename_prefix": "Dateiname-Präfix",
+            "output_folder": "Ausgabeordner",
+            "caption_file_extension": "Annotation-Dateierweiterung",
+            "prompt": "Prompt",
+            "extra_pnginfo": "Zusätzliche PNG-Info"
+        },
+        "outputs": {
+            "filename": "Dateiname"
+        },
+        "description": "Speichert das Eingabebild im ComfyUI-Ausgabeverzeichnis."
+    },
+    "SaveStringKJ": {
+        "title": "Zeichenkette speichern (KJ)",
+        "inputs": {
+            "string": "String"
+        },
+        "widgets": {
+            "filename_prefix": "Dateiname-Präfix",
+            "output_folder": "Ausgabeordner",
+            "file_extension": "Dateierweiterung"
+        },
+        "outputs": {
+            "filename": "Dateiname"
+        }
+    },
+    "FastPreview": {
+        "title": "Schnellvorschau",
+        "inputs": {
+            "image": "Bild"
+        },
+        "widgets": {
+            "format": "Format",
+            "quality": "Qualität"
+        },
+        "outputs": {}
+    },
+    "ImageCropByMaskAndResize": {
+        "title": "Nach Maske zuschneiden und skalieren",
+        "inputs": {
+            "image": "Bild",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "base_resolution": "Basisauflösung",
+            "padding": "Füllung",
+            "min_crop_resolution": "Minimale Zuschnitt-Auflösung",
+            "max_crop_resolution": "Maximale Zuschnitt-Auflösung"
+        },
+        "outputs": {
+            "images": "Bild",
+            "masks": "Maske",
+            "BBox": "BBox"
+        }
+    },
+    "ImageCropByMask": {
+        "title": "Nach Maske zuschneiden",
+        "inputs": {
+            "image": "Bild",
+            "mask": "Maske"
+        },
+        "outputs": {
+            "image": "Bild"
+        },
+        "description": "Eingabebild gemäß der angegebenen Maske zuschneiden"
+    },
+    "ImageUncropByMask": {
+        "title": "Uncrop nach Maske",
+        "inputs": {
+            "destination": "Zielbild",
+            "source": "Quellbild",
+            "mask": "Maske",
+            "bbox": "BBox"
+        },
+        "outputs": {
+            "image": "Bild"
+        }
+    },
+    "ImageCropByMaskBatch": {
+        "title": "Nach Masken-Stapel zuschneiden",
+        "inputs": {
+            "image": "Bild",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "width": "Breite",
+            "height": "Höhe",
+            "padding": "Füllung",
+            "preserve_size": "Größe beibehalten",
+            "bg_color": "Hintergrundfarbe"
+        },
+        "outputs": {
+            "images": "Bild",
+            "masks": "Maske"
+        }
+    },
+    "ImagePadKJ": {
+        "title": "Bildpolsterung (KJ)",
+        "inputs": {
+            "image": "Bild",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "left": "Polsterung links",
+            "right": "Polsterung rechts",
+            "top": "Polsterung oben",
+            "bottom": "Polsterung unten",
+            "extra_padding": "zusätzliche Polsterung",
+            "pad_mode": "Auffüllmodus",
+            "color": "Farbe",
+            "target_width": "Zielbreite",
+            "target_height": "Zielhöhe"
+        },
+        "outputs": {
+            "images": "Bild",
+            "masks": "Maske"
+        },
+        "description": "Polstert das Eingabebild auf und maskiert es optional mit der angegebenen Füllung."
+    },
+    "ImageBatchJoinWithTransition": {
+        "title": "Bild-Stapel-Verknüpfung (mit Übergang)",
+        "inputs": {
+            "images_1": "Bild 1",
+            "images_2": "Bild 2"
+        },
+        "widgets": {
+            "start_index": "Startindex",
+            "interpolation": "Interpolation",
+            "transition_type": "Übergangstyp",
+            "transitioning_frames": "Übergangsframe",
+            "blur_radius": "Unschärferadius",
+            "reverse": "Umkehren",
+            "device": "Gerät"
+        },
+        "outputs": {
+            "images": "Bild",
+            "masks": "Maske"
+        },
+        "description": "Eingabebild"
+    },
+    "Intrinsic_lora_sampling": {
+        "title": "IntrinsicLoRA-Sampling",
+        "inputs": {
+            "model": "Modell",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image": "Bild",
+            "optional_latent": "Latent (optional)"
+        },
+        "widgets": {
+            "lora_name": "LoRA-Name",
+            "task": "Aufgabe",
+            "text": "Text",
+            "per_batch": "pro Stapel"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "IMAGE": "Bild"
+        },
+        "description": "Intrinsic-Lora, die der Sampler verwendet: https://github.com/duxiaodan/intrinsic-lora — diese Lora sind klein und sind daher in diesem Knotenpaket enthalten."
+    },
+    "BatchCLIPSeg": {
+        "title": "CLIP-semantische Segmentierung",
+        "inputs": {
+            "images": "Bild",
+            "opt_model": "Modell wählen",
+            "prev_mask": "Vorherige Maske"
+        },
+        "widgets": {
+            "text": "Text",
+            "threshold": "Schwellenwert",
+            "binary_mask": "binäre Maske",
+            "combine_mask": "Masken zusammenführen",
+            "use_cuda": "CUDA verwenden",
+            "blur_sigma": "Unschärfe-Stärke",
+            "image_bg_Ievel": "Bildhintergrund horizontal",
+            "invert": "Rückwärts"
+        },
+        "outputs": {
+            "Image": "Bild",
+            "Mask": "Maske"
+        },
+        "description": "Segmentiert ein Bild oder einen Bild-Stapel mit CLIPSeg."
+    },
+    "DownloadAndLoadCLIPSeg": {
+        "title": "CLIPSeg laden",
+        "widgets": {
+            "model": "Modell"
+        },
+        "outputs": {
+            "clipseg_model": "CLIPSeg-Modell"
+        },
+        "description": "CLIPSeg-Modell mit huggingface_hub nach Comfy/models/clip_seg herunterladen"
+    },
+    "CreateTextMask": {
+        "title": "Textmaske",
+        "widgets": {
+            "invert": "Umkehren",
+            "frames": "Anzahl der Frames",
+            "text_x": "Position_X",
+            "text_y": "Position_Y",
+            "font_size": "Schriftgröße",
+            "font_color": "Schriftfarbe",
+            "text": "Text",
+            "font": "Schriftart",
+            "width": "Breite",
+            "height": "Höhe",
+            "start_rotation": "Anfangsrotation",
+            "end_rotation": "Finale Rotation"
+        },
+        "outputs": {
+            "IMAGE": "Bild",
+            "MASK": "Maske"
+        }
+    },
+    "ColorToMask": {
+        "title": "Bildfarbe zu Maske",
+        "inputs": {
+            "images": "Bild"
+        },
+        "widgets": {
+            "invert": "Umkehren",
+            "red": "Rot",
+            "green": "Grün",
+            "blue": "Blau",
+            "threshold": "Schwellenwert",
+            "per_batch": "Pro Stapel"
+        },
+        "outputs": {
+            "MASK": "Maske"
+        },
+        "description": "Wandelt die gewählten RGB-Werte in eine Maske um. Bei Stapel-Eingaben steuert **per_batch**, wie viele Bilder auf einmal verarbeitet werden."
+    },
+    "CreateFluidMask": {
+        "title": "Flüssigkeitsmaske",
+        "widgets": {
+            "invert": "Umkehren",
+            "frames": "Anzahl der Frames",
+            "width": "Breite",
+            "height": "Höhe",
+            "inflow_count": "Zufluss-Menge",
+            "inflow_velocity": "Zuflussgeschwindigkeit",
+            "inflow_radius": "Zufluss-Radius",
+            "inflow_padding": "Zufluss-Füllung",
+            "inflow_duration": "Zufluss-Zeit"
+        },
+        "outputs": {
+            "IMAGE": "Bild",
+            "MASK": "Maske"
+        }
+    },
+    "CreateAudioMask": {
+        "title": "Audiomaske",
+        "widgets": {
+            "invert": "Umkehren",
+            "frames": "Anzahl der Frames",
+            "scale": "Zoom",
+            "audio_path": "Audiopfad",
+            "width": "Breite",
+            "height": "Höhe"
+        },
+        "outputs": {
+            "IMAGE": "Bild",
+            "MASK": "Maske"
+        }
+    },
+    "CreateGradientMask": {
+        "title": "Gradientenmaske",
+        "widgets": {
+            "invert": "Umkehren",
+            "frames": "Anzahl der Frames",
+            "width": "Breite",
+            "height": "Höhe"
+        },
+        "outputs": {
+            "MASK": "Maske"
+        }
+    },
+    "CreateFadeMask": {
+        "title": "Überblendungsmaske",
+        "widgets": {
+            "invert": "Umkehren",
+            "frames": "Anzahl der Frames",
+            "width": "Breite",
+            "height": "Höhe",
+            "interpolation": "Interpolationsmethode",
+            "start_level": "Startfarbwert",
+            "midpoint_level": "Mittelpunktfarbwert",
+            "end_level": "Finaler Farbwert",
+            "midpoint_frame": "Mittelpunkt-Frame-Nummer"
+        },
+        "outputs": {
+            "MASK": "Maske"
+        },
+        "description": "Erstellt eine Gruppe von Masken, die zwischen den angegebenen Frames und Werten interpoliert. Verwendet dieselbe Syntax wie Fizz's BatchValueSchedule. Der erste Wert ist der Frame-Index (beginnt bei 1 statt bei 0), der zweite Wert in Klammern ist der Float-Maskenwert im Bereich 0,0–1,0.\nBeispiel, Standardwerte:\n0:(0.0)\n7:(1.0)\n15:(0.0)\nErstellt einen 16-Frame-Masken-Stapel, der bei Schwarz beginnt, über die gewählte Kurve bis zu Frame 8 auf vollständiges Weiß interpoliert und von dort bis Frame 16 wieder zu vollständigem Schwarz interpoliert."
+    },
+    "CreateFadeMaskAdvanced": {
+        "title": "Überblendungsmaske (Erweitert)",
+        "widgets": {
+            "points_string": "Farbwertpunkt",
+            "invert": "Umkehren",
+            "frames": "Anzahl der Frames",
+            "width": "Breite",
+            "height": "Höhe",
+            "interpolation": "Interpolationsmethode"
+        },
+        "outputs": {
+            "MASK": "Maske"
+        }
+    },
+    "CreateMagicMask": {
+        "title": "Psychedelische Maske",
+        "widgets": {
+            "frames": "Anzahl der Frames",
+            "depth": "Tiefe",
+            "distortion": "Verzerrung",
+            "seed": "Seed",
+            "control_after_generate": "Aktion nach der Ausführung",
+            "fixed": "Fixieren",
+            "increment": "Erhöhen",
+            "decrement": "Verringern",
+            "randomize": "Zufall",
+            "transitions": "Übergang",
+            "frame_height": "Höhe",
+            "frame_width": "Breite"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "mask_inverted": "Maske umkehren"
+        }
+    },
+    "CreateShapeMask": {
+        "title": "Formmaske",
+        "widgets": {
+            "shape": "Form",
+            "circle": "Kreis",
+            "square": "Quadrat",
+            "triangle": "Dreieck",
+            "frames": "Anzahl der Frames",
+            "location_x": "Position_X",
+            "location_y": "Position_Y",
+            "size": "Größe",
+            "grow": "Wachstum",
+            "frame_width": "Breite",
+            "frame_height": "Höhe",
+            "shape_width": "Breite der Form",
+            "shape_height": "Höhe der Form"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "mask_inverted": "Maske umkehren"
+        },
+        "description": "Erstellt eine Maske oder eine Gruppe von Masken mit der angegebenen Form. Die Position ist die Mittelpunktsposition. Der Wachstumswert gibt an, um wie viel die Form pro Frame wächst, und erzeugt so eine animierte Maske."
+    },
+    "CreateVoronoiMask": {
+        "title": "Voronoi-Maske",
+        "widgets": {
+            "frames": "Anzahl der Frames",
+            "num_points": "Anzahl der Punkte",
+            "line_width": "Linienbreite",
+            "speed": "Geschwindigkeit",
+            "frame_width": "Breite",
+            "frame_height": "Höhe"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "mask_inverted": "Maske umkehren"
+        }
+    },
+    "GetMaskSizeAndCount": {
+        "title": "Maskengrößen und -anzahl abrufen",
+        "inputs": {
+            "mask": "Maske"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "width": "Breite",
+            "height": "Höhe",
+            "count": "Anzahl"
+        },
+        "description": "Breite, Höhe und Stapelgröße der Ausgabemaske"
+    },
+    "GrowMaskWithBlur": {
+        "title": "Masken-Unschärfe-Wachstum",
+        "inputs": {
+            "mask": "Maske"
+        },
+        "widgets": {
+            "expand": "Erweitert",
+            "incremental_expandrate": "Erweiterungsschritt",
+            "tapered_corners": "Abschrägung",
+            "flip_input": "Eingang umkehren",
+            "use_cuda": "CUDA verwenden",
+            "blur_radius": "Unschärferadius",
+            "sigma": "Sigma",
+            "lerp_alpha": "lineare Transparenz",
+            "decay_factor": "Erosionskoeffizient",
+            "fill_holes": "Füllen"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "mask_inverted": "Maske umkehren"
+        },
+        "description": "# Masken-Unschärfe-Wachstum\n- Maske: Eingabemaske oder Masken-Stapel\n- Erweiterung: erweitert oder verkleinert Maske/Stapel um den eingestellten Wert\n- Erweiterungsschritt: Wachstumsrate, die pro Frame um den eingestellten Wert erhöht wird\n- Abschrägung: konische Ecken verwenden\n- Eingang umkehren: Eingabemaske invertieren\n- Unschärferadius: Werte > 0 verwischen die Maske\n- Lineare Transparenz: interpolierte Alpha-Werte zwischen Frames\n- Abklingfaktor: Abklingwert der Interpolation zwischen Frames\n- Füllen: Löcher in der Maske füllen (langsam)"
+    },
+    "MaskBatchMulti": {
+        "title": "Masken-Kombistapel (mehrfach)",
+        "inputs": {
+            "mask_1": "Maske_1",
+            "mask_2": "Maske_2",
+            "mask_3": "Maske_3",
+            "mask_4": "Maske_4",
+            "mask_5": "Maske_5",
+            "mask_6": "Maske_6",
+            "mask_7": "Maske_7",
+            "mask_8": "Maske_8",
+            "mask_9": "Maske_9",
+            "mask_10": "Maske_10"
+        },
+        "widgets": {
+            "inputcount": "Eingabemenge",
+            "Update inputs": "Eingang aktualisieren"
+        },
+        "outputs": {
+            "masks": "Maske"
+        },
+        "description": "Führt mehrere Masken zu einem Masken-Stapel zusammen. Die Anzahl der Eingangs-Schnittstellen kann über „Eingabemenge“ eingestellt werden; klicke auf Aktualisieren, um die Schnittstellen zu aktualisieren."
+    },
+    "OffsetMask": {
+        "title": "Maskenversatz",
+        "inputs": {
+            "mask": "Maske"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "angle": "Winkel",
+            "duplication_factor": "Wiederholungen",
+            "roll": "Rolling verwenden",
+            "incremental": "Inkrement verwenden",
+            "padding_mode": "Auffüllmodus",
+            "empty": "Leer",
+            "border": "Rand",
+            "reflection": "Reflexion"
+        },
+        "outputs": {
+            "mask": "Maske"
+        },
+        "description": "# Maske um den angegebenen Betrag strecken\n- Maske: Eingabemaske oder Masken-Stapel\n- x: horizontale Streckung\n- y: vertikale Streckung\n- Wiederholungen: Anzahl der Stapelkopien der Maske\n- Rollening verwenden: Rand-Wrap (Rolling)"
+    },
+    "RoundMask": {
+        "title": "Maskenrundung",
+        "inputs": {
+            "mask": "Maske"
+        },
+        "outputs": {
+            "MASK": "Maske"
+        }
+    },
+    "ResizeMask": {
+        "title": "Maske skalieren",
+        "inputs": {
+            "mask": "Maske"
+        },
+        "widgets": {
+            "width": "Breite",
+            "height": "Höhe",
+            "keep_proportions": "Festes Seitenverhältnis",
+            "upscale_method": "Erweiterte Interpolation",
+            "crop": "Schneiden"
+        },
+        "outputs": {
+            "mask": "Maske",
+            "width": "Breite",
+            "height": "Höhe"
+        },
+        "description": "Skaliert die Maske oder den Masken-Stapel auf die angegebene Breite und Höhe."
+    },
+    "RemapMaskRange": {
+        "title": "Maskenbereich remappen",
+        "inputs": {
+            "mask": "Maske"
+        },
+        "widgets": {
+            "min": "Minimum",
+            "max": "Maximum"
+        },
+        "outputs": {
+            "mask": "Maske"
+        },
+        "description": "Setzt neues Minimum und Maximum für die Maske."
+    },
+    "SeparateMasks": {
+        "title": "Maske trennen",
+        "inputs": {
+            "mask": "Maske"
+        },
+        "widgets": {
+            "size_threshold_width": "Breitengrößenschwelle",
+            "size_threshold_height": "Höhengrößenschwelle",
+            "mode": "Trennungsmodus",
+            "max_poly_points": "Maximale Polygon-Punktzahl",
+            "polygon": "Polygon",
+            "shape": "Form",
+            "mask_np": "Numpy-Maske",
+            "max_points": "Maximale Punktzahl"
+        },
+        "outputs": {
+            "mask": "Maske"
+        }
+    },
+    "PathchSageAttentionKJ": {
+        "title": "SAGE-Attention-Patch (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "allow_compile": "Kompilierung zulassen",
+            "sage_attention": "SAGE-Attention"
+        },
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "CheckpointLoaderKJ": {
+        "title": "Großmodell-Lader (KJ)",
+        "inputs": {},
+        "widgets": {
+            "ckpt_name": "Modellname",
+            "weight_dtype": "Gewichts-Datentyp",
+            "compute_dtype": "Berechnungs-Datentyp",
+            "patch_cublaslinear": "CUBlas-linearer Patch",
+            "sage_attention": "SAGE-Attention",
+            "enable_fp16_accumulation": "FP16-Akkumulation aktivieren"
+        },
+        "outputs": {
+            "model": "Modell",
+            "clip": "CLIP",
+            "vae": "VAE"
+        }
+    },
+    "DiffusionModelLoaderKJ": {
+        "title": "Diffusionsmodell-Lader (KJ)",
+        "inputs": {
+            "extra_state_dict": "Zusätzliches state_dict"
+        },
+        "widgets": {
+            "model_name": "Modellname",
+            "weight_dtype": "Gewichts-Datentyp",
+            "compute_dtype": "Berechnungs-Datentyp",
+            "patch_cublaslinear": "CUBlas-linearer Patch",
+            "sage_attention": "SAGE-Attention",
+            "enable_fp16_accumulation": "FP16-Akkumulation aktivieren"
+        },
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "PatchModelPatcherOrder": {
+        "title": "Reihenfolge der Modell-Patches anpassen",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "patch_order": "Patch-Reihenfolge",
+            "full_load": "Vollständig laden"
+        },
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "TorchCompileModelFluxAdvanced": {
+        "title": "Flux-Modell-Torch-Kompilierung (Erweitert)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Vollständiges Bild",
+            "mode": "Modus",
+            "double_blocks": "Doppelblock",
+            "single_blocks": "Einzelblock",
+            "dynamic": "Bewegung",
+            "dynamo_cache_size_limit": "Dynamisches Cache-Größenlimit",
+            "blocks_str": "Block-Zeichenkette"
+        },
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "TorchCompileModelFluxAdvancedV2": {
+        "title": "Flux-Modell-Torch-Kompilierung (Erweitert) V2",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Vollständiges Bild",
+            "mode": "Modus",
+            "double_blocks": "Doppelblock",
+            "single_blocks": "Einzelblock",
+            "dynamic": "Bewegung",
+            "dynamo_cache_size_limit": "Dynamisches Cache-Größenlimit",
+            "blocks_str": "Block-Zeichenkette"
+        },
+        "outputs": {
+            "MODEL": "Modell",
+            "model": "Modell"
+        }
+    },
+    "TorchCompileModelHyVideo": {
+        "title": "Torch-kompiliertes Hybrid-Video-Modell",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Vollständiges Bild",
+            "mode": "Modus",
+            "dynamic": "Bewegung",
+            "dynamo_cache_size_limit": "Dynamisches Cache-Größenlimit",
+            "compile_single_blocks": "Einzelblock kompilieren",
+            "compile_double_blocks": "Doppelblock kompilieren",
+            "compile_txt_in": "Texteingang kompilieren",
+            "compile_vector_in": "Vektoreingang kompilieren",
+            "compile_final_layer": "letzte Schicht kompilieren"
+        },
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "TorchCompileModelWanVideo": {
+        "title": "Torch-kompiliertes Wan-Video-Modell",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Vollständiges Bild",
+            "mode": "Modus",
+            "dynamic": "Bewegung",
+            "dynamo_cache_size_limit": "Dynamisches Cache-Größenlimit",
+            "compile_transformer_blocks_only": "Nur Transformer-Blöcke kompilieren"
+        },
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "TorchCompileModelWanVideoV2": {
+        "title": "Wan-Video Torch-kompiliertes Modell V2",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Vollständiges Bild",
+            "mode": "Modus",
+            "dynamic": "Bewegung",
+            "dynamo_cache_size_limit": "Dynamisches Cache-Größenlimit",
+            "compile_transformer_blocks_only": "Nur Transformer-Blöcke kompilieren"
+        },
+        "outputs": {
+            "MODEL": "Modell",
+            "model": "Modell"
+        }
+    },
+    "TorchCompileVAE": {
+        "title": "Torch-kompiliertes VAE",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Vollständiges Bild",
+            "mode": "Modus",
+            "compile_encoder": "Encoder kompilieren",
+            "compile_decoder": "Decoder kompilieren"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "TorchCompileControlNet": {
+        "title": "Torch-kompiliertes ControlNet",
+        "inputs": {
+            "controlnet": "ControlNet"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Vollständiges Bild",
+            "mode": "Modus"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "TorchCompileLTXModel": {
+        "title": "Torch-kompiliertes LTX-Modell",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Vollständiges Bild",
+            "mode": "Modus",
+            "dynamic": "Bewegung"
+        },
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "TorchCompileCosmosModel": {
+        "title": "Torch-kompiliertes Cosmos-Modell",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Vollständiges Bild",
+            "mode": "Modus",
+            "dynamic": "Bewegung",
+            "dynamo_cache_size_limit": "Dynamisches Cache-Größenlimit"
+        },
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "WanVideoTeaCacheKJ": {
+        "title": "Wan-Video-Cache-Optimierung (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "rel_l1_thresh": "relativer L1-Schwellenwert",
+            "start_percent": "Start-Prozent",
+            "end_percent": "Ende-Prozent",
+            "cache_device": "Cache-Gerät",
+            "coefficients": "Koeffizient"
+        },
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "WanVideoEnhanceAVideoKJ": {
+        "title": "Wan-Video-Verbesserung (KJ)",
+        "inputs": {
+            "model": "Modell",
+            "latent": "latent"
+        },
+        "widgets": {
+            "weight": "Gewichte"
+        },
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "WanVideoNAG": {
+        "title": "Wan-Video natürlicher Gradient",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "conditioning": "Bedingung",
+            "nag_scale": "Netzwerk_Skalierung",
+            "nag_alpha": "Netzwerk_alpha",
+            "nag_tau": "Netzwerk_tau",
+            "input_type": "Eingabetyp"
+        },
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "SkipLayerGuidanceWanVideo": {
+        "title": "Wan-Video Layer-Skip-Guidance",
+        "inputs": {
+            "model": "Modell",
+            "blocks": "Block",
+            "start_percent": "Start-Prozent",
+            "end_percent": "Ende-Prozent"
+        },
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "CFGZeroStarAndInit": {
+        "title": "CFG-Sparse-Initialisierung",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "use_zero_init": "Null-Initialisierung verwenden",
+            "zero_init_steps": "Null-Initialisierung-Schritte"
+        },
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "SetNode": {
+        "title": "Punkt einstellen",
+        "inputs": {
+            "*": "Eingang"
+        },
+        "widgets": {
+            "Constant": "Konstante"
+        },
+        "outputs": {
+            "*": "Ausgabe"
+        }
+    },
+    "GetNode": {
+        "title": "Punkte abrufen",
+        "inputs": {
+            "*": "Eingang"
+        },
+        "widgets": {
+            "Constant": "Konstante"
+        },
+        "outputs": {
+            "*": "Ausgabe"
+        }
+    },
+    "BOOLConstant": {
+        "title": "Boolesche Konstante",
+        "inputs": {
+            "value": "Wert"
+        },
+        "widgets": {
+            "value": "Wert"
+        },
+        "outputs": {
+            "value": "Wert"
+        }
+    },
+    "INTConstant": {
+        "title": "Ganzzahl-Konstante",
+        "widgets": {
+            "value": "Wert"
+        },
+        "outputs": {
+            "value": "Wert"
+        }
+    },
+    "FloatConstant": {
+        "title": "Float-Konstante",
+        "widgets": {
+            "value": "Wert"
+        },
+        "outputs": {
+            "value": "Wert"
+        }
+    },
+    "StringConstant": {
+        "title": "Zeichenketten-Konstante",
+        "widgets": {
+            "string": "String"
+        },
+        "outputs": {
+            "STRING": "String"
+        }
+    },
+    "StringConstantMultiline": {
+        "title": "Zeichenketten-Konstante (Textfeld)",
+        "widgets": {
+            "string": "String",
+            "strip_newlines": "mit Zeilenumbruch"
+        },
+        "outputs": {
+            "STRING": "String"
+        }
+    },
+    "ScaleBatchPromptSchedule": {
+        "title": "Prompt-Stapel-Schedule skalieren",
+        "inputs": {
+            "input_str": "String",
+            "old_frame_count": "Alte Frame-Anzahl",
+            "new_frame_count": "Neue Frame-Anzahl"
+        },
+        "outputs": {
+            "STRING": "String"
+        }
+    },
+    "GetLatentsFromBatchIndexed": {
+        "title": "Latent nach Index abrufen",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "latent_format": "Latent-Format"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "ConditioningMultiCombine": {
+        "title": "Bedingungen zusammenführen (mehrfach)",
+        "inputs": {
+            "conditioning_1": "Bedingung_1",
+            "conditioning_2": "Bedingung_2",
+            "conditioning_3": "Bedingung_3",
+            "conditioning_4": "Bedingung_4",
+            "conditioning_5": "Bedingung_5",
+            "conditioning_6": "Bedingung_6",
+            "conditioning_7": "Bedingung_7",
+            "conditioning_8": "Bedingung_8",
+            "conditioning_9": "Bedingung_9",
+            "conditioning_10": "Bedingung_10",
+            "conditioning_11": "Bedingung_11",
+            "conditioning_12": "Bedingung_12",
+            "conditioning_13": "Bedingung_13",
+            "conditioning_14": "Bedingung_14",
+            "conditioning_15": "Bedingung_15",
+            "conditioning_16": "Bedingung_16",
+            "conditioning_17": "Bedingung_17",
+            "conditioning_18": "Bedingung_18",
+            "conditioning_19": "Bedingung_19",
+            "conditioning_20": "Bedingung_20"
+        },
+        "widgets": {
+            "inputcount": "Eingabemenge",
+            "operation": "Operation",
+            "Update inputs": "Eingang aktualisieren"
+        },
+        "outputs": {
+            "combined": "Bedingung",
+            "inputcount": "Eingabemenge"
+        },
+        "description": "Führt mehrere Bedingungsknoten zu einem zusammen"
+    },
+    "AppendStringsToList": {
+        "title": "Zeichenkette an Liste anhängen",
+        "inputs": {
+            "string1": "Zeichenkette1",
+            "string2": "Zeichenkette2"
+        },
+        "outputs": {
+            "STRING": "String"
+        }
+    },
+    "JoinStrings": {
+        "title": "Zeichenketten zusammenführen",
+        "inputs": {
+            "string1": "Zeichenkette1",
+            "string2": "Zeichenkette2"
+        },
+        "widgets": {
+            "delimiter": "Trennzeichen"
+        },
+        "outputs": {
+            "STRING": "String"
+        }
+    },
+    "JoinStringMulti": {
+        "title": "Zeichenketten zusammenführen (mehrfach)",
+        "inputs": {
+            "string_1": "Zeichenkette_1",
+            "string_2": "Zeichenkette_2",
+            "string_3": "Zeichenkette_3",
+            "string_4": "Zeichenkette_4",
+            "string_5": "Zeichenkette_5",
+            "string_6": "Zeichenkette_6",
+            "string_7": "Zeichenkette_7",
+            "string_8": "Zeichenkette_8",
+            "string_9": "Zeichenkette_9",
+            "string_10": "Zeichenkette_10"
+        },
+        "widgets": {
+            "inputcount": "Eingabemenge",
+            "delimiter": "Trennzeichen",
+            "return_list": "als Liste ausgeben",
+            "Update inputs": "Eingang aktualisieren"
+        },
+        "outputs": {
+            "string": "String"
+        },
+        "description": "Führt mehrere Zeichenketten zu einem Zeichenketten-Stapel oder einer Zeichenketten-Liste zusammen. Die Anzahl der Eingangs-Schnittstellen kann über „Eingabemenge“ eingestellt werden; klicke auf Aktualisieren, um die Schnittstellen zu aktualisieren."
+    },
+    "CondPassThrough": {
+        "title": "Bedingungen weiterreichen",
+        "inputs": {
+            "positive": "Positive Bedingung",
+            "negative": "Negative Bedingung"
+        },
+        "outputs": {
+            "positive": "Positive Bedingung",
+            "negative": "Negative Bedingung"
+        }
+    },
+    "ModelPassThrough": {
+        "title": "Modell-Brücke",
+        "inputs": {
+            "model": "Modell"
+        },
+        "outputs": {
+            "model": "Modell"
+        },
+        "description": "Modell an den nächsten Knoten weitergeben"
+    },
+    "ConditioningSetMaskAndCombine": {
+        "title": "Bedingungs-Maske setzen (Merge 2)",
+        "inputs": {
+            "positive_1": "Positive Bedingung_1",
+            "negative_1": "Negative Bedingung_1",
+            "positive_2": "Positive Bedingung_2",
+            "negative_2": "Negative Bedingung_2",
+            "mask_1": "Maske_1",
+            "mask_2": "Maske_2"
+        },
+        "widgets": {
+            "mask_1_strength": "Maske_1_Intensität",
+            "mask_2_strength": "Maske_2_Intensität",
+            "set_cond_area": "Bedingungsbereich setzen",
+            "default": "Standard",
+            "mask bounds": "Maskenrand"
+        },
+        "outputs": {
+            "combined_positive": "Positive Bedingung",
+            "combined_negative": "Negative Bedingung"
+        },
+        "description": "Bündelt mehrere Conditioning-Masken und kombiniert die Knoten zu einem; gleiche Funktion wie der native ComfyUI-Knoten"
+    },
+    "ConditioningSetMaskAndCombine3": {
+        "title": "Bedingungs-Maske setzen (Merge 3)",
+        "inputs": {
+            "positive_1": "Positive Bedingung_1",
+            "negative_1": "Negative Bedingung_1",
+            "positive_2": "Positive Bedingung_2",
+            "negative_2": "Negative Bedingung_2",
+            "positive_3": "Positive Bedingung_3",
+            "negative_3": "Negative Bedingung_3",
+            "mask_1": "Maske_1",
+            "mask_2": "Maske_2",
+            "mask_3": "Maske_3"
+        },
+        "widgets": {
+            "mask_1_strength": "Maske_1_Intensität",
+            "mask_2_strength": "Maske_2_Intensität",
+            "mask_3_strength": "Maske_3_Intensität",
+            "set_cond_area": "Bedingungsbereich setzen",
+            "default": "Standard",
+            "mask bounds": "Maskenrand"
+        },
+        "outputs": {
+            "combined_positive": "Positive Bedingung",
+            "combined_negative": "Negative Bedingung"
+        },
+        "description": "Bündelt mehrere Conditioning-Masken und kombiniert die Knoten zu einem; gleiche Funktion wie der native ComfyUI-Knoten"
+    },
+    "ConditioningSetMaskAndCombine4": {
+        "title": "Bedingungs-Maske setzen (Merge 4)",
+        "inputs": {
+            "positive_1": "Positive Bedingung_1",
+            "negative_1": "Negative Bedingung_1",
+            "positive_2": "Positive Bedingung_2",
+            "negative_2": "Negative Bedingung_2",
+            "positive_3": "Positive Bedingung_3",
+            "negative_3": "Negative Bedingung_3",
+            "positive_4": "Positive Bedingung_4",
+            "negative_4": "Negative Bedingung_4",
+            "mask_1": "Maske_1",
+            "mask_2": "Maske_2",
+            "mask_3": "Maske_3",
+            "mask_4": "Maske_4"
+        },
+        "widgets": {
+            "mask_1_strength": "Maske_1_Intensität",
+            "mask_2_strength": "Maske_2_Intensität",
+            "mask_3_strength": "Maske_3_Intensität",
+            "mask_4_strength": "Maske_4_Intensität",
+            "set_cond_area": "Bedingungsbereich setzen",
+            "default": "Standard",
+            "mask bounds": "Maskenrand"
+        },
+        "outputs": {
+            "combined_positive": "Positive Bedingung zusammenführen",
+            "combined_negative": "Negative Bedingung zusammenführen"
+        },
+        "description": "Bündelt mehrere Conditioning-Masken und kombiniert die Knoten zu einem; gleiche Funktion wie der native ComfyUI-Knoten"
+    },
+    "ConditioningSetMaskAndCombine5": {
+        "title": "Bedingungs-Maske setzen (Merge 5)",
+        "inputs": {
+            "positive_1": "Positive Bedingung_1",
+            "negative_1": "Negative Bedingung_1",
+            "positive_2": "Positive Bedingung_2",
+            "negative_2": "Negative Bedingung_2",
+            "positive_3": "Positive Bedingung_3",
+            "negative_3": "Negative Bedingung_3",
+            "positive_4": "Positive Bedingung_4",
+            "negative_4": "Negative Bedingung_4",
+            "positive_5": "Positive Bedingung_5",
+            "negative_5": "Negative Bedingung_5",
+            "mask_1": "Maske_1",
+            "mask_2": "Maske_2",
+            "mask_3": "Maske_3",
+            "mask_4": "Maske_4",
+            "mask_5": "Maske_5"
+        },
+        "widgets": {
+            "mask_1_strength": "Maske_1_Intensität",
+            "mask_2_strength": "Maske_2_Intensität",
+            "mask_3_strength": "Maske_3_Intensität",
+            "mask_4_strength": "Maske_4_Intensität",
+            "mask_5_strength": "Maske_5_Intensität",
+            "set_cond_area": "Bedingungsbereich setzen",
+            "default": "Standard",
+            "mask bounds": "Maskenrand"
+        },
+        "outputs": {
+            "combined_positive": "Positive Bedingung zusammenführen",
+            "combined_negative": "Negative Bedingung zusammenführen"
+        },
+        "description": "Bündelt mehrere Conditioning-Masken und kombiniert die Knoten zu einem; gleiche Funktion wie der native ComfyUI-Knoten"
+    },
+    "VRAM_Debug": {
+        "title": "VRAM-Bereinigung",
+        "inputs": {
+            "any_input": "Beliebiger Eingang",
+            "image_pass": "Bild-Passthrough",
+            "model_pass": "Modell-Passthrough"
+        },
+        "widgets": {
+            "empty_cache": "Cache leeren",
+            "gc_collect": "Müllsammlung",
+            "unload_all_models": "Alle Modelle entladen"
+        },
+        "outputs": {
+            "any_output": "Beliebige Ausgabe",
+            "image_pass": "Bild-Passthrough",
+            "model_pass": "Modell-Passthrough",
+            "freemem_before": "Verbleibender Speicher vor der Bereinigung",
+            "freemem_after": "Verbleibender Speicher nach der Bereinigung"
+        },
+        "description": "Gibt die Eingabedaten unverändert zurück (nur als Trigger-Signal verwendet), führt zugleich die Comfy-Modellverwaltung und Müllsammlung aus und meldet die verbleibende VRAM-Menge vor und nach der Operation."
+    },
+    "SomethingToString": {
+        "title": "Beliebig zu Zeichenkette",
+        "inputs": {
+            "input": "Eingang"
+        },
+        "widgets": {
+            "prefix": "Präfix",
+            "suffix": "Suffix"
+        },
+        "outputs": {
+            "STRING": "String"
+        }
+    },
+    "Sleep": {
+        "title": "Ruhezustand",
+        "inputs": {
+            "input": "Eingang"
+        },
+        "widgets": {
+            "minutes": "Minuten",
+            "seconds": "Sekunden"
+        },
+        "outputs": {
+            "*": "*"
+        }
+    },
+    "EmptyLatentImagePresets": {
+        "title": "Voreinstellung für leeres Latent-Bild",
+        "widgets": {
+            "dimensions": "Größe",
+            "invert": "Umkehren",
+            "batch_size": "Stapelgröße"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "Breite",
+            "Height": "Höhe"
+        }
+    },
+    "EmptyLatentImageCustomPresets": {
+        "title": "benutzerdefinierte Latent-Bild-Voreinstellung",
+        "widgets": {
+            "dimensions": "Größe",
+            "invert": "Umkehren",
+            "batch_size": "Stapelgröße"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "Breite",
+            "Height": "Höhe"
+        },
+        "description": "Erstellt ein leeres implizites Bild mit den angegebenen Maßen. \n Diese Optionen werden aus der Datei „'custom_dimensions. json“ im „Knotenordner“ geladen."
+    },
+    "WidgetToString": {
+        "title": "Komponente zu Zeichenkette",
+        "inputs": {
+            "any_input": "Beliebiger Eingang"
+        },
+        "widgets": {
+            "id": "Knoten-ID",
+            "widget_name": "Komponentenname",
+            "return_all": "alle zurückgeben",
+            "node_title": "Knotentitel",
+            "allowed_float_decimals": "Fließkommazahlen zulassen"
+        },
+        "outputs": {
+            "STRING": "String"
+        }
+    },
+    "DummyOut": {
+        "title": "virtuelle Latent-Ausgabe",
+        "inputs": {
+            "any_input": "Beliebiger Eingang"
+        },
+        "outputs": {
+            "*": "Ausgabe"
+        }
+    },
+    "FlipSigmasAdjusted": {
+        "title": "umgekehrte Sigmas anpassen",
+        "inputs": {
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "divide_by_last_sigma": "durch das letzte Sigma dividieren",
+            "divide_by": "dividieren durch",
+            "offset_by": "Versatz"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas",
+            "sigmas_string": "sigmas-Zeichenkette"
+        }
+    },
+    "CustomSigmas": {
+        "title": "benutzerdefinierte Sigmas",
+        "widgets": {
+            "sigmas_string": "Sigmas-Zeichenkette",
+            "interpolate_to_steps": "Interpolationsschritte",
+            "t_steps": "T-Schritte",
+            "num_steps": "Schritte"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        }
+    },
+    "StringToFloatList": {
+        "title": "Zeichenkette zu Float-Liste",
+        "inputs": {
+            "string": "String"
+        },
+        "outputs": {
+            "FLOAT": "Gleitkommazahl"
+        }
+    },
+    "InjectNoiseToLatent": {
+        "title": "Rauschen in Latent injizieren",
+        "inputs": {
+            "latents": "Latent",
+            "noise": "Rauschen",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "strength": "Intensität",
+            "normalize": "Normalisieren",
+            "average": "Mitteln",
+            "mix_randn_amount": "Intensität der zufälligen Rauschmischung",
+            "seed": "Seed"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "SoundReactive": {
+        "title": "Audioreaktion",
+        "inputs": {
+            "audio": "Audio"
+        },
+        "widgets": {
+            "sound_level": "Lautstärkepegel",
+            "start_range_hz": "Start des Hz-Bereichs",
+            "end_range_hz": "Ende des Hz-Bereichs",
+            "multiplier": "Multiplikator",
+            "smoothing_factor": "Glättungsfaktor",
+            "normalize": "Normalisieren",
+            "Start mic capture": "Mikrofonaufnahme starten",
+            "Start_mic_capture": "Mikrofonaufnahme starten",
+            "Stop mic capture": "Mikrofonaufnahme stoppen",
+            "Stop_mic_capture": "Mikrofonaufnahme stoppen"
+        },
+        "outputs": {
+            "sound_level": "Lautstärkepegel",
+            "sound_level_int": "Lautstärkepegel-Ganzzahl"
+        },
+        "description": "Gibt die Lautstärke des Eingangsaudios zurück.\n\nVerwendet den Browser-Audioeingang.\n\nFür Live-Sampling."
+    },
+    "GenerateNoise": {
+        "title": "Rauschen erzeugen",
+        "inputs": {
+            "model": "Modell",
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "width": "Breite",
+            "height": "Höhe",
+            "batch_size": "Stapelgröße",
+            "seed": "Zufalls-Seed",
+            "control_after_generate": "Nach Generierung steuern",
+            "fixed": "Fixieren",
+            "increment": "Erhöhen",
+            "decrement": "Verringern",
+            "randomize": "Zufall",
+            "multiplier": "Multiplikator",
+            "constant_batch_noise": "Konstantes Stapelrauschen",
+            "normalize": "Normalisieren",
+            "latent_channels": "Latent-Kanäle",
+            "shape": "Form"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        },
+        "description": "Erzeugt bei der Injektion Rauschen oder dient als leeres Latent im Sampler, wenn Rauschen hinzufügen deaktiviert ist"
+    },
+    "StableZero123_BatchSchedule": {
+        "title": "Stable Zero123 Mehransichts-Batchgenerierung",
+        "inputs": {
+            "clip_vision": "CLIP-Vision",
+            "init_image": "Anfangsbild",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "Breite",
+            "height": "Höhe",
+            "batch_size": "Stapelgröße",
+            "interpolation": "Interpolationsmethode",
+            "linear": "linear",
+            "ease_in": "Ease-in",
+            "ease_out": "Ease-out",
+            "ease_in_out": "Ease-in-out",
+            "azimuth_points_string": "Azimut-Punkt",
+            "elevation_points_string": "Elevation-Punkt"
+        },
+        "outputs": {
+            "positive": "Positive Bedingung",
+            "negative": "Negative Bedingung",
+            "latent": "Latent"
+        },
+        "description": "Gibt ein einzelnes Bild ein und erzeugt stapelweise konsistente Mehransicht-Bilder (z. B. 0°, 90°, 180°), mit VRAM-optimierter Ablaufplanung."
+    },
+    "SV3D_BatchSchedule": {
+        "title": "SV3D-Stapel-Schedule",
+        "inputs": {
+            "clip_vision": "CLIP-Vision",
+            "init_image": "Anfangsbild",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "Breite",
+            "height": "Höhe",
+            "batch_size": "Stapelgröße",
+            "interpolation": "Interpolationsmethode",
+            "azimuth_points_string": "Azimut-Punkt",
+            "elevation_points_string": "Elevation-Punkt"
+        },
+        "outputs": {
+            "positive": "Positive Bedingung",
+            "negative": "Negative Bedingung",
+            "latent": "Latent"
+        },
+        "description": "Interpoliert die Azimut- und Elevationswerte von SV3D über einen Schedule.\n\nHinweis: SV3D ist ein Videomodell, daher müssen die Schedule-Werte fortschreitend sein.\n\nhttps://huggingface.co/stabilityai/sv3d"
+    },
+    "LoadResAdapterNormalization": {
+        "title": "ResAdapter-Normalisierung laden",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "resadapter_path": "ResAdapter-Pfad"
+        },
+        "outputs": {
+            "MODEL": "Modell"
+        }
+    },
+    "Superprompt": {
+        "title": "Superprompt",
+        "inputs": {
+            "prompt": "Hinweis"
+        },
+        "widgets": {
+            "instruction_prompt": "Anweisungs-Prompt",
+            "max_new_tokens": "Maximale neue Token-Anzahl"
+        },
+        "outputs": {
+            "STRING": "String"
+        },
+        "description": "Ein auf dem Superprompt-Datensatz feinabgestimmtes T5-Modell.\n\nSkaliert Text-Prompts zu detaillierteren Beschreibungen hoch.\n\nAls Vorverarbeitungsschritt für Text-zu-Bild-Generierung\n\nModelle, die von detaillierteren Prompts profitieren. \n\nhttps://huggingface.co/roborovski/superprompt-v1"
+    },
+    "CameraPoseVisualizer": {
+        "title": "Kameraposen-Visualisierung",
+        "inputs": {
+            "cameractrl_poses": "Kamerasteuerungs-Pose"
+        },
+        "widgets": {
+            "pose_file_path": "Pose-Dateipfad",
+            "base_xval": "Basis-X-Wert",
+            "zval": "Z-Wert",
+            "scale": "Zoom",
+            "use_exact_fx": "Exakten Effekt verwenden",
+            "relative_c2w": "relative Kamera-zu-Welt-Koordinaten",
+            "use_viewer": "Viewer verwenden",
+            "cameractrl_poses": "Kamerasteuerungs-Pose",
+            "extrinsic": "Außen",
+            "color_map": "Farbkartierung",
+            "hw_ratio": "Seitenverhältnis",
+            "list_label": "Listenbeschriftung",
+            "w2cs": "Welt zu Kamera",
+            "transform_matrix": "Transformationsmatrix"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "Kameraposen visualisieren\n\n(das Modul Camera Ctrl Pose von Animatediff Evolved oder über eine .txt-Datei mit den intrinsischen Kameraparametern und Koordinaten des RealEstate-Datensatzes, dargestellt in einer 3D-Ansicht)"
+    },
+    "StabilityAPI_SD3": {
+        "title": "StabilityAPI SD3",
+        "inputs": {
+            "image": "Bild"
+        },
+        "widgets": {
+            "prompt": "Hinweis",
+            "n_prompt": "Negativ-Hinweis",
+            "seed": "Zufalls-Seed",
+            "control_before_generate": "Vor-Generierungs-Steuerung",
+            "model": "Modell",
+            "aspect_ratio": "Seitenverhältnis",
+            "output_format": "Ausgabeformat",
+            "api_key": "API-Schlüssel",
+            "img2img_strength": "Bild-zu-Bild-Intensität",
+            "disable_metadata": "Metadaten deaktivieren"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        },
+        "description": "# Aufruf der Stability-API\n\nVerwende nach Möglichkeit denselben key für API-Aufrufe, unabhängig davon, wie viele keys das Konto hat.\n\nErhalte keys unter https://platform.stability.ai/account/keys. Empfohlen wird, eine config.json mit dem key zu erstellen und in das Plugin-Verzeichnis zu legen.\n\n# Warnung:\n\nAuch wenn disable_metadata (Metadaten deaktivieren) aktiviert ist, kann der API-Schlüssel in den Metadaten gespeichert werden, wenn der Workflow einen anderen Speicherknoten als diesen enthält.\n\nSD3 benötigt 6,5 Punkte pro Generierung\n\nSD3-Turbo benötigt 4 Punkte pro Generierung\n\nWenn kein Bild-Eingang verbunden ist, wird der Text-zu-Bild-Modus verwendet"
+    },
+    "CheckpointPerturbWeights": {
+        "title": "Checkpoint-Großmodell-Störungsgewichte",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "joint_blocks": "Verbundblock",
+            "final_layer": "Abschlusschicht.",
+            "rest_of_the_blocks": "übrige Blöcke",
+            "seed": "Zufalls-Seed",
+            "control_before_generate": "Vor-Generierungs-Steuerung"
+        },
+        "outputs": {
+            "MODEL": "Modell"
+        }
+    },
+    "DifferentialDiffusionAdvanced": {
+        "title": "Differenz-Diffusion (Erweitert)",
+        "inputs": {
+            "model": "Modell",
+            "samples": "Sampling",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "multiplier": "Multiplikator"
+        },
+        "outputs": {
+            "MODEL": "Modell",
+            "LATENT": "Latent"
+        }
+    },
+    "FluxBlockLoraSelect": {
+        "title": "Flux-Block-LoRA-Auswahl",
+        "inputs": {},
+        "outputs": {
+            "blocks": "Block"
+        },
+        "description": "ICLightUnet laden: lädt ein ICLightUnet-Modell. (experimentell) in Entwicklung \n Eine andere, unbequeme, aber funktionierende Methode ist, das Modell von https://huggingface.co/Kijai/iclight-comfy/blob/main/iclight_fc_converted.safetensors herunterzuladen und zusammen mit dem InstructPixToPix-Bedingungs-Knoten zu verwenden."
+    },
+    "HunyuanVideoBlockLoraSelect": {
+        "title": "Hunyuan-Video Block-LoRA-Auswahl",
+        "inputs": {},
+        "outputs": {
+            "blocks": "Block"
+        },
+        "description": "Wählt den Alpha-Wert eines einzelnen Blocks; ein Wert von 0 entfernt den gesamten Block"
+    },
+    "FluxBlockLoraLoader": {
+        "title": "Flux-Block-LoRA-Lader",
+        "inputs": {
+            "model": "Modell",
+            "blocks": "Block",
+            "opt_lora_path": "LoRA-Pfad (optional)"
+        },
+        "widgets": {
+            "strength_model": "Modellstärke",
+            "lora_name": "LoRA-Name"
+        },
+        "outputs": {
+            "model": "Modell",
+            "rank": "Stufe"
+        }
+    },
+    "CustomControlNetWeightsFluxFromList": {
+        "title": "Benutzerdefinierte ControlNet-Gewichte Flux aus Liste",
+        "inputs": {
+            "cn_extras": "ControlNet-Zusatz",
+            "list_of_floats": "Float-Liste"
+        },
+        "widgets": {
+            "uncond_multiplier": "Unbedingter Multiplikator",
+            "autosize": "automatische Größe"
+        },
+        "outputs": {
+            "CN_WEIGHTS": "ControlNet-Gewichte",
+            "TK_SHORTCUT": "TK-Verknüpfung"
+        },
+        "description": "Wandelt eine Float-Liste in ControlNet-Gewichte um (für Advanced-ControlNet)"
+    },
+    "SetShakkerLabsUnionControlNetType": {
+        "title": "ShakkerLabs Combined-ControlNet-Typ einstellen",
+        "inputs": {
+            "control_net": "ControlNet",
+            "type": "Typ"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "ModelSaveKJ": {
+        "title": "Modell speichern (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "filename_prefix": "Dateiname-Präfix",
+            "model_key_prefix": "Modell-Key-Präfix"
+        }
+    },
+    "StyleModelApplyAdvanced": {
+        "title": "Erweiterter Stilmodell-Anwender",
+        "inputs": {
+            "conditioning": "Bedingungs-Guidance",
+            "style_model": "Stilmodell",
+            "clip_vision_output": "CLIP-Vision-Ausgabe"
+        },
+        "widgets": {
+            "strength": "Intensität"
+        },
+        "outputs": {
+            "conditioning": "Bedingungs-Guidance"
+        },
+        "description": "Stilmodell-Anwendung, aber mit einzustellendem Intensitätsparameter"
+    },
+    "AudioConcatenate": {
+        "title": "Audio verketten",
+        "inputs": {
+            "audio1": "Audio 1",
+            "audio2": "Audio 2"
+        },
+        "widgets": {
+            "direction": "Richtung"
+        },
+        "outputs": {
+            "AUDIO": "Audio"
+        },
+        "description": "Verbindet Audio1 mit Audio2 in der angegebenen Richtung."
+    },
+    "ImageNoiseAugmentation": {
+        "title": "Bild-Rauschverstärkung",
+        "inputs": {
+            "image": "Bild"
+        },
+        "widgets": {
+            "noise_aug_strength": "Rauschverstärkungsintensität",
+            "seed": "Zufalls-Seed"
+        },
+        "outputs": {
+            "image": "Bild"
+        }
+    },
+    "VAELoaderKJ": {
+        "title": "VAE-Lader (KJ)",
+        "inputs": {},
+        "widgets": {
+            "vae_name": "VAE-Name",
+            "device": "Gerät",
+            "weight_dtype": "Gewichts-Datentyp"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "ScheduledCFGGuidance": {
+        "title": "Schedule-basierte CFG-Guidance",
+        "inputs": {
+            "model": "Modell",
+            "positive": "Positiv-Hinweis",
+            "negative": "Negativ-Hinweis"
+        },
+        "widgets": {
+            "cfg": "CFG-Wert",
+            "start_percent": "Start-Prozent",
+            "end_percent": "Ende-Prozent"
+        },
+        "outputs": {
+            "GUIDER": "Führung"
+        }
+    },
+    "ApplyRifleXRoPE_WanVideo": {
+        "title": "Wan-Video RifleX RoPE anwenden",
+        "inputs": {
+            "model": "Modell",
+            "latent": "Latent",
+            "k": "k-Wert"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "ApplyRifleXRoPE_HunuyanVideo": {
+        "title": "Hunyuan-Video RifleX RoPE anwenden",
+        "inputs": {
+            "model": "Modell",
+            "latent": "Latent",
+            "k": "k-Wert"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "TimerNodeKJ": {
+        "title": "Timer (KJ)",
+        "inputs": {
+            "any_input": "Beliebiger Eingang",
+            "timer": "Timer"
+        },
+        "widgets": {
+            "mode": "Modus",
+            "name": "Name"
+        },
+        "outputs": {
+            "any_output": "Beliebige Ausgabe",
+            "timer": "Timer",
+            "time": "Zeit"
+        }
+    },
+    "ImageBatchFilter": {
+        "title": "Bild-Stapelfilter",
+        "inputs": {
+            "images": "Bild",
+            "replacement_image": "Bild austauschen"
+        },
+        "widgets": {
+            "empty_color": "Farbeinstellung für leere Bereiche",
+            "empty_threshold": "Schwellenwert, ab dem ein Bereich als leer gilt"
+        },
+        "outputs": {
+            "images": "Bild",
+            "IMAGES": "Bild",
+            "removed_indices": "Index löschen"
+        },
+        "description": "Leere Bilder aus dem Stapel entfernen"
+    },
+    "ImageResizeKJv2": {
+        "title": "Bildskalierung v2 (KJ)",
+        "inputs": {
+            "image": "Bild",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "width": "Breite",
+            "height": "Höhe",
+            "upscale_method": "Skalierungsmethode",
+            "keep_proportions": "Festes Seitenverhältnis",
+            "keep_proportion": "Festes Seitenverhältnis",
+            "pad_color": "Füllfarbe",
+            "crop_position": "Zuschnittposition",
+            "divisible_by": "Teilbarkeit",
+            "device": "Gerät",
+            "per_batch": "Stapel"
+        },
+        "outputs": {
+            "IMAGE": "Bild",
+            "width": "Breite",
+            "height": "Höhe",
+            "mask": "Maske"
+        },
+        "description": "Bildskalierung der 2. Generation. Die Größe kann über Eingaben angegeben werden; die Priorität der finalen Ausgabe folgt diesen Regeln:\n- Referenzbildgröße \n- Breite-Eingang und Höhe-Eingang \n- Breite und Höhe \n \nEin festes Seitenverhältnis wird anhand der höchsten Größe festgelegt."
+    },
+    "InsertLatentToIndexed": {
+        "title": "Latent-Index einfügen",
+        "inputs": {
+            "source": "Quelle",
+            "destination": "Ziel"
+        },
+        "widgets": {
+            "index": "Koeffizient"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "latent": "Latent"
+        },
+        "description": "Fügt das Latent am angegebenen Index in den ursprünglichen Latent-Stapel ein."
+    },
+    "DiTBlockLoraLoader": {
+        "title": "DiT-Block-Lora-Lader",
+        "inputs": {
+            "model": "Modell",
+            "opt_lora_path": "Lora-Pfad wählen",
+            "blocks": "Block"
+        },
+        "widgets": {
+            "strength_model": "Modellstärke",
+            "lora_name": "LoRA-Namen",
+            "overlap": "Überlappungsmenge"
+        },
+        "outputs": {
+            "model": "Modell",
+            "rank": "Rang"
+        },
+        "description": "Neu hinzugefügter Inhalt."
+    },
+    "LeapfusionHunyuanI2VPatcher": {
+        "title": "FastBlend Hunyuan Bild-zu-Video-Patch",
+        "inputs": {
+            "model": "Modell",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "index": "Koeffizient",
+            "start_percent": "Startprozentsatz",
+            "end_percent": "Ende-Prozent",
+            "strength": "Intensität"
+        },
+        "outputs": {
+            "MODEL": "Modell",
+            "model": "Modell"
+        },
+        "description": "Neu hinzugefügter Inhalt."
+    },
+    "ModelPatchTorchSettings": {
+        "title": "Modell-Patch Torch-Einstellungen",
+        "inputs": {
+            "model": "Modell",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "FP16-Akkumulation aktivieren",
+            "start_percent": "Startprozentsatz",
+            "end_percent": "Ende-Prozent",
+            "strength": "Intensität"
+        },
+        "outputs": {
+            "MODEL": "Modell",
+            "model": "Modell"
+        },
+        "description": "Reduziert die GPU-VRAM-Nutzung\nBeschleunigt Matrix-Multiplikations-Akkumulation\nVerbessert die Energieeffizienz\nMögliche Folgen: numerischer Überlauf, Genauigkeitsverlust."
+    },
+    "LoraExtractKJ": {
+        "title": "Lora-Extraktion (KJ)",
+        "inputs": {
+            "finetuned_model": "Feinabgestimmtes Modell",
+            "original_model": "Originalmodell"
+        },
+        "widgets": {
+            "filename_prefix": "Dateiname-Präfix",
+            "rank": "Stufe",
+            "lora_type": "Lora-Typ",
+            "algorithm": "Algorithmus",
+            "lowrank_iters": "Low-Rank-Iterationen",
+            "output_dtype": "Ausgabe-Datentyp",
+            "bias_diff": "Abweichungsdifferenz",
+            "adaptive_param": "adaptive Parameter",
+            "clamp_quantile": "Clamp-Quantil"
+        },
+        "outputs": {
+            "images": "Bild",
+            "masks": "Maske"
+        },
+        "description": "LoraExtract"
+    },
+    "Wan21BlockLoraSelect": {
+        "title": "Wan2.1 Block-LoRA-Selektor",
+        "inputs": {
+            "model": "Modell",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "FP16-Akkumulation aktivieren",
+            "start_percent": "Startprozentsatz",
+            "end_percent": "Ende-Prozent",
+            "strength": "Intensität"
+        },
+        "outputs": {
+            "BLOCKS": "Block",
+            "blocks": "Block"
+        },
+        "description": "Wählt den Alpha-Wert eines einzelnen Blocks; ein Wert von 0 entfernt den gesamten Block."
+    },
+    "LoadVideosFromFolder": {
+        "title": "Video aus Ordner laden",
+        "inputs": {
+            "video": "Video"
+        },
+        "widgets": {
+            "video": "Video",
+            "force_rate": "Framerate erzwingen",
+            "custom_width": "benutzerdefinierte Breite",
+            "custom_height": "benutzerdefinierte Höhe",
+            "frame_load_cap": "Obergrenze der gelesenen Frame-Anzahl",
+            "skip_first_frames": "erste X Frames überspringen",
+            "select_every_nth": "Intervall",
+            "output_type": "Ausgabetyp",
+            "grid_max_columns": "maximale Spaltenanzahl des Rasters",
+            "add_label": "Tag hinzufügen"
+        },
+        "outputs": {
+            "IMAGE": "Bild"
+        }
+    },
+    "TorchCompileModelQwenImage": {
+        "title": "Qwen-Bild Torch-kompiliertes Modell",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Gesamtes Bild",
+            "mode": "Modus",
+            "dynamic": "Bewegung",
+            "compile_transformer_blocks_only": "Nur Transformator-Module kompilieren",
+            "dynamo_cache_size_limit": "Dynamischer Speicher-Cache-Größenlimit"
+        },
+        "outputs": {
+            "MODEL": "Modell",
+            "model": "Modell"
+        }
+    },
+    "LazySwitchKJ": {
+        "title": "Einfacher Schalter (KJ)",
+        "inputs": {
+            "on_false": "Falsch",
+            "on_true": "Korrekt"
+        },
+        "widgets": {
+            "switch": "Schalter"
+        },
+        "outputs": {
+            "*": "Beliebig"
+        }
+    },
+    "GetLatentSizeAndCount": {
+        "title": "Latent-Größe und -Anzahl abrufen",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "latent": "Latent",
+            "batch_size": "Stapelgröße",
+            "channels": "Kanal",
+            "frames": "Frame",
+            "width": "Breite",
+            "height": "Höhe"
+        }
+    },
+    "DiffusionModelSelector": {
+        "title": "Diffusionsmodell-Selektor",
+        "inputs": {},
+        "widgets": {
+            "model_name": "Modellname"
+        },
+        "outputs": {
+            "model_path": "Modellpfad"
+        }
+    },
+    "LoraReduceRankKJ": {
+        "title": "Lora-Rangreduktion (KJ)",
+        "inputs": {},
+        "widgets": {
+            "lora_name": "LoRA-Namen",
+            "new_rank": "Neue Stufe",
+            "dynamic_method": "Dynamische Methode",
+            "dynamic_param": "Dynamische Parameter",
+            "output_dtype": "Ausgabe-Datentyp",
+            "verbose": "Ausführlicher Modus"
+        },
+        "outputs": {
+            "model_path": "Modellpfad"
+        },
+        "description": "Passt die Größe des LoRA-Modells durch Verringern des Rangs des Modells an.\n Referenz: das kohya-basierte sd-scripts: https://github.com/kohya-ss/sd-scripts/blob/main/networks/resize_lora.py"
+    },
+    "DrawMaskOnImage": {
+        "title": "Bild und Maske zusammenführen",
+        "inputs": {
+            "image": "Bild",
+            "mask": "Maske"
+        },
+        "widgets": {
+            "mask_opacity": "Masken-Opazität",
+            "mask_color": "Maskenfarbe",
+            "color": "Farbe"
+        },
+        "outputs": {
+            "images": "Bild"
+        },
+        "description": "Wenn gleichzeitig ein Bild und eine Maske eingegeben werden, wird die Maske in das Bild eingefügt."
+    },
+    "BlockifyMask": {
+        "title": "Blockmaske",
+        "inputs": {
+            "image": "Bild",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "block_size": "Blockgröße"
+        },
+        "outputs": {
+            "mask": "Maske"
+        },
+        "description": "Erstellt eine Blockmaske, indem der Begrenzungsrahmen jeder Maske in Blöcke der angegebenen Größe unterteilt und jeder Block gefüllt wird, der einen Teil der ursprünglichen Maske enthält."
+    },
+    "ConsolidateMasksKJ": {
+        "title": "Masken integrieren (KJ)",
+        "inputs": {
+            "mask": "Maske",
+            "masks": "Maske"
+        },
+        "widgets": {
+            "padding": "Füllung",
+            "width": "Breite",
+            "height": "Höhe"
+        },
+        "outputs": {
+            "mask": "Maske"
+        },
+        "description": "Fasst einen Stapel einzelner Masken zusammen, indem eine maximale Gruppe einzelner Masken gefunden wird, die vollständig in einen rechteckigen Bereich mit den gegebenen Abmessungen (einschließlich Polsterung) passt, und dieser Vorgang wiederholt wird, bis keine Masken mehr zusammengeführt werden können."
+    },
+    "GGUFLoaderKJ": {
+        "title": "GGUF-Modell-Lader (KJ)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "Modellname",
+            "extra_model_name": "zusätzlicher Modellname",
+            "dequant_dtype": "Dequantisierungs-Datentyp",
+            "patch_dtype": "Patch-Datentyp",
+            "patch_on_device": "Patch auf dem Gerät",
+            "attention_override": "Attention-Vorrang-Modus",
+            "enable_fp16_accumulation": "FP16-Akkumulation aktivieren"
+        },
+        "outputs": {
+            "model": "Modell"
+        },
+        "description": "Lädt ein GGUF-Modell mit erweiterten Optionen; dafür muss ComfyUI-GGUF installiert sein."
+    },
+    "EndRecordCUDAMemoryHistory": {
+        "title": "CUDA-Speicher-History-Aufzeichnung beenden (KJ)",
+        "inputs": {
+            "input": "Eingang"
+        },
+        "widgets": {
+            "output_path": "Ausgabepfad"
+        },
+        "outputs": {
+            "input": "Eingang",
+            "output_path": "Ausgabepfad"
+        },
+        "description": "Aufzeichnung der CUDA-Speicherzuordnungs-History zwischen Start und Ende und Speichern in einer Datei, die hier analysiert werden kann: https://docs.pytorch.org/memory_viz oder mit dem Knoten „CUDA-Speicher-History visualisieren“."
+    },
+    "VisualizeCUDAMemoryHistory": {
+        "title": "CUDA-Speicher-History visualisieren (KJ)",
+        "inputs": {
+            "input": "Eingang"
+        },
+        "widgets": {
+            "snapshot_path": "Snapshot-Pfad"
+        },
+        "outputs": {
+            "input": "Eingang",
+            "output_path": "Ausgabepfad"
+        },
+        "description": "Visualisiert die CUDA-Speicherzuordnungs-History-Datei und öffnet sie im Browser"
+    },
+    "StartRecordCUDAMemoryHistory": {
+        "title": "CUDA-Speicher-History-Aufzeichnung starten (KJ)",
+        "inputs": {
+            "input": "Eingang"
+        },
+        "widgets": {
+            "enabled": "aktiviert",
+            "context": "Hintergrund",
+            "stacks": "Heap",
+            "max_entries": "Maximale Einträge"
+        },
+        "outputs": {
+            "input": "Eingang"
+        }
+    },
+    "NABLA_AttentionKJ": {
+        "title": "NABLA-Attention (KJ)",
+        "inputs": {
+            "model": "Modell",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "window_time": "Fensterzeit",
+            "window_width": "Fensterbreite",
+            "window_height": "Fensterhöhe",
+            "sparsity": "Spärlichkeit",
+            "torch_compile": "torch-Kompilierung"
+        },
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "SimpleCalculatorKJ": {
+        "title": "Einfacher Rechner (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "FLOAT": "Gleitkommazahl",
+            "STRING": "Gleitkommazahl",
+            "INT": "Ganzzahl"
+        }
+    },
+    "VAEDecodeLoopKJ": {
+        "title": "VAE-Schleifendekodierung (KJ)",
+        "inputs": {
+            "samples": "Sampling",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "overlap_latent_frames": "Latent-Bild wiederholen"
+        },
+        "outputs": {
+            "IMAGE": "Bild",
+            "STRING": "Gleitkommazahl",
+            "INT": "Ganzzahl"
+        }
+    },
+    "GetTrackRange": {
+        "title": "Pfadbereich abrufen (KJ)",
+        "inputs": {
+            "tracks": "Spuren"
+        },
+        "widgets": {
+            "start_index": "Startindex",
+            "num_frames": "Anzahl der Frames"
+        },
+        "outputs": {
+            "TRACKS": "Spuren"
+        }
+    },
+    "AddNoiseToTrackPath": {
+        "title": "Rauschen zum Pfad hinzufügen (KJ)",
+        "inputs": {
+            "tracks": "Spuren"
+        },
+        "widgets": {
+            "strength": "Intensität",
+            "seed": "Seed",
+            "noise_x_ratio": "Rauschen-x-Verhältnis",
+            "noise_y_ratio": "Rauschen-y-Verhältnis",
+            "noise_temporal_ratio": "Rauschzeit-Verhältnis"
+        },
+        "outputs": {
+            "TRACKS": "Spuren"
+        }
+    },
+    "WanImageToVideoSVIPro": {
+        "title": "Wan Bild-zu-Video SVI Pro (KJ)",
+        "inputs": {
+            "positive": "Positiv-Hinweis",
+            "negative": "Negativ-Hinweis",
+            "anchor_samples": "Anker-Sampling",
+            "prev_samples": "Vorheriges Sampling"
+        },
+        "widgets": {
+            "length": "Länge",
+            "motion_latent_count": "Bewegungs-Latent-Anzahl"
+        },
+        "outputs": {
+            "positive": "Positiv-Hinweis",
+            "negative": "Negativ-Hinweis",
+            "latent": "Latent"
+        }
+    },
+    "ModelMemoryUseReportPatch": {
+        "title": "Modell-Speicherverberichts-Patch (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "model": "Modell"
+        },
+        "outputs": {
+            "model": "Modell"
+        },
+        "description": "Fügt dem Modell eine Rückruffunktion hinzu, um die Speichernutzung nach Abschluss des Samplings zu melden"
+    },
+    "ModelMemoryUsageFactorOverride": {
+        "title": "Benutzerdefinierter Wert des Modell-Speichernutzungsfaktors (KJ)",
+        "inputs": {
+            "model": "Modell",
+            "memory_usage_factor": "Speichernutzungsfaktor"
+        },
+        "widgets": {
+            "model": "Modell",
+            "memory_usage_factor": "Speichernutzungsfaktor"
+        },
+        "outputs": {
+            "model": "Modell"
+        },
+        "description": "Überschreibt während des Samplings den Speichernutzungsfaktor des Modells."
+    },
+    "LTXVEnhanceAVideoKJ": {
+        "title": "LTX-Video-Verbesserung (KJ)",
+        "inputs": {
+            "model": "Modell",
+            "latent": "Latent",
+            "weight": "Gewichte"
+        },
+        "widgets": {
+            "model": "Modell",
+            "latent": "Latent",
+            "weight": "Gewichte"
+        },
+        "outputs": {
+            "model": "Modell"
+        }
+    },
+    "LTX2BlockLoraSelect": {
+        "title": "LTX2-Block-Lora-Selektor (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "selectedditblocks": "gewählte DIT-Blöcke"
+        },
+        "description": "Fügt dem Modell eine Rückruffunktion hinzu, um die Speichernutzung nach Abschluss des Samplings zu melden"
+    },
+    "VisualizeSigmasKJ": {
+        "title": "Sigma-Werte visualisieren (KJ)",
+        "inputs": {
+            "sigmas": "Sigma-Wert"
+        },
+        "widgets": {
+            "start_step": "Anfangsschritte",
+            "end_step": "Endschritte"
+        },
+        "outputs": {
+            "sigmas_out": "Sigma-Ausgabe",
+            "image": "Bild"
+        },
+        "description": ""
+    },
+    "LTX2SamplingPreviewOverride": {
+        "title": "LTX2-Sampling-Vorschauüberschneidung (KJ)",
+        "inputs": {
+            "model": "Modell",
+            "latent_upscale_model": "Latent-Upscaling-Modell",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "preview_rate": "Vorschau-Rate"
+        },
+        "outputs": {},
+        "description": "Die LTX2-Sampling-Vorschau ist vorübergehend deaktiviert, bis die Vorschau in einer stabilen Kernversion vervollständigt ist."
+    },
+    "LTXVAddGuidesFromBatch": {
+        "title": "Guidance-Bild aus Stapel hinzufügen (KJ)",
+        "inputs": {
+            "positive": "Positive Guidance",
+            "negative": "Negative Guidance",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images": "Bild"
+        },
+        "widgets": {
+            "strength": "Intensität"
+        },
+        "outputs": {
+            "positive": "Positive Guidance",
+            "negative": "Negative Guidance",
+            "latent": "Latent"
+        },
+        "description": "Fügt mehrere Guidance-Bilder aus einem Stapel entsprechend ihrem Frame-Index zum Latent-Bild hinzu. Nicht schwarze Bilder im Stapel werden als Guidance-Bilder verwendet."
+    },
+    "LTX2AudioLatentNormalizingSampling": {
+        "title": "LTX2-Audio-Latent-normalisiertes Sampling (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "audio_normalization_factors": "Audio-Normalisierungsfaktor"
+        },
+        "outputs": {},
+        "description": "Verbessert die Audioqualität der LTX2-Generierung, indem das Audio-Latent in den angegebenen Sampling-Schritten normalisiert wird."
+    },
+    "PreviewLatentNoiseMask": {
+        "title": "Latent-Rauschmaske-Vorschau (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "mask": "Maske"
+        },
+        "description": "Latent-Rauschmaske-Vorschau"
+    },
+    "WanChunkFeedForward": {
+        "title": "Wan-Video blockweise Feed-Forward (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "chunks": "Blockanzahl",
+            "dim_threshold": "Dimensionsschwelle"
+        },
+        "outputs": {
+            "model": "Modell"
+        },
+        "description": "Experimentelle Funktion, kann die Modellausgabe verändern!! Verringert die peak VRAM-Nutzung durch Aktivierung blockweiser Feed-Forward-Verarbeitung (ein Konzept aus neuronalen Netzen)."
+    },
+    "SamplerSelfRefineVideo": {
+        "title": "Sampler self-refine Video (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {
+            "input_mode": "Eingabemodus",
+            "start_step1": "Schritt 1 starten",
+            "end_step1": "Schritt 1 beenden",
+            "start_step2": "Schritt 2 starten",
+            "end_step2": "Schritt 2 beenden",
+            "steps_1": "Schritt 1",
+            "steps_2": "Schritt 2",
+            "certain_percentage": "Prozentsatz bestimmen",
+            "uncertainty_threshold": "Unsicherheitsschwelle",
+            "verbose": "detailliert",
+            "seed": "Zufalls-Seed"
+        },
+        "outputs": {},
+        "description": "Versucht, https://github.com/agwmon/self-refine-video umzusetzen; nur zum Testen, funktioniert möglicherweise nicht wie erwartet."
+    },
+    "LTXVAddGuideMulti": {
+        "title": "LTX-Video mehrere Guidance-Bilder hinzufügen (KJ)",
+        "inputs": {
+            "positive": "Positive Guidance",
+            "negative": "Negative Guidance",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "Bild 1"
+        },
+        "widgets": {
+            "Number of Guides": "Anzahl der Guidance",
+            "frame_idx_1": "Frame-Index 1",
+            "strength_1": "Intensität 1"
+        },
+        "outputs": {
+            "positive": "Positive Guidance",
+            "negative": "Negative Guidance",
+            "latent": "Latent"
+        },
+        "description": "Fügt an den angegebenen Frame-Indizes mehrere Guidance-Bilder hinzu und legt deren Intensität fest; nutzt die Funktion „Dynamische Kombination“. Dafür sind ComfyUI 0.8.1 und Frontend 1.33.4 oder höher erforderlich."
+    },
+    "LTXVImgToVideoInplaceKJ": {
+        "title": "LTX-Video Bild in Video umwandeln (KJ)",
+        "inputs": {
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "Bild 1"
+        },
+        "widgets": {
+            "Number of Guides": "Anzahl der Guidance",
+            "index_1": "Index 1",
+            "strength_1": "Intensität 1"
+        },
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "Ersetzt die Latent-Frames des Videos durch die kodierten Eingabebilder und nutzt die Funktion Dynamische Kombination; diese erfordert ComfyUI 0.8.1 und Frontend 1.33.4 oder höher."
+    },
+    "LTXVAudioVideoMask": {
+        "title": "Audio- und Videomaske (KJ)",
+        "inputs": {
+            "video_latent": "Video-Latent",
+            "audio_latent": "Audio-Latent"
+        },
+        "widgets": {
+            "video_fps": "Video-Framerate",
+            "video_start_time": "Videostartzeit",
+            "video_end_time": "Videoendzeit",
+            "audio_start_time": "Audiostartzeit",
+            "audio_end_time": "Audioendzeit",
+            "max_length": "Maximale Länge"
+        },
+        "outputs": {
+            "video_latent": "Video-Latent",
+            "audio_latent": "Audio-Latent"
+        },
+        "description": "Erstellt für den Latent-Inhalt von Video und Audio eine Rauschmaske im angegebenen Zeitbereich. In den maskierten Bereichen wird neuer Inhalt erzeugt."
+    },
+    "LTX2AttentionTunerPatch": {
+        "title": "LTX2-Attention-Anpassungspatch (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "blocks": "Block",
+            "video_scale": "Videoskalierung",
+            "audio_scale": "Audioskalierung",
+            "audio_to_video_scale": "Audio-zu-Video-Skalierung",
+            "video_to_audio_scale": "Video-zu-Audio-Skalierung"
+        },
+        "outputs": {
+            "model": "Modell"
+        },
+        "description": "Experimentell! Benutzerdefinierter LTX2-Vorwärtsdurchlauf, der den Attention-Skalierungsfaktor je nach Modalität einstellt und zugleich die peak VRAM-Nutzung senkt."
+    },
+    "LTX2_NAG": {
+        "title": "LTX2-normalisierte Attention-Guidance (KJ)",
+        "inputs": {
+            "model": "Modell",
+            "nag_cond_video": "Video-Bedingung",
+            "nag_cond_audio": "Audio-Bedingung"
+        },
+        "widgets": {
+            "nag_scale": "NAG-Skalierung",
+            "nag_alpha": "NAG alpha",
+            "nag_tau": "NAG tau",
+            "inplace": "In-place-Operation"
+        },
+        "outputs": {
+            "model": "Modell"
+        },
+        "description": "https://github.com/ChenDarYen/Normalized-Attention-Guidance"
+    },
+    "LTX2MemoryEfficientSageAttentionPatch": {
+        "title": "LTX2-speichereffizienter Sage-Attention-Patch (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Modell"
+        },
+        "description": "Experimentell! Aktiviert benutzerdefinierte Sage-Attention, um die peak VRAM-Nutzung zu senken, und überschreibt den Attention-Modus. Erfordert die neueste Version von Sage-Attention."
+    },
+    "LTXVChunkFeedForward": {
+        "title": "LTX-Video blockweise Feed-Forward-Aktivierung (KJ)",
+        "inputs": {
+            "model": "Modell"
+        },
+        "widgets": {
+            "chunks": "Blockweise",
+            "dim_threshold": "Dimensionsschwelle"
+        },
+        "outputs": {
+            "model": "Modell"
+        },
+        "description": "Experimentell und kann die Modellausgabe verändern! Die Aktivierung blockweiser Feed-Forward-Verarbeitung (ein Konzept aus neuronalen Netzen) kann die peak-Nutzung des virtuellen Speichers senken."
+    },
+    "LTX2LoraLoaderAdvanced": {
+        "title": "LTX2-Erweitert-Lora-Lader (KJ)",
+        "inputs": {
+            "model": "Modell",
+            "opt_lora_path": "Optimierter LoRA-Pfad",
+            "blocks": "Block"
+        },
+        "widgets": {
+            "lora_name": "LoRA-Name",
+            "strength_model": "Modellstärke",
+            "video": "Video",
+            "video_to_audio": "Video zu Audio",
+            "audio": "Audio",
+            "audio_to_video": "Audio zu Video",
+            "other": "Sonstiges"
+        },
+        "outputs": {
+            "model": "Modell",
+            "loaded_keys_info": "Schlüsselinformationen laden",
+            "rank": "Stufe"
+        },
+        "description": "Erweiterter LoRA-Lader mit blockweiser Intensitätssteuerung für das LTX2-Modell"
+    },
+    "HDRPreviewKJ": {
+        "title": "HDR-Vorschau (KJ)",
+        "inputs": {
+            "image": "Bild"
+        },
+        "widgets": {
+            "exposure": "Belichtung",
+            "saturation": "Sättigung",
+            "fps": "Bildrate",
+            "input_space": "Eingangsraum"
+        },
+        "outputs": {
+            "image": "Bild"
+        },
+        "description": "Live-Belichtungsvorschau für hochdynamikkomprimierte Bilder (HDR).\nEingang: ein Bild-/Video-Stapel im Bereich [0,1], komprimiert mit LogC3 (z. B. die nach VAE-Dekodierung ausgegebenen Bilder in einem HDR-IC-LoRA-Workflow, noch ohne HDR-Dekompression).\nIn einem WebGL-Fragment-Shader des Browsers wird Live-Regler-Feedback über Dekompression, Belichtung, Sättigung, Reynolds-Tonemapping und sRGB-Verarbeitung bereitgestellt. Dieselbe Mathematik läuft serverseitig, um den gerenderten sRGB-Bildausgang zu erzeugen.\nRegleränderungen aktualisieren die Vorschau sofort; der Bildausgang wird erst aktualisiert, wenn der Workflow neu eingereiht wird. "
+    },
+    "HunyuanVideoEncodeKeyframesToCond": {
+        "title": "Hunyuan-Video Start-/Endframe zu Bedingung kodieren (KJ)",
+        "inputs": {
+            "model": "Modell",
+            "positive": "Positiv-Hinweis",
+            "vae": "VAE",
+            "start_frame": "Startframe",
+            "end_frame": "Endframe",
+            "negative": "Negativ-Hinweis"
+        },
+        "widgets": {
+            "num_frames": "Anzahl der Frames",
+            "tile_size": "Chunk-Größe",
+            "overlap": "Überlappungsmenge",
+            "temporal_size": "Zeitdimension-Größe",
+            "temporal_overlap": "Zeitdimension-Überlappung"
+        },
+        "outputs": {
+            "model": "Modell",
+            "positive": "Positiv-Prompt",
+            "negative": "Negativ-Prompt",
+            "latent": "Latent"
+        }
+    }
+}

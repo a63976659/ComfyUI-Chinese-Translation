@@ -1,0 +1,223 @@
+{
+    "VoiceBridgeASRLoader": {
+        "title": "VoiceBridge ASR-Lader",
+        "inputs": {},
+        "widgets": {
+            "repo_id": "Repository-ID",
+            "source": "Quelle",
+            "precision": "Genauigkeit",
+            "attention": "Attention",
+            "max_new_tokens": "Maximale neue Token",
+            "forced_aligner": "Force-Aligner",
+            "local_model_path_asr": "Lokaler ASR-Modellpfad",
+            "local_model_path_fa": "Lokaler FA-Modellpfad"
+        },
+        "outputs": {
+            "model_key": "Modell-Key",
+            "MODEL_KEY": "MODEL_KEY"
+        },
+        "description": "Kategorie: ASR laden",
+        "api_version": "V1"
+    },
+    "VoiceBridgeASRTranscribe": {
+        "title": "VoiceBridge ASR-Untertiteltranskription",
+        "inputs": {
+            "audio": "Audio"
+        },
+        "widgets": {
+            "model_key": "Modell-Key",
+            "language": "Sprache",
+            "context": "Kontext",
+            "return_timestamps": "Zeitstempel zurückgeben"
+        },
+        "outputs": {
+            "forced_aligns": "Force-Aligning-Ergebnis",
+            "text": "Text",
+            "language": "Sprache",
+            "timestamps": "Zeitstempel",
+            "LIST": "Liste",
+            "STRING": "String"
+        },
+        "description": "Kategorie: ASR-Transkription",
+        "api_version": "V1"
+    },
+    "VoiceBridgeTTSLoader": {
+        "title": "VoiceBridge TTS-Lader",
+        "inputs": {},
+        "widgets": {
+            "repo_id": "Repository-ID",
+            "source": "Quelle",
+            "precision": "Genauigkeit",
+            "attention": "Attention",
+            "local_model_path": "Lokaler TTS-Modellpfad"
+        },
+        "outputs": {
+            "model_key": "Modell-Key",
+            "MODEL_KEY": "MODEL_KEY"
+        },
+        "description": "Kategorie: TTS laden",
+        "api_version": "V1"
+    },
+    "VoiceClonePrompt": {
+        "title": "Stimmklon-Prompt",
+        "inputs": {
+            "model_key": "Modell-Key",
+            "ref_audio": "Referenzaudio"
+        },
+        "widgets": {
+            "ref_text": "Referenztext"
+        },
+        "outputs": {
+            "voice_clone_prompt": "Stimmklon-Prompt",
+            "VOICE_CLONE_PROMPT": "Stimmklon-Prompt"
+        },
+        "description": "Kategorie: Stimmklon-Prompt",
+        "api_version": "V1"
+    },
+    "SRTToAudio": {
+        "title": "srt-Untertitel in Audio umwandeln",
+        "inputs": {
+            "model_key": "Modell-Key",
+            "voice_clone_prompt": "Stimmklon-Prompt"
+        },
+        "widgets": {
+            "srt_string": "srt-Untertitel String",
+            "language": "Sprache",
+            "tempo_limit": "Tempo-Begrenzung",
+            "mini_gap_ms": "Mindestlücke in ms",
+            "batch_size": "Stapelgröße"
+        },
+        "outputs": {
+            "audio": "Audio",
+            "adjusted_srt": "Angepasste srt-Untertitel",
+            "AUDIO": "Audio",
+            "STRING": "String"
+        },
+        "description": "Kategorie: srt-Untertitel in Audio umwandeln",
+        "api_version": "V1"
+    },
+    "generate srt": {
+        "title": "srt-Untertitel generieren",
+        "inputs": {},
+        "widgets": {
+            "forced_aligns": "Force-Aligning-Ergebnis",
+            "text": "Text",
+            "language": "Sprache",
+            "save_srt": "srt-Untertitel speichern",
+            "filename_prefix": "Dateiname-Präfix"
+        },
+        "outputs": {
+            "srt_string": "srt-Untertitel-String",
+            "STRING": "String"
+        },
+        "description": "Kategorie: srt-Untertitel generieren",
+        "api_version": "V1"
+    },
+    "SaveSRTFromString": {
+        "title": "srt-Untertitel aus String speichern",
+        "inputs": {},
+        "widgets": {
+            "srt_string": "srt-Untertitel-String",
+            "filename_prefix": "Dateiname-Präfix"
+        },
+        "outputs": {
+            "save_path": "Speicherpfad",
+            "STRING": "String"
+        },
+        "description": "Kategorie: srt-Untertitel aus String speichern",
+        "api_version": "V1"
+    },
+    "VoiceBridgeAIAPI": {
+        "title": "VoiceBridge AI API",
+        "inputs": {},
+        "widgets": {
+            "model": "Modell",
+            "base_url": "Basis-URL",
+            "api_key": "API-Schlüssel",
+            "system_prompt": "System-Prompt",
+            "prompt": "Hinweis",
+            "max_tokens": "Maximale Tokenanzahl",
+            "temperature": "Temperatur",
+            "top_p": "Top-P"
+        },
+        "outputs": {
+            "response": "Antwort",
+            "STRING": "String"
+        },
+        "description": "Kategorie: AI API",
+        "api_version": "V1"
+    },
+    "VoiceBridgeUnloadModel": {
+        "title": "VoiceBridge Modell entladen",
+        "inputs": {
+            "anything": "Beliebig"
+        },
+        "widgets": {
+            "Unload_ASR_Model": "ASR-Modell entladen",
+            "Unload_TTS_Model": "TTS-Modell entladen"
+        },
+        "outputs": {
+            "any": "Beliebig"
+        },
+        "description": "Kategorie: Modell entladen",
+        "api_version": "V1"
+    },
+    "VoiceBridgeLoadSRT": {
+        "title": "VoiceBridge srt-Untertitel laden",
+        "inputs": {},
+        "widgets": {
+            "srt": "srt-Untertitel",
+            "upload": "Hochladen"
+        },
+        "outputs": {
+            "srt_string": "srt-Untertitel-String"
+        },
+        "description": "Kategorie: srt-Untertitel aus String speichern"
+    },
+    "VoiceBridgeSRTSplitter": {
+        "title": "VoiceBridge srt-Untertitel-Splitter",
+        "inputs": {},
+        "widgets": {
+            "srt": "srt-Untertitel",
+            "upload": "Hochladen"
+        },
+        "outputs": {
+            "texts": "Textinhalt",
+            "count": "Anzahl",
+            "srt_items": "SRT-Element"
+        },
+        "description": "Kategorie: srt aus String speichern"
+    },
+    "VoiceBridgeAudioListMergerBySRT": {
+        "title": "VoiceBridge Audio-Liste aus srt-Untertiteln zusammenführen",
+        "inputs": {
+            "audios": "Audio",
+            "srt_items": "srt-Untertitel-Element"
+        },
+        "widgets": {
+            "tempo_limit": "Dauerbegrenzung",
+            "mini_gap_ms": "Mindestabstand in ms"
+        },
+        "outputs": {
+            "audio": "Audio",
+            "adjusted_srt": "Angepasste Untertitel (SRT-Format)"
+        },
+        "description": "Kategorie: srt aus String speichern"
+    },
+    "GenerateSRT": {
+        "title": "Untertiteldatei generieren",
+        "inputs": {
+            "forced_aligns": "Force-Aligning-Daten"
+        },
+        "widgets": {
+            "save_srt": "srt-Untertiteldatei speichern?",
+            "filename_prefix": "Dateiname-Präfix",
+            "text": "Textinhalt",
+            "language": "Sprache"
+        },
+        "outputs": {
+            "srt_string": "srt-Untertitel-String"
+        },
+        "description": "Generiert Untertitel im SRT-Format auf Grundlage von Eingabetext und Sprachinformationen. Unterstützt Force-Aligning-Daten zur Verbesserung der Untertitelgenauigkeit; optional als Datei speicherbar mit anpassbarem Dateinamen-Präfix."
+    }
+}
