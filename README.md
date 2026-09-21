@@ -92,18 +92,20 @@ ComfyUI-Global-Translation 是一个专为 ComfyUI 设计的汉化插件。通�
 ---
 
 ## 效果展示
-
+仅展示中英双语效果，其它语言请自行查看。切换跟随ComfyUI语言设置。
 ### 翻译开关按钮
+<img width="150" height="100" alt="中文开关1" src="https://github.com/user-attachments/assets/775bb652-3b66-404c-9531-e6147d1dbeff" />
+<img width="150" height="100" alt="英文开关1" src="https://github.com/user-attachments/assets/c1bdce29-fb07-4861-9f05-ba87049e4557" />
+<img width="150" height="100" alt="中文开关2" src="https://github.com/user-attachments/assets/40c692c6-142b-4512-94a6-ba95800254d8" />
+<img width="150" height="100" alt="英文开关2" src="https://github.com/user-attachments/assets/18c970d0-a8f8-450d-894c-19aecbd2f80b" />
+<img width="150" height="100" alt="中文开关3" src="https://github.com/user-attachments/assets/2e84be85-f06e-4bcd-9d58-bfb6f2ca6170" />
+<img width="150" height="100" alt="英文开关3" src="https://github.com/user-attachments/assets/bedb11e2-1e34-4558-8bdb-d11f6d3a18fe" />
 
-<img width="900" height="180" alt="新版开" src="https://github.com/user-attachments/assets/0e6751fb-4196-4f09-9a64-818bda07f343" />
+### 管理界面
 
-<img width="1000" height="180" alt="新版-关" src="https://github.com/user-attachments/assets/13810712-12df-4bea-bdfd-5e86f3d7686e" />
+<img width="2000" height="1500" alt="设置界面" src="https://github.com/user-attachments/assets/1c1607a1-9153-4f9a-aeec-cd49458dd5b4" />
+<img width="2000" height="1500" alt="英文设置界面" src="https://github.com/user-attachments/assets/71d1c68a-3e3f-41a7-867b-8d42543faba1" />
 
-### 界面效果
-
-<img width="800" height="400" alt="界面效果1" src="https://github.com/user-attachments/assets/aa4e4889-33b0-4860-b973-61baf1e7f57e" />
-<img width="800" height="600" alt="界面效果2" src="https://github.com/user-attachments/assets/466e4509-af6a-4bb0-9e31-55b4cf7799e1" />
-<img width="800" height="800" alt="界面效果3" src="https://github.com/user-attachments/assets/332d471d-85b0-4aa5-8aef-e9a674bd179d" />
 
 ---
 
