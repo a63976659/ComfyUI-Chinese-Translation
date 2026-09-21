@@ -1,0 +1,4219 @@
+{
+    "ContextWindowsVisualizerKJ": {
+        "title": "ابزار نمایش بصری پنجرهٔ زمینه (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "frame_units": "واحد فریم",
+            "dim": "بُعد",
+            "temporal_downscale": "نرخ زیرنمونه‌برداری زمانی",
+            "num_frames": "تعداد فریم",
+            "context_length": "طول زمینه",
+            "context_overlap": "همپوشانی زمینه",
+            "context_schedule": "زمان‌بندی زمینه",
+            "context_stride": "اندازهٔ گام زمینه",
+            "closed_loop": "حلقهٔ بسته",
+            "fuse_method": "روش ادغام",
+            "causal_window_fix": "اصلاح پنجرهٔ علّی",
+            "freenoise": "نویز آزاد",
+            "cond_retain_index_list": "فهرست نمایه‌های حفظ شرط"
+        },
+        "outputs": {
+            "model": "مدل"
+        },
+        "description": "نمایش بصری تعاملی پنجرهٔ زمینهٔ ComfyUI: موقعیت پنجره، مقدار همپوشانی، وزن‌های ادغام و ترکیب گام‌به‌گام فریم‌ها، با به‌روزرسانی زنده. می‌توانید انتخاب کنید تنظیمات روی هستهٔ گرهٔ پنجرهٔ زمینه (دستی) و مدل‌های دیگر اعمال شود."
+    },
+    "MiniMaxH3TokenCounter": {
+        "title": "شمارندهٔ توکن MiniMax H3",
+        "inputs": {
+            "samples": "نمونه‌برداری",
+            "conditioning": "شرط"
+        },
+        "widgets": {},
+        "outputs": {
+            "samples": "نمونه‌برداری",
+            "conditioning": "شرط",
+            "tokens": "توکن",
+            "breakdown": "تجزیه"
+        },
+        "description": "طول دنبالهٔ بسته‌بندی‌شده‌ای را که MiniMax H3 هنگام تولید بدون نمونه‌برداری اجرا می‌کند محاسبه کنید. بر اساس متغیرهای نهان AV و اطلاعات شرط (شامل طول متن، فریم‌های کلیدی و بلوک‌های مرجع)، همان چیدمان مدل را می‌سازد: [متن | فریم کلیدی/مرجع | صوت | ویدئو]."
+    },
+    "MiniMaxLowVRAMAttention": {
+        "title": "توجه کم‌مصرفِ VRAM MiniMax H3",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "head_chunks": "تعداد بلوک سر"
+        },
+        "outputs": {
+            "model": "مدل"
+        },
+        "description": "با تغییر ندادن منطق محاسبات، اوج مصرف VRAM را در ماژول توجه MiniMax H3 کاهش می‌دهد. فراخوانی‌های توجه را به چند گروه سر تقسیم می‌کند، به‌طوری‌که داده‌های گذرا درون هسته (مانند نسخه‌های q/k با int8 و انباشتگرهای fp32) هنگام معتبر بودن بافر qkv ادغام‌شده با تعداد بلوک‌ها کاهش می‌یابد و هم‌زمان بلافاصله پس از مصرف، بافر qkv و ورودی‌های بلوک نرمال‌سازی آزاد می‌شوند. نتایج خروجی دقیقاً با مدل بدون وصله یکسان است."
+    },
+    "MiniMaxChunkFeedForward": {
+        "title": "شبکهٔ پیش‌خور بلوکی MiniMax H3",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "chunks": "تعداد بلوک",
+            "seq_threshold": "آستانهٔ دنباله"
+        },
+        "outputs": {},
+        "description": "پیش‌خور (SwiGLU) در MiniMax H3 را بر پایهٔ بُعد توکن‌های بسته‌بندی‌شده بلوک‌بندی می‌کند تا اوج مصرف VRAM کاهش یابد. هنگام کوانتیزه‌سازی مدل، هر بلوک همچنان از هستهٔ INT8 ادغام‌شدهٔ ComfyUI عبور می‌کند؛ چون مقادیر فعال‌سازی به‌ازای هر توکن کوانتیزه می‌شوند، خروجی با مدل بدون بلوک‌بندی یکسان است."
+    },
+    "Ideogram4PromptBuilderKJ": {
+        "title": "سازندهٔ دستور متنی Ideogram4 (KJ)",
+        "inputs": {
+            "image": "تصویر",
+            "import_json": "وارد کردن JSON",
+            "bboxes": "کادر محدوده"
+        },
+        "widgets": {
+            "width": "عرض",
+            "height": "ارتفاع",
+            "high_level_description": "توضیح پیشرفته",
+            "background": "پس‌زمینه",
+            "style": "سبک",
+            "aesthetics": "زیبایی‌شناسی",
+            "lighting": "نورپردازی",
+            "medium": "رسانه",
+            "style_palette_data": "دادهٔ پالت رنگ سبک",
+            "elements_data": "دادهٔ عناصر",
+            "bg_brightness": "روشنایی پس‌زمینه",
+            "import_mode": "حالت وارد کردن",
+            "output_format": "قالب خروجی",
+            "coord_mode": "حالت مختصات",
+            "bbox_order": "ترتیب کادرهای محدوده"
+        },
+        "outputs": {
+            "prompt": "دستور متنی",
+            "preview": "پیش‌نمایش",
+            "bboxes": "کادر محدوده",
+            "width": "عرض",
+            "height": "ارتفاع"
+        },
+        "description": "\nسازندهٔ بصری دستور متنی برای قالب زیرنویس JSON ساختاریافتهٔ Ideogram 4.\n\nروی بوم بکشید تا نواحی رسم شوند؛ یک ناحیه را انتخاب کنید تا نوع آن (شیء/متن)، توضیح، متن و پالت رنگش تنظیم شود. پس‌زمینه و فیلدهای سبک اختیاری را به‌صورت ویجت تنظیم کنید. رشتهٔ JSONِ زیرنویسِ مونتاژشده را خروجی می‌دهد.\n\nافست محور bboX روی شبکهٔ 0-1000 نرمال می‌شود، به قالب [کمینهٔ افست محور Y، کمینهٔ افست محور X، بیشینهٔ افست محور Y، بیشینهٔ افست محور X]؛ عرض/ارتفاع نسبت ابعاد بوم را تنظیم می‌کند.\n\nکنترل‌های بوم:\n- کشیدن: رسم ناحیهٔ جدید\n- Ctrl/Cmd+کشیدن: اجبار به رسم ناحیهٔ جدید حتی روی ناحیهٔ موجود\n- کلیک: انتخاب ناحیه · Alt+کلیک: چرخش میان نواحی همپوشان\n- دوبار کلیک: ویرایش درون‌خطی توضیح\n- کلیک راست: فهرست نواحی (انتخاب/حذف/کپی/بچینش مجدد، بالا یعنی جلو)\n- Del/Backspace: حذف ناحیهٔ انتخاب‌شده\n- Ctrl/Cmd + C/V/D: کپی/چسباندن/تکثیر ناحیهٔ انتخاب‌شده\n- فیلدهای افست محور bboX کنار obj/متن (پیکسل/خروجی) قابل ویرایش‌اند\n\nنمونه‌های رنگ:\n- کلیک: ویرایش · کشیدن: بچینش مجدد · کلیک راست: حذف\n- هاور+Ctrl/Cmd + C/V: کپی/چسباندن مقدار رنگ hex\n- \"+\": افزودن رنگ (اگر کلیپ‌بورد رنگ باشد از همان رنگ استفاده می‌کند)\n\nنوار ابزار:\n- زنده: استفاده از پیش‌نمایش نمونه‌برداری زنده به‌عنوان پس‌زمینه (و گرفتن نتیجهٔ نهایی)\n- گرفتن پس‌زمینه/پاک‌کردن پس‌زمینه: استفاده از آخرین تصویر تولیدشده به‌عنوان پس‌زمینه\n- کشویی روشنایی، تخمین توکن، و کپی/چسباندن/پاک‌کردن همه"
+    },
+    "RandomImageFromBatch": {
+        "title": "انتخاب تصادفی تصویر از دسته (KJ)",
+        "inputs": {
+            "input": "ورودی"
+        },
+        "widgets": {
+            "start_index": "نمایهٔ شروع",
+            "end_index": "نمایهٔ پایان",
+            "num_frames": "تعداد فریم",
+            "randomness": "تصادفی‌بودن",
+            "min_distance": "حداقل فاصله",
+            "max_distance": "حداکثر فاصله",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "output": "خروجی"
+        },
+        "description": "مجموعه‌ای از فریم‌ها را از بازهٔ نمایه‌های انتخاب‌شدهٔ یک دستهٔ تصویر یا ماسک برمی‌گزیند. هنگامی که تصادفی‌بودن=0 باشد، فریم‌های برگزیده به‌طور یکنواخت در بازه پخش می‌شوند؛ هنگامی که تصادفی‌بودن=1 باشد، نمونه‌برداری تصادفی یکنواخت بدون تکرار هستند؛ و مقادیر میانی به‌صورت خطی ترکیب می‌شوند. خروجی همیشه بر اساس نمایهٔ دسته مرتب است. نمایه‌های منفی از انتها شمرده می‌شوند (-1 = آخرین)."
+    },
+    "FastPreviewBatch": {
+        "title": "پیش‌نمایش سریع دسته (KJ)",
+        "inputs": {
+            "input": "ورودی"
+        },
+        "widgets": {
+            "max_thumb_size": "حداکثر اندازهٔ بندانگشتی",
+            "crf": "محدود کردن کیفیت تصویر",
+            "max_grid_frames": "حداکثر فریم شبکه"
+        },
+        "outputs": {},
+        "description": "دستهٔ تصاویر را به یک نوار بندانگشتی MP4 با کدگذاری H.264 که کاملاً فریم‌های I است رمزگذاری می‌کند و آن را به‌صورت شبکهٔ تعاملی نمایش می‌دهد. برای بزرگ‌نمایی و مرور رفت‌وبرگشت روی یک کاشی کلیک کنید. از تولید N فایل PNG می‌پرهیزد."
+    },
+    "BBOXToBoundingBoxKJ": {
+        "title": "تبدیل BBOX به کادر محدوده (KJ)",
+        "inputs": {
+            "bbox": "کادر محدوده"
+        },
+        "widgets": {
+            "bbox_format": "قالب کادر محدوده",
+            "index": "نمایه"
+        },
+        "outputs": {
+            "bounding_box": "کادر محدوده"
+        },
+        "description": "BBOX در KJNodes را به دیکشنری‌های بومی BOUNDING_BOX که گره‌های هسته (مانند برش تصویر) استفاده می‌کنند تبدیل می‌کند."
+    },
+    "WanVideoMemoryEfficientSageAttentionPatch": {
+        "title": "وصلهٔ توجه Sage کم‌مصرفِ حافظه برای ویدئوی Wan (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "مدل"
+        },
+        "description": "قابلیت آزمایشی! sageattention سفارشی را روی خودتوجهی WanVideo برای کاهش اوج مصرف VRAM فعال می‌کند و حالت توجه را بازنویسی می‌کند. نیازمند تازه‌ترین نسخهٔ sageattention."
+    },
+    "MiniMaxH3MemoryEfficientSageAttentionPatch": {
+        "title": "وصلهٔ توجه Sage کم‌مصرفِ حافظه MiniMax H3 (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "مدل"
+        },
+        "description": "قابلیت آزمایشی! sageattention سفارشی را روی خودتوجهی MiniMax H3 برای کاهش اوج مصرف VRAM فعال می‌کند و حالت توجه را بازنویسی می‌کند. نیازمند تازه‌ترین نسخهٔ sageattention."
+    },
+    "PatchFlashAttentionKJ": {
+        "title": "وصلهٔ Flash Attention (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "allow_compile": "اجازهٔ کامپایل"
+        },
+        "outputs": {},
+        "description": "گرهٔ آزمایشی برای وصله‌زدن توجه به Flash Attention، بدون بازگشت خاموش به SDPA پیش‌فرض رابط ComfyUI. توجه مدل‌هایی که از این گره می‌گذرند را وصله می‌کند؛ برای غیرفعال‌سازی باید گره را دور بزنید یا قطع کنید. نیازمند نصب کتابخانهٔ flash_attn."
+    },
+    "TorchCompileModelAdvanced": {
+        "title": "کامپایل مدل Torch نسخهٔ پیشرفته (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "backend": "بک‌اند",
+            "fullgraph": "حالت گراف کامل",
+            "mode": "حالت",
+            "dynamic": "پویا",
+            "compile_transformer_blocks_only": "فقط بلوک‌های Transformer را کامپایل کن",
+            "dynamo_cache_size_limit": "محدودیت اندازهٔ حافظهٔ نهان‌گاه Dynamo",
+            "debug_compile_keys": "کلیدهای کامپایل اشکال‌زدایی",
+            "disable_dynamic_vram": "غیرفعال‌سازی VRAM پویا"
+        },
+        "outputs": {},
+        "description": "وصلهٔ پیشرفتهٔ torch.compile برای مدل‌های انتشار."
+    },
+    "Krea2PromptWeight": {
+        "title": "وزن‌دهی دستور متنی Krea2 (KJ)",
+        "inputs": {
+            "clip": "CLIP",
+            "model": "مدل"
+        },
+        "widgets": {
+            "text": "متن",
+            "strength": "شدت"
+        },
+        "outputs": {
+            "model": "مدل",
+            "conditioning": "شرط"
+        },
+        "description": "وزن‌دهی دستور متنی به‌ازای هر توکن برای Krea2 (K2) از طریق مقیاس‌دهی مقادیر توجه محقق می‌شود. از (کلمه:-1) برای حذف یک مفهوم و (کلمه:1.5) برای تأکید بر آن استفاده کنید — این قابلیت با رمزگذار Qwen3-VL کار می‌کند و با تنظیمات وزن معمولی قابل دستیابی نیست. مدل وصله‌خورده و شرط را خروجی می‌دهد؛ CFG نمونه‌بردار را روی 1.0 تنظیم کنید."
+    },
+    "Ideogram4OptimizationsKJ": {
+        "title": "بهینه‌سازی Ideogram4 (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "chunk_ffn": "پیش‌خور بلوکی",
+            "ffn_chunks": "تعداد بلوک پیش‌خور",
+            "ffn_seq_threshold": "آستانهٔ دنبالهٔ پیش‌خور",
+            "bf16_rope": "کدگذاری موقعیت bf16"
+        },
+        "outputs": {
+            "model": "مدل"
+        },
+        "description": "قابلیت آزمایشی، ممکن است خروجی مدل را تغییر دهد!! اوج VRAM را در پیش‌رو (forward) Ideogram4 کاهش می‌دهد. chunk_ffn فعال‌سازی‌های SwiGLU را بر پایهٔ بُعد توکن می‌شکافد؛ bf16_rope کدگذاری RoPE را با نوع دادهٔ مدل اعمال می‌کند نه با ارتقا به fp32. هر دو بزرگ‌ترین تانسورهای گذرای درون بلوک را هدف می‌گیرند."
+    },
+    "PiDColorBiasCorrection": {
+        "title": "تصحیح انحراف رنگ PiD (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "strength": "شدت",
+            "backbone": "شبکهٔ اصلی"
+        },
+        "outputs": {},
+        "description": "تصحیح‌کنندهٔ کشش رنگ/روشنایی برای رمزگشای چهارگام PiD. در نخستین گام نمونه‌برداری، یک انحراف به‌ازای هر کانال را از افست افقی 0_p red با استفاده از یک مدل خطی کوچک که برای کشش سیستماتیک مدل کالیبره شده کم می‌کند (مدل تمایل دارد صحنه‌های تیره را روشن‌تر و ته‌رنگ آبی اضافه کند)."
+    },
+    "LeapfusionHunyuanI2V": {
+        "title": "Leapfusion Hunyuan تصویر به ویدئو (KJ)",
+        "inputs": {
+            "model": "مدل",
+            "latent": "متغیر نهان"
+        },
+        "widgets": {
+            "index": "نمایه",
+            "start_percent": "درصد شروع",
+            "end_percent": "درصد پایان",
+            "strength": "شدت"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VAEMergeKJ": {
+        "title": "ادغام VAE (KJ)",
+        "inputs": {
+            "vae_1": "VAE1",
+            "vae_2": "VAE2"
+        },
+        "widgets": {
+            "ratio": "نسبت"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "وزن‌های دو VAE را با میانگین وزنی ادغام می‌کند. نسبت، وزن به‌سوی VAE_2 است (0.0 = کاملاً VAE_1، 1.0 = کاملاً VAE_2). دو VAE باید معماری یکسانی داشته باشند (کلیدها و شکل‌های دیکشنری وضعیت منطبق)."
+    },
+    "LatentInpaintTTM": {
+        "title": "ترمیم ماسک Latent TTM (KJ)",
+        "inputs": {
+            "model": "مدل",
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "steps": "تعداد گام"
+        },
+        "outputs": {},
+        "description": "https://github.com/time-to-move/TTM"
+    },
+    "DeprecatedCompileNodeKJ": {
+        "title": "گرهٔ کامپایل منسوخ‌شده (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "این گره با گرهٔ TorchCompileModelAdvanced جایگزین شده است، لطفاً از آن گره استفاده کنید."
+    },
+    "ModelPreviewOverrideKJ": {
+        "title": "بازنویسی پیش‌نمایش مدل (KJ)",
+        "inputs": {
+            "model": "مدل",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "max_resolution": "حداکثر وضوح",
+            "jpeg_quality": "کیفیت JPEG",
+            "suppress_default_preview": "غیرفعال‌سازی پیش‌نمایش پیش‌فرض",
+            "preview_frames": "فریم پیش‌نمایش",
+            "preview_fps": "نرخ فریم پیش‌نمایش",
+            "tiny_vae": "VAE خرد"
+        },
+        "outputs": {},
+        "description": "یک فریم پیش‌نمایش زندهٔ اختصاصی روی این گره اضافه می‌کند که می‌تواند حداکثر وضوح را بازنویسی کند. سقف پیش‌نمایش پیش‌فرض ComfyUI نگاشت 512p است؛ این گره پیش‌نمایش خود را مستقیماً به مؤلفهٔ DOM روی گره می‌فرستد، بنابراین مدل‌های فضای پیکسل (Chroma Radiance، ZImage، HiDream-O1 و…) می‌توانند با وضوح کامل نمونه‌بردار پیش‌نمایش شوند."
+    },
+    "GetPreviewOverrideFramesKJ": {
+        "title": "گرفتن فریم بازنویسی پیش‌نمایش (KJ)",
+        "inputs": {
+            "model": "مدل",
+            "after_sample": "پس از نمونه‌برداری"
+        },
+        "widgets": {},
+        "outputs": {
+            "frames": "فریم‌های ویدئو"
+        },
+        "description": "فریم‌هایی را که در طول آخرین نمونه‌برداری توسط بازنویسی پیش‌نمایش مدل گرفته شده‌اند بازمی‌گرداند. برای اطمینان از ترتیب اجرای درست، «model» را از بازنویسی پیش‌نمایش مدل (همان مدلِ تغذیه‌کنندهٔ نمونه‌بردار) و «after_sample» را پس از نمونه‌بردار (Latent/IMAGE) متصل کنید."
+    },
+    "PatchTritonVAE": {
+        "title": "وصلهٔ Triton VAE (KJ)",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "fuse_norm_silu": "ادغام نرمال‌سازی با تابع فعال‌سازی SiLU",
+            "channels_last": "کانال‌اول",
+            "int8_conv": "کانولوشن INT8",
+            "autotune": "تنظیم خودکار"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "سرعت رمزگشایی/رمزگذاری VAE را با ادغام هستهٔ norm+SiLU در Triton و چیدمان کانال‌اول برای کانولوشن افزایش می‌دهد. VAEهای پشتیبانی‌شده (تشخیص خودکار): VAE ویدئوی Wan 2.1/2.2 (شامل Qwen-Image، RMSNorm، حدود 1.4x/1.15x)، و Flux/Flux2، و VAE تصویر KL مانند SDXL و SD1.5 (GroupNorm، حدود 1.6-1.8x در 2048p)، و VAE ویدئوی LTXV/LTX2 (PiedNorm؛ بلوک‌های رمزگشا با شرط زمانی فقط نرمال‌سازی ادغام می‌شود). سایر معماری‌ها پشتیبانی نمی‌شوند. به‌صورت وصلهٔ شیء روی یک وصله‌زنندهٔ نسخه‌بردار اعمال می‌شود، بنابراین فقط هنگام بارگذاری آن VAE وجود دارد."
+    },
+    "ImageTransformKJ": {
+        "title": "تبدیل تصویر (KJ)",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "target_width": "عرض هدف",
+            "target_height": "ارتفاع هدف",
+            "upscale_method": "روش بزرگ‌نمایی",
+            "keep_proportion": "حفظ نسبت",
+            "divisible_by": "عدد بخش‌پذیر",
+            "extra_padding": "پدینگ اضافی",
+            "invert_crop": "معکوس‌سازی برش",
+            "grid_size": "اندازهٔ شبکه"
+        },
+        "outputs": {
+            "width": "عرض",
+            "height": "ارتفاع",
+            "output": "تصویر خروجی",
+            "output_mask": "ماسک خروجی"
+        },
+        "description": "این گره‌ای برای تبدیل تصویر است؛ از تنظیم اندازهٔ تصویر، روش‌های بزرگ‌نمایی، حفظ نسبت و پارامترهای دیگر پشتیبانی می‌کند و از تبدیل هم‌زمان ماسک نیز پشتیبانی می‌کند."
+    },
+    "ScreencapStream": {
+        "title": "جریان ضبط صفحه (KJ)",
+        "inputs": {},
+        "widgets": {
+            "crop_width": "عرض برش",
+            "crop_height": "ارتفاع برش",
+            "Start capture": "شروع ضبط",
+            "Hide preview": "پنهان‌سازی پیش‌نمایش"
+        },
+        "outputs": {
+            "image": "تصویر"
+        },
+        "description": "این گره برای ضبط زندهٔ تصویر صفحه نمایش استفاده می‌شود. به کاربر اجازه می‌دهد عرض و ارتفاع ناحیهٔ ضبط را سفارشی کند و دکمه‌های کنترل شروع و توقف ضبط را فراهم می‌کند. تصویر زندهٔ ضبط‌شده در پنجرهٔ پیش‌نمایش نمایش داده می‌شود تا وضعیت ضبط صفحه به‌راحتی پایش شود."
+    },
+    "DecodeAndSaveVideo": {
+        "title": "رمزگشایی و ذخیرهٔ ویدئو (KJ)",
+        "inputs": {
+            "video_latent": "Latent ویدئو",
+            "video_vae": "مدل VAE ویدئو",
+            "audio_latent": "Latent صوت",
+            "audio_vae": "مدل VAE صوت"
+        },
+        "widgets": {
+            "fps": "نرخ فریم",
+            "filename_prefix": "پیشوند نام فایل",
+            "format": "قالب",
+            "codec": "کدک",
+            "tiling": "پردازش بلوکی"
+        },
+        "outputs": {
+            "video": "ویدئوی رمزگشایی‌شده",
+            "filename": "نام فایل ذخیره‌شده"
+        },
+        "description": "این گره فضای نهان ویدئو (Video Latent) را به یک فایل ویدئوی واقعی رمزگشایی کرده و ذخیره می‌کند. از رمزگشایی هم‌زمان صوت نیز پشتیبانی می‌کند. کاربر می‌تواند نرخ فریم (FPS)، پیشوند نام فایل، قالب خروجی (مانند MP4، MOV و…)، کدک ویدئو (مانند H.264، H.265) و اینکه آیا پردازش بلوکی (Tiling) برای ویدئوهای بزرگ فعال شود را اینجا پیکربندی کند."
+    },
+    "EncodeVideoComponents": {
+        "title": "رمزگذاری مؤلفه‌های ویدئو (KJ)",
+        "inputs": {
+            "video": "ویدئو",
+            "vae": "مدل VAE"
+        },
+        "widgets": {
+            "width": "عرض",
+            "height": "ارتفاع",
+            "max_frames": "حداکثر تعداد فریم",
+            "upscale_method": "روش بزرگ‌نمایی",
+            "Keep Proportion": "حفظ نسبت"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "audio": "صوت",
+            "fps": "نرخ فریم",
+            "frame_count": "تعداد فریم"
+        },
+        "description": "این گره فریم‌های ویدئو را به نمایش فضای نهان (Latent) رمزگذاری می‌کند و معمولاً در جریان تولید یا پردازش ویدئو به کار می‌رود. یک جریان ویدئو و مدل VAE را به‌عنوان ورودی می‌گیرد و داده‌های فضای نهانِ رمزگذاری‌شده، جریان صوت، اطلاعات نرخ فریم و تعداد کل فریم‌ها را خروجی می‌دهد. کاربر همچنین می‌تواند وضوح خروجی (عرض و ارتفاع)، حداکثر تعداد فریم، روش بزرگ‌نمایی تصویر (مانند Lanczos) و اینکه نسبت ابعاد اصلی حفظ شود را اینجا تنظیم کند."
+    },
+    "ColorMatchV2": {
+        "title": "تطبیق رنگ V2 (KJ)",
+        "inputs": {
+            "image_target": "تصویر هدف",
+            "image_ref": "تصویر مرجع"
+        },
+        "widgets": {
+            "method": "روش",
+            "strength": "شدت",
+            "multithread": "چندریسه‌ای"
+        },
+        "outputs": {
+            "image": "تصویر"
+        },
+        "description": "گره‌ای برای اعمال سبک رنگ یک تصویر مرجع روی تصویر هدف. از چندین الگوریتم تطبیق (مانند mkl) پشتیبانی می‌کند، امکان تنظیم شدت تطبیق را فراهم می‌کند و برای افزایش کارایی از پردازش چندریسه‌ای پشتیبانی می‌کند."
+    },
+    "PreviewImageOrMask": {
+        "title": "پیش‌نمایش تصویر یا ماسک (KJ)",
+        "inputs": {
+            "input": "تصویر یا ماسک ورودی"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "این گره تصویر یا ماسک ورودی را مستقیماً در رابط ComfyUI نمایش می‌دهد و عمدتاً برای اشکال‌زدایی و مشاهدهٔ نتایج میانی در طول پردازش استفاده می‌شود. معمولاً جریان داده خروجی نمی‌دهد و تنها به‌عنوان پیش‌نمایش بصری به کار می‌رود."
+    },
+    "ImageSharpenKJ": {
+        "title": "تیز کردن تصویر (KJ)",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "method": "روش",
+            "strength": "شدت"
+        },
+        "outputs": {
+            "output": "تصویر خروجی"
+        },
+        "description": "این گره تصویر ورودی را تیز می‌کند. به کاربر اجازه می‌دهد الگوریتم‌های تیز کردن متفاوتی (مانند rcas) انتخاب و شدت تیز کردن را تنظیم کند تا وضوح و جزئیات تصویر افزایش یابد."
+    },
+    "PlaySoundKJ": {
+        "title": "پخش صوت",
+        "inputs": {
+            "any_input": "ورودی دلخواه",
+            "audio": "صوت"
+        },
+        "widgets": {
+            "audio_path": "مسیر صوت",
+            "mode": "حالت",
+            "volume": "سطح صدا",
+            "duration": "مدت"
+        },
+        "outputs": {
+            "any_output": "خروجی دلخواه"
+        },
+        "description": "فایل صوتی مشخص‌شده را پخش می‌کند؛ از تنظیم حالت پخش، سطح صدا و مدت پشتیبانی می‌کند."
+    },
+    "NormalizedAmplitudeToMask": {
+        "title": "نرمال‌سازی دامنه به ماسک",
+        "inputs": {
+            "normalized_amp": "دامنهٔ نرمال‌شده"
+        },
+        "widgets": {
+            "width": "عرض",
+            "height": "ارتفاع",
+            "frame_offset": "افست فریم",
+            "location_x": "موقعیت_X",
+            "location_y": "موقعیت_Y",
+            "size": "اندازه",
+            "shape": "شکل",
+            "color": "رنگ"
+        },
+        "outputs": {
+            "MASK": "ماسک"
+        },
+        "description": "گره‌ای برای پل‌زدن به افزونهٔ AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nبر اساس دامنهٔ نرمال‌شده یک ماسک می‌سازد."
+    },
+    "NormalizedAmplitudeToFloatList": {
+        "title": "نرمال‌سازی دامنه به فهرست اعشاری",
+        "inputs": {
+            "normalized_amp": "دامنهٔ نرمال‌شده"
+        },
+        "outputs": {
+            "FLOAT": "عدد اعشاری"
+        },
+        "description": "گره‌ای برای پل‌زدن به افزونهٔ AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nبر اساس دامنهٔ نرمال‌شده یک فهرست عدد اعشاری می‌سازد."
+    },
+    "OffsetMaskByNormalizedAmplitude": {
+        "title": "جابه‌جایی ماسک بر پایهٔ دامنهٔ نرمال‌شده",
+        "inputs": {
+            "normalized_amp": "دامنهٔ نرمال‌شده",
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "rotate": "چرخش",
+            "angle_multiplier": "مضرب زاویه"
+        },
+        "outputs": {
+            "mask": "ماسک"
+        },
+        "description": "گره‌ای برای پل‌زدن به افزونهٔ AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nبر اساس دامنهٔ نرمال‌شده یک ماسک را جابه‌جا می‌کند."
+    },
+    "ImageTransformByNormalizedAmplitude": {
+        "title": "تبدیل تصویر بر پایهٔ دامنهٔ نرمال‌شده",
+        "inputs": {
+            "normalized_amp": "دامنهٔ نرمال‌شده",
+            "image": "تصویر"
+        },
+        "widgets": {
+            "zoom_scale": "مقیاس‌دهی",
+            "x_offset": "جابه‌جایی x",
+            "y_offset": "جابه‌جایی y",
+            "cumulative": "انباشت"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "گره‌ای برای پل‌زدن به افزونهٔ AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nبر اساس دامنهٔ نرمال‌شده یک تصویر را تبدیل می‌کند."
+    },
+    "BatchCropFromMask": {
+        "title": "برش ماسک",
+        "inputs": {
+            "original_images": "تصویر",
+            "masks": "ماسک"
+        },
+        "widgets": {
+            "crop_size_mult": "ضریب برش",
+            "bbox_smooth_alpha": "شفافیت هموار BBox"
+        },
+        "outputs": {
+            "original_images": "تصویر اصلی",
+            "cropped_images": "تصویر بریده",
+            "bboxes": "BBox",
+            "width": "عرض",
+            "height": "ارتفاع"
+        }
+    },
+    "BatchUncrop": {
+        "title": "لغو برش (دسته)",
+        "inputs": {
+            "original_images": "تصویر اصلی",
+            "cropped_images": "تصویر بریده",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "border_blending": "ادغام حاشیه",
+            "crop_rescale": "مقیاس‌دهی مجدد",
+            "border_bottom": "مرز پایینی",
+            "border_top": "مرز بالایی",
+            "border_left": "مرز چپ",
+            "border_right": "مرز راست"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "BatchCropFromMaskAdvanced": {
+        "title": "برش ماسک (پیشرفته)",
+        "inputs": {
+            "original_images": "تصویر",
+            "masks": "ماسک"
+        },
+        "widgets": {
+            "crop_size_mult": "ضریب برش",
+            "bbox_smooth_alpha": "شفافیت هموار BBox"
+        },
+        "outputs": {
+            "original_images": "تصویر اصلی",
+            "cropped_images": "تصویر بریده",
+            "cropped_masks": "ماسک برش",
+            "combined_crop_image": "ادغام تصاویر بریده",
+            "combined_crop_masks": "ادغام ماسک‌های بریده",
+            "bboxes": "BBox",
+            "combined_bounding_box": "ادغام BBox",
+            "bbox_width": "عرض BBox",
+            "bbox_height": "ارتفاع BBox"
+        }
+    },
+    "FilterZeroMasksAndCorrespondingImages": {
+        "title": "پالایش ماسک‌ها و تصاویر صفری",
+        "inputs": {
+            "masks": "ماسک",
+            "original_images": "تصویر"
+        },
+        "outputs": {
+            "non_zero_masks_out": "ماسک‌های غیرصفر",
+            "non_zero_mask_images_out": "تصاویر غیرصفر",
+            "zero_mask_images_out": "تصاویر صفر",
+            "zero_mask_images_out_indexes": "نمایهٔ تصاویر ماسک غیرصفر"
+        },
+        "description": "همهٔ ماسک‌های خالی (یعنی تماماً صفر) را از mask فیلتر می‌کند\nدر صورت ارائه، می‌توان تصاویر متناظر را نیز در\n original_images بر اساس نمایه فیلتر کرد\n original_images (اختیاری): در صورت ارائه باید همان طول mask را داشته باشد."
+    },
+    "InsertImageBatchByIndexes": {
+        "title": "درج تصاویر دسته بر اساس نمایه",
+        "inputs": {
+            "images": "تصویر",
+            "images_to_insert": "تصاویر درج‌شده",
+            "insert_indexes": "نمایه‌های درج"
+        },
+        "outputs": {
+            "images_after_insert": "تصویر"
+        },
+        "description": "این گره باید با گرهٔ FilterZeroMasksAndCorrespondingImages استفاده شود،\n_بر اساس insert_indexes مقدار images_to_insert را در images درج می‌کند.\n_مقدار بازگشتی: images_after_insert - دنبالهٔ تصاویر به‌روزشده با ترتیب اصلی."
+    },
+    "BatchUncropAdvanced": {
+        "title": "لغو برش (پیشرفته)",
+        "inputs": {
+            "original_images": "تصویر اصلی",
+            "cropped_images": "تصویر بریده",
+            "cropped_masks": "ماسک برش",
+            "combined_crop_mask": "ادغام ماسک‌های بریده",
+            "bboxes": "BBox",
+            "combined_bounding_box": "ادغام BBox"
+        },
+        "widgets": {
+            "border_blending": "ادغام حاشیه",
+            "crop_rescale": "مقیاس‌دهی مجدد",
+            "use_combined_mask": "استفاده از ماسک ادغام‌شده",
+            "use_square_mask": "استفاده از ماسک مربعی"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "SplitBboxes": {
+        "title": "جدا کردن BBox",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "نمایه"
+        },
+        "outputs": {
+            "bboxes_a": "BBox_A",
+            "bboxes_b": "BBox_B"
+        },
+        "description": "فهرست bbox مشخص‌شده در نمایهٔ تنظیم‌شده را به دو فهرست تقسیم می‌کند"
+    },
+    "BboxToInt": {
+        "title": "BBox به عدد صحیح",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "نمایه"
+        },
+        "outputs": {
+            "x_min": "کمینهٔ X",
+            "y_min": "بیشینهٔ Y",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "center_x": "مرکز X",
+            "center_y": "مرکز Y"
+        },
+        "description": "نمایهٔ انتخاب‌شده از فهرست کادرهای محدوده را به‌صورت عدد صحیح بازمی‌گرداند"
+    },
+    "BboxVisualize": {
+        "title": "پیش‌نمایش BBox",
+        "inputs": {
+            "images": "تصویر",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "line_width": "ضخامت خط"
+        },
+        "outputs": {
+            "images": "تصویر"
+        },
+        "description": "bbox مشخص‌شده را روی تصویر نمایش می‌دهد"
+    },
+    "PlotCoordinates": {
+        "title": "نمودار مختصات",
+        "inputs": {
+            "coordinates": "مختصات",
+            "size_multiplier": "مضرب اندازه"
+        },
+        "widgets": {
+            "text": "متن",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "bbox_width": "عرض BBox",
+            "bbox_height": "ارتفاع BBox"
+        },
+        "outputs": {
+            "images": "تصویر",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "bbox_height": "ارتفاع BBox",
+            "bbox_width": "عرض BBox"
+        },
+        "description": "با استفاده از Matplotlib یک دنبالهٔ نمودار مختصات می‌سازد."
+    },
+    "SplineEditor": {
+        "title": "ویرایشگر منحنی",
+        "inputs": {
+            "bg_image": "تصویر پس‌زمینه"
+        },
+        "widgets": {
+            "points_store": "موقعیت نقاط",
+            "mask_width": "عرض ماسک",
+            "mask_height": "ارتفاع ماسک",
+            "points_to_sample": "دقت نمونه‌برداری",
+            "sampling_method": "روش نمونه‌برداری",
+            "interpolation": "روش درون‌یابی",
+            "tension": "کشش",
+            "repeat_output": "تکرار خروجی",
+            "float_output_type": "نوع خروجی اعشاری",
+            "min_value": "کمینه",
+            "max_value": "بیشینه",
+            "New spline": "منحنی جدید",
+            "New canvas": "بوم جدید"
+        },
+        "outputs": {
+            "mask": "ماسک",
+            "coord_str": "مختصات",
+            "float": "عدد اعشاری",
+            "count": "تعداد",
+            "normalized_str": "رشتهٔ نرمال‌شده"
+        },
+        "description": "# در حال توسعه \nتا حد امکان از این گره در گردش کار استفاده نکنید، ممکن است با تعداد زیادی باگ و ناپایداری روبه‌رو شوید!! \n \n##ویرایشگر گرافیکی برای ساخت زمان‌بندی انواع مقادیر \n\n**Shift+کلیک چپ** افزودن نقطهٔ کنترلی جدید، **Ctrl+کلیک چپ** ساخت نقطهٔ کنترلی میانی، **کلیک راست** حذف نقطهٔ کنترلی.\nنقاط انتهایی قابل حذف نیستند.\n\n کلیک راست روی پس‌زمینه منویی باز می‌کند: چند تنظیم بصری که بر نتیجهٔ خروجی اثر ندارند:\n - دیدپذیری دستگیره‌های کنترلی \n - نمایش نقاط نمونه \n\n**دقت نمونه** تعداد نقاط نمونه را تنظیم می‌کند، نقاط نمونه را از خود منحنی اسپلاین بازمی‌گرداند و ربطی به نقاط کنترلی واقعی ندارد، نوع درون‌یابی آن را تعیین می‌کند.\nروش نمونه:\n - زمان: نمونه‌برداری در امتداد محور زمان، برای زمان‌بندی \n - مسیر: نمونه‌برداری در امتداد مسیر منحنی، برای مختصات \n\n خروجی:\n - دستهٔ ماسک \n مناسب هر گره‌ای که ماسک می‌گیرد \n - فهرست اعداد اعشاری \n مناسب گروه‌های وزن IPAdapter \n - دنبالهٔ pandas \n مناسب گره‌هایی که زمان‌بندی دستهٔ Fizz را می‌گیرند \n - تانسور torch \n مناسب گره‌های نامشخص"
+    },
+    "CreateShapeMaskOnPath": {
+        "title": "ساخت ماسک شکل",
+        "inputs": {
+            "coordinates": "مختصات",
+            "size_multiplier": "مضرب اندازه"
+        },
+        "widgets": {
+            "shape": "شکل",
+            "frame_height": "ارتفاع",
+            "frame_width": "عرض",
+            "shape_height": "ارتفاع شکل",
+            "shape_width": "عرض شکل",
+            "shape_color": "رنگ شکل",
+            "bg_color": "رنگ پس‌زمینه",
+            "blur_radius": "شعاع محو",
+            "intensity": "شدت"
+        },
+        "outputs": {
+            "mask": "ماسک",
+            "mask_inverted": "معکوس‌سازی ماسک"
+        },
+        "description": "یک ماسک یا دستهٔ ماسک با شکل مشخص‌شده تولید می‌کند؛ پارامتر موقعیت، موقعیت مرکز است."
+    },
+    "CreateShapeImageOnPath": {
+        "title": "ساخت تصویر شکل",
+        "inputs": {
+            "coordinates": "مختصات",
+            "size_multiplier": "مضرب اندازه"
+        },
+        "widgets": {
+            "shape": "شکل",
+            "frame_height": "ارتفاع",
+            "frame_width": "عرض",
+            "shape_height": "ارتفاع شکل",
+            "shape_width": "عرض شکل",
+            "shape_color": "رنگ شکل",
+            "bg_color": "رنگ پس‌زمینه",
+            "blur_radius": "شعاع محو",
+            "intensity": "شدت",
+            "trailing": "دنباله",
+            "border_width": "ضخامت حاشیه",
+            "border_color": "رنگ حاشیه"
+        },
+        "outputs": {
+            "image": "تصویر",
+            "mask": "ماسک"
+        },
+        "description": "یک تصویر یا دستهٔ تصویر با شکل مشخص‌شده تولید می‌کند؛ پارامتر موقعیت، موقعیت مرکز است."
+    },
+    "CreateTextOnPath": {
+        "title": "ساخت متن",
+        "inputs": {
+            "coordinates": "مختصات",
+            "size_multiplier": "مضرب اندازه"
+        },
+        "widgets": {
+            "text": "متن",
+            "frame_height": "ارتفاع",
+            "frame_width": "عرض",
+            "font": "قلم",
+            "font_size": "اندازهٔ قلم",
+            "alignment": "هم‌ترازی با",
+            "text_color": "رنگ متن"
+        },
+        "outputs": {
+            "image": "تصویر",
+            "mask": "ماسک",
+            "mask_inverted": "معکوس‌سازی ماسک"
+        },
+        "description": "یک ماسک یا دسته‌ای ماسک با متن مشخص‌شده می‌سازد. موقعیت، موقعیت مرکز است."
+    },
+    "CreateGradientFromCoords": {
+        "title": "ساخت تصویر گرادیان از مختصات",
+        "inputs": {
+            "coordinates": "مختصات"
+        },
+        "widgets": {
+            "frame_height": "ارتفاع",
+            "frame_width": "عرض",
+            "start_color": "رنگ شروع",
+            "end_color": "رنگ پایان",
+            "multiplier": "مضرب"
+        },
+        "outputs": {
+            "image": "تصویر"
+        },
+        "description": "در موقعیت مختصات یک تصویر گرادیان می‌سازد."
+    },
+    "GradientToFloat": {
+        "title": "گرادیان به عدد اعشاری",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "steps": "تعداد گام"
+        },
+        "outputs": {
+            "float_x": "اعشاری_X",
+            "float_y": "اعشاری_Y"
+        },
+        "description": "محاسبهٔ فهرست اعشاری تصویر"
+    },
+    "MaskOrImageToWeight": {
+        "title": "ماسک یا تصویر به وزن",
+        "inputs": {
+            "images": "تصویر",
+            "masks": "ماسک"
+        },
+        "widgets": {
+            "output_type": "نوع خروجی"
+        },
+        "outputs": {
+            "FLOAT": "عدد اعشاری",
+            "STRING": "عدد اعشاری"
+        },
+        "description": "میانگین دستهٔ ماسک یا تصویر را گرفته و نتیجه را بر اساس «نوع خروجی» خروجی می‌دهد."
+    },
+    "WeightScheduleConvert": {
+        "title": "تبدیل زمان‌بندی وزن",
+        "inputs": {
+            "input_values": "مقادیر ورودی",
+            "interpolation_curve": "منحنی درون‌یابی"
+        },
+        "widgets": {
+            "output_type": "نوع خروجی",
+            "invert": "معکوس",
+            "repeat": "تکرار",
+            "remap_to_frames": "بازنگاشت به فریم",
+            "interpolation_curve": "منحنی درون‌یابی",
+            "remap_values": "بازنگاشت مقادیر",
+            "remap_min": "بازنگاشت کمینه",
+            "remap_max": "بازنگاشت بیشینه"
+        },
+        "outputs": {
+            "FLOAT": "عدد اعشاری",
+            "STRING": "عدد اعشاری",
+            "INT": "عدد صحیح"
+        },
+        "description": "فهرست‌ها/دنباله‌های مقدار مختلف را به نوع دیگری تبدیل می‌کند."
+    },
+    "FloatToMask": {
+        "title": "عدد اعشاری به ماسک",
+        "inputs": {
+            "input_values": "مقادیر ورودی"
+        },
+        "widgets": {
+            "width": "عرض",
+            "height": "ارتفاع"
+        },
+        "outputs": {
+            "MASK": "ماسک"
+        },
+        "description": "بر اساس مقادیر اعشاری ورودی دسته‌ای ماسک تولید می‌کند. اندازهٔ دسته به طول مقادیر اعشاری ورودی بستگی دارد. هر ماسک با عرض و ارتفاع مشخص‌شده ساخته می‌شود."
+    },
+    "WeightScheduleExtend": {
+        "title": "گسترش زمان‌بندی وزن",
+        "inputs": {
+            "input_values_1": "مقادیر_ورودی_1",
+            "input_values_2": "مقادیر_ورودی_2"
+        },
+        "widgets": {
+            "output_type": "نوع خروجی"
+        },
+        "outputs": {
+            "FLOAT": "عدد اعشاری"
+        },
+        "description": "فهرست‌ها/دنباله‌های مقدار مختلف را گسترش داده و در صورت نیاز تبدیل می‌کند"
+    },
+    "FloatToSigmas": {
+        "title": "عدد اعشاری به Sigmas",
+        "inputs": {
+            "float_list": "فهرست اعداد اعشاری"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        },
+        "description": "از فهرست اعداد اعشاری یک تانسور sigmas می‌سازد"
+    },
+    "SigmasToFloat": {
+        "title": "Sigmas به عدد اعشاری",
+        "inputs": {
+            "sigmas": "sigmas"
+        },
+        "outputs": {
+            "float": "عدد اعشاری"
+        },
+        "description": "از تانسور sigma یک فهرست عدد اعشاری می‌سازد."
+    },
+    "GLIGENTextBoxApplyBatchCoords": {
+        "title": "کاربرد کادر متنی GLIGEN (مختصات دسته)",
+        "inputs": {
+            "conditioning_to": "شرط",
+            "latents": "Latent",
+            "clip": "CLIP",
+            "gligen_textbox_model": "مدل GLIGEN",
+            "coordinates": "مختصات",
+            "size_multiplier": "مضرب اندازه"
+        },
+        "widgets": {
+            "text": "متن",
+            "width": "عرض",
+            "height": "ارتفاع"
+        },
+        "outputs": {
+            "conditioning": "شرط",
+            "coord_preview": "پیش‌نمایش مختصات"
+        },
+        "description": "این گره امکان زمان‌بندی موقعیت کادرهای متنی GLIGEN در یک دسته را فراهم می‌کند و همراه با AnimateDiff-Evolved استفاده می‌شود. پیشنهاد می‌شود با گرهٔ ویرایشگر منحنی استفاده شود.\n\n مدل GLIGEN را می‌توان از «Get Models» در مدیر بارگیری دریافت کرد. یا مستقیماً از: https://huggingface.co/comfyanonymous/GLIGEN_pruned_safetensors/tree/main . \n \n ورودی‌ها: \n- ورودی **Latent** برای محاسبهٔ اندازهٔ دسته \n- **CLIP** همان رمزگذار متن است، مثل سایر ورودی‌های CLIP \n- **مدل GLIGEN** به گرهٔ بارگذار GLIGEN وصل شود \n- **مختصات** رشتهٔ json نقاط مختصات را دریافت می‌کند و با گرهٔ ویرایشگر منحنی سازگار است. \n- **متن** دستور متنی موقعیت کادرها \n- **عرض** و **ارتفاع** ابعاد کادر متنی GLIGEN را تنظیم می‌کنند \n\n خروجی‌ها:\n- **شرط** میان CLIP Text Encode و نمونه‌بردار وصل شود \n- **پیش‌نمایش مختصات** برای پیش‌نمایش مختصات و BBox \n\n"
+    },
+    "CreateInstanceDiffusionTracking": {
+        "title": "ساخت ردیابی InstanceDiffusion",
+        "inputs": {
+            "coordinates": "مختصات",
+            "size_multiplier": "مضرب اندازه"
+        },
+        "widgets": {
+            "width": "عرض",
+            "height": "ارتفاع",
+            "bbox_width": "عرض BBox",
+            "bbox_height": "ارتفاع BBox",
+            "class_name": "نام کلاس",
+            "class_id": "شناسهٔ کلاس",
+            "prompt": "دستور متنی",
+            "fit_in_frame": "منطبق با فریم"
+        },
+        "outputs": {
+            "tracking": "ردیابی",
+            "prompt": "راهنمایی",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "bbox_width": "عرض bbox",
+            "bbox_height": "ارتفاع bbox",
+            "int": "عدد صحیح"
+        },
+        "description": "دادهٔ ردیابی برای InstanceDiffusion تولید می‌کند:\nhttps://github.com/logtd/ComfyUI-InstanceDiffusion\n\nقالب دستور متنی InstanceDiffusion:\n`\"class_id.class_name\": \"prompt\"`\nمثال:\n`\"1.head\": \"((head))\"`"
+    },
+    "AppendInstanceDiffusionTracking": {
+        "title": "افزودن ردیابی InstanceDiffusion",
+        "inputs": {
+            "tracking_1": "ردیابی_1",
+            "tracking_2": "ردیابی_2",
+            "prompt_1": "دستور متنی_1",
+            "prompt_2": "دستور متنی_2"
+        },
+        "outputs": {
+            "tracking": "ردیابی",
+            "prompt": "راهنمایی"
+        },
+        "description": "افزودن دادهٔ ردیابی برای استفاده با InstanceDiffusion: https://github.com/logtd/ComfyUI-InstanceDiffusion"
+    },
+    "InterpolateCoords": {
+        "title": "درون‌یابی مختصات",
+        "inputs": {
+            "coordinates": "مختصات",
+            "interpolation_curve": "منحنی درون‌یابی"
+        },
+        "outputs": {
+            "coordinates": "مختصات"
+        },
+        "description": "درج مختصات بر اساس منحنی"
+    },
+    "DrawInstanceDiffusionTracking": {
+        "title": "رسم ردیابی InstanceDiffusion",
+        "inputs": {
+            "image": "تصویر",
+            "tracking": "ردیابی"
+        },
+        "widgets": {
+            "box_line_width": "ضخامت خط کادر",
+            "draw_text": "رسم متن",
+            "font": "قلم",
+            "font_size": "اندازهٔ قلم"
+        },
+        "outputs": {
+            "image": "تصویر"
+        },
+        "description": "دادهٔ ردیابی را از گرهٔ CreateInstanceDiffusionTracking برای رسم فراخوانی می‌کند "
+    },
+    "PointsEditor": {
+        "title": "ویرایشگر نقاط",
+        "inputs": {
+            "bg_image": "تصویر پس‌زمینه"
+        },
+        "widgets": {
+            "points_store": "موقعیت نقاط",
+            "bbox_store": "موقعیت BBox",
+            "bbox_format": "قالب BBox",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "normalize": "نرمال‌سازی",
+            "New canvs": "بوم جدید",
+            "Load Image": "بارگذاری تصویر",
+            "Clear Image": "پاک‌کردن تصویر",
+            "New canvas": "بوم جدید"
+        },
+        "outputs": {
+            "positive_coords": "مختصات مثبت",
+            "negative_coords": "مختصات منفی",
+            "bbox": "BBox",
+            "bbox_mask": "ماسک BBox",
+            "cropped_image": "تصویر بریده"
+        },
+        "description": "# در حال توسعه  \nتا حد امکان از این گره در گردش کار استفاده نکنید، ممکن است با تعداد زیادی باگ و ناپایداری روبه‌رو شوید!!  \n\n## ویرایشگر گرافیکی ساخت مختصات\n\n**Shift + کلیک چپ** افزودن نقطهٔ مختصات مثبت (سبز).\n\n**Shift + کلیک راست** افزودن نقطهٔ مختصات منفی (قرمز).\n\n**Ctrl + کلیک چپ** رسم کادر.\n\n**کلیک راست روی نقطهٔ مختصات** حذف آن نقطه؛ نقطهٔ شروع/پایان آرایهٔ نقاط قابل حذف نیست.\n\nبرای افزودن تصویر، گره را انتخاب کرده و تصویر را بچسبانید یا رها کنید.\n\nیا از اینپوت تصویر پس‌زمینه تغذیه کنید، با استفاده از نخستین فریم تصویر ورودی.\n\n**تصویر در گره و گردش کار ذخیره می‌شود**\nاز منوی کلیک راست می‌توان تصویر را پاک کرد.\n"
+    },
+    "CutAndDragOnPath": {
+        "title": "برش و کشیدن مسیر",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک",
+            "bg_image": "تصویر پس‌زمینه",
+            "coordinates": "مختصات"
+        },
+        "widgets": {
+            "frame_width": "عرض فریم",
+            "frame_height": "ارتفاع فریم",
+            "inpaint": "ترمیم"
+        },
+        "outputs": {
+            "image": "تصویر",
+            "mask": "ماسک"
+        },
+        "description": "ناحیهٔ ماسک را از تصویر می‌برد و آن ناحیه را در امتداد مسیر می‌کشد. اگر ترمیم فعال باشد و تصویر پس‌زمینه ارائه نشود، ناحیهٔ بریده با الگوریتم OpenCV TELEA پر می‌شود."
+    },
+    "ImagePass": {
+        "title": "پل تصویر",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "تصویر را به گرهٔ بعدی منتقل می‌کند"
+    },
+    "ColorMatch": {
+        "title": "رنگ‌آمیزی تصویر",
+        "inputs": {
+            "image_ref": "تصویر مرجع",
+            "image_target": "تصویر هدف"
+        },
+        "widgets": {
+            "method": "روش",
+            "strength": "شدت",
+            "multithread": "چندریسه‌ای"
+        },
+        "outputs": {
+            "image": "تصویر"
+        },
+        "description": "«color-matcher (رنگ‌آمیزی تصویر)» می‌تواند سبک رنگ را میان تصاویر تبدیل کند؛ برای رنگ‌آمیزی خودکار عکس‌ها، نقاشی‌ها، دنبالهٔ فریم‌ها و اصلاح تثبیت نور صحنه به کار می‌رود.\n\nبر پایهٔ الگوریتم‌های Reinhard و دیگران، الگوریتم Monge-Kantorovich Linearization (MKL) که Pitie و همکاران ارائه کردند، و راه‌حل تحلیلی ما که تطبیق هیستوگرام کلاسیک را با الگوریتم Multi-Variate Gaussian Distribution (MVGD) ترکیب می‌کند. همان‌طور که نشان داده شده، روش HM-MVGD-HM ما از روش‌های موجود برتر است.\n\nhttps://github.com/hahnec/color-matcher/"
+    },
+    "SaveImageWithAlpha": {
+        "title": "ذخیرهٔ تصویر با کانال Alpha",
+        "inputs": {
+            "images": "تصویر",
+            "mask": "ماسک",
+            "filename_prefix": "پیشوند نام فایل",
+            "prompt": "دستور متنی",
+            "extra_pnginfo": "اطلاعات اضافی PNG"
+        },
+        "outputs": {}
+    },
+    "ImageConcanate": {
+        "title": "ادغام تصویر",
+        "inputs": {
+            "image1": "تصویر_1",
+            "image2": "تصویر_2"
+        },
+        "widgets": {
+            "direction": "جهت",
+            "match_image_size": "تطبیق اندازهٔ تصویر"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "دو تصویر را بر اساس جهت ادغام می‌کند."
+    },
+    "ImageConcatFromBatch": {
+        "title": "ادغام تصویر (دسته)",
+        "inputs": {
+            "images": "تصویر"
+        },
+        "widgets": {
+            "num_columns": "تعداد ستون",
+            "match_image_size": "تطبیق اندازه",
+            "max_resolution": "حداکثر وضوح"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "تصاویر را از دستهٔ تصویر گرفته و بر اساس تعداد ستون به یک تصویر واحد می‌چیند."
+    },
+    "ImageGridComposite2x2": {
+        "title": "ادغام شبکهٔ تصویر 2x2",
+        "inputs": {
+            "image1": "تصویر_1",
+            "image2": "تصویر_2",
+            "image3": "تصویر_3",
+            "image4": "تصویر_4"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "4 تصویر ورودی را در یک جدول 2x2 ادغام می‌کند."
+    },
+    "ImageGridComposite3x3": {
+        "title": "ادغام شبکهٔ تصویر 3x3",
+        "inputs": {
+            "image1": "تصویر_1",
+            "image2": "تصویر_2",
+            "image3": "تصویر_3",
+            "image4": "تصویر_4",
+            "image5": "تصویر_5",
+            "image6": "تصویر_6",
+            "image7": "تصویر_7",
+            "image8": "تصویر_8",
+            "image9": "تصویر_9"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "9 تصویر ورودی را در یک جدول 3x3 ادغام می‌کند."
+    },
+    "ImageBatchTestPattern": {
+        "title": "الگوی دستهٔ تصویر",
+        "widgets": {
+            "batch_size": "اندازهٔ دسته",
+            "start_from": "مقدار شروع",
+            "text_x": "متن x",
+            "text_y": "متن y",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "font": "قلم",
+            "font_size": "اندازهٔ قلم"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "ImageGrabPIL": {
+        "title": "ضبط صفحهٔ PIL",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "num_frames": "تعداد فریم",
+            "delay": "تأخیر"
+        },
+        "outputs": {
+            "image": "تصویر"
+        },
+        "description": "ناحیه‌ای را بر اساس مختصات صفحه ضبط می‌کند.\n\nبرای نمونه‌برداری زنده استفاده می‌شود."
+    },
+    "Screencap_mss": {
+        "title": "ضبط صفحه MSS",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "num_frames": "تعداد فریم",
+            "delay": "تأخیر"
+        },
+        "outputs": {
+            "images": "تصویر"
+        },
+        "description": "ناحیه‌ای را بر اساس مختصات صفحه ضبط می‌کند.\n\nبرای نمونه‌برداری زنده استفاده می‌شود."
+    },
+    "WebcamCaptureCV2": {
+        "title": "ضبط دوربین CV2",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "cam_index": "شمارهٔ دوربین",
+            "release": "آزادسازی"
+        },
+        "outputs": {
+            "image": "تصویر"
+        },
+        "description": "با استفاده از CV2 دوربین وب را فراخوانی کرده و صفحه را ضبط می‌کند.\n\nبرای نمونه‌برداری زنده استفاده می‌شود."
+    },
+    "AddLabel": {
+        "title": "افزودن برچسب",
+        "inputs": {
+            "image": "تصویر",
+            "caption": "عنوان"
+        },
+        "widgets": {
+            "text_x": "موقعیت_X",
+            "text_y": "موقعیت_Y",
+            "height": "ارتفاع",
+            "font_size": "اندازهٔ قلم",
+            "font_color": "رنگ قلم",
+            "label_color": "رنگ پس‌زمینه",
+            "font": "قلم",
+            "text": "متن",
+            "direction": "جهت"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "GetImageSizeAndCount": {
+        "title": "گرفتن تعداد و ابعاد تصویر",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "outputs": {
+            "image": "تصویر",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "count": "تعداد"
+        },
+        "description": "عرض، ارتفاع و اندازهٔ دستهٔ تصویر را خروجی می‌دهد"
+    },
+    "ImageBatchRepeatInterleaving": {
+        "title": "تکثیر دستهٔ تصویر",
+        "inputs": {
+            "images": "تصویر",
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "repeats": "تعداد دفعات"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "تصاویر دسته را به تعداد مشخص‌شده تکرار می‌کند.\n\nمثلاً دسته‌ای شامل 5 تصویر: 0,1,2,3,4\n\nپس از 2 بار تکرار می‌شود: 0,0,1,1,2,2,3,3,4,4"
+    },
+    "ImageUpscaleWithModelBatched": {
+        "title": "بزرگ‌نمایی دستهٔ تصویر با مدل",
+        "inputs": {
+            "upscale_model": "مدل بزرگ‌نمایی",
+            "images": "تصویر"
+        },
+        "widgets": {
+            "per_batch": "هر دسته"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "کارکرد مشابه گرهٔ بومی فوق‌تمایز مدل در ComfyUI است، اما از تنظیم دسته‌بندی برای کاهش مصرف VRAM پشتیبانی می‌کند."
+    },
+    "ImageNormalize_Neg1_To_1": {
+        "title": "نرمال‌سازی تصویر از -1 تا 1",
+        "inputs": {
+            "images": "تصویر"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "نرمال‌سازی تصویر به [-1,1]"
+    },
+    "RemapImageRange": {
+        "title": "بازنگاشت محدودهٔ تصویر",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "min": "کمینه",
+            "max": "بیشینه",
+            "clamp": "مهار"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "مقادیر تصویر را به محدودهٔ مشخص‌شده بازنگاشت می‌کند."
+    },
+    "SplitImageChannels": {
+        "title": "جدا کردن کانال‌های تصویر",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "outputs": {
+            "red": "قرمز",
+            "green": "سبز",
+            "blue": "آبی",
+            "mask": "ماسک"
+        },
+        "description": "تصویر را به تصاویر تک‌کاناله جدا می‌کند و کانال alpha را به‌صورت ماسک جدا می‌کند."
+    },
+    "MergeImageChannels": {
+        "title": "ادغام کانال‌های تصویر",
+        "inputs": {
+            "red": "قرمز",
+            "green": "سبز",
+            "blue": "آبی",
+            "alpha": "کانال شفاف alpha"
+        },
+        "outputs": {
+            "image": "تصویر"
+        },
+        "description": "کانال‌ها را در یک تصویر ادغام می‌کند"
+    },
+    "ImagePadForOutpaintMasked": {
+        "title": "گسترش بوم به بیرون (ماسک)",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "left": "چپ",
+            "top": "بالا",
+            "right": "راست",
+            "bottom": "پایین",
+            "feathering": "محو لبه"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "ImagePadForOutpaintTargetSize": {
+        "title": "گسترش بوم به بیرون (اندازه)",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "target_width": "عرض هدف",
+            "target_height": "ارتفاع هدف",
+            "feathering": "محو لبه",
+            "upscale_method": "روش مقیاس‌دهی"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "ImagePrepForICLora": {
+        "title": "آماده‌سازی تصویر ICLora",
+        "inputs": {
+            "reference_image": "تصویر مرجع",
+            "latent_image": "تصویر Latent",
+            "latent_mask": "ماسک Latent",
+            "reference_mask": "ماسک مرجع"
+        },
+        "widgets": {
+            "output_width": "عرض خروجی",
+            "output_height": "ارتفاع خروجی",
+            "border_width": "ضخامت حاشیه"
+        },
+        "outputs": {
+            "image": "تصویر",
+            "mask": "ماسک"
+        }
+    },
+    "ImageAndMaskPreview": {
+        "title": "پیش‌نمایش تصویر و ماسک",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "mask_opacity": "کدری ماسک",
+            "mask_color": "رنگ ماسک",
+            "pass_through": "عبور"
+        },
+        "outputs": {
+            "composite": "تصویر"
+        },
+        "description": "ماسک یا تصویر را پیش‌نمایش می‌کند؛ وقتی هم‌زمان تصویر و ماسک وارد شوند، ماسک روی تصویر ادغام می‌شود.\nهنگامی که «عبور» روشن باشد، ترکیب غیرفعال می‌شود و برای پیش‌نمایش از طریق ادغام در گرهٔ ویدئو استفاده می‌گردد."
+    },
+    "CrossFadeImages": {
+        "title": "تلاشی متقاطع تصویر",
+        "inputs": {
+            "images_1": "تصویر_1",
+            "images_2": "تصویر_2"
+        },
+        "widgets": {
+            "interpolation": "روش درون‌یابی",
+            "transition_start_index": "شمارهٔ شروع گذار",
+            "transitioning_frames": "تعداد فریم گذار",
+            "start_level": "مقدار رنگ شروع",
+            "end_level": "مقدار رنگ پایانی"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "CrossFadeImagesMulti": {
+        "title": "تلاشی متقاطع چندگانهٔ تصاویر",
+        "inputs": {
+            "image_1": "تصویر_1",
+            "image_2": "تصویر_2"
+        },
+        "widgets": {
+            "inputcount": "تعداد ورودی‌ها",
+            "interpolation": "روش درون‌یابی",
+            "Update inputs": "به‌روزرسانی ورودی‌ها",
+            "transitioning_frames": "تعداد فریم گذار"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "TransitionImagesMulti": {
+        "title": "تصاویر گذار چندگانه",
+        "inputs": {
+            "image_1": "تصویر_1",
+            "image_2": "تصویر_2"
+        },
+        "widgets": {
+            "inputcount": "تعداد ورودی‌ها",
+            "interpolation": "روش درون‌یابی",
+            "transition_type": "نوع گذار",
+            "transitioning_frames": "تعداد فریم گذار",
+            "blur_radius": "شعاع محو",
+            "reverse": "معکوس",
+            "device": "دستگاه",
+            "Update inputs": "به‌روزرسانی ورودی‌ها"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        },
+        "description": "گذار میان تصاویر می‌سازد."
+    },
+    "TransitionImagesInBatch": {
+        "title": "تصاویر گذار دسته",
+        "inputs": {
+            "images": "تصویر"
+        },
+        "widgets": {
+            "interpolation": "روش درون‌یابی",
+            "transition_type": "نوع گذار",
+            "transitioning_frames": "تعداد فریم گذار",
+            "blur_radius": "شعاع محو",
+            "reverse": "معکوس",
+            "device": "دستگاه"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        },
+        "description": "میان تصاویر دسته‌ای گذار می‌سازد"
+    },
+    "ShuffleImageBatch": {
+        "title": "برهم‌زدن ترتیب دستهٔ تصویر",
+        "inputs": {
+            "images": "تصویر"
+        },
+        "widgets": {
+            "seed": "بذر"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "GetImageRangeFromBatch": {
+        "title": "گرفتن محدودهٔ تصاویر",
+        "inputs": {
+            "images": "تصویر",
+            "masks": "ماسک"
+        },
+        "widgets": {
+            "start_index": "شمارهٔ شروع",
+            "num_frames": "تعداد فریم"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        },
+        "description": "بر اساس دستهٔ تصویر ورودی و پارامترها، یک دستهٔ تصویر جدید می‌سازد."
+    },
+    "GetLatentRangeFromBatch": {
+        "title": "گرفتن محدودهٔ Latent",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "start_index": "شمارهٔ شروع",
+            "num_frames": "تعداد فریم"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "Insert_Latent_To_Index": {
+        "title": "درج Latent در نمایه",
+        "inputs": {
+            "source": "مبدأ",
+            "destination": "مقصد"
+        },
+        "widgets": {
+            "index": "نمایه"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "GetImagesFromBatchIndexed": {
+        "title": "گرفتن تصویر از دسته",
+        "inputs": {
+            "images": "تصویر"
+        },
+        "widgets": {
+            "indexes": "شماره"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "تصاویر را بر اساس شمارهٔ نمایه انتخاب می‌کند."
+    },
+    "InsertImagesToBatchIndexed": {
+        "title": "درج تصویر در دستهٔ نمایه",
+        "inputs": {
+            "original_images": "تصویر اصلی",
+            "images_to_insert": "تصاویر درج‌شده"
+        },
+        "widgets": {
+            "indexes": "نمایه"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "تصویر در نمایهٔ مشخص‌شده را در دستهٔ تصویر اصلی درج می‌کند."
+    },
+    "PadImageBatchInterleaved": {
+        "title": "پرکردن درهم‌تنیدهٔ دستهٔ تصویر",
+        "inputs": {
+            "images": "تصویر"
+        },
+        "widgets": {
+            "empty_frames_per_image": "تعداد فریم خالی به‌ازای هر تصویر",
+            "pad_frame_value": "مقدار فریم پُرکننده",
+            "add_after_last": "افزودن به انتها"
+        },
+        "outputs": {
+            "images": "تصویر",
+            "masks": "ماسک"
+        },
+        "description": "میان تصاویرِ پردازش دسته‌ای، فریم خالی درج می‌کند."
+    },
+    "ReplaceImagesInBatch": {
+        "title": "جایگزینی دستهٔ تصویر",
+        "inputs": {
+            "original_images": "تصویر اصلی",
+            "replacement_images": "تصاویر جایگزین",
+            "original_masks": "ماسک اصلی",
+            "replacement_masks": "ماسک جایگزین"
+        },
+        "widgets": {
+            "start_index": "شمارهٔ شروع"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "از نمایهٔ شروع مشخص‌شده، تصاویرِ پردازش دسته‌ای را با تصاویر جایگزین عوض می‌کند."
+    },
+    "ReverseImageBatch": {
+        "title": "معکوس‌سازی ترتیب دستهٔ تصویر",
+        "inputs": {
+            "images": "تصویر"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "ترتیب تصاویرِ پردازش دسته‌ای را معکوس می‌کند."
+    },
+    "ImageBatchMulti": {
+        "title": "ترکیب دسته‌های تصویر (چندگانه)",
+        "inputs": {
+            "image_1": "تصویر_1",
+            "image_2": "تصویر_2",
+            "image_3": "تصویر_3",
+            "image_4": "تصویر_4",
+            "image_5": "تصویر_5",
+            "image_6": "تصویر_6",
+            "image_7": "تصویر_7",
+            "image_8": "تصویر_8",
+            "image_9": "تصویر_9",
+            "image_10": "تصویر_10"
+        },
+        "widgets": {
+            "inputcount": "تعداد ورودی‌ها",
+            "blending": "روش آمیختن",
+            "Update inputs": "به‌روزرسانی ورودی‌ها"
+        },
+        "outputs": {
+            "images": "تصویر"
+        },
+        "description": "چند تصویر را در یک دستهٔ تصویر ادغام می‌کند. می‌توان تعداد اینپوت‌های ورودی را از طریق \"تعداد ورودی‌ها\" تنظیم کرد و برای تازه‌سازی روی به‌روزرسانی کلیک کرد."
+    },
+    "ImageTensorList": {
+        "title": "فهرست تانسورهای تصویر",
+        "inputs": {
+            "image1": "تصویر1",
+            "image2": "تصویر2"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "از تصاویر ورودی یک فهرست تصویر می‌سازد."
+    },
+    "ImageBatchExtendWithOverlap": {
+        "title": "گسترش دستهٔ تصویر (با بخش‌های همپوشان)",
+        "inputs": {
+            "source_images": "تصویر مبدأ",
+            "new_images": "تصویر جدید"
+        },
+        "widgets": {
+            "overlap": "همپوشانی",
+            "overlap_side": "همپوشانی کناری",
+            "overlap_mode": "همپوشانی الگو"
+        },
+        "outputs": {
+            "source_images": "تصویر مبدأ",
+            "start_images": "تصویر شروع",
+            "extended_images": "تصویر گسترشیافته"
+        },
+        "description": "گرهٔ کمکی برای گسترش تولید ویدئو\n ابتدا مبدأ و مقدار همپوشانی را می‌گیرد تا فریم شروع گسترش به دست آید.\n سپس در نسخهٔ دیگرِ این گره\n فریم‌های تازه تولیدشده را ارائه کرده و انتخاب می‌کند چگونه همپوشانی انجام شود."
+    },
+    "ImageAddMulti": {
+        "title": "آمیختن تصویر (چندگانه)",
+        "inputs": {
+            "image_1": "تصویر_1",
+            "image_2": "تصویر_2",
+            "image_3": "تصویر_3",
+            "image_4": "تصویر_4",
+            "image_5": "تصویر_5",
+            "image_6": "تصویر_6",
+            "image_7": "تصویر_7",
+            "image_8": "تصویر_8",
+            "image_9": "تصویر_9",
+            "image_10": "تصویر_10"
+        },
+        "widgets": {
+            "inputcount": "تعداد ورودی‌ها",
+            "blending": "روش آمیختن",
+            "blend_amount": "مقدار آمیختن",
+            "Update inputs": "به‌روزرسانی ورودی‌ها"
+        },
+        "outputs": {
+            "images": "تصویر"
+        },
+        "description": "چند تصویر را می‌آمیزد. می‌توان تعداد اینپوت‌های ورودی را از طریق \"تعداد ورودی‌ها\" تنظیم کرد و برای تازه‌سازی روی به‌روزرسانی کلیک کرد."
+    },
+    "ImageConcatMulti": {
+        "title": "ادغام تصویر (چندتایی)",
+        "inputs": {
+            "image_1": "تصویر_1",
+            "image_2": "تصویر_2"
+        },
+        "widgets": {
+            "inputcount": "تعداد ورودی‌ها",
+            "direction": "جهت",
+            "match_image_size": "تطبیق اندازه",
+            "Update inputs": "به‌روزرسانی ورودی‌ها"
+        },
+        "outputs": {
+            "images": "تصویر"
+        },
+        "description": "چند تصویر را بر اساس جهت ادغام می‌کند. برای به‌روزرسانی تعداد ورودی‌ها روی به‌روزرسانی کلیک کنید."
+    },
+    "PreviewAnimation": {
+        "title": "پیش‌نمایش متحرک",
+        "inputs": {
+            "images": "تصویر",
+            "masks": "ماسک"
+        },
+        "widgets": {
+            "fps": "نرخ فریم"
+        }
+    },
+    "ImageResizeKJ": {
+        "title": "مقیاس‌دهی تصویر (KJ)",
+        "inputs": {
+            "image": "تصویر",
+            "get_image_size": "تصویر مرجع",
+            "width_input": "عرض",
+            "height_input": "ارتفاع"
+        },
+        "widgets": {
+            "width": "عرض",
+            "height": "ارتفاع",
+            "upscale_method": "روش مقیاس‌دهی",
+            "keep_proportions": "نسبت ابعاد ثابت",
+            "keep_proportion": "نسبت ابعاد ثابت",
+            "divisible_by": "عدد بخش‌پذیر",
+            "crop": "برش",
+            "per_batch": "دسته"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "width": "عرض",
+            "height": "ارتفاع"
+        },
+        "description": "تصویر را به عرض و ارتفاع مشخص‌شده مقیاس می‌دهد. اندازه‌ها می‌توانند از ورودی مشخص شوند؛ اولویت خروجی نهایی بر اساس قواعد زیر است:\n- اندازهٔ تصویر مرجع \n- عرض-ورودی و ارتفاع-ورودی \n- عرض و ارتفاع \n \nنسبت ابعاد ثابت، نسبت را بر اساس بزرگ‌ترین بُعد تثبیت می‌کند."
+    },
+    "LoadAndResizeImage": {
+        "title": "بارگذاری و مقیاس‌دهی تصویر",
+        "widgets": {
+            "image": "تصویر",
+            "resize": "مقیاس‌دهی",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "repeat": "تکثیر",
+            "keep_proportion": "نسبت ابعاد ثابت",
+            "divisible_by": "ضریب",
+            "mask_channel": "کانال ماسک",
+            "background_color": "رنگ پس‌زمینه",
+            "upload": "آپلود"
+        },
+        "outputs": {
+            "image": "تصویر",
+            "mask": "ماسک",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "image_path": "مسیر تصویر"
+        }
+    },
+    "LoadImagesFromFolderKJ": {
+        "title": "بارگذاری پوشهٔ تصویر (KJ)",
+        "widgets": {
+            "folder": "پوشه",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "keep_aspect_ratio": "حفظ نسبت ابعاد",
+            "image_load_cap": "سقف بارگذاری",
+            "start_index": "شمارهٔ شروع",
+            "include_subfolders": "شامل پوشه‌های فرعی"
+        },
+        "outputs": {
+            "image": "تصویر",
+            "mask": "ماسک",
+            "count": "تعداد",
+            "image_path": "مسیر تصویر"
+        },
+        "description": "تصاویر را از پوشه به پردازش دسته‌ای بارگذاری می‌کند؛ تصاویر تغییر اندازه داده شده و در دسته بارگذاری می‌شوند."
+    },
+    "ImageGridtoBatch": {
+        "title": "جدول تصویر به دسته",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "columns": "تعداد ستون",
+            "The number of columns in the grid.": "تعداد ستون‌های جدول.",
+            "rows": "تعداد ردیف",
+            "The number of rows in the grid. Set to 0 for automatic calculation.": "تعداد ردیف‌های جدول، 0 یعنی خودکار."
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "نمودار را به یک دستهٔ تصویر واحد تبدیل می‌کند."
+    },
+    "SaveImageKJ": {
+        "title": "ذخیرهٔ تصویر (KJ)",
+        "inputs": {
+            "images": "تصویر",
+            "caption": "حاشیه‌نویسی"
+        },
+        "widgets": {
+            "filename_prefix": "پیشوند نام فایل",
+            "output_folder": "پوشهٔ خروجی",
+            "caption_file_extension": "پسوند فایل حاشیه‌نویسی",
+            "prompt": "دستور متنی",
+            "extra_pnginfo": "اطلاعات اضافی PNG"
+        },
+        "outputs": {
+            "filename": "نام فایل"
+        },
+        "description": "تصاویر ورودی را در پوشهٔ خروجی ComfyUI ذخیره می‌کند."
+    },
+    "SaveStringKJ": {
+        "title": "ذخیرهٔ رشته (KJ)",
+        "inputs": {
+            "string": "رشته"
+        },
+        "widgets": {
+            "filename_prefix": "پیشوند نام فایل",
+            "output_folder": "پوشهٔ خروجی",
+            "file_extension": "پسوند فایل"
+        },
+        "outputs": {
+            "filename": "نام فایل"
+        }
+    },
+    "FastPreview": {
+        "title": "پیش‌نمایش سریع",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "format": "قالب",
+            "quality": "کیفیت"
+        },
+        "outputs": {}
+    },
+    "ImageCropByMaskAndResize": {
+        "title": "برش و مقیاس‌دهی بر اساس ماسک",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "base_resolution": "وضوح پایه",
+            "padding": "پدینگ",
+            "min_crop_resolution": "حداقل وضوح برش",
+            "max_crop_resolution": "حداکثر وضوح برش"
+        },
+        "outputs": {
+            "images": "تصویر",
+            "masks": "ماسک",
+            "BBox": "BBox"
+        }
+    },
+    "ImageCropByMask": {
+        "title": "برش بر اساس ماسک",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک"
+        },
+        "outputs": {
+            "image": "تصویر"
+        },
+        "description": "تصویر ورودی را بر اساس ماسک ارائه‌شده برش می‌دهد"
+    },
+    "ImageUncropByMask": {
+        "title": "لغو برش بر اساس ماسک",
+        "inputs": {
+            "destination": "تصویر هدف",
+            "source": "تصویر مبدأ",
+            "mask": "ماسک",
+            "bbox": "BBox"
+        },
+        "outputs": {
+            "image": "تصویر"
+        }
+    },
+    "ImageCropByMaskBatch": {
+        "title": "برش دسته بر اساس ماسک",
+        "inputs": {
+            "image": "تصویر",
+            "masks": "ماسک"
+        },
+        "widgets": {
+            "width": "عرض",
+            "height": "ارتفاع",
+            "padding": "پدینگ",
+            "preserve_size": "حفظ اندازه‌ها",
+            "bg_color": "رنگ پس‌زمینه"
+        },
+        "outputs": {
+            "images": "تصویر",
+            "masks": "ماسک"
+        }
+    },
+    "ImagePadKJ": {
+        "title": "پدینگ تصویر (KJ)",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "left": "پدینگ چپ",
+            "right": "پدینگ راست",
+            "top": "پدینگ بالا",
+            "bottom": "پدینگ پایین",
+            "extra_padding": "پدینگ اضافی",
+            "pad_mode": "حالت پدینگ",
+            "color": "رنگ",
+            "target_width": "عرض هدف",
+            "target_height": "ارتفاع هدف"
+        },
+        "outputs": {
+            "images": "تصویر",
+            "masks": "ماسک"
+        },
+        "description": "تصویر ورودی را پدینگ می‌کند و گزینه‌ای برای ماسک‌گذاری با پدینگ مشخص‌شده دارد."
+    },
+    "ImageBatchJoinWithTransition": {
+        "title": "پیوند دستهٔ تصویر (با افکت گذار)",
+        "inputs": {
+            "images_1": "تصویر1",
+            "images_2": "تصویر2"
+        },
+        "widgets": {
+            "start_index": "نمایهٔ شروع",
+            "interpolation": "درون‌یابی",
+            "transition_type": "نوع گذار",
+            "transitioning_frames": "فریم‌های گذار",
+            "blur_radius": "شعاع محو",
+            "reverse": "معکوس",
+            "device": "دستگاه"
+        },
+        "outputs": {
+            "images": "تصویر",
+            "masks": "ماسک"
+        },
+        "description": "تصویر ورودی"
+    },
+    "Intrinsic_lora_sampling": {
+        "title": "نمونه‌برداری IntrinsicLoRA",
+        "inputs": {
+            "model": "مدل",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image": "تصویر",
+            "optional_latent": "Latent (اختیاری)"
+        },
+        "widgets": {
+            "lora_name": "نام LoRA",
+            "task": "وظیفه",
+            "text": "متن",
+            "per_batch": "هر دسته"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "IMAGE": "تصویر"
+        },
+        "description": "lora درونی که نمونه‌بردار استفاده می‌کند: https://github.com/duxiaodan/intrinsic-lora این loraها بسیار کوچک‌اند، لذا در این بستهٔ گره گنجانده شده‌اند."
+    },
+    "BatchCLIPSeg": {
+        "title": "قطعه‌بندی معنایی CLIP",
+        "inputs": {
+            "images": "تصویر",
+            "opt_model": "انتخاب مدل",
+            "prev_mask": "ماسک قبلی"
+        },
+        "widgets": {
+            "text": "متن",
+            "threshold": "آستانه",
+            "binary_mask": "ماسک دودویی",
+            "combine_mask": "ادغام ماسک",
+            "use_cuda": "استفاده از CUDA",
+            "blur_sigma": "شدت محو",
+            "image_bg_Ievel": "سطح پس‌زمینهٔ تصویر",
+            "invert": "معکوس"
+        },
+        "outputs": {
+            "Image": "تصویر",
+            "Mask": "ماسک"
+        },
+        "description": "با CLIPSeg یک تصویر یا یک دسته تصویر را قطعه‌بندی می‌کند."
+    },
+    "DownloadAndLoadCLIPSeg": {
+        "title": "بارگذاری CLIPSeg",
+        "widgets": {
+            "model": "مدل"
+        },
+        "outputs": {
+            "clipseg_model": "مدل CLIPSeg"
+        },
+        "description": "مدل CLIPSeg را با huggingface_hub به Comfy/models/clip_seg بارگیری می‌کند"
+    },
+    "CreateTextMask": {
+        "title": "ماسک متنی",
+        "widgets": {
+            "invert": "معکوس",
+            "frames": "تعداد فریم",
+            "text_x": "موقعیت_X",
+            "text_y": "موقعیت_Y",
+            "font_size": "اندازهٔ قلم",
+            "font_color": "رنگ قلم",
+            "text": "متن",
+            "font": "قلم",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "start_rotation": "چرخش شروع",
+            "end_rotation": "چرخش پایانی"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "ColorToMask": {
+        "title": "رنگ تصویر به ماسک",
+        "inputs": {
+            "images": "تصویر"
+        },
+        "widgets": {
+            "invert": "معکوس",
+            "red": "قرمز",
+            "green": "سبز",
+            "blue": "آبی",
+            "threshold": "آستانه",
+            "per_batch": "هر دسته"
+        },
+        "outputs": {
+            "MASK": "ماسک"
+        },
+        "description": "مقادیر RGB انتخاب‌شده را به ماسک تبدیل می‌کند. برای ورودی دسته‌ای، **per_batch** تعداد تصاویری را که یک‌باره پردازش می‌شوند کنترل می‌کند."
+    },
+    "CreateFluidMask": {
+        "title": "ماسک سیال",
+        "widgets": {
+            "invert": "معکوس",
+            "frames": "تعداد فریم",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "inflow_count": "مقدار جریان",
+            "inflow_velocity": "سرعت جریان",
+            "inflow_radius": "شعاع جریان",
+            "inflow_padding": "پدینگ جریان",
+            "inflow_duration": "زمان جریان"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "CreateAudioMask": {
+        "title": "ماسک صوت",
+        "widgets": {
+            "invert": "معکوس",
+            "frames": "تعداد فریم",
+            "scale": "مقیاس‌دهی",
+            "audio_path": "مسیر صوت",
+            "width": "عرض",
+            "height": "ارتفاع"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "CreateGradientMask": {
+        "title": "ماسک گرادیان",
+        "widgets": {
+            "invert": "معکوس",
+            "frames": "تعداد فریم",
+            "width": "عرض",
+            "height": "ارتفاع"
+        },
+        "outputs": {
+            "MASK": "ماسک"
+        }
+    },
+    "CreateFadeMask": {
+        "title": "ماسک محو",
+        "widgets": {
+            "invert": "معکوس",
+            "frames": "تعداد فریم",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "interpolation": "روش درون‌یابی",
+            "start_level": "مقدار رنگ شروع",
+            "midpoint_level": "مقدار رنگ نقطهٔ میانی",
+            "end_level": "مقدار رنگ پایانی",
+            "midpoint_frame": "شمارهٔ فریم نقطهٔ میانی"
+        },
+        "outputs": {
+            "MASK": "ماسک"
+        },
+        "description": "مجموعه‌ای ماسکِ درون‌یابی‌شده میان فریم‌ها و مقادیر داده‌شده می‌سازد. از همان دستور BatchValueSchedule فیز استفاده می‌کند. نخستین مقدار نمایهٔ فریم است (از 1 شروع می‌شود نه از 0)؛ مقدار دوم داخل پرانتز، مقدار اعشاری ماسک در بازهٔ 0.0-1.0 است.\nمثلاً مقادیر پیش‌فرض:\n0:(0.0)\n7:(1.0)\n15:(0.0)\nیک دستهٔ ماسک 16 فریمی می‌سازد که از سیاه شروع شده، از طریق منحنی درون‌یابی انتخاب‌شده تا فریم هشتم به سفید کامل درون‌یابی می‌شود، و سپس از آنجا تا فریم شانزدهم به سیاه کامل درون‌یابی می‌گردد."
+    },
+    "CreateFadeMaskAdvanced": {
+        "title": "ماسک محو (پیشرفته)",
+        "widgets": {
+            "points_string": "نقطهٔ مقدار رنگ",
+            "invert": "معکوس",
+            "frames": "تعداد فریم",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "interpolation": "روش درون‌یابی"
+        },
+        "outputs": {
+            "MASK": "ماسک"
+        }
+    },
+    "CreateMagicMask": {
+        "title": "ماسک توهم‌آور",
+        "widgets": {
+            "frames": "تعداد فریم",
+            "depth": "عمق",
+            "distortion": "اعوجاج",
+            "seed": "بذر",
+            "control_after_generate": "عملیات پس از اجرا",
+            "fixed": "ثابت",
+            "increment": "افزایش",
+            "decrement": "کاهش",
+            "randomize": "تصادفی",
+            "transitions": "گذار",
+            "frame_height": "ارتفاع",
+            "frame_width": "عرض"
+        },
+        "outputs": {
+            "mask": "ماسک",
+            "mask_inverted": "معکوس‌سازی ماسک"
+        }
+    },
+    "CreateShapeMask": {
+        "title": "ماسک شکل",
+        "widgets": {
+            "shape": "شکل",
+            "circle": "دایره",
+            "square": "مربع",
+            "triangle": "مثلث",
+            "frames": "تعداد فریم",
+            "location_x": "موقعیت_X",
+            "location_y": "موقعیت_Y",
+            "size": "اندازه",
+            "grow": "رشد",
+            "frame_width": "عرض",
+            "frame_height": "ارتفاع",
+            "shape_width": "عرض شکل",
+            "shape_height": "ارتفاع شکل"
+        },
+        "outputs": {
+            "mask": "ماسک",
+            "mask_inverted": "معکوس‌سازی ماسک"
+        },
+        "description": "یک ماسک یا مجموعه‌ای ماسک با شکل مشخص‌شده می‌سازد. موقعیت، موقعیت مرکز است. مقدار رشد، میزان رشد شکل در هر فریم است که ماسک متحرک می‌سازد."
+    },
+    "CreateVoronoiMask": {
+        "title": "ماسک فورونوی",
+        "widgets": {
+            "frames": "تعداد فریم",
+            "num_points": "تعداد نقاط",
+            "line_width": "ضخامت خط",
+            "speed": "سرعت",
+            "frame_width": "عرض",
+            "frame_height": "ارتفاع"
+        },
+        "outputs": {
+            "mask": "ماسک",
+            "mask_inverted": "معکوس‌سازی ماسک"
+        }
+    },
+    "GetMaskSizeAndCount": {
+        "title": "گرفتن ابعاد و تعداد ماسک",
+        "inputs": {
+            "mask": "ماسک"
+        },
+        "outputs": {
+            "mask": "ماسک",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "count": "تعداد"
+        },
+        "description": "عرض، ارتفاع و اندازهٔ دستهٔ ماسک را خروجی می‌دهد"
+    },
+    "GrowMaskWithBlur": {
+        "title": "رشد و محو ماسک",
+        "inputs": {
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "expand": "گسترش",
+            "incremental_expandrate": "گام گسترش",
+            "tapered_corners": "پخ",
+            "flip_input": "معکوس‌سازی ورودی",
+            "use_cuda": "استفاده از CUDA",
+            "blur_radius": "شعاع محو",
+            "sigma": "Sigma",
+            "lerp_alpha": "شفافیت خطی",
+            "decay_factor": "ضریب فرسایش",
+            "fill_holes": "پرکردن"
+        },
+        "outputs": {
+            "mask": "ماسک",
+            "mask_inverted": "معکوس‌سازی ماسک"
+        },
+        "description": "# رشد و محو ماسک\n- ماسک: ماسک ورودی یا دستهٔ ماسک\n- گسترش: ماسک یا دستهٔ ماسک را به مقدار تنظیم‌شده منبسط یا منقبض می‌کند\n- گام گسترش: نرخ گسترش را به‌ازای هر فریم به مقدار تنظیم‌شده افزایش می‌دهد\n- پخ: از گوشه‌های مخروطی استفاده می‌کند\n- معکوس‌سازی ورودی: ماسک ورودی را وارونه می‌کند\n- شعاع محو: مقداری بزرگ‌تر از 0 ماسک را محو می‌کند\n- شفافیت خطی: مقادیر آلفای درون‌یابی‌شده میان فریم‌ها\n- ضریب افول: مقدار افول درون‌یابی‌شده میان فریم‌ها\n- پرکردن: سوراخ‌های ماسک را پر می‌کند (کند)"
+    },
+    "MaskBatchMulti": {
+        "title": "ترکیب دسته‌های ماسک (چندگانه)",
+        "inputs": {
+            "mask_1": "ماسک_1",
+            "mask_2": "ماسک_2",
+            "mask_3": "ماسک_3",
+            "mask_4": "ماسک_4",
+            "mask_5": "ماسک_5",
+            "mask_6": "ماسک_6",
+            "mask_7": "ماسک_7",
+            "mask_8": "ماسک_8",
+            "mask_9": "ماسک_9",
+            "mask_10": "ماسک_10"
+        },
+        "widgets": {
+            "inputcount": "تعداد ورودی‌ها",
+            "Update inputs": "به‌روزرسانی ورودی‌ها"
+        },
+        "outputs": {
+            "masks": "ماسک"
+        },
+        "description": "چند ماسک را در یک دستهٔ ماسک ادغام می‌کند. می‌توان تعداد اینپوت‌های ورودی را از طریق \"تعداد ورودی‌ها\" تنظیم کرد و برای تازه‌سازی روی به‌روزرسانی کلیک کرد."
+    },
+    "OffsetMask": {
+        "title": "جابه‌جایی ماسک",
+        "inputs": {
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "angle": "زاویه",
+            "duplication_factor": "تعداد تکرار",
+            "roll": "استفاده از غلتش",
+            "incremental": "استفاده از افزایش",
+            "padding_mode": "حالت پدینگ",
+            "empty": "خالی",
+            "border": "مرز",
+            "reflection": "بازتاب"
+        },
+        "outputs": {
+            "mask": "ماسک"
+        },
+        "description": "# ماسک را به مقدار مشخص‌شده بکِش\n- ماسک: ماسک ورودی یا دستهٔ ماسک\n- x: مقدار کشش افقی\n- y: مقدار کشش عمودی\n- تعداد تکرار: بارهای تکرار دسته‌ای ماسک\n- استفاده از غلتش: بسته‌شدن لبه‌ها"
+    },
+    "RoundMask": {
+        "title": "گرد کردن ماسک",
+        "inputs": {
+            "mask": "ماسک"
+        },
+        "outputs": {
+            "MASK": "ماسک"
+        }
+    },
+    "ResizeMask": {
+        "title": "مقیاس‌دهی ماسک",
+        "inputs": {
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "width": "عرض",
+            "height": "ارتفاع",
+            "keep_proportions": "نسبت ابعاد ثابت",
+            "upscale_method": "درون‌یابی پیشرفته",
+            "crop": "برش"
+        },
+        "outputs": {
+            "mask": "ماسک",
+            "width": "عرض",
+            "height": "ارتفاع"
+        },
+        "description": "ماسک یا دستهٔ ماسک را به عرض و ارتفاع مشخص‌شده تنظیم می‌کند."
+    },
+    "RemapMaskRange": {
+        "title": "بازنگاشت محدودهٔ ماسک",
+        "inputs": {
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "min": "کمینه",
+            "max": "بیشینه"
+        },
+        "outputs": {
+            "mask": "ماسک"
+        },
+        "description": "کمینه و بیشینهٔ جدیدی برای ماسک تنظیم می‌کند."
+    },
+    "SeparateMasks": {
+        "title": "جداسازی ماسک",
+        "inputs": {
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "size_threshold_width": "آستانهٔ اندازهٔ عرض",
+            "size_threshold_height": "آستانهٔ اندازهٔ ارتفاع",
+            "mode": "حالت جداسازی",
+            "max_poly_points": "حداکثر تعداد نقاط چندضلعی",
+            "polygon": "چندضلعی",
+            "shape": "شکل",
+            "mask_np": "ماسک Numpy",
+            "max_points": "حداکثر تعداد نقاط"
+        },
+        "outputs": {
+            "mask": "ماسک"
+        }
+    },
+    "PathchSageAttentionKJ": {
+        "title": "وصلهٔ توجه SAGE (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "allow_compile": "اجازهٔ کامپایل",
+            "sage_attention": "توجه SAGE"
+        },
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "CheckpointLoaderKJ": {
+        "title": "بارگذار مدل بزرگ (KJ)",
+        "inputs": {},
+        "widgets": {
+            "ckpt_name": "نام مدل",
+            "weight_dtype": "نوع دادهٔ وزن‌ها",
+            "compute_dtype": "نوع دادهٔ محاسبات",
+            "patch_cublaslinear": "وصلهٔ خطی CUBlas",
+            "sage_attention": "توجه SAGE",
+            "enable_fp16_accumulation": "فعال‌سازی انباشت FP16"
+        },
+        "outputs": {
+            "model": "مدل",
+            "clip": "CLIP",
+            "vae": "VAE"
+        }
+    },
+    "DiffusionModelLoaderKJ": {
+        "title": "بارگذار مدل انتشار (KJ)",
+        "inputs": {
+            "extra_state_dict": "دیکشنری وضعیت اضافی"
+        },
+        "widgets": {
+            "model_name": "نام مدل",
+            "weight_dtype": "نوع دادهٔ وزن‌ها",
+            "compute_dtype": "نوع دادهٔ محاسبات",
+            "patch_cublaslinear": "وصلهٔ خطی CUBlas",
+            "sage_attention": "توجه SAGE",
+            "enable_fp16_accumulation": "فعال‌سازی انباشت FP16"
+        },
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "PatchModelPatcherOrder": {
+        "title": "تنظیم ترتیب وصلهٔ مدل",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "patch_order": "ترتیب وصله",
+            "full_load": "بارگذاری کامل"
+        },
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "TorchCompileModelFluxAdvanced": {
+        "title": "کامپایل Torch مدل Flux (پیشرفته)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "backend": "بک‌اند",
+            "fullgraph": "گراف کامل",
+            "mode": "حالت",
+            "double_blocks": "بلوک دوتایی",
+            "single_blocks": "بلوک تکی",
+            "dynamic": "پویا",
+            "dynamo_cache_size_limit": "محدودیت اندازهٔ نهان‌گاه پویا",
+            "blocks_str": "رشتهٔ بلوک"
+        },
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "TorchCompileModelFluxAdvancedV2": {
+        "title": "کامپایل Torch مدل Flux (پیشرفته) V2",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "backend": "بک‌اند",
+            "fullgraph": "گراف کامل",
+            "mode": "حالت",
+            "double_blocks": "بلوک دوتایی",
+            "single_blocks": "بلوک تکی",
+            "dynamic": "پویا",
+            "dynamo_cache_size_limit": "محدودیت اندازهٔ نهان‌گاه پویا",
+            "blocks_str": "رشتهٔ بلوک"
+        },
+        "outputs": {
+            "MODEL": "مدل",
+            "model": "مدل"
+        }
+    },
+    "TorchCompileModelHyVideo": {
+        "title": "کامپایل Torch مدل ترکیبی ویدئو",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "backend": "بک‌اند",
+            "fullgraph": "گراف کامل",
+            "mode": "حالت",
+            "dynamic": "پویا",
+            "dynamo_cache_size_limit": "محدودیت اندازهٔ نهان‌گاه پویا",
+            "compile_single_blocks": "کامپایل بلوک تکی",
+            "compile_double_blocks": "کامپایل بلوک دوتایی",
+            "compile_txt_in": "کامپایل ورودی متن",
+            "compile_vector_in": "کامپایل ورودی بردار",
+            "compile_final_layer": "کامپایل لایهٔ نهایی"
+        },
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "TorchCompileModelWanVideo": {
+        "title": "کامپایل Torch مدل ویدئوی Wan",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "backend": "بک‌اند",
+            "fullgraph": "گراف کامل",
+            "mode": "حالت",
+            "dynamic": "پویا",
+            "dynamo_cache_size_limit": "محدودیت اندازهٔ نهان‌گاه پویا",
+            "compile_transformer_blocks_only": "فقط بلوک‌های Transformer را کامپایل کن"
+        },
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "TorchCompileModelWanVideoV2": {
+        "title": "مدل کامپایل Torch ویدئوی Wan V2",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "backend": "بک‌اند",
+            "fullgraph": "گراف کامل",
+            "mode": "حالت",
+            "dynamic": "پویا",
+            "dynamo_cache_size_limit": "محدودیت اندازهٔ نهان‌گاه پویا",
+            "compile_transformer_blocks_only": "فقط بلوک‌های Transformer را کامپایل کن"
+        },
+        "outputs": {
+            "MODEL": "مدل",
+            "model": "مدل"
+        }
+    },
+    "TorchCompileVAE": {
+        "title": "کامپایل Torch VAE",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "backend": "بک‌اند",
+            "fullgraph": "گراف کامل",
+            "mode": "حالت",
+            "compile_encoder": "کامپایل رمزگذار",
+            "compile_decoder": "کامپایل رمزگشا"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "TorchCompileControlNet": {
+        "title": "کامپایل Torch ControlNet",
+        "inputs": {
+            "controlnet": "ControlNet"
+        },
+        "widgets": {
+            "backend": "بک‌اند",
+            "fullgraph": "گراف کامل",
+            "mode": "حالت"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "TorchCompileLTXModel": {
+        "title": "کامپایل Torch مدل LTX",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "backend": "بک‌اند",
+            "fullgraph": "گراف کامل",
+            "mode": "حالت",
+            "dynamic": "پویا"
+        },
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "TorchCompileCosmosModel": {
+        "title": "کامپایل Torch مدل Cosmos",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "backend": "بک‌اند",
+            "fullgraph": "گراف کامل",
+            "mode": "حالت",
+            "dynamic": "پویا",
+            "dynamo_cache_size_limit": "محدودیت اندازهٔ نهان‌گاه پویا"
+        },
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "WanVideoTeaCacheKJ": {
+        "title": "بهینه‌سازی نهان‌گاه ویدئوی Wan (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "rel_l1_thresh": "آستانهٔ نسبی L1",
+            "start_percent": "درصد شروع",
+            "end_percent": "درصد پایان",
+            "cache_device": "دستگاه نهان‌گاه",
+            "coefficients": "ضریب"
+        },
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "WanVideoEnhanceAVideoKJ": {
+        "title": "تقویت ویدئوی Wan (KJ)",
+        "inputs": {
+            "model": "مدل",
+            "latent": "latent"
+        },
+        "widgets": {
+            "weight": "وزن"
+        },
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "WanVideoNAG": {
+        "title": "گرادیان طبیعی ویدئوی Wan",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "conditioning": "شرط",
+            "nag_scale": "شبکه_مقیاس",
+            "nag_alpha": "شبکه_آلفا",
+            "nag_tau": "شبکه_تائو",
+            "input_type": "نوع ورودی"
+        },
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "SkipLayerGuidanceWanVideo": {
+        "title": "هدایت پرش لایه در ویدئوی Wan",
+        "inputs": {
+            "model": "مدل",
+            "blocks": "بلوک",
+            "start_percent": "درصد شروع",
+            "end_percent": "درصد پایان"
+        },
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "CFGZeroStarAndInit": {
+        "title": "مقداردهی اولیهٔ پراکندهٔ CFG",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "use_zero_init": "استفاده از مقداردهی اولیهٔ صفر",
+            "zero_init_steps": "گام‌های مقداردهی اولیهٔ صفر"
+        },
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "SetNode": {
+        "title": "نقطهٔ تنظیم",
+        "inputs": {
+            "*": "ورودی"
+        },
+        "widgets": {
+            "Constant": "ثابت"
+        },
+        "outputs": {
+            "*": "خروجی"
+        }
+    },
+    "GetNode": {
+        "title": "نقطهٔ گرفتن",
+        "inputs": {
+            "*": "ورودی"
+        },
+        "widgets": {
+            "Constant": "ثابت"
+        },
+        "outputs": {
+            "*": "خروجی"
+        }
+    },
+    "BOOLConstant": {
+        "title": "ثابت بولی",
+        "inputs": {
+            "value": "مقدار"
+        },
+        "widgets": {
+            "value": "مقدار"
+        },
+        "outputs": {
+            "value": "مقدار"
+        }
+    },
+    "INTConstant": {
+        "title": "ثابت صحیح",
+        "widgets": {
+            "value": "مقدار"
+        },
+        "outputs": {
+            "value": "مقدار"
+        }
+    },
+    "FloatConstant": {
+        "title": "ثابت اعشاری",
+        "widgets": {
+            "value": "مقدار"
+        },
+        "outputs": {
+            "value": "مقدار"
+        }
+    },
+    "StringConstant": {
+        "title": "ثابت رشته‌ای",
+        "widgets": {
+            "string": "رشته"
+        },
+        "outputs": {
+            "STRING": "رشته"
+        }
+    },
+    "StringConstantMultiline": {
+        "title": "ثابت رشته‌ای (کادر متن)",
+        "widgets": {
+            "string": "رشته",
+            "strip_newlines": "با کاراکتر خط‌شکن"
+        },
+        "outputs": {
+            "STRING": "رشته"
+        }
+    },
+    "ScaleBatchPromptSchedule": {
+        "title": "زمان‌بندی دستهٔ دستور متنی مقیاس‌یافته",
+        "inputs": {
+            "input_str": "رشته",
+            "old_frame_count": "تعداد فریم قدیمی",
+            "new_frame_count": "تعداد فریم جدید"
+        },
+        "outputs": {
+            "STRING": "رشته"
+        }
+    },
+    "GetLatentsFromBatchIndexed": {
+        "title": "گرفتن Latent بر اساس نمایه",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "latent_format": "قالب latent"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "ConditioningMultiCombine": {
+        "title": "ادغام شرط (چندگانه)",
+        "inputs": {
+            "conditioning_1": "شرط_1",
+            "conditioning_2": "شرط_2",
+            "conditioning_3": "شرط_3",
+            "conditioning_4": "شرط_4",
+            "conditioning_5": "شرط_5",
+            "conditioning_6": "شرط_6",
+            "conditioning_7": "شرط_7",
+            "conditioning_8": "شرط_8",
+            "conditioning_9": "شرط_9",
+            "conditioning_10": "شرط_10",
+            "conditioning_11": "شرط_11",
+            "conditioning_12": "شرط_12",
+            "conditioning_13": "شرط_13",
+            "conditioning_14": "شرط_14",
+            "conditioning_15": "شرط_15",
+            "conditioning_16": "شرط_16",
+            "conditioning_17": "شرط_17",
+            "conditioning_18": "شرط_18",
+            "conditioning_19": "شرط_19",
+            "conditioning_20": "شرط_20"
+        },
+        "widgets": {
+            "inputcount": "تعداد ورودی‌ها",
+            "operation": "عملیات",
+            "Update inputs": "به‌روزرسانی ورودی‌ها"
+        },
+        "outputs": {
+            "combined": "شرط",
+            "inputcount": "تعداد ورودی‌ها"
+        },
+        "description": "چند گرهٔ شرط را در یکی ادغام می‌کند"
+    },
+    "AppendStringsToList": {
+        "title": "افزودن رشته به فهرست",
+        "inputs": {
+            "string1": "رشته1",
+            "string2": "رشته2"
+        },
+        "outputs": {
+            "STRING": "رشته"
+        }
+    },
+    "JoinStrings": {
+        "title": "ادغام رشته‌ها",
+        "inputs": {
+            "string1": "رشته1",
+            "string2": "رشته2"
+        },
+        "widgets": {
+            "delimiter": "جداکننده"
+        },
+        "outputs": {
+            "STRING": "رشته"
+        }
+    },
+    "JoinStringMulti": {
+        "title": "ادغام رشته (چندگانه)",
+        "inputs": {
+            "string_1": "رشته_1",
+            "string_2": "رشته_2",
+            "string_3": "رشته_3",
+            "string_4": "رشته_4",
+            "string_5": "رشته_5",
+            "string_6": "رشته_6",
+            "string_7": "رشته_7",
+            "string_8": "رشته_8",
+            "string_9": "رشته_9",
+            "string_10": "رشته_10"
+        },
+        "widgets": {
+            "inputcount": "تعداد ورودی‌ها",
+            "delimiter": "جداکننده",
+            "return_list": "به‌صورت فهرست خروجی می‌دهد",
+            "Update inputs": "به‌روزرسانی ورودی‌ها"
+        },
+        "outputs": {
+            "string": "رشته"
+        },
+        "description": "چند رشته را در یک دستهٔ رشته یا فهرست رشته ادغام می‌کند. می‌توان تعداد اینپوت‌های ورودی را از طریق \"تعداد ورودی‌ها\" تنظیم کرد و برای تازه‌سازی روی به‌روزرسانی کلیک کرد."
+    },
+    "CondPassThrough": {
+        "title": "عبور شرط",
+        "inputs": {
+            "positive": "شرط مثبت",
+            "negative": "شرط منفی"
+        },
+        "outputs": {
+            "positive": "شرط مثبت",
+            "negative": "شرط منفی"
+        }
+    },
+    "ModelPassThrough": {
+        "title": "پل مدل",
+        "inputs": {
+            "model": "مدل"
+        },
+        "outputs": {
+            "model": "مدل"
+        },
+        "description": "مدل را به گرهٔ بعدی منتقل می‌کند"
+    },
+    "ConditioningSetMaskAndCombine": {
+        "title": "تنظیم ماسک شرط (ادغام 2)",
+        "inputs": {
+            "positive_1": "شرط مثبت_1",
+            "negative_1": "شرط منفی_1",
+            "positive_2": "شرط مثبت_2",
+            "negative_2": "شرط منفی_2",
+            "mask_1": "ماسک_1",
+            "mask_2": "ماسک_2"
+        },
+        "widgets": {
+            "mask_1_strength": "ماسک_1_شدت",
+            "mask_2_strength": "ماسک_2_شدت",
+            "set_cond_area": "تنظیم ناحیهٔ شرط",
+            "default": "پیش‌فرض",
+            "mask bounds": "مرزهای ماسک"
+        },
+        "outputs": {
+            "combined_positive": "شرط مثبت",
+            "combined_negative": "شرط منفی"
+        },
+        "description": "چندین ماسک تنظیم را بسته‌بندی کرده و گره‌ها را در یکی ترکیب می‌کند؛ کارکرد مشابه گرهٔ بومی ComfyUI است"
+    },
+    "ConditioningSetMaskAndCombine3": {
+        "title": "تنظیم ماسک شرط (ادغام 3)",
+        "inputs": {
+            "positive_1": "شرط مثبت_1",
+            "negative_1": "شرط منفی_1",
+            "positive_2": "شرط مثبت_2",
+            "negative_2": "شرط منفی_2",
+            "positive_3": "شرط مثبت_3",
+            "negative_3": "شرط منفی_3",
+            "mask_1": "ماسک_1",
+            "mask_2": "ماسک_2",
+            "mask_3": "ماسک_3"
+        },
+        "widgets": {
+            "mask_1_strength": "ماسک_1_شدت",
+            "mask_2_strength": "ماسک_2_شدت",
+            "mask_3_strength": "ماسک_3_شدت",
+            "set_cond_area": "تنظیم ناحیهٔ شرط",
+            "default": "پیش‌فرض",
+            "mask bounds": "مرزهای ماسک"
+        },
+        "outputs": {
+            "combined_positive": "شرط مثبت",
+            "combined_negative": "شرط منفی"
+        },
+        "description": "چندین ماسک تنظیم را بسته‌بندی کرده و گره‌ها را در یکی ترکیب می‌کند؛ کارکرد مشابه گرهٔ بومی ComfyUI است"
+    },
+    "ConditioningSetMaskAndCombine4": {
+        "title": "تنظیم ماسک شرط (ادغام 4)",
+        "inputs": {
+            "positive_1": "شرط مثبت_1",
+            "negative_1": "شرط منفی_1",
+            "positive_2": "شرط مثبت_2",
+            "negative_2": "شرط منفی_2",
+            "positive_3": "شرط مثبت_3",
+            "negative_3": "شرط منفی_3",
+            "positive_4": "شرط مثبت_4",
+            "negative_4": "شرط منفی_4",
+            "mask_1": "ماسک_1",
+            "mask_2": "ماسک_2",
+            "mask_3": "ماسک_3",
+            "mask_4": "ماسک_4"
+        },
+        "widgets": {
+            "mask_1_strength": "ماسک_1_شدت",
+            "mask_2_strength": "ماسک_2_شدت",
+            "mask_3_strength": "ماسک_3_شدت",
+            "mask_4_strength": "ماسک_4_شدت",
+            "set_cond_area": "تنظیم ناحیهٔ شرط",
+            "default": "پیش‌فرض",
+            "mask bounds": "مرزهای ماسک"
+        },
+        "outputs": {
+            "combined_positive": "ادغام شرط مثبت",
+            "combined_negative": "ادغام شرط منفی"
+        },
+        "description": "چندین ماسک تنظیم را بسته‌بندی کرده و گره‌ها را در یکی ترکیب می‌کند؛ کارکرد مشابه گرهٔ بومی ComfyUI است"
+    },
+    "ConditioningSetMaskAndCombine5": {
+        "title": "تنظیم ماسک شرط (ادغام 5)",
+        "inputs": {
+            "positive_1": "شرط مثبت_1",
+            "negative_1": "شرط منفی_1",
+            "positive_2": "شرط مثبت_2",
+            "negative_2": "شرط منفی_2",
+            "positive_3": "شرط مثبت_3",
+            "negative_3": "شرط منفی_3",
+            "positive_4": "شرط مثبت_4",
+            "negative_4": "شرط منفی_4",
+            "positive_5": "شرط مثبت_5",
+            "negative_5": "شرط منفی_5",
+            "mask_1": "ماسک_1",
+            "mask_2": "ماسک_2",
+            "mask_3": "ماسک_3",
+            "mask_4": "ماسک_4",
+            "mask_5": "ماسک_5"
+        },
+        "widgets": {
+            "mask_1_strength": "ماسک_1_شدت",
+            "mask_2_strength": "ماسک_2_شدت",
+            "mask_3_strength": "ماسک_3_شدت",
+            "mask_4_strength": "ماسک_4_شدت",
+            "mask_5_strength": "ماسک_5_شدت",
+            "set_cond_area": "تنظیم ناحیهٔ شرط",
+            "default": "پیش‌فرض",
+            "mask bounds": "مرزهای ماسک"
+        },
+        "outputs": {
+            "combined_positive": "ادغام شرط مثبت",
+            "combined_negative": "ادغام شرط منفی"
+        },
+        "description": "چندین ماسک تنظیم را بسته‌بندی کرده و گره‌ها را در یکی ترکیب می‌کند؛ کارکرد مشابه گرهٔ بومی ComfyUI است"
+    },
+    "VRAM_Debug": {
+        "title": "پاک‌سازی VRAM",
+        "inputs": {
+            "any_input": "هر ورودی",
+            "image_pass": "عبور تصویر",
+            "model_pass": "عبور مدل"
+        },
+        "widgets": {
+            "empty_cache": "خالی‌کردن نهان‌گاه",
+            "gc_collect": "جمع‌آوری زباله",
+            "unload_all_models": "تخلیهٔ همهٔ مدل‌ها"
+        },
+        "outputs": {
+            "any_output": "هر خروجی",
+            "image_pass": "عبور تصویر",
+            "model_pass": "عبور مدل",
+            "freemem_before": "حافظهٔ باقیمانده پیش از پاک‌سازی",
+            "freemem_after": "حافظهٔ باقیمانده پس از پاک‌سازی"
+        },
+        "description": "دادهٔ ورودی را بدون تغییر بازمی‌گرداند (فقط به‌عنوان سیگنال ماشه استفاده می‌شود) و هم‌زمان کارکردهای مدیریت مدل Comfy و جمع‌آوری زباله را اجرا کرده، و پیش و پس از عملیات حافظهٔ باقیماندهٔ (VRAM) را گزارش می‌کند."
+    },
+    "SomethingToString": {
+        "title": "دلخواه به رشته",
+        "inputs": {
+            "input": "ورودی"
+        },
+        "widgets": {
+            "prefix": "پیشوند",
+            "suffix": "پسوند"
+        },
+        "outputs": {
+            "STRING": "رشته"
+        }
+    },
+    "Sleep": {
+        "title": "خواب",
+        "inputs": {
+            "input": "ورودی"
+        },
+        "widgets": {
+            "minutes": "دقیقه",
+            "seconds": "ثانیه"
+        },
+        "outputs": {
+            "*": "*"
+        }
+    },
+    "EmptyLatentImagePresets": {
+        "title": "پیش‌تنظیم تصویر Latent خالی",
+        "widgets": {
+            "dimensions": "ابعاد",
+            "invert": "معکوس",
+            "batch_size": "اندازهٔ دسته"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "عرض",
+            "Height": "ارتفاع"
+        }
+    },
+    "EmptyLatentImageCustomPresets": {
+        "title": "پیش‌تنظیم تصویر Latent سفارشی",
+        "widgets": {
+            "dimensions": "ابعاد",
+            "invert": "معکوس",
+            "batch_size": "اندازهٔ دسته"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "عرض",
+            "Height": "ارتفاع"
+        },
+        "description": "بر اساس ابعاد مشخص‌شده یک تصویر نهان (latent) خالی تولید می‌کند. \n این گزینه‌ها از فایل 'custom_dimensions.json' در «پوشهٔ گره» بارگذاری می‌شوند."
+    },
+    "WidgetToString": {
+        "title": "مؤلفه به رشته",
+        "inputs": {
+            "any_input": "ورودی دلخواه"
+        },
+        "widgets": {
+            "id": "شناسهٔ گره",
+            "widget_name": "نام مؤلفه",
+            "return_all": "بازگرداندن همه",
+            "node_title": "عنوان گره",
+            "allowed_float_decimals": "اجازهٔ کسر اعشاری"
+        },
+        "outputs": {
+            "STRING": "رشته"
+        }
+    },
+    "DummyOut": {
+        "title": "خروجی Latent مجازی",
+        "inputs": {
+            "any_input": "هر ورودی"
+        },
+        "outputs": {
+            "*": "خروجی"
+        }
+    },
+    "FlipSigmasAdjusted": {
+        "title": "تنظیم sigmas معکوس",
+        "inputs": {
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "divide_by_last_sigma": "تقسیم بر Sigma آخر",
+            "divide_by": "تقسیم بر",
+            "offset_by": "مقدار افست"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas",
+            "sigmas_string": "رشتهٔ sigmas"
+        }
+    },
+    "CustomSigmas": {
+        "title": "Sigmas سفارشی",
+        "widgets": {
+            "sigmas_string": "رشتهٔ Sigmas",
+            "interpolate_to_steps": "گام‌های درون‌یابی",
+            "t_steps": "گام‌های T",
+            "num_steps": "تعداد گام"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        }
+    },
+    "StringToFloatList": {
+        "title": "رشته به فهرست اعشاری",
+        "inputs": {
+            "string": "رشته"
+        },
+        "outputs": {
+            "FLOAT": "عدد اعشاری"
+        }
+    },
+    "InjectNoiseToLatent": {
+        "title": "تزریق نویز به Latent",
+        "inputs": {
+            "latents": "Latent",
+            "noise": "نویز",
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "strength": "شدت",
+            "normalize": "نرمال‌سازی",
+            "average": "میانگین",
+            "mix_randn_amount": "شدت آمیختن نویز تصادفی",
+            "seed": "بذر"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "SoundReactive": {
+        "title": "واکنش صوتی",
+        "inputs": {
+            "audio": "صوت"
+        },
+        "widgets": {
+            "sound_level": "سطح بلندی صدا",
+            "start_range_hz": "بازهٔ Hz شروع",
+            "end_range_hz": "بازهٔ Hz پایان",
+            "multiplier": "مضرب",
+            "smoothing_factor": "ضریب همواری",
+            "normalize": "نرمال‌سازی",
+            "Start mic capture": "شروع ضبط میکروفون",
+            "Start_mic_capture": "شروع ضبط میکروفون",
+            "Stop mic capture": "توقف ضبط میکروفون",
+            "Stop_mic_capture": "توقف ضبط میکروفون"
+        },
+        "outputs": {
+            "sound_level": "سطح بلندی صدا",
+            "sound_level_int": "عدد صحیح سطح بلندی صدا"
+        },
+        "description": "سطح بلندی صدای صوت ورودی را بازمی‌گرداند.\n\nاز ورودی صوت مرورگر استفاده می‌کند.\n\nبرای نمونه‌برداری زنده استفاده می‌شود."
+    },
+    "GenerateNoise": {
+        "title": "تولید نویز",
+        "inputs": {
+            "model": "مدل",
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "width": "عرض",
+            "height": "ارتفاع",
+            "batch_size": "اندازهٔ دسته",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "fixed": "ثابت",
+            "increment": "افزایش",
+            "decrement": "کاهش",
+            "randomize": "تصادفی",
+            "multiplier": "مضرب",
+            "constant_batch_noise": "نویز دستهٔ ثابت",
+            "normalize": "نرمال‌سازی",
+            "latent_channels": "کانال latent",
+            "shape": "شکل"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        },
+        "description": "هنگام تزریق نویز تولید می‌کند، یا وقتی افزودن نویز خاموش است به‌عنوان یک Latent خالی روی نمونه‌بردار استفاده می‌شود"
+    },
+    "StableZero123_BatchSchedule": {
+        "title": "تولید دسته‌ای چندمنظرهٔ Stable Zero123",
+        "inputs": {
+            "clip_vision": "بینایی CLIP",
+            "init_image": "تصویر اولیه",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "عرض",
+            "height": "ارتفاع",
+            "batch_size": "اندازهٔ دسته",
+            "interpolation": "روش درون‌یابی",
+            "linear": "خطی",
+            "ease_in": "ورود آهسته",
+            "ease_out": "خروج آهسته",
+            "ease_in_out": "ورود و خروج آهسته",
+            "azimuth_points_string": "نقطهٔ سمت",
+            "elevation_points_string": "نقطهٔ ارتفاع"
+        },
+        "outputs": {
+            "positive": "شرط مثبت",
+            "negative": "شرط منفی",
+            "latent": "Latent"
+        },
+        "description": "یک تصویر ورودی می‌گیرد و دسته‌ای تصویر چندمنظرهٔ همسو (مانند 0°، 90°، 180°) تولید می‌کند؛ از زمان‌بندی بهینه‌سازی VRAM پشتیبانی می‌کند."
+    },
+    "SV3D_BatchSchedule": {
+        "title": "زمان‌بندی دستهٔ SV3D",
+        "inputs": {
+            "clip_vision": "بینایی CLIP",
+            "init_image": "تصویر اولیه",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "عرض",
+            "height": "ارتفاع",
+            "batch_size": "اندازهٔ دسته",
+            "interpolation": "روش درون‌یابی",
+            "azimuth_points_string": "نقطهٔ سمت",
+            "elevation_points_string": "نقطهٔ ارتفاع"
+        },
+        "outputs": {
+            "positive": "شرط مثبت",
+            "negative": "شرط منفی",
+            "latent": "Latent"
+        },
+        "description": "مقادیر سمت و ارتفاع SV3D را با استفاده از درون‌یابی زمان‌بندی می‌کند.\n\nتوجه: SV3D یک مدل ویدئو است، بنابراین مقادیر زمان‌بندی باید تدریجاً پیش بروند.\n\nhttps://huggingface.co/stabilityai/sv3d"
+    },
+    "LoadResAdapterNormalization": {
+        "title": "بارگذاری نرمال‌ساز ResAdapter",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "resadapter_path": "مسیر ResAdapter"
+        },
+        "outputs": {
+            "MODEL": "مدل"
+        }
+    },
+    "Superprompt": {
+        "title": "ابر دستور",
+        "inputs": {
+            "prompt": "راهنمایی"
+        },
+        "widgets": {
+            "instruction_prompt": "دستور متنی دستورالعمل",
+            "max_new_tokens": "حداکثر تعداد توکن جدید"
+        },
+        "outputs": {
+            "STRING": "رشته"
+        },
+        "description": "مدل T5 تنظیم‌شده روی مجموعه‌دادهٔ ابردستور.\n\nیک دستور متنی را به توصیفی مفصل‌تر ارتقا می‌دهد.\n\nبه‌عنوان گامی پیش از تولید متن‌به‌تصویر استفاده می‌شود\n\nمدل‌هایی که از دستورات مفصل‌تر بهره می‌برند. \n\nhttps://huggingface.co/roborovski/superprompt-v1"
+    },
+    "CameraPoseVisualizer": {
+        "title": "نمایش بصری وضعیت دوربین",
+        "inputs": {
+            "cameractrl_poses": "وضعیت کنترل دوربین"
+        },
+        "widgets": {
+            "pose_file_path": "مسیر فایل وضعیت",
+            "base_xval": "مقدار پایهٔ X",
+            "zval": "مقدار Z",
+            "scale": "مقیاس‌دهی",
+            "use_exact_fx": "استفاده از درون‌یابی دقیق",
+            "relative_c2w": "دوربین نسبی به مختصات جهانی",
+            "use_viewer": "استفاده از نمایشگر",
+            "cameractrl_poses": "وضعیت کنترل دوربین",
+            "extrinsic": "خارجی",
+            "color_map": "نگاشت رنگ",
+            "hw_ratio": "نسبت ارتفاع به عرض",
+            "list_label": "برچسب فهرست",
+            "w2cs": "جهان به دوربین",
+            "transform_matrix": "ماتریس تبدیل"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "نمایش بصری وضعیت دوربین\n\n(از ماژول Camera Ctrl Pose در Animatediff Evolved، یا از طریق فایل ‎.txt که پارامترهای داخلی دوربین و مختصات مجموعه‌دادهٔ RealEstate را دارد، در نمودار سه‌بُعدی نمایش داده می‌شود)"
+    },
+    "StabilityAPI_SD3": {
+        "title": "StabilityAPI SD3",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "prompt": "راهنمایی",
+            "n_prompt": "دستور منفی",
+            "seed": "بذر تصادفی",
+            "control_before_generate": "کنترل پیش از تولید",
+            "model": "مدل",
+            "aspect_ratio": "نسبت ابعاد",
+            "output_format": "قالب خروجی",
+            "api_key": "کلید API",
+            "img2img_strength": "شدت تصویر‌به‌تصویر",
+            "disable_metadata": "غیرفعال‌سازی فراداده"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "# فراخوانی Stability API\n\nتا حد امکان بدون توجه به تعداد کلیدهای حساب، برای فراخوانی API از همان کلید استفاده کنید.\n\nکلید را از https://platform.stability.ai/account/keys بگیرید؛ پیشنهاد می‌شود فایلی به نام config.json حاوی کلید بسازید و آن را در پوشهٔ افزونه بگذارید.\n\n# هشدار:\n\nحتی اگر disable_metadata (غیرفعال‌سازی فراداده) روشن باشد، اگر گردش کار شامل گرهٔ ذخیره‌ای متفاوت از این گره باشد، ممکن است کلید API در فراداده ذخیره شود.\n\nهر بار تولید در SD3 به 6.5 واحد اعتبار نیاز دارد\n\nهر بار تولید در SD3-Turbo به 4 واحد اعتبار نیاز دارد\n\nاگر ورودی تصویر وصل نشود، حالت متن‌به‌تصویر استفاده می‌شود"
+    },
+    "CheckpointPerturbWeights": {
+        "title": "اغتشاش وزن مدل بزرگ نقطهٔ بررسی",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "joint_blocks": "بلوک‌های مشترک",
+            "final_layer": "لایهٔ نهایی",
+            "rest_of_the_blocks": "سایر بلوک‌ها",
+            "seed": "بذر تصادفی",
+            "control_before_generate": "کنترل پیش از تولید"
+        },
+        "outputs": {
+            "MODEL": "مدل"
+        }
+    },
+    "DifferentialDiffusionAdvanced": {
+        "title": "انتشار تفاضلی (پیشرفته)",
+        "inputs": {
+            "model": "مدل",
+            "samples": "نمونه‌برداری",
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "multiplier": "مضرب"
+        },
+        "outputs": {
+            "MODEL": "مدل",
+            "LATENT": "Latent"
+        }
+    },
+    "FluxBlockLoraSelect": {
+        "title": "انتخاب LoRA بلوک Flux",
+        "inputs": {},
+        "outputs": {
+            "blocks": "بلوک"
+        },
+        "description": "بارگذاری ICLightUnet: یک مدل ICLightUnet را بارگذاری می‌کند. (آزمایشی) در حال توسعه \n روش دیگرِ کم‌راحت اما کارآمد این است که مدل را از https://huggingface.co/Kijai/iclight-comfy/blob/main/iclight_fc_converted.safetensors بارگیری کرده و با گرهٔ InstructPixToPix Condition استفاده کنید."
+    },
+    "HunyuanVideoBlockLoraSelect": {
+        "title": "انتخاب LoRA بلوک ویدئوی Hunyuan",
+        "inputs": {},
+        "outputs": {
+            "blocks": "بلوک"
+        },
+        "description": "مقدار آلفای یک بلوک واحد را انتخاب کنید؛ مقدار 0 کل بلوک را حذف می‌کند"
+    },
+    "FluxBlockLoraLoader": {
+        "title": "بارگذار LoRA بلوک Flux",
+        "inputs": {
+            "model": "مدل",
+            "blocks": "بلوک",
+            "opt_lora_path": "مسیر LoRA (اختیاری)"
+        },
+        "widgets": {
+            "strength_model": "شدت مدل",
+            "lora_name": "نام LoRA"
+        },
+        "outputs": {
+            "model": "مدل",
+            "rank": "رتبه"
+        }
+    },
+    "CustomControlNetWeightsFluxFromList": {
+        "title": "وزن‌های ControlNet سفارشی Flux از فهرست",
+        "inputs": {
+            "cn_extras": "ControlNet اضافی",
+            "list_of_floats": "فهرست اعداد اعشاری"
+        },
+        "widgets": {
+            "uncond_multiplier": "مضرب بدون‌شرط",
+            "autosize": "اندازهٔ خودکار"
+        },
+        "outputs": {
+            "CN_WEIGHTS": "وزن‌های ControlNet",
+            "TK_SHORTCUT": "میان‌بُر TK"
+        },
+        "description": "فهرست اعداد اعشاری را به وزن‌های ControlNet تبدیل می‌کند (برای Advanced-ControlNet)"
+    },
+    "SetShakkerLabsUnionControlNetType": {
+        "title": "نوع ControlNet مشترک ShakkerLabs را تنظیم می‌کند",
+        "inputs": {
+            "control_net": "ControlNet",
+            "type": "نوع"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "ModelSaveKJ": {
+        "title": "ذخیرهٔ مدل (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "filename_prefix": "پیشوند نام فایل",
+            "model_key_prefix": "پیشوند کلید مدل"
+        }
+    },
+    "StyleModelApplyAdvanced": {
+        "title": "اعمال‌کنندهٔ مدل سبک پیشرفته",
+        "inputs": {
+            "conditioning": "هدایت شرط",
+            "style_model": "مدل سبک",
+            "clip_vision_output": "خروجی بینایی CLIP"
+        },
+        "widgets": {
+            "strength": "شدت"
+        },
+        "outputs": {
+            "conditioning": "هدایت شرط"
+        },
+        "description": "اعمال مدل سبک، اما نیازمند تنظیم پارامتر شدت"
+    },
+    "AudioConcatenate": {
+        "title": "چسباندن صوت",
+        "inputs": {
+            "audio1": "صوت1",
+            "audio2": "صوت2"
+        },
+        "widgets": {
+            "direction": "جهت"
+        },
+        "outputs": {
+            "AUDIO": "صوت"
+        },
+        "description": "صوت1 را به صوت2 بر اساس جهت مشخص‌شده می‌چسباند."
+    },
+    "ImageNoiseAugmentation": {
+        "title": "تقویت نویز تصویر",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "noise_aug_strength": "شدت تقویت نویز",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "image": "تصویر"
+        }
+    },
+    "VAELoaderKJ": {
+        "title": "بارگذار VAE (KJ)",
+        "inputs": {},
+        "widgets": {
+            "vae_name": "نام VAE",
+            "device": "دستگاه",
+            "weight_dtype": "نوع دادهٔ وزن‌ها"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "ScheduledCFGGuidance": {
+        "title": "هدایت CFG زمان‌بندی‌شده",
+        "inputs": {
+            "model": "مدل",
+            "positive": "دستور مثبت",
+            "negative": "دستور منفی"
+        },
+        "widgets": {
+            "cfg": "مقدار CFG",
+            "start_percent": "درصد شروع",
+            "end_percent": "درصد پایان"
+        },
+        "outputs": {
+            "GUIDER": "هدایت‌گر"
+        }
+    },
+    "ApplyRifleXRoPE_WanVideo": {
+        "title": "اعمال RifleX RoPE برای ویدئوی Wan",
+        "inputs": {
+            "model": "مدل",
+            "latent": "Latent",
+            "k": "مقدار k"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "ApplyRifleXRoPE_HunuyanVideo": {
+        "title": "اعمال RifleX RoPE برای ویدئوی Hunyuan",
+        "inputs": {
+            "model": "مدل",
+            "latent": "Latent",
+            "k": "مقدار k"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "TimerNodeKJ": {
+        "title": "زمان‌سنج (KJ)",
+        "inputs": {
+            "any_input": "ورودی دلخواه",
+            "timer": "زمان‌سنج"
+        },
+        "widgets": {
+            "mode": "حالت",
+            "name": "نام"
+        },
+        "outputs": {
+            "any_output": "خروجی دلخواه",
+            "timer": "زمان‌سنج",
+            "time": "زمان"
+        }
+    },
+    "ImageBatchFilter": {
+        "title": "پالایهٔ پردازش دسته‌ای تصویر",
+        "inputs": {
+            "images": "تصویر",
+            "replacement_image": "جایگزینی تصویر"
+        },
+        "widgets": {
+            "empty_color": "تنظیم رنگ ناحیهٔ خالی",
+            "empty_threshold": "آستانهٔ شدت برای تشخیص خالی بودن ناحیه"
+        },
+        "outputs": {
+            "images": "تصویر",
+            "IMAGES": "تصویر",
+            "removed_indices": "نمایهٔ حذف"
+        },
+        "description": "تصاویر خالی را از پردازش دسته‌ای حذف می‌کند"
+    },
+    "ImageResizeKJv2": {
+        "title": "مقیاس‌دهی تصویر v2 (KJ)",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "width": "عرض",
+            "height": "ارتفاع",
+            "upscale_method": "روش مقیاس‌دهی",
+            "keep_proportions": "نسبت ابعاد ثابت",
+            "keep_proportion": "نسبت ابعاد ثابت",
+            "pad_color": "رنگ پدینگ",
+            "crop_position": "موقعیت برش",
+            "divisible_by": "عدد بخش‌پذیر",
+            "device": "دستگاه",
+            "per_batch": "دسته"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "mask": "ماسک"
+        },
+        "description": "مقیاس‌دهی تصویر نسل 2. اندازه‌ها می‌توانند از ورودی مشخص شوند؛ اولویت خروجی نهایی بر اساس قواعد زیر است:\n- اندازهٔ تصویر مرجع \n- عرض-ورودی و ارتفاع-ورودی \n- عرض و ارتفاع \n \nنسبت ابعاد ثابت، نسبت را بر اساس بزرگ‌ترین بُعد تثبیت می‌کند."
+    },
+    "InsertLatentToIndexed": {
+        "title": "درج Latent بر اساس نمایه",
+        "inputs": {
+            "source": "مبدأ",
+            "destination": "مقصد"
+        },
+        "widgets": {
+            "index": "ضریب"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "latent": "Latent"
+        },
+        "description": "Latent در نمایهٔ مشخص‌شده را در دستهٔ Latent اصلی درج می‌کند."
+    },
+    "DiTBlockLoraLoader": {
+        "title": "بارگذار Lora بلوک DiT",
+        "inputs": {
+            "model": "مدل",
+            "opt_lora_path": "انتخاب مسیر Lora",
+            "blocks": "بلوک"
+        },
+        "widgets": {
+            "strength_model": "شدت مدل",
+            "lora_name": "نام Lora",
+            "overlap": "مقدار همپوشانی"
+        },
+        "outputs": {
+            "model": "مدل",
+            "rank": "رتبه"
+        },
+        "description": "محتوای تازه افزوده."
+    },
+    "LeapfusionHunyuanI2VPatcher": {
+        "title": "وصلهٔ Leapfusion Hunyuan تصویر به ویدئو",
+        "inputs": {
+            "model": "مدل",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "index": "ضریب",
+            "start_percent": "درصد شروع",
+            "end_percent": "درصد پایان",
+            "strength": "شدت"
+        },
+        "outputs": {
+            "MODEL": "مدل",
+            "model": "مدل"
+        },
+        "description": "محتوای تازه افزوده."
+    },
+    "ModelPatchTorchSettings": {
+        "title": "تنظیمات وصلهٔ مدل Torch",
+        "inputs": {
+            "model": "مدل",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "فعال‌سازی انباشت FP16",
+            "start_percent": "درصد شروع",
+            "end_percent": "درصد پایان",
+            "strength": "شدت"
+        },
+        "outputs": {
+            "MODEL": "مدل",
+            "model": "مدل"
+        },
+        "description": "مصرف حافظهٔ GPU را کاهش می‌دهد\nعملیات ضرب و انباشت ماتریس را سرعت می‌بخشد\nنسبت بازده انرژی را افزایش می‌دهد\nممکن است رخ دهد: سرریز عددی و افت دقت."
+    },
+    "LoraExtractKJ": {
+        "title": "استخراج Lora (KJ)",
+        "inputs": {
+            "finetuned_model": "مدل تنظیم‌شده",
+            "original_model": "مدل اصلی"
+        },
+        "widgets": {
+            "filename_prefix": "پیشوند نام فایل",
+            "rank": "رتبه",
+            "lora_type": "نوع Lora",
+            "algorithm": "الگوریتم",
+            "lowrank_iters": "تعداد تکرار رتبهٔ پایین",
+            "output_dtype": "نوع دادهٔ خروجی",
+            "bias_diff": "اختلاف انحراف",
+            "adaptive_param": "پارامتر خودتنظیم",
+            "clamp_quantile": "کوانتایل Clamp"
+        },
+        "outputs": {
+            "images": "تصویر",
+            "masks": "ماسک"
+        },
+        "description": "LoraExtract"
+    },
+    "Wan21BlockLoraSelect": {
+        "title": "انتخاب‌گر LoRA بلوکی Wan2.1",
+        "inputs": {
+            "model": "مدل",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "فعال‌سازی انباشت FP16",
+            "start_percent": "درصد شروع",
+            "end_percent": "درصد پایان",
+            "strength": "شدت"
+        },
+        "outputs": {
+            "BLOCKS": "بلوک",
+            "blocks": "بلوک"
+        },
+        "description": "مقدار آلفای یک بلوک واحد را انتخاب کنید؛ مقدار 0 کل بلوک را حذف می‌کند."
+    },
+    "LoadVideosFromFolder": {
+        "title": "بارگذاری ویدئو از پوشه",
+        "inputs": {
+            "video": "ویدئو"
+        },
+        "widgets": {
+            "video": "ویدئو",
+            "force_rate": "تحمیل نرخ فریم",
+            "custom_width": "عرض سفارشی",
+            "custom_height": "ارتفاع سفارشی",
+            "frame_load_cap": "سقف خواندن تعداد فریم",
+            "skip_first_frames": "رد کردن X فریم اول",
+            "select_every_nth": "فاصله",
+            "output_type": "نوع خروجی",
+            "grid_max_columns": "حداکثر ستون‌های شبکه",
+            "add_label": "افزودن برچسب"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "TorchCompileModelQwenImage": {
+        "title": "مدل Torch کامپایل Qwen Image",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "backend": "بک‌اند",
+            "fullgraph": "گراف کامل",
+            "mode": "حالت",
+            "dynamic": "پویا",
+            "compile_transformer_blocks_only": "فقط ماژول تبدیل‌گر را کامپایل کن",
+            "dynamo_cache_size_limit": "محدودیت اندازهٔ حافظهٔ نهان‌گاه پویا"
+        },
+        "outputs": {
+            "MODEL": "مدل",
+            "model": "مدل"
+        }
+    },
+    "LazySwitchKJ": {
+        "title": "سوییچ آسان (KJ)",
+        "inputs": {
+            "on_false": "نادرست",
+            "on_true": "صحیح"
+        },
+        "widgets": {
+            "switch": "سوییچ"
+        },
+        "outputs": {
+            "*": "دلخواه"
+        }
+    },
+    "GetLatentSizeAndCount": {
+        "title": "گرفتن اندازه و تعداد Latent",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "latent": "Latent",
+            "batch_size": "اندازهٔ دسته",
+            "channels": "کانال‌ها",
+            "frames": "فریم",
+            "width": "عرض",
+            "height": "ارتفاع"
+        }
+    },
+    "DiffusionModelSelector": {
+        "title": "انتخاب‌گر مدل انتشار",
+        "inputs": {},
+        "widgets": {
+            "model_name": "نام مدل"
+        },
+        "outputs": {
+            "model_path": "مسیر مدل"
+        }
+    },
+    "LoraReduceRankKJ": {
+        "title": "کاهش رتبهٔ Lora (KJ)",
+        "inputs": {},
+        "widgets": {
+            "lora_name": "نام Lora",
+            "new_rank": "رتبهٔ جدید",
+            "dynamic_method": "روش پویا",
+            "dynamic_param": "پارامتر پویا",
+            "output_dtype": "نوع دادهٔ خروجی",
+            "verbose": "حالت تفصیلی"
+        },
+        "outputs": {
+            "model_path": "مسیر مدل"
+        },
+        "description": "با کاهش رتبهٔ مدل، اندازهٔ مدل LoRA را تنظیم می‌کند.\n با sd-scripts مبتنی بر kohya مراجعه کنید: https://github.com/kohya-ss/sd-scripts/blob/main/networks/resize_lora.py"
+    },
+    "DrawMaskOnImage": {
+        "title": "ادغام تصویر و ماسک",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "mask_opacity": "کدری ماسک",
+            "mask_color": "رنگ ماسک",
+            "color": "رنگ"
+        },
+        "outputs": {
+            "images": "تصویر"
+        },
+        "description": "وقتی هم‌زمان تصویر و ماسک وارد شوند، ماسک روی تصویر ادغام می‌شود."
+    },
+    "BlockifyMask": {
+        "title": "ماسک بلوکی",
+        "inputs": {
+            "image": "تصویر",
+            "masks": "ماسک"
+        },
+        "widgets": {
+            "block_size": "اندازهٔ بلوک"
+        },
+        "outputs": {
+            "mask": "ماسک"
+        },
+        "description": "با تقسیم کادر محدودهٔ هر ماسک به بلوک‌هایی با اندازهٔ مشخص و پرکردن بلوک‌هایی که بخشی از ماسک اصلی را در بر دارند، یک ماسک بلوکی می‌سازد."
+    },
+    "ConsolidateMasksKJ": {
+        "title": "یکپارچه‌سازی ماسک‌ها (KJ)",
+        "inputs": {
+            "mask": "ماسک",
+            "masks": "ماسک"
+        },
+        "widgets": {
+            "padding": "پدینگ",
+            "width": "عرض",
+            "height": "ارتفاع"
+        },
+        "outputs": {
+            "mask": "ماسک"
+        },
+        "description": "با یافتن بیشترین تعداد ماسک‌های منفرد که کاملاً در یک ناحیهٔ مستطیلی با عرض و ارتفاع داده‌شده (شامل پدینگ) جا می‌شوند و سپس تکرار این فرایند تا جایی که دیگر ماسکی قابل ادغام نباشد، دسته‌ای ماسک منفرد را یکپارچه می‌کند."
+    },
+    "GGUFLoaderKJ": {
+        "title": "بارگذار مدل GGUF (KJ)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "نام مدل",
+            "extra_model_name": "نام مدل اضافی",
+            "dequant_dtype": "نوع دادهٔ ضد کوانتیزه",
+            "patch_dtype": "نوع دادهٔ وصله",
+            "patch_on_device": "وصله روی دستگاه",
+            "attention_override": "حالت اولویت توجه",
+            "enable_fp16_accumulation": "فعال‌سازی انباشت FP16"
+        },
+        "outputs": {
+            "model": "مدل"
+        },
+        "description": "مدل GGUF را با گزینه‌های پیشرفته بارگذاری می‌کند؛ پیش از آن باید نرم‌افزار ComfyUI-GGUF نصب شود."
+    },
+    "EndRecordCUDAMemoryHistory": {
+        "title": "پایان ثبت تاریخچهٔ حافظهٔ CUDA (KJ)",
+        "inputs": {
+            "input": "ورودی"
+        },
+        "widgets": {
+            "output_path": "مسیر خروجی"
+        },
+        "outputs": {
+            "input": "ورودی",
+            "output_path": "مسیر خروجی"
+        },
+        "description": "تاریخچهٔ تخصیص حافظهٔ CUDA میان شروع و پایان را ثبت کرده و در فایلی ذخیره می‌کند که می‌توان آن را اینجا تحلیل کرد: https://docs.pytorch.org/memory_viz یا با استفاده از گرهٔ «نمایش بصری تاریخچهٔ حافظهٔ CUDA»."
+    },
+    "VisualizeCUDAMemoryHistory": {
+        "title": "نمایش بصری تاریخچهٔ حافظهٔ CUDA (KJ)",
+        "inputs": {
+            "input": "ورودی"
+        },
+        "widgets": {
+            "snapshot_path": "مسیر عکس فوری"
+        },
+        "outputs": {
+            "input": "ورودی",
+            "output_path": "مسیر خروجی"
+        },
+        "description": "فایل تاریخچهٔ تخصیص حافظهٔ CUDA را به‌صورت بصری نمایش می‌دهد و در مرورگر باز می‌کند"
+    },
+    "StartRecordCUDAMemoryHistory": {
+        "title": "شروع ثبت تاریخچهٔ حافظهٔ CUDA (KJ)",
+        "inputs": {
+            "input": "ورودی"
+        },
+        "widgets": {
+            "enabled": "روشن",
+            "context": "پس‌زمینه",
+            "stacks": "پشته",
+            "max_entries": "حداکثر تعداد ورودی‌ها"
+        },
+        "outputs": {
+            "input": "ورودی"
+        }
+    },
+    "NABLA_AttentionKJ": {
+        "title": "توجه NABLA (KJ)",
+        "inputs": {
+            "model": "مدل",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "window_time": "زمان پنجره",
+            "window_width": "عرض پنجره",
+            "window_height": "ارتفاع پنجره",
+            "sparsity": "پراکنندگی",
+            "torch_compile": "کامپایل torch"
+        },
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "SimpleCalculatorKJ": {
+        "title": "ماشین‌حساب ساده (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "FLOAT": "عدد اعشاری",
+            "STRING": "عدد اعشاری",
+            "INT": "عدد صحیح"
+        }
+    },
+    "VAEDecodeLoopKJ": {
+        "title": "رمزگشایی حلقوی VAE (KJ)",
+        "inputs": {
+            "samples": "نمونه‌برداری",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "overlap_latent_frames": "تکرار تصویر Latent"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "STRING": "عدد اعشاری",
+            "INT": "عدد صحیح"
+        }
+    },
+    "GetTrackRange": {
+        "title": "گرفتن محدودهٔ مسیر (KJ)",
+        "inputs": {
+            "tracks": "مسیر"
+        },
+        "widgets": {
+            "start_index": "نمایهٔ شروع",
+            "num_frames": "تعداد فریم"
+        },
+        "outputs": {
+            "TRACKS": "مسیر"
+        }
+    },
+    "AddNoiseToTrackPath": {
+        "title": "افزودن نویز به مسیر حرکتی (KJ)",
+        "inputs": {
+            "tracks": "مسیر"
+        },
+        "widgets": {
+            "strength": "شدت",
+            "seed": "بذر",
+            "noise_x_ratio": "نسبت نویز x",
+            "noise_y_ratio": "نسبت نویز y",
+            "noise_temporal_ratio": "نسبت نویز زمانی"
+        },
+        "outputs": {
+            "TRACKS": "مسیر"
+        }
+    },
+    "WanImageToVideoSVIPro": {
+        "title": "Wan تصویر به ویدئو SVI حرفه‌ای (KJ)",
+        "inputs": {
+            "positive": "دستور مثبت",
+            "negative": "دستور منفی",
+            "anchor_samples": "نمونه‌برداری لنگر",
+            "prev_samples": "نمونه‌برداری قبلی"
+        },
+        "widgets": {
+            "length": "طول",
+            "motion_latent_count": "تعداد حرکت Latent"
+        },
+        "outputs": {
+            "positive": "دستور مثبت",
+            "negative": "دستور منفی",
+            "latent": "Latent"
+        }
+    },
+    "ModelMemoryUseReportPatch": {
+        "title": "وصلهٔ گزارش مصرف حافظهٔ مدل (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "model": "مدل"
+        },
+        "outputs": {
+            "model": "مدل"
+        },
+        "description": "تابع callback به مدل اضافه می‌کند تا پس از پایان نمونه‌برداری مصرف حافظه را گزارش کند"
+    },
+    "ModelMemoryUsageFactorOverride": {
+        "title": "مقدار سفارشی ضریب مصرف حافظهٔ مدل (KJ)",
+        "inputs": {
+            "model": "مدل",
+            "memory_usage_factor": "ضریب مصرف حافظه"
+        },
+        "widgets": {
+            "model": "مدل",
+            "memory_usage_factor": "ضریب مصرف حافظه"
+        },
+        "outputs": {
+            "model": "مدل"
+        },
+        "description": "در طول نمونه‌برداری ضریب مصرف حافظهٔ مدل را بازنویسی می‌کند."
+    },
+    "LTXVEnhanceAVideoKJ": {
+        "title": "تقویت ویدئوی LTX (KJ)",
+        "inputs": {
+            "model": "مدل",
+            "latent": "Latent",
+            "weight": "وزن"
+        },
+        "widgets": {
+            "model": "مدل",
+            "latent": "Latent",
+            "weight": "وزن"
+        },
+        "outputs": {
+            "model": "مدل"
+        }
+    },
+    "LTX2BlockLoraSelect": {
+        "title": "انتخاب‌گر Lora بلوک LTX2 (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "selectedditblocks": "بلوک DIT انتخاب‌شده"
+        },
+        "description": "تابع callback به مدل اضافه می‌کند تا پس از پایان نمونه‌برداری مصرف حافظه را گزارش کند"
+    },
+    "VisualizeSigmasKJ": {
+        "title": "نمایش بصری مقدار sigma (KJ)",
+        "inputs": {
+            "sigmas": "مقادیر sigma"
+        },
+        "widgets": {
+            "start_step": "گام شروع",
+            "end_step": "گام پایان"
+        },
+        "outputs": {
+            "sigmas_out": "خروجی sigma",
+            "image": "تصویر"
+        },
+        "description": ""
+    },
+    "LTX2SamplingPreviewOverride": {
+        "title": "بازنویسی پیش‌نمایش نمونه‌برداری LTX2 (KJ)",
+        "inputs": {
+            "model": "مدل",
+            "latent_upscale_model": "مدل بزرگ‌نمایی Latent",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "preview_rate": "نرخ پیش‌نمایش"
+        },
+        "outputs": {},
+        "description": "قابلیت پیش‌نمایش نمونه‌برداری LTX2 موقتاً غیرفعال شده است و تا زمانی که این قابلیت در یک هستهٔ پایدار کامل شود ادامه خواهد داشت."
+    },
+    "LTXVAddGuidesFromBatch": {
+        "title": "افزودن تصاویر هدایت از دسته (KJ)",
+        "inputs": {
+            "positive": "هدایت مثبت",
+            "negative": "هدایت منفی",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images": "تصویر"
+        },
+        "widgets": {
+            "strength": "شدت"
+        },
+        "outputs": {
+            "positive": "هدایت مثبت",
+            "negative": "هدایت منفی",
+            "latent": "Latent"
+        },
+        "description": "چند تصویر هدایت از یک دسته را بر اساس نمایهٔ فریم متناظر به تصویر Latent اضافه می‌کند. تصاویر غیرسیاه در دسته به‌عنوان تصویر هدایت استفاده می‌شوند."
+    },
+    "LTX2AudioLatentNormalizingSampling": {
+        "title": "نمونه‌برداری نرمال‌سازی Latent صوت LTX2 (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "audio_normalization_factors": "ضریب نرمال‌سازی صوت"
+        },
+        "outputs": {},
+        "description": "با نرمال‌سازی Latent صوت در گام‌های نمونه‌برداری مشخص‌شده، کیفیت صوت تولیدشده در LTX2 را بهبود می‌بخشد."
+    },
+    "PreviewLatentNoiseMask": {
+        "title": "پیش‌نمایش ماسک نویز Latent (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "mask": "ماسک"
+        },
+        "description": "پیش‌نمایش ماسک نویز Latent"
+    },
+    "WanChunkFeedForward": {
+        "title": "پیش‌خور بلوکی ویدئوی Wan (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "chunks": "تعداد بلوک",
+            "dim_threshold": "آستانهٔ بُعد"
+        },
+        "outputs": {
+            "model": "مدل"
+        },
+        "description": "قابلیت آزمایشی، ممکن است خروجی مدل را تغییر دهد!! با فعال‌سازی پیش‌خور بلوکی (مفهومی در شبکه‌های عصبی) اوج مصرف VRAM را کاهش می‌دهد."
+    },
+    "SamplerSelfRefineVideo": {
+        "title": "خودپالایشیِ نمونه‌بردار برای ویدئو (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {
+            "input_mode": "حالت ورودی",
+            "start_step1": "گام شروع 1",
+            "end_step1": "گام پایان 1",
+            "start_step2": "گام شروع 2",
+            "end_step2": "گام پایان 2",
+            "steps_1": "گام 1",
+            "steps_2": "گام 2",
+            "certain_percentage": "درصد قطعیت",
+            "uncertainty_threshold": "آستانهٔ عدم‌قطعیت",
+            "verbose": "تفصیلی",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {},
+        "description": "تلاش برای پیاده‌سازی https://github.com/agwmon/self-refine-video، فقط برای آزمایش، ممکن است مطابق انتظار کار نکند."
+    },
+    "LTXVAddGuideMulti": {
+        "title": "ویدئوی LTX افزودن چند تصویر هدایت (KJ)",
+        "inputs": {
+            "positive": "هدایت مثبت",
+            "negative": "هدایت منفی",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "تصویر1"
+        },
+        "widgets": {
+            "Number of Guides": "تعداد تصاویر هدایت",
+            "frame_idx_1": "نمایهٔ فریم 1",
+            "strength_1": "شدت 1"
+        },
+        "outputs": {
+            "positive": "هدایت مثبت",
+            "negative": "هدایت منفی",
+            "latent": "Latent"
+        },
+        "description": "چند تصویر هدایت را در نمایهٔ فریم‌های مشخص‌شده اضافه کرده و شدتشان را تنظیم می‌کند؛ از قابلیت «Dynamic Combos» استفاده می‌کند که نیازمند ComfyUI نسخهٔ 0.8.1 و فرانت‌اند 1.33.4 یا جدیدتر است."
+    },
+    "LTXVImgToVideoInplaceKJ": {
+        "title": "ویدئوی LTX تبدیل تصویر به ویدئو (KJ)",
+        "inputs": {
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "تصویر1"
+        },
+        "widgets": {
+            "Number of Guides": "تعداد تصاویر هدایت",
+            "index_1": "نمایهٔ 1",
+            "strength_1": "شدت 1"
+        },
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "فریم‌های Latent ویدئو را با تصاویر ورودیِ رمزگذاری‌شده جایگزین می‌کند؛ از قابلیت Dynamic Combos استفاده می‌کند که نیازمند ComfyUI نسخهٔ 0.8.1 و فرانت‌اند 1.33.4 یا جدیدتر است."
+    },
+    "LTXVAudioVideoMask": {
+        "title": "ماسک صوت و ویدئو (KJ)",
+        "inputs": {
+            "video_latent": "Latent ویدئو",
+            "audio_latent": "Latent صوت"
+        },
+        "widgets": {
+            "video_fps": "نرخ فریم ویدئو",
+            "video_start_time": "زمان شروع ویدئو",
+            "video_end_time": "زمان پایان ویدئو",
+            "audio_start_time": "زمان شروع صوت",
+            "audio_end_time": "زمان پایان صوت",
+            "max_length": "حداکثر طول"
+        },
+        "outputs": {
+            "video_latent": "Latent ویدئو",
+            "audio_latent": "Latent صوت"
+        },
+        "description": "بر اساس بازهٔ زمانی مشخص‌شده برای محتوای Latent ویدئو و صوت یک ماسک نویز می‌سازد. در این نواحی پوشش‌داده‌شده محتوای تازه تولید می‌شود."
+    },
+    "LTX2AttentionTunerPatch": {
+        "title": "وصلهٔ تنظیم توجه LTX2 (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "blocks": "بلوک",
+            "video_scale": "مقیاس ویدئو",
+            "audio_scale": "مقیاس صوت",
+            "audio_to_video_scale": "مقیاس صوت به ویدئو",
+            "video_to_audio_scale": "مقیاس ویدئو به صوت"
+        },
+        "outputs": {
+            "model": "مدل"
+        },
+        "description": "آزمایشی! پیش‌روی (forward) سفارشی LTX2 که ضرایب مقیاس توجه را بر اساس هر رسانه تنظیم می‌کند و هم‌زمان اوج مصرف VRAM را نیز کاهش می‌دهد."
+    },
+    "LTX2_NAG": {
+        "title": "هدایت توجه نرمال‌شدهٔ LTX2 (KJ)",
+        "inputs": {
+            "model": "مدل",
+            "nag_cond_video": "شرط ویدئو",
+            "nag_cond_audio": "شرط صوت"
+        },
+        "widgets": {
+            "nag_scale": "مقیاس NAG",
+            "nag_alpha": "NAG alpha",
+            "nag_tau": "NAG tau",
+            "inplace": "عمل درجا"
+        },
+        "outputs": {
+            "model": "مدل"
+        },
+        "description": "https://github.com/ChenDarYen/Normalized-Attention-Guidance"
+    },
+    "LTX2MemoryEfficientSageAttentionPatch": {
+        "title": "وصلهٔ توجه Sage کم‌مصرفِ حافظه LTX2 (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "مدل"
+        },
+        "description": "آزمایشی! توجه Sage سفارشی را برای کاهش اوج مصرف VRAM فعال کرده و حالت توجه را بازنویسی می‌کند. نیازمند تازه‌ترین نسخهٔ Sage Attention."
+    },
+    "LTXVChunkFeedForward": {
+        "title": "ویدئوی LTX فعال‌سازی پیش‌خور بلوکی (KJ)",
+        "inputs": {
+            "model": "مدل"
+        },
+        "widgets": {
+            "chunks": "بلوک‌بندی",
+            "dim_threshold": "آستانهٔ بُعد"
+        },
+        "outputs": {
+            "model": "مدل"
+        },
+        "description": "آزمایشی و ممکن است خروجی مدل را تغییر دهد! فعال‌سازی پیش‌خور بلوکی (مفهومی در شبکه‌های عصبی) اوج مصرف حافظهٔ مجازی را کاهش می‌دهد."
+    },
+    "LTX2LoraLoaderAdvanced": {
+        "title": "بارگذار Lora پیشرفتهٔ LTX2 (KJ)",
+        "inputs": {
+            "model": "مدل",
+            "opt_lora_path": "بهینه‌سازی مسیر LoRA",
+            "blocks": "بلوک"
+        },
+        "widgets": {
+            "lora_name": "نام LoRA",
+            "strength_model": "شدت مدل",
+            "video": "ویدئو",
+            "video_to_audio": "ویدئو به صوت",
+            "audio": "صوت",
+            "audio_to_video": "صوت به ویدئو",
+            "other": "سایر"
+        },
+        "outputs": {
+            "model": "مدل",
+            "loaded_keys_info": "بارگذاری اطلاعات کلید",
+            "rank": "رتبه"
+        },
+        "description": "بارگذار LoRA پیشرفته با کنترل شدت به‌ازای هر بلوک برای مدل‌های LTX2"
+    },
+    "HDRPreviewKJ": {
+        "title": "پیش‌نمایش HDR (KJ)",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "exposure": "نوردهی",
+            "saturation": "اشباع",
+            "fps": "نرخ فریم",
+            "input_space": "فضای ورودی"
+        },
+        "outputs": {
+            "image": "تصویر"
+        },
+        "description": "پیش‌نمایش زندهٔ نوردهی برای تصاویر فشردهٔ دامنهٔ دینامیکی بالا.\nورودی: دستهٔ تصویر/ویدئوی فشرده‌شده با LogC3 در بازهٔ [0,1] (مثلاً خروجیِ رمزگشایی‌شدهٔ VAE در گردش کار HDR IC-LoRA، پیش از بازکردن فشرده‌سازی HDR).\nبازخورد زندهٔ کشویی‌ها از طریق بازکردن فشرده‌سازی، نوردهی، اشباع، نگاشت تُن Reinhard و پردازش sRGB در سایه‌سنگ قطعهٔ WebGL مرورگر پیاده شده است؛ همان ریاضیات سمت سرور اجرا می‌شود تا خروجی تصویر sRGB پخته تولید شود.\nتغییر کشویی‌ها پیش‌نمایش را فوراً به‌روز می‌کند؛ در حالی که خروجی تصویر تنها هنگام صف‌گذاری مجدد گردش کار به‌روز می‌شود. "
+    },
+    "HunyuanVideoEncodeKeyframesToCond": {
+        "title": "ویدئوی Hunyuan رمزگذاری فریم‌های اول/آخر به شرط (KJ)",
+        "inputs": {
+            "model": "مدل",
+            "positive": "دستور مثبت",
+            "vae": "VAE",
+            "start_frame": "فریم شروع",
+            "end_frame": "فریم پایان",
+            "negative": "دستور منفی"
+        },
+        "widgets": {
+            "num_frames": "تعداد فریم",
+            "tile_size": "اندازهٔ بلوک",
+            "overlap": "مقدار همپوشانی",
+            "temporal_size": "اندازهٔ بُعد زمانی",
+            "temporal_overlap": "مقدار همپوشانی بُعد زمانی"
+        },
+        "outputs": {
+            "model": "مدل",
+            "positive": "دستور متنی مثبت",
+            "negative": "دستور متنی منفی",
+            "latent": "Latent"
+        }
+    }
+}

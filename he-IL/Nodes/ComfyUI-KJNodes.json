@@ -1,0 +1,4219 @@
+{
+    "ContextWindowsVisualizerKJ": {
+        "title": "כלי הדמיה של חלון ההקשר (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "frame_units": "יחידת פריימים",
+            "dim": "ממדים",
+            "temporal_downscale": "קצב תת-דגימה זמנית",
+            "num_frames": "מספר פריימים",
+            "context_length": "אורך ההקשר",
+            "context_overlap": "חפיפת ההקשר",
+            "context_schedule": "תזמור ההקשר",
+            "context_stride": "גודל צעד ההקשר",
+            "closed_loop": "לולאה סגורה",
+            "fuse_method": "שיטת מיזוג",
+            "causal_window_fix": "תיקון חלון סיבתי",
+            "freenoise": "רעש חופשי",
+            "cond_retain_index_list": "רשימת אינדקסי שימור תנאי"
+        },
+        "outputs": {
+            "model": "מודל"
+        },
+        "description": "הדמיה אינטראקטיבית של חלון ההקשר ב-ComfyUI: מיקום החלון, מידת החפיפה, משקלי המיזוג וערבוב פר-פריים, בעדכון בזמן אמת. ניתן לבחור להחיל את ההגדרות על צומת חלון ההקשר הליבות (ידני) ומודלים אחרים."
+    },
+    "MiniMaxH3TokenCounter": {
+        "title": "מונה טוקנים של MiniMax H3",
+        "inputs": {
+            "samples": "דגימה",
+            "conditioning": "תנאי"
+        },
+        "widgets": {},
+        "outputs": {
+            "samples": "דגימה",
+            "conditioning": "תנאי",
+            "tokens": "טוקן",
+            "breakdown": "פירוק"
+        },
+        "description": "חישבו את אורך הרצף הארוז ש-MiniMax H3 מריץ בעת יצירה ללא דגימה. בהתבסס על המשתנים הפוטנציאליים של AV ועל פרטי התנאי (כולל אורך הטקסט, פריימים מפתח ומקטעי ייחוס), נבנית אותה פריסת מודל [טקסט | פריים מפתח/ייחוס | אודיו | וידאו]."
+    },
+    "MiniMaxLowVRAMAttention": {
+        "title": "מנגנון תשומת לב חוסך בזיכרון VRAM של MiniMax H3",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "head_chunks": "מספר מקטעי ראש"
+        },
+        "outputs": {
+            "model": "מודל"
+        },
+        "description": "מבלי לשנות את לוגיקת החישוב, מפחית את ניצול שיא ה-VRAM של מודול תשומת הלב של MiniMax H3. הוא מחלק את קריאות תשומת הלב למספר קבוצות ראשים, כך שהנתונים החולפים בתוך הליבה (כגון עותקי q/k ב-int8 וצברי fp32) קטנים בהתאם למספר המקטעים בעוד מאגר ה-qkv הממוזג בתוקף, ומשחרר מיד את מאגר ה-qkv ואת קלט מקטע הנרמול לאחר הצריכה. פלט התוצאות זהה לחלוטין למודל הלא-מרוקע."
+    },
+    "MiniMaxChunkFeedForward": {
+        "title": "רשת הזנה קדמית מחולקת למקטעים של MiniMax H3",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "chunks": "מספר מקטעים",
+            "seq_threshold": "סף רצף"
+        },
+        "outputs": {},
+        "description": "מחלק את ההזנה הקדמית (SwiGLU) של MiniMax H3 בהתאם לממד הטוקנים הארוזים כדי להפחית את ניצול שיא ה-VRAM. כאשר המודל עובר קוונטיזציה, כל מקטע עדיין עובר דרך ליבת ה-INT8 הממוזגת של ComfyUI; מכיוון שערכי ההפעלה עוברים קוונטיזציה פר-טוקן, הפלט תואם למודל הלא-מחולק."
+    },
+    "Ideogram4PromptBuilderKJ": {
+        "title": "בונה פרומפטים של Ideogram4 (KJ)",
+        "inputs": {
+            "image": "תמונה",
+            "import_json": "ייבוא JSON",
+            "bboxes": "תיבת גבול"
+        },
+        "widgets": {
+            "width": "רוחב",
+            "height": "גובה",
+            "high_level_description": "תיאור מתקדם",
+            "background": "רקע",
+            "style": "סגנון",
+            "aesthetics": "אסתטיקה",
+            "lighting": "תאורה",
+            "medium": "מדיה",
+            "style_palette_data": "נתוני לוח צבעי הסגנון",
+            "elements_data": "נתוני אלמנטים",
+            "bg_brightness": "בהירות הרקע",
+            "import_mode": "מצב ייבוא",
+            "output_format": "פורמט פלט",
+            "coord_mode": "מצב קואורדינטות",
+            "bbox_order": "סדר תיבות הגבול"
+        },
+        "outputs": {
+            "prompt": "פרומפט",
+            "preview": "תצוגה מקדימה",
+            "bboxes": "תיבת גבול",
+            "width": "רוחב",
+            "height": "גובה"
+        },
+        "description": "\nבונה פרומפטים חזותי בפורמט הכיתוב JSON המובנה של Ideogram 4.\n\nגרור על הקנבס כדי לצייר אזורים; בחר אזור כדי להגדיר את סוגו (אובייקט/טקסט), את התיאור, הטקסט ולוח הצבעים. הגדר את הרקע ואת שדות הסגנון האופציונליים כווידג'טים. פולט את מחרוזת ה-JSON המורכבת של ההכיתוב.\n\nהיסט ציר ה-bboX מנורמל לרשת של 0-1000, בפורמט [מינימום היסט ציר Y, מינימום היסט ציר X, מקסימום היסט ציר Y, מקסימום היסט ציר X]; רוחב/גובה מגדירים את יחס התצוגה של הקנבס.\n\nפקודות קנבס:\n- גרירה: ציור אזור חדש\n- Ctrl/Cmd+גרירה: כפיית ציור אזור חדש גם מעל אזור קיים\n- לחיצה: בחירת אזור · Alt+לחיצה: מעבר בין אזורים חופפים\n- לחיצה כפולה: עריכת תיאור מוטבעת\n- לחיצה ימנית: רשימת אזורים (בחירה/מחיקה/שכפול/סידור מחדש, העליון הוא הקדמי ביותר)\n- Del/Backspace: מחיקת האזור הנבחר\n- Ctrl/Cmd + C/V/D: שכפול/הדבקה/שכפול האזור הנבחר\n- שדות היסט ציר ה-bboX ליד obj/טקסט (פיקסלים/פלט) ניתנים לעריכה\n\nדגמי צבע:\n- לחיצה: עריכה · גרירה: סידור מחדש · לחיצה ימנית: מחיקה\n- ריחוף+Ctrl/Cmd + C/V: שכפול/הדבקת ערך צבע הקסדצימלי\n- \"+\": הוספת צבע (אם הלוח הוא צבע, נעשה בו שימוש)\n\nסרגל כלים:\n- חי: שימוש בתצוגה מקדימה של דגימה חיה כרקע (ולוכד את התוצאה הסופית)\n- לכידת רקע/ניקוי רקע: שימוש בתמונה שנוצרה לאחרונה כרקע\n- מחוון בהירות, הערכת טוקנים, ושכפול/הדבקה/ניקוי הכול"
+    },
+    "RandomImageFromBatch": {
+        "title": "בחירת תמונה אקראית מאצווה (KJ)",
+        "inputs": {
+            "input": "קלט"
+        },
+        "widgets": {
+            "start_index": "אינדקס התחלתי",
+            "end_index": "אינדקס סופי",
+            "num_frames": "מספר פריימים",
+            "randomness": "אקראיות",
+            "min_distance": "מרווח מינימלי",
+            "max_distance": "מרווח מקסימלי",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "output": "פלט"
+        },
+        "description": "בחר רצף פריימים מתחום אינדקסים נבחר מאצווה של תמונות או מסיכות. כאשר אקראיות=0 הפריימים הנבחרים מפוזרים באופן אחיד בתוך התחום; כאשר אקראיות=1 הם אקראיים אחידים ללא חזרות; וערכי ביניים ערבובים ליניארית. הפלט תמיד ממוין לפי אינדקס האצווה. אינדקסים שליליים נספרים מהסוף (1- = האחרון)."
+    },
+    "FastPreviewBatch": {
+        "title": "תצוגה מקדימה מהירה של אצווה (KJ)",
+        "inputs": {
+            "input": "קלט"
+        },
+        "widgets": {
+            "max_thumb_size": "גודל תמונה ממוזערת מרבי",
+            "crf": "הגבלת איכות התצוגה",
+            "max_grid_frames": "מספר פריימים מרבי ברשת"
+        },
+        "outputs": {},
+        "description": "מקודד אצוות תמונות לסרט תמונות ממוזערות MP4 ב-H.264 שכלו פריימי-I, ומציג אותן כרשת אינטראקטיבית. לחיצה על אבן מגדילה ומאפשרת ניווט קדימה ואחורה. נמנע מיצירת N קבצי PNG."
+    },
+    "BBOXToBoundingBoxKJ": {
+        "title": "המרת BBOX לתיבת גבול (KJ)",
+        "inputs": {
+            "bbox": "תיבת גבול"
+        },
+        "widgets": {
+            "bbox_format": "פורמט תיבת הגבול",
+            "index": "אינדקס"
+        },
+        "outputs": {
+            "bounding_box": "תיבת גבול"
+        },
+        "description": "ממיר את ה-BBOX של KJNodes למילונים מקוריים מסוג BOUNDING_BOX המשמשים את הצמתים הליבות (כגון חיתוך תמונה)."
+    },
+    "WanVideoMemoryEfficientSageAttentionPatch": {
+        "title": "מרכז תשומת לב Sage חסכונית בזיכרון עבור Wan Video (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "מודל"
+        },
+        "description": "פיצ'ר ניסיוני! מפעיל sageattention מותאם אישית על תשומת הלב העצמית של WanVideo כדי להפחית את ניצול שיא ה-VRAM, וגורס את מצב תשומת הלב. דורש את הגרסה העדכנית ביותר של sageattention."
+    },
+    "MiniMaxH3MemoryEfficientSageAttentionPatch": {
+        "title": "מרכז תשומת לב Sage חסכונית בזיכרון עבור MiniMax H3 (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "מודל"
+        },
+        "description": "פיצ'ר ניסיוני! מפעיל sageattention מותאם אישית על תשומת הלב העצמית של MiniMax H3 כדי להפחית את ניצול שיא ה-VRAM, וגורס את מצב תשומת הלב. דורש את הגרסה העדכנית ביותר של sageattention."
+    },
+    "PatchFlashAttentionKJ": {
+        "title": "מרכז Flash Attention (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "allow_compile": "אפשר קומפילציה"
+        },
+        "outputs": {},
+        "description": "צומת ניסיוני למרכז תשומת לב כדי להשתמש ב-Flash Attention, ללא נסיגה שקטה ל-SDPA המהוה של ממשק ComfyUI. ממרכז את תשומת הלב במודלים העוברים דרך צומת זה; כדי להשבית יש לעקוף או לנתק צומת זה. דורש התקנת הספרייה flash_attn."
+    },
+    "TorchCompileModelAdvanced": {
+        "title": "קומפילציית מודל Torch מתקדמת (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "מצב תמונה שלמה",
+            "mode": "מצב",
+            "dynamic": "דינמי",
+            "compile_transformer_blocks_only": "קמפל רק את מקטעי ה-Transformer",
+            "dynamo_cache_size_limit": "מגבלת גודל המטמון של Dynamo",
+            "debug_compile_keys": "מפתחות קומפילציה לניפוב",
+            "disable_dynamic_vram": "השבתת VRAM דינמי"
+        },
+        "outputs": {},
+        "description": "מרכז torch.compile מתקדם למודלי דיפוזיה."
+    },
+    "Krea2PromptWeight": {
+        "title": "משקלי פרומפט של Krea2 (KJ)",
+        "inputs": {
+            "clip": "CLIP",
+            "model": "מודל"
+        },
+        "widgets": {
+            "text": "טקסט",
+            "strength": "עוצמה"
+        },
+        "outputs": {
+            "model": "מודל",
+            "conditioning": "תנאי"
+        },
+        "description": "משיג משקלי פרומפט פר-טוקן עבור Krea2 (K2) באמצעות קנה מידה של ערכי תשומת לב. השתמשו ב-(מילה:-1) כדי להסיר רעיון וב-(מילה:1.5) כדי להדגיש אותו — יכולת זו פועלת עם מקודד Qwen3-VL ואינה אפשרית בהגדרות משקל רגילות. פולט מודל מרוקע ותנאי; הגדירו את CFG של הדוגם ל-1.0."
+    },
+    "Ideogram4OptimizationsKJ": {
+        "title": "אופטימיזציה של Ideogram4 (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "chunk_ffn": "הזנה קדמית מחולקת למקטעים",
+            "ffn_chunks": "מספר מקטעי ההזנה הקדמית",
+            "ffn_seq_threshold": "סף רצף ההזנה הקדמית",
+            "bf16_rope": "הצפנת מיקום bf16"
+        },
+        "outputs": {
+            "model": "מודל"
+        },
+        "description": "פיצ'ר ניסיוני שעשוי לשנות את פלט המודל!! מפחית את ניצול שיא ה-VRAM בהפצה הקדמית של Ideogram4. ה-chunk_ffn מחלק את הפעלות ה-SwiGLU לפי ממד הטוקן, וה-bf16_rope מיישם את הצפנת ה-RoPE לפי סוג נתוני המודל במקום לשדרג ל-fp32. שניהם מכוונים לשני הטנזורים החולפים הגדולים ביותר במקטע."
+    },
+    "PiDColorBiasCorrection": {
+        "title": "תיקון סטיית צבע של PiD (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "strength": "עוצמה",
+            "backbone": "רשת הגב"
+        },
+        "outputs": {},
+        "description": "מתקן סחיפת צבע/בהירות עבור מפענח PiD בארבעה צעדים. בצעד הדגימה הראשון, באמצעות מודל ליניארי קטן המכויל לסחיפה השיטתית של המודל, הוא גורע סטייה פר-ערוך מההיסט האופקי 0_p אדום (המודל נוטה להבהיר סצנות כהות ולהוסיף גוון כחול)."
+    },
+    "LeapfusionHunyuanI2V": {
+        "title": "המדת תמונה לוידאו של Hunyuan עם Leapfusion (KJ)",
+        "inputs": {
+            "model": "מודל",
+            "latent": "משתנה סמוי"
+        },
+        "widgets": {
+            "index": "אינדקס",
+            "start_percent": "אחוז התחלתי",
+            "end_percent": "אחוז סופי",
+            "strength": "עוצמה"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VAEMergeKJ": {
+        "title": "מיזוג VAE (KJ)",
+        "inputs": {
+            "vae_1": "VAE1",
+            "vae_2": "VAE2"
+        },
+        "widgets": {
+            "ratio": "יחס"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "ממזג את משקלי שני VAE בממוצע משוקלל. היחס הוא המשקל הנוטה לכיוון VAE_2 (0.0 = VAE_1 טהור, 1.0 = VAE_2 טהור). שני ה-VAE חייבים לחלוק את אותה ארכיטקטורה (מפתחות וצורות תואמים של מילון המצב)."
+    },
+    "LatentInpaintTTM": {
+        "title": "תיקון מסיכת Latent ב-TTM (KJ)",
+        "inputs": {
+            "model": "מודל",
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "steps": "מספר צעדים"
+        },
+        "outputs": {},
+        "description": "https://github.com/time-to-move/TTM"
+    },
+    "DeprecatedCompileNodeKJ": {
+        "title": "צומת קומפילציה מיושן (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "צומת זה הוחלף על ידי הצומת TorchCompileModelAdvanced, אנא השתמשו בצומת ההוא"
+    },
+    "ModelPreviewOverrideKJ": {
+        "title": "דריסת תצוגה מקדימה של מודל (KJ)",
+        "inputs": {
+            "model": "מודל",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "max_resolution": "רזולוציה מרבית",
+            "jpeg_quality": "איכות JPEG",
+            "suppress_default_preview": "השבתת התצוגה המקדימה המהוה",
+            "preview_frames": "פריים מקדים",
+            "preview_fps": "קצב פריימים של התצוגה המקדימה",
+            "tiny_vae": "VAE זעיר"
+        },
+        "outputs": {},
+        "description": "מוסיף פריים מקדים חי ייעודי בצומת זה, שיכול לדרוס את הרזולוציה המרבית. מגבלת התצוגה המקדימה המהוה של ComfyUI היא 512p; צומת זה שולח את התצוגה המקדימה שלו ישירות לרכיב DOM על הצומת, ולכן מודלי מרחב-פיקסל (Chroma Radiance, ZImage, HiDream-O1 ועוד) ניתנים לתצוגה מקדימה ברזולוציית הדגימה המלאה."
+    },
+    "GetPreviewOverrideFramesKJ": {
+        "title": "השגת פריים של דריסת תצוגה מקדימה (KJ)",
+        "inputs": {
+            "model": "מודל",
+            "after_sample": "לאחר דגימה"
+        },
+        "widgets": {},
+        "outputs": {
+            "frames": "פריימי וידאו"
+        },
+        "description": "מחזיר את הפריימים שנתפסו על ידי דריסת התצוגה המקדימה של המודל במהלך הדגימה האחרונה. חברו את 'המודל' מדריסת התצוגה המקדימה של המודל (אותו מודל המזין את הדוגם) ואת 'after_sample' מאחר־הדוגם (Latent/IMAGE) כדי להבטיח סדר ביצוע נכון."
+    },
+    "PatchTritonVAE": {
+        "title": "מרכז Triton VAE (KJ)",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "fuse_norm_silu": "מיזוג הפעלת SiLU עם נרמול",
+            "channels_last": "ערוך לפניו",
+            "int8_conv": "קונבולוציית INT8",
+            "autotune": "כוונון אוטומטי"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "מאיץ את הפענוח/קידוד ה-VAE באמצעות מיזוג ליבת norm+SiLU ב-Triton ופריסת קונבולוציה עם הערוך לפניו. מודלי VAE נתמכים (זיהוי אוטומטי): VAE וידאו Wan 2.1/2.2 (כולל Qwen-Image, RMSNorm, פי 1.4/1.15 לערך), Flux/Flux2, ו-VAE תמונה מסוג KL כמו SDXL ו-SD1.5 (GroupNorm, פי 1.6-1.8 לערך ב-2048p), ו-VAE וידאו LTXV/LTX2 (PiedNorm; מקטעי מפנח המותנים בצעד-זמן ממזגים רק נרמול). ארכיטקטורות אחרות אינן נתמכות. מיושם כטלאי-אובייקט על מכשיר-טלאי משוכפל, ולכן קיים רק בעת טעינת ה-VAE ההוא."
+    },
+    "ImageTransformKJ": {
+        "title": "טרנספורמציית תמונה (KJ)",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "target_width": "רוחב יעד",
+            "target_height": "גובה יעד",
+            "upscale_method": "שיטת הגדלה",
+            "keep_proportion": "שמירה על יחס",
+            "divisible_by": "מספר מתחלק",
+            "extra_padding": "ריפוד נוסף",
+            "invert_crop": "היפוך חיתוך",
+            "grid_size": "גודל רשת"
+        },
+        "outputs": {
+            "width": "רוחב",
+            "height": "גובה",
+            "output": "תמונת פלט",
+            "output_mask": "מסיכת פלט"
+        },
+        "description": "זהו צומת לטרנספורמציות תמונה, התומך בשינוי גודל תמונה, בשיטות הגדלה, בשמירה על יחס ובפרמטרים נוספים, ותומך בטרנספורמציות מסונכרנות של מסיכות."
+    },
+    "ScreencapStream": {
+        "title": "זרם לכידת מסך (KJ)",
+        "inputs": {},
+        "widgets": {
+            "crop_width": "רוחב חיתוך",
+            "crop_height": "גובה חיתוך",
+            "Start capture": "החל לכידה",
+            "Hide preview": "הסתרת תצוגה מקדימה"
+        },
+        "outputs": {
+            "image": "תמונה"
+        },
+        "description": "צומת זה לוכד את תמונת המסך בזמן אמת. הוא מאפשר למשתמש להתאים אישית את רוחב וגובה אזור הלכידה, ומספק כפתורי בקרה להפעלה והפסקה של הלכידה. התמונה החיה שנלכדת מוצגת בחלון תצוגה מקדימה לנוחות המעקב אחר הקלטת המסך."
+    },
+    "DecodeAndSaveVideo": {
+        "title": "פענוח ושמירת וידאו (KJ)",
+        "inputs": {
+            "video_latent": "Latent של וידאו",
+            "video_vae": "מודל VAE של וידאו",
+            "audio_latent": "Latent של אודיו",
+            "audio_vae": "מודל VAE של אודיו"
+        },
+        "widgets": {
+            "fps": "קצב פריימים",
+            "filename_prefix": "קידומת שם קובץ",
+            "format": "פורמט",
+            "codec": "מקודד/מפענח",
+            "tiling": "עיבוד במקטעים"
+        },
+        "outputs": {
+            "video": "הווידאו המפוענח",
+            "filename": "שם הקובץ השמור"
+        },
+        "description": "צומת זה מפענח את המרחב הסמוי של הווידאו (Video Latent) לקובץ וידאו בפועל ושומר אותו. הוא תומך בפענוח אודיו במקביל. המשתמש יכול להגדיר כאן את קצב הפריימים (FPS), את קידומת שם הקובץ, את פורמט הפלט (כגון MP4, MOV ועוד), את המקודד של הווידאו (כגון H.264, H.265) ואת אם לאפשר עיבוד במקטעים (Tiling) לוידאו גדולים."
+    },
+    "EncodeVideoComponents": {
+        "title": "קידוד רכיבי וידאו (KJ)",
+        "inputs": {
+            "video": "וידאו",
+            "vae": "מודל VAE"
+        },
+        "widgets": {
+            "width": "רוחב",
+            "height": "גובה",
+            "max_frames": "מספר פריימים מרבי",
+            "upscale_method": "שיטת הגדלה",
+            "Keep Proportion": "שמירה על יחס"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "audio": "אודיו",
+            "fps": "קצב פריימים",
+            "frame_count": "מספר פריימים"
+        },
+        "description": "צומת זה מקודד את פריימי הווידאו לייצוג מרחב סמוי (Latent), המשמש בדרך כלל בזרימת יצירה או עיבוד וידאו. הוא מקבל זרם וידאו ומודל VAE כקלטים, ופולט את נתוני המרחב הסמוי המקודדים, את זרם האודיו, את פרטי קצב הפריימים ואת סך כל הפריימים. המשתמש יכול גם להגדיר כאן את רזולוציית הפלט (רוחב וגובה), להגביל את מספר הפריימים המרבי, לבחור שיטת הגדלת תמונה (כגון Lanczos) ואת אם לשמור על יחס הרוחב-גובה המקורי."
+    },
+    "ColorMatchV2": {
+        "title": "התאמת צבעים V2 (KJ)",
+        "inputs": {
+            "image_target": "תמונת היעד",
+            "image_ref": "תמונת הייחוס"
+        },
+        "widgets": {
+            "method": "שיטה",
+            "strength": "עוצמה",
+            "multithread": "רב-ערוכיות"
+        },
+        "outputs": {
+            "image": "תמונה"
+        },
+        "description": "צומת ההופך את סגנון הצבעים של תמונת ייחוס על תמונת יעד. תומך באלגוריתמי התאמה מרובים (כגון mkl), מאפשר כוונון של עוצמת ההתאמה, ותומך בעיבוד רב-ערוכי לשיפור היעילות."
+    },
+    "PreviewImageOrMask": {
+        "title": "תצוגה מקדימה של תמונה או מסיכה (KJ)",
+        "inputs": {
+            "input": "תמונה או מסיכת קלט"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "צומת זה מציג ישירות בממשק ComfyUI את התמונה או המסיכה בקלט, בעיקר לצורך ניפוב ובחינת תוצאות ביניים בתהליך העיבוד. בדרך כלל אינו פולט זרם נתונים אלא משמש כתצוגה מקדימה חזותית בלבד."
+    },
+    "ImageSharpenKJ": {
+        "title": "חידוד תמונה (KJ)",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "method": "שיטה",
+            "strength": "עוצמה"
+        },
+        "outputs": {
+            "output": "תמונת פלט"
+        },
+        "description": "צומת זה מחדד את תמונת הקלט. הוא מאפשר למשתמש לבחור אלגוריתמי חידוד שונים (כגון rcas) ולכוונן את עוצמת החידוד, ובכך מגביר את חדות התמונה ואת פרטיה."
+    },
+    "PlaySoundKJ": {
+        "title": "השמעת צליל",
+        "inputs": {
+            "any_input": "קלט כלשהו",
+            "audio": "אודיו"
+        },
+        "widgets": {
+            "audio_path": "נתיב אודיו",
+            "mode": "מצב",
+            "volume": "עוצמת שמע",
+            "duration": "משך זמן"
+        },
+        "outputs": {
+            "any_output": "פלט כלשהו"
+        },
+        "description": "מנגן קובץ אודיו מצוין, תומך בהגדרת מצב ניגון, עוצמת שמע ומשך זמן."
+    },
+    "NormalizedAmplitudeToMask": {
+        "title": "נרמול משרעת למסיכה",
+        "inputs": {
+            "normalized_amp": "משרעת מנורמלת"
+        },
+        "widgets": {
+            "width": "רוחב",
+            "height": "גובה",
+            "frame_offset": "היסט פריים",
+            "location_x": "מיקום_X",
+            "location_y": "מיקום_Y",
+            "size": "גודל",
+            "shape": "צורה",
+            "color": "צבע"
+        },
+        "outputs": {
+            "MASK": "מסיכה"
+        },
+        "description": "צומת לגישור עם התוסף AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nיוצר מסיכה על סמך המשרעת המנורמלת."
+    },
+    "NormalizedAmplitudeToFloatList": {
+        "title": "נרמול משרעת לרשימת מספרי נקודה צפה",
+        "inputs": {
+            "normalized_amp": "משרעת מנורמלת"
+        },
+        "outputs": {
+            "FLOAT": "נקודה צפה"
+        },
+        "description": "צומת לגישור עם התוסף AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nיוצר רשימת מספרי נקודה צפה על סמך המשרעת המנורמלת."
+    },
+    "OffsetMaskByNormalizedAmplitude": {
+        "title": "הזזת מסיכה לפי משרעת מנורמלת",
+        "inputs": {
+            "normalized_amp": "משרעת מנורמלת",
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "rotate": "סיבוב",
+            "angle_multiplier": "מכפיל זווית"
+        },
+        "outputs": {
+            "mask": "מסיכה"
+        },
+        "description": "צומת לגישור עם התוסף AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nמזיז מסיכה על סמך המשרעת המנורמלת."
+    },
+    "ImageTransformByNormalizedAmplitude": {
+        "title": "טרנספורמציית תמונה לפי משרעת מנורמלת",
+        "inputs": {
+            "normalized_amp": "משרעת מנורמלת",
+            "image": "תמונה"
+        },
+        "widgets": {
+            "zoom_scale": "קנה מידה",
+            "x_offset": "היסט x",
+            "y_offset": "היסט y",
+            "cumulative": "הצטברות"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "צומת לגישור עם התוסף AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nמבצע טרנספורמציה של תמונה על סמך המשרעת המנורמלת."
+    },
+    "BatchCropFromMask": {
+        "title": "חיתוך מסיכה",
+        "inputs": {
+            "original_images": "תמונה",
+            "masks": "מסיכה"
+        },
+        "widgets": {
+            "crop_size_mult": "מקדם חיתוך",
+            "bbox_smooth_alpha": "שקיפות חלקה של BBox"
+        },
+        "outputs": {
+            "original_images": "התמונה המקורית",
+            "cropped_images": "התמונה החתוכה",
+            "bboxes": "BBox",
+            "width": "רוחב",
+            "height": "גובה"
+        }
+    },
+    "BatchUncrop": {
+        "title": "היפוך חיתוך (אצווה)",
+        "inputs": {
+            "original_images": "התמונה המקורית",
+            "cropped_images": "התמונה החתוכה",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "border_blending": "מיזוג מסגרת",
+            "crop_rescale": "שינוי קנה מידה מחדש",
+            "border_bottom": "גבול תחתון",
+            "border_top": "גבול עליון",
+            "border_left": "גבול שמאלי",
+            "border_right": "גבול ימני"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "BatchCropFromMaskAdvanced": {
+        "title": "חיתוך מסיכה (מתקדם)",
+        "inputs": {
+            "original_images": "תמונה",
+            "masks": "מסיכה"
+        },
+        "widgets": {
+            "crop_size_mult": "מקדם חיתוך",
+            "bbox_smooth_alpha": "שקיפות חלקה של BBox"
+        },
+        "outputs": {
+            "original_images": "התמונה המקורית",
+            "cropped_images": "התמונה החתוכה",
+            "cropped_masks": "מסיכת חיתוך",
+            "combined_crop_image": "מיזוג תמונות חתוכות",
+            "combined_crop_masks": "מיזוג מסיכות חתוכות",
+            "bboxes": "BBox",
+            "combined_bounding_box": "מיזוג BBox",
+            "bbox_width": "רוחב BBox",
+            "bbox_height": "גובה BBox"
+        }
+    },
+    "FilterZeroMasksAndCorrespondingImages": {
+        "title": "סינון מסיכות ותמונות אפס",
+        "inputs": {
+            "masks": "מסיכה",
+            "original_images": "תמונה"
+        },
+        "outputs": {
+            "non_zero_masks_out": "מסיכות לא-אפס",
+            "non_zero_mask_images_out": "תמונות לא-אפס",
+            "zero_mask_images_out": "תמונות אפס",
+            "zero_mask_images_out_indexes": "אינדקסי תמונות של מסיכות לא-אפס"
+        },
+        "description": "מסנן החוצה את כל המסיכות הריקות (כלומר אפס מלא) מתוך mask\nאם סופק, ניתן גם לסנן לפי אינדקס\n את כל התמונות המתאימות בתוך\n original_images (אופציונלי): אם סופק, עליו להיות באורך זהה ל-mask."
+    },
+    "InsertImageBatchByIndexes": {
+        "title": "הכנסת אצוות תמונות לפי אינדקס",
+        "inputs": {
+            "images": "תמונה",
+            "images_to_insert": "התמונות להכנסה",
+            "insert_indexes": "אינדקסי הכנסה"
+        },
+        "outputs": {
+            "images_after_insert": "תמונה"
+        },
+        "description": "צומת זה חייב לשמש יחד עם הצומת FilterZeroMasksAndCorrespondingImages,\nכאשר images_to_insert מוכנסים לתוך images בהתאם ל-insert_indexes.\nערך מוחזר: images_after_insert - רצף התמונות המעודכן לפי הסדר המקורי."
+    },
+    "BatchUncropAdvanced": {
+        "title": "Uncrop (מתקדם)",
+        "inputs": {
+            "original_images": "התמונה המקורית",
+            "cropped_images": "התמונה החתוכה",
+            "cropped_masks": "מסיכת חיתוך",
+            "combined_crop_mask": "מיזוג מסיכות חתוכות",
+            "bboxes": "BBox",
+            "combined_bounding_box": "מיזוג BBox"
+        },
+        "widgets": {
+            "border_blending": "מיזוג מסגרת",
+            "crop_rescale": "שינוי קנה מידה מחדש",
+            "use_combined_mask": "שימוש במסיכה הממוזגת",
+            "use_square_mask": "שימוש במסיכה מרובעת"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "SplitBboxes": {
+        "title": "הפרדת BBox",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "אינדקס"
+        },
+        "outputs": {
+            "bboxes_a": "BBox_A",
+            "bboxes_b": "BBox_B"
+        },
+        "description": "מפצל את רשימת ה-bbox הנתונה במיקום האינדקס המוגדר לשתי רשימות"
+    },
+    "BboxToInt": {
+        "title": "BBox לשלם",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "אינדקס"
+        },
+        "outputs": {
+            "x_min": "מינימום X",
+            "y_min": "מקסימום Y",
+            "width": "רוחב",
+            "height": "גובה",
+            "center_x": "מרכז X",
+            "center_y": "מרכז Y"
+        },
+        "description": "מחזיר את האינדקס הנבחר מרשימת תיבות הגבול כמספר שלם"
+    },
+    "BboxVisualize": {
+        "title": "תצוגה מקדימה של BBox",
+        "inputs": {
+            "images": "תמונה",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "line_width": "עובי קו"
+        },
+        "outputs": {
+            "images": "תמונה"
+        },
+        "description": "מציג את ה-bbox הנתון על התמונה"
+    },
+    "PlotCoordinates": {
+        "title": "תרשים קואורדינטות",
+        "inputs": {
+            "coordinates": "קואורדינטות",
+            "size_multiplier": "מכפיל ממדים"
+        },
+        "widgets": {
+            "text": "טקסט",
+            "width": "רוחב",
+            "height": "גובה",
+            "bbox_width": "רוחב BBox",
+            "bbox_height": "גובה BBox"
+        },
+        "outputs": {
+            "images": "תמונה",
+            "width": "רוחב",
+            "height": "גובה",
+            "bbox_height": "גובה BBox",
+            "bbox_width": "רוחב BBox"
+        },
+        "description": "יוצר סדרת תרשימי קואורדינטות באמצעות Matplotlib."
+    },
+    "SplineEditor": {
+        "title": "עורך עקומות",
+        "inputs": {
+            "bg_image": "תמונת רקע"
+        },
+        "widgets": {
+            "points_store": "מיקום נקודות",
+            "mask_width": "רוחב המסיכה",
+            "mask_height": "גובה המסיכה",
+            "points_to_sample": "דיוק הדגימה",
+            "sampling_method": "שיטת הדגימה",
+            "interpolation": "שיטת האינטרפולציה",
+            "tension": "מתח",
+            "repeat_output": "פלט חוזר",
+            "float_output_type": "סוג פלט נקודה צפה",
+            "min_value": "ערך מינימלי",
+            "max_value": "ערך מקסימלי",
+            "New spline": "עקומה חדשה",
+            "New canvas": "קנבס חדש"
+        },
+        "outputs": {
+            "mask": "מסיכה",
+            "coord_str": "קואורדינטות",
+            "float": "נקודה צפה",
+            "count": "כמות",
+            "normalized_str": "מחרוזת מנורמלת"
+        },
+        "description": "# בפיתוח \nנא להימנע משימוש בצומת זה בוורקflows, ייתכן שתיתקלו בהמון באגים ובאי-יציבות!! \n \n##עורך גרפי ליצירת תזמור ערכים למיניהם \n\n**Shift+לחיצה שמאלית** הוספת נקודת בקרה חדשה, **Ctrl+לחיצה שמאלית** יצירת נקודת בקרה אמצעית, **לחיצה ימנית** הסרת נקודת בקרה.\nלא ניתן למחוק את נקודות הקצה.\n\n לחיצה ימנית על הרקע פותחת תפריט: כמה הגדרות ויזואליות, שאינן משפיעות על תוצאת הפלט:\n - נראות ידיות הבקרה \n - הצגת נקודות דגימה \n\n**דיוק הדגימה** מגדיר את מספר נקודות הדגימה, מחזיר נקודות דגימה מהספליין עצמו, בלתי תלוי בנקודות הבקרה בפועל, נקבע לפי סוג האינטרפולציה.\nשיטת הדגימה:\n - זמן: דגימה לאורך ציר הזמן, לתזמור \n - נתיב: דגימה לאורך נתיב העקומה, לקואורדינטות \n\n פלט:\n - אצוות מסיכות \n מתאים לכל צומת שמקבל מסיכה \n - רשימת נקודות צפה \n מתאים לקבוצות משקלים של IPAdapter \n - סדרת pandas \n מתאים לצמתים שמקבלים את הצומת Fizz BatchValue Schedule \n - טנזור torch \n מתאים לצמתים לא מזוהים"
+    },
+    "CreateShapeMaskOnPath": {
+        "title": "יצירת מסיכת צורה",
+        "inputs": {
+            "coordinates": "קואורדינטות",
+            "size_multiplier": "מכפיל ממדים"
+        },
+        "widgets": {
+            "shape": "צורה",
+            "frame_height": "גובה",
+            "frame_width": "רוחב",
+            "shape_height": "גובה הצורה",
+            "shape_width": "רוחב הצורה",
+            "shape_color": "צבע הצורה",
+            "bg_color": "צבע הרקע",
+            "blur_radius": "רדיוס טשטוש",
+            "intensity": "עוצמה"
+        },
+        "outputs": {
+            "mask": "מסיכה",
+            "mask_inverted": "היפוך המסיכה"
+        },
+        "description": "מייצר מסיכה או אצוות מסיכות בצורה הנתונה; פרמטר המיקום הוא המיקום המרכזי."
+    },
+    "CreateShapeImageOnPath": {
+        "title": "יצירת תמונת צורה",
+        "inputs": {
+            "coordinates": "קואורדינטות",
+            "size_multiplier": "מכפיל ממדים"
+        },
+        "widgets": {
+            "shape": "צורה",
+            "frame_height": "גובה",
+            "frame_width": "רוחב",
+            "shape_height": "גובה הצורה",
+            "shape_width": "רוחב הצורה",
+            "shape_color": "צבע הצורה",
+            "bg_color": "צבע הרקע",
+            "blur_radius": "רדיוס טשטוש",
+            "intensity": "עוצמה",
+            "trailing": "עוקב",
+            "border_width": "עובי מסגרת",
+            "border_color": "צבע המסגרת"
+        },
+        "outputs": {
+            "image": "תמונה",
+            "mask": "מסיכה"
+        },
+        "description": "מייצר תמונה או אצוות תמונות בצורה הנתונה; פרמטר המיקום הוא המיקום המרכזי."
+    },
+    "CreateTextOnPath": {
+        "title": "יצירת טקסט",
+        "inputs": {
+            "coordinates": "קואורדינטות",
+            "size_multiplier": "מכפיל ממדים"
+        },
+        "widgets": {
+            "text": "טקסט",
+            "frame_height": "גובה",
+            "frame_width": "רוחב",
+            "font": "גופן",
+            "font_size": "גודל הגופן",
+            "alignment": "יישור אל",
+            "text_color": "צבע הטקסט"
+        },
+        "outputs": {
+            "image": "תמונה",
+            "mask": "מסיכה",
+            "mask_inverted": "היפוך המסיכה"
+        },
+        "description": "יוצר מסיכה או אצוות מסיכות עם הטקסט הנתון. המיקום הוא המיקום המרכזי."
+    },
+    "CreateGradientFromCoords": {
+        "title": "יצירת תמונת מדרג מקואורדינטות",
+        "inputs": {
+            "coordinates": "קואורדינטות"
+        },
+        "widgets": {
+            "frame_height": "גובה",
+            "frame_width": "רוחב",
+            "start_color": "צבע התחלתי",
+            "end_color": "צבע סופי",
+            "multiplier": "מכפיל"
+        },
+        "outputs": {
+            "image": "תמונה"
+        },
+        "description": "יוצר תמונת מדרג במיקום הקואורדינטות."
+    },
+    "GradientToFloat": {
+        "title": "מדרג לנקודה צפה",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "steps": "מספר צעדים"
+        },
+        "outputs": {
+            "float_x": "נקודה צפה_X",
+            "float_y": "נקודה צפה_Y"
+        },
+        "description": "חישוב רשימת נקודות צפה של תמונה"
+    },
+    "MaskOrImageToWeight": {
+        "title": "מסיכה או תמונה למשקלים",
+        "inputs": {
+            "images": "תמונה",
+            "masks": "מסיכה"
+        },
+        "widgets": {
+            "output_type": "סוג פלט"
+        },
+        "outputs": {
+            "FLOAT": "נקודה צפה",
+            "STRING": "נקודה צפה"
+        },
+        "description": "מחשב את הממוצע של אצוות מסיכות או תמונות, ופולט את התוצאה לפי סוג הפלט."
+    },
+    "WeightScheduleConvert": {
+        "title": "המרת תזמור משקלים",
+        "inputs": {
+            "input_values": "ערכי קלט",
+            "interpolation_curve": "עקומת אינטרפולציה"
+        },
+        "widgets": {
+            "output_type": "סוג פלט",
+            "invert": "היפוך",
+            "repeat": "חזרה",
+            "remap_to_frames": "מיפוי מחדש לפריימים",
+            "interpolation_curve": "עקומת אינטרפולציה",
+            "remap_values": "מיפוי מחדש של ערכים",
+            "remap_min": "מיפוי מחדש של מינימום",
+            "remap_max": "מיפוי מחדש של מקסימום"
+        },
+        "outputs": {
+            "FLOAT": "נקודה צפה",
+            "STRING": "נקודה צפה",
+            "INT": "שלם"
+        },
+        "description": "מתמיר רשימות/רצפי ערכים שונים לסוג אחר."
+    },
+    "FloatToMask": {
+        "title": "נקודה צפה למסיכה",
+        "inputs": {
+            "input_values": "ערכי קלט"
+        },
+        "widgets": {
+            "width": "רוחב",
+            "height": "גובה"
+        },
+        "outputs": {
+            "MASK": "מסיכה"
+        },
+        "description": "מייצר אצוות מסיכות בהתאם לערכי הנקודה הצפה בקלט. גודל האצווה נקבע לפי אורך ערכי הנקודה הצפה בקלט. כל מסיכה מיוצרת ברוחב ובגובה הנתונים."
+    },
+    "WeightScheduleExtend": {
+        "title": "הרחבת תזמור משקלים",
+        "inputs": {
+            "input_values_1": "ערכי_קלט_1",
+            "input_values_2": "ערכי_קלט_2"
+        },
+        "widgets": {
+            "output_type": "סוג פלט"
+        },
+        "outputs": {
+            "FLOAT": "נקודה צפה"
+        },
+        "description": "מרחיב רשימות/רצפי ערכים שונים וממיר לפי הצורך"
+    },
+    "FloatToSigmas": {
+        "title": "נקודה צפה ל-Sigmas",
+        "inputs": {
+            "float_list": "רשימת נקודות צפה"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        },
+        "description": "יוצר טנזור sigmas מרשימת נקודות צפה"
+    },
+    "SigmasToFloat": {
+        "title": "Sigmas לנקודה צפה",
+        "inputs": {
+            "sigmas": "sigmas"
+        },
+        "outputs": {
+            "float": "נקודה צפה"
+        },
+        "description": "יוצר רשימת נקודות צפה מטנזור sigma."
+    },
+    "GLIGENTextBoxApplyBatchCoords": {
+        "title": "יישום תיבות טקסט GLIGEN (קואורדינטות אצווה)",
+        "inputs": {
+            "conditioning_to": "תנאי",
+            "latents": "Latent",
+            "clip": "CLIP",
+            "gligen_textbox_model": "מודל GLIGEN",
+            "coordinates": "קואורדינטות",
+            "size_multiplier": "מכפיל ממדים"
+        },
+        "widgets": {
+            "text": "טקסט",
+            "width": "רוחב",
+            "height": "גובה"
+        },
+        "outputs": {
+            "conditioning": "תנאי",
+            "coord_preview": "תצוגה מקדימה של קואורדינטות"
+        },
+        "description": "צומת זה מאפשר לתזמר את מיקומי תיבות הטקסט של GLIGEN בתוך אצווה, לשימוש יחד עם AnimateDiff-Evolved. מומלץ להשתמש יחד עם הצומת עורך עקומות.\n\n ניתן להוריד את מודל GLIGEN דרך 'התקנת מודלים' שבמנהל. או ישירות מ-: https://huggingface.co/comfyanonymous/GLIGEN_pruned_safetensors/tree/main . \n \n קלטים: \n- הקלט **Latent** משמש לחישוב גודל האצווה \n- **CLIP** הוא מקודד הטקסט, כמו שאר קלטי ה-CLIP \n- **מודל GLIGEN** מחובר לצומת מטעין ה-GLIGEN \n- **קואורדינטות** מקבל מחרוזת json של נקודות קואורדינטות, תואמת לצומת עורך העקומות. \n- **טקסט** הפרומפט של מיקומי תיבת הטקסט \n- **רוחב** ו-**גובה** מגדירים את גודל תיבת הטקסט של GLIGEN \n \nפלטים:\n- **תנאי** מחובר בין קידוד הטקסט של CLIP לדוגם \n- **תצוגה מקדימה של קואורדינטות** לתצוגה מקדימה של הקואורדינטות וה-BBox \n\n"
+    },
+    "CreateInstanceDiffusionTracking": {
+        "title": "יצירת מעקב InstanceDiffusion",
+        "inputs": {
+            "coordinates": "קואורדינטות",
+            "size_multiplier": "מכפיל ממדים"
+        },
+        "widgets": {
+            "width": "רוחב",
+            "height": "גובה",
+            "bbox_width": "רוחב BBox",
+            "bbox_height": "גובה BBox",
+            "class_name": "שם מחלקה",
+            "class_id": "מזהה מחלקה",
+            "prompt": "פרומפט",
+            "fit_in_frame": "התאמה לפריים"
+        },
+        "outputs": {
+            "tracking": "מעקב",
+            "prompt": "רמז",
+            "width": "רוחב",
+            "height": "גובה",
+            "bbox_width": "רוחב bbox",
+            "bbox_height": "גובה bbox",
+            "int": "שלם"
+        },
+        "description": "מייצר נתוני מעקב עבור InstanceDiffusion:\nhttps://github.com/logtd/ComfyUI-InstanceDiffusion\n\nפורמט הפרומפט של InstanceDiffusion:\n`\"class_id.class_name\": \"prompt\"`\nדוגמה:\n`\"1.head\": \"((head))\"`"
+    },
+    "AppendInstanceDiffusionTracking": {
+        "title": "צירוף מעקב InstanceDiffusion",
+        "inputs": {
+            "tracking_1": "מעקב_1",
+            "tracking_2": "מעקב_2",
+            "prompt_1": "פרומפט_1",
+            "prompt_2": "פרומפט_2"
+        },
+        "outputs": {
+            "tracking": "מעקב",
+            "prompt": "רמז"
+        },
+        "description": "צירוף נתוני מעקב לשימוש עם InstanceDiffusion: https://github.com/logtd/ComfyUI-InstanceDiffusion"
+    },
+    "InterpolateCoords": {
+        "title": "אינטרפולציית קואורדינטות",
+        "inputs": {
+            "coordinates": "קואורדינטות",
+            "interpolation_curve": "עקומת אינטרפולציה"
+        },
+        "outputs": {
+            "coordinates": "קואורדינטות"
+        },
+        "description": "הכנסת קואורדינטות לפי עקומה"
+    },
+    "DrawInstanceDiffusionTracking": {
+        "title": "ציור מעקב InstanceDiffusion",
+        "inputs": {
+            "image": "תמונה",
+            "tracking": "מעקב"
+        },
+        "widgets": {
+            "box_line_width": "עובי קו המסגרת",
+            "draw_text": "ציור טקסט",
+            "font": "גופן",
+            "font_size": "גודל הגופן"
+        },
+        "outputs": {
+            "image": "תמונה"
+        },
+        "description": "קורא לנתוני המעקב מהצומת CreateInstanceDiffusionTracking כדי לצייר אותם "
+    },
+    "PointsEditor": {
+        "title": "עורך נקודות",
+        "inputs": {
+            "bg_image": "תמונת רקע"
+        },
+        "widgets": {
+            "points_store": "מיקום נקודות",
+            "bbox_store": "מיקום BBox",
+            "bbox_format": "פורמט BBox",
+            "width": "רוחב",
+            "height": "גובה",
+            "normalize": "נרמול",
+            "New canvs": "קנבס חדש",
+            "Load Image": "טעינת תמונה",
+            "Clear Image": "ניקוי תמונה",
+            "New canvas": "קנבס חדש"
+        },
+        "outputs": {
+            "positive_coords": "קואורדינטות חיוביות",
+            "negative_coords": "קואורדינטות שליליות",
+            "bbox": "BBox",
+            "bbox_mask": "מסיכת BBox",
+            "cropped_image": "התמונה החתוכה"
+        },
+        "description": "# בפיתוח  \nנא להימנע משימוש בצומת זה בוורקflows, ייתכן שתיתקלו בהמון באגים ובאי-יציבות!!  \n\n## עורך גרפי ליצירת קואורדינטות\n\n**Shift + לחיצה שמאלית** הוספת נקודת קואורדינטות חיובית (ירוקה).\n\n**Shift + לחיצה ימנית** הוספת נקודת קואורדינטות שלילית (אדומה).\n\n**Ctrl + לחיצה שמאלית** ציור תיבה.\n\n**לחיצה ימנית על נקודת קואורדינטות** מחיקת הנקודה; לא ניתן למחוק את נקודת ההתחלה/סיום של מערך הנקודות.\n\nכדי להוסיף תמונה, בחרו בצומת והדביקו או גררו תמונה פנימה.\n\nאו הזינו מממשק תמונת הרקע, תוך שימוש בפריים הראשון של תמונת הקלט.\n\n**התמונה נשמרת לצומת ולוורקflow**\nניתן לנקות את התמונה מתפריט הלחצן הימני.\n"
+    },
+    "CutAndDragOnPath": {
+        "title": "חיתוך וגרירת נתיב",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסיכה",
+            "bg_image": "תמונת רקע",
+            "coordinates": "קואורדינטות"
+        },
+        "widgets": {
+            "frame_width": "רוחב המסגרת",
+            "frame_height": "גובה המסגרת",
+            "inpaint": "תיקון"
+        },
+        "outputs": {
+            "image": "תמונה",
+            "mask": "מסיכה"
+        },
+        "description": "גוזר את אזור המסיכה מהתמונה וגורר את האזור לאורך נתיב. אם תיקון מופעל ולא סופקה תמונת רקע, אזור הגזירה ממולא באלגוריתם OpenCV TELEA."
+    },
+    "ImagePass": {
+        "title": "גשר תמונה",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "העברת תמונה לצומת הבא"
+    },
+    "ColorMatch": {
+        "title": "כונון צבע תמונה",
+        "inputs": {
+            "image_ref": "תמונת הייחוס",
+            "image_target": "תמונת היעד"
+        },
+        "widgets": {
+            "method": "שיטה",
+            "strength": "עוצמה",
+            "multithread": "רב-ערוכיות"
+        },
+        "outputs": {
+            "image": "תמונה"
+        },
+        "description": "ה-color-matcher (כונון צבע תמונה) יכול להמיר סגנונות צבע בין תמונות, לשימוש בכונון אוטומטי של צבע בתמונות, בציורים, בפריימים רצופים ובתיקון קיפאון שדה-אור.\n\nמבוסס על אלגוריתמי Reinhard ואחרים, על אלגוריתם ה-Monge-Kantorovich Linearization (MKL) שהציעו Pitie et al., ועל הפתרון האנליטי המשולב שלנו של התאמת היסטוגרמה קלאסית לאלגוריתם ה-Multi-Variate Gaussian Distribution (MVGD). כפי שמוצג, השיטה המשולבת שלנו HM-MVGD-HM עולה על השיטות הקיימות.\n\nhttps://github.com/hahnec/color-matcher/"
+    },
+    "SaveImageWithAlpha": {
+        "title": "שמירת תמונה עם ערוץ Alpha",
+        "inputs": {
+            "images": "תמונה",
+            "mask": "מסיכה",
+            "filename_prefix": "קידומת שם קובץ",
+            "prompt": "פרומפט",
+            "extra_pnginfo": "מידע PNG נוסף"
+        },
+        "outputs": {}
+    },
+    "ImageConcanate": {
+        "title": "מיזוג תמונות",
+        "inputs": {
+            "image1": "תמונה_1",
+            "image2": "תמונה_2"
+        },
+        "widgets": {
+            "direction": "כיוון",
+            "match_image_size": "התאמת גודל התמונה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "ממזג שתי תמונות לפי כיוון."
+    },
+    "ImageConcatFromBatch": {
+        "title": "מיזוג תמונות (אצווה)",
+        "inputs": {
+            "images": "תמונה"
+        },
+        "widgets": {
+            "num_columns": "מספר עמודות",
+            "match_image_size": "התאמת ממדים",
+            "max_resolution": "רזולוציה מרבית"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "לוקח תמונות מאצוות תמונות ומסדר אותן כתמונה יחידה לפי מספר העמודות."
+    },
+    "ImageGridComposite2x2": {
+        "title": "מיזוג רשת תמונות 2x2",
+        "inputs": {
+            "image1": "תמונה_1",
+            "image2": "תמונה_2",
+            "image3": "תמונה_3",
+            "image4": "תמונה_4"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "ממזג 4 תמונות קלט לטבלת 2x2."
+    },
+    "ImageGridComposite3x3": {
+        "title": "מיזוג רשת תמונות 3x3",
+        "inputs": {
+            "image1": "תמונה_1",
+            "image2": "תמונה_2",
+            "image3": "תמונה_3",
+            "image4": "תמונה_4",
+            "image5": "תמונה_5",
+            "image6": "תמונה_6",
+            "image7": "תמונה_7",
+            "image8": "תמונה_8",
+            "image9": "תמונה_9"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "ממזג 9 תמונות קלט לטבלת 3x3."
+    },
+    "ImageBatchTestPattern": {
+        "title": "תבנית אצוות תמונות",
+        "widgets": {
+            "batch_size": "גודל אצווה",
+            "start_from": "ערך התחלתי",
+            "text_x": "טקסט x",
+            "text_y": "טקסט y",
+            "width": "רוחב",
+            "height": "גובה",
+            "font": "גופן",
+            "font_size": "גודל הגופן"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "ImageGrabPIL": {
+        "title": "לכידת מסך PIL",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "רוחב",
+            "height": "גובה",
+            "num_frames": "מספר פריימים",
+            "delay": "השהיה"
+        },
+        "outputs": {
+            "image": "תמונה"
+        },
+        "description": "לוכד אזור לפי קואורדינטות מסך.\n\nלשימוש בדגימה חיה."
+    },
+    "Screencap_mss": {
+        "title": "לכידת מסך MSS",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "רוחב",
+            "height": "גובה",
+            "num_frames": "מספר פריימים",
+            "delay": "השהיה"
+        },
+        "outputs": {
+            "images": "תמונה"
+        },
+        "description": "לוכד אזור לפי קואורדינטות מסך.\n\nלשימוש בדגימה חיה."
+    },
+    "WebcamCaptureCV2": {
+        "title": "לכידת מצלמה CV2",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "רוחב",
+            "height": "גובה",
+            "cam_index": "מספר מצלמה",
+            "release": "שחרור"
+        },
+        "outputs": {
+            "image": "תמונה"
+        },
+        "description": "משתמש ב-CV2 כדי לפתוח מצלמת רשת וללכוד את המסך.\n\nלשימוש בדגימה חיה."
+    },
+    "AddLabel": {
+        "title": "הוספת תווית",
+        "inputs": {
+            "image": "תמונה",
+            "caption": "כותרת"
+        },
+        "widgets": {
+            "text_x": "מיקום_X",
+            "text_y": "מיקום_Y",
+            "height": "גובה",
+            "font_size": "גודל הגופן",
+            "font_color": "צבע הגופן",
+            "label_color": "צבע הרקע",
+            "font": "גופן",
+            "text": "טקסט",
+            "direction": "כיוון"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "GetImageSizeAndCount": {
+        "title": "השגת ממדים וכמות של תמונה",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "outputs": {
+            "image": "תמונה",
+            "width": "רוחב",
+            "height": "גובה",
+            "count": "כמות"
+        },
+        "description": "פולט את רוחב, גובה וגודל האצווה של התמונה"
+    },
+    "ImageBatchRepeatInterleaving": {
+        "title": "שכפול אצוות תמונות",
+        "inputs": {
+            "images": "תמונה",
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "repeats": "מספר פעמים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "משכפל את התמונות באצווה מספר פעמים נתון.\n\nלדוגמה אצווה עם 5 תמונות: 0,1,2,3,4\n\nלאחר חזרה של פעמיים מתקבל: 0,0,1,1,2,2,3,3,4,4"
+    },
+    "ImageUpscaleWithModelBatched": {
+        "title": "הגדלת אצוות תמונות באמצעות מודל",
+        "inputs": {
+            "upscale_model": "מודל הגדלה",
+            "images": "תמונה"
+        },
+        "widgets": {
+            "per_batch": "לכל אצווה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "הפונקציה זהה לצומת המקורי של ComfyUI להגדלת רזולוציה על-ידי מודל, אך תומך בחלוקה לאצוות להפחתת ניצול ה-VRAM."
+    },
+    "ImageNormalize_Neg1_To_1": {
+        "title": "נרמול תמונה מ-1- ל-1",
+        "inputs": {
+            "images": "תמונה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "נרמול תמונות ל-[-1,1]"
+    },
+    "RemapImageRange": {
+        "title": "מיפוי מחדש של טווח התמונה",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "min": "ערך מינימלי",
+            "max": "ערך מקסימלי",
+            "clamp": "הגבלה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "ממפה מחדש את ערכי התמונה לטווח הנתון."
+    },
+    "SplitImageChannels": {
+        "title": "הפרדת ערוצי תמונה",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "outputs": {
+            "red": "אדום",
+            "green": "ירוק",
+            "blue": "כחול",
+            "mask": "מסיכה"
+        },
+        "description": "מפריד את התמונה לתמונות בערוץ יחיד; ערוץ ה-alpha מופרד כמסיכה."
+    },
+    "MergeImageChannels": {
+        "title": "מיזוג ערוצי תמונה",
+        "inputs": {
+            "red": "אדום",
+            "green": "ירוק",
+            "blue": "כחול",
+            "alpha": "ערוץ השקיפות alpha"
+        },
+        "outputs": {
+            "image": "תמונה"
+        },
+        "description": "מיזוג ערוצים לתמונה"
+    },
+    "ImagePadForOutpaintMasked": {
+        "title": "הרחבת קנבס החוצה (מסיכה)",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "left": "שמאל",
+            "top": "למעלה",
+            "right": "ימין",
+            "bottom": "למטה",
+            "feathering": "טשטוש שוליים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסיכה"
+        }
+    },
+    "ImagePadForOutpaintTargetSize": {
+        "title": "הרחבת קנבס החוצה (ממדים)",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "target_width": "רוחב יעד",
+            "target_height": "גובה יעד",
+            "feathering": "טשטוש שוליים",
+            "upscale_method": "שיטת שינוי קנה מידה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסיכה"
+        }
+    },
+    "ImagePrepForICLora": {
+        "title": "הכנת תמונת ICLora",
+        "inputs": {
+            "reference_image": "תמונת הייחוס",
+            "latent_image": "תמונת Latent",
+            "latent_mask": "מסיכת Latent",
+            "reference_mask": "מסיכת ייחוס"
+        },
+        "widgets": {
+            "output_width": "רוחב פלט",
+            "output_height": "גובה פלט",
+            "border_width": "עובי מסגרת"
+        },
+        "outputs": {
+            "image": "תמונה",
+            "mask": "מסיכה"
+        }
+    },
+    "ImageAndMaskPreview": {
+        "title": "תצוגה מקדימה של תמונה ומסיכה",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "mask_opacity": "אטימות המסיכה",
+            "mask_color": "צבע המסיכה",
+            "pass_through": "מעבר-דרך"
+        },
+        "outputs": {
+            "composite": "תמונה"
+        },
+        "description": "מציג תצוגה מקדימה של תמונה או מסיכה; כאשר מוזנות תמונה ומסיכה יחד, המסיכה ממזגת מעל התמונה.\nכאשר מעבר-דרך מופעל הסינתזה מושבתת, לשימוש בתצוגה מקדימה דרך המיזוג לצומת וידאו."
+    },
+    "CrossFadeImages": {
+        "title": "דהייה-צלבית של תמונות",
+        "inputs": {
+            "images_1": "תמונה_1",
+            "images_2": "תמונה_2"
+        },
+        "widgets": {
+            "interpolation": "שיטת האינטרפולציה",
+            "transition_start_index": "אינדקס התחלת המעבר",
+            "transitioning_frames": "מספר פריימי המעבר",
+            "start_level": "ערך צבע התחלתי",
+            "end_level": "ערך צבע סופי"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "CrossFadeImagesMulti": {
+        "title": "דהייה-צלבית מרובה של תמונות",
+        "inputs": {
+            "image_1": "תמונה_1",
+            "image_2": "תמונה_2"
+        },
+        "widgets": {
+            "inputcount": "מספר קלטים",
+            "interpolation": "שיטת האינטרפולציה",
+            "Update inputs": "עדכון קלטים",
+            "transitioning_frames": "מספר פריימי המעבר"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "TransitionImagesMulti": {
+        "title": "תמונות מעבר מרובות",
+        "inputs": {
+            "image_1": "תמונה_1",
+            "image_2": "תמונה_2"
+        },
+        "widgets": {
+            "inputcount": "מספר קלטים",
+            "interpolation": "שיטת האינטרפולציה",
+            "transition_type": "סוג המעבר",
+            "transitioning_frames": "מספר פריימי המעבר",
+            "blur_radius": "רדיוס טשטוש",
+            "reverse": "הפוך",
+            "device": "התקן",
+            "Update inputs": "עדכון קלטים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסיכה"
+        },
+        "description": "יוצר מעבר בין תמונות."
+    },
+    "TransitionImagesInBatch": {
+        "title": "תמונות מעבר של אצווה",
+        "inputs": {
+            "images": "תמונה"
+        },
+        "widgets": {
+            "interpolation": "שיטת האינטרפולציה",
+            "transition_type": "סוג המעבר",
+            "transitioning_frames": "מספר פריימי המעבר",
+            "blur_radius": "רדיוס טשטוש",
+            "reverse": "הפוך",
+            "device": "התקן"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסיכה"
+        },
+        "description": "יוצר מעבר בין תמונות בעיבוד אצוות"
+    },
+    "ShuffleImageBatch": {
+        "title": "ערבוב אצוות תמונות",
+        "inputs": {
+            "images": "תמונה"
+        },
+        "widgets": {
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסיכה"
+        }
+    },
+    "GetImageRangeFromBatch": {
+        "title": "השגת טווח תמונות",
+        "inputs": {
+            "images": "תמונה",
+            "masks": "מסיכה"
+        },
+        "widgets": {
+            "start_index": "מספר התחלתי",
+            "num_frames": "מספר פריימים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסיכה"
+        },
+        "description": "יוצר אצוות תמונות חדשה בהתאם לאצוות תמונות הקלט ולפרמטרים."
+    },
+    "GetLatentRangeFromBatch": {
+        "title": "השגת טווח Latent",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "start_index": "מספר התחלתי",
+            "num_frames": "מספר פריימים"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "Insert_Latent_To_Index": {
+        "title": "הכנסת Latent לאינדקס",
+        "inputs": {
+            "source": "מקור",
+            "destination": "יעד"
+        },
+        "widgets": {
+            "index": "אינדקס"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "GetImagesFromBatchIndexed": {
+        "title": "השגת תמונה מהאצווה",
+        "inputs": {
+            "images": "תמונה"
+        },
+        "widgets": {
+            "indexes": "מספר סידורי"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "בוחר תמונות לפי מספר אינדקס."
+    },
+    "InsertImagesToBatchIndexed": {
+        "title": "הכנסת תמונה לאצווה לפי אינדקס",
+        "inputs": {
+            "original_images": "התמונה המקורית",
+            "images_to_insert": "התמונות להכנסה"
+        },
+        "widgets": {
+            "indexes": "אינדקס"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "מכניס את התמונה באינדקס הנתון אל תוך אצוות תמונות המקור."
+    },
+    "PadImageBatchInterleaved": {
+        "title": "מילוי מתחלף של אצוות תמונות",
+        "inputs": {
+            "images": "תמונה"
+        },
+        "widgets": {
+            "empty_frames_per_image": "מספר פריימים ריקים לכל תמונה",
+            "pad_frame_value": "ערך פריים ממלא",
+            "add_after_last": "הוספה בסוף"
+        },
+        "outputs": {
+            "images": "תמונה",
+            "masks": "מסיכה"
+        },
+        "description": "משבץ פריימים ריקים בין התמונות בעיבוד אצווה."
+    },
+    "ReplaceImagesInBatch": {
+        "title": "החלפת אצוות תמונות",
+        "inputs": {
+            "original_images": "התמונה המקורית",
+            "replacement_images": "התמונות המחליפות",
+            "original_masks": "המסיכה המקורית",
+            "replacement_masks": "מסיכת ההחלפה"
+        },
+        "widgets": {
+            "start_index": "מספר התחלתי"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "החל מהאינדקס ההתחלתי הנתון, מחליף את התמונות בעיבוד האצווה בתמונות המחליפות."
+    },
+    "ReverseImageBatch": {
+        "title": "היפוך אצוות תמונות",
+        "inputs": {
+            "images": "תמונה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "הופך את סדר התמונות בעיבוד האצווה."
+    },
+    "ImageBatchMulti": {
+        "title": "איחוד אצוות תמונות (מרובה)",
+        "inputs": {
+            "image_1": "תמונה_1",
+            "image_2": "תמונה_2",
+            "image_3": "תמונה_3",
+            "image_4": "תמונה_4",
+            "image_5": "תמונה_5",
+            "image_6": "תמונה_6",
+            "image_7": "תמונה_7",
+            "image_8": "תמונה_8",
+            "image_9": "תמונה_9",
+            "image_10": "תמונה_10"
+        },
+        "widgets": {
+            "inputcount": "מספר קלטים",
+            "blending": "שיטת הערבוב",
+            "Update inputs": "עדכון קלטים"
+        },
+        "outputs": {
+            "images": "תמונה"
+        },
+        "description": "ממזג מספר תמונות לאצוות תמונות. ניתן להגדיר את מספר ממשקי הקלט באמצעות 'מספר קלטים', וללחוץ על עדכון לריענון הממשקים."
+    },
+    "ImageTensorList": {
+        "title": "רשימת טנזורי תמונה",
+        "inputs": {
+            "image1": "תמונה1",
+            "image2": "תמונה2"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "יוצר רשימת תמונות מתמונות הקלט."
+    },
+    "ImageBatchExtendWithOverlap": {
+        "title": "הרחבת אצוות תמונות (עם חלקים חופפים)",
+        "inputs": {
+            "source_images": "תמונת המקור",
+            "new_images": "התמונה החדשה"
+        },
+        "widgets": {
+            "overlap": "חפיפה",
+            "overlap_side": "חפיפה צדדית",
+            "overlap_mode": "חפיפת תבנית"
+        },
+        "outputs": {
+            "source_images": "תמונת המקור",
+            "start_images": "תמונת ההתחלה",
+            "extended_images": "התמונה המורחבת"
+        },
+        "description": "צומת עזרה להרחבת יצירת וידאו\n תחילה משיג את מקור הקלט ואת כמות החפיפה כדי לקבל את פריים תחילת ההרחבה.\n לאחר מכן, בהעתק אחר של צומת זה\n מספק את הפריימים שנוצרו מחדש, ובוחר כיצד לבצע חפיפה."
+    },
+    "ImageAddMulti": {
+        "title": "ערבוב תמונות (מרובה)",
+        "inputs": {
+            "image_1": "תמונה_1",
+            "image_2": "תמונה_2",
+            "image_3": "תמונה_3",
+            "image_4": "תמונה_4",
+            "image_5": "תמונה_5",
+            "image_6": "תמונה_6",
+            "image_7": "תמונה_7",
+            "image_8": "תמונה_8",
+            "image_9": "תמונה_9",
+            "image_10": "תמונה_10"
+        },
+        "widgets": {
+            "inputcount": "מספר קלטים",
+            "blending": "שיטת הערבוב",
+            "blend_amount": "כמות הערבוב",
+            "Update inputs": "עדכון קלטים"
+        },
+        "outputs": {
+            "images": "תמונה"
+        },
+        "description": "מערבב מספר תמונות. ניתן להגדיר את מספר ממשקי הקלט באמצעות 'מספר קלטים', וללחוץ על עדכון לריענון הממשקים."
+    },
+    "ImageConcatMulti": {
+        "title": "מיזוג תמונות (מרובים)",
+        "inputs": {
+            "image_1": "תמונה_1",
+            "image_2": "תמונה_2"
+        },
+        "widgets": {
+            "inputcount": "מספר קלטים",
+            "direction": "כיוון",
+            "match_image_size": "התאמת ממדים",
+            "Update inputs": "עדכון קלטים"
+        },
+        "outputs": {
+            "images": "תמונה"
+        },
+        "description": "ממזג מספר תמונות לפי כיוון. לחיצה על עדכון מעדכנת את מספר הקלטים."
+    },
+    "PreviewAnimation": {
+        "title": "תצוגה מקדימה מונפשת",
+        "inputs": {
+            "images": "תמונה",
+            "masks": "מסיכה"
+        },
+        "widgets": {
+            "fps": "קצב פריימים"
+        }
+    },
+    "ImageResizeKJ": {
+        "title": "שינוי קנה מידה של תמונה (KJ)",
+        "inputs": {
+            "image": "תמונה",
+            "get_image_size": "תמונת הייחוס",
+            "width_input": "רוחב",
+            "height_input": "גובה"
+        },
+        "widgets": {
+            "width": "רוחב",
+            "height": "גובה",
+            "upscale_method": "שיטת שינוי קנה מידה",
+            "keep_proportions": "קביעת יחס רוחב-גובה",
+            "keep_proportion": "קביעת יחס רוחב-גובה",
+            "divisible_by": "מספר שמתחלק בו",
+            "crop": "חיתוך",
+            "per_batch": "אצווה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "width": "רוחב",
+            "height": "גובה"
+        },
+        "description": "משנה קנה-מידה של התמונה לפי רוחב וגובה הנתונים. ניתן לקבוע את הממדים דרך הקלט, וסדר העדיפויות של הפלט הסופי הוא לפי הכללים הבאים:\n- גודל תמונת הייחוס \n- רוחב-קלט וגובה-קלט \n- רוחב וגובה \n \nקביעת יחס רוחב-גובה מקבעת את היחס לפי הממד הגבוה ביותר."
+    },
+    "LoadAndResizeImage": {
+        "title": "טעינה ושינוי קנה מידה של תמונה",
+        "widgets": {
+            "image": "תמונה",
+            "resize": "קנה מידה",
+            "width": "רוחב",
+            "height": "גובה",
+            "repeat": "שכפול",
+            "keep_proportion": "קביעת יחס רוחב-גובה",
+            "divisible_by": "גורם",
+            "mask_channel": "ערוץ המסיכה",
+            "background_color": "צבע הרקע",
+            "upload": "העלאה"
+        },
+        "outputs": {
+            "image": "תמונה",
+            "mask": "מסיכה",
+            "width": "רוחב",
+            "height": "גובה",
+            "image_path": "נתיב התמונה"
+        }
+    },
+    "LoadImagesFromFolderKJ": {
+        "title": "טעינת תיקיית תמונות (KJ)",
+        "widgets": {
+            "folder": "תיקייה",
+            "width": "רוחב",
+            "height": "גובה",
+            "keep_aspect_ratio": "שמירה על יחס רוחב-גובה",
+            "image_load_cap": "מגבלת טעינה",
+            "start_index": "מספר התחלתי",
+            "include_subfolders": "כלול תיקיות משנה"
+        },
+        "outputs": {
+            "image": "תמונה",
+            "mask": "מסיכה",
+            "count": "כמות",
+            "image_path": "נתיב התמונה"
+        },
+        "description": "טוען תמונות מתיקייה אל תוך אצווה; התמונות מותאמות בגודל ונטענות לתוך האצווה."
+    },
+    "ImageGridtoBatch": {
+        "title": "טבלת תמונות לאצווה",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "columns": "מספר עמודות",
+            "The number of columns in the grid.": "מספר העמודות בטבלה.",
+            "rows": "מספר שורות",
+            "The number of rows in the grid. Set to 0 for automatic calculation.": "מספר השורות בטבלה, 0 אוטומטי."
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "ממיר את התשריט לאצוות תמונות יחידה."
+    },
+    "SaveImageKJ": {
+        "title": "שמירת תמונה (KJ)",
+        "inputs": {
+            "images": "תמונה",
+            "caption": "תיוג"
+        },
+        "widgets": {
+            "filename_prefix": "קידומת שם קובץ",
+            "output_folder": "תיקיית פלט",
+            "caption_file_extension": "סיומת קובץ התיוג",
+            "prompt": "פרומפט",
+            "extra_pnginfo": "מידע PNG נוסף"
+        },
+        "outputs": {
+            "filename": "שם קובץ"
+        },
+        "description": "שומר את תמונות הקלט בספרית הפלט של ComfyUI."
+    },
+    "SaveStringKJ": {
+        "title": "שמירת מחרוזת (KJ)",
+        "inputs": {
+            "string": "מחרוזת"
+        },
+        "widgets": {
+            "filename_prefix": "קידומת שם קובץ",
+            "output_folder": "תיקיית פלט",
+            "file_extension": "סיומת קובץ"
+        },
+        "outputs": {
+            "filename": "שם קובץ"
+        }
+    },
+    "FastPreview": {
+        "title": "תצוגה מקדימה מהירה",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "format": "פורמט",
+            "quality": "איכות"
+        },
+        "outputs": {}
+    },
+    "ImageCropByMaskAndResize": {
+        "title": "חיתוך ושינוי קנה מידה לפי מסיכה",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "base_resolution": "רזולוציה בסיסית",
+            "padding": "מילוי",
+            "min_crop_resolution": "רזולוציית חיתוך מינימלית",
+            "max_crop_resolution": "רזולוציית חיתוך מקסימלית"
+        },
+        "outputs": {
+            "images": "תמונה",
+            "masks": "מסיכה",
+            "BBox": "BBox"
+        }
+    },
+    "ImageCropByMask": {
+        "title": "חיתוך לפי מסיכה",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסיכה"
+        },
+        "outputs": {
+            "image": "תמונה"
+        },
+        "description": "חותך את תמונת הקלט לפי המסיכה שסופקה"
+    },
+    "ImageUncropByMask": {
+        "title": "היפוך חיתוך לפי מסיכה",
+        "inputs": {
+            "destination": "תמונת היעד",
+            "source": "תמונת המקור",
+            "mask": "מסיכה",
+            "bbox": "BBox"
+        },
+        "outputs": {
+            "image": "תמונה"
+        }
+    },
+    "ImageCropByMaskBatch": {
+        "title": "חיתוך אצווה לפי מסיכה",
+        "inputs": {
+            "image": "תמונה",
+            "masks": "מסיכה"
+        },
+        "widgets": {
+            "width": "רוחב",
+            "height": "גובה",
+            "padding": "מילוי",
+            "preserve_size": "שמירת ממדים",
+            "bg_color": "צבע הרקע"
+        },
+        "outputs": {
+            "images": "תמונה",
+            "masks": "מסיכה"
+        }
+    },
+    "ImagePadKJ": {
+        "title": "מילוי תמונה (KJ)",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "left": "מילוי שמאלי",
+            "right": "מילוי ימני",
+            "top": "מילוי עליון",
+            "bottom": "מילוי תחתון",
+            "extra_padding": "ריפוד נוסף",
+            "pad_mode": "מצב מילוי",
+            "color": "צבע",
+            "target_width": "רוחב יעד",
+            "target_height": "גובה יעד"
+        },
+        "outputs": {
+            "images": "תמונה",
+            "masks": "מסיכה"
+        },
+        "description": "ממלא את תמונת הקלט, עם אפשרות למסיכה במילוי מוגדר."
+    },
+    "ImageBatchJoinWithTransition": {
+        "title": "חיבור אצוות תמונות (עם אפקט מעבר)",
+        "inputs": {
+            "images_1": "תמונה1",
+            "images_2": "תמונה2"
+        },
+        "widgets": {
+            "start_index": "אינדקס התחלתי",
+            "interpolation": "אינטרפולציה",
+            "transition_type": "סוג המעבר",
+            "transitioning_frames": "פריימי מעבר",
+            "blur_radius": "רדיוס טשטוש",
+            "reverse": "היפוך",
+            "device": "התקן"
+        },
+        "outputs": {
+            "images": "תמונה",
+            "masks": "מסיכה"
+        },
+        "description": "תמונות קלט"
+    },
+    "Intrinsic_lora_sampling": {
+        "title": "דגימת IntrinsicLoRA",
+        "inputs": {
+            "model": "מודל",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image": "תמונה",
+            "optional_latent": "Latent (אופציונלי)"
+        },
+        "widgets": {
+            "lora_name": "שם ה-LoRA",
+            "task": "משימה",
+            "text": "טקסט",
+            "per_batch": "לכל אצווה"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "IMAGE": "תמונה"
+        },
+        "description": "ה-LoRA הפנימי שמשמש את הדוגם: https://github.com/duxiaodan/intrinsic-lora. ה-LoRA הללו קטנים מאוד, ולכן הם כלולים בחבילת הצמתים הזו."
+    },
+    "BatchCLIPSeg": {
+        "title": "סגמנטציה סמנטית ב-CLIP",
+        "inputs": {
+            "images": "תמונה",
+            "opt_model": "בחירת מודל",
+            "prev_mask": "המסיכה הקודמת"
+        },
+        "widgets": {
+            "text": "טקסט",
+            "threshold": "סף",
+            "binary_mask": "מסיכה בינארית",
+            "combine_mask": "מיזוג מסיכה",
+            "use_cuda": "שימוש ב-CUDA",
+            "blur_sigma": "עוצמת הטשטוש",
+            "image_bg_Ievel": "רמת הרקע של התמונה",
+            "invert": "הפוך"
+        },
+        "outputs": {
+            "Image": "תמונה",
+            "Mask": "מסיכה"
+        },
+        "description": "משתמש ב-CLIPSeg כדי לבצע סגמנטציה של תמונה או אצוות תמונות."
+    },
+    "DownloadAndLoadCLIPSeg": {
+        "title": "טעינת CLIPSeg",
+        "widgets": {
+            "model": "מודל"
+        },
+        "outputs": {
+            "clipseg_model": "מודל CLIPSeg"
+        },
+        "description": "מוריד את מודל ה-CLIPSeg אל Comfy/models/clip_seg באמצעות huggingface_hub"
+    },
+    "CreateTextMask": {
+        "title": "מסיכת טקסט",
+        "widgets": {
+            "invert": "היפוך",
+            "frames": "מספר פריימים",
+            "text_x": "מיקום_X",
+            "text_y": "מיקום_Y",
+            "font_size": "גודל הגופן",
+            "font_color": "צבע הגופן",
+            "text": "טקסט",
+            "font": "גופן",
+            "width": "רוחב",
+            "height": "גובה",
+            "start_rotation": "סיבוב התחלתי",
+            "end_rotation": "סיבוב סופי"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסיכה"
+        }
+    },
+    "ColorToMask": {
+        "title": "צבע תמונה למסיכה",
+        "inputs": {
+            "images": "תמונה"
+        },
+        "widgets": {
+            "invert": "היפוך",
+            "red": "אדום",
+            "green": "ירוק",
+            "blue": "כחול",
+            "threshold": "סף",
+            "per_batch": "לכל אצווה"
+        },
+        "outputs": {
+            "MASK": "מסיכה"
+        },
+        "description": "ממיר את ערכי ה-RGB הנבחרים למסיכה. עבור קלט אצוות, **per_batch** שולט במספר התמונות המעובדות בכל פעם."
+    },
+    "CreateFluidMask": {
+        "title": "מסיכה נוזלית",
+        "widgets": {
+            "invert": "היפוך",
+            "frames": "מספר פריימים",
+            "width": "רוחב",
+            "height": "גובה",
+            "inflow_count": "כמות הזרימה",
+            "inflow_velocity": "מהירות הזרימה",
+            "inflow_radius": "רדיוס הזרימה",
+            "inflow_padding": "מילוי הזרימה",
+            "inflow_duration": "זמן הזרימה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסיכה"
+        }
+    },
+    "CreateAudioMask": {
+        "title": "מסיכת אודיו",
+        "widgets": {
+            "invert": "היפוך",
+            "frames": "מספר פריימים",
+            "scale": "קנה מידה",
+            "audio_path": "נתיב אודיו",
+            "width": "רוחב",
+            "height": "גובה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסיכה"
+        }
+    },
+    "CreateGradientMask": {
+        "title": "מסיכת מדרג",
+        "widgets": {
+            "invert": "היפוך",
+            "frames": "מספר פריימים",
+            "width": "רוחב",
+            "height": "גובה"
+        },
+        "outputs": {
+            "MASK": "מסיכה"
+        }
+    },
+    "CreateFadeMask": {
+        "title": "מסיכת דהייה",
+        "widgets": {
+            "invert": "היפוך",
+            "frames": "מספר פריימים",
+            "width": "רוחב",
+            "height": "גובה",
+            "interpolation": "שיטת האינטרפולציה",
+            "start_level": "ערך צבע התחלתי",
+            "midpoint_level": "ערך צבע נקודת האמצע",
+            "end_level": "ערך צבע סופי",
+            "midpoint_frame": "מספר פריים בנקודת האמצע"
+        },
+        "outputs": {
+            "MASK": "מסיכה"
+        },
+        "description": "יוצר קבוצת מסיכות המועברות באינטרפולציה בין הפריימים והערכים הנתונים. משתמש באותו תחביר של ה-BatchValueSchedule של Fizz. הערך הראשון הוא אינדקס הפריים (לא מתחיל ב-0 אלא ב-1), והערך השני בסוגריים הוא ערך המסיכה כנקודה צפה בטווח 0.0-1.0.\nלדוגמה, ערכי ברירת המחדל:\n0:(0.0)\n7:(1.0)\n15:(0.0)\nיצרו אצוות מסיכות של 16 פריימים המתחילה בשחור, עוברת אינטרפולציה ללבן מלא בפריים השמיני דרך עקומת האינטרפולציה הנבחרת, ומשם עוברת אינטרפולציה לשחור מלא בפריים ה-16."
+    },
+    "CreateFadeMaskAdvanced": {
+        "title": "מסיכת דהייה (מתקדם)",
+        "widgets": {
+            "points_string": "נקודת ערך צבע",
+            "invert": "היפוך",
+            "frames": "מספר פריימים",
+            "width": "רוחב",
+            "height": "גובה",
+            "interpolation": "שיטת האינטרפולציה"
+        },
+        "outputs": {
+            "MASK": "מסיכה"
+        }
+    },
+    "CreateMagicMask": {
+        "title": "מסיכה פסיכדלית",
+        "widgets": {
+            "frames": "מספר פריימים",
+            "depth": "עומק",
+            "distortion": "עיוות",
+            "seed": "זרע אקראי",
+            "control_after_generate": "פעולה לאחר הרצה",
+            "fixed": "קבוע",
+            "increment": "עלייה",
+            "decrement": "ירידה",
+            "randomize": "אקראי",
+            "transitions": "מעבר",
+            "frame_height": "גובה",
+            "frame_width": "רוחב"
+        },
+        "outputs": {
+            "mask": "מסיכה",
+            "mask_inverted": "היפוך המסיכה"
+        }
+    },
+    "CreateShapeMask": {
+        "title": "מסיכת צורה",
+        "widgets": {
+            "shape": "צורה",
+            "circle": "מעגל",
+            "square": "ריבוע",
+            "triangle": "משולש",
+            "frames": "מספר פריימים",
+            "location_x": "מיקום_X",
+            "location_y": "מיקום_Y",
+            "size": "גודל",
+            "grow": "צמיחה",
+            "frame_width": "רוחב",
+            "frame_height": "גובה",
+            "shape_width": "רוחב הצורה",
+            "shape_height": "גובה הצורה"
+        },
+        "outputs": {
+            "mask": "מסיכה",
+            "mask_inverted": "היפוך המסיכה"
+        },
+        "description": "יוצר מסיכה או קבוצת מסיכות בצורה הנתונה. המיקום הוא המיקום המרכזי. ערך הצמיחה הוא כמות גדילת הצורה בכל פריים, ויוצר מסיכה מונפשת."
+    },
+    "CreateVoronoiMask": {
+        "title": "מסיכת Voronoi",
+        "widgets": {
+            "frames": "מספר פריימים",
+            "num_points": "מספר נקודות",
+            "line_width": "עובי קו",
+            "speed": "מהירות",
+            "frame_width": "רוחב",
+            "frame_height": "גובה"
+        },
+        "outputs": {
+            "mask": "מסיכה",
+            "mask_inverted": "היפוך המסיכה"
+        }
+    },
+    "GetMaskSizeAndCount": {
+        "title": "השגת ממדים וכמות של המסיכה",
+        "inputs": {
+            "mask": "מסיכה"
+        },
+        "outputs": {
+            "mask": "מסיכה",
+            "width": "רוחב",
+            "height": "גובה",
+            "count": "כמות"
+        },
+        "description": "פולט את רוחב המסיכה, גובהה וגודל האצווה"
+    },
+    "GrowMaskWithBlur": {
+        "title": "צמיחה וטשטוש מסיכה",
+        "inputs": {
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "expand": "הרחבה",
+            "incremental_expandrate": "תוספת הרחבה",
+            "tapered_corners": "החפה",
+            "flip_input": "היפוך הקלט",
+            "use_cuda": "שימוש ב-CUDA",
+            "blur_radius": "רדיוס טשטוש",
+            "sigma": "Sigma",
+            "lerp_alpha": "שקיפות ליניארית",
+            "decay_factor": "מקדם שחיקה",
+            "fill_holes": "מילוי"
+        },
+        "outputs": {
+            "mask": "מסיכה",
+            "mask_inverted": "היפוך המסיכה"
+        },
+        "description": "# צמיחה וטשטוש מסיכה\n- מסיכה: מסיכת קלט או אצוות מסיכות\n- הרחבה: מרחיב או מכווץ את המסיכה או אצוות המסיכות לפי הערך שהוגדר\n- תוספת הרחבה: מגדיל את קצב ההרחבה בערך שהוגדר לכל פריים\n- החפה: שימוש בזוויות משופעות\n- היפוך הקלט: הופך את המסיכה בקלט\n- רדיוס טשטוש: ערך הגדול מ-0 מטשטש את המסיכה\n- שקיפות ליניארית: ערכי alpha המועברים באינטרפולציה בין פריימים\n- מקדם דעיכה: ערך הדעיכה המועבר באינטרפולציה בין פריימים\n- מילוי: ממלא חורים במסיכה (איטי)"
+    },
+    "MaskBatchMulti": {
+        "title": "איחוד אצוות מסיכות (מרובה)",
+        "inputs": {
+            "mask_1": "מסיכה_1",
+            "mask_2": "מסיכה_2",
+            "mask_3": "מסיכה_3",
+            "mask_4": "מסיכה_4",
+            "mask_5": "מסיכה_5",
+            "mask_6": "מסיכה_6",
+            "mask_7": "מסיכה_7",
+            "mask_8": "מסיכה_8",
+            "mask_9": "מסיכה_9",
+            "mask_10": "מסיכה_10"
+        },
+        "widgets": {
+            "inputcount": "מספר קלטים",
+            "Update inputs": "עדכון קלטים"
+        },
+        "outputs": {
+            "masks": "מסיכה"
+        },
+        "description": "ממזג מספר מסיכות לאצוות מסיכות. ניתן להגדיר את מספר ממשקי הקלט באמצעות 'מספר קלטים', וללחוץ על עדכון לריענון הממשקים."
+    },
+    "OffsetMask": {
+        "title": "הזזת מסיכה",
+        "inputs": {
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "angle": "זווית",
+            "duplication_factor": "מספר חזרות",
+            "roll": "שימוש בגלילה",
+            "incremental": "שימוש בתוספת",
+            "padding_mode": "מצב מילוי",
+            "empty": "ריק",
+            "border": "גבול",
+            "reflection": "שיקוף"
+        },
+        "outputs": {
+            "mask": "מסיכה"
+        },
+        "description": "# מותח/מכווץ את המסיכה בכמות הנתונה\n- מסיכה: מסיכת קלט או אצוות מסיכות\n- x: כמות המתיחה האופקית\n- y: כמות המתיחה האנכית\n- מספר חזרות: מספר העתקי המסיכה באצווה\n- שימוש בגלילה: עטיפת שוליים"
+    },
+    "RoundMask": {
+        "title": "עיגול המסיכה",
+        "inputs": {
+            "mask": "מסיכה"
+        },
+        "outputs": {
+            "MASK": "מסיכה"
+        }
+    },
+    "ResizeMask": {
+        "title": "שינוי קנה מידה של המסיכה",
+        "inputs": {
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "width": "רוחב",
+            "height": "גובה",
+            "keep_proportions": "קביעת יחס רוחב-גובה",
+            "upscale_method": "אינטרפולציה מתקדמת",
+            "crop": "חיתוך"
+        },
+        "outputs": {
+            "mask": "מסיכה",
+            "width": "רוחב",
+            "height": "גובה"
+        },
+        "description": "מתאים את המסיכה או אצוות המסיכות לרוחב ולגובה הנתונים."
+    },
+    "RemapMaskRange": {
+        "title": "מיפוי מחדש של טווח המסיכה",
+        "inputs": {
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "min": "ערך מינימלי",
+            "max": "ערך מקסימלי"
+        },
+        "outputs": {
+            "mask": "מסיכה"
+        },
+        "description": "קובע ערכי מינימום ומקסימום חדשים למסיכה."
+    },
+    "SeparateMasks": {
+        "title": "הפרדת מסיכה",
+        "inputs": {
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "size_threshold_width": "סף גודל רוחב",
+            "size_threshold_height": "סף גודל גובה",
+            "mode": "מצב הפרדה",
+            "max_poly_points": "מספר נקודות מרבי במצולע",
+            "polygon": "מצולע",
+            "shape": "צורה",
+            "mask_np": "מסיכת Numpy",
+            "max_points": "מספר נקודות מרבי"
+        },
+        "outputs": {
+            "mask": "מסיכה"
+        }
+    },
+    "PathchSageAttentionKJ": {
+        "title": "מרכז תשומת לב SAGE (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "allow_compile": "אפשר קומפילציה",
+            "sage_attention": "תשומת לב SAGE"
+        },
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "CheckpointLoaderKJ": {
+        "title": "מטעין מודלים גדולים (KJ)",
+        "inputs": {},
+        "widgets": {
+            "ckpt_name": "שם המודל",
+            "weight_dtype": "סוג נתוני המשקולות",
+            "compute_dtype": "סוג נתוני החישוב",
+            "patch_cublaslinear": "מרכז ליניארי CUBlas",
+            "sage_attention": "תשומת לב SAGE",
+            "enable_fp16_accumulation": "הפעלת הצברת FP16"
+        },
+        "outputs": {
+            "model": "מודל",
+            "clip": "CLIP",
+            "vae": "VAE"
+        }
+    },
+    "DiffusionModelLoaderKJ": {
+        "title": "מטעין מודל דיפוזיה (KJ)",
+        "inputs": {
+            "extra_state_dict": "מילון מצב נוסף"
+        },
+        "widgets": {
+            "model_name": "שם המודל",
+            "weight_dtype": "סוג נתוני המשקולות",
+            "compute_dtype": "סוג נתוני החישוב",
+            "patch_cublaslinear": "מרכז ליניארי CUBlas",
+            "sage_attention": "תשומת לב SAGE",
+            "enable_fp16_accumulation": "הפעלת הצברת FP16"
+        },
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "PatchModelPatcherOrder": {
+        "title": "כוונון סדר הטלאים של המודל",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "patch_order": "סדר הטלאים",
+            "full_load": "טעינה מלאה"
+        },
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "TorchCompileModelFluxAdvanced": {
+        "title": "קומפילציית Torch של מודל Flux (מתקדם)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "גרף שלם",
+            "mode": "מצב",
+            "double_blocks": "בלוק כפול",
+            "single_blocks": "בלוק יחיד",
+            "dynamic": "דינמי",
+            "dynamo_cache_size_limit": "מגבלת גודל מטמון דינמית",
+            "blocks_str": "מחרוזת בלוק"
+        },
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "TorchCompileModelFluxAdvancedV2": {
+        "title": "קומפילציית Torch של מודל Flux (מתקדם) V2",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "גרף שלם",
+            "mode": "מצב",
+            "double_blocks": "בלוק כפול",
+            "single_blocks": "בלוק יחיד",
+            "dynamic": "דינמי",
+            "dynamo_cache_size_limit": "מגבלת גודל מטמון דינמית",
+            "blocks_str": "מחרוזת בלוק"
+        },
+        "outputs": {
+            "MODEL": "מודל",
+            "model": "מודל"
+        }
+    },
+    "TorchCompileModelHyVideo": {
+        "title": "קומפילציית Torch של מודל וידאו היברידי",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "גרף שלם",
+            "mode": "מצב",
+            "dynamic": "דינמי",
+            "dynamo_cache_size_limit": "מגבלת גודל מטמון דינמית",
+            "compile_single_blocks": "קמפול בלוק יחיד",
+            "compile_double_blocks": "קמפול בלוק כפול",
+            "compile_txt_in": "קמפול קלט טקסט",
+            "compile_vector_in": "קמפול קלט וקטור",
+            "compile_final_layer": "קמפול השכבה הסופית"
+        },
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "TorchCompileModelWanVideo": {
+        "title": "קומפילציית Torch של מודל הווידאו Wan",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "גרף שלם",
+            "mode": "מצב",
+            "dynamic": "דינמי",
+            "dynamo_cache_size_limit": "מגבלת גודל מטמון דינמית",
+            "compile_transformer_blocks_only": "קמפול רק בלוקים של ה-Transformer"
+        },
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "TorchCompileModelWanVideoV2": {
+        "title": "מודל וידאו Wan בהקמפול Torch V2",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "גרף שלם",
+            "mode": "מצב",
+            "dynamic": "דינמי",
+            "dynamo_cache_size_limit": "מגבלת גודל מטמון דינמית",
+            "compile_transformer_blocks_only": "קמפול רק בלוקים של ה-Transformer"
+        },
+        "outputs": {
+            "MODEL": "מודל",
+            "model": "מודל"
+        }
+    },
+    "TorchCompileVAE": {
+        "title": "קומפילציית Torch של ה-VAE",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "גרף שלם",
+            "mode": "מצב",
+            "compile_encoder": "קמפול המקודד",
+            "compile_decoder": "קמפול המפנח"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "TorchCompileControlNet": {
+        "title": "קומפילציית Torch של ה-ControlNet",
+        "inputs": {
+            "controlnet": "ControlNet"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "גרף שלם",
+            "mode": "מצב"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "TorchCompileLTXModel": {
+        "title": "קומפילציית Torch של מודל LTX",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "גרף שלם",
+            "mode": "מצב",
+            "dynamic": "דינמי"
+        },
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "TorchCompileCosmosModel": {
+        "title": "קומפילציית Torch של מודל Cosmos",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "גרף שלם",
+            "mode": "מצב",
+            "dynamic": "דינמי",
+            "dynamo_cache_size_limit": "מגבלת גודל מטמון דינמית"
+        },
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "WanVideoTeaCacheKJ": {
+        "title": "אופטימיזציית מטמון לוידאו Wan (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "rel_l1_thresh": "סף L1 יחסי",
+            "start_percent": "אחוז התחלתי",
+            "end_percent": "אחוז סופי",
+            "cache_device": "התקן המטמון",
+            "coefficients": "מקדם"
+        },
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "WanVideoEnhanceAVideoKJ": {
+        "title": "שיפור וידאו Wan (KJ)",
+        "inputs": {
+            "model": "מודל",
+            "latent": "latent"
+        },
+        "widgets": {
+            "weight": "משקל"
+        },
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "WanVideoNAG": {
+        "title": "גרדיאנט טבעי לוידאו Wan",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "conditioning": "תנאי",
+            "nag_scale": "רשת_קנה_מידה",
+            "nag_alpha": "רשת_alpha",
+            "nag_tau": "רשת_tau",
+            "input_type": "סוג קלט"
+        },
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "SkipLayerGuidanceWanVideo": {
+        "title": "הכוויית דילוג שכבות לוידאו Wan",
+        "inputs": {
+            "model": "מודל",
+            "blocks": "בלוק",
+            "start_percent": "אחוז התחלתי",
+            "end_percent": "אחוז סופי"
+        },
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "CFGZeroStarAndInit": {
+        "title": "אתחול CFG מפוזר",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "use_zero_init": "שימוש באתחול אפס",
+            "zero_init_steps": "מספר צעדי אתחול אפס"
+        },
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "SetNode": {
+        "title": "נקודת הגדרה",
+        "inputs": {
+            "*": "קלט"
+        },
+        "widgets": {
+            "Constant": "קבוע"
+        },
+        "outputs": {
+            "*": "פלט"
+        }
+    },
+    "GetNode": {
+        "title": "נקודת קבלה",
+        "inputs": {
+            "*": "קלט"
+        },
+        "widgets": {
+            "Constant": "קבוע"
+        },
+        "outputs": {
+            "*": "פלט"
+        }
+    },
+    "BOOLConstant": {
+        "title": "קבוע בוליאני",
+        "inputs": {
+            "value": "ערך"
+        },
+        "widgets": {
+            "value": "ערך"
+        },
+        "outputs": {
+            "value": "ערך"
+        }
+    },
+    "INTConstant": {
+        "title": "קבוע מספר שלם",
+        "widgets": {
+            "value": "ערך"
+        },
+        "outputs": {
+            "value": "ערך"
+        }
+    },
+    "FloatConstant": {
+        "title": "קבוע נקודה צפה",
+        "widgets": {
+            "value": "ערך"
+        },
+        "outputs": {
+            "value": "ערך"
+        }
+    },
+    "StringConstant": {
+        "title": "קבוע מחרוזת",
+        "widgets": {
+            "string": "מחרוזת"
+        },
+        "outputs": {
+            "STRING": "מחרוזת"
+        }
+    },
+    "StringConstantMultiline": {
+        "title": "קבוע מחרוזת (תיבת טקסט)",
+        "widgets": {
+            "string": "מחרוזת",
+            "strip_newlines": "עם ירידות שורה"
+        },
+        "outputs": {
+            "STRING": "מחרוזת"
+        }
+    },
+    "ScaleBatchPromptSchedule": {
+        "title": "תזמור אצוות פרומפטים לשינוי קנה מידה",
+        "inputs": {
+            "input_str": "מחרוזת",
+            "old_frame_count": "מספר הפריימים הישנים",
+            "new_frame_count": "מספר הפריימים החדשים"
+        },
+        "outputs": {
+            "STRING": "מחרוזת"
+        }
+    },
+    "GetLatentsFromBatchIndexed": {
+        "title": "השגת Latent לפי אינדקס",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "latent_format": "פורמט latent"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "ConditioningMultiCombine": {
+        "title": "מיזוג תנאים (מרובה)",
+        "inputs": {
+            "conditioning_1": "תנאי_1",
+            "conditioning_2": "תנאי_2",
+            "conditioning_3": "תנאי_3",
+            "conditioning_4": "תנאי_4",
+            "conditioning_5": "תנאי_5",
+            "conditioning_6": "תנאי_6",
+            "conditioning_7": "תנאי_7",
+            "conditioning_8": "תנאי_8",
+            "conditioning_9": "תנאי_9",
+            "conditioning_10": "תנאי_10",
+            "conditioning_11": "תנאי_11",
+            "conditioning_12": "תנאי_12",
+            "conditioning_13": "תנאי_13",
+            "conditioning_14": "תנאי_14",
+            "conditioning_15": "תנאי_15",
+            "conditioning_16": "תנאי_16",
+            "conditioning_17": "תנאי_17",
+            "conditioning_18": "תנאי_18",
+            "conditioning_19": "תנאי_19",
+            "conditioning_20": "תנאי_20"
+        },
+        "widgets": {
+            "inputcount": "מספר קלטים",
+            "operation": "פעולה",
+            "Update inputs": "עדכון קלטים"
+        },
+        "outputs": {
+            "combined": "תנאי",
+            "inputcount": "מספר קלטים"
+        },
+        "description": "ממזג מספר צמתים של תנאי לאחד"
+    },
+    "AppendStringsToList": {
+        "title": "צירוף מחרוזת לרשימה",
+        "inputs": {
+            "string1": "מחרוזת1",
+            "string2": "מחרוזת2"
+        },
+        "outputs": {
+            "STRING": "מחרוזת"
+        }
+    },
+    "JoinStrings": {
+        "title": "מיזוג מחרוזות",
+        "inputs": {
+            "string1": "מחרוזת1",
+            "string2": "מחרוזת2"
+        },
+        "widgets": {
+            "delimiter": "מפריד"
+        },
+        "outputs": {
+            "STRING": "מחרוזת"
+        }
+    },
+    "JoinStringMulti": {
+        "title": "מיזוג מחרוזות (מרובה)",
+        "inputs": {
+            "string_1": "מחרוזת_1",
+            "string_2": "מחרוזת_2",
+            "string_3": "מחרוזת_3",
+            "string_4": "מחרוזת_4",
+            "string_5": "מחרוזת_5",
+            "string_6": "מחרוזת_6",
+            "string_7": "מחרוזת_7",
+            "string_8": "מחרוזת_8",
+            "string_9": "מחרוזת_9",
+            "string_10": "מחרוזת_10"
+        },
+        "widgets": {
+            "inputcount": "מספר קלטים",
+            "delimiter": "מפריד",
+            "return_list": "פלט כרשימה",
+            "Update inputs": "עדכון קלטים"
+        },
+        "outputs": {
+            "string": "מחרוזת"
+        },
+        "description": "ממזג מספר מחרוזות לאצוות מחרוזות או לרשימת מחרוזות. ניתן להגדיר את מספר ממשקי הקלט באמצעות 'מספר קלטים', וללחוץ על עדכון לריענון הממשקים."
+    },
+    "CondPassThrough": {
+        "title": "העברת תנאי",
+        "inputs": {
+            "positive": "תנאי חיובי",
+            "negative": "תנאי שלילי"
+        },
+        "outputs": {
+            "positive": "תנאי חיובי",
+            "negative": "תנאי שלילי"
+        }
+    },
+    "ModelPassThrough": {
+        "title": "גשר מודל",
+        "inputs": {
+            "model": "מודל"
+        },
+        "outputs": {
+            "model": "מודל"
+        },
+        "description": "מעביר את המודל לצומת הבא"
+    },
+    "ConditioningSetMaskAndCombine": {
+        "title": "מסיכת קביעת תנאי (מיזוג 2)",
+        "inputs": {
+            "positive_1": "תנאי חיובי_1",
+            "negative_1": "תנאי שלילי_1",
+            "positive_2": "תנאי חיובי_2",
+            "negative_2": "תנאי שלילי_2",
+            "mask_1": "מסיכה_1",
+            "mask_2": "מסיכה_2"
+        },
+        "widgets": {
+            "mask_1_strength": "מסיכה_1_עוצמה",
+            "mask_2_strength": "מסיכה_2_עוצמה",
+            "set_cond_area": "קביעת אזור התנאי",
+            "default": "ברירת מחדל",
+            "mask bounds": "גבולות המסיכה"
+        },
+        "outputs": {
+            "combined_positive": "תנאי חיובי",
+            "combined_negative": "תנאי שלילי"
+        },
+        "description": "קושר מספר מסיכות תנאי ומאחד את הצמתים לאחת; הפונקציה זהה לצומת המקורי של ComfyUI"
+    },
+    "ConditioningSetMaskAndCombine3": {
+        "title": "מסיכת קביעת תנאי (מיזוג 3)",
+        "inputs": {
+            "positive_1": "תנאי חיובי_1",
+            "negative_1": "תנאי שלילי_1",
+            "positive_2": "תנאי חיובי_2",
+            "negative_2": "תנאי שלילי_2",
+            "positive_3": "תנאי חיובי_3",
+            "negative_3": "תנאי שלילי_3",
+            "mask_1": "מסיכה_1",
+            "mask_2": "מסיכה_2",
+            "mask_3": "מסיכה_3"
+        },
+        "widgets": {
+            "mask_1_strength": "מסיכה_1_עוצמה",
+            "mask_2_strength": "מסיכה_2_עוצמה",
+            "mask_3_strength": "מסיכה_3_עוצמה",
+            "set_cond_area": "קביעת אזור התנאי",
+            "default": "ברירת מחדל",
+            "mask bounds": "גבולות המסיכה"
+        },
+        "outputs": {
+            "combined_positive": "תנאי חיובי",
+            "combined_negative": "תנאי שלילי"
+        },
+        "description": "קושר מספר מסיכות תנאי ומאחד את הצמתים לאחת; הפונקציה זהה לצומת המקורי של ComfyUI"
+    },
+    "ConditioningSetMaskAndCombine4": {
+        "title": "מסיכת קביעת תנאי (מיזוג 4)",
+        "inputs": {
+            "positive_1": "תנאי חיובי_1",
+            "negative_1": "תנאי שלילי_1",
+            "positive_2": "תנאי חיובי_2",
+            "negative_2": "תנאי שלילי_2",
+            "positive_3": "תנאי חיובי_3",
+            "negative_3": "תנאי שלילי_3",
+            "positive_4": "תנאי חיובי_4",
+            "negative_4": "תנאי שלילי_4",
+            "mask_1": "מסיכה_1",
+            "mask_2": "מסיכה_2",
+            "mask_3": "מסיכה_3",
+            "mask_4": "מסיכה_4"
+        },
+        "widgets": {
+            "mask_1_strength": "מסיכה_1_עוצמה",
+            "mask_2_strength": "מסיכה_2_עוצמה",
+            "mask_3_strength": "מסיכה_3_עוצמה",
+            "mask_4_strength": "מסיכה_4_עוצמה",
+            "set_cond_area": "קביעת אזור התנאי",
+            "default": "ברירת מחדל",
+            "mask bounds": "גבולות המסיכה"
+        },
+        "outputs": {
+            "combined_positive": "מיזוג תנאים חיוביים",
+            "combined_negative": "מיזוג תנאים שליליים"
+        },
+        "description": "קושר מספר מסיכות תנאי ומאחד את הצמתים לאחת; הפונקציה זהה לצומת המקורי של ComfyUI"
+    },
+    "ConditioningSetMaskAndCombine5": {
+        "title": "מסיכת קביעת תנאי (מיזוג 5)",
+        "inputs": {
+            "positive_1": "תנאי חיובי_1",
+            "negative_1": "תנאי שלילי_1",
+            "positive_2": "תנאי חיובי_2",
+            "negative_2": "תנאי שלילי_2",
+            "positive_3": "תנאי חיובי_3",
+            "negative_3": "תנאי שלילי_3",
+            "positive_4": "תנאי חיובי_4",
+            "negative_4": "תנאי שלילי_4",
+            "positive_5": "תנאי חיובי_5",
+            "negative_5": "תנאי שלילי_5",
+            "mask_1": "מסיכה_1",
+            "mask_2": "מסיכה_2",
+            "mask_3": "מסיכה_3",
+            "mask_4": "מסיכה_4",
+            "mask_5": "מסיכה_5"
+        },
+        "widgets": {
+            "mask_1_strength": "מסיכה_1_עוצמה",
+            "mask_2_strength": "מסיכה_2_עוצמה",
+            "mask_3_strength": "מסיכה_3_עוצמה",
+            "mask_4_strength": "מסיכה_4_עוצמה",
+            "mask_5_strength": "מסיכה_5_עוצמה",
+            "set_cond_area": "קביעת אזור התנאי",
+            "default": "ברירת מחדל",
+            "mask bounds": "גבולות המסיכה"
+        },
+        "outputs": {
+            "combined_positive": "מיזוג תנאים חיוביים",
+            "combined_negative": "מיזוג תנאים שליליים"
+        },
+        "description": "קושר מספר מסיכות תנאי ומאחד את הצמתים לאחת; הפונקציה זהה לצומת המקורי של ComfyUI"
+    },
+    "VRAM_Debug": {
+        "title": "ניקוי VRAM",
+        "inputs": {
+            "any_input": "קלט כלשהו",
+            "image_pass": "מעבר תמונה",
+            "model_pass": "מעבר מודל"
+        },
+        "widgets": {
+            "empty_cache": "ניקוי המטמון",
+            "gc_collect": "איסוף זבל",
+            "unload_all_models": "פריקת כל המודלים"
+        },
+        "outputs": {
+            "any_output": "פלט כלשהו",
+            "image_pass": "מעבר תמונה",
+            "model_pass": "מעבר מודל",
+            "freemem_before": "זיכרון פנוי לפני הניקוי",
+            "freemem_after": "זיכרון פנוי אחרי הניקוי"
+        },
+        "description": "מחזיר את נתוני הקלט כמות שהם (משמש רק כאות הפעלה), ומבצע במקביל את פונקציות ניהול המודלים של Comfy ואת איסוף הזבל, ומדווח על ה-VRAM הפנוי לפני ואחרי הפעולה."
+    },
+    "SomethingToString": {
+        "title": "ערך כלשהו למחרוזת",
+        "inputs": {
+            "input": "קלט"
+        },
+        "widgets": {
+            "prefix": "קידומת",
+            "suffix": "סיומת"
+        },
+        "outputs": {
+            "STRING": "מחרוזת"
+        }
+    },
+    "Sleep": {
+        "title": "שהייה",
+        "inputs": {
+            "input": "קלט"
+        },
+        "widgets": {
+            "minutes": "דקות",
+            "seconds": "שניות"
+        },
+        "outputs": {
+            "*": "*"
+        }
+    },
+    "EmptyLatentImagePresets": {
+        "title": "קביעת מראש של תמונת Latent ריקה",
+        "widgets": {
+            "dimensions": "ממדים",
+            "invert": "היפוך",
+            "batch_size": "גודל אצווה"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "רוחב",
+            "Height": "גובה"
+        }
+    },
+    "EmptyLatentImageCustomPresets": {
+        "title": "קביעת מראש מותאמת של תמונת Latent",
+        "widgets": {
+            "dimensions": "ממדים",
+            "invert": "היפוך",
+            "batch_size": "גודל אצווה"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "רוחב",
+            "Height": "גובה"
+        },
+        "description": "מייצר תמונה סמויה ריקה בהתאם לממדים הנתונים. \n אפשרויות אלו נטענות מקובץ ה-'custom_dimensions.json' שב'תיקיית הצמתים'."
+    },
+    "WidgetToString": {
+        "title": "רכיב למחרוזת",
+        "inputs": {
+            "any_input": "קלט כלשהו"
+        },
+        "widgets": {
+            "id": "מזהה הצומת",
+            "widget_name": "שם הרכיב",
+            "return_all": "החזרת הכול",
+            "node_title": "כותרת הצומת",
+            "allowed_float_decimals": "אפשר שברים עשרוניים"
+        },
+        "outputs": {
+            "STRING": "מחרוזת"
+        }
+    },
+    "DummyOut": {
+        "title": "פלט Latent וירטואלי",
+        "inputs": {
+            "any_input": "קלט כלשהו"
+        },
+        "outputs": {
+            "*": "פלט"
+        }
+    },
+    "FlipSigmasAdjusted": {
+        "title": "כוונון Sigmas הפוכים",
+        "inputs": {
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "divide_by_last_sigma": "חילוק ב-Sigma האחרון",
+            "divide_by": "חילוק ב-",
+            "offset_by": "גודל ההיסט"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas",
+            "sigmas_string": "מחרוזת sigmas"
+        }
+    },
+    "CustomSigmas": {
+        "title": "Sigmas מותאמים",
+        "widgets": {
+            "sigmas_string": "מחרוזת Sigmas",
+            "interpolate_to_steps": "מספר צעדי אינטרפולציה",
+            "t_steps": "מספר צעדי T",
+            "num_steps": "מספר צעדים"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        }
+    },
+    "StringToFloatList": {
+        "title": "מחרוזת לרשימת נקודות צפה",
+        "inputs": {
+            "string": "מחרוזת"
+        },
+        "outputs": {
+            "FLOAT": "נקודה צפה"
+        }
+    },
+    "InjectNoiseToLatent": {
+        "title": "הזרקת רעש ל-Latent",
+        "inputs": {
+            "latents": "Latent",
+            "noise": "רעש",
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "strength": "עוצמה",
+            "normalize": "נרמול",
+            "average": "ממוצע",
+            "mix_randn_amount": "עוצמת ערבוב הרעש האקראי",
+            "seed": "זרע"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "SoundReactive": {
+        "title": "תגובה קולית",
+        "inputs": {
+            "audio": "אודיו"
+        },
+        "widgets": {
+            "sound_level": "רמת עוצמת שמע",
+            "start_range_hz": "טווח Hz התחלתי",
+            "end_range_hz": "טווח Hz סופי",
+            "multiplier": "מכפיל",
+            "smoothing_factor": "מקדם החלקה",
+            "normalize": "נרמול",
+            "Start mic capture": "החל לכידת מיקרופון",
+            "Start_mic_capture": "החל לכידת מיקרופון",
+            "Stop mic capture": "עצור לכידת מיקרופון",
+            "Stop_mic_capture": "עצור לכידת מיקרופון"
+        },
+        "outputs": {
+            "sound_level": "רמת עוצמת שמע",
+            "sound_level_int": "רמת עוצמת שמע (שלם)"
+        },
+        "description": "מחזיר משוב על עוצמת השמע של האודיו הנכנס.\n\nמשתמש בקלט האודיו של הדפדפן.\n\nלשימוש בדגימה חיה."
+    },
+    "GenerateNoise": {
+        "title": "יצירת רעש",
+        "inputs": {
+            "model": "מודל",
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "width": "רוחב",
+            "height": "גובה",
+            "batch_size": "גודל אצווה",
+            "seed": "זרע אקראי",
+            "control_after_generate": "בקרה לאחר יצירה",
+            "fixed": "קבוע",
+            "increment": "עלייה",
+            "decrement": "ירידה",
+            "randomize": "אקראי",
+            "multiplier": "מכפיל",
+            "constant_batch_noise": "רעש אצווה קבוע",
+            "normalize": "נרמול",
+            "latent_channels": "ערוץ latent",
+            "shape": "צורה"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        },
+        "description": "מייצר רעש בעת ההזרקה, או משמש כ-latent ריק בדוגם כאשר הוספת הרעש כבויה"
+    },
+    "StableZero123_BatchSchedule": {
+        "title": "יצירה באצוות רב-זוויתית של Stable Zero123",
+        "inputs": {
+            "clip_vision": "ראיית CLIP",
+            "init_image": "תמונה ראשונית",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "רוחב",
+            "height": "גובה",
+            "batch_size": "גודל אצווה",
+            "interpolation": "שיטת האינטרפולציה",
+            "linear": "ליניארי",
+            "ease_in": "הרפיה בכניסה",
+            "ease_out": "הרפיה ביציאה",
+            "ease_in_out": "הרפיה בכניסה וביציאה",
+            "azimuth_points_string": "נקודת אזימוט",
+            "elevation_points_string": "נקודת גבהות"
+        },
+        "outputs": {
+            "positive": "תנאי חיובי",
+            "negative": "תנאי שלילי",
+            "latent": "Latent"
+        },
+        "description": "מקבל תמונה בודדת ומייצר באצווה תמונות עקביות רב-זוויתיות (כגון 0°, 90°, 180°), עם תמיכה בתזמור לאופטימיזציית VRAM."
+    },
+    "SV3D_BatchSchedule": {
+        "title": "תזמור אצוות SV3D",
+        "inputs": {
+            "clip_vision": "ראיית CLIP",
+            "init_image": "תמונה ראשונית",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "רוחב",
+            "height": "גובה",
+            "batch_size": "גודל אצווה",
+            "interpolation": "שיטת האינטרפולציה",
+            "azimuth_points_string": "נקודת אזימוט",
+            "elevation_points_string": "נקודת גבהות"
+        },
+        "outputs": {
+            "positive": "תנאי חיובי",
+            "negative": "תנאי שלילי",
+            "latent": "Latent"
+        },
+        "description": "מתזמר את ערכי האזימוט והגבהות של SV3D באמצעות אינטרפולציה.\n\nשימו לב ש-SV3D הוא מודל וידאו, ולכן ערכי התזמור חייבים להתקדם בהדרגה.\n\nhttps://huggingface.co/stabilityai/sv3d"
+    },
+    "LoadResAdapterNormalization": {
+        "title": "טעינת נרמול ResAdapter",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "resadapter_path": "נתיב ResAdapter"
+        },
+        "outputs": {
+            "MODEL": "מודל"
+        }
+    },
+    "Superprompt": {
+        "title": "על-פרומפט",
+        "inputs": {
+            "prompt": "רמז"
+        },
+        "widgets": {
+            "instruction_prompt": "פרומפט הנחיה",
+            "max_new_tokens": "מספר טוקנים חדשים מרבי"
+        },
+        "outputs": {
+            "STRING": "מחרוזת"
+        },
+        "description": "מודל T5 שעבר כוונון עדין על סט הנתונים של על-הפרומפטים.\n\nמשדרג פרומפט טקסט לתיאור מפורט יותר.\n\nלשימוש כשלב לפני היצירה מטקסט לתמונה\n\nמודלים שנהנים מפרומפטים מפורטים יותר. \n\nhttps://huggingface.co/roborovski/superprompt-v1"
+    },
+    "CameraPoseVisualizer": {
+        "title": "הדמיית תנוחת מצלמה",
+        "inputs": {
+            "cameractrl_poses": "תנוחת בקרת מצלמה"
+        },
+        "widgets": {
+            "pose_file_path": "נתיב קובץ התנוחה",
+            "base_xval": "ערך X בסיסי",
+            "zval": "ערך Z",
+            "scale": "קנה מידה",
+            "use_exact_fx": "שימוש באפקטים מדויקים",
+            "relative_c2w": "ממצלמה יחסית לקואורדינטות עולם",
+            "use_viewer": "שימוש במציג",
+            "cameractrl_poses": "תנוחת בקרת מצלמה",
+            "extrinsic": "חיצוני",
+            "color_map": "מיפוי צבעים",
+            "hw_ratio": "יחס גובה-רוחב",
+            "list_label": "תווית רשימה",
+            "w2cs": "מעולם למצלמה",
+            "transform_matrix": "מטריצת טרנספורמציה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "הדמיית תנוחת המצלמה\n\n(מתוך מודול ה-Camera Ctrl Pose של Animatediff Evolved, או באמצעות קובץ ‎.txt המכיל את פרמטרי המצלמה הפנימיים ואת הקואורדינטות מסט הנתונים RealEstate, מוצג בתרשים תלת-ממדי)"
+    },
+    "StabilityAPI_SD3": {
+        "title": "StabilityAPI SD3",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "prompt": "רמז",
+            "n_prompt": "פרומפט שלילי",
+            "seed": "זרע אקראי",
+            "control_before_generate": "בקרה לפני יצירה",
+            "model": "מודל",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "output_format": "פורמט פלט",
+            "api_key": "מפתח API",
+            "img2img_strength": "עוצמת תמונה-לתמונה",
+            "disable_metadata": "השבתת מטא-נתונים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "# קריאה ל-Stability API\n\nהשתמשו ככל האפשר באותו מפתח לקריאות ה-API, בלי קשר לכמה מפתחות יש בחשבון.\n\nהשיגו מפתח ב- https://platform.stability.ai/account/keys , מומלץ ליצור קובץ config.json המכיל את המפתח ולהניחו תחת תיקיית התוסף.\n\n# אזהרה:\n\nגם אם disable_metadata (השבתת מטא-נתונים) מופעל, ייתכן שמפתח ה-API יישמר במטא-נתונים אם ה-workflow כולל צומת שמירה השונה מצומת זה.\n\nSD3 דורש 6.5 נקודות לכל יצירה\n\nSD3-Turbo דורש 4 נקודות לכל יצירה\n\nאם לא מחברים קלט תמונה, משתמש במצב טקסט-לתמונה"
+    },
+    "CheckpointPerturbWeights": {
+        "title": "הפרעת משקולות במודל-ענק של Checkpoint",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "joint_blocks": "בלוק משותף",
+            "final_layer": "השכבה הסופית",
+            "rest_of_the_blocks": "שאר הבלוקים",
+            "seed": "זרע אקראי",
+            "control_before_generate": "בקרה לפני יצירה"
+        },
+        "outputs": {
+            "MODEL": "מודל"
+        }
+    },
+    "DifferentialDiffusionAdvanced": {
+        "title": "הבדלי דיפוזיה (מתקדם)",
+        "inputs": {
+            "model": "מודל",
+            "samples": "דגימה",
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "multiplier": "מכפיל"
+        },
+        "outputs": {
+            "MODEL": "מודל",
+            "LATENT": "Latent"
+        }
+    },
+    "FluxBlockLoraSelect": {
+        "title": "בחירת LoRA של בלוק Flux",
+        "inputs": {},
+        "outputs": {
+            "blocks": "בלוק"
+        },
+        "description": "טעינת ICLightUnet: טוען מודל ICLightUnet. (ניסיוני) בפיתוח \n דרך אחרת, פחות נוחה אך עובדת, היא להוריד את המודל מ- https://huggingface.co/Kijai/iclight-comfy/blob/main/iclight_fc_converted.safetensors ואז להשתמש בו יחד עם הצומת InstructPixToPix תנאי."
+    },
+    "HunyuanVideoBlockLoraSelect": {
+        "title": "בחירת LoRA של בלוק לוידאו Hunyuan",
+        "inputs": {},
+        "outputs": {
+            "blocks": "בלוק"
+        },
+        "description": "בוחר ערך אלפא לבלוק יחיד; ערך 0 מסיר את הבלוק כולו"
+    },
+    "FluxBlockLoraLoader": {
+        "title": "מטעין LoRA של בלוק Flux",
+        "inputs": {
+            "model": "מודל",
+            "blocks": "בלוק",
+            "opt_lora_path": "נתיב LoRA (אופציונלי)"
+        },
+        "widgets": {
+            "strength_model": "עוצמת המודל",
+            "lora_name": "שם ה-LoRA"
+        },
+        "outputs": {
+            "model": "מודל",
+            "rank": "דרגה"
+        }
+    },
+    "CustomControlNetWeightsFluxFromList": {
+        "title": "משקולי ControlNet מותאמים ל-Flux מרשימה",
+        "inputs": {
+            "cn_extras": "ControlNet נוסף",
+            "list_of_floats": "רשימת נקודות צפה"
+        },
+        "widgets": {
+            "uncond_multiplier": "מכפיל ללא-תנאי",
+            "autosize": "גודל אוטומטי"
+        },
+        "outputs": {
+            "CN_WEIGHTS": "משקולי ControlNet",
+            "TK_SHORTCUT": "קיצור דרך TK"
+        },
+        "description": "ממיר רשימת מספרי נקודה צפה למשקולי ControlNet (עבור Advanced-ControlNet)"
+    },
+    "SetShakkerLabsUnionControlNetType": {
+        "title": "קביעת סוג ה-ControlNet המשולב של ShakkerLabs",
+        "inputs": {
+            "control_net": "ControlNet",
+            "type": "סוג"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "ModelSaveKJ": {
+        "title": "שמירת מודל (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "filename_prefix": "קידומת שם קובץ",
+            "model_key_prefix": "קידומת מפתח המודל"
+        }
+    },
+    "StyleModelApplyAdvanced": {
+        "title": "מפעיל מודל סגנון מתקדם",
+        "inputs": {
+            "conditioning": "הכוויית תנאי",
+            "style_model": "מודל סגנון",
+            "clip_vision_output": "פלט ראיית CLIP"
+        },
+        "widgets": {
+            "strength": "עוצמה"
+        },
+        "outputs": {
+            "conditioning": "הכוויית תנאי"
+        },
+        "description": "החלת מודל סגנון, אך דורש הגדרת פרמטר עוצמה"
+    },
+    "AudioConcatenate": {
+        "title": "חיבור אודיו",
+        "inputs": {
+            "audio1": "אודיו1",
+            "audio2": "אודיו2"
+        },
+        "widgets": {
+            "direction": "כיוון"
+        },
+        "outputs": {
+            "AUDIO": "אודיו"
+        },
+        "description": "מחבר את אודיו1 לאודיו2 לפי הכיוון הנתון."
+    },
+    "ImageNoiseAugmentation": {
+        "title": "הגברת רעש בתמונה",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "noise_aug_strength": "עוצמת הגברת הרעש",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "image": "תמונה"
+        }
+    },
+    "VAELoaderKJ": {
+        "title": "מטעין VAE (KJ)",
+        "inputs": {},
+        "widgets": {
+            "vae_name": "שם VAE",
+            "device": "התקן",
+            "weight_dtype": "סוג נתוני המשקולות"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "ScheduledCFGGuidance": {
+        "title": "הכוויית CFG מתוזמרת",
+        "inputs": {
+            "model": "מודל",
+            "positive": "פרומפט חיובי",
+            "negative": "פרומפט שלילי"
+        },
+        "widgets": {
+            "cfg": "ערך CFG",
+            "start_percent": "אחוז התחלתי",
+            "end_percent": "אחוז סופי"
+        },
+        "outputs": {
+            "GUIDER": "מכווה"
+        }
+    },
+    "ApplyRifleXRoPE_WanVideo": {
+        "title": "החלת RifleX RoPE על וידאו Wan",
+        "inputs": {
+            "model": "מודל",
+            "latent": "Latent",
+            "k": "ערך k"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "ApplyRifleXRoPE_HunuyanVideo": {
+        "title": "החלת RifleX RoPE על וידאו Hunyuan",
+        "inputs": {
+            "model": "מודל",
+            "latent": "Latent",
+            "k": "ערך k"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "TimerNodeKJ": {
+        "title": "טיימר (KJ)",
+        "inputs": {
+            "any_input": "קלט כלשהו",
+            "timer": "טיימר"
+        },
+        "widgets": {
+            "mode": "מצב",
+            "name": "שם"
+        },
+        "outputs": {
+            "any_output": "פלט כלשהו",
+            "timer": "טיימר",
+            "time": "זמן"
+        }
+    },
+    "ImageBatchFilter": {
+        "title": "מסנן עיבוד אצוות תמונות",
+        "inputs": {
+            "images": "תמונה",
+            "replacement_image": "החלפת תמונה"
+        },
+        "widgets": {
+            "empty_color": "הגדרת צבע האזורים הריקים",
+            "empty_threshold": "ערך סף לעוצמה הקובעת אם אזור הוא ריק"
+        },
+        "outputs": {
+            "images": "תמונה",
+            "IMAGES": "תמונה",
+            "removed_indices": "אינדקס מחיקה"
+        },
+        "description": "מוחק תמונות ריקות מעיבוד האצווה"
+    },
+    "ImageResizeKJv2": {
+        "title": "שינוי קנה מידה של תמונה v2 (KJ)",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "width": "רוחב",
+            "height": "גובה",
+            "upscale_method": "שיטת שינוי קנה מידה",
+            "keep_proportions": "קביעת יחס רוחב-גובה",
+            "keep_proportion": "קביעת יחס רוחב-גובה",
+            "pad_color": "צבע מילוי",
+            "crop_position": "מיקום חיתוך",
+            "divisible_by": "מספר שמתחלק בו",
+            "device": "התקן",
+            "per_batch": "אצווה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "width": "רוחב",
+            "height": "גובה",
+            "mask": "מסיכה"
+        },
+        "description": "שינוי קנה מידה של תמונה, דור 2. ניתן לקבוע את הממדים דרך הקלט, וסדר העדיפויות של הפלט הסופי הוא לפי הכללים הבאים:\n- גודל תמונת הייחוס \n- רוחב-קלט וגובה-קלט \n- רוחב וגובה \n \nקביעת יחס רוחב-גובה מקבעת את היחס לפי הממד הגבוה ביותר."
+    },
+    "InsertLatentToIndexed": {
+        "title": "הכנסת Latent לפי אינדקס",
+        "inputs": {
+            "source": "מקור",
+            "destination": "יעד"
+        },
+        "widgets": {
+            "index": "מקדם"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "latent": "Latent"
+        },
+        "description": "מכניס את ה-Latent באינדקס הנתון אל תוך אצוות ה-Latent המקורית."
+    },
+    "DiTBlockLoraLoader": {
+        "title": "מטעין Lora של בלוק DiT",
+        "inputs": {
+            "model": "מודל",
+            "opt_lora_path": "בחירת נתיב Lora",
+            "blocks": "בלוק"
+        },
+        "widgets": {
+            "strength_model": "עוצמת המודל",
+            "lora_name": "שם Lora",
+            "overlap": "כמות החפיפה"
+        },
+        "outputs": {
+            "model": "מודל",
+            "rank": "דירוג"
+        },
+        "description": "תוכן שנוסף לאחרונה."
+    },
+    "LeapfusionHunyuanI2VPatcher": {
+        "title": "מרכז Leapfusion להמדת תמונה לוידאו של Hunyuan",
+        "inputs": {
+            "model": "מודל",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "index": "מקדם",
+            "start_percent": "אחוז התחלה",
+            "end_percent": "אחוז סופי",
+            "strength": "עוצמה"
+        },
+        "outputs": {
+            "MODEL": "מודל",
+            "model": "מודל"
+        },
+        "description": "תוכן שנוסף לאחרונה."
+    },
+    "ModelPatchTorchSettings": {
+        "title": "הגדרות מרכז מודל Torch",
+        "inputs": {
+            "model": "מודל",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "הפעלת הצברת FP16",
+            "start_percent": "אחוז התחלה",
+            "end_percent": "אחוז סופי",
+            "strength": "עוצמה"
+        },
+        "outputs": {
+            "MODEL": "מודל",
+            "model": "מודל"
+        },
+        "description": "מפחית את ניצול זיכרון ה-GPU\nמאיץ את פעולות הצבירה של כפל מטריצות\nמשפר את יחס יעילות האנרגיה\nעלולים להופיע: גלישה מספרית ואובדן דיוק."
+    },
+    "LoraExtractKJ": {
+        "title": "חילוץ Lora (KJ)",
+        "inputs": {
+            "finetuned_model": "המודל שכוונן",
+            "original_model": "המודל המקורי"
+        },
+        "widgets": {
+            "filename_prefix": "קידומת שם קובץ",
+            "rank": "דרגה",
+            "lora_type": "סוג ה-Lora",
+            "algorithm": "אלגוריתם",
+            "lowrank_iters": "מספר חזרות דרגה נמוכה",
+            "output_dtype": "סוג נתוני הפלט",
+            "bias_diff": "הפרש הטיות",
+            "adaptive_param": "פרמטר הסתגלותי",
+            "clamp_quantile": "קוונטיל Clamp"
+        },
+        "outputs": {
+            "images": "תמונה",
+            "masks": "מסיכה"
+        },
+        "description": "LoraExtract"
+    },
+    "Wan21BlockLoraSelect": {
+        "title": "בורר LoRA מבוסס-בלוקים של Wan2.1",
+        "inputs": {
+            "model": "מודל",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "הפעלת הצברת FP16",
+            "start_percent": "אחוז התחלה",
+            "end_percent": "אחוז סופי",
+            "strength": "עוצמה"
+        },
+        "outputs": {
+            "BLOCKS": "בלוק",
+            "blocks": "בלוק"
+        },
+        "description": "בוחר ערך אלפא לבלוק יחיד; ערך 0 מסיר את הבלוק כולו."
+    },
+    "LoadVideosFromFolder": {
+        "title": "טעינת וידאו מתיקייה",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "video": "וידאו",
+            "force_rate": "כפיית קצב פריימים",
+            "custom_width": "רוחב מותאם",
+            "custom_height": "גובה מותאם",
+            "frame_load_cap": "מגבלת קריאת מספר פריימים",
+            "skip_first_frames": "דילוג על X הפריימים הראשונים",
+            "select_every_nth": "מרווח",
+            "output_type": "סוג פלט",
+            "grid_max_columns": "מספר עמודות מרבי ברשת",
+            "add_label": "הוספת תווית"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "TorchCompileModelQwenImage": {
+        "title": "מודל Qwen Image בהקמפול Torch",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "גרף שלם",
+            "mode": "מצב",
+            "dynamic": "דינמי",
+            "compile_transformer_blocks_only": "קמפול רק מודול ה-Transformer",
+            "dynamo_cache_size_limit": "מגבלת גודל מטמון זיכרון דינמי"
+        },
+        "outputs": {
+            "MODEL": "מודל",
+            "model": "מודל"
+        }
+    },
+    "LazySwitchKJ": {
+        "title": "מתג קל (KJ)",
+        "inputs": {
+            "on_false": "שגוי",
+            "on_true": "תקין"
+        },
+        "widgets": {
+            "switch": "מתג"
+        },
+        "outputs": {
+            "*": "כלשהו"
+        }
+    },
+    "GetLatentSizeAndCount": {
+        "title": "השגת גודל וכמות של Latent",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "latent": "Latent",
+            "batch_size": "גודל אצווה",
+            "channels": "ערוצים",
+            "frames": "פריים",
+            "width": "רוחב",
+            "height": "גובה"
+        }
+    },
+    "DiffusionModelSelector": {
+        "title": "בורר מודל דיפוזיה",
+        "inputs": {},
+        "widgets": {
+            "model_name": "שם המודל"
+        },
+        "outputs": {
+            "model_path": "נתיב המודל"
+        }
+    },
+    "LoraReduceRankKJ": {
+        "title": "הורדת דרגת Lora (KJ)",
+        "inputs": {},
+        "widgets": {
+            "lora_name": "שם Lora",
+            "new_rank": "דרגה חדשה",
+            "dynamic_method": "שיטה דינמית",
+            "dynamic_param": "פרמטר דינמי",
+            "output_dtype": "סוג נתוני הפלט",
+            "verbose": "מצב מפורט"
+        },
+        "outputs": {
+            "model_path": "נתיב המודל"
+        },
+        "description": "מתאים את גודל מודל ה-LoRA באמצעות הורדת דרגת המודל.\n ראו את ה-sd-scripts המבוסס על kohya: https://github.com/kohya-ss/sd-scripts/blob/main/networks/resize_lora.py"
+    },
+    "DrawMaskOnImage": {
+        "title": "מיזוג תמונה ומסיכה",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסיכה"
+        },
+        "widgets": {
+            "mask_opacity": "אטימות המסיכה",
+            "mask_color": "צבע המסיכה",
+            "color": "צבע"
+        },
+        "outputs": {
+            "images": "תמונה"
+        },
+        "description": "כאשר מוזנות תמונה ומסיכה יחד, המסיכה ממזגת מעל התמונה."
+    },
+    "BlockifyMask": {
+        "title": "מסיכה מקוטעת",
+        "inputs": {
+            "image": "תמונה",
+            "masks": "מסיכה"
+        },
+        "widgets": {
+            "block_size": "גודל הבלוק"
+        },
+        "outputs": {
+            "mask": "מסיכה"
+        },
+        "description": "יוצר מסיכה מקוטעת על ידי חלוקת תיבת הגבול של כל מסיכה לבלוקים בגודל הנתון, ומילוי הבלוקים המכילים חלק כלשהו מהמסיכה המקורית."
+    },
+    "ConsolidateMasksKJ": {
+        "title": "איחוד מסיכות (KJ)",
+        "inputs": {
+            "mask": "מסיכה",
+            "masks": "מסיכה"
+        },
+        "widgets": {
+            "padding": "מילוי",
+            "width": "רוחב",
+            "height": "גובה"
+        },
+        "outputs": {
+            "mask": "מסיכה"
+        },
+        "description": "מאחד אצוות של מסיכות נפרדות על ידי מציאת המספר המרבי של מסיכות נפרדות הנכנסות במלואן בתוך אזור מלבני ברוחב ובגובה הנתונים (כולל הריפוד), וחזרה על התהליך עד שאין עוד מסיכה הניתנת למיזוג."
+    },
+    "GGUFLoaderKJ": {
+        "title": "מטעין מודלי GGUF (KJ)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "שם המודל",
+            "extra_model_name": "שם מודל נוסף",
+            "dequant_dtype": "סוג נתוני הסרת הקוונטיזציה",
+            "patch_dtype": "סוג נתוני הטלאי",
+            "patch_on_device": "טלאי על ההתקן",
+            "attention_override": "מצב עדיפות לתשומת לב",
+            "enable_fp16_accumulation": "הפעלת הצברת FP16"
+        },
+        "outputs": {
+            "model": "מודל"
+        },
+        "description": "טוען מודלי GGUF עם אפשרויות מתקדמות; דורש התקנה תחילית של ComfyUI-GGUF."
+    },
+    "EndRecordCUDAMemoryHistory": {
+        "title": "סיום רישום היסטוריית זיכרון CUDA (KJ)",
+        "inputs": {
+            "input": "קלט"
+        },
+        "widgets": {
+            "output_path": "נתיב פלט"
+        },
+        "outputs": {
+            "input": "קלט",
+            "output_path": "נתיב פלט"
+        },
+        "description": "רושם את היסטוריית הקצאת זיכרון ה-CUDA בין ההתחלה לסיום ושומר אותה לקובץ, שניתן לנתח כאן: https://docs.pytorch.org/memory_viz או באמצעות הצומת 'הדמיית היסטוריית זיכרון CUDA'."
+    },
+    "VisualizeCUDAMemoryHistory": {
+        "title": "הדמיית היסטוריית זיכרון CUDA (KJ)",
+        "inputs": {
+            "input": "קלט"
+        },
+        "widgets": {
+            "snapshot_path": "נתיב צילום המצב"
+        },
+        "outputs": {
+            "input": "קלט",
+            "output_path": "נתיב פלט"
+        },
+        "description": "מציג חזותית את קובץ היסטוריית הקצאת זיכרון CUDA ופותח אותו בדפדפן"
+    },
+    "StartRecordCUDAMemoryHistory": {
+        "title": "החלת רישום היסטוריית זיכרון CUDA (KJ)",
+        "inputs": {
+            "input": "קלט"
+        },
+        "widgets": {
+            "enabled": "הפעלה",
+            "context": "רקע",
+            "stacks": "מחסנית",
+            "max_entries": "מספר רשומות מרבי"
+        },
+        "outputs": {
+            "input": "קלט"
+        }
+    },
+    "NABLA_AttentionKJ": {
+        "title": "תשומת לב NABLA (KJ)",
+        "inputs": {
+            "model": "מודל",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "window_time": "זמן החלון",
+            "window_width": "רוחב החלון",
+            "window_height": "גובה החלון",
+            "sparsity": "דלילות",
+            "torch_compile": "קומפילציית torch"
+        },
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "SimpleCalculatorKJ": {
+        "title": "מחשבון פשוט (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "FLOAT": "נקודה צפה",
+            "STRING": "נקודה צפה",
+            "INT": "שלם"
+        }
+    },
+    "VAEDecodeLoopKJ": {
+        "title": "פענוח מעגלי של VAE (KJ)",
+        "inputs": {
+            "samples": "דגימה",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "overlap_latent_frames": "חזרה על תמונת Latent"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "STRING": "נקודה צפה",
+            "INT": "שלם"
+        }
+    },
+    "GetTrackRange": {
+        "title": "השגת טווח מסלול (KJ)",
+        "inputs": {
+            "tracks": "מסלול"
+        },
+        "widgets": {
+            "start_index": "אינדקס התחלתי",
+            "num_frames": "מספר פריימים"
+        },
+        "outputs": {
+            "TRACKS": "מסלול"
+        }
+    },
+    "AddNoiseToTrackPath": {
+        "title": "הוספת רעש לנתיב המסלול (KJ)",
+        "inputs": {
+            "tracks": "מסלול"
+        },
+        "widgets": {
+            "strength": "עוצמה",
+            "seed": "זרע",
+            "noise_x_ratio": "יחס רעש x",
+            "noise_y_ratio": "יחס רעש y",
+            "noise_temporal_ratio": "יחס רעש זמן"
+        },
+        "outputs": {
+            "TRACKS": "מסלול"
+        }
+    },
+    "WanImageToVideoSVIPro": {
+        "title": "Wan המדת תמונה לוידאו SVI מקצועי (KJ)",
+        "inputs": {
+            "positive": "פרומפט חיובי",
+            "negative": "פרומפט שלילי",
+            "anchor_samples": "דגימת עוגן",
+            "prev_samples": "דגימה קודמת"
+        },
+        "widgets": {
+            "length": "אורך",
+            "motion_latent_count": "מספר תנועות Latent"
+        },
+        "outputs": {
+            "positive": "פרומפט חיובי",
+            "negative": "פרומפט שלילי",
+            "latent": "Latent"
+        }
+    },
+    "ModelMemoryUseReportPatch": {
+        "title": "מרכז דוח ניצול זיכרון המודל (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "model": "מודל"
+        },
+        "outputs": {
+            "model": "מודל"
+        },
+        "description": "מוסיף פונקציית callback למודל כדי לדווח על ניצול הזיכרון לאחר סיום הדגימה"
+    },
+    "ModelMemoryUsageFactorOverride": {
+        "title": "ערך מותאם של מקדם ניצול זיכרון המודל (KJ)",
+        "inputs": {
+            "model": "מודל",
+            "memory_usage_factor": "מקדם ניצול זיכרון"
+        },
+        "widgets": {
+            "model": "מודל",
+            "memory_usage_factor": "מקדם ניצול זיכרון"
+        },
+        "outputs": {
+            "model": "מודל"
+        },
+        "description": "גורס את מקדם ניצול הזיכרון של המודל במהלך הדגימה."
+    },
+    "LTXVEnhanceAVideoKJ": {
+        "title": "שיפור וידאו LTX (KJ)",
+        "inputs": {
+            "model": "מודל",
+            "latent": "Latent",
+            "weight": "משקל"
+        },
+        "widgets": {
+            "model": "מודל",
+            "latent": "Latent",
+            "weight": "משקל"
+        },
+        "outputs": {
+            "model": "מודל"
+        }
+    },
+    "LTX2BlockLoraSelect": {
+        "title": "בורר Lora של בלוק LTX2 (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "selectedditblocks": "בלוק ה-DIT הנבחר"
+        },
+        "description": "מוסיף פונקציית callback למודל כדי לדווח על ניצול הזיכרון לאחר סיום הדגימה"
+    },
+    "VisualizeSigmasKJ": {
+        "title": "הדמיית ערכי sigma (KJ)",
+        "inputs": {
+            "sigmas": "ערכי sigma"
+        },
+        "widgets": {
+            "start_step": "מספר צעדים התחלתי",
+            "end_step": "מספר צעדים סופי"
+        },
+        "outputs": {
+            "sigmas_out": "פלט sigma",
+            "image": "תמונה"
+        },
+        "description": ""
+    },
+    "LTX2SamplingPreviewOverride": {
+        "title": "דריסת תצוגה מקדימה של דגימת LTX2 (KJ)",
+        "inputs": {
+            "model": "מודל",
+            "latent_upscale_model": "מודל הגדלת Latent",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "preview_rate": "קצב התצוגה המקדימה"
+        },
+        "outputs": {},
+        "description": "תצוגת הדגימה המקדימה של LTX2 מושבתת זמנית, ונשארת כך עד שהתכונה תושלם בגרסת ליבה יציבה."
+    },
+    "LTXVAddGuidesFromBatch": {
+        "title": "הוספת תמונות מנחות מהאצווה (KJ)",
+        "inputs": {
+            "positive": "הכווייה חיובית",
+            "negative": "הכווייה שלילית",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images": "תמונה"
+        },
+        "widgets": {
+            "strength": "עוצמה"
+        },
+        "outputs": {
+            "positive": "הכווייה חיובית",
+            "negative": "הכווייה שלילית",
+            "latent": "Latent"
+        },
+        "description": "מוסיף מספר תמונות מנחות מתוך אצווה לתמונת ה-Latent בהתאם לאינדקס הפריים המקביל. תמונות שאינן שחורות באצווה ישמשו כתמונות מנחות."
+    },
+    "LTX2AudioLatentNormalizingSampling": {
+        "title": "דגימת נרמול Latent אודיו של LTX2 (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "audio_normalization_factors": "מקדם נרמול האודיו"
+        },
+        "outputs": {},
+        "description": "משפר את איכות האודיו המיוצר ב-LTX2 באמצעות נרמול ה-Latent של האודיו בצעדי הדגימה הנתונים."
+    },
+    "PreviewLatentNoiseMask": {
+        "title": "תצוגה מקדימה של מסיכת רעש Latent (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "mask": "מסיכה"
+        },
+        "description": "תצוגה מקדימה של מסיכת רעש Latent"
+    },
+    "WanChunkFeedForward": {
+        "title": "הזנה קדמית מקוטעת לוידאו Wan (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "chunks": "מספר בלוקים",
+            "dim_threshold": "סף ממד"
+        },
+        "outputs": {
+            "model": "מודל"
+        },
+        "description": "פיצ'ר ניסיוני שעשוי לשנות את פלט המודל!! מפחית את ניצול שיא ה-VRAM באמצעות הפעלת הזנה קדמית מקוטעת (מושג ברשתות עצביות)."
+    },
+    "SamplerSelfRefineVideo": {
+        "title": "דוגם לליטוש-עצמי של וידאו (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {
+            "input_mode": "מצב קלט",
+            "start_step1": "צעד התחלה 1",
+            "end_step1": "צעד סיום 1",
+            "start_step2": "צעד התחלה 2",
+            "end_step2": "צעד סיום 2",
+            "steps_1": "צעד 1",
+            "steps_2": "צעד 2",
+            "certain_percentage": "אחוז ודאות",
+            "uncertainty_threshold": "סף אי-ודאות",
+            "verbose": "מפורט",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {},
+        "description": "ניסיון לממש את https://github.com/agwmon/self-refine-video, לבדיקה בלבד, ייתכן שלא יעבוד כצפוי."
+    },
+    "LTXVAddGuideMulti": {
+        "title": "וידאו LTX הוספת מספר תמונות מנחות (KJ)",
+        "inputs": {
+            "positive": "הכווייה חיובית",
+            "negative": "הכווייה שלילית",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "תמונה1"
+        },
+        "widgets": {
+            "Number of Guides": "מספר התמונות המנחות",
+            "frame_idx_1": "אינדקס פריים 1",
+            "strength_1": "עוצמה 1"
+        },
+        "outputs": {
+            "positive": "הכווייה חיובית",
+            "negative": "הכווייה שלילית",
+            "latent": "Latent"
+        },
+        "description": "מוסיף מספר תמונות מנחות באינדקסי הפריימים הנתונים ומגדיר את עוצמתן, תוך שימוש ביכולת 'הרכבה דינמית' (Dynamic Combo), המחייבת את ComfyUI גרסה 0.8.1 ואת ממשק Frontend 1.33.4 או חדש יותר."
+    },
+    "LTXVImgToVideoInplaceKJ": {
+        "title": "וידאו LTX המרת תמונות לוידאו (KJ)",
+        "inputs": {
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "תמונה1"
+        },
+        "widgets": {
+            "Number of Guides": "מספר התמונות המנחות",
+            "index_1": "אינדקס 1",
+            "strength_1": "עוצמה 1"
+        },
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "מחליף את פריימי ה-Latent של הווידאו בתמונות הקלט המקודדות, תוך שימוש ביכולת 'הרכבה דינמית', המחייבת את ComfyUI גרסה 0.8.1 ואת ממשק Frontend 1.33.4 או חדש יותר."
+    },
+    "LTXVAudioVideoMask": {
+        "title": "מסיכת אודיו ווידאו (KJ)",
+        "inputs": {
+            "video_latent": "Latent של וידאו",
+            "audio_latent": "Latent של אודיו"
+        },
+        "widgets": {
+            "video_fps": "קצב פריימי הווידאו",
+            "video_start_time": "זמן התחלת הווידאו",
+            "video_end_time": "זמן סיום הווידאו",
+            "audio_start_time": "זמן התחלת האודיו",
+            "audio_end_time": "זמן סיום האודיו",
+            "max_length": "אורך מרבי"
+        },
+        "outputs": {
+            "video_latent": "Latent של וידאו",
+            "audio_latent": "Latent של אודיו"
+        },
+        "description": "יוצר מסיכת רעש לתוכן ה-Latent של הווידאו והאודיו בהתאם לטווח הזמן הנתון. אזורים מכוסים אלו ייצרו תוכן חדש."
+    },
+    "LTX2AttentionTunerPatch": {
+        "title": "מרכז כוונון תשומת לב של LTX2 (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "blocks": "בלוק",
+            "video_scale": "קנה מידה של וידאו",
+            "audio_scale": "קנה מידה של אודיו",
+            "audio_to_video_scale": "קנה מידה מאודיו לוידאו",
+            "video_to_audio_scale": "קנה מידה מווידאו לאודיו"
+        },
+        "outputs": {
+            "model": "מודל"
+        },
+        "description": "ניסיוני! העברה קדמית מותאמת אישית של LTX2 הקובעת את מקדמי קנה-המידה של תשומת הלב לפי כל מודליות שונה, תוך הפחתת ניצול שיא ה-VRAM."
+    },
+    "LTX2_NAG": {
+        "title": "הכוויית תשומת לב מנורמלת של LTX2 (KJ)",
+        "inputs": {
+            "model": "מודל",
+            "nag_cond_video": "תנאי וידאו",
+            "nag_cond_audio": "תנאי אודיו"
+        },
+        "widgets": {
+            "nag_scale": "קנה מידה של NAG",
+            "nag_alpha": "NAG alpha",
+            "nag_tau": "NAG tau",
+            "inplace": "פעולה במקום"
+        },
+        "outputs": {
+            "model": "מודל"
+        },
+        "description": "https://github.com/ChenDarYen/Normalized-Attention-Guidance"
+    },
+    "LTX2MemoryEfficientSageAttentionPatch": {
+        "title": "מרכז תשומת לב Sage חסכוני בזיכרון עבור LTX2 (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "מודל"
+        },
+        "description": "ניסיוני! מפעיל תשומת לב Sage מותאמת אישית כדי להפחית את ניצול שיא ה-VRAM, וגורס את מצב תשומת הלב. דורש את הגרסה העדכנית ביותר של Sage Attention."
+    },
+    "LTXVChunkFeedForward": {
+        "title": "וידאו LTX הפעלת הזנה קדמית מקוטעת (KJ)",
+        "inputs": {
+            "model": "מודל"
+        },
+        "widgets": {
+            "chunks": "חלוקה למקטעים",
+            "dim_threshold": "סף ממד"
+        },
+        "outputs": {
+            "model": "מודל"
+        },
+        "description": "ניסיוני ועשוי לשנות את פלט המודל! הפעלת הזנה קדמית מקוטעת (מושג ברשתות עצביות) מפחיתה את ניצול שיא הזיכרון הוירטואלי."
+    },
+    "LTX2LoraLoaderAdvanced": {
+        "title": "מטעין Lora מתקדם של LTX2 (KJ)",
+        "inputs": {
+            "model": "מודל",
+            "opt_lora_path": "נתיב LoRA מיוטב",
+            "blocks": "בלוק"
+        },
+        "widgets": {
+            "lora_name": "שם ה-LoRA",
+            "strength_model": "עוצמת המודל",
+            "video": "וידאו",
+            "video_to_audio": "ווידאו לאודיו",
+            "audio": "אודיו",
+            "audio_to_video": "אודיו לוידאו",
+            "other": "אחר"
+        },
+        "outputs": {
+            "model": "מודל",
+            "loaded_keys_info": "טעינת פרטי המפתח",
+            "rank": "דרגה"
+        },
+        "description": "מטעין LoRA מתקדם עם שליטה בעוצמה לכל בלוק של מודלי LTX2"
+    },
+    "HDRPreviewKJ": {
+        "title": "תצוגה מקדימה של HDR (KJ)",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "exposure": "חשיפה",
+            "saturation": "רוויה",
+            "fps": "קצב פריימים",
+            "input_space": "מרחב הקלט"
+        },
+        "outputs": {
+            "image": "תמונה"
+        },
+        "description": "תצוגה מקדימה חיה של חשיפה לתמונות דחוסות בטווח דינמי גבוה.\nקלט: אצוות תמונה/ווידאו דחוסות ב-LogC3 בטווח [0,1] (למשל, פלט לאחר פענוח VAE בוורקflow של HDR IC-LoRA, ללא שחרור דחיסת HDR).\nמשוב בזמן אמת של מזנונים מושג דרך שחרור דחיסה, חשיפה, רוויה, מיפוי גוונים של Reinhard ועיבוד sRGB ב-fragment shader של WebGL בדפדפן. אותן פעולות חשבוניות רצות בצד השרת כדי לייצר פלט תמונת sRGB אפוי.\nשינויי המזנונים מעדכנים את התצוגה המקדימה מיד; בעוד שפלט התמונה מתעדכן רק בעת הוספת הוורקflow מחדש לתור. "
+    },
+    "HunyuanVideoEncodeKeyframesToCond": {
+        "title": "וידאו Hunyuan קידוד פריימי התחלה/סיום לתנאי (KJ)",
+        "inputs": {
+            "model": "מודל",
+            "positive": "פרומפט חיובי",
+            "vae": "VAE",
+            "start_frame": "פריים התחלתי",
+            "end_frame": "פריים סופי",
+            "negative": "פרומפט שלילי"
+        },
+        "widgets": {
+            "num_frames": "מספר פריימים",
+            "tile_size": "גודל מקטע",
+            "overlap": "כמות החפיפה",
+            "temporal_size": "גודל הממד הזמני",
+            "temporal_overlap": "כמות החפיפה בממד הזמני"
+        },
+        "outputs": {
+            "model": "מודל",
+            "positive": "פרומפט חיובי",
+            "negative": "פרומפט שלילי",
+            "latent": "Latent"
+        }
+    }
+}

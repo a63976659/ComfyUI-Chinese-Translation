@@ -1,0 +1,543 @@
+{
+    "Context Big (rgthree)": {
+        "title": "زمینه (بزرگ)",
+        "inputs": {
+            "base_ctx": "زمینه",
+            "model": "مدل",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "شرط مثبت",
+            "negative": "شرط منفی",
+            "latent": "Latent",
+            "images": "تصویر",
+            "seed": "بذر",
+            "steps": "گام‌ها",
+            "step_refiner": "گام‌های Refiner",
+            "cfg": "CFG",
+            "ckpt_name": "نام مدل",
+            "sampler": "نمونه‌بردار",
+            "scheduler": "زمان‌بند",
+            "clip_width": "عرض CLIP",
+            "clip_height": "ارتفاع CLIP",
+            "text_pos_g": "متن مثبت G",
+            "text_pos_l": "متن مثبت L",
+            "text_neg_g": "متن منفی G",
+            "text_neg_l": "متن منفی L",
+            "mask": "ماسک",
+            "control_net": "ControlNet"
+        },
+        "outputs": {
+            "CONTEXT": "زمینه",
+            "MODEL": "مدل",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "شرط مثبت",
+            "NEGATIVE": "شرط منفی",
+            "LATENT": "Latent",
+            "IMAGE": "تصویر",
+            "SEED": "بذر",
+            "STEPS": "گام‌ها",
+            "STEP_REFINER": "گام‌های Refiner",
+            "CFG": "CFG",
+            "CKPT_NAME": "نام مدل",
+            "SAMPLER": "نمونه‌بردار",
+            "SCHEDULER": "زمان‌بند",
+            "CLIP_WIDTH": "عرض CLIP",
+            "CLIP_HEIGHT": "ارتفاع CLIP",
+            "TEXT_POS_G": "متن مثبت G",
+            "TEXT_POS_L": "متن مثبت L",
+            "TEXT_NEG_G": "متن منفی G",
+            "TEXT_NEG_L": "متن منفی L",
+            "MASK": "ماسک",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+    "Context (rgthree)": {
+        "title": "زمینه",
+        "inputs": {
+            "base_ctx": "زمینه",
+            "model": "مدل",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "شرط مثبت",
+            "negative": "شرط منفی",
+            "latent": "Latent",
+            "images": "تصویر",
+            "seed": "بذر"
+        },
+        "outputs": {
+            "CONTEXT": "زمینه",
+            "MODEL": "مدل",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "شرط مثبت",
+            "NEGATIVE": "شرط منفی",
+            "LATENT": "Latent",
+            "IMAGE": "تصویر",
+            "SEED": "بذر"
+        }
+    },
+    "Context Switch (rgthree)": {
+        "title": "تبدیل زمینه",
+        "inputs": {
+            "ctx_01": "زمینه_01",
+            "ctx_02": "زمینه_02",
+            "ctx_03": "زمینه_03",
+            "ctx_04": "زمینه_04",
+            "ctx_05": "زمینه_05"
+        },
+        "outputs": {
+            "CONTEXT": "زمینه",
+            "MODEL": "مدل",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "شرط مثبت",
+            "NEGATIVE": "شرط منفی",
+            "LATENT": "Latent",
+            "IMAGE": "تصویر",
+            "SEED": "بذر"
+        }
+    },
+    "Context Switch Big (rgthree)": {
+        "title": "تبدیل زمینه (بزرگ)",
+        "inputs": {
+            "ctx_01": "زمینه_01",
+            "ctx_02": "زمینه_02",
+            "ctx_03": "زمینه_03",
+            "ctx_04": "زمینه_04",
+            "ctx_05": "زمینه_05"
+        },
+        "outputs": {
+            "CONTEXT": "زمینه",
+            "MODEL": "مدل",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "شرط مثبت",
+            "NEGATIVE": "شرط منفی",
+            "LATENT": "Latent",
+            "IMAGE": "تصویر",
+            "STEPS": "گام‌ها",
+            "SEED": "بذر",
+            "STEP_REFINER": "گام‌های Refiner",
+            "CFG": "CFG",
+            "CKPT_NAME": "نام مدل",
+            "SAMPLER": "نمونه‌بردار",
+            "SCHEDULER": "زمان‌بند",
+            "CLIP_WIDTH": "عرض CLIP",
+            "CLIP_HEIGHT": "ارتفاع CLIP",
+            "TEXT_POS_G": "متن مثبت G",
+            "TEXT_POS_L": "متن مثبت L",
+            "TEXT_NEG_G": "متن منفی G",
+            "TEXT_NEG_L": "متن منفی L",
+            "MASK": "ماسک",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+    "Display Int (rgthree)": {
+        "title": "نمایش عدد صحیح",
+        "widgets": {
+            "input": "ورودی"
+        }
+    },
+    "Display Any (rgthree)": {
+        "title": "نمایش هرچه",
+        "inputs": {
+            "source": "ورودی"
+        }
+    },
+    "Lora Loader Stack (rgthree)": {
+        "title": "پشته بارکننده LoRA",
+        "inputs": {
+            "model": "مدل",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "lora_01": "LoRA_01",
+            "lora_02": "LoRA_02",
+            "lora_03": "LoRA_03",
+            "lora_04": "LoRA_04",
+            "strength_01": "قدرت_01",
+            "strength_02": "قدرت_02",
+            "strength_03": "قدرت_03",
+            "strength_04": "قدرت_04"
+        },
+        "outputs": {
+            "MODEL": "مدل",
+            "CLIP": "CLIP"
+        }
+    },
+    "Seed (rgthree)": {
+        "title": "بذر تصادفی",
+        "widgets": {
+            "🎲 Randomize Each Time": "🎲 تصادفی هر بار",
+            "🎲 New Fixed Random": "🎲 تصادفی جدید ثابت",
+            "♻️ (Use Last Queued Seed)": "♻️ استفاده از آخرین بذر صف",
+            "seed": "بذر"
+        },
+        "outputs": {
+            "SEED": "بذر"
+        }
+    },
+    "Image Inset Crop (rgthree)": {
+        "title": "برش درون‌نهاده تصویر",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "measurement": "حالت",
+            "bottom": "پایین",
+            "top": "بالا",
+            "left": "چپ",
+            "right": "راست"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "Power Prompt (rgthree)": {
+        "title": "پرامپت",
+        "inputs": {
+            "opt_model": "مدل",
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "insert_lora": "درج LoRA",
+            "insert_embedding": "درج embedding",
+            "insert_saved": "درج سفارشی"
+        },
+        "outputs": {
+            "CONDITIONING": "شرط",
+            "MODEL": "مدل",
+            "CLIP": "CLIP",
+            "TEXT": "متن"
+        }
+    },
+    "Power Prompt - Simple (rgthree)": {
+        "title": "پرامپت (ساده)",
+        "inputs": {
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "insert_embedding": "درج embedding",
+            "insert_saved": "درج سفارشی"
+        },
+        "outputs": {
+            "CONDITIONING": "شرط",
+            "TEXT": "متن"
+        }
+    },
+    "KSampler Config (rgthree)": {
+        "title": "پیکربندی KSampler",
+        "widgets": {
+            "steps_total": "مجموع گام‌ها",
+            "refiner_step": "گام‌های Refiner",
+            "cfg": "CFG",
+            "sampler": "نمونه‌بردار",
+            "sampler_name": "نام نمونه‌بردار",
+            "scheduler": "زمان‌بند"
+        },
+        "outputs": {
+            "STEPS": "گام‌ها",
+            "REFINER_STEP": "گام‌های Refiner",
+            "CFG": "CFG",
+            "SAMPLER": "نمونه‌بردار",
+            "SCHEDULER": "زمان‌بند"
+        }
+    },
+    "SDXL Empty Latent Image (rgthree)": {
+        "title": "تصویر Latent خالی SDXL",
+        "widgets": {
+            "dimensions": "ابعاد",
+            "clip_scale": "مقیاس CLIP",
+            "batch_size": "اندازه دسته"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "CLIP_WIDTH": "عرض CLIP",
+            "CLIP_HEIGHT": "ارتفاع CLIP"
+        }
+    },
+    "SDXL Power Prompt - Positive (rgthree)": {
+        "title": "پرامپت SDXL (مثبت)",
+        "inputs": {
+            "opt_model": "مدل",
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt_g": "پرامپت G",
+            "prompt_l": "پرامپت L",
+            "opt_clip_width": "عرض CLIP",
+            "opt_clip_height": "ارتفاع CLIP",
+            "insert_lora": "درج LoRA",
+            "insert_embedding": "درج embedding",
+            "insert_saved": "درج سفارشی",
+            "target_width": "عرض هدف",
+            "target_height": "ارتفاع هدف",
+            "crop_width": "عرض برش",
+            "crop_height": "ارتفاع برش"
+        },
+        "outputs": {
+            "CONDITIONING": "شرط",
+            "MODEL": "مدل",
+            "CLIP": "CLIP",
+            "TEXT_G": "متن G",
+            "TEXT_L": "متن L"
+        }
+    },
+    "SDXL Power Prompt - Simple / Negative (rgthree)": {
+        "title": "پرامپت SDXL (ساده/منفی)",
+        "inputs": {
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt_g": "پرامپت G",
+            "prompt_l": "پرامپت L",
+            "opt_clip_width": "عرض CLIP",
+            "opt_clip_height": "ارتفاع CLIP",
+            "insert_lora": "درج LoRA",
+            "insert_embedding": "درج embedding",
+            "insert_saved": "درج سفارشی",
+            "target_width": "عرض هدف",
+            "target_height": "ارتفاع هدف",
+            "crop_width": "عرض برش",
+            "crop_height": "ارتفاع برش"
+        },
+        "outputs": {
+            "CONDITIONING": "شرط",
+            "TEXT_G": "متن G",
+            "TEXT_L": "متن L"
+        }
+    },
+    "Any Switch (rgthree)": {
+        "title": "تبدیل هرچه",
+        "inputs": {
+            "any_01": "ورودی_01",
+            "any_02": "ورودی_02",
+            "any_03": "ورودی_03",
+            "any_04": "ورودی_04",
+            "any_05": "ورودی_05"
+        },
+        "outputs": {
+            "*": "خروجی"
+        }
+    },
+    "Context Merge (rgthree)": {
+        "title": "ادغام زمینه",
+        "inputs": {
+            "ctx_01": "زمینه_01",
+            "ctx_02": "زمینه_02",
+            "ctx_03": "زمینه_03",
+            "ctx_04": "زمینه_04",
+            "ctx_05": "زمینه_05"
+        },
+        "outputs": {
+            "CONTEXT": "زمینه",
+            "MODEL": "مدل",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "شرط مثبت",
+            "NEGATIVE": "شرط منفی",
+            "LATENT": "Latent",
+            "IMAGE": "تصویر",
+            "STEPS": "گام‌ها"
+        }
+    },
+    "Context Merge Big (rgthree)": {
+        "title": "ادغام زمینه (بزرگ)",
+        "inputs": {
+            "ctx_01": "زمینه_01",
+            "ctx_02": "زمینه_02",
+            "ctx_03": "زمینه_03",
+            "ctx_04": "زمینه_04",
+            "ctx_05": "زمینه_05"
+        },
+        "outputs": {
+            "CONTEXT": "زمینه",
+            "MODEL": "مدل",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "شرط مثبت",
+            "NEGATIVE": "شرط منفی",
+            "LATENT": "Latent",
+            "IMAGE": "تصویر",
+            "STEPS": "گام‌ها",
+            "SEED": "بذر",
+            "STEP_REFINER": "گام‌های Refiner",
+            "CFG": "CFG",
+            "CKPT_NAME": "نام مدل",
+            "SAMPLER": "نمونه‌بردار",
+            "SCHEDULER": "زمان‌بند",
+            "CLIP_WIDTH": "عرض CLIP",
+            "CLIP_HEIGHT": "ارتفاع CLIP",
+            "TEXT_POS_G": "متن مثبت G",
+            "TEXT_POS_L": "متن مثبت L",
+            "TEXT_NEG_G": "متن منفی G",
+            "TEXT_NEG_L": "متن منفی L",
+            "MASK": "ماسک",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+    "Reroute (rgthree)": {
+        "title": "مسیردهی"
+    },
+    "Node Collector (rgthree)": {
+        "title": "گردهاور گره‌ها"
+    },
+    "Fast Muter (rgthree)": {
+        "title": "بی‌صدا کردن گره‌ها",
+        "outputs": {
+            "OPT_CONNECTION": "اتصال اختیاری"
+        }
+    },
+    "Fast Bypasser (rgthree)": {
+        "title": "گذر از گره‌ها",
+        "outputs": {
+            "OPT_CONNECTION": "اتصال اختیاری"
+        }
+    },
+    "Mute / Bypass Repeater (rgthree)": {
+        "title": "بی‌صدا/گذر گره (تکرارکننده)",
+        "outputs": {
+            "OPT_CONNECTION": "اتصال اختیاری"
+        }
+    },
+    "Mute / Bypass Relay (rgthree)": {
+        "title": "بی‌صدا/گذر گره (رله)",
+        "outputs": {
+            "OPT_CONNECTION": "اتصال اختیاری"
+        }
+    },
+    "Fast Group Bypasser (rgthree)": {
+        "title": "گذر از چند گروه",
+        "outputs": {
+            "OPT_CONNECTION": "اتصال اختیاری"
+        }
+    },
+    "Fast Groups Bypasser (rgthree)": {
+        "title": "گذر از چند گروه",
+        "outputs": {
+            "OPT_CONNECTION": "اتصال اختیاری"
+        }
+    },
+    "Fast Actions Button (rgthree)": {
+        "title": "کلید عملیات",
+        "widgets": {
+            "🎬 Action!": "🎬 شروع!"
+        }
+    },
+    "Bookmark (rgthree)": {
+        "title": "🔖 نشانک",
+        "widgets": {
+            "shortcut_key": "کلید میانبر",
+            "zoom": "بزرگ‌نمایی"
+        }
+    },
+    "Random Unmuter (rgthree)": {
+        "title": "فعال‌سازی تصادفی"
+    },
+    "Fast Groups Muter (rgthree)": {
+        "title": "بی‌صدا کردن چند گروه",
+        "outputs": {
+            "OPT_CONNECTION": "اتصال اختیاری"
+        }
+    },
+    "Label (rgthree)": {
+        "title": "برچسب"
+    },
+    "Image Comparer (rgthree)": {
+        "title": "مقایسه تصویر",
+        "inputs": {
+            "image_a": "تصویر_A",
+            "image_b": "تصویر_B"
+        }
+    },
+    "Node Combiner (rgthree)": {
+        "title": "ترکیب‌کننده گره‌ها",
+        "inputs": {
+            "image_a": "تصویر_A",
+            "image_b": "تصویر_B"
+        },
+        "outputs": {
+            "Output": "خروجی",
+            "clip": "CLIP"
+        }
+    },
+    "Power Primitive (rgthree)": {
+        "title": "ابزار چندمنظوره مقادیر",
+        "inputs": {},
+        "widgets": {
+            "value": "مقدار",
+            "type": "نوع"
+        },
+        "outputs": {
+            "INT": "عدد صحیح",
+            "FLOAT": "عدد اعشاری",
+            "BOOLEAN": "بولی",
+            "STRING": "رشته"
+        }
+    },
+    "Power Puter (rgthree)": {
+        "title": "محاسب‌گر قدرت",
+        "inputs": {
+            "outputs": "خروجی",
+            "STRING": "رشته"
+        },
+        "widgets": {
+            "outputs": "خروجی",
+            "STRING": "رشته"
+        },
+        "outputs": {
+            "INT": "عدد صحیح",
+            "FLOAT": "عدد اعشاری",
+            "BOOLEAN": "بولی",
+            "STRING": "رشته"
+        }
+    },
+    "Image or Latent Size (rgthree)": {
+        "title": "اندازه تصویر یا Latent",
+        "inputs": {
+            "input": "ورودی"
+        },
+        "widgets": {
+            "STRING": "رشته"
+        },
+        "outputs": {
+            "WIDTH": "عرض",
+            "HEIGHT": "ارتفاع"
+        }
+    },
+    "Image Resize (rgthree)": {
+        "title": "تغییر اندازه تصویر",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "measurement": "حالت",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "fit": "ملاءمت",
+            "method": "روش"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "WIDTH": "عرض",
+            "HEIGHT": "ارتفاع"
+        }
+    },
+    "Power Lora Loader (rgthree)": {
+        "title": "بارکننده وزن LoRA",
+        "inputs": {
+            "model": "مدل",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "➕ Add Lora": "➕ افزودن LoRA"
+        },
+        "outputs": {
+            "MODEL": "مدل",
+            "clip": "CLIP"
+        }
+    }
+}

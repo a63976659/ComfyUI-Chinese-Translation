@@ -1,0 +1,4810 @@
+{
+    "ClaudeNode": {
+        "title": "Anthropic Claude",
+        "inputs": {
+            "source": "נתיב מקור",
+            "image_1": "תמונה_1"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "model": "מודל",
+            "max_tokens": "מירב הטוקנים",
+            "temperature": "טמפרטורה",
+            "reasoning_effort": "מאמץ הסקה",
+            "seed": "זרע"
+        },
+        "outputs": {
+            "String": "מחרוזת"
+        },
+        "description": "מייצר תגובות טקסט באמצעות מודל Claude של Anthropic. ספק פרומפט טקסט, ותוכל לצרף תמונה אחת או יותר כדי לבנות הקשר רב-מודלי."
+    },
+    "ByteDanceSeedNode": {
+        "title": "בייטדיאנס Seedance2.0",
+        "inputs": {
+            "video_1": "וידאו_1",
+            "image_1": "תמונה_1"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "model": "מודל",
+            "temperature": "טמפרטורה",
+            "seed": "זרע"
+        },
+        "outputs": {
+            "String": "מחרוזת"
+        },
+        "description": "מייצר תגובות טקסט באמצעות מודל Seed2.0 של ByteDance. ספק פרומפט טקסט, ותוכל לצרף תמונה אחת או יותר או וידאו כדי להעשיר את ההקשר רב-מודלי."
+    },
+    "ByteDance2ReferenceNodeV2": {
+        "title": "בייטדיאנס וידאו הפניה Seedance 2.5",
+        "inputs": {
+            "image_1": "תמונה1",
+            "image_2": "תמונה2",
+            "image_3": "תמונה3",
+            "image_4": "תמונה4",
+            "image_5": "תמונה5",
+            "image_6": "תמונה6",
+            "image_7": "תמונה7",
+            "image_8": "תמונה8",
+            "image_9": "תמונה9",
+            "audio_1": "אודיו1",
+            "audio_2": "אודיו2",
+            "audio_3": "אודיו3",
+            "video_1": "וידאו1",
+            "video_2": "וידאו2",
+            "video_3": "וידאו3",
+            "asset_1": "נכס1",
+            "asset_2": "נכס2",
+            "asset_3": "נכס3"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "resolution": "רזולוציה",
+            "ratio": "יחס רוחב-גובה",
+            "generate_audio": "יצירת אודיו",
+            "duration": "משך",
+            "task_type": "סוג משימה",
+            "auto_downscale": "הקטנה אוטומטית",
+            "auto_upscale": "הגדלה אוטומטית",
+            "output_format": "תצורת פלט",
+            "seed": "זרע",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "String": "מחרוזת"
+        },
+        "description": "יצירה, עריכה או הארכה של וידאו עם Seedance2.5 או 2.0, עם תמיכה בתמונה, וידאו ואודיו כהפניה. תומך בהפניות רב-מודליות, בעריכת וידאו ובהארכת וידאו."
+    },
+    "ByteDanceVideoEnhanceNode": {
+        "title": "בייטדיאנס שיפור וידאו vCube",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "tool_version": "גרסת הכלי",
+            "scene": "סצנה",
+            "enhance_style": "סגנון שיפור",
+            "resolution": "רזולוציה",
+            "fps": "קצב פריימים",
+            "bitrate_level": "רמת קצב סיביות"
+        },
+        "outputs": {},
+        "description": "הגדלה ושחזור וידאו באמצעות vCube של בייטדיאנס: תומך ברזולוציית-על עד 8K, בדחיסה, בהסרת ארטיפקטים ורעשים, בשיפור צבע וחדות, ובאינטרפולציה של פריימים כרשות."
+    },
+    "GeminiNode": {
+        "title": "גוגל Gemini",
+        "inputs": {
+            "images": "קבוצת תמונות",
+            "audio": "אודיו",
+            "video": "וידאו",
+            "files": "קבצי קלט של Gemini",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "ratio": "יחס רוחב-גובה",
+            "duration": "משך",
+            "model": "מודל"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "STRING": "מחרוזת"
+        }
+    },
+    "GeminiNodeV2": {
+        "title": "גוגל GeminiV2",
+        "inputs": {
+            "image_1": "תמונה1",
+            "image_2": "תמונה2",
+            "image_3": "תמונה3",
+            "image_4": "תמונה4",
+            "image_5": "תמונה5",
+            "image_6": "תמונה6",
+            "image_7": "תמונה7",
+            "image_8": "תמונה8",
+            "image_9": "תמונה9",
+            "video_1": "וידאו1",
+            "audio_1": "אודיו1",
+            "files": "קבצי קלט של Gemini"
+        },
+        "widgets": {
+            "model": "מודל",
+            "thinking_level": "רמת חשיבה",
+            "temperature": "טמפרטורה",
+            "max_output_tokens": "מירב טוקני הפלט",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "duration": "משך"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "STRING": "מחרוזת"
+        }
+    },
+    "GeminiVideoOmniV2": {
+        "title": "גוגל וידאו Gemini Omni",
+        "inputs": {
+            "image_1": "תמונה1",
+            "image_2": "תמונה2",
+            "image_3": "תמונה3",
+            "image_4": "תמונה4",
+            "image_5": "תמונה5",
+            "image_6": "תמונה6",
+            "image_7": "תמונה7",
+            "image_8": "תמונה8",
+            "image_9": "תמונה9",
+            "video_1": "וידאו1",
+            "video_2": "וידאו2",
+            "video_3": "וידאו3"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "duration": "משך",
+            "task_type": "סוג משימה",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "STRING": "מחרוזת"
+        }
+    },
+    "GeminiInputFiles": {
+        "title": "גוגל קבצי קלט של Gemini",
+        "inputs": {
+            "GEMINI_INPUT_FILES": "קבצי קלט של Gemini",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "file": "קובץ",
+            "model": "מודל"
+        },
+        "outputs": {
+            "GEMINI_INPUT_FILES": "קבצי קלט של Gemini",
+            "STRING": "מחרוזת"
+        }
+    },
+    "OpenAIChatNode": {
+        "title": "צ'אט OpenAI",
+        "inputs": {
+            "images": "קבוצת תמונות",
+            "audio": "אודיו",
+            "advanced_options": "אפשרויות מתקדמות",
+            "files": "קובץ קלט OpenAI",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "persist_context": "הקשר מתמשך",
+            "duration": "משך",
+            "model": "מודל"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "STRING": "מחרוזת"
+        }
+    },
+    "OpenAIInputFiles": {
+        "title": "קובץ קלט לצ'אט OpenAI",
+        "inputs": {
+            "OPENAI_INPUT_FILES": "קובץ קלט OpenAI",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "file": "קובץ",
+            "model": "מודל"
+        },
+        "outputs": {
+            "OPENAI_INPUT_FILES": "קובץ קלט OpenAI",
+            "STRING": "מחרוזת"
+        }
+    },
+    "OpenAIChatConfig": {
+        "title": "אפשרויות מתקדמות לצ'אט OpenAI",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסכה",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "truncation": "קיצוץ",
+            "max_output_tokens": "מירב טוקני הפלט",
+            "quality": "איכות",
+            "n": "כמות",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "אפשרויות מתקדמות",
+            "string": "מחרוזת"
+        }
+    },
+    "OpenRouterLLMNode": {
+        "title": "מודל שפה גדול של OpenRouter",
+        "inputs": {
+            "image_1": "תמונה1",
+            "image_2": "תמונה2",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "reasoning_effort": "מאמץ הסקה מוגבר",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "אפשרויות מתקדמות",
+            "string": "מחרוזת"
+        }
+    },
+    "BeebleSwitchXVideoEdit": {
+        "title": "עריכת וידאו Beeble SwitchX",
+        "inputs": {
+            "video": "וידאו",
+            "reference_image": "תמונת הפניה"
+        },
+        "widgets": {
+            "prompt": "מילת פרומפט",
+            "alpha_mode": "מצב Alpha",
+            "max_resolution": "רזולוציה מרבית",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "video": "וידאו",
+            "alpha": "Alpha"
+        },
+        "description": "ערוך וידאו באמצעות BeebleSwitchX. ניתן להחליף כל אלמנט בסצנה (רקע, תאורה, לבוש) תוך שמירה על הפיקסלים ועל התנועה של הנושא המקורי. ספק תמונת הפניה ו/או פרומפט טקסט שמתאר את המראה החדש. עד 240 פריימים, ברזולוציה מרבית של כ-2.77MP לכל פריים."
+    },
+    "BriaRemoveVideoBackground": {
+        "title": "הסרת רקע מוידאו Bria",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "background_color": "צבע רקע",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        }
+    },
+    "BriaVideoGreenScreen": {
+        "title": "מסך ירוק לווידאו Bria",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "green_shade": "צבע מסך ירוק",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "החלף את רקע הווידאו במסך כרומה בצבע אחיד באמצעות Bria."
+    },
+    "BriaTransparentVideoBackground": {
+        "title": "הסרת רקע מוידאו Bria (שקוף)",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "images": "תמונה",
+            "mask": "מסכה"
+        },
+        "description": "הסר רקע מהווידאו באמצעות Bria ותקבל פריימים חתוכים ומסכת Alpha. חבר את שניהם לצומת הרכבה, או שמור אותם לתוך WEBM כדי לקבל וידאו שקוף."
+    },
+    "ByteDanceTextToVideoNode": {
+        "title": "בייטדיאנס טקסט לוידאו",
+        "inputs": {
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "duration": "משך",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "camera_fixed": "מצלמה נעולה",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "video": "וידאו",
+            "VIDEO": "וידאו"
+        }
+    },
+    "ByteDanceImageToVideoNode": {
+        "title": "בייטדיאנס תמונה לוידאו",
+        "inputs": {
+            "image": "תמונה",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "duration": "משך",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "camera_fixed": "מצלמה נעולה",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "video": "וידאו",
+            "VIDEO": "וידאו"
+        }
+    },
+    "ByteDanceFirstLastFrameNode": {
+        "title": "בייטדיאנס פריים ראשון ואחרון לוידאו",
+        "inputs": {
+            "first_frame": "תמונת הפריים הראשון",
+            "last_frame": "תמונת הפריים האחרון",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "duration": "משך",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "camera_fixed": "מצלמה נעולה",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "video": "וידאו",
+            "VIDEO": "וידאו"
+        }
+    },
+    "ByteDanceImageReferenceNode": {
+        "title": "בייטדיאנס תמונת הפניה לוידאו",
+        "inputs": {
+            "images": "קבוצת תמונות",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "duration": "משך",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "camera_fixed": "מצלמה נעולה",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "video": "וידאו",
+            "VIDEO": "וידאו"
+        }
+    },
+    "ByteDance2TextToVideoNode": {
+        "title": "בייטדיאנס 2.0 טקסט לוידאו",
+        "inputs": {
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "ratio": "יחס רוחב-גובה",
+            "generate_audio": "יצירת אודיו",
+            "duration": "משך",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "camera_fixed": "מצלמה נעולה",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "video": "וידאו",
+            "VIDEO": "וידאו"
+        }
+    },
+    "ByteDance2FirstLastFrameNode": {
+        "title": "בייטדיאנס 2.0 פריים ראשון ואחרון לוידאו",
+        "inputs": {
+            "first_frame": "תמונת הפריים הראשון",
+            "last_frame": "תמונת הפריים האחרון",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "ratio": "יחס רוחב-גובה",
+            "generate_audio": "יצירת אודיו",
+            "duration": "משך",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "video": "וידאו",
+            "VIDEO": "וידאו"
+        }
+    },
+    "ByteDance2ReferenceNode": {
+        "title": "בייטדיאנס 2.0 הפניה לוידאו",
+        "inputs": {
+            "image_1": "תמונה1",
+            "image_2": "תמונה2",
+            "image_3": "תמונה3",
+            "image_4": "תמונה4",
+            "image_5": "תמונה5",
+            "image_6": "תמונה6",
+            "image_7": "תמונה7",
+            "image_8": "תמונה8",
+            "image_9": "תמונה9",
+            "video_1": "וידאו1",
+            "video_2": "וידאו2",
+            "video_3": "וידאו3",
+            "audio_1": "אודיו1",
+            "audio_2": "אודיו2",
+            "audio_3": "אודיו3",
+            "asset_1": "נכס1",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "ratio": "יחס רוחב-גובה",
+            "generate_audio": "יצירת אודיו",
+            "duration": "משך",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "camera_fixed": "מצלמה נעולה",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "video": "וידאו",
+            "VIDEO": "וידאו"
+        }
+    },
+    "ByteDanceCreateVideoAsset": {
+        "title": "בייטדיאנס יצירת נכס וידאו",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "group_id": "מזהה קבוצה"
+        },
+        "outputs": {
+            "asset_id": "מזהה נכס",
+            "group_id": "מזהה קבוצה"
+        },
+        "description": "צור נכס וידאו אישי של Seedance2.0. העלה את וידאו הקלט ורשום אותו בקבוצת הנכסים המצוינת.\n  אם מזהה הנכס ריק, מופעל תהליך אימות H5 אישי אמיתי כדי ליצור קבוצה חדשה, ואז מתווסף הנכס."
+    },
+    "GrokVideoNode": {
+        "title": "Grok וידאו",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "model": "מודל",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "duration": "משך"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        }
+    },
+    "GrokVideoReferenceNode": {
+        "title": "Grok הפניה לוידאו",
+        "inputs": {
+            "reference_0": "הפניה0",
+            "reference_1": "הפניה1",
+            "reference_2": "הפניה2",
+            "reference_3": "הפניה3",
+            "reference_4": "הפניה4",
+            "reference_5": "הפניה5",
+            "reference_6": "הפניה6"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "duration": "משך",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        }
+    },
+    "GrokVideoEditNode": {
+        "title": "Grok עריכת וידאו",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "model": "מודל",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "duration": "משך"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        }
+    },
+    "GrokVideoExtendNode": {
+        "title": "Grok הארכת וידאו",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "model": "מודל",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "duration": "משך"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        }
+    },
+    "HitPawVideoEnhance": {
+        "title": "שיפור וידאו של HitPaw",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        }
+    },
+    "KlingCameraControls": {
+        "title": "שליטת מצלמה של קלינג",
+        "inputs": {
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "camera_control_type": "סוג שליטת מצלמה",
+            "horizontal_movement": "תנועה אופקית",
+            "vertical_movement": "תנועה אנכית",
+            "pan": "פן",
+            "tilt": "טילט",
+            "roll": "רוטציה",
+            "zoom": "זום"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "camera_control": "פרמטרי שליטת מצלמה"
+        }
+    },
+    "KlingTextToVideoNode": {
+        "title": "קלינג טקסט לוידאו",
+        "inputs": {},
+        "widgets": {
+            "cfg_scale": "יחס CFG",
+            "mode": "מצב",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "task_id": "מזהה משימה",
+            "auth_token": "טוקנים מורשים",
+            "camera_control": "פרמטרי שליטת מצלמה",
+            "model_name": "שם מודל",
+            "duration": "משך"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingImage2VideoNode": {
+        "title": "קלינג תמונה לוידאו",
+        "inputs": {
+            "start_frame": "פריים התחלתי",
+            "end_frame": "פריים סופי",
+            "camera_control": "פרמטרי שליטת מצלמה",
+            "prompt": "פרומפט",
+            "negative_prompt": "פרומפט שלילי"
+        },
+        "widgets": {
+            "cfg_scale": "יחס CFG",
+            "mode": "מצב",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "task_id": "מזהה משימה",
+            "auth_token": "טוקנים מורשים",
+            "model_name": "שם מודל",
+            "duration": "משך"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingCameraControlI2VNode": {
+        "title": "קלינג תמונה לוידאו (שליטת מצלמה)",
+        "inputs": {
+            "start_frame": "פריים התחלתי",
+            "end_frame": "פריים סופי",
+            "camera_control": "פרמטרי שליטת מצלמה",
+            "prompt": "פרומפט",
+            "negative_prompt": "פרומפט שלילי"
+        },
+        "widgets": {
+            "cfg_scale": "יחס CFG",
+            "mode": "מצב",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "task_id": "מזהה משימה",
+            "auth_token": "טוקנים מורשים",
+            "model_name": "שם מודל",
+            "duration": "משך"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingCameraControlT2VNode": {
+        "title": "קלינג טקסט לוידאו (שליטת מצלמה)",
+        "inputs": {
+            "camera_control": "פרמטרי שליטת מצלמה",
+            "prompt": "פרומפט",
+            "negative_prompt": "פרומפט שלילי"
+        },
+        "widgets": {
+            "cfg_scale": "יחס CFG",
+            "mode": "מצב",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "task_id": "מזהה משימה",
+            "auth_token": "טוקנים מורשים",
+            "model_name": "שם מודל",
+            "duration": "משך"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingStartEndFrameNode": {
+        "title": "קלינג יצירת וידאו מפריים ראשון ואחרון",
+        "inputs": {
+            "start_frame": "פריים התחלתי",
+            "end_frame": "פריים סופי",
+            "camera_control": "פרמטרי שליטת מצלמה",
+            "prompt": "פרומפט",
+            "negative_prompt": "פרומפט שלילי"
+        },
+        "widgets": {
+            "cfg_scale": "יחס CFG",
+            "mode": "מצב",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "task_id": "מזהה משימה",
+            "auth_token": "טוקנים מורשים",
+            "model_name": "שם מודל",
+            "duration": "משך"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingVideoExtendNode": {
+        "title": "הארכת וידאו של קלינג",
+        "inputs": {
+            "start_frame": "פריים התחלתי",
+            "end_frame": "פריים סופי",
+            "video_id": "מזהה וידאו",
+            "prompt": "פרומפט",
+            "negative_prompt": "פרומפט שלילי"
+        },
+        "widgets": {
+            "cfg_scale": "יחס CFG",
+            "mode": "מצב",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "task_id": "מזהה משימה",
+            "auth_token": "טוקנים מורשים",
+            "model_name": "שם מודל",
+            "duration": "משך"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingLipSyncAudioToVideoNode": {
+        "title": "סנכרון שפתיים לוידאו של קלינג מונע אודיו",
+        "inputs": {
+            "audio": "אודיו",
+            "text": "טקסט",
+            "video": "וידאו"
+        },
+        "widgets": {
+            "voice_language": "שפת דיבור",
+            "voice_speed": "מהירות דיבור",
+            "mode": "מצב",
+            "task_id": "מזהה משימה",
+            "auth_token": "טוקנים מורשים",
+            "model_name": "שם מודל",
+            "voice_id": "מזהה קול"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingLipSyncTextToVideoNode": {
+        "title": "קלינג וידאו סנכרון שפתיים מונע טקסט",
+        "inputs": {
+            "audio": "אודיו",
+            "text": "טקסט",
+            "video": "וידאו"
+        },
+        "widgets": {
+            "voice_language": "שפת דיבור",
+            "voice_speed": "מהירות דיבור",
+            "mode": "מצב",
+            "task_id": "מזהה משימה",
+            "auth_token": "טוקנים מורשים",
+            "voice": "דיבור",
+            "voice_id": "מזהה קול"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingSingleImageVideoEffectNode": {
+        "title": "אפקט וידאו לדמות אחת של קלינג",
+        "inputs": {
+            "image": "תמונה",
+            "video_id": "מזהה וידאו"
+        },
+        "widgets": {
+            "dual_character": "שתי דמויות",
+            "effect_scene": "סצנת אפקט",
+            "mode": "מצב",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "task_id": "מזהה משימה",
+            "auth_token": "טוקנים מורשים",
+            "model_name": "שם מודל",
+            "duration": "משך"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingDualCharacterVideoEffectNode": {
+        "title": "אפקט וידאו לשתי דמויות של קלינג",
+        "inputs": {
+            "image_1": "תמונה1",
+            "image_2": "תמונה2",
+            "video_id": "מזהה וידאו",
+            "image_left": "תמונה שמאלית",
+            "image_right": "תמונה ימנית"
+        },
+        "widgets": {
+            "dual_character": "שתי דמויות",
+            "effect_scene": "סצנת אפקט",
+            "mode": "מצב",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "task_id": "מזהה משימה",
+            "auth_token": "טוקנים מורשים",
+            "model_name": "שם מודל",
+            "duration": "משך"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingOmniProTextToVideoNode": {
+        "title": "צומת קלינג Omni טקסט לוידאו (גרסת Pro)",
+        "inputs": {
+            "reference_images": "תמונת הפניה"
+        },
+        "widgets": {
+            "model_name": "שם מודל",
+            "resolution": "רזולוציה",
+            "auth_token": "טוקנים מורשים",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "n": "כמות"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingOmniProFirstLastFrameNode": {
+        "title": "קלינג Omni פריים ראשון ואחרון לוידאו (גרסת Pro)",
+        "inputs": {
+            "first_frame": "תמונת הפריים הראשון",
+            "end_frame": "תמונת הפריים האחרון",
+            "reference_images": "תמונת הפניה"
+        },
+        "widgets": {
+            "model_name": "שם מודל",
+            "resolution": "רזולוציה",
+            "duration": "משך זמן",
+            "aspect_ratio": "יחס רוחב-גובה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingOmniProImageToVideoNode": {
+        "title": "קלינג Omni תמונה לוידאו (גרסת Pro)",
+        "inputs": {
+            "reference_images": "תמונת הפניה"
+        },
+        "widgets": {
+            "model_name": "שם מודל",
+            "resolution": "רזולוציה",
+            "duration": "משך זמן",
+            "aspect_ratio": "יחס רוחב-גובה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingOmniProVideoToVideoNode": {
+        "title": "קלינג Omni וידאו לוידאו (גרסת Pro)",
+        "inputs": {
+            "reference_video": "וידאו הפניה",
+            "reference_images": "תמונת הפניה"
+        },
+        "widgets": {
+            "model_name": "שם מודל",
+            "keep_original_sound": "שימוש באודיו המקורי",
+            "duration": "משך זמן",
+            "aspect_ratio": "יחס רוחב-גובה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingOmniProEditVideoNode": {
+        "title": "קלינג Omni עריכת וידאו (גרסת Pro)",
+        "inputs": {
+            "video": "וידאו",
+            "reference_images": "תמונת הפניה"
+        },
+        "widgets": {
+            "model_name": "שם מודל",
+            "keep_original_sound": "שמירה על הקול המקורי"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        }
+    },
+    "KlingTextToVideoWithAudio": {
+        "title": "קלינג טקסט לוידאו (עם אודיו)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "שם מודל",
+            "mode": "מצב",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "duration": "משך",
+            "auth_token": "טוקנים מורשים",
+            "generate_audio": "יצירת אודיו"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingImageToVideoWithAudio": {
+        "title": "קלינג תמונה לוידאו (עם אודיו)",
+        "inputs": {
+            "start_frame": "פריים התחלתי"
+        },
+        "widgets": {
+            "model_name": "שם מודל",
+            "mode": "מצב",
+            "generate_audio": "יצירת אודיו",
+            "duration": "משך"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingMotionControl": {
+        "title": "שליטת תנועה של קלינג",
+        "inputs": {
+            "reference_video": "וידאו הפניה",
+            "reference_image": "תמונת הפניה"
+        },
+        "widgets": {
+            "mode": "מצב",
+            "character_orientation": "מיקום הדמות",
+            "keep_original_sound": "שמירה על הקול המקורי"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        }
+    },
+    "KlingAvatarNode": {
+        "title": "קלינג Avatar 2",
+        "inputs": {
+            "image": "תמונה",
+            "sound_file": "קובץ אודיו"
+        },
+        "widgets": {
+            "mode": "מצב",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        }
+    },
+    "LtxvApiTextToVideo": {
+        "title": "LTXV טקסט לוידאו",
+        "inputs": {
+            "positive": "תנאי חיובי",
+            "negative": "תנאי שלילי",
+            "vae": "VAE מקודד",
+            "image": "תמונה"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "resolution": "רזולוציה",
+            "duration": "משך (שניות)",
+            "fps": "קצב פריימים (fps)",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "generate_audio": "יצירת אודיו"
+        },
+        "outputs": {
+            "video": "וידאו",
+            "VIDEO": "וידאו"
+        }
+    },
+    "LtxvApiImageToVideo": {
+        "title": "LTXV תמונה לוידאו",
+        "inputs": {
+            "positive": "תנאי חיובי",
+            "negative": "תנאי שלילי",
+            "vae": "VAE מקודד",
+            "image": "תמונה"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "resolution": "רזולוציה",
+            "duration": "משך (שניות)",
+            "fps": "קצב פריימים (fps)",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "generate_audio": "יצירת אודיו"
+        },
+        "outputs": {
+            "video": "וידאו",
+            "VIDEO": "וידאו"
+        }
+    },
+    "LtxApi25TextToVideo": {
+        "title": "LTX 2.5 טקסט לוידאו",
+        "inputs": {},
+        "widgets": {
+            "model": "מודל",
+            "duration": "משך (שניות)",
+            "resolution": "רזולוציה",
+            "fps": "קצב פריימים (fps)",
+            "generate_audio": "יצירת אודיו",
+            "prompt": "פרומפט",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        }
+    },
+    "LtxApi25ImageToVideo": {
+        "title": "LTX 2.5 תמונה לוידאו",
+        "inputs": {
+            "last_frame": "הפריים הקודם",
+            "image": "תמונה"
+        },
+        "widgets": {
+            "model": "מודל",
+            "duration": "משך (שניות)",
+            "resolution": "רזולוציה",
+            "fps": "קצב פריימים (fps)",
+            "generate_audio": "יצירת אודיו",
+            "prompt": "פרומפט",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        }
+    },
+    "LtxApi25AudioToVideo": {
+        "title": "LTX 2.5 אודיו לוידאו",
+        "inputs": {
+            "audio": "אודיו",
+            "image": "תמונה"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "prompt": "פרומפט",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        }
+    },
+    "LumaVideoNode": {
+        "title": "Luma טקסט לוידאו",
+        "inputs": {
+            "luma_concepts": "קונספט של Luma",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "duration": "משך",
+            "loop": "לולאה",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "auth_token": "טוקנים מורשים",
+            "weight": "משקל"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "luma_concepts": "קונספט של Luma",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "LumaImageToVideoNode": {
+        "title": "Luma תמונה לוידאו",
+        "inputs": {
+            "first_image": "תמונת הפריים הראשון",
+            "last_image": "תמונת הפריים האחרון",
+            "luma_concepts": "קונספט של Luma",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "duration": "משך",
+            "loop": "לולאה",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "auth_token": "טוקנים מורשים",
+            "weight": "משקל"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "luma_concepts": "קונספט של Luma",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "LumaConceptsNode": {
+        "title": "קונספט של Luma",
+        "inputs": {
+            "image": "תמונה",
+            "prompt": "פרומפט",
+            "luma_concepts": "קונספט של Luma"
+        },
+        "widgets": {
+            "image_type": "סוג תמונה",
+            "concept1": "קונספט1",
+            "concept2": "קונספט2",
+            "concept3": "קונספט3",
+            "concept4": "קונספט4",
+            "auth_token": "טוקנים מורשים",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "n": "כמות"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "luma_concepts": "קונספט של Luma"
+        }
+    },
+    "MinimaxTextToVideoNode": {
+        "title": "MiniMax טקסט לוידאו",
+        "inputs": {
+            "image": "תמונה",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "duration": "משך",
+            "subject": "נושא",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "auth_token": "טוקנים מורשים",
+            "weight": "משקל"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "luma_concepts": "קונספט של Luma",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "MinimaxImageToVideoNode": {
+        "title": "MiniMax תמונה לוידאו",
+        "inputs": {
+            "image": "תמונה",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "duration": "משך",
+            "subject": "נושא",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "auth_token": "טוקנים מורשים",
+            "weight": "משקל"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "luma_concepts": "קונספט של Luma",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "MinimaxHailuoVideoNode": {
+        "title": "MiniMax וידאו Hailuo",
+        "inputs": {
+            "first_frame_image": "תמונת הפריים הראשון",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "prompt_optimizer": "אופטימיזציה של פרומפט",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "duration": "משך",
+            "subject": "נושא",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "auth_token": "טוקנים מורשים",
+            "weight": "משקל"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "luma_concepts": "קונספט של Luma",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "PixverseTextToVideoNode": {
+        "title": "PixVerse טקסט לוידאו",
+        "inputs": {
+            "video": "וידאו",
+            "image": "תמונה",
+            "pixverse_template": "תבנית PixVerse",
+            "prompt_text": "טקסט הפרומפט",
+            "negative_prompt": "פרומפט שלילי"
+        },
+        "widgets": {
+            "aspect_ratio": "יחס רוחב-גובה",
+            "quality": "איכות",
+            "duration_seconds": "משך (שניות)",
+            "motion_mode": "מצב תנועה",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "string": "מחרוזת"
+        }
+    },
+    "PixverseImageToVideoNode": {
+        "title": "PixVerse תמונה לוידאו",
+        "inputs": {
+            "video": "וידאו",
+            "image": "תמונה",
+            "pixverse_template": "תבנית PixVerse",
+            "prompt_text": "טקסט הפרומפט",
+            "negative_prompt": "פרומפט שלילי"
+        },
+        "widgets": {
+            "aspect_ratio": "יחס רוחב-גובה",
+            "quality": "איכות",
+            "duration_seconds": "משך (שניות)",
+            "motion_mode": "מצב תנועה",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "string": "מחרוזת"
+        }
+    },
+    "PixverseTransitionVideoNode": {
+        "title": "וידאו מעבר של PixVerse",
+        "inputs": {
+            "first_frame": "הפריים הראשון",
+            "last_frame": "הפריים האחרון",
+            "pixverse_template": "תבנית PixVerse",
+            "prompt_text": "טקסט הפרומפט",
+            "negative_prompt": "פרומפט שלילי"
+        },
+        "widgets": {
+            "aspect_ratio": "יחס רוחב-גובה",
+            "quality": "איכות",
+            "duration_seconds": "משך (שניות)",
+            "motion_mode": "מצב תנועה",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "string": "מחרוזת"
+        }
+    },
+    "PixverseTemplateNode": {
+        "title": "תבנית PixVerse",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "template": "תבנית"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "pixverse_template": "תבנית PixVerse"
+        }
+    },
+    "RunwayFirstLastFrameNode": {
+        "title": "Runway וידאו מפריים ראשון ואחרון",
+        "inputs": {
+            "positive": "תנאי חיובי",
+            "negative": "תנאי שלילי",
+            "camera_conditions": "תנאי מצלמה",
+            "start_frame": "פריים התחלתי",
+            "end_frame": "פריים סופי"
+        },
+        "widgets": {
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "ratio": "יחס רוחב-גובה",
+            "duration": "משך",
+            "batch_size": "גודל אצווה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "RunwayImageToVideoNodeGen3a": {
+        "title": "Runway תמונה לוידאו (Gen3a Turbo)",
+        "inputs": {
+            "positive": "תנאי חיובי",
+            "negative": "תנאי שלילי",
+            "camera_conditions": "תנאי מצלמה",
+            "start_frame": "פריים התחלתי",
+            "end_frame": "פריים סופי"
+        },
+        "widgets": {
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "ratio": "יחס רוחב-גובה",
+            "duration": "משך",
+            "batch_size": "גודל אצווה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "RunwayImageToVideoNodeGen4": {
+        "title": "Runway תמונה לוידאו (Gen4 Turbo)",
+        "inputs": {
+            "positive": "תנאי חיובי",
+            "negative": "תנאי שלילי",
+            "camera_conditions": "תנאי מצלמה",
+            "start_frame": "פריים התחלתי",
+            "end_frame": "פריים סופי"
+        },
+        "widgets": {
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "ratio": "יחס רוחב-גובה",
+            "duration": "משך",
+            "batch_size": "גודל אצווה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video_id": "מזהה וידאו",
+            "duration": "משך",
+            "string": "מחרוזת"
+        }
+    },
+    "OpenAIVideoSora2": {
+        "title": "OpenAI Sora2 - וידאו",
+        "inputs": {
+            "image": "תמונה",
+            "audio": "אודיו"
+        },
+        "widgets": {
+            "model": "מודל",
+            "size": "גודל",
+            "resolution": "רזולוציה",
+            "duration": "משך (שניות)",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "generate_audio": "יצירת אודיו",
+            "prompt_extend": "הרחבת הפרומפט",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "TopazVideoEnhance": {
+        "title": "משפר הווידאו של Topaz",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "upscaler_enabled": "הפעלת המשפר",
+            "upscaler_model": "מודל השיפור",
+            "upscaler_resolution": "העלאת הרזולוציה",
+            "upscaler_creativity": "הארכת המשך",
+            "interpolation_enabled": "הפעלת אינטרפולציה",
+            "interpolation_model": "מודל האינטרפולציה",
+            "interpolation_slowmo": "הילוך איטי של אינטרפולציה",
+            "interpolation_frame_rate": "קצב הפריימים של האינטרפולציה",
+            "interpolation_duplicate": "כפילויות אינטרפולציה",
+            "interpolation_duplicate_threshold": "סף כפילויות אינטרפולציה",
+            "dynamic_compression_level": "רמת דחיסה דינמית"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video": "וידאו"
+        }
+    },
+    "TopazVideoEnhanceV2": {
+        "title": "משפר הווידאו של Topaz V2",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "upscaler_model": "מודל השיפור",
+            "upscaler_resolution": "העלאת הרזולוציה",
+            "creativity": "משך",
+            "sharp:": "חד",
+            "realism:": "ריאליסטי",
+            "interpolation_model": "מודל האינטרפולציה",
+            "dynamic_compression_level": "רמת דחיסה דינמית"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video": "וידאו"
+        }
+    },
+    "VeoVideoGenerationNode": {
+        "title": "גוגל יצירת וידאו Veo2",
+        "inputs": {
+            "image": "תמונה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "negative_prompt": "פרומפט שלילי",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "duration_seconds": "משך הווידאו (שניות)",
+            "enhance_prompt": "שיפור פרומפט",
+            "person_generation": "מצב יצירת אנשים",
+            "seed": "זרע אקראי",
+            "model": "מודל",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "Veo3VideoGenerationNode": {
+        "title": "גוגל יצירת וידאו Veo3",
+        "inputs": {
+            "image": "תמונה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "negative_prompt": "פרומפט שלילי",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "duration_seconds": "משך הווידאו (שניות)",
+            "enhance_prompt": "שיפור פרומפט",
+            "person_generation": "מצב יצירת אנשים",
+            "seed": "זרע אקראי",
+            "model": "מודל",
+            "generate_audio": "יצירת אודיו",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "Veo3FirstLastFrameNode": {
+        "title": "גוגל יצירת וידאו מפריים ראשון ואחרון Veo3",
+        "inputs": {
+            "first_frame": "תמונת הפריים הראשון",
+            "last_frame": "תמונת הפריים האחרון"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "negative_prompt": "פרומפט שלילי",
+            "resolution": "רזולוציה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "duration": "משך (שניות)",
+            "enhance_prompt": "שיפור פרומפט",
+            "person_generation": "מצב יצירת אנשים",
+            "seed": "זרע אקראי",
+            "model": "מודל",
+            "generate_audio": "יצירת אודיו",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "ViduTextToVideoNode": {
+        "title": "Vidu טקסט לוידאו",
+        "inputs": {
+            "image": "תמונה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "duration": "משך (שניות)",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "movement_amplitude": "עוצמת תנועה"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "ViduImageToVideoNode": {
+        "title": "Vidu תמונה לוידאו",
+        "inputs": {
+            "image": "תמונה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "duration": "משך (שניות)",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "movement_amplitude": "עוצמת תנועה"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "ViduReferenceVideoNode": {
+        "title": "Vidu הפניה לוידאו",
+        "inputs": {
+            "images": "קבוצת תמונות",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "duration": "משך (שניות)",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "movement_amplitude": "עוצמת תנועה"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "ViduStartEndToVideoNode": {
+        "title": "Vidu יצירת וידאו מפריים ראשון ואחרון",
+        "inputs": {
+            "first_frame": "תמונת הפריים הראשון",
+            "end_frame": "תמונת הפריים האחרון"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "duration": "משך (שניות)",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "movement_amplitude": "עוצמת תנועה"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "ViduExtendVideoNode": {
+        "title": "Vidu הארכת וידאו",
+        "inputs": {
+            "video": "וידאו",
+            "end_frame": "פריים סופי"
+        },
+        "widgets": {
+            "model": "מודל",
+            "duration": "משך (שניות)",
+            "resolution": "רזולוציה",
+            "prompt": "פרומפט",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        }
+    },
+    "ViduMultiFrameVideoNode": {
+        "title": "Vidu יצירת וידאו רב-פריימי",
+        "inputs": {
+            "start_image": "תמונת התחלה",
+            "end_image1": "תמונת סיום1",
+            "end_image2": "תמונת סיום2"
+        },
+        "widgets": {
+            "model": "מודל",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "resolution": "רזולוציה",
+            "frames": "ריבוי פריימים",
+            "duration:": "משך (שניות)",
+            "duration1:": "משך 1 (שניות)",
+            "duration2:": "משך 2 (שניות)"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "Vidu3TextToVideoNode": {
+        "title": "Vidu Q3 טקסט לוידאו",
+        "inputs": {},
+        "widgets": {
+            "model": "מודל",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "duration:": "משך (שניות)",
+            "duration": "משך (שניות)",
+            "audio": "אודיו",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "Vidu3ImageToVideoNode": {
+        "title": "Vidu Q3 תמונה לוידאו",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "duration": "משך (שניות)",
+            "audio": "אודיו",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "Vidu3StartEndToVideoNode": {
+        "title": "Vidu3 פריים ראשון ואחרון לוידאו",
+        "inputs": {
+            "first_frame": "תמונת הפריים הראשון",
+            "end_frame": "תמונת הפריים האחרון"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "duration": "משך (שניות)",
+            "audio": "אודיו",
+            "prompt": "פרומפט",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "movement_amplitude": "עוצמת תנועה"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "WanTextToVideoApi": {
+        "title": "Wan טקסט לוידאו",
+        "inputs": {
+            "audio": "אודיו"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "size": "גודל",
+            "resolution": "רזולוציה",
+            "duration": "משך (שניות)",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "generate_audio": "יצירת אודיו",
+            "prompt_extend": "הרחבת הפרומפט",
+            "watermark": "סימן מים",
+            "shot_type": "סוג צילום"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "WanImageToVideoApi": {
+        "title": "Wan תמונה לוידאו",
+        "inputs": {
+            "image": "תמונה",
+            "audio": "אודיו"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "resolution": "רזולוציה",
+            "duration": "משך (שניות)",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "generate_audio": "יצירת אודיו",
+            "prompt_extend": "הרחבת הפרומפט",
+            "watermark": "סימן מים",
+            "shot_type": "סוג צילום"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "WanReferenceVideoApi": {
+        "title": "Wan הפניה לוידאו",
+        "inputs": {
+            "character1": "תכונה1",
+            "audio": "אודיו",
+            "VIDEO": "וידאו",
+            "video": "וידאו"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "size": "גודל",
+            "duration": "משך (שניות)",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "generate_audio": "יצירת אודיו",
+            "prompt_extend": "הרחבת הפרומפט",
+            "watermark": "סימן מים",
+            "shot_type": "סוג צילום"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        }
+    },
+    "Wan2TextToVideoApi": {
+        "title": "Wan2.7 טקסט לוידאו",
+        "inputs": {
+            "positive": "תנאי חיובי",
+            "negative": "תנאי שלילי",
+            "audio": "אודיו"
+        },
+        "widgets": {
+            "resolution": "רזולוציה",
+            "ratio": "יחס רוחב-גובה",
+            "seed": "זרע אקראי",
+            "duration": "משך (שניות)",
+            "prompt_extend": "הרחבת הפרומפט",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "Wan2ImageToVideoApi": {
+        "title": "Wan2.7 תמונה לוידאו",
+        "inputs": {
+            "first_frame": "תמונת הפריים הראשון",
+            "last_frame": "תמונת הפריים האחרון",
+            "audio": "אודיו"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "duration": "משך (שניות)",
+            "ratio": "יחס רוחב-גובה",
+            "seed": "זרע אקראי",
+            "prompt_extend": "הרחבת הפרומפט",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "Wan2VideoContinuationApi": {
+        "title": "Wan2.7 הארכת וידאו",
+        "inputs": {
+            "first_clip": "הקליפ הראשון",
+            "last_frame": "תמונת הפריים האחרון",
+            "audio": "אודיו"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "duration": "משך (שניות)",
+            "ratio": "יחס רוחב-גובה",
+            "seed": "זרע אקראי",
+            "prompt_extend": "הרחבת הפרומפט",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "Wan2VideoEditApi": {
+        "title": "Wan2.7 עריכת וידאו",
+        "inputs": {
+            "video": "וידאו",
+            "image1": "תמונה1",
+            "image2": "תמונה2",
+            "image3": "תמונה3",
+            "image4": "תמונה4"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "ratio": "יחס רוחב-גובה",
+            "duration": "משך (שניות)",
+            "seed": "זרע אקראי",
+            "audio_setting": "הגדרות אודיו",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "Wan2ReferenceVideoApi": {
+        "title": "Wan2.7 הפניה לוידאו",
+        "inputs": {
+            "video1": "וידאו1",
+            "video2": "וידאו2",
+            "video3": "וידאו3",
+            "image1": "תמונה1",
+            "image2": "תמונה2",
+            "image3": "תמונה3",
+            "image4": "תמונה4"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "ratio": "יחס רוחב-גובה",
+            "duration": "משך (שניות)",
+            "seed": "זרע אקראי",
+            "audio_setting": "הגדרות אודיו",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        }
+    },
+    "HappyHorseTextToVideoApi": {
+        "title": "HappyHorse טקסט לוידאו",
+        "inputs": {
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "ratio": "יחס רוחב-גובה",
+            "duration": "משך (שניות)",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "יוצר וידאו מפוקקד טקסט באמצעות מודל «HappyHorse»."
+    },
+    "HappyHorse Image to Video": {
+        "title": "HappyHorse תמונה לוידאו",
+        "inputs": {
+            "first_frame": "תמונת הפריים הראשון"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "duration": "משך (שניות)",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        },
+        "description": "יוצר וידאו מתמונת הפריים הראשון באמצעות מודל «HappyHorse»."
+    },
+    "HappyHorseVideoEditApi": {
+        "title": "HappyHorse עריכת וידאו",
+        "inputs": {
+            "video": "וידאו",
+            "image1": "תמונה1",
+            "image2": "תמונה2",
+            "image3": "תמונה3",
+            "image4": "תמונה4",
+            "image5": "תמונה5"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "ratio": "יחס רוחב-גובה",
+            "duration": "משך (שניות)",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        },
+        "description": "ערוך וידאו באמצעות מודל «HappyHorse» בעזרת הוראת טקסט או תמונת הפניה./n משך הווידאו שהתקבל הוא 3 עד 15 שניות, זהה למשך וידאו הקלט; קלט הארוך מ-15 שניות ייקטע."
+    },
+    "HappyHorseReferenceVideoApi": {
+        "title": "HappyHorse הפניה לוידאו",
+        "inputs": {
+            "video": "וידאו",
+            "image1": "תמונה1",
+            "image2": "תמונה2",
+            "image3": "תמונה3",
+            "image4": "תמונה4",
+            "image5": "תמונה5",
+            "image6": "תמונה6",
+            "image7": "תמונה7",
+            "image8": "תמונה8",
+            "image9": "תמונה9"
+        },
+        "widgets": {
+            "model": "מודל",
+            "resolution": "רזולוציה",
+            "ratio": "יחס רוחב-גובה",
+            "duration": "משך (שניות)",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "VIDEO": "יצירת וידאו"
+        },
+        "description": "צור וידאו הכולל אנשים או חפצים בהתבסס על חומרי הפניה באמצעות מודל «HappyHorse»./n תומך בהצגה של דמות אחת וכן באינטראקציה בין מספר דמויות."
+    },
+    "WavespeedFlashVSRNode": {
+        "title": "WaveSpeed הגדלת וידאו FlashVSR",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "target_resolution": "רזולוציה יעד"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        }
+    },
+    "BeebleSwitchXImageEdit": {
+        "title": "עריכת תמונה Beeble SwitchX",
+        "inputs": {
+            "image": "תמונה",
+            "reference_image": "תמונת הפניה"
+        },
+        "widgets": {
+            "prompt": "מילת פרומפט",
+            "alpha_mode": "מצב Alpha",
+            "max_resolution": "רזולוציה מרבית",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "image": "תמונה",
+            "alpha": "ערוץ Alpha"
+        },
+        "description": "ערוך תמונה בודדת באמצעות BeebleSwitchX. ניתן להחליף כל אלמנט בסצנה (רקע, תאורה, לבוש) תוך שמירה על הפיקסלים של הנושא המקורי. ספק תמונת הפניה ו/או פרומפט טקסט שמתאר את המראה החדש. רזולוציה מרבית של כ-2.77MP."
+    },
+    "FluxProUltraImageNode": {
+        "title": "Flux 1.1 [pro] תמונה בחדות-יתר",
+        "inputs": {
+            "image_prompt": "פרומפט תמונה",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "prompt_upsampling": "הגדלת הפרומפט",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "raw": "נתוני מקור",
+            "auth_token": "טוקנים מורשים",
+            "image_prompt_strength": "עוצמת פרומפט התמונה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסכה"
+        }
+    },
+    "FluxKontextProImageNode": {
+        "title": "Flux.1 הקשר תמונה [pro]",
+        "inputs": {
+            "input_image": "תמונת קלט",
+            "mask": "מסכה",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "prompt_upsampling": "הגדלת הפרומפט",
+            "aspect_ratio": "יחס רוחב לגובה",
+            "guidance": "עוצמת ההנחיה",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "steps": "מספר צעדים",
+            "seed": "זרע",
+            "raw": "נתוני מקור",
+            "auth_token": "טוקנים מורשים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסכה"
+        }
+    },
+    "FluxKontextMaxImageNode": {
+        "title": "Flux.1 הקשר תמונה [max] ",
+        "inputs": {
+            "input_image": "תמונת קלט",
+            "mask": "מסכה",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "prompt_upsampling": "הגדלת הפרומפט",
+            "aspect_ratio": "יחס רוחב לגובה",
+            "guidance": "עוצמת ההנחיה",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "steps": "מספר צעדים",
+            "seed": "זרע",
+            "raw": "נתוני מקור",
+            "auth_token": "טוקנים מורשים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסכה"
+        }
+    },
+    "FluxProFillNode": {
+        "title": "Flux.1 מילוי תמונה",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסכה",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "prompt_upsampling": "הגדלת הפרומפט",
+            "top": "הרחבה למעלה",
+            "bottom": "הרחבה למטה",
+            "left": "הרחבה שמאלה",
+            "right": "הרחבה ימינה",
+            "guidance": "עוצמת ההנחיה",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "steps": "מספר צעדים",
+            "seed": "זרע",
+            "raw": "נתוני מקור",
+            "auth_token": "טוקנים מורשים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסכה"
+        }
+    },
+    "FluxEraseNode": {
+        "title": "Flux מחיקת תמונה",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסכה"
+        },
+        "widgets": {
+            "dilate_pixels": "מתיחת פיקסלים",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "מסיר מהתמונה את העצמים הממוסכים ומשחזר את הרקע. צייר מסכה על האזור שברצונך למחוק."
+    },
+    "FluxVTONode": {
+        "title": "Flux מדידה וירטואלית",
+        "inputs": {
+            "person": "אדם",
+            "garment": "בגד"
+        },
+        "widgets": {
+            "prompt": "מילת פרומפט",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "מדידה וירטואלית: הלבש את האדם בבגד שסופק."
+    },
+    "Flux2ProImageNode": {
+        "title": "Flux דור 2 תמונה בחדות-יתר [גרסת Pro] ",
+        "inputs": {
+            "images": "קבוצת תמונות",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "prompt_upsampling": "הגדלת הפרומפט",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "width": "רוחב",
+            "height": "גובה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסכה"
+        }
+    },
+    "Flux2MaxImageNode": {
+        "title": "צומת תמונה Flux.2 (מקסימום)",
+        "inputs": {
+            "images": "תמונה",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "width": "רוחב",
+            "height": "גובה",
+            "prompt_upsampling": "הגדלת הפרומפט",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "seed": "זרע"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסכה"
+        }
+    },
+    "Flux2ImageNode": {
+        "title": "יצירת תמונה Flux.2",
+        "inputs": {
+            "image_1": "קלט תמונה"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "model": "מודל",
+            "width": "רוחב",
+            "height": "גובה",
+            "seed": "זרע אקראי לחלוטין",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        },
+        "description": "צומת המייצר תמונות באמצעות מודל Flux.2"
+    },
+    "Flux3TextToVideoNode": {
+        "title": "Flux.3 טקסט לוידאו",
+        "inputs": {},
+        "widgets": {
+            "prompt": "פרומפט",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "duration": "משך",
+            "resolution": "רזולוציה",
+            "generate_audio": "יצירת אודיו",
+            "safety_tolerance": "סובלנות בטיחות",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "מייצר וידאו עם אודיו מסונכרן מפרומפט טקסט באמצעות FLUX3."
+    },
+    "Flux3ImageToVideoNode": {
+        "title": "Flux.3 תמונה לוידאו",
+        "inputs": {
+            "image_0": "תמונה0",
+            "image_1": "תמונה1",
+            "image_2": "תמונה2",
+            "image_3": "תמונה3",
+            "image_4": "תמונה4",
+            "image_5": "תמונה5"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "placement": "פריסה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "duration": "משך",
+            "resolution": "רזולוציה",
+            "generate_audio": "יצירת אודיו",
+            "safety_tolerance": "סובלנות בטיחות",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "צור אנימציה של FLUX3 מ-1 עד 10 תמונות. כל תמונה הופכת לפריים בקליפ: תמונה אחת פותחת אותו, שתי תמונות מעברות מראשונה לשנייה, ותמונות נוספות פרושות או קבועות בנקודות הזמן שבחרת."
+    },
+    "Flux3VideoContinuationNode": {
+        "title": "Flux.3 הארכת וידאו",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "duration": "משך",
+            "resolution": "רזולוציה",
+            "generate_audio": "יצירת אודיו",
+            "safety_tolerance": "סובלנות בטיחות",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "המשך וידאו של FLUX 3: הקליפ החדש ממשיך מפריימים האחרונים של הווידאו שסיפקת."
+    },
+    "FluxVideoUpscaleNode": {
+        "title": "Flux.3 הגדלת וידאו",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "upscale_factor": "מקדם הגדלה",
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "auto_downscale": "שינוי גודל אוטומטי",
+            "safety_tolerance": "סובלנות בטיחות",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "הגדל וידאו פי 1.5 עד 3 בטכנולוגיית רזולוציית-על של FLUX; שומר במדויק על האיכות המקורית או מעצים יצירתית את הפרטים."
+    },
+    "BriaImageEditNode": {
+        "title": "עריכת תמונה Bria",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסכה"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "guidance_scale": "עוצמת ההנחיה",
+            "steps": "מספר צעדים",
+            "moderation": "מודרציה",
+            "prompt_content_moderation": "מודרציה של תוכן הפרומפט",
+            "visual_input_moderation": "מודרציה של קלט חזותי",
+            "visual_output_moderation": "מודרציה של פלט חזותי"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "structured_prompt": "פרומפט מובנה"
+        }
+    },
+    "BriaRemoveImageBackground": {
+        "title": "הסרת רקע מתמונה Bria",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "moderation": "מודרציה",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "images": "קבוצת תמונות"
+        }
+    },
+    "ByteDanceImageNode": {
+        "title": "בייטדיאנס תמונה",
+        "inputs": {
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "size_preset": "ערך קבוע מראש של גודל",
+            "width": "רוחב",
+            "height": "גובה",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "guidance_scale": "יחס הנחיה",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "image": "תמונה",
+            "IMAGE": "תמונה"
+        }
+    },
+    "ByteDanceSeedreamNode": {
+        "title": "בייטדיאנס Jimeng 4.0",
+        "inputs": {
+            "image": "תמונה",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "size_preset": "ערך קבוע מראש של גודל",
+            "width": "רוחב",
+            "height": "גובה",
+            "sequential_image_generation": "יצירת תמונות עוקבות",
+            "max_images": "מירב התמונות",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "guidance_scale": "יחס הנחיה",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "image": "תמונה",
+            "IMAGE": "תמונה"
+        }
+    },
+    "ByteDanceSeedreamNodeV2": {
+        "title": "בייטדיאנס Seedream 4.5 ו-5.0",
+        "inputs": {
+            "image_1": "תמונה 1"
+        },
+        "widgets": {
+            "model": "מודל",
+            "size_preset": "הגדרה מראש של גודל",
+            "width": "רוחב",
+            "height": "גובה",
+            "max_images": "מירב התמונות",
+            "fail_on_partial": "עצור בכשל חלקי",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "image": "תמונה"
+        },
+        "description": "יצירה אחידה של תמונה מטקסט ועריכה מדויקת במשפט אחד עד רזולוציה של 4K."
+    },
+    "ByteDanceCreateImageAsset": {
+        "title": "בייטדיאנס יצירת נכס תמונה",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "group_id": "מזהה קבוצה"
+        },
+        "outputs": {
+            "asset_id": "מזהה נכס",
+            "group_id": "מזהה קבוצה"
+        },
+        "description": "צור נכס תמונה אישי של Seedance2.0. העלה את תמונת הקלט ורשום אותה בקבוצת הנכסים המצוינת.\n  אם מזהה הנכס ריק, מופעל תהליך אימות H5 אישי אמיתי, ונוצרת קבוצה חדשה לפני הוספת הנכס."
+    },
+    "GeminiImageNode": {
+        "title": "גוגל תמונת Gemini",
+        "inputs": {
+            "images": "תמונה",
+            "files": "קבצי קלט של Gemini"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "seed": "זרע אקראי",
+            "model": "מודל",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "STRING": "מחרוזת"
+        }
+    },
+    "GeminiImage2Node": {
+        "title": "בננה קטנה Pro (תמונת Google Gemini)",
+        "inputs": {
+            "images": "קבוצת תמונות",
+            "files": "קובץ"
+        },
+        "widgets": {
+            "model": "מודל",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "response_modalities": "מצב תגובה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסכה"
+        }
+    },
+    "GeminiNanoBanana2": {
+        "title": "בננה קטנה Pro (תמונת Google Gemini)",
+        "inputs": {
+            "images": "קבוצת תמונות",
+            "files": "קובץ"
+        },
+        "widgets": {
+            "model": "מודל",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "response_modalities": "מצב תגובה",
+            "thinking_level": "רמת חשיבה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "STRING": "מחרוזת"
+        },
+        "description": "יצירה או עריכה סינכרונית של תמונות דרך Google Vertex API."
+    },
+    "GeminiNanoBanana2V2": {
+        "title": "בננה קטנה 2",
+        "inputs": {
+            "image_1": "תמונה1",
+            "files": "קובץ"
+        },
+        "widgets": {
+            "prompt": "מילת פרומפט",
+            "model": "מודל",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "thinking_level": "רמת חשיבה",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "response_modalities": "מודליות התגובה",
+            "system_prompt": "מילת פרומפט מערכת"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "STRING": "מחרוזת",
+            "thought_image": "תמונה"
+        },
+        "description": "צומת Nano Banana 2 ליצירת תמונות."
+    },
+    "GrokImageNode": {
+        "title": "Grok תמונה",
+        "inputs": {},
+        "widgets": {
+            "model": "מודל",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "number_of_images": "מספר התמונות"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "GrokImageEditNode": {
+        "title": "עריכת תמונה Grok",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "model": "מודל",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "number_of_images": "מספר התמונות"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "GrokImageEditNodeV2": {
+        "title": "עריכת תמונה Grok",
+        "inputs": {
+            "image_1": "תמונה1",
+            "image_2": "תמונה2"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "model": "מודל",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "number_of_images": "מספר התמונות"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "HitPawGeneralImageEnhance": {
+        "title": "שיפור תמונה שלם של HitPaw",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "model": "מודל",
+            "upscale_factor": "יחס הגדלה",
+            "auto_downscale": "שינוי גודל אוטומטי"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "IdeogramV1": {
+        "title": "Ideogram טקסט לתמונה V1",
+        "inputs": {
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "turbo": "מצב האצה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "magic_prompt_option": "אפשרויות פרומפט קסם",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "negative_prompt": "פרומפט שלילי",
+            "seed": "זרע",
+            "num_images": "מספר התמונות",
+            "auth_token": "טוקנים מורשים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסכה"
+        }
+    },
+    "IdeogramV2": {
+        "title": "Ideogram טקסט לתמונה V2",
+        "inputs": {
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "turbo": "מצב האצה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "magic_prompt_option": "אפשרויות פרומפט קסם",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "negative_prompt": "פרומפט שלילי",
+            "style_type": "סוג סגנון",
+            "seed": "זרע",
+            "num_images": "מספר התמונות",
+            "color_palette": "לוח צבעים",
+            "auth_token": "טוקנים מורשים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסכה"
+        }
+    },
+    "IdeogramV3": {
+        "title": "Ideogram טקסט לתמונה V3",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסכה",
+            "prompt": "פרומפט",
+            "character_image": "תמונת דמות",
+            "character_mask": "מסכת דמות"
+        },
+        "widgets": {
+            "turbo": "מצב האצה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "magic_prompt_option": "אפשרויות פרומפט קסם",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "rendering_speed": "מהירות רינדור",
+            "style_type": "סוג סגנון",
+            "seed": "זרע",
+            "num_images": "מספר התמונות",
+            "color_palette": "לוח צבעים",
+            "auth_token": "טוקנים מורשים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסכה"
+        }
+    },
+    "IdeogramV4": {
+        "title": "Ideogram טקסט לתמונה V4",
+        "inputs": {
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "resolution": "רזולוציה",
+            "rendering_speed": "מהירות רינדור",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "KlingVirtualTryOnNode": {
+        "title": "קלינג מדידה וירטואלית",
+        "inputs": {
+            "image": "תמונה",
+            "human_image": "תמונת אדם",
+            "cloth_image": "תמונת בגד"
+        },
+        "widgets": {
+            "image_type": "סוג תמונה",
+            "image_fidelity": "נאמנות לתמונה",
+            "human_fidelity": "נאמנות לאדם",
+            "model_name": "שם מודל",
+            "task_id": "מזהה משימה",
+            "auth_token": "טוקנים מורשים",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "n": "כמות"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingImageGenerationNode": {
+        "title": "קלינג יצירת תמונה",
+        "inputs": {
+            "image": "תמונה",
+            "prompt": "פרומפט",
+            "negative_prompt": "פרומפט שלילי"
+        },
+        "widgets": {
+            "image_type": "סוג תמונה",
+            "image_fidelity": "נאמנות לתמונה",
+            "human_fidelity": "נאמנות לאדם",
+            "model_name": "שם מודל",
+            "task_id": "מזהה משימה",
+            "auth_token": "טוקנים מורשים",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "n": "כמות"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "string": "מחרוזת"
+        }
+    },
+    "KlingOmniProImageNode": {
+        "title": "קלינג Omni תמונה (גרסת Pro)",
+        "inputs": {
+            "reference_images": "תמונת הפניה"
+        },
+        "widgets": {
+            "model_name": "שם מודל",
+            "resolution": "רזולוציה",
+            "auth_token": "טוקנים מורשים",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "n": "כמות"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "string": "מחרוזת"
+        }
+    },
+    "Krea2ImageNode": {
+        "title": "Krea 2 תמונה",
+        "inputs": {
+            "style_reference": "הפניית סגנון",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "creativity": "יצירתיות",
+            "moodboard_id": "מזהה לוח השראה",
+            "moodboard_strength": "עוצמת לוח ההשראה",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {},
+        "description": "צור תמונות עם Krea2 — בחר גודל בינוני (איור אקספרסיבי) או גדול (ריאליזם אקספרסיבי). תומך בלוח השראה כרשות ובהפניות סגנון של עד 10 תמונות משורשרות."
+    },
+    "Krea2StyleReferenceNode": {
+        "title": "Krea 2 הפניית סגנון",
+        "inputs": {
+            "image": "תמונה",
+            "style_reference": "הפניית סגנון"
+        },
+        "widgets": {
+            "strength": "עוצמה"
+        },
+        "outputs": {
+            "style_reference": "הפניית סגנון"
+        },
+        "description": "מוסיף הפניית סגנון של תמונה אחת ליצירת Krea2. שרשר מספר צמתים של הפניית סגנון Krea2 (עד 10) והזן את פלט «הפניית הסגנון» הסופי אל Krea2 Image. כל תמונה מועלת לאחסון ComfyAPI ומועברת כ-URL."
+    },
+    "LumaImageNode": {
+        "title": "Luma טקסט לתמונה",
+        "inputs": {
+            "image_luma_ref": "תמונת הפניה של Luma",
+            "style_image": "תמונת סגנון",
+            "prompt": "פרומפט",
+            "character_image": "תמונת אדם"
+        },
+        "widgets": {
+            "model": "מודל",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "seed": "זרע",
+            "style_image_weight": "משקל תמונת הסגנון",
+            "luma_ref": "הפניה של Luma",
+            "auth_token": "טוקנים מורשים",
+            "max_refs": "מירב ההפניות",
+            "weight": "משקל"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "luma_concepts": "קונספט של Luma"
+        }
+    },
+    "LumaImageModifyNode": {
+        "title": "Luma תמונה לתמונה",
+        "inputs": {
+            "image": "תמונה",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "image_weight": "משקל תמונה",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "auth_token": "טוקנים מורשים",
+            "weight": "משקל"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "LumaReferenceNode": {
+        "title": "הפניה של Luma",
+        "inputs": {
+            "image": "תמונה",
+            "prompt": "פרומפט",
+            "luma_ref": "הפניה של Luma"
+        },
+        "widgets": {
+            "image_type": "סוג תמונה",
+            "weight": "משקל",
+            "human_fidelity": "נאמנות לאדם",
+            "model_name": "שם מודל",
+            "task_id": "מזהה משימה",
+            "auth_token": "טוקנים מורשים",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "n": "כמות"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "luma_ref": "הפניה של Luma"
+        }
+    },
+    "LumaImageNode2": {
+        "title": "Luma UNI-1 תמונה",
+        "inputs": {
+            "image_1": "תמונה 1"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "model": "מודל",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "style": "סגנון",
+            "web_search": "חיפוש באינטרנט",
+            "seed": "זרע"
+        },
+        "outputs": {},
+        "description": "מייצר תמונות מטקסט באמצעות מודל Luma UNI-1."
+    },
+    "LumaImageEditNode2": {
+        "title": "Luma UNI-1 עריכת תמונה",
+        "inputs": {
+            "source": "נתיב מקור",
+            "image_1": "תמונה 1"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "model": "מודל",
+            "style": "סגנון",
+            "web_search": "חיפוש באינטרנט",
+            "seed": "זרע"
+        },
+        "outputs": {},
+        "description": "עורך תמונה קיימת בהתאם לפרומפט טקסט באמצעות מודל Luma UNI-1."
+    },
+    "MagnificImageUpscalerCreativeNode": {
+        "title": "Magnific הגדלת תמונה (מצב יצירתי)",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "scale_factor": "מקדם קנה מידה",
+            "optimized_for": "מטרת האופטימיזציה",
+            "creativity": "יצירתיות",
+            "hdr": "HDR טווח דינמי גבוה",
+            "resemblance": "דמיון",
+            "fractality": "פרקטליות",
+            "engine": "מנוע",
+            "auto_downscale": "דגימה מטה אוטומטית"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "MagnificImageUpscalerPreciseV2Node": {
+        "title": "Magnific הגדלת תמונה V2",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "scale_factor": "מקדם קנה מידה",
+            "flavor": "סגנון",
+            "sharpen": "חידוד",
+            "smart_grain": "גרעין חכם",
+            "ultra_detail": "פרטי-על דקים",
+            "auto_downscale": "דגימה מטה אוטומטית"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "MagnificImageStyleTransferNode": {
+        "title": "Magnific המרת סגנון תמונה",
+        "inputs": {
+            "image": "תמונה",
+            "reference_image": "תמונת הפניה"
+        },
+        "widgets": {
+            "style_strength": "עוצמת הסגנון",
+            "structure_strength": "עוצמת המבנה",
+            "flavor": "סגנון",
+            "engine": "מנוע",
+            "portrait_mode": "מצב פורטרט",
+            "fixed_generation": "נעילת יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "MagnificImageRelightNode": {
+        "title": "Magnific תאורה מחדש של תמונה",
+        "inputs": {
+            "image": "תמונה",
+            "reference_image": "תמונת הפניה"
+        },
+        "widgets": {
+            "light_transfer_strength": "עוצמת התאורה",
+            "style": "סגנון",
+            "interpolate_from_original": "אינטרפולציה מנתוני המקור",
+            "change_background": "שנה רקע",
+            "preserve_details": "שמירה על פרטים",
+            "advanced_settings": "הגדרות מתקדמות"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "MagnificImageSkinEnhancerNode": {
+        "title": "Magnific משפר עור בתמונה",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "sharpen": "חידוד",
+            "smart_grain": "גרעין חכם",
+            "mode": "מצב"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "OpenAIDalle2": {
+        "title": "OpenAI DALL·E 2",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסכה",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "size": "גודל",
+            "n": "כמות",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "string": "מחרוזת"
+        }
+    },
+    "OpenAIDalle3": {
+        "title": "OpenAI DALL·E 3",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסכה",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "size": "גודל",
+            "quality": "איכות",
+            "style": "סגנון",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "string": "מחרוזת"
+        }
+    },
+    "OpenAIGPTImage1": {
+        "title": "OpenAI GPT תמונה 1",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסכה",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "background": "רקע",
+            "size": "גודל",
+            "quality": "איכות",
+            "n": "כמות",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "string": "מחרוזת"
+        }
+    },
+    "OpenAIGPTImageNodeV2": {
+        "title": "OpenAI GPT תמונה 2",
+        "inputs": {
+            "image_1": "תמונה1",
+            "image_2": "תמונה2",
+            "image_3": "תמונה3",
+            "mask": "מסכה",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "size": "גודל",
+            "custom_width": "הגדר רוחב",
+            "custom_height": "הגדר גובה",
+            "background": "רקע",
+            "quality": "איכות",
+            "n": "כמות",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "string": "מחרוזת"
+        }
+    },
+    "QuiverTextToSVGNode": {
+        "title": "טקסט לתמונת וקטור SVG",
+        "inputs": {
+            "ref_0": "הפניה",
+            "ref_1": "הפניה1",
+            "ref_2": "הפניה2",
+            "ref_3": "הפניה3"
+        },
+        "widgets": {
+            "model": "מודל",
+            "temperature": "טמפרטורה",
+            "top_p": "יחס ההסתברות הגבוהה",
+            "presence_penalty": "קנס הימצאות",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "seed": "זרע"
+        },
+        "outputs": {
+            "SVG": "תמונת וקטור"
+        }
+    },
+    "QuiverImageToSVGNode": {
+        "title": "תמונה לתמונת וקטור SVG",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "auto_crop": "חיתוך אוטומטי",
+            "model": "מודל",
+            "target_size": "גודל יעד",
+            "temperature": "טמפרטורה",
+            "top_p": "יחס ההסתברות הגבוהה",
+            "presence_penalty": "קנס הימצאות",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "seed": "זרע"
+        },
+        "outputs": {
+            "SVG": "תמונת וקטור"
+        }
+    },
+    "RecraftTextToImageNode": {
+        "title": "Recraft טקסט לתמונה",
+        "inputs": {
+            "recraft_style": "סגנון Recraft",
+            "negative_prompt": "פרומפט שלילי",
+            "recraft_controls": "פרמטרי שליטה של Recraft"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "size": "גודל",
+            "n": "כמות",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "string": "מחרוזת"
+        }
+    },
+    "RecraftImageToImageNode": {
+        "title": "Recraft תמונה לתמונה",
+        "inputs": {
+            "image": "תמונת קלט",
+            "recraft_style": "סגנון Recraft",
+            "negative_prompt": "פרומפט שלילי",
+            "recraft_controls": "פרמטרי שליטה של Recraft",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "n": "מספר הפקות",
+            "strength": "עוצמת Reimagine",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "RecraftImageInpaintingNode": {
+        "title": "Recraft תיקון תמונה",
+        "inputs": {
+            "image": "תמונה",
+            "mask": "מסכה",
+            "recraft_style": "סגנון Recraft",
+            "negative_prompt": "פרומפט שלילי",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "n": "מספר הפקות",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "RecraftTextToVectorNode": {
+        "title": "Recraft טקסט לווקטור",
+        "inputs": {
+            "recraft_controls": "פרמטרי שליטה של Recraft",
+            "negative_prompt": "פרומפט שלילי",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "substyle": "סוג תת-סגנון",
+            "size": "מידות פלט",
+            "n": "מספר הפקות",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VECTOR": "גרפיקת וקטור"
+        }
+    },
+    "RecraftVectorizeImageNode": {
+        "title": "Recraft וקטוריזציה של תמונה",
+        "inputs": {
+            "image": "תמונה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {},
+        "outputs": {
+            "VECTOR": "גרפיקת וקטור"
+        }
+    },
+    "RecraftRemoveBackgroundNode": {
+        "title": "Recraft הסרת רקע",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "תמונה",
+            "MASK": "מסכה"
+        }
+    },
+    "RecraftReplaceBackgroundNode": {
+        "title": "Recraft החלפת רקע",
+        "inputs": {
+            "image": "תמונה",
+            "recraft_style": "סגנון Recraft",
+            "negative_prompt": "פרומפט שלילי",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {
+            "prompt": "תיאור הרקע",
+            "n": "מספר הפקות",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "RecraftCrispUpscaleNode": {
+        "title": "Recraft הגדלת תמונה חדה",
+        "inputs": {
+            "image": "תמונה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "RecraftCreativeUpscaleNode": {
+        "title": "Recraft הגדלת תמונה יצירתית",
+        "inputs": {
+            "image": "תמונה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "RecraftStyleV3RealisticImage": {
+        "title": "Recraft סגנון - תמונה ריאליסטית",
+        "inputs": {
+            "colors": "צבע",
+            "background_color": "צבע רקע"
+        },
+        "widgets": {
+            "substyle": "תת-סגנון"
+        },
+        "outputs": {
+            "recraft_style": "סגנון Recraft"
+        }
+    },
+    "RecraftStyleV3DigitalIllustration": {
+        "title": "Recraft סגנון - איור דיגיטלי",
+        "inputs": {
+            "colors": "צבע",
+            "background_color": "צבע רקע"
+        },
+        "widgets": {
+            "substyle": "תת-סגנון"
+        },
+        "outputs": {
+            "recraft_style": "סגנון Recraft"
+        }
+    },
+    "RecraftStyleV3LogoRaster": {
+        "title": "Recraft סגנון - לוגו רסטרי",
+        "inputs": {
+            "colors": "צבע",
+            "background_color": "צבע רקע"
+        },
+        "widgets": {
+            "substyle": "תת-סגנון"
+        },
+        "outputs": {
+            "recraft_style": "סגנון Recraft"
+        }
+    },
+    "RecraftStyleV3InfiniteStyleLibrary": {
+        "title": "Recraft סגנון - ספריית סגנונות אינסופית",
+        "inputs": {
+            "colors": "צבע",
+            "background_color": "צבע רקע"
+        },
+        "widgets": {
+            "style_id": "מזהה סגנון"
+        },
+        "outputs": {
+            "recraft_style": "סגנון Recraft"
+        }
+    },
+    "RecraftCreateStyleNode": {
+        "title": "סגנון עיצוב של Recraft",
+        "inputs": {
+            "image0": "תמונה0",
+            "image1": "תמונה1"
+        },
+        "widgets": {
+            "style": "סגנון"
+        },
+        "outputs": {
+            "style": "סגנון",
+            "style_id": "מזהה סגנון"
+        }
+    },
+    "RecraftColorRGB": {
+        "title": "Recraft צבע RGB",
+        "inputs": {
+            "recraft_color": "Recraft צבע"
+        },
+        "widgets": {
+            "r": "ערך אדום",
+            "g": "ערך ירוק",
+            "b": "ערך כחול"
+        },
+        "outputs": {
+            "recraft_color": "Recraft צבע",
+            "string": "מחרוזת"
+        }
+    },
+    "RecraftControls": {
+        "title": "פרמטרי שליטה של Recraft",
+        "inputs": {
+            "colors": "צבע",
+            "background_color": "צבע רקע"
+        },
+        "widgets": {
+            "r": "ערך אדום",
+            "g": "ערך ירוק",
+            "b": "ערך כחול"
+        },
+        "outputs": {
+            "recraft_controls": "פרמטרי שליטה של Recraft",
+            "string": "מחרוזת"
+        }
+    },
+    "RecraftV4TextToImageNode": {
+        "title": "Recraft טקסט לתמונה V4",
+        "inputs": {
+            "recraft_controls": "פרמטרי שליטה של Recraft"
+        },
+        "widgets": {
+            "model": "מודל",
+            "size": "גודל",
+            "n": "כמות",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "string": "מחרוזת"
+        }
+    },
+    "RecraftV4TextToVectorNode": {
+        "title": "Recraft טקסט לווקטור V4",
+        "inputs": {
+            "recraft_controls": "פרמטרי שליטה של Recraft"
+        },
+        "widgets": {
+            "model": "מודל",
+            "size": "גודל",
+            "n": "כמות",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "SVG": "תצורת וקטור SVG"
+        }
+    },
+    "ReveImageCreateNode": {
+        "title": "Reve טקסט לתמונה",
+        "inputs": {
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "test_time_scaling": "בדיקת קנה מידה של זמן",
+            "upscale": "הגדלה",
+            "remove_background": "הסרת רקע",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "string": "מחרוזת"
+        }
+    },
+    "ReveImageEditNode": {
+        "title": "עריכת תמונה Reve",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "model": "מודל",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "test_time_scaling": "בדיקת קנה מידה של זמן",
+            "upscale": "הגדלה",
+            "remove_background": "הסרת רקע",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "string": "מחרוזת"
+        }
+    },
+    "ReveImageRemixNode": {
+        "title": "יצירה מחדש של תמונה Reve",
+        "inputs": {
+            "image_0": "תמונה0",
+            "image_1": "תמונה1",
+            "image_2": "תמונה2",
+            "image_3": "תמונה3",
+            "image_4": "תמונה4",
+            "image_5": "תמונה5"
+        },
+        "widgets": {
+            "model": "מודל",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "test_time_scaling": "בדיקת קנה מידה של זמן",
+            "upscale": "הגדלה",
+            "remove_background": "הסרת רקע",
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "string": "מחרוזת"
+        }
+    },
+    "RunwayTextToImageNode": {
+        "title": "Runway טקסט לתמונה",
+        "inputs": {
+            "positive": "תנאי חיובי",
+            "negative": "תנאי שלילי",
+            "reference_image": "תמונת הפניה",
+            "start_frame": "פריים התחלתי",
+            "end_frame": "פריים סופי"
+        },
+        "widgets": {
+            "seed": "זרע",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "ratio": "יחס רוחב-גובה",
+            "duration": "משך",
+            "batch_size": "גודל אצווה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "string": "מחרוזת"
+        }
+    },
+    "StabilityStableImageUltraNode": {
+        "title": "תמונה בחדות-יתר של Stability AI",
+        "inputs": {
+            "image": "תמונה",
+            "negative_prompt": "פרומפט שלילי",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "style_preset": "הגדרה מראש של סגנון",
+            "seed": "זרע אקראי",
+            "image_denoise": "עוצמת הפחתת רעש",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "StabilityStableImageSD_3_5Node": {
+        "title": "תמונת Stability AI SD 3.5",
+        "inputs": {
+            "image": "תמונה",
+            "negative_prompt": "פרומפט שלילי",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "style_preset": "הגדרה מראש של סגנון",
+            "cfg_scale": "מקדם הנחיית CFG",
+            "seed": "זרע אקראי",
+            "image_denoise": "עוצמת הפחתת רעש",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "StabilityUpscaleConservativeNode": {
+        "title": "הגדלה שמרנית של Stability AI",
+        "inputs": {
+            "image": "תמונה",
+            "negative_prompt": "פרומפט שלילי",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "creativity": "עוצמת יצירתיות",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "StabilityUpscaleCreativeNode": {
+        "title": "הגדלה יצירתית של Stability AI",
+        "inputs": {
+            "image": "תמונה",
+            "negative_prompt": "פרומפט שלילי",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "creativity": "עוצמת יצירתיות",
+            "style_preset": "הגדרה מראש של סגנון",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "StabilityUpscaleFastNode": {
+        "title": "הגדלה מהירה במיוחד של Stability AI",
+        "inputs": {
+            "image": "תמונה",
+            "auth_token": "טוקנים מורשים"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "TopazImageEnhance": {
+        "title": "משפר התמונות של Topaz",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "model": "מודל",
+            "subject_detection": "זיהוי עצמים",
+            "face_enhancement": "שיפור פנים",
+            "face_enhancement_creativity": "יצירתיות בשיפור פנים",
+            "face_enhancement_strength": "עוצמת שיפור פנים",
+            "crop_to_fill": "חיתוך למילוי",
+            "output_width": "רוחב פלט",
+            "output_height": "גובה פלט",
+            "creativity": "יצירתיות",
+            "face_preservation": "הגנת פנים",
+            "color_preservation": "הגנת צבע"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "video": "וידאו"
+        }
+    },
+    "WanTextToImageApi": {
+        "title": "Wan טקסט לתמונה",
+        "inputs": {
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "width": "רוחב",
+            "height": "גובה",
+            "resolution": "רזולוציה",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "prompt_extend": "הרחבת הפרומפט",
+            "watermark": "סימן מים",
+            "shot_type": "סוג צילום"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "WanImageToImageApi": {
+        "title": "Wan תמונה לתמונה",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "width": "רוחב",
+            "height": "גובה",
+            "resolution": "רזולוציה",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "prompt_extend": "הרחבת הפרומפט",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "WavespeedImageUpscaleNode": {
+        "title": "הגדלת תמונה של WaveSpeed",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "model": "מודל",
+            "target_resolution": "רזולוציה יעד"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "ElevenLabsSpeechToText": {
+        "title": "Eleven Labs דיבור לטקסט",
+        "inputs": {
+            "audio": "אודיו"
+        },
+        "widgets": {
+            "model": "מודל",
+            "tag_audio_events": "סימון אירועי אודיו",
+            "diarize": "זיהוי דוברים",
+            "diarization_threshold": "סף זיהוי דוברים",
+            "temperature": "טמפרטורה",
+            "timestamps_granularity": "דיוק חותמת זמן",
+            "language_code": "קוד שפה",
+            "num_speakers": "מספר דוברים",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "language_code": "קוד שפה",
+            "text": "טקסט",
+            "seed": "נתוני JSON של מילים"
+        }
+    },
+    "ElevenLabsVoiceSelector": {
+        "title": "בורר קולות של Eleven Labs",
+        "inputs": {},
+        "widgets": {
+            "voice": "קול"
+        },
+        "outputs": {
+            "voice": "קול"
+        }
+    },
+    "ElevenLabsTextToSpeech": {
+        "title": "Eleven Labs טקסט לדיבור",
+        "inputs": {
+            "voice": "קול"
+        },
+        "widgets": {
+            "stabillity": "יציבות",
+            "apply_text_normalization": "החלת נרמול טקסט",
+            "model": "מודל",
+            "speed": "מהירות",
+            "similarity_boost": "שיפור דמיון",
+            "use_speaker_boost": "השתמש בשיפור דוברים",
+            "style": "סגנון",
+            "language_code": "קוד שפה",
+            "output_format": "תצורת פלט",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "AUDIO": "אודיו"
+        }
+    },
+    "ElevenLabsAudioIsolation": {
+        "title": "טכנולוגיית הפרדת דיבור של Eleven Labs",
+        "inputs": {
+            "audio": "אודיו"
+        },
+        "widgets": {},
+        "outputs": {
+            "AUDIO": "אודיו"
+        }
+    },
+    "ElevenLabsTextToSoundEffects": {
+        "title": "Eleven Labs טקסט לאפקט קולי",
+        "inputs": {
+            "text": "טקסט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "duration": "משך (שניות)",
+            "loop": "לולאה",
+            "prompt_influence": "מידת השפעת הפרומפט",
+            "output_format": "תצורת פלט"
+        },
+        "outputs": {
+            "AUDIO": "אודיו"
+        }
+    },
+    "ElevenLabsInstantVoiceClone": {
+        "title": "שכפול דיבור מיידי של Eleven Labs",
+        "inputs": {
+            "audio0": "אודיו0",
+            "audio1": "אודיו1",
+            "audio2": "אודיו2",
+            "audio3": "אודיו3",
+            "audio4": "אודיו4",
+            "audio5": "אודיו5",
+            "audio6": "אודיו6"
+        },
+        "widgets": {
+            "remove_background_noise": "הסרת רעש רקע"
+        },
+        "outputs": {
+            "voice": "קול"
+        }
+    },
+    "ElevenLabsSpeechToSpeech": {
+        "title": "Eleven Labs דיבור לדיבור",
+        "inputs": {
+            "voice": "קול",
+            "audio": "אודיו"
+        },
+        "widgets": {
+            "stabillity": "יציבות",
+            "model": "מודל",
+            "speed": "מהירות",
+            "similarity_boost": "שיפור דמיון",
+            "use_speaker_boost": "השתמש בשיפור דוברים",
+            "style": "סגנון",
+            "output_format": "תצורת פלט",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "remove_background_noise": "הסרת רעש רקע"
+        },
+        "outputs": {
+            "AUDIO": "אודיו"
+        }
+    },
+    "ElevenLabsTextToDialogue": {
+        "title": "Eleven Labs טקסט לשיחה",
+        "inputs": {
+            "voice1": "קול1",
+            "voice2": "קול2",
+            "voice3": "קול3",
+            "voice4": "קול4",
+            "voice5": "קול5",
+            "voice6": "קול6",
+            "voice7": "קול7",
+            "voice8": "קול8",
+            "voice9": "קול9",
+            "voice10": "קול10"
+        },
+        "widgets": {
+            "stabillity": "יציבות",
+            "apply_text_normalization": "החלת נרמול טקסט",
+            "model": "מודל",
+            "inputs": "מספר קלטים",
+            "language_code": "קוד שפה",
+            "output_format": "תצורת פלט",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "AUDIO": "אודיו"
+        }
+    },
+    "SoniloVideoToMusic": {
+        "title": "Sonilo וידאו למוזיקה",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "duration": "משך (שניות)",
+            "model": "מודל",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "AIDEO": "אודיו"
+        }
+    },
+    "SoniloTextToMusic": {
+        "title": "Sonilo טקסט למוזיקה",
+        "inputs": {
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "AIDEO": "אודיו"
+        }
+    },
+    "StabilityTextToAudio": {
+        "title": "Stability AI טקסט לדיבור",
+        "inputs": {
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "duration": "משך",
+            "steps": "מספר צעדים",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "audio": "אודיו",
+            "AUDIO": "אודיו"
+        }
+    },
+    "StabilityAudioToAudio": {
+        "title": "Stability AI אודיו לאודיו",
+        "inputs": {
+            "audio": "אודיו",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "duration": "משך",
+            "steps": "מספר צעדים",
+            "seed": "זרע אקראי",
+            "strength": "עוצמה",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "audio": "אודיו",
+            "AUDIO": "אודיו"
+        }
+    },
+    "StabilityAudioInpaint": {
+        "title": "Stability AI שיחזור אודיו (Inpaint)",
+        "inputs": {
+            "audio": "אודיו",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "duration": "משך",
+            "steps": "מספר צעדים",
+            "seed": "זרע אקראי",
+            "mask_start": "מסכת התחלה",
+            "mask_end": "מסכת סיום",
+            "control_after_generate": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "audio": "אודיו",
+            "AUDIO": "אודיו"
+        }
+    },
+    "TencentTextToModelNode": {
+        "title": "Hunyuan3D: יצירת מודל מטקסט (גרסת Pro)",
+        "inputs": {},
+        "widgets": {
+            "model": "מודל",
+            "face_count": "מספר פאות",
+            "pbr": "רינדור בסיס פיזיקלי",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "texture_image": "תמונת מרקם",
+            "GLB": "פורמט GLB",
+            "OBJ": "פורמט OBJ"
+        }
+    },
+    "TencentImageToModelNode": {
+        "title": "Hunyuan3D: יצירת מודל מתמונה (גרסת Pro)",
+        "inputs": {
+            "image": "תמונה",
+            "image_left": "תמונה צד שמאל",
+            "image_right": "תמונה צד ימין",
+            "image_back": "תמונה אחורית"
+        },
+        "widgets": {
+            "model": "מודל",
+            "face_count": "מספר פאות",
+            "generate_type": "סוג יצירה",
+            "pbr": "רינדור בסיס פיזיקלי",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "texture_image": "תמונת מרקם",
+            "GLB": "פורמט GLB",
+            "OBJ": "פורמט OBJ",
+            "optional_metallic": "מתכת (אופציונלי)",
+            "optional_normal": "רגיל (אופציונלי)",
+            "optional_roughness": "חיספוס (אופציונלי)"
+        }
+    },
+    "TencentModelTo3DUVNode": {
+        "title": "Hunyuan3D: המרת מודל לטקסטורת UV",
+        "inputs": {
+            "model_3d": "מודל תלת-ממדי"
+        },
+        "widgets": {
+            "model": "מודל",
+            "face_count": "מספר פאות",
+            "pbr": "רינדור בסיס פיזיקלי",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "GLB": "פורמט GLB",
+            "OBJ": "פורמט OBJ"
+        }
+    },
+    "Tencent3DTextureEditNode": {
+        "title": "Hunyuan3D: עריכת מרקם תלת-ממדי",
+        "inputs": {
+            "model_3d": "מודל תלת-ממדי"
+        },
+        "widgets": {
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "texture_image": "תמונת מרקם",
+            "GLB": "פורמט GLB",
+            "OBJ": "פורמט OBJ",
+            "uv_image": "תמונת UV"
+        }
+    },
+    "Tencent3DPartNode": {
+        "title": "Hunyuan3D: רכיב תלת-ממדי",
+        "inputs": {
+            "model_3d": "מודל תלת-ממדי"
+        },
+        "widgets": {
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "FBX": "פורמט FBX"
+        }
+    },
+    "TencentSmartTopologyNode": {
+        "title": "Hunyuan3D: מבנה טופולוגיה חכם",
+        "inputs": {
+            "model_3d": "מודל תלת-ממדי"
+        },
+        "widgets": {
+            "model": "מודל",
+            "polygon_type": "סוג פוליגון",
+            "face_level": "רמת פאות",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "GLB": "פורמט GLB",
+            "OBJ": "פורמט OBJ"
+        }
+    },
+    "MeshyTextToModelNode": {
+        "title": "Meshy: יצירת מודל מטקסט",
+        "inputs": {},
+        "widgets": {
+            "model": "מודל",
+            "style": "סגנון",
+            "should_remesh": "רשת מחדש",
+            "topology": "מבנה טופולוגי",
+            "target_polycount": "מספר פוליגונים יעד",
+            "symmetry_mode": "מצב סימטריה",
+            "pose_mode": "מצב תנוחה",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "meshy_task_id": "מספר משימה של Meshy",
+            "GLB": "פורמט GLB",
+            "FBX": "פורמט FBX"
+        }
+    },
+    "MeshyRefineNode": {
+        "title": "Meshy: ליטוש מודל סקיצה",
+        "inputs": {
+            "meshy_task_id": "מספר משימה של Meshy",
+            "texture_image": "תמונת מרקם"
+        },
+        "widgets": {
+            "model": "מודל",
+            "enable_pbr": "הפעלת רינדור PBR בסיס פיזיקלי",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "meshy_task_id": "מספר משימה של Meshy",
+            "GLB": "פורמט GLB",
+            "FBX": "פורמט FBX"
+        }
+    },
+    "MeshyImageToModelNode": {
+        "title": "Meshy: יצירת מודל מתמונה",
+        "inputs": {
+            "image": "תמונה",
+            "texture_image": "תמונת מרקם"
+        },
+        "widgets": {
+            "model": "מודל",
+            "should_remesh": "רשת מחדש",
+            "topology": "מבנה טופולוגי",
+            "target_polycount": "מספר פוליגונים יעד",
+            "symmetry_mode": "מצב סימטריה",
+            "should_texture": "החלת מרקם",
+            "enable_pbr": "הפעלת רינדור PBR בסיס פיזיקלי",
+            "pose_mode": "מצב תנוחה",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "meshy_task_id": "מספר משימה של Meshy",
+            "GLB": "פורמט GLB",
+            "FBX": "פורמט FBX"
+        }
+    },
+    "MeshyMultiImageToModelNode": {
+        "title": "Meshy: יצירת מודל ממספר תמונות",
+        "inputs": {
+            "image": "תמונה",
+            "image0": "תמונה0",
+            "image1": "תמונה1",
+            "texture_image": "תמונת מרקם"
+        },
+        "widgets": {
+            "model": "מודל",
+            "should_remesh": "רשת מחדש",
+            "topology": "מבנה טופולוגי",
+            "target_polycount": "מספר פוליגונים יעד",
+            "symmetry_mode": "מצב סימטריה",
+            "should_texture": "החלת מרקם",
+            "enable_pbr": "הפעלת רינדור PBR בסיס פיזיקלי",
+            "pose_mode": "מצב תנוחה",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "meshy_task_id": "מספר משימה של Meshy",
+            "GLB": "פורמט GLB",
+            "FBX": "פורמט FBX"
+        }
+    },
+    "MeshyRigModelNode": {
+        "title": "Meshy: מודל שלד",
+        "inputs": {
+            "meshy_task_id": "מספר משימה של Meshy",
+            "texture_image": "תמונת מרקם"
+        },
+        "widgets": {
+            "height_meters": "גובה (מטרים)"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "meshy_task_id": "מספר משימה של Meshy",
+            "GLB": "פורמט GLB",
+            "FBX": "פורמט FBX"
+        }
+    },
+    "MeshyAnimateModelNode": {
+        "title": "Meshy: הנפשת מודל",
+        "inputs": {
+            "rig_task_id": "מספר משימת שלד",
+            "texture_image": "תמונת מרקם"
+        },
+        "widgets": {
+            "action_id": "מזהה פעולה"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "meshy_task_id": "מספר משימה של Meshy",
+            "GLB": "פורמט GLB",
+            "FBX": "פורמט FBX"
+        }
+    },
+    "MeshyTextureNode": {
+        "title": "Meshy: מודל מרקם",
+        "inputs": {
+            "meshy_task_id": "מספר משימה של Meshy",
+            "image_style": "סגנון תמונה"
+        },
+        "widgets": {
+            "model": "מודל",
+            "enable_original_uv": "הפעלת UV מקורי",
+            "pbr": "רינדור PBR בסיס פיזיקלי"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "meshy_task_id": "מספר משימה של Meshy",
+            "GLB": "פורמט GLB",
+            "FBX": "פורמט FBX"
+        }
+    },
+    "Rodin3D_Regular": {
+        "title": "יצירת Rodin 3D - יצירה רגילה",
+        "inputs": {
+            "images": "קבוצת תמונות"
+        },
+        "widgets": {
+            "Seed": "זרע אקראי",
+            "Material_Type": "סוג חומר",
+            "Polygon_count": "מספר פוליגונים"
+        },
+        "outputs": {
+            "3D_Model_Path": "נתיב מודל תלת-ממדי",
+            "3D Model Path": "נתיב מודל תלת-ממדי"
+        }
+    },
+    "Rodin3D_Detail": {
+        "title": "יצירת Rodin 3D - יצירת פרטים",
+        "inputs": {
+            "images": "קבוצת תמונות"
+        },
+        "widgets": {
+            "Seed": "זרע אקראי",
+            "Material_Type": "סוג חומר",
+            "Polygon_count": "מספר פוליגונים"
+        },
+        "outputs": {
+            "3D_Model_Path": "נתיב מודל תלת-ממדי",
+            "3D Model Path": "נתיב מודל תלת-ממדי"
+        }
+    },
+    "Rodin3D_Smooth": {
+        "title": "יצירת Rodin 3D - יצירה חלקה",
+        "inputs": {
+            "images": "קבוצת תמונות"
+        },
+        "widgets": {
+            "Seed": "זרע אקראי",
+            "Material_Type": "סוג חומר",
+            "Polygon_count": "מספר פוליגונים"
+        },
+        "outputs": {
+            "3D_Model_Path": "נתיב מודל תלת-ממדי",
+            "3D Model Path": "נתיב מודל תלת-ממדי"
+        }
+    },
+    "Rodin3D_Sketch": {
+        "title": "יצירת Rodin 3D - יצירת סקיצה",
+        "inputs": {
+            "images": "קבוצת תמונות"
+        },
+        "widgets": {
+            "Seed": "זרע אקראי",
+            "Material_Type": "סוג חומר",
+            "Polygon_count": "מספר פוליגונים"
+        },
+        "outputs": {
+            "3D_Model_Path": "נתיב מודל תלת-ממדי",
+            "3D Model Path": "נתיב מודל תלת-ממדי"
+        }
+    },
+    "Rodin3D_Gen2": {
+        "title": "יצירת Rodin 3D - מחולל Gen-2",
+        "inputs": {
+            "images": "קבוצת תמונות",
+            "Images": "קבוצת תמונות"
+        },
+        "widgets": {
+            "Seed": "זרע אקראי",
+            "Material_Type": "סוג חומר",
+            "Polygon_count": "מספר פוליגונים",
+            "TAPose": "תנוחת TA"
+        },
+        "outputs": {
+            "3D_Model_Path": "נתיב מודל תלת-ממדי",
+            "3D Model Path": "נתיב מודל תלת-ממדי"
+        }
+    },
+    "Rodin3D_Gen25_Image": {
+        "title": "Rodin 3D Gen-2.5 - תמונה לתלת-ממד",
+        "inputs": {
+            "image0": "קלט תמונה 0",
+            "image1": "קלט תמונה 1"
+        },
+        "widgets": {
+            "mode": "מצב",
+            "tier": "רמה",
+            "polygon_count": "מספר פוליגונים",
+            "creative": "יצירתיות",
+            "material": "חומר",
+            "geometry_file_format": "פורמט קובץ גאומטרי",
+            "texture_mode": "מצב מרקם",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "TAPose": "תנוחת TA",
+            "hd_texture": "מרקם בהבחנה גבוהה",
+            "texture_delight": "ליטוש מרקם",
+            "use_original_alpha": "שימוש ב-Alpha מקורי",
+            "addon_highpack": "תוסף בנפח גבוה",
+            "bbox_width": "רוחב תיבת מקף",
+            "bbox_height": "גובה תיבת מקף",
+            "bbox_length": "אורך תיבת מקף",
+            "height_cm": "גובה (סנטימטרים)"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל"
+        },
+        "description": "המרת תמונה דו-ממדית למודל תלת-ממדי"
+    },
+    "Rodin3D_Gen25_Text": {
+        "title": "Rodin 3D Gen-2.5 - טקסט לתלת-ממד",
+        "inputs": {
+            "prompt": "מילת פרומפט"
+        },
+        "widgets": {
+            "mode": "מצב",
+            "tier": "רמה",
+            "polygon_count": "מספר פוליגונים",
+            "creative": "יצירתיות",
+            "material": "חומר",
+            "geometry_file_format": "פורמט קובץ גאומטרי",
+            "texture_mode": "מצב מרקם",
+            "seed": "זרע אקראי",
+            "control_after_generate": "שליטה לאחר יצירה",
+            "TAPose": "תנוחת TA",
+            "hd_texture": "מרקם בהבחנה גבוהה",
+            "texture_delight": "ליטוש מרקם",
+            "addon_highpack": "תוסף בנפח גבוה",
+            "bbox_width": "רוחב תיבת מקף",
+            "bbox_height": "גובה תיבת מקף",
+            "bbox_length": "אורך תיבת מקף",
+            "height_cm": "גובה (סנטימטרים)"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל"
+        },
+        "description": "צומת Rodin 3D Gen-2.5 טקסט לתלת-ממד, ליצירת מודל תלת-ממדי בהתבסס על פרומפט טקסט."
+    },
+    "TripoTextToModelNode": {
+        "title": "Tripo: טקסט למודל",
+        "inputs": {
+            "images": "קבוצת תמונות"
+        },
+        "widgets": {
+            "model_version": "גרסת מודל",
+            "style": "סגנון",
+            "texture": "טקסטורה",
+            "pbr": "חומר PBR",
+            "image_seed": "זרע תמונה",
+            "model_seed": "זרע מודל",
+            "texture_seed": "זרע טקסטורה",
+            "texture_quality": "איכות טקסטורה",
+            "face_limit": "מגבלת מספר פאות",
+            "quad": "רשת מרובעת"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "model task_id": "מזהה משימת מודל",
+            "model_task_id": "מזהה משימת מודל"
+        }
+    },
+    "TripoImageToModelNode": {
+        "title": "Tripo: תמונה למודל",
+        "inputs": {
+            "image": "תמונה",
+            "images": "קבוצת תמונות"
+        },
+        "widgets": {
+            "model_version": "גרסת מודל",
+            "style": "סגנון",
+            "texture": "טקסטורה",
+            "pbr": "חומר PBR",
+            "image_seed": "זרע תמונה",
+            "model_seed": "זרע מודל",
+            "orientation": "אוריינטציה",
+            "texture_seed": "זרע טקסטורה",
+            "texture_quality": "איכות טקסטורה",
+            "texture_alignment": "יישור מרקם",
+            "face_limit": "מגבלת מספר פאות",
+            "quad": "רשת מרובעת"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "model task_id": "מזהה משימת מודל",
+            "model_task_id": "מזהה משימת מודל"
+        }
+    },
+    "TripoMultiviewToModelNode": {
+        "title": "Tripo: תצוגות מרובות למודל",
+        "inputs": {
+            "image": "תמונה",
+            "images": "קבוצת תמונות",
+            "image_left": "תצוגת שמאל",
+            "image_back": "תצוגה אחורית",
+            "image_right": "תצוגת ימין"
+        },
+        "widgets": {
+            "model_version": "גרסת מודל",
+            "orientation": "אוריינטציה",
+            "style": "סגנון",
+            "texture": "טקסטורה",
+            "pbr": "חומר PBR",
+            "image_seed": "זרע תמונה",
+            "model_seed": "זרע מודל",
+            "texture_seed": "זרע טקסטורה",
+            "texture_quality": "איכות טקסטורה",
+            "texture_alignment": "יישור מרקם",
+            "face_limit": "מגבלת מספר פאות",
+            "quad": "רשת מרובעת"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "model task_id": "מזהה משימת מודל",
+            "model_task_id": "מזהה משימת מודל"
+        }
+    },
+    "TripoP1TextToModelNode": {
+        "title": "Tripo P1: טקסט למודל",
+        "inputs": {
+            "prompt": "מילת פרומפט",
+            "negative_prompt": "פרומפט שלילי"
+        },
+        "widgets": {
+            "output_mode": "מצב פלט",
+            "image_seed": "זרע אקראי של תמונה",
+            "face_limit": "מגבלת פאות",
+            "model_seed": "זרע אקראי של מודל",
+            "auto_size": "גודל אוטומטי",
+            "export_uv": "ייצוא UV",
+            "compress_geometry": "דחיסת גאומטריה"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "model task_id": "מזהה משימת מודל"
+        },
+        "description": "המרת פרומפט טקסט למודל תלת-ממדי"
+    },
+    "TripoP1ImageToModelNode": {
+        "title": "Tripo P1: תמונה למודל",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "output_mode": "מצב פלט",
+            "enable_image_autofix": "הפעלת תיקון תמונה אוטומטי",
+            "face_limit": "מגבלת פאות",
+            "model_seed": "זרע אקראי של מודל",
+            "auto_size": "גודל אוטומטי",
+            "export_uv": "ייצוא UV",
+            "compress_geometry": "דחיסת גאומטריה"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "model_task_id": "מזהה משימת מודל"
+        },
+        "description": "TripoP1 תמונה לתלת-ממד. מותאם במיוחד לרשתות בפוליגונים נמוכים ברמת משחק."
+    },
+    "TripoP1MultiviewToModelNode": {
+        "title": "Tripo P1: תצוגות מרובות למודל",
+        "inputs": {
+            "image": "תמונה",
+            "image_left": "תמונת תצוגת שמאל",
+            "image_back": "תמונת תצוגה אחורית",
+            "image_right": "תמונת תצוגת ימין"
+        },
+        "widgets": {
+            "output_mode": "מצב פלט",
+            "face_limit": "מגבלת מספר פאות",
+            "model_seed": "זרע אקראי של מודל",
+            "auto_size": "גודל אוטומטי",
+            "export_uv": "ייצוא UV",
+            "compress_geometry": "דחיסת גאומטריה"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "model_task_id": "מזהה משימת מודל"
+        },
+        "description": "TripoP1 תצוגות מרובות לתלת-ממד, ממיר בין 2 ל-4 תמונות הפניה, בסדר [קדימה, שמאלה, אחורה, ימינה]. חייבת לכלול תמונה קדמית; כל שילוב משלושת הנותרים ניתן להשמטה."
+    },
+    "TripoTextureNode": {
+        "title": "Tripo: מודל מרקם",
+        "inputs": {
+            "model task_id": "מזהה משימת מודל",
+            "model_task_id": "מזהה משימת מודל"
+        },
+        "widgets": {
+            "model_version": "גרסת מודל",
+            "style": "סגנון",
+            "texture": "טקסטורה",
+            "pbr": "חומר PBR",
+            "image_seed": "זרע תמונה",
+            "model_seed": "זרע מודל",
+            "orientation": "אוריינטציה",
+            "texture_seed": "זרע טקסטורה",
+            "texture_quality": "איכות טקסטורה",
+            "texture_alignment": "יישור מרקם",
+            "face_limit": "מגבלת מספר פאות",
+            "quad": "רשת מרובעת"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "model_task_id": "מזהה משימת מודל"
+        }
+    },
+    "TripoRefineNode": {
+        "title": "Tripo: ליטוש מודל טיוטה",
+        "inputs": {
+            "model task_id": "מזהה משימת מודל",
+            "model_task_id": "מזהה משימת מודל"
+        },
+        "widgets": {
+            "format": "פורמט",
+            "face_limittexture_size": "מגבלת גודל מרקם פאות",
+            "texture_format": "פורמט מרקם",
+            "quad": "רשת מרובעת"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "model task_id": "מזהה משימת מודל",
+            "model_task_id": "מזהה משימת מודל"
+        }
+    },
+    "TripoRigNode": {
+        "title": "Tripo: מודל Rig",
+        "inputs": {
+            "original model task id": "מזהה משימת מודל מקורי",
+            "original_model_task_id": "מזהה משימת מודל מקורי"
+        },
+        "widgets": {
+            "format": "פורמט",
+            "face_limittexture_size": "מגבלת גודל מרקם פאות",
+            "texture_format": "פורמט מרקם",
+            "quad": "רשת מרובעת"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "rig task_id": "מזהה משימת Rig",
+            "rig_task_id": "מזהה משימת Rig"
+        }
+    },
+    "TripoRetargetNode": {
+        "title": "Tripo: מודל אנימציה בהפניה מחדש",
+        "inputs": {
+            "original model task id": "מזהה משימת מודל מקורי",
+            "original_model_task_id": "מזהה משימת מודל מקורי"
+        },
+        "widgets": {
+            "animation": "אנימציה",
+            "face_limittexture_size": "מגבלת גודל מרקם פאות",
+            "texture_format": "פורמט מרקם",
+            "quad": "רשת מרובעת"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "retarget task_id": "מזהה משימת הפניה מחדש",
+            "retarget_task_id": "מזהה משימת הפניה מחדש"
+        }
+    },
+    "BriaVideoReplaceBackground": {
+        "title": "החלפת רקע בווידאו של Bria",
+        "inputs": {
+            "video": "וידאו",
+            "background_image": "תמונת רקע",
+            "background_video": "וידאו רקע"
+        },
+        "widgets": {
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "החלף את רקע הווידאו בתמונה או בווידאו שסופקו באמצעות Bria. הפלט שומר על הרזולוציה ועל קצב הפריימים של החזית; אם לרקע יש יחס רוחב-גובה שונה, הוא יימתח כדי להתאים, לכן ודא ביחס רקע תואם לתוצאה ללא עיוות."
+    },
+    "RunwayAleph2VideoToVideoNode": {
+        "title": "Runway Aleph2 וידאו לוידאו",
+        "inputs": {
+            "video": "וידאו",
+            "keyframes": "פריימי מפתח",
+            "prompt_images": "תמונת רמז"
+        },
+        "widgets": {
+            "prompt": "רמז",
+            "seed": "זרע אקראי",
+            "generate_control": "שליטה ביצירה",
+            "public_figure_threshold": "סף בני אדם ציבוריים"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "ערוך וידאו עם רמזי טקסט באמצעות מודל Aleph2 של Runway. ה-Aleph2 מעביר את הווידאו שלך תוך שמירה על התנועה והקצב המקוריים (עיצוב מחדש, תאורה מחדש, הוספה או הסרה של אלמנטים, שינוי נקודת מבט); רזולוציית הפלט תואמת לוידאו הקלט, על וידאו הקלט להיות באורך 2 עד 30 שניות בקצב 30fps או פחות. ניתן לבחור להדריך את העריכה באמצעות פריימי מפתח (עוגנים לוידאו הקלט) או תמונת רמז (עוגנת לוידאו הפלט) - אחד בלבד, לא שניהם יחד."
+    },
+    "TripoImportModelNode": {
+        "title": "Tripo: ייבוא מודל",
+        "inputs": {
+            "model_3d": "נתיב קובץ מודל תלת-ממדי"
+        },
+        "widgets": {},
+        "outputs": {
+            "model task_id": "מזהה משימת מודל"
+        },
+        "description": "יבא מודלים תלת-ממדיים חיצוניים (למשל מ-Rodin, מ-Hunyuan3D או מקובץ מקומי) אל Tripo כדי להשתמש בהם בצמתי העיבוד שלאחר מכן של Tripo: מרקם, שלד, המרה. מומלץ להשתמש בפורמט GLB: כאשר המרקמים מוטמעים בקובץ בלבד, הם עשויים להישמר לאחר הייבוא. שים לב שיישום מרקם על מודל מיובא דורש הגדרת רמז מרקם תחילה."
+    },
+    "GeminiVideoOmni": {
+        "title": "גוגל Gemini Omni (וידאו)",
+        "inputs": {
+            "image_1": "תמונה_1",
+            "video_1": "וידאו_1"
+        },
+        "widgets": {
+            "model": "מודל",
+            "model_prompt": "רמז מודל",
+            "temperature": "טמפרטורה",
+            "seed": "זרע",
+            "generate_after_control": "שליטה לאחר יצירה"
+        },
+        "outputs": {},
+        "description": "מייצר וידאו עם אודיו מרמז טקסט באמצעות מודל GeminiOmniFlash של גוגל. ניתן לספק תמונה או וידאו כהפניה כדי להדריך או לערוך את תוצאת היצירה. ציין ישירות ברמז את המשך הרצוי (3-10 שניות) ויחס הרוחב-גובה (16:9 או 9:16)."
+    },
+    "LumaRay32TextToVideoNode": {
+        "title": "Luma Ray 3.2 טקסט לוידאו",
+        "inputs": {
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "duration": "משך",
+            "seed": "זרע",
+            "loop": "לולאה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "generation_id": "מזהה יצירה"
+        },
+        "description": "מייצר וידאו מרמז טקסט באמצעות מודל Ray3.2 של Luma."
+    },
+    "LumaRay32ImageToVideoNode": {
+        "title": "Luma Ray 3.2 תמונה לוידאו",
+        "inputs": {
+            "start_frame": "פריים התחלתי",
+            "end_frame": "פריים סופי",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "resolution": "רזולוציה",
+            "loop": "לולאה",
+            "seed": "זרע אקראי",
+            "generate_after_control": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "video": "וידאו",
+            "generation_id": "מזהה יצירה"
+        },
+        "description": "מייצר וידאו מפריים התחלתי ו/או סופי באמצעות מודל Ray3.2 של Luma. יצירה עוגנת-תמונה היא תמיד 5 שניות."
+    },
+    "LumaRay32KeyframesToVideoNode": {
+        "title": "Luma Ray 3.2 פריימי מפתח לוידאו",
+        "inputs": {
+            "keyframes": "פריימי מפתח",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "resolution": "רזולוציה",
+            "duration": "משך זמן",
+            "seed": "זרע",
+            "generate_after_control": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "generation_id": "מזהה יצירה"
+        },
+        "description": "המרת פריימי מפתח לוידאו"
+    },
+    "LumaRay32VideoEditNode": {
+        "title": "Luma Ray 3.2 עריכת וידאו",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "resolution": "רזולוציה",
+            "strength": "עוצמה",
+            "seed": "זרע",
+            "generate_after_control": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "generation_id": "מזהה יצירה"
+        },
+        "description": "בצע רנדור מחדש של וידאו קיים בהתאם לרמז חדש (עיצוב מחדש, תאורה מחדש, הוספה או הסרה של אלמנטים) תוך שמירה על הפעולה המקורית, בעזרת LumaRay3.2. הווידאו המקורי באורך עד 18 שניות; הווידאו בעריכה שומר על אורך המקור."
+    },
+    "LumaRay32VideoReframeNode": {
+        "title": "Luma Ray 3.2 מסגור וידאו מחדש",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "strength": "עוצמה",
+            "seed": "זרע",
+            "generate_after_control": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "generation_id": "מזהה יצירה"
+        },
+        "description": "שנה את יחס הרוחב-גובה של וידאו קיים כדי למלא את אזורי הקנבס החדשים שנחשפו, בעזרת LumaRay3.2. הווידאו המקורי באורך עד 30 שניות. החיוב הוא לכל שניית פלט."
+    },
+    "LumaRay32ExtendVideoNode": {
+        "title": "Luma Ray 3.2 הארכת וידאו",
+        "inputs": {},
+        "widgets": {
+            "source_generation_id": "מזהה יצירת מקור",
+            "direction": "כיוון",
+            "loop": "לולאה",
+            "prompt": "פרומפט",
+            "resolution": "רזולוציה",
+            "seed": "זרע",
+            "generate_after_control": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "VIDEO": "וידאו",
+            "generation_id": "מזהה יצירה"
+        },
+        "description": "הרח קדימה את יצירת ה-Ray3.2 הקודמת (המשך אחריה) או הרח אחורה (הקדם לפניה). חבר את פלט מזהה יצירת המקור של צומת LumaRay3.2 הקודם. ההרחבה היא תמיד 5 שניות."
+    },
+    "HeyGenTalkingPhotoNode": {
+        "title": "HeyGen תמונה מדברת",
+        "inputs": {
+            "image": "תמונה",
+            "speech_source": "מקור הדיבור",
+            "speech_text": "טקסט דיבור"
+        },
+        "widgets": {
+            "speech_source": "מקור הדיבור",
+            "voice": "דיבור",
+            "custom_voice_id": "מזהה דיבור מותאם",
+            "voice_speed": "מהירות דיבור",
+            "resolution": "רזולוציה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "expressiveness": "ביטוי",
+            "seed": "זרע",
+            "speech_text": "טקסט דיבור"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "הנפש כל תמונת אדם לוידאו שיחה בסנכרון שפתיים (HeyGen Avatar IV). ניתן להנעה באמצעות תסריט טקסט או אודיו מותאם."
+    },
+    "HeyGenAvatarVideoNode": {
+        "title": "HeyGen וידאו אווטאר דינמי",
+        "inputs": {},
+        "widgets": {
+            "engine": "מנוע",
+            "avatar": "אווטאר",
+            "speech source": "מקור הדיבור",
+            "voice": "דיבור",
+            "custom_voice_id": "מזהה דיבור מותאם",
+            "voice_speed": "מהירות דיבור",
+            "custom_avatar_id": "מזהה אווטאר מותאם",
+            "resolution": "רזולוציה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "background_color": "צבע רקע",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "מייצר וידאו של מצגת מדברת מתוך דמות וירטואלית של HeyGen. כולל את הדמויות הווירטואליות הפופולריות ביותר של HeyGen; כל מזהה מראה יכול לשמש כתיעדוף הגדרה."
+    },
+    "HeyGenCreateAvatarNode": {
+        "title": "HeyGen יצירת אווטאר",
+        "inputs": {
+            "ref_image_1": "תמונת הפניה 1"
+        },
+        "widgets": {
+            "source": "קובץ מקור"
+        },
+        "outputs": {
+            "avatar_id": "מזהה אווטאר",
+            "preview": "תמונת תצוגה מקדימה"
+        },
+        "description": "ליצירת אווטאר בהתבסס על תמונת מקור ופרומפט"
+    },
+    "HeyGenVideoTranslateNode": {
+        "title": "HeyGen תרגום וידאו",
+        "inputs": {
+            "video": "וידאו"
+        },
+        "widgets": {
+            "output_language": "שפת פלט",
+            "mode": "מצב",
+            "translate_audio_only": "תרגם אודיו בלבד",
+            "speaker_count": "מספר דוברים",
+            "seed": "זרע אקראי"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "צומת תרגום וידאו של HeyGen"
+    },
+    "MinimaxHailuo03TextToVideoNode": {
+        "title": "MiniMax Hailuo H3 טקסט לוידאו",
+        "inputs": {},
+        "widgets": {
+            "model": "מודל",
+            "model_prompt": "פרומפט מודל",
+            "resolution": "רזולוציה",
+            "ratio": "יחס",
+            "seed": "זרע",
+            "watermark": "סימן מים"
+        },
+        "outputs": {},
+        "description": "מייצר וידאו מפרומפט טקסט באמצעות מודל MiniMaxH3."
+    },
+    "MinimaxHailuo03FirstLastFrameNode": {
+        "title": "MiniMax Hailuo H3 פריים ראשון ואחרון לוידאו",
+        "inputs": {
+            "first_frame": "פריים ראשון",
+            "last_frame": "פריים אחרון"
+        },
+        "widgets": {
+            "model": "מודל",
+            "model_prompt": "פרומפט מודל",
+            "resolution": "רזולוציה",
+            "duration": "משך זמן",
+            "seed": "זרע אקראי",
+            "generate_control": "שליטה ביצירה",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "יצירת וידאו מפריים ראשון ואחרון"
+    },
+    "MinimaxHailuo03ReferenceNode": {
+        "title": "MiniMax Hailuo H3 הפניה לוידאו",
+        "inputs": {
+            "image_1": "תמונה1",
+            "video_1": "וידאו1",
+            "audio_1": "אודיו1"
+        },
+        "widgets": {
+            "model": "מודל",
+            "prompt": "פרומפט",
+            "resolution": "רזולוציה",
+            "ratio": "יחס",
+            "seed": "זרע אקראי",
+            "watermark": "סימן מים"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "מייצר וידאו חדש תוך שימוש בתמונה, וידאו ואודיו כהפניות באמצעות מודל MiniMax H3."
+    },
+    "SyncLipSyncNode": {
+        "title": "sync.so סנכרון תנועות פה",
+        "inputs": {
+            "video": "וידאו",
+            "audio": "אודיו"
+        },
+        "widgets": {
+            "seed": "זרע אקראי",
+            "generate_after_control": "שליטה לאחר יצירה",
+            "model": "מודל",
+            "sync_mode": "מצב סנכרון",
+            "speaker_selection": "בחירת דובר",
+            "speaker_frame": "פריים של דובר",
+            "speaker_x": "קואורדינטת X של דובר",
+            "speaker_y": "קואורדינטת Y של דובר"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "סנכרון אודיו עם תנועות הפה בווידאו"
+    },
+    "SyncTalkingImageNode": {
+        "title": "sync.so תמונה מדברת",
+        "inputs": {
+            "image": "תמונה",
+            "audio": "אודיו"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "seed": "זרע",
+            "generate_after_control": "שליטה לאחר יצירה",
+            "model": "מודל",
+            "speaker_selection": "בחירת דובר",
+            "speaker_x": "קואורדינטת X של דובר",
+            "speaker_y": "קואורדינטת Y של דובר",
+            "auto_downscale": "דגימה מטה אוטומטית"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "שילוב תמונה ואודיו ליצירת תמונה מדברת"
+    },
+    "IdeogramPImage": {
+        "title": "תמונת Ideogram P",
+        "inputs": {
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "quality": "איכות",
+            "resolution": "רזולוציה",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "prompt_upsampling": "דגימת-על של הפרומפט",
+            "seed": "זרע",
+            "generate_after_control": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "final_prompt": "הפרומפט הסופי"
+        },
+        "description": "צומת ליצירת תמונות"
+    },
+    "ByteDanceSeedAudio": {
+        "title": "בייטדיאנס אודיו Seed 1.0",
+        "inputs": {},
+        "widgets": {
+            "text_prompt": "רמז טקסט",
+            "reference_mode": "מצב הפניה",
+            "sample_rate": "קצב דגימה",
+            "speech_rate": "מהירות דיבור",
+            "loudness_rate": "עוצמת קול",
+            "pitch_rate": "גובה צליל",
+            "seed": "זרע",
+            "model": "מודל",
+            "generate_after_control": "שליטה לאחר יצירה"
+        },
+        "outputs": {
+            "AUDIO": "וידאו"
+        },
+        "description": "צומת אודיו Seed של בייטדיאנס 1.0"
+    },
+    "HeyGenTextToSpeechNode": {
+        "title": "HeyGen טקסט לדיבור",
+        "inputs": {},
+        "widgets": {
+            "text": "טקסט",
+            "voice": "דיבור",
+            "custom_voice_id": "מזהה דיבור מותאם",
+            "speed": "מהירות דיבור",
+            "ssml": "תגי שליטה SSML",
+            "seed": "זרע",
+            "generate_after_control": "שליטה לאחר יצירה"
+        },
+        "outputs": {},
+        "description": "צומת שהופך טקסט לדיבור"
+    },
+    "ComfyCloudMiniMaxH3TextToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3 טקסט לוידאו",
+        "inputs": {
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "seed": "זרע אקראי",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "duration_seconds": "משך (שניות)"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "קבוצת הצמתים של Comfy Cloud עדיין מתעדכנת באופן שוטף: ייתכן שייאפשרו או יוסרו אפשרויות, וייתכן שתזרימי עבודה מסוימים יושבתו. השתמש ב-MiniMax H3 כדי ליצור וידאו עם פסק-קול תואם מרמז טקסט. התמונה והאודיו מגיעים מאותו תהליך עיבוד, ולא מדיבוב בדיעבד.  \n פועל על ה-GPU של Comfy Cloud, חיוב לפי משך ריצה, 0.001295 דולר לכל שניית GPU (0.27 נקודות זכות).  \n תשלום בנקודות זכות, ללא מנוי לשירות ענן."
+    },
+    "ComfyCloudMiniMaxH3ImageToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3 תמונה לוידאו",
+        "inputs": {
+            "first_frame": "פריים ראשון",
+            "prompt": "פרומפט"
+        },
+        "widgets": {
+            "seed": "זרע אקראי",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "duration_seconds": "משך זמן"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "קבוצת הצמתים של Comfy Cloud עדיין מתעדכנת באופן שוטף: ייתכן שייאפשרו או יוסרו אפשרויות, וייתכן שתזרימי עבודה מסוימים יושבתו. השתמש ב-MiniMax H3 כדי ליצור וידאו עם פסק-קול תואם מרמז טקסט. התמונה והאודיו מגיעים מאותו תהליך עיבוד, ולא מדיבוב בדיעבד.  \n פועל על ה-GPU של Comfy Cloud, חיוב לפי משך ריצה, 0.001295 דולר לכל שניית GPU (0.27 נקודות זכות).  \n תשלום בנקודות זכות, ללא מנוי לשירות ענן."
+    },
+    "ComfyCloudMiniMaxH3FirstLastFrameToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3 פריים ראשון ואחרון לוידאו",
+        "inputs": {
+            "first_frame": "פריים ראשון",
+            "last_frame": "פריים אחרון"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "seed": "זרע אקראי",
+            "aspect_ratio": "יחס רוחב-גובה",
+            "resolution": "רזולוציה",
+            "duration_seconds": "משך זמן (שניות)"
+        },
+        "outputs": {
+            "VIDEO": "וידאו"
+        },
+        "description": "קבוצת הצמתים של Comfy Cloud עדיין מתעדכנת באופן שוטף: ייתכן שייאפשרו או יוסרו אפשרויות, וייתכן שתזרימי עבודה מסוימים יושבתו. השתמש ב-MiniMax H3 כדי ליצור וידאו עם פסק-קול תואם מרמז טקסט. התמונה והאודיו מגיעים מאותו תהליך עיבוד, ולא מדיבוב בדיעבד.  \n פועל על ה-GPU של Comfy Cloud, חיוב לפי משך ריצה, 0.001295 דולר לכל שניית GPU (0.27 נקודות זכות).  \n תשלום בנקודות זכות, ללא מנוי לשירות ענן."
+    },
+    "TripoConversionNode": {
+        "title": "המרת מודל Tripo",
+        "inputs": {
+            "original model task id": "מזהה משימת מודל מקורי",
+            "original_model_task_id": "מזהה משימת מודל מקורי"
+        },
+        "widgets": {
+            "format": "פורמט",
+            "face_limittexture_size": "מגבלת גודל מרקם פאות",
+            "face_limit": "מגבלת פאות",
+            "texture_size": "גודל מרקם",
+            "texture_format": "פורמט מרקם",
+            "quad": "רשת מרובעת"
+        },
+        "outputs": {
+            "model_file": "קובץ מודל",
+            "model task_id": "מזהה משימת מודל",
+            "model_task_id": "מזהה משימת מודל"
+        }
+    }
+}

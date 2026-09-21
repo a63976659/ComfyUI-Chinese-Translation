@@ -1,0 +1,543 @@
+{
+    "Context Big (rgthree)": {
+        "title": "הקשר (גדול)",
+        "inputs": {
+            "base_ctx": "הקשר",
+            "model": "מודל",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "תנאי חיובי",
+            "negative": "תנאי שלילי",
+            "latent": "Latent",
+            "images": "תמונה",
+            "seed": "גרעין",
+            "steps": "צעדים",
+            "step_refiner": "צעדי Refiner",
+            "cfg": "CFG",
+            "ckpt_name": "שם מודל",
+            "sampler": "דוגם",
+            "scheduler": "מתזמר",
+            "clip_width": "רוחב CLIP",
+            "clip_height": "גובה CLIP",
+            "text_pos_g": "טקסט חיובי G",
+            "text_pos_l": "טקסט חיובי L",
+            "text_neg_g": "טקסט שלילי G",
+            "text_neg_l": "טקסט שלילי L",
+            "mask": "מסיכה",
+            "control_net": "ControlNet"
+        },
+        "outputs": {
+            "CONTEXT": "הקשר",
+            "MODEL": "מודל",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "תנאי חיובי",
+            "NEGATIVE": "תנאי שלילי",
+            "LATENT": "Latent",
+            "IMAGE": "תמונה",
+            "SEED": "גרעין",
+            "STEPS": "צעדים",
+            "STEP_REFINER": "צעדי Refiner",
+            "CFG": "CFG",
+            "CKPT_NAME": "שם מודל",
+            "SAMPLER": "דוגם",
+            "SCHEDULER": "מתזמר",
+            "CLIP_WIDTH": "רוחב CLIP",
+            "CLIP_HEIGHT": "גובה CLIP",
+            "TEXT_POS_G": "טקסט חיובי G",
+            "TEXT_POS_L": "טקסט חיובי L",
+            "TEXT_NEG_G": "טקסט שלילי G",
+            "TEXT_NEG_L": "טקסט שלילי L",
+            "MASK": "מסיכה",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+    "Context (rgthree)": {
+        "title": "הקשר",
+        "inputs": {
+            "base_ctx": "הקשר",
+            "model": "מודל",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "תנאי חיובי",
+            "negative": "תנאי שלילי",
+            "latent": "Latent",
+            "images": "תמונה",
+            "seed": "גרעין"
+        },
+        "outputs": {
+            "CONTEXT": "הקשר",
+            "MODEL": "מודל",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "תנאי חיובי",
+            "NEGATIVE": "תנאי שלילי",
+            "LATENT": "Latent",
+            "IMAGE": "תמונה",
+            "SEED": "גרעין"
+        }
+    },
+    "Context Switch (rgthree)": {
+        "title": "החלפת הקשר",
+        "inputs": {
+            "ctx_01": "הקשר_01",
+            "ctx_02": "הקשר_02",
+            "ctx_03": "הקשר_03",
+            "ctx_04": "הקשר_04",
+            "ctx_05": "הקשר_05"
+        },
+        "outputs": {
+            "CONTEXT": "הקשר",
+            "MODEL": "מודל",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "תנאי חיובי",
+            "NEGATIVE": "תנאי שלילי",
+            "LATENT": "Latent",
+            "IMAGE": "תמונה",
+            "SEED": "גרעין"
+        }
+    },
+    "Context Switch Big (rgthree)": {
+        "title": "החלפת הקשר (גדול)",
+        "inputs": {
+            "ctx_01": "הקשר_01",
+            "ctx_02": "הקשר_02",
+            "ctx_03": "הקשר_03",
+            "ctx_04": "הקשר_04",
+            "ctx_05": "הקשר_05"
+        },
+        "outputs": {
+            "CONTEXT": "הקשר",
+            "MODEL": "מודל",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "תנאי חיובי",
+            "NEGATIVE": "תנאי שלילי",
+            "LATENT": "Latent",
+            "IMAGE": "תמונה",
+            "STEPS": "צעדים",
+            "SEED": "גרעין",
+            "STEP_REFINER": "צעדי Refiner",
+            "CFG": "CFG",
+            "CKPT_NAME": "שם מודל",
+            "SAMPLER": "דוגם",
+            "SCHEDULER": "מתזמר",
+            "CLIP_WIDTH": "רוחב CLIP",
+            "CLIP_HEIGHT": "גובה CLIP",
+            "TEXT_POS_G": "טקסט חיובי G",
+            "TEXT_POS_L": "טקסט חיובי L",
+            "TEXT_NEG_G": "טקסט שלילי G",
+            "TEXT_NEG_L": "טקסט שלילי L",
+            "MASK": "מסיכה",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+    "Display Int (rgthree)": {
+        "title": "הצג מספר שלם",
+        "widgets": {
+            "input": "קלט"
+        }
+    },
+    "Display Any (rgthree)": {
+        "title": "הצג כל־הוא",
+        "inputs": {
+            "source": "קלט"
+        }
+    },
+    "Lora Loader Stack (rgthree)": {
+        "title": "מטען LoRA בערימה",
+        "inputs": {
+            "model": "מודל",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "lora_01": "LoRA_01",
+            "lora_02": "LoRA_02",
+            "lora_03": "LoRA_03",
+            "lora_04": "LoRA_04",
+            "strength_01": "חוזק_01",
+            "strength_02": "חוזק_02",
+            "strength_03": "חוזק_03",
+            "strength_04": "חוזק_04"
+        },
+        "outputs": {
+            "MODEL": "מודל",
+            "CLIP": "CLIP"
+        }
+    },
+    "Seed (rgthree)": {
+        "title": "גרעין אקראי",
+        "widgets": {
+            "🎲 Randomize Each Time": "🎲 אקראי בכל פעם",
+            "🎲 New Fixed Random": "🎲 אקראי קבוע חדש",
+            "♻️ (Use Last Queued Seed)": "♻️ השתמש בגרעין בתור האחרון",
+            "seed": "גרעין"
+        },
+        "outputs": {
+            "SEED": "גרעין"
+        }
+    },
+    "Image Inset Crop (rgthree)": {
+        "title": "חיתוך פנימי של תמונה",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "measurement": "מצב",
+            "bottom": "למטה",
+            "top": "למעלה",
+            "left": "שמאל",
+            "right": "ימין"
+        },
+        "outputs": {
+            "IMAGE": "תמונה"
+        }
+    },
+    "Power Prompt (rgthree)": {
+        "title": "פרומפט",
+        "inputs": {
+            "opt_model": "מודל",
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "insert_lora": "הוסף LoRA",
+            "insert_embedding": "הוסף הטמעה",
+            "insert_saved": "הוסף מותאם"
+        },
+        "outputs": {
+            "CONDITIONING": "תנאי",
+            "MODEL": "מודל",
+            "CLIP": "CLIP",
+            "TEXT": "טקסט"
+        }
+    },
+    "Power Prompt - Simple (rgthree)": {
+        "title": "פרומפט (פשוט)",
+        "inputs": {
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt": "פרומפט",
+            "insert_embedding": "הוסף הטמעה",
+            "insert_saved": "הוסף מותאם"
+        },
+        "outputs": {
+            "CONDITIONING": "תנאי",
+            "TEXT": "טקסט"
+        }
+    },
+    "KSampler Config (rgthree)": {
+        "title": "הגדרות KSampler",
+        "widgets": {
+            "steps_total": "סה״כ צעדים",
+            "refiner_step": "צעדי Refiner",
+            "cfg": "CFG",
+            "sampler": "דוגם",
+            "sampler_name": "שם הדוגם",
+            "scheduler": "מתזמר"
+        },
+        "outputs": {
+            "STEPS": "צעדים",
+            "REFINER_STEP": "צעדי Refiner",
+            "CFG": "CFG",
+            "SAMPLER": "דוגם",
+            "SCHEDULER": "מתזמר"
+        }
+    },
+    "SDXL Empty Latent Image (rgthree)": {
+        "title": "תמונת Latent ריקה SDXL",
+        "widgets": {
+            "dimensions": "ממדים",
+            "clip_scale": "קנה מידה CLIP",
+            "batch_size": "גודל אצווה"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "CLIP_WIDTH": "רוחב CLIP",
+            "CLIP_HEIGHT": "גובה CLIP"
+        }
+    },
+    "SDXL Power Prompt - Positive (rgthree)": {
+        "title": "פרומפט SDXL (חיובי)",
+        "inputs": {
+            "opt_model": "מודל",
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt_g": "פרומפט G",
+            "prompt_l": "פרומפט L",
+            "opt_clip_width": "רוחב CLIP",
+            "opt_clip_height": "גובה CLIP",
+            "insert_lora": "הוסף LoRA",
+            "insert_embedding": "הוסף הטמעה",
+            "insert_saved": "הוסף מותאם",
+            "target_width": "רוחב יעד",
+            "target_height": "גובה יעד",
+            "crop_width": "רוחב חיתוך",
+            "crop_height": "גובה חיתוך"
+        },
+        "outputs": {
+            "CONDITIONING": "תנאי",
+            "MODEL": "מודל",
+            "CLIP": "CLIP",
+            "TEXT_G": "טקסט G",
+            "TEXT_L": "טקסט L"
+        }
+    },
+    "SDXL Power Prompt - Simple / Negative (rgthree)": {
+        "title": "פרומפט SDXL (פשוט/שלילי)",
+        "inputs": {
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt_g": "פרומפט G",
+            "prompt_l": "פרומפט L",
+            "opt_clip_width": "רוחב CLIP",
+            "opt_clip_height": "גובה CLIP",
+            "insert_lora": "הוסף LoRA",
+            "insert_embedding": "הוסף הטמעה",
+            "insert_saved": "הוסף מותאם",
+            "target_width": "רוחב יעד",
+            "target_height": "גובה יעד",
+            "crop_width": "רוחב חיתוך",
+            "crop_height": "גובה חיתוך"
+        },
+        "outputs": {
+            "CONDITIONING": "תנאי",
+            "TEXT_G": "טקסט G",
+            "TEXT_L": "טקסט L"
+        }
+    },
+    "Any Switch (rgthree)": {
+        "title": "בורר כל־הוא",
+        "inputs": {
+            "any_01": "קלט_01",
+            "any_02": "קלט_02",
+            "any_03": "קלט_03",
+            "any_04": "קלט_04",
+            "any_05": "קלט_05"
+        },
+        "outputs": {
+            "*": "פלט"
+        }
+    },
+    "Context Merge (rgthree)": {
+        "title": "מיזוג הקשר",
+        "inputs": {
+            "ctx_01": "הקשר_01",
+            "ctx_02": "הקשר_02",
+            "ctx_03": "הקשר_03",
+            "ctx_04": "הקשר_04",
+            "ctx_05": "הקשר_05"
+        },
+        "outputs": {
+            "CONTEXT": "הקשר",
+            "MODEL": "מודל",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "תנאי חיובי",
+            "NEGATIVE": "תנאי שלילי",
+            "LATENT": "Latent",
+            "IMAGE": "תמונה",
+            "STEPS": "צעדים"
+        }
+    },
+    "Context Merge Big (rgthree)": {
+        "title": "מיזוג הקשר (גדול)",
+        "inputs": {
+            "ctx_01": "הקשר_01",
+            "ctx_02": "הקשר_02",
+            "ctx_03": "הקשר_03",
+            "ctx_04": "הקשר_04",
+            "ctx_05": "הקשר_05"
+        },
+        "outputs": {
+            "CONTEXT": "הקשר",
+            "MODEL": "מודל",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "תנאי חיובי",
+            "NEGATIVE": "תנאי שלילי",
+            "LATENT": "Latent",
+            "IMAGE": "תמונה",
+            "STEPS": "צעדים",
+            "SEED": "גרעין",
+            "STEP_REFINER": "צעדי Refiner",
+            "CFG": "CFG",
+            "CKPT_NAME": "שם מודל",
+            "SAMPLER": "דוגם",
+            "SCHEDULER": "מתזמר",
+            "CLIP_WIDTH": "רוחב CLIP",
+            "CLIP_HEIGHT": "גובה CLIP",
+            "TEXT_POS_G": "טקסט חיובי G",
+            "TEXT_POS_L": "טקסט חיובי L",
+            "TEXT_NEG_G": "טקסט שלילי G",
+            "TEXT_NEG_L": "טקסט שלילי L",
+            "MASK": "מסיכה",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+    "Reroute (rgthree)": {
+        "title": "נתיב מחדש"
+    },
+    "Node Collector (rgthree)": {
+        "title": "אוסף צמתים"
+    },
+    "Fast Muter (rgthree)": {
+        "title": "השתקת צמתים",
+        "outputs": {
+            "OPT_CONNECTION": "חיבור אופציונלי"
+        }
+    },
+    "Fast Bypasser (rgthree)": {
+        "title": "דילוג על צמתים",
+        "outputs": {
+            "OPT_CONNECTION": "חיבור אופציונלי"
+        }
+    },
+    "Mute / Bypass Repeater (rgthree)": {
+        "title": "השתקה/דילוג צמתים (חוזר)",
+        "outputs": {
+            "OPT_CONNECTION": "חיבור אופציונלי"
+        }
+    },
+    "Mute / Bypass Relay (rgthree)": {
+        "title": "השתקה/דילוג צמתים (ממסר)",
+        "outputs": {
+            "OPT_CONNECTION": "חיבור אופציונלי"
+        }
+    },
+    "Fast Group Bypasser (rgthree)": {
+        "title": "דילוג על קבוצות",
+        "outputs": {
+            "OPT_CONNECTION": "חיבור אופציונלי"
+        }
+    },
+    "Fast Groups Bypasser (rgthree)": {
+        "title": "דילוג על קבוצות",
+        "outputs": {
+            "OPT_CONNECTION": "חיבור אופציונלי"
+        }
+    },
+    "Fast Actions Button (rgthree)": {
+        "title": "מקש פעולה",
+        "widgets": {
+            "🎬 Action!": "🎬 אקשן!"
+        }
+    },
+    "Bookmark (rgthree)": {
+        "title": "🔖 סימנייה",
+        "widgets": {
+            "shortcut_key": "קיצור מקלדת",
+            "zoom": "זום"
+        }
+    },
+    "Random Unmuter (rgthree)": {
+        "title": "הפעלה אקראית"
+    },
+    "Fast Groups Muter (rgthree)": {
+        "title": "השתקת קבוצות",
+        "outputs": {
+            "OPT_CONNECTION": "חיבור אופציונלי"
+        }
+    },
+    "Label (rgthree)": {
+        "title": "תווית"
+    },
+    "Image Comparer (rgthree)": {
+        "title": "השוואת תמונות",
+        "inputs": {
+            "image_a": "תמונה_A",
+            "image_b": "תמונה_B"
+        }
+    },
+    "Node Combiner (rgthree)": {
+        "title": "משלב צמתים",
+        "inputs": {
+            "image_a": "תמונה_A",
+            "image_b": "תמונה_B"
+        },
+        "outputs": {
+            "Output": "פלט",
+            "clip": "CLIP"
+        }
+    },
+    "Power Primitive (rgthree)": {
+        "title": "כלי רב־שימושי ערכים",
+        "inputs": {},
+        "widgets": {
+            "value": "ערך",
+            "type": "סוג"
+        },
+        "outputs": {
+            "INT": "מספר שלם",
+            "FLOAT": "מספר צף",
+            "BOOLEAN": "בוליאני",
+            "STRING": "מחרוזת"
+        }
+    },
+    "Power Puter (rgthree)": {
+        "title": "מחשבון עוצמה",
+        "inputs": {
+            "outputs": "פלט",
+            "STRING": "מחרוזת"
+        },
+        "widgets": {
+            "outputs": "פלט",
+            "STRING": "מחרוזת"
+        },
+        "outputs": {
+            "INT": "מספר שלם",
+            "FLOAT": "מספר צף",
+            "BOOLEAN": "בוליאני",
+            "STRING": "מחרוזת"
+        }
+    },
+    "Image or Latent Size (rgthree)": {
+        "title": "גודל תמונה או Latent",
+        "inputs": {
+            "input": "קלט"
+        },
+        "widgets": {
+            "STRING": "מחרוזת"
+        },
+        "outputs": {
+            "WIDTH": "רוחב",
+            "HEIGHT": "גובה"
+        }
+    },
+    "Image Resize (rgthree)": {
+        "title": "שינוי גודל תמונה",
+        "inputs": {
+            "image": "תמונה"
+        },
+        "widgets": {
+            "measurement": "מצב",
+            "width": "רוחב",
+            "height": "גובה",
+            "fit": "התאמה",
+            "method": "שיטה"
+        },
+        "outputs": {
+            "IMAGE": "תמונה",
+            "WIDTH": "רוחב",
+            "HEIGHT": "גובה"
+        }
+    },
+    "Power Lora Loader (rgthree)": {
+        "title": "טוען LoRA משקולות",
+        "inputs": {
+            "model": "מודל",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "➕ Add Lora": "➕ הוסף LoRA"
+        },
+        "outputs": {
+            "MODEL": "מודל",
+            "clip": "CLIP"
+        }
+    }
+}

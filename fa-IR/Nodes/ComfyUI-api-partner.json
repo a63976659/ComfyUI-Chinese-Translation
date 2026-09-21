@@ -1,0 +1,4810 @@
+{
+    "ClaudeNode": {
+        "title": "Anthropic Claude",
+        "inputs": {
+            "source": "مسیر مبدأ",
+            "image_1": "تصویر_۱"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "model": "مدل",
+            "max_tokens": "بیشینه توکن‌ها",
+            "temperature": "دما",
+            "reasoning_effort": "تلاش استنتاجی",
+            "seed": "بذر"
+        },
+        "outputs": {
+            "String": "رشته"
+        },
+        "description": "با استفاده از مدل Claude شرکت Anthropic پاسخ متنی تولید می‌کند. یک پرامپت متنی ارائه دهید و در صورت تمایل یک یا چند تصویر برای ساخت زمینه چندوجهی ضمیمه کنید."
+    },
+    "ByteDanceSeedNode": {
+        "title": "بایت‌دنس Seedance2.0",
+        "inputs": {
+            "video_1": "ویدیو_۱",
+            "image_1": "تصویر_۱"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "model": "مدل",
+            "temperature": "دما",
+            "seed": "بذر"
+        },
+        "outputs": {
+            "String": "رشته"
+        },
+        "description": "با استفاده از مدل Seed2.0 شرکت ByteDance پاسخ متنی تولید می‌کند. یک پرامپت متنی ارائه دهید و در صورت تمایل یک یا چند تصویر یا ویدیو برای غنی‌سازی زمینه چندوجهی ضمیمه کنید."
+    },
+    "ByteDance2ReferenceNodeV2": {
+        "title": "بایت‌دنس مرجع ویدیوی Seedance 2.5",
+        "inputs": {
+            "image_1": "تصویر۱",
+            "image_2": "تصویر۲",
+            "image_3": "تصویر۳",
+            "image_4": "تصویر۴",
+            "image_5": "تصویر۵",
+            "image_6": "تصویر۶",
+            "image_7": "تصویر۷",
+            "image_8": "تصویر۸",
+            "image_9": "تصویر۹",
+            "audio_1": "صوت۱",
+            "audio_2": "صوت۲",
+            "audio_3": "صوت۳",
+            "video_1": "ویدیو۱",
+            "video_2": "ویدیو۲",
+            "video_3": "ویدیو۳",
+            "asset_1": "دارایی۱",
+            "asset_2": "دارایی۲",
+            "asset_3": "دارایی۳"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "resolution": "وضوح",
+            "ratio": "نسبت ابعاد",
+            "generate_audio": "تولید صدا",
+            "duration": "مدت",
+            "task_type": "نوع وظیفه",
+            "auto_downscale": "کوچک‌نمایی خودکار",
+            "auto_upscale": "بزرگ‌نمایی خودکار",
+            "output_format": "قالب خروجی",
+            "seed": "بذر",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "String": "رشته"
+        },
+        "description": "با Seedance2.5 یا 2.0 ویدیو تولید، ویرایش یا گسترش دهید، با پشتیبانی از تصویر، ویدیو و صدای مرجع. از مراجع چندوجهی، ویرایش ویدیو و گسترش ویدیو پشتیبانی می‌کند."
+    },
+    "ByteDanceVideoEnhanceNode": {
+        "title": "بایت‌دنس بهبود ویدیوی vCube",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "tool_version": "نسخهٔ ابزار",
+            "scene": "صحنه",
+            "enhance_style": "سبک بهبود",
+            "resolution": "وضوح",
+            "fps": "نرخ فریم",
+            "bitrate_level": "سطح نرخ بیت"
+        },
+        "outputs": {},
+        "description": "با استفاده از vCube بایت‌دنس ویدیو را بزرگ‌نمایی و ترمیم کنید: ابروضوح تا 8K پشتیبانی می‌شود، فشار، حذف artifactها و نویز، بهبود رنگ و وضوح، همراه با درون‌یابی فریم اختیاری."
+    },
+    "GeminiNode": {
+        "title": "گوگل Gemini",
+        "inputs": {
+            "images": "گروه تصویر",
+            "audio": "صوت",
+            "video": "ویدیو",
+            "files": "فایل‌های ورودی Gemini",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "ratio": "نسبت ابعاد",
+            "duration": "مدت",
+            "model": "مدل"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "STRING": "رشته"
+        }
+    },
+    "GeminiNodeV2": {
+        "title": "گوگل GeminiV2",
+        "inputs": {
+            "image_1": "تصویر۱",
+            "image_2": "تصویر۲",
+            "image_3": "تصویر۳",
+            "image_4": "تصویر۴",
+            "image_5": "تصویر۵",
+            "image_6": "تصویر۶",
+            "image_7": "تصویر۷",
+            "image_8": "تصویر۸",
+            "image_9": "تصویر۹",
+            "video_1": "ویدیو۱",
+            "audio_1": "صوت۱",
+            "files": "فایل‌های ورودی Gemini"
+        },
+        "widgets": {
+            "model": "مدل",
+            "thinking_level": "سطح تفکر",
+            "temperature": "دما",
+            "max_output_tokens": "بیشینه توکن‌های خروجی",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "duration": "مدت"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "STRING": "رشته"
+        }
+    },
+    "GeminiVideoOmniV2": {
+        "title": "گوگل ویدیوی Gemini Omni",
+        "inputs": {
+            "image_1": "تصویر۱",
+            "image_2": "تصویر۲",
+            "image_3": "تصویر۳",
+            "image_4": "تصویر۴",
+            "image_5": "تصویر۵",
+            "image_6": "تصویر۶",
+            "image_7": "تصویر۷",
+            "image_8": "تصویر۸",
+            "image_9": "تصویر۹",
+            "video_1": "ویدیو۱",
+            "video_2": "ویدیو۲",
+            "video_3": "ویدیو۳"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "aspect_ratio": "نسبت ابعاد",
+            "duration": "مدت",
+            "task_type": "نوع وظیفه",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "STRING": "رشته"
+        }
+    },
+    "GeminiInputFiles": {
+        "title": "گوگل فایل‌های ورودی Gemini",
+        "inputs": {
+            "GEMINI_INPUT_FILES": "فایل‌های ورودی Gemini",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "file": "فایل",
+            "model": "مدل"
+        },
+        "outputs": {
+            "GEMINI_INPUT_FILES": "فایل‌های ورودی Gemini",
+            "STRING": "رشته"
+        }
+    },
+    "OpenAIChatNode": {
+        "title": "گفتگوی OpenAI",
+        "inputs": {
+            "images": "گروه تصویر",
+            "audio": "صوت",
+            "advanced_options": "گزینه‌های پیشرفته",
+            "files": "فایل ورودی OpenAI",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "persist_context": "زمینهٔ پایدار",
+            "duration": "مدت",
+            "model": "مدل"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "STRING": "رشته"
+        }
+    },
+    "OpenAIInputFiles": {
+        "title": "فایل ورودی گفتگوی OpenAI",
+        "inputs": {
+            "OPENAI_INPUT_FILES": "فایل ورودی OpenAI",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "file": "فایل",
+            "model": "مدل"
+        },
+        "outputs": {
+            "OPENAI_INPUT_FILES": "فایل ورودی OpenAI",
+            "STRING": "رشته"
+        }
+    },
+    "OpenAIChatConfig": {
+        "title": "گزینه‌های پیشرفتهٔ گفتگوی OpenAI",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "truncation": "برش",
+            "max_output_tokens": "بیشینه توکن‌های خروجی",
+            "quality": "کیفیت",
+            "n": "تعداد",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "گزینه‌های پیشرفته",
+            "string": "رشته"
+        }
+    },
+    "OpenRouterLLMNode": {
+        "title": "مدل زبانی بزرگ OpenRouter",
+        "inputs": {
+            "image_1": "تصویر۱",
+            "image_2": "تصویر۲",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "reasoning_effort": "تلاش استنتاجی زیاد",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "گزینه‌های پیشرفته",
+            "string": "رشته"
+        }
+    },
+    "BeebleSwitchXVideoEdit": {
+        "title": "ویرایش ویدیوی Beeble SwitchX",
+        "inputs": {
+            "video": "ویدیو",
+            "reference_image": "تصویر مرجع"
+        },
+        "widgets": {
+            "prompt": "کلمهٔ پرامپت",
+            "alpha_mode": "حالت Alpha",
+            "max_resolution": "بیشینه وضوح",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "video": "ویدیو",
+            "alpha": "Alpha"
+        },
+        "description": "با استفاده از BeebleSwitchX یک ویدیو را ویرایش کنید. می‌توان هر عنصری از صحنه (پس‌زمینه، نورپردازی، لباس) را عوض کرد در حالی که پیکسل‌ها و حرکت سوژهٔ اصلی حفظ می‌شوند. یک تصویر مرجع و/یا پرامپت متنی برای توصیف ظاهر جدید ارائه دهید. تا ۲۴۰ فریم با حداکثر وضوح حدود 2.77MP برای هر فریم."
+    },
+    "BriaRemoveVideoBackground": {
+        "title": "حذف پس‌زمینهٔ ویدیو Bria",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "background_color": "رنگ پس‌زمینه",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        }
+    },
+    "BriaVideoGreenScreen": {
+        "title": "پردهٔ سبز ویدیویی Bria",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "green_shade": "رنگ پردهٔ سبز",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "با استفاده از Bria پس‌زمینهٔ ویدیو را با یک صفحهٔ کرم‌رنگ یکدست جایگزین کنید."
+    },
+    "BriaTransparentVideoBackground": {
+        "title": "حذف پس‌زمینهٔ ویدیو Bria (شفاف)",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "images": "تصویر",
+            "mask": "ماسک"
+        },
+        "description": "با استفاده از Bria پس‌زمینه را از ویدیو حذف کنید و فریم‌های بریده‌شده و ماسک Alpha را خارج دهید. هر دو را به گرهٔ ترکیب وصل کنید یا آن‌ها را در یک WEBM ذخیره کنید تا ویدیوی شفاف ساخته شود."
+    },
+    "ByteDanceTextToVideoNode": {
+        "title": "بایت‌دنس تولید ویدیو از متن",
+        "inputs": {
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "aspect_ratio": "نسبت ابعاد",
+            "duration": "مدت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "camera_fixed": "ثابت نگه‌داشتن دوربین",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "video": "ویدیو",
+            "VIDEO": "ویدیو"
+        }
+    },
+    "ByteDanceImageToVideoNode": {
+        "title": "بایت‌دنس تولید ویدیو از تصویر",
+        "inputs": {
+            "image": "تصویر",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "aspect_ratio": "نسبت ابعاد",
+            "duration": "مدت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "camera_fixed": "ثابت نگه‌داشتن دوربین",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "video": "ویدیو",
+            "VIDEO": "ویدیو"
+        }
+    },
+    "ByteDanceFirstLastFrameNode": {
+        "title": "بایت‌دنس تبدیل فریم اول و آخر به ویدیو",
+        "inputs": {
+            "first_frame": "تصویر فریم اول",
+            "last_frame": "تصویر فریم آخر",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "aspect_ratio": "نسبت ابعاد",
+            "duration": "مدت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "camera_fixed": "ثابت نگه‌داشتن دوربین",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "video": "ویدیو",
+            "VIDEO": "ویدیو"
+        }
+    },
+    "ByteDanceImageReferenceNode": {
+        "title": "بایت‌دنس تبدیل تصویر مرجع به ویدیو",
+        "inputs": {
+            "images": "گروه تصویر",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "aspect_ratio": "نسبت ابعاد",
+            "duration": "مدت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "camera_fixed": "ثابت نگه‌داشتن دوربین",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "video": "ویدیو",
+            "VIDEO": "ویدیو"
+        }
+    },
+    "ByteDance2TextToVideoNode": {
+        "title": "بایت‌دنس 2.0 تولید ویدیو از متن",
+        "inputs": {
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "ratio": "نسبت ابعاد",
+            "generate_audio": "تولید صدا",
+            "duration": "مدت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "camera_fixed": "ثابت نگه‌داشتن دوربین",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "video": "ویدیو",
+            "VIDEO": "ویدیو"
+        }
+    },
+    "ByteDance2FirstLastFrameNode": {
+        "title": "بایت‌دنس 2.0 تبدیل فریم اول و آخر به ویدیو",
+        "inputs": {
+            "first_frame": "تصویر فریم اول",
+            "last_frame": "تصویر فریم آخر",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "ratio": "نسبت ابعاد",
+            "generate_audio": "تولید صدا",
+            "duration": "مدت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "video": "ویدیو",
+            "VIDEO": "ویدیو"
+        }
+    },
+    "ByteDance2ReferenceNode": {
+        "title": "بایت‌دنس 2.0 تبدیل مرجع به ویدیو",
+        "inputs": {
+            "image_1": "تصویر۱",
+            "image_2": "تصویر۲",
+            "image_3": "تصویر۳",
+            "image_4": "تصویر۴",
+            "image_5": "تصویر۵",
+            "image_6": "تصویر۶",
+            "image_7": "تصویر۷",
+            "image_8": "تصویر۸",
+            "image_9": "تصویر۹",
+            "video_1": "ویدیو۱",
+            "video_2": "ویدیو۲",
+            "video_3": "ویدیو۳",
+            "audio_1": "صوت۱",
+            "audio_2": "صوت۲",
+            "audio_3": "صوت۳",
+            "asset_1": "دارایی۱",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "ratio": "نسبت ابعاد",
+            "generate_audio": "تولید صدا",
+            "duration": "مدت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "camera_fixed": "ثابت نگه‌داشتن دوربین",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "video": "ویدیو",
+            "VIDEO": "ویدیو"
+        }
+    },
+    "ByteDanceCreateVideoAsset": {
+        "title": "بایت‌دنس ساخت دارایی ویدیو",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "group_id": "شناسهٔ گروه"
+        },
+        "outputs": {
+            "asset_id": "شناسهٔ دارایی",
+            "group_id": "شناسهٔ گروه"
+        },
+        "description": "یک دارایی ویدیوی شخصی Seedance2.0 بسازید. ویدیوی ورودی را بارگذاری و آن را در گروه دارایی مشخص‌شده ثبت کنید.\n  اگر شناسهٔ دارایی خالی باشد، فرایند احراز هویت واقعی H5 فردی اجرا می‌شود تا گروه تازه‌ای ساخته شود و سپس همان دارایی افزوده گردد."
+    },
+    "GrokVideoNode": {
+        "title": "Grok ویدیو",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "duration": "مدت"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        }
+    },
+    "GrokVideoReferenceNode": {
+        "title": "Grok تولید ویدیو از مرجع",
+        "inputs": {
+            "reference_0": "مرجع۰",
+            "reference_1": "مرجع۱",
+            "reference_2": "مرجع۲",
+            "reference_3": "مرجع۳",
+            "reference_4": "مرجع۴",
+            "reference_5": "مرجع۵",
+            "reference_6": "مرجع۶"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "aspect_ratio": "نسبت ابعاد",
+            "duration": "مدت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        }
+    },
+    "GrokVideoEditNode": {
+        "title": "Grok ویرایش ویدیو",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "model": "مدل",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "duration": "مدت"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        }
+    },
+    "GrokVideoExtendNode": {
+        "title": "Grok گسترش ویدیو",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "model": "مدل",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "duration": "مدت"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        }
+    },
+    "HitPawVideoEnhance": {
+        "title": "قابلیت بهبود ویدیوی HitPaw",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        }
+    },
+    "KlingCameraControls": {
+        "title": "کنترل دوربین Kling",
+        "inputs": {
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "camera_control_type": "نوع کنترل دوربین",
+            "horizontal_movement": "حرکت افقی",
+            "vertical_movement": "حرکت عمودی",
+            "pan": "پن",
+            "tilt": "تیلت",
+            "roll": "چرخش",
+            "zoom": "زوم"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "camera_control": "پارامترهای کنترل دوربین"
+        }
+    },
+    "KlingTextToVideoNode": {
+        "title": "KLing تولید ویدیو از متن",
+        "inputs": {},
+        "widgets": {
+            "cfg_scale": "نسبت CFG",
+            "mode": "حالت",
+            "aspect_ratio": "نسبت ابعاد",
+            "task_id": "شناسهٔ وظیفه",
+            "auth_token": "توکن‌های مجاز",
+            "camera_control": "پارامترهای کنترل دوربین",
+            "model_name": "نام مدل",
+            "duration": "مدت"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "KlingImage2VideoNode": {
+        "title": "Kling تبدیل تصویر به ویدیو",
+        "inputs": {
+            "start_frame": "فریم شروع",
+            "end_frame": "فریم پایان",
+            "camera_control": "پارامترهای کنترل دوربین",
+            "prompt": "پرامپت",
+            "negative_prompt": "پرامپت منفی"
+        },
+        "widgets": {
+            "cfg_scale": "نسبت CFG",
+            "mode": "حالت",
+            "aspect_ratio": "نسبت ابعاد",
+            "task_id": "شناسهٔ وظیفه",
+            "auth_token": "توکن‌های مجاز",
+            "model_name": "نام مدل",
+            "duration": "مدت"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "KlingCameraControlI2VNode": {
+        "title": "Kling تبدیل تصویر به ویدیو (کنترل دوربین)",
+        "inputs": {
+            "start_frame": "فریم شروع",
+            "end_frame": "فریم پایان",
+            "camera_control": "پارامترهای کنترل دوربین",
+            "prompt": "پرامپت",
+            "negative_prompt": "پرامپت منفی"
+        },
+        "widgets": {
+            "cfg_scale": "نسبت CFG",
+            "mode": "حالت",
+            "aspect_ratio": "نسبت ابعاد",
+            "task_id": "شناسهٔ وظیفه",
+            "auth_token": "توکن‌های مجاز",
+            "model_name": "نام مدل",
+            "duration": "مدت"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "KlingCameraControlT2VNode": {
+        "title": "Kling تولید ویدیو از متن (کنترل دوربین)",
+        "inputs": {
+            "camera_control": "پارامترهای کنترل دوربین",
+            "prompt": "پرامپت",
+            "negative_prompt": "پرامپت منفی"
+        },
+        "widgets": {
+            "cfg_scale": "نسبت CFG",
+            "mode": "حالت",
+            "aspect_ratio": "نسبت ابعاد",
+            "task_id": "شناسهٔ وظیفه",
+            "auth_token": "توکن‌های مجاز",
+            "model_name": "نام مدل",
+            "duration": "مدت"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "KlingStartEndFrameNode": {
+        "title": "Kling تولید ویدیو از فریم اول و آخر",
+        "inputs": {
+            "start_frame": "فریم شروع",
+            "end_frame": "فریم پایان",
+            "camera_control": "پارامترهای کنترل دوربین",
+            "prompt": "پرامپت",
+            "negative_prompt": "پرامپت منفی"
+        },
+        "widgets": {
+            "cfg_scale": "نسبت CFG",
+            "mode": "حالت",
+            "aspect_ratio": "نسبت ابعاد",
+            "task_id": "شناسهٔ وظیفه",
+            "auth_token": "توکن‌های مجاز",
+            "model_name": "نام مدل",
+            "duration": "مدت"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "KlingVideoExtendNode": {
+        "title": "گسترش ویدیوی Kling",
+        "inputs": {
+            "start_frame": "فریم شروع",
+            "end_frame": "فریم پایان",
+            "video_id": "شناسهٔ ویدیو",
+            "prompt": "پرامپت",
+            "negative_prompt": "پرامپت منفی"
+        },
+        "widgets": {
+            "cfg_scale": "نسبت CFG",
+            "mode": "حالت",
+            "aspect_ratio": "نسبت ابعاد",
+            "task_id": "شناسهٔ وظیفه",
+            "auth_token": "توکن‌های مجاز",
+            "model_name": "نام مدل",
+            "duration": "مدت"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "KlingLipSyncAudioToVideoNode": {
+        "title": "همگام‌سازی لبخوانی ویدیوی Kling با درایو صوتی",
+        "inputs": {
+            "audio": "صوت",
+            "text": "متن",
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "voice_language": "زبان گفتار",
+            "voice_speed": "سرعت گفتار",
+            "mode": "حالت",
+            "task_id": "شناسهٔ وظیفه",
+            "auth_token": "توکن‌های مجاز",
+            "model_name": "نام مدل",
+            "voice_id": "شناسهٔ صدا"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "KlingLipSyncTextToVideoNode": {
+        "title": "Kling ویدیوی لبخوانی با درایو متن",
+        "inputs": {
+            "audio": "صوت",
+            "text": "متن",
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "voice_language": "زبان گفتار",
+            "voice_speed": "سرعت گفتار",
+            "mode": "حالت",
+            "task_id": "شناسهٔ وظیفه",
+            "auth_token": "توکن‌های مجاز",
+            "voice": "گفتار",
+            "voice_id": "شناسهٔ صدا"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "KlingSingleImageVideoEffectNode": {
+        "title": "جلوهٔ ویدیوی تک‌شخصیت Kling",
+        "inputs": {
+            "image": "تصویر",
+            "video_id": "شناسهٔ ویدیو"
+        },
+        "widgets": {
+            "dual_character": "دو شخصیت",
+            "effect_scene": "صحنهٔ جلوه",
+            "mode": "حالت",
+            "aspect_ratio": "نسبت ابعاد",
+            "task_id": "شناسهٔ وظیفه",
+            "auth_token": "توکن‌های مجاز",
+            "model_name": "نام مدل",
+            "duration": "مدت"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "KlingDualCharacterVideoEffectNode": {
+        "title": "جلوهٔ ویدیوی دو شخصیت Kling",
+        "inputs": {
+            "image_1": "تصویر۱",
+            "image_2": "تصویر۲",
+            "video_id": "شناسهٔ ویدیو",
+            "image_left": "تصویر سمت چپ",
+            "image_right": "تصویر سمت راست"
+        },
+        "widgets": {
+            "dual_character": "دو شخصیت",
+            "effect_scene": "صحنهٔ جلوه",
+            "mode": "حالت",
+            "aspect_ratio": "نسبت ابعاد",
+            "task_id": "شناسهٔ وظیفه",
+            "auth_token": "توکن‌های مجاز",
+            "model_name": "نام مدل",
+            "duration": "مدت"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "KlingOmniProTextToVideoNode": {
+        "title": "گرهٔ Kling Omni تبدیل متن به ویدیو (نسخهٔ حرفه‌ای)",
+        "inputs": {
+            "reference_images": "تصویر مرجع"
+        },
+        "widgets": {
+            "model_name": "نام مدل",
+            "resolution": "وضوح",
+            "auth_token": "توکن‌های مجاز",
+            "aspect_ratio": "نسبت ابعاد",
+            "n": "تعداد"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "string": "رشته"
+        }
+    },
+    "KlingOmniProFirstLastFrameNode": {
+        "title": "Kling Omni تبدیل فریم اول و آخر به ویدیو (نسخهٔ حرفه‌ای)",
+        "inputs": {
+            "first_frame": "تصویر فریم اول",
+            "end_frame": "تصویر فریم آخر",
+            "reference_images": "تصویر مرجع"
+        },
+        "widgets": {
+            "model_name": "نام مدل",
+            "resolution": "وضوح",
+            "duration": "مدت زمان",
+            "aspect_ratio": "نسبت ابعاد"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "string": "رشته"
+        }
+    },
+    "KlingOmniProImageToVideoNode": {
+        "title": "Kling Omni تبدیل تصویر به ویدیو (نسخهٔ حرفه‌ای)",
+        "inputs": {
+            "reference_images": "تصویر مرجع"
+        },
+        "widgets": {
+            "model_name": "نام مدل",
+            "resolution": "وضوح",
+            "duration": "مدت زمان",
+            "aspect_ratio": "نسبت ابعاد"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "string": "رشته"
+        }
+    },
+    "KlingOmniProVideoToVideoNode": {
+        "title": "Kling Omni تبدیل ویدیو به ویدیو (نسخهٔ حرفه‌ای)",
+        "inputs": {
+            "reference_video": "ویدیوی مرجع",
+            "reference_images": "تصویر مرجع"
+        },
+        "widgets": {
+            "model_name": "نام مدل",
+            "keep_original_sound": "استفاده از صدای اصلی",
+            "duration": "مدت زمان",
+            "aspect_ratio": "نسبت ابعاد"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "string": "رشته"
+        }
+    },
+    "KlingOmniProEditVideoNode": {
+        "title": "ویرایش ویدیوی Kling Omni (نسخهٔ حرفه‌ای)",
+        "inputs": {
+            "video": "ویدیو",
+            "reference_images": "تصویر مرجع"
+        },
+        "widgets": {
+            "model_name": "نام مدل",
+            "keep_original_sound": "حفظ صدای اصلی"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        }
+    },
+    "KlingTextToVideoWithAudio": {
+        "title": "Kling تبدیل متن به ویدیو (با صدا)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "نام مدل",
+            "mode": "حالت",
+            "aspect_ratio": "نسبت ابعاد",
+            "duration": "مدت",
+            "auth_token": "توکن‌های مجاز",
+            "generate_audio": "تولید صدا"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "KlingImageToVideoWithAudio": {
+        "title": "Kling تبدیل تصویر به ویدیو (با صدا)",
+        "inputs": {
+            "start_frame": "فریم شروع"
+        },
+        "widgets": {
+            "model_name": "نام مدل",
+            "mode": "حالت",
+            "generate_audio": "تولید صدا",
+            "duration": "مدت"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "KlingMotionControl": {
+        "title": "کنترل حرکت Kling",
+        "inputs": {
+            "reference_video": "ویدیوی مرجع",
+            "reference_image": "تصویر مرجع"
+        },
+        "widgets": {
+            "mode": "حالت",
+            "character_orientation": "موقعیت شخصیت",
+            "keep_original_sound": "حفظ صدای اصلی"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        }
+    },
+    "KlingAvatarNode": {
+        "title": "Kling Avatar 2",
+        "inputs": {
+            "image": "تصویر",
+            "sound_file": "فایل صوتی"
+        },
+        "widgets": {
+            "mode": "حالت",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        }
+    },
+    "LtxvApiTextToVideo": {
+        "title": "تبدیل متن به ویدیوی LTXV",
+        "inputs": {
+            "positive": "شرط مثبت",
+            "negative": "شرط منفی",
+            "vae": "رمزگذار VAE",
+            "image": "تصویر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "resolution": "وضوح",
+            "duration": "مدت (ثانیه)",
+            "fps": "نرخ فریم (fps)",
+            "control_after_generate": "کنترل پس از تولید",
+            "generate_audio": "تولید صدا"
+        },
+        "outputs": {
+            "video": "ویدیو",
+            "VIDEO": "ویدیو"
+        }
+    },
+    "LtxvApiImageToVideo": {
+        "title": "تبدیل تصویر به ویدیوی LTXV",
+        "inputs": {
+            "positive": "شرط مثبت",
+            "negative": "شرط منفی",
+            "vae": "رمزگذار VAE",
+            "image": "تصویر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "resolution": "وضوح",
+            "duration": "مدت (ثانیه)",
+            "fps": "نرخ فریم (fps)",
+            "control_after_generate": "کنترل پس از تولید",
+            "generate_audio": "تولید صدا"
+        },
+        "outputs": {
+            "video": "ویدیو",
+            "VIDEO": "ویدیو"
+        }
+    },
+    "LtxApi25TextToVideo": {
+        "title": "LTX 2.5 تولید ویدیو از متن",
+        "inputs": {},
+        "widgets": {
+            "model": "مدل",
+            "duration": "مدت (ثانیه)",
+            "resolution": "وضوح",
+            "fps": "نرخ فریم (fps)",
+            "generate_audio": "تولید صدا",
+            "prompt": "پرامپت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        }
+    },
+    "LtxApi25ImageToVideo": {
+        "title": "LTX 2.5 تولید ویدیو از تصویر",
+        "inputs": {
+            "last_frame": "فریم پیشین",
+            "image": "تصویر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "duration": "مدت (ثانیه)",
+            "resolution": "وضوح",
+            "fps": "نرخ فریم (fps)",
+            "generate_audio": "تولید صدا",
+            "prompt": "پرامپت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        }
+    },
+    "LtxApi25AudioToVideo": {
+        "title": "LTX 2.5 تولید ویدیو از صدا",
+        "inputs": {
+            "audio": "صوت",
+            "image": "تصویر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "prompt": "پرامپت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        }
+    },
+    "LumaVideoNode": {
+        "title": "تبدیل متن به ویدیوی Luma",
+        "inputs": {
+            "luma_concepts": "مفهوم Luma",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "duration": "مدت",
+            "loop": "حلقه",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "auth_token": "توکن‌های مجاز",
+            "weight": "وزن"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "luma_concepts": "مفهوم Luma",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "LumaImageToVideoNode": {
+        "title": "تبدیل تصویر به ویدیوی Luma",
+        "inputs": {
+            "first_image": "تصویر نخستین فریم",
+            "last_image": "تصویر آخرین فریم",
+            "luma_concepts": "مفهوم Luma",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "duration": "مدت",
+            "loop": "حلقه",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "auth_token": "توکن‌های مجاز",
+            "weight": "وزن"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "luma_concepts": "مفهوم Luma",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "LumaConceptsNode": {
+        "title": "مفهوم Luma",
+        "inputs": {
+            "image": "تصویر",
+            "prompt": "پرامپت",
+            "luma_concepts": "مفهوم Luma"
+        },
+        "widgets": {
+            "image_type": "نوع تصویر",
+            "concept1": "مفهوم۱",
+            "concept2": "مفهوم۲",
+            "concept3": "مفهوم۳",
+            "concept4": "مفهوم۴",
+            "auth_token": "توکن‌های مجاز",
+            "aspect_ratio": "نسبت ابعاد",
+            "n": "تعداد"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "luma_concepts": "مفهوم Luma"
+        }
+    },
+    "MinimaxTextToVideoNode": {
+        "title": "تبدیل متن به ویدیوی MiniMax",
+        "inputs": {
+            "image": "تصویر",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "duration": "مدت",
+            "subject": "سوژه",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "auth_token": "توکن‌های مجاز",
+            "weight": "وزن"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "luma_concepts": "مفهوم Luma",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "MinimaxImageToVideoNode": {
+        "title": "تبدیل تصویر به ویدیوی MiniMax",
+        "inputs": {
+            "image": "تصویر",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "duration": "مدت",
+            "subject": "سوژه",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "auth_token": "توکن‌های مجاز",
+            "weight": "وزن"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "luma_concepts": "مفهوم Luma",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "MinimaxHailuoVideoNode": {
+        "title": "ویدیوی هایلو MiniMax",
+        "inputs": {
+            "first_frame_image": "تصویر فریم اول",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "prompt_optimizer": "بهینه‌سازی پرامپت",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "duration": "مدت",
+            "subject": "سوژه",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "auth_token": "توکن‌های مجاز",
+            "weight": "وزن"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "luma_concepts": "مفهوم Luma",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "PixverseTextToVideoNode": {
+        "title": "تبدیل متن به ویدیوی PixVerse",
+        "inputs": {
+            "video": "ویدیو",
+            "image": "تصویر",
+            "pixverse_template": "قالب PixVerse",
+            "prompt_text": "متن پرامپت",
+            "negative_prompt": "پرامپت منفی"
+        },
+        "widgets": {
+            "aspect_ratio": "نسبت ابعاد",
+            "quality": "کیفیت",
+            "duration_seconds": "مدت (ثانیه)",
+            "motion_mode": "حالت حرکت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "string": "رشته"
+        }
+    },
+    "PixverseImageToVideoNode": {
+        "title": "تبدیل تصویر به ویدیوی PixVerse",
+        "inputs": {
+            "video": "ویدیو",
+            "image": "تصویر",
+            "pixverse_template": "قالب PixVerse",
+            "prompt_text": "متن پرامپت",
+            "negative_prompt": "پرامپت منفی"
+        },
+        "widgets": {
+            "aspect_ratio": "نسبت ابعاد",
+            "quality": "کیفیت",
+            "duration_seconds": "مدت (ثانیه)",
+            "motion_mode": "حالت حرکت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "string": "رشته"
+        }
+    },
+    "PixverseTransitionVideoNode": {
+        "title": "ویدیوی گذار PixVerse",
+        "inputs": {
+            "first_frame": "فریم اول",
+            "last_frame": "فریم آخر",
+            "pixverse_template": "قالب PixVerse",
+            "prompt_text": "متن پرامپت",
+            "negative_prompt": "پرامپت منفی"
+        },
+        "widgets": {
+            "aspect_ratio": "نسبت ابعاد",
+            "quality": "کیفیت",
+            "duration_seconds": "مدت (ثانیه)",
+            "motion_mode": "حالت حرکت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "string": "رشته"
+        }
+    },
+    "PixverseTemplateNode": {
+        "title": "قالب PixVerse",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "template": "قالب"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "pixverse_template": "قالب PixVerse"
+        }
+    },
+    "RunwayFirstLastFrameNode": {
+        "title": "ویدیوی فریم اول و آخر Runway",
+        "inputs": {
+            "positive": "شرط مثبت",
+            "negative": "شرط منفی",
+            "camera_conditions": "شرط دوربین",
+            "start_frame": "فریم شروع",
+            "end_frame": "فریم پایان"
+        },
+        "widgets": {
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "ratio": "نسبت ابعاد",
+            "duration": "مدت",
+            "batch_size": "اندازهٔ دسته"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "RunwayImageToVideoNodeGen3a": {
+        "title": "تبدیل تصویر به ویدیوی Runway (Gen3a Turbo)",
+        "inputs": {
+            "positive": "شرط مثبت",
+            "negative": "شرط منفی",
+            "camera_conditions": "شرط دوربین",
+            "start_frame": "فریم شروع",
+            "end_frame": "فریم پایان"
+        },
+        "widgets": {
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "ratio": "نسبت ابعاد",
+            "duration": "مدت",
+            "batch_size": "اندازهٔ دسته"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "RunwayImageToVideoNodeGen4": {
+        "title": "تبدیل تصویر به ویدیوی Runway (Gen4 Turbo)",
+        "inputs": {
+            "positive": "شرط مثبت",
+            "negative": "شرط منفی",
+            "camera_conditions": "شرط دوربین",
+            "start_frame": "فریم شروع",
+            "end_frame": "فریم پایان"
+        },
+        "widgets": {
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "ratio": "نسبت ابعاد",
+            "duration": "مدت",
+            "batch_size": "اندازهٔ دسته"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video_id": "شناسهٔ ویدیو",
+            "duration": "مدت",
+            "string": "رشته"
+        }
+    },
+    "OpenAIVideoSora2": {
+        "title": "OpenAI Sora2 - ویدیو",
+        "inputs": {
+            "image": "تصویر",
+            "audio": "صوت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "size": "اندازه",
+            "resolution": "وضوح",
+            "duration": "مدت (ثانیه)",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "generate_audio": "تولید صدا",
+            "prompt_extend": "گسترش پرامپت",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "TopazVideoEnhance": {
+        "title": "بهبود‌دهندهٔ ویدیوی Topaz",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "upscaler_enabled": "فعال‌سازی بهبود‌دهنده",
+            "upscaler_model": "مدل بهبود",
+            "upscaler_resolution": "افزایش وضوح",
+            "upscaler_creativity": "افزایش مدت",
+            "interpolation_enabled": "فعال‌سازی درون‌یابی",
+            "interpolation_model": "مدل درون‌یابی",
+            "interpolation_slowmo": "آهسته‌سازی درون‌یابی",
+            "interpolation_frame_rate": "نرخ فریم درون‌یابی",
+            "interpolation_duplicate": "تکرارهای درون‌یابی",
+            "interpolation_duplicate_threshold": "آستانهٔ تکرار درون‌یابی",
+            "dynamic_compression_level": "سطح فشار پویا"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video": "ویدیو"
+        }
+    },
+    "TopazVideoEnhanceV2": {
+        "title": "بهبود‌دهندهٔ ویدیوی Topaz V2",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "upscaler_model": "مدل بهبود",
+            "upscaler_resolution": "افزایش وضوح",
+            "creativity": "مدت",
+            "sharp:": "تیز",
+            "realism:": "واقع‌گرایانه",
+            "interpolation_model": "مدل درون‌یابی",
+            "dynamic_compression_level": "سطح فشار پویا"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video": "ویدیو"
+        }
+    },
+    "VeoVideoGenerationNode": {
+        "title": "گوگل تولید ویدیوی Veo2",
+        "inputs": {
+            "image": "تصویر",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "negative_prompt": "پرامپت منفی",
+            "aspect_ratio": "نسبت ابعاد",
+            "duration_seconds": "مدت ویدیو (ثانیه)",
+            "enhance_prompt": "تقویت پرامپت",
+            "person_generation": "حالت تولید افراد",
+            "seed": "بذر تصادفی",
+            "model": "مدل",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "Veo3VideoGenerationNode": {
+        "title": "گوگل تولید ویدیوی Veo3",
+        "inputs": {
+            "image": "تصویر",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "negative_prompt": "پرامپت منفی",
+            "aspect_ratio": "نسبت ابعاد",
+            "duration_seconds": "مدت ویدیو (ثانیه)",
+            "enhance_prompt": "تقویت پرامپت",
+            "person_generation": "حالت تولید افراد",
+            "seed": "بذر تصادفی",
+            "model": "مدل",
+            "generate_audio": "تولید صدا",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "Veo3FirstLastFrameNode": {
+        "title": "گوگل تولید ویدیوی فریم اول و آخر Veo3",
+        "inputs": {
+            "first_frame": "تصویر فریم اول",
+            "last_frame": "تصویر فریم آخر"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "negative_prompt": "پرامپت منفی",
+            "resolution": "وضوح",
+            "aspect_ratio": "نسبت ابعاد",
+            "duration": "مدت (ثانیه)",
+            "enhance_prompt": "تقویت پرامپت",
+            "person_generation": "حالت تولید افراد",
+            "seed": "بذر تصادفی",
+            "model": "مدل",
+            "generate_audio": "تولید صدا",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "ViduTextToVideoNode": {
+        "title": "تبدیل متن به ویدیوی Vidu",
+        "inputs": {
+            "image": "تصویر",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "duration": "مدت (ثانیه)",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "movement_amplitude": "دامنهٔ حرکت"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "ViduImageToVideoNode": {
+        "title": "تبدیل تصویر به ویدیوی Vidu",
+        "inputs": {
+            "image": "تصویر",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "duration": "مدت (ثانیه)",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "movement_amplitude": "دامنهٔ حرکت"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "ViduReferenceVideoNode": {
+        "title": "تبدیل مرجع به ویدیوی Vidu",
+        "inputs": {
+            "images": "گروه تصویر",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "duration": "مدت (ثانیه)",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "movement_amplitude": "دامنهٔ حرکت"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "ViduStartEndToVideoNode": {
+        "title": "تولید ویدیو از فریم اول و آخر Vidu",
+        "inputs": {
+            "first_frame": "تصویر فریم اول",
+            "end_frame": "تصویر فریم آخر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "duration": "مدت (ثانیه)",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "movement_amplitude": "دامنهٔ حرکت"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "ViduExtendVideoNode": {
+        "title": "گسترش ویدیوی Vidu",
+        "inputs": {
+            "video": "ویدیو",
+            "end_frame": "فریم پایان"
+        },
+        "widgets": {
+            "model": "مدل",
+            "duration": "مدت (ثانیه)",
+            "resolution": "وضوح",
+            "prompt": "پرامپت",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        }
+    },
+    "ViduMultiFrameVideoNode": {
+        "title": "تولید ویدیوی چندفریمی Vidu",
+        "inputs": {
+            "start_image": "تصویر شروع",
+            "end_image1": "تصویر پایان۱",
+            "end_image2": "تصویر پایان۲"
+        },
+        "widgets": {
+            "model": "مدل",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "resolution": "وضوح",
+            "frames": "چند فریم",
+            "duration:": "مدت (ثانیه)",
+            "duration1:": "مدت ۱ (ثانیه)",
+            "duration2:": "مدت ۲ (ثانیه)"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "Vidu3TextToVideoNode": {
+        "title": "Vidu Q3 تولید ویدیو از متن",
+        "inputs": {},
+        "widgets": {
+            "model": "مدل",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "duration:": "مدت (ثانیه)",
+            "duration": "مدت (ثانیه)",
+            "audio": "صوت",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "Vidu3ImageToVideoNode": {
+        "title": "Vidu Q3 تولید ویدیو از تصویر",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "duration": "مدت (ثانیه)",
+            "audio": "صوت",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "Vidu3StartEndToVideoNode": {
+        "title": "Vidu3 تبدیل فریم اول و آخر به ویدیو",
+        "inputs": {
+            "first_frame": "تصویر فریم اول",
+            "end_frame": "تصویر فریم آخر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "duration": "مدت (ثانیه)",
+            "audio": "صوت",
+            "prompt": "پرامپت",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "movement_amplitude": "دامنهٔ حرکت"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "WanTextToVideoApi": {
+        "title": "تبدیل متن به ویدیوی Wan",
+        "inputs": {
+            "audio": "صوت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "size": "اندازه",
+            "resolution": "وضوح",
+            "duration": "مدت (ثانیه)",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "generate_audio": "تولید صدا",
+            "prompt_extend": "گسترش پرامپت",
+            "watermark": "واترمارک",
+            "shot_type": "نوع فیلم‌برداری"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "WanImageToVideoApi": {
+        "title": "تبدیل تصویر به ویدیوی Wan",
+        "inputs": {
+            "image": "تصویر",
+            "audio": "صوت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "resolution": "وضوح",
+            "duration": "مدت (ثانیه)",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "generate_audio": "تولید صدا",
+            "prompt_extend": "گسترش پرامپت",
+            "watermark": "واترمارک",
+            "shot_type": "نوع فیلم‌برداری"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "WanReferenceVideoApi": {
+        "title": "Wan تولید ویدیو از مرجع",
+        "inputs": {
+            "character1": "ویژگی۱",
+            "audio": "صوت",
+            "VIDEO": "ویدیو",
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "size": "اندازه",
+            "duration": "مدت (ثانیه)",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "generate_audio": "تولید صدا",
+            "prompt_extend": "گسترش پرامپت",
+            "watermark": "واترمارک",
+            "shot_type": "نوع فیلم‌برداری"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        }
+    },
+    "Wan2TextToVideoApi": {
+        "title": "Wan2.7 تولید ویدیو از متن",
+        "inputs": {
+            "positive": "شرط مثبت",
+            "negative": "شرط منفی",
+            "audio": "صوت"
+        },
+        "widgets": {
+            "resolution": "وضوح",
+            "ratio": "نسبت ابعاد",
+            "seed": "بذر تصادفی",
+            "duration": "مدت (ثانیه)",
+            "prompt_extend": "گسترش پرامپت",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "Wan2ImageToVideoApi": {
+        "title": "Wan2.7 تولید ویدیو از تصویر",
+        "inputs": {
+            "first_frame": "تصویر فریم اول",
+            "last_frame": "تصویر فریم آخر",
+            "audio": "صوت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "duration": "مدت (ثانیه)",
+            "ratio": "نسبت ابعاد",
+            "seed": "بذر تصادفی",
+            "prompt_extend": "گسترش پرامپت",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "Wan2VideoContinuationApi": {
+        "title": "Wan2.7 گسترش ویدیو",
+        "inputs": {
+            "first_clip": "کلیپ نخست",
+            "last_frame": "تصویر فریم آخر",
+            "audio": "صوت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "duration": "مدت (ثانیه)",
+            "ratio": "نسبت ابعاد",
+            "seed": "بذر تصادفی",
+            "prompt_extend": "گسترش پرامپت",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "Wan2VideoEditApi": {
+        "title": "Wan2.7 ویرایش ویدیو",
+        "inputs": {
+            "video": "ویدیو",
+            "image1": "تصویر۱",
+            "image2": "تصویر۲",
+            "image3": "تصویر۳",
+            "image4": "تصویر۴"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "ratio": "نسبت ابعاد",
+            "duration": "مدت (ثانیه)",
+            "seed": "بذر تصادفی",
+            "audio_setting": "تنظیمات صدا",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "Wan2ReferenceVideoApi": {
+        "title": "Wan2.7 تولید ویدیو از مرجع",
+        "inputs": {
+            "video1": "ویدیو۱",
+            "video2": "ویدیو۲",
+            "video3": "ویدیو۳",
+            "image1": "تصویر۱",
+            "image2": "تصویر۲",
+            "image3": "تصویر۳",
+            "image4": "تصویر۴"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "ratio": "نسبت ابعاد",
+            "duration": "مدت (ثانیه)",
+            "seed": "بذر تصادفی",
+            "audio_setting": "تنظیمات صدا",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        }
+    },
+    "HappyHorseTextToVideoApi": {
+        "title": "اسپ اسب خوشحال تولید ویدیو از متن",
+        "inputs": {
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "ratio": "نسبت ابعاد",
+            "duration": "مدت (ثانیه)",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "با استفاده از مدل «HappyHorse» بر پایهٔ پرامپت متنی یک ویدیو تولید می‌کند."
+    },
+    "HappyHorse Image to Video": {
+        "title": "اسب خوشحال تولید ویدیو از تصویر",
+        "inputs": {
+            "first_frame": "تصویر فریم اول"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "duration": "مدت (ثانیه)",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        },
+        "description": "با استفاده از مدل «HappyHorse» از تصویر فریم اول یک ویدیو تولید می‌کند."
+    },
+    "HappyHorseVideoEditApi": {
+        "title": "اسب خوشحال ویرایش ویدیو",
+        "inputs": {
+            "video": "ویدیو",
+            "image1": "تصویر۱",
+            "image2": "تصویر۲",
+            "image3": "تصویر۳",
+            "image4": "تصویر۴",
+            "image5": "تصویر۵"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "ratio": "نسبت ابعاد",
+            "duration": "مدت (ثانیه)",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        },
+        "description": "با استفاده از مدل «اسب خوشحال» ویدیو را با توضیح متنی یا تصویر مرجع ویرایش کنید./n مدت ویدیوی خروجی ۳ تا ۱۵ ثانیه و هم‌اندازه با مدت ویدیوی ورودی است؛ ورودی بیش از ۱۵ ثانیه بریده می‌شود."
+    },
+    "HappyHorseReferenceVideoApi": {
+        "title": "اسب خوشحال تولید ویدیو از مرجع",
+        "inputs": {
+            "video": "ویدیو",
+            "image1": "تصویر۱",
+            "image2": "تصویر۲",
+            "image3": "تصویر۳",
+            "image4": "تصویر۴",
+            "image5": "تصویر۵",
+            "image6": "تصویر۶",
+            "image7": "تصویر۷",
+            "image8": "تصویر۸",
+            "image9": "تصویر۹"
+        },
+        "widgets": {
+            "model": "مدل",
+            "resolution": "وضوح",
+            "ratio": "نسبت ابعاد",
+            "duration": "مدت (ثانیه)",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "VIDEO": "تولید ویدیو"
+        },
+        "description": "با استفاده از مدل «HappyHorse» بر پایهٔ مواد مرجع ویدیویی شامل افراد یا اشیا تولید کنید./n از نمایش یک شخصیت و نیز تعامل میان چند شخصیت پشتیبانی می‌کند."
+    },
+    "WavespeedFlashVSRNode": {
+        "title": "موج سرعت WaveSpeed قابلیت بزرگ‌نمایی ویدیوی FlashVSR",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "target_resolution": "وضوح هدف"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        }
+    },
+    "BeebleSwitchXImageEdit": {
+        "title": "ویرایش تصویر Beeble SwitchX",
+        "inputs": {
+            "image": "تصویر",
+            "reference_image": "تصویر مرجع"
+        },
+        "widgets": {
+            "prompt": "کلمهٔ پرامپت",
+            "alpha_mode": "حالت Alpha",
+            "max_resolution": "بیشینه وضوح",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "image": "تصویر",
+            "alpha": "کانال Alpha"
+        },
+        "description": "با استفاده از BeebleSwitchX یک تصویر منفرد را ویرایش کنید. می‌توان هر عنصری از صحنه (پس‌زمینه، نورپردازی، لباس) را عوض کرد در حالی که پیکسل‌های سوژهٔ اصلی حفظ می‌شوند. یک تصویر مرجع و/یا پرامپت متنی برای توصیف ظاهر جدید ارائه دهید. حداکثر وضوح حدود 2.77MP."
+    },
+    "FluxProUltraImageNode": {
+        "title": "Flux 1.1 [pro] تصویر فوق‌عالي‌کیفیت",
+        "inputs": {
+            "image_prompt": "پرامپت تصویر",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "prompt_upsampling": "افزایش پرامپت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "aspect_ratio": "نسبت ابعاد",
+            "raw": "دادهٔ اصلی",
+            "auth_token": "توکن‌های مجاز",
+            "image_prompt_strength": "شدت پرامپت تصویر"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "FluxKontextProImageNode": {
+        "title": "Flux.1 زمینهٔ تصویر [pro]",
+        "inputs": {
+            "input_image": "تصویر ورودی",
+            "mask": "ماسک",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "prompt_upsampling": "افزایش پرامپت",
+            "aspect_ratio": "نسبت عرض به ارتفاع",
+            "guidance": "شدت راهنما",
+            "control_after_generate": "کنترل پس از تولید",
+            "steps": "تعداد گام",
+            "seed": "بذر",
+            "raw": "دادهٔ اصلی",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "FluxKontextMaxImageNode": {
+        "title": "Flux.1 زمینهٔ تصویر [max] ",
+        "inputs": {
+            "input_image": "تصویر ورودی",
+            "mask": "ماسک",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "prompt_upsampling": "افزایش پرامپت",
+            "aspect_ratio": "نسبت عرض به ارتفاع",
+            "guidance": "شدت راهنما",
+            "control_after_generate": "کنترل پس از تولید",
+            "steps": "تعداد گام",
+            "seed": "بذر",
+            "raw": "دادهٔ اصلی",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "FluxProFillNode": {
+        "title": "تصویدازی Flux.1",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "prompt_upsampling": "افزایش پرامپت",
+            "top": "گسترش بالا",
+            "bottom": "گسترش پایین",
+            "left": "گسترش چپ",
+            "right": "گسترش راست",
+            "guidance": "شدت راهنما",
+            "control_after_generate": "کنترل پس از تولید",
+            "steps": "تعداد گام",
+            "seed": "بذر",
+            "raw": "دادهٔ اصلی",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "FluxEraseNode": {
+        "title": "پاک‌کردن تصویر Flux",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "dilate_pixels": "بسط پیکسل",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "اشیا ماسک‌شده را از تصویر حذف و پس‌زمینه را بازسازی می‌کند. روی ناحیه‌ای که می‌خواهید پاک شود ماسک بکشید."
+    },
+    "FluxVTONode": {
+        "title": "پرو مجازی Flux",
+        "inputs": {
+            "person": "فرد",
+            "garment": "لباس"
+        },
+        "widgets": {
+            "prompt": "کلمهٔ پرامپت",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "پرو مجازی: پوشش فرد با لباس ارائه‌شده."
+    },
+    "Flux2ProImageNode": {
+        "title": "نسل ۲ Flux فوق‌عالي‌کیفیت تصویر [نسخهٔ حرفه‌ای] ",
+        "inputs": {
+            "images": "گروه تصویر",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "prompt_upsampling": "افزایش پرامپت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "width": "عرض",
+            "height": "ارتفاع"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "Flux2MaxImageNode": {
+        "title": "گرهٔ تصویر Flux.2 (بیشینه)",
+        "inputs": {
+            "images": "تصویر",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "width": "عرض",
+            "height": "ارتفاع",
+            "prompt_upsampling": "افزایش پرامپت",
+            "control_after_generate": "کنترل پس از تولید",
+            "seed": "بذر"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "Flux2ImageNode": {
+        "title": "تولید تصویر Flux.2",
+        "inputs": {
+            "image_1": "ورودی تصویر"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "model": "مدل",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "seed": "بذر کاملاً تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        },
+        "description": "گره‌ای که با مدل Flux.2 تصویر تولید می‌کند"
+    },
+    "Flux3TextToVideoNode": {
+        "title": "Flux.3 تبدیل متن به ویدیو",
+        "inputs": {},
+        "widgets": {
+            "prompt": "پرامپت",
+            "aspect_ratio": "نسبت ابعاد",
+            "duration": "مدت",
+            "resolution": "وضوح",
+            "generate_audio": "تولید صدا",
+            "safety_tolerance": "تحمل ایمنی",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "با FLUX3 از پرامپت متنی ویدیویی با صدای همگام تولید می‌کند."
+    },
+    "Flux3ImageToVideoNode": {
+        "title": "Flux.3 تبدیل تصویر به ویدیو",
+        "inputs": {
+            "image_0": "تصویر۰",
+            "image_1": "تصویر۱",
+            "image_2": "تصویر۲",
+            "image_3": "تصویر۳",
+            "image_4": "تصویر۴",
+            "image_5": "تصویر۵"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "placement": "چیدمان",
+            "aspect_ratio": "نسبت ابعاد",
+            "duration": "مدت",
+            "resolution": "وضوح",
+            "generate_audio": "تولید صدا",
+            "safety_tolerance": "تحمل ایمنی",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "با استفاده از ۱ تا ۱۰ تصویر یک انیمیشن FLUX3 بسازید. هر تصویر یک نما از کلیپ می‌شود: یک تصویر آن را می‌گشاید، دو تصویر از اولی به دومی گذار می‌کنند، و تصاویر بیشتر در نقاط زمانی که انتخاب می‌کنید پخش یا ثابت می‌شوند."
+    },
+    "Flux3VideoContinuationNode": {
+        "title": "Flux.3 گسترش ویدیو",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "aspect_ratio": "نسبت ابعاد",
+            "duration": "مدت",
+            "resolution": "وضوح",
+            "generate_audio": "تولید صدا",
+            "safety_tolerance": "تحمل ایمنی",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "ادامهٔ ویدیوی FLUX 3: کلیپ تازه از آخرین فریم‌های ویدیوی ارائه‌شده ادامه می‌دهد."
+    },
+    "FluxVideoUpscaleNode": {
+        "title": "Flux.3 بزرگ‌نمایی ویدیو",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "upscale_factor": "ضریب بزرگ‌نمایی",
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "auto_downscale": "مقیاس خودکار",
+            "safety_tolerance": "تحمل ایمنی",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "با تکنیک ابروضوح FLUX ویدیو را ۱.۵ تا ۳ برابر بزرگ کنید؛ می‌تواند کیفیت اصلی را دقیق حفظ کند یا جزئیات را به‌شکل خلاقانه تقویت کند."
+    },
+    "BriaImageEditNode": {
+        "title": "ویرایش تصویر Bria",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "guidance_scale": "شدت راهنما",
+            "steps": "تعداد گام",
+            "moderation": "بررسی محتوا",
+            "prompt_content_moderation": "بررسی محتوای پرامپت",
+            "visual_input_moderation": "بررسی ورودی بصری",
+            "visual_output_moderation": "بررسی خروجی بصری"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "structured_prompt": "پرامپت ساختاریافته"
+        }
+    },
+    "BriaRemoveImageBackground": {
+        "title": "حذف پس‌زمینهٔ تصویر Bria",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "moderation": "بررسی محتوا",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "images": "گروه تصویر"
+        }
+    },
+    "ByteDanceImageNode": {
+        "title": "بایت‌دنس تصویر",
+        "inputs": {
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "size_preset": "مقدار ازپیش‌تنظیم اندازه",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "guidance_scale": "نسبت راهنما",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "image": "تصویر",
+            "IMAGE": "تصویر"
+        }
+    },
+    "ByteDanceSeedreamNode": {
+        "title": "بایت‌دنس Jimeng 4.0",
+        "inputs": {
+            "image": "تصویر",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "size_preset": "مقدار ازپیش‌تنظیم اندازه",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "sequential_image_generation": "تولید تصویر ترتیبی",
+            "max_images": "بیشینه تعداد تصویر",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "guidance_scale": "نسبت راهنما",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "image": "تصویر",
+            "IMAGE": "تصویر"
+        }
+    },
+    "ByteDanceSeedreamNodeV2": {
+        "title": "بایت‌دنس Seedream 4.5 و 5.0",
+        "inputs": {
+            "image_1": "تصویر ۱"
+        },
+        "widgets": {
+            "model": "مدل",
+            "size_preset": "ازپیش‌تنظیم اندازه",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "max_images": "بیشینه تعداد تصویر",
+            "fail_on_partial": "توقف هنگام شکست جزئی",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "image": "تصویر"
+        },
+        "description": "تولید یکپارچهٔ متن به تصویر و ویرازی دقیق با یک پرامپت تا وضوح حداکثر 4K."
+    },
+    "ByteDanceCreateImageAsset": {
+        "title": "بایت‌دنس ساخت دارایی تصویر",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "group_id": "شناسهٔ گروه"
+        },
+        "outputs": {
+            "asset_id": "شناسهٔ دارایی",
+            "group_id": "شناسهٔ گروه"
+        },
+        "description": "یک دارایی تصویر شخصی Seedance2.0 بسازید. تصویر ورودی را بارگذاری و آن را در گروه دارایی مشخص‌شده ثبت کنید.\n  اگر شناسهٔ دارایی خالی باشد، فرایند احراز هویت واقعی H5 فردی اجرا می‌شود و گروه تازه‌ای پیش از افزودن دارایی ساخته می‌شود."
+    },
+    "GeminiImageNode": {
+        "title": "گوگل تصویر Gemini",
+        "inputs": {
+            "images": "تصویر",
+            "files": "فایل‌های ورودی Gemini"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "aspect_ratio": "نسبت ابعاد",
+            "seed": "بذر تصادفی",
+            "model": "مدل",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "STRING": "رشته"
+        }
+    },
+    "GeminiImage2Node": {
+        "title": "موز کوچک Pro (تصویر گوگل Gemini)",
+        "inputs": {
+            "images": "گروه تصویر",
+            "files": "فایل"
+        },
+        "widgets": {
+            "model": "مدل",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "response_modalities": "شیوهٔ پاسخ"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "GeminiNanoBanana2": {
+        "title": "موز کوچک Pro (تصویر گوگل Gemini)",
+        "inputs": {
+            "images": "گروه تصویر",
+            "files": "فایل"
+        },
+        "widgets": {
+            "model": "مدل",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "response_modalities": "شیوهٔ پاسخ",
+            "thinking_level": "سطح تفکر"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "STRING": "رشته"
+        },
+        "description": "تولید یا ویرایش هم‌زمان تصویر از طریق Google Vertex API."
+    },
+    "GeminiNanoBanana2V2": {
+        "title": "موز کوچک ۲",
+        "inputs": {
+            "image_1": "تصویر۱",
+            "files": "فایل"
+        },
+        "widgets": {
+            "prompt": "کلمهٔ پرامپت",
+            "model": "مدل",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "thinking_level": "سطح تفکر",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "response_modalities": "راه‌اندازی پاسخ",
+            "system_prompt": "کلمهٔ پرامپت سیستم"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "STRING": "رشته",
+            "thought_image": "تصویر"
+        },
+        "description": "گره‌ای برای Nano Banana 2 که تصویر تولید می‌کند."
+    },
+    "GrokImageNode": {
+        "title": "Grok تصویر",
+        "inputs": {},
+        "widgets": {
+            "model": "مدل",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "aspect_ratio": "نسبت ابعاد",
+            "number_of_images": "تعداد تصاویر"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "GrokImageEditNode": {
+        "title": "ویرایش تصویر Grok",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "number_of_images": "تعداد تصاویر"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "GrokImageEditNodeV2": {
+        "title": "ویرایش تصویر Grok",
+        "inputs": {
+            "image_1": "تصویر۱",
+            "image_2": "تصویر۲"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "model": "مدل",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "number_of_images": "تعداد تصاویر"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "HitPawGeneralImageEnhance": {
+        "title": "قابلیت بهبود یکپارچهٔ تصویر HitPaw",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "upscale_factor": "نسبت بزرگ‌نمایی",
+            "auto_downscale": "مقیاس خودکار"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "IdeogramV1": {
+        "title": "Ideogram متن به تصویر V1",
+        "inputs": {
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "turbo": "حالت شتاب‌دهی",
+            "aspect_ratio": "نسبت ابعاد",
+            "magic_prompt_option": "گزینه‌های پرامپت جادویی",
+            "control_after_generate": "کنترل پس از تولید",
+            "negative_prompt": "پرامپت منفی",
+            "seed": "بذر",
+            "num_images": "تعداد تصاویر",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "IdeogramV2": {
+        "title": "Ideogram متن به تصویر V2",
+        "inputs": {
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "turbo": "حالت شتاب‌دهی",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "magic_prompt_option": "گزینه‌های پرامپت جادویی",
+            "control_after_generate": "کنترل پس از تولید",
+            "negative_prompt": "پرامپت منفی",
+            "style_type": "نوع سبک",
+            "seed": "بذر",
+            "num_images": "تعداد تصاویر",
+            "color_palette": "پالت رنگ",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "IdeogramV3": {
+        "title": "Ideogram متن به تصویر V3",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک",
+            "prompt": "پرامپت",
+            "character_image": "تصویر شخصیت",
+            "character_mask": "ماسک شخصیت"
+        },
+        "widgets": {
+            "turbo": "حالت شتاب‌دهی",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "magic_prompt_option": "گزینه‌های پرامپت جادویی",
+            "control_after_generate": "کنترل پس از تولید",
+            "rendering_speed": "سرعت رندر",
+            "style_type": "نوع سبک",
+            "seed": "بذر",
+            "num_images": "تعداد تصاویر",
+            "color_palette": "پالت رنگ",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "IdeogramV4": {
+        "title": "Ideogram متن به تصویر V4",
+        "inputs": {
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "resolution": "وضوح",
+            "rendering_speed": "سرعت رندر",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "KlingVirtualTryOnNode": {
+        "title": "پرو مجازی Kling",
+        "inputs": {
+            "image": "تصویر",
+            "human_image": "تصویر فرد",
+            "cloth_image": "تصویر لباس"
+        },
+        "widgets": {
+            "image_type": "نوع تصویر",
+            "image_fidelity": "وفاداری تصویر",
+            "human_fidelity": "وفاداری فرد",
+            "model_name": "نام مدل",
+            "task_id": "شناسهٔ وظیفه",
+            "auth_token": "توکن‌های مجاز",
+            "aspect_ratio": "نسبت ابعاد",
+            "n": "تعداد"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "string": "رشته"
+        }
+    },
+    "KlingImageGenerationNode": {
+        "title": "تولید تصویر Kling",
+        "inputs": {
+            "image": "تصویر",
+            "prompt": "پرامپت",
+            "negative_prompt": "پرامپت منفی"
+        },
+        "widgets": {
+            "image_type": "نوع تصویر",
+            "image_fidelity": "وفاداری تصویر",
+            "human_fidelity": "وفاداری فرد",
+            "model_name": "نام مدل",
+            "task_id": "شناسهٔ وظیفه",
+            "auth_token": "توکن‌های مجاز",
+            "aspect_ratio": "نسبت ابعاد",
+            "n": "تعداد"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "string": "رشته"
+        }
+    },
+    "KlingOmniProImageNode": {
+        "title": "Kling Omni تصویر (نسخهٔ حرفه‌ای)",
+        "inputs": {
+            "reference_images": "تصویر مرجع"
+        },
+        "widgets": {
+            "model_name": "نام مدل",
+            "resolution": "وضوح",
+            "auth_token": "توکن‌های مجاز",
+            "aspect_ratio": "نسبت ابعاد",
+            "n": "تعداد"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "string": "رشته"
+        }
+    },
+    "Krea2ImageNode": {
+        "title": "Krea 2 تصویر",
+        "inputs": {
+            "style_reference": "مرجع سبک",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "creativity": "خلاقیت",
+            "moodboard_id": "شناسهٔ تختهٔ حال‌وهوا",
+            "moodboard_strength": "شدت تختهٔ حال‌وهوا",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {},
+        "description": "با Krea2 تصویر تولید کنید — اندازهٔ متوسط (تصویرسازی بیانگر) یا بزرگ (سبک واقع‌گرایانه پراحساس) را انتخاب کنید. از تختهٔ حال‌وهوای اختیاری و تا ۱۰ تصویر مرجع سبک زنجیره‌ای پشتیبانی می‌کند."
+    },
+    "Krea2StyleReferenceNode": {
+        "title": "Krea 2 مرجع سبک",
+        "inputs": {
+            "image": "تصویر",
+            "style_reference": "مرجع سبک"
+        },
+        "widgets": {
+            "strength": "شدت"
+        },
+        "outputs": {
+            "style_reference": "مرجع سبک"
+        },
+        "description": "یک مرجع سبک تصویری به تولیدکنندهٔ Krea2 اضافه می‌کند. چند گرهٔ مرجع سبک Krea2 را زنجیره کنید (حداکثر ۱۰) و خروجی نهایی «مرجع سبک» را به Krea2 Image بدهید. هر تصویر به ذخیرهٔ ComfyAPI بارگذاری و به‌شکل URL منتقل می‌شود."
+    },
+    "LumaImageNode": {
+        "title": "متن به تصویر Luma",
+        "inputs": {
+            "image_luma_ref": "مرجع تصویر Luma",
+            "style_image": "تصویر سبک",
+            "prompt": "پرامپت",
+            "character_image": "تصویر فرد"
+        },
+        "widgets": {
+            "model": "مدل",
+            "aspect_ratio": "نسبت ابعاد",
+            "seed": "بذر",
+            "style_image_weight": "وزن تصویر سبک",
+            "luma_ref": "مرجع Luma",
+            "auth_token": "توکن‌های مجاز",
+            "max_refs": "بیشینه تعداد مرجع",
+            "weight": "وزن"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "luma_concepts": "مفهوم Luma"
+        }
+    },
+    "LumaImageModifyNode": {
+        "title": "تبدیل تصویر به تصویر Luma",
+        "inputs": {
+            "image": "تصویر",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "image_weight": "وزن تصویر",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "auth_token": "توکن‌های مجاز",
+            "weight": "وزن"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "LumaReferenceNode": {
+        "title": "مرجع Luma",
+        "inputs": {
+            "image": "تصویر",
+            "prompt": "پرامپت",
+            "luma_ref": "مرجع Luma"
+        },
+        "widgets": {
+            "image_type": "نوع تصویر",
+            "weight": "وزن",
+            "human_fidelity": "وفاداری فرد",
+            "model_name": "نام مدل",
+            "task_id": "شناسهٔ وظیفه",
+            "auth_token": "توکن‌های مجاز",
+            "aspect_ratio": "نسبت ابعاد",
+            "n": "تعداد"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "luma_ref": "مرجع Luma"
+        }
+    },
+    "LumaImageNode2": {
+        "title": "Luma UNI-1 تصویر",
+        "inputs": {
+            "image_1": "تصویر ۱"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "model": "مدل",
+            "aspect_ratio": "نسبت ابعاد",
+            "style": "سبک",
+            "web_search": "جست‌وجوی وب",
+            "seed": "بذر"
+        },
+        "outputs": {},
+        "description": "با مدل Luma UNI-1 از متن تصویر تولید می‌کند."
+    },
+    "LumaImageEditNode2": {
+        "title": "Luma UNI-1 ویرایش تصویر",
+        "inputs": {
+            "source": "مسیر مبدأ",
+            "image_1": "تصویر ۱"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "model": "مدل",
+            "style": "سبک",
+            "web_search": "جست‌وجوی وب",
+            "seed": "بذر"
+        },
+        "outputs": {},
+        "description": "با مدل Luma UNI-1 بر پایهٔ پرامپت متنی یک تصویر موجود را ویرایش می‌کند."
+    },
+    "MagnificImageUpscalerCreativeNode": {
+        "title": "بزرگ‌نمایی تصویر Magnific (حالت خلاقانه)",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "scale_factor": "ضریب مقیاس",
+            "optimized_for": "هدف بهینه‌سازی",
+            "creativity": "خلاقیت",
+            "hdr": "محدودهٔ دینامیکی بالا HDR",
+            "resemblance": "شباهت",
+            "fractality": "درجهٔ فروکتابی‌بودن",
+            "engine": "موتور",
+            "auto_downscale": "نمونه‌برداری پایین خودکار"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "MagnificImageUpscalerPreciseV2Node": {
+        "title": "بزرگ‌نمایی تصویر Magnific V2",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "scale_factor": "ضریب مقیاس",
+            "flavor": "سبک",
+            "sharpen": "تیزی",
+            "smart_grain": "دانهٔ هوشمند",
+            "ultra_detail": "جزئیات فوق‌دقیق",
+            "auto_downscale": "نمونه‌برداری پایین خودکار"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "MagnificImageStyleTransferNode": {
+        "title": "تبدیل سبک تصویر Magnific",
+        "inputs": {
+            "image": "تصویر",
+            "reference_image": "تصویر مرجع"
+        },
+        "widgets": {
+            "style_strength": "شدت سبک",
+            "structure_strength": "شدت ساختار",
+            "flavor": "سبک",
+            "engine": "موتور",
+            "portrait_mode": "حالت پرتره",
+            "fixed_generation": "تثبیت تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "MagnificImageRelightNode": {
+        "title": "نورپردازی مجدد تصویر Magnific",
+        "inputs": {
+            "image": "تصویر",
+            "reference_image": "تصویر مرجع"
+        },
+        "widgets": {
+            "light_transfer_strength": "شدت نور",
+            "style": "سبک",
+            "interpolate_from_original": "درون‌یابی از دادهٔ اصلی",
+            "change_background": "تغییر پس‌زمینه",
+            "preserve_details": "حفظ جزئیات",
+            "advanced_settings": "تنظیمات پیشرفته"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "MagnificImageSkinEnhancerNode": {
+        "title": "تقویت‌کنندهٔ پوست تصویر Magnific",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "sharpen": "تیزی",
+            "smart_grain": "دانهٔ هوشمند",
+            "mode": "حالت"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "OpenAIDalle2": {
+        "title": "OpenAI DALL·E 2",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "size": "اندازه",
+            "n": "تعداد",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "string": "رشته"
+        }
+    },
+    "OpenAIDalle3": {
+        "title": "OpenAI DALL·E 3",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "size": "اندازه",
+            "quality": "کیفیت",
+            "style": "سبک",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "string": "رشته"
+        }
+    },
+    "OpenAIGPTImage1": {
+        "title": "OpenAI GPT تصویر ۱",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "background": "پس‌زمینه",
+            "size": "اندازه",
+            "quality": "کیفیت",
+            "n": "تعداد",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "string": "رشته"
+        }
+    },
+    "OpenAIGPTImageNodeV2": {
+        "title": "OpenAI GPT تصویر ۲",
+        "inputs": {
+            "image_1": "تصویر۱",
+            "image_2": "تصویر۲",
+            "image_3": "تصویر۳",
+            "mask": "ماسک",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "size": "اندازه",
+            "custom_width": "تنظیم عرض",
+            "custom_height": "تنظیم ارتفاع",
+            "background": "پس‌زمینه",
+            "quality": "کیفیت",
+            "n": "تعداد",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "string": "رشته"
+        }
+    },
+    "QuiverTextToSVGNode": {
+        "title": "تبدیل متن به تصویر برداری SVG",
+        "inputs": {
+            "ref_0": "مرجع",
+            "ref_1": "مرجع۱",
+            "ref_2": "مرجع۲",
+            "ref_3": "مرجع۳"
+        },
+        "widgets": {
+            "model": "مدل",
+            "temperature": "دما",
+            "top_p": "نسبت بیشینه احتمال",
+            "presence_penalty": "مجازات حضور",
+            "control_after_generate": "کنترل پس از تولید",
+            "seed": "بذر"
+        },
+        "outputs": {
+            "SVG": "تصویر برداری"
+        }
+    },
+    "QuiverImageToSVGNode": {
+        "title": "تبدیل تصویر به تصویر برداری SVG",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "auto_crop": "برش خودکار",
+            "model": "مدل",
+            "target_size": "اندازهٔ هدف",
+            "temperature": "دما",
+            "top_p": "نسبت بیشینه احتمال",
+            "presence_penalty": "مجازات حضور",
+            "control_after_generate": "کنترل پس از تولید",
+            "seed": "بذر"
+        },
+        "outputs": {
+            "SVG": "تصویر برداری"
+        }
+    },
+    "RecraftTextToImageNode": {
+        "title": "تولید تصویر از متن Recraft",
+        "inputs": {
+            "recraft_style": "سبک Recraft",
+            "negative_prompt": "پرامپت منفی",
+            "recraft_controls": "پارامترهای کنترل Recraft"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "size": "اندازه",
+            "n": "تعداد",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "string": "رشته"
+        }
+    },
+    "RecraftImageToImageNode": {
+        "title": "تولید تصویر از تصویر Recraft",
+        "inputs": {
+            "image": "تصویر ورودی",
+            "recraft_style": "سبک Recraft",
+            "negative_prompt": "پرامپت منفی",
+            "recraft_controls": "پارامترهای کنترل Recraft",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "n": "تعداد تولید",
+            "strength": "شدت بازنگاری",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "RecraftImageInpaintingNode": {
+        "title": "ترمیم تصویر Recraft",
+        "inputs": {
+            "image": "تصویر",
+            "mask": "ماسک",
+            "recraft_style": "سبک Recraft",
+            "negative_prompt": "پرامپت منفی",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "n": "تعداد تولید",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "RecraftTextToVectorNode": {
+        "title": "تولید بردار از متن Recraft",
+        "inputs": {
+            "recraft_controls": "پارامترهای کنترل Recraft",
+            "negative_prompt": "پرامپت منفی",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "substyle": "نوع زیرسبک",
+            "size": "ابعاد خروجی",
+            "n": "تعداد تولید",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VECTOR": "گرافیک برداری"
+        }
+    },
+    "RecraftVectorizeImageNode": {
+        "title": "بردارسازی تصویر Recraft",
+        "inputs": {
+            "image": "تصویر",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {},
+        "outputs": {
+            "VECTOR": "گرافیک برداری"
+        }
+    },
+    "RecraftRemoveBackgroundNode": {
+        "title": "حذف پس‌زمینه Recraft",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "تصویر",
+            "MASK": "ماسک"
+        }
+    },
+    "RecraftReplaceBackgroundNode": {
+        "title": "تعویض پس‌زمینه Recraft",
+        "inputs": {
+            "image": "تصویر",
+            "recraft_style": "سبک Recraft",
+            "negative_prompt": "پرامپت منفی",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {
+            "prompt": "توضیح پس‌زمینه",
+            "n": "تعداد تولید",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "RecraftCrispUpscaleNode": {
+        "title": "بزرگ‌نمایی واضح تصویر Recraft",
+        "inputs": {
+            "image": "تصویر",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "RecraftCreativeUpscaleNode": {
+        "title": "بزرگ‌نمایی خلاقانهٔ تصویر Recraft",
+        "inputs": {
+            "image": "تصویر",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "RecraftStyleV3RealisticImage": {
+        "title": "سبک Recraft - تصویر واقعی",
+        "inputs": {
+            "colors": "رنگ",
+            "background_color": "رنگ پس‌زمینه"
+        },
+        "widgets": {
+            "substyle": "زیرسبک"
+        },
+        "outputs": {
+            "recraft_style": "سبک Recraft"
+        }
+    },
+    "RecraftStyleV3DigitalIllustration": {
+        "title": "سبک Recraft - تصویرسازی دیجیتال",
+        "inputs": {
+            "colors": "رنگ",
+            "background_color": "رنگ پس‌زمینه"
+        },
+        "widgets": {
+            "substyle": "زیرسبک"
+        },
+        "outputs": {
+            "recraft_style": "سبک Recraft"
+        }
+    },
+    "RecraftStyleV3LogoRaster": {
+        "title": "سبک Recraft - لوگوی رستری",
+        "inputs": {
+            "colors": "رنگ",
+            "background_color": "رنگ پس‌زمینه"
+        },
+        "widgets": {
+            "substyle": "زیرسبک"
+        },
+        "outputs": {
+            "recraft_style": "سبک Recraft"
+        }
+    },
+    "RecraftStyleV3InfiniteStyleLibrary": {
+        "title": "سبک Recraft - کتابخانهٔ بی‌پایان سبک‌ها",
+        "inputs": {
+            "colors": "رنگ",
+            "background_color": "رنگ پس‌زمینه"
+        },
+        "widgets": {
+            "style_id": "شناسهٔ سبک"
+        },
+        "outputs": {
+            "recraft_style": "سبک Recraft"
+        }
+    },
+    "RecraftCreateStyleNode": {
+        "title": "سبک طراحی Recraft",
+        "inputs": {
+            "image0": "تصویر۰",
+            "image1": "تصویر۱"
+        },
+        "widgets": {
+            "style": "سبک"
+        },
+        "outputs": {
+            "style": "سبک",
+            "style_id": "شناسهٔ سبک"
+        }
+    },
+    "RecraftColorRGB": {
+        "title": "رنگ RGB Recraft",
+        "inputs": {
+            "recraft_color": "رنگ Recraft"
+        },
+        "widgets": {
+            "r": "مقدار قرمز",
+            "g": "مقدار سبز",
+            "b": "مقدار آبی"
+        },
+        "outputs": {
+            "recraft_color": "رنگ Recraft",
+            "string": "رشته"
+        }
+    },
+    "RecraftControls": {
+        "title": "پارامترهای کنترل Recraft",
+        "inputs": {
+            "colors": "رنگ",
+            "background_color": "رنگ پس‌زمینه"
+        },
+        "widgets": {
+            "r": "مقدار قرمز",
+            "g": "مقدار سبز",
+            "b": "مقدار آبی"
+        },
+        "outputs": {
+            "recraft_controls": "پارامترهای کنترل Recraft",
+            "string": "رشته"
+        }
+    },
+    "RecraftV4TextToImageNode": {
+        "title": "تولید تصویر از متن Recraft V4",
+        "inputs": {
+            "recraft_controls": "پارامترهای کنترل Recraft"
+        },
+        "widgets": {
+            "model": "مدل",
+            "size": "اندازه",
+            "n": "تعداد",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "string": "رشته"
+        }
+    },
+    "RecraftV4TextToVectorNode": {
+        "title": "تولید بردار از متن Recraft V4",
+        "inputs": {
+            "recraft_controls": "پارامترهای کنترل Recraft"
+        },
+        "widgets": {
+            "model": "مدل",
+            "size": "اندازه",
+            "n": "تعداد",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "SVG": "قالب برداری SVG"
+        }
+    },
+    "ReveImageCreateNode": {
+        "title": "Reve تولید تصویر از متن",
+        "inputs": {
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "aspect_ratio": "نسبت ابعاد",
+            "test_time_scaling": "آزمون مقیاس زمانی",
+            "upscale": "بزرگ‌نمایی",
+            "remove_background": "حذف پس‌زمینه",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "string": "رشته"
+        }
+    },
+    "ReveImageEditNode": {
+        "title": "Reve ویرایش تصویر",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "aspect_ratio": "نسبت ابعاد",
+            "test_time_scaling": "آزمون مقیاس زمانی",
+            "upscale": "بزرگ‌نمایی",
+            "remove_background": "حذف پس‌زمینه",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "string": "رشته"
+        }
+    },
+    "ReveImageRemixNode": {
+        "title": "Reve بازآفرینی تصویر",
+        "inputs": {
+            "image_0": "تصویر۰",
+            "image_1": "تصویر۱",
+            "image_2": "تصویر۲",
+            "image_3": "تصویر۳",
+            "image_4": "تصویر۴",
+            "image_5": "تصویر۵"
+        },
+        "widgets": {
+            "model": "مدل",
+            "aspect_ratio": "نسبت ابعاد",
+            "test_time_scaling": "آزمون مقیاس زمانی",
+            "upscale": "بزرگ‌نمایی",
+            "remove_background": "حذف پس‌زمینه",
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "string": "رشته"
+        }
+    },
+    "RunwayTextToImageNode": {
+        "title": "Runway متن به تصویر",
+        "inputs": {
+            "positive": "شرط مثبت",
+            "negative": "شرط منفی",
+            "reference_image": "تصویر مرجع",
+            "start_frame": "فریم شروع",
+            "end_frame": "فریم پایان"
+        },
+        "widgets": {
+            "seed": "بذر",
+            "control_after_generate": "کنترل پس از تولید",
+            "ratio": "نسبت ابعاد",
+            "duration": "مدت",
+            "batch_size": "اندازهٔ دسته"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "string": "رشته"
+        }
+    },
+    "StabilityStableImageUltraNode": {
+        "title": "Stability AI تصویر فوق‌عالي‌کیفیت",
+        "inputs": {
+            "image": "تصویر",
+            "negative_prompt": "پرامپت منفی",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "aspect_ratio": "نسبت ابعاد",
+            "style_preset": "پیش‌تنظیم سبک",
+            "seed": "بذر تصادفی",
+            "image_denoise": "شدت نویززدایی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "StabilityStableImageSD_3_5Node": {
+        "title": "Stability AI تصویر SD 3.5",
+        "inputs": {
+            "image": "تصویر",
+            "negative_prompt": "پرامپت منفی",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "aspect_ratio": "نسبت ابعاد",
+            "style_preset": "پیش‌تنظیم سبک",
+            "cfg_scale": "ضریب راهنمای CFG",
+            "seed": "بذر تصادفی",
+            "image_denoise": "شدت نویززدایی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "StabilityUpscaleConservativeNode": {
+        "title": "Stability AI بزرگ‌نمایی محتاطانه",
+        "inputs": {
+            "image": "تصویر",
+            "negative_prompt": "پرامپت منفی",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "creativity": "شدت خلاقیت",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "StabilityUpscaleCreativeNode": {
+        "title": "Stability AI بزرگ‌نمایی خلاقانه",
+        "inputs": {
+            "image": "تصویر",
+            "negative_prompt": "پرامپت منفی",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "creativity": "شدت خلاقیت",
+            "style_preset": "پیش‌تنظیم سبک",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "StabilityUpscaleFastNode": {
+        "title": "Stability AI بزرگ‌نمایی بسیار سریع",
+        "inputs": {
+            "image": "تصویر",
+            "auth_token": "توکن‌های مجاز"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "TopazImageEnhance": {
+        "title": "Topaz بهبود‌دهندهٔ تصویر",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "subject_detection": "آشکارسازی اشیا",
+            "face_enhancement": "بهبود چهره",
+            "face_enhancement_creativity": "خلاقیت بهبود چهره",
+            "face_enhancement_strength": "شدت بهبود چهره",
+            "crop_to_fill": "برش تا پر شدن",
+            "output_width": "عرض خروجی",
+            "output_height": "ارتفاع خروجی",
+            "creativity": "خلاقیت",
+            "face_preservation": "محافظت از چهره",
+            "color_preservation": "محافظت از رنگ"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "video": "ویدیو"
+        }
+    },
+    "WanTextToImageApi": {
+        "title": "تبدیل متن به تصویر Wan",
+        "inputs": {
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "resolution": "وضوح",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "prompt_extend": "گسترش پرامپت",
+            "watermark": "واترمارک",
+            "shot_type": "نوع فیلم‌برداری"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "WanImageToImageApi": {
+        "title": "Wan تولید تصویر از تصویر",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "width": "عرض",
+            "height": "ارتفاع",
+            "resolution": "وضوح",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "prompt_extend": "گسترش پرامپت",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "WavespeedImageUpscaleNode": {
+        "title": "موج سرعت WaveSpeed بزرگ‌نمایی تصویر",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "target_resolution": "وضوح هدف"
+        },
+        "outputs": {
+            "IMAGE": "تصویر"
+        }
+    },
+    "ElevenLabsSpeechToText": {
+        "title": "Eleven Labs گفتار به متن",
+        "inputs": {
+            "audio": "صوت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "tag_audio_events": "نشانه‌گذاری رویدادهای صوتی",
+            "diarize": "تشخیص گوینده",
+            "diarization_threshold": "آستانهٔ تشخیص گوینده",
+            "temperature": "دما",
+            "timestamps_granularity": "دانهٔ زمانی",
+            "language_code": "کد زبان",
+            "num_speakers": "تعداد گویندگان",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "language_code": "کد زبان",
+            "text": "متن",
+            "seed": "دادهٔ JSON کلمات"
+        }
+    },
+    "ElevenLabsVoiceSelector": {
+        "title": "انتخاب‌کنندهٔ صدای Eleven Labs",
+        "inputs": {},
+        "widgets": {
+            "voice": "صدا"
+        },
+        "outputs": {
+            "voice": "صدا"
+        }
+    },
+    "ElevenLabsTextToSpeech": {
+        "title": "Eleven Labs متن به گفتار",
+        "inputs": {
+            "voice": "صدا"
+        },
+        "widgets": {
+            "stabillity": "پایداری",
+            "apply_text_normalization": "اعمال استانداردسازی متن",
+            "model": "مدل",
+            "speed": "سرعت",
+            "similarity_boost": "تقویت شباهت",
+            "use_speaker_boost": "استفاده از تقویت‌کنندهٔ گوینده",
+            "style": "سبک",
+            "language_code": "کد زبان",
+            "output_format": "قالب خروجی",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "AUDIO": "صوت"
+        }
+    },
+    "ElevenLabsAudioIsolation": {
+        "title": "جداسازی صدای Eleven Labs",
+        "inputs": {
+            "audio": "صوت"
+        },
+        "widgets": {},
+        "outputs": {
+            "AUDIO": "صوت"
+        }
+    },
+    "ElevenLabsTextToSoundEffects": {
+        "title": "Eleven Labs متن به جلوهٔ صوتی",
+        "inputs": {
+            "text": "متن"
+        },
+        "widgets": {
+            "model": "مدل",
+            "duration": "مدت (ثانیه)",
+            "loop": "حلقه",
+            "prompt_influence": "میزان تأثیر پرامپت",
+            "output_format": "قالب خروجی"
+        },
+        "outputs": {
+            "AUDIO": "صوت"
+        }
+    },
+    "ElevenLabsInstantVoiceClone": {
+        "title": "کلون فوری صدای Eleven Labs",
+        "inputs": {
+            "audio0": "صوت۰",
+            "audio1": "صوت۱",
+            "audio2": "صوت۲",
+            "audio3": "صوت۳",
+            "audio4": "صوت۴",
+            "audio5": "صوت۵",
+            "audio6": "صوت۶"
+        },
+        "widgets": {
+            "remove_background_noise": "حذف نویز پس‌زمینه"
+        },
+        "outputs": {
+            "voice": "صدا"
+        }
+    },
+    "ElevenLabsSpeechToSpeech": {
+        "title": "Eleven Labs گفتار به گفتار",
+        "inputs": {
+            "voice": "صدا",
+            "audio": "صوت"
+        },
+        "widgets": {
+            "stabillity": "پایداری",
+            "model": "مدل",
+            "speed": "سرعت",
+            "similarity_boost": "تقویت شباهت",
+            "use_speaker_boost": "استفاده از تقویت‌کنندهٔ گوینده",
+            "style": "سبک",
+            "output_format": "قالب خروجی",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "remove_background_noise": "حذف نویز پس‌زمینه"
+        },
+        "outputs": {
+            "AUDIO": "صوت"
+        }
+    },
+    "ElevenLabsTextToDialogue": {
+        "title": "Eleven Labs متن به گفتگو",
+        "inputs": {
+            "voice1": "صدا۱",
+            "voice2": "صدا۲",
+            "voice3": "صدا۳",
+            "voice4": "صدا۴",
+            "voice5": "صدا۵",
+            "voice6": "صدا۶",
+            "voice7": "صدا۷",
+            "voice8": "صدا۸",
+            "voice9": "صدا۹",
+            "voice10": "صدا۱۰"
+        },
+        "widgets": {
+            "stabillity": "پایداری",
+            "apply_text_normalization": "اعمال استانداردسازی متن",
+            "model": "مدل",
+            "inputs": "تعداد ورودی‌ها",
+            "language_code": "کد زبان",
+            "output_format": "قالب خروجی",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "AUDIO": "صوت"
+        }
+    },
+    "SoniloVideoToMusic": {
+        "title": "Sonilo تولید موسیقی از ویدیو",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "duration": "مدت (ثانیه)",
+            "model": "مدل",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "AIDEO": "صوت"
+        }
+    },
+    "SoniloTextToMusic": {
+        "title": "Sonilo تولید موسیقی از متن",
+        "inputs": {
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "AIDEO": "صوت"
+        }
+    },
+    "StabilityTextToAudio": {
+        "title": "Stability AI متن به گفتار",
+        "inputs": {
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "duration": "مدت",
+            "steps": "تعداد گام",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "audio": "صوت",
+            "AUDIO": "صوت"
+        }
+    },
+    "StabilityAudioToAudio": {
+        "title": "Stability AI صوت به صوت",
+        "inputs": {
+            "audio": "صوت",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "duration": "مدت",
+            "steps": "تعداد گام",
+            "seed": "بذر تصادفی",
+            "strength": "شدت",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "audio": "صوت",
+            "AUDIO": "صوت"
+        }
+    },
+    "StabilityAudioInpaint": {
+        "title": "Stability AI بازنگاری صوت (Inpaint)",
+        "inputs": {
+            "audio": "صوت",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "duration": "مدت",
+            "steps": "تعداد گام",
+            "seed": "بذر تصادفی",
+            "mask_start": "ماسک شروع",
+            "mask_end": "ماسک پایان",
+            "control_after_generate": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "audio": "صوت",
+            "AUDIO": "صوت"
+        }
+    },
+    "TencentTextToModelNode": {
+        "title": "Hunyuan سه‌بعدی: تولید مدل از متن (نسخهٔ حرفه‌ای)",
+        "inputs": {},
+        "widgets": {
+            "model": "مدل",
+            "face_count": "تعداد وجه",
+            "pbr": "رندر تقویت‌شدهٔ فیزیکی PBR",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "texture_image": "تصویر بافت",
+            "GLB": "قالب GLB",
+            "OBJ": "قالب OBJ"
+        }
+    },
+    "TencentImageToModelNode": {
+        "title": "Hunyuan سه‌بعدی: تولید مدل از تصویر (نسخهٔ حرفه‌ای)",
+        "inputs": {
+            "image": "تصویر",
+            "image_left": "تصویر سمت چپ",
+            "image_right": "تصویر سمت راست",
+            "image_back": "تصویر پشت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "face_count": "تعداد وجه",
+            "generate_type": "نوع تولید",
+            "pbr": "رندر تقویت‌شدهٔ فیزیکی PBR",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "texture_image": "تصویر بافت",
+            "GLB": "قالب GLB",
+            "OBJ": "قالب OBJ",
+            "optional_metallic": "فلز (اختیاری)",
+            "optional_normal": "عادی (اختیاری)",
+            "optional_roughness": "زبری (اختیاری)"
+        }
+    },
+    "TencentModelTo3DUVNode": {
+        "title": "Hunyuan سه‌بعدی: تبدیل مدل به نقشهٔ UV",
+        "inputs": {
+            "model_3d": "مدل سه‌بعدی"
+        },
+        "widgets": {
+            "model": "مدل",
+            "face_count": "تعداد وجه",
+            "pbr": "رندر تقویت‌شدهٔ فیزیکی PBR",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "GLB": "قالب GLB",
+            "OBJ": "قالب OBJ"
+        }
+    },
+    "Tencent3DTextureEditNode": {
+        "title": "Hunyuan سه‌بعدی: ویرایش بافت سه‌بعدی",
+        "inputs": {
+            "model_3d": "مدل سه‌بعدی"
+        },
+        "widgets": {
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "texture_image": "تصویر بافت",
+            "GLB": "قالب GLB",
+            "OBJ": "قالب OBJ",
+            "uv_image": "تصویر UV"
+        }
+    },
+    "Tencent3DPartNode": {
+        "title": "Hunyuan سه‌بعدی: قطعات سه‌بعدی",
+        "inputs": {
+            "model_3d": "مدل سه‌بعدی"
+        },
+        "widgets": {
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "FBX": "قالب FBX"
+        }
+    },
+    "TencentSmartTopologyNode": {
+        "title": "Hunyuan سه‌بعدی: توپولوژی هوشمند",
+        "inputs": {
+            "model_3d": "مدل سه‌بعدی"
+        },
+        "widgets": {
+            "model": "مدل",
+            "polygon_type": "نوع چندضلعی",
+            "face_level": "سطح وجه",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "GLB": "قالب GLB",
+            "OBJ": "قالب OBJ"
+        }
+    },
+    "MeshyTextToModelNode": {
+        "title": "Meshy تولید مدل از متن",
+        "inputs": {},
+        "widgets": {
+            "model": "مدل",
+            "style": "سبک",
+            "should_remesh": "بازمش‌بندی",
+            "topology": "توپولوژی",
+            "target_polycount": "تعداد چنده‌ضلعی هدف",
+            "symmetry_mode": "حالت تقارن",
+            "pose_mode": "حالت پوز",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "meshy_task_id": "شمارهٔ وظیفهٔ Meshy",
+            "GLB": "قالب GLB",
+            "FBX": "قالب FBX"
+        }
+    },
+    "MeshyRefineNode": {
+        "title": "Meshy: تکمیل مدل پیش‌نویس",
+        "inputs": {
+            "meshy_task_id": "شمارهٔ وظیفهٔ Meshy",
+            "texture_image": "تصویر بافت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "enable_pbr": "فعال‌سازی رندر تقویت‌شدهٔ فیزیکی PBR",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "meshy_task_id": "شمارهٔ وظیفهٔ Meshy",
+            "GLB": "قالب GLB",
+            "FBX": "قالب FBX"
+        }
+    },
+    "MeshyImageToModelNode": {
+        "title": "Meshy: تولید مدل از تصویر",
+        "inputs": {
+            "image": "تصویر",
+            "texture_image": "تصویر بافت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "should_remesh": "بازمش‌بندی",
+            "topology": "توپولوژی",
+            "target_polycount": "تعداد چنده‌ضلعی هدف",
+            "symmetry_mode": "حالت تقارن",
+            "should_texture": "اعمال بافت",
+            "enable_pbr": "فعال‌سازی رندر تقویت‌شدهٔ فیزیکی PBR",
+            "pose_mode": "حالت پوز",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "meshy_task_id": "شمارهٔ وظیفهٔ Meshy",
+            "GLB": "قالب GLB",
+            "FBX": "قالب FBX"
+        }
+    },
+    "MeshyMultiImageToModelNode": {
+        "title": "Meshy: تولید مدل از چند تصویر",
+        "inputs": {
+            "image": "تصویر",
+            "image0": "تصویر۰",
+            "image1": "تصویر۱",
+            "texture_image": "تصویر بافت"
+        },
+        "widgets": {
+            "model": "مدل",
+            "should_remesh": "بازمش‌بندی",
+            "topology": "توپولوژی",
+            "target_polycount": "تعداد چنده‌ضلعی هدف",
+            "symmetry_mode": "حالت تقارن",
+            "should_texture": "اعمال بافت",
+            "enable_pbr": "فعال‌سازی رندر تقویت‌شدهٔ فیزیکی PBR",
+            "pose_mode": "حالت پوز",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "meshy_task_id": "شمارهٔ وظیفهٔ Meshy",
+            "GLB": "قالب GLB",
+            "FBX": "قالب FBX"
+        }
+    },
+    "MeshyRigModelNode": {
+        "title": "Meshy: مدل استخوان‌بندی‌شده",
+        "inputs": {
+            "meshy_task_id": "شمارهٔ وظیفهٔ Meshy",
+            "texture_image": "تصویر بافت"
+        },
+        "widgets": {
+            "height_meters": "ارتفاع (متر)"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "meshy_task_id": "شمارهٔ وظیفهٔ Meshy",
+            "GLB": "قالب GLB",
+            "FBX": "قالب FBX"
+        }
+    },
+    "MeshyAnimateModelNode": {
+        "title": "Meshy: مدل انیمیشن‌شده",
+        "inputs": {
+            "rig_task_id": "شمارهٔ وظیفهٔ استخوان‌بندی",
+            "texture_image": "تصویر بافت"
+        },
+        "widgets": {
+            "action_id": "شناسهٔ حرکت"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "meshy_task_id": "شمارهٔ وظیفهٔ Meshy",
+            "GLB": "قالب GLB",
+            "FBX": "قالب FBX"
+        }
+    },
+    "MeshyTextureNode": {
+        "title": "Meshy: مدل بافت‌دار",
+        "inputs": {
+            "meshy_task_id": "شمارهٔ وظیفهٔ Meshy",
+            "image_style": "سبک تصویر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "enable_original_uv": "فعال‌سازی UV اصلی",
+            "pbr": "رندر تقویت‌شدهٔ فیزیکی PBR"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "meshy_task_id": "شمارهٔ وظیفهٔ Meshy",
+            "GLB": "قالب GLB",
+            "FBX": "قالب FBX"
+        }
+    },
+    "Rodin3D_Regular": {
+        "title": "Rodin 3D تولید - تولید معمولی",
+        "inputs": {
+            "images": "گروه تصویر"
+        },
+        "widgets": {
+            "Seed": "بذر تصادفی",
+            "Material_Type": "نوع ماده",
+            "Polygon_count": "تعداد چندضلعی"
+        },
+        "outputs": {
+            "3D_Model_Path": "مسیر مدل سه‌بعدی",
+            "3D Model Path": "مسیر مدل سه‌بعدی"
+        }
+    },
+    "Rodin3D_Detail": {
+        "title": "Rodin 3D تولید - تولید با جزئیات",
+        "inputs": {
+            "images": "گروه تصویر"
+        },
+        "widgets": {
+            "Seed": "بذر تصادفی",
+            "Material_Type": "نوع ماده",
+            "Polygon_count": "تعداد چندضلعی"
+        },
+        "outputs": {
+            "3D_Model_Path": "مسیر مدل سه‌بعدی",
+            "3D Model Path": "مسیر مدل سه‌بعدی"
+        }
+    },
+    "Rodin3D_Smooth": {
+        "title": "Rodin 3D تولید - تولید صاف",
+        "inputs": {
+            "images": "گروه تصویر"
+        },
+        "widgets": {
+            "Seed": "بذر تصادفی",
+            "Material_Type": "نوع ماده",
+            "Polygon_count": "تعداد چندضلعی"
+        },
+        "outputs": {
+            "3D_Model_Path": "مسیر مدل سه‌بعدی",
+            "3D Model Path": "مسیر مدل سه‌بعدی"
+        }
+    },
+    "Rodin3D_Sketch": {
+        "title": "Rodin 3D تولید - تولید از پیش‌نویس",
+        "inputs": {
+            "images": "گروه تصویر"
+        },
+        "widgets": {
+            "Seed": "بذر تصادفی",
+            "Material_Type": "نوع ماده",
+            "Polygon_count": "تعداد چندضلعی"
+        },
+        "outputs": {
+            "3D_Model_Path": "مسیر مدل سه‌بعدی",
+            "3D Model Path": "مسیر مدل سه‌بعدی"
+        }
+    },
+    "Rodin3D_Gen2": {
+        "title": "Rodin 3D تولید - تولیدکنندهٔ Gen-2",
+        "inputs": {
+            "images": "گروه تصویر",
+            "Images": "گروه تصویر"
+        },
+        "widgets": {
+            "Seed": "بذر تصادفی",
+            "Material_Type": "نوع ماده",
+            "Polygon_count": "تعداد چندضلعی",
+            "TAPose": "پوز TA"
+        },
+        "outputs": {
+            "3D_Model_Path": "مسیر مدل سه‌بعدی",
+            "3D Model Path": "مسیر مدل سه‌بعدی"
+        }
+    },
+    "Rodin3D_Gen25_Image": {
+        "title": "Rodin 3D Gen-2.5 - تبدیل تصویر به 3D",
+        "inputs": {
+            "image0": "ورودی تصویر ۰",
+            "image1": "ورودی تصویر ۱"
+        },
+        "widgets": {
+            "mode": "حالت",
+            "tier": "سطح",
+            "polygon_count": "تعداد چندضلعی",
+            "creative": "خلاقیت",
+            "material": "ماده",
+            "geometry_file_format": "قالب فایل هندسه",
+            "texture_mode": "حالت بافت",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "TAPose": "پوز TA",
+            "hd_texture": "بافت عالي‌کیفیت",
+            "texture_delight": "زیباسازی بافت",
+            "use_original_alpha": "استفاده از Alpha اصلی",
+            "addon_highpack": "افزونهٔ پرحجم",
+            "bbox_width": "عرض کادر محدود",
+            "bbox_height": "ارتفاع کادر محدود",
+            "bbox_length": "طول کادر محدود",
+            "height_cm": "ارتفاع (سانتی‌متر)"
+        },
+        "outputs": {
+            "model_file": "فایل مدل"
+        },
+        "description": "تبدیل تصویر دوبعدی به مدل سه‌بعدی"
+    },
+    "Rodin3D_Gen25_Text": {
+        "title": "Rodin 3D Gen-2.5 - تبدیل متن به 3D",
+        "inputs": {
+            "prompt": "کلمهٔ پرامپت"
+        },
+        "widgets": {
+            "mode": "حالت",
+            "tier": "سلسله‌مراتب",
+            "polygon_count": "تعداد چندضلعی",
+            "creative": "خلاقیت",
+            "material": "ماده",
+            "geometry_file_format": "قالب فایل هندسه",
+            "texture_mode": "حالت بافت",
+            "seed": "بذر تصادفی",
+            "control_after_generate": "کنترل پس از تولید",
+            "TAPose": "پوز TA",
+            "hd_texture": "بافت عالي‌کیفیت",
+            "texture_delight": "زیباسازی بافت",
+            "addon_highpack": "افزونهٔ پرحجم",
+            "bbox_width": "عرض کادر محدود",
+            "bbox_height": "ارتفاع کادر محدود",
+            "bbox_length": "طول کادر محدود",
+            "height_cm": "ارتفاع (سانتی‌متر)"
+        },
+        "outputs": {
+            "model_file": "فایل مدل"
+        },
+        "description": "گرهٔ Rodin 3D Gen-2.5 تبدیل متن به 3D که بر پایهٔ پرامپت متنی مدل سه‌بعدی تولید می‌کند."
+    },
+    "TripoTextToModelNode": {
+        "title": "Tripo: تبدیل متن به مدل",
+        "inputs": {
+            "images": "گروه تصویر"
+        },
+        "widgets": {
+            "model_version": "نسخهٔ مدل",
+            "style": "سبک",
+            "texture": "نقشهٔ بافت",
+            "pbr": "مادهٔ PBR",
+            "image_seed": "بذر تصویر",
+            "model_seed": "بذر مدل",
+            "texture_seed": "بذر بافت",
+            "texture_quality": "کیفیت بافت",
+            "face_limit": "محدودیت تعداد وجه",
+            "quad": "مش چهارضلعی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "model task_id": "شناسهٔ وظیفهٔ مدل",
+            "model_task_id": "شناسهٔ وظیفهٔ مدل"
+        }
+    },
+    "TripoImageToModelNode": {
+        "title": "Tripo: تبدیل تصویر به مدل",
+        "inputs": {
+            "image": "تصویر",
+            "images": "گروه تصویر"
+        },
+        "widgets": {
+            "model_version": "نسخهٔ مدل",
+            "style": "سبک",
+            "texture": "نقشهٔ بافت",
+            "pbr": "مادهٔ PBR",
+            "image_seed": "بذر تصویر",
+            "model_seed": "بذر مدل",
+            "orientation": "جهت‌گیری",
+            "texture_seed": "بذر بافت",
+            "texture_quality": "کیفیت بافت",
+            "texture_alignment": "هم‌ترازی بافت",
+            "face_limit": "محدودیت تعداد وجه",
+            "quad": "مش چهارضلعی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "model task_id": "شناسهٔ وظیفهٔ مدل",
+            "model_task_id": "شناسهٔ وظیفهٔ مدل"
+        }
+    },
+    "TripoMultiviewToModelNode": {
+        "title": "Tripo: تبدیل چندنما به مدل",
+        "inputs": {
+            "image": "تصویر",
+            "images": "گروه تصویر",
+            "image_left": "نمای چپ",
+            "image_back": "نمای پشت",
+            "image_right": "نمای راست"
+        },
+        "widgets": {
+            "model_version": "نسخهٔ مدل",
+            "orientation": "جهت‌گیری",
+            "style": "سبک",
+            "texture": "نقشهٔ بافت",
+            "pbr": "مادهٔ PBR",
+            "image_seed": "بذر تصویر",
+            "model_seed": "بذر مدل",
+            "texture_seed": "بذر بافت",
+            "texture_quality": "کیفیت بافت",
+            "texture_alignment": "هم‌ترازی بافت",
+            "face_limit": "محدودیت تعداد وجه",
+            "quad": "مش چهارضلعی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "model task_id": "شناسهٔ وظیفهٔ مدل",
+            "model_task_id": "شناسهٔ وظیفهٔ مدل"
+        }
+    },
+    "TripoP1TextToModelNode": {
+        "title": "Tripo P1: تبدیل متن به مدل",
+        "inputs": {
+            "prompt": "کلمهٔ پرامپت",
+            "negative_prompt": "پرامپت منفی"
+        },
+        "widgets": {
+            "output_mode": "حالت خروجی",
+            "image_seed": "بذر تصادفی تصویر",
+            "face_limit": "محدودیت وجه",
+            "model_seed": "بذر تصادفی مدل",
+            "auto_size": "اندازهٔ خودکار",
+            "export_uv": "خروجی UV",
+            "compress_geometry": "فشار هندسه"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "model task_id": "شناسهٔ وظیفهٔ مدل"
+        },
+        "description": "پرامپت متنی را به مدل سه‌بعدی تبدیل می‌کند"
+    },
+    "TripoP1ImageToModelNode": {
+        "title": "Tripo P1: تبدیل تصویر به مدل",
+        "inputs": {
+            "image": "تصویر"
+        },
+        "widgets": {
+            "output_mode": "حالت خروجی",
+            "enable_image_autofix": "فعال‌سازی ترمیم خودکار تصویر",
+            "face_limit": "محدودیت وجه",
+            "model_seed": "بذر تصادفی مدل",
+            "auto_size": "اندازهٔ خودکار",
+            "export_uv": "خروجی UV",
+            "compress_geometry": "فشار هندسه"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "model_task_id": "شناسهٔ وظیفهٔ مدل"
+        },
+        "description": "TripoP1 تبدیل تصویر به سه‌بعدی. به‌ویژه برای مش‌های کم‌چندضلعی درجهٔ بازی بهینه شده است."
+    },
+    "TripoP1MultiviewToModelNode": {
+        "title": "Tripo P1: تبدیل چندنما به مدل",
+        "inputs": {
+            "image": "تصویر",
+            "image_left": "تصویر نمای چپ",
+            "image_back": "تصویر نمای پشت",
+            "image_right": "تصویر نمای راست"
+        },
+        "widgets": {
+            "output_mode": "حالت خروجی",
+            "face_limit": "محدودیت تعداد وجه",
+            "model_seed": "بذر تصادفی مدل",
+            "auto_size": "اندازهٔ خودکار",
+            "export_uv": "خروجی UV",
+            "compress_geometry": "فشار هندسه"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "model_task_id": "شناسهٔ وظیفهٔ مدل"
+        },
+        "description": "TripoP1 تبدیل چندنمای دوبعدی به سه‌بعدی، با تبدیل از ۲ تا ۴ تصویر مرجع به ترتیب [جلو، چپ، پشت، راست]. تصویر جلو الزامی است؛ هر ترکیبی از سه تای دیگر می‌تواند حذف شود."
+    },
+    "TripoTextureNode": {
+        "title": "Tripo: مدل بافت‌دار",
+        "inputs": {
+            "model task_id": "شناسهٔ وظیفهٔ مدل",
+            "model_task_id": "شناسهٔ وظیفهٔ مدل"
+        },
+        "widgets": {
+            "model_version": "نسخهٔ مدل",
+            "style": "سبک",
+            "texture": "نقشهٔ بافت",
+            "pbr": "مادهٔ PBR",
+            "image_seed": "بذر تصویر",
+            "model_seed": "بذر مدل",
+            "orientation": "جهت‌گیری",
+            "texture_seed": "بذر بافت",
+            "texture_quality": "کیفیت بافت",
+            "texture_alignment": "هم‌ترازی بافت",
+            "face_limit": "محدودیت تعداد وجه",
+            "quad": "مش چهارضلعی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "model_task_id": "شناسهٔ وظیفهٔ مدل"
+        }
+    },
+    "TripoRefineNode": {
+        "title": "Tripo: تکمیل مدل پیش‌نویس",
+        "inputs": {
+            "model task_id": "شناسهٔ وظیفهٔ مدل",
+            "model_task_id": "شناسهٔ وظیفهٔ مدل"
+        },
+        "widgets": {
+            "format": "قالب",
+            "face_limittexture_size": "محدودیت اندازهٔ بافت وجه",
+            "texture_format": "قالب بافت",
+            "quad": "مش چهارضلعی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "model task_id": "شناسهٔ وظیفهٔ مدل",
+            "model_task_id": "شناسهٔ وظیفهٔ مدل"
+        }
+    },
+    "TripoRigNode": {
+        "title": "Tripo: مدل داربست‌بندی‌شده",
+        "inputs": {
+            "original model task id": "شناسهٔ وظیفهٔ مدل اصلی",
+            "original_model_task_id": "شناسهٔ وظیفهٔ مدل اصلی"
+        },
+        "widgets": {
+            "format": "قالب",
+            "face_limittexture_size": "محدودیت اندازهٔ بافت وجه",
+            "texture_format": "قالب بافت",
+            "quad": "مش چهارضلعی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "rig task_id": "شناسهٔ وظیفهٔ داربست‌بندی",
+            "rig_task_id": "شناسهٔ وظیفهٔ داربست‌بندی"
+        }
+    },
+    "TripoRetargetNode": {
+        "title": "Tripo: مدل بازنویسی جهت",
+        "inputs": {
+            "original model task id": "شناسهٔ وظیفهٔ مدل اصلی",
+            "original_model_task_id": "شناسهٔ وظیفهٔ مدل اصلی"
+        },
+        "widgets": {
+            "animation": "انیمیشن",
+            "face_limittexture_size": "محدودیت اندازهٔ بافت وجه",
+            "texture_format": "قالب بافت",
+            "quad": "مش چهارضلعی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "retarget task_id": "شناسهٔ وظیفهٔ بازنویسی",
+            "retarget_task_id": "شناسهٔ وظیفهٔ بازنویسی"
+        }
+    },
+    "BriaVideoReplaceBackground": {
+        "title": "جایگزینی پس‌زمینهٔ ویدیو Bria",
+        "inputs": {
+            "video": "ویدیو",
+            "background_image": "تصویر پس‌زمینه",
+            "background_video": "ویدیوی پس‌زمینه"
+        },
+        "widgets": {
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "با استفاده از Bria پس‌زمینهٔ ویدیو را با تصویر یا ویدیوی ارائه‌شده جایگزین کنید. خروجی وضوح و نرخ فریم پیش‌زمینه را حفظ می‌کند؛ اگر پس‌زمینه نسبت ابعاد متفاوتی داشته باشد کشیده می‌شود تا جا بیفتد، پس برای نتیجهٔ بدون اعوجاج نسبت یکسان را تضمین کنید."
+    },
+    "RunwayAleph2VideoToVideoNode": {
+        "title": "تبدیل ویدیو به ویدیوی Runway Aleph2",
+        "inputs": {
+            "video": "ویدیو",
+            "keyframes": "فریم کلیدی",
+            "prompt_images": "تصویر پرامپت"
+        },
+        "widgets": {
+            "prompt": "راهنما",
+            "seed": "بذر تصادفی",
+            "generate_control": "کنترل تولید",
+            "public_figure_threshold": "آستانهٔ افراد عمومی"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "با استفاده از مدل Aleph2 شرکت Runway ویدیو را با پرامپت متنی ویرایش کنید. Aleph2 ویدیوی شما را دگرگون می‌کند (تغییر استایل، تغییر نورپردازی، افزودن یا حذف عناصر، تغییر زاویه) در حالی که حرکت و ریتم اصلی حفظ می‌شود؛ خروجی با وضوح ویدیوی ورودی یکسان است و ویدیوی ورودی باید ۲ تا ۳۰ ثانیه با نرخ فریم 30fps یا کمتر باشد. می‌توانید با فریم‌های کلیدی (مهار خورده به ویدیوی ورودی) یا تصاویر پرامپت (مهار خورده به ویدیوی خروجی) ویرایش را هدایت کنید — فقط یکی، نه هر دو با هم."
+    },
+    "TripoImportModelNode": {
+        "title": "Tripo: درون‌ریزی مدل",
+        "inputs": {
+            "model_3d": "مسیر فایل مدل سه‌بعدی"
+        },
+        "widgets": {},
+        "outputs": {
+            "model task_id": "شناسهٔ وظیفهٔ مدل"
+        },
+        "description": "مدل‌های سه‌بعدی بیرونی (مثلاً از Rodin، Hunyuan3D یا فایل‌های محلی) را به Tripo درون‌ریزی کنید تا در گره‌های پس‌پردازش Tripo به کار روند: بافت، استخوان‌بندی، تبدیل. قالب GLB توصیه می‌شود: وقتی بافت‌ها فقط درون فایل جاسازی شده‌اند، پس از درون‌ریزی حفظ می‌مانند. توجه کنید برای بافت‌گذاری مدل درون‌ریزی‌شده ابتدا باید پرامپت بافت تنظیم شود."
+    },
+    "GeminiVideoOmni": {
+        "title": "گوگل Gemini Omni (ویدیو)",
+        "inputs": {
+            "image_1": "تصویر_۱",
+            "video_1": "ویدیو_۱"
+        },
+        "widgets": {
+            "model": "مدل",
+            "model_prompt": "پرامپت مدل",
+            "temperature": "دما",
+            "seed": "بذر",
+            "generate_after_control": "کنترل پس از تولید"
+        },
+        "outputs": {},
+        "description": "با مدل Google GeminiOmniFlash از پرامپت متنی ویدیویی با صدا تولید کنید. می‌توانید تصویر یا ویدیوی مرجع برای هدایت یا ویرایش نتیجهٔ تولید ارائه دهید. مدت (۳-۱۰ ثانیه) و نسبت ابعاد (16:9 یا 9:16) را مستقیماً در پرامپت بنویسید."
+    },
+    "LumaRay32TextToVideoNode": {
+        "title": "Luma Ray 3.2 تولید ویدیو از متن",
+        "inputs": {
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "duration": "مدت",
+            "seed": "بذر",
+            "loop": "حلقه"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "generation_id": "شناسهٔ تولید"
+        },
+        "description": "با مدل Ray3.2 شرکت Luma از پرامپت متنی ویدیو تولید می‌کند."
+    },
+    "LumaRay32ImageToVideoNode": {
+        "title": "Luma Ray 3.2 تولید ویدیو از تصویر",
+        "inputs": {
+            "start_frame": "فریم شروع",
+            "end_frame": "فریم پایان",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "resolution": "وضوح",
+            "loop": "حلقه",
+            "seed": "بذر تصادفی",
+            "generate_after_control": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "video": "ویدیو",
+            "generation_id": "شناسهٔ تولید"
+        },
+        "description": "با مدل Ray3.2 شرکت Luma از فریم شروع و/یا پایان ویدیو تولید می‌کند. تولید مهارخورده با تصویر همیشه ۵ ثانیه است."
+    },
+    "LumaRay32KeyframesToVideoNode": {
+        "title": "Luma Ray 3.2 تبدیل فریم کلیدی به ویدیو",
+        "inputs": {
+            "keyframes": "فریم کلیدی",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "resolution": "وضوح",
+            "duration": "مدت زمان",
+            "seed": "بذر",
+            "generate_after_control": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "generation_id": "شناسهٔ تولید"
+        },
+        "description": "تبدیل فریم‌های کلیدی به ویدیو"
+    },
+    "LumaRay32VideoEditNode": {
+        "title": "ویرایش ویدیوی Luma Ray 3.2",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "resolution": "وضوح",
+            "strength": "شدت",
+            "seed": "بذر",
+            "generate_after_control": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "generation_id": "شناسهٔ تولید"
+        },
+        "description": "با LumaRay3.2 یک ویدیوی موجود را بر پایهٔ پرامپت تازه باز-رندر می‌کند (تغییر طراحی، تغییر نورپردازی، افزودن یا حذف عناصر) در حالی که حرکت اصلی حفظ می‌شود. ویدیوی مبدأ تا ۱۸ ثانیه؛ ویدیوی ویرایش‌شده به همان طول مبدأ باقی می‌ماند."
+    },
+    "LumaRay32VideoReframeNode": {
+        "title": "بازتنظیم ویدیوی Luma Ray 3.2",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "strength": "شدت",
+            "seed": "بذر",
+            "generate_after_control": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "generation_id": "شناسهٔ تولید"
+        },
+        "description": "با LumaRay3.2 نسبت ابعاد یک ویدیوی موجود را تغییر دهید تا ناحیهٔ تازه آشکارسازی‌شدهٔ بوم پر شود. ویدیوی مبدأ تا ۳۰ ثانیه. هزینه به ازای هر ثانیهٔ خروجی محاسبه می‌شود."
+    },
+    "LumaRay32ExtendVideoNode": {
+        "title": "Luma Ray 3.2 گسترش ویدیو",
+        "inputs": {},
+        "widgets": {
+            "source_generation_id": "شناسهٔ تولید مبدأ",
+            "direction": "جهت",
+            "loop": "حلقه",
+            "prompt": "پرامپت",
+            "resolution": "وضوح",
+            "seed": "بذر",
+            "generate_after_control": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو",
+            "generation_id": "شناسهٔ تولید"
+        },
+        "description": "تولید قبلی Ray3.2 را به جلو گسترش دهید (ادامه پس از آن) یا به عقب (افزودن پیش از آن). خروجی شناسهٔ تولید گرهٔ LumaRay3.2 قبلی را وصل کنید. گسترش همیشه ۵ ثانیه است."
+    },
+    "HeyGenTalkingPhotoNode": {
+        "title": "HeyGen صحبت کردن عکس",
+        "inputs": {
+            "image": "تصویر",
+            "speech_source": "منبع گفتار",
+            "speech_text": "متن گفتار"
+        },
+        "widgets": {
+            "speech_source": "منبع گفتار",
+            "voice": "گفتار",
+            "custom_voice_id": "شناسهٔ صدای سفارشی",
+            "voice_speed": "سرعت گفتار",
+            "resolution": "وضوح",
+            "aspect_ratio": "نسبت ابعاد",
+            "expressiveness": "ابراز",
+            "seed": "بذر",
+            "speech_text": "متن گفتار"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "هر تصویر فردی را به ویدیوی گفتگوی لبخوان‌متحرک انیمیت می‌کند (HeyGenAvatarIV). با اسکریپت متنی یا صدای سفارشی قابل راه‌اندازی است."
+    },
+    "HeyGenAvatarVideoNode": {
+        "title": "ویدیوی آواتار پویای HeyGen",
+        "inputs": {},
+        "widgets": {
+            "engine": "موتور",
+            "avatar": "آواتار",
+            "speech source": "منبع گفتار",
+            "voice": "گفتار",
+            "custom_voice_id": "شناسهٔ صدای سفارشی",
+            "voice_speed": "سرعت گفتار",
+            "custom_avatar_id": "شناسهٔ آواتار سفارشی",
+            "resolution": "وضوح",
+            "aspect_ratio": "نسبت ابعاد",
+            "background_color": "رنگ پس‌زمینه",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "از شخصیت‌های HeyGen یک ویدیوی ارائه‌دهندهٔ در حال صحبت بسازد. محبوب‌ترین آواتارهای عمومی HeyGen گنجانده شده‌اند؛ هر شناسهٔ ظاهری می‌تواند به‌عنوان جای‌گزین ارائه شود."
+    },
+    "HeyGenCreateAvatarNode": {
+        "title": "HeyGen ساخت آواتار",
+        "inputs": {
+            "ref_image_1": "تصویر مرجع ۱"
+        },
+        "widgets": {
+            "source": "فایل مبدأ"
+        },
+        "outputs": {
+            "avatar_id": "شناسهٔ آواتار",
+            "preview": "تصویر پیش‌نمایش"
+        },
+        "description": "برای ساخت آواتار از تصویر مبدأ و پرامپت به کار می‌رود"
+    },
+    "HeyGenVideoTranslateNode": {
+        "title": "HeyGen ترجمهٔ ویدیو",
+        "inputs": {
+            "video": "ویدیو"
+        },
+        "widgets": {
+            "output_language": "زبان خروجی",
+            "mode": "حالت",
+            "translate_audio_only": "فقط ترجمهٔ صدا",
+            "speaker_count": "تعداد گویندگان",
+            "seed": "بذر تصادفی"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "گرهٔ ترجمهٔ ویدیوی HeyGen"
+    },
+    "MinimaxHailuo03TextToVideoNode": {
+        "title": "MiniMax H3 تولید ویدیو از متن",
+        "inputs": {},
+        "widgets": {
+            "model": "مدل",
+            "model_prompt": "پرامپت مدل",
+            "resolution": "وضوح",
+            "ratio": "نسبت",
+            "seed": "بذر",
+            "watermark": "واترمارک"
+        },
+        "outputs": {},
+        "description": "با مدل MiniMaxH3 از پرامپت متنی ویدیو تولید می‌کند."
+    },
+    "MinimaxHailuo03FirstLastFrameNode": {
+        "title": "MiniMax H3 تبدیل فریم اول و آخر به ویدیو",
+        "inputs": {
+            "first_frame": "فریم اول",
+            "last_frame": "فریم آخر"
+        },
+        "widgets": {
+            "model": "مدل",
+            "model_prompt": "پرامپت مدل",
+            "resolution": "وضوح",
+            "duration": "مدت زمان",
+            "seed": "بذر تصادفی",
+            "generate_control": "کنترل تولید",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "تولید ویدیو از فریم اول و فریم آخر"
+    },
+    "MinimaxHailuo03ReferenceNode": {
+        "title": "MiniMax H3 تولید ویدیو از مرجع",
+        "inputs": {
+            "image_1": "تصویر۱",
+            "video_1": "ویدیو۱",
+            "audio_1": "صوت۱"
+        },
+        "widgets": {
+            "model": "مدل",
+            "prompt": "پرامپت",
+            "resolution": "وضوح",
+            "ratio": "نسبت",
+            "seed": "بذر تصادفی",
+            "watermark": "واترمارک"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "با استفاده از مدل MiniMax H3 تصویر، ویدیو و صدا را به‌عنوان مرجع برای تولید ویدیوی تازه به کار برید."
+    },
+    "SyncLipSyncNode": {
+        "title": "همگام‌سازی لب‌های sync.so",
+        "inputs": {
+            "video": "ویدیو",
+            "audio": "صوت"
+        },
+        "widgets": {
+            "seed": "بذر تصادفی",
+            "generate_after_control": "کنترل پس از تولید",
+            "model": "مدل",
+            "sync_mode": "حالت همگام‌سازی",
+            "speaker_selection": "انتخاب گوینده",
+            "speaker_frame": "فریم گوینده",
+            "speaker_x": "مختصه X گوینده",
+            "speaker_y": "مختصه Y گوینده"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "همگام‌سازی حرکت لب‌های ویدیو با صدا"
+    },
+    "SyncTalkingImageNode": {
+        "title": "تصویر در حال صحبت sync.so",
+        "inputs": {
+            "image": "تصویر",
+            "audio": "صوت"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "seed": "بذر",
+            "generate_after_control": "کنترل پس از تولید",
+            "model": "مدل",
+            "speaker_selection": "انتخاب گوینده",
+            "speaker_x": "مختصه X گوینده",
+            "speaker_y": "مختصه Y گوینده",
+            "auto_downscale": "نمونه‌برداری پایین خودکار"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "ترکیب تصویر و صدا برای ساخت تصویر در حال صحبت"
+    },
+    "IdeogramPImage": {
+        "title": "تصویر هیروگلیف P",
+        "inputs": {
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "quality": "کیفیت",
+            "resolution": "وضوح",
+            "aspect_ratio": "نسبت ابعاد",
+            "prompt_upsampling": "افزایش نمونهٔ پرامپت",
+            "seed": "بذر",
+            "generate_after_control": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "IMAGE": "تصویر",
+            "final_prompt": "پرامپت نهایی"
+        },
+        "description": "گره‌ای که تصویر تولید می‌کند"
+    },
+    "ByteDanceSeedAudio": {
+        "title": "بایت‌دنس صدای Seed 1.0",
+        "inputs": {},
+        "widgets": {
+            "text_prompt": "پرامپت متنی",
+            "reference_mode": "حالت مرجع",
+            "sample_rate": "نرخ نمونه‌برداری",
+            "speech_rate": "سرعت گفتار",
+            "loudness_rate": "بلندی صدا",
+            "pitch_rate": "گام صدا",
+            "seed": "بذر",
+            "model": "مدل",
+            "generate_after_control": "کنترل پس از تولید"
+        },
+        "outputs": {
+            "AUDIO": "ویدیو"
+        },
+        "description": "گرهٔ صدای بایت‌دنس Seed 1.0"
+    },
+    "HeyGenTextToSpeechNode": {
+        "title": "HeyGen متن به گفتار",
+        "inputs": {},
+        "widgets": {
+            "text": "متن",
+            "voice": "گفتار",
+            "custom_voice_id": "شناسهٔ صدای سفارشی",
+            "speed": "سرعت گفتار",
+            "ssml": "برچسب‌های کنترل SSML",
+            "seed": "بذر",
+            "generate_after_control": "کنترل پس از تولید"
+        },
+        "outputs": {},
+        "description": "گره‌ای که متن را به گفتار تبدیل می‌کند"
+    },
+    "ComfyCloudMiniMaxH3TextToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3 تبدیل متن به ویدیو",
+        "inputs": {
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "seed": "بذر تصادفی",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "duration_seconds": "مدت (ثانیه)"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "مجموعهٔ گره‌های Comfy Cloud همچنان در حال به‌روزرسانی است: ممکن است گزینه‌ها افزوده یا حذف شوند و برخی گردش‌های کار غیرفعال شوند. با MiniMax H3 از پرامپت متنی ویدیویی با موسیقی متناسب تولید کنید. تصویر و صدا از همان فرایند می‌آیند، نه دوبلهٔ پس از تولید.  \n  روی GPUهای Comfy Cloud اجرا می‌شود و بر پایهٔ زمان اجرا هزینه می‌شود، هر GPU ثانیه ۰.۰۰۱۲۹۵ دلار (۰.۲۷ اعتبار).  \n  با اعتبار پرداخت می‌شود، بدون نیاز به اشتراک سرویس ابری."
+    },
+    "ComfyCloudMiniMaxH3ImageToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3 تبدیل تصویر به ویدیو",
+        "inputs": {
+            "first_frame": "فریم اول",
+            "prompt": "پرامپت"
+        },
+        "widgets": {
+            "seed": "بذر تصادفی",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "duration_seconds": "مدت زمان"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "مجموعهٔ گره‌های Comfy Cloud همچنان در حال به‌روزرسانی است: ممکن است گزینه‌ها افزوده یا حذف شوند و برخی گردش‌های کار غیرفعال شوند. با MiniMax H3 از پرامپت متنی ویدیویی با موسیقی متناسب تولید کنید. تصویر و صدا از همان فرایند می‌آیند، نه دوبلهٔ پس از تولید.  \n  روی GPUهای Comfy Cloud اجرا می‌شود و بر پایهٔ زمان اجرا هزینه می‌شود، هر GPU ثانیه ۰.۰۰۱۲۹۵ دلار (۰.۲۷ اعتبار).  \n  با اعتبار پرداخت می‌شود، بدون نیاز به اشتراک سرویس ابری."
+    },
+    "ComfyCloudMiniMaxH3FirstLastFrameToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3 تبدیل فریم اول و آخر به ویدیو",
+        "inputs": {
+            "first_frame": "فریم اول",
+            "last_frame": "فریم آخر"
+        },
+        "widgets": {
+            "prompt": "پرامپت",
+            "seed": "بذر تصادفی",
+            "aspect_ratio": "نسبت ابعاد",
+            "resolution": "وضوح",
+            "duration_seconds": "مدت زمان (ثانیه)"
+        },
+        "outputs": {
+            "VIDEO": "ویدیو"
+        },
+        "description": "مجموعهٔ گره‌های Comfy Cloud همچنان در حال به‌روزرسانی است: ممکن است گزینه‌ها افزوده یا حذف شوند و برخی گردش‌های کار غیرفعال شوند. با MiniMax H3 از پرامپت متنی ویدیویی با موسیقی متناسب تولید کنید. تصویر و صدا از همان فرایند می‌آیند، نه دوبلهٔ پس از تولید.  \n  روی GPUهای Comfy Cloud اجرا می‌شود و بر پایهٔ زمان اجرا هزینه می‌شود، هر GPU ثانیه ۰.۰۰۱۲۹۵ دلار (۰.۲۷ اعتبار).  \n  با اعتبار پرداخت می‌شود، بدون نیاز به اشتراک سرویس ابری."
+    },
+    "TripoConversionNode": {
+        "title": "تبدیل مدل Tripo",
+        "inputs": {
+            "original model task id": "شناسهٔ وظیفهٔ مدل اصلی",
+            "original_model_task_id": "شناسهٔ وظیفهٔ مدل اصلی"
+        },
+        "widgets": {
+            "format": "قالب",
+            "face_limittexture_size": "محدودیت اندازهٔ بافت وجه",
+            "face_limit": "محدودیت وجه",
+            "texture_size": "اندازهٔ بافت",
+            "texture_format": "قالب بافت",
+            "quad": "مش چهارضلعی"
+        },
+        "outputs": {
+            "model_file": "فایل مدل",
+            "model task_id": "شناسهٔ وظیفهٔ مدل",
+            "model_task_id": "شناسهٔ وظیفهٔ مدل"
+        }
+    }
+}
