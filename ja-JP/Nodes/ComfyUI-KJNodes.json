@@ -1,0 +1,4219 @@
+{
+    "ContextWindowsVisualizerKJ": {
+        "title": "コンテキストウィンドウ可視化ツール (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "frame_units": "フレーム単位",
+            "dim": "次元",
+            "temporal_downscale": "時間ダウンサンプル率",
+            "num_frames": "フレーム数",
+            "context_length": "コンテキスト長",
+            "context_overlap": "コンテキスト重複",
+            "context_schedule": "コンテキストスケジュール",
+            "context_stride": "コンテキストストライド",
+            "closed_loop": "クローズドループ",
+            "fuse_method": "融合方法",
+            "causal_window_fix": "因果ウィンドウ修復",
+            "freenoise": "FreeNoise",
+            "cond_retain_index_list": "条件保持インデックスリスト"
+        },
+        "outputs": {
+            "model": "モデル"
+        },
+        "description": "ComfyUIコンテキストウィンドウのインタラクティブ可視化：ウィンドウ位置、重複度、融合重み、フレーム単位のブレンドをリアルタイム表示。コア「コンテキストウィンドウ（手動）」ノードなどへ設定を適用することも可能。"
+    },
+    "MiniMaxH3TokenCounter": {
+        "title": "MiniMax H3 トークンカウンタ",
+        "inputs": {
+            "samples": "サンプリング",
+            "conditioning": "条件"
+        },
+        "widgets": {},
+        "outputs": {
+            "samples": "サンプリング",
+            "conditioning": "条件",
+            "tokens": "トークン",
+            "breakdown": "分解"
+        },
+        "description": "MiniMax H3生成時にサンプリングなしで実行されるパック済みシーケンス長を計算。AV Latentと条件情報（テキスト長、キーフレーム、リファレンスブロックを含む）から、モデルと同じ[テキスト | キーフレーム/リファレンス | 音声 | 動画]レイアウトを構築。"
+    },
+    "MiniMaxLowVRAMAttention": {
+        "title": "MiniMax H3 低VRAMアテンション",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "head_chunks": "ヘッドブロック数"
+        },
+        "outputs": {
+            "model": "モデル"
+        },
+        "description": "計算ロジックを変更せず、MiniMax H3アテンションモジュールのピークVRAM使用量を削減。アテンション呼び出しを複数のヘッドグループに分割し、融合後のqkvバッファが有効な間にチャンク数に応じてカーネル内の過渡データ（int8 q/kコピー、fp32アキュムレータ等）を削減、同時に消費完了後すぐqkvバッファと正規化ブロック入力を解放。出力は未パッチモデルと完全に一致。"
+    },
+    "MiniMaxChunkFeedForward": {
+        "title": "MiniMax H3 チャンク前フィードフォワードNN",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "chunks": "チャンク数",
+            "seq_threshold": "シーケンス閾値"
+        },
+        "outputs": {},
+        "description": "MiniMax H3の前FF（SwiGLU）をトークン次元でチャンク分割し、ピークVRAM使用量を削減。モデル量子化時も各チャンクはComfyUIの融合INT8カーネルを通り、活性化はトークン単位で量子化されるため、出力は未分割モデルと一致。"
+    },
+    "Ideogram4PromptBuilderKJ": {
+        "title": "Ideogram4 プロンプトビルダー (KJ)",
+        "inputs": {
+            "image": "画像",
+            "import_json": "JSON読込",
+            "bboxes": "バウンディングボックス"
+        },
+        "widgets": {
+            "width": "幅",
+            "height": "高さ",
+            "high_level_description": "上位説明",
+            "background": "背景",
+            "style": "スタイル",
+            "aesthetics": "美学",
+            "lighting": "照明",
+            "medium": "媒体",
+            "style_palette_data": "スタイルパレットデータ",
+            "elements_data": "エレメントデータ",
+            "bg_brightness": "背景の明るさ",
+            "import_mode": "読み込みモード",
+            "output_format": "出力形式",
+            "coord_mode": "座標モード",
+            "bbox_order": "バウンディングボックス順序"
+        },
+        "outputs": {
+            "prompt": "プロンプト",
+            "preview": "プレビュー",
+            "bboxes": "バウンディングボックス",
+            "width": "幅",
+            "height": "高さ"
+        },
+        "description": "\nIdeogram 4構造化JSONキャプション形式用の可視化プロンプトビルダー。\n\nキャンバス上をドラッグしてリージョンを描画。選択するとタイプ（オブジェクト/テキスト）、説明、テキスト、パレットを設定可能。背景とスタイル項目はウィジェットとして設定。組立済みキャプションJSON文字列を出力。\n\nbbox軸オフセットは0-1000グリッドに正規化、形式は[Y最小, X最小, Y最大, X最大]。幅/高さでキャンバスのアスペクト比を設定。\n\nキャンバス操作：\n- ドラッグ：新規リージョン描画\n- Ctrl/Cmd+ドラッグ：既存リージョン上でも新規リージョンを強制描画\n- クリック：リージョン選択 · Alt+クリック：重複リージョンを循環\n- ダブルクリック：説明をインライン編集\n- 右クリック：リージョンリスト（選択/削除/複製/並び替え、上ほど前面）\n- Del/Backspace：選択リージョンを削除\n- Ctrl/Cmd + C/V/D：コピー/貼り付け/選択複製\n- obj/テキスト横のbbox軸オフセットフィールド（ピクセル/出力）編集可\n\nカラースウォッチ：\n- クリック：編集 · ドラッグ：並び替え · 右クリック：削除\n- ホバー+Ctrl/Cmd + C/V：16進色値をコピー/貼り付け\n- \"+\"：色を追加（クリップボードが色ならそれを使用）\n\nツールバー：\n- リアルタイム：ライブサンプリングプレビューを背景に使用（最終結果も取得）\n- 背景取得/背景クリア：最後に生成した画像を背景に使用\n- 明るさスライダ、トークン推定、コピー/貼り付け/全クリア"
+    },
+    "RandomImageFromBatch": {
+        "title": "バッチからランダムに画像を選択 (KJ)",
+        "inputs": {
+            "input": "入力"
+        },
+        "widgets": {
+            "start_index": "開始インデックス",
+            "end_index": "終了インデックス",
+            "num_frames": "フレーム数",
+            "randomness": "ランダム性",
+            "min_distance": "最小間隔",
+            "max_distance": "最大間隔",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "output": "出力"
+        },
+        "description": "画像またはマスクバッチの選択したインデックス範囲からフレーム列を選択。ランダム性=0では範囲内に均一分布、=1では非重複の一様乱数、中間値は線形ブレンド。出力は常にバッチインデックスでソート。負インデックスは末尾からカウント（-1 = 最後）。"
+    },
+    "FastPreviewBatch": {
+        "title": "高速プレビューバッチ (KJ)",
+        "inputs": {
+            "input": "入力"
+        },
+        "widgets": {
+            "max_thumb_size": "最大サムネイルサイズ",
+            "crf": "画質上限 (CRF)",
+            "max_grid_frames": "最大グリッドフレーム数"
+        },
+        "outputs": {},
+        "description": "画像バッチを全IフレームのH.264 MP4サムネイルストリップとして符号化し、インタラクティブグリッドで表示。タイルをクリックすると拡大と前後閲覧が可能。N個のPNGファイル生成を回避。"
+    },
+    "BBOXToBoundingBoxKJ": {
+        "title": "BBOX→バウンディングボックス (KJ)",
+        "inputs": {
+            "bbox": "バウンディングボックス"
+        },
+        "widgets": {
+            "bbox_format": "バウンディングボックス形式",
+            "index": "インデックス"
+        },
+        "outputs": {
+            "bounding_box": "バウンディングボックス"
+        },
+        "description": "KJNodesのBBOXをコアノード（画像クロップ等）が使用するネイティブBOUNDING_BOX辞書へ変換。"
+    },
+    "WanVideoMemoryEfficientSageAttentionPatch": {
+        "title": "Wan動画 省メモリSageアテンションパッチ (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "モデル"
+        },
+        "description": "実験的機能！WanVideoの自己アテンションでカスタムsageattentionを有効化し、ピークVRAM使用量を削減、アテンションモードを上書き。最新版のsageattentionが必要。"
+    },
+    "MiniMaxH3MemoryEfficientSageAttentionPatch": {
+        "title": "MiniMax H3 省メモリSageアテンションパッチ (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "モデル"
+        },
+        "description": "実験的機能！MiniMax H3の自己アテンションでカスタムsageattentionを有効化し、ピークVRAM使用量を削減、アテンションモードを上書き。最新版のsageattentionが必要。"
+    },
+    "PatchFlashAttentionKJ": {
+        "title": "Flashアテンションパッチ (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "allow_compile": "コンパイルを許可"
+        },
+        "outputs": {},
+        "description": "Flashアテンションを使用するようアテンションをパッチする実験ノード。ComfyUIデフォルトのサイレントSDPAフォールバックは不使用。本ノードを通過したモデルのアテンションをパッチ、無効化するにはバイパスまたは切断。flash_attnライブラリのインストールが必要。"
+    },
+    "TorchCompileModelAdvanced": {
+        "title": "Torchコンパイルモデル上級版 (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "backend": "バックエンド",
+            "fullgraph": "フルグラフモード",
+            "mode": "モード",
+            "dynamic": "動的",
+            "compile_transformer_blocks_only": "Transformerブロックのみコンパイル",
+            "dynamo_cache_size_limit": "Dynamoキャッシュサイズ上限",
+            "debug_compile_keys": "デバッグコンパイルキー",
+            "disable_dynamic_vram": "動的VRAMを無効化"
+        },
+        "outputs": {},
+        "description": "拡散モデル向け上級 torch.compile パッチ。"
+    },
+    "Krea2PromptWeight": {
+        "title": "Krea2 プロンプト重み (KJ)",
+        "inputs": {
+            "clip": "CLIP",
+            "model": "モデル"
+        },
+        "widgets": {
+            "text": "テキスト",
+            "strength": "強度"
+        },
+        "outputs": {
+            "model": "モデル",
+            "conditioning": "条件"
+        },
+        "description": "アテンション値のスケーリングでKrea2（K2）にトークン単位プロンプト重みを適用。(語:-1)で概念を除去、(語:1.5)で概念を強調——Qwen3-VLエンコーダ専用、通常の重み設定では不可能。パッチ済みモデルと条件を出力、サンプラーCFGは1.0に設定。"
+    },
+    "Ideogram4OptimizationsKJ": {
+        "title": "Ideogram4 最適化 (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "chunk_ffn": "チャンク前FF",
+            "ffn_chunks": "前FFチャンク数",
+            "ffn_seq_threshold": "前FFシーケンス閾値",
+            "bf16_rope": "bf16_RoPE"
+        },
+        "outputs": {
+            "model": "モデル"
+        },
+        "description": "実験的、モデル出力が変わる可能性有り！！Ideogram4前方伝播のピークVRAMを削減。chunk_ffnはSwiGLU活性化をトークン次元で分割、bf16_ropeはfp32へアップキャストせずモデルデータ型でRoPEを適用。両者ともブロック内の最大一時テンソル2種を狙う。"
+    },
+    "PiDColorBiasCorrection": {
+        "title": "PiD 色偏差補正 (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "strength": "強度",
+            "backbone": "バックボーン"
+        },
+        "outputs": {},
+        "description": "PiD 4ステップデコーダの色/明度ドリフト補正。最初のサンプリングステップで、モデルの系統的ドリフトに校正された小型線形モデルを使い、レベルオフセット0_pからチャンネル別偏差を減算（モデルは暗いシーンを明るくし青みを追加する傾向）。"
+    },
+    "LeapfusionHunyuanI2V": {
+        "title": "LeapFusion 混元 画像→動画 (KJ)",
+        "inputs": {
+            "model": "モデル",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "index": "インデックス",
+            "start_percent": "開始率",
+            "end_percent": "終了率",
+            "strength": "強度"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VAEMergeKJ": {
+        "title": "VAEマージ (KJ)",
+        "inputs": {
+            "vae_1": "VAE1",
+            "vae_2": "VAE2"
+        },
+        "widgets": {
+            "ratio": "比率"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "加重平均で2つのVAEの重みを統合。比率はVAE_2側の重み（0.0 = 純VAE_1、1.0 = 純VAE_2）。両VAEは同一アーキテクチャ（一致するstate_dictキーと形状）必須。"
+    },
+    "LatentInpaintTTM": {
+        "title": "Latentマスク修復TTM (KJ)",
+        "inputs": {
+            "model": "モデル",
+            "mask": "マスク"
+        },
+        "widgets": {
+            "steps": "ステップ数"
+        },
+        "outputs": {},
+        "description": "https://github.com/time-to-move/TTM"
+    },
+    "DeprecatedCompileNodeKJ": {
+        "title": "廃止済みコンパイルノード (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "本ノードはTorchCompileModelAdvancedに置き換えられました。そちらをご利用ください"
+    },
+    "ModelPreviewOverrideKJ": {
+        "title": "モデルプレビューオーバーライド (KJ)",
+        "inputs": {
+            "model": "モデル",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "max_resolution": "最大解像度",
+            "jpeg_quality": "JPEG品質",
+            "suppress_default_preview": "デフォルトプレビューを無効化",
+            "preview_frames": "プレビューフレーム",
+            "preview_fps": "プレビューフレームレート",
+            "tiny_vae": "ミニVAE"
+        },
+        "outputs": {},
+        "description": "本ノードに専用のライブプレビューフレームを追加、最大解像度を上書き可能。ComfyUIのデフォルトプレビュー上限は512pだが、本ノードは自身のプレビューをノード上のDOMコンポーネントへ直接送信するため、ピクセル空間モデル（Chroma Radiance、ZImage、HiDream-O1等）をフルサンプラー解像度でプレビュー可能。"
+    },
+    "GetPreviewOverrideFramesKJ": {
+        "title": "プレビューオーバーライドフレーム取得 (KJ)",
+        "inputs": {
+            "model": "モデル",
+            "after_sample": "サンプリング後"
+        },
+        "widgets": {},
+        "outputs": {
+            "frames": "動画フレーム"
+        },
+        "description": "直近のサンプリング中にモデルプレビューオーバーライドが捕捉したフレームを返す。実行順序を保証するため、モデルプレビューオーバーライドの『モデル』（サンプラー供給と同じ）とサンプラー後のafter_sample（Latent/IMAGE）を接続。"
+    },
+    "PatchTritonVAE": {
+        "title": "Triton VAEパッチ (KJ)",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "fuse_norm_silu": "融合正規化 SiLU活性化",
+            "channels_last": "チャンネルラスト",
+            "int8_conv": "INT8畳み込み",
+            "autotune": "自動チューニング"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "融合Triton norm+SiLUカーネルとチャンネルラスト畳み込みレイアウトでVAEのエンコード/デコードを高速化。対応VAE（自動検出）：Wan 2.1/2.2動画VAE（Qwen-Image含む、RMSNorm、約1.4x/1.15x）、Flux/Flux2、SDXLとSD1.5等KL画像VAE（GroupNorm、2048p時約1.6-1.8x）、LTXV/LTX2動画VAE（PiexelNorm、時間ステップ条件デコーダブロックは正規化融合のみ）。他アーキテクチャ非対応。クローンされたパッチャにオブジェクトパッチとして適用、そのVAE読み込み時のみ有効。"
+    },
+    "ImageTransformKJ": {
+        "title": "画像変換 (KJ)",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク"
+        },
+        "widgets": {
+            "target_width": "目標幅",
+            "target_height": "目標高さ",
+            "upscale_method": "拡大手法",
+            "keep_proportion": "比率保持",
+            "divisible_by": "整除数",
+            "extra_padding": "追加パディング",
+            "invert_crop": "クロップ反転",
+            "grid_size": "グリッドサイズ"
+        },
+        "outputs": {
+            "width": "幅",
+            "height": "高さ",
+            "output": "出力画像",
+            "output_mask": "出力マスク"
+        },
+        "description": "画像変換ノード。リサイズ、拡大手法、比率保持などのパラメータに対応、マスクの同期変換も可能。"
+    },
+    "ScreencapStream": {
+        "title": "スクリーンキャプチャストリーム (KJ)",
+        "inputs": {},
+        "widgets": {
+            "crop_width": "クロップ幅",
+            "crop_height": "クロップ高",
+            "Start capture": "キャプチャ開始",
+            "Hide preview": "プレビュー非表示"
+        },
+        "outputs": {
+            "image": "画像"
+        },
+        "description": "画面をリアルタイムキャプチャするノード。キャプチャ範囲の幅・高さをカスタム可能、開始・停止ボタン付き。キャプチャ映像はプレビューウィンドウに表示され、録画状況を監視しやすい。"
+    },
+    "DecodeAndSaveVideo": {
+        "title": "動画をデコードして保存 (KJ)",
+        "inputs": {
+            "video_latent": "動画Latent",
+            "video_vae": "動画VAEモデル",
+            "audio_latent": "音声Latent",
+            "audio_vae": "音声VAEモデル"
+        },
+        "widgets": {
+            "fps": "フレームレート",
+            "filename_prefix": "ファイル名接頭辞",
+            "format": "形式",
+            "codec": "コーデック",
+            "tiling": "タイリング"
+        },
+        "outputs": {
+            "video": "デコード後の動画",
+            "filename": "保存後のファイル名"
+        },
+        "description": "動画Latentを実際の動画ファイルにデコードして保存するノード。音声の同時デコードに対応。フレームレート(FPS)、ファイル名接頭辞、出力形式(MP4, MOV等)、動画コーデック(H.264, H.265)、大容量動画向けのタイリング(Tiling)有効/無効を設定可能。"
+    },
+    "EncodeVideoComponents": {
+        "title": "動画コンポーネントエンコード (KJ)",
+        "inputs": {
+            "video": "動画",
+            "vae": "VAEモデル"
+        },
+        "widgets": {
+            "width": "幅",
+            "height": "高さ",
+            "max_frames": "最大フレーム数",
+            "upscale_method": "拡大手法",
+            "Keep Proportion": "比率保持"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "audio": "音声",
+            "fps": "フレームレート",
+            "frame_count": "フレーム数"
+        },
+        "description": "動画フレームをLatent表現に符号化するノード、動画生成や処理フローで使用。動画ストリームとVAEモデルを入力に受け、符号化後Latentデータ、音声ストリーム、フレームレート情報、総フレーム数を出力。出力解像度（幅・高さ）、最大フレーム数制限、拡大手法（Lanczos等）、アスペクト比保持も設定可。"
+    },
+    "ColorMatchV2": {
+        "title": "色マッチング V2 (KJ)",
+        "inputs": {
+            "image_target": "目標画像",
+            "image_ref": "参照画像"
+        },
+        "widgets": {
+            "method": "手法",
+            "strength": "強度",
+            "multithread": "マルチスレッド"
+        },
+        "outputs": {
+            "image": "画像"
+        },
+        "description": "参照画像の色スタイルを目標画像に適用するノード。複数のマッチングアルゴリズム（mkl等）に対応、マッチ強度調整、マルチスレッド処理で効率向上。"
+    },
+    "PreviewImageOrMask": {
+        "title": "画像またはマスクプレビュー (KJ)",
+        "inputs": {
+            "input": "入力画像またはマスク"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "ComfyUI画面に入力画像またはマスクを直接表示。デバッグや処理途中の結果確認用。データストリームは出力せず、可視化プレビューのみ。"
+    },
+    "ImageSharpenKJ": {
+        "title": "画像シャープ加工 (KJ)",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "method": "手法",
+            "strength": "強度"
+        },
+        "outputs": {
+            "output": "出力画像"
+        },
+        "description": "入力画像をシャープ加工するノード。複数のシャープアルゴリズム（rcas等）を選択、強度を調整して鮮明度とディテールを強化。"
+    },
+    "PlaySoundKJ": {
+        "title": "音声を再生",
+        "inputs": {
+            "any_input": "任意入力",
+            "audio": "音声"
+        },
+        "widgets": {
+            "audio_path": "音声パス",
+            "mode": "モード",
+            "volume": "音量",
+            "duration": "持続時間"
+        },
+        "outputs": {
+            "any_output": "任意出力"
+        },
+        "description": "指定音声ファイルを再生。再生モード、音量、持続時間を設定可能。"
+    },
+    "NormalizedAmplitudeToMask": {
+        "title": "正規化振幅→マスク",
+        "inputs": {
+            "normalized_amp": "正規化振幅"
+        },
+        "widgets": {
+            "width": "幅",
+            "height": "高さ",
+            "frame_offset": "フレームオフセット",
+            "location_x": "位置_X",
+            "location_y": "位置_Y",
+            "size": "サイズ",
+            "shape": "形状",
+            "color": "色"
+        },
+        "outputs": {
+            "MASK": "マスク"
+        },
+        "description": "AudioSchedulerプラグインブリッジ用ノード：\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\n正規化振幅でマスクを作成。"
+    },
+    "NormalizedAmplitudeToFloatList": {
+        "title": "正規化振幅→FLOATリスト",
+        "inputs": {
+            "normalized_amp": "正規化振幅"
+        },
+        "outputs": {
+            "FLOAT": "FLOAT"
+        },
+        "description": "AudioSchedulerプラグインブリッジ用ノード：\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\n正規化振幅でFLOATリストを作成。"
+    },
+    "OffsetMaskByNormalizedAmplitude": {
+        "title": "正規化振幅でマスクをオフセット",
+        "inputs": {
+            "normalized_amp": "正規化振幅",
+            "mask": "マスク"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "rotate": "回転",
+            "angle_multiplier": "角度倍率"
+        },
+        "outputs": {
+            "mask": "マスク"
+        },
+        "description": "AudioSchedulerプラグインブリッジ用ノード：\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\n正規化振幅でマスクをオフセット。"
+    },
+    "ImageTransformByNormalizedAmplitude": {
+        "title": "正規化振幅で画像を変換",
+        "inputs": {
+            "normalized_amp": "正規化振幅",
+            "image": "画像"
+        },
+        "widgets": {
+            "zoom_scale": "スケール",
+            "x_offset": "xキャンセル",
+            "y_offset": "yキャンセル",
+            "cumulative": "累積"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "AudioSchedulerプラグインブリッジ用ノード：\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\n正規化振幅で画像を変換。"
+    },
+    "BatchCropFromMask": {
+        "title": "マスククロップ",
+        "inputs": {
+            "original_images": "画像",
+            "masks": "マスク"
+        },
+        "widgets": {
+            "crop_size_mult": "クロップ係数",
+            "bbox_smooth_alpha": "BBox平滑アルファ"
+        },
+        "outputs": {
+            "original_images": "元画像",
+            "cropped_images": "クロップ画像",
+            "bboxes": "BBox",
+            "width": "幅",
+            "height": "高さ"
+        }
+    },
+    "BatchUncrop": {
+        "title": "アンクロップ（バッチ）",
+        "inputs": {
+            "original_images": "元画像",
+            "cropped_images": "クロップ画像",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "border_blending": "ボーダー融合",
+            "crop_rescale": "再スケーリング",
+            "border_bottom": "下辺",
+            "border_top": "上辺",
+            "border_left": "左辺",
+            "border_right": "右辺"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "BatchCropFromMaskAdvanced": {
+        "title": "マスククロップ（上級）",
+        "inputs": {
+            "original_images": "画像",
+            "masks": "マスク"
+        },
+        "widgets": {
+            "crop_size_mult": "クロップ係数",
+            "bbox_smooth_alpha": "BBox平滑アルファ"
+        },
+        "outputs": {
+            "original_images": "元画像",
+            "cropped_images": "クロップ画像",
+            "cropped_masks": "クロップマスク",
+            "combined_crop_image": "クロップ画像マージ",
+            "combined_crop_masks": "クロップマスクマージ",
+            "bboxes": "BBox",
+            "combined_bounding_box": "BBoxマージ",
+            "bbox_width": "BBox幅",
+            "bbox_height": "BBox高さ"
+        }
+    },
+    "FilterZeroMasksAndCorrespondingImages": {
+        "title": "ゼロマスクと画像をフィルタ",
+        "inputs": {
+            "masks": "マスク",
+            "original_images": "画像"
+        },
+        "outputs": {
+            "non_zero_masks_out": "非ゼロマスク",
+            "non_zero_mask_images_out": "非ゼロ画像",
+            "zero_mask_images_out": "ゼロ画像",
+            "zero_mask_images_out_indexes": "非ゼロマスク画像インデックス"
+        },
+        "description": "mask内の空マスク（全ゼロ）をフィルタ除去。\n提供されていればインデックスでも\n original_images内の対応画像を除去。\n original_images（任意）：提供時はmaskと同じ長さ必須。"
+    },
+    "InsertImageBatchByIndexes": {
+        "title": "インデックスで画像バッチに挿入",
+        "inputs": {
+            "images": "画像",
+            "images_to_insert": "挿入画像",
+            "insert_indexes": "挿入インデックス"
+        },
+        "outputs": {
+            "images_after_insert": "画像"
+        },
+        "description": "FilterZeroMasksAndCorrespondingImagesノードと併用。\n_ insert_indexesに従い images_to_insertをimagesへ挿入。\n_返し値：images_after_insert - 元順序で更新後の画像列。"
+    },
+    "BatchUncropAdvanced": {
+        "title": "アンクロップ（上級）",
+        "inputs": {
+            "original_images": "元画像",
+            "cropped_images": "クロップ画像",
+            "cropped_masks": "クロップマスク",
+            "combined_crop_mask": "クロップマスクマージ",
+            "bboxes": "BBox",
+            "combined_bounding_box": "BBoxマージ"
+        },
+        "widgets": {
+            "border_blending": "ボーダー融合",
+            "crop_rescale": "再スケーリング",
+            "use_combined_mask": "マージマスクを使用",
+            "use_square_mask": "正方形マスクを使用"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "SplitBboxes": {
+        "title": "BBox分離",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "インデックス"
+        },
+        "outputs": {
+            "bboxes_a": "BBox_A",
+            "bboxes_b": "BBox_B"
+        },
+        "description": "指定インデックスでbboxリストを2つのリストに分割"
+    },
+    "BboxToInt": {
+        "title": "BBox→INT",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "インデックス"
+        },
+        "outputs": {
+            "x_min": "X最小値",
+            "y_min": "Y最大値",
+            "width": "幅",
+            "height": "高さ",
+            "center_x": "X中心",
+            "center_y": "Y中心"
+        },
+        "description": "バウンディングボックスリストから選択したインデックスをINTで返す"
+    },
+    "BboxVisualize": {
+        "title": "BBoxプレビュー",
+        "inputs": {
+            "images": "画像",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "line_width": "線幅"
+        },
+        "outputs": {
+            "images": "画像"
+        },
+        "description": "画像上に指定bboxを表示"
+    },
+    "PlotCoordinates": {
+        "title": "座標プロット",
+        "inputs": {
+            "coordinates": "座標",
+            "size_multiplier": "サイズ倍率"
+        },
+        "widgets": {
+            "text": "テキスト",
+            "width": "幅",
+            "height": "高さ",
+            "bbox_width": "BBox幅",
+            "bbox_height": "BBox高さ"
+        },
+        "outputs": {
+            "images": "画像",
+            "width": "幅",
+            "height": "高さ",
+            "bbox_height": "BBox高さ",
+            "bbox_width": "BBox幅"
+        },
+        "description": "Matplotlibで座標グラフ列を作成。"
+    },
+    "SplineEditor": {
+        "title": "スプラインエディタ",
+        "inputs": {
+            "bg_image": "背景画像"
+        },
+        "widgets": {
+            "points_store": "点位置",
+            "mask_width": "マスク幅",
+            "mask_height": "マスク高さ",
+            "points_to_sample": "サンプリング精度",
+            "sampling_method": "サンプリング手法",
+            "interpolation": "補間方式",
+            "tension": "テンション",
+            "repeat_output": "重複出力",
+            "float_output_type": "FLOAT出力型",
+            "min_value": "最小値",
+            "max_value": "最大値",
+            "New spline": "新規スプライン",
+            "New canvas": "新規キャンバス"
+        },
+        "outputs": {
+            "mask": "マスク",
+            "coord_str": "座標",
+            "float": "FLOAT",
+            "count": "数量",
+            "normalized_str": "正規化文字列"
+        },
+        "description": "# 開発中 \nワークフローでの本ノード使用は避けてください、大量のバグと不安定性の可能性！！ \n \n##各種値スケジュール作成用グラフィカルエディタ \n\n**Shift+左クリック** で新制御点を追加、**Ctrl+左クリック** で中間制御点を作成、**右クリック** で制御点を削除。\n端点は削除不可。\n\n背景右クリックでメニュー：出力に影響しない視覚設定：\n - ハンドル表示 \n - サンプル点表示 \n\n**サンプル精度** でサンプル点数を設定、スプライン線自身からサンプル点を返す。実際の制御点ではなく補間型で決定。\nサンプル手法：\n - 時間：時間軸に沿ってサンプル、スケジュール用 \n - パス：曲線パスに沿ってサンプル、座標用 \n\n出力：\n - マスクバッチ \n マスクを受け取るノード向け \n - FLOATリスト \n IPAdapter重みグループ向け \n - pandas series \n Fizzバッチスケジュールノード向け \n - torch tensor \n 不明ノード向け"
+    },
+    "CreateShapeMaskOnPath": {
+        "title": "形状マスク作成",
+        "inputs": {
+            "coordinates": "座標",
+            "size_multiplier": "サイズ倍率"
+        },
+        "widgets": {
+            "shape": "形状",
+            "frame_height": "高さ",
+            "frame_width": "幅",
+            "shape_height": "形状高さ",
+            "shape_width": "形状幅",
+            "shape_color": "形状色",
+            "bg_color": "背景色",
+            "blur_radius": "ぼかし半径",
+            "intensity": "強度"
+        },
+        "outputs": {
+            "mask": "マスク",
+            "mask_inverted": "マスク反転"
+        },
+        "description": "指定形状のマスクまたはマスクバッチを生成、位置パラメータは中心。"
+    },
+    "CreateShapeImageOnPath": {
+        "title": "形状画像作成",
+        "inputs": {
+            "coordinates": "座標",
+            "size_multiplier": "サイズ倍率"
+        },
+        "widgets": {
+            "shape": "形状",
+            "frame_height": "高さ",
+            "frame_width": "幅",
+            "shape_height": "形状高さ",
+            "shape_width": "形状幅",
+            "shape_color": "形状色",
+            "bg_color": "背景色",
+            "blur_radius": "ぼかし半径",
+            "intensity": "強度",
+            "trailing": "トレーリング",
+            "border_width": "ボーダー幅",
+            "border_color": "ボーダー色"
+        },
+        "outputs": {
+            "image": "画像",
+            "mask": "マスク"
+        },
+        "description": "指定形状の画像または画像バッチを生成、位置パラメータは中心。"
+    },
+    "CreateTextOnPath": {
+        "title": "テキスト作成",
+        "inputs": {
+            "coordinates": "座標",
+            "size_multiplier": "サイズ倍率"
+        },
+        "widgets": {
+            "text": "テキスト",
+            "frame_height": "高さ",
+            "frame_width": "幅",
+            "font": "フォント",
+            "font_size": "フォントサイズ",
+            "alignment": "配置",
+            "text_color": "テキスト色"
+        },
+        "outputs": {
+            "image": "画像",
+            "mask": "マスク",
+            "mask_inverted": "マスク反転"
+        },
+        "description": "指定テキストのマスクまたはマスクバッチを生成。位置は中心。"
+    },
+    "CreateGradientFromCoords": {
+        "title": "座標からグラデーション画像作成",
+        "inputs": {
+            "coordinates": "座標"
+        },
+        "widgets": {
+            "frame_height": "高さ",
+            "frame_width": "幅",
+            "start_color": "開始色",
+            "end_color": "終了色",
+            "multiplier": "倍率"
+        },
+        "outputs": {
+            "image": "画像"
+        },
+        "description": "座標位置にグラデーション画像を作成。"
+    },
+    "GradientToFloat": {
+        "title": "グラデーション→FLOAT",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "steps": "ステップ数"
+        },
+        "outputs": {
+            "float_x": "FLOAT_X",
+            "float_y": "FLOAT_Y"
+        },
+        "description": "画像のFLOATリストを計算"
+    },
+    "MaskOrImageToWeight": {
+        "title": "マスクまたは画像→重み",
+        "inputs": {
+            "images": "画像",
+            "masks": "マスク"
+        },
+        "widgets": {
+            "output_type": "出力型"
+        },
+        "outputs": {
+            "FLOAT": "FLOAT",
+            "STRING": "FLOAT"
+        },
+        "description": "マスクまたは画像バッチの平均値を取得し、出力型で結果を返す。"
+    },
+    "WeightScheduleConvert": {
+        "title": "重みスケジュール変換",
+        "inputs": {
+            "input_values": "入力値",
+            "interpolation_curve": "補間曲線"
+        },
+        "widgets": {
+            "output_type": "出力型",
+            "invert": "反転",
+            "repeat": "重複",
+            "remap_to_frames": "フレームへ再マッピング",
+            "interpolation_curve": "補間曲線",
+            "remap_values": "再マッピング値",
+            "remap_min": "再マッピング最小値",
+            "remap_max": "再マッピング最大値"
+        },
+        "outputs": {
+            "FLOAT": "FLOAT",
+            "STRING": "FLOAT",
+            "INT": "INT"
+        },
+        "description": "各種値リスト/シーケンスを別の型へ変換。"
+    },
+    "FloatToMask": {
+        "title": "FLOAT→マスク",
+        "inputs": {
+            "input_values": "入力値"
+        },
+        "widgets": {
+            "width": "幅",
+            "height": "高さ"
+        },
+        "outputs": {
+            "MASK": "マスク"
+        },
+        "description": "入力FLOAT数値からマスクバッチを生成。バッチサイズは入力FLOATリスト長で決定。各マスクは指定幅・高さで生成。"
+    },
+    "WeightScheduleExtend": {
+        "title": "重みスケジュール拡張",
+        "inputs": {
+            "input_values_1": "入力値_1",
+            "input_values_2": "入力値_2"
+        },
+        "widgets": {
+            "output_type": "出力型"
+        },
+        "outputs": {
+            "FLOAT": "FLOAT"
+        },
+        "description": "各種値リスト/シリーズを拡張、必要に応じて変換"
+    },
+    "FloatToSigmas": {
+        "title": "FLOAT→Sigmas",
+        "inputs": {
+            "float_list": "FLOATリスト"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        },
+        "description": "FLOATリストからsigmasテンソルを作成"
+    },
+    "SigmasToFloat": {
+        "title": "Sigmas→FLOAT",
+        "inputs": {
+            "sigmas": "sigmas"
+        },
+        "outputs": {
+            "float": "FLOAT"
+        },
+        "description": "sigmaテンソルからFLOATリストを作成。"
+    },
+    "GLIGENTextBoxApplyBatchCoords": {
+        "title": "GLIGENテキストボックス適用（バッチ座標）",
+        "inputs": {
+            "conditioning_to": "条件",
+            "latents": "Latent",
+            "clip": "CLIP",
+            "gligen_textbox_model": "GLIGENモデル",
+            "coordinates": "座標",
+            "size_multiplier": "サイズ倍率"
+        },
+        "widgets": {
+            "text": "テキスト",
+            "width": "幅",
+            "height": "高さ"
+        },
+        "outputs": {
+            "conditioning": "条件",
+            "coord_preview": "座標プレビュー"
+        },
+        "description": "バッチ内でGLIGENテキストボックス位置をスケジュール可能、AnimateDiff-Evolvedと併用。スプラインエディタとの併用を推奨。\n\nGLIGENモデルはマネージャーの『モデルインストール』からダウンロード可。直接：https://huggingface.co/comfyanonymous/GLIGEN_pruned_safetensors/tree/main \n \n 入力： \n- **Latent** 入力：バッチサイズ計算用 \n- **CLIP** ：テキストエンコーダ、他CLIP入力と同じ \n- **GLIGENモデル** ：GLIGENローダーノードに接続 \n- **座標** ：座標点JSON文字列を受信、スプラインエディタと互換 \n- **テキスト** ：テキストボックス位置のプロンプト \n- **幅** と **高さ** ：GLIGENテキストボックスのサイズ設定 \n \n出力：\n- **条件** ：CLIPテキスト符号化とサンプラーの間に接続 \n- **座標プレビュー** ：座標とBBoxのプレビュー用 \n\n"
+    },
+    "CreateInstanceDiffusionTracking": {
+        "title": "InstanceDiffusionトラッキング作成",
+        "inputs": {
+            "coordinates": "座標",
+            "size_multiplier": "サイズ倍率"
+        },
+        "widgets": {
+            "width": "幅",
+            "height": "高さ",
+            "bbox_width": "BBox幅",
+            "bbox_height": "BBox高さ",
+            "class_name": "クラス名",
+            "class_id": "クラスID",
+            "prompt": "プロンプト",
+            "fit_in_frame": "フレームにフィット"
+        },
+        "outputs": {
+            "tracking": "トラッキング",
+            "prompt": "プロンプト",
+            "width": "幅",
+            "height": "高さ",
+            "bbox_width": "bbox幅",
+            "bbox_height": "bbox高さ",
+            "int": "INT"
+        },
+        "description": "InstanceDiffusion用トラッキングデータを生成：\nhttps://github.com/logtd/ComfyUI-InstanceDiffusion\n\nInstanceDiffusionプロンプト形式：\n`\"class_id.class_name\": \"prompt\"`\n例：\n`\"1.head\": \"((head))\"`"
+    },
+    "AppendInstanceDiffusionTracking": {
+        "title": "InstanceDiffusionトラッキング追加",
+        "inputs": {
+            "tracking_1": "トラッキング_1",
+            "tracking_2": "トラッキング_2",
+            "prompt_1": "プロンプト_1",
+            "prompt_2": "プロンプト_2"
+        },
+        "outputs": {
+            "tracking": "トラッキング",
+            "prompt": "プロンプト"
+        },
+        "description": "InstanceDiffusion用トラッキングデータを追加：https://github.com/logtd/ComfyUI-InstanceDiffusion"
+    },
+    "InterpolateCoords": {
+        "title": "座標補間",
+        "inputs": {
+            "coordinates": "座標",
+            "interpolation_curve": "補間曲線"
+        },
+        "outputs": {
+            "coordinates": "座標"
+        },
+        "description": "スプラインに従い座標を補間"
+    },
+    "DrawInstanceDiffusionTracking": {
+        "title": "InstanceDiffusionトラッキング描画",
+        "inputs": {
+            "image": "画像",
+            "tracking": "トラッキング"
+        },
+        "widgets": {
+            "box_line_width": "枠線幅",
+            "draw_text": "テキストを描画",
+            "font": "フォント",
+            "font_size": "フォントサイズ"
+        },
+        "outputs": {
+            "image": "画像"
+        },
+        "description": "CreateInstanceDiffusionTrackingノードのトラッキングデータを呼び出して描画 "
+    },
+    "PointsEditor": {
+        "title": "ポイントエディタ",
+        "inputs": {
+            "bg_image": "背景画像"
+        },
+        "widgets": {
+            "points_store": "点位置",
+            "bbox_store": "BBox位置",
+            "bbox_format": "BBox形式",
+            "width": "幅",
+            "height": "高さ",
+            "normalize": "正規化",
+            "New canvs": "新規キャンバス",
+            "Load Image": "画像を読み込み",
+            "Clear Image": "画像をクリア",
+            "New canvas": "新規キャンバス"
+        },
+        "outputs": {
+            "positive_coords": "ポジティブ座標",
+            "negative_coords": "ネガティブ座標",
+            "bbox": "BBox",
+            "bbox_mask": "BBoxマスク",
+            "cropped_image": "クロップ画像"
+        },
+        "description": "# 開発中  \nワークフローでの本ノード使用は避けてください、大量のバグと不安定性の可能性！！  \n\n##座標作成用グラフィカルエディタ\n\n**Shift + 左クリック** でポジティブ（緑）座標点を追加。\n\n**Shift + 右クリック** でネガティブ（赤）座標点を追加。\n\n**Ctrl + 左クリック** で枠を描画。\n\n**座標点を右クリック** で該当点を削除、点配列の始点/終点は削除不可。\n\n画像を追加するにはノードを選択し貼り付けまたはドラッグ。\n\nまたは背景画像インターフェースから入力、入力画像の最初のフレームを使用。\n\n**画像はノードとワークフローに保存されます**\n右クリックメニューで画像をクリア可。\n"
+    },
+    "CutAndDragOnPath": {
+        "title": "パスカット＆ドラッグ",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク",
+            "bg_image": "背景画像",
+            "coordinates": "座標"
+        },
+        "widgets": {
+            "frame_width": "フレーム幅",
+            "frame_height": "フレーム高さ",
+            "inpaint": "修復"
+        },
+        "outputs": {
+            "image": "画像",
+            "mask": "マスク"
+        },
+        "description": "画像からマスク領域を切除し、パスに沿ってドラッグ。修復が有効で背景画像が無い場合、OpenCV TELEAアルゴリズムで切除領域を埋める。"
+    },
+    "ImagePass": {
+        "title": "画像パススルー",
+        "inputs": {
+            "image": "画像"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "画像を次のノードへ伝達"
+    },
+    "ColorMatch": {
+        "title": "色変換",
+        "inputs": {
+            "image_ref": "参照画像",
+            "image_target": "目標画像"
+        },
+        "widgets": {
+            "method": "手法",
+            "strength": "強度",
+            "multithread": "マルチスレッド"
+        },
+        "outputs": {
+            "image": "画像"
+        },
+        "description": "color-matcher（色変換）は画像間で色彩スタイルを転送、写真、絵画、シリーズフレームの自動色調整正および光場定格修正に使用。\\n\\nReinhard等のアルゴリズム、Pitie等のMonge-Kantorovich Linearization (MKL)、古典ヒストグラムマッチングを組み合わせたMulti-Variate Gaussian Distribution (MVGD)の解析解に基づく。HM-MVGD-HM方式は既存方式より優れている。\\n\\nhttps://github.com/hahnec/color-matcher/"
+    },
+    "SaveImageWithAlpha": {
+        "title": "Alphaチャネル付き画像を保存",
+        "inputs": {
+            "images": "画像",
+            "mask": "マスク",
+            "filename_prefix": "ファイル名接頭辞",
+            "prompt": "プロンプト",
+            "extra_pnginfo": "追加PNG情報"
+        },
+        "outputs": {}
+    },
+    "ImageConcanate": {
+        "title": "画像結合",
+        "inputs": {
+            "image1": "画像_1",
+            "image2": "画像_2"
+        },
+        "widgets": {
+            "direction": "方向",
+            "match_image_size": "画像サイズを合わせる"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "方向に従い2枚の画像を結合。"
+    },
+    "ImageConcatFromBatch": {
+        "title": "画像結合（バッチ）",
+        "inputs": {
+            "images": "画像"
+        },
+        "widgets": {
+            "num_columns": "列数",
+            "match_image_size": "サイズを合わせる",
+            "max_resolution": "最大解像度"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "画像バッチから画像を取得し、列数に従い単一画像へ配置。"
+    },
+    "ImageGridComposite2x2": {
+        "title": "画像グリッド合成2x2",
+        "inputs": {
+            "image1": "画像_1",
+            "image2": "画像_2",
+            "image3": "画像_3",
+            "image4": "画像_4"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "4枚の入力画像を2x2グリッドに合成。"
+    },
+    "ImageGridComposite3x3": {
+        "title": "画像グリッド合成3x3",
+        "inputs": {
+            "image1": "画像_1",
+            "image2": "画像_2",
+            "image3": "画像_3",
+            "image4": "画像_4",
+            "image5": "画像_5",
+            "image6": "画像_6",
+            "image7": "画像_7",
+            "image8": "画像_8",
+            "image9": "画像_9"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "9枚の入力画像を3x3グリッドに合成。"
+    },
+    "ImageBatchTestPattern": {
+        "title": "画像バッチテストパターン",
+        "widgets": {
+            "batch_size": "バッチサイズ",
+            "start_from": "開始値",
+            "text_x": "テキストx",
+            "text_y": "テキストy",
+            "width": "幅",
+            "height": "高さ",
+            "font": "フォント",
+            "font_size": "フォントサイズ"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "ImageGrabPIL": {
+        "title": "PILスクリーンキャプチャ",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "幅",
+            "height": "高さ",
+            "num_frames": "フレーム数",
+            "delay": "遅延"
+        },
+        "outputs": {
+            "image": "画像"
+        },
+        "description": "画面座標で領域をキャプチャ。\n\nライブサンプリング用。"
+    },
+    "Screencap_mss": {
+        "title": "スクリーンキャプチャMSS",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "幅",
+            "height": "高さ",
+            "num_frames": "フレーム数",
+            "delay": "遅延"
+        },
+        "outputs": {
+            "images": "画像"
+        },
+        "description": "画面座標で領域をキャプチャ。\n\nライブサンプリング用。"
+    },
+    "WebcamCaptureCV2": {
+        "title": "カメラキャプチャCV2",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "幅",
+            "height": "高さ",
+            "cam_index": "カメラ番号",
+            "release": "リリース"
+        },
+        "outputs": {
+            "image": "画像"
+        },
+        "description": "CV2でウェブカメラを呼び出し画面をキャプチャ。\n\nライブサンプリング用。"
+    },
+    "AddLabel": {
+        "title": "ラベル追加",
+        "inputs": {
+            "image": "画像",
+            "caption": "タイトル"
+        },
+        "widgets": {
+            "text_x": "位置_X",
+            "text_y": "位置_Y",
+            "height": "高さ",
+            "font_size": "フォントサイズ",
+            "font_color": "フォント色",
+            "label_color": "背景色",
+            "font": "フォント",
+            "text": "テキスト",
+            "direction": "方向"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "GetImageSizeAndCount": {
+        "title": "画像サイズと個数取得",
+        "inputs": {
+            "image": "画像"
+        },
+        "outputs": {
+            "image": "画像",
+            "width": "幅",
+            "height": "高さ",
+            "count": "数量"
+        },
+        "description": "画像の幅・高さ・バッチサイズを出力"
+    },
+    "ImageBatchRepeatInterleaving": {
+        "title": "画像バッチ複製",
+        "inputs": {
+            "images": "画像",
+            "mask": "マスク"
+        },
+        "widgets": {
+            "repeats": "回数"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "指定回数でバッチ内画像を複製。\n\\n例：5枚のバッチ 0,1,2,3,4\\n\\n2回複製後：0,0,1,1,2,2,3,3,4,4"
+    },
+    "ImageUpscaleWithModelBatched": {
+        "title": "画像バッチモデル拡大",
+        "inputs": {
+            "upscale_model": "拡大モデル",
+            "images": "画像"
+        },
+        "widgets": {
+            "per_batch": "バッチ毎"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "ComfyUIネイティブのモデル超解像と同じ機能、バッチ分割設定でVRAM使用量を削減。"
+    },
+    "ImageNormalize_Neg1_To_1": {
+        "title": "画像正規化 -1～1",
+        "inputs": {
+            "images": "画像"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "画像を [-1,1] に正規化"
+    },
+    "RemapImageRange": {
+        "title": "画像範囲再マッピング",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "min": "最小値",
+            "max": "最大値",
+            "clamp": "クランプ"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "画像値を指定範囲へ再マッピング。"
+    },
+    "SplitImageChannels": {
+        "title": "画像チャンネル分離",
+        "inputs": {
+            "image": "画像"
+        },
+        "outputs": {
+            "red": "赤",
+            "green": "緑",
+            "blue": "青",
+            "mask": "マスク"
+        },
+        "description": "画像を単一チャンネル画像に分離、alphaチャンネルはマスクとして分離。"
+    },
+    "MergeImageChannels": {
+        "title": "画像チャンネル結合",
+        "inputs": {
+            "red": "赤",
+            "green": "緑",
+            "blue": "青",
+            "alpha": "alphaチャンネル"
+        },
+        "outputs": {
+            "image": "画像"
+        },
+        "description": "チャンネルを画像へ結合"
+    },
+    "ImagePadForOutpaintMasked": {
+        "title": "外_paddingキャンバス（マスク）",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク"
+        },
+        "widgets": {
+            "left": "左",
+            "top": "上",
+            "right": "右",
+            "bottom": "下",
+            "feathering": "フェザー"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "ImagePadForOutpaintTargetSize": {
+        "title": "外_paddingキャンバス（サイズ）",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク"
+        },
+        "widgets": {
+            "target_width": "目標幅",
+            "target_height": "目標高さ",
+            "feathering": "フェザー",
+            "upscale_method": "スケール手法"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "ImagePrepForICLora": {
+        "title": "ICLoRA画像準備",
+        "inputs": {
+            "reference_image": "参照画像",
+            "latent_image": "Latent画像",
+            "latent_mask": "Latentマスク",
+            "reference_mask": "参考マスク"
+        },
+        "widgets": {
+            "output_width": "出力幅",
+            "output_height": "出力高さ",
+            "border_width": "ボーダー幅"
+        },
+        "outputs": {
+            "image": "画像",
+            "mask": "マスク"
+        }
+    },
+    "ImageAndMaskPreview": {
+        "title": "画像とマスクプレビュー",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク"
+        },
+        "widgets": {
+            "mask_opacity": "マスク不透明度",
+            "mask_color": "マスク色",
+            "pass_through": "スルー"
+        },
+        "outputs": {
+            "composite": "画像"
+        },
+        "description": "画像またはマスクをプレビュー、両方入力時はマスクを画像に合成して表示。\nスルー有効時は合成を無効化、動画ノードで統合プレビュー用。"
+    },
+    "CrossFadeImages": {
+        "title": "クロスフェード画像",
+        "inputs": {
+            "images_1": "画像_1",
+            "images_2": "画像_2"
+        },
+        "widgets": {
+            "interpolation": "補間方式",
+            "transition_start_index": "遷移開始番号",
+            "transitioning_frames": "遷移フレーム数",
+            "start_level": "開始レベル",
+            "end_level": "終了レベル"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "CrossFadeImagesMulti": {
+        "title": "多重クロスフェード画像",
+        "inputs": {
+            "image_1": "画像_1",
+            "image_2": "画像_2"
+        },
+        "widgets": {
+            "inputcount": "入力数",
+            "interpolation": "補間方式",
+            "Update inputs": "入力を更新",
+            "transitioning_frames": "遷移フレーム数"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "TransitionImagesMulti": {
+        "title": "多重遷移画像",
+        "inputs": {
+            "image_1": "画像_1",
+            "image_2": "画像_2"
+        },
+        "widgets": {
+            "inputcount": "入力数",
+            "interpolation": "補間方式",
+            "transition_type": "遷移タイプ",
+            "transitioning_frames": "遷移フレーム数",
+            "blur_radius": "ぼかし半径",
+            "reverse": "リバース",
+            "device": "デバイス",
+            "Update inputs": "入力を更新"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        },
+        "description": "画像間遷移を作成。"
+    },
+    "TransitionImagesInBatch": {
+        "title": "バッチ内遷移画像",
+        "inputs": {
+            "images": "画像"
+        },
+        "widgets": {
+            "interpolation": "補間方式",
+            "transition_type": "遷移タイプ",
+            "transitioning_frames": "遷移フレーム数",
+            "blur_radius": "ぼかし半径",
+            "reverse": "リバース",
+            "device": "デバイス"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        },
+        "description": "バッチ画像間で遷移を作成"
+    },
+    "ShuffleImageBatch": {
+        "title": "画像バッチシャッフル",
+        "inputs": {
+            "images": "画像"
+        },
+        "widgets": {
+            "seed": "シード"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "GetImageRangeFromBatch": {
+        "title": "画像範囲取得",
+        "inputs": {
+            "images": "画像",
+            "masks": "マスク"
+        },
+        "widgets": {
+            "start_index": "開始番号",
+            "num_frames": "フレーム数"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        },
+        "description": "入力画像バッチとパラメータから新バッチを作成。"
+    },
+    "GetLatentRangeFromBatch": {
+        "title": "Latent範囲取得",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "start_index": "開始番号",
+            "num_frames": "フレーム数"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "Insert_Latent_To_Index": {
+        "title": "Latentをインデックスに挿入",
+        "inputs": {
+            "source": "ソース",
+            "destination": "ターゲット"
+        },
+        "widgets": {
+            "index": "インデックス"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "GetImagesFromBatchIndexed": {
+        "title": "バッチから画像取得",
+        "inputs": {
+            "images": "画像"
+        },
+        "widgets": {
+            "indexes": "番号"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "インデックス番号で画像を選択。"
+    },
+    "InsertImagesToBatchIndexed": {
+        "title": "画像をインデックスに挿入（バッチ）",
+        "inputs": {
+            "original_images": "元画像",
+            "images_to_insert": "挿入画像"
+        },
+        "widgets": {
+            "indexes": "インデックス"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "指定インデックスに画像を元バッチへ挿入。"
+    },
+    "PadImageBatchInterleaved": {
+        "title": "画像バッチ交互パディング",
+        "inputs": {
+            "images": "画像"
+        },
+        "widgets": {
+            "empty_frames_per_image": "画像毎空フレーム数",
+            "pad_frame_value": "パディングフレーム値",
+            "add_after_last": "末尾に追加"
+        },
+        "outputs": {
+            "images": "画像",
+            "masks": "マスク"
+        },
+        "description": "バッチ画像間に空フレームを挿入。"
+    },
+    "ReplaceImagesInBatch": {
+        "title": "画像バッチ置換",
+        "inputs": {
+            "original_images": "元画像",
+            "replacement_images": "置換画像",
+            "original_masks": "元マスク",
+            "replacement_masks": "置換マスク"
+        },
+        "widgets": {
+            "start_index": "開始番号"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "指定開始インデックスからバッチ画像を置換画像で置換。"
+    },
+    "ReverseImageBatch": {
+        "title": "画像バッチ反転",
+        "inputs": {
+            "images": "画像"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "バッチ画像順序を反転。"
+    },
+    "ImageBatchMulti": {
+        "title": "画像合成バッチ（多重）",
+        "inputs": {
+            "image_1": "画像_1",
+            "image_2": "画像_2",
+            "image_3": "画像_3",
+            "image_4": "画像_4",
+            "image_5": "画像_5",
+            "image_6": "画像_6",
+            "image_7": "画像_7",
+            "image_8": "画像_8",
+            "image_9": "画像_9",
+            "image_10": "画像_10"
+        },
+        "widgets": {
+            "inputcount": "入力数",
+            "blending": "ブレンド方式",
+            "Update inputs": "入力を更新"
+        },
+        "outputs": {
+            "images": "画像"
+        },
+        "description": "複数画像を画像バッチに統合。『入力数』でインターフェース数を設定、更新クリックでリフレッシュ。"
+    },
+    "ImageTensorList": {
+        "title": "画像テンソルリスト",
+        "inputs": {
+            "image1": "画像1",
+            "image2": "画像2"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "入力画像から画像リストを作成。"
+    },
+    "ImageBatchExtendWithOverlap": {
+        "title": "画像バッチ拡張（重複付き）",
+        "inputs": {
+            "source_images": "元画像",
+            "new_images": "新画像"
+        },
+        "widgets": {
+            "overlap": "重複",
+            "overlap_side": "サイド重複",
+            "overlap_mode": "モード重複"
+        },
+        "outputs": {
+            "source_images": "元画像",
+            "start_images": "開始画像",
+            "extended_images": "拡張画像"
+        },
+        "description": "動画生成拡張用補助ノード。\nまず入力ソースと重複量を取得し拡張開始フレームを得る。\n同ノードの別コピーで新生成フレームを提供し重複方法を設定。"
+    },
+    "ImageAddMulti": {
+        "title": "画像ブレンド（多重）",
+        "inputs": {
+            "image_1": "画像_1",
+            "image_2": "画像_2",
+            "image_3": "画像_3",
+            "image_4": "画像_4",
+            "image_5": "画像_5",
+            "image_6": "画像_6",
+            "image_7": "画像_7",
+            "image_8": "画像_8",
+            "image_9": "画像_9",
+            "image_10": "画像_10"
+        },
+        "widgets": {
+            "inputcount": "入力数",
+            "blending": "ブレンド方式",
+            "blend_amount": "ブレンド量",
+            "Update inputs": "入力を更新"
+        },
+        "outputs": {
+            "images": "画像"
+        },
+        "description": "複数画像をブレンド。『入力数』でインターフェース数を設定、更新クリックでリフレッシュ。"
+    },
+    "ImageConcatMulti": {
+        "title": "画像連結（複数）",
+        "inputs": {
+            "image_1": "画像_1",
+            "image_2": "画像_2"
+        },
+        "widgets": {
+            "inputcount": "入力数",
+            "direction": "方向",
+            "match_image_size": "サイズを合わせる",
+            "Update inputs": "入力を更新"
+        },
+        "outputs": {
+            "images": "画像"
+        },
+        "description": "方向に従い複数画像を連結。入力をクリックして数を更新。"
+    },
+    "PreviewAnimation": {
+        "title": "アニメプレビュー",
+        "inputs": {
+            "images": "画像",
+            "masks": "マスク"
+        },
+        "widgets": {
+            "fps": "フレームレート"
+        }
+    },
+    "ImageResizeKJ": {
+        "title": "画像リサイズ（KJ）",
+        "inputs": {
+            "image": "画像",
+            "get_image_size": "参照画像",
+            "width_input": "幅",
+            "height_input": "高さ"
+        },
+        "widgets": {
+            "width": "幅",
+            "height": "高さ",
+            "upscale_method": "スケール手法",
+            "keep_proportions": "アスペクト比固定",
+            "keep_proportion": "アスペクト比固定",
+            "divisible_by": "整除数",
+            "crop": "クロップ",
+            "per_batch": "バッチ"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "width": "幅",
+            "height": "高さ"
+        },
+        "description": "指定幅・高さで画像をリサイズ。サイズは入力で指定可、最終出力優先順位：\\n- 参照画像サイズ \\n- 幅-入力 と 高さ-入力 \\n- 幅 と 高さ \\n\\nアスペクト比固定は最大サイズで固定。"
+    },
+    "LoadAndResizeImage": {
+        "title": "画像ロード＆リサイズ",
+        "widgets": {
+            "image": "画像",
+            "resize": "スケール",
+            "width": "幅",
+            "height": "高さ",
+            "repeat": "複製",
+            "keep_proportion": "アスペクト比固定",
+            "divisible_by": "因数",
+            "mask_channel": "マスクチャンネル",
+            "background_color": "背景色",
+            "upload": "アップロード"
+        },
+        "outputs": {
+            "image": "画像",
+            "mask": "マスク",
+            "width": "幅",
+            "height": "高さ",
+            "image_path": "画像パス"
+        }
+    },
+    "LoadImagesFromFolderKJ": {
+        "title": "フォルダから画像ロード (KJ)",
+        "widgets": {
+            "folder": "フォルダ",
+            "width": "幅",
+            "height": "高さ",
+            "keep_aspect_ratio": "アスペクト比保持",
+            "image_load_cap": "読み込み上限",
+            "start_index": "開始番号",
+            "include_subfolders": "サブフォルダを含む"
+        },
+        "outputs": {
+            "image": "画像",
+            "mask": "マスク",
+            "count": "数量",
+            "image_path": "画像パス"
+        },
+        "description": "フォルダから画像をバッチへロード、サイズ調整後バッチに格納。"
+    },
+    "ImageGridtoBatch": {
+        "title": "画像グリッド→バッチ",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "columns": "列数",
+            "The number of columns in the grid.": "グリッドの列数。",
+            "rows": "行数",
+            "The number of rows in the grid. Set to 0 for automatic calculation.": "グリッドの行数、0は自動。"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "グリッド画像を単一バッチへ変換。"
+    },
+    "SaveImageKJ": {
+        "title": "画像保存 (KJ)",
+        "inputs": {
+            "images": "画像",
+            "caption": "アノテーション"
+        },
+        "widgets": {
+            "filename_prefix": "ファイル名接頭辞",
+            "output_folder": "出力フォルダ",
+            "caption_file_extension": "アノテーション拡張子",
+            "prompt": "プロンプト",
+            "extra_pnginfo": "追加PNG情報"
+        },
+        "outputs": {
+            "filename": "ファイル名"
+        },
+        "description": "入力画像をComfyUI出力ディレクトリへ保存。"
+    },
+    "SaveStringKJ": {
+        "title": "文字列保存 (KJ)",
+        "inputs": {
+            "string": "文字列"
+        },
+        "widgets": {
+            "filename_prefix": "ファイル名接頭辞",
+            "output_folder": "出力フォルダ",
+            "file_extension": "ファイル拡張子"
+        },
+        "outputs": {
+            "filename": "ファイル名"
+        }
+    },
+    "FastPreview": {
+        "title": "高速プレビュー",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "format": "形式",
+            "quality": "品質"
+        },
+        "outputs": {}
+    },
+    "ImageCropByMaskAndResize": {
+        "title": "マスクでクロップ＆リサイズ",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク"
+        },
+        "widgets": {
+            "base_resolution": "基本解像度",
+            "padding": "パディング",
+            "min_crop_resolution": "最小クロップ解像度",
+            "max_crop_resolution": "最大クロップ解像度"
+        },
+        "outputs": {
+            "images": "画像",
+            "masks": "マスク",
+            "BBox": "BBox"
+        }
+    },
+    "ImageCropByMask": {
+        "title": "マスクでクロップ",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク"
+        },
+        "outputs": {
+            "image": "画像"
+        },
+        "description": "提供マスクで入力画像をクロップ"
+    },
+    "ImageUncropByMask": {
+        "title": "マスクでアンクロップ",
+        "inputs": {
+            "destination": "目標画像",
+            "source": "元画像",
+            "mask": "マスク",
+            "bbox": "BBox"
+        },
+        "outputs": {
+            "image": "画像"
+        }
+    },
+    "ImageCropByMaskBatch": {
+        "title": "マスクでバッチクロップ",
+        "inputs": {
+            "image": "画像",
+            "masks": "マスク"
+        },
+        "widgets": {
+            "width": "幅",
+            "height": "高さ",
+            "padding": "パディング",
+            "preserve_size": "サイズ保持",
+            "bg_color": "背景色"
+        },
+        "outputs": {
+            "images": "画像",
+            "masks": "マスク"
+        }
+    },
+    "ImagePadKJ": {
+        "title": "画像パディング (KJ)",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク"
+        },
+        "widgets": {
+            "left": "左パディング",
+            "right": "右パディング",
+            "top": "上パディング",
+            "bottom": "下パディング",
+            "extra_padding": "追加パディング",
+            "pad_mode": "パディングモード",
+            "color": "色",
+            "target_width": "目標幅",
+            "target_height": "目標高さ"
+        },
+        "outputs": {
+            "images": "画像",
+            "masks": "マスク"
+        },
+        "description": "入力画像をパディング、マスクに指定パディングを適用可。"
+    },
+    "ImageBatchJoinWithTransition": {
+        "title": "画像バッチ連結（トランジション付き）",
+        "inputs": {
+            "images_1": "画像1",
+            "images_2": "画像2"
+        },
+        "widgets": {
+            "start_index": "開始インデックス",
+            "interpolation": "補間",
+            "transition_type": "遷移タイプ",
+            "transitioning_frames": "遷移フレーム",
+            "blur_radius": "ぼかし半径",
+            "reverse": "反転",
+            "device": "デバイス"
+        },
+        "outputs": {
+            "images": "画像",
+            "masks": "マスク"
+        },
+        "description": "入力画像"
+    },
+    "Intrinsic_lora_sampling": {
+        "title": "IntrinsicLoRAサンプリング",
+        "inputs": {
+            "model": "モデル",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image": "画像",
+            "optional_latent": "Latent（任意）"
+        },
+        "widgets": {
+            "lora_name": "LoRA名",
+            "task": "タスク",
+            "text": "テキスト",
+            "per_batch": "バッチ毎"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "IMAGE": "画像"
+        },
+        "description": "サンプラー用内在LoRA：https://github.com/duxiaodan/intrinsic-lora。小さいため本ノードパックに含まれる。"
+    },
+    "BatchCLIPSeg": {
+        "title": "CLIPセマンティックセグメンテーション",
+        "inputs": {
+            "images": "画像",
+            "opt_model": "モデルを選択",
+            "prev_mask": "前マスク"
+        },
+        "widgets": {
+            "text": "テキスト",
+            "threshold": "閾値",
+            "binary_mask": "二値マスク",
+            "combine_mask": "マスクを結合",
+            "use_cuda": "CUDAを使用",
+            "blur_sigma": "ぼかし強度",
+            "image_bg_Ievel": "画像背景レベル",
+            "invert": "リバース"
+        },
+        "outputs": {
+            "Image": "画像",
+            "Mask": "マスク"
+        },
+        "description": "CLIPSegで画像1枚またはバッチをセグメント。"
+    },
+    "DownloadAndLoadCLIPSeg": {
+        "title": "CLIPSegロード",
+        "widgets": {
+            "model": "モデル"
+        },
+        "outputs": {
+            "clipseg_model": "CLIPSegモデル"
+        },
+        "description": "huggingface_hubでCLIPSegモデルを Comfy/models/clip_seg へダウンロード"
+    },
+    "CreateTextMask": {
+        "title": "テキストマスク",
+        "widgets": {
+            "invert": "反転",
+            "frames": "フレーム数",
+            "text_x": "位置_X",
+            "text_y": "位置_Y",
+            "font_size": "フォントサイズ",
+            "font_color": "フォント色",
+            "text": "テキスト",
+            "font": "フォント",
+            "width": "幅",
+            "height": "高さ",
+            "start_rotation": "開始回転",
+            "end_rotation": "終了回転"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "ColorToMask": {
+        "title": "画像色→マスク",
+        "inputs": {
+            "images": "画像"
+        },
+        "widgets": {
+            "invert": "反転",
+            "red": "赤",
+            "green": "緑",
+            "blue": "青",
+            "threshold": "閾値",
+            "per_batch": "バッチ毎"
+        },
+        "outputs": {
+            "MASK": "マスク"
+        },
+        "description": "選択RGB値をマスクに変換。バッチ入力では **per_batch** が1回に処理する画像数を制御。"
+    },
+    "CreateFluidMask": {
+        "title": "流体マスク",
+        "widgets": {
+            "invert": "反転",
+            "frames": "フレーム数",
+            "width": "幅",
+            "height": "高さ",
+            "inflow_count": "流入数",
+            "inflow_velocity": "流入速度",
+            "inflow_radius": "流入半径",
+            "inflow_padding": "流入パディング",
+            "inflow_duration": "流入時間"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "CreateAudioMask": {
+        "title": "音声マスク",
+        "widgets": {
+            "invert": "反転",
+            "frames": "フレーム数",
+            "scale": "スケール",
+            "audio_path": "音声パス",
+            "width": "幅",
+            "height": "高さ"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "CreateGradientMask": {
+        "title": "グラデーションマスク",
+        "widgets": {
+            "invert": "反転",
+            "frames": "フレーム数",
+            "width": "幅",
+            "height": "高さ"
+        },
+        "outputs": {
+            "MASK": "マスク"
+        }
+    },
+    "CreateFadeMask": {
+        "title": "フェードマスク",
+        "widgets": {
+            "invert": "反転",
+            "frames": "フレーム数",
+            "width": "幅",
+            "height": "高さ",
+            "interpolation": "補間方式",
+            "start_level": "開始レベル",
+            "midpoint_level": "中間レベル",
+            "end_level": "終了レベル",
+            "midpoint_frame": "中間フレーム番号"
+        },
+        "outputs": {
+            "MASK": "マスク"
+        },
+        "description": "指定フレームと値の間を補間するマスク群を作成。FizzのBatchValueScheduleと同構文。第1値はフレームインデックス（0始まりでなく1始まり）、括弧内第2値は0.0-1.0範囲のマスクFLOAT値。\n\n例、デフォルト：\n0:(0.0)\n7:(1.0)\n15:(0.0)\nは16フレームのマスクバッチを生成、黒スタート、補間曲線で8フレームで完全白、そこから16フレームで完全黒へ。"
+    },
+    "CreateFadeMaskAdvanced": {
+        "title": "フェードマスク（上級）",
+        "widgets": {
+            "points_string": "レベル点",
+            "invert": "反転",
+            "frames": "フレーム数",
+            "width": "幅",
+            "height": "高さ",
+            "interpolation": "補間方式"
+        },
+        "outputs": {
+            "MASK": "マスク"
+        }
+    },
+    "CreateMagicMask": {
+        "title": "マジックマスク",
+        "widgets": {
+            "frames": "フレーム数",
+            "depth": "深度",
+            "distortion": "歪み",
+            "seed": "シード",
+            "control_after_generate": "実行後操作",
+            "fixed": "固定",
+            "increment": "増加",
+            "decrement": "減少",
+            "randomize": "ランダム",
+            "transitions": "遷移",
+            "frame_height": "高さ",
+            "frame_width": "幅"
+        },
+        "outputs": {
+            "mask": "マスク",
+            "mask_inverted": "マスク反転"
+        }
+    },
+    "CreateShapeMask": {
+        "title": "形状マスク",
+        "widgets": {
+            "shape": "形状",
+            "circle": "円形",
+            "square": "正方形",
+            "triangle": "三角形",
+            "frames": "フレーム数",
+            "location_x": "位置_X",
+            "location_y": "位置_Y",
+            "size": "サイズ",
+            "grow": "成長",
+            "frame_width": "幅",
+            "frame_height": "高さ",
+            "shape_width": "形状幅",
+            "shape_height": "形状高さ"
+        },
+        "outputs": {
+            "mask": "マスク",
+            "mask_inverted": "マスク反転"
+        },
+        "description": "指定形状のマスクまたはマスク群を作成。位置は中心。成長値はフレーム毎に形状を成長させる量、アニメーションマスクを生成。"
+    },
+    "CreateVoronoiMask": {
+        "title": "ボロノイマスク",
+        "widgets": {
+            "frames": "フレーム数",
+            "num_points": "点数",
+            "line_width": "線幅",
+            "speed": "速度",
+            "frame_width": "幅",
+            "frame_height": "高さ"
+        },
+        "outputs": {
+            "mask": "マスク",
+            "mask_inverted": "マスク反転"
+        }
+    },
+    "GetMaskSizeAndCount": {
+        "title": "マスクサイズと個数取得",
+        "inputs": {
+            "mask": "マスク"
+        },
+        "outputs": {
+            "mask": "マスク",
+            "width": "幅",
+            "height": "高さ",
+            "count": "数量"
+        },
+        "description": "マスクの幅・高さ・バッチサイズを出力"
+    },
+    "GrowMaskWithBlur": {
+        "title": "マスクぼかし成長",
+        "inputs": {
+            "mask": "マスク"
+        },
+        "widgets": {
+            "expand": "拡張",
+            "incremental_expandrate": "増分拡張率",
+            "tapered_corners": "面取り",
+            "flip_input": "入力を反転",
+            "use_cuda": "CUDAを使用",
+            "blur_radius": "ぼかし半径",
+            "sigma": "Sigma",
+            "lerp_alpha": "線形アルファ",
+            "decay_factor": "減衰係数",
+            "fill_holes": "穴埋め"
+        },
+        "outputs": {
+            "mask": "マスク",
+            "mask_inverted": "マスク反転"
+        },
+        "description": "# マスクぼかし成長\\n- マスク：入力マスクまたはマスクバッチ\\n- 拡張：設定値でマスクまたはマスクバッチを拡張/縮小\\n- 増分拡張率：フレーム毎に設定値で拡張率を増加\\n- 面取り：テーパー角を使用\\n- 入力を反転：入力マスクをフリップ\\n- ぼかし半径：0以上でマスクをぼかし\\n- 線形アルファ：フレーム間補間アルファ値\\n- 減衰係数：フレーム間補間の減衰値\\n- 穴埋め：マスク内の穴を埋める（遅い）"
+    },
+    "MaskBatchMulti": {
+        "title": "マスク合成バッチ（多重）",
+        "inputs": {
+            "mask_1": "マスク_1",
+            "mask_2": "マスク_2",
+            "mask_3": "マスク_3",
+            "mask_4": "マスク_4",
+            "mask_5": "マスク_5",
+            "mask_6": "マスク_6",
+            "mask_7": "マスク_7",
+            "mask_8": "マスク_8",
+            "mask_9": "マスク_9",
+            "mask_10": "マスク_10"
+        },
+        "widgets": {
+            "inputcount": "入力数",
+            "Update inputs": "入力を更新"
+        },
+        "outputs": {
+            "masks": "マスク"
+        },
+        "description": "複数マスクをマスクバッチに統合。『入力数』でインターフェース数を設定、更新クリックでリフレッシュ。"
+    },
+    "OffsetMask": {
+        "title": "マスクオフセット",
+        "inputs": {
+            "mask": "マスク"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "angle": "角度",
+            "duplication_factor": "重複回数",
+            "roll": "ロールを使用",
+            "incremental": "増分を使用",
+            "padding_mode": "パディングモード",
+            "empty": "空",
+            "border": "境界",
+            "reflection": "反射"
+        },
+        "outputs": {
+            "mask": "マスク"
+        },
+        "description": "# マスクを設定量で伸縮\\n- マスク：入力マスクまたはマスクバッチ\\n- x：水平伸缩量\\n- y：垂直伸缩量\\n- 重複回数：マスクをバッチ複製する回数\\n- ロールを使用：ロールラップ"
+    },
+    "RoundMask": {
+        "title": "マスク丸め",
+        "inputs": {
+            "mask": "マスク"
+        },
+        "outputs": {
+            "MASK": "マスク"
+        }
+    },
+    "ResizeMask": {
+        "title": "マスカイサイズ",
+        "inputs": {
+            "mask": "マスク"
+        },
+        "widgets": {
+            "width": "幅",
+            "height": "高さ",
+            "keep_proportions": "アスペクト比固定",
+            "upscale_method": "上級補間",
+            "crop": "クロップ"
+        },
+        "outputs": {
+            "mask": "マスク",
+            "width": "幅",
+            "height": "高さ"
+        },
+        "description": "マスクまたはマスクバッチを指定幅・高さにリサイズ。"
+    },
+    "RemapMaskRange": {
+        "title": "マスク範囲再マッピング",
+        "inputs": {
+            "mask": "マスク"
+        },
+        "widgets": {
+            "min": "最小値",
+            "max": "最大値"
+        },
+        "outputs": {
+            "mask": "マスク"
+        },
+        "description": "マスクの新最小値と最大値を設定。"
+    },
+    "SeparateMasks": {
+        "title": "マスク分離",
+        "inputs": {
+            "mask": "マスク"
+        },
+        "widgets": {
+            "size_threshold_width": "幅サイズ閾値",
+            "size_threshold_height": "高サイズ閾値",
+            "mode": "分離モード",
+            "max_poly_points": "最大多角点数",
+            "polygon": "多角形",
+            "shape": "形状",
+            "mask_np": "Numpyマスク",
+            "max_points": "最大点数"
+        },
+        "outputs": {
+            "mask": "マスク"
+        }
+    },
+    "PathchSageAttentionKJ": {
+        "title": "SAGEアテンションパッチ (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "allow_compile": "コンパイルを許可",
+            "sage_attention": "SAGEアテンション"
+        },
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "CheckpointLoaderKJ": {
+        "title": "チェックポイントローダー (KJ)",
+        "inputs": {},
+        "widgets": {
+            "ckpt_name": "モデル名",
+            "weight_dtype": "重みデータ型",
+            "compute_dtype": "計算データ型",
+            "patch_cublaslinear": "CUBLASLinearパッチ",
+            "sage_attention": "SAGEアテンション",
+            "enable_fp16_accumulation": "FP16アキュムレーション有効"
+        },
+        "outputs": {
+            "model": "モデル",
+            "clip": "CLIP",
+            "vae": "VAE"
+        }
+    },
+    "DiffusionModelLoaderKJ": {
+        "title": "拡散モデルローダー (KJ)",
+        "inputs": {
+            "extra_state_dict": "追加state_dict"
+        },
+        "widgets": {
+            "model_name": "モデル名",
+            "weight_dtype": "重みデータ型",
+            "compute_dtype": "計算データ型",
+            "patch_cublaslinear": "CUBLASLinearパッチ",
+            "sage_attention": "SAGEアテンション",
+            "enable_fp16_accumulation": "FP16アキュムレーション有効"
+        },
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "PatchModelPatcherOrder": {
+        "title": "モデルパッチ順序調整",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "patch_order": "パッチ順序",
+            "full_load": "フルロード"
+        },
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "TorchCompileModelFluxAdvanced": {
+        "title": "FluxモデルTorchコンパイル（上級）",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "backend": "バックエンド",
+            "fullgraph": "フルグラフ",
+            "mode": "モード",
+            "double_blocks": "ダブルブロック",
+            "single_blocks": "シングルブロック",
+            "dynamic": "動的",
+            "dynamo_cache_size_limit": "Dynamoキャッシュサイズ上限",
+            "blocks_str": "ブロック文字列"
+        },
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "TorchCompileModelFluxAdvancedV2": {
+        "title": "FluxモデルTorchコンパイル（上級）V2",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "backend": "バックエンド",
+            "fullgraph": "フルグラフ",
+            "mode": "モード",
+            "double_blocks": "ダブルブロック",
+            "single_blocks": "シングルブロック",
+            "dynamic": "動的",
+            "dynamo_cache_size_limit": "Dynamoキャッシュサイズ上限",
+            "blocks_str": "ブロック文字列"
+        },
+        "outputs": {
+            "MODEL": "モデル",
+            "model": "モデル"
+        }
+    },
+    "TorchCompileModelHyVideo": {
+        "title": "Torchコンパイル混元動画モデル",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "backend": "バックエンド",
+            "fullgraph": "フルグラフ",
+            "mode": "モード",
+            "dynamic": "動的",
+            "dynamo_cache_size_limit": "Dynamoキャッシュサイズ上限",
+            "compile_single_blocks": "シングルブロックのみコンパイル",
+            "compile_double_blocks": "ダブルブロックのみコンパイル",
+            "compile_txt_in": "テキスト入力をコンパイル",
+            "compile_vector_in": "ベクトル入力をコンパイル",
+            "compile_final_layer": "最終層をコンパイル"
+        },
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "TorchCompileModelWanVideo": {
+        "title": "TorchコンパイルWan動画モデル",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "backend": "バックエンド",
+            "fullgraph": "フルグラフ",
+            "mode": "モード",
+            "dynamic": "動的",
+            "dynamo_cache_size_limit": "Dynamoキャッシュサイズ上限",
+            "compile_transformer_blocks_only": "Transformerブロックのみコンパイル"
+        },
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "TorchCompileModelWanVideoV2": {
+        "title": "Wan動画 TorchコンパイルモデルV2",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "backend": "バックエンド",
+            "fullgraph": "フルグラフ",
+            "mode": "モード",
+            "dynamic": "動的",
+            "dynamo_cache_size_limit": "Dynamoキャッシュサイズ上限",
+            "compile_transformer_blocks_only": "Transformerブロックのみコンパイル"
+        },
+        "outputs": {
+            "MODEL": "モデル",
+            "model": "モデル"
+        }
+    },
+    "TorchCompileVAE": {
+        "title": "TorchコンパイルVAE",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "backend": "バックエンド",
+            "fullgraph": "フルグラフ",
+            "mode": "モード",
+            "compile_encoder": "エンコーダをコンパイル",
+            "compile_decoder": "デコーダをコンパイル"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "TorchCompileControlNet": {
+        "title": "TorchコンパイルControlNet",
+        "inputs": {
+            "controlnet": "ControlNet"
+        },
+        "widgets": {
+            "backend": "バックエンド",
+            "fullgraph": "フルグラフ",
+            "mode": "モード"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "TorchCompileLTXModel": {
+        "title": "TorchコンパイルLTXモデル",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "backend": "バックエンド",
+            "fullgraph": "フルグラフ",
+            "mode": "モード",
+            "dynamic": "動的"
+        },
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "TorchCompileCosmosModel": {
+        "title": "TorchコンパイルCosmosモデル",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "backend": "バックエンド",
+            "fullgraph": "フルグラフ",
+            "mode": "モード",
+            "dynamic": "動的",
+            "dynamo_cache_size_limit": "Dynamoキャッシュサイズ上限"
+        },
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "WanVideoTeaCacheKJ": {
+        "title": "Wan動画キャッシュ最適化 (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "rel_l1_thresh": "相対L1閾値",
+            "start_percent": "開始率",
+            "end_percent": "終了率",
+            "cache_device": "キャッシュデバイス",
+            "coefficients": "係数"
+        },
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "WanVideoEnhanceAVideoKJ": {
+        "title": "Wan動画 EAV 増強 (KJ)",
+        "inputs": {
+            "model": "モデル",
+            "latent": "latent"
+        },
+        "widgets": {
+            "weight": "重み"
+        },
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "WanVideoNAG": {
+        "title": "Wan動画 NAG",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "conditioning": "条件",
+            "nag_scale": "NAG_スケール",
+            "nag_alpha": "NAG_alpha",
+            "nag_tau": "NAG_tau",
+            "input_type": "入力型"
+        },
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "SkipLayerGuidanceWanVideo": {
+        "title": "Wan動画 SLG",
+        "inputs": {
+            "model": "モデル",
+            "blocks": "ブロック",
+            "start_percent": "開始率",
+            "end_percent": "終了率"
+        },
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "CFGZeroStarAndInit": {
+        "title": "CFGスターゼロ初期化",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "use_zero_init": "ゼロ初期化を使用",
+            "zero_init_steps": "ゼロ初期化ステップ数"
+        },
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "SetNode": {
+        "title": "セットノード",
+        "inputs": {
+            "*": "入力"
+        },
+        "widgets": {
+            "Constant": "定数"
+        },
+        "outputs": {
+            "*": "出力"
+        }
+    },
+    "GetNode": {
+        "title": "ゲットノード",
+        "inputs": {
+            "*": "入力"
+        },
+        "widgets": {
+            "Constant": "定数"
+        },
+        "outputs": {
+            "*": "出力"
+        }
+    },
+    "BOOLConstant": {
+        "title": "BOOL定数",
+        "inputs": {
+            "value": "値"
+        },
+        "widgets": {
+            "value": "値"
+        },
+        "outputs": {
+            "value": "値"
+        }
+    },
+    "INTConstant": {
+        "title": "INT定数",
+        "widgets": {
+            "value": "値"
+        },
+        "outputs": {
+            "value": "値"
+        }
+    },
+    "FloatConstant": {
+        "title": "FLOAT定数",
+        "widgets": {
+            "value": "値"
+        },
+        "outputs": {
+            "value": "値"
+        }
+    },
+    "StringConstant": {
+        "title": "文字列定数",
+        "widgets": {
+            "string": "文字列"
+        },
+        "outputs": {
+            "STRING": "文字列"
+        }
+    },
+    "StringConstantMultiline": {
+        "title": "文字列定数（マルチライン）",
+        "widgets": {
+            "string": "文字列",
+            "strip_newlines": "改行を含む"
+        },
+        "outputs": {
+            "STRING": "文字列"
+        }
+    },
+    "ScaleBatchPromptSchedule": {
+        "title": "プロンプトバッチスケジュール スケール",
+        "inputs": {
+            "input_str": "文字列",
+            "old_frame_count": "旧フレーム数",
+            "new_frame_count": "新フレーム数"
+        },
+        "outputs": {
+            "STRING": "文字列"
+        }
+    },
+    "GetLatentsFromBatchIndexed": {
+        "title": "インデックスでLatent取得",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "latent_format": "Latent形式"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "ConditioningMultiCombine": {
+        "title": "条件マージ（多重）",
+        "inputs": {
+            "conditioning_1": "条件_1",
+            "conditioning_2": "条件_2",
+            "conditioning_3": "条件_3",
+            "conditioning_4": "条件_4",
+            "conditioning_5": "条件_5",
+            "conditioning_6": "条件_6",
+            "conditioning_7": "条件_7",
+            "conditioning_8": "条件_8",
+            "conditioning_9": "条件_9",
+            "conditioning_10": "条件_10",
+            "conditioning_11": "条件_11",
+            "conditioning_12": "条件_12",
+            "conditioning_13": "条件_13",
+            "conditioning_14": "条件_14",
+            "conditioning_15": "条件_15",
+            "conditioning_16": "条件_16",
+            "conditioning_17": "条件_17",
+            "conditioning_18": "条件_18",
+            "conditioning_19": "条件_19",
+            "conditioning_20": "条件_20"
+        },
+        "widgets": {
+            "inputcount": "入力数",
+            "operation": "操作",
+            "Update inputs": "入力を更新"
+        },
+        "outputs": {
+            "combined": "条件",
+            "inputcount": "入力数"
+        },
+        "description": "複数条件ノードを1つにマージ"
+    },
+    "AppendStringsToList": {
+        "title": "文字列をリストに追加",
+        "inputs": {
+            "string1": "文字列1",
+            "string2": "文字列2"
+        },
+        "outputs": {
+            "STRING": "文字列"
+        }
+    },
+    "JoinStrings": {
+        "title": "文字列連結",
+        "inputs": {
+            "string1": "文字列1",
+            "string2": "文字列2"
+        },
+        "widgets": {
+            "delimiter": "区切り文字"
+        },
+        "outputs": {
+            "STRING": "文字列"
+        }
+    },
+    "JoinStringMulti": {
+        "title": "文字列連結（多重）",
+        "inputs": {
+            "string_1": "文字列_1",
+            "string_2": "文字列_2",
+            "string_3": "文字列_3",
+            "string_4": "文字列_4",
+            "string_5": "文字列_5",
+            "string_6": "文字列_6",
+            "string_7": "文字列_7",
+            "string_8": "文字列_8",
+            "string_9": "文字列_9",
+            "string_10": "文字列_10"
+        },
+        "widgets": {
+            "inputcount": "入力数",
+            "delimiter": "区切り文字",
+            "return_list": "リストとして出力",
+            "Update inputs": "入力を更新"
+        },
+        "outputs": {
+            "string": "文字列"
+        },
+        "description": "複数文字列を文字列バッチまたはリストに統合。『入力数』でインターフェース数を設定、更新クリックでリフレッシュ。"
+    },
+    "CondPassThrough": {
+        "title": "条件パススルー",
+        "inputs": {
+            "positive": "ポジティブ条件",
+            "negative": "ネガティブ条件"
+        },
+        "outputs": {
+            "positive": "ポジティブ条件",
+            "negative": "ネガティブ条件"
+        }
+    },
+    "ModelPassThrough": {
+        "title": "モデルパススルー",
+        "inputs": {
+            "model": "モデル"
+        },
+        "outputs": {
+            "model": "モデル"
+        },
+        "description": "モデルを次のノードへ伝達"
+    },
+    "ConditioningSetMaskAndCombine": {
+        "title": "条件マスク設定（2系統マージ）",
+        "inputs": {
+            "positive_1": "ポジティブ条件_1",
+            "negative_1": "ネガティブ条件_1",
+            "positive_2": "ポジティブ条件_2",
+            "negative_2": "ネガティブ条件_2",
+            "mask_1": "マスク_1",
+            "mask_2": "マスク_2"
+        },
+        "widgets": {
+            "mask_1_strength": "マスク_1_強度",
+            "mask_2_strength": "マスク_2_強度",
+            "set_cond_area": "条件領域を設定",
+            "default": "デフォルト",
+            "mask bounds": "マスク境界"
+        },
+        "outputs": {
+            "combined_positive": "ポジティブ条件",
+            "combined_negative": "ネガティブ条件"
+        },
+        "description": "複数条件マスクをバンドルしノードを1つに統合、ComfyUIネイティブノードと同じ機能"
+    },
+    "ConditioningSetMaskAndCombine3": {
+        "title": "条件マスク設定（3系統マージ）",
+        "inputs": {
+            "positive_1": "ポジティブ条件_1",
+            "negative_1": "ネガティブ条件_1",
+            "positive_2": "ポジティブ条件_2",
+            "negative_2": "ネガティブ条件_2",
+            "positive_3": "ポジティブ条件_3",
+            "negative_3": "ネガティブ条件_3",
+            "mask_1": "マスク_1",
+            "mask_2": "マスク_2",
+            "mask_3": "マスク_3"
+        },
+        "widgets": {
+            "mask_1_strength": "マスク_1_強度",
+            "mask_2_strength": "マスク_2_強度",
+            "mask_3_strength": "マスク_3_強度",
+            "set_cond_area": "条件領域を設定",
+            "default": "デフォルト",
+            "mask bounds": "マスク境界"
+        },
+        "outputs": {
+            "combined_positive": "ポジティブ条件",
+            "combined_negative": "ネガティブ条件"
+        },
+        "description": "複数条件マスクをバンドルしノードを1つに統合、ComfyUIネイティブノードと同じ機能"
+    },
+    "ConditioningSetMaskAndCombine4": {
+        "title": "条件マスク設定（4系統マージ）",
+        "inputs": {
+            "positive_1": "ポジティブ条件_1",
+            "negative_1": "ネガティブ条件_1",
+            "positive_2": "ポジティブ条件_2",
+            "negative_2": "ネガティブ条件_2",
+            "positive_3": "ポジティブ条件_3",
+            "negative_3": "ネガティブ条件_3",
+            "positive_4": "ポジティブ条件_4",
+            "negative_4": "ネガティブ条件_4",
+            "mask_1": "マスク_1",
+            "mask_2": "マスク_2",
+            "mask_3": "マスク_3",
+            "mask_4": "マスク_4"
+        },
+        "widgets": {
+            "mask_1_strength": "マスク_1_強度",
+            "mask_2_strength": "マスク_2_強度",
+            "mask_3_strength": "マスク_3_強度",
+            "mask_4_strength": "マスク_4_強度",
+            "set_cond_area": "条件領域を設定",
+            "default": "デフォルト",
+            "mask bounds": "マスク境界"
+        },
+        "outputs": {
+            "combined_positive": "ポジティブ条件マージ",
+            "combined_negative": "ネガティブ条件マージ"
+        },
+        "description": "複数条件マスクをバンドルしノードを1つに統合、ComfyUIネイティブノードと同じ機能"
+    },
+    "ConditioningSetMaskAndCombine5": {
+        "title": "条件マスク設定（5系統マージ）",
+        "inputs": {
+            "positive_1": "ポジティブ条件_1",
+            "negative_1": "ネガティブ条件_1",
+            "positive_2": "ポジティブ条件_2",
+            "negative_2": "ネガティブ条件_2",
+            "positive_3": "ポジティブ条件_3",
+            "negative_3": "ネガティブ条件_3",
+            "positive_4": "ポジティブ条件_4",
+            "negative_4": "ネガティブ条件_4",
+            "positive_5": "ポジティブ条件_5",
+            "negative_5": "ネガティブ条件_5",
+            "mask_1": "マスク_1",
+            "mask_2": "マスク_2",
+            "mask_3": "マスク_3",
+            "mask_4": "マスク_4",
+            "mask_5": "マスク_5"
+        },
+        "widgets": {
+            "mask_1_strength": "マスク_1_強度",
+            "mask_2_strength": "マスク_2_強度",
+            "mask_3_strength": "マスク_3_強度",
+            "mask_4_strength": "マスク_4_強度",
+            "mask_5_strength": "マスク_5_強度",
+            "set_cond_area": "条件領域を設定",
+            "default": "デフォルト",
+            "mask bounds": "マスク境界"
+        },
+        "outputs": {
+            "combined_positive": "ポジティブ条件マージ",
+            "combined_negative": "ネガティブ条件マージ"
+        },
+        "description": "複数条件マスクをバンドルしノードを1つに統合、ComfyUIネイティブノードと同じ機能"
+    },
+    "VRAM_Debug": {
+        "title": "VRAMクリーンアップ",
+        "inputs": {
+            "any_input": "任意入力",
+            "image_pass": "画像スルー",
+            "model_pass": "モデルスルー"
+        },
+        "widgets": {
+            "empty_cache": "キャッシュをクリア",
+            "gc_collect": "ガベージコレクション",
+            "unload_all_models": "全モデルをアンロード"
+        },
+        "outputs": {
+            "any_output": "任意出力",
+            "image_pass": "画像スルー",
+            "model_pass": "モデルスルー",
+            "freemem_before": "クリーンアップ前空きメモリ",
+            "freemem_after": "クリーンアップ後空きメモリ"
+        },
+        "description": "入力データをそのまま返す（トリガー信号用）、同時にComfyモデル管理機能とGCを実行、操作前後のVRAM空き状況をレポート。"
+    },
+    "SomethingToString": {
+        "title": "任意→文字列",
+        "inputs": {
+            "input": "入力"
+        },
+        "widgets": {
+            "prefix": "接頭辞",
+            "suffix": "接尾辞"
+        },
+        "outputs": {
+            "STRING": "文字列"
+        }
+    },
+    "Sleep": {
+        "title": "スリープ",
+        "inputs": {
+            "input": "入力"
+        },
+        "widgets": {
+            "minutes": "分",
+            "seconds": "秒"
+        },
+        "outputs": {
+            "*": "*"
+        }
+    },
+    "EmptyLatentImagePresets": {
+        "title": "空Latent画像プリセット",
+        "widgets": {
+            "dimensions": "サイズ",
+            "invert": "反転",
+            "batch_size": "バッチサイズ"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "幅",
+            "Height": "高さ"
+        }
+    },
+    "EmptyLatentImageCustomPresets": {
+        "title": "カスタムLatent画像プリセット",
+        "widgets": {
+            "dimensions": "サイズ",
+            "invert": "反転",
+            "batch_size": "バッチサイズ"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "幅",
+            "Height": "高さ"
+        },
+        "description": "指定サイズで空Latent画像を生成。\n選択肢は『ノードフォルダ』内の custom_dimensions.json から読み込み。"
+    },
+    "WidgetToString": {
+        "title": "ウィジェット→文字列",
+        "inputs": {
+            "any_input": "任意入力"
+        },
+        "widgets": {
+            "id": "ノードID",
+            "widget_name": "ウィジェット名",
+            "return_all": "全返却",
+            "node_title": "ノードタイトル",
+            "allowed_float_decimals": "FLOAT小数位を許可"
+        },
+        "outputs": {
+            "STRING": "文字列"
+        }
+    },
+    "DummyOut": {
+        "title": "ダミーLatent出力",
+        "inputs": {
+            "any_input": "任意入力"
+        },
+        "outputs": {
+            "*": "出力"
+        }
+    },
+    "FlipSigmasAdjusted": {
+        "title": "シグマ反転（調整付き）",
+        "inputs": {
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "divide_by_last_sigma": "最後のSigmaで除算",
+            "divide_by": "除算",
+            "offset_by": "オフセット量"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas",
+            "sigmas_string": "Sigmas文字列"
+        }
+    },
+    "CustomSigmas": {
+        "title": "カスタムSigmas",
+        "widgets": {
+            "sigmas_string": "Sigmas文字列",
+            "interpolate_to_steps": "補間ステップ数",
+            "t_steps": "Tステップ数",
+            "num_steps": "ステップ数"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        }
+    },
+    "StringToFloatList": {
+        "title": "文字列→FLOATリスト",
+        "inputs": {
+            "string": "文字列"
+        },
+        "outputs": {
+            "FLOAT": "FLOAT"
+        }
+    },
+    "InjectNoiseToLatent": {
+        "title": "Latentにノイズ注入",
+        "inputs": {
+            "latents": "Latent",
+            "noise": "ノイズ",
+            "mask": "マスク"
+        },
+        "widgets": {
+            "strength": "強度",
+            "normalize": "正規化",
+            "average": "平均",
+            "mix_randn_amount": "ランダムノイズブレンド強度",
+            "seed": "シード"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "SoundReactive": {
+        "title": "音声リアクション",
+        "inputs": {
+            "audio": "音声"
+        },
+        "widgets": {
+            "sound_level": "音量レベル",
+            "start_range_hz": "開始Hz範囲",
+            "end_range_hz": "終了Hz範囲",
+            "multiplier": "乗数",
+            "smoothing_factor": "平滑係数",
+            "normalize": "正規化",
+            "Start mic capture": "マイクキャプチャ開始",
+            "Start_mic_capture": "マイクキャプチャ開始",
+            "Stop mic capture": "マイクキャプチャ停止",
+            "Stop_mic_capture": "マイクキャプチャ停止"
+        },
+        "outputs": {
+            "sound_level": "音量レベル",
+            "sound_level_int": "音量レベルINT"
+        },
+        "description": "入力音声の音量をフィードバック。\n\nブラウザ音声入力を使用。\n\nライブサンプリング用。"
+    },
+    "GenerateNoise": {
+        "title": "ノイズ生成",
+        "inputs": {
+            "model": "モデル",
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "width": "幅",
+            "height": "高さ",
+            "batch_size": "バッチサイズ",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後操作",
+            "fixed": "固定",
+            "increment": "増加",
+            "decrement": "減少",
+            "randomize": "ランダム",
+            "multiplier": "乗数",
+            "constant_batch_noise": "一定バッチノイズ",
+            "normalize": "正規化",
+            "latent_channels": "Latentチャンネル",
+            "shape": "形状"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        },
+        "description": "注入時にノイズを生成、またはノイズ追加オフ時はサンプラー上の空Latentとして使用"
+    },
+    "StableZero123_BatchSchedule": {
+        "title": "StableZero123 マルチビューバッチ生成",
+        "inputs": {
+            "clip_vision": "CLIP Vision",
+            "init_image": "初期画像",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "幅",
+            "height": "高さ",
+            "batch_size": "バッチサイズ",
+            "interpolation": "補間方式",
+            "linear": "線形",
+            "ease_in": "イーズイン",
+            "ease_out": "イーズアウト",
+            "ease_in_out": "イーズインアウト",
+            "azimuth_points_string": "方位角点",
+            "elevation_points_string": "仰角点"
+        },
+        "outputs": {
+            "positive": "ポジティブ条件",
+            "negative": "ネガティブ条件",
+            "latent": "Latent"
+        },
+        "description": "単一画像から多視点整合画像（0°、90°、180°等）をバッチ生成、VRAM最適化スケジュール対応。"
+    },
+    "SV3D_BatchSchedule": {
+        "title": "SV3Dバッチスケジュール",
+        "inputs": {
+            "clip_vision": "CLIP Vision",
+            "init_image": "初期画像",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "幅",
+            "height": "高さ",
+            "batch_size": "バッチサイズ",
+            "interpolation": "補間方式",
+            "azimuth_points_string": "方位角点",
+            "elevation_points_string": "仰角点"
+        },
+        "outputs": {
+            "positive": "ポジティブ条件",
+            "negative": "ネガティブ条件",
+            "latent": "Latent"
+        },
+        "description": "補間スケジュールでSV3Dの方位角と仰角を設定。\n\n\\nSV3Dは動画モデルのためスケジュール値は段階的に変化必須。\n\\nhttps://huggingface.co/stabilityai/sv3d"
+    },
+    "LoadResAdapterNormalization": {
+        "title": "ResAdapter正規化ロード",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "resadapter_path": "ResAdapterパス"
+        },
+        "outputs": {
+            "MODEL": "モデル"
+        }
+    },
+    "Superprompt": {
+        "title": "スーパープロンプト",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "instruction_prompt": "指示プロンプト",
+            "max_new_tokens": "最大新規トークン数"
+        },
+        "outputs": {
+            "STRING": "文字列"
+        },
+        "description": "スーパープロンプトデータセットでファインチューンしたT5モデル。\n\nテキストプロンプトをより詳細な説明へアップスケール。\n\nテキスト→画像の生成前ステップに使用。\n\nより詳細なプロンプトから利益を得るモデル向け。\n\\nhttps://huggingface.co/roborovski/superprompt-v1"
+    },
+    "CameraPoseVisualizer": {
+        "title": "カメラポーズ可視化",
+        "inputs": {
+            "cameractrl_poses": "カメラ制御ポーズ"
+        },
+        "widgets": {
+            "pose_file_path": "ポーズファイルパス",
+            "base_xval": "基準X値",
+            "zval": "Z値",
+            "scale": "スケール",
+            "use_exact_fx": "精密射影を使用",
+            "relative_c2w": "相対カメラ→ワールド",
+            "use_viewer": "ビューアを使用",
+            "cameractrl_poses": "カメラ制御ポーズ",
+            "extrinsic": "外部",
+            "color_map": "カラーマップ",
+            "hw_ratio": "高幅比",
+            "list_label": "リストラベル",
+            "w2cs": "ワールド→カメラ",
+            "transform_matrix": "変換行列"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "カメラポーズを可視化\n\n\\n（AnimateDiff-EvolvedのCameraCtrlポーズモジュール、またはRealEstateデータセットのカメラ内部パラメータと座標を含む.txtファイルから3D図で表示）"
+    },
+    "StabilityAPI_SD3": {
+        "title": "StabilityAPI SD3",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "n_prompt": "ネガティブプロンプト",
+            "seed": "ランダムシード",
+            "control_before_generate": "生成前操作",
+            "model": "モデル",
+            "aspect_ratio": "アスペクト比",
+            "output_format": "出力形式",
+            "api_key": "APIキー",
+            "img2img_strength": "画像→画像 強度",
+            "disable_metadata": "メタデータを無効化"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "# Stability API呼び出し\\n\\nアカウントに複数キーがあっても同一キーの使用を推奨。\\n\\nhttps://platform.stability.ai/account/keys でキー取得、キーを含む config.json をプラグインディレクトリに置くことを推奨。\\n\\n# 警告：\\n\\ndisable_metadata（メタデータ無効）を有効にしても、本ノードと異なる保存ノードがワークフローに含まれる場合、APIキーがメタデータに保存される可能性があります。\\n\\nSD3は生成毎に6.5クレジット\\n\\nSD3-Turboは生成毎に4クレジット\\n\\n画像未接続時はテキスト→画像モード"
+    },
+    "CheckpointPerturbWeights": {
+        "title": "Checkpoint重み摂動",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "joint_blocks": "共同ブロック",
+            "final_layer": "最終層",
+            "rest_of_the_blocks": "その他ブロック",
+            "seed": "ランダムシード",
+            "control_before_generate": "生成前操作"
+        },
+        "outputs": {
+            "MODEL": "モデル"
+        }
+    },
+    "DifferentialDiffusionAdvanced": {
+        "title": "差分拡散（上級）",
+        "inputs": {
+            "model": "モデル",
+            "samples": "サンプリング",
+            "mask": "マスク"
+        },
+        "widgets": {
+            "multiplier": "乗数"
+        },
+        "outputs": {
+            "MODEL": "モデル",
+            "LATENT": "Latent"
+        }
+    },
+    "FluxBlockLoraSelect": {
+        "title": "FluxブロックLoRA選択",
+        "inputs": {},
+        "outputs": {
+            "blocks": "ブロック"
+        },
+        "description": "ICLightUnetロード：ICLightUnetモデルを読み込み。（実験的）開発中 \\n\\n別の使いづらくても動作する方法：https://huggingface.co/Kijai/iclight-comfy/blob/main/iclight_fc_converted.safetensors からモデルをダウンロードし InstructPixToPix条件ノードと併用。"
+    },
+    "HunyuanVideoBlockLoraSelect": {
+        "title": "混元動画 ブロックLoRA選択",
+        "inputs": {},
+        "outputs": {
+            "blocks": "ブロック"
+        },
+        "description": "単一ブロックのalpha値を選択、0でブロック全体を除去"
+    },
+    "FluxBlockLoraLoader": {
+        "title": "FluxブロックLoRAローダー",
+        "inputs": {
+            "model": "モデル",
+            "blocks": "ブロック",
+            "opt_lora_path": "LoRAパス（任意）"
+        },
+        "widgets": {
+            "strength_model": "モデル強度",
+            "lora_name": "LoRA名"
+        },
+        "outputs": {
+            "model": "モデル",
+            "rank": "ランク"
+        }
+    },
+    "CustomControlNetWeightsFluxFromList": {
+        "title": "Flux ControlNetカスタム重み（リストから）",
+        "inputs": {
+            "cn_extras": "ControlNet追加",
+            "list_of_floats": "FLOATリスト"
+        },
+        "widgets": {
+            "uncond_multiplier": "無条件乗数",
+            "autosize": "自動サイズ"
+        },
+        "outputs": {
+            "CN_WEIGHTS": "ControlNet重み",
+            "TK_SHORTCUT": "TKショートカット"
+        },
+        "description": "FLOATリストをControlNet重みへ変換（Advanced-ControlNet用）"
+    },
+    "SetShakkerLabsUnionControlNetType": {
+        "title": "ShakkerLabs Union ControlNet タイプ設定",
+        "inputs": {
+            "control_net": "ControlNet",
+            "type": "タイプ"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "ModelSaveKJ": {
+        "title": "モデル保存 (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "filename_prefix": "ファイル名接頭辞",
+            "model_key_prefix": "モデルキー接頭辞"
+        }
+    },
+    "StyleModelApplyAdvanced": {
+        "title": "スタイルモデル応用（上級）",
+        "inputs": {
+            "conditioning": "条件ガイダンス",
+            "style_model": "スタイルモデル",
+            "clip_vision_output": "CLIP Vision出力"
+        },
+        "widgets": {
+            "strength": "強度"
+        },
+        "outputs": {
+            "conditioning": "条件ガイダンス"
+        },
+        "description": "スタイルモデル適用、強度パラメータ付き"
+    },
+    "AudioConcatenate": {
+        "title": "音声連結",
+        "inputs": {
+            "audio1": "音声1",
+            "audio2": "音声2"
+        },
+        "widgets": {
+            "direction": "方向"
+        },
+        "outputs": {
+            "AUDIO": "音声"
+        },
+        "description": "指定方向で音声1を音声2に連結。"
+    },
+    "ImageNoiseAugmentation": {
+        "title": "画像ノイズaugment",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "noise_aug_strength": "ノイズaugment強度",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "image": "画像"
+        }
+    },
+    "VAELoaderKJ": {
+        "title": "VAEローダー (KJ)",
+        "inputs": {},
+        "widgets": {
+            "vae_name": "VAE名",
+            "device": "デバイス",
+            "weight_dtype": "重みデータ型"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "ScheduledCFGGuidance": {
+        "title": "スケジュールCFGガイダンス",
+        "inputs": {
+            "model": "モデル",
+            "positive": "ポジティブプロンプト",
+            "negative": "ネガティブプロンプト"
+        },
+        "widgets": {
+            "cfg": "CFG値",
+            "start_percent": "開始率",
+            "end_percent": "終了率"
+        },
+        "outputs": {
+            "GUIDER": "ガイダンス"
+        }
+    },
+    "ApplyRifleXRoPE_WanVideo": {
+        "title": "Wan動画 RifleX RoPE適用",
+        "inputs": {
+            "model": "モデル",
+            "latent": "Latent",
+            "k": "k値"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "ApplyRifleXRoPE_HunuyanVideo": {
+        "title": "混元動画 RifleX RoPE適用",
+        "inputs": {
+            "model": "モデル",
+            "latent": "Latent",
+            "k": "k値"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "TimerNodeKJ": {
+        "title": "タイマー (KJ)",
+        "inputs": {
+            "any_input": "任意入力",
+            "timer": "タイマー"
+        },
+        "widgets": {
+            "mode": "モード",
+            "name": "名称"
+        },
+        "outputs": {
+            "any_output": "任意出力",
+            "timer": "タイマー",
+            "time": "時間"
+        }
+    },
+    "ImageBatchFilter": {
+        "title": "画像バッチフィルタ",
+        "inputs": {
+            "images": "画像",
+            "replacement_image": "置換画像"
+        },
+        "widgets": {
+            "empty_color": "空白色設定",
+            "empty_threshold": "空白判定閾値"
+        },
+        "outputs": {
+            "images": "画像",
+            "IMAGES": "画像",
+            "removed_indices": "削除インデックス"
+        },
+        "description": "バッチから空白画像を削除"
+    },
+    "ImageResizeKJv2": {
+        "title": "画像リサイズ v2 (KJ)",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク"
+        },
+        "widgets": {
+            "width": "幅",
+            "height": "高さ",
+            "upscale_method": "スケール手法",
+            "keep_proportions": "アスペクト比固定",
+            "keep_proportion": "アスペクト比固定",
+            "pad_color": "パディング色",
+            "crop_position": "クロップ位置",
+            "divisible_by": "整除数",
+            "device": "デバイス",
+            "per_batch": "バッチ"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "width": "幅",
+            "height": "高さ",
+            "mask": "マスク"
+        },
+        "description": "画像リサイズ第2版。サイズは入力で指定可、最終出力優先順位：\\n- 参照画像サイズ \\n- 幅-入力 と 高さ-入力 \\n- 幅 と 高さ \\n\\nアスペクト比固定は最大サイズで固定。"
+    },
+    "InsertLatentToIndexed": {
+        "title": "Latentをインデックス挿入",
+        "inputs": {
+            "source": "ソース",
+            "destination": "ターゲット"
+        },
+        "widgets": {
+            "index": "係数"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "latent": "Latent"
+        },
+        "description": "指定インデックスのLatentを元Latentバッチへ挿入。"
+    },
+    "DiTBlockLoraLoader": {
+        "title": "DiTブロックLoRAローダー",
+        "inputs": {
+            "model": "モデル",
+            "opt_lora_path": "LoRAパスを選択",
+            "blocks": "ブロック"
+        },
+        "widgets": {
+            "strength_model": "モデル強度",
+            "lora_name": "LoRA名",
+            "overlap": "重複量"
+        },
+        "outputs": {
+            "model": "モデル",
+            "rank": "ランク"
+        },
+        "description": "新規追加内容。"
+    },
+    "LeapfusionHunyuanI2VPatcher": {
+        "title": "LeapFusion 混元 画像→動画 パッチ",
+        "inputs": {
+            "model": "モデル",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "index": "係数",
+            "start_percent": "開始率",
+            "end_percent": "終了率",
+            "strength": "強度"
+        },
+        "outputs": {
+            "MODEL": "モデル",
+            "model": "モデル"
+        },
+        "description": "新規追加内容。"
+    },
+    "ModelPatchTorchSettings": {
+        "title": "モデルパッチ Torch設定",
+        "inputs": {
+            "model": "モデル",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "FP16アキュムレーション有効",
+            "start_percent": "開始率",
+            "end_percent": "終了率",
+            "strength": "強度"
+        },
+        "outputs": {
+            "MODEL": "モデル",
+            "model": "モデル"
+        },
+        "description": "GPU VRAM使用量を削減\\n\\n行列積アキュムレーションを高速化\\n\\n電力効率を向上\\n\\n数値オーバーフロー、精度低下の可能性有り。"
+    },
+    "LoraExtractKJ": {
+        "title": "LoRA抽出 (KJ)",
+        "inputs": {
+            "finetuned_model": "ファインチューンモデル",
+            "original_model": "元モデル"
+        },
+        "widgets": {
+            "filename_prefix": "ファイル名接頭辞",
+            "rank": "ランク",
+            "lora_type": "LoRAタイプ",
+            "algorithm": "アルゴリズム",
+            "lowrank_iters": "低ランク反復回数",
+            "output_dtype": "出力データ型",
+            "bias_diff": "バイアス差分",
+            "adaptive_param": "自己適合パラメータ",
+            "clamp_quantile": "クランプ分位点"
+        },
+        "outputs": {
+            "images": "画像",
+            "masks": "マスク"
+        },
+        "description": "LoraExtract"
+    },
+    "Wan21BlockLoraSelect": {
+        "title": "Wan2.1ブロックLoRAセレクタ",
+        "inputs": {
+            "model": "モデル",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "FP16アキュムレーション有効",
+            "start_percent": "開始率",
+            "end_percent": "終了率",
+            "strength": "強度"
+        },
+        "outputs": {
+            "BLOCKS": "ブロック",
+            "blocks": "ブロック"
+        },
+        "description": "単一ブロックのalpha値を選択、0でブロック全体を除去。"
+    },
+    "LoadVideosFromFolder": {
+        "title": "フォルダから動画ロード",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "video": "動画",
+            "force_rate": "強制フレームレート",
+            "custom_width": "カスタム幅",
+            "custom_height": "カスタム高さ",
+            "frame_load_cap": "フレーム読み込み上限",
+            "skip_first_frames": "先頭Xフレームをスキップ",
+            "select_every_nth": "間隔",
+            "output_type": "出力型",
+            "grid_max_columns": "グリッド最大列数",
+            "add_label": "ラベル追加"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "TorchCompileModelQwenImage": {
+        "title": "Qwen-Image Torchコンパイルモデル",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "backend": "バックエンド",
+            "fullgraph": "フルグラフ",
+            "mode": "モード",
+            "dynamic": "動的",
+            "compile_transformer_blocks_only": "Transformerモジュールのみコンパイル",
+            "dynamo_cache_size_limit": "Dynamoキャッシュサイズ上限"
+        },
+        "outputs": {
+            "MODEL": "モデル",
+            "model": "モデル"
+        }
+    },
+    "LazySwitchKJ": {
+        "title": "レイジースイッチ (KJ)",
+        "inputs": {
+            "on_false": "False時",
+            "on_true": "True時"
+        },
+        "widgets": {
+            "switch": "スイッチ"
+        },
+        "outputs": {
+            "*": "任意"
+        }
+    },
+    "GetLatentSizeAndCount": {
+        "title": "Latentサイズと個数取得",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "latent": "Latent",
+            "batch_size": "バッチサイズ",
+            "channels": "チャンネル",
+            "frames": "フレーム",
+            "width": "幅",
+            "height": "高さ"
+        }
+    },
+    "DiffusionModelSelector": {
+        "title": "拡散モデルセレクタ",
+        "inputs": {},
+        "widgets": {
+            "model_name": "モデル名"
+        },
+        "outputs": {
+            "model_path": "モデルパス"
+        }
+    },
+    "LoraReduceRankKJ": {
+        "title": "LoRAランク縮小 (KJ)",
+        "inputs": {},
+        "widgets": {
+            "lora_name": "LoRA名",
+            "new_rank": "新ランク",
+            "dynamic_method": "動的手法",
+            "dynamic_param": "動的パラメータ",
+            "output_dtype": "出力データ型",
+            "verbose": "詳細モード"
+        },
+        "outputs": {
+            "model_path": "モデルパス"
+        },
+        "description": "LoRAモデルのランクを下げてサイズを調整。\n\\n参考：kohyaベースのsd-scripts https://github.com/kohya-ss/sd-scripts/blob/main/networks/resize_lora.py"
+    },
+    "DrawMaskOnImage": {
+        "title": "画像とマスクを統合",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク"
+        },
+        "widgets": {
+            "mask_opacity": "マスク不透明度",
+            "mask_color": "マスク色",
+            "color": "色"
+        },
+        "outputs": {
+            "images": "画像"
+        },
+        "description": "画像とマスク両方入力時、マスクを画像に合成。"
+    },
+    "BlockifyMask": {
+        "title": "ブロックマスク",
+        "inputs": {
+            "image": "画像",
+            "masks": "マスク"
+        },
+        "widgets": {
+            "block_size": "ブロックサイズ"
+        },
+        "outputs": {
+            "mask": "マスク"
+        },
+        "description": "各マスクのバウンディングボックスを指定サイズのブロックに分割、元マスクの任意部分を含むブロックを塗りつぶしてブロックマスクを作成。"
+    },
+    "ConsolidateMasksKJ": {
+        "title": "マスク統合 (KJ)",
+        "inputs": {
+            "mask": "マスク",
+            "masks": "マスク"
+        },
+        "widgets": {
+            "padding": "パディング",
+            "width": "幅",
+            "height": "高さ"
+        },
+        "outputs": {
+            "mask": "マスク"
+        },
+        "description": "指定幅・高さ（パディング含む）の矩形領域に完全に収まる最大個数の独立マスク群を抽出、これ以上統合できないまで繰り返しバッチマスクを統合。"
+    },
+    "GGUFLoaderKJ": {
+        "title": "GGUFモデルローダー (KJ)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "モデル名",
+            "extra_model_name": "追加モデル名",
+            "dequant_dtype": "逆量子化データ型",
+            "patch_dtype": "パッチデータ型",
+            "patch_on_device": "デバイス上パッチ",
+            "attention_override": "アテンション上書きモード",
+            "enable_fp16_accumulation": "FP16アキュムレーション有効"
+        },
+        "outputs": {
+            "model": "モデル"
+        },
+        "description": "上級オプション付きGGUFモデルを読み込み。ComfyUI-GGUFのインストールが前提。"
+    },
+    "EndRecordCUDAMemoryHistory": {
+        "title": "CUDAメモリ履歴記録終了 (KJ)",
+        "inputs": {
+            "input": "入力"
+        },
+        "widgets": {
+            "output_path": "出力パス"
+        },
+        "outputs": {
+            "input": "入力",
+            "output_path": "出力パス"
+        },
+        "description": "CUDAメモリ割り当ての開始から終了までの履歴を記録しファイルに保存。https://docs.pytorch.org/memory_viz または『CUDAメモリ履歴可視化』ノードで解析可。"
+    },
+    "VisualizeCUDAMemoryHistory": {
+        "title": "CUDAメモリ履歴可視化 (KJ)",
+        "inputs": {
+            "input": "入力"
+        },
+        "widgets": {
+            "snapshot_path": "スナップショットパス"
+        },
+        "outputs": {
+            "input": "入力",
+            "output_path": "出力パス"
+        },
+        "description": "CUDAメモリ割り当て履歴ファイルを可視化しブラウザで開く"
+    },
+    "StartRecordCUDAMemoryHistory": {
+        "title": "CUDAメモリ履歴記録開始 (KJ)",
+        "inputs": {
+            "input": "入力"
+        },
+        "widgets": {
+            "enabled": "有効",
+            "context": "背景",
+            "stacks": "スタック",
+            "max_entries": "最大エントリ数"
+        },
+        "outputs": {
+            "input": "入力"
+        }
+    },
+    "NABLA_AttentionKJ": {
+        "title": "NABLAアテンション (KJ)",
+        "inputs": {
+            "model": "モデル",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "window_time": "ウィンドウ時間",
+            "window_width": "ウィンドウ幅",
+            "window_height": "ウィンドウ高さ",
+            "sparsity": "疎性",
+            "torch_compile": "torchコンパイル"
+        },
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "SimpleCalculatorKJ": {
+        "title": "簡易電卓 (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "FLOAT": "FLOAT",
+            "STRING": "FLOAT",
+            "INT": "INT"
+        }
+    },
+    "VAEDecodeLoopKJ": {
+        "title": "VAEループデコード (KJ)",
+        "inputs": {
+            "samples": "サンプリング",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "overlap_latent_frames": "重複Latent画像"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "STRING": "FLOAT",
+            "INT": "INT"
+        }
+    },
+    "GetTrackRange": {
+        "title": "トラッキング範囲取得 (KJ)",
+        "inputs": {
+            "tracks": "トラジェクトリ"
+        },
+        "widgets": {
+            "start_index": "開始インデックス",
+            "num_frames": "フレーム数"
+        },
+        "outputs": {
+            "TRACKS": "トラジェクトリ"
+        }
+    },
+    "AddNoiseToTrackPath": {
+        "title": "トラッキングパスにノイズ追加 (KJ)",
+        "inputs": {
+            "tracks": "トラジェクトリ"
+        },
+        "widgets": {
+            "strength": "強度",
+            "seed": "シード",
+            "noise_x_ratio": "ノイズx比率",
+            "noise_y_ratio": "ノイズy比率",
+            "noise_temporal_ratio": "ノイズ時間比率"
+        },
+        "outputs": {
+            "TRACKS": "トラジェクトリ"
+        }
+    },
+    "WanImageToVideoSVIPro": {
+        "title": "Wan 画像→動画 SVI Pro (KJ)",
+        "inputs": {
+            "positive": "ポジティブプロンプト",
+            "negative": "ネガティブプロンプト",
+            "anchor_samples": "アンカーサンプリング",
+            "prev_samples": "前サンプリング"
+        },
+        "widgets": {
+            "length": "長さ",
+            "motion_latent_count": "モーションLatent数"
+        },
+        "outputs": {
+            "positive": "ポジティブプロンプト",
+            "negative": "ネガティブプロンプト",
+            "latent": "Latent"
+        }
+    },
+    "ModelMemoryUseReportPatch": {
+        "title": "モデルメモリ使用レポートパッチ (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "model": "モデル"
+        },
+        "outputs": {
+            "model": "モデル"
+        },
+        "description": "サンプリング完了後にメモリ使用状況をレポートするコールバックをモデルに追加"
+    },
+    "ModelMemoryUsageFactorOverride": {
+        "title": "モデルメモリ使用係数オーバーライド (KJ)",
+        "inputs": {
+            "model": "モデル",
+            "memory_usage_factor": "メモリ使用係数"
+        },
+        "widgets": {
+            "model": "モデル",
+            "memory_usage_factor": "メモリ使用係数"
+        },
+        "outputs": {
+            "model": "モデル"
+        },
+        "description": "サンプリング中のモデルメモリ使用係数を上書き。"
+    },
+    "LTXVEnhanceAVideoKJ": {
+        "title": "LTX動画 EAV (KJ)",
+        "inputs": {
+            "model": "モデル",
+            "latent": "Latent",
+            "weight": "重み"
+        },
+        "widgets": {
+            "model": "モデル",
+            "latent": "Latent",
+            "weight": "重み"
+        },
+        "outputs": {
+            "model": "モデル"
+        }
+    },
+    "LTX2BlockLoraSelect": {
+        "title": "LTX2ブロックLoRAセレクタ (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "selectedditblocks": "選択DiTブロック"
+        },
+        "description": "サンプリング完了後にメモリ使用状況をレポートするコールバックをモデルに追加"
+    },
+    "VisualizeSigmasKJ": {
+        "title": "Sigma値可視化 (KJ)",
+        "inputs": {
+            "sigmas": "Sigma値"
+        },
+        "widgets": {
+            "start_step": "開始ステップ",
+            "end_step": "終了ステップ"
+        },
+        "outputs": {
+            "sigmas_out": "Sigma出力",
+            "image": "画像"
+        },
+        "description": ""
+    },
+    "LTX2SamplingPreviewOverride": {
+        "title": "LTX2サンプリングプレビューオーバーライド (KJ)",
+        "inputs": {
+            "model": "モデル",
+            "latent_upscale_model": "Latent拡大モデル",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "preview_rate": "プレビュートート"
+        },
+        "outputs": {},
+        "description": "LTX2サンプリングプレビューを一時的に無効化。安定版コアでプレビュー機能が改善されるまで。"
+    },
+    "LTXVAddGuidesFromBatch": {
+        "title": "バッチからガイド画像を追加 (KJ)",
+        "inputs": {
+            "positive": "ポジティブガイド",
+            "negative": "ネガティブガイド",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images": "画像"
+        },
+        "widgets": {
+            "strength": "強度"
+        },
+        "outputs": {
+            "positive": "ポジティブガイド",
+            "negative": "ネガティブガイド",
+            "latent": "Latent"
+        },
+        "description": "バッチ内の複数ガイド画像を対応フレームインデックスでLatent画像へ追加。バッチ中の非黒画像がガイドとして使用。"
+    },
+    "LTX2AudioLatentNormalizingSampling": {
+        "title": "LTX2音声Latent正規化サンプリング (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "audio_normalization_factors": "音声正規化係数"
+        },
+        "outputs": {},
+        "description": "指定サンプリングステップで音声Latentを正規化し、LTX2生成音声品質を向上。"
+    },
+    "PreviewLatentNoiseMask": {
+        "title": "Latentノイズマスクプレビュー (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "mask": "マスク"
+        },
+        "description": "Latentノイズマスクをプレビュー"
+    },
+    "WanChunkFeedForward": {
+        "title": "Wan動画 チャンク前FF (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "chunks": "ブロック数",
+            "dim_threshold": "次元閾値"
+        },
+        "outputs": {
+            "model": "モデル"
+        },
+        "description": "実験的、モデル出力が変わる可能性有り！！チャンク前FF（NN概念）活性でピークVRAM使用量を削減。"
+    },
+    "SamplerSelfRefineVideo": {
+        "title": "サンプラー自己リファイン動画 (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {
+            "input_mode": "入力モード",
+            "start_step1": "開始ステップ1",
+            "end_step1": "終了ステップ1",
+            "start_step2": "開始ステップ2",
+            "end_step2": "終了ステップ2",
+            "steps_1": "ステップ1",
+            "steps_2": "ステップ2",
+            "certain_percentage": "確信率",
+            "uncertainty_threshold": "不確実性閾値",
+            "verbose": "詳細",
+            "seed": "ランダムシード"
+        },
+        "outputs": {},
+        "description": "https://github.com/agwmon/self-refine-video の試作実装、テスト専用、期待通りに動作しない可能性有り。"
+    },
+    "LTXVAddGuideMulti": {
+        "title": "LTX動画 複数ガイド追加 (KJ)",
+        "inputs": {
+            "positive": "ポジティブガイド",
+            "negative": "ネガティブガイド",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "画像1"
+        },
+        "widgets": {
+            "Number of Guides": "ガイド数",
+            "frame_idx_1": "フレームインデックス 1",
+            "strength_1": "強度 1"
+        },
+        "outputs": {
+            "positive": "ポジティブガイド",
+            "negative": "ネガティブガイド",
+            "latent": "Latent"
+        },
+        "description": "指定フレームインデックスに複数ガイド画像を追加し強度を設定。『動的コンボ』使用、ComfyUI 0.8.1以上、フロントエンド1.33.4以上が前提。"
+    },
+    "LTXVImgToVideoInplaceKJ": {
+        "title": "LTX動画 画像→動画 インプレース (KJ)",
+        "inputs": {
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "画像1"
+        },
+        "widgets": {
+            "Number of Guides": "ガイド数",
+            "index_1": "インデックス 1",
+            "strength_1": "強度 1"
+        },
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "動画Latentフレームを符号化後入力画像で置換。『動的コンボ』使用、ComfyUI 0.8.1以上、フロントエンド1.33.4以上が前提。"
+    },
+    "LTXVAudioVideoMask": {
+        "title": "音声・動画マスク (KJ)",
+        "inputs": {
+            "video_latent": "動画Latent",
+            "audio_latent": "音声Latent"
+        },
+        "widgets": {
+            "video_fps": "動画フレームレート",
+            "video_start_time": "動画開始時間",
+            "video_end_time": "動画終了時間",
+            "audio_start_time": "音声開始時間",
+            "audio_end_time": "音声終了時間",
+            "max_length": "最大長"
+        },
+        "outputs": {
+            "video_latent": "動画Latent",
+            "audio_latent": "音声Latent"
+        },
+        "description": "指定時間範囲で動画・音声Latent内容にノイズマスクを作成。マスク領域に新内容を生成。"
+    },
+    "LTX2AttentionTunerPatch": {
+        "title": "LTX2アテンションチューンパッチ (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "blocks": "ブロック",
+            "video_scale": "動画スケール",
+            "audio_scale": "音声スケール",
+            "audio_to_video_scale": "音声→動画スケール",
+            "video_to_audio_scale": "動画→音声スケール"
+        },
+        "outputs": {
+            "model": "モデル"
+        },
+        "description": "実験的！モダリティ別にアテンションスケーリング係数を設定するカスタムLTX2前方伝播、ピークVRAM使用量も削減。"
+    },
+    "LTX2_NAG": {
+        "title": "LTX2 NAG (KJ)",
+        "inputs": {
+            "model": "モデル",
+            "nag_cond_video": "動画条件",
+            "nag_cond_audio": "音声条件"
+        },
+        "widgets": {
+            "nag_scale": "NAGスケール",
+            "nag_alpha": "NAG alpha",
+            "nag_tau": "NAG tau",
+            "inplace": "インプレース"
+        },
+        "outputs": {
+            "model": "モデル"
+        },
+        "description": "https://github.com/ChenDarYen/Normalized-Attention-Guidance"
+    },
+    "LTX2MemoryEfficientSageAttentionPatch": {
+        "title": "LTX2 省メモリSageアテンションパッチ (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "モデル"
+        },
+        "description": "実験的！カスタムSageアテンションを有効化しピークVRAMを削減、アテンションモードを上書き。最新版Sageアテンションが必要。"
+    },
+    "LTXVChunkFeedForward": {
+        "title": "LTX動画 チャンク前FF活性 (KJ)",
+        "inputs": {
+            "model": "モデル"
+        },
+        "widgets": {
+            "chunks": "チャンク",
+            "dim_threshold": "次元閾値"
+        },
+        "outputs": {
+            "model": "モデル"
+        },
+        "description": "実験的でモデル出力が変わる可能性有り！チャンク前FF（NN概念）活性で仮想メモリピーク使用量を削減。"
+    },
+    "LTX2LoraLoaderAdvanced": {
+        "title": "LTX2上級LoRAローダー (KJ)",
+        "inputs": {
+            "model": "モデル",
+            "opt_lora_path": "LoRAパス（任意）",
+            "blocks": "ブロック"
+        },
+        "widgets": {
+            "lora_name": "LoRA名",
+            "strength_model": "モデル強度",
+            "video": "動画",
+            "video_to_audio": "動画→音声",
+            "audio": "音声",
+            "audio_to_video": "音声→動画",
+            "other": "その他"
+        },
+        "outputs": {
+            "model": "モデル",
+            "loaded_keys_info": "ロードキー情報",
+            "rank": "ランク"
+        },
+        "description": "LTX2モデル向けブロック別強度制御付き上級LoRAローダー"
+    },
+    "HDRPreviewKJ": {
+        "title": "HDRプレビュー (KJ)",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "exposure": "露出",
+            "saturation": "彩度",
+            "fps": "フレームレート",
+            "input_space": "入力スペース"
+        },
+        "outputs": {
+            "image": "画像"
+        },
+        "description": "HDR圧縮画像のライブ露出プレビュー。\n入力：LogC3圧縮後[0,1]範囲の画像/動画バッチ（例：HDR IC-LoRAワークフローでVAEデコード後、HDR解像未適用）。\nブラウザWebGLフラグメントシェーダで減圧、露出、彩度、Reinhard調色マッピング、sRGB処理によるライブスライダーフィードバックを実現。同演算をサーバー側でも実行、焼き込み済みsRGB画像を出力。\nスライダー変更でプレビュー即時更新、画像出力はワークフロー再キュー時に更新。 "
+    },
+    "HunyuanVideoEncodeKeyframesToCond": {
+        "title": "混元動画 最初/最終フレーム符号化→条件 (KJ)",
+        "inputs": {
+            "model": "モデル",
+            "positive": "ポジティブプロンプト",
+            "vae": "VAE",
+            "start_frame": "開始フレーム",
+            "end_frame": "終了フレーム",
+            "negative": "ネガティブプロンプト"
+        },
+        "widgets": {
+            "num_frames": "フレーム数",
+            "tile_size": "チャンクサイズ",
+            "overlap": "重複量",
+            "temporal_size": "時間次元サイズ",
+            "temporal_overlap": "時間次元重複量"
+        },
+        "outputs": {
+            "model": "モデル",
+            "positive": "ポジティブプロンプト",
+            "negative": "ネガティブプロンプト",
+            "latent": "Latent"
+        }
+    }
+}

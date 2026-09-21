@@ -1,0 +1,223 @@
+{
+    "VoiceBridgeASRLoader": {
+        "title": "보이스브릿지 ASR 로더",
+        "inputs": {},
+        "widgets": {
+            "repo_id": "저장소 ID",
+            "source": "소스",
+            "precision": "정밀도",
+            "attention": "어텐션",
+            "max_new_tokens": "최대 신규 토큰 수",
+            "forced_aligner": "강제 정렬기",
+            "local_model_path_asr": "로컬 ASR 모델 경로",
+            "local_model_path_fa": "로컬 FA 모델 경로"
+        },
+        "outputs": {
+            "model_key": "모델 키",
+            "MODEL_KEY": "MODEL_KEY"
+        },
+        "description": "범주: ASR 로드",
+        "api_version": "V1"
+    },
+    "VoiceBridgeASRTranscribe": {
+        "title": "보이스브릿지 ASR 자막 전사",
+        "inputs": {
+            "audio": "오디오"
+        },
+        "widgets": {
+            "model_key": "모델 키",
+            "language": "언어",
+            "context": "컨텍스트",
+            "return_timestamps": "타임스탬프 반환"
+        },
+        "outputs": {
+            "forced_aligns": "강제 정렬 결과",
+            "text": "텍스트",
+            "language": "언어",
+            "timestamps": "타임스탬프",
+            "LIST": "리스트",
+            "STRING": "문자열"
+        },
+        "description": "범주: ASR 전사",
+        "api_version": "V1"
+    },
+    "VoiceBridgeTTSLoader": {
+        "title": "보이스브릿지 TTS 로더",
+        "inputs": {},
+        "widgets": {
+            "repo_id": "저장소 ID",
+            "source": "소스",
+            "precision": "정밀도",
+            "attention": "어텐션",
+            "local_model_path": "로컬 TTS 모델 경로"
+        },
+        "outputs": {
+            "model_key": "모델 키",
+            "MODEL_KEY": "MODEL_KEY"
+        },
+        "description": "범주: TTS 로드",
+        "api_version": "V1"
+    },
+    "VoiceClonePrompt": {
+        "title": "음성 복제 프롬프트",
+        "inputs": {
+            "model_key": "모델 키",
+            "ref_audio": "참고 오디오"
+        },
+        "widgets": {
+            "ref_text": "참고 텍스트"
+        },
+        "outputs": {
+            "voice_clone_prompt": "음성 복제 프롬프트",
+            "VOICE_CLONE_PROMPT": "음성 복제 프롬프트"
+        },
+        "description": "범주: 음성 복제 프롬프트",
+        "api_version": "V1"
+    },
+    "SRTToAudio": {
+        "title": "SRT 자막을 오디오로 변환",
+        "inputs": {
+            "model_key": "모델 키",
+            "voice_clone_prompt": "음성 복제 프롬프트"
+        },
+        "widgets": {
+            "srt_string": "SRT 자막 문자열",
+            "language": "언어",
+            "tempo_limit": "템포 제한",
+            "mini_gap_ms": "최소 간격(ms)",
+            "batch_size": "배치 크기"
+        },
+        "outputs": {
+            "audio": "오디오",
+            "adjusted_srt": "조정된 SRT 자막",
+            "AUDIO": "오디오",
+            "STRING": "문자열"
+        },
+        "description": "범주: SRT 자막을 오디오로 변환",
+        "api_version": "V1"
+    },
+    "generate srt": {
+        "title": "SRT 자막 생성",
+        "inputs": {},
+        "widgets": {
+            "forced_aligns": "강제 정렬 결과",
+            "text": "텍스트",
+            "language": "언어",
+            "save_srt": "SRT 자막 저장",
+            "filename_prefix": "파일명 접두어"
+        },
+        "outputs": {
+            "srt_string": "SRT 자막 문자열",
+            "STRING": "문자열"
+        },
+        "description": "범주: SRT 자막 생성",
+        "api_version": "V1"
+    },
+    "SaveSRTFromString": {
+        "title": "문자열에서 SRT 자막 저장",
+        "inputs": {},
+        "widgets": {
+            "srt_string": "SRT 자막 문자열",
+            "filename_prefix": "파일명 접두어"
+        },
+        "outputs": {
+            "save_path": "저장 경로",
+            "STRING": "문자열"
+        },
+        "description": "범주: 문자열에서 SRT 자막 저장",
+        "api_version": "V1"
+    },
+    "VoiceBridgeAIAPI": {
+        "title": "보이스브릿지 AI API",
+        "inputs": {},
+        "widgets": {
+            "model": "모델",
+            "base_url": "기본 URL",
+            "api_key": "API 키",
+            "system_prompt": "시스템 프롬프트",
+            "prompt": "프롬프트",
+            "max_tokens": "최대 토큰 수",
+            "temperature": "온도",
+            "top_p": "Top-P"
+        },
+        "outputs": {
+            "response": "응답",
+            "STRING": "문자열"
+        },
+        "description": "범주: AI API",
+        "api_version": "V1"
+    },
+    "VoiceBridgeUnloadModel": {
+        "title": "보이스브릿지 모델 언로드",
+        "inputs": {
+            "anything": "아무거나"
+        },
+        "widgets": {
+            "Unload_ASR_Model": "ASR 모델 언로드",
+            "Unload_TTS_Model": "TTS 모델 언로드"
+        },
+        "outputs": {
+            "any": "아무거나"
+        },
+        "description": "범주: 모델 언로드",
+        "api_version": "V1"
+    },
+    "VoiceBridgeLoadSRT": {
+        "title": "보이스브릿지 SRT 자막 로드",
+        "inputs": {},
+        "widgets": {
+            "srt": "SRT 자막",
+            "upload": "업로드"
+        },
+        "outputs": {
+            "srt_string": "SRT 자막 문자열"
+        },
+        "description": "범주: 문자열에서 SRT 자막 저장"
+    },
+    "VoiceBridgeSRTSplitter": {
+        "title": "보이스브릿지 SRT 자막 분할기",
+        "inputs": {},
+        "widgets": {
+            "srt": "SRT 자막",
+            "upload": "업로드"
+        },
+        "outputs": {
+            "texts": "텍스트 내용",
+            "count": "수량",
+            "srt_items": "SRT 항목"
+        },
+        "description": "범주: 문자열에서 SRT 저장"
+    },
+    "VoiceBridgeAudioListMergerBySRT": {
+        "title": "SRT 자막 제공 보이스브릿지 오디오 리스트 병합",
+        "inputs": {
+            "audios": "오디오",
+            "srt_items": "SRT 자막 항목"
+        },
+        "widgets": {
+            "tempo_limit": "지속 시간 제한",
+            "mini_gap_ms": "최소 간격(ms)"
+        },
+        "outputs": {
+            "audio": "오디오",
+            "adjusted_srt": "조정된 자막(SRT 형식)"
+        },
+        "description": "범주: 문자열에서 SRT 저장"
+    },
+    "GenerateSRT": {
+        "title": "자막 파일 생성",
+        "inputs": {
+            "forced_aligns": "강제 정렬 데이터"
+        },
+        "widgets": {
+            "save_srt": "SRT 자막 파일 저장 여부",
+            "filename_prefix": "파일명 접두어",
+            "text": "텍스트 내용",
+            "language": "언어"
+        },
+        "outputs": {
+            "srt_string": "SRT 자막 문자열"
+        },
+        "description": "입력된 텍스트와 언어 정보로 SRT 형식 자막 내용을 생성합니다. 강제 정렬 데이터를 지원해 자막 정확도를 높이며, 파일 저장 여부를 선택할 수 있고 출력 파일명 접두어도 사용자 지정할 수 있습니다."
+    }
+}

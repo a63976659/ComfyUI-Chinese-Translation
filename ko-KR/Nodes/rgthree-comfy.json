@@ -1,0 +1,552 @@
+{
+    "Context Big (rgthree)": {
+        "title": "컨텍스트(대형)",
+        "inputs": {
+            "base_ctx": "컨텍스트",
+            "model": "모델",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "긍정 컨디셔닝",
+            "negative": "부정 컨디셔닝",
+            "latent": "Latent",
+            "images": "이미지",
+            "seed": "랜덤 시드",
+            "steps": "스텝 수",
+            "step_refiner": "Refiner 스텝 수",
+            "cfg": "CFG",
+            "ckpt_name": "모델 이름",
+            "sampler": "샘플러",
+            "scheduler": "스케줄러",
+            "clip_width": "CLIP 너비",
+            "clip_height": "CLIP 높이",
+            "text_pos_g": "긍정 텍스트 G",
+            "text_pos_l": "긍정 텍스트 L",
+            "text_neg_g": "부정 텍스트 G",
+            "text_neg_l": "부정 텍스트 L",
+            "mask": "마스크",
+            "control_net": "ControlNet"
+        },
+        "outputs": {
+            "CONTEXT": "컨텍스트",
+            "MODEL": "모델",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "긍정 컨디셔닝",
+            "NEGATIVE": "부정 컨디셔닝",
+            "LATENT": "Latent",
+            "IMAGE": "이미지",
+            "SEED": "랜덤 시드",
+            "STEPS": "스텝 수",
+            "STEP_REFINER": "Refiner 스텝 수",
+            "CFG": "CFG",
+            "CKPT_NAME": "모델 이름",
+            "SAMPLER": "샘플러",
+            "SCHEDULER": "스케줄러",
+            "CLIP_WIDTH": "CLIP 너비",
+            "CLIP_HEIGHT": "CLIP 높이",
+            "TEXT_POS_G": "긍정 텍스트 G",
+            "TEXT_POS_L": "긍정 텍스트 L",
+            "TEXT_NEG_G": "부정 텍스트 G",
+            "TEXT_NEG_L": "부정 텍스트 L",
+            "MASK": "마스크",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+    "Context (rgthree)": {
+        "title": "컨텍스트",
+        "inputs": {
+            "base_ctx": "컨텍스트",
+            "model": "모델",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "긍정 컨디셔닝",
+            "negative": "부정 컨디셔닝",
+            "latent": "Latent",
+            "images": "이미지",
+            "seed": "랜덤 시드"
+        },
+        "outputs": {
+            "CONTEXT": "컨텍스트",
+            "MODEL": "모델",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "긍정 컨디셔닝",
+            "NEGATIVE": "부정 컨디셔닝",
+            "LATENT": "Latent",
+            "IMAGE": "이미지",
+            "SEED": "랜덤 시드"
+        }
+    },
+    "Context Switch (rgthree)": {
+        "title": "컨텍스트 스위치",
+        "inputs": {
+            "ctx_01": "컨텍스트_01",
+            "ctx_02": "컨텍스트_02",
+            "ctx_03": "컨텍스트_03",
+            "ctx_04": "컨텍스트_04",
+            "ctx_05": "컨텍스트_05"
+        },
+        "outputs": {
+            "CONTEXT": "컨텍스트",
+            "MODEL": "모델",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "긍정 컨디셔닝",
+            "NEGATIVE": "부정 컨디셔닝",
+            "LATENT": "Latent",
+            "IMAGE": "이미지",
+            "SEED": "랜덤 시드"
+        }
+    },
+    "Context Switch Big (rgthree)": {
+        "title": "컨텍스트 스위치(대형)",
+        "inputs": {
+            "ctx_01": "컨텍스트_01",
+            "ctx_02": "컨텍스트_02",
+            "ctx_03": "컨텍스트_03",
+            "ctx_04": "컨텍스트_04",
+            "ctx_05": "컨텍스트_05"
+        },
+        "outputs": {
+            "CONTEXT": "컨텍스트",
+            "MODEL": "모델",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "긍정 컨디셔닝",
+            "NEGATIVE": "부정 컨디셔닝",
+            "LATENT": "Latent",
+            "IMAGE": "이미지",
+            "STEPS": "스텝 수",
+            "SEED": "랜덤 시드",
+            "STEP_REFINER": "Refiner 스텝 수",
+            "CFG": "CFG",
+            "CKPT_NAME": "모델 이름",
+            "SAMPLER": "샘플러",
+            "SCHEDULER": "스케줄러",
+            "CLIP_WIDTH": "CLIP 너비",
+            "CLIP_HEIGHT": "CLIP 높이",
+            "TEXT_POS_G": "긍정 텍스트 G",
+            "TEXT_POS_L": "긍정 텍스트 L",
+            "TEXT_NEG_G": "부정 텍스트 G",
+            "TEXT_NEG_L": "부정 텍스트 L",
+            "MASK": "마스크",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+
+
+
+    "Display Int (rgthree)": {
+        "title": "정수 표시",
+        "widgets": {
+            "input": "입력"
+        }
+    },
+    "Display Any (rgthree)": {
+        "title": "아무거나 표시",
+        "inputs": {
+            "source": "입력"
+        }
+    },
+    
+    
+
+    "Lora Loader Stack (rgthree)": {
+        "title": "LoRA 스택 로더",
+        "inputs": {
+            "model": "모델",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "lora_01": "LoRA_01",
+            "lora_02": "LoRA_02",
+            "lora_03": "LoRA_03",
+            "lora_04": "LoRA_04",
+            "strength_01": "강도_01",
+            "strength_02": "강도_02",
+            "strength_03": "강도_03",
+            "strength_04": "강도_04"
+        },
+        "outputs": {
+            "MODEL": "모델",
+            "CLIP": "CLIP"
+        }
+    },
+    "Seed (rgthree)": {
+        "title": "랜덤 시드",
+        "widgets": {
+            "🎲 Randomize Each Time": "🎲매번 랜덤",
+            "🎲 New Fixed Random": "🎲수동 랜덤",
+            "♻️ (Use Last Queued Seed)": "♻️최근 시드 사용",
+            "seed": "랜덤 시드"
+        },
+        "outputs": {
+            "SEED": "랜덤 시드"
+        }
+    },
+    "Image Inset Crop (rgthree)": {
+        "title": "이미지 임베드 크롭",
+        "inputs": {
+            "image": "이미지"
+        },
+        "widgets": {
+            "measurement": "모드",
+            "bottom": "아래",
+            "top": "위",
+            "left": "왼쪽",
+            "right": "오른쪽"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        }
+    },
+    "Power Prompt (rgthree)": {
+        "title": "프롬프트",
+        "inputs": {
+            "opt_model": "모델",
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt": "프롬프트",
+            "insert_lora": "LoRA 삽입",
+            "insert_embedding": "임베딩 삽입",
+            "insert_saved": "사용자 정의 삽입"
+        },
+        "outputs": {
+            "CONDITIONING": "컨디셔닝",
+            "MODEL": "모델",
+            "CLIP": "CLIP",
+            "TEXT": "텍스트"
+        }
+    },
+    "Power Prompt - Simple (rgthree)": {
+        "title": "프롬프트 (간이)",
+        "inputs": {
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt": "프롬프트",
+            "insert_embedding": "임베딩 삽입",
+            "insert_saved": "사용자 정의 삽입"
+        },
+        "outputs": {
+            "CONDITIONING": "컨디셔닝",
+            "TEXT": "텍스트"
+        }
+    },
+    "KSampler Config (rgthree)": {
+        "title": "KSampler 설정",
+        "widgets": {
+            "steps_total": "총 스텝 수",
+            "refiner_step": "Refiner 스텝 수",
+            "cfg": "CFG",
+            "sampler": "샘플러",
+            "sampler_name": "샘플러 이름",
+            "scheduler": "스케줄러"
+        },
+        "outputs": {
+            "STEPS": "스텝 수",
+            "REFINER_STEP": "Refiner 스텝 수",
+            "CFG": "CFG",
+            "SAMPLER": "샘플러",
+            "SCHEDULER": "스케줄러"
+        }
+    },
+    "SDXL Empty Latent Image (rgthree)": {
+        "title": "SDXL 빈 Latent 이미지",
+        "widgets": {
+            "dimensions": "사이즈",
+            "clip_scale": "CLIP 스케일",
+            "batch_size": "배치 크기"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "CLIP_WIDTH": "CLIP 너비",
+            "CLIP_HEIGHT": "CLIP 높이"
+        }
+    },
+    "SDXL Power Prompt - Positive (rgthree)": {
+        "title": "SDXL 프롬프트 (긍정)",
+        "inputs": {
+            "opt_model": "모델",
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt_g": "프롬프트 G",
+            "prompt_l": "프롬프트 L",
+            "opt_clip_width": "CLIP 너비",
+            "opt_clip_height": "CLIP 높이",
+            "insert_lora": "LoRA 삽입",
+            "insert_embedding": "임베딩 삽입",
+            "insert_saved": "사용자 정의 삽입",
+            "target_width": "대상 너비",
+            "target_height": "대상 높이",
+            "crop_width": "크롭 너비",
+            "crop_height": "크롭 높이"
+        },
+        "outputs": {
+            "CONDITIONING": "컨디셔닝",
+            "MODEL": "모델",
+            "CLIP": "CLIP",
+            "TEXT_G": "텍스트 G",
+            "TEXT_L": "텍스트 L"
+        }
+    },
+    "SDXL Power Prompt - Simple / Negative (rgthree)": {
+        "title": "SDXL 프롬프트 (간이/부정)",
+        "inputs": {
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt_g": "프롬프트 G",
+            "prompt_l": "프롬프트 L",
+            "opt_clip_width": "CLIP 너비",
+            "opt_clip_height": "CLIP 높이",
+            "insert_lora": "LoRA 삽입",
+            "insert_embedding": "임베딩 삽입",
+            "insert_saved": "사용자 정의 삽입",
+            "target_width": "대상 너비",
+            "target_height": "대상 높이",
+            "crop_width": "크롭 너비",
+            "crop_height": "크롭 높이"
+        },
+        "outputs": {
+            "CONDITIONING": "컨디셔닝",
+            "TEXT_G": "텍스트 G",
+            "TEXT_L": "텍스트 L"
+        }
+    },
+
+
+
+    "Any Switch (rgthree)": {
+        "title": "아무거나 스위치",
+        "inputs": {
+            "any_01": "입력_01",
+            "any_02": "입력_02",
+            "any_03": "입력_03",
+            "any_04": "입력_04",
+            "any_05": "입력_05"
+        },
+        "outputs": {
+            "*": "출력"
+        }
+    },
+    "Context Merge (rgthree)": {
+        "title": "컨텍스트 융합",
+        "inputs": {
+            "ctx_01": "컨텍스트_01",
+            "ctx_02": "컨텍스트_02",
+            "ctx_03": "컨텍스트_03",
+            "ctx_04": "컨텍스트_04",
+            "ctx_05": "컨텍스트_05"
+        },
+        "outputs": {
+            "CONTEXT": "컨텍스트",
+            "MODEL": "모델",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "긍정 컨디셔닝",
+            "NEGATIVE": "부정 컨디셔닝",
+            "LATENT": "Latent",
+            "IMAGE": "이미지",
+            "STEPS": "스텝 수"
+        }
+    },
+    "Context Merge Big (rgthree)": {
+        "title": "컨텍스트 융합(대형)",
+        "inputs": {
+            "ctx_01": "컨텍스트_01",
+            "ctx_02": "컨텍스트_02",
+            "ctx_03": "컨텍스트_03",
+            "ctx_04": "컨텍스트_04",
+            "ctx_05": "컨텍스트_05"
+        },
+        "outputs": {
+            "CONTEXT": "컨텍스트",
+            "MODEL": "모델",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "긍정 컨디셔닝",
+            "NEGATIVE": "부정 컨디셔닝",
+            "LATENT": "Latent",
+            "IMAGE": "이미지",
+            "STEPS": "스텝 수",
+            "SEED": "랜덤 시드",
+            "STEP_REFINER": "Refiner 스텝 수",
+            "CFG": "CFG",
+            "CKPT_NAME": "모델 이름",
+            "SAMPLER": "샘플러",
+            "SCHEDULER": "스케줄러",
+            "CLIP_WIDTH": "CLIP 너비",
+            "CLIP_HEIGHT": "CLIP 높이",
+            "TEXT_POS_G": "긍정 텍스트 G",
+            "TEXT_POS_L": "긍정 텍스트 L",
+            "TEXT_NEG_G": "부정 텍스트 G",
+            "TEXT_NEG_L": "부정 텍스트 L",
+            "MASK": "마스크",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+    "Reroute (rgthree)": {
+        "title": "중계 노드"
+    },
+    "Node Collector (rgthree)": {
+        "title": "노드 수집기"
+    },
+    "Fast Muter (rgthree)": {
+        "title": "노드 우회",
+        "outputs": {
+            "OPT_CONNECTION": "선택적 연결"
+        }
+    },
+    "Fast Bypasser (rgthree)": {
+        "title": "노드 무시",
+        "outputs": {
+            "OPT_CONNECTION": "선택적 연결"
+        }
+    },
+    "Mute / Bypass Repeater (rgthree)": {
+        "title": "노드 우회/무시 (중계)",
+        "outputs": {
+            "OPT_CONNECTION": "선택적 연결"
+        }
+    },
+    "Mute / Bypass Relay (rgthree)": {
+        "title": "노드 우회/무시 (전송)",
+        "outputs": {
+            "OPT_CONNECTION": "선택적 연결"
+        }
+    },
+    "Fast Group Bypasser (rgthree)": {
+        "title": "다중 상자 무시",
+        "outputs": {
+            "OPT_CONNECTION": "선택적 연결"
+        }
+    },
+    "Fast Groups Bypasser (rgthree)": {
+        "title": "다중 상자 무시",
+        "outputs": {
+            "OPT_CONNECTION": "선택적 연결"
+        }
+    },
+    "Fast Actions Button (rgthree)": {
+        "title": "동작 키",
+        "widgets": {
+            "🎬 Action!": "🎬실행!"
+        }
+    },
+    "Bookmark (rgthree)": {
+        "title": "🔖북마크",
+        "widgets": {
+            "shortcut_key": "단축키",
+            "zoom": "축소·확대"
+        }
+    },
+    "Random Unmuter (rgthree)": {
+        "title": "랜덤 활성화"
+    },
+    "Fast Groups Muter (rgthree)": {
+        "title": "다중 상자 우회",
+        "outputs": {
+            "OPT_CONNECTION": "선택적 연결"
+        }
+    },
+    "Label (rgthree)": {
+        "title": "태그"
+    },
+    "Image Comparer (rgthree)": {
+        "title": "이미지 비교",
+        "inputs": {
+            "image_a": "이미지_A",
+            "image_b": "이미지_B"
+        }
+    },
+    "Node Combiner (rgthree)": {
+        "title": "노드 조합기",
+        "inputs": {
+            "image_a": "이미지_A",
+            "image_b": "이미지_B"
+        },
+        "outputs": {
+            "Output": "출력",
+            "clip": "CLIP"
+        }
+    },
+    "Power Primitive (rgthree)": {
+        "title": "수량 다기능 도구",
+        "inputs": {},
+        "widgets": {
+            "value": "값",
+            "type": "유형"
+        },
+        "outputs": {
+            "INT": "정수",
+            "FLOAT": "부동소수점",
+            "BOOLEAN": "불리언",
+            "STRING": "문자열"
+        }
+    },
+    "Power Puter (rgthree)": {
+        "title": "거듭제곱 계산기",
+        "inputs": {
+            "outputs": "출력",
+            "STRING": "문자열"
+        },
+        "widgets": {
+            "outputs": "출력",
+            "STRING": "문자열"
+        },
+        "outputs": {
+            "INT": "정수",
+            "FLOAT": "부동소수점",
+            "BOOLEAN": "불리언",
+            "STRING": "문자열"
+        }
+    },
+    "Image or Latent Size (rgthree)": {
+        "title": "이미지 또는 Latent 크기",
+        "inputs": {
+            "input": "입력"
+        },
+        "widgets": {
+            "STRING": "문자열"
+        },
+        "outputs": {
+            "WIDTH": "너비",
+            "HEIGHT": "높이"
+        }
+    },
+    "Image Resize (rgthree)": {
+        "title": "이미지 축소·확대",
+        "inputs": {
+            "image": "이미지"
+        },
+        "widgets": {
+            "measurement": "모드",
+            "width": "너비",
+            "height": "높이",
+            "fit": "맞춤",
+            "method": "방법"
+        },
+        "outputs": {
+            "IMAGE": "이미지",
+            "WIDTH": "너비",
+            "HEIGHT": "높이"
+        }
+    },
+    "Power Lora Loader (rgthree)": {
+        "title": "가중치 LoRA 로더",
+        "inputs": {
+            "model": "모델",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "➕ Add Lora": "➕LoRA 추가"
+        },
+        "outputs": {
+            "MODEL": "모델",
+            "clip": "CLIP"
+        }
+    }
+}

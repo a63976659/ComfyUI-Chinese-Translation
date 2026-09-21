@@ -1,0 +1,71 @@
+{
+    "DownloadAndLoadFlorence2Model": {
+        "title": "Florence2Model 다운로드 및 로드",
+        "inputs": {},
+        "widgets": {
+            "model": "모델",
+            "precision": "정밀도",
+            "attention": "어텐션",
+            "lora": "lora",
+            "convert_to_safetensors": "safetensors로 변환"
+        },
+        "outputs": {
+            "florence2_model": "florence2 모델",
+            "FL2MODEL": "FL2MODEL"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "DownloadAndLoadFlorence2Lora": {
+        "title": "Florence2 Lora 다운로드 및 로드",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {},
+        "outputs": {
+            "lora": "lora"
+        },
+        "description": ""
+    },
+    "Florence2ModelLoader": {
+        "title": "Florence2 모델 다운로드 및 로드",
+        "inputs": {
+            "model": "모델",
+            "precision": "정밀도",
+            "attention": "어텐션",
+            "lora": "lora"
+        },
+        "widgets": {
+            "convert_to_safetensors": "safetensors로 변환"
+        },
+        "outputs": {
+            "florence2_model": "florence2 모델"
+        },
+        "description": ""
+    },
+    "Florence2Run": {
+        "title": "Florence 실행",
+        "inputs": {
+            "image": "이미지",
+            "florence2_model": "florence2 모델",
+            "task": "작업"
+        },
+        "widgets": {
+            "text_input": "텍스트 입력",
+            "fill_mask": "빈칸 채우기",
+            "keep_model_loaded": "모델 로드 유지",
+            "max_new_tokens": "최대 새로운 토큰 수",
+            "num_beams": "빔 수",
+            "do_sample": "샘플링 수행",
+            "output_mask_select": "출력 마스크 선택",
+            "seed": "시드"
+        },
+        "outputs": {
+            "image": "이미지",
+            "mask": "마스크",
+            "caption": "캡션",
+            "data": "데이터"
+        },
+        "description": ""
+    }
+}

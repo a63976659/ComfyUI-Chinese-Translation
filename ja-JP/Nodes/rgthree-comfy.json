@@ -1,0 +1,552 @@
+{
+    "Context Big (rgthree)": {
+        "title": "コンテキスト（大型）",
+        "inputs": {
+            "base_ctx": "コンテキスト",
+            "model": "モデル",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "ポジティブ条件",
+            "negative": "ネガティブ条件",
+            "latent": "Latent",
+            "images": "画像",
+            "seed": "シード",
+            "steps": "ステップ数",
+            "step_refiner": "Refiner ステップ数",
+            "cfg": "CFG",
+            "ckpt_name": "モデル名",
+            "sampler": "サンプラー",
+            "scheduler": "スケジューラ",
+            "clip_width": "CLIP 幅",
+            "clip_height": "CLIP 高さ",
+            "text_pos_g": "ポジティブテキストG",
+            "text_pos_l": "ポジティブテキストL",
+            "text_neg_g": "ネガティブテキストG",
+            "text_neg_l": "ネガティブテキストL",
+            "mask": "マスク",
+            "control_net": "ControlNet"
+        },
+        "outputs": {
+            "CONTEXT": "コンテキスト",
+            "MODEL": "モデル",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "ポジティブ条件",
+            "NEGATIVE": "ネガティブ条件",
+            "LATENT": "Latent",
+            "IMAGE": "画像",
+            "SEED": "シード",
+            "STEPS": "ステップ数",
+            "STEP_REFINER": "Refiner ステップ数",
+            "CFG": "CFG",
+            "CKPT_NAME": "モデル名",
+            "SAMPLER": "サンプラー",
+            "SCHEDULER": "スケジューラ",
+            "CLIP_WIDTH": "CLIP 幅",
+            "CLIP_HEIGHT": "CLIP 高さ",
+            "TEXT_POS_G": "ポジティブテキストG",
+            "TEXT_POS_L": "ポジティブテキストL",
+            "TEXT_NEG_G": "ネガティブテキストG",
+            "TEXT_NEG_L": "ネガティブテキストL",
+            "MASK": "マスク",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+    "Context (rgthree)": {
+        "title": "コンテキスト",
+        "inputs": {
+            "base_ctx": "コンテキスト",
+            "model": "モデル",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "ポジティブ条件",
+            "negative": "ネガティブ条件",
+            "latent": "Latent",
+            "images": "画像",
+            "seed": "シード"
+        },
+        "outputs": {
+            "CONTEXT": "コンテキスト",
+            "MODEL": "モデル",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "ポジティブ条件",
+            "NEGATIVE": "ネガティブ条件",
+            "LATENT": "Latent",
+            "IMAGE": "画像",
+            "SEED": "シード"
+        }
+    },
+    "Context Switch (rgthree)": {
+        "title": "コンテキストスイッチ",
+        "inputs": {
+            "ctx_01": "コンテキスト_01",
+            "ctx_02": "コンテキスト_02",
+            "ctx_03": "コンテキスト_03",
+            "ctx_04": "コンテキスト_04",
+            "ctx_05": "コンテキスト_05"
+        },
+        "outputs": {
+            "CONTEXT": "コンテキスト",
+            "MODEL": "モデル",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "ポジティブ条件",
+            "NEGATIVE": "ネガティブ条件",
+            "LATENT": "Latent",
+            "IMAGE": "画像",
+            "SEED": "シード"
+        }
+    },
+    "Context Switch Big (rgthree)": {
+        "title": "コンテキストスイッチ（大型）",
+        "inputs": {
+            "ctx_01": "コンテキスト_01",
+            "ctx_02": "コンテキスト_02",
+            "ctx_03": "コンテキスト_03",
+            "ctx_04": "コンテキスト_04",
+            "ctx_05": "コンテキスト_05"
+        },
+        "outputs": {
+            "CONTEXT": "コンテキスト",
+            "MODEL": "モデル",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "ポジティブ条件",
+            "NEGATIVE": "ネガティブ条件",
+            "LATENT": "Latent",
+            "IMAGE": "画像",
+            "STEPS": "ステップ数",
+            "SEED": "シード",
+            "STEP_REFINER": "Refiner ステップ数",
+            "CFG": "CFG",
+            "CKPT_NAME": "モデル名",
+            "SAMPLER": "サンプラー",
+            "SCHEDULER": "スケジューラ",
+            "CLIP_WIDTH": "CLIP 幅",
+            "CLIP_HEIGHT": "CLIP 高さ",
+            "TEXT_POS_G": "ポジティブテキストG",
+            "TEXT_POS_L": "ポジティブテキストL",
+            "TEXT_NEG_G": "ネガティブテキストG",
+            "TEXT_NEG_L": "ネガティブテキストL",
+            "MASK": "マスク",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+
+
+
+    "Display Int (rgthree)": {
+        "title": "整数表示",
+        "widgets": {
+            "input": "入力"
+        }
+    },
+    "Display Any (rgthree)": {
+        "title": "任意表示",
+        "inputs": {
+            "source": "入力"
+        }
+    },
+    
+    
+
+    "Lora Loader Stack (rgthree)": {
+        "title": "LoRA スタック ローダー",
+        "inputs": {
+            "model": "モデル",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "lora_01": "LoRA_01",
+            "lora_02": "LoRA_02",
+            "lora_03": "LoRA_03",
+            "lora_04": "LoRA_04",
+            "strength_01": "強度_01",
+            "strength_02": "強度_02",
+            "strength_03": "強度_03",
+            "strength_04": "強度_04"
+        },
+        "outputs": {
+            "MODEL": "モデル",
+            "CLIP": "CLIP"
+        }
+    },
+    "Seed (rgthree)": {
+        "title": "シード",
+        "widgets": {
+            "🎲 Randomize Each Time": "🎲 毎回ランダム",
+            "🎲 New Fixed Random": "🎲 手動ランダム",
+            "♻️ (Use Last Queued Seed)": "♻️ 前回のキュー投入シードを使用",
+            "seed": "シード"
+        },
+        "outputs": {
+            "SEED": "シード"
+        }
+    },
+    "Image Inset Crop (rgthree)": {
+        "title": "画像インセットクロップ",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "measurement": "モード",
+            "bottom": "下",
+            "top": "上",
+            "left": "左",
+            "right": "右"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "Power Prompt (rgthree)": {
+        "title": "プロンプト",
+        "inputs": {
+            "opt_model": "モデル",
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "insert_lora": "LoRA 挿入",
+            "insert_embedding": "embedding 挿入",
+            "insert_saved": "カスタム 挿入"
+        },
+        "outputs": {
+            "CONDITIONING": "条件",
+            "MODEL": "モデル",
+            "CLIP": "CLIP",
+            "TEXT": "テキスト"
+        }
+    },
+    "Power Prompt - Simple (rgthree)": {
+        "title": "プロンプト（簡易）",
+        "inputs": {
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "insert_embedding": "embedding 挿入",
+            "insert_saved": "カスタム 挿入"
+        },
+        "outputs": {
+            "CONDITIONING": "条件",
+            "TEXT": "テキスト"
+        }
+    },
+    "KSampler Config (rgthree)": {
+        "title": "Kサンプラー設定",
+        "widgets": {
+            "steps_total": "総ステップ数",
+            "refiner_step": "Refiner ステップ数",
+            "cfg": "CFG",
+            "sampler": "サンプラー",
+            "sampler_name": "サンプラー名",
+            "scheduler": "スケジューラ"
+        },
+        "outputs": {
+            "STEPS": "ステップ数",
+            "REFINER_STEP": "Refiner ステップ数",
+            "CFG": "CFG",
+            "SAMPLER": "サンプラー",
+            "SCHEDULER": "スケジューラ"
+        }
+    },
+    "SDXL Empty Latent Image (rgthree)": {
+        "title": "SDXL 空 Latent 画像",
+        "widgets": {
+            "dimensions": "サイズ",
+            "clip_scale": "CLIP スケール",
+            "batch_size": "バッチサイズ"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "CLIP_WIDTH": "CLIP 幅",
+            "CLIP_HEIGHT": "CLIP 高さ"
+        }
+    },
+    "SDXL Power Prompt - Positive (rgthree)": {
+        "title": "SDXL プロンプト（ポジティブ）",
+        "inputs": {
+            "opt_model": "モデル",
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt_g": "プロンプトG",
+            "prompt_l": "プロンプトL",
+            "opt_clip_width": "CLIP 幅",
+            "opt_clip_height": "CLIP 高さ",
+            "insert_lora": "LoRA 挿入",
+            "insert_embedding": "embedding 挿入",
+            "insert_saved": "カスタム 挿入",
+            "target_width": "目標幅",
+            "target_height": "目標高さ",
+            "crop_width": "クロップ幅",
+            "crop_height": "クロップ高さ"
+        },
+        "outputs": {
+            "CONDITIONING": "条件",
+            "MODEL": "モデル",
+            "CLIP": "CLIP",
+            "TEXT_G": "テキストG",
+            "TEXT_L": "テキストL"
+        }
+    },
+    "SDXL Power Prompt - Simple / Negative (rgthree)": {
+        "title": "SDXL プロンプト（簡易/ネガティブ）",
+        "inputs": {
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt_g": "プロンプトG",
+            "prompt_l": "プロンプトL",
+            "opt_clip_width": "CLIP 幅",
+            "opt_clip_height": "CLIP 高さ",
+            "insert_lora": "LoRA 挿入",
+            "insert_embedding": "embedding 挿入",
+            "insert_saved": "カスタム 挿入",
+            "target_width": "目標幅",
+            "target_height": "目標高さ",
+            "crop_width": "クロップ幅",
+            "crop_height": "クロップ高さ"
+        },
+        "outputs": {
+            "CONDITIONING": "条件",
+            "TEXT_G": "テキストG",
+            "TEXT_L": "テキストL"
+        }
+    },
+
+
+
+    "Any Switch (rgthree)": {
+        "title": "任意スイッチ",
+        "inputs": {
+            "any_01": "入力_01",
+            "any_02": "入力_02",
+            "any_03": "入力_03",
+            "any_04": "入力_04",
+            "any_05": "入力_05"
+        },
+        "outputs": {
+            "*": "出力"
+        }
+    },
+    "Context Merge (rgthree)": {
+        "title": "コンテキストマージ",
+        "inputs": {
+            "ctx_01": "コンテキスト_01",
+            "ctx_02": "コンテキスト_02",
+            "ctx_03": "コンテキスト_03",
+            "ctx_04": "コンテキスト_04",
+            "ctx_05": "コンテキスト_05"
+        },
+        "outputs": {
+            "CONTEXT": "コンテキスト",
+            "MODEL": "モデル",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "ポジティブ条件",
+            "NEGATIVE": "ネガティブ条件",
+            "LATENT": "Latent",
+            "IMAGE": "画像",
+            "STEPS": "ステップ数"
+        }
+    },
+    "Context Merge Big (rgthree)": {
+        "title": "コンテキストマージ（大型）",
+        "inputs": {
+            "ctx_01": "コンテキスト_01",
+            "ctx_02": "コンテキスト_02",
+            "ctx_03": "コンテキスト_03",
+            "ctx_04": "コンテキスト_04",
+            "ctx_05": "コンテキスト_05"
+        },
+        "outputs": {
+            "CONTEXT": "コンテキスト",
+            "MODEL": "モデル",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "ポジティブ条件",
+            "NEGATIVE": "ネガティブ条件",
+            "LATENT": "Latent",
+            "IMAGE": "画像",
+            "STEPS": "ステップ数",
+            "SEED": "シード",
+            "STEP_REFINER": "Refiner ステップ数",
+            "CFG": "CFG",
+            "CKPT_NAME": "モデル名",
+            "SAMPLER": "サンプラー",
+            "SCHEDULER": "スケジューラ",
+            "CLIP_WIDTH": "CLIP 幅",
+            "CLIP_HEIGHT": "CLIP 高さ",
+            "TEXT_POS_G": "ポジティブテキストG",
+            "TEXT_POS_L": "ポジティブテキストL",
+            "TEXT_NEG_G": "ネガティブテキストG",
+            "TEXT_NEG_L": "ネガティブテキストL",
+            "MASK": "マスク",
+            "CONTROL_NET": "ControlNet"
+        }
+    },
+    "Reroute (rgthree)": {
+        "title": "リルート"
+    },
+    "Node Collector (rgthree)": {
+        "title": "ノードコレクター"
+    },
+    "Fast Muter (rgthree)": {
+        "title": "ノード無効化",
+        "outputs": {
+            "OPT_CONNECTION": "オプション接続"
+        }
+    },
+    "Fast Bypasser (rgthree)": {
+        "title": "ノードバイパス",
+        "outputs": {
+            "OPT_CONNECTION": "オプション接続"
+        }
+    },
+    "Mute / Bypass Repeater (rgthree)": {
+        "title": "ノード無効/バイパス（中継）",
+        "outputs": {
+            "OPT_CONNECTION": "オプション接続"
+        }
+    },
+    "Mute / Bypass Relay (rgthree)": {
+        "title": "ノード無効/バイパス（送信）",
+        "outputs": {
+            "OPT_CONNECTION": "オプション接続"
+        }
+    },
+    "Fast Group Bypasser (rgthree)": {
+        "title": "グループバイパス",
+        "outputs": {
+            "OPT_CONNECTION": "オプション接続"
+        }
+    },
+    "Fast Groups Bypasser (rgthree)": {
+        "title": "グループバイパス",
+        "outputs": {
+            "OPT_CONNECTION": "オプション接続"
+        }
+    },
+    "Fast Actions Button (rgthree)": {
+        "title": "アクションボタン",
+        "widgets": {
+            "🎬 Action!": "🎬 実行!"
+        }
+    },
+    "Bookmark (rgthree)": {
+        "title": "🔖 ブックマーク",
+        "widgets": {
+            "shortcut_key": "ショートカットキー",
+            "zoom": "ズーム"
+        }
+    },
+    "Random Unmuter (rgthree)": {
+        "title": "ランダムミュート解除"
+    },
+    "Fast Groups Muter (rgthree)": {
+        "title": "グループ無効化",
+        "outputs": {
+            "OPT_CONNECTION": "オプション接続"
+        }
+    },
+    "Label (rgthree)": {
+        "title": "ラベル"
+    },
+    "Image Comparer (rgthree)": {
+        "title": "画像比較",
+        "inputs": {
+            "image_a": "画像_A",
+            "image_b": "画像_B"
+        }
+    },
+    "Node Combiner (rgthree)": {
+        "title": "ノードコンバイナー",
+        "inputs": {
+            "image_a": "画像_A",
+            "image_b": "画像_B"
+        },
+        "outputs": {
+            "Output": "出力",
+            "clip": "CLIP"
+        }
+    },
+    "Power Primitive (rgthree)": {
+        "title": "多機能プリミティブ",
+        "inputs": {},
+        "widgets": {
+            "value": "値",
+            "type": "タイプ"
+        },
+        "outputs": {
+            "INT": "整数",
+            "FLOAT": "浮動小数",
+            "BOOLEAN": "真偽",
+            "STRING": "文字列"
+        }
+    },
+    "Power Puter (rgthree)": {
+        "title": "多機能計算機",
+        "inputs": {
+            "outputs": "出力",
+            "STRING": "文字列"
+        },
+        "widgets": {
+            "outputs": "出力",
+            "STRING": "文字列"
+        },
+        "outputs": {
+            "INT": "整数",
+            "FLOAT": "浮動小数",
+            "BOOLEAN": "真偽",
+            "STRING": "文字列"
+        }
+    },
+    "Image or Latent Size (rgthree)": {
+        "title": "画像または Latent サイズ",
+        "inputs": {
+            "input": "入力"
+        },
+        "widgets": {
+            "STRING": "文字列"
+        },
+        "outputs": {
+            "WIDTH": "幅",
+            "HEIGHT": "高さ"
+        }
+    },
+    "Image Resize (rgthree)": {
+        "title": "画像リサイズ",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "measurement": "モード",
+            "width": "幅",
+            "height": "高さ",
+            "fit": "適合",
+            "method": "方法"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "WIDTH": "幅",
+            "HEIGHT": "高さ"
+        }
+    },
+    "Power Lora Loader (rgthree)": {
+        "title": "重み LoRA ローダー",
+        "inputs": {
+            "model": "モデル",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "➕ Add Lora": "➕ LoRA 追加"
+        },
+        "outputs": {
+            "MODEL": "モデル",
+            "clip": "CLIP"
+        }
+    }
+}

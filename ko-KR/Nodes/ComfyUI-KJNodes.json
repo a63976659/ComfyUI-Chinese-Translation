@@ -1,0 +1,4219 @@
+{
+    "ContextWindowsVisualizerKJ": {
+        "title": "컨텍스트 윈도우 시각화 도구 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "frame_units": "프레임 단위",
+            "dim": "차원",
+            "temporal_downscale": "시간 다운샘플링률",
+            "num_frames": "프레임 수",
+            "context_length": "컨텍스트 길이",
+            "context_overlap": "컨텍스트 겹침",
+            "context_schedule": "컨텍스트 스케줄",
+            "context_stride": "컨텍스트 스트라이드",
+            "closed_loop": "닫힌 루프",
+            "fuse_method": "융합 방법",
+            "causal_window_fix": "인과 윈도우 고정",
+            "freenoise": "자유 노이즈",
+            "cond_retain_index_list": "조건 보존 인덱스 목록"
+        },
+        "outputs": {
+            "model": "모델"
+        },
+        "description": "ComfyUI 컨텍스트 윈도우의 인터랙티브 시각화: 윈도우 위치, 겹침 정도, 융합 가중치와 프레임별 블렌딩을 실시간으로 업데이트합니다. 설정을 핵심 '컨텍스트 윈도우(수동)' 노드 등에 적용할지 선택할 수 있습니다."
+    },
+    "MiniMaxH3TokenCounter": {
+        "title": "MiniMax H3 토큰 카운터",
+        "inputs": {
+            "samples": "샘플",
+            "conditioning": "컨디셔닝"
+        },
+        "widgets": {},
+        "outputs": {
+            "samples": "샘플",
+            "conditioning": "컨디셔닝",
+            "tokens": "토큰",
+            "breakdown": "분해"
+        },
+        "description": "MiniMax H3 생성 시 샘플링 없이 실행되는 패킹된 시퀀스 길이를 계산합니다. AV 잠재 변수와 조건 정보(텍스트 길이, 키프레임, 참조 블록 포함)로 모델과 동일한 [텍스트 | 키프레임/참조 | 오디오 | 비디오] 레이아웃을 구축합니다."
+    },
+    "MiniMaxLowVRAMAttention": {
+        "title": "MiniMax H3 저VRAM 어텐션",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "head_chunks": "헤드 청크 수"
+        },
+        "outputs": {
+            "model": "모델"
+        },
+        "description": "계산 로직을 변경하지 않고 MiniMax H3 어텐션 모듈의 피크 VRAM 사용량을 줄입니다. 어텐션 호출을 여러 헤드 그룹으로 분할하여 커널 내부의 일시적 데이터(int8 q/k 복제본, fp32 누산기 등)가 융합된 qkv 버퍼에서 청크 수에 비례해 줄어들도록 하고, 소비가 끝난 qkv 버퍼와 정규화 블록 입력은 즉시 해제합니다. 출력은 패치 전 모델과 완전히 동일합니다."
+    },
+    "MiniMaxChunkFeedForward": {
+        "title": "MiniMax H3 분할 피드포워드 신경망",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "chunks": "분할 수",
+            "seq_threshold": "시퀀스 임계값"
+        },
+        "outputs": {},
+        "description": "MiniMax H3의 피드포워드(SwiGLU)를 패킹된 토큰 차원으로 분할해 피크 VRAM 사용량을 줄입니다. 모델이 양자화된 경우에도 각 청크는 ComfyUI의 융합 INT8 커널을 거치며, 활성화값은 토큰별로 양자화되므로 출력은 분할 전 모델과 일치합니다."
+    },
+    "Ideogram4PromptBuilderKJ": {
+        "title": "Ideogram4 프롬프트 빌더 (KJ)",
+        "inputs": {
+            "image": "이미지",
+            "import_json": "JSON 가져오기",
+            "bboxes": "바운딩 박스"
+        },
+        "widgets": {
+            "width": "너비",
+            "height": "높이",
+            "high_level_description": "상위 수준 설명",
+            "background": "배경",
+            "style": "스타일",
+            "aesthetics": "미학",
+            "lighting": "조명",
+            "medium": "매체",
+            "style_palette_data": "스타일 팔레트 데이터",
+            "elements_data": "요소 데이터",
+            "bg_brightness": "배경 밝기",
+            "import_mode": "가져오기 모드",
+            "output_format": "출력 형식",
+            "coord_mode": "좌표 모드",
+            "bbox_order": "바운딩 박스 순서"
+        },
+        "outputs": {
+            "prompt": "프롬프트",
+            "preview": "미리보기",
+            "bboxes": "바운딩 박스",
+            "width": "너비",
+            "height": "높이"
+        },
+        "description": "\nIdeogram 4의 구조화된 JSON 캡션 형식을 위한 시각적 프롬프트 빌더입니다.\n\n캔버스에서 드래그하여 영역을 그리세요. 선택한 영역의 유형(객체/텍스트), 설명, 텍스트, 팔레트를 설정할 수 있습니다. 배경과 선택적 스타일 필드는 위젯으로 설정합니다. 조합된 캡션 JSON 문자열을 출력합니다.\n\n바운딩 박스 좌표는 0-1000 그리드에 정규화되며 [Y최소, X최소, Y최대, X최대] 형식입니다. 너비/높이는 캔버스의 종횡비를 설정합니다.\n\n캔버스 조작:\n- 드래그: 새 영역 그리기\n- Ctrl/Cmd+드래그: 기존 영역 위에서 강제로 새 영역 그리기\n- 클릭: 영역 선택 · Alt+클릭: 겹친 영역 순환 선택\n- 더블클릭: 설명 인라인 편집\n- 우클릭: 영역 목록(선택/삭제/복사/재정렬, 맨 위가 최전층)\n- Del/Backspace: 선택한 영역 삭제\n- Ctrl/Cmd + C/V/D: 선택한 영역 복사/붙여넣기/중복\n- 객체/텍스트 옆 바운딩 박스 필드(픽셀/출력)는 편집 가능\n\n색상 스와치:\n- 클릭: 편집 · 드래그: 재정렬 · 우클릭: 삭제\n- 호버+Ctrl/Cmd + C/V: 16진수 색상값 복사/붙여넣기\n- \"+\": 색상 추가(클립보드가 색상이면 그 색상 사용)\n\n툴바:\n- 라이브: 라이브 샘플링 미리보기와 최종 결과 캡처를 배경으로 사용\n- 배경 캡처/배경 지우기: 마지막 생성 이미지를 배경으로 사용\n- 밝기 슬라이더, 토큰 추정, 복사/붙여넣기/모두 지우기"
+    },
+    "RandomImageFromBatch": {
+        "title": "배치에서 이미지 랜덤 선택 (KJ)",
+        "inputs": {
+            "input": "입력"
+        },
+        "widgets": {
+            "start_index": "시작 인덱스",
+            "end_index": "종료 인덱스",
+            "num_frames": "프레임 수",
+            "randomness": "무작위성",
+            "min_distance": "최소 간격",
+            "max_distance": "최대 간격",
+            "seed": "랜덤 시드"
+        },
+        "outputs": {
+            "output": "출력"
+        },
+        "description": "이미지 또는 마스크 배치의 선택된 인덱스 범위에서 프레임 시퀀스를 선택합니다. 무작위성=0이면 범위 내에 고르게 배포되고, =1이면 중복 없는 균등 랜덤이며, 중간 값은 선형 혼합입니다. 출력은 항상 배치 인덱스 순으로 정렬됩니다. 음수 인덱스는 끝에서부터 셉니다(-1 = 마지막)."
+    },
+    "FastPreviewBatch": {
+        "title": "빠른 미리보기 배치 (KJ)",
+        "inputs": {
+            "input": "입력"
+        },
+        "widgets": {
+            "max_thumb_size": "최대 섬네일 크기",
+            "crf": "화질 제한",
+            "max_grid_frames": "최대 그리드 프레임 수"
+        },
+        "outputs": {},
+        "description": "이미지 배치를 전체 I-프레임 H.264 MP4 섬네일 스트립으로 인코딩해 인터랙티브 그리드로 표시합니다. 타일을 클릭하면 확대하고 앞뒤로 탐색할 수 있습니다. N개의 PNG 파일을 만드는 수고를 피할 수 있습니다."
+    },
+    "BBOXToBoundingBoxKJ": {
+        "title": "BBOX를 바운딩 박스로 (KJ)",
+        "inputs": {
+            "bbox": "바운딩 박스"
+        },
+        "widgets": {
+            "bbox_format": "바운딩 박스 형식",
+            "index": "인덱스"
+        },
+        "outputs": {
+            "bounding_box": "바운딩 박스"
+        },
+        "description": "KJNodes의 BBOX를 핵심 노드(이미지 크롭 등)가 사용하는 네이티브 BOUNDING_BOX 딕셔너리로 변환합니다."
+    },
+    "WanVideoMemoryEfficientSageAttentionPatch": {
+        "title": "Wan 비디오 메모리 효율 Sage 어텐션 패치 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "모델"
+        },
+        "description": "실험적 기능! WanVideo의 셀프 어텐션에서 커스텀 sageattention을 활성화해 어텐션 모드를 오버라이드하고 피크 VRAM 사용량을 줄입니다. 최신 버전의 sageattention이 필요합니다."
+    },
+    "MiniMaxH3MemoryEfficientSageAttentionPatch": {
+        "title": "MiniMax H3 메모리 효율 Sage 어텐션 패치 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "모델"
+        },
+        "description": "실험적 기능! MiniMax H3 셀프 어텐션에서 커스텀 sageattention을 활성화해 어텐션 모드를 오버라이드하고 피크 VRAM 사용량을 줄입니다. 최신 버전의 sageattention이 필요합니다."
+    },
+    "PatchFlashAttentionKJ": {
+        "title": "Flash 어텐션으로 패치 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "allow_compile": "컴파일 허용"
+        },
+        "outputs": {},
+        "description": "ComfyUI 기본 UI의 조용한 SDPA 폴백을 사용하지 않고 Flash Attention으로 어텐션을 패치하기 위한 실험 노드입니다. 이 노드를 통과한 모델의 어텐션에 패치를 적용하며, 비활성화하려면 이 노드를 바이패스하거나 연결을 해제해야 합니다. flash_attn 라이브러리 설치가 필요합니다."
+    },
+    "TorchCompileModelAdvanced": {
+        "title": "Torch 컴파일 모델 고급 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "backend": "백엔드",
+            "fullgraph": "전체 그래프 모드",
+            "mode": "모드",
+            "dynamic": "동적",
+            "compile_transformer_blocks_only": "Transformer 블록만 컴파일",
+            "dynamo_cache_size_limit": "Dynamo 캐시 크기 제한",
+            "debug_compile_keys": "컴파일 키 디버그",
+            "disable_dynamic_vram": "동적 VRAM 비활성화"
+        },
+        "outputs": {},
+        "description": "확산 모델을 위한 고급 torch.compile 패치입니다."
+    },
+    "Krea2PromptWeight": {
+        "title": "Krea2 프롬프트 가중치 (KJ)",
+        "inputs": {
+            "clip": "CLIP",
+            "model": "모델"
+        },
+        "widgets": {
+            "text": "텍스트",
+            "strength": "강도"
+        },
+        "outputs": {
+            "model": "모델",
+            "conditioning": "컨디셔닝"
+        },
+        "description": "Krea2(K2)에서 어텐션 값 스케일링으로 토큰별 프롬프트 가중치를 구현합니다. (단어:-1)로 개념을 제거하고 (단어:1.5)로 강조할 수 있으며, Qwen3-VL 인코더에서 작동하는 이 기능은 일반 가중치 설정으로는 할 수 없습니다. 패치된 모델과 컨디셔닝을 출력하고, 샘플러 CFG는 1.0으로 설정하세요."
+    },
+    "Ideogram4OptimizationsKJ": {
+        "title": "Ideogram4 최적화 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "chunk_ffn": "분할 피드포워드",
+            "ffn_chunks": "피드포워드 분할 수",
+            "ffn_seq_threshold": "피드포워드 시퀀스 임계값",
+            "bf16_rope": "bf16_위치 인코딩"
+        },
+        "outputs": {
+            "model": "모델"
+        },
+        "description": "실험적 기능, 모델 출력이 바뀔 수 있습니다!! Ideogram4의 순전파 피크 VRAM을 줄입니다. chunk_ffn은 SwiGLU 활성화를 토큰 차원으로 분할하고, bf16_rope는 fp32로 업캐스팅하지 않고 모델의 데이터 형식으로 RoPE를 적용합니다. 둘 다 블록 내 가장 큰 두 개의 일시적 텐서를 대상으로 합니다."
+    },
+    "PiDColorBiasCorrection": {
+        "title": "PiD 색상 편향 보정 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "strength": "강도",
+            "backbone": "백본 네트워크"
+        },
+        "outputs": {},
+        "description": "PiD 4단계 디코더의 색상/밝기 드리프트 보정기. 첫 샘플링 단계에서 모델의 체계적 드리프트에 맞춰 보정된 소형 선형 모델을 사용해 채널별 편차를 감산합니다(모델은 어두운 장면을 밝히는 경향이 있고 청색조를 더함)."
+    },
+    "LeapfusionHunyuanI2V": {
+        "title": "Leapfusion Hunyuan 이미지→비디오 (KJ)",
+        "inputs": {
+            "model": "모델",
+            "latent": "잠재 변수"
+        },
+        "widgets": {
+            "index": "인덱스",
+            "start_percent": "시작 백분율",
+            "end_percent": "종료 백분율",
+            "strength": "강도"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VAEMergeKJ": {
+        "title": "VAE 병합 (KJ)",
+        "inputs": {
+            "vae_1": "VAE1",
+            "vae_2": "VAE2"
+        },
+        "widgets": {
+            "ratio": "비율"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "두 VAE의 가중치를 가중 평균으로 병합합니다. 비율은 VAE_2 쪽으로 치우친 가중치입니다(0.0 = 순수 VAE_1, 1.0 = 순수 VAE_2). 두 VAE는 동일한 아키텍처(상태 딕셔너리 키와 형태 일치)를 공유해야 합니다"
+    },
+    "LatentInpaintTTM": {
+        "title": "Latent 마스크 인페인트 TTM (KJ)",
+        "inputs": {
+            "model": "모델",
+            "mask": "마스크"
+        },
+        "widgets": {
+            "steps": "단계 수"
+        },
+        "outputs": {},
+        "description": "https://github.com/time-to-move/TTM"
+    },
+    "DeprecatedCompileNodeKJ": {
+        "title": "폐기된 컴파일 노드 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "이 노드는 TorchCompileModelAdvanced 노드로 대체되었습니다. 해당 노드를 사용하세요"
+    },
+    "ModelPreviewOverrideKJ": {
+        "title": "모델 미리보기 오버라이드 (KJ)",
+        "inputs": {
+            "model": "모델",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "max_resolution": "최대 해상도",
+            "jpeg_quality": "JPEG 품질",
+            "suppress_default_preview": "기본 미리보기 억제",
+            "preview_frames": "미리보기 프레임",
+            "preview_fps": "미리보기 프레임 레이트",
+            "tiny_vae": "소형 VAE"
+        },
+        "outputs": {},
+        "description": "이 노드에 전용 실시간 미리보기 프레임을 추가하며 최대 해상도를 오버라이드할 수 있습니다. ComfyUI 기본 미리보기 상한은 512p이지만, 이 노드는 미리보기를 노드의 DOM 요소로 직접 전송하므로 픽셀 공간 모델(Chroma Radiance, ZImage, HiDream-O1 등)을 전체 샘플러 해상도로 미리볼 수 있습니다."
+    },
+    "GetPreviewOverrideFramesKJ": {
+        "title": "미리보기 오버라이드 프레임 가져오기 (KJ)",
+        "inputs": {
+            "model": "모델",
+            "after_sample": "샘플 후"
+        },
+        "widgets": {},
+        "outputs": {
+            "frames": "비디오 프레임"
+        },
+        "description": "최근 샘플링 중에 모델 미리보기 오버라이드가 캡처한 프레임을 반환합니다. 모델 미리보기 오버라이드의 '모델'(샘플러에 공급된 것과 동일한 모델)과 샘플러 이후의 'after_sample'(Latent/IMAGE)을 연결하여 올바른 실행 순서를 보장하세요."
+    },
+    "PatchTritonVAE": {
+        "title": "Triton VAE 패치 (KJ)",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "fuse_norm_silu": "융합 Norm+SiLU 활성화",
+            "channels_last": "채널 우선",
+            "int8_conv": "INT8 컨볼루션",
+            "autotune": "자동 튜닝"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "융합된 Triton Norm+SiLU 커널과 채널 우선 컨볼루션 배치를 사용해 VAE의 디코딩/인코딩 속도를 높입니다. 지원 VAE(자동 감지): Wan 2.1/2.2 비디오 VAE(Qwen-Image 포함, RMSNorm, 약 1.4배/1.15배), Flux/Flux2, SDXL 및 SD1.5 KL 이미지 VAE(GroupNorm, 2048p에서 약 1.6-1.8배), LTXV/LTX2 비디오 VAE(PixelNorm; 시간 조건부 디코더 블록은 정규화 융합만 적용). 다른 아키텍처는 지원되지 않습니다. 클론된 패처에 개체 패치로 적용되므로 해당 VAE가 로드된 동안만 존재합니다."
+    },
+    "ImageTransformKJ": {
+        "title": "이미지 변형 (KJ)",
+        "inputs": {
+            "image": "이미지",
+            "mask": "마스크"
+        },
+        "widgets": {
+            "target_width": "목표 너비",
+            "target_height": "목표 높이",
+            "upscale_method": "업스케일 방법",
+            "keep_proportion": "비율 유지",
+            "divisible_by": "나누어떨어지는 수",
+            "extra_padding": "추가 패딩",
+            "invert_crop": "크롭 반전",
+            "grid_size": "그리드 크기"
+        },
+        "outputs": {
+            "width": "너비",
+            "height": "높이",
+            "output": "출력 이미지",
+            "output_mask": "출력 마스크"
+        },
+        "description": "이미지 리사이즈, 업스케일 방법, 비율 유지 등의 파라미터를 지원하는 이미지 변형 노드이며, 마스크의 동기 변형도 지원합니다."
+    },
+    "ScreencapStream": {
+        "title": "스크린 캡처 스트림 (KJ)",
+        "inputs": {},
+        "widgets": {
+            "crop_width": "캡처 너비",
+            "crop_height": "캡처 높이",
+            "Start capture": "캡처 시작",
+            "Hide preview": "미리보기 숨기기"
+        },
+        "outputs": {
+            "image": "이미지"
+        },
+        "description": "이 노드는 화면을 실시간으로 캡처합니다. 캡처 영역의 너비와 높이를 사용자 정의할 수 있으며 시작/정지 컨트롤 버튼을 제공합니다. 캡처한 실시간 화면은 미리보기 창에 표시되어 녹화 상태를 손쉽게 확인할 수 있습니다."
+    },
+    "DecodeAndSaveVideo": {
+        "title": "디코딩 후 비디오 저장 (KJ)",
+        "inputs": {
+            "video_latent": "비디오 Latent",
+            "video_vae": "비디오 VAE 모델",
+            "audio_latent": "오디오 Latent",
+            "audio_vae": "오디오 VAE 모델"
+        },
+        "widgets": {
+            "fps": "프레임 레이트",
+            "filename_prefix": "파일명 접두사",
+            "format": "형식",
+            "codec": "코덱",
+            "tiling": "타일링"
+        },
+        "outputs": {
+            "video": "디코딩된 비디오",
+            "filename": "저장된 파일명"
+        },
+        "description": "이 노드는 비디오 잠재 공간(Video Latent)을 실제 비디오 파일로 디코딩해 저장합니다. 오디오 동시 디코딩도 지원합니다. 여기서 프레임 레이트(FPS), 파일명 접두사, 출력 형식(MP4, MOV 등), 비디오 코덱(H.264, H.265 등), 큰 비디오 처리를 위한 타일링(Tiling) 활성화 여부를 설정할 수 있습니다."
+    },
+    "EncodeVideoComponents": {
+        "title": "비디오 컴포넌트 인코딩 (KJ)",
+        "inputs": {
+            "video": "비디오",
+            "vae": "VAE 모델"
+        },
+        "widgets": {
+            "width": "너비",
+            "height": "높이",
+            "max_frames": "최대 프레임 수",
+            "upscale_method": "업스케일 방법",
+            "Keep Proportion": "비율 유지"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "audio": "오디오",
+            "fps": "프레임 레이트",
+            "frame_count": "프레임 수"
+        },
+        "description": "이 노드는 비디오 프레지를 잠재 공간(Latent) 표현으로 인코딩하며, 보통 비디오 생성·처리 워크플로에 사용됩니다. 비디오 스트림과 VAE 모델을 입력으로 받아 인코딩된 잠재 공간 데이터, 오디오 스트림, 프레임 레이트 정보, 총 프레임 수를 출력합니다. 여기서 출력 해상도(너비·높이) 설정, 최대 프레임 수 제한, 이미지 업스케일 방법(Lanczos 등) 선택, 원본 종횡비 유지 여부를 지정할 수 있습니다."
+    },
+    "ColorMatchV2": {
+        "title": "컬러 매칭 V2 (KJ)",
+        "inputs": {
+            "image_target": "대상 이미지",
+            "image_ref": "참고 이미지"
+        },
+        "widgets": {
+            "method": "방법",
+            "strength": "강도",
+            "multithread": "멀티스레드"
+        },
+        "outputs": {
+            "image": "이미지"
+        },
+        "description": "참고 이미지의 컬러 스타일을 대상 이미지에 적용하는 노드입니다. 여러 매칭 알고리즘(mkl 등)을 지원하고 매칭 강도를 조절할 수 있으며, 멀티스레드 처리로 효율을 높일 수 있습니다."
+    },
+    "PreviewImageOrMask": {
+        "title": "이미지 또는 마스크 미리보기 (KJ)",
+        "inputs": {
+            "input": "입력 이미지 또는 마스크"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "이 노드는 입력된 이미지 또는 마스크를 ComfyUI 인터페이스에 직접 표시하며, 주로 디버깅과 처리 중간 결과 확인에 사용됩니다. 데이터 스트림을 출력하지 않고 시각적 미리보기 전용으로 사용됩니다."
+    },
+    "ImageSharpenKJ": {
+        "title": "이미지 샤픈 (KJ)",
+        "inputs": {
+            "image": "이미지"
+        },
+        "widgets": {
+            "method": "방법",
+            "strength": "강도"
+        },
+        "outputs": {
+            "output": "출력 이미지"
+        },
+        "description": "이 노드는 입력 이미지를 샤픈 처리합니다. 다양한 샤픈 알고리즘(rcas 등) 선택과 강도 조절을 통해 선명도와 디테일을 향상시킬 수 있습니다."
+    },
+    "PlaySoundKJ": {
+        "title": "소리 재생",
+        "inputs": {
+            "any_input": "임의 입력",
+            "audio": "오디오"
+        },
+        "widgets": {
+            "audio_path": "오디오 경로",
+            "mode": "모드",
+            "volume": "볼륨",
+            "duration": "지속 시간"
+        },
+        "outputs": {
+            "any_output": "임의 출력"
+        },
+        "description": "지정된 오디오 파일을 재생하며 재생 모드, 볼륨, 지속 시간 설정을 지원합니다."
+    },
+    "NormalizedAmplitudeToMask": {
+        "title": "정규화 진폭→마스크",
+        "inputs": {
+            "normalized_amp": "정규화 진폭"
+        },
+        "widgets": {
+            "width": "너비",
+            "height": "높이",
+            "frame_offset": "프레임 오프셋",
+            "location_x": "위치_X",
+            "location_y": "위치_Y",
+            "size": "크기",
+            "shape": "모양",
+            "color": "색상"
+        },
+        "outputs": {
+            "MASK": "마스크"
+        },
+        "description": "AudioScheduler 플러그인을 브리지하는 노드입니다:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\n정규화 진폭 기반으로 마스크를 생성합니다."
+    },
+    "NormalizedAmplitudeToFloatList": {
+        "title": "정규화 진폭→부동소수 리스트",
+        "inputs": {
+            "normalized_amp": "정규화 진폭"
+        },
+        "outputs": {
+            "FLOAT": "부동소수"
+        },
+        "description": "AudioScheduler 플러그인을 브리지하는 노드입니다:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\n정규화 진폭 기반으로 부동소수 리스트를 생성합니다."
+    },
+    "OffsetMaskByNormalizedAmplitude": {
+        "title": "정규화 진폭으로 마스크 오프셋",
+        "inputs": {
+            "normalized_amp": "정규화 진폭",
+            "mask": "마스크"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "rotate": "회전",
+            "angle_multiplier": "각도 배수"
+        },
+        "outputs": {
+            "mask": "마스크"
+        },
+        "description": "AudioScheduler 플러그인을 브리지하는 노드입니다:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\n정규화 진폭 기반으로 마스크를 오프셋합니다."
+    },
+    "ImageTransformByNormalizedAmplitude": {
+        "title": "정규화 진폭으로 이미지 변형",
+        "inputs": {
+            "normalized_amp": "정규화 진폭",
+            "image": "이미지"
+        },
+        "widgets": {
+            "zoom_scale": "줌",
+            "x_offset": "x 오프셋",
+            "y_offset": "y 오프셋",
+            "cumulative": "누적"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "AudioScheduler 플러그인을 브리지하는 노드입니다:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\n정규화 진폭 기반으로 이미지를 변형합니다."
+    },
+    "BatchCropFromMask": {
+        "title": "마스크 크롭",
+        "inputs": {
+            "original_images": "이미지",
+            "masks": "마스크"
+        },
+        "widgets": {
+            "crop_size_mult": "크롭 배수",
+            "bbox_smooth_alpha": "BBox 스무딩 알파"
+        },
+        "outputs": {
+            "original_images": "원본 이미지",
+            "cropped_images": "크롭 이미지",
+            "bboxes": "BBox",
+            "width": "너비",
+            "height": "높이"
+        }
+    },
+    "BatchUncrop": {
+        "title": "언크롭(배치)",
+        "inputs": {
+            "original_images": "원본 이미지",
+            "cropped_images": "크롭 이미지",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "border_blending": "테두리 블렌딩",
+            "crop_rescale": "재축소",
+            "border_bottom": "하단 테두리",
+            "border_top": "상단 테두리",
+            "border_left": "좌측 테두리",
+            "border_right": "우측 테두리"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        }
+    },
+    "BatchCropFromMaskAdvanced": {
+        "title": "마스크 크롭(고급)",
+        "inputs": {
+            "original_images": "이미지",
+            "masks": "마스크"
+        },
+        "widgets": {
+            "crop_size_mult": "크롭 배수",
+            "bbox_smooth_alpha": "BBox 스무딩 알파"
+        },
+        "outputs": {
+            "original_images": "원본 이미지",
+            "cropped_images": "크롭 이미지",
+            "cropped_masks": "크롭 마스크",
+            "combined_crop_image": "병합 크롭 이미지",
+            "combined_crop_masks": "병합 크롭 마스크",
+            "bboxes": "BBox",
+            "combined_bounding_box": "병합 BBox",
+            "bbox_width": "BBox 너비",
+            "bbox_height": "BBox 높이"
+        }
+    },
+    "FilterZeroMasksAndCorrespondingImages": {
+        "title": "영(0) 마스크 및 이미지 필터링",
+        "inputs": {
+            "masks": "마스크",
+            "original_images": "이미지"
+        },
+        "outputs": {
+            "non_zero_masks_out": "제로가 아닌 마스크",
+            "non_zero_mask_images_out": "제로가 아닌 이미지",
+            "zero_mask_images_out": "제로 마스크 이미지",
+            "zero_mask_images_out_indexes": "제로가 아닌 마스크 이미지 인덱스"
+        },
+        "description": "mask의 모든 빈 마스크(즉, 전부 0)를 필터링합니다\n제공되는 경우 인덱스를 통해\n original_images의 모든 해당 이미지도 필터링합니다\n original_images(선택): 제공되는 경우 mask와 동일한 길이여야 합니다."
+    },
+    "InsertImageBatchByIndexes": {
+        "title": "인덱스로 이미지 배치 삽입",
+        "inputs": {
+            "images": "이미지",
+            "images_to_insert": "삽입 이미지",
+            "insert_indexes": "삽입 인덱스"
+        },
+        "outputs": {
+            "images_after_insert": "이미지"
+        },
+        "description": "이 노드는 FilterZeroMasksAndCorrespondingImages 노드와 함께 사용해야 하며,\n_ insert_indexes 에 따라 images_to_insert 를 images 에 삽입합니다.\n_ 반환값: images_after_insert - 원본 순서대로 업데이트된 이미지 시퀀스."
+    },
+    "BatchUncropAdvanced": {
+        "title": "Uncrop(고급)",
+        "inputs": {
+            "original_images": "원본 이미지",
+            "cropped_images": "크롭 이미지",
+            "cropped_masks": "크롭 마스크",
+            "combined_crop_mask": "병합 크롭 마스크",
+            "bboxes": "BBox",
+            "combined_bounding_box": "병합 BBox"
+        },
+        "widgets": {
+            "border_blending": "테두리 블렌딩",
+            "crop_rescale": "재축소",
+            "use_combined_mask": "병합 마스크 사용",
+            "use_square_mask": "정사각형 마스크 사용"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        }
+    },
+    "SplitBboxes": {
+        "title": "BBox 분할",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "인덱스"
+        },
+        "outputs": {
+            "bboxes_a": "BBox_A",
+            "bboxes_b": "BBox_B"
+        },
+        "description": "설정된 인덱스에 따라 지정된 bbox 목록을 두 개의 목록으로 분할합니다"
+    },
+    "BboxToInt": {
+        "title": "BBox→정수",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "인덱스"
+        },
+        "outputs": {
+            "x_min": "X 최소값",
+            "y_min": "Y 최대값",
+            "width": "너비",
+            "height": "높이",
+            "center_x": "X 중심",
+            "center_y": "Y 중심"
+        },
+        "description": "바운딩 박스 목록에서 선택된 인덱스를 정수로 반환합니다"
+    },
+    "BboxVisualize": {
+        "title": "BBox 미리보기",
+        "inputs": {
+            "images": "이미지",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "line_width": "선 두께"
+        },
+        "outputs": {
+            "images": "이미지"
+        },
+        "description": "이미지 위에 지정된 bbox를 표시합니다"
+    },
+    "PlotCoordinates": {
+        "title": "좌표 플롯",
+        "inputs": {
+            "coordinates": "좌표",
+            "size_multiplier": "크기 배수"
+        },
+        "widgets": {
+            "text": "텍스트",
+            "width": "너비",
+            "height": "높이",
+            "bbox_width": "BBox 너비",
+            "bbox_height": "BBox 높이"
+        },
+        "outputs": {
+            "images": "이미지",
+            "width": "너비",
+            "height": "높이",
+            "bbox_height": "BBox 높이",
+            "bbox_width": "BBox 너비"
+        },
+        "description": "Matplotlib로 좌표 플롯 프레임 시리즈를 생성합니다."
+    },
+    "SplineEditor": {
+        "title": "스플라인 에디터",
+        "inputs": {
+            "bg_image": "배경 이미지"
+        },
+        "widgets": {
+            "points_store": "점 위치",
+            "mask_width": "마스크 너비",
+            "mask_height": "마스크 높이",
+            "points_to_sample": "샘플링 정밀도",
+            "sampling_method": "샘플링 방법",
+            "interpolation": "보간 방식",
+            "tension": "텐션",
+            "repeat_output": "출력 반복",
+            "float_output_type": "부동소수 출력 유형",
+            "min_value": "최소값",
+            "max_value": "최대값",
+            "New spline": "새 스플라인",
+            "New canvas": "새 캔버스"
+        },
+        "outputs": {
+            "mask": "마스크",
+            "coord_str": "좌표",
+            "float": "부동소수",
+            "count": "수량",
+            "normalized_str": "정규화 문자열"
+        },
+        "description": "# 개발 중 \n가능하면 워크플로에서 이 노드를 사용하지 마세요. 버그가 많고 불안정할 수 있습니다!! \n \n##다양한 값 스케줄링을 위한 시각적 에디터 \n\n**Shift+좌클릭** 새 제어점 추가, **Ctrl+좌클릭** 중간 제어점 생성, **우클릭** 제어점 제거.\n엔드포인트는 삭제할 수 없습니다.\n\n 배경 우클릭 시 메뉴: 출력 효과에 영향 없는 일부 시각 설정:\n - 제어 핸들 표시 \n - 샘플링 점 표시 \n\n**샘플링 정밀도** 샘플링 점 수를 설정합니다. 실제 제어점이 아니라 스플라인 자체에서 샘플링 점을 반환하며, 보간 유형에 따라 결정됩니다.\n샘플링 방법:\n - 시간: 시간축를 따라 샘플링, 스케줄링용 \n - 경로: 곡선 경로를 따라 샘플링, 좌표용 \n\n 출력:\n - 마스크 배치 \n 마스크를 수신하는 모든 노드에 사용 \n - 부동소수 리스트 \n IPAdapter 가중치 그룹에 사용 \n - pandas series \n Fizz 배치 스케줄링 노드를 수신하는 노드에 사용 \n - torch tensor \n 알 수 없는 노드에 사용"
+    },
+    "CreateShapeMaskOnPath": {
+        "title": "도형 마스크 생성",
+        "inputs": {
+            "coordinates": "좌표",
+            "size_multiplier": "크기 배수"
+        },
+        "widgets": {
+            "shape": "도형",
+            "frame_height": "높이",
+            "frame_width": "너비",
+            "shape_height": "도형 높이",
+            "shape_width": "도형 너비",
+            "shape_color": "도형 색상",
+            "bg_color": "배경색",
+            "blur_radius": "블러 반경",
+            "intensity": "강도"
+        },
+        "outputs": {
+            "mask": "마스크",
+            "mask_inverted": "반전 마스크"
+        },
+        "description": "지정된 도형의 마스크 또는 마스크 배치를 생성합니다. 위치 파라미터는 중심 좌표입니다."
+    },
+    "CreateShapeImageOnPath": {
+        "title": "도형 이미지 생성",
+        "inputs": {
+            "coordinates": "좌표",
+            "size_multiplier": "크기 배수"
+        },
+        "widgets": {
+            "shape": "도형",
+            "frame_height": "높이",
+            "frame_width": "너비",
+            "shape_height": "도형 높이",
+            "shape_width": "도형 너비",
+            "shape_color": "도형 색상",
+            "bg_color": "배경색",
+            "blur_radius": "블러 반경",
+            "intensity": "강도",
+            "trailing": "트레일링",
+            "border_width": "테두리 너비",
+            "border_color": "테두리 색상"
+        },
+        "outputs": {
+            "image": "이미지",
+            "mask": "마스크"
+        },
+        "description": "지정된 도형의 이미지 또는 이미지 배치를 생성합니다. 위치 파라미터는 중심 좌표입니다."
+    },
+    "CreateTextOnPath": {
+        "title": "텍스트 생성",
+        "inputs": {
+            "coordinates": "좌표",
+            "size_multiplier": "크기 배수"
+        },
+        "widgets": {
+            "text": "텍스트",
+            "frame_height": "높이",
+            "frame_width": "너비",
+            "font": "글꼴",
+            "font_size": "글꼴 크기",
+            "alignment": "정렬 대상",
+            "text_color": "텍스트 색상"
+        },
+        "outputs": {
+            "image": "이미지",
+            "mask": "마스크",
+            "mask_inverted": "반전 마스크"
+        },
+        "description": "지정된 텍스트의 마스크 또는 마스크 배치를 생성합니다. 위치는 중심 좌표입니다."
+    },
+    "CreateGradientFromCoords": {
+        "title": "좌표에서 그라데이션 이미지 생성",
+        "inputs": {
+            "coordinates": "좌표"
+        },
+        "widgets": {
+            "frame_height": "높이",
+            "frame_width": "너비",
+            "start_color": "시작 색상",
+            "end_color": "종료 색상",
+            "multiplier": "배수"
+        },
+        "outputs": {
+            "image": "이미지"
+        },
+        "description": "좌표 위치에서 그라데이션 이미지를 생성합니다."
+    },
+    "GradientToFloat": {
+        "title": "그라데이션→부동소수",
+        "inputs": {
+            "image": "이미지"
+        },
+        "widgets": {
+            "steps": "단계 수"
+        },
+        "outputs": {
+            "float_x": "부동소수_X",
+            "float_y": "부동소수_Y"
+        },
+        "description": "이미지에서 부동소수 리스트를 계산"
+    },
+    "MaskOrImageToWeight": {
+        "title": "마스크 또는 이미지→가중치",
+        "inputs": {
+            "images": "이미지",
+            "masks": "마스크"
+        },
+        "widgets": {
+            "output_type": "출력 유형"
+        },
+        "outputs": {
+            "FLOAT": "부동소수",
+            "STRING": "부동소수"
+        },
+        "description": "마스크 또는 이미지 배치의 평균값을 가져 출력 유형에 따라 결과를 출력합니다."
+    },
+    "WeightScheduleConvert": {
+        "title": "가중치 스케줄 변환",
+        "inputs": {
+            "input_values": "입력 값",
+            "interpolation_curve": "보간 곡선"
+        },
+        "widgets": {
+            "output_type": "출력 유형",
+            "invert": "반전",
+            "repeat": "반복",
+            "remap_to_frames": "프레임에 재매핑",
+            "interpolation_curve": "보간 곡선",
+            "remap_values": "재매핑 값",
+            "remap_min": "재매핑 최소값",
+            "remap_max": "재매핑 최대값"
+        },
+        "outputs": {
+            "FLOAT": "부동소수",
+            "STRING": "부동소수",
+            "INT": "정수"
+        },
+        "description": "서로 다른 값 리스트/시리즈를 다른 유형으로 변환합니다."
+    },
+    "FloatToMask": {
+        "title": "부동소수→마스크",
+        "inputs": {
+            "input_values": "입력 값"
+        },
+        "widgets": {
+            "width": "너비",
+            "height": "높이"
+        },
+        "outputs": {
+            "MASK": "마스크"
+        },
+        "description": "입력된 부동소수 값으로 마스크 배치를 생성합니다. 배치 크기는 입력 부동소수 값의 길이가 결정합니다. 각 마스크는 지정된 너비와 높이로 생성됩니다."
+    },
+    "WeightScheduleExtend": {
+        "title": "가중치 스케줄 확장",
+        "inputs": {
+            "input_values_1": "입력 값_1",
+            "input_values_2": "입력 값_2"
+        },
+        "widgets": {
+            "output_type": "출력 유형"
+        },
+        "outputs": {
+            "FLOAT": "부동소수"
+        },
+        "description": "서로 다른 값 리스트/시리즈를 확장하고 필요에 따라 변환합니다"
+    },
+    "FloatToSigmas": {
+        "title": "부동소수→Sigmas",
+        "inputs": {
+            "float_list": "부동소수 리스트"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        },
+        "description": "부동소수 리스트에서 sigmas 텐서를 생성합니다"
+    },
+    "SigmasToFloat": {
+        "title": "Sigmas→부동소수",
+        "inputs": {
+            "sigmas": "sigmas"
+        },
+        "outputs": {
+            "float": "부동소수"
+        },
+        "description": "sigma 텐서에서 부동소수 리스트를 생성합니다."
+    },
+    "GLIGENTextBoxApplyBatchCoords": {
+        "title": "GLIGEN 텍스트 박스 적용(배치 좌표)",
+        "inputs": {
+            "conditioning_to": "컨디셔닝",
+            "latents": "Latent",
+            "clip": "CLIP",
+            "gligen_textbox_model": "GLIGEN 모델",
+            "coordinates": "좌표",
+            "size_multiplier": "크기 배수"
+        },
+        "widgets": {
+            "text": "텍스트",
+            "width": "너비",
+            "height": "높이"
+        },
+        "outputs": {
+            "conditioning": "컨디셔닝",
+            "coord_preview": "좌표 미리보기"
+        },
+        "description": "이 노드는 AnimateDiff-Evolved와 함께 배치에서 GLIGEN 텍스트 박스의 위치를 스케줄링합니다. 스플라인 에디터 노드와 함께 사용하는 것을 권장합니다.\n\n GLIGEN 모델은 관리자 의 '모델 설치'에서 다운로드하거나 다음에서 직접 다운로드하세요: https://huggingface.co/comfyanonymous/GLIGEN_pruned_safetensors/tree/main \n \n 입력: \n- **Latent** 입력은 배치 크기를 계산하는 데 사용 \n- **CLIP** 는 텍스트 인코더로, 다른 CLIP 입력과 동일 \n- **GLIGEN 모델** 은 GLIGEN 로더 노드에 연결 \n- **좌표** 는 좌표점 JSON 문자열을 수신하며, 스플라인 에디터 노드와 호환됩니다. \n- **텍스트** 텍스트 박스 위치의 프롬프트 \n- **너비** 와 **높이** 는 GLIGEN 텍스트 박스의 크기를 설정 \n \n출력:\n- **컨디셔닝** CLIP 텍스트 인코딩 과 샘플러 사이에 연결 \n- **좌표 미리보기** 좌표와 BBox 프리뷰용 \n\n"
+    },
+    "CreateInstanceDiffusionTracking": {
+        "title": "인스턴스 디퓨전 트래킹 생성",
+        "inputs": {
+            "coordinates": "좌표",
+            "size_multiplier": "크기 배수"
+        },
+        "widgets": {
+            "width": "너비",
+            "height": "높이",
+            "bbox_width": "BBox 너비",
+            "bbox_height": "BBox 높이",
+            "class_name": "클래스명",
+            "class_id": "클래스 ID",
+            "prompt": "프롬프트",
+            "fit_in_frame": "프레임에 맞춤"
+        },
+        "outputs": {
+            "tracking": "트래킹",
+            "prompt": "프롬프트",
+            "width": "너비",
+            "height": "높이",
+            "bbox_width": "bbox 너비",
+            "bbox_height": "bbox 높이",
+            "int": "정수"
+        },
+        "description": "InstanceDiffusion용 트래킹 데이터를 생성합니다:\nhttps://github.com/logtd/ComfyUI-InstanceDiffusion\n\nInstanceDiffusion 프롬프트 형식:\n`\"class_id.class_name\": \"prompt\"`\n예시:\n`\"1.head\": \"((head))\"`"
+    },
+    "AppendInstanceDiffusionTracking": {
+        "title": "인스턴스 디퓨전 트래킹 추가",
+        "inputs": {
+            "tracking_1": "트래킹_1",
+            "tracking_2": "트래킹_2",
+            "prompt_1": "프롬프트_1",
+            "prompt_2": "프롬프트_2"
+        },
+        "outputs": {
+            "tracking": "트래킹",
+            "prompt": "프롬프트"
+        },
+        "description": "인스턴스 디퓨전용 트래킹 데이터를 추가합니다: https://github.com/logtd/ComfyUI-InstanceDiffusion"
+    },
+    "InterpolateCoords": {
+        "title": "좌표 보간",
+        "inputs": {
+            "coordinates": "좌표",
+            "interpolation_curve": "보간 곡선"
+        },
+        "outputs": {
+            "coordinates": "좌표"
+        },
+        "description": "곡선에 따라 좌표를 보간합니다"
+    },
+    "DrawInstanceDiffusionTracking": {
+        "title": "인스턴스 디퓨전 트래킹 그리기",
+        "inputs": {
+            "image": "이미지",
+            "tracking": "트래킹"
+        },
+        "widgets": {
+            "box_line_width": "박스 선 두께",
+            "draw_text": "텍스트 그리기",
+            "font": "글꼴",
+            "font_size": "글꼴 크기"
+        },
+        "outputs": {
+            "image": "이미지"
+        },
+        "description": "CreateInstanceDiffusionTracking 노드의 트래킹 데이터를 호출하여 그립니다 "
+    },
+    "PointsEditor": {
+        "title": "포인트 에디터",
+        "inputs": {
+            "bg_image": "배경 이미지"
+        },
+        "widgets": {
+            "points_store": "점 위치",
+            "bbox_store": "BBox 위치",
+            "bbox_format": "BBox 형식",
+            "width": "너비",
+            "height": "높이",
+            "normalize": "정규화",
+            "New canvs": "새 캔버스",
+            "Load Image": "이미지 로드",
+            "Clear Image": "이미지 지우기",
+            "New canvas": "새 캔버스"
+        },
+        "outputs": {
+            "positive_coords": "긍정 좌표",
+            "negative_coords": "부정 좌표",
+            "bbox": "BBox",
+            "bbox_mask": "BBox 마스크",
+            "cropped_image": "크롭 이미지"
+        },
+        "description": "# 개발 중  \n가능하면 워크플로에서 이 노드를 사용하지 마세요. 버그가 많고 불안정할 수 있습니다!!  \n\n##좌표를 생성하는 시각적 에디터\n\n**Shift + 좌클릭** 긍정(초록) 좌표점 추가.\n\n**Shift + 우클릭** 부정(빨강) 좌표점 추가.\n\n**Ctrl + 좌클릭** 사각형 박스 그리기.\n\n**포인트 우클릭** 해당 포인트 삭제, 포인트 배열의 시작/종료점은 삭제할 수 없습니다.\n\n이미지를 추가하려면 노드를 선택하고 이미지를 붙여넣거나 드래그하세요.\n\n또는 배경 이미지 인터페이스로 입력하며 입력 이미지의 첫 프레임을 사용합니다.\n\n**이미지는 노드와 워크플로에 저장됩니다**\n우클릭 메뉴에서 이미지를 지울 수 있습니다.\n"
+    },
+    "CutAndDragOnPath": {
+        "title": "경로를 따라 오려내기·드래그",
+        "inputs": {
+            "image": "이미지",
+            "mask": "마스크",
+            "bg_image": "배경 이미지",
+            "coordinates": "좌표"
+        },
+        "widgets": {
+            "frame_width": "프레임 너비",
+            "frame_height": "프레임 높이",
+            "inpaint": "인페인트"
+        },
+        "outputs": {
+            "image": "이미지",
+            "mask": "마스크"
+        },
+        "description": "이미지에서 마스크 영역을 오려내어 경로를 따라 드래그합니다. 인페인트를 활성화하고 배경 이미지를 제공하지 않으면 OpenCV TELEA 알고리즘으로 오려낸 영역을 채웁니다."
+    },
+    "ImagePass": {
+        "title": "이미지 브리지",
+        "inputs": {
+            "image": "이미지"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "이미지를 다음 노드로 전달합니다"
+    },
+    "ColorMatch": {
+        "title": "이미지 색보정",
+        "inputs": {
+            "image_ref": "참고 이미지",
+            "image_target": "대상 이미지"
+        },
+        "widgets": {
+            "method": "방법",
+            "strength": "강도",
+            "multithread": "멀티스레드"
+        },
+        "outputs": {
+            "image": "이미지"
+        },
+        "description": "color-matcher(이미지 색보정)는 사진, 회화, 시퀀스 프레임의 자동 색보정 및 라이트필드 스틸 보정에 사용되며 이미지 간 색 스타일을 변환할 수 있습니다.\n\nReinhard 등의 알고리즘, Pitie 등의 Monge-Kantorovich Linearization(MKL) 알고리즘, 그리고 고전 히스토그램 매칭을 접목한 Multi-Variate Gaussian Distribution(MVGD) 알고리즘의 해석적 솔루션을 기반으로 합니다. 앞서 보여준 바와 같이 HM-MVGD-HM 방법은 기존 방법보다 우수합니다.\n\nhttps://github.com/hahnec/color-matcher/"
+    },
+    "SaveImageWithAlpha": {
+        "title": "Alpha 채널 포함 이미지 저장",
+        "inputs": {
+            "images": "이미지",
+            "mask": "마스크",
+            "filename_prefix": "파일명 접두사",
+            "prompt": "프롬프트",
+            "extra_pnginfo": "추가 PNG 정보"
+        },
+        "outputs": {}
+    },
+    "ImageConcanate": {
+        "title": "이미지 결합",
+        "inputs": {
+            "image1": "이미지_1",
+            "image2": "이미지_2"
+        },
+        "widgets": {
+            "direction": "방향",
+            "match_image_size": "이미지 크기 맞춤"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "방향에 따라 두 이미지를 결합합니다."
+    },
+    "ImageConcatFromBatch": {
+        "title": "이미지 결합(배치)",
+        "inputs": {
+            "images": "이미지"
+        },
+        "widgets": {
+            "num_columns": "열 수",
+            "match_image_size": "크기 맞춤",
+            "max_resolution": "최대 해상도"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "이미지 배치에서 이미지를 가져와 열 수에 따라 단일 이미지로 정렬합니다."
+    },
+    "ImageGridComposite2x2": {
+        "title": "이미지 그리드 합성 2x2",
+        "inputs": {
+            "image1": "이미지_1",
+            "image2": "이미지_2",
+            "image3": "이미지_3",
+            "image4": "이미지_4"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "4개의 입력 이미지를 2x2 표로 합성합니다."
+    },
+    "ImageGridComposite3x3": {
+        "title": "이미지 그리드 합성 3x3",
+        "inputs": {
+            "image1": "이미지_1",
+            "image2": "이미지_2",
+            "image3": "이미지_3",
+            "image4": "이미지_4",
+            "image5": "이미지_5",
+            "image6": "이미지_6",
+            "image7": "이미지_7",
+            "image8": "이미지_8",
+            "image9": "이미지_9"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "9개의 입력 이미지를 3x3 표로 합성합니다."
+    },
+    "ImageBatchTestPattern": {
+        "title": "이미지 배치 패턴",
+        "widgets": {
+            "batch_size": "배치 크기",
+            "start_from": "시작 값",
+            "text_x": "텍스트 x",
+            "text_y": "텍스트 y",
+            "width": "너비",
+            "height": "높이",
+            "font": "글꼴",
+            "font_size": "글꼴 크기"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        }
+    },
+    "ImageGrabPIL": {
+        "title": "PIL 화면 캡처",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "너비",
+            "height": "높이",
+            "num_frames": "프레임 수",
+            "delay": "지연"
+        },
+        "outputs": {
+            "image": "이미지"
+        },
+        "description": "스크린 좌표로 영역을 캡처합니다.\n\n실시간 샘플링에 사용됩니다."
+    },
+    "Screencap_mss": {
+        "title": "스크린 캡처 MSS",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "너비",
+            "height": "높이",
+            "num_frames": "프레임 수",
+            "delay": "지연"
+        },
+        "outputs": {
+            "images": "이미지"
+        },
+        "description": "스크린 좌표로 영역을 캡처합니다.\n\n실시간 샘플링에 사용됩니다."
+    },
+    "WebcamCaptureCV2": {
+        "title": "웹캠 캡처 CV2",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "너비",
+            "height": "높이",
+            "cam_index": "카메라 번호",
+            "release": "해제"
+        },
+        "outputs": {
+            "image": "이미지"
+        },
+        "description": "CV2로 웹캠을 호출해 화면을 캡처합니다.\n\n실시간 샘플링에 사용됩니다."
+    },
+    "AddLabel": {
+        "title": "라벨 추가",
+        "inputs": {
+            "image": "이미지",
+            "caption": "제목"
+        },
+        "widgets": {
+            "text_x": "위치_X",
+            "text_y": "위치_Y",
+            "height": "높이",
+            "font_size": "글꼴 크기",
+            "font_color": "글꼴 색상",
+            "label_color": "배경색",
+            "font": "글꼴",
+            "text": "텍스트",
+            "direction": "방향"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        }
+    },
+    "GetImageSizeAndCount": {
+        "title": "이미지 크기·수량 가져오기",
+        "inputs": {
+            "image": "이미지"
+        },
+        "outputs": {
+            "image": "이미지",
+            "width": "너비",
+            "height": "높이",
+            "count": "수량"
+        },
+        "description": "이미지의 너비, 높이, 배치 크기를 출력"
+    },
+    "ImageBatchRepeatInterleaving": {
+        "title": "이미지 배치 복제",
+        "inputs": {
+            "images": "이미지",
+            "mask": "마스크"
+        },
+        "widgets": {
+            "repeats": "횟수"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "배치 내 이미지를 지정된 횟수만큼 복제합니다.\n\n예: 5개 이미지의 배치 0,1,2,3,4\n\n2회 반복 후 0,0,1,1,2,2,3,3,4,4"
+    },
+    "ImageUpscaleWithModelBatched": {
+        "title": "모델로 이미지 배치 업스케일",
+        "inputs": {
+            "upscale_model": "업스케일 모델",
+            "images": "이미지"
+        },
+        "widgets": {
+            "per_batch": "배치당"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "ComfyUI 기본 모델 초해상도 노드와 동일한 기능을 하되, 분할 배치 설정을 지원해 VRAM 사용량을 줄입니다."
+    },
+    "ImageNormalize_Neg1_To_1": {
+        "title": "이미지 정규화 -1~1",
+        "inputs": {
+            "images": "이미지"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "이미지를 [-1,1]로 정규화"
+    },
+    "RemapImageRange": {
+        "title": "이미지 범위 재매핑",
+        "inputs": {
+            "image": "이미지"
+        },
+        "widgets": {
+            "min": "최소값",
+            "max": "최대값",
+            "clamp": "클램프"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "이미지 값을 지정된 범위로 재매핑합니다."
+    },
+    "SplitImageChannels": {
+        "title": "이미지 채널 분리",
+        "inputs": {
+            "image": "이미지"
+        },
+        "outputs": {
+            "red": "빨강",
+            "green": "초록",
+            "blue": "파랑",
+            "mask": "마스크"
+        },
+        "description": "이미지를 단일 채널 이미지로 분리하고, alpha 채널은 마스크로 분리합니다."
+    },
+    "MergeImageChannels": {
+        "title": "이미지 채널 병합",
+        "inputs": {
+            "red": "빨강",
+            "green": "초록",
+            "blue": "파랑",
+            "alpha": "alpha 투명 채널"
+        },
+        "outputs": {
+            "image": "이미지"
+        },
+        "description": "채널을 이미지로 병합"
+    },
+    "ImagePadForOutpaintMasked": {
+        "title": "아웃페인트 패드(마스크)",
+        "inputs": {
+            "image": "이미지",
+            "mask": "마스크"
+        },
+        "widgets": {
+            "left": "좌",
+            "top": "상",
+            "right": "우",
+            "bottom": "하",
+            "feathering": "페이딩"
+        },
+        "outputs": {
+            "IMAGE": "이미지",
+            "MASK": "마스크"
+        }
+    },
+    "ImagePadForOutpaintTargetSize": {
+        "title": "아웃페인트 패드(크기)",
+        "inputs": {
+            "image": "이미지",
+            "mask": "마스크"
+        },
+        "widgets": {
+            "target_width": "목표 너비",
+            "target_height": "목표 높이",
+            "feathering": "페이딩",
+            "upscale_method": "축소 방법"
+        },
+        "outputs": {
+            "IMAGE": "이미지",
+            "MASK": "마스크"
+        }
+    },
+    "ImagePrepForICLora": {
+        "title": "ICLora 이미지 준비",
+        "inputs": {
+            "reference_image": "참고 이미지",
+            "latent_image": "Latent 이미지",
+            "latent_mask": "Latent 마스크",
+            "reference_mask": "참고 마스크"
+        },
+        "widgets": {
+            "output_width": "출력 너비",
+            "output_height": "출력 높이",
+            "border_width": "테두리 너비"
+        },
+        "outputs": {
+            "image": "이미지",
+            "mask": "마스크"
+        }
+    },
+    "ImageAndMaskPreview": {
+        "title": "이미지·마스크 미리보기",
+        "inputs": {
+            "image": "이미지",
+            "mask": "마스크"
+        },
+        "widgets": {
+            "mask_opacity": "마스크 불투명도",
+            "mask_color": "마스크 색상",
+            "pass_through": "패스스루"
+        },
+        "outputs": {
+            "composite": "이미지"
+        },
+        "description": "이미지 또는 마스크를 미리보며, 이미지와 마스크를 모두 입력하면 마스크를 이미지에 합성합니다.\n패스스루를 활성화하면 합성이 비활성화되어 비디오 병합 노드의 미리보기로 통과하는 데 사용됩니다."
+    },
+    "CrossFadeImages": {
+        "title": "교차 페이드 이미지",
+        "inputs": {
+            "images_1": "이미지_1",
+            "images_2": "이미지_2"
+        },
+        "widgets": {
+            "interpolation": "보간 방식",
+            "transition_start_index": "전환 시작 인덱스",
+            "transitioning_frames": "전환 프레임 수",
+            "start_level": "시작 값",
+            "end_level": "종료 값"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        }
+    },
+    "CrossFadeImagesMulti": {
+        "title": "다중 교차 페이드 이미지",
+        "inputs": {
+            "image_1": "이미지_1",
+            "image_2": "이미지_2"
+        },
+        "widgets": {
+            "inputcount": "입력 수",
+            "interpolation": "보간 방식",
+            "Update inputs": "입력 업데이트",
+            "transitioning_frames": "전환 프레임 수"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        }
+    },
+    "TransitionImagesMulti": {
+        "title": "다중 전환 이미지",
+        "inputs": {
+            "image_1": "이미지_1",
+            "image_2": "이미지_2"
+        },
+        "widgets": {
+            "inputcount": "입력 수",
+            "interpolation": "보간 방식",
+            "transition_type": "전환 유형",
+            "transitioning_frames": "전환 프레임 수",
+            "blur_radius": "블러 반경",
+            "reverse": "반전",
+            "device": "장치",
+            "Update inputs": "입력 업데이트"
+        },
+        "outputs": {
+            "IMAGE": "이미지",
+            "MASK": "마스크"
+        },
+        "description": "이미지 간의 전환을 생성합니다."
+    },
+    "TransitionImagesInBatch": {
+        "title": "배치 내 전환 이미지",
+        "inputs": {
+            "images": "이미지"
+        },
+        "widgets": {
+            "interpolation": "보간 방식",
+            "transition_type": "전환 유형",
+            "transitioning_frames": "전환 프레임 수",
+            "blur_radius": "블러 반경",
+            "reverse": "반전",
+            "device": "장치"
+        },
+        "outputs": {
+            "IMAGE": "이미지",
+            "MASK": "마스크"
+        },
+        "description": "배치 이미지 간에 전환을 생성합니다"
+    },
+    "ShuffleImageBatch": {
+        "title": "이미지 배 뒤섞기",
+        "inputs": {
+            "images": "이미지"
+        },
+        "widgets": {
+            "seed": "시드"
+        },
+        "outputs": {
+            "IMAGE": "이미지",
+            "MASK": "마스크"
+        }
+    },
+    "GetImageRangeFromBatch": {
+        "title": "이미지 범위 가져오기",
+        "inputs": {
+            "images": "이미지",
+            "masks": "마스크"
+        },
+        "widgets": {
+            "start_index": "시작 번호",
+            "num_frames": "프레임 수"
+        },
+        "outputs": {
+            "IMAGE": "이미지",
+            "MASK": "마스크"
+        },
+        "description": "입력 이미지 배치와 매개변수에 따라 새 이미지 배치를 생성합니다."
+    },
+    "GetLatentRangeFromBatch": {
+        "title": "Latent 범위 가져오기",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "start_index": "시작 번호",
+            "num_frames": "프레임 수"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "Insert_Latent_To_Index": {
+        "title": "Latent를 인덱스에 삽입",
+        "inputs": {
+            "source": "원본",
+            "destination": "대상"
+        },
+        "widgets": {
+            "index": "인덱스"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "GetImagesFromBatchIndexed": {
+        "title": "배치에서 이미지 가져오기",
+        "inputs": {
+            "images": "이미지"
+        },
+        "widgets": {
+            "indexes": "번호"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "인덱스 번호로 이미지를 선택합니다."
+    },
+    "InsertImagesToBatchIndexed": {
+        "title": "이미지를 인덱스 배치에 삽입",
+        "inputs": {
+            "original_images": "원본 이미지",
+            "images_to_insert": "삽입 이미지"
+        },
+        "widgets": {
+            "indexes": "인덱스"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "지정된 인덱스 위치의 이미지를 원본 이미지 배치에 삽입합니다."
+    },
+    "PadImageBatchInterleaved": {
+        "title": "이미지 배치 교대 패딩",
+        "inputs": {
+            "images": "이미지"
+        },
+        "widgets": {
+            "empty_frames_per_image": "이미지당 빈 프레임 수",
+            "pad_frame_value": "패딩 프레임 값",
+            "add_after_last": "마지막 뒤에 추가"
+        },
+        "outputs": {
+            "images": "이미지",
+            "masks": "마스크"
+        },
+        "description": "배치 내 이미지 사이에 빈 프레임을 삽입합니다."
+    },
+    "ReplaceImagesInBatch": {
+        "title": "이미지 배치 교체",
+        "inputs": {
+            "original_images": "원본 이미지",
+            "replacement_images": "교체 이미지",
+            "original_masks": "원본 마스크",
+            "replacement_masks": "교체 마스크"
+        },
+        "widgets": {
+            "start_index": "시작 번호"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "지정된 시작 인덱스부터 배치 내 이미지를 교체합니다. 교체 이미지로 대체합니다."
+    },
+    "ReverseImageBatch": {
+        "title": "이미지 배치를 뒤집기",
+        "inputs": {
+            "images": "이미지"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "배치 내 이미지의 순서를 뒤집습니다."
+    },
+    "ImageBatchMulti": {
+        "title": "이미지 결합 배치 (다중)",
+        "inputs": {
+            "image_1": "이미지_1",
+            "image_2": "이미지_2",
+            "image_3": "이미지_3",
+            "image_4": "이미지_4",
+            "image_5": "이미지_5",
+            "image_6": "이미지_6",
+            "image_7": "이미지_7",
+            "image_8": "이미지_8",
+            "image_9": "이미지_9",
+            "image_10": "이미지_10"
+        },
+        "widgets": {
+            "inputcount": "입력 수",
+            "blending": "블렌딩 방식",
+            "Update inputs": "입력 업데이트"
+        },
+        "outputs": {
+            "images": "이미지"
+        },
+        "description": "여러 이미지를 이미지 배치로 병합합니다. \"입력 수\" 설정으로 입력 인터페이스 수를 지정할 수 있으며, 업데이트를 클릭하면 인터페이스가 갱신됩니다."
+    },
+    "ImageTensorList": {
+        "title": "이미지 텐서 목록",
+        "inputs": {
+            "image1": "이미지1",
+            "image2": "이미지2"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "입력 이미지로 이미지 목록을 생성합니다."
+    },
+    "ImageBatchExtendWithOverlap": {
+        "title": "이미지 배치 확장 (중복 영역 포함)",
+        "inputs": {
+            "source_images": "원본 이미지",
+            "new_images": "새 이미지"
+        },
+        "widgets": {
+            "overlap": "중복",
+            "overlap_side": "측면 중복",
+            "overlap_mode": "모드 중복"
+        },
+        "outputs": {
+            "source_images": "원본 이미지",
+            "start_images": "시작 이미지",
+            "extended_images": "확장 이미지"
+        },
+        "description": "영상 생성 확장을 위한 보조 노드\n  먼저 입력 원본과 중복량을 가져와 확장 시작 프레임을 얻습니다.\n  그런 다음 이 노드의 다른 사본에\n  새로 생성된 프레임을 제공하고 중복 처리 방식을 선택합니다."
+    },
+    "ImageAddMulti": {
+        "title": "이미지 블렌드 (다중)",
+        "inputs": {
+            "image_1": "이미지_1",
+            "image_2": "이미지_2",
+            "image_3": "이미지_3",
+            "image_4": "이미지_4",
+            "image_5": "이미지_5",
+            "image_6": "이미지_6",
+            "image_7": "이미지_7",
+            "image_8": "이미지_8",
+            "image_9": "이미지_9",
+            "image_10": "이미지_10"
+        },
+        "widgets": {
+            "inputcount": "입력 수",
+            "blending": "블렌딩 방식",
+            "blend_amount": "블렌드 양",
+            "Update inputs": "입력 업데이트"
+        },
+        "outputs": {
+            "images": "이미지"
+        },
+        "description": "여러 이미지를 블렌드합니다. \"입력 수\" 설정으로 입력 인터페이스 수를 지정할 수 있으며, 업데이트를 클릭하면 인터페이스가 갱신됩니다."
+    },
+    "ImageConcatMulti": {
+        "title": "이미지 병합 (여러 개)",
+        "inputs": {
+            "image_1": "이미지_1",
+            "image_2": "이미지_2"
+        },
+        "widgets": {
+            "inputcount": "입력 수",
+            "direction": "방향",
+            "match_image_size": "크기 맞춤",
+            "Update inputs": "입력 업데이트"
+        },
+        "outputs": {
+            "images": "이미지"
+        },
+        "description": "방향에 따라 여러 이미지를 병합합니다. 업데이트를 클릭하면 입력 수가 갱신됩니다."
+    },
+    "PreviewAnimation": {
+        "title": "애니메이션 미리보기",
+        "inputs": {
+            "images": "이미지",
+            "masks": "마스크"
+        },
+        "widgets": {
+            "fps": "프레임 레이트"
+        }
+    },
+    "ImageResizeKJ": {
+        "title": "이미지 축소·확대 (KJ)",
+        "inputs": {
+            "image": "이미지",
+            "get_image_size": "참조 이미지",
+            "width_input": "너비",
+            "height_input": "높이"
+        },
+        "widgets": {
+            "width": "너비",
+            "height": "높이",
+            "upscale_method": "확대 방법",
+            "keep_proportions": "종횡비 고정",
+            "keep_proportion": "종횡비 고정",
+            "divisible_by": "나누어 떨어지는 수",
+            "crop": "크롭",
+            "per_batch": "배치"
+        },
+        "outputs": {
+            "IMAGE": "이미지",
+            "width": "너비",
+            "height": "높이"
+        },
+        "description": "지정된 너비·높이로 이미지를 축소·확대합니다. 크기는 입력으로 지정할 수 있으며, 최종 출력 우선순위는 다음 규칙에 따릅니다:\n- 참조 이미지 크기 \n- 너비-입력 및 높이-입력 \n- 너비 및 높이 \n \n종횡비 고정은 가장 큰 크기에 맞춰 종횡비를 유지합니다."
+    },
+    "LoadAndResizeImage": {
+        "title": "이미지 로드 및 축소·확대",
+        "widgets": {
+            "image": "이미지",
+            "resize": "축소·확대",
+            "width": "너비",
+            "height": "높이",
+            "repeat": "복제",
+            "keep_proportion": "종횡비 고정",
+            "divisible_by": "인수",
+            "mask_channel": "마스크 채널",
+            "background_color": "배경색",
+            "upload": "업로드"
+        },
+        "outputs": {
+            "image": "이미지",
+            "mask": "마스크",
+            "width": "너비",
+            "height": "높이",
+            "image_path": "이미지 경로"
+        }
+    },
+    "LoadImagesFromFolderKJ": {
+        "title": "폴더에서 이미지 로드 (KJ)",
+        "widgets": {
+            "folder": "폴더",
+            "width": "너비",
+            "height": "높이",
+            "keep_aspect_ratio": "종횡비 유지",
+            "image_load_cap": "로드 상한",
+            "start_index": "시작 번호",
+            "include_subfolders": "하위 폴더 포함"
+        },
+        "outputs": {
+            "image": "이미지",
+            "mask": "마스크",
+            "count": "수량",
+            "image_path": "이미지 경로"
+        },
+        "description": "폴더에서 이미지를 배치로 로드합니다. 이미지는 크기 조정 후 배치를 구성합니다."
+    },
+    "ImageGridtoBatch": {
+        "title": "이미지 그리드를 배치로",
+        "inputs": {
+            "image": "이미지"
+        },
+        "widgets": {
+            "columns": "열 수",
+            "The number of columns in the grid.": "그리드의 열 수.",
+            "rows": "행 수",
+            "The number of rows in the grid. Set to 0 for automatic calculation.": "그리드의 행 수, 0이면 자동 계산."
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "그리드를 단일 이미지 배치로 변환합니다."
+    },
+    "SaveImageKJ": {
+        "title": "이미지 저장 (KJ)",
+        "inputs": {
+            "images": "이미지",
+            "caption": "캡션"
+        },
+        "widgets": {
+            "filename_prefix": "파일명 접두사",
+            "output_folder": "출력 폴더",
+            "caption_file_extension": "캡션 파일 확장자",
+            "prompt": "프롬프트",
+            "extra_pnginfo": "추가 PNG 정보"
+        },
+        "outputs": {
+            "filename": "파일명"
+        },
+        "description": "입력 이미지를 ComfyUI 출력 디렉터리에 저장합니다."
+    },
+    "SaveStringKJ": {
+        "title": "문자열 저장 (KJ)",
+        "inputs": {
+            "string": "문자열"
+        },
+        "widgets": {
+            "filename_prefix": "파일명 접두사",
+            "output_folder": "출력 폴더",
+            "file_extension": "파일 확장자"
+        },
+        "outputs": {
+            "filename": "파일명"
+        }
+    },
+    "FastPreview": {
+        "title": "빠른 미리보기",
+        "inputs": {
+            "image": "이미지"
+        },
+        "widgets": {
+            "format": "형식",
+            "quality": "품질"
+        },
+        "outputs": {}
+    },
+    "ImageCropByMaskAndResize": {
+        "title": "마스크로 크롭 후 축소·확대",
+        "inputs": {
+            "image": "이미지",
+            "mask": "마스크"
+        },
+        "widgets": {
+            "base_resolution": "기본 해상도",
+            "padding": "패딩",
+            "min_crop_resolution": "최소 크롭 해상도",
+            "max_crop_resolution": "최대 크롭 해상도"
+        },
+        "outputs": {
+            "images": "이미지",
+            "masks": "마스크",
+            "BBox": "BBox"
+        }
+    },
+    "ImageCropByMask": {
+        "title": "마스크로 크롭",
+        "inputs": {
+            "image": "이미지",
+            "mask": "마스크"
+        },
+        "outputs": {
+            "image": "이미지"
+        },
+        "description": "제공된 마스크에 따라 입력 이미지를 크롭합니다"
+    },
+    "ImageUncropByMask": {
+        "title": "마스크로 역크롭",
+        "inputs": {
+            "destination": "대상 이미지",
+            "source": "원본 이미지",
+            "mask": "마스크",
+            "bbox": "BBox"
+        },
+        "outputs": {
+            "image": "이미지"
+        }
+    },
+    "ImageCropByMaskBatch": {
+        "title": "마스크로 배치 크롭",
+        "inputs": {
+            "image": "이미지",
+            "masks": "마스크"
+        },
+        "widgets": {
+            "width": "너비",
+            "height": "높이",
+            "padding": "패딩",
+            "preserve_size": "크기 보존",
+            "bg_color": "배경색"
+        },
+        "outputs": {
+            "images": "이미지",
+            "masks": "마스크"
+        }
+    },
+    "ImagePadKJ": {
+        "title": "이미지 패딩 (KJ)",
+        "inputs": {
+            "image": "이미지",
+            "mask": "마스크"
+        },
+        "widgets": {
+            "left": "왼쪽 패딩",
+            "right": "오른쪽 패딩",
+            "top": "위쪽 패딩",
+            "bottom": "아래쪽 패딩",
+            "extra_padding": "추가 패딩",
+            "pad_mode": "패딩 모드",
+            "color": "색상",
+            "target_width": "목표 너비",
+            "target_height": "목표 높이"
+        },
+        "outputs": {
+            "images": "이미지",
+            "masks": "마스크"
+        },
+        "description": "입력 이미지에 패딩을 적용하며, 지정한 패딩으로 마스크를 선택적으로 처리할 수 있습니다."
+    },
+    "ImageBatchJoinWithTransition": {
+        "title": "이미지 배치 연결 (전환 효과 포함)",
+        "inputs": {
+            "images_1": "이미지1",
+            "images_2": "이미지2"
+        },
+        "widgets": {
+            "start_index": "시작 인덱스",
+            "interpolation": "보간",
+            "transition_type": "전환 유형",
+            "transitioning_frames": "전환 프레임",
+            "blur_radius": "블러 반경",
+            "reverse": "반전",
+            "device": "장치"
+        },
+        "outputs": {
+            "images": "이미지",
+            "masks": "마스크"
+        },
+        "description": "입력 이미지"
+    },
+    "Intrinsic_lora_sampling": {
+        "title": "IntrinsicLoRA 샘플링",
+        "inputs": {
+            "model": "모델",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image": "이미지",
+            "optional_latent": "Latent(선택)"
+        },
+        "widgets": {
+            "lora_name": "LoRA 이름",
+            "task": "작업",
+            "text": "텍스트",
+            "per_batch": "배치당"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "IMAGE": "이미지"
+        },
+        "description": "샘플러가 사용하는 내부 LoRA: https://github.com/duxiaodan/intrinsic-lora 이 LoRA는 크기가 작아서 본 노드 패키지에 포함되어 있습니다."
+    },
+    "BatchCLIPSeg": {
+        "title": "CLIP 시맨틱 분할",
+        "inputs": {
+            "images": "이미지",
+            "opt_model": "선택 모델",
+            "prev_mask": "이전 마스크"
+        },
+        "widgets": {
+            "text": "텍스트",
+            "threshold": "임계값",
+            "binary_mask": "이진 마스크",
+            "combine_mask": "마스크 병합",
+            "use_cuda": "CUDA 사용",
+            "blur_sigma": "블러 강도",
+            "image_bg_Ievel": "이미지 배경 수준",
+            "invert": "반전"
+        },
+        "outputs": {
+            "Image": "이미지",
+            "Mask": "마스크"
+        },
+        "description": "CLIPSeg로 이미지 하나 또는 이미지 배치를 분할합니다."
+    },
+    "DownloadAndLoadCLIPSeg": {
+        "title": "CLIPSeg 로드",
+        "widgets": {
+            "model": "모델"
+        },
+        "outputs": {
+            "clipseg_model": "CLIPSeg 모델"
+        },
+        "description": "huggingface_hub를 사용하여 CLIPSeg 모델을 Comfy/models/clip_seg로 다운로드합니다"
+    },
+    "CreateTextMask": {
+        "title": "텍스트 마스크",
+        "widgets": {
+            "invert": "반전",
+            "frames": "프레임 수",
+            "text_x": "위치_X",
+            "text_y": "위치_Y",
+            "font_size": "글자 크기",
+            "font_color": "글자색",
+            "text": "텍스트",
+            "font": "글꼴",
+            "width": "너비",
+            "height": "높이",
+            "start_rotation": "시작 회전",
+            "end_rotation": "최종 회전"
+        },
+        "outputs": {
+            "IMAGE": "이미지",
+            "MASK": "마스크"
+        }
+    },
+    "ColorToMask": {
+        "title": "이미지 색상을 마스크로",
+        "inputs": {
+            "images": "이미지"
+        },
+        "widgets": {
+            "invert": "반전",
+            "red": "빨강",
+            "green": "초록",
+            "blue": "파랑",
+            "threshold": "임계값",
+            "per_batch": "배치당"
+        },
+        "outputs": {
+            "MASK": "마스크"
+        },
+        "description": "선택한 RGB 값을 마스크로 변환합니다. 배치 입력의 경우 **per_batch**가 한 번에 처리할 이미지 수를 제어합니다."
+    },
+    "CreateFluidMask": {
+        "title": "유체 마스크",
+        "widgets": {
+            "invert": "반전",
+            "frames": "프레임 수",
+            "width": "너비",
+            "height": "높이",
+            "inflow_count": "유입 수량",
+            "inflow_velocity": "유입 속도",
+            "inflow_radius": "유입 반경",
+            "inflow_padding": "유입 패딩",
+            "inflow_duration": "유입 시간"
+        },
+        "outputs": {
+            "IMAGE": "이미지",
+            "MASK": "마스크"
+        }
+    },
+    "CreateAudioMask": {
+        "title": "오디오 마스크",
+        "widgets": {
+            "invert": "반전",
+            "frames": "프레임 수",
+            "scale": "축소·확대",
+            "audio_path": "오디오 경로",
+            "width": "너비",
+            "height": "높이"
+        },
+        "outputs": {
+            "IMAGE": "이미지",
+            "MASK": "마스크"
+        }
+    },
+    "CreateGradientMask": {
+        "title": "그라데이션 마스크",
+        "widgets": {
+            "invert": "반전",
+            "frames": "프레임 수",
+            "width": "너비",
+            "height": "높이"
+        },
+        "outputs": {
+            "MASK": "마스크"
+        }
+    },
+    "CreateFadeMask": {
+        "title": "페이드 마스크",
+        "widgets": {
+            "invert": "반전",
+            "frames": "프레임 수",
+            "width": "너비",
+            "height": "높이",
+            "interpolation": "보간 방식",
+            "start_level": "시작 값",
+            "midpoint_level": "중간 값",
+            "end_level": "최종 값",
+            "midpoint_frame": "중간 프레임 번호"
+        },
+        "outputs": {
+            "MASK": "마스크"
+        },
+        "description": "지정된 프레임과 값 사이를 보간하는 마스크 묶음을 생성합니다. Fizz의 BatchValueSchedule과 동일한 구문을 사용합니다. 첫 번째 값은 프레임 인덱스(0이 아니라 1부터 시작)이며, 괄호 안의 두 번째 값은 0.0-1.0 범위의 마스크 부동 소수 값입니다.\n예를 들어 기본 값:\n0:(0.0)\n7:(1.0)\n15:(0.0)\n은 16프레임의 마스크 배치를 생성하며, 검은색에서 시작해 선택한 곡선 보간으로 8프레임에 완전한 흰색에 도달한 뒤, 다시 보간하여 16프레임에 완전한 검은색이 됩니다."
+    },
+    "CreateFadeMaskAdvanced": {
+        "title": "페이드 마스크 (고급)",
+        "widgets": {
+            "points_string": "색 값 지점",
+            "invert": "반전",
+            "frames": "프레임 수",
+            "width": "너비",
+            "height": "높이",
+            "interpolation": "보간 방식"
+        },
+        "outputs": {
+            "MASK": "마스크"
+        }
+    },
+    "CreateMagicMask": {
+        "title": "매직 마스크",
+        "widgets": {
+            "frames": "프레임 수",
+            "depth": "깊이",
+            "distortion": "왜곡",
+            "seed": "시드",
+            "control_after_generate": "생성 후 제어",
+            "fixed": "고정",
+            "increment": "증가",
+            "decrement": "감소",
+            "randomize": "랜덤",
+            "transitions": "전환",
+            "frame_height": "높이",
+            "frame_width": "너비"
+        },
+        "outputs": {
+            "mask": "마스크",
+            "mask_inverted": "반전 마스크"
+        }
+    },
+    "CreateShapeMask": {
+        "title": "도형 마스크",
+        "widgets": {
+            "shape": "도형",
+            "circle": "원형",
+            "square": "정사각형",
+            "triangle": "삼각형",
+            "frames": "프레임 수",
+            "location_x": "위치_X",
+            "location_y": "위치_Y",
+            "size": "크기",
+            "grow": "성장",
+            "frame_width": "너비",
+            "frame_height": "높이",
+            "shape_width": "도형의 너비",
+            "shape_height": "도형의 높이"
+        },
+        "outputs": {
+            "mask": "마스크",
+            "mask_inverted": "반전 마스크"
+        },
+        "description": "지정된 도형의 마스크 또는 마스크 묶음을 생성합니다. 위치는 중심 좌표입니다. 성장 값은 각 프레임에서 도형을 성장시키는 양으로, 애니메이션 마스크를 생성합니다."
+    },
+    "CreateVoronoiMask": {
+        "title": "보로노이 마스크",
+        "widgets": {
+            "frames": "프레임 수",
+            "num_points": "점 수",
+            "line_width": "선 두께",
+            "speed": "속도",
+            "frame_width": "너비",
+            "frame_height": "높이"
+        },
+        "outputs": {
+            "mask": "마스크",
+            "mask_inverted": "반전 마스크"
+        }
+    },
+    "GetMaskSizeAndCount": {
+        "title": "마스크 크기·수량 가져오기",
+        "inputs": {
+            "mask": "마스크"
+        },
+        "outputs": {
+            "mask": "마스크",
+            "width": "너비",
+            "height": "높이",
+            "count": "수량"
+        },
+        "description": "마스크의 너비, 높이, 배치 크기를 출력합니다"
+    },
+    "GrowMaskWithBlur": {
+        "title": "마스크 블러 성장",
+        "inputs": {
+            "mask": "마스크"
+        },
+        "widgets": {
+            "expand": "확장",
+            "incremental_expandrate": "확장 증가분",
+            "tapered_corners": "모서리 깎기",
+            "flip_input": "입력 반전",
+            "use_cuda": "CUDA 사용",
+            "blur_radius": "블러 반경",
+            "sigma": "Sigma",
+            "lerp_alpha": "선형 알파",
+            "decay_factor": "감쇠 계수",
+            "fill_holes": "구멍 메우기"
+        },
+        "outputs": {
+            "mask": "마스크",
+            "mask_inverted": "반전 마스크"
+        },
+        "description": "# 마스크 블러 성장\n- 마스크: 입력 마스크 또는 배치 마스크\n- 확장: 설정한 값으로 마스크 또는 배치 마스크를 확장 또는 축소\n- 확장 증가분: 프레임마다 설정한 값만큼 증가하는 확장률\n- 모서리 깎기: 테이퍼진 모서리 사용\n- 입력 반전: 입력 마스크를 뒤집기\n- 블러 반경: 0보다 큰 값이면 마스크를 블러 처리\n- 선형 알파: 프레임 간 보간 알파 값\n- 감쇠 계수: 프레임 간 보간의 감쇠 값\n- 구멍 메우기: 마스크 내 구멍을 채움 (느림)"
+    },
+    "MaskBatchMulti": {
+        "title": "마스크 결합 배치 (다중)",
+        "inputs": {
+            "mask_1": "마스크_1",
+            "mask_2": "마스크_2",
+            "mask_3": "마스크_3",
+            "mask_4": "마스크_4",
+            "mask_5": "마스크_5",
+            "mask_6": "마스크_6",
+            "mask_7": "마스크_7",
+            "mask_8": "마스크_8",
+            "mask_9": "마스크_9",
+            "mask_10": "마스크_10"
+        },
+        "widgets": {
+            "inputcount": "입력 수",
+            "Update inputs": "입력 업데이트"
+        },
+        "outputs": {
+            "masks": "마스크"
+        },
+        "description": "여러 마스크를 마스크 배치로 병합합니다. \"입력 수\" 설정으로 입력 인터페이스 수를 지정할 수 있으며, 업데이트를 클릭하면 인터페이스가 갱신됩니다."
+    },
+    "OffsetMask": {
+        "title": "마스크 오프셋",
+        "inputs": {
+            "mask": "마스크"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "angle": "각도",
+            "duplication_factor": "중복 횟수",
+            "roll": "롤 사용",
+            "incremental": "증분 사용",
+            "padding_mode": "패딩 모드",
+            "empty": "빈값",
+            "border": "경계",
+            "reflection": "반사"
+        },
+        "outputs": {
+            "mask": "마스크"
+        },
+        "description": "# 마스크를 지정된 양만큼 이동\n- 마스크: 입력 마스크 또는 배치 마스크\n- x: 수평 이동량\n- y: 수직 이동량\n- 중복 횟수: 마스크를 배치로 복제하는 횟수\n- 롤 사용: 가장자리 말아 감기"
+    },
+    "RoundMask": {
+        "title": "마스크 반올림",
+        "inputs": {
+            "mask": "마스크"
+        },
+        "outputs": {
+            "MASK": "마스크"
+        }
+    },
+    "ResizeMask": {
+        "title": "마스크 축소·확대",
+        "inputs": {
+            "mask": "마스크"
+        },
+        "widgets": {
+            "width": "너비",
+            "height": "높이",
+            "keep_proportions": "종횡비 고정",
+            "upscale_method": "고급 보간",
+            "crop": "크롭"
+        },
+        "outputs": {
+            "mask": "마스크",
+            "width": "너비",
+            "height": "높이"
+        },
+        "description": "마스크 또는 배치 마스크를 지정된 너비와 높이로 조정합니다."
+    },
+    "RemapMaskRange": {
+        "title": "마스크 범위 재매핑",
+        "inputs": {
+            "mask": "마스크"
+        },
+        "widgets": {
+            "min": "최소값",
+            "max": "최대값"
+        },
+        "outputs": {
+            "mask": "마스크"
+        },
+        "description": "마스크에 새로운 최소값과 최대값을 설정합니다."
+    },
+    "SeparateMasks": {
+        "title": "마스크 분리",
+        "inputs": {
+            "mask": "마스크"
+        },
+        "widgets": {
+            "size_threshold_width": "너비 크기 임계값",
+            "size_threshold_height": "높이 크기 임계값",
+            "mode": "분리 모드",
+            "max_poly_points": "최대 폴리곤 점 수",
+            "polygon": "폴리곤",
+            "shape": "도형",
+            "mask_np": "Numpy 마스크",
+            "max_points": "최대 점 수"
+        },
+        "outputs": {
+            "mask": "마스크"
+        }
+    },
+    "PathchSageAttentionKJ": {
+        "title": "SAGE 어텐션 패치 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "allow_compile": "컴파일 허용",
+            "sage_attention": "SAGE 어텐션"
+        },
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "CheckpointLoaderKJ": {
+        "title": "체크포인트 로더 (KJ)",
+        "inputs": {},
+        "widgets": {
+            "ckpt_name": "모델 이름",
+            "weight_dtype": "가중치 데이터 타입",
+            "compute_dtype": "계산 데이터 타입",
+            "patch_cublaslinear": "CUBlas 리니어 패치",
+            "sage_attention": "SAGE 어텐션",
+            "enable_fp16_accumulation": "FP16 누적 활성화"
+        },
+        "outputs": {
+            "model": "모델",
+            "clip": "CLIP",
+            "vae": "VAE"
+        }
+    },
+    "DiffusionModelLoaderKJ": {
+        "title": "확산 모델 로더 (KJ)",
+        "inputs": {
+            "extra_state_dict": "추가 상태 딕셔너리"
+        },
+        "widgets": {
+            "model_name": "모델 이름",
+            "weight_dtype": "가중치 데이터 타입",
+            "compute_dtype": "계산 데이터 타입",
+            "patch_cublaslinear": "CUBlas 리니어 패치",
+            "sage_attention": "SAGE 어텐션",
+            "enable_fp16_accumulation": "FP16 누적 활성화"
+        },
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "PatchModelPatcherOrder": {
+        "title": "모델 패처 순서 조정",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "patch_order": "패치 순서",
+            "full_load": "전체 로드"
+        },
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "TorchCompileModelFluxAdvanced": {
+        "title": "Flux 모델 Torch 컴파일 (고급)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "backend": "백엔드",
+            "fullgraph": "전체 그래프",
+            "mode": "모드",
+            "double_blocks": "더블 블록",
+            "single_blocks": "싱글 블록",
+            "dynamic": "동적",
+            "dynamo_cache_size_limit": "다이나모 캐시 크기 제한",
+            "blocks_str": "블록 문자열"
+        },
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "TorchCompileModelFluxAdvancedV2": {
+        "title": "Flux 모델 Torch 컴파일 (고급) V2",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "backend": "백엔드",
+            "fullgraph": "전체 그래프",
+            "mode": "모드",
+            "double_blocks": "더블 블록",
+            "single_blocks": "싱글 블록",
+            "dynamic": "동적",
+            "dynamo_cache_size_limit": "다이나모 캐시 크기 제한",
+            "blocks_str": "블록 문자열"
+        },
+        "outputs": {
+            "MODEL": "모델",
+            "model": "모델"
+        }
+    },
+    "TorchCompileModelHyVideo": {
+        "title": "Torch 컴파일 HunyuanVideo 모델",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "backend": "백엔드",
+            "fullgraph": "전체 그래프",
+            "mode": "모드",
+            "dynamic": "동적",
+            "dynamo_cache_size_limit": "다이나모 캐시 크기 제한",
+            "compile_single_blocks": "싱글 블록 컴파일",
+            "compile_double_blocks": "더블 블록 컴파일",
+            "compile_txt_in": "텍스트 입력 컴파일",
+            "compile_vector_in": "벡터 입력 컴파일",
+            "compile_final_layer": "최종 레이어 컴파일"
+        },
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "TorchCompileModelWanVideo": {
+        "title": "Torch 컴파일 WanVideo 모델",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "backend": "백엔드",
+            "fullgraph": "전체 그래프",
+            "mode": "모드",
+            "dynamic": "동적",
+            "dynamo_cache_size_limit": "다이나모 캐시 크기 제한",
+            "compile_transformer_blocks_only": "Transformer 블록만 컴파일"
+        },
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "TorchCompileModelWanVideoV2": {
+        "title": "WanVideo Torch 컴파일 모델 V2",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "backend": "백엔드",
+            "fullgraph": "전체 그래프",
+            "mode": "모드",
+            "dynamic": "동적",
+            "dynamo_cache_size_limit": "다이나모 캐시 크기 제한",
+            "compile_transformer_blocks_only": "Transformer 블록만 컴파일"
+        },
+        "outputs": {
+            "MODEL": "모델",
+            "model": "모델"
+        }
+    },
+    "TorchCompileVAE": {
+        "title": "Torch 컴파일 VAE",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "backend": "백엔드",
+            "fullgraph": "전체 그래프",
+            "mode": "모드",
+            "compile_encoder": "인코더 컴파일",
+            "compile_decoder": "디코더 컴파일"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "TorchCompileControlNet": {
+        "title": "Torch 컴파일 ControlNet",
+        "inputs": {
+            "controlnet": "ControlNet"
+        },
+        "widgets": {
+            "backend": "백엔드",
+            "fullgraph": "전체 그래프",
+            "mode": "모드"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "TorchCompileLTXModel": {
+        "title": "Torch 컴파일 LTX 모델",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "backend": "백엔드",
+            "fullgraph": "전체 그래프",
+            "mode": "모드",
+            "dynamic": "동적"
+        },
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "TorchCompileCosmosModel": {
+        "title": "Torch 컴파일 Cosmos 모델",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "backend": "백엔드",
+            "fullgraph": "전체 그래프",
+            "mode": "모드",
+            "dynamic": "동적",
+            "dynamo_cache_size_limit": "다이나모 캐시 크기 제한"
+        },
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "WanVideoTeaCacheKJ": {
+        "title": "WanVideo 캐시 최적화 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "rel_l1_thresh": "상대 L1 임계값",
+            "start_percent": "시작 백분율",
+            "end_percent": "종료 백분율",
+            "cache_device": "캐시 장치",
+            "coefficients": "계수"
+        },
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "WanVideoEnhanceAVideoKJ": {
+        "title": "WanVideo 증강 (KJ)",
+        "inputs": {
+            "model": "모델",
+            "latent": "latent"
+        },
+        "widgets": {
+            "weight": "가중치"
+        },
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "WanVideoNAG": {
+        "title": "WanVideo NAG 안내",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "conditioning": "컨디셔닝",
+            "nag_scale": "NAG_스케일",
+            "nag_alpha": "NAG_alpha",
+            "nag_tau": "NAG_tau",
+            "input_type": "입력 유형"
+        },
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "SkipLayerGuidanceWanVideo": {
+        "title": "WanVideo 레이어 스킵 가이던스",
+        "inputs": {
+            "model": "모델",
+            "blocks": "블록",
+            "start_percent": "시작 백분율",
+            "end_percent": "종료 백분율"
+        },
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "CFGZeroStarAndInit": {
+        "title": "CFG 제로스타 및 초기화",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "use_zero_init": "제로 초기화 사용",
+            "zero_init_steps": "제로 초기화 스텝 수"
+        },
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "SetNode": {
+        "title": "셋 노드",
+        "inputs": {
+            "*": "입력"
+        },
+        "widgets": {
+            "Constant": "상수"
+        },
+        "outputs": {
+            "*": "출력"
+        }
+    },
+    "GetNode": {
+        "title": "겟 노드",
+        "inputs": {
+            "*": "입력"
+        },
+        "widgets": {
+            "Constant": "상수"
+        },
+        "outputs": {
+            "*": "출력"
+        }
+    },
+    "BOOLConstant": {
+        "title": "불리값 상수",
+        "inputs": {
+            "value": "값"
+        },
+        "widgets": {
+            "value": "값"
+        },
+        "outputs": {
+            "value": "값"
+        }
+    },
+    "INTConstant": {
+        "title": "정수 상수",
+        "widgets": {
+            "value": "값"
+        },
+        "outputs": {
+            "value": "값"
+        }
+    },
+    "FloatConstant": {
+        "title": "부동 소수점 상수",
+        "widgets": {
+            "value": "값"
+        },
+        "outputs": {
+            "value": "값"
+        }
+    },
+    "StringConstant": {
+        "title": "문자열 상수",
+        "widgets": {
+            "string": "문자열"
+        },
+        "outputs": {
+            "STRING": "문자열"
+        }
+    },
+    "StringConstantMultiline": {
+        "title": "문자열 상수 (텍스트 상자)",
+        "widgets": {
+            "string": "문자열",
+            "strip_newlines": "개행 문자 포함"
+        },
+        "outputs": {
+            "STRING": "문자열"
+        }
+    },
+    "ScaleBatchPromptSchedule": {
+        "title": "프롬프트 배치 스케줄 축소·확대",
+        "inputs": {
+            "input_str": "문자열",
+            "old_frame_count": "이전 프레임 수",
+            "new_frame_count": "새 프레임 수"
+        },
+        "outputs": {
+            "STRING": "문자열"
+        }
+    },
+    "GetLatentsFromBatchIndexed": {
+        "title": "인덱스로 Latent 가져오기",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "latent_format": "latent 형식"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "ConditioningMultiCombine": {
+        "title": "컨디셔닝 병합 (다중)",
+        "inputs": {
+            "conditioning_1": "컨디셔닝_1",
+            "conditioning_2": "컨디셔닝_2",
+            "conditioning_3": "컨디셔닝_3",
+            "conditioning_4": "컨디셔닝_4",
+            "conditioning_5": "컨디셔닝_5",
+            "conditioning_6": "컨디셔닝_6",
+            "conditioning_7": "컨디셔닝_7",
+            "conditioning_8": "컨디셔닝_8",
+            "conditioning_9": "컨디셔닝_9",
+            "conditioning_10": "컨디셔닝_10",
+            "conditioning_11": "컨디셔닝_11",
+            "conditioning_12": "컨디셔닝_12",
+            "conditioning_13": "컨디셔닝_13",
+            "conditioning_14": "컨디셔닝_14",
+            "conditioning_15": "컨디셔닝_15",
+            "conditioning_16": "컨디셔닝_16",
+            "conditioning_17": "컨디셔닝_17",
+            "conditioning_18": "컨디셔닝_18",
+            "conditioning_19": "컨디셔닝_19",
+            "conditioning_20": "컨디셔닝_20"
+        },
+        "widgets": {
+            "inputcount": "입력 수",
+            "operation": "연산",
+            "Update inputs": "입력 업데이트"
+        },
+        "outputs": {
+            "combined": "컨디셔닝",
+            "inputcount": "입력 수"
+        },
+        "description": "여러 컨디셔닝 노드를 하나로 병합합니다"
+    },
+    "AppendStringsToList": {
+        "title": "문자열을 목록에 추가",
+        "inputs": {
+            "string1": "문자열1",
+            "string2": "문자열2"
+        },
+        "outputs": {
+            "STRING": "문자열"
+        }
+    },
+    "JoinStrings": {
+        "title": "문자열 결합",
+        "inputs": {
+            "string1": "문자열1",
+            "string2": "문자열2"
+        },
+        "widgets": {
+            "delimiter": "구분자"
+        },
+        "outputs": {
+            "STRING": "문자열"
+        }
+    },
+    "JoinStringMulti": {
+        "title": "문자열 결합 (다중)",
+        "inputs": {
+            "string_1": "문자열_1",
+            "string_2": "문자열_2",
+            "string_3": "문자열_3",
+            "string_4": "문자열_4",
+            "string_5": "문자열_5",
+            "string_6": "문자열_6",
+            "string_7": "문자열_7",
+            "string_8": "문자열_8",
+            "string_9": "문자열_9",
+            "string_10": "문자열_10"
+        },
+        "widgets": {
+            "inputcount": "입력 수",
+            "delimiter": "구분자",
+            "return_list": "목록으로 출력",
+            "Update inputs": "입력 업데이트"
+        },
+        "outputs": {
+            "string": "문자열"
+        },
+        "description": "여러 문자열을 문자열 배치 또는 문자열 목록으로 결합합니다. \"입력 수\" 설정으로 입력 인터페이스 수를 지정할 수 있으며, 업데이트를 클릭하면 인터페이스가 갱신됩니다."
+    },
+    "CondPassThrough": {
+        "title": "컨디셔닝 패스스루",
+        "inputs": {
+            "positive": "긍정 컨디셔닝",
+            "negative": "부정 컨디셔닝"
+        },
+        "outputs": {
+            "positive": "긍정 컨디셔닝",
+            "negative": "부정 컨디셔닝"
+        }
+    },
+    "ModelPassThrough": {
+        "title": "모델 패스스루",
+        "inputs": {
+            "model": "모델"
+        },
+        "outputs": {
+            "model": "모델"
+        },
+        "description": "모델을 다음 노드로 전달합니다"
+    },
+    "ConditioningSetMaskAndCombine": {
+        "title": "컨디셔닝 마스크 설정 (병합2)",
+        "inputs": {
+            "positive_1": "긍정 컨디셔닝_1",
+            "negative_1": "부정 컨디셔닝_1",
+            "positive_2": "긍정 컨디셔닝_2",
+            "negative_2": "부정 컨디셔닝_2",
+            "mask_1": "마스크_1",
+            "mask_2": "마스크_2"
+        },
+        "widgets": {
+            "mask_1_strength": "마스크_1_강도",
+            "mask_2_strength": "마스크_2_강도",
+            "set_cond_area": "컨디셔닝 영역 설정",
+            "default": "기본",
+            "mask bounds": "마스크 경계"
+        },
+        "outputs": {
+            "combined_positive": "긍정 컨디셔닝",
+            "combined_negative": "부정 컨디셔닝"
+        },
+        "description": "여러 컨디셔닝 마스크를 묶어 노드를 하나로 결합합니다. 기능은 ComfyUI 기본 노드와 동일합니다"
+    },
+    "ConditioningSetMaskAndCombine3": {
+        "title": "컨디셔닝 마스크 설정 (병합3)",
+        "inputs": {
+            "positive_1": "긍정 컨디셔닝_1",
+            "negative_1": "부정 컨디셔닝_1",
+            "positive_2": "긍정 컨디셔닝_2",
+            "negative_2": "부정 컨디셔닝_2",
+            "positive_3": "긍정 컨디셔닝_3",
+            "negative_3": "부정 컨디셔닝_3",
+            "mask_1": "마스크_1",
+            "mask_2": "마스크_2",
+            "mask_3": "마스크_3"
+        },
+        "widgets": {
+            "mask_1_strength": "마스크_1_강도",
+            "mask_2_strength": "마스크_2_강도",
+            "mask_3_strength": "마스크_3_강도",
+            "set_cond_area": "컨디셔닝 영역 설정",
+            "default": "기본",
+            "mask bounds": "마스크 경계"
+        },
+        "outputs": {
+            "combined_positive": "긍정 컨디셔닝",
+            "combined_negative": "부정 컨디셔닝"
+        },
+        "description": "여러 컨디셔닝 마스크를 묶어 노드를 하나로 결합합니다. 기능은 ComfyUI 기본 노드와 동일합니다"
+    },
+    "ConditioningSetMaskAndCombine4": {
+        "title": "컨디셔닝 마스크 설정 (병합4)",
+        "inputs": {
+            "positive_1": "긍정 컨디셔닝_1",
+            "negative_1": "부정 컨디셔닝_1",
+            "positive_2": "긍정 컨디셔닝_2",
+            "negative_2": "부정 컨디셔닝_2",
+            "positive_3": "긍정 컨디셔닝_3",
+            "negative_3": "부정 컨디셔닝_3",
+            "positive_4": "긍정 컨디셔닝_4",
+            "negative_4": "부정 컨디셔닝_4",
+            "mask_1": "마스크_1",
+            "mask_2": "마스크_2",
+            "mask_3": "마스크_3",
+            "mask_4": "마스크_4"
+        },
+        "widgets": {
+            "mask_1_strength": "마스크_1_강도",
+            "mask_2_strength": "마스크_2_강도",
+            "mask_3_strength": "마스크_3_강도",
+            "mask_4_strength": "마스크_4_강도",
+            "set_cond_area": "컨디셔닝 영역 설정",
+            "default": "기본",
+            "mask bounds": "마스크 경계"
+        },
+        "outputs": {
+            "combined_positive": "병합 긍정 컨디셔닝",
+            "combined_negative": "병합 부정 컨디셔닝"
+        },
+        "description": "여러 컨디셔닝 마스크를 묶어 노드를 하나로 결합합니다. 기능은 ComfyUI 기본 노드와 동일합니다"
+    },
+    "ConditioningSetMaskAndCombine5": {
+        "title": "컨디셔닝 마스크 설정 (병합5)",
+        "inputs": {
+            "positive_1": "긍정 컨디셔닝_1",
+            "negative_1": "부정 컨디셔닝_1",
+            "positive_2": "긍정 컨디셔닝_2",
+            "negative_2": "부정 컨디셔닝_2",
+            "positive_3": "긍정 컨디셔닝_3",
+            "negative_3": "부정 컨디셔닝_3",
+            "positive_4": "긍정 컨디셔닝_4",
+            "negative_4": "부정 컨디셔닝_4",
+            "positive_5": "긍정 컨디셔닝_5",
+            "negative_5": "부정 컨디셔닝_5",
+            "mask_1": "마스크_1",
+            "mask_2": "마스크_2",
+            "mask_3": "마스크_3",
+            "mask_4": "마스크_4",
+            "mask_5": "마스크_5"
+        },
+        "widgets": {
+            "mask_1_strength": "마스크_1_강도",
+            "mask_2_strength": "마스크_2_강도",
+            "mask_3_strength": "마스크_3_강도",
+            "mask_4_strength": "마스크_4_강도",
+            "mask_5_strength": "마스크_5_강도",
+            "set_cond_area": "컨디셔닝 영역 설정",
+            "default": "기본",
+            "mask bounds": "마스크 경계"
+        },
+        "outputs": {
+            "combined_positive": "병합 긍정 컨디셔닝",
+            "combined_negative": "병합 부정 컨디셔닝"
+        },
+        "description": "여러 컨디셔닝 마스크를 묶어 노드를 하나로 결합합니다. 기능은 ComfyUI 기본 노드와 동일합니다"
+    },
+    "VRAM_Debug": {
+        "title": "VRAM 정리",
+        "inputs": {
+            "any_input": "임의 입력",
+            "image_pass": "이미지 패스스루",
+            "model_pass": "모델 패스스루"
+        },
+        "widgets": {
+            "empty_cache": "캐시 비우기",
+            "gc_collect": "가비지 컬렉션",
+            "unload_all_models": "모든 모델 언로드"
+        },
+        "outputs": {
+            "any_output": "임의 출력",
+            "image_pass": "이미지 패스스루",
+            "model_pass": "모델 패스스루",
+            "freemem_before": "정리 전 잔여 메모리",
+            "freemem_after": "정리 후 잔여 메모리"
+        },
+        "description": "입력 데이터를 그대로 반환하고(트리거 신호로만 사용), Comfy 모델 관리 기능과 가비지 컬렉션을 실행하며 작업 전후의 VRAM 잔여량을 보고합니다."
+    },
+    "SomethingToString": {
+        "title": "임의 값을 문자열로",
+        "inputs": {
+            "input": "입력"
+        },
+        "widgets": {
+            "prefix": "접두사",
+            "suffix": "접미사"
+        },
+        "outputs": {
+            "STRING": "문자열"
+        }
+    },
+    "Sleep": {
+        "title": "대기",
+        "inputs": {
+            "input": "입력"
+        },
+        "widgets": {
+            "minutes": "분",
+            "seconds": "초"
+        },
+        "outputs": {
+            "*": "*"
+        }
+    },
+    "EmptyLatentImagePresets": {
+        "title": "빈 Latent 이미지 프리셋",
+        "widgets": {
+            "dimensions": "크기",
+            "invert": "반전",
+            "batch_size": "배치 크기"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "너비",
+            "Height": "높이"
+        }
+    },
+    "EmptyLatentImageCustomPresets": {
+        "title": "사용자 정의 Latent 이미지 프리셋",
+        "widgets": {
+            "dimensions": "크기",
+            "invert": "반전",
+            "batch_size": "배치 크기"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "너비",
+            "Height": "높이"
+        },
+        "description": "지정된 크기에 따라 빈 잠재 이미지를 생성합니다. \n 옵션은 '노드 폴더'의 'custom_dimensions.json' 파일에서 로드됩니다."
+    },
+    "WidgetToString": {
+        "title": "위젯을 문자열로",
+        "inputs": {
+            "any_input": "임의 입력"
+        },
+        "widgets": {
+            "id": "노드 ID",
+            "widget_name": "위젯 이름",
+            "return_all": "전체 반환",
+            "node_title": "노드 제목",
+            "allowed_float_decimals": "허용 부동 소수 자릿수"
+        },
+        "outputs": {
+            "STRING": "문자열"
+        }
+    },
+    "DummyOut": {
+        "title": "더미 Latent 출력",
+        "inputs": {
+            "any_input": "임의 입력"
+        },
+        "outputs": {
+            "*": "출력"
+        }
+    },
+    "FlipSigmasAdjusted": {
+        "title": "Sigmas 반전 조정",
+        "inputs": {
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "divide_by_last_sigma": "마지막 Sigma로 나눗셈",
+            "divide_by": "나눗셈",
+            "offset_by": "오프셋량"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas",
+            "sigmas_string": "sigmas 문자열"
+        }
+    },
+    "CustomSigmas": {
+        "title": "사용자 정의 Sigmas",
+        "widgets": {
+            "sigmas_string": "Sigmas 문자열",
+            "interpolate_to_steps": "보간 스텝 수",
+            "t_steps": "T 스텝 수",
+            "num_steps": "스텝 수"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        }
+    },
+    "StringToFloatList": {
+        "title": "문자열을 부동 소수 목록으로",
+        "inputs": {
+            "string": "문자열"
+        },
+        "outputs": {
+            "FLOAT": "부동 소수"
+        }
+    },
+    "InjectNoiseToLatent": {
+        "title": "Latent에 노이즈 주입",
+        "inputs": {
+            "latents": "Latent",
+            "noise": "노이즈",
+            "mask": "마스크"
+        },
+        "widgets": {
+            "strength": "강도",
+            "normalize": "정규화",
+            "average": "평균",
+            "mix_randn_amount": "랜덤 노이즈 혼합 강도",
+            "seed": "시드"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "SoundReactive": {
+        "title": "오디오 반응",
+        "inputs": {
+            "audio": "오디오"
+        },
+        "widgets": {
+            "sound_level": "볼륨 레벨",
+            "start_range_hz": "시작 Hz 범위",
+            "end_range_hz": "종료 Hz 범위",
+            "multiplier": "곱수",
+            "smoothing_factor": "스무딩 계수",
+            "normalize": "정규화",
+            "Start mic capture": "마이크 캡처 시작",
+            "Start_mic_capture": "마이크 캡처 시작",
+            "Stop mic capture": "마이크 캡처 중지",
+            "Stop_mic_capture": "마이크 캡처 중지"
+        },
+        "outputs": {
+            "sound_level": "볼륨 레벨",
+            "sound_level_int": "볼륨 레벨 정수"
+        },
+        "description": "입력 오디오의 볼륨을 피드백합니다.\n\n브라우저 오디오 입력을 사용합니다.\n\n실시간 샘플링에 사용합니다."
+    },
+    "GenerateNoise": {
+        "title": "노이즈 생성",
+        "inputs": {
+            "model": "모델",
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "width": "너비",
+            "height": "높이",
+            "batch_size": "배치 크기",
+            "seed": "랜덤 시드",
+            "control_after_generate": "생성 후 제어",
+            "fixed": "고정",
+            "increment": "증가",
+            "decrement": "감소",
+            "randomize": "랜덤",
+            "multiplier": "곱수",
+            "constant_batch_noise": "일정 배치 노이즈",
+            "normalize": "정규화",
+            "latent_channels": "latent 채널",
+            "shape": "형태"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        },
+        "description": "주입 시 노이즈를 생성하며, 노이즈 추가가 꺼져 있으면 샘플러의 빈 Latent로 사용"
+    },
+    "StableZero123_BatchSchedule": {
+        "title": "StableZero123 다중 뷰 배치 생성",
+        "inputs": {
+            "clip_vision": "CLIP 비전",
+            "init_image": "초기 이미지",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "너비",
+            "height": "높이",
+            "batch_size": "배치 크기",
+            "interpolation": "보간 방식",
+            "linear": "선형",
+            "ease_in": "이지 인",
+            "ease_out": "이지 아웃",
+            "ease_in_out": "이지 인아웃",
+            "azimuth_points_string": "방위각 지점",
+            "elevation_points_string": "고도각 지점"
+        },
+        "outputs": {
+            "positive": "긍정 컨디셔닝",
+            "negative": "부정 컨디셔닝",
+            "latent": "Latent"
+        },
+        "description": "단일 이미지를 입력해 다중 뷰 일관 이미지(예: 0°, 90°, 180°)를 배치 생성하며, VRAM 최적화 스케줄을 지원합니다."
+    },
+    "SV3D_BatchSchedule": {
+        "title": "SV3D 배치 스케줄",
+        "inputs": {
+            "clip_vision": "CLIP 비전",
+            "init_image": "초기 이미지",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "너비",
+            "height": "높이",
+            "batch_size": "배치 크기",
+            "interpolation": "보간 방식",
+            "azimuth_points_string": "방위각 지점",
+            "elevation_points_string": "고도각 지점"
+        },
+        "outputs": {
+            "positive": "긍정 컨디셔닝",
+            "negative": "부정 컨디셔닝",
+            "latent": "Latent"
+        },
+        "description": "보간 스케줄로 SV3D의 방위각과 고도각 값을 지정합니다.\n\nSV3D는 비디오 모델이므로 스케줄 값은 반드시 점진적이어야 합니다.\n\nhttps://huggingface.co/stabilityai/sv3d"
+    },
+    "LoadResAdapterNormalization": {
+        "title": "ResAdapter 정규화 로드",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "resadapter_path": "ResAdapter 경로"
+        },
+        "outputs": {
+            "MODEL": "모델"
+        }
+    },
+    "Superprompt": {
+        "title": "슈퍼프롬프트",
+        "inputs": {
+            "prompt": "프롬프트"
+        },
+        "widgets": {
+            "instruction_prompt": "지시 프롬프트",
+            "max_new_tokens": "최대 새 토큰 수"
+        },
+        "outputs": {
+            "STRING": "문자열"
+        },
+        "description": "슈퍼프롬프트 데이터셋으로 파인튜닝한 T5 모델입니다.\n\n텍스트 프롬프트를 더 상세한 설명으로 업스케일합니다.\n\n텍스트-이미지 생성 이전 단계에 사용\n\n더 상세한 프롬프트에서 이익을 얻는 모델에 적합합니다. \n\nhttps://huggingface.co/roborovski/superprompt-v1"
+    },
+    "CameraPoseVisualizer": {
+        "title": "카메라 포즈 시각화",
+        "inputs": {
+            "cameractrl_poses": "카메라 컨트롤 포즈"
+        },
+        "widgets": {
+            "pose_file_path": "포즈 파일 경로",
+            "base_xval": "기본 X 값",
+            "zval": "Z 값",
+            "scale": "축소·확대",
+            "use_exact_fx": "정확한 fx 사용",
+            "relative_c2w": "상대 카메라-to-월드 좌표",
+            "use_viewer": "뷰어 사용",
+            "cameractrl_poses": "카메라 컨트롤 포즈",
+            "extrinsic": "외부 행렬",
+            "color_map": "색상 매핑",
+            "hw_ratio": "높이-너비 비율",
+            "list_label": "목록 레이블",
+            "w2cs": "월드-to-카메라",
+            "transform_matrix": "변환 행렬"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "카메라 포즈를 시각화합니다\n\n(Animatediff Evolved의 Camera Ctrl 포즈 모듈에서 가져왔거나, RealEstate 데이터셋의 카메라 내부 파라미터와 좌표를 포함한 .txt 파일을 통해 3D 그림으로 렌더링합니다)"
+    },
+    "StabilityAPI_SD3": {
+        "title": "StabilityAPI SD3",
+        "inputs": {
+            "image": "이미지"
+        },
+        "widgets": {
+            "prompt": "프롬프트",
+            "n_prompt": "부정 프롬프트",
+            "seed": "랜덤 시드",
+            "control_before_generate": "생성 전 제어",
+            "model": "모델",
+            "aspect_ratio": "종횡비",
+            "output_format": "출력 형식",
+            "api_key": "API 키",
+            "img2img_strength": "이미지-투-이미지 강도",
+            "disable_metadata": "메타데이터 비활성화"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        },
+        "description": "# Stability API 호출\n\n계정에 키가 여러 개 있어도 가능한 한 동일한 키로 API를 호출하세요.\n\nhttps://platform.stability.ai/account/keys 에서 키를 발급받으세요. 키를 포함한 config.json 파일을 만들어 플러그인 디렉터리에 두는 것을 권장합니다.\n\n# 경고:\n\ndisable_metadata(메타데이터 비활성화)를 켜도 워클플로에 이 노드 이외의 저장 노드가 있으면 API 키가 메타데이터에 저장될 수 있습니다.\n\nSD3는 생성당 6.5 크레딧\n\nSD3-Turbo는 생성당 4 크레딧\n\n이미지 입력이 연결되지 않으면 텍스트-투-이미지 모드를 사용합니다"
+    },
+    "CheckpointPerturbWeights": {
+        "title": "체크포인트 가중치 교란",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "joint_blocks": "조인트 블록",
+            "final_layer": "최종 레이어",
+            "rest_of_the_blocks": "나머지 블록",
+            "seed": "랜덤 시드",
+            "control_before_generate": "생성 전 제어"
+        },
+        "outputs": {
+            "MODEL": "모델"
+        }
+    },
+    "DifferentialDiffusionAdvanced": {
+        "title": "차등 확산 (고급)",
+        "inputs": {
+            "model": "모델",
+            "samples": "샘플",
+            "mask": "마스크"
+        },
+        "widgets": {
+            "multiplier": "곱수"
+        },
+        "outputs": {
+            "MODEL": "모델",
+            "LATENT": "Latent"
+        }
+    },
+    "FluxBlockLoraSelect": {
+        "title": "Flux 블록 LoRA 선택",
+        "inputs": {},
+        "outputs": {
+            "blocks": "블록"
+        },
+        "description": "ICLightUnet 로드: ICLightUnet 모델을 로드합니다. (실험적) 개발 중 \n 사용이 까다롭지만 동작하는 다른 방법으로는 https://huggingface.co/Kijai/iclight-comfy/blob/main/iclight_fc_converted.safetensors 에서 모델을 다운로드해 InstructPixToPix 컨디셔닝 노드와 함께 사용하는 것입니다."
+    },
+    "HunyuanVideoBlockLoraSelect": {
+        "title": "HunyuanVideo 블록 LoRA 선택",
+        "inputs": {},
+        "outputs": {
+            "blocks": "블록"
+        },
+        "description": "개별 블록의 alpha 값을 선택합니다. 값이 0이면 블록 전체가 제거됩니다"
+    },
+    "FluxBlockLoraLoader": {
+        "title": "Flux 블록 LoRA 로더",
+        "inputs": {
+            "model": "모델",
+            "blocks": "블록",
+            "opt_lora_path": "LoRA 경로(선택)"
+        },
+        "widgets": {
+            "strength_model": "모델 강도",
+            "lora_name": "LoRA 이름"
+        },
+        "outputs": {
+            "model": "모델",
+            "rank": "랭크"
+        }
+    },
+    "CustomControlNetWeightsFluxFromList": {
+        "title": "목록에서 사용자 정의 ControlNet 가중치 Flux",
+        "inputs": {
+            "cn_extras": "ControlNet 추가",
+            "list_of_floats": "부동 소수 목록"
+        },
+        "widgets": {
+            "uncond_multiplier": "무조건 곱수",
+            "autosize": "자동 크기"
+        },
+        "outputs": {
+            "CN_WEIGHTS": "ControlNet 가중치",
+            "TK_SHORTCUT": "TK 바로가기"
+        },
+        "description": "부동 소수 목록을 ControlNet 가중치로 변환 (Advanced-ControlNet용)"
+    },
+    "SetShakkerLabsUnionControlNetType": {
+        "title": "ShakkerLabs Union ControlNet 유형 설정",
+        "inputs": {
+            "control_net": "ControlNet",
+            "type": "유형"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "ModelSaveKJ": {
+        "title": "모델 저장 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "filename_prefix": "파일명 접두사",
+            "model_key_prefix": "모델 키 접두사"
+        }
+    },
+    "StyleModelApplyAdvanced": {
+        "title": "고급 스타일 모델 적용기",
+        "inputs": {
+            "conditioning": "컨디셔닝",
+            "style_model": "스타일 모델",
+            "clip_vision_output": "CLIP 비전 출력"
+        },
+        "widgets": {
+            "strength": "강도"
+        },
+        "outputs": {
+            "conditioning": "컨디셔닝"
+        },
+        "description": "강도 매개변수를 설정하는 스타일 모델 적용"
+    },
+    "AudioConcatenate": {
+        "title": "오디오 연결",
+        "inputs": {
+            "audio1": "오디오1",
+            "audio2": "오디오2"
+        },
+        "widgets": {
+            "direction": "방향"
+        },
+        "outputs": {
+            "AUDIO": "오디오"
+        },
+        "description": "지정된 방향으로 오디오1을 오디오2에 연결합니다."
+    },
+    "ImageNoiseAugmentation": {
+        "title": "이미지 노이즈 증강",
+        "inputs": {
+            "image": "이미지"
+        },
+        "widgets": {
+            "noise_aug_strength": "노이즈 증강 강도",
+            "seed": "랜덤 시드"
+        },
+        "outputs": {
+            "image": "이미지"
+        }
+    },
+    "VAELoaderKJ": {
+        "title": "VAE 로더 (KJ)",
+        "inputs": {},
+        "widgets": {
+            "vae_name": "VAE 이름",
+            "device": "장치",
+            "weight_dtype": "가중치 데이터 타입"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "ScheduledCFGGuidance": {
+        "title": "스케줄형 CFG 가이던스",
+        "inputs": {
+            "model": "모델",
+            "positive": "긍정 프롬프트",
+            "negative": "부정 프롬프트"
+        },
+        "widgets": {
+            "cfg": "CFG 값",
+            "start_percent": "시작 백분율",
+            "end_percent": "종료 백분율"
+        },
+        "outputs": {
+            "GUIDER": "가이더"
+        }
+    },
+    "ApplyRifleXRoPE_WanVideo": {
+        "title": "WanVideo RifleX RoPE 적용",
+        "inputs": {
+            "model": "모델",
+            "latent": "Latent",
+            "k": "k 값"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "ApplyRifleXRoPE_HunuyanVideo": {
+        "title": "HunyuanVideo RifleX RoPE 적용",
+        "inputs": {
+            "model": "모델",
+            "latent": "Latent",
+            "k": "k 값"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "TimerNodeKJ": {
+        "title": "타이머 (KJ)",
+        "inputs": {
+            "any_input": "임의 입력",
+            "timer": "타이머"
+        },
+        "widgets": {
+            "mode": "모드",
+            "name": "이름"
+        },
+        "outputs": {
+            "any_output": "임의 출력",
+            "timer": "타이머",
+            "time": "시간"
+        }
+    },
+    "ImageBatchFilter": {
+        "title": "이미지 배치 필터",
+        "inputs": {
+            "images": "이미지",
+            "replacement_image": "교체 이미지"
+        },
+        "widgets": {
+            "empty_color": "빈 영역 색상 설정",
+            "empty_threshold": "영역의 빈값 판정 강도 임계값"
+        },
+        "outputs": {
+            "images": "이미지",
+            "IMAGES": "이미지",
+            "removed_indices": "삭제 인덱스"
+        },
+        "description": "배치에서 빈 이미지를 제거합니다"
+    },
+    "ImageResizeKJv2": {
+        "title": "이미지 축소·확대 v2 (KJ)",
+        "inputs": {
+            "image": "이미지",
+            "mask": "마스크"
+        },
+        "widgets": {
+            "width": "너비",
+            "height": "높이",
+            "upscale_method": "확대 방법",
+            "keep_proportions": "종횡비 고정",
+            "keep_proportion": "종횡비 고정",
+            "pad_color": "패딩 색상",
+            "crop_position": "크롭 위치",
+            "divisible_by": "나누어 떨어지는 수",
+            "device": "장치",
+            "per_batch": "배치"
+        },
+        "outputs": {
+            "IMAGE": "이미지",
+            "width": "너비",
+            "height": "높이",
+            "mask": "마스크"
+        },
+        "description": "이미지 축소·확대 2세대. 크기는 입력으로 지정할 수 있으며, 최종 출력 우선순위는 다음 규칙에 따릅니다:\n- 참조 이미지 크기 \n- 너비-입력 및 높이-입력 \n- 너비 및 높이 \n \n종횡비 고정은 가장 큰 크기에 맞춰 종횡비를 유지합니다."
+    },
+    "InsertLatentToIndexed": {
+        "title": "Latent를 인덱스에 삽입",
+        "inputs": {
+            "source": "원본",
+            "destination": "대상"
+        },
+        "widgets": {
+            "index": "계수"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "latent": "Latent"
+        },
+        "description": "지정된 인덱스 위치의 Latent를 원본 Latent 배치에 삽입합니다."
+    },
+    "DiTBlockLoraLoader": {
+        "title": "DiT 블록 Lora 로더",
+        "inputs": {
+            "model": "모델",
+            "opt_lora_path": "Lora 경로 선택",
+            "blocks": "블록"
+        },
+        "widgets": {
+            "strength_model": "모델 강도",
+            "lora_name": "Lora 이름",
+            "overlap": "중복량"
+        },
+        "outputs": {
+            "model": "모델",
+            "rank": "랭크"
+        },
+        "description": "최근 추가된 내용입니다."
+    },
+    "LeapfusionHunyuanI2VPatcher": {
+        "title": "LeapFusion Hunyuan 이미지-투-비디오 패치",
+        "inputs": {
+            "model": "모델",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "index": "계수",
+            "start_percent": "시작 백분율",
+            "end_percent": "종료 백분율",
+            "strength": "강도"
+        },
+        "outputs": {
+            "MODEL": "모델",
+            "model": "모델"
+        },
+        "description": "최근 추가된 내용입니다."
+    },
+    "ModelPatchTorchSettings": {
+        "title": "모델 Torch 설정 패치",
+        "inputs": {
+            "model": "모델",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "FP16 누산 활성화",
+            "start_percent": "시작 백분율",
+            "end_percent": "종료 백분율",
+            "strength": "강도"
+        },
+        "outputs": {
+            "MODEL": "모델",
+            "model": "모델"
+        },
+        "description": "GPU VRAM 사용량 감소\n행렬 곱 누산 연산 가속\n에너지 효율 향상\n발생 가능: 수치 오버플로, 정밀도 손실."
+    },
+    "LoraExtractKJ": {
+        "title": "Lora 추출 (KJ)",
+        "inputs": {
+            "finetuned_model": "파인튜닝 모델",
+            "original_model": "원본 모델"
+        },
+        "widgets": {
+            "filename_prefix": "파일명 접두사",
+            "rank": "랭크",
+            "lora_type": "Lora 유형",
+            "algorithm": "알고리즘",
+            "lowrank_iters": "저랭크 반복 횟수",
+            "output_dtype": "출력 데이터 타입",
+            "bias_diff": "바이어스 차이",
+            "adaptive_param": "적응형 파라미터",
+            "clamp_quantile": "클램프 분위수"
+        },
+        "outputs": {
+            "images": "이미지",
+            "masks": "마스크"
+        },
+        "description": "LoraExtract"
+    },
+    "Wan21BlockLoraSelect": {
+        "title": "Wan2.1 블록형 LoRA 선택기",
+        "inputs": {
+            "model": "모델",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "FP16 누산 활성화",
+            "start_percent": "시작 백분율",
+            "end_percent": "종료 백분율",
+            "strength": "강도"
+        },
+        "outputs": {
+            "BLOCKS": "블록",
+            "blocks": "블록"
+        },
+        "description": "개별 블록의 alpha 값을 선택합니다. 값이 0이면 블록 전체가 제거됩니다."
+    },
+    "LoadVideosFromFolder": {
+        "title": "폴더에서 비디오 로드",
+        "inputs": {
+            "video": "비디오"
+        },
+        "widgets": {
+            "video": "비디오",
+            "force_rate": "강제 프레임 레이트",
+            "custom_width": "사용자 정의 너비",
+            "custom_height": "사용자 정의 높이",
+            "frame_load_cap": "프레임 수 로드 상한",
+            "skip_first_frames": "앞의 X프레임 건너뛰기",
+            "select_every_nth": "간격",
+            "output_type": "출력 유형",
+            "grid_max_columns": "그리드 최대 열 수",
+            "add_label": "레이블 추가"
+        },
+        "outputs": {
+            "IMAGE": "이미지"
+        }
+    },
+    "TorchCompileModelQwenImage": {
+        "title": "QwenImage Torch 컴파일 모델",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "backend": "백엔드",
+            "fullgraph": "전체 그래프",
+            "mode": "모드",
+            "dynamic": "동적",
+            "compile_transformer_blocks_only": "Transformer 블록만 컴파일",
+            "dynamo_cache_size_limit": "다이나모 캐시 크기 제한"
+        },
+        "outputs": {
+            "MODEL": "모델",
+            "model": "모델"
+        }
+    },
+    "LazySwitchKJ": {
+        "title": "레이지 스위치 (KJ)",
+        "inputs": {
+            "on_false": "False일 때",
+            "on_true": "True일 때"
+        },
+        "widgets": {
+            "switch": "스위치"
+        },
+        "outputs": {
+            "*": "임의"
+        }
+    },
+    "GetLatentSizeAndCount": {
+        "title": "Latent 크기 및 수량 가져오기",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "latent": "Latent",
+            "batch_size": "배치 크기",
+            "channels": "채널",
+            "frames": "프레임",
+            "width": "너비",
+            "height": "높이"
+        }
+    },
+    "DiffusionModelSelector": {
+        "title": "확산 모델 선택기",
+        "inputs": {},
+        "widgets": {
+            "model_name": "모델 이름"
+        },
+        "outputs": {
+            "model_path": "모델 경로"
+        }
+    },
+    "LoraReduceRankKJ": {
+        "title": "Lora 랭크 축소 (KJ)",
+        "inputs": {},
+        "widgets": {
+            "lora_name": "Lora 이름",
+            "new_rank": "새 랭크",
+            "dynamic_method": "동적 방법",
+            "dynamic_param": "동적 파라미터",
+            "output_dtype": "출력 데이터 타입",
+            "verbose": "상세 모드"
+        },
+        "outputs": {
+            "model_path": "모델 경로"
+        },
+        "description": "모델의 랭크를 낮춰 LoRA 모델의 크기를 조정합니다.\n kohya 기반 sd-scripts 참고: https://github.com/kohya-ss/sd-scripts/blob/main/networks/resize_lora.py"
+    },
+    "DrawMaskOnImage": {
+        "title": "이미지와 마스크 합치기",
+        "inputs": {
+            "image": "이미지",
+            "mask": "마스크"
+        },
+        "widgets": {
+            "mask_opacity": "마스크 불투명도",
+            "mask_color": "마스크 색상",
+            "color": "색상"
+        },
+        "outputs": {
+            "images": "이미지"
+        },
+        "description": "이미지와 마스크를 동시에 입력하면 마스크를 이미지에 합성합니다."
+    },
+    "BlockifyMask": {
+        "title": "마스크 블록화",
+        "inputs": {
+            "image": "이미지",
+            "masks": "마스크"
+        },
+        "widgets": {
+            "block_size": "블록 크기"
+        },
+        "outputs": {
+            "mask": "마스크"
+        },
+        "description": "각 마스크의 경계 상자를 지정된 크기의 블록으로 나누고, 원본 마스크의 일부가 포함된 블록을 채워 블록 마스크를 생성합니다."
+    },
+    "ConsolidateMasksKJ": {
+        "title": "마스크 통합 (KJ)",
+        "inputs": {
+            "mask": "마스크",
+            "masks": "마스크"
+        },
+        "widgets": {
+            "padding": "패딩",
+            "width": "너비",
+            "height": "높이"
+        },
+        "outputs": {
+            "mask": "마스크"
+        },
+        "description": "개별 마스크 묶음이 패딩을 포함해 주어진 너비와 높이의 사각형 영역에 완전히 들어가는 최대 개수를 찾은 뒤, 더 이상 합칠 마스크가 없을 때까지 이 과정을 반복하여 개별 마스크 배치를 통합합니다."
+    },
+    "GGUFLoaderKJ": {
+        "title": "GGUF 모델 로더 (KJ)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "모델 이름",
+            "extra_model_name": "추가 모델 이름",
+            "dequant_dtype": "디퀄라이즈 데이터 타입",
+            "patch_dtype": "패치 데이터 타입",
+            "patch_on_device": "장치 위 패치",
+            "attention_override": "어텐션 우선 모드",
+            "enable_fp16_accumulation": "FP16 누산 활성화"
+        },
+        "outputs": {
+            "model": "모델"
+        },
+        "description": "고급 옵션으로 GGUF 모델을 로드합니다. ComfyUI-GGUF 설치가 먼저 필요합니다."
+    },
+    "EndRecordCUDAMemoryHistory": {
+        "title": "CUDA 메모리 히스토리 기록 종료 (KJ)",
+        "inputs": {
+            "input": "입력"
+        },
+        "widgets": {
+            "output_path": "출력 경로"
+        },
+        "outputs": {
+            "input": "입력",
+            "output_path": "출력 경로"
+        },
+        "description": "CUDA 메모리 할당의 시작과 종료 사이 히스토리를 기록해 파일로 저장합니다. 다음에서 분석 가능: https://docs.pytorch.org/memory_viz 또는 'CUDA 메모리 히스토리 시각화' 노드 사용."
+    },
+    "VisualizeCUDAMemoryHistory": {
+        "title": "CUDA 메모리 히스토리 시각화 (KJ)",
+        "inputs": {
+            "input": "입력"
+        },
+        "widgets": {
+            "snapshot_path": "스냅샷 경로"
+        },
+        "outputs": {
+            "input": "입력",
+            "output_path": "출력 경로"
+        },
+        "description": "CUDA 메모리 할당 히스토리 파일을 시각화하여 브라우저에서 엽니다"
+    },
+    "StartRecordCUDAMemoryHistory": {
+        "title": "CUDA 메모리 히스토리 기록 시작 (KJ)",
+        "inputs": {
+            "input": "입력"
+        },
+        "widgets": {
+            "enabled": "켜기",
+            "context": "배경",
+            "stacks": "스택",
+            "max_entries": "최대 항목 수"
+        },
+        "outputs": {
+            "input": "입력"
+        }
+    },
+    "NABLA_AttentionKJ": {
+        "title": "NABLA 어텐션 (KJ)",
+        "inputs": {
+            "model": "모델",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "window_time": "창 시간",
+            "window_width": "창 너비",
+            "window_height": "창 높이",
+            "sparsity": "희소도",
+            "torch_compile": "torch 컴파일"
+        },
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "SimpleCalculatorKJ": {
+        "title": "간단 계산기 (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "FLOAT": "부동 소수",
+            "STRING": "부동 소수",
+            "INT": "정수"
+        }
+    },
+    "VAEDecodeLoopKJ": {
+        "title": "VAE 루프 디코드 (KJ)",
+        "inputs": {
+            "samples": "샘플",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "overlap_latent_frames": "중복 Latent 이미지"
+        },
+        "outputs": {
+            "IMAGE": "이미지",
+            "STRING": "부동 소수",
+            "INT": "정수"
+        }
+    },
+    "GetTrackRange": {
+        "title": "트래킹 범위 가져오기 (KJ)",
+        "inputs": {
+            "tracks": "트래킹"
+        },
+        "widgets": {
+            "start_index": "시작 인덱스",
+            "num_frames": "프레임 수"
+        },
+        "outputs": {
+            "TRACKS": "트래킹"
+        }
+    },
+    "AddNoiseToTrackPath": {
+        "title": "트래킹 경로에 노이즈 추가 (KJ)",
+        "inputs": {
+            "tracks": "트래킹"
+        },
+        "widgets": {
+            "strength": "강도",
+            "seed": "시드",
+            "noise_x_ratio": "노이즈 x 비율",
+            "noise_y_ratio": "노이즈 y 비율",
+            "noise_temporal_ratio": "노이즈 시간 비율"
+        },
+        "outputs": {
+            "TRACKS": "트래킹"
+        }
+    },
+    "WanImageToVideoSVIPro": {
+        "title": "Wan 이미지-투-비디오 SVI Pro (KJ)",
+        "inputs": {
+            "positive": "긍정 프롬프트",
+            "negative": "부정 프롬프트",
+            "anchor_samples": "앵커 샘플",
+            "prev_samples": "이전 샘플"
+        },
+        "widgets": {
+            "length": "길이",
+            "motion_latent_count": "모션 Latent 횟수"
+        },
+        "outputs": {
+            "positive": "긍정 프롬프트",
+            "negative": "부정 프롬프트",
+            "latent": "Latent"
+        }
+    },
+    "ModelMemoryUseReportPatch": {
+        "title": "모델 메모리 사용 리포트 패치 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "model": "모델"
+        },
+        "outputs": {
+            "model": "모델"
+        },
+        "description": "샘플링 완료 후 메모리 사용량을 보고하기 위한 콜백을 모델에 추가합니다"
+    },
+    "ModelMemoryUsageFactorOverride": {
+        "title": "모델 메모리 사용률 계수 사용자 정의 (KJ)",
+        "inputs": {
+            "model": "모델",
+            "memory_usage_factor": "메모리 사용 계수"
+        },
+        "widgets": {
+            "model": "모델",
+            "memory_usage_factor": "메모리 사용 계수"
+        },
+        "outputs": {
+            "model": "모델"
+        },
+        "description": "샘플링 중 모델의 메모리 사용 계수를 재정의합니다."
+    },
+    "LTXVEnhanceAVideoKJ": {
+        "title": "LTXVideo 증강 (KJ)",
+        "inputs": {
+            "model": "모델",
+            "latent": "Latent",
+            "weight": "가중치"
+        },
+        "widgets": {
+            "model": "모델",
+            "latent": "Latent",
+            "weight": "가중치"
+        },
+        "outputs": {
+            "model": "모델"
+        }
+    },
+    "LTX2BlockLoraSelect": {
+        "title": "LTX2 블록 Lora 선택기 (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "selectedditblocks": "선택된 DIT 블록"
+        },
+        "description": "샘플링 완료 후 메모리 사용량을 보고하기 위한 콜백을 모델에 추가합니다"
+    },
+    "VisualizeSigmasKJ": {
+        "title": "sigma 값 시각화 (KJ)",
+        "inputs": {
+            "sigmas": "sigma 값"
+        },
+        "widgets": {
+            "start_step": "시작 스텝",
+            "end_step": "종료 스텝"
+        },
+        "outputs": {
+            "sigmas_out": "sigma 출력",
+            "image": "이미지"
+        },
+        "description": ""
+    },
+    "LTX2SamplingPreviewOverride": {
+        "title": "LTX2 샘플링 미리보기 재정의 (KJ)",
+        "inputs": {
+            "model": "모델",
+            "latent_upscale_model": "Latent 업스케일 모델",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "preview_rate": "미리보기 레이트"
+        },
+        "outputs": {},
+        "description": "미리보기 기능이 안정적인 코어 버전에서 완성될 때까지 LTX2 샘플링 미리보기를 일시적으로 비활성화합니다."
+    },
+    "LTXVAddGuidesFromBatch": {
+        "title": "배치에서 가이드 이미지 추가 (KJ)",
+        "inputs": {
+            "positive": "긍정 가이드",
+            "negative": "부정 가이드",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images": "이미지"
+        },
+        "widgets": {
+            "strength": "강도"
+        },
+        "outputs": {
+            "positive": "긍정 가이드",
+            "negative": "부정 가이드",
+            "latent": "Latent"
+        },
+        "description": "배치 내 여러 가이드 이미지를 해당 프레임 인덱스에 맞춰 Latent에 추가합니다. 배치에서 검은색이 아닌 이미지가 가이드 이미지로 사용됩니다."
+    },
+    "LTX2AudioLatentNormalizingSampling": {
+        "title": "LTX2 오디오 Latent 정규화 샘플링 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "audio_normalization_factors": "오디오 정규화 계수"
+        },
+        "outputs": {},
+        "description": "지정된 스텝에서 오디오 Latent를 정규화 처리하여 LTX2가 생성하는 오디오 품질을 향상시킵니다."
+    },
+    "PreviewLatentNoiseMask": {
+        "title": "Latent 노이즈 마스크 미리보기 (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "mask": "마스크"
+        },
+        "description": "Latent 노이즈 마스크를 미리보기"
+    },
+    "WanChunkFeedForward": {
+        "title": "WanVideo 분할 순방향 전달 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "chunks": "블록 수",
+            "dim_threshold": "차원 임계값"
+        },
+        "outputs": {
+            "model": "모델"
+        },
+        "description": "실험적 기능, 모델 출력이 달라질 수 있습니다!! 분할 순방향 전달(신경망 개념) 활성화로 피크 VRAM 사용량을 줄입니다."
+    },
+    "SamplerSelfRefineVideo": {
+        "title": "샘플러 자기 정제 비디오 (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {
+            "input_mode": "입력 모드",
+            "start_step1": "시작 스텝1",
+            "end_step1": "종료 스텝1",
+            "start_step2": "시작 스텝2",
+            "end_step2": "종료 스텝2",
+            "steps_1": "스텝1",
+            "steps_2": "스텝2",
+            "certain_percentage": "확신 백분율",
+            "uncertainty_threshold": "불확실성 임계값",
+            "verbose": "상세",
+            "seed": "랜덤 시드"
+        },
+        "outputs": {},
+        "description": "https://github.com/agwmon/self-refine-video 구현 시도, 테스트 전용이며 의도대로 동작하지 않을 수 있습니다."
+    },
+    "LTXVAddGuideMulti": {
+        "title": "LTXVideo 가이드 이미지 여러 개 추가 (KJ)",
+        "inputs": {
+            "positive": "긍정 가이드",
+            "negative": "부정 가이드",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "이미지1"
+        },
+        "widgets": {
+            "Number of Guides": "가이드 수",
+            "frame_idx_1": "프레임 인덱스 1",
+            "strength_1": "강도 1"
+        },
+        "outputs": {
+            "positive": "긍정 가이드",
+            "negative": "부정 가이드",
+            "latent": "Latent"
+        },
+        "description": "지정된 프레임 인덱스에 강도를 설정해 여러 가이드 이미지를 추가합니다. '동적 조합' 기능을 사용하며, ComfyUI 0.8.1 및 프론트엔드 1.33.4 이상이 필요합니다."
+    },
+    "LTXVImgToVideoInplaceKJ": {
+        "title": "LTXVideo 이미지를 비디오로 변환 (KJ)",
+        "inputs": {
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "이미지1"
+        },
+        "widgets": {
+            "Number of Guides": "가이드 수",
+            "index_1": "인덱스 1",
+            "strength_1": "강도 1"
+        },
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "비디오의 Latent 프레임을 인코딩된 입력 이미지로 대체합니다. 동적 조합 기능을 사용하며, ComfyUI 0.8.1 및 프론트엔드 1.33.4 이상이 필요합니다."
+    },
+    "LTXVAudioVideoMask": {
+        "title": "오디오 및 비디오 마스크 (KJ)",
+        "inputs": {
+            "video_latent": "비디오 Latent",
+            "audio_latent": "오디오 Latent"
+        },
+        "widgets": {
+            "video_fps": "비디오 프레임 레이트",
+            "video_start_time": "비디오 시작 시간",
+            "video_end_time": "비디오 종료 시간",
+            "audio_start_time": "오디오 시작 시간",
+            "audio_end_time": "오디오 종료 시간",
+            "max_length": "최대 길이"
+        },
+        "outputs": {
+            "video_latent": "비디오 Latent",
+            "audio_latent": "오디오 Latent"
+        },
+        "description": "지정된 시간 범위에 따라 비디오와 오디오 Latent 내용에 노이즈 마스크를 생성합니다. 마스크 처리된 영역에는 새로운 내용이 생성됩니다."
+    },
+    "LTX2AttentionTunerPatch": {
+        "title": "LTX2 어텐션 튜너 패치 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "blocks": "블록",
+            "video_scale": "비디오 스케일",
+            "audio_scale": "오디오 스케일",
+            "audio_to_video_scale": "오디오-투-비디오 스케일",
+            "video_to_audio_scale": "비디오-투-오디오 스케일"
+        },
+        "outputs": {
+            "model": "모델"
+        },
+        "description": "실험적! 다른 모달리티에 어텐션 스케일 계수를 설정하는 사용자 정의 LTX2 순방향 전달이며, 동시에 피크 VRAM 사용량도 줄입니다."
+    },
+    "LTX2_NAG": {
+        "title": "LTX2 정규화 어텐션 가이던스 (KJ)",
+        "inputs": {
+            "model": "모델",
+            "nag_cond_video": "비디오 컨디셔닝",
+            "nag_cond_audio": "오디오 컨디셔닝"
+        },
+        "widgets": {
+            "nag_scale": "NAG 스케일",
+            "nag_alpha": "NAG alpha",
+            "nag_tau": "NAG tau",
+            "inplace": "제자리 연산"
+        },
+        "outputs": {
+            "model": "모델"
+        },
+        "description": "https://github.com/ChenDarYen/Normalized-Attention-Guidance"
+    },
+    "LTX2MemoryEfficientSageAttentionPatch": {
+        "title": "LTX2 메모리 효율 Sage 어텐션 패치 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "모델"
+        },
+        "description": "실험적! 사용자 정의 Sage 어텐션을 활성화해 피크 VRAM 사용량을 줄이고 어텐션 모드를 재정의합니다. 최신 버전의 Sage 어텐션이 필요합니다."
+    },
+    "LTXVChunkFeedForward": {
+        "title": "LTXVideo 분할 순방향 전달 활성화 (KJ)",
+        "inputs": {
+            "model": "모델"
+        },
+        "widgets": {
+            "chunks": "분할",
+            "dim_threshold": "차원 임계값"
+        },
+        "outputs": {
+            "model": "모델"
+        },
+        "description": "실험적이며 모델 출력이 달라질 수 있습니다! 분할 순방향 전달(신경망 개념) 활성화로 피크 메모리 사용량을 줄입니다."
+    },
+    "LTX2LoraLoaderAdvanced": {
+        "title": "LTX2 고급 Lora 로더 (KJ)",
+        "inputs": {
+            "model": "모델",
+            "opt_lora_path": "선택 LoRA 경로",
+            "blocks": "블록"
+        },
+        "widgets": {
+            "lora_name": "LoRA 이름",
+            "strength_model": "모델 강도",
+            "video": "비디오",
+            "video_to_audio": "비디오-투-오디오",
+            "audio": "오디오",
+            "audio_to_video": "오디오-투-비디오",
+            "other": "기타"
+        },
+        "outputs": {
+            "model": "모델",
+            "loaded_keys_info": "로드된 키 정보",
+            "rank": "랭크"
+        },
+        "description": "LTX2 모델을 블록별 강도로 제어하는 고급 LoRA 로더"
+    },
+    "HDRPreviewKJ": {
+        "title": "HDR 미리보기 (KJ)",
+        "inputs": {
+            "image": "이미지"
+        },
+        "widgets": {
+            "exposure": "노출",
+            "saturation": "채도",
+            "fps": "프레임 레이트",
+            "input_space": "입력 공간"
+        },
+        "outputs": {
+            "image": "이미지"
+        },
+        "description": "HDR 압축 이미지의 실시간 노출 미리보기.\n입력: LogC3로 압축된 [0,1] 범위의 이미지/비디오 배치 (예: HDR IC-LoRA 워크플로에서 HDR 해제 압축 전 VAE 디코드 출력).\n브라우저의 WebGL 프래그먼트 셰이더에서 해제 압축, 노출, 채도, Reinhard 톤 매핑, sRGB 처리를 통해 실시간 슬라이더 피드백을 구현합니다. 동일한 연산이 서버 측에서도 실행되어 구워진 sRGB 이미지 출력을 생성합니다.\n슬라이더 변경은 미리보기를 즉시 갱신하며, 이미지 출력은 워크플로가 재큐잉될 때 갱신됩니다. "
+    },
+    "HunyuanVideoEncodeKeyframesToCond": {
+        "title": "HunyuanVideo 시작/끝 프레임 컨디셔닝으로 인코딩 (KJ)",
+        "inputs": {
+            "model": "모델",
+            "positive": "긍정 프롬프트",
+            "vae": "VAE",
+            "start_frame": "시작 프레임",
+            "end_frame": "종료 프레임",
+            "negative": "부정 프롬프트"
+        },
+        "widgets": {
+            "num_frames": "프레임 수",
+            "tile_size": "타일 크기",
+            "overlap": "중복량",
+            "temporal_size": "시간 차원 크기",
+            "temporal_overlap": "시간 차원 중복량"
+        },
+        "outputs": {
+            "model": "모델",
+            "positive": "긍정 프롬프트",
+            "negative": "부정 프롬프트",
+            "latent": "Latent"
+        }
+    }
+}

@@ -1,0 +1,223 @@
+{
+    "VoiceBridgeASRLoader": {
+        "title": "音声ブリッジASRローダー",
+        "inputs": {},
+        "widgets": {
+            "repo_id": "リポジトリID",
+            "source": "ソース",
+            "precision": "精度",
+            "attention": "アテンション",
+            "max_new_tokens": "最大新規トークン数",
+            "forced_aligner": "強制アライナー",
+            "local_model_path_asr": "ローカルASRモデルパス",
+            "local_model_path_fa": "ローカルFAモデルパス"
+        },
+        "outputs": {
+            "model_key": "モデルキー",
+            "MODEL_KEY": "MODEL_KEY"
+        },
+        "description": "カテゴリ: ASRロード",
+        "api_version": "V1"
+    },
+    "VoiceBridgeASRTranscribe": {
+        "title": "音声ブリッジASR字幕文字起こし",
+        "inputs": {
+            "audio": "音声"
+        },
+        "widgets": {
+            "model_key": "モデルキー",
+            "language": "言語",
+            "context": "コンテキスト",
+            "return_timestamps": "タイムスタンプを返す"
+        },
+        "outputs": {
+            "forced_aligns": "強制アライメント結果",
+            "text": "テキスト",
+            "language": "言語",
+            "timestamps": "タイムスタンプ",
+            "LIST": "リスト",
+            "STRING": "文字列"
+        },
+        "description": "カテゴリ: ASR文字起こし",
+        "api_version": "V1"
+    },
+    "VoiceBridgeTTSLoader": {
+        "title": "音声ブリッジTTSローダー",
+        "inputs": {},
+        "widgets": {
+            "repo_id": "リポジトリID",
+            "source": "ソース",
+            "precision": "精度",
+            "attention": "アテンション",
+            "local_model_path": "ローカルTTSモデルパス"
+        },
+        "outputs": {
+            "model_key": "モデルキー",
+            "MODEL_KEY": "MODEL_KEY"
+        },
+        "description": "カテゴリ: TTSロード",
+        "api_version": "V1"
+    },
+    "VoiceClonePrompt": {
+        "title": "音声クローンプロンプト",
+        "inputs": {
+            "model_key": "モデルキー",
+            "ref_audio": "参照音声"
+        },
+        "widgets": {
+            "ref_text": "参照テキスト"
+        },
+        "outputs": {
+            "voice_clone_prompt": "音声クローンプロンプト",
+            "VOICE_CLONE_PROMPT": "音声クローンプロンプト"
+        },
+        "description": "カテゴリ: 音声クローンプロンプト",
+        "api_version": "V1"
+    },
+    "SRTToAudio": {
+        "title": "SRT字幕を音声に変換",
+        "inputs": {
+            "model_key": "モデルキー",
+            "voice_clone_prompt": "音声クローンプロンプト"
+        },
+        "widgets": {
+            "srt_string": "SRT字幕文字列",
+            "language": "言語",
+            "tempo_limit": "テンポ制限",
+            "mini_gap_ms": "最小ギャップ(ms)",
+            "batch_size": "バッチサイズ"
+        },
+        "outputs": {
+            "audio": "音声",
+            "adjusted_srt": "調整後のSRT字幕",
+            "AUDIO": "音声",
+            "STRING": "文字列"
+        },
+        "description": "カテゴリ: SRT字幕を音声に変換",
+        "api_version": "V1"
+    },
+    "generate srt": {
+        "title": "SRT字幕を生成",
+        "inputs": {},
+        "widgets": {
+            "forced_aligns": "強制アライメント結果",
+            "text": "テキスト",
+            "language": "言語",
+            "save_srt": "SRT字幕を保存",
+            "filename_prefix": "ファイル名プレフィックス"
+        },
+        "outputs": {
+            "srt_string": "SRT字幕文字列",
+            "STRING": "文字列"
+        },
+        "description": "カテゴリ: SRT字幕を生成",
+        "api_version": "V1"
+    },
+    "SaveSRTFromString": {
+        "title": "文字列からSRT字幕を保存",
+        "inputs": {},
+        "widgets": {
+            "srt_string": "SRT字幕文字列",
+            "filename_prefix": "ファイル名プレフィックス"
+        },
+        "outputs": {
+            "save_path": "保存パス",
+            "STRING": "文字列"
+        },
+        "description": "カテゴリ: 文字列からSRT字幕を保存",
+        "api_version": "V1"
+    },
+    "VoiceBridgeAIAPI": {
+        "title": "音声ブリッジAI API",
+        "inputs": {},
+        "widgets": {
+            "model": "モデル",
+            "base_url": "ベースURL",
+            "api_key": "APIキー",
+            "system_prompt": "システムプロンプト",
+            "prompt": "プロンプト",
+            "max_tokens": "最大トークン数",
+            "temperature": "温度",
+            "top_p": "Top-P"
+        },
+        "outputs": {
+            "response": "レスポンス",
+            "STRING": "文字列"
+        },
+        "description": "カテゴリ: AI API",
+        "api_version": "V1"
+    },
+    "VoiceBridgeUnloadModel": {
+        "title": "音声ブリッジモデルアンロード",
+        "inputs": {
+            "anything": "任意"
+        },
+        "widgets": {
+            "Unload_ASR_Model": "ASRモデルをアンロード",
+            "Unload_TTS_Model": "TTSモデルをアンロード"
+        },
+        "outputs": {
+            "any": "任意"
+        },
+        "description": "カテゴリ: モデルアンロード",
+        "api_version": "V1"
+    },
+    "VoiceBridgeLoadSRT": {
+        "title": "音声ブリッジSRT字幕読み込み",
+        "inputs": {},
+        "widgets": {
+            "srt": "SRT字幕",
+            "upload": "アップロード"
+        },
+        "outputs": {
+            "srt_string": "SRT字幕文字列"
+        },
+        "description": "カテゴリ: 文字列からSRT字幕を保存"
+    },
+    "VoiceBridgeSRTSplitter": {
+        "title": "音声ブリッジSRT字幕スプリッター",
+        "inputs": {},
+        "widgets": {
+            "srt": "SRT字幕",
+            "upload": "アップロード"
+        },
+        "outputs": {
+            "texts": "テキスト内容",
+            "count": "数",
+            "srt_items": "SRTアイテム"
+        },
+        "description": "カテゴリ: 文字列からSRTを保存"
+    },
+    "VoiceBridgeAudioListMergerBySRT": {
+        "title": "SRT字幕に基づく音声リストマージ",
+        "inputs": {
+            "audios": "音声",
+            "srt_items": "SRT字幕アイテム"
+        },
+        "widgets": {
+            "tempo_limit": "尺制限",
+            "mini_gap_ms": "最小間隔(ms)"
+        },
+        "outputs": {
+            "audio": "音声",
+            "adjusted_srt": "調整後の字幕（SRT形式）"
+        },
+        "description": "カテゴリ: 文字列からSRTを保存"
+    },
+    "GenerateSRT": {
+        "title": "字幕ファイルを生成",
+        "inputs": {
+            "forced_aligns": "強制アライメントデータ"
+        },
+        "widgets": {
+            "save_srt": "SRT字幕ファイルを保存するか",
+            "filename_prefix": "ファイル名プレフィックス",
+            "text": "テキスト内容",
+            "language": "言語"
+        },
+        "outputs": {
+            "srt_string": "SRT字幕文字列"
+        },
+        "description": "入力されたテキストと言語情報に基づきSRT形式の字幕内容を生成します。強制アライメントデータに対応して字幕の精度を向上、ファイル保存の有無を選択でき、出力ファイル名プレフィックスもカスタマイズ可能です。"
+    }
+}

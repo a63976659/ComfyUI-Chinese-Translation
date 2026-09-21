@@ -1,0 +1,4810 @@
+{
+    "ClaudeNode": {
+        "title": "Anthropic Claude",
+        "inputs": {
+            "source": "Caminho de origem",
+            "image_1": "Imagem_1"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "model": "Modelo",
+            "max_tokens": "Máximo de tokens",
+            "temperature": "Temperatura",
+            "reasoning_effort": "Esforço de raciocínio",
+            "seed": "Semente"
+        },
+        "outputs": {
+            "String": "String"
+        },
+        "description": "Gera respostas de texto com o modelo Claude da Anthropic. Forneça um prompt de texto e, opcionalmente, anexe uma ou mais imagens para construir contexto multimodal."
+    },
+    "ByteDanceSeedNode": {
+        "title": "ByteDance Seedance 2.0",
+        "inputs": {
+            "video_1": "Vídeo_1",
+            "image_1": "Imagem_1"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "model": "Modelo",
+            "temperature": "Temperatura",
+            "seed": "Semente"
+        },
+        "outputs": {
+            "String": "String"
+        },
+        "description": "Gera respostas de texto com o modelo Seed 2.0 da ByteDance. Forneça um prompt de texto e, opcionalmente, anexe uma ou mais imagens ou vídeos para enriquecer o contexto multimodal."
+    },
+    "ByteDance2ReferenceNodeV2": {
+        "title": "ByteDance Seedance 2.5 referência de vídeo",
+        "inputs": {
+            "image_1": "Imagem 1",
+            "image_2": "Imagem 2",
+            "image_3": "Imagem 3",
+            "image_4": "Imagem 4",
+            "image_5": "Imagem 5",
+            "image_6": "Imagem 6",
+            "image_7": "Imagem 7",
+            "image_8": "Imagem 8",
+            "image_9": "Imagem 9",
+            "audio_1": "Áudio 1",
+            "audio_2": "Áudio 2",
+            "audio_3": "Áudio 3",
+            "video_1": "Vídeo 1",
+            "video_2": "Vídeo 2",
+            "video_3": "Vídeo 3",
+            "asset_1": "Ativo 1",
+            "asset_2": "Ativo 2",
+            "asset_3": "Ativo 3"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "resolution": "Resolução",
+            "ratio": "Proporção",
+            "generate_audio": "Gerar áudio",
+            "duration": "Duração",
+            "task_type": "Tipo de tarefa",
+            "auto_downscale": "Redimensionar automaticamente para baixo",
+            "auto_upscale": "Redimensionar automaticamente para cima",
+            "output_format": "Formato de saída",
+            "seed": "Semente",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "String": "String"
+        },
+        "description": "Gera, edita ou estende vídeos com Seedance 2.5 ou 2.0, com suporte a imagens, vídeos e áudios de referência. Suporta referências multimodais, edição de vídeo e extensão de vídeo."
+    },
+    "ByteDanceVideoEnhanceNode": {
+        "title": "Aprimoramento de vídeo ByteDance vCube",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "tool_version": "Versão da ferramenta",
+            "scene": "Cenário",
+            "enhance_style": "Estilo de aprimoramento",
+            "resolution": "Resolução",
+            "fps": "Taxa de quadros",
+            "bitrate_level": "Nível de taxa de bits"
+        },
+        "outputs": {},
+        "description": "Amplia e restaura vídeos com o vCube da ByteDance: super-resolução de até 8K, remoção de compressão, artefatos e ruído, melhoria de cor e nitidez, com interpolação de quadros opcional."
+    },
+    "GeminiNode": {
+        "title": "Google Gemini",
+        "inputs": {
+            "images": "Grupo de imagens",
+            "audio": "Áudio",
+            "video": "Vídeo",
+            "files": "Arquivos de entrada Gemini",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "ratio": "Proporção",
+            "duration": "Duração",
+            "model": "Modelo"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "STRING": "String"
+        }
+    },
+    "GeminiNodeV2": {
+        "title": "Google Gemini V2",
+        "inputs": {
+            "image_1": "Imagem 1",
+            "image_2": "Imagem 2",
+            "image_3": "Imagem 3",
+            "image_4": "Imagem 4",
+            "image_5": "Imagem 5",
+            "image_6": "Imagem 6",
+            "image_7": "Imagem 7",
+            "image_8": "Imagem 8",
+            "image_9": "Imagem 9",
+            "video_1": "Vídeo 1",
+            "audio_1": "Áudio 1",
+            "files": "Arquivos de entrada Gemini"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "thinking_level": "Nível de raciocínio",
+            "temperature": "Temperatura",
+            "max_output_tokens": "Máximo de tokens de saída",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "duration": "Duração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "STRING": "String"
+        }
+    },
+    "GeminiVideoOmniV2": {
+        "title": "Google Gemini Omni vídeo",
+        "inputs": {
+            "image_1": "Imagem 1",
+            "image_2": "Imagem 2",
+            "image_3": "Imagem 3",
+            "image_4": "Imagem 4",
+            "image_5": "Imagem 5",
+            "image_6": "Imagem 6",
+            "image_7": "Imagem 7",
+            "image_8": "Imagem 8",
+            "image_9": "Imagem 9",
+            "video_1": "Vídeo 1",
+            "video_2": "Vídeo 2",
+            "video_3": "Vídeo 3"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "aspect_ratio": "Proporção",
+            "duration": "Duração",
+            "task_type": "Tipo de tarefa",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "STRING": "String"
+        }
+    },
+    "GeminiInputFiles": {
+        "title": "Google Gemini arquivos de entrada",
+        "inputs": {
+            "GEMINI_INPUT_FILES": "Arquivos de entrada Gemini",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "file": "Arquivo",
+            "model": "Modelo"
+        },
+        "outputs": {
+            "GEMINI_INPUT_FILES": "Arquivos de entrada Gemini",
+            "STRING": "String"
+        }
+    },
+    "OpenAIChatNode": {
+        "title": "OpenAI Chat",
+        "inputs": {
+            "images": "Grupo de imagens",
+            "audio": "Áudio",
+            "advanced_options": "Opções avançadas",
+            "files": "Arquivos de entrada da OpenAI",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "persist_context": "Contexto persistente",
+            "duration": "Duração",
+            "model": "Modelo"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "STRING": "String"
+        }
+    },
+    "OpenAIInputFiles": {
+        "title": "Arquivos de entrada do OpenAI Chat",
+        "inputs": {
+            "OPENAI_INPUT_FILES": "Arquivos de entrada da OpenAI",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "file": "Arquivo",
+            "model": "Modelo"
+        },
+        "outputs": {
+            "OPENAI_INPUT_FILES": "Arquivos de entrada da OpenAI",
+            "STRING": "String"
+        }
+    },
+    "OpenAIChatConfig": {
+        "title": "Opções avançadas do OpenAI Chat",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "truncation": "Truncamento",
+            "max_output_tokens": "Máximo de tokens de saída",
+            "quality": "Qualidade",
+            "n": "Quantidade",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "auth_token": "Tokens autorizados"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "Opções avançadas",
+            "string": "String"
+        }
+    },
+    "OpenRouterLLMNode": {
+        "title": "LLM da OpenRouter",
+        "inputs": {
+            "image_1": "Imagem 1",
+            "image_2": "Imagem 2",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "reasoning_effort": "Raciocínio esforçado",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "auth_token": "Tokens autorizados"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "Opções avançadas",
+            "string": "String"
+        }
+    },
+    "BeebleSwitchXVideoEdit": {
+        "title": "Edição de vídeo Beeble SwitchX",
+        "inputs": {
+            "video": "Vídeo",
+            "reference_image": "Imagem de referência"
+        },
+        "widgets": {
+            "prompt": "Prompt de texto",
+            "alpha_mode": "Modo alfa",
+            "max_resolution": "Resolução máxima",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "video": "Vídeo",
+            "alpha": "Alpha"
+        },
+        "description": "Edita um vídeo com o BeebleSwitchX. Permite trocar qualquer elemento da cena (fundo, iluminação, roupas) mantendo os pixels e o movimento do sujeito original. Forneça uma imagem de referência e/ou um prompt de texto descrevendo o novo visual. Até 240 quadros, com resolução máxima de aproximadamente 2,77 MP por quadro."
+    },
+    "BriaRemoveVideoBackground": {
+        "title": "Bria remover fundo de vídeo",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "background_color": "Cor de fundo",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        }
+    },
+    "BriaVideoGreenScreen": {
+        "title": "Tela verde de vídeo Bria",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "green_shade": "Cor da tela verde",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "Substitui o fundo do vídeo por uma tela verde sólida com a Bria."
+    },
+    "BriaTransparentVideoBackground": {
+        "title": "Bria remover fundo de vídeo (transparente)",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "images": "Imagem",
+            "mask": "Máscara"
+        },
+        "description": "Remove o fundo de vídeos com a Bria e retorna os quadros recortados e máscaras alfa. Conecte ambos a um nó de composição ou envie-os para Salvar WEBM para gerar um vídeo transparente."
+    },
+    "ByteDanceTextToVideoNode": {
+        "title": "ByteDance texto para vídeo",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "aspect_ratio": "Proporção",
+            "duration": "Duração",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "camera_fixed": "Câmera fixa",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "video": "Vídeo",
+            "VIDEO": "Vídeo"
+        }
+    },
+    "ByteDanceImageToVideoNode": {
+        "title": "ByteDance imagem para vídeo",
+        "inputs": {
+            "image": "Imagem",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "aspect_ratio": "Proporção",
+            "duration": "Duração",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "camera_fixed": "Câmera fixa",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "video": "Vídeo",
+            "VIDEO": "Vídeo"
+        }
+    },
+    "ByteDanceFirstLastFrameNode": {
+        "title": "ByteDance primeiro e último quadro para vídeo",
+        "inputs": {
+            "first_frame": "Imagem do primeiro quadro",
+            "last_frame": "Imagem do último quadro",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "aspect_ratio": "Proporção",
+            "duration": "Duração",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "camera_fixed": "Câmera fixa",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "video": "Vídeo",
+            "VIDEO": "Vídeo"
+        }
+    },
+    "ByteDanceImageReferenceNode": {
+        "title": "ByteDance imagem de referência para vídeo",
+        "inputs": {
+            "images": "Grupo de imagens",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "aspect_ratio": "Proporção",
+            "duration": "Duração",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "camera_fixed": "Câmera fixa",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "video": "Vídeo",
+            "VIDEO": "Vídeo"
+        }
+    },
+    "ByteDance2TextToVideoNode": {
+        "title": "ByteDance 2.0 texto para vídeo",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "ratio": "Proporção",
+            "generate_audio": "Gerar áudio",
+            "duration": "Duração",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "camera_fixed": "Câmera fixa",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "video": "Vídeo",
+            "VIDEO": "Vídeo"
+        }
+    },
+    "ByteDance2FirstLastFrameNode": {
+        "title": "ByteDance 2.0 primeiro e último quadro para vídeo",
+        "inputs": {
+            "first_frame": "Imagem do primeiro quadro",
+            "last_frame": "Imagem do último quadro",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "ratio": "Proporção",
+            "generate_audio": "Gerar áudio",
+            "duration": "Duração",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "video": "Vídeo",
+            "VIDEO": "Vídeo"
+        }
+    },
+    "ByteDance2ReferenceNode": {
+        "title": "ByteDance 2.0 referência para vídeo",
+        "inputs": {
+            "image_1": "Imagem 1",
+            "image_2": "Imagem 2",
+            "image_3": "Imagem 3",
+            "image_4": "Imagem 4",
+            "image_5": "Imagem 5",
+            "image_6": "Imagem 6",
+            "image_7": "Imagem 7",
+            "image_8": "Imagem 8",
+            "image_9": "Imagem 9",
+            "video_1": "Vídeo 1",
+            "video_2": "Vídeo 2",
+            "video_3": "Vídeo 3",
+            "audio_1": "Áudio 1",
+            "audio_2": "Áudio 2",
+            "audio_3": "Áudio 3",
+            "asset_1": "Ativo 1",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "ratio": "Proporção",
+            "generate_audio": "Gerar áudio",
+            "duration": "Duração",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "camera_fixed": "Câmera fixa",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "video": "Vídeo",
+            "VIDEO": "Vídeo"
+        }
+    },
+    "ByteDanceCreateVideoAsset": {
+        "title": "ByteDance criar ativo de vídeo",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "group_id": "ID do grupo"
+        },
+        "outputs": {
+            "asset_id": "ID do ativo",
+            "group_id": "ID do grupo"
+        },
+        "description": "Cria um ativo de vídeo pessoal do Seedance 2.0. Envia o vídeo de entrada e o registra no grupo de ativos especificado.\n Se o ID do ativo estiver vazio, executa o fluxo real de autenticação pessoal H5 para criar um novo grupo e depois adiciona o ativo."
+    },
+    "GrokVideoNode": {
+        "title": "Grok Vídeo",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "duration": "Duração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        }
+    },
+    "GrokVideoReferenceNode": {
+        "title": "Grok referência para vídeo",
+        "inputs": {
+            "reference_0": "Referência 0",
+            "reference_1": "Referência 1",
+            "reference_2": "Referência 2",
+            "reference_3": "Referência 3",
+            "reference_4": "Referência 4",
+            "reference_5": "Referência 5",
+            "reference_6": "Referência 6"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "aspect_ratio": "Proporção",
+            "duration": "Duração",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        }
+    },
+    "GrokVideoEditNode": {
+        "title": "Edição de vídeo Grok",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "duration": "Duração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        }
+    },
+    "GrokVideoExtendNode": {
+        "title": "Extensão de vídeo Grok",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "duration": "Duração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        }
+    },
+    "HitPawVideoEnhance": {
+        "title": "Aprimoramento de vídeo HitPaw",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        }
+    },
+    "KlingCameraControls": {
+        "title": "Controle de câmera Kling",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "camera_control_type": "Tipo de controle de câmera",
+            "horizontal_movement": "Movimento horizontal",
+            "vertical_movement": "Movimento vertical",
+            "pan": "Pan",
+            "tilt": "Tilt",
+            "roll": "Roll",
+            "zoom": "Zoom"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "camera_control": "Parâmetros de controle da câmera"
+        }
+    },
+    "KlingTextToVideoNode": {
+        "title": "Kling texto para vídeo",
+        "inputs": {},
+        "widgets": {
+            "cfg_scale": "Escala CFG",
+            "mode": "Modo",
+            "aspect_ratio": "Proporção",
+            "task_id": "ID da tarefa",
+            "auth_token": "Tokens autorizados",
+            "camera_control": "Parâmetros de controle da câmera",
+            "model_name": "Nome do modelo",
+            "duration": "Duração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "KlingImage2VideoNode": {
+        "title": "Kling imagem para vídeo",
+        "inputs": {
+            "start_frame": "Quadro inicial",
+            "end_frame": "Quadro final",
+            "camera_control": "Parâmetros de controle da câmera",
+            "prompt": "Prompt",
+            "negative_prompt": "Prompt negativo"
+        },
+        "widgets": {
+            "cfg_scale": "Escala CFG",
+            "mode": "Modo",
+            "aspect_ratio": "Proporção",
+            "task_id": "ID da tarefa",
+            "auth_token": "Tokens autorizados",
+            "model_name": "Nome do modelo",
+            "duration": "Duração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "KlingCameraControlI2VNode": {
+        "title": "Kling imagem para vídeo (controle de câmera)",
+        "inputs": {
+            "start_frame": "Quadro inicial",
+            "end_frame": "Quadro final",
+            "camera_control": "Parâmetros de controle da câmera",
+            "prompt": "Prompt",
+            "negative_prompt": "Prompt negativo"
+        },
+        "widgets": {
+            "cfg_scale": "Escala CFG",
+            "mode": "Modo",
+            "aspect_ratio": "Proporção",
+            "task_id": "ID da tarefa",
+            "auth_token": "Tokens autorizados",
+            "model_name": "Nome do modelo",
+            "duration": "Duração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "KlingCameraControlT2VNode": {
+        "title": "Kling texto para vídeo (controle de câmera)",
+        "inputs": {
+            "camera_control": "Parâmetros de controle da câmera",
+            "prompt": "Prompt",
+            "negative_prompt": "Prompt negativo"
+        },
+        "widgets": {
+            "cfg_scale": "Escala CFG",
+            "mode": "Modo",
+            "aspect_ratio": "Proporção",
+            "task_id": "ID da tarefa",
+            "auth_token": "Tokens autorizados",
+            "model_name": "Nome do modelo",
+            "duration": "Duração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "KlingStartEndFrameNode": {
+        "title": "Kling primeiro e último quadro para vídeo",
+        "inputs": {
+            "start_frame": "Quadro inicial",
+            "end_frame": "Quadro final",
+            "camera_control": "Parâmetros de controle da câmera",
+            "prompt": "Prompt",
+            "negative_prompt": "Prompt negativo"
+        },
+        "widgets": {
+            "cfg_scale": "Escala CFG",
+            "mode": "Modo",
+            "aspect_ratio": "Proporção",
+            "task_id": "ID da tarefa",
+            "auth_token": "Tokens autorizados",
+            "model_name": "Nome do modelo",
+            "duration": "Duração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "KlingVideoExtendNode": {
+        "title": "Extensão de vídeo Kling",
+        "inputs": {
+            "start_frame": "Quadro inicial",
+            "end_frame": "Quadro final",
+            "video_id": "ID do vídeo",
+            "prompt": "Prompt",
+            "negative_prompt": "Prompt negativo"
+        },
+        "widgets": {
+            "cfg_scale": "Escala CFG",
+            "mode": "Modo",
+            "aspect_ratio": "Proporção",
+            "task_id": "ID da tarefa",
+            "auth_token": "Tokens autorizados",
+            "model_name": "Nome do modelo",
+            "duration": "Duração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "KlingLipSyncAudioToVideoNode": {
+        "title": "Kling sincronização labial de vídeo dirigida por áudio",
+        "inputs": {
+            "audio": "Áudio",
+            "text": "Texto",
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "voice_language": "Idioma da voz",
+            "voice_speed": "Velocidade da voz",
+            "mode": "Modo",
+            "task_id": "ID da tarefa",
+            "auth_token": "Tokens autorizados",
+            "model_name": "Nome do modelo",
+            "voice_id": "ID da voz"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "KlingLipSyncTextToVideoNode": {
+        "title": "Kling vídeo com sincronização labial dirigida por texto",
+        "inputs": {
+            "audio": "Áudio",
+            "text": "Texto",
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "voice_language": "Idioma da voz",
+            "voice_speed": "Velocidade da voz",
+            "mode": "Modo",
+            "task_id": "ID da tarefa",
+            "auth_token": "Tokens autorizados",
+            "voice": "Voz",
+            "voice_id": "ID da voz"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "KlingSingleImageVideoEffectNode": {
+        "title": "Efeito de vídeo Kling para um personagem",
+        "inputs": {
+            "image": "Imagem",
+            "video_id": "ID do vídeo"
+        },
+        "widgets": {
+            "dual_character": "Dois personagens",
+            "effect_scene": "Cenário do efeito",
+            "mode": "Modo",
+            "aspect_ratio": "Proporção",
+            "task_id": "ID da tarefa",
+            "auth_token": "Tokens autorizados",
+            "model_name": "Nome do modelo",
+            "duration": "Duração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "KlingDualCharacterVideoEffectNode": {
+        "title": "Efeito de vídeo Kling para dois personagens",
+        "inputs": {
+            "image_1": "Imagem 1",
+            "image_2": "Imagem 2",
+            "video_id": "ID do vídeo",
+            "image_left": "Imagem esquerda",
+            "image_right": "Imagem direita"
+        },
+        "widgets": {
+            "dual_character": "Dois personagens",
+            "effect_scene": "Cenário do efeito",
+            "mode": "Modo",
+            "aspect_ratio": "Proporção",
+            "task_id": "ID da tarefa",
+            "auth_token": "Tokens autorizados",
+            "model_name": "Nome do modelo",
+            "duration": "Duração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "KlingOmniProTextToVideoNode": {
+        "title": "Kling Omni texto para vídeo (pro)",
+        "inputs": {
+            "reference_images": "Imagem de referência"
+        },
+        "widgets": {
+            "model_name": "Nome do modelo",
+            "resolution": "Resolução",
+            "auth_token": "Tokens autorizados",
+            "aspect_ratio": "Proporção",
+            "n": "Quantidade"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "string": "String"
+        }
+    },
+    "KlingOmniProFirstLastFrameNode": {
+        "title": "Kling Omni primeiro e último quadro para vídeo (pro)",
+        "inputs": {
+            "first_frame": "Imagem do primeiro quadro",
+            "end_frame": "Imagem do último quadro",
+            "reference_images": "Imagem de referência"
+        },
+        "widgets": {
+            "model_name": "Nome do modelo",
+            "resolution": "Resolução",
+            "duration": "Duração",
+            "aspect_ratio": "Proporção"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "string": "String"
+        }
+    },
+    "KlingOmniProImageToVideoNode": {
+        "title": "Kling Omni imagem para vídeo (pro)",
+        "inputs": {
+            "reference_images": "Imagem de referência"
+        },
+        "widgets": {
+            "model_name": "Nome do modelo",
+            "resolution": "Resolução",
+            "duration": "Duração",
+            "aspect_ratio": "Proporção"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "string": "String"
+        }
+    },
+    "KlingOmniProVideoToVideoNode": {
+        "title": "Kling Omni vídeo para vídeo (pro)",
+        "inputs": {
+            "reference_video": "Vídeo de referência",
+            "reference_images": "Imagem de referência"
+        },
+        "widgets": {
+            "model_name": "Nome do modelo",
+            "keep_original_sound": "Usar áudio original",
+            "duration": "Duração",
+            "aspect_ratio": "Proporção"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "string": "String"
+        }
+    },
+    "KlingOmniProEditVideoNode": {
+        "title": "Kling Omni edição de vídeo (pro)",
+        "inputs": {
+            "video": "Vídeo",
+            "reference_images": "Imagem de referência"
+        },
+        "widgets": {
+            "model_name": "Nome do modelo",
+            "keep_original_sound": "Manter áudio original"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        }
+    },
+    "KlingTextToVideoWithAudio": {
+        "title": "Kling texto para vídeo (com áudio)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "Nome do modelo",
+            "mode": "Modo",
+            "aspect_ratio": "Proporção",
+            "duration": "Duração",
+            "auth_token": "Tokens autorizados",
+            "generate_audio": "Gerar áudio"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "KlingImageToVideoWithAudio": {
+        "title": "Kling imagem para vídeo (com áudio)",
+        "inputs": {
+            "start_frame": "Quadro inicial"
+        },
+        "widgets": {
+            "model_name": "Nome do modelo",
+            "mode": "Modo",
+            "generate_audio": "Gerar áudio",
+            "duration": "Duração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "KlingMotionControl": {
+        "title": "Controle de movimento Kling",
+        "inputs": {
+            "reference_video": "Vídeo de referência",
+            "reference_image": "Imagem de referência"
+        },
+        "widgets": {
+            "mode": "Modo",
+            "character_orientation": "Posicionamento do personagem",
+            "keep_original_sound": "Manter áudio original"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        }
+    },
+    "KlingAvatarNode": {
+        "title": "Kling Avatar 2",
+        "inputs": {
+            "image": "Imagem",
+            "sound_file": "Arquivo de voz"
+        },
+        "widgets": {
+            "mode": "Modo",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        }
+    },
+    "LtxvApiTextToVideo": {
+        "title": "LTXV texto para vídeo",
+        "inputs": {
+            "positive": "Condição positiva",
+            "negative": "Condição negativa",
+            "vae": "Codificador VAE",
+            "image": "Imagem"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "resolution": "Resolução",
+            "duration": "Duração (s)",
+            "fps": "Taxa de quadros (fps)",
+            "control_after_generate": "Controle pós-geração",
+            "generate_audio": "Gerar áudio"
+        },
+        "outputs": {
+            "video": "Vídeo",
+            "VIDEO": "Vídeo"
+        }
+    },
+    "LtxvApiImageToVideo": {
+        "title": "LTXV imagem para vídeo",
+        "inputs": {
+            "positive": "Condição positiva",
+            "negative": "Condição negativa",
+            "vae": "Codificador VAE",
+            "image": "Imagem"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "resolution": "Resolução",
+            "duration": "Duração (s)",
+            "fps": "Taxa de quadros (fps)",
+            "control_after_generate": "Controle pós-geração",
+            "generate_audio": "Gerar áudio"
+        },
+        "outputs": {
+            "video": "Vídeo",
+            "VIDEO": "Vídeo"
+        }
+    },
+    "LtxApi25TextToVideo": {
+        "title": "LTX 2.5 texto para vídeo",
+        "inputs": {},
+        "widgets": {
+            "model": "Modelo",
+            "duration": "Duração (s)",
+            "resolution": "Resolução",
+            "fps": "Taxa de quadros (fps)",
+            "generate_audio": "Gerar áudio",
+            "prompt": "Prompt",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        }
+    },
+    "LtxApi25ImageToVideo": {
+        "title": "LTX 2.5 imagem para vídeo",
+        "inputs": {
+            "last_frame": "Quadro anterior",
+            "image": "Imagem"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "duration": "Duração (s)",
+            "resolution": "Resolução",
+            "fps": "Taxa de quadros (fps)",
+            "generate_audio": "Gerar áudio",
+            "prompt": "Prompt",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        }
+    },
+    "LtxApi25AudioToVideo": {
+        "title": "LTX 2.5 áudio para vídeo",
+        "inputs": {
+            "audio": "Áudio",
+            "image": "Imagem"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "prompt": "Prompt",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        }
+    },
+    "LumaVideoNode": {
+        "title": "Luma texto para vídeo",
+        "inputs": {
+            "luma_concepts": "Conceitos da Luma",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "duration": "Duração",
+            "loop": "Loop",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "auth_token": "Tokens autorizados",
+            "weight": "Peso"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "luma_concepts": "Conceitos da Luma",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "LumaImageToVideoNode": {
+        "title": "Luma imagem para vídeo",
+        "inputs": {
+            "first_image": "Imagem do primeiro quadro",
+            "last_image": "Imagem do último quadro",
+            "luma_concepts": "Conceitos da Luma",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "duration": "Duração",
+            "loop": "Loop",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "auth_token": "Tokens autorizados",
+            "weight": "Peso"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "luma_concepts": "Conceitos da Luma",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "LumaConceptsNode": {
+        "title": "Conceitos da Luma",
+        "inputs": {
+            "image": "Imagem",
+            "prompt": "Prompt",
+            "luma_concepts": "Conceitos da Luma"
+        },
+        "widgets": {
+            "image_type": "Tipo de imagem",
+            "concept1": "Conceito 1",
+            "concept2": "Conceito 2",
+            "concept3": "Conceito 3",
+            "concept4": "Conceito 4",
+            "auth_token": "Tokens autorizados",
+            "aspect_ratio": "Proporção",
+            "n": "Quantidade"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "luma_concepts": "Conceitos da Luma"
+        }
+    },
+    "MinimaxTextToVideoNode": {
+        "title": "MiniMax texto para vídeo",
+        "inputs": {
+            "image": "Imagem",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "duration": "Duração",
+            "subject": "Assunto",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "auth_token": "Tokens autorizados",
+            "weight": "Peso"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "luma_concepts": "Conceitos da Luma",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "MinimaxImageToVideoNode": {
+        "title": "MiniMax imagem para vídeo",
+        "inputs": {
+            "image": "Imagem",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "duration": "Duração",
+            "subject": "Assunto",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "auth_token": "Tokens autorizados",
+            "weight": "Peso"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "luma_concepts": "Conceitos da Luma",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "MinimaxHailuoVideoNode": {
+        "title": "MiniMax Hailuo vídeo",
+        "inputs": {
+            "first_frame_image": "Imagem do primeiro quadro",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "prompt_optimizer": "Otimização de prompt",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "duration": "Duração",
+            "subject": "Assunto",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "auth_token": "Tokens autorizados",
+            "weight": "Peso"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "luma_concepts": "Conceitos da Luma",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "PixverseTextToVideoNode": {
+        "title": "PixVerse texto para vídeo",
+        "inputs": {
+            "video": "Vídeo",
+            "image": "Imagem",
+            "pixverse_template": "Template PixVerse",
+            "prompt_text": "Texto do prompt",
+            "negative_prompt": "Prompt negativo"
+        },
+        "widgets": {
+            "aspect_ratio": "Proporção",
+            "quality": "Qualidade",
+            "duration_seconds": "Duração (s)",
+            "motion_mode": "Modo de movimento",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "auth_token": "Tokens autorizados"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "string": "String"
+        }
+    },
+    "PixverseImageToVideoNode": {
+        "title": "PixVerse imagem para vídeo",
+        "inputs": {
+            "video": "Vídeo",
+            "image": "Imagem",
+            "pixverse_template": "Template PixVerse",
+            "prompt_text": "Texto do prompt",
+            "negative_prompt": "Prompt negativo"
+        },
+        "widgets": {
+            "aspect_ratio": "Proporção",
+            "quality": "Qualidade",
+            "duration_seconds": "Duração (s)",
+            "motion_mode": "Modo de movimento",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "auth_token": "Tokens autorizados"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "string": "String"
+        }
+    },
+    "PixverseTransitionVideoNode": {
+        "title": "Vídeo de transição PixVerse",
+        "inputs": {
+            "first_frame": "Primeiro quadro",
+            "last_frame": "Último quadro",
+            "pixverse_template": "Template PixVerse",
+            "prompt_text": "Texto do prompt",
+            "negative_prompt": "Prompt negativo"
+        },
+        "widgets": {
+            "aspect_ratio": "Proporção",
+            "quality": "Qualidade",
+            "duration_seconds": "Duração (s)",
+            "motion_mode": "Modo de movimento",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "auth_token": "Tokens autorizados"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "string": "String"
+        }
+    },
+    "PixverseTemplateNode": {
+        "title": "Modelo PixVerse",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "template": "Modelo"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "pixverse_template": "Template PixVerse"
+        }
+    },
+    "RunwayFirstLastFrameNode": {
+        "title": "Runway primeiro e último quadro",
+        "inputs": {
+            "positive": "Condição positiva",
+            "negative": "Condição negativa",
+            "camera_conditions": "Condição da câmera",
+            "start_frame": "Quadro inicial",
+            "end_frame": "Quadro final"
+        },
+        "widgets": {
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "ratio": "Proporção",
+            "duration": "Duração",
+            "batch_size": "Tamanho do lote"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "RunwayImageToVideoNodeGen3a": {
+        "title": "Runway imagem para vídeo (Gen3a Turbo)",
+        "inputs": {
+            "positive": "Condição positiva",
+            "negative": "Condição negativa",
+            "camera_conditions": "Condição da câmera",
+            "start_frame": "Quadro inicial",
+            "end_frame": "Quadro final"
+        },
+        "widgets": {
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "ratio": "Proporção",
+            "duration": "Duração",
+            "batch_size": "Tamanho do lote"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "RunwayImageToVideoNodeGen4": {
+        "title": "Runway imagem para vídeo (Gen4 Turbo)",
+        "inputs": {
+            "positive": "Condição positiva",
+            "negative": "Condição negativa",
+            "camera_conditions": "Condição da câmera",
+            "start_frame": "Quadro inicial",
+            "end_frame": "Quadro final"
+        },
+        "widgets": {
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "ratio": "Proporção",
+            "duration": "Duração",
+            "batch_size": "Tamanho do lote"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video_id": "ID do vídeo",
+            "duration": "Duração",
+            "string": "String"
+        }
+    },
+    "OpenAIVideoSora2": {
+        "title": "OpenAI Sora2 - vídeo",
+        "inputs": {
+            "image": "Imagem",
+            "audio": "Áudio"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "size": "Dimensões",
+            "resolution": "Resolução",
+            "duration": "Duração (s)",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "generate_audio": "Gerar áudio",
+            "prompt_extend": "Estender o prompt",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "TopazVideoEnhance": {
+        "title": "Realce de vídeo Topaz",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "upscaler_enabled": "Ativar realce",
+            "upscaler_model": "Modelo de aprimoramento",
+            "upscaler_resolution": "Aumentar resolução",
+            "upscaler_creativity": "Aumentar duração",
+            "interpolation_enabled": "Ativar interpolação",
+            "interpolation_model": "Modelo de interpolação",
+            "interpolation_slowmo": "Câmera lenta da interpolação",
+            "interpolation_frame_rate": "Taxa de quadros da interpolação",
+            "interpolation_duplicate": "Repetições da interpolação",
+            "interpolation_duplicate_threshold": "Limiar de repetição da interpolação",
+            "dynamic_compression_level": "Nível de compressão dinâmica"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video": "Vídeo"
+        }
+    },
+    "TopazVideoEnhanceV2": {
+        "title": "Realce de vídeo Topaz V2",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "upscaler_model": "Modelo de aprimoramento",
+            "upscaler_resolution": "Aumentar resolução",
+            "creativity": "Duração",
+            "sharp:": "Nitidez",
+            "realism:": "Realismo",
+            "interpolation_model": "Modelo de interpolação",
+            "dynamic_compression_level": "Nível de compressão dinâmica"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video": "Vídeo"
+        }
+    },
+    "VeoVideoGenerationNode": {
+        "title": "Geração de vídeo Google Veo2",
+        "inputs": {
+            "image": "Imagem",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "negative_prompt": "Prompt negativo",
+            "aspect_ratio": "Proporção",
+            "duration_seconds": "Duração do vídeo (s)",
+            "enhance_prompt": "Aprimoramento de prompt",
+            "person_generation": "Modo de geração de pessoas",
+            "seed": "Semente aleatória",
+            "model": "Modelo",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "Veo3VideoGenerationNode": {
+        "title": "Geração de vídeo Google Veo3",
+        "inputs": {
+            "image": "Imagem",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "negative_prompt": "Prompt negativo",
+            "aspect_ratio": "Proporção",
+            "duration_seconds": "Duração do vídeo (s)",
+            "enhance_prompt": "Aprimoramento de prompt",
+            "person_generation": "Modo de geração de pessoas",
+            "seed": "Semente aleatória",
+            "model": "Modelo",
+            "generate_audio": "Gerar áudio",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "Veo3FirstLastFrameNode": {
+        "title": "Geração de vídeo Google Veo3 com primeiro e último quadro",
+        "inputs": {
+            "first_frame": "Imagem do primeiro quadro",
+            "last_frame": "Imagem do último quadro"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "negative_prompt": "Prompt negativo",
+            "resolution": "Resolução",
+            "aspect_ratio": "Proporção",
+            "duration": "Duração (s)",
+            "enhance_prompt": "Aprimoramento de prompt",
+            "person_generation": "Modo de geração de pessoas",
+            "seed": "Semente aleatória",
+            "model": "Modelo",
+            "generate_audio": "Gerar áudio",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "ViduTextToVideoNode": {
+        "title": "Vidu texto para vídeo",
+        "inputs": {
+            "image": "Imagem",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "duration": "Duração (s)",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "movement_amplitude": "Intensidade do movimento"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "ViduImageToVideoNode": {
+        "title": "Vidu imagem para vídeo",
+        "inputs": {
+            "image": "Imagem",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "duration": "Duração (s)",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "movement_amplitude": "Intensidade do movimento"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "ViduReferenceVideoNode": {
+        "title": "Vidu referência para vídeo",
+        "inputs": {
+            "images": "Grupo de imagens",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "duration": "Duração (s)",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "movement_amplitude": "Intensidade do movimento"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "ViduStartEndToVideoNode": {
+        "title": "Vidu geração de vídeo com primeiro e último quadro",
+        "inputs": {
+            "first_frame": "Imagem do primeiro quadro",
+            "end_frame": "Imagem do último quadro"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "duration": "Duração (s)",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "movement_amplitude": "Intensidade do movimento"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "ViduExtendVideoNode": {
+        "title": "Extensão de vídeo Vidu",
+        "inputs": {
+            "video": "Vídeo",
+            "end_frame": "Quadro final"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "duration": "Duração (s)",
+            "resolution": "Resolução",
+            "prompt": "Prompt",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        }
+    },
+    "ViduMultiFrameVideoNode": {
+        "title": "Geração de vídeo multiquadro Vidu",
+        "inputs": {
+            "start_image": "Imagem inicial",
+            "end_image1": "Imagem final 1",
+            "end_image2": "Imagem final 2"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "resolution": "Resolução",
+            "frames": "Multiquadro",
+            "duration:": "Duração (s)",
+            "duration1:": "Duração 1 (s)",
+            "duration2:": "Duração 2 (s)"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "Vidu3TextToVideoNode": {
+        "title": "Vidu Q3 texto para vídeo",
+        "inputs": {},
+        "widgets": {
+            "model": "Modelo",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "duration:": "Duração (s)",
+            "duration": "Duração (s)",
+            "audio": "Áudio",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "Vidu3ImageToVideoNode": {
+        "title": "Vidu Q3 imagem para vídeo",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "duration": "Duração (s)",
+            "audio": "Áudio",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "Vidu3StartEndToVideoNode": {
+        "title": "Vidu3 primeiro e último quadro para vídeo",
+        "inputs": {
+            "first_frame": "Imagem do primeiro quadro",
+            "end_frame": "Imagem do último quadro"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "duration": "Duração (s)",
+            "audio": "Áudio",
+            "prompt": "Prompt",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "movement_amplitude": "Intensidade do movimento"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "WanTextToVideoApi": {
+        "title": "Wan texto para vídeo",
+        "inputs": {
+            "audio": "Áudio"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "size": "Dimensões",
+            "resolution": "Resolução",
+            "duration": "Duração (s)",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "generate_audio": "Gerar áudio",
+            "prompt_extend": "Estender o prompt",
+            "watermark": "Marca d'água",
+            "shot_type": "Tipo de tomada"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "WanImageToVideoApi": {
+        "title": "Wan imagem para vídeo",
+        "inputs": {
+            "image": "Imagem",
+            "audio": "Áudio"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "resolution": "Resolução",
+            "duration": "Duração (s)",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "generate_audio": "Gerar áudio",
+            "prompt_extend": "Estender o prompt",
+            "watermark": "Marca d'água",
+            "shot_type": "Tipo de tomada"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "WanReferenceVideoApi": {
+        "title": "Wan referência para vídeo",
+        "inputs": {
+            "character1": "Característica 1",
+            "audio": "Áudio",
+            "VIDEO": "Vídeo",
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "size": "Dimensões",
+            "duration": "Duração (s)",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "generate_audio": "Gerar áudio",
+            "prompt_extend": "Estender o prompt",
+            "watermark": "Marca d'água",
+            "shot_type": "Tipo de tomada"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        }
+    },
+    "Wan2TextToVideoApi": {
+        "title": "Wan2.7 texto para vídeo",
+        "inputs": {
+            "positive": "Condição positiva",
+            "negative": "Condição negativa",
+            "audio": "Áudio"
+        },
+        "widgets": {
+            "resolution": "Resolução",
+            "ratio": "Proporção",
+            "seed": "Semente aleatória",
+            "duration": "Duração (s)",
+            "prompt_extend": "Estender o prompt",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "Wan2ImageToVideoApi": {
+        "title": "Wan2.7 imagem para vídeo",
+        "inputs": {
+            "first_frame": "Imagem do primeiro quadro",
+            "last_frame": "Imagem do último quadro",
+            "audio": "Áudio"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "duration": "Duração (s)",
+            "ratio": "Proporção",
+            "seed": "Semente aleatória",
+            "prompt_extend": "Estender o prompt",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "Wan2VideoContinuationApi": {
+        "title": "Extensão de vídeo Wan2.7",
+        "inputs": {
+            "first_clip": "Primeiro clipe",
+            "last_frame": "Imagem do último quadro",
+            "audio": "Áudio"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "duration": "Duração (s)",
+            "ratio": "Proporção",
+            "seed": "Semente aleatória",
+            "prompt_extend": "Estender o prompt",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "Wan2VideoEditApi": {
+        "title": "Edição de vídeo Wan2.7",
+        "inputs": {
+            "video": "Vídeo",
+            "image1": "Imagem 1",
+            "image2": "Imagem 2",
+            "image3": "Imagem 3",
+            "image4": "Imagem 4"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "ratio": "Proporção",
+            "duration": "Duração (s)",
+            "seed": "Semente aleatória",
+            "audio_setting": "Configurações de áudio",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "Wan2ReferenceVideoApi": {
+        "title": "Wan2.7 referência para vídeo",
+        "inputs": {
+            "video1": "Vídeo 1",
+            "video2": "Vídeo 2",
+            "video3": "Vídeo 3",
+            "image1": "Imagem 1",
+            "image2": "Imagem 2",
+            "image3": "Imagem 3",
+            "image4": "Imagem 4"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "ratio": "Proporção",
+            "duration": "Duração (s)",
+            "seed": "Semente aleatória",
+            "audio_setting": "Configurações de áudio",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        }
+    },
+    "HappyHorseTextToVideoApi": {
+        "title": "HappyHorse texto para vídeo",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "ratio": "Proporção",
+            "duration": "Duração (s)",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "Gera um vídeo a partir de um prompt de texto com o modelo “HappyHorse”."
+    },
+    "HappyHorse Image to Video": {
+        "title": "HappyHorse imagem para vídeo",
+        "inputs": {
+            "first_frame": "Imagem do primeiro quadro"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "duration": "Duração (s)",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        },
+        "description": "Gera um vídeo a partir da primeira imagem com o modelo “HappyHorse”."
+    },
+    "HappyHorseVideoEditApi": {
+        "title": "HappyHorse edição de vídeo",
+        "inputs": {
+            "video": "Vídeo",
+            "image1": "Imagem 1",
+            "image2": "Imagem 2",
+            "image3": "Imagem 3",
+            "image4": "Imagem 4",
+            "image5": "Imagem 5"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "ratio": "Proporção",
+            "duration": "Duração (s)",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        },
+        "description": "Edita vídeos com o modelo “HappyHorse” usando descrição por texto ou imagens de referência./nA duração do vídeo de saída é de 3 a 15 segundos, igual à do vídeo de entrada; entradas com mais de 15 segundos serão cortadas."
+    },
+    "HappyHorseReferenceVideoApi": {
+        "title": "HappyHorse referência para vídeo",
+        "inputs": {
+            "video": "Vídeo",
+            "image1": "Imagem 1",
+            "image2": "Imagem 2",
+            "image3": "Imagem 3",
+            "image4": "Imagem 4",
+            "image5": "Imagem 5",
+            "image6": "Imagem 6",
+            "image7": "Imagem 7",
+            "image8": "Imagem 8",
+            "image9": "Imagem 9"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "resolution": "Resolução",
+            "ratio": "Proporção",
+            "duration": "Duração (s)",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "VIDEO": "Gerar vídeo"
+        },
+        "description": "Gera um vídeo com pessoas ou objetos a partir de material de referência com o modelo “HappyHorse”./nSuporta a exibição de um personagem e interações entre vários personagens."
+    },
+    "WavespeedFlashVSRNode": {
+        "title": "WaveSpeed FlashVSR ampliação de vídeo",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "target_resolution": "Resolução alvo"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        }
+    },
+    "BeebleSwitchXImageEdit": {
+        "title": "Edição de imagem Beeble SwitchX",
+        "inputs": {
+            "image": "Imagem",
+            "reference_image": "Imagem de referência"
+        },
+        "widgets": {
+            "prompt": "Prompt de texto",
+            "alpha_mode": "Modo alfa",
+            "max_resolution": "Resolução máxima",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "image": "Imagem",
+            "alpha": "Canal alfa"
+        },
+        "description": "Edita uma imagem única com o BeebleSwitchX. Permite trocar qualquer elemento da cena (fundo, iluminação, roupas) mantendo os pixels do sujeito original. Forneça uma imagem de referência e/ou um prompt de texto descrevendo o novo visual. Resolução máxima de aproximadamente 2,77 MP."
+    },
+    "FluxProUltraImageNode": {
+        "title": "Flux 1.1 [pro] imagem super HD",
+        "inputs": {
+            "image_prompt": "Prompt de imagem",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "prompt_upsampling": "Ampliar o prompt",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "aspect_ratio": "Proporção",
+            "raw": "Dados originais",
+            "auth_token": "Tokens autorizados",
+            "image_prompt_strength": "Força do prompt de imagem"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "FluxKontextProImageNode": {
+        "title": "Flux.1 Image Context [pro]",
+        "inputs": {
+            "input_image": "Imagem de entrada",
+            "mask": "Máscara",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "prompt_upsampling": "Ampliar o prompt",
+            "aspect_ratio": "Proporção da imagem",
+            "guidance": "Força de guidance",
+            "control_after_generate": "Controle pós-geração",
+            "steps": "Etapas",
+            "seed": "Semente",
+            "raw": "Dados originais",
+            "auth_token": "Tokens autorizados"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "FluxKontextMaxImageNode": {
+        "title": "Flux.1 Image Context [max] ",
+        "inputs": {
+            "input_image": "Imagem de entrada",
+            "mask": "Máscara",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "prompt_upsampling": "Ampliar o prompt",
+            "aspect_ratio": "Proporção da imagem",
+            "guidance": "Força de guidance",
+            "control_after_generate": "Controle pós-geração",
+            "steps": "Etapas",
+            "seed": "Semente",
+            "raw": "Dados originais",
+            "auth_token": "Tokens autorizados"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "FluxProFillNode": {
+        "title": "Flux.1 Fill imagem",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "prompt_upsampling": "Ampliar o prompt",
+            "top": "Expansão superior",
+            "bottom": "Expansão inferior",
+            "left": "Expansão à esquerda",
+            "right": "Expansão à direita",
+            "guidance": "Força de guidance",
+            "control_after_generate": "Controle pós-geração",
+            "steps": "Etapas",
+            "seed": "Semente",
+            "raw": "Dados originais",
+            "auth_token": "Tokens autorizados"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "FluxEraseNode": {
+        "title": "Flux.1 Remove imagem",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "dilate_pixels": "Pixels de expansão (dilate)",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Remove objetos mascarados da imagem e reconstrói o fundo. Desenhe a máscara sobre a área que deseja apagar."
+    },
+    "FluxVTONode": {
+        "title": "Provador virtual Flux",
+        "inputs": {
+            "person": "Pessoa",
+            "garment": "Roupa"
+        },
+        "widgets": {
+            "prompt": "Prompt de texto",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Provador virtual: veste a pessoa com a roupa fornecida."
+    },
+    "Flux2ProImageNode": {
+        "title": "Flux 2ª geração imagem super HD [pro] ",
+        "inputs": {
+            "images": "Grupo de imagens",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "prompt_upsampling": "Ampliar o prompt",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "width": "Largura",
+            "height": "Altura"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "Flux2MaxImageNode": {
+        "title": "Flux.2 imagem (max)",
+        "inputs": {
+            "images": "Imagem",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "width": "Largura",
+            "height": "Altura",
+            "prompt_upsampling": "Ampliar o prompt",
+            "control_after_generate": "Controle pós-geração",
+            "seed": "Semente"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "Flux2ImageNode": {
+        "title": "Geração de imagem Flux.2",
+        "inputs": {
+            "image_1": "Imagens de entrada"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "model": "Modelo",
+            "width": "Largura",
+            "height": "Altura",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Nó que gera imagens com o modelo Flux.2"
+    },
+    "Flux3TextToVideoNode": {
+        "title": "Flux.3 texto para vídeo",
+        "inputs": {},
+        "widgets": {
+            "prompt": "Prompt",
+            "aspect_ratio": "Proporção",
+            "duration": "Duração",
+            "resolution": "Resolução",
+            "generate_audio": "Gerar áudio",
+            "safety_tolerance": "Tolerância de segurança",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "Gera vídeos com áudio sincronizado a partir de prompts de texto, usando o FLUX3."
+    },
+    "Flux3ImageToVideoNode": {
+        "title": "Flux.3 imagem para vídeo",
+        "inputs": {
+            "image_0": "Imagem 0",
+            "image_1": "Imagem 1",
+            "image_2": "Imagem 2",
+            "image_3": "Imagem 3",
+            "image_4": "Imagem 4",
+            "image_5": "Imagem 5"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "placement": "Disposição",
+            "aspect_ratio": "Proporção",
+            "duration": "Duração",
+            "resolution": "Resolução",
+            "generate_audio": "Gerar áudio",
+            "safety_tolerance": "Tolerância de segurança",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "Gera um vídeo FLUX3 com 1 a 10 imagens. Cada imagem se torna um plano do clipe: uma imagem abre o vídeo, duas fazem a transição da primeira para a segunda, e mais imagens são distribuídas ou fixadas nos momentos que você escolher."
+    },
+    "Flux3VideoContinuationNode": {
+        "title": "Flux.3 extensão de vídeo",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "aspect_ratio": "Proporção",
+            "duration": "Duração",
+            "resolution": "Resolução",
+            "generate_audio": "Gerar áudio",
+            "safety_tolerance": "Tolerância de segurança",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "Continuação de vídeo FLUX3: o novo clipe dá sequência aos últimos quadros do vídeo fornecido."
+    },
+    "FluxVideoUpscaleNode": {
+        "title": "Flux.3 ampliação de vídeo",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "upscale_factor": "Fator de ampliação",
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "auto_downscale": "Escala automática",
+            "safety_tolerance": "Tolerância de segurança",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "Amplia vídeos de 1,5 a 3× com a super-resolução FLUX, preservando com precisão a qualidade original ou realçando detalhes de forma criativa."
+    },
+    "BriaImageEditNode": {
+        "title": "Edição de imagem Bria",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "guidance_scale": "Força de guidance",
+            "steps": "Etapas",
+            "moderation": "Moderação",
+            "prompt_content_moderation": "Moderação do prompt",
+            "visual_input_moderation": "Moderação da entrada visual",
+            "visual_output_moderation": "Moderação da saída visual"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "structured_prompt": "Prompt estruturado"
+        }
+    },
+    "BriaRemoveImageBackground": {
+        "title": "Bria remover fundo de imagem",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "moderation": "Moderação",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "images": "Grupo de imagens"
+        }
+    },
+    "ByteDanceImageNode": {
+        "title": "ByteDance imagem",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "size_preset": "Valores predefinidos de tamanho",
+            "width": "Largura",
+            "height": "Altura",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "guidance_scale": "Escala de guidance",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "image": "Imagem",
+            "IMAGE": "Imagem"
+        }
+    },
+    "ByteDanceSeedreamNode": {
+        "title": "ByteDance Seedream 4.0",
+        "inputs": {
+            "image": "Imagem",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "size_preset": "Valores predefinidos de tamanho",
+            "width": "Largura",
+            "height": "Altura",
+            "sequential_image_generation": "Geração sequencial de imagens",
+            "max_images": "Máximo de imagens",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "guidance_scale": "Escala de guidance",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "image": "Imagem",
+            "IMAGE": "Imagem"
+        }
+    },
+    "ByteDanceSeedreamNodeV2": {
+        "title": "ByteDance Seedream 4.5 e 5.0",
+        "inputs": {
+            "image_1": "Imagem 1"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "size_preset": "Predefinição de tamanho",
+            "width": "Largura",
+            "height": "Altura",
+            "max_images": "Máximo de imagens",
+            "fail_on_partial": "Interromper em falha parcial",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "image": "Imagem"
+        },
+        "description": "Geração unificada de texto para imagem e edições precisas com uma única frase em até 4K."
+    },
+    "ByteDanceCreateImageAsset": {
+        "title": "ByteDance criar ativo de imagem",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "group_id": "ID do grupo"
+        },
+        "outputs": {
+            "asset_id": "ID do ativo",
+            "group_id": "ID do grupo"
+        },
+        "description": "Cria um ativo de imagem pessoal do Seedance 2.0. Envia a imagem de entrada e a registra no grupo de ativos especificado.\n Se o ID do ativo estiver vazio, executa o fluxo real de autenticação pessoal H5 para criar um novo grupo antes de adicionar o ativo."
+    },
+    "GeminiImageNode": {
+        "title": "Google Gemini imagem",
+        "inputs": {
+            "images": "Imagem",
+            "files": "Arquivos de entrada Gemini"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "aspect_ratio": "Proporção",
+            "seed": "Semente aleatória",
+            "model": "Modelo",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "STRING": "String"
+        }
+    },
+    "GeminiImage2Node": {
+        "title": "Nano Banana Pro (Google Gemini Image)",
+        "inputs": {
+            "images": "Grupo de imagens",
+            "files": "Arquivo"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "response_modalities": "Modalidade de resposta"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "GeminiNanoBanana2": {
+        "title": "Nano Banana Pro (Google Gemini Image)",
+        "inputs": {
+            "images": "Grupo de imagens",
+            "files": "Arquivo"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "response_modalities": "Modalidade de resposta",
+            "thinking_level": "Nível de raciocínio"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "STRING": "String"
+        },
+        "description": "Gera ou edita imagens de forma síncrona pela API Google Vertex."
+    },
+    "GeminiNanoBanana2V2": {
+        "title": "Nano Banana 2",
+        "inputs": {
+            "image_1": "Imagem 1",
+            "files": "Arquivo"
+        },
+        "widgets": {
+            "prompt": "Prompt de texto",
+            "model": "Modelo",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "thinking_level": "Nível de raciocínio",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "response_modalities": "Modalidade de resposta",
+            "system_prompt": "Prompt de sistema"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "STRING": "String",
+            "thought_image": "Imagem"
+        },
+        "description": "Nó Nano Banana 2 para gerar imagens."
+    },
+    "GrokImageNode": {
+        "title": "Grok imagem",
+        "inputs": {},
+        "widgets": {
+            "model": "Modelo",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "aspect_ratio": "Proporção",
+            "number_of_images": "Quantidade de imagens"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "GrokImageEditNode": {
+        "title": "Edição de imagem Grok",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "number_of_images": "Quantidade de imagens"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "GrokImageEditNodeV2": {
+        "title": "Edição de imagem Grok",
+        "inputs": {
+            "image_1": "Imagem 1",
+            "image_2": "Imagem 2"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "model": "Modelo",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "number_of_images": "Quantidade de imagens"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "HitPawGeneralImageEnhance": {
+        "title": "Aprimoramento integral de imagem HitPaw",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "upscale_factor": "Proporção de ampliação",
+            "auto_downscale": "Escala automática"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "IdeogramV1": {
+        "title": "Ideogram texto para imagem V1",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "turbo": "Modo turbo",
+            "aspect_ratio": "Proporção",
+            "magic_prompt_option": "Opção de prompt mágico",
+            "control_after_generate": "Controle pós-geração",
+            "negative_prompt": "Prompt negativo",
+            "seed": "Semente",
+            "num_images": "Quantidade de imagens",
+            "auth_token": "Tokens autorizados"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "IdeogramV2": {
+        "title": "Ideogram texto para imagem V2",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "turbo": "Modo turbo",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "magic_prompt_option": "Opção de prompt mágico",
+            "control_after_generate": "Controle pós-geração",
+            "negative_prompt": "Prompt negativo",
+            "style_type": "Tipo de estilo",
+            "seed": "Semente",
+            "num_images": "Quantidade de imagens",
+            "color_palette": "Paleta",
+            "auth_token": "Tokens autorizados"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "IdeogramV3": {
+        "title": "Ideogram texto para imagem V3",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara",
+            "prompt": "Prompt",
+            "character_image": "Imagem do personagem",
+            "character_mask": "Máscara do personagem"
+        },
+        "widgets": {
+            "turbo": "Modo turbo",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "magic_prompt_option": "Opção de prompt mágico",
+            "control_after_generate": "Controle pós-geração",
+            "rendering_speed": "Velocidade de renderização",
+            "style_type": "Tipo de estilo",
+            "seed": "Semente",
+            "num_images": "Quantidade de imagens",
+            "color_palette": "Paleta",
+            "auth_token": "Tokens autorizados"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "IdeogramV4": {
+        "title": "Ideogram texto para imagem V4",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "resolution": "Resolução",
+            "rendering_speed": "Velocidade de renderização",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "KlingVirtualTryOnNode": {
+        "title": "Provador virtual Kling",
+        "inputs": {
+            "image": "Imagem",
+            "human_image": "Imagem da pessoa",
+            "cloth_image": "Imagem da roupa"
+        },
+        "widgets": {
+            "image_type": "Tipo de imagem",
+            "image_fidelity": "Fidelidade da imagem",
+            "human_fidelity": "Fidelidade da pessoa",
+            "model_name": "Nome do modelo",
+            "task_id": "ID da tarefa",
+            "auth_token": "Tokens autorizados",
+            "aspect_ratio": "Proporção",
+            "n": "Quantidade"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "string": "String"
+        }
+    },
+    "KlingImageGenerationNode": {
+        "title": "Geração de imagem Kling",
+        "inputs": {
+            "image": "Imagem",
+            "prompt": "Prompt",
+            "negative_prompt": "Prompt negativo"
+        },
+        "widgets": {
+            "image_type": "Tipo de imagem",
+            "image_fidelity": "Fidelidade da imagem",
+            "human_fidelity": "Fidelidade da pessoa",
+            "model_name": "Nome do modelo",
+            "task_id": "ID da tarefa",
+            "auth_token": "Tokens autorizados",
+            "aspect_ratio": "Proporção",
+            "n": "Quantidade"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "string": "String"
+        }
+    },
+    "KlingOmniProImageNode": {
+        "title": "Kling Omni imagem (pro)",
+        "inputs": {
+            "reference_images": "Imagem de referência"
+        },
+        "widgets": {
+            "model_name": "Nome do modelo",
+            "resolution": "Resolução",
+            "auth_token": "Tokens autorizados",
+            "aspect_ratio": "Proporção",
+            "n": "Quantidade"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "string": "String"
+        }
+    },
+    "Krea2ImageNode": {
+        "title": "Krea 2 imagem",
+        "inputs": {
+            "style_reference": "Referência de estilo",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "creativity": "Criatividade",
+            "moodboard_id": "ID do moodboard",
+            "moodboard_strength": "Força do moodboard",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {},
+        "description": "Gera imagens com o Krea2 — escolha médio (ilustrações expressivas) ou grande (realismo expressivo). Suporta moodboards opcionais e até 10 referências de estilo em cadeia."
+    },
+    "Krea2StyleReferenceNode": {
+        "title": "Referência de estilo Krea 2",
+        "inputs": {
+            "image": "Imagem",
+            "style_reference": "Referência de estilo"
+        },
+        "widgets": {
+            "strength": "Força"
+        },
+        "outputs": {
+            "style_reference": "Referência de estilo"
+        },
+        "description": "Adiciona uma referência de estilo de imagem ao gerador Krea2. Encadeie vários nós de referência de estilo Krea2 (até 10) e conecte a saída final `estilo de referência` ao Krea2 Imagem. Cada imagem é enviada ao armazenamento ComfyAPI e transmitida como URL."
+    },
+    "LumaImageNode": {
+        "title": "Luma texto para imagem",
+        "inputs": {
+            "image_luma_ref": "Referência de imagem Luma",
+            "style_image": "Imagem de estilo",
+            "prompt": "Prompt",
+            "character_image": "Imagem da pessoa"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "aspect_ratio": "Proporção",
+            "seed": "Semente",
+            "style_image_weight": "Peso da imagem de estilo",
+            "luma_ref": "Referências da Luma",
+            "auth_token": "Tokens autorizados",
+            "max_refs": "Máximo de referências",
+            "weight": "Peso"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "luma_concepts": "Conceitos da Luma"
+        }
+    },
+    "LumaImageModifyNode": {
+        "title": "Luma imagem para imagem",
+        "inputs": {
+            "image": "Imagem",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "image_weight": "Peso da imagem",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "auth_token": "Tokens autorizados",
+            "weight": "Peso"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "LumaReferenceNode": {
+        "title": "Referências da Luma",
+        "inputs": {
+            "image": "Imagem",
+            "prompt": "Prompt",
+            "luma_ref": "Referências da Luma"
+        },
+        "widgets": {
+            "image_type": "Tipo de imagem",
+            "weight": "Peso",
+            "human_fidelity": "Fidelidade da pessoa",
+            "model_name": "Nome do modelo",
+            "task_id": "ID da tarefa",
+            "auth_token": "Tokens autorizados",
+            "aspect_ratio": "Proporção",
+            "n": "Quantidade"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "luma_ref": "Referências da Luma"
+        }
+    },
+    "LumaImageNode2": {
+        "title": "Luma UNI-1 imagem",
+        "inputs": {
+            "image_1": "Imagem 1"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "model": "Modelo",
+            "aspect_ratio": "Proporção",
+            "style": "Estilo",
+            "web_search": "Busca na web",
+            "seed": "Semente"
+        },
+        "outputs": {},
+        "description": "Gera imagens a partir de texto com o modelo Luma UNI-1."
+    },
+    "LumaImageEditNode2": {
+        "title": "Edição de imagem Luma UNI-1",
+        "inputs": {
+            "source": "Caminho de origem",
+            "image_1": "Imagem 1"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "model": "Modelo",
+            "style": "Estilo",
+            "web_search": "Busca na web",
+            "seed": "Semente"
+        },
+        "outputs": {},
+        "description": "Edita uma imagem existente a partir de um prompt de texto com o modelo Luma UNI-1."
+    },
+    "MagnificImageUpscalerCreativeNode": {
+        "title": "Magnific ampliação de imagem (modo criativo)",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "scale_factor": "Fator de escala",
+            "optimized_for": "Meta de otimização",
+            "creativity": "Criatividade",
+            "hdr": "HDR (alta faixa dinâmica)",
+            "resemblance": "Semelhança",
+            "fractality": "Fractalidade",
+            "engine": "Motor",
+            "auto_downscale": "Redução automática"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "MagnificImageUpscalerPreciseV2Node": {
+        "title": "Magnific ampliação de imagem V2",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "scale_factor": "Fator de escala",
+            "flavor": "Estilo",
+            "sharpen": "Nitidez",
+            "smart_grain": "Granulado inteligente",
+            "ultra_detail": "Detalhes ultrafinos",
+            "auto_downscale": "Redução automática"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "MagnificImageStyleTransferNode": {
+        "title": "Transferência de estilo de imagem Magnific",
+        "inputs": {
+            "image": "Imagem",
+            "reference_image": "Imagem de referência"
+        },
+        "widgets": {
+            "style_strength": "Força do estilo",
+            "structure_strength": "Força da estrutura",
+            "flavor": "Estilo",
+            "engine": "Motor",
+            "portrait_mode": "Modo retrato",
+            "fixed_generation": "Geração fixa"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "MagnificImageRelightNode": {
+        "title": "Reiluminação de imagem Magnific",
+        "inputs": {
+            "image": "Imagem",
+            "reference_image": "Imagem de referência"
+        },
+        "widgets": {
+            "light_transfer_strength": "Força da iluminação",
+            "style": "Estilo",
+            "interpolate_from_original": "Interpolar a partir dos originais",
+            "change_background": "Alterar fundo",
+            "preserve_details": "Preservar detalhes",
+            "advanced_settings": "Configurações avançadas"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "MagnificImageSkinEnhancerNode": {
+        "title": "Realce de pele Magnific",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "sharpen": "Nitidez",
+            "smart_grain": "Granulado inteligente",
+            "mode": "Modo"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "OpenAIDalle2": {
+        "title": "OpenAI DALL·E 2",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "size": "Dimensões",
+            "n": "Quantidade",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "auth_token": "Tokens autorizados"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "string": "String"
+        }
+    },
+    "OpenAIDalle3": {
+        "title": "OpenAI DALL·E 3",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "size": "Dimensões",
+            "quality": "Qualidade",
+            "style": "Estilo",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "auth_token": "Tokens autorizados"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "string": "String"
+        }
+    },
+    "OpenAIGPTImage1": {
+        "title": "OpenAI GPT Image 1",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "background": "Fundo",
+            "size": "Dimensões",
+            "quality": "Qualidade",
+            "n": "Quantidade",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "auth_token": "Tokens autorizados"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "string": "String"
+        }
+    },
+    "OpenAIGPTImageNodeV2": {
+        "title": "OpenAI GPT Image 2",
+        "inputs": {
+            "image_1": "Imagem 1",
+            "image_2": "Imagem 2",
+            "image_3": "Imagem 3",
+            "mask": "Máscara",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "size": "Dimensões",
+            "custom_width": "Definir largura",
+            "custom_height": "Definir altura",
+            "background": "Fundo",
+            "quality": "Qualidade",
+            "n": "Quantidade",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "auth_token": "Tokens autorizados"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "string": "String"
+        }
+    },
+    "QuiverTextToSVGNode": {
+        "title": "Texto para imagem vetorial SVG",
+        "inputs": {
+            "ref_0": "Referência",
+            "ref_1": "Referência 1",
+            "ref_2": "Referência 2",
+            "ref_3": "Referência 3"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "temperature": "Temperatura",
+            "top_p": "Top p",
+            "presence_penalty": "Penalidade de presença",
+            "control_after_generate": "Controle pós-geração",
+            "seed": "Semente"
+        },
+        "outputs": {
+            "SVG": "Imagem vetorial"
+        }
+    },
+    "QuiverImageToSVGNode": {
+        "title": "Imagem para imagem vetorial SVG",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "auto_crop": "Recorte automático",
+            "model": "Modelo",
+            "target_size": "Tamanho alvo",
+            "temperature": "Temperatura",
+            "top_p": "Top p",
+            "presence_penalty": "Penalidade de presença",
+            "control_after_generate": "Controle pós-geração",
+            "seed": "Semente"
+        },
+        "outputs": {
+            "SVG": "Imagem vetorial"
+        }
+    },
+    "RecraftTextToImageNode": {
+        "title": "Recraft texto para imagem",
+        "inputs": {
+            "recraft_style": "Recraft estilo",
+            "negative_prompt": "Prompt negativo",
+            "recraft_controls": "Recraft controles de regravação"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "size": "Dimensões",
+            "n": "Quantidade",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "string": "String"
+        }
+    },
+    "RecraftImageToImageNode": {
+        "title": "Recraft imagem para imagem",
+        "inputs": {
+            "image": "Imagem de entrada",
+            "recraft_style": "Recraft estilo",
+            "negative_prompt": "Prompt negativo",
+            "recraft_controls": "Recraft controles de regravação",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "n": "Quantidade gerada",
+            "strength": "Força de repintura",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "RecraftImageInpaintingNode": {
+        "title": "Recraft inpaint de imagem",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara",
+            "recraft_style": "Recraft estilo",
+            "negative_prompt": "Prompt negativo",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "n": "Quantidade gerada",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "RecraftTextToVectorNode": {
+        "title": "Recraft texto para vetor",
+        "inputs": {
+            "recraft_controls": "Recraft controles de regravação",
+            "negative_prompt": "Prompt negativo",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "substyle": "Tipo de subestilo",
+            "size": "Tamanho de saída",
+            "n": "Quantidade gerada",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "VECTOR": "Gráfico vetorial"
+        }
+    },
+    "RecraftVectorizeImageNode": {
+        "title": "Recraft vetorizar imagem",
+        "inputs": {
+            "image": "Imagem",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {},
+        "outputs": {
+            "VECTOR": "Gráfico vetorial"
+        }
+    },
+    "RecraftRemoveBackgroundNode": {
+        "title": "Recraft remover fundo",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "RecraftReplaceBackgroundNode": {
+        "title": "Recraft substituir fundo",
+        "inputs": {
+            "image": "Imagem",
+            "recraft_style": "Recraft estilo",
+            "negative_prompt": "Prompt negativo",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {
+            "prompt": "Descrição do fundo",
+            "n": "Quantidade gerada",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "RecraftCrispUpscaleNode": {
+        "title": "Recraft ampliação nítida de imagem",
+        "inputs": {
+            "image": "Imagem",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "RecraftCreativeUpscaleNode": {
+        "title": "Recraft ampliação criativa de imagem",
+        "inputs": {
+            "image": "Imagem",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "RecraftStyleV3RealisticImage": {
+        "title": "Recraft estilo - fotografia realista",
+        "inputs": {
+            "colors": "Cor",
+            "background_color": "Cor de fundo"
+        },
+        "widgets": {
+            "substyle": "Subestilo"
+        },
+        "outputs": {
+            "recraft_style": "Recraft estilo"
+        }
+    },
+    "RecraftStyleV3DigitalIllustration": {
+        "title": "Recraft estilo - ilustração digital",
+        "inputs": {
+            "colors": "Cor",
+            "background_color": "Cor de fundo"
+        },
+        "widgets": {
+            "substyle": "Subestilo"
+        },
+        "outputs": {
+            "recraft_style": "Recraft estilo"
+        }
+    },
+    "RecraftStyleV3LogoRaster": {
+        "title": "Recraft estilo - logo rasterizada",
+        "inputs": {
+            "colors": "Cor",
+            "background_color": "Cor de fundo"
+        },
+        "widgets": {
+            "substyle": "Subestilo"
+        },
+        "outputs": {
+            "recraft_style": "Recraft estilo"
+        }
+    },
+    "RecraftStyleV3InfiniteStyleLibrary": {
+        "title": "Recraft estilo - biblioteca infinita de estilos",
+        "inputs": {
+            "colors": "Cor",
+            "background_color": "Cor de fundo"
+        },
+        "widgets": {
+            "style_id": "ID do estilo"
+        },
+        "outputs": {
+            "recraft_style": "Recraft estilo"
+        }
+    },
+    "RecraftCreateStyleNode": {
+        "title": "Design do estilo Recraft",
+        "inputs": {
+            "image0": "Imagem 0",
+            "image1": "Imagem 1"
+        },
+        "widgets": {
+            "style": "Estilo"
+        },
+        "outputs": {
+            "style": "Estilo",
+            "style_id": "ID do estilo"
+        }
+    },
+    "RecraftColorRGB": {
+        "title": "Recraft cor RGB",
+        "inputs": {
+            "recraft_color": "Recraft cor"
+        },
+        "widgets": {
+            "r": "Valor de vermelho",
+            "g": "Valor de verde",
+            "b": "Valor de azul"
+        },
+        "outputs": {
+            "recraft_color": "Recraft cor",
+            "string": "String"
+        }
+    },
+    "RecraftControls": {
+        "title": "Recraft controles de regravação",
+        "inputs": {
+            "colors": "Cor",
+            "background_color": "Cor de fundo"
+        },
+        "widgets": {
+            "r": "Valor de vermelho",
+            "g": "Valor de verde",
+            "b": "Valor de azul"
+        },
+        "outputs": {
+            "recraft_controls": "Recraft controles de regravação",
+            "string": "String"
+        }
+    },
+    "RecraftV4TextToImageNode": {
+        "title": "Recraft texto para imagem V4",
+        "inputs": {
+            "recraft_controls": "Recraft controles de regravação"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "size": "Dimensões",
+            "n": "Quantidade",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "string": "String"
+        }
+    },
+    "RecraftV4TextToVectorNode": {
+        "title": "Recraft texto para vetor V4",
+        "inputs": {
+            "recraft_controls": "Recraft controles de regravação"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "size": "Dimensões",
+            "n": "Quantidade",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "SVG": "Formato vetorial SVG"
+        }
+    },
+    "ReveImageCreateNode": {
+        "title": "Reve texto para imagem",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "aspect_ratio": "Proporção",
+            "test_time_scaling": "Escala de tempo de teste",
+            "upscale": "Ampliar",
+            "remove_background": "Remover fundo",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "string": "String"
+        }
+    },
+    "ReveImageEditNode": {
+        "title": "Edição de imagem Reve",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "aspect_ratio": "Proporção",
+            "test_time_scaling": "Escala de tempo de teste",
+            "upscale": "Ampliar",
+            "remove_background": "Remover fundo",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "string": "String"
+        }
+    },
+    "ReveImageRemixNode": {
+        "title": "Recriação de imagem Reve",
+        "inputs": {
+            "image_0": "Imagem 0",
+            "image_1": "Imagem 1",
+            "image_2": "Imagem 2",
+            "image_3": "Imagem 3",
+            "image_4": "Imagem 4",
+            "image_5": "Imagem 5"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "aspect_ratio": "Proporção",
+            "test_time_scaling": "Escala de tempo de teste",
+            "upscale": "Ampliar",
+            "remove_background": "Remover fundo",
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "string": "String"
+        }
+    },
+    "RunwayTextToImageNode": {
+        "title": "Runway texto para imagem",
+        "inputs": {
+            "positive": "Condição positiva",
+            "negative": "Condição negativa",
+            "reference_image": "Imagem de referência",
+            "start_frame": "Quadro inicial",
+            "end_frame": "Quadro final"
+        },
+        "widgets": {
+            "seed": "Semente",
+            "control_after_generate": "Controle pós-geração",
+            "ratio": "Proporção",
+            "duration": "Duração",
+            "batch_size": "Tamanho do lote"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "string": "String"
+        }
+    },
+    "StabilityStableImageUltraNode": {
+        "title": "Imagem super HD Stability AI",
+        "inputs": {
+            "image": "Imagem",
+            "negative_prompt": "Prompt negativo",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "aspect_ratio": "Proporção",
+            "style_preset": "Predefinição de estilo",
+            "seed": "Semente aleatória",
+            "image_denoise": "Força de redução de ruído",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "StabilityStableImageSD_3_5Node": {
+        "title": "Stability AI SD 3.5 imagem",
+        "inputs": {
+            "image": "Imagem",
+            "negative_prompt": "Prompt negativo",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "aspect_ratio": "Proporção",
+            "style_preset": "Predefinição de estilo",
+            "cfg_scale": "Escala de guidance CFG",
+            "seed": "Semente aleatória",
+            "image_denoise": "Força de redução de ruído",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "StabilityUpscaleConservativeNode": {
+        "title": "Ampliação conservadora Stability AI",
+        "inputs": {
+            "image": "Imagem",
+            "negative_prompt": "Prompt negativo",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "creativity": "Força criativa",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "StabilityUpscaleCreativeNode": {
+        "title": "Ampliação criativa Stability AI",
+        "inputs": {
+            "image": "Imagem",
+            "negative_prompt": "Prompt negativo",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "creativity": "Força criativa",
+            "style_preset": "Predefinição de estilo",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "StabilityUpscaleFastNode": {
+        "title": "Ampliação rápida Stability AI",
+        "inputs": {
+            "image": "Imagem",
+            "auth_token": "Tokens autorizados"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "TopazImageEnhance": {
+        "title": "Realce de imagem Topaz",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "subject_detection": "Detecção de sujeitos",
+            "face_enhancement": "Realce facial",
+            "face_enhancement_creativity": "Criatividade do realce facial",
+            "face_enhancement_strength": "Força do realce facial",
+            "crop_to_fill": "Cortar para preencher",
+            "output_width": "Largura de saída",
+            "output_height": "Altura de saída",
+            "creativity": "Criatividade",
+            "face_preservation": "Proteção de rostos",
+            "color_preservation": "Proteção de cores"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "video": "Vídeo"
+        }
+    },
+    "WanTextToImageApi": {
+        "title": "Wan texto para imagem",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "width": "Largura",
+            "height": "Altura",
+            "resolution": "Resolução",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "prompt_extend": "Estender o prompt",
+            "watermark": "Marca d'água",
+            "shot_type": "Tipo de tomada"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "WanImageToImageApi": {
+        "title": "Wan imagem para imagem gerada por imagem",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "width": "Largura",
+            "height": "Altura",
+            "resolution": "Resolução",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "prompt_extend": "Estender o prompt",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "WavespeedImageUpscaleNode": {
+        "title": "WaveSpeed ampliação de imagem",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "target_resolution": "Resolução alvo"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "ElevenLabsSpeechToText": {
+        "title": "ElevenLabs fala para texto",
+        "inputs": {
+            "audio": "Áudio"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "tag_audio_events": "Marcar eventos de áudio",
+            "diarize": "Identificação de falantes",
+            "diarization_threshold": "Limiar de identificação de falantes",
+            "temperature": "Temperatura",
+            "timestamps_granularity": "Precisão das marcas de tempo",
+            "language_code": "Código do idioma",
+            "num_speakers": "Número de falantes",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "language_code": "Código do idioma",
+            "text": "Texto",
+            "seed": "Dados JSON de palavras"
+        }
+    },
+    "ElevenLabsVoiceSelector": {
+        "title": "Seletor de vozes ElevenLabs",
+        "inputs": {},
+        "widgets": {
+            "voice": "Voz"
+        },
+        "outputs": {
+            "voice": "Voz"
+        }
+    },
+    "ElevenLabsTextToSpeech": {
+        "title": "ElevenLabs texto para fala",
+        "inputs": {
+            "voice": "Voz"
+        },
+        "widgets": {
+            "stabillity": "Estabilidade",
+            "apply_text_normalization": "Aplicar normalização de texto",
+            "model": "Modelo",
+            "speed": "Velocidade",
+            "similarity_boost": "Aumento de similaridade",
+            "use_speaker_boost": "Usar aprimoramento do falante",
+            "style": "Estilo",
+            "language_code": "Código do idioma",
+            "output_format": "Formato de saída",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "AUDIO": "Áudio"
+        }
+    },
+    "ElevenLabsAudioIsolation": {
+        "title": "Isolamento de áudio ElevenLabs",
+        "inputs": {
+            "audio": "Áudio"
+        },
+        "widgets": {},
+        "outputs": {
+            "AUDIO": "Áudio"
+        }
+    },
+    "ElevenLabsTextToSoundEffects": {
+        "title": "ElevenLabs texto para efeitos sonoros",
+        "inputs": {
+            "text": "Texto"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "duration": "Duração (s)",
+            "loop": "Loop",
+            "prompt_influence": "Influência do prompt",
+            "output_format": "Formato de saída"
+        },
+        "outputs": {
+            "AUDIO": "Áudio"
+        }
+    },
+    "ElevenLabsInstantVoiceClone": {
+        "title": "Clonagem de voz instantânea ElevenLabs",
+        "inputs": {
+            "audio0": "Áudio 0",
+            "audio1": "Áudio 1",
+            "audio2": "Áudio 2",
+            "audio3": "Áudio 3",
+            "audio4": "Áudio 4",
+            "audio5": "Áudio 5",
+            "audio6": "Áudio 6"
+        },
+        "widgets": {
+            "remove_background_noise": "Remover ruído de fundo"
+        },
+        "outputs": {
+            "voice": "Voz"
+        }
+    },
+    "ElevenLabsSpeechToSpeech": {
+        "title": "ElevenLabs fala para fala",
+        "inputs": {
+            "voice": "Voz",
+            "audio": "Áudio"
+        },
+        "widgets": {
+            "stabillity": "Estabilidade",
+            "model": "Modelo",
+            "speed": "Velocidade",
+            "similarity_boost": "Aumento de similaridade",
+            "use_speaker_boost": "Usar aprimoramento do falante",
+            "style": "Estilo",
+            "output_format": "Formato de saída",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "remove_background_noise": "Remover ruído de fundo"
+        },
+        "outputs": {
+            "AUDIO": "Áudio"
+        }
+    },
+    "ElevenLabsTextToDialogue": {
+        "title": "ElevenLabs texto para diálogo",
+        "inputs": {
+            "voice1": "Voz 1",
+            "voice2": "Voz 2",
+            "voice3": "Voz 3",
+            "voice4": "Voz 4",
+            "voice5": "Voz 5",
+            "voice6": "Voz 6",
+            "voice7": "Voz 7",
+            "voice8": "Voz 8",
+            "voice9": "Voz 9",
+            "voice10": "Voz 10"
+        },
+        "widgets": {
+            "stabillity": "Estabilidade",
+            "apply_text_normalization": "Aplicar normalização de texto",
+            "model": "Modelo",
+            "inputs": "Número de entradas",
+            "language_code": "Código do idioma",
+            "output_format": "Formato de saída",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "AUDIO": "Áudio"
+        }
+    },
+    "SoniloVideoToMusic": {
+        "title": "Sonilo vídeo para música",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "duration": "Duração (s)",
+            "model": "Modelo",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "AIDEO": "Áudio"
+        }
+    },
+    "SoniloTextToMusic": {
+        "title": "Sonilo texto para música",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "AIDEO": "Áudio"
+        }
+    },
+    "StabilityTextToAudio": {
+        "title": "Stability AI texto para fala",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "duration": "Duração",
+            "steps": "Etapas",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "audio": "Áudio",
+            "AUDIO": "Áudio"
+        }
+    },
+    "StabilityAudioToAudio": {
+        "title": "Stability AI áudio para áudio",
+        "inputs": {
+            "audio": "Áudio",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "duration": "Duração",
+            "steps": "Etapas",
+            "seed": "Semente aleatória",
+            "strength": "Força",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "audio": "Áudio",
+            "AUDIO": "Áudio"
+        }
+    },
+    "StabilityAudioInpaint": {
+        "title": "Stability AI repintura de áudio (Inpaint)",
+        "inputs": {
+            "audio": "Áudio",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "duration": "Duração",
+            "steps": "Etapas",
+            "seed": "Semente aleatória",
+            "mask_start": "Máscara inicial",
+            "mask_end": "Máscara final",
+            "control_after_generate": "Controle pós-geração"
+        },
+        "outputs": {
+            "audio": "Áudio",
+            "AUDIO": "Áudio"
+        }
+    },
+    "TencentTextToModelNode": {
+        "title": "Hunyuan3D: texto para modelo (pro)",
+        "inputs": {},
+        "widgets": {
+            "model": "Modelo",
+            "face_count": "Número de faces",
+            "pbr": "Renderização física aprimorada (PBR)",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "texture_image": "Imagens de textura",
+            "GLB": "Formato GLB",
+            "OBJ": "Formato OBJ"
+        }
+    },
+    "TencentImageToModelNode": {
+        "title": "Hunyuan3D: imagem para modelo (pro)",
+        "inputs": {
+            "image": "Imagem",
+            "image_left": "Imagem esquerda",
+            "image_right": "Imagem direita",
+            "image_back": "Imagem traseira"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "face_count": "Número de faces",
+            "generate_type": "Tipo de geração",
+            "pbr": "Renderização física aprimorada (PBR)",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "texture_image": "Imagens de textura",
+            "GLB": "Formato GLB",
+            "OBJ": "Formato OBJ",
+            "optional_metallic": "Metálico (opcional)",
+            "optional_normal": "Normal (opcional)",
+            "optional_roughness": "Rugosidade (opcional)"
+        }
+    },
+    "TencentModelTo3DUVNode": {
+        "title": "Hunyuan3D: modelo para mapa UV",
+        "inputs": {
+            "model_3d": "Modelo 3D"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "face_count": "Número de faces",
+            "pbr": "Renderização física aprimorada (PBR)",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "GLB": "Formato GLB",
+            "OBJ": "Formato OBJ"
+        }
+    },
+    "Tencent3DTextureEditNode": {
+        "title": "Hunyuan3D: edição de textura 3D",
+        "inputs": {
+            "model_3d": "Modelo 3D"
+        },
+        "widgets": {
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "texture_image": "Imagens de textura",
+            "GLB": "Formato GLB",
+            "OBJ": "Formato OBJ",
+            "uv_image": "Imagem UV"
+        }
+    },
+    "Tencent3DPartNode": {
+        "title": "Hunyuan3D: peças 3D",
+        "inputs": {
+            "model_3d": "Modelo 3D"
+        },
+        "widgets": {
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "FBX": "Formato FBX"
+        }
+    },
+    "TencentSmartTopologyNode": {
+        "title": "Hunyuan3D: topologia inteligente",
+        "inputs": {
+            "model_3d": "Modelo 3D"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "polygon_type": "Tipo de polígono",
+            "face_level": "Nível de faces",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "GLB": "Formato GLB",
+            "OBJ": "Formato OBJ"
+        }
+    },
+    "MeshyTextToModelNode": {
+        "title": "Meshy: texto para modelo",
+        "inputs": {},
+        "widgets": {
+            "model": "Modelo",
+            "style": "Estilo",
+            "should_remesh": "Remesh",
+            "topology": "Topologia",
+            "target_polycount": "Polígonos alvo",
+            "symmetry_mode": "Modo de simetria",
+            "pose_mode": "Modo de pose",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "meshy_task_id": "Nº da tarefa Meshy",
+            "GLB": "Formato GLB",
+            "FBX": "Formato FBX"
+        }
+    },
+    "MeshyRefineNode": {
+        "title": "Meshy: refinar modelo rascunho",
+        "inputs": {
+            "meshy_task_id": "Nº da tarefa Meshy",
+            "texture_image": "Imagens de textura"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "enable_pbr": "Ativar renderização PBR aprimorada fisicamente",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "meshy_task_id": "Nº da tarefa Meshy",
+            "GLB": "Formato GLB",
+            "FBX": "Formato FBX"
+        }
+    },
+    "MeshyImageToModelNode": {
+        "title": "Meshy: imagem para modelo",
+        "inputs": {
+            "image": "Imagem",
+            "texture_image": "Imagens de textura"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "should_remesh": "Remesh",
+            "topology": "Topologia",
+            "target_polycount": "Polígonos alvo",
+            "symmetry_mode": "Modo de simetria",
+            "should_texture": "Aplicar texturas",
+            "enable_pbr": "Ativar renderização PBR aprimorada fisicamente",
+            "pose_mode": "Modo de pose",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "meshy_task_id": "Nº da tarefa Meshy",
+            "GLB": "Formato GLB",
+            "FBX": "Formato FBX"
+        }
+    },
+    "MeshyMultiImageToModelNode": {
+        "title": "Meshy: múltiplas imagens para modelo",
+        "inputs": {
+            "image": "Imagem",
+            "image0": "Imagem 0",
+            "image1": "Imagem 1",
+            "texture_image": "Imagens de textura"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "should_remesh": "Remesh",
+            "topology": "Topologia",
+            "target_polycount": "Polígonos alvo",
+            "symmetry_mode": "Modo de simetria",
+            "should_texture": "Aplicar texturas",
+            "enable_pbr": "Ativar renderização PBR aprimorada fisicamente",
+            "pose_mode": "Modo de pose",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "meshy_task_id": "Nº da tarefa Meshy",
+            "GLB": "Formato GLB",
+            "FBX": "Formato FBX"
+        }
+    },
+    "MeshyRigModelNode": {
+        "title": "Meshy: modelar esqueleto",
+        "inputs": {
+            "meshy_task_id": "Nº da tarefa Meshy",
+            "texture_image": "Imagens de textura"
+        },
+        "widgets": {
+            "height_meters": "Altura (m)"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "meshy_task_id": "Nº da tarefa Meshy",
+            "GLB": "Formato GLB",
+            "FBX": "Formato FBX"
+        }
+    },
+    "MeshyAnimateModelNode": {
+        "title": "Meshy: animar modelo",
+        "inputs": {
+            "rig_task_id": "Nº da tarefa de esqueleto",
+            "texture_image": "Imagens de textura"
+        },
+        "widgets": {
+            "action_id": "ID da ação"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "meshy_task_id": "Nº da tarefa Meshy",
+            "GLB": "Formato GLB",
+            "FBX": "Formato FBX"
+        }
+    },
+    "MeshyTextureNode": {
+        "title": "Meshy: texturizar modelo",
+        "inputs": {
+            "meshy_task_id": "Nº da tarefa Meshy",
+            "image_style": "Estilo da imagem"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "enable_original_uv": "Usar UV original",
+            "pbr": "Renderização PBR aprimorada fisicamente"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "meshy_task_id": "Nº da tarefa Meshy",
+            "GLB": "Formato GLB",
+            "FBX": "Formato FBX"
+        }
+    },
+    "Rodin3D_Regular": {
+        "title": "Rodin 3D geração - geração comum",
+        "inputs": {
+            "images": "Grupo de imagens"
+        },
+        "widgets": {
+            "Seed": "Semente aleatória",
+            "Material_Type": "Tipo de material",
+            "Polygon_count": "Número de polígonos"
+        },
+        "outputs": {
+            "3D_Model_Path": "Caminho do modelo 3D",
+            "3D Model Path": "Caminho do modelo 3D"
+        }
+    },
+    "Rodin3D_Detail": {
+        "title": "Rodin 3D geração - geração de detalhes",
+        "inputs": {
+            "images": "Grupo de imagens"
+        },
+        "widgets": {
+            "Seed": "Semente aleatória",
+            "Material_Type": "Tipo de material",
+            "Polygon_count": "Número de polígonos"
+        },
+        "outputs": {
+            "3D_Model_Path": "Caminho do modelo 3D",
+            "3D Model Path": "Caminho do modelo 3D"
+        }
+    },
+    "Rodin3D_Smooth": {
+        "title": "Rodin 3D geração - geração suavizada",
+        "inputs": {
+            "images": "Grupo de imagens"
+        },
+        "widgets": {
+            "Seed": "Semente aleatória",
+            "Material_Type": "Tipo de material",
+            "Polygon_count": "Número de polígonos"
+        },
+        "outputs": {
+            "3D_Model_Path": "Caminho do modelo 3D",
+            "3D Model Path": "Caminho do modelo 3D"
+        }
+    },
+    "Rodin3D_Sketch": {
+        "title": "Rodin 3D geração - geração de esboço",
+        "inputs": {
+            "images": "Grupo de imagens"
+        },
+        "widgets": {
+            "Seed": "Semente aleatória",
+            "Material_Type": "Tipo de material",
+            "Polygon_count": "Número de polígonos"
+        },
+        "outputs": {
+            "3D_Model_Path": "Caminho do modelo 3D",
+            "3D Model Path": "Caminho do modelo 3D"
+        }
+    },
+    "Rodin3D_Gen2": {
+        "title": "Rodin 3D geração - gerador Gen-2",
+        "inputs": {
+            "images": "Grupo de imagens",
+            "Images": "Grupo de imagens"
+        },
+        "widgets": {
+            "Seed": "Semente aleatória",
+            "Material_Type": "Tipo de material",
+            "Polygon_count": "Número de polígonos",
+            "TAPose": "Pose de texto para ação"
+        },
+        "outputs": {
+            "3D_Model_Path": "Caminho do modelo 3D",
+            "3D Model Path": "Caminho do modelo 3D"
+        }
+    },
+    "Rodin3D_Gen25_Image": {
+        "title": "Rodin 3D Gen-2.5 - imagem para 3D",
+        "inputs": {
+            "image0": "Imagem de entrada 0",
+            "image1": "Imagem de entrada 1"
+        },
+        "widgets": {
+            "mode": "Modo",
+            "tier": "Qualidade",
+            "polygon_count": "Número de polígonos",
+            "creative": "Criatividade",
+            "material": "Material",
+            "geometry_file_format": "Formato do arquivo geométrico",
+            "texture_mode": "Modo de textura",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "TAPose": "Pose de texto para ação",
+            "hd_texture": "Texturas em alta definição",
+            "texture_delight": "Embelezamento de textura",
+            "use_original_alpha": "Usar alpha original",
+            "addon_highpack": "Plug-in de alta capacidade",
+            "bbox_width": "Largura da caixa delimitadora",
+            "bbox_height": "Altura da caixa delimitadora",
+            "bbox_length": "Comprimento da caixa delimitadora",
+            "height_cm": "Altura (cm)"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo"
+        },
+        "description": "Converte imagens 2D em modelos 3D"
+    },
+    "Rodin3D_Gen25_Text": {
+        "title": "Rodin 3D Gen-2.5 - texto para 3D",
+        "inputs": {
+            "prompt": "Prompt de texto"
+        },
+        "widgets": {
+            "mode": "Modo",
+            "tier": "Nível de complexidade",
+            "polygon_count": "Número de polígonos",
+            "creative": "Criatividade",
+            "material": "Material",
+            "geometry_file_format": "Formato do arquivo geométrico",
+            "texture_mode": "Modo de textura",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "TAPose": "Pose de texto para ação",
+            "hd_texture": "Texturas em alta definição",
+            "texture_delight": "Embelezamento de textura",
+            "addon_highpack": "Plug-in de alta capacidade",
+            "bbox_width": "Largura da caixa delimitadora",
+            "bbox_height": "Altura da caixa delimitadora",
+            "bbox_length": "Comprimento da caixa delimitadora",
+            "height_cm": "Altura (cm)"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo"
+        },
+        "description": "Nó Rodin 3D Gen-2.5 texto para 3D, gera modelos 3D a partir de prompts de texto."
+    },
+    "TripoTextToModelNode": {
+        "title": "Tripo: texto para modelo",
+        "inputs": {
+            "images": "Grupo de imagens"
+        },
+        "widgets": {
+            "model_version": "Versão do modelo",
+            "style": "Estilo",
+            "texture": "Textura",
+            "pbr": "Material PBR",
+            "image_seed": "Semente da imagem",
+            "model_seed": "Semente do modelo",
+            "texture_seed": "Semente da textura",
+            "texture_quality": "Qualidade da textura",
+            "face_limit": "Limite de faces",
+            "quad": "Malha de quadriláteros"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "model task_id": "ID da tarefa do modelo",
+            "model_task_id": "ID da tarefa do modelo"
+        }
+    },
+    "TripoImageToModelNode": {
+        "title": "Tripo: imagem para modelo",
+        "inputs": {
+            "image": "Imagem",
+            "images": "Grupo de imagens"
+        },
+        "widgets": {
+            "model_version": "Versão do modelo",
+            "style": "Estilo",
+            "texture": "Textura",
+            "pbr": "Material PBR",
+            "image_seed": "Semente da imagem",
+            "model_seed": "Semente do modelo",
+            "orientation": "Orientação",
+            "texture_seed": "Semente da textura",
+            "texture_quality": "Qualidade da textura",
+            "texture_alignment": "Alinhamento da textura",
+            "face_limit": "Limite de faces",
+            "quad": "Malha de quadriláteros"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "model task_id": "ID da tarefa do modelo",
+            "model_task_id": "ID da tarefa do modelo"
+        }
+    },
+    "TripoMultiviewToModelNode": {
+        "title": "Tripo: multivista para modelo",
+        "inputs": {
+            "image": "Imagem",
+            "images": "Grupo de imagens",
+            "image_left": "Vista esquerda",
+            "image_back": "Vista traseira",
+            "image_right": "Vista direita"
+        },
+        "widgets": {
+            "model_version": "Versão do modelo",
+            "orientation": "Orientação",
+            "style": "Estilo",
+            "texture": "Textura",
+            "pbr": "Material PBR",
+            "image_seed": "Semente da imagem",
+            "model_seed": "Semente do modelo",
+            "texture_seed": "Semente da textura",
+            "texture_quality": "Qualidade da textura",
+            "texture_alignment": "Alinhamento da textura",
+            "face_limit": "Limite de faces",
+            "quad": "Malha de quadriláteros"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "model task_id": "ID da tarefa do modelo",
+            "model_task_id": "ID da tarefa do modelo"
+        }
+    },
+    "TripoP1TextToModelNode": {
+        "title": "Tripo P1: texto para modelo",
+        "inputs": {
+            "prompt": "Prompt de texto",
+            "negative_prompt": "Prompt negativo"
+        },
+        "widgets": {
+            "output_mode": "Modo de saída",
+            "image_seed": "Semente aleatória da imagem",
+            "face_limit": "Limite de faces",
+            "model_seed": "Semente aleatória do modelo",
+            "auto_size": "Tamanho automático",
+            "export_uv": "Exportar UV",
+            "compress_geometry": "Comprimir geometria"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "model task_id": "ID da tarefa do modelo"
+        },
+        "description": "Converte prompts de texto em modelos 3D"
+    },
+    "TripoP1ImageToModelNode": {
+        "title": "Tripo P1: imagem para modelo",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "output_mode": "Modo de saída",
+            "enable_image_autofix": "Ativar inpaint automático de imagem",
+            "face_limit": "Limite de faces",
+            "model_seed": "Semente aleatória do modelo",
+            "auto_size": "Tamanho automático",
+            "export_uv": "Exportar UV",
+            "compress_geometry": "Comprimir geometria"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "model_task_id": "ID da tarefa do modelo"
+        },
+        "description": "Tripo P1 imagem para 3D. Otimizado para malhas de baixa poligonização, nível de jogos."
+    },
+    "TripoP1MultiviewToModelNode": {
+        "title": "Tripo P1: multivista para modelo",
+        "inputs": {
+            "image": "Imagem",
+            "image_left": "Imagem da vista esquerda",
+            "image_back": "Imagem da vista traseira",
+            "image_right": "Imagem da vista direita"
+        },
+        "widgets": {
+            "output_mode": "Modo de saída",
+            "face_limit": "Limite de faces",
+            "model_seed": "Semente aleatória do modelo",
+            "auto_size": "Tamanho automático",
+            "export_uv": "Exportar UV",
+            "compress_geometry": "Comprimir geometria"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "model_task_id": "ID da tarefa do modelo"
+        },
+        "description": "Tripo P1 multivista para 3D, converte de 2 a 4 imagens de referência na ordem [frente, esquerda, trás, direita]. A vista frontal é obrigatória; qualquer combinação das outras três pode ser omitida."
+    },
+    "TripoTextureNode": {
+        "title": "Tripo: texturizar modelo",
+        "inputs": {
+            "model task_id": "ID da tarefa do modelo",
+            "model_task_id": "ID da tarefa do modelo"
+        },
+        "widgets": {
+            "model_version": "Versão do modelo",
+            "style": "Estilo",
+            "texture": "Textura",
+            "pbr": "Material PBR",
+            "image_seed": "Semente da imagem",
+            "model_seed": "Semente do modelo",
+            "orientation": "Orientação",
+            "texture_seed": "Semente da textura",
+            "texture_quality": "Qualidade da textura",
+            "texture_alignment": "Alinhamento da textura",
+            "face_limit": "Limite de faces",
+            "quad": "Malha de quadriláteros"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "model_task_id": "ID da tarefa do modelo"
+        }
+    },
+    "TripoRefineNode": {
+        "title": "Tripo: refinar modelo rascunho",
+        "inputs": {
+            "model task_id": "ID da tarefa do modelo",
+            "model_task_id": "ID da tarefa do modelo"
+        },
+        "widgets": {
+            "format": "Formato",
+            "face_limittexture_size": "Limite de tamanho da textura facial",
+            "texture_format": "Formato da textura",
+            "quad": "Malha de quadriláteros"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "model task_id": "ID da tarefa do modelo",
+            "model_task_id": "ID da tarefa do modelo"
+        }
+    },
+    "TripoRigNode": {
+        "title": "Tripo: modelo com esqueleto (rig)",
+        "inputs": {
+            "original model task id": "ID da tarefa do modelo original",
+            "original_model_task_id": "ID da tarefa do modelo original"
+        },
+        "widgets": {
+            "format": "Formato",
+            "face_limittexture_size": "Limite de tamanho da textura facial",
+            "texture_format": "Formato da textura",
+            "quad": "Malha de quadriláteros"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "rig task_id": "ID da tarefa de rig",
+            "rig_task_id": "ID da tarefa de rig"
+        }
+    },
+    "TripoRetargetNode": {
+        "title": "Tripo: reorientar modelo animado",
+        "inputs": {
+            "original model task id": "ID da tarefa do modelo original",
+            "original_model_task_id": "ID da tarefa do modelo original"
+        },
+        "widgets": {
+            "animation": "Animação",
+            "face_limittexture_size": "Limite de tamanho da textura facial",
+            "texture_format": "Formato da textura",
+            "quad": "Malha de quadriláteros"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "retarget task_id": "ID da tarefa de redirecionamento",
+            "retarget_task_id": "ID da tarefa de redirecionamento"
+        }
+    },
+    "BriaVideoReplaceBackground": {
+        "title": "Bria substituir fundo de vídeo",
+        "inputs": {
+            "video": "Vídeo",
+            "background_image": "Imagem de fundo",
+            "background_video": "Vídeo de fundo"
+        },
+        "widgets": {
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "Substitui o fundo de um vídeo por uma imagem ou vídeo fornecidos com a Bria. A saída mantém a resolução e a taxa de quadros do primeiro plano; se o fundo tiver outra proporção, será esticado para caber — mantenha as proporções iguais para evitar distorções."
+    },
+    "RunwayAleph2VideoToVideoNode": {
+        "title": "Runway Aleph2 vídeo para vídeo",
+        "inputs": {
+            "video": "Vídeo",
+            "keyframes": "Quadros-chave",
+            "prompt_images": "Imagens de prompt"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "seed": "Semente aleatória",
+            "generate_control": "Controle de geração",
+            "public_figure_threshold": "Limiar de pessoas públicas"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "Edita vídeos com prompts de texto usando o modelo Aleph2 da Runway. O Aleph2 transforma seus vídeos (reestilização, reiluminação, adicionar/remover elementos, mudar o ângulo) mantendo o movimento e o ritmo originais; a resolução de saída é igual à do vídeo de entrada, que deve ter de 2 a 30 segundos e taxa de quadros de até 30 fps. Guias opcionais: quadros-chave (ancorados ao vídeo de entrada) ou imagens de prompt (ancoradas ao vídeo de saída) — use apenas um dos dois, nunca ambos."
+    },
+    "TripoImportModelNode": {
+        "title": "Tripo: importar modelo",
+        "inputs": {
+            "model_3d": "Caminho do arquivo do modelo 3D"
+        },
+        "widgets": {},
+        "outputs": {
+            "model task_id": "ID da tarefa do modelo"
+        },
+        "description": "Importa modelos 3D externos (por exemplo, do Rodin, Hunyuan3D ou arquivos locais) para o Tripo, a fim de usar nos nós de pós-processamento: texturização, esqueleto, conversão. Recomenda-se o formato GLB: as texturas incorporadas ao arquivo são preservadas após a importação. Atenção: para texturizar um modelo importado, é preciso definir primeiro um prompt de textura."
+    },
+    "GeminiVideoOmni": {
+        "title": "Google Gemini Omni (vídeo)",
+        "inputs": {
+            "image_1": "Imagem_1",
+            "video_1": "Vídeo_1"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "model_prompt": "Prompt do modelo",
+            "temperature": "Temperatura",
+            "seed": "Semente",
+            "generate_after_control": "Controle pós-geração"
+        },
+        "outputs": {},
+        "description": "Gera vídeos com áudio a partir de prompts de texto usando o modelo Gemini Omni Flash do Google. Opcionalmente forneça imagens ou vídeos de referência para orientar ou editar o resultado. Indique diretamente no prompt a duração desejada (3-10 segundos) e a proporção (16:9 ou 9:16)."
+    },
+    "LumaRay32TextToVideoNode": {
+        "title": "Luma Ray 3.2 texto para vídeo",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "duration": "Duração",
+            "seed": "Semente",
+            "loop": "Loop"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "generation_id": "ID da geração"
+        },
+        "description": "Gera vídeos a partir de prompts de texto com o modelo Ray 3.2 da Luma."
+    },
+    "LumaRay32ImageToVideoNode": {
+        "title": "Luma Ray 3.2 imagem para vídeo",
+        "inputs": {
+            "start_frame": "Quadro inicial",
+            "end_frame": "Quadro final",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "resolution": "Resolução",
+            "loop": "Loop",
+            "seed": "Semente aleatória",
+            "generate_after_control": "Controle pós-geração"
+        },
+        "outputs": {
+            "video": "Vídeo",
+            "generation_id": "ID da geração"
+        },
+        "description": "Gera vídeos a partir do primeiro e/ou último quadro com o modelo Ray 3.2 da Luma. Gerações ancoradas em imagens têm sempre 5 segundos."
+    },
+    "LumaRay32KeyframesToVideoNode": {
+        "title": "Luma Ray 3.2 quadros-chave para vídeo",
+        "inputs": {
+            "keyframes": "Quadros-chave",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "resolution": "Resolução",
+            "duration": "Duração",
+            "seed": "Semente",
+            "generate_after_control": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "generation_id": "ID da geração"
+        },
+        "description": "Converte quadros-chave em vídeo"
+    },
+    "LumaRay32VideoEditNode": {
+        "title": "Luma Ray 3.2 edição de vídeo",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "resolution": "Resolução",
+            "strength": "Força",
+            "seed": "Semente",
+            "generate_after_control": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "generation_id": "ID da geração"
+        },
+        "description": "Rerrenderiza vídeos existentes com um novo prompt (reestilização, reiluminação, adicionar/remover elementos) mantendo o movimento original, com o LumaRay3.2. O vídeo de origem aceita até 18 segundos; o vídeo editado mantém a duração da origem."
+    },
+    "LumaRay32VideoReframeNode": {
+        "title": "Luma Ray 3.2 reencuadre de vídeo",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "strength": "Força",
+            "seed": "Semente",
+            "generate_after_control": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "generation_id": "ID da geração"
+        },
+        "description": "Alterar a proporção de um vídeo existente com o LumaRay3.2, preenchendo as novas áreas visíveis do quadro. O vídeo de origem aceita até 30 segundos. Cobrança por segundo de saída."
+    },
+    "LumaRay32ExtendVideoNode": {
+        "title": "Luma Ray 3.2 extensão de vídeo",
+        "inputs": {},
+        "widgets": {
+            "source_generation_id": "ID da geração de origem",
+            "direction": "Direção",
+            "loop": "Loop",
+            "prompt": "Prompt",
+            "resolution": "Resolução",
+            "seed": "Semente",
+            "generate_after_control": "Controle pós-geração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo",
+            "generation_id": "ID da geração"
+        },
+        "description": "Estende para trás uma geração Ray 3.2 anterior (prosseguindo depois dela) ou para frente (introduzindo antes dela). Conecte a saída ID da geração de origem de um nó LumaRay3.2 anterior. A extensão tem sempre 5 segundos."
+    },
+    "HeyGenTalkingPhotoNode": {
+        "title": "HeyGen foto falante",
+        "inputs": {
+            "image": "Imagem",
+            "speech_source": "Origem da voz",
+            "speech_text": "Texto da fala"
+        },
+        "widgets": {
+            "speech_source": "Origem da voz",
+            "voice": "Voz",
+            "custom_voice_id": "ID de voz personalizada",
+            "voice_speed": "Velocidade da voz",
+            "resolution": "Resolução",
+            "aspect_ratio": "Proporção",
+            "expressiveness": "Expressividade",
+            "seed": "Semente",
+            "speech_text": "Texto da fala"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "Anima qualquer imagem de pessoa como um vídeo de conversa com sincronização labial (HeyGen Avatar IV). Dirigível por roteiro de texto ou áudio personalizado."
+    },
+    "HeyGenAvatarVideoNode": {
+        "title": "HeyGen vídeo de avatar dinâmico",
+        "inputs": {},
+        "widgets": {
+            "engine": "Motor",
+            "avatar": "Avatar",
+            "speech source": "Origem da voz",
+            "voice": "Voz",
+            "custom_voice_id": "ID de voz personalizada",
+            "voice_speed": "Velocidade da voz",
+            "custom_avatar_id": "ID de avatar personalizado",
+            "resolution": "Resolução",
+            "aspect_ratio": "Proporção",
+            "background_color": "Cor de fundo",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "Gera um vídeo de apresentador falante a partir de um avatar da HeyGen. Inclui os avatares públicos mais populares da HeyGen; qualquer ID de avatar pode ser fornecido como substituição."
+    },
+    "HeyGenCreateAvatarNode": {
+        "title": "HeyGen criar avatar",
+        "inputs": {
+            "ref_image_1": "Imagem de referência 1"
+        },
+        "widgets": {
+            "source": "Arquivo de origem"
+        },
+        "outputs": {
+            "avatar_id": "ID do avatar",
+            "preview": "Imagem de pré-visualização"
+        },
+        "description": "Cria um avatar a partir de imagens e prompts de origem"
+    },
+    "HeyGenVideoTranslateNode": {
+        "title": "HeyGen tradução de vídeo",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "output_language": "Idioma de saída",
+            "mode": "Modo",
+            "translate_audio_only": "Traduzir apenas o áudio",
+            "speaker_count": "Número de falantes",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "Nó de tradução de vídeo HeyGen"
+    },
+    "MinimaxHailuo03TextToVideoNode": {
+        "title": "MiniMax Hailuo H3 texto para vídeo",
+        "inputs": {},
+        "widgets": {
+            "model": "Modelo",
+            "model_prompt": "Prompt do modelo",
+            "resolution": "Resolução",
+            "ratio": "Proporção",
+            "seed": "Semente",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {},
+        "description": "Gera vídeos a partir de prompts de texto com o modelo MiniMax H3."
+    },
+    "MinimaxHailuo03FirstLastFrameNode": {
+        "title": "MiniMax Hailuo H3 primeiro e último quadro para vídeo",
+        "inputs": {
+            "first_frame": "Primeiro quadro",
+            "last_frame": "Último quadro"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "model_prompt": "Prompt do modelo",
+            "resolution": "Resolução",
+            "duration": "Duração",
+            "seed": "Semente aleatória",
+            "generate_control": "Controle de geração",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "Gera um vídeo a partir do primeiro e do último quadro"
+    },
+    "MinimaxHailuo03ReferenceNode": {
+        "title": "MiniMax Hailuo H3 referência para vídeo",
+        "inputs": {
+            "image_1": "Imagem 1",
+            "video_1": "Vídeo 1",
+            "audio_1": "Áudio 1"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "prompt": "Prompt",
+            "resolution": "Resolução",
+            "ratio": "Proporção",
+            "seed": "Semente aleatória",
+            "watermark": "Marca d'água"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "Gera um novo vídeo usando imagens, vídeos e áudios como referência com o modelo MiniMax H3."
+    },
+    "SyncLipSyncNode": {
+        "title": "sync.so sincronização labial",
+        "inputs": {
+            "video": "Vídeo",
+            "audio": "Áudio"
+        },
+        "widgets": {
+            "seed": "Semente aleatória",
+            "generate_after_control": "Controle pós-geração",
+            "model": "Modelo",
+            "sync_mode": "Modo de sincronização",
+            "speaker_selection": "Seleção do falante",
+            "speaker_frame": "Quadro do falante",
+            "speaker_x": "Coordenada X do falante",
+            "speaker_y": "Coordenada Y do falante"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "Sincroniza o áudio com os movimentos labiais do vídeo"
+    },
+    "SyncTalkingImageNode": {
+        "title": "sync.so imagem falante",
+        "inputs": {
+            "image": "Imagem",
+            "audio": "Áudio"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "seed": "Semente",
+            "generate_after_control": "Controle pós-geração",
+            "model": "Modelo",
+            "speaker_selection": "Seleção do falante",
+            "speaker_x": "Coordenada X do falante",
+            "speaker_y": "Coordenada Y do falante",
+            "auto_downscale": "Redução automática"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "Combina imagem e áudio para gerar uma imagem falante"
+    },
+    "IdeogramPImage": {
+        "title": "Imagem P Hieróglifo",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "quality": "Qualidade",
+            "resolution": "Resolução",
+            "aspect_ratio": "Proporção",
+            "prompt_upsampling": "Ampliar o prompt",
+            "seed": "Semente",
+            "generate_after_control": "Controle pós-geração"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "final_prompt": "Prompt final"
+        },
+        "description": "Nó que gera imagens"
+    },
+    "ByteDanceSeedAudio": {
+        "title": "ByteDance Seed Audio 1.0",
+        "inputs": {},
+        "widgets": {
+            "text_prompt": "Prompt de texto",
+            "reference_mode": "Modo de referência",
+            "sample_rate": "Taxa de amostragem",
+            "speech_rate": "Velocidade da fala",
+            "loudness_rate": "Loudness",
+            "pitch_rate": "Tom",
+            "seed": "Semente",
+            "model": "Modelo",
+            "generate_after_control": "Controle pós-geração"
+        },
+        "outputs": {
+            "AUDIO": "Vídeo"
+        },
+        "description": "Nó ByteDance Seed Audio 1.0"
+    },
+    "HeyGenTextToSpeechNode": {
+        "title": "HeyGen texto para fala",
+        "inputs": {},
+        "widgets": {
+            "text": "Texto",
+            "voice": "Voz",
+            "custom_voice_id": "ID de voz personalizada",
+            "speed": "Velocidade da fala",
+            "ssml": "Tags de controle SSML",
+            "seed": "Semente",
+            "generate_after_control": "Controle pós-geração"
+        },
+        "outputs": {},
+        "description": "Nó que converte texto em fala"
+    },
+    "ComfyCloudMiniMaxH3TextToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3 texto para vídeo",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "seed": "Semente aleatória",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "duration_seconds": "Duração (s)"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "O conjunto de nós da Comfy Cloud está em evolução constante: opções podem ser adicionadas ou removidas e alguns workflows podem ser desativados. Gera vídeos com trilha sonora correspondente a partir de prompts de texto usando o MiniMax H3. Imagem e áudio vêm do mesmo processo, não de dublagem posterior.  \n Executa nas GPUs do Comfy Cloud, cobrado por tempo de execução: US$ 0,001295 (0,27 créditos) por GPU-segundo.  \n Pago em créditos, sem assinatura de nuvem."
+    },
+    "ComfyCloudMiniMaxH3ImageToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3 imagem para vídeo",
+        "inputs": {
+            "first_frame": "Primeiro quadro",
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "seed": "Semente aleatória",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "duration_seconds": "Duração"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "O conjunto de nós da Comfy Cloud está em evolução constante: opções podem ser adicionadas ou removidas e alguns workflows podem ser desativados. Gera vídeos com trilha sonora correspondente a partir de prompts de texto usando o MiniMax H3. Imagem e áudio vêm do mesmo processo, não de dublagem posterior.  \n Executa nas GPUs do Comfy Cloud, cobrado por tempo de execução: US$ 0,001295 (0,27 créditos) por GPU-segundo.  \n Pago em créditos, sem assinatura de nuvem."
+    },
+    "ComfyCloudMiniMaxH3FirstLastFrameToVideoNode": {
+        "title": "Comfy Cloud MiniMax H3 primeiro e último quadro para vídeo",
+        "inputs": {
+            "first_frame": "Primeiro quadro",
+            "last_frame": "Último quadro"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "seed": "Semente aleatória",
+            "aspect_ratio": "Proporção",
+            "resolution": "Resolução",
+            "duration_seconds": "Duração (s)"
+        },
+        "outputs": {
+            "VIDEO": "Vídeo"
+        },
+        "description": "O conjunto de nós da Comfy Cloud está em evolução constante: opções podem ser adicionadas ou removidas e alguns workflows podem ser desativados. Gera vídeos com trilha sonora correspondente a partir de prompts de texto usando o MiniMax H3. Imagem e áudio vêm do mesmo processo, não de dublagem posterior.  \n Executa nas GPUs do Comfy Cloud, cobrado por tempo de execução: US$ 0,001295 (0,27 créditos) por GPU-segundo.  \n Pago em créditos, sem assinatura de nuvem."
+    },
+    "TripoConversionNode": {
+        "title": "Converter modelo Tripo",
+        "inputs": {
+            "original model task id": "ID da tarefa do modelo original",
+            "original_model_task_id": "ID da tarefa do modelo original"
+        },
+        "widgets": {
+            "format": "Formato",
+            "face_limittexture_size": "Limite de tamanho da textura facial",
+            "face_limit": "Limite de faces",
+            "texture_size": "Tamanho da textura",
+            "texture_format": "Formato da textura",
+            "quad": "Malha de quadriláteros"
+        },
+        "outputs": {
+            "model_file": "Arquivo do modelo",
+            "model task_id": "ID da tarefa do modelo",
+            "model_task_id": "ID da tarefa do modelo"
+        }
+    }
+}

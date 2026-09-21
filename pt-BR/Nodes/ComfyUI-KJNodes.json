@@ -1,0 +1,4219 @@
+{
+    "ContextWindowsVisualizerKJ": {
+        "title": "Visualizador de Janela de Contexto (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "frame_units": "Unidade de quadros",
+            "dim": "Dimensões",
+            "temporal_downscale": "Taxa de subsampling temporal",
+            "num_frames": "Número de quadros",
+            "context_length": "Comprimento do contexto",
+            "context_overlap": "Sobreposição do contexto",
+            "context_schedule": "Agendamento do contexto",
+            "context_stride": "Passo do contexto",
+            "closed_loop": "Loop fechado",
+            "fuse_method": "Método de mesclagem",
+            "causal_window_fix": "Correção de janela causal",
+            "freenoise": "Ruído livre",
+            "cond_retain_index_list": "Lista de índices de condições preservadas"
+        },
+        "outputs": {
+            "model": "Modelo"
+        },
+        "description": "Visualização interativa da janela de contexto do ComfyUI: posição das janelas, sobreposição, pesos de fusão e mistura por quadro, em tempo real. Opcionalmente aplica as configurações ao nó principal Context Window (Manual) e a outros modelos."
+    },
+    "MiniMaxH3TokenCounter": {
+        "title": "Contador de tokens MiniMax H3",
+        "inputs": {
+            "samples": "Amostragem",
+            "conditioning": "Condicionamento"
+        },
+        "widgets": {},
+        "outputs": {
+            "samples": "Amostragem",
+            "conditioning": "Condicionamento",
+            "tokens": "Tokens",
+            "breakdown": "Decompor"
+        },
+        "description": "Calcula o comprimento do pacote que o MiniMax H3 processaria durante a geração sem amostragem. Monta o mesmo layout [texto | chave/referência | áudio | vídeo] do modelo, com base no latent de vídeo e nas informações de condição (comprimento do texto, quadros-chave e blocos de referência)."
+    },
+    "MiniMaxLowVRAMAttention": {
+        "title": "Atenção MiniMax H3 de baixa VRAM",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "head_chunks": "Número de blocos de cabeças"
+        },
+        "outputs": {
+            "model": "Modelo"
+        },
+        "description": "Reduz o pico de VRAM do módulo de atenção do MiniMax H3 sem alterar a lógica de cálculo. Divide as chamadas de atenção em vários grupos de cabeças, de modo que os dados transitórios internos do kernel (como cópias int8 de q/k e acumuladores fp32) diminuem com o número de blocos enquanto o buffer qkv fundido permanece válido, liberando imediatamente o buffer qkv e as entradas normalizadas dos blocos após o consumo. A saída é idêntica à do modelo sem o patch."
+    },
+    "MiniMaxChunkFeedForward": {
+        "title": "Feed-forward em blocos MiniMax H3",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "chunks": "Número de blocos",
+            "seq_threshold": "Limiar de sequência"
+        },
+        "outputs": {},
+        "description": "Divide o feed-forward (SwiGLU) do MiniMax H3 ao longo da dimensão de tokens empacotados para reduzir o uso de pico de VRAM. Quando o modelo está quantizado, cada bloco ainda passa pelo kernel INT8 fundido do ComfyUI; como as ativações são quantizadas por token, a saída é consistente com o modelo sem divisão em blocos."
+    },
+    "Ideogram4PromptBuilderKJ": {
+        "title": "Construtor de prompts Ideogram4 (KJ)",
+        "inputs": {
+            "image": "Imagem",
+            "import_json": "Importar JSON",
+            "bboxes": "Caixa delimitadora"
+        },
+        "widgets": {
+            "width": "Largura",
+            "height": "Altura",
+            "high_level_description": "Descrição avançada",
+            "background": "Fundo",
+            "style": "Estilo",
+            "aesthetics": "Estética",
+            "lighting": "Iluminação",
+            "medium": "Mídia",
+            "style_palette_data": "Dados da paleta de estilo",
+            "elements_data": "Dados dos elementos",
+            "bg_brightness": "Brilho do fundo",
+            "import_mode": "Modo de importação",
+            "output_format": "Formato de saída",
+            "coord_mode": "Modo de coordenadas",
+            "bbox_order": "Ordem das caixas delimitadoras"
+        },
+        "outputs": {
+            "prompt": "Prompt",
+            "preview": "Pré-visualização",
+            "bboxes": "Caixa delimitadora",
+            "width": "Largura",
+            "height": "Altura"
+        },
+        "description": "\nConstrutor de prompts visual para o formato de legenda JSON estruturado do Ideogram 4.\n\nArraste na tela para desenhar regiões; selecione uma região para definir seu tipo (objeto/texto), descrição, texto e paleta. Defina fundo e campos de estilo opcionais como widgets. Produz a string JSON de legenda montada.\n\nAs offsets da bbox são normalizadas para uma grade 0-1000, no formato [y_min, x_min, y_max, x_max]; largura/altura definem a proporção da tela.\n\nControles da tela:\n- Arrastar: desenhar nova região\n- Ctrl/Cmd+arrastar: forçar nova região mesmo sobre regiões existentes\n- Clique: selecionar região · Alt+clique: ciclar regiões sobrepostas\n- Duplo clique: editar descrição inline\n- Clique direito: lista de regiões (selecionar/excluir/duplicar/reordenar, topo = frente)\n- Del/Backspace: excluir região selecionada\n- Ctrl/Cmd + C/V/D: copiar/colar/duplicar região selecionada\n- As offsets da bbox ao lado de obj/texto (pixels/saída) são editáveis\n\nAmostras de cor:\n- Clique: editar · Arrastar: reordenar · Clique direito: excluir\n- Hover+Ctrl/Cmd + C/V: copiar/colar valor hexadecimal da cor\n- \"+\": adicionar cor (usa a cor da área de transferência se houver)\n\nBarra de ferramentas:\n- Ao vivo: usar a pré-visualização de amostragem ao vivo como fundo (e capturar o resultado final)\n- Capturar fundo / limpar fundo: usar a última imagem gerada como fundo\n- Controle de brilho, estimativa de tokens e copiar/colar/limpar tudo"
+    },
+    "RandomImageFromBatch": {
+        "title": "Seleção aleatória de imagens do lote (KJ)",
+        "inputs": {
+            "input": "Entrada"
+        },
+        "widgets": {
+            "start_index": "Índice inicial",
+            "end_index": "Índice final",
+            "num_frames": "Número de quadros",
+            "randomness": "Aleatoriedade",
+            "min_distance": "Espaçamento mínimo",
+            "max_distance": "Espaçamento máximo",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "output": "Saída"
+        },
+        "description": "Seleciona um conjunto de quadros dentro de uma faixa de índices de um lote de imagens ou máscaras. Com aleatoriedade=0, os quadros selecionados ficam uniformemente espaçados na faixa; com aleatoriedade=1, são amostrados aleatoriamente sem repetição; valores intermediários fazem uma mistura linear. A saída é sempre ordenada pelo índice do lote. Índices negativos contam a partir do fim (-1 = último)."
+    },
+    "FastPreviewBatch": {
+        "title": "Pré-visualização rápida de lote (KJ)",
+        "inputs": {
+            "input": "Entrada"
+        },
+        "widgets": {
+            "max_thumb_size": "Tamanho máximo da miniatura",
+            "crf": "Limitar qualidade da imagem",
+            "max_grid_frames": "Número máximo de quadros da grade"
+        },
+        "outputs": {},
+        "description": "Codifica um lote de imagens como uma tira de miniaturas MP4 H.264 só com quadros I e exibe como grade interativa. Clique em um bloco para ampliar e navegar para frente/trás. Evita gerar N arquivos PNG."
+    },
+    "BBOXToBoundingBoxKJ": {
+        "title": "BBOX para caixa delimitadora (KJ)",
+        "inputs": {
+            "bbox": "Caixa delimitadora"
+        },
+        "widgets": {
+            "bbox_format": "Formato da caixa delimitadora",
+            "index": "Índice"
+        },
+        "outputs": {
+            "bounding_box": "Caixa delimitadora"
+        },
+        "description": "Converte o BBOX do KJNodes em um dicionário nativo BOUNDING_BOX usado por nós do núcleo (como Recortar Imagem)."
+    },
+    "WanVideoMemoryEfficientSageAttentionPatch": {
+        "title": "Wan Vídeo: patch de atenção Sage eficiente em memória (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Modelo"
+        },
+        "description": "Experimental! Ativa a sageattention customizada na autoatenção do WanVideo para reduzir o pico de VRAM, sobrescrevendo o modo de atenção. Requer a versão mais recente do sageattention."
+    },
+    "MiniMaxH3MemoryEfficientSageAttentionPatch": {
+        "title": "MiniMax H3: patch de atenção Sage eficiente em memória (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Modelo"
+        },
+        "description": "Experimental! Ativa a sageattention customizada na autoatenção do MiniMax H3 para reduzir o pico de VRAM, sobrescrevendo o modo de atenção. Requer a versão mais recente do sageattention."
+    },
+    "PatchFlashAttentionKJ": {
+        "title": "Patch de Flash Attention (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "allow_compile": "Permitir compilação"
+        },
+        "outputs": {},
+        "description": "Nó experimental que patcheia a atenção para usar Flash Attention, sem o fallback silencioso de SDPA padrão da UI do ComfyUI. Aplica patch na atenção dos modelos que passem por este nó; para desativar, bypass ou desconecte o nó. Requer a biblioteca flash_attn instalada."
+    },
+    "TorchCompileModelAdvanced": {
+        "title": "Modelo compilado Torch avançado (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Modo de grafo completo",
+            "mode": "Modo",
+            "dynamic": "Dinâmico",
+            "compile_transformer_blocks_only": "Compilar apenas blocos Transformer",
+            "dynamo_cache_size_limit": "Limite de tamanho de cache do Dynamo",
+            "debug_compile_keys": "Chaves de depuração da compilação",
+            "disable_dynamic_vram": "Desativar VRAM dinâmica"
+        },
+        "outputs": {},
+        "description": "Patch avançado de torch.compile para modelos de difusão."
+    },
+    "Krea2PromptWeight": {
+        "title": "Pesos de prompt Krea2 (KJ)",
+        "inputs": {
+            "clip": "CLIP",
+            "model": "Modelo"
+        },
+        "widgets": {
+            "text": "Texto",
+            "strength": "Força"
+        },
+        "outputs": {
+            "model": "Modelo",
+            "conditioning": "Condicionamento"
+        },
+        "description": "Implementa ponderação de prompt por token no Krea2 (K2) via escalonamento dos valores de atenção. Use (palavra:-1) para remover um conceito e (palavra:1.5) para destacá-lo — algo que os ajustes comuns de peso não alcançam com o codificador Qwen3-VL. Fornece o modelo e a condição com patch; defina o CFG do amostrador como 1.0."
+    },
+    "Ideogram4OptimizationsKJ": {
+        "title": "Otimização Ideogram4 (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "chunk_ffn": "Feed-forward em blocos",
+            "ffn_chunks": "Número de blocos de feed-forward",
+            "ffn_seq_threshold": "Limiar de sequência de feed-forward",
+            "bf16_rope": "Codificação de posição bf16"
+        },
+        "outputs": {
+            "model": "Modelo"
+        },
+        "description": "Experimental e pode alterar a saída do modelo!! Reduz o pico de VRAM do forward do Ideogram4. chunk_ffn divide as ativações SwiGLU ao longo da dimensão de tokens; bf16_rope aplica o RoPE no dtype do modelo em vez de subir para fp32. Ambos miram os dois maiores tensores transitórios dos blocos."
+    },
+    "PiDColorBiasCorrection": {
+        "title": "Correção de viés de cor PiD (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "strength": "Força",
+            "backbone": "Rede backbone"
+        },
+        "outputs": {},
+        "description": "Corretor de deriva de cor/luminância do decodificador PiD de quatro passos. No primeiro passo de amostragem, subtrai um viés por canal do deslocamento horizontal 0_p usando um pequeno modelo linear calibrado para a deriva sistemática do modelo (tende a clarear cenas escuras e adicionar um tom azulado)"
+    },
+    "LeapfusionHunyuanI2V": {
+        "title": "LeapFusion Hunyuan imagem para vídeo (KJ)",
+        "inputs": {
+            "model": "Modelo",
+            "latent": "Latente"
+        },
+        "widgets": {
+            "index": "Índice",
+            "start_percent": "Porcentagem inicial",
+            "end_percent": "Porcentagem final",
+            "strength": "Força"
+        },
+        "outputs": {},
+        "description": ""
+    },
+    "VAEMergeKJ": {
+        "title": "Mesclagem de VAE (KJ)",
+        "inputs": {
+            "vae_1": "VAE1",
+            "vae_2": "VAE2"
+        },
+        "widgets": {
+            "ratio": "Proporção"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "Mescla os pesos de dois VAEs por média ponderada. A proporção é o peso inclinado ao VAE_2 (0.0 = puro VAE_1, 1.0 = puro VAE_2). Os dois VAEs devem compartilhar a mesma arquitetura (chaves e formas do state dict correspondentes)"
+    },
+    "LatentInpaintTTM": {
+        "title": "Reparo de máscara Latent TTM (KJ)",
+        "inputs": {
+            "model": "Modelo",
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "steps": "Etapas"
+        },
+        "outputs": {},
+        "description": "https://github.com/time-to-move/TTM"
+    },
+    "DeprecatedCompileNodeKJ": {
+        "title": "Nó de compilação descontinuado (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "Este nó foi substituído pelo nó TorchCompileModelAdvanced; use-o"
+    },
+    "ModelPreviewOverrideKJ": {
+        "title": "Sobreposição de pré-visualização do modelo (KJ)",
+        "inputs": {
+            "model": "Modelo",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "max_resolution": "Resolução máxima",
+            "jpeg_quality": "Qualidade JPEG",
+            "suppress_default_preview": "Desativar pré-visualização padrão",
+            "preview_frames": "Quadros de pré-visualização",
+            "preview_fps": "Taxa de quadros da pré-visualização",
+            "tiny_vae": "VAE mini"
+        },
+        "outputs": {},
+        "description": "Adiciona um quadro de pré-visualização ao vivo dedicado neste nó, com sobrescrita da resolução máxima. O limite padrão de pré-visualização do ComfyUI é 512p; este nó envia sua própria pré-visualização direto ao componente DOM do nó, permitindo visualizar modelos de espaço de pixels (Chroma Radiance, ZImage, HiDream-O1 etc.) na resolução total do amostrador."
+    },
+    "GetPreviewOverrideFramesKJ": {
+        "title": "Obter quadros de sobreposição de pré-visualização (KJ)",
+        "inputs": {
+            "model": "Modelo",
+            "after_sample": "Pós-amostragem"
+        },
+        "widgets": {},
+        "outputs": {
+            "frames": "Quadros de vídeo"
+        },
+        "description": "Retorna os quadros capturados pela sobreposição de pré-visualização do modelo durante a última amostragem. Conecte o 'modelo' vindo do Sobreposição de Pré-visualização do Modelo (o mesmo fornecido ao amostrador) e o 'after_sample' (Latent/IMAGE) após o amostrador para garantir a ordem de execução correta."
+    },
+    "PatchTritonVAE": {
+        "title": "Patch Triton para VAE (KJ)",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "fuse_norm_silu": "Ativação SiLU com normalização fundida",
+            "channels_last": "Canais primeiro",
+            "int8_conv": "Convolução INT8",
+            "autotune": "Autoajuste"
+        },
+        "outputs": {
+            "vae": "VAE"
+        },
+        "description": "Acelera a decodificação/encoding do VAE com kernels Triton de norm+SiLU fundidos e layout de convolução channels-first. VAEs suportados (detecção automática): VAE de vídeo Wan 2.1/2.2 (inclui Qwen-Image, RMSNorm, ~1.4x/1.15x), Flux/Flux2, VAEs de imagem KL como SDXL e SD1.5 (GroupNorm, ~1.6-1.8x em 2048px) e VAEs de vídeo LTXV/LTX2 (PixedNorm; blocos do decodificador condicionados por timestep recebem apenas a fusão de normalização). Outras arquiteturas não são suportadas. Aplicado como patch de objeto em um cloner patcheado, existindo apenas enquanto esse VAE estiver carregado."
+    },
+    "ImageTransformKJ": {
+        "title": "Transformação de imagem (KJ)",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "target_width": "Largura alvo",
+            "target_height": "Altura alvo",
+            "upscale_method": "Método de redimensionamento",
+            "keep_proportion": "Manter proporção",
+            "divisible_by": "Divisível por",
+            "extra_padding": "Preenchimento extra",
+            "invert_crop": "Recorte invertido",
+            "grid_size": "Tamanho da grade"
+        },
+        "outputs": {
+            "width": "Largura",
+            "height": "Altura",
+            "output": "Imagem de saída",
+            "output_mask": "Máscara de saída"
+        },
+        "description": "Nó de transformação de imagens com redimensionamento, métodos de ampliação, manutenção de proporção e transformação sincronizada de máscaras."
+    },
+    "ScreencapStream": {
+        "title": "Captura de tela ao vivo (KJ)",
+        "inputs": {},
+        "widgets": {
+            "crop_width": "Largura do recorte",
+            "crop_height": "Altura do recorte",
+            "Start capture": "Iniciar captura",
+            "Hide preview": "Ocultar pré-visualização"
+        },
+        "outputs": {
+            "image": "Imagem"
+        },
+        "description": "Captura a tela em tempo real. Permite definir largura e altura da área capturada, com botões de iniciar e parar. A imagem ao vivo aparece na janela de pré-visualização para acompanhar a captura."
+    },
+    "DecodeAndSaveVideo": {
+        "title": "Decodificar e salvar vídeo (KJ)",
+        "inputs": {
+            "video_latent": "Latent de vídeo",
+            "video_vae": "Modelo VAE de vídeo",
+            "audio_latent": "Latent de áudio",
+            "audio_vae": "Modelo VAE de áudio"
+        },
+        "widgets": {
+            "fps": "Taxa de quadros",
+            "filename_prefix": "Prefixo do nome do arquivo",
+            "format": "Formato",
+            "codec": "Codec",
+            "tiling": "Processamento em blocos"
+        },
+        "outputs": {
+            "video": "Vídeo decodificado",
+            "filename": "Nome do arquivo salvo"
+        },
+        "description": "Decodifica o espaço latente de vídeo (Video Latent) em um arquivo de vídeo real e o salva. Suporta decodificar áudio simultaneamente. Configure aqui a taxa de quadros (FPS), o prefixo do nome, o formato de saída (MP4, MOV etc.), o codec de vídeo (H.264, H.265) e se o processamento em blocos (Tiling) está ativado para vídeos grandes."
+    },
+    "EncodeVideoComponents": {
+        "title": "Codificador de componentes de vídeo (KJ)",
+        "inputs": {
+            "video": "Vídeo",
+            "vae": "Modelo VAE"
+        },
+        "widgets": {
+            "width": "Largura",
+            "height": "Altura",
+            "max_frames": "Número máximo de quadros",
+            "upscale_method": "Método de redimensionamento",
+            "Keep Proportion": "Manter proporção"
+        },
+        "outputs": {
+            "latent": "Latent",
+            "audio": "Áudio",
+            "fps": "Taxa de quadros",
+            "frame_count": "Número de quadros"
+        },
+        "description": "Codifica quadros de vídeo como representação no espaço latente, geralmente usado em fluxos de geração ou processamento de vídeo. Recebe o fluxo de vídeo e o modelo VAE como entrada e produz o latente codificado, o fluxo de áudio, a taxa de quadros e o número total de quadros. Também permite definir a resolução de saída (largura e altura), limitar o número máximo de quadros, escolher o método de ampliação (como Lanczos) e manter a proporção original."
+    },
+    "ColorMatchV2": {
+        "title": "Correspondência de cores V2 (KJ)",
+        "inputs": {
+            "image_target": "Imagem de destino",
+            "image_ref": "Imagem de referência"
+        },
+        "widgets": {
+            "method": "Método",
+            "strength": "Força",
+            "multithread": "Multithreading"
+        },
+        "outputs": {
+            "image": "Imagem"
+        },
+        "description": "Aplica o estilo de cor da imagem de referência à imagem de destino. Suporta vários algoritmos (como mkl), ajuste de intensidade da correspondência e multithreading para maior eficiência."
+    },
+    "PreviewImageOrMask": {
+        "title": "Visualizar imagem ou máscara (KJ)",
+        "inputs": {
+            "input": "Imagem ou máscara de entrada"
+        },
+        "widgets": {},
+        "outputs": {},
+        "description": "Exibe diretamente a imagem ou máscara de entrada na interface do ComfyUI, útil para depuração e visualização de resultados intermediários. Normalmente não produz saída de dados; serve apenas como pré-visualização."
+    },
+    "ImageSharpenKJ": {
+        "title": "Nitidez de imagem (KJ)",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "method": "Método",
+            "strength": "Força"
+        },
+        "outputs": {
+            "output": "Imagem de saída"
+        },
+        "description": "Aplique nitidez à imagem de entrada escolhendo o algoritmo (como rcas) e ajustando a intensidade, realçando definição e detalhes."
+    },
+    "PlaySoundKJ": {
+        "title": "Reproduzir som",
+        "inputs": {
+            "any_input": "Entrada qualquer",
+            "audio": "Áudio"
+        },
+        "widgets": {
+            "audio_path": "Caminho do áudio",
+            "mode": "Modo",
+            "volume": "Volume",
+            "duration": "Duração"
+        },
+        "outputs": {
+            "any_output": "Saída qualquer"
+        },
+        "description": "Reproduz um arquivo de áudio especificado, com modo de reprodução, volume e duração configuráveis."
+    },
+    "NormalizedAmplitudeToMask": {
+        "title": "Amplitude normalizada para máscara",
+        "inputs": {
+            "normalized_amp": "Amplitude normalizada"
+        },
+        "widgets": {
+            "width": "Largura",
+            "height": "Altura",
+            "frame_offset": "Deslocamento de quadros",
+            "location_x": "Posição_X",
+            "location_y": "Posição_Y",
+            "size": "Tamanho",
+            "shape": "Forma",
+            "color": "Cor"
+        },
+        "outputs": {
+            "MASK": "Máscara"
+        },
+        "description": "Nó de ponte para o plugin AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nCria máscaras com base na amplitude normalizada."
+    },
+    "NormalizedAmplitudeToFloatList": {
+        "title": "Amplitude normalizada para lista de floats",
+        "inputs": {
+            "normalized_amp": "Amplitude normalizada"
+        },
+        "outputs": {
+            "FLOAT": "Float"
+        },
+        "description": "Nó de ponte para o plugin AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nCria uma lista de floats com base na amplitude normalizada."
+    },
+    "OffsetMaskByNormalizedAmplitude": {
+        "title": "Deslocar máscara por amplitude normalizada",
+        "inputs": {
+            "normalized_amp": "Amplitude normalizada",
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "rotate": "Rotação",
+            "angle_multiplier": "Múltiplo de ângulo"
+        },
+        "outputs": {
+            "mask": "Máscara"
+        },
+        "description": "Nó de ponte para o plugin AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nDesloca a máscara com base na amplitude normalizada."
+    },
+    "ImageTransformByNormalizedAmplitude": {
+        "title": "Transformar imagem por amplitude normalizada",
+        "inputs": {
+            "normalized_amp": "Amplitude normalizada",
+            "image": "Imagem"
+        },
+        "widgets": {
+            "zoom_scale": "Escala",
+            "x_offset": "Deslocamento X",
+            "y_offset": "Deslocamento Y",
+            "cumulative": "Acumular"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Nó de ponte para o plugin AudioScheduler:\n\nhttps://github.com/a1lazydog/ComfyUI-AudioScheduler\n\nTransforma a imagem com base na amplitude normalizada."
+    },
+    "BatchCropFromMask": {
+        "title": "Recorte por máscara",
+        "inputs": {
+            "original_images": "Imagem",
+            "masks": "Máscara"
+        },
+        "widgets": {
+            "crop_size_mult": "Fator de recorte",
+            "bbox_smooth_alpha": "Alpha suave da BBox"
+        },
+        "outputs": {
+            "original_images": "Imagem original",
+            "cropped_images": "Imagem recortada",
+            "bboxes": "BBox",
+            "width": "Largura",
+            "height": "Altura"
+        }
+    },
+    "BatchUncrop": {
+        "title": "Recorte invertido (lote)",
+        "inputs": {
+            "original_images": "Imagem original",
+            "cropped_images": "Imagem recortada",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "border_blending": "Fusão de bordas",
+            "crop_rescale": "Redimensionar",
+            "border_bottom": "Borda inferior",
+            "border_top": "Borda superior",
+            "border_left": "Borda esquerda",
+            "border_right": "Borda direita"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "BatchCropFromMaskAdvanced": {
+        "title": "Recorte por máscara (avançado)",
+        "inputs": {
+            "original_images": "Imagem",
+            "masks": "Máscara"
+        },
+        "widgets": {
+            "crop_size_mult": "Fator de recorte",
+            "bbox_smooth_alpha": "Alpha suave da BBox"
+        },
+        "outputs": {
+            "original_images": "Imagem original",
+            "cropped_images": "Imagem recortada",
+            "cropped_masks": "Máscara recortada",
+            "combined_crop_image": "Imagens recortadas mescladas",
+            "combined_crop_masks": "Máscaras recortadas mescladas",
+            "bboxes": "BBox",
+            "combined_bounding_box": "BBox mescladas",
+            "bbox_width": "Largura da BBox",
+            "bbox_height": "Altura da BBox"
+        }
+    },
+    "FilterZeroMasksAndCorrespondingImages": {
+        "title": "Filtrar máscaras e imagens zeradas",
+        "inputs": {
+            "masks": "Máscara",
+            "original_images": "Imagem"
+        },
+        "outputs": {
+            "non_zero_masks_out": "Máscaras não zeradas",
+            "non_zero_mask_images_out": "Imagens não zeradas",
+            "zero_mask_images_out": "Imagens zeradas",
+            "zero_mask_images_out_indexes": "Índices de imagens com máscaras não zeradas"
+        },
+        "description": "Remove todas as máscaras vazias (todas as zeros) do lote.\nSe fornecido, também filtra as\n imagens correspondentes em original_images\n pelo índice.\n original_images (opcional): se fornecido, deve ter o mesmo comprimento que mask."
+    },
+    "InsertImageBatchByIndexes": {
+        "title": "Inserir imagens no lote por índice",
+        "inputs": {
+            "images": "Imagem",
+            "images_to_insert": "Imagens a inserir",
+            "insert_indexes": "Índices de inserção"
+        },
+        "outputs": {
+            "images_after_insert": "Imagem"
+        },
+        "description": "Use este nó junto com FilterZeroMasksAndCorrespondingImages;\ninsere images_to_insert em images conforme insert_indexes.\nRetorno: images_after_insert - a sequência de imagens atualizada na ordem original."
+    },
+    "BatchUncropAdvanced": {
+        "title": "Uncrop (avançado)",
+        "inputs": {
+            "original_images": "Imagem original",
+            "cropped_images": "Imagem recortada",
+            "cropped_masks": "Máscara recortada",
+            "combined_crop_mask": "Máscaras recortadas mescladas",
+            "bboxes": "BBox",
+            "combined_bounding_box": "BBox mescladas"
+        },
+        "widgets": {
+            "border_blending": "Fusão de bordas",
+            "crop_rescale": "Redimensionar",
+            "use_combined_mask": "Usar máscaras mescladas",
+            "use_square_mask": "Usar máscaras quadradas"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "SplitBboxes": {
+        "title": "Separar BBox",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "Índice"
+        },
+        "outputs": {
+            "bboxes_a": "BBox_A",
+            "bboxes_b": "BBox_B"
+        },
+        "description": "Divide uma lista de bboxes fornecida no índice escolhido em duas listas"
+    },
+    "BboxToInt": {
+        "title": "BBox para inteiros",
+        "inputs": {
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "index": "Índice"
+        },
+        "outputs": {
+            "x_min": "X mínimo",
+            "y_min": "Y máximo",
+            "width": "Largura",
+            "height": "Altura",
+            "center_x": "Centro X",
+            "center_y": "Centro Y"
+        },
+        "description": "Retorna como inteiros os índices selecionados da lista de caixas delimitadoras"
+    },
+    "BboxVisualize": {
+        "title": "Pré-visualização de BBox",
+        "inputs": {
+            "images": "Imagem",
+            "bboxes": "BBox"
+        },
+        "widgets": {
+            "line_width": "Espessura da linha"
+        },
+        "outputs": {
+            "images": "Imagem"
+        },
+        "description": "Desenha as bboxes indicadas sobre as imagens"
+    },
+    "PlotCoordinates": {
+        "title": "Gráfico de coordenadas",
+        "inputs": {
+            "coordinates": "Coordenadas",
+            "size_multiplier": "Multiplicador de dimensões"
+        },
+        "widgets": {
+            "text": "Texto",
+            "width": "Largura",
+            "height": "Altura",
+            "bbox_width": "Largura da BBox",
+            "bbox_height": "Altura da BBox"
+        },
+        "outputs": {
+            "images": "Imagem",
+            "width": "Largura",
+            "height": "Altura",
+            "bbox_height": "Altura da BBox",
+            "bbox_width": "Largura da BBox"
+        },
+        "description": "Cria uma série de gráficos de coordenadas com Matplotlib."
+    },
+    "SplineEditor": {
+        "title": "Editor de curvas",
+        "inputs": {
+            "bg_image": "Imagem de fundo"
+        },
+        "widgets": {
+            "points_store": "Posições dos pontos",
+            "mask_width": "Largura da máscara",
+            "mask_height": "Altura da máscara",
+            "points_to_sample": "Precisão de amostragem",
+            "sampling_method": "Método de amostragem",
+            "interpolation": "Método de interpolação",
+            "tension": "Tensão",
+            "repeat_output": "Repetir saída",
+            "float_output_type": "Tipo de saída float",
+            "min_value": "Valor mínimo",
+            "max_value": "Valor máximo",
+            "New spline": "Nova curva",
+            "New canvas": "Nova tela"
+        },
+        "outputs": {
+            "mask": "Máscara",
+            "coord_str": "Coordenadas",
+            "float": "Float",
+            "count": "Quantidade",
+            "normalized_str": "String normalizada"
+        },
+        "description": "# Em desenvolvimento \nEvite usar este nó em workflows; pode ter muitos bugs e ser instável!! \n \n##Editor gráfico para criar diversos agendamentos de valores \n\n**Shift+clique esquerdo** adiciona um novo ponto de controle, **Ctrl+clique esquerdo** cria um ponto intermediário, **clique direito** remove o ponto.\nAs extremidades não podem ser removidas.\n\n Clicar com o botão direito no fundo abre um menu: configurações visuais que não afetam a saída:\n - Visibilidade das alças \n - Mostrar pontos de amostragem \n\n**Precisão de amostragem** define o número de pontos amostrados da própria spline, independentes dos pontos de controle reais, conforme o tipo de interpolação.\nMétodos de amostragem:\n - Tempo: amostra ao longo do eixo do tempo, para agendamento \n - Caminho: amostra ao longo do caminho da curva, para coordenadas \n\n Saídas:\n - Lote de máscaras \n Para qualquer nó que aceite máscaras \n - Lista de floats \n Para grupos de pesos do IPAdapter \n - Série pandas \n Para nós que aceitam o agendador de lotes Fizz \n - Tensor torch \n Para nós não identificados"
+    },
+    "CreateShapeMaskOnPath": {
+        "title": "Criar máscara de forma",
+        "inputs": {
+            "coordinates": "Coordenadas",
+            "size_multiplier": "Multiplicador de dimensões"
+        },
+        "widgets": {
+            "shape": "Forma",
+            "frame_height": "Altura",
+            "frame_width": "Largura",
+            "shape_height": "Altura da forma",
+            "shape_width": "Largura da forma",
+            "shape_color": "Cor da forma",
+            "bg_color": "Cor de fundo",
+            "blur_radius": "Raio do desfoque",
+            "intensity": "Força"
+        },
+        "outputs": {
+            "mask": "Máscara",
+            "mask_inverted": "Inverter máscara"
+        },
+        "description": "Gera uma máscara ou lote de máscaras com a forma especificada; a posição é o centro."
+    },
+    "CreateShapeImageOnPath": {
+        "title": "Criar imagem de forma",
+        "inputs": {
+            "coordinates": "Coordenadas",
+            "size_multiplier": "Multiplicador de dimensões"
+        },
+        "widgets": {
+            "shape": "Forma",
+            "frame_height": "Altura",
+            "frame_width": "Largura",
+            "shape_height": "Altura da forma",
+            "shape_width": "Largura da forma",
+            "shape_color": "Cor da forma",
+            "bg_color": "Cor de fundo",
+            "blur_radius": "Raio do desfoque",
+            "intensity": "Força",
+            "trailing": "À direita",
+            "border_width": "Espessura da borda",
+            "border_color": "Cor da borda"
+        },
+        "outputs": {
+            "image": "Imagem",
+            "mask": "Máscara"
+        },
+        "description": "Gera uma imagem ou lote de imagens com a forma especificada; a posição é o centro."
+    },
+    "CreateTextOnPath": {
+        "title": "Criar texto",
+        "inputs": {
+            "coordinates": "Coordenadas",
+            "size_multiplier": "Multiplicador de dimensões"
+        },
+        "widgets": {
+            "text": "Texto",
+            "frame_height": "Altura",
+            "frame_width": "Largura",
+            "font": "Fonte",
+            "font_size": "Tamanho da fonte",
+            "alignment": "Alinhado em",
+            "text_color": "Cor do texto"
+        },
+        "outputs": {
+            "image": "Imagem",
+            "mask": "Máscara",
+            "mask_inverted": "Inverter máscara"
+        },
+        "description": "Cria uma máscara ou lote de máscaras com o texto especificado. A posição é o centro."
+    },
+    "CreateGradientFromCoords": {
+        "title": "Criar imagem de gradiente a partir de coordenadas",
+        "inputs": {
+            "coordinates": "Coordenadas"
+        },
+        "widgets": {
+            "frame_height": "Altura",
+            "frame_width": "Largura",
+            "start_color": "Cor inicial",
+            "end_color": "Cor final",
+            "multiplier": "Multiplicador"
+        },
+        "outputs": {
+            "image": "Imagem"
+        },
+        "description": "Cria uma imagem de gradiente na posição das coordenadas."
+    },
+    "GradientToFloat": {
+        "title": "Gradiente para float",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "steps": "Etapas"
+        },
+        "outputs": {
+            "float_x": "Float_X",
+            "float_y": "Float_Y"
+        },
+        "description": "Calcula lista de floats da imagem"
+    },
+    "MaskOrImageToWeight": {
+        "title": "Máscara ou imagem para peso",
+        "inputs": {
+            "images": "Imagem",
+            "masks": "Máscara"
+        },
+        "widgets": {
+            "output_type": "Tipo de saída"
+        },
+        "outputs": {
+            "FLOAT": "Float",
+            "STRING": "Float"
+        },
+        "description": "Obtém a média do lote de máscaras ou imagens e produz o resultado conforme o Tipo de saída."
+    },
+    "WeightScheduleConvert": {
+        "title": "Conversor de agendamento de pesos",
+        "inputs": {
+            "input_values": "Valores de entrada",
+            "interpolation_curve": "Curva de interpolação"
+        },
+        "widgets": {
+            "output_type": "Tipo de saída",
+            "invert": "Inverter",
+            "repeat": "Repetir",
+            "remap_to_frames": "Remapear para quadros",
+            "interpolation_curve": "Curva de interpolação",
+            "remap_values": "Remapear valores",
+            "remap_min": "Remapear valor mínimo",
+            "remap_max": "Remapear valor máximo"
+        },
+        "outputs": {
+            "FLOAT": "Float",
+            "STRING": "Float",
+            "INT": "Inteiro"
+        },
+        "description": "Converte diferentes listas/séries de valores para outro tipo."
+    },
+    "FloatToMask": {
+        "title": "Float para máscara",
+        "inputs": {
+            "input_values": "Valores de entrada"
+        },
+        "widgets": {
+            "width": "Largura",
+            "height": "Altura"
+        },
+        "outputs": {
+            "MASK": "Máscara"
+        },
+        "description": "Gera um lote de máscaras a partir dos valores float fornecidos. O tamanho do lote é definido pelo comprimento da lista de floats. Cada máscara é criada com a largura e altura especificadas."
+    },
+    "WeightScheduleExtend": {
+        "title": "Expansão de agendamento de pesos",
+        "inputs": {
+            "input_values_1": "Valor de entrada_1",
+            "input_values_2": "Valor de entrada_2"
+        },
+        "widgets": {
+            "output_type": "Tipo de saída"
+        },
+        "outputs": {
+            "FLOAT": "Float"
+        },
+        "description": "Expande diferentes listas/séries de valores e converte conforme necessário"
+    },
+    "FloatToSigmas": {
+        "title": "Float para Sigmas",
+        "inputs": {
+            "float_list": "Lista de floats"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        },
+        "description": "Cria um tensor de sigmas a partir de uma lista de floats"
+    },
+    "SigmasToFloat": {
+        "title": "Sigmas para float",
+        "inputs": {
+            "sigmas": "sigmas"
+        },
+        "outputs": {
+            "float": "Float"
+        },
+        "description": "Cria uma lista de floats a partir do tensor de sigmas."
+    },
+    "GLIGENTextBoxApplyBatchCoords": {
+        "title": "Aplicar caixas de texto GLIGEN (coordenadas em lote)",
+        "inputs": {
+            "conditioning_to": "Condicionamento",
+            "latents": "Latent",
+            "clip": "CLIP",
+            "gligen_textbox_model": "Modelo GLIGEN",
+            "coordinates": "Coordenadas",
+            "size_multiplier": "Multiplicador de dimensões"
+        },
+        "widgets": {
+            "text": "Texto",
+            "width": "Largura",
+            "height": "Altura"
+        },
+        "outputs": {
+            "conditioning": "Condicionamento",
+            "coord_preview": "Pré-visualização de coordenadas"
+        },
+        "description": "Este nó permite agendar a posição das caixas de texto GLIGEN no lote, para usar com AnimateDiff-Evolved. Recomenda-se usar junto com o nó Editor de Curvas.\n\n O modelo GLIGEN pode ser baixado em 'Instalar modelos' do Gerenciador, ou diretamente em: https://huggingface.co/comfyanonymous/GLIGEN_pruned_safetensors/tree/main. \n \n Entradas: \n- A entrada **Latent** é usada para calcular o tamanho do lote \n- **CLIP** é o codificador de texto, como qualquer entrada CLIP \n- **Modelo GLIGEN** conecta-se ao nó Carregador de GLIGEN \n- **Coordenadas** recebe uma string JSON de pontos de coordenadas, compatível com o nó Editor de Curvas. \n- **Texto** é o prompt para a posição da caixa de texto \n- **Largura** e **Altura** definem o tamanho das caixas de texto GLIGEN \n \nSaídas:\n- **Condicionamento** conecta-se entre CLIP Text Encode e o amostrador \n- **Pré-visualização de coordenadas** serve para visualizar coordenadas e BBox\n\n"
+    },
+    "CreateInstanceDiffusionTracking": {
+        "title": "Criar rastreamento InstanceDiffusion",
+        "inputs": {
+            "coordinates": "Coordenadas",
+            "size_multiplier": "Multiplicador de dimensões"
+        },
+        "widgets": {
+            "width": "Largura",
+            "height": "Altura",
+            "bbox_width": "Largura da BBox",
+            "bbox_height": "Altura da BBox",
+            "class_name": "Nome da classe",
+            "class_id": "ID da classe",
+            "prompt": "Prompt",
+            "fit_in_frame": "Ajustar ao quadro"
+        },
+        "outputs": {
+            "tracking": "Rastreamento",
+            "prompt": "Prompt",
+            "width": "Largura",
+            "height": "Altura",
+            "bbox_width": "Largura do bbox",
+            "bbox_height": "Altura do bbox",
+            "int": "Inteiro"
+        },
+        "description": "Gera dados de rastreamento para o InstanceDiffusion:\nhttps://github.com/logtd/ComfyUI-InstanceDiffusion\n\nFormato de prompt do InstanceDiffusion:\n`\"class_id.class_name\": \"prompt\"`\nExemplo:\n`\"1.head\": \"((head))\"`"
+    },
+    "AppendInstanceDiffusionTracking": {
+        "title": "Anexar rastreamento InstanceDiffusion",
+        "inputs": {
+            "tracking_1": "Rastreamento_1",
+            "tracking_2": "Rastreamento_2",
+            "prompt_1": "Prompt_1",
+            "prompt_2": "Prompt_2"
+        },
+        "outputs": {
+            "tracking": "Rastreamento",
+            "prompt": "Prompt"
+        },
+        "description": "Anexa dados de rastreamento para uso com InstanceDiffusion: https://github.com/logtd/ComfyUI-InstanceDiffusion"
+    },
+    "InterpolateCoords": {
+        "title": "Interpolação de coordenadas",
+        "inputs": {
+            "coordinates": "Coordenadas",
+            "interpolation_curve": "Curva de interpolação"
+        },
+        "outputs": {
+            "coordinates": "Coordenadas"
+        },
+        "description": "Inserir coordenadas conforme a curva"
+    },
+    "DrawInstanceDiffusionTracking": {
+        "title": "Desenhar rastreamento InstanceDiffusion",
+        "inputs": {
+            "image": "Imagem",
+            "tracking": "Rastreamento"
+        },
+        "widgets": {
+            "box_line_width": "Espessura da moldura",
+            "draw_text": "Desenhar texto",
+            "font": "Fonte",
+            "font_size": "Tamanho da fonte"
+        },
+        "outputs": {
+            "image": "Imagem"
+        },
+        "description": "Desenha os rastreamentos gerados pelo nó CreateInstanceDiffusionTracking "
+    },
+    "PointsEditor": {
+        "title": "Editor de pontos",
+        "inputs": {
+            "bg_image": "Imagem de fundo"
+        },
+        "widgets": {
+            "points_store": "Posições dos pontos",
+            "bbox_store": "Posições da BBox",
+            "bbox_format": "Formato da BBox",
+            "width": "Largura",
+            "height": "Altura",
+            "normalize": "Normalizar",
+            "New canvs": "Nova tela",
+            "Load Image": "Carregar imagem",
+            "Clear Image": "Limpar imagem",
+            "New canvas": "Nova tela"
+        },
+        "outputs": {
+            "positive_coords": "Coordenadas positivas",
+            "negative_coords": "Coordenadas negativas",
+            "bbox": "BBox",
+            "bbox_mask": "Máscara da BBox",
+            "cropped_image": "Imagem recortada"
+        },
+        "description": "# Em desenvolvimento  \nEvite usar este nó em workflows; pode ter muitos bugs e ser instável!!  \n\n## Editor gráfico para criar coordenadas\n\n**Shift + clique esquerdo** adiciona um ponto de coordenada positivo (verde).\n\n**Shift + clique direito** adiciona um ponto de coordenada negativo (vermelho).\n\n**Ctrl + clique esquerdo** desenha uma caixa.\n\n**Clique direito em um ponto** o remove; o primeiro/último ponto da série não pode ser removido.\n\nPara adicionar uma imagem, selecione o nó e cole ou arraste uma imagem.\n\nOu conecte a entrada Imagem de fundo, usando o primeiro quadro da imagem de entrada.\n\n**A imagem é salva no nó e no workflow**\nO menu de clique direito pode limpar a imagem.\n"
+    },
+    "CutAndDragOnPath": {
+        "title": "Recorte de caminho com arraste",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara",
+            "bg_image": "Imagem de fundo",
+            "coordinates": "Coordenadas"
+        },
+        "widgets": {
+            "frame_width": "Largura da moldura",
+            "frame_height": "Altura da moldura",
+            "inpaint": "Preenchimento"
+        },
+        "outputs": {
+            "image": "Imagem",
+            "mask": "Máscara"
+        },
+        "description": "Recorta a área mascarada da imagem e a arrasta ao longo de um caminho. Com Preenchimento ativado e sem imagem de fundo, a área recortada é preenchida com o algoritmo TELEA do OpenCV."
+    },
+    "ImagePass": {
+        "title": "Ponte de imagem",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Passa a imagem para o próximo nó"
+    },
+    "ColorMatch": {
+        "title": "Harmonia de cores",
+        "inputs": {
+            "image_ref": "Imagem de referência",
+            "image_target": "Imagem de destino"
+        },
+        "widgets": {
+            "method": "Método",
+            "strength": "Força",
+            "multithread": "Multithreading"
+        },
+        "outputs": {
+            "image": "Imagem"
+        },
+        "description": "color-matcher (harmonia de cores) transfere estilos de cor entre imagens, servindo para correção automática de fotos, pinturas e sequências de quadros, incluindo stop-motion.\n\nBaseado nos algoritmos Reinhard, no MKL (Monge-Kantorovich Linearization) de Pitie et al., e na nossa solução Multi-Variate Gaussian Distribution (MVGD) combinada com correspondência de histograma clássica. Como mostrado, nosso método HM-MVGD-HM supera as abordagens existentes.\n\nhttps://github.com/hahnec/color-matcher/"
+    },
+    "SaveImageWithAlpha": {
+        "title": "Salvar imagem com canal alfa",
+        "inputs": {
+            "images": "Imagem",
+            "mask": "Máscara",
+            "filename_prefix": "Prefixo do nome do arquivo",
+            "prompt": "Prompt",
+            "extra_pnginfo": "Informação PNG extra"
+        },
+        "outputs": {}
+    },
+    "ImageConcanate": {
+        "title": "Unir imagens",
+        "inputs": {
+            "image1": "Imagem_1",
+            "image2": "Imagem_2"
+        },
+        "widgets": {
+            "direction": "Direção",
+            "match_image_size": "Igualar tamanho das imagens"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Une duas imagens na direção especificada."
+    },
+    "ImageConcatFromBatch": {
+        "title": "Unir imagens (lote)",
+        "inputs": {
+            "images": "Imagem"
+        },
+        "widgets": {
+            "num_columns": "Número de colunas",
+            "match_image_size": "Igualar dimensões",
+            "max_resolution": "Resolução máxima"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Obtém as imagens do lote e as arrange em uma única imagem com o número de colunas definido."
+    },
+    "ImageGridComposite2x2": {
+        "title": "Grade de imagens 2x2",
+        "inputs": {
+            "image1": "Imagem_1",
+            "image2": "Imagem_2",
+            "image3": "Imagem_3",
+            "image4": "Imagem_4"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Combina 4 imagens de entrada em uma grade 2x2."
+    },
+    "ImageGridComposite3x3": {
+        "title": "Grade de imagens 3x3",
+        "inputs": {
+            "image1": "Imagem_1",
+            "image2": "Imagem_2",
+            "image3": "Imagem_3",
+            "image4": "Imagem_4",
+            "image5": "Imagem_5",
+            "image6": "Imagem_6",
+            "image7": "Imagem_7",
+            "image8": "Imagem_8",
+            "image9": "Imagem_9"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Combina 9 imagens de entrada em uma grade 3x3."
+    },
+    "ImageBatchTestPattern": {
+        "title": "Padrão de lote de imagens",
+        "widgets": {
+            "batch_size": "Tamanho do lote",
+            "start_from": "Valor inicial",
+            "text_x": "Texto x",
+            "text_y": "Texto y",
+            "width": "Largura",
+            "height": "Altura",
+            "font": "Fonte",
+            "font_size": "Tamanho da fonte"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "ImageGrabPIL": {
+        "title": "Captura de tela PIL",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "Largura",
+            "height": "Altura",
+            "num_frames": "Número de quadros",
+            "delay": "Atraso"
+        },
+        "outputs": {
+            "image": "Imagem"
+        },
+        "description": "Captura uma região pelas coordenadas de tela.\n\nPara amostragem ao vivo."
+    },
+    "Screencap_mss": {
+        "title": "Captura de tela MSS",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "Largura",
+            "height": "Altura",
+            "num_frames": "Número de quadros",
+            "delay": "Atraso"
+        },
+        "outputs": {
+            "images": "Imagem"
+        },
+        "description": "Captura uma região pelas coordenadas de tela.\n\nPara amostragem ao vivo."
+    },
+    "WebcamCaptureCV2": {
+        "title": "Captura de câmera CV2",
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "width": "Largura",
+            "height": "Altura",
+            "cam_index": "Número da câmera",
+            "release": "Liberar"
+        },
+        "outputs": {
+            "image": "Imagem"
+        },
+        "description": "Captura a tela via webcam com CV2.\n\nPara amostragem ao vivo."
+    },
+    "AddLabel": {
+        "title": "Adicionar rótulo",
+        "inputs": {
+            "image": "Imagem",
+            "caption": "Título"
+        },
+        "widgets": {
+            "text_x": "Posição_X",
+            "text_y": "Posição_Y",
+            "height": "Altura",
+            "font_size": "Tamanho da fonte",
+            "font_color": "Cor da fonte",
+            "label_color": "Cor de fundo",
+            "font": "Fonte",
+            "text": "Texto",
+            "direction": "Direção"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "GetImageSizeAndCount": {
+        "title": "Obter dimensões da imagem",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "outputs": {
+            "image": "Imagem",
+            "width": "Largura",
+            "height": "Altura",
+            "count": "Quantidade"
+        },
+        "description": "Fornece a largura, altura e tamanho do lote da imagem de saída"
+    },
+    "ImageBatchRepeatInterleaving": {
+        "title": "Duplicar lote de imagens",
+        "inputs": {
+            "images": "Imagem",
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "repeats": "Repetições"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Duplica cada imagem do lote pelo número de repetições.\n\nExemplo, lote com 5 imagens: 0,1,2,3,4\n\nApós 2 repetições: 0,0,1,1,2,2,3,3,4,4"
+    },
+    "ImageUpscaleWithModelBatched": {
+        "title": "Ampliar lote de imagens por modelo",
+        "inputs": {
+            "upscale_model": "Modelo de ampliação",
+            "images": "Imagem"
+        },
+        "widgets": {
+            "per_batch": "Por lote"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Igual ao nó nativo de upscale por modelo do ComfyUI, mas permite processar em lotes menores para reduzir o uso de VRAM."
+    },
+    "ImageNormalize_Neg1_To_1": {
+        "title": "Normalizar imagem de -1 a 1",
+        "inputs": {
+            "images": "Imagem"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Normaliza a imagem para [-1,1]"
+    },
+    "RemapImageRange": {
+        "title": "Remapear faixa da imagem",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "min": "Valor mínimo",
+            "max": "Valor máximo",
+            "clamp": "Restringir"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Remapeia os valores da imagem para a faixa especificada."
+    },
+    "SplitImageChannels": {
+        "title": "Separar canais da imagem",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "outputs": {
+            "red": "Vermelho",
+            "green": "Verde",
+            "blue": "Azul",
+            "mask": "Máscara"
+        },
+        "description": "Separa a imagem em canais únicos; o canal alfa vira máscara."
+    },
+    "MergeImageChannels": {
+        "title": "Combinar canais da imagem",
+        "inputs": {
+            "red": "Vermelho",
+            "green": "Verde",
+            "blue": "Azul",
+            "alpha": "Canal alfa"
+        },
+        "outputs": {
+            "image": "Imagem"
+        },
+        "description": "Combina os canais em uma imagem"
+    },
+    "ImagePadForOutpaintMasked": {
+        "title": "Expandir tela (máscara)",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "left": "Esquerda",
+            "top": "Cima",
+            "right": "Direita",
+            "bottom": "Baixo",
+            "feathering": "Esmaecer"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "ImagePadForOutpaintTargetSize": {
+        "title": "Expandir tela (dimensões)",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "target_width": "Largura alvo",
+            "target_height": "Altura alvo",
+            "feathering": "Esmaecer",
+            "upscale_method": "Método de redimensionamento"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "ImagePrepForICLora": {
+        "title": "Preparar imagem ICLora",
+        "inputs": {
+            "reference_image": "Imagem de referência",
+            "latent_image": "Imagem Latent",
+            "latent_mask": "Máscara Latent",
+            "reference_mask": "Máscara de referência"
+        },
+        "widgets": {
+            "output_width": "Largura de saída",
+            "output_height": "Altura de saída",
+            "border_width": "Espessura da borda"
+        },
+        "outputs": {
+            "image": "Imagem",
+            "mask": "Máscara"
+        }
+    },
+    "ImageAndMaskPreview": {
+        "title": "Pré-visualização de imagem e máscara",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "mask_opacity": "Opacidade da máscara",
+            "mask_color": "Cor da máscara",
+            "pass_through": "Atravessar"
+        },
+        "outputs": {
+            "composite": "Imagem"
+        },
+        "description": "Pré-visualiza imagem ou máscara; quando ambos são fornecidos, a máscara é composta sobre a imagem.\nCom Atravessar ativado a composição é desativada, para pré-visualizações via nós de junção em vídeo."
+    },
+    "CrossFadeImages": {
+        "title": "Transição cruzada de imagens",
+        "inputs": {
+            "images_1": "Imagem_1",
+            "images_2": "Imagem_2"
+        },
+        "widgets": {
+            "interpolation": "Método de interpolação",
+            "transition_start_index": "Índice inicial da transição",
+            "transitioning_frames": "Quadros de transição",
+            "start_level": "Valor inicial",
+            "end_level": "Valor final"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "CrossFadeImagesMulti": {
+        "title": "Transição cruzada múltipla",
+        "inputs": {
+            "image_1": "Imagem_1",
+            "image_2": "Imagem_2"
+        },
+        "widgets": {
+            "inputcount": "Número de entradas",
+            "interpolation": "Método de interpolação",
+            "Update inputs": "Atualizar entradas",
+            "transitioning_frames": "Quadros de transição"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "TransitionImagesMulti": {
+        "title": "Quadros de transição",
+        "inputs": {
+            "image_1": "Imagem_1",
+            "image_2": "Imagem_2"
+        },
+        "widgets": {
+            "inputcount": "Número de entradas",
+            "interpolation": "Método de interpolação",
+            "transition_type": "Tipo de transição",
+            "transitioning_frames": "Quadros de transição",
+            "blur_radius": "Raio do desfoque",
+            "reverse": "Reverter",
+            "device": "Dispositivo",
+            "Update inputs": "Atualizar entradas"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        },
+        "description": "Cria transições entre imagens."
+    },
+    "TransitionImagesInBatch": {
+        "title": "Quadros de transição de lote",
+        "inputs": {
+            "images": "Imagem"
+        },
+        "widgets": {
+            "interpolation": "Método de interpolação",
+            "transition_type": "Tipo de transição",
+            "transitioning_frames": "Quadros de transição",
+            "blur_radius": "Raio do desfoque",
+            "reverse": "Reverter",
+            "device": "Dispositivo"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        },
+        "description": "Cria transições entre imagens de um lote"
+    },
+    "ShuffleImageBatch": {
+        "title": "Embaralhar lote de imagens",
+        "inputs": {
+            "images": "Imagem"
+        },
+        "widgets": {
+            "seed": "Semente"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "GetImageRangeFromBatch": {
+        "title": "Obter intervalo de imagens",
+        "inputs": {
+            "images": "Imagem",
+            "masks": "Máscara"
+        },
+        "widgets": {
+            "start_index": "Número inicial",
+            "num_frames": "Número de quadros"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        },
+        "description": "Cria um novo lote de imagens a partir do lote de entrada conforme os parâmetros."
+    },
+    "GetLatentRangeFromBatch": {
+        "title": "Obter intervalo de Latent",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "start_index": "Número inicial",
+            "num_frames": "Número de quadros"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "Insert_Latent_To_Index": {
+        "title": "Inserir Latent no índice",
+        "inputs": {
+            "source": "Origem",
+            "destination": "Destino"
+        },
+        "widgets": {
+            "index": "Índice"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "GetImagesFromBatchIndexed": {
+        "title": "Obter imagem do lote",
+        "inputs": {
+            "images": "Imagem"
+        },
+        "widgets": {
+            "indexes": "Índice"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Seleciona imagens pelo número do índice."
+    },
+    "InsertImagesToBatchIndexed": {
+        "title": "Inserir imagem no lote pelo índice",
+        "inputs": {
+            "original_images": "Imagem original",
+            "images_to_insert": "Imagens a inserir"
+        },
+        "widgets": {
+            "indexes": "Índice"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Insere a imagem na posição do índice especificado no lote original."
+    },
+    "PadImageBatchInterleaved": {
+        "title": "Preenchimento escalonado do lote de imagens",
+        "inputs": {
+            "images": "Imagem"
+        },
+        "widgets": {
+            "empty_frames_per_image": "Quadros vazios por imagem",
+            "pad_frame_value": "Valor do quadro de preenchimento",
+            "add_after_last": "Adicionar ao final"
+        },
+        "outputs": {
+            "images": "Imagem",
+            "masks": "Máscara"
+        },
+        "description": "Insere quadros vazios entre as imagens do lote."
+    },
+    "ReplaceImagesInBatch": {
+        "title": "Substituir imagens do lote",
+        "inputs": {
+            "original_images": "Imagem original",
+            "replacement_images": "Imagens de substituição",
+            "original_masks": "Máscara original",
+            "replacement_masks": "Máscara de substituição"
+        },
+        "widgets": {
+            "start_index": "Número inicial"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Substitui imagens no lote a partir do índice inicial especificado pelas imagens de substituição."
+    },
+    "ReverseImageBatch": {
+        "title": "Reverter lote de imagens",
+        "inputs": {
+            "images": "Imagem"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Inverte a ordem das imagens do lote."
+    },
+    "ImageBatchMulti": {
+        "title": "Combinar lote de imagens (múltiplos)",
+        "inputs": {
+            "image_1": "Imagem_1",
+            "image_2": "Imagem_2",
+            "image_3": "Imagem_3",
+            "image_4": "Imagem_4",
+            "image_5": "Imagem_5",
+            "image_6": "Imagem_6",
+            "image_7": "Imagem_7",
+            "image_8": "Imagem_8",
+            "image_9": "Imagem_9",
+            "image_10": "Imagem_10"
+        },
+        "widgets": {
+            "inputcount": "Número de entradas",
+            "blending": "Modo de mistura",
+            "Update inputs": "Atualizar entradas"
+        },
+        "outputs": {
+            "images": "Imagem"
+        },
+        "description": "Combina várias imagens em um lote de imagens. Defina a quantidade de entradas em \"Número de entradas\" e clique em Atualizar para renovar as interfaces."
+    },
+    "ImageTensorList": {
+        "title": "Lista de tensores de imagem",
+        "inputs": {
+            "image1": "Imagem 1",
+            "image2": "Imagem 2"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Cria uma lista de imagens a partir das imagens de entrada."
+    },
+    "ImageBatchExtendWithOverlap": {
+        "title": "Expansão de lote de imagens (com sobreposição)",
+        "inputs": {
+            "source_images": "Imagem de origem",
+            "new_images": "Nova imagem"
+        },
+        "widgets": {
+            "overlap": "Sobreposição",
+            "overlap_side": "Sobreposição lateral",
+            "overlap_mode": "Sobreposição do modo"
+        },
+        "outputs": {
+            "source_images": "Imagem de origem",
+            "start_images": "Imagem inicial",
+            "extended_images": "Imagem expandida"
+        },
+        "description": "Nó auxiliar para expansão em geração de vídeo\n Primeiro obtém a origem e a sobreposição para gerar o quadro inicial da expansão.\n Depois, em outra cópia deste nó,\n fornece os novos quadros gerados e escolhe como sobrepor."
+    },
+    "ImageAddMulti": {
+        "title": "Mistura de imagens (múltiplos)",
+        "inputs": {
+            "image_1": "Imagem_1",
+            "image_2": "Imagem_2",
+            "image_3": "Imagem_3",
+            "image_4": "Imagem_4",
+            "image_5": "Imagem_5",
+            "image_6": "Imagem_6",
+            "image_7": "Imagem_7",
+            "image_8": "Imagem_8",
+            "image_9": "Imagem_9",
+            "image_10": "Imagem_10"
+        },
+        "widgets": {
+            "inputcount": "Número de entradas",
+            "blending": "Modo de mistura",
+            "blend_amount": "Quantidade de mistura",
+            "Update inputs": "Atualizar entradas"
+        },
+        "outputs": {
+            "images": "Imagem"
+        },
+        "description": "Mistura várias imagens. Defina a quantidade de entradas em \"Número de entradas\" e clique em Atualizar para renovar as interfaces."
+    },
+    "ImageConcatMulti": {
+        "title": "Junção de imagens (múltiplos)",
+        "inputs": {
+            "image_1": "Imagem_1",
+            "image_2": "Imagem_2"
+        },
+        "widgets": {
+            "inputcount": "Número de entradas",
+            "direction": "Direção",
+            "match_image_size": "Igualar dimensões",
+            "Update inputs": "Atualizar entradas"
+        },
+        "outputs": {
+            "images": "Imagem"
+        },
+        "description": "Combina várias imagens na direção especificada. Clique em Atualizar para ajustar o número de entradas."
+    },
+    "PreviewAnimation": {
+        "title": "Pré-visualização de animação",
+        "inputs": {
+            "images": "Imagem",
+            "masks": "Máscara"
+        },
+        "widgets": {
+            "fps": "Taxa de quadros"
+        }
+    },
+    "ImageResizeKJ": {
+        "title": "Redimensionar imagem (KJ)",
+        "inputs": {
+            "image": "Imagem",
+            "get_image_size": "Imagem de referência",
+            "width_input": "Largura",
+            "height_input": "Altura"
+        },
+        "widgets": {
+            "width": "Largura",
+            "height": "Altura",
+            "upscale_method": "Método de redimensionamento",
+            "keep_proportions": "Proporção fixa",
+            "keep_proportion": "Proporção fixa",
+            "divisible_by": "Divisível por",
+            "crop": "Recortar",
+            "per_batch": "Lote"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "width": "Largura",
+            "height": "Altura"
+        },
+        "description": "Redimensiona a imagem pela largura e altura indicadas. As dimensões podem vir de entradas, com prioridade final conforme:\n - Tamanho da imagem de referência \n - Largura-entrada e Altura-entrada \n - Largura e Altura \n \nA proporção fixa trava a proporção pelo tamanho máximo."
+    },
+    "LoadAndResizeImage": {
+        "title": "Carregar e redimensionar imagem",
+        "widgets": {
+            "image": "Imagem",
+            "resize": "Escala",
+            "width": "Largura",
+            "height": "Altura",
+            "repeat": "Duplicar",
+            "keep_proportion": "Proporção fixa",
+            "divisible_by": "Fator",
+            "mask_channel": "Canal da máscara",
+            "background_color": "Cor de fundo",
+            "upload": "Enviar"
+        },
+        "outputs": {
+            "image": "Imagem",
+            "mask": "Máscara",
+            "width": "Largura",
+            "height": "Altura",
+            "image_path": "Caminho da imagem"
+        }
+    },
+    "LoadImagesFromFolderKJ": {
+        "title": "Carregar pasta de imagens (KJ)",
+        "widgets": {
+            "folder": "Pasta",
+            "width": "Largura",
+            "height": "Altura",
+            "keep_aspect_ratio": "Manter proporção",
+            "image_load_cap": "Limite de carregamento",
+            "start_index": "Número inicial",
+            "include_subfolders": "Incluir subpastas"
+        },
+        "outputs": {
+            "image": "Imagem",
+            "mask": "Máscara",
+            "count": "Quantidade",
+            "image_path": "Caminho das imagens"
+        },
+        "description": "Carrega imagens de uma pasta em um lote; as imagens são redimensionadas ao serem carregadas."
+    },
+    "ImageGridtoBatch": {
+        "title": "Grade de imagens para lote",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "columns": "Número de colunas",
+            "The number of columns in the grid.": "Número de colunas da grade.",
+            "rows": "Número de linhas",
+            "The number of rows in the grid. Set to 0 for automatic calculation.": "Número de linhas da grade; 0 é automático."
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Converte uma imagem em grade em um lote de imagens."
+    },
+    "SaveImageKJ": {
+        "title": "Salvar imagem (KJ)",
+        "inputs": {
+            "images": "Imagem",
+            "caption": "Legenda"
+        },
+        "widgets": {
+            "filename_prefix": "Prefixo do nome do arquivo",
+            "output_folder": "Pasta de saída",
+            "caption_file_extension": "Extensão do arquivo de legenda",
+            "prompt": "Prompt",
+            "extra_pnginfo": "Informação PNG extra"
+        },
+        "outputs": {
+            "filename": "Nome do arquivo"
+        },
+        "description": "Salva a imagem de entrada no diretório de saída do ComfyUI."
+    },
+    "SaveStringKJ": {
+        "title": "Salvar string (KJ)",
+        "inputs": {
+            "string": "String"
+        },
+        "widgets": {
+            "filename_prefix": "Prefixo do nome do arquivo",
+            "output_folder": "Pasta de saída",
+            "file_extension": "Extensão do arquivo"
+        },
+        "outputs": {
+            "filename": "Nome do arquivo"
+        }
+    },
+    "FastPreview": {
+        "title": "Pré-visualização rápida",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "format": "Formato",
+            "quality": "Qualidade"
+        },
+        "outputs": {}
+    },
+    "ImageCropByMaskAndResize": {
+        "title": "Recortar e redimensionar pela máscara",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "base_resolution": "Resolução base",
+            "padding": "Preenchimento",
+            "min_crop_resolution": "Resolução mínima do recorte",
+            "max_crop_resolution": "Resolução máxima do recorte"
+        },
+        "outputs": {
+            "images": "Imagem",
+            "masks": "Máscara",
+            "BBox": "BBox"
+        }
+    },
+    "ImageCropByMask": {
+        "title": "Recortar pela máscara",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara"
+        },
+        "outputs": {
+            "image": "Imagem"
+        },
+        "description": "Recorta a imagem de entrada conforme a máscara fornecida"
+    },
+    "ImageUncropByMask": {
+        "title": "Uncrop (reexpansão) pela máscara",
+        "inputs": {
+            "destination": "Imagem de destino",
+            "source": "Imagem de origem",
+            "mask": "Máscara",
+            "bbox": "BBox"
+        },
+        "outputs": {
+            "image": "Imagem"
+        }
+    },
+    "ImageCropByMaskBatch": {
+        "title": "Recortar por lote de máscaras",
+        "inputs": {
+            "image": "Imagem",
+            "masks": "Máscara"
+        },
+        "widgets": {
+            "width": "Largura",
+            "height": "Altura",
+            "padding": "Preenchimento",
+            "preserve_size": "Preservar dimensões",
+            "bg_color": "Cor de fundo"
+        },
+        "outputs": {
+            "images": "Imagem",
+            "masks": "Máscara"
+        }
+    },
+    "ImagePadKJ": {
+        "title": "Preencher imagem (KJ)",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "left": "Preenchimento esquerdo",
+            "right": "Preenchimento direito",
+            "top": "Preenchimento superior",
+            "bottom": "Preenchimento inferior",
+            "extra_padding": "Preenchimento extra",
+            "pad_mode": "Modo de preenchimento",
+            "color": "Cor",
+            "target_width": "Largura alvo",
+            "target_height": "Altura alvo"
+        },
+        "outputs": {
+            "images": "Imagem",
+            "masks": "Máscara"
+        },
+        "description": "Preenche a imagem de entrada e opcionalmente cria uma máscara das áreas preenchidas."
+    },
+    "ImageBatchJoinWithTransition": {
+        "title": "Concatenação de lotes de imagens (com transições)",
+        "inputs": {
+            "images_1": "Imagem 1",
+            "images_2": "Imagem 2"
+        },
+        "widgets": {
+            "start_index": "Índice inicial",
+            "interpolation": "Interpolar",
+            "transition_type": "Tipo de transição",
+            "transitioning_frames": "Quadros de transição",
+            "blur_radius": "Raio do desfoque",
+            "reverse": "Inverter",
+            "device": "Dispositivo"
+        },
+        "outputs": {
+            "images": "Imagem",
+            "masks": "Máscara"
+        },
+        "description": "Imagem de entrada"
+    },
+    "Intrinsic_lora_sampling": {
+        "title": "Amostragem IntrinsicLoRA",
+        "inputs": {
+            "model": "Modelo",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image": "Imagem",
+            "optional_latent": "Latent (opcional)"
+        },
+        "widgets": {
+            "lora_name": "Nome do LoRA",
+            "task": "Tarefa",
+            "text": "Texto",
+            "per_batch": "Por lote"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "IMAGE": "Imagem"
+        },
+        "description": "LoRAs intrínsecos usados pelo amostrador: https://github.com/duxiaodan/intrinsic-lora — são pequenos, portanto incluídos neste pacote de nós."
+    },
+    "BatchCLIPSeg": {
+        "title": "Segmentação semântica CLIP",
+        "inputs": {
+            "images": "Imagem",
+            "opt_model": "Selecionar modelo",
+            "prev_mask": "Máscara anterior"
+        },
+        "widgets": {
+            "text": "Texto",
+            "threshold": "Limiar",
+            "binary_mask": "Máscara binária",
+            "combine_mask": "Combinar máscara",
+            "use_cuda": "Usar CUDA",
+            "blur_sigma": "Intensidade do desfoque",
+            "image_bg_Ievel": "Nível de fundo da imagem",
+            "invert": "Reverter"
+        },
+        "outputs": {
+            "Image": "Imagem",
+            "Mask": "Máscara"
+        },
+        "description": "Segmenta uma imagem ou um lote de imagens com CLIPSeg."
+    },
+    "DownloadAndLoadCLIPSeg": {
+        "title": "Carregar CLIPSeg",
+        "widgets": {
+            "model": "Modelo"
+        },
+        "outputs": {
+            "clipseg_model": "Modelo CLIPSeg"
+        },
+        "description": "Baixa o modelo CLIPSeg para Comfy/models/clip_seg usando huggingface_hub"
+    },
+    "CreateTextMask": {
+        "title": "Máscara de texto",
+        "widgets": {
+            "invert": "Inverter",
+            "frames": "Número de quadros",
+            "text_x": "Posição_X",
+            "text_y": "Posição_Y",
+            "font_size": "Tamanho da fonte",
+            "font_color": "Cor da fonte",
+            "text": "Texto",
+            "font": "Fonte",
+            "width": "Largura",
+            "height": "Altura",
+            "start_rotation": "Rotação inicial",
+            "end_rotation": "Rotação final"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "ColorToMask": {
+        "title": "Cor da imagem para máscara",
+        "inputs": {
+            "images": "Imagem"
+        },
+        "widgets": {
+            "invert": "Inverter",
+            "red": "Vermelho",
+            "green": "Verde",
+            "blue": "Azul",
+            "threshold": "Limiar",
+            "per_batch": "Por lote"
+        },
+        "outputs": {
+            "MASK": "Máscara"
+        },
+        "description": "Converte o valor RGB selecionado em máscara. Para entradas em lote, **per_batch** controla quantas imagens são processadas por vez."
+    },
+    "CreateFluidMask": {
+        "title": "Máscara fluida",
+        "widgets": {
+            "invert": "Inverter",
+            "frames": "Número de quadros",
+            "width": "Largura",
+            "height": "Altura",
+            "inflow_count": "Quantidade de entrada do fluxo",
+            "inflow_velocity": "Velocidade do fluxo",
+            "inflow_radius": "Raio do fluxo",
+            "inflow_padding": "Preenchimento do fluxo",
+            "inflow_duration": "Duração do fluxo"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "CreateAudioMask": {
+        "title": "Máscara de áudio",
+        "widgets": {
+            "invert": "Inverter",
+            "frames": "Número de quadros",
+            "scale": "Escala",
+            "audio_path": "Caminho do áudio",
+            "width": "Largura",
+            "height": "Altura"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "MASK": "Máscara"
+        }
+    },
+    "CreateGradientMask": {
+        "title": "Máscara de gradiente",
+        "widgets": {
+            "invert": "Inverter",
+            "frames": "Número de quadros",
+            "width": "Largura",
+            "height": "Altura"
+        },
+        "outputs": {
+            "MASK": "Máscara"
+        }
+    },
+    "CreateFadeMask": {
+        "title": "Máscara de esmaecimento",
+        "widgets": {
+            "invert": "Inverter",
+            "frames": "Número de quadros",
+            "width": "Largura",
+            "height": "Altura",
+            "interpolation": "Método de interpolação",
+            "start_level": "Valor inicial",
+            "midpoint_level": "Valor do ponto médio",
+            "end_level": "Valor final",
+            "midpoint_frame": "Número do quadro do ponto médio"
+        },
+        "outputs": {
+            "MASK": "Máscara"
+        },
+        "description": "Cria um conjunto de máscaras interpoladas entre os quadros e valores informados. Usa a mesma sintaxe do BatchValueSchedule do Fizz. O primeiro valor é o índice do quadro (começa em 1, não 0); o segundo valor entre parênteses é o valor da máscara em float de 0.0 a 1.0.\nPor exemplo, os valores padrão:\n0:(0.0)\n7:(1.0)\n15:(0.0)\ncriarão um lote de 16 máscaras que começa preto, interpola até branco total no oitavo quadro pela curva escolhida e depois interpola até preto total no décimo sexto quadro."
+    },
+    "CreateFadeMaskAdvanced": {
+        "title": "Máscara de esmaecimento (avançado)",
+        "widgets": {
+            "points_string": "Pontos de valor",
+            "invert": "Inverter",
+            "frames": "Número de quadros",
+            "width": "Largura",
+            "height": "Altura",
+            "interpolation": "Método de interpolação"
+        },
+        "outputs": {
+            "MASK": "Máscara"
+        }
+    },
+    "CreateMagicMask": {
+        "title": "Máscara psicodélica",
+        "widgets": {
+            "frames": "Número de quadros",
+            "depth": "Profundidade",
+            "distortion": "Distorção",
+            "seed": "Semente",
+            "control_after_generate": "Ação após execução",
+            "fixed": "Fixo",
+            "increment": "Aumentar",
+            "decrement": "Diminuir",
+            "randomize": "Aleatório",
+            "transitions": "Transição",
+            "frame_height": "Altura",
+            "frame_width": "Largura"
+        },
+        "outputs": {
+            "mask": "Máscara",
+            "mask_inverted": "Inverter máscara"
+        }
+    },
+    "CreateShapeMask": {
+        "title": "Máscara de forma",
+        "widgets": {
+            "shape": "Forma",
+            "circle": "Círculo",
+            "square": "Quadrado",
+            "triangle": "Triângulo",
+            "frames": "Número de quadros",
+            "location_x": "Posição_X",
+            "location_y": "Posição_Y",
+            "size": "Tamanho",
+            "grow": "Crescer",
+            "frame_width": "Largura",
+            "frame_height": "Altura",
+            "shape_width": "Largura da forma",
+            "shape_height": "Altura da forma"
+        },
+        "outputs": {
+            "mask": "Máscara",
+            "mask_inverted": "Inverter máscara"
+        },
+        "description": "Cria uma máscara ou conjunto de máscaras com a forma especificada; a posição é o centro. O valor de crescimento define quanto a forma cresce em cada quadro, criando uma máscara animada."
+    },
+    "CreateVoronoiMask": {
+        "title": "Máscara Voronoi",
+        "widgets": {
+            "frames": "Número de quadros",
+            "num_points": "Número de pontos",
+            "line_width": "Espessura da linha",
+            "speed": "Velocidade",
+            "frame_width": "Largura",
+            "frame_height": "Altura"
+        },
+        "outputs": {
+            "mask": "Máscara",
+            "mask_inverted": "Inverter máscara"
+        }
+    },
+    "GetMaskSizeAndCount": {
+        "title": "Obter dimensões da máscara",
+        "inputs": {
+            "mask": "Máscara"
+        },
+        "outputs": {
+            "mask": "Máscara",
+            "width": "Largura",
+            "height": "Altura",
+            "count": "Quantidade"
+        },
+        "description": "Fornece largura, altura e tamanho do lote da máscara"
+    },
+    "GrowMaskWithBlur": {
+        "title": "Crescimento com desfoque da máscara",
+        "inputs": {
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "expand": "Expandir",
+            "incremental_expandrate": "Incremento da expansão",
+            "tapered_corners": "Chanfro",
+            "flip_input": "Inverter entrada",
+            "use_cuda": "Usar CUDA",
+            "blur_radius": "Raio do desfoque",
+            "sigma": "Sigma",
+            "lerp_alpha": "Alfa linear",
+            "decay_factor": "Fator de erosão",
+            "fill_holes": "Preencher"
+        },
+        "outputs": {
+            "mask": "Máscara",
+            "mask_inverted": "Inverter máscara"
+        },
+        "description": "# Crescimento com desfoque da máscara\n- Máscara: máscara de entrada ou em lote\n- Expandir: expande ou contrai as máscaras pelo valor definido\n- Incremento da expansão: aumenta a taxa de expansão pelo valor definido a cada quadro\n- Chanfro: usa bordas cônicas\n- Inverter entrada: inverte as máscaras de entrada\n- Raio do desfoque: valores maiores que 0 desfocam as máscaras\n- Alfa linear: interpola os valores alfa entre quadros\n- Fator de erosão: valor de decaimento da interpolação entre quadros\n- Preencher: preenche buracos nas máscaras (lento)"
+    },
+    "MaskBatchMulti": {
+        "title": "Combinar lote de máscaras (múltiplos)",
+        "inputs": {
+            "mask_1": "Máscara_1",
+            "mask_2": "Máscara_2",
+            "mask_3": "Máscara_3",
+            "mask_4": "Máscara_4",
+            "mask_5": "Máscara_5",
+            "mask_6": "Máscara_6",
+            "mask_7": "Máscara_7",
+            "mask_8": "Máscara_8",
+            "mask_9": "Máscara_9",
+            "mask_10": "Máscara_10"
+        },
+        "widgets": {
+            "inputcount": "Número de entradas",
+            "Update inputs": "Atualizar entradas"
+        },
+        "outputs": {
+            "masks": "Máscara"
+        },
+        "description": "Combina várias máscaras em um lote de máscaras. Defina a quantidade de entradas em \"Número de entradas\" e clique em Atualizar para renovar as interfaces."
+    },
+    "OffsetMask": {
+        "title": "Deslocar máscara",
+        "inputs": {
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "x": "X",
+            "y": "Y",
+            "angle": "Ângulo",
+            "duplication_factor": "Número de repetições",
+            "roll": "Usar rolagem",
+            "incremental": "Usar delta",
+            "padding_mode": "Modo de preenchimento",
+            "empty": "Vazio",
+            "border": "Borda",
+            "reflection": "Reflexão"
+        },
+        "outputs": {
+            "mask": "Máscara"
+        },
+        "description": "# Desloca e expande a máscara pela quantidade definida\n- Máscara: máscara de entrada ou em lote\n- x: deslocamento horizontal\n- y: deslocamento vertical\n- Número de repetições: vezes que a máscara é duplicada no lote\n- Usar rolagem: enrola as bordas (wrap)"
+    },
+    "RoundMask": {
+        "title": "Arredondar máscara",
+        "inputs": {
+            "mask": "Máscara"
+        },
+        "outputs": {
+            "MASK": "Máscara"
+        }
+    },
+    "ResizeMask": {
+        "title": "Redimensionar máscara",
+        "inputs": {
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "width": "Largura",
+            "height": "Altura",
+            "keep_proportions": "Proporção fixa",
+            "upscale_method": "Interpolação avançada",
+            "crop": "Recortar"
+        },
+        "outputs": {
+            "mask": "Máscara",
+            "width": "Largura",
+            "height": "Altura"
+        },
+        "description": "Redimensiona a máscara ou lote de máscaras para a largura e altura especificadas."
+    },
+    "RemapMaskRange": {
+        "title": "Remapear faixa da máscara",
+        "inputs": {
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "min": "Valor mínimo",
+            "max": "Valor máximo"
+        },
+        "outputs": {
+            "mask": "Máscara"
+        },
+        "description": "Define novos valores mínimo e máximo para a máscara."
+    },
+    "SeparateMasks": {
+        "title": "Dividir máscara",
+        "inputs": {
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "size_threshold_width": "Limiar de largura",
+            "size_threshold_height": "Limiar de altura",
+            "mode": "Modo de divisão",
+            "max_poly_points": "Máximo de pontos do polígono",
+            "polygon": "Polígono",
+            "shape": "Forma",
+            "mask_np": "Máscara Numpy",
+            "max_points": "Máximo de pontos"
+        },
+        "outputs": {
+            "mask": "Máscara"
+        }
+    },
+    "PathchSageAttentionKJ": {
+        "title": "Patch de atenção SAGE (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "allow_compile": "Permitir compilação",
+            "sage_attention": "Atenção SAGE"
+        },
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "CheckpointLoaderKJ": {
+        "title": "Carregador de modelos grandes (KJ)",
+        "inputs": {},
+        "widgets": {
+            "ckpt_name": "Nome do modelo",
+            "weight_dtype": "dtype dos pesos",
+            "compute_dtype": "dtype de cálculo",
+            "patch_cublaslinear": "Patch linear CUBlas",
+            "sage_attention": "Atenção SAGE",
+            "enable_fp16_accumulation": "Ativar acumulação FP16"
+        },
+        "outputs": {
+            "model": "Modelo",
+            "clip": "CLIP",
+            "vae": "VAE"
+        }
+    },
+    "DiffusionModelLoaderKJ": {
+        "title": "Carregador de modelo de difusão (KJ)",
+        "inputs": {
+            "extra_state_dict": "State dict adicional"
+        },
+        "widgets": {
+            "model_name": "Nome do modelo",
+            "weight_dtype": "dtype dos pesos",
+            "compute_dtype": "dtype de cálculo",
+            "patch_cublaslinear": "Patch linear CUBlas",
+            "sage_attention": "Atenção SAGE",
+            "enable_fp16_accumulation": "Ativar acumulação FP16"
+        },
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "PatchModelPatcherOrder": {
+        "title": "Ajustar ordem dos patches do modelo",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "patch_order": "Ordem dos patches",
+            "full_load": "Carregamento completo"
+        },
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "TorchCompileModelFluxAdvanced": {
+        "title": "Compilação Torch do modelo Flux (avançado)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Grafo completo",
+            "mode": "Modo",
+            "double_blocks": "Blocos duplos",
+            "single_blocks": "Blocos simples",
+            "dynamic": "Dinâmico",
+            "dynamo_cache_size_limit": "Limite dinâmico do tamanho do cache",
+            "blocks_str": "String dos blocos"
+        },
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "TorchCompileModelFluxAdvancedV2": {
+        "title": "Compilação Torch do modelo Flux (avançado) V2",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Grafo completo",
+            "mode": "Modo",
+            "double_blocks": "Blocos duplos",
+            "single_blocks": "Blocos simples",
+            "dynamic": "Dinâmico",
+            "dynamo_cache_size_limit": "Limite dinâmico do tamanho do cache",
+            "blocks_str": "String dos blocos"
+        },
+        "outputs": {
+            "MODEL": "Modelo",
+            "model": "Modelo"
+        }
+    },
+    "TorchCompileModelHyVideo": {
+        "title": "Compilar com Torch o modelo de vídeo híbrido",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Grafo completo",
+            "mode": "Modo",
+            "dynamic": "Dinâmico",
+            "dynamo_cache_size_limit": "Limite dinâmico do tamanho do cache",
+            "compile_single_blocks": "Compilar blocos simples",
+            "compile_double_blocks": "Compilar blocos duplos",
+            "compile_txt_in": "Compilar entrada de texto",
+            "compile_vector_in": "Compilar entrada vetorial",
+            "compile_final_layer": "Compilar camada final"
+        },
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "TorchCompileModelWanVideo": {
+        "title": "Compilar com Torch o modelo de vídeo Wan",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Grafo completo",
+            "mode": "Modo",
+            "dynamic": "Dinâmico",
+            "dynamo_cache_size_limit": "Limite dinâmico do tamanho do cache",
+            "compile_transformer_blocks_only": "Compilar apenas blocos Transformer"
+        },
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "TorchCompileModelWanVideoV2": {
+        "title": "Modelo compilado Torch Wan Vídeo V2",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Grafo completo",
+            "mode": "Modo",
+            "dynamic": "Dinâmico",
+            "dynamo_cache_size_limit": "Limite dinâmico do tamanho do cache",
+            "compile_transformer_blocks_only": "Compilar apenas blocos Transformer"
+        },
+        "outputs": {
+            "MODEL": "Modelo",
+            "model": "Modelo"
+        }
+    },
+    "TorchCompileVAE": {
+        "title": "Compilar VAE com Torch",
+        "inputs": {
+            "vae": "VAE"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Grafo completo",
+            "mode": "Modo",
+            "compile_encoder": "Compilar codificador",
+            "compile_decoder": "Compilar decodificador"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "TorchCompileControlNet": {
+        "title": "Compilar ControlNet com Torch",
+        "inputs": {
+            "controlnet": "ControlNet"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Grafo completo",
+            "mode": "Modo"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "TorchCompileLTXModel": {
+        "title": "Compilar modelo LTX com Torch",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Grafo completo",
+            "mode": "Modo",
+            "dynamic": "Dinâmico"
+        },
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "TorchCompileCosmosModel": {
+        "title": "Compilar modelo Cosmos com Torch",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Grafo completo",
+            "mode": "Modo",
+            "dynamic": "Dinâmico",
+            "dynamo_cache_size_limit": "Limite dinâmico do tamanho do cache"
+        },
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "WanVideoTeaCacheKJ": {
+        "title": "Otimização de cache Wan Vídeo (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "rel_l1_thresh": "Limiar L1 relativo",
+            "start_percent": "Porcentagem inicial",
+            "end_percent": "Porcentagem final",
+            "cache_device": "Dispositivo do cache",
+            "coefficients": "Coeficiente"
+        },
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "WanVideoEnhanceAVideoKJ": {
+        "title": "Aprimoramento de vídeo Wan (KJ)",
+        "inputs": {
+            "model": "Modelo",
+            "latent": "latent"
+        },
+        "widgets": {
+            "weight": "Peso"
+        },
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "WanVideoNAG": {
+        "title": "Gradiente natural Wan Vídeo",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "conditioning": "Condicionamento",
+            "nag_scale": "Escala_da_rede",
+            "nag_alpha": "Alfa_da_rede",
+            "nag_tau": "Rede_tau",
+            "input_type": "Tipo de entrada"
+        },
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "SkipLayerGuidanceWanVideo": {
+        "title": "Guidance por salto de camadas Wan Vídeo",
+        "inputs": {
+            "model": "Modelo",
+            "blocks": "Blocos",
+            "start_percent": "Porcentagem inicial",
+            "end_percent": "Porcentagem final"
+        },
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "CFGZeroStarAndInit": {
+        "title": "Inicialização esparsa de CFG",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "use_zero_init": "Usar inicialização zero",
+            "zero_init_steps": "Passos da inicialização zero"
+        },
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "SetNode": {
+        "title": "Pontos de configuração",
+        "inputs": {
+            "*": "Entrada"
+        },
+        "widgets": {
+            "Constant": "Constante"
+        },
+        "outputs": {
+            "*": "Saída"
+        }
+    },
+    "GetNode": {
+        "title": "Pontos de obtenção",
+        "inputs": {
+            "*": "Entrada"
+        },
+        "widgets": {
+            "Constant": "Constante"
+        },
+        "outputs": {
+            "*": "Saída"
+        }
+    },
+    "BOOLConstant": {
+        "title": "Constante booleana",
+        "inputs": {
+            "value": "Valor"
+        },
+        "widgets": {
+            "value": "Valor"
+        },
+        "outputs": {
+            "value": "Valor"
+        }
+    },
+    "INTConstant": {
+        "title": "Constante inteira",
+        "widgets": {
+            "value": "Valor"
+        },
+        "outputs": {
+            "value": "Valor"
+        }
+    },
+    "FloatConstant": {
+        "title": "Constante float",
+        "widgets": {
+            "value": "Valor"
+        },
+        "outputs": {
+            "value": "Valor"
+        }
+    },
+    "StringConstant": {
+        "title": "Constante de string",
+        "widgets": {
+            "string": "String"
+        },
+        "outputs": {
+            "STRING": "String"
+        }
+    },
+    "StringConstantMultiline": {
+        "title": "Constante de string (caixa de texto)",
+        "widgets": {
+            "string": "String",
+            "strip_newlines": "Com quebras de linha"
+        },
+        "outputs": {
+            "STRING": "String"
+        }
+    },
+    "ScaleBatchPromptSchedule": {
+        "title": "Escalar agendamento de lote de prompts",
+        "inputs": {
+            "input_str": "String",
+            "old_frame_count": "Quadros antigos",
+            "new_frame_count": "Novos quadros"
+        },
+        "outputs": {
+            "STRING": "String"
+        }
+    },
+    "GetLatentsFromBatchIndexed": {
+        "title": "Obter Latent por índice",
+        "inputs": {
+            "latents": "Latent"
+        },
+        "widgets": {
+            "latent_format": "Formato do latent"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "ConditioningMultiCombine": {
+        "title": "Mesclar condições (múltiplos)",
+        "inputs": {
+            "conditioning_1": "Condição_1",
+            "conditioning_2": "Condição_2",
+            "conditioning_3": "Condição_3",
+            "conditioning_4": "Condição_4",
+            "conditioning_5": "Condição_5",
+            "conditioning_6": "Condição_6",
+            "conditioning_7": "Condição_7",
+            "conditioning_8": "Condição_8",
+            "conditioning_9": "Condição_9",
+            "conditioning_10": "Condição_10",
+            "conditioning_11": "Condição_11",
+            "conditioning_12": "Condição_12",
+            "conditioning_13": "Condição_13",
+            "conditioning_14": "Condição_14",
+            "conditioning_15": "Condição_15",
+            "conditioning_16": "Condição_16",
+            "conditioning_17": "Condição_17",
+            "conditioning_18": "Condição_18",
+            "conditioning_19": "Condição_19",
+            "conditioning_20": "Condição_20"
+        },
+        "widgets": {
+            "inputcount": "Número de entradas",
+            "operation": "Operação",
+            "Update inputs": "Atualizar entradas"
+        },
+        "outputs": {
+            "combined": "Condicionamento",
+            "inputcount": "Número de entradas"
+        },
+        "description": "Mescla vários nós de condição em um só"
+    },
+    "AppendStringsToList": {
+        "title": "Anexar string à lista",
+        "inputs": {
+            "string1": "String 1",
+            "string2": "String 2"
+        },
+        "outputs": {
+            "STRING": "String"
+        }
+    },
+    "JoinStrings": {
+        "title": "Mesclar strings",
+        "inputs": {
+            "string1": "String 1",
+            "string2": "String 2"
+        },
+        "widgets": {
+            "delimiter": "Separador"
+        },
+        "outputs": {
+            "STRING": "String"
+        }
+    },
+    "JoinStringMulti": {
+        "title": "Mesclar strings (múltiplos)",
+        "inputs": {
+            "string_1": "String_1",
+            "string_2": "String_2",
+            "string_3": "String_3",
+            "string_4": "String_4",
+            "string_5": "String_5",
+            "string_6": "String_6",
+            "string_7": "String_7",
+            "string_8": "String_8",
+            "string_9": "String_9",
+            "string_10": "String_10"
+        },
+        "widgets": {
+            "inputcount": "Número de entradas",
+            "delimiter": "Separador",
+            "return_list": "Saída como lista",
+            "Update inputs": "Atualizar entradas"
+        },
+        "outputs": {
+            "string": "String"
+        },
+        "description": "Mescla várias strings em um lote de strings ou uma lista de strings. Defina a quantidade de entradas em \"Número de entradas\" e clique em Atualizar para renovar as interfaces."
+    },
+    "CondPassThrough": {
+        "title": "Passagem de condição",
+        "inputs": {
+            "positive": "Condição positiva",
+            "negative": "Condição negativa"
+        },
+        "outputs": {
+            "positive": "Condição positiva",
+            "negative": "Condição negativa"
+        }
+    },
+    "ModelPassThrough": {
+        "title": "Ponte de modelo",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "outputs": {
+            "model": "Modelo"
+        },
+        "description": "Passa o modelo para o próximo nó"
+    },
+    "ConditioningSetMaskAndCombine": {
+        "title": "Definir máscara da condição (mesclar 2)",
+        "inputs": {
+            "positive_1": "Condição positiva_1",
+            "negative_1": "Condição negativa_1",
+            "positive_2": "Condição positiva_2",
+            "negative_2": "Condição negativa_2",
+            "mask_1": "Máscara_1",
+            "mask_2": "Máscara_2"
+        },
+        "widgets": {
+            "mask_1_strength": "Força_da_máscara_1",
+            "mask_2_strength": "Força_da_máscara_2",
+            "set_cond_area": "Definir regiões da condição",
+            "default": "Padrão",
+            "mask bounds": "Limites da máscara"
+        },
+        "outputs": {
+            "combined_positive": "Condição positiva",
+            "combined_negative": "Condição negativa"
+        },
+        "description": "Agrupa várias máscaras de condicionamento e combina os nós em um só, com a mesma função dos nós nativos do ComfyUI"
+    },
+    "ConditioningSetMaskAndCombine3": {
+        "title": "Definir máscara da condição (mesclar 3)",
+        "inputs": {
+            "positive_1": "Condição positiva_1",
+            "negative_1": "Condição negativa_1",
+            "positive_2": "Condição positiva_2",
+            "negative_2": "Condição negativa_2",
+            "positive_3": "Condição positiva_3",
+            "negative_3": "Condição negativa_3",
+            "mask_1": "Máscara_1",
+            "mask_2": "Máscara_2",
+            "mask_3": "Máscara_3"
+        },
+        "widgets": {
+            "mask_1_strength": "Força_da_máscara_1",
+            "mask_2_strength": "Força_da_máscara_2",
+            "mask_3_strength": "Força_da_máscara_3",
+            "set_cond_area": "Definir regiões da condição",
+            "default": "Padrão",
+            "mask bounds": "Limites da máscara"
+        },
+        "outputs": {
+            "combined_positive": "Condição positiva",
+            "combined_negative": "Condição negativa"
+        },
+        "description": "Agrupa várias máscaras de condicionamento e combina os nós em um só, com a mesma função dos nós nativos do ComfyUI"
+    },
+    "ConditioningSetMaskAndCombine4": {
+        "title": "Definir máscara da condição (mesclar 4)",
+        "inputs": {
+            "positive_1": "Condição positiva_1",
+            "negative_1": "Condição negativa_1",
+            "positive_2": "Condição positiva_2",
+            "negative_2": "Condição negativa_2",
+            "positive_3": "Condição positiva_3",
+            "negative_3": "Condição negativa_3",
+            "positive_4": "Condição positiva_4",
+            "negative_4": "Condição negativa_4",
+            "mask_1": "Máscara_1",
+            "mask_2": "Máscara_2",
+            "mask_3": "Máscara_3",
+            "mask_4": "Máscara_4"
+        },
+        "widgets": {
+            "mask_1_strength": "Força_da_máscara_1",
+            "mask_2_strength": "Força_da_máscara_2",
+            "mask_3_strength": "Força_da_máscara_3",
+            "mask_4_strength": "Força_da_máscara_4",
+            "set_cond_area": "Definir regiões da condição",
+            "default": "Padrão",
+            "mask bounds": "Limites da máscara"
+        },
+        "outputs": {
+            "combined_positive": "Mesclar condições positivas",
+            "combined_negative": "Mesclar condições negativas"
+        },
+        "description": "Agrupa várias máscaras de condicionamento e combina os nós em um só, com a mesma função dos nós nativos do ComfyUI"
+    },
+    "ConditioningSetMaskAndCombine5": {
+        "title": "Definir máscara da condição (mesclar 5)",
+        "inputs": {
+            "positive_1": "Condição positiva_1",
+            "negative_1": "Condição negativa_1",
+            "positive_2": "Condição positiva_2",
+            "negative_2": "Condição negativa_2",
+            "positive_3": "Condição positiva_3",
+            "negative_3": "Condição negativa_3",
+            "positive_4": "Condição positiva_4",
+            "negative_4": "Condição negativa_4",
+            "positive_5": "Condição positiva_5",
+            "negative_5": "Condição negativa_5",
+            "mask_1": "Máscara_1",
+            "mask_2": "Máscara_2",
+            "mask_3": "Máscara_3",
+            "mask_4": "Máscara_4",
+            "mask_5": "Máscara_5"
+        },
+        "widgets": {
+            "mask_1_strength": "Força_da_máscara_1",
+            "mask_2_strength": "Força_da_máscara_2",
+            "mask_3_strength": "Força_da_máscara_3",
+            "mask_4_strength": "Força_da_máscara_4",
+            "mask_5_strength": "Força_da_máscara_5",
+            "set_cond_area": "Definir regiões da condição",
+            "default": "Padrão",
+            "mask bounds": "Limites da máscara"
+        },
+        "outputs": {
+            "combined_positive": "Mesclar condições positivas",
+            "combined_negative": "Mesclar condições negativas"
+        },
+        "description": "Agrupa várias máscaras de condicionamento e combina os nós em um só, com a mesma função dos nós nativos do ComfyUI"
+    },
+    "VRAM_Debug": {
+        "title": "Limpeza de VRAM",
+        "inputs": {
+            "any_input": "Qualquer entrada",
+            "image_pass": "Passagem de imagem",
+            "model_pass": "Passagem de modelo"
+        },
+        "widgets": {
+            "empty_cache": "Limpar cache",
+            "gc_collect": "Coleta de lixo",
+            "unload_all_models": "Descarregar todos os modelos"
+        },
+        "outputs": {
+            "any_output": "Qualquer saída",
+            "image_pass": "Passagem de imagem",
+            "model_pass": "Passagem de modelo",
+            "freemem_before": "Memória restante antes da limpeza",
+            "freemem_after": "Memória restante após a limpeza"
+        },
+        "description": "Retorna os dados de entrada sem alterações (usado apenas como sinal de disparo), executando simultaneamente funções de gerenciamento de modelos do Comfy e coleta de lixo, e relatando a memória de vídeo (VRAM) restante antes e depois das operações."
+    },
+    "SomethingToString": {
+        "title": "Qualquer coisa para string",
+        "inputs": {
+            "input": "Entrada"
+        },
+        "widgets": {
+            "prefix": "Prefixo",
+            "suffix": "Sufixo"
+        },
+        "outputs": {
+            "STRING": "String"
+        }
+    },
+    "Sleep": {
+        "title": "Dormir",
+        "inputs": {
+            "input": "Entrada"
+        },
+        "widgets": {
+            "minutes": "Minutos",
+            "seconds": "Segundos"
+        },
+        "outputs": {
+            "*": "*"
+        }
+    },
+    "EmptyLatentImagePresets": {
+        "title": "Predefinição de imagem Latent vazia",
+        "widgets": {
+            "dimensions": "Dimensões",
+            "invert": "Inverter",
+            "batch_size": "Tamanho do lote"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "Largura",
+            "Height": "Altura"
+        }
+    },
+    "EmptyLatentImageCustomPresets": {
+        "title": "Predefinição de imagem Latent personalizada",
+        "widgets": {
+            "dimensions": "Dimensões",
+            "invert": "Inverter",
+            "batch_size": "Tamanho do lote"
+        },
+        "outputs": {
+            "Latent": "Latent",
+            "Width": "Largura",
+            "Height": "Altura"
+        },
+        "description": "Gera uma imagem latente em branco conforme as dimensões especificadas. \n Essas opções são carregadas do arquivo 'custom_dimensions.json' na pasta do nó."
+    },
+    "WidgetToString": {
+        "title": "Componente para string",
+        "inputs": {
+            "any_input": "Entrada qualquer"
+        },
+        "widgets": {
+            "id": "ID do nó",
+            "widget_name": "Nome do componente",
+            "return_all": "Retornar tudo",
+            "node_title": "Título do nó",
+            "allowed_float_decimals": "Permitir decimais float"
+        },
+        "outputs": {
+            "STRING": "String"
+        }
+    },
+    "DummyOut": {
+        "title": "Saída Latent virtual",
+        "inputs": {
+            "any_input": "Qualquer entrada"
+        },
+        "outputs": {
+            "*": "Saída"
+        }
+    },
+    "FlipSigmasAdjusted": {
+        "title": "Ajustar Sigmas invertidos",
+        "inputs": {
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "divide_by_last_sigma": "Dividir pelo último Sigma",
+            "divide_by": "Dividir por",
+            "offset_by": "Deslocamento"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas",
+            "sigmas_string": "String de sigmas"
+        }
+    },
+    "CustomSigmas": {
+        "title": "Sigmas personalizados",
+        "widgets": {
+            "sigmas_string": "String dos Sigmas",
+            "interpolate_to_steps": "Passos de interpolação",
+            "t_steps": "Passos T",
+            "num_steps": "Etapas"
+        },
+        "outputs": {
+            "SIGMAS": "Sigmas"
+        }
+    },
+    "StringToFloatList": {
+        "title": "String para lista de floats",
+        "inputs": {
+            "string": "String"
+        },
+        "outputs": {
+            "FLOAT": "Float"
+        }
+    },
+    "InjectNoiseToLatent": {
+        "title": "Injetar ruído no Latent",
+        "inputs": {
+            "latents": "Latent",
+            "noise": "Ruído",
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "strength": "Força",
+            "normalize": "Normalizar",
+            "average": "Média",
+            "mix_randn_amount": "Força da mistura de ruído aleatório",
+            "seed": "Semente"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
+    "SoundReactive": {
+        "title": "Reativo ao áudio",
+        "inputs": {
+            "audio": "Áudio"
+        },
+        "widgets": {
+            "sound_level": "Nível de volume",
+            "start_range_hz": "Faixa de Hz inicial",
+            "end_range_hz": "Faixa de Hz final",
+            "multiplier": "Multiplicador",
+            "smoothing_factor": "Fator de suavização",
+            "normalize": "Normalizar",
+            "Start mic capture": "Iniciar captura do microfone",
+            "Start_mic_capture": "Iniciar captura do microfone",
+            "Stop mic capture": "Parar captura do microfone",
+            "Stop_mic_capture": "Parar captura do microfone"
+        },
+        "outputs": {
+            "sound_level": "Nível de volume",
+            "sound_level_int": "Nível de volume inteiro"
+        },
+        "description": "Retorna o nível de volume do áudio de entrada.\n\nUsa a entrada de áudio do navegador.\n\nPara amostragem ao vivo."
+    },
+    "GenerateNoise": {
+        "title": "Gerar ruído",
+        "inputs": {
+            "model": "Modelo",
+            "sigmas": "Sigmas"
+        },
+        "widgets": {
+            "width": "Largura",
+            "height": "Altura",
+            "batch_size": "Tamanho do lote",
+            "seed": "Semente aleatória",
+            "control_after_generate": "Controle pós-geração",
+            "fixed": "Fixo",
+            "increment": "Aumentar",
+            "decrement": "Diminuir",
+            "randomize": "Aleatório",
+            "multiplier": "Multiplicador",
+            "constant_batch_noise": "Ruído de lote constante",
+            "normalize": "Normalizar",
+            "latent_channels": "Canais do latent",
+            "shape": "Forma"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        },
+        "description": "Gera ruído na injeção ou serve como latent vazio no amostrador quando a adição de ruído está desativada"
+    },
+    "StableZero123_BatchSchedule": {
+        "title": "Stable Zero123 multiview em lote",
+        "inputs": {
+            "clip_vision": "CLIP Visual",
+            "init_image": "Imagem inicial",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "Largura",
+            "height": "Altura",
+            "batch_size": "Tamanho do lote",
+            "interpolation": "Método de interpolação",
+            "linear": "Linear",
+            "ease_in": "Ease-in",
+            "ease_out": "Ease-out",
+            "ease_in_out": "Ease-in-out",
+            "azimuth_points_string": "Pontos de azimute",
+            "elevation_points_string": "Pontos de elevação"
+        },
+        "outputs": {
+            "positive": "Condição positiva",
+            "negative": "Condição negativa",
+            "latent": "Latent"
+        },
+        "description": "Entrada de imagem única, gera em lote imagens multiview coerentes (como 0°, 90°, 180°), com suporte a agendamento otimizado de VRAM."
+    },
+    "SV3D_BatchSchedule": {
+        "title": "Agendamento de lote SV3D",
+        "inputs": {
+            "clip_vision": "CLIP Visual",
+            "init_image": "Imagem inicial",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "width": "Largura",
+            "height": "Altura",
+            "batch_size": "Tamanho do lote",
+            "interpolation": "Método de interpolação",
+            "azimuth_points_string": "Pontos de azimute",
+            "elevation_points_string": "Pontos de elevação"
+        },
+        "outputs": {
+            "positive": "Condição positiva",
+            "negative": "Condição negativa",
+            "latent": "Latent"
+        },
+        "description": "Agenda os valores de azimute e elevação do SV3D com interpolação.\n\nAtenção: o SV3D é um modelo de vídeo, então os valores do agendamento devem progredir gradualmente.\n\nhttps://huggingface.co/stabilityai/sv3d"
+    },
+    "LoadResAdapterNormalization": {
+        "title": "Carregar normalização ResAdapter",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "resadapter_path": "Caminho do ResAdapter"
+        },
+        "outputs": {
+            "MODEL": "Modelo"
+        }
+    },
+    "Superprompt": {
+        "title": "Super prompt",
+        "inputs": {
+            "prompt": "Prompt"
+        },
+        "widgets": {
+            "instruction_prompt": "Prompt de instrução",
+            "max_new_tokens": "Máximo de novos tokens"
+        },
+        "outputs": {
+            "STRING": "String"
+        },
+        "description": "Modelo T5 ajustado por fine-tuning com o conjunto de dados superprompt.\n\nAmplia a descrição do prompt de texto para um formato mais detalhado.\n\nEtapa prévia à geração de texto para imagem\n\nPara modelos que se beneficiam de prompts mais detalhados. \n\nhttps://huggingface.co/roborovski/superprompt-v1"
+    },
+    "CameraPoseVisualizer": {
+        "title": "Visualização de pose da câmera",
+        "inputs": {
+            "cameractrl_poses": "Pose de controle da câmera"
+        },
+        "widgets": {
+            "pose_file_path": "Caminho do arquivo de pose",
+            "base_xval": "Valor X base",
+            "zval": "Valor Z",
+            "scale": "Escala",
+            "use_exact_fx": "Usar efeitos exatos",
+            "relative_c2w": "Câmera relativa para coordenadas do mundo",
+            "use_viewer": "Usar visualizador",
+            "cameractrl_poses": "Pose de controle da câmera",
+            "extrinsic": "Externo",
+            "color_map": "Mapa de cores",
+            "hw_ratio": "Proporção",
+            "list_label": "Rótulos da lista",
+            "w2cs": "Mundo para câmera",
+            "transform_matrix": "Matriz de transformação"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "Visualiza a pose da câmera\n\n(módulo Camera Ctrl Pose do Animatediff Evolved, ou renderizado em gráfico 3D a partir de um arquivo .txt com intrínsecos e coordenadas de câmera do dataset RealEstate)"
+    },
+    "StabilityAPI_SD3": {
+        "title": "StabilityAPI SD3",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "prompt": "Prompt",
+            "n_prompt": "Prompt negativo",
+            "seed": "Semente aleatória",
+            "control_before_generate": "Controle pré-geração",
+            "model": "Modelo",
+            "aspect_ratio": "Proporção da imagem",
+            "output_format": "Formato de saída",
+            "api_key": "Chave de API",
+            "img2img_strength": "Força de imagem para imagem",
+            "disable_metadata": "Desativar metadados"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        },
+        "description": "# Chamada da Stability API\n\nUse a mesma chave para chamar a API, mesmo que a conta tenha várias chaves.\n\nObtenha a chave em https://platform.stability.ai/account/keys; recomenda-se criar um arquivo config.json contendo a chave e colocá-lo no diretório do plugin.\n\n# Aviso:\n\nmesmo com disable_metadata (desativar metadados) ligado, a chave da API poderá ser salva nos metadados se o workflow contiver nós de salvamento diferentes deste.\n\nSD3 consome 6,5 créditos por geração\n\nSD3-Turbo consome 4 créditos por geração\n\nSem imagem de entrada conectada, usa o modo texto para imagem"
+    },
+    "CheckpointPerturbWeights": {
+        "title": "Perturbar pesos do Checkpoint",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "joint_blocks": "Bloco conjunto",
+            "final_layer": "Camada final",
+            "rest_of_the_blocks": "Demais blocos",
+            "seed": "Semente aleatória",
+            "control_before_generate": "Controle pré-geração"
+        },
+        "outputs": {
+            "MODEL": "Modelo"
+        }
+    },
+    "DifferentialDiffusionAdvanced": {
+        "title": "Differential Diffusion (avançado)",
+        "inputs": {
+            "model": "Modelo",
+            "samples": "Amostragem",
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "multiplier": "Multiplicador"
+        },
+        "outputs": {
+            "MODEL": "Modelo",
+            "LATENT": "Latent"
+        }
+    },
+    "FluxBlockLoraSelect": {
+        "title": "Seleção de LoRA por bloco Flux",
+        "inputs": {},
+        "outputs": {
+            "blocks": "Bloco"
+        },
+        "description": "Carregar ICLightUnet: carrega um modelo ICLightUnet. (Experimental) Em desenvolvimento \n Alternativa ruim, mas funcional: baixe o modelo em https://huggingface.co/Kijai/iclight-comfy/blob/main/iclight_fc_converted.safetensors e use-o junto com o nó Condicionamento InstructPixToPix."
+    },
+    "HunyuanVideoBlockLoraSelect": {
+        "title": "Seleção de LoRA por bloco Hunyuan Vídeo",
+        "inputs": {},
+        "outputs": {
+            "blocks": "Bloco"
+        },
+        "description": "Escolhe o valor alpha de um bloco individual; valor 0 remove o bloco inteiro"
+    },
+    "FluxBlockLoraLoader": {
+        "title": "Carregador de LoRA por bloco Flux",
+        "inputs": {
+            "model": "Modelo",
+            "blocks": "Bloco",
+            "opt_lora_path": "Caminho do LoRA (opcional)"
+        },
+        "widgets": {
+            "strength_model": "Força do modelo",
+            "lora_name": "Nome do LoRA"
+        },
+        "outputs": {
+            "model": "Modelo",
+            "rank": "Rank"
+        }
+    },
+    "CustomControlNetWeightsFluxFromList": {
+        "title": "Pesos de ControlNet personalizados Flux a partir de lista",
+        "inputs": {
+            "cn_extras": "ControlNet adicional",
+            "list_of_floats": "Lista de floats"
+        },
+        "widgets": {
+            "uncond_multiplier": "Multiplicador incondicional",
+            "autosize": "Tamanho automático"
+        },
+        "outputs": {
+            "CN_WEIGHTS": "Pesos do ControlNet",
+            "TK_SHORTCUT": "Atalho TK"
+        },
+        "description": "Converte uma lista de floats em pesos de ControlNet (para o Advanced-ControlNet)"
+    },
+    "SetShakkerLabsUnionControlNetType": {
+        "title": "Definir tipo de ControlNet conjunto ShakkerLabs",
+        "inputs": {
+            "control_net": "ControlNet",
+            "type": "Tipo"
+        },
+        "outputs": {
+            "control_net": "ControlNet"
+        }
+    },
+    "ModelSaveKJ": {
+        "title": "Salvar modelo (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "filename_prefix": "Prefixo do nome do arquivo",
+            "model_key_prefix": "Prefixo da chave do modelo"
+        }
+    },
+    "StyleModelApplyAdvanced": {
+        "title": "Aplicador avançado de modelos de estilo",
+        "inputs": {
+            "conditioning": "Condição de guidance",
+            "style_model": "Modelo de estilo",
+            "clip_vision_output": "Saída CLIP Visual"
+        },
+        "widgets": {
+            "strength": "Força"
+        },
+        "outputs": {
+            "conditioning": "Condição de guidance"
+        },
+        "description": "Aplicação do modelo de estilo, mas com parâmetro de força"
+    },
+    "AudioConcatenate": {
+        "title": "Concatenação de áudio",
+        "inputs": {
+            "audio1": "Áudio 1",
+            "audio2": "Áudio 2"
+        },
+        "widgets": {
+            "direction": "Direção"
+        },
+        "outputs": {
+            "AUDIO": "Áudio"
+        },
+        "description": "Conecta o Áudio 1 ao Áudio 2 na direção especificada."
+    },
+    "ImageNoiseAugmentation": {
+        "title": "Aumento de ruído da imagem",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "noise_aug_strength": "Força do aumento de ruído",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {
+            "image": "Imagem"
+        }
+    },
+    "VAELoaderKJ": {
+        "title": "Carregador de VAE (KJ)",
+        "inputs": {},
+        "widgets": {
+            "vae_name": "Nome do VAE",
+            "device": "Dispositivo",
+            "weight_dtype": "dtype dos pesos"
+        },
+        "outputs": {
+            "vae": "VAE"
+        }
+    },
+    "ScheduledCFGGuidance": {
+        "title": "Guidance de CFG com agendamento",
+        "inputs": {
+            "model": "Modelo",
+            "positive": "Prompt positivo",
+            "negative": "Prompt negativo"
+        },
+        "widgets": {
+            "cfg": "Valor CFG",
+            "start_percent": "Porcentagem inicial",
+            "end_percent": "Porcentagem final"
+        },
+        "outputs": {
+            "GUIDER": "Guidador"
+        }
+    },
+    "ApplyRifleXRoPE_WanVideo": {
+        "title": "Wan Vídeo: aplicar RifleX RoPE",
+        "inputs": {
+            "model": "Modelo",
+            "latent": "Latent",
+            "k": "Valor k"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "ApplyRifleXRoPE_HunuyanVideo": {
+        "title": "Hunyuan Vídeo: aplicar RifleX RoPE",
+        "inputs": {
+            "model": "Modelo",
+            "latent": "Latent",
+            "k": "Valor k"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "TimerNodeKJ": {
+        "title": "Cronômetro (KJ)",
+        "inputs": {
+            "any_input": "Entrada qualquer",
+            "timer": "Cronômetro"
+        },
+        "widgets": {
+            "mode": "Modo",
+            "name": "Nome"
+        },
+        "outputs": {
+            "any_output": "Saída qualquer",
+            "timer": "Cronômetro",
+            "time": "Tempo"
+        }
+    },
+    "ImageBatchFilter": {
+        "title": "Filtro de lote de imagens",
+        "inputs": {
+            "images": "Imagem",
+            "replacement_image": "Substituir imagens"
+        },
+        "widgets": {
+            "empty_color": "Cor das áreas vazias",
+            "empty_threshold": "Limiar de força para considerar uma área vazia"
+        },
+        "outputs": {
+            "images": "Imagem",
+            "IMAGES": "Imagem",
+            "removed_indices": "Excluir índices"
+        },
+        "description": "Remove imagens vazias do lote"
+    },
+    "ImageResizeKJv2": {
+        "title": "Escala de imagem v2 (KJ)",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "width": "Largura",
+            "height": "Altura",
+            "upscale_method": "Método de redimensionamento",
+            "keep_proportions": "Proporção fixa",
+            "keep_proportion": "Proporção fixa",
+            "pad_color": "Cor de preenchimento",
+            "crop_position": "Posição do recorte",
+            "divisible_by": "Divisível por",
+            "device": "Dispositivo",
+            "per_batch": "Lote"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "width": "Largura",
+            "height": "Altura",
+            "mask": "Máscara"
+        },
+        "description": "Escala de imagem, 2ª geração. As dimensões podem vir de entradas, com prioridade final conforme:\n- Tamanho da imagem de referência \n- Largura-entrada e Altura-entrada \n- Largura e Altura \n \nA proporção fixa trava a proporção pelo tamanho máximo."
+    },
+    "InsertLatentToIndexed": {
+        "title": "Inserir Latent por índice",
+        "inputs": {
+            "source": "Origem",
+            "destination": "Destino"
+        },
+        "widgets": {
+            "index": "Coeficiente"
+        },
+        "outputs": {
+            "LATENT": "Latent",
+            "latent": "Latent"
+        },
+        "description": "Insere o Latent no índice especificado no lote de Latents original."
+    },
+    "DiTBlockLoraLoader": {
+        "title": "Carregador de Lora por bloco DiT",
+        "inputs": {
+            "model": "Modelo",
+            "opt_lora_path": "Escolher caminho do Lora",
+            "blocks": "Bloco"
+        },
+        "widgets": {
+            "strength_model": "Força do modelo",
+            "lora_name": "Nome do Lora",
+            "overlap": "Sobreposição"
+        },
+        "outputs": {
+            "model": "Modelo",
+            "rank": "Rank"
+        },
+        "description": "Novo aditivo."
+    },
+    "LeapfusionHunyuanI2VPatcher": {
+        "title": "Patch de fusão rápida Hunyuan imagem para vídeo",
+        "inputs": {
+            "model": "Modelo",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "index": "Coeficiente",
+            "start_percent": "Porcentagem inicial",
+            "end_percent": "Porcentagem final",
+            "strength": "Força"
+        },
+        "outputs": {
+            "MODEL": "Modelo",
+            "model": "Modelo"
+        },
+        "description": "Novo aditivo."
+    },
+    "ModelPatchTorchSettings": {
+        "title": "Definições Torch do patch do modelo",
+        "inputs": {
+            "model": "Modelo",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "Ativar acumulação FP16",
+            "start_percent": "Porcentagem inicial",
+            "end_percent": "Porcentagem final",
+            "strength": "Força"
+        },
+        "outputs": {
+            "MODEL": "Modelo",
+            "model": "Modelo"
+        },
+        "description": "Reduz o uso de VRAM da GPU\nAcelera a acumulação de multiplicações matriciais\nMelhora a eficiência energética\nPodem ocorrer: overflow numérico e perda de precisão."
+    },
+    "LoraExtractKJ": {
+        "title": "Extrair Lora (KJ)",
+        "inputs": {
+            "finetuned_model": "Modelo ajustado",
+            "original_model": "Modelo original"
+        },
+        "widgets": {
+            "filename_prefix": "Prefixo do nome do arquivo",
+            "rank": "Rank",
+            "lora_type": "Tipo de Lora",
+            "algorithm": "Algoritmo",
+            "lowrank_iters": "Iterações de baixo rank",
+            "output_dtype": "dtype de saída",
+            "bias_diff": "Diferença de viés",
+            "adaptive_param": "Parâmetro adaptativo",
+            "clamp_quantile": "Quantil de clamp"
+        },
+        "outputs": {
+            "images": "Imagem",
+            "masks": "Máscara"
+        },
+        "description": "LoraExtract"
+    },
+    "Wan21BlockLoraSelect": {
+        "title": "Seletor de LoRA por bloco Wan2.1",
+        "inputs": {
+            "model": "Modelo",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "enable_fp16_accumulation": "Ativar acumulação FP16",
+            "start_percent": "Porcentagem inicial",
+            "end_percent": "Porcentagem final",
+            "strength": "Força"
+        },
+        "outputs": {
+            "BLOCKS": "Bloco",
+            "blocks": "Bloco"
+        },
+        "description": "Escolhe o valor alpha de um bloco individual; valor 0 remove o bloco inteiro."
+    },
+    "LoadVideosFromFolder": {
+        "title": "Carregar vídeo da pasta",
+        "inputs": {
+            "video": "Vídeo"
+        },
+        "widgets": {
+            "video": "Vídeo",
+            "force_rate": "Forçar taxa de quadros",
+            "custom_width": "Largura personalizada",
+            "custom_height": "Altura personalizada",
+            "frame_load_cap": "Limite de quadros lidos",
+            "skip_first_frames": "Pular os X primeiros quadros",
+            "select_every_nth": "Intervalo",
+            "output_type": "Tipo de saída",
+            "grid_max_columns": "Máximo de colunas da grade",
+            "add_label": "Adicionar rótulo"
+        },
+        "outputs": {
+            "IMAGE": "Imagem"
+        }
+    },
+    "TorchCompileModelQwenImage": {
+        "title": "Compilar modelo Qwen Image com Torch",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "backend": "Backend",
+            "fullgraph": "Grafo completo",
+            "mode": "Modo",
+            "dynamic": "Dinâmico",
+            "compile_transformer_blocks_only": "Compilar apenas blocos Transformer",
+            "dynamo_cache_size_limit": "Limite dinâmico do tamanho do cache"
+        },
+        "outputs": {
+            "MODEL": "Modelo",
+            "model": "Modelo"
+        }
+    },
+    "LazySwitchKJ": {
+        "title": "Interruptor simples (KJ)",
+        "inputs": {
+            "on_false": "Falso",
+            "on_true": "Verdadeiro"
+        },
+        "widgets": {
+            "switch": "Interruptor"
+        },
+        "outputs": {
+            "*": "Qualquer"
+        }
+    },
+    "GetLatentSizeAndCount": {
+        "title": "Obter tamanho e quantidade do Latent",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "latent": "Latent",
+            "batch_size": "Tamanho do lote",
+            "channels": "Canais",
+            "frames": "Quadros",
+            "width": "Largura",
+            "height": "Altura"
+        }
+    },
+    "DiffusionModelSelector": {
+        "title": "Seletor de modelo de difusão",
+        "inputs": {},
+        "widgets": {
+            "model_name": "Nome do modelo"
+        },
+        "outputs": {
+            "model_path": "Caminho do modelo"
+        }
+    },
+    "LoraReduceRankKJ": {
+        "title": "Reduzir rank de Lora (KJ)",
+        "inputs": {},
+        "widgets": {
+            "lora_name": "Nome do Lora",
+            "new_rank": "Novo rank",
+            "dynamic_method": "Método dinâmico",
+            "dynamic_param": "Parâmetro dinâmico",
+            "output_dtype": "dtype de saída",
+            "verbose": "Modo detalhado"
+        },
+        "outputs": {
+            "model_path": "Caminho do modelo"
+        },
+        "description": "Ajusta o tamanho do modelo LoRA reduzindo o rank do modelo. \n Baseado no sd-scripts da kohya: https://github.com/kohya-ss/sd-scripts/blob/main/networks/resize_lora.py"
+    },
+    "DrawMaskOnImage": {
+        "title": "Mesclar imagem e máscara",
+        "inputs": {
+            "image": "Imagem",
+            "mask": "Máscara"
+        },
+        "widgets": {
+            "mask_opacity": "Opacidade da máscara",
+            "mask_color": "Cor da máscara",
+            "color": "Cor"
+        },
+        "outputs": {
+            "images": "Imagem"
+        },
+        "description": "Quando imagem e máscara são fornecidas simultaneamente, mescla a máscara na imagem."
+    },
+    "BlockifyMask": {
+        "title": "Máscara em blocos",
+        "inputs": {
+            "image": "Imagem",
+            "masks": "Máscara"
+        },
+        "widgets": {
+            "block_size": "Tamanho do bloco"
+        },
+        "outputs": {
+            "mask": "Máscara"
+        },
+        "description": "Cria uma máscara em blocos dividindo a caixa delimitadora de cada máscara em blocos do tamanho especificado e preenchendo os blocos que contêm qualquer parte da máscara original."
+    },
+    "ConsolidateMasksKJ": {
+        "title": "Consolidar máscaras (KJ)",
+        "inputs": {
+            "mask": "Máscara",
+            "masks": "Máscara"
+        },
+        "widgets": {
+            "padding": "Preenchimento",
+            "width": "Largura",
+            "height": "Altura"
+        },
+        "outputs": {
+            "mask": "Máscara"
+        },
+        "description": "Consolida um lote de máscaras individuais encontrando o maior conjunto possível de máscaras que cabe inteiramente em uma área retangular com a largura e a altura dadas (incluindo o preenchimento), repetindo o processo até que nenhuma máscara possa ser mesclada."
+    },
+    "GGUFLoaderKJ": {
+        "title": "Carregador de modelos GGUF (KJ)",
+        "inputs": {},
+        "widgets": {
+            "model_name": "Nome do modelo",
+            "extra_model_name": "Nome do modelo adicional",
+            "dequant_dtype": "dtype de desquantização",
+            "patch_dtype": "dtype do patch",
+            "patch_on_device": "Patch no dispositivo",
+            "attention_override": "Modo de prioridade da atenção",
+            "enable_fp16_accumulation": "Ativar acumulação FP16"
+        },
+        "outputs": {
+            "model": "Modelo"
+        },
+        "description": "Carrega modelos GGUF com opções avançadas; requer o ComfyUI-GGUF instalado."
+    },
+    "EndRecordCUDAMemoryHistory": {
+        "title": "Encerrar registro do histórico de memória CUDA (KJ)",
+        "inputs": {
+            "input": "Entrada"
+        },
+        "widgets": {
+            "output_path": "Caminho de saída"
+        },
+        "outputs": {
+            "input": "Entrada",
+            "output_path": "Caminho de saída"
+        },
+        "description": "Registra o histórico entre o início e o fim das alocações de memória CUDA e o salva em um arquivo, que pode ser analisado em: https://docs.pytorch.org/memory_viz ou com o nó \"Visualizar histórico de memória CUDA\"."
+    },
+    "VisualizeCUDAMemoryHistory": {
+        "title": "Visualizar histórico de memória CUDA (KJ)",
+        "inputs": {
+            "input": "Entrada"
+        },
+        "widgets": {
+            "snapshot_path": "Caminho do snapshot"
+        },
+        "outputs": {
+            "input": "Entrada",
+            "output_path": "Caminho de saída"
+        },
+        "description": "Visualiza o arquivo de histórico de alocações de memória CUDA e abre no navegador"
+    },
+    "StartRecordCUDAMemoryHistory": {
+        "title": "Iniciar registro do histórico de memória CUDA (KJ)",
+        "inputs": {
+            "input": "Entrada"
+        },
+        "widgets": {
+            "enabled": "Ativado",
+            "context": "Fundo",
+            "stacks": "Pilha",
+            "max_entries": "Máximo de entradas"
+        },
+        "outputs": {
+            "input": "Entrada"
+        }
+    },
+    "NABLA_AttentionKJ": {
+        "title": "Atenção NABLA (KJ)",
+        "inputs": {
+            "model": "Modelo",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "window_time": "Janela temporal",
+            "window_width": "Largura da janela",
+            "window_height": "Altura da janela",
+            "sparsity": "Esparsidade",
+            "torch_compile": "Compilação torch"
+        },
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "SimpleCalculatorKJ": {
+        "title": "Calculadora simples (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "FLOAT": "Float",
+            "STRING": "Float",
+            "INT": "Inteiro"
+        }
+    },
+    "VAEDecodeLoopKJ": {
+        "title": "Decodificação cíclica de VAE (KJ)",
+        "inputs": {
+            "samples": "Amostragem",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "overlap_latent_frames": "Repetir imagens Latent"
+        },
+        "outputs": {
+            "IMAGE": "Imagem",
+            "STRING": "Float",
+            "INT": "Inteiro"
+        }
+    },
+    "GetTrackRange": {
+        "title": "Obter faixa da trajetória (KJ)",
+        "inputs": {
+            "tracks": "Trajetória"
+        },
+        "widgets": {
+            "start_index": "Índice inicial",
+            "num_frames": "Número de quadros"
+        },
+        "outputs": {
+            "TRACKS": "Trajetória"
+        }
+    },
+    "AddNoiseToTrackPath": {
+        "title": "Adicionar ruído ao caminho da trajetória (KJ)",
+        "inputs": {
+            "tracks": "Trajetória"
+        },
+        "widgets": {
+            "strength": "Força",
+            "seed": "Semente",
+            "noise_x_ratio": "Taxa de ruído x",
+            "noise_y_ratio": "Taxa de ruído y",
+            "noise_temporal_ratio": "Taxa de ruído temporal"
+        },
+        "outputs": {
+            "TRACKS": "Trajetória"
+        }
+    },
+    "WanImageToVideoSVIPro": {
+        "title": "Wan imagem para vídeo SVI Pro (KJ)",
+        "inputs": {
+            "positive": "Prompt positivo",
+            "negative": "Prompt negativo",
+            "anchor_samples": "Amostragem âncora",
+            "prev_samples": "Amostragem prévia"
+        },
+        "widgets": {
+            "length": "Duração",
+            "motion_latent_count": "Vezes do Latent de movimento"
+        },
+        "outputs": {
+            "positive": "Prompt positivo",
+            "negative": "Prompt negativo",
+            "latent": "Latent"
+        }
+    },
+    "ModelMemoryUseReportPatch": {
+        "title": "Patch de relatório de uso de memória do modelo (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "model": "Modelo"
+        },
+        "outputs": {
+            "model": "Modelo"
+        },
+        "description": "Adiciona um callback ao modelo para relatar o uso de memória após a conclusão da amostragem"
+    },
+    "ModelMemoryUsageFactorOverride": {
+        "title": "Valor personalizado do fator de memória do modelo (KJ)",
+        "inputs": {
+            "model": "Modelo",
+            "memory_usage_factor": "Fator de uso de memória"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "memory_usage_factor": "Fator de uso de memória"
+        },
+        "outputs": {
+            "model": "Modelo"
+        },
+        "description": "Sobrescreve o coeficiente de uso de memória do modelo durante a amostragem."
+    },
+    "LTXVEnhanceAVideoKJ": {
+        "title": "Aprimoramento de vídeo LTX (KJ)",
+        "inputs": {
+            "model": "Modelo",
+            "latent": "Latent",
+            "weight": "Peso"
+        },
+        "widgets": {
+            "model": "Modelo",
+            "latent": "Latent",
+            "weight": "Peso"
+        },
+        "outputs": {
+            "model": "Modelo"
+        }
+    },
+    "LTX2BlockLoraSelect": {
+        "title": "Seletor de Lora por bloco LTX2 (KJ)",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "selectedditblocks": "Blocos DIT selecionados"
+        },
+        "description": "Adiciona um callback ao modelo para relatar o uso de memória após a conclusão da amostragem"
+    },
+    "VisualizeSigmasKJ": {
+        "title": "Visualizar valores sigma (KJ)",
+        "inputs": {
+            "sigmas": "Valores sigma"
+        },
+        "widgets": {
+            "start_step": "Passo inicial",
+            "end_step": "Passo final"
+        },
+        "outputs": {
+            "sigmas_out": "Saída sigma",
+            "image": "Imagem"
+        },
+        "description": ""
+    },
+    "LTX2SamplingPreviewOverride": {
+        "title": "Sobreposição de pré-visualização de amostragem LTX2 (KJ)",
+        "inputs": {
+            "model": "Modelo",
+            "latent_upscale_model": "Modelo de ampliação Latent",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "preview_rate": "Taxa de pré-visualização"
+        },
+        "outputs": {},
+        "description": "A pré-visualização de amostragem do LTX2 está temporariamente desativada até que o recurso seja aprimorado em uma versão estável do núcleo."
+    },
+    "LTXVAddGuidesFromBatch": {
+        "title": "Adicionar imagens de orientação do lote (KJ)",
+        "inputs": {
+            "positive": "Orientação positiva",
+            "negative": "Orientação negativa",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images": "Imagem"
+        },
+        "widgets": {
+            "strength": "Força"
+        },
+        "outputs": {
+            "positive": "Orientação positiva",
+            "negative": "Orientação negativa",
+            "latent": "Latent"
+        },
+        "description": "Adiciona várias imagens de orientação de um lote ao Latent conforme os índices de quadros correspondentes. As imagens não pretas do lote serão usadas como imagens de orientação."
+    },
+    "LTX2AudioLatentNormalizingSampling": {
+        "title": "Normalização do Latent de áudio na amostragem LTX2 (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "audio_normalization_factors": "Fator de normalização do áudio"
+        },
+        "outputs": {},
+        "description": "Melhora a qualidade do áudio gerado pelo LTX2 normalizando o Latent de áudio nos passos de amostragem especificados."
+    },
+    "PreviewLatentNoiseMask": {
+        "title": "Máscara de ruído do Latent de pré-visualização (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {},
+        "outputs": {
+            "mask": "Máscara"
+        },
+        "description": "Máscara de ruído do Latent de pré-visualização"
+    },
+    "WanChunkFeedForward": {
+        "title": "Feed-forward em blocos Wan Vídeo (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "chunks": "Número de blocos",
+            "dim_threshold": "Limiar de dimensão"
+        },
+        "outputs": {
+            "model": "Modelo"
+        },
+        "description": "Funcionalidade experimental, pode alterar a saída do modelo!! Reduz o uso de pico de VRAM por meio de ativações de feed-forward em blocos (conceito de redes neurais)."
+    },
+    "SamplerSelfRefineVideo": {
+        "title": "Amostrador de vídeo com autopurificação (KJ)",
+        "inputs": {
+            "latent": "Latent"
+        },
+        "widgets": {
+            "input_mode": "Modo de entrada",
+            "start_step1": "Início da etapa 1",
+            "end_step1": "Fim da etapa 1",
+            "start_step2": "Início da etapa 2",
+            "end_step2": "Fim da etapa 2",
+            "steps_1": "Etapa 1",
+            "steps_2": "Etapa 2",
+            "certain_percentage": "Percentual de certeza",
+            "uncertainty_threshold": "Limiar de incerteza",
+            "verbose": "Detalhes",
+            "seed": "Semente aleatória"
+        },
+        "outputs": {},
+        "description": "Tentativa de implementar https://github.com/agwmon/self-refine-video; apenas para testes, pode não funcionar como esperado."
+    },
+    "LTXVAddGuideMulti": {
+        "title": "LTX Vídeo: adicionar várias imagens de orientação (KJ)",
+        "inputs": {
+            "positive": "Orientação positiva",
+            "negative": "Orientação negativa",
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "Imagem 1"
+        },
+        "widgets": {
+            "Number of Guides": "Quantidade de orientações",
+            "frame_idx_1": "Índice do quadro 1",
+            "strength_1": "Força 1"
+        },
+        "outputs": {
+            "positive": "Orientação positiva",
+            "negative": "Orientação negativa",
+            "latent": "Latent"
+        },
+        "description": "Adiciona várias imagens de orientação nos índices de quadros especificados com suas forças, usando o recurso de combinação dinâmica, que requer o ComfyUI 0.8.1 e o frontend 1.33.4 ou superior."
+    },
+    "LTXVImgToVideoInplaceKJ": {
+        "title": "LTX Vídeo: converter imagens em vídeo (KJ)",
+        "inputs": {
+            "vae": "VAE",
+            "latent": "Latent",
+            "images_1": "Imagem 1"
+        },
+        "widgets": {
+            "Number of Guides": "Quantidade de orientações",
+            "index_1": "Índice 1",
+            "strength_1": "Força 1"
+        },
+        "outputs": {
+            "latent": "Latent"
+        },
+        "description": "Substitui os quadros Latent do vídeo pelas imagens de entrada codificadas, usando o recurso de combinação dinâmica, que requer o ComfyUI 0.8.1 e o frontend 1.33.4 ou superior."
+    },
+    "LTXVAudioVideoMask": {
+        "title": "Máscaras de áudio e vídeo (KJ)",
+        "inputs": {
+            "video_latent": "Latent de vídeo",
+            "audio_latent": "Latent de áudio"
+        },
+        "widgets": {
+            "video_fps": "Taxa de quadros do vídeo",
+            "video_start_time": "Início do vídeo",
+            "video_end_time": "Fim do vídeo",
+            "audio_start_time": "Início do áudio",
+            "audio_end_time": "Fim do áudio",
+            "max_length": "Duração máxima"
+        },
+        "outputs": {
+            "video_latent": "Latent de vídeo",
+            "audio_latent": "Latent de áudio"
+        },
+        "description": "Cria máscaras de ruído para o conteúdo Latent de vídeo e áudio conforme os intervalos de tempo especificados. Novo conteúdo será gerado nas áreas mascaradas."
+    },
+    "LTX2AttentionTunerPatch": {
+        "title": "Patch de ajuste de atenção LTX2 (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "blocks": "Bloco",
+            "video_scale": "Escala do vídeo",
+            "audio_scale": "Escala do áudio",
+            "audio_to_video_scale": "Escala de áudio para vídeo",
+            "video_to_audio_scale": "Escala de vídeo para áudio"
+        },
+        "outputs": {
+            "model": "Modelo"
+        },
+        "description": "Experimental! Forward personalizado do LTX2 com fatores de escala de atenção definidos por modalidade, que também reduz o uso de pico de VRAM."
+    },
+    "LTX2_NAG": {
+        "title": "Guidance de atenção normalizada LTX2 (KJ)",
+        "inputs": {
+            "model": "Modelo",
+            "nag_cond_video": "Condição de vídeo",
+            "nag_cond_audio": "Condição de áudio"
+        },
+        "widgets": {
+            "nag_scale": "Escala NAG",
+            "nag_alpha": "NAG alpha",
+            "nag_tau": "NAG tau",
+            "inplace": "Operação in-place"
+        },
+        "outputs": {
+            "model": "Modelo"
+        },
+        "description": "https://github.com/ChenDarYen/Normalized-Attention-Guidance"
+    },
+    "LTX2MemoryEfficientSageAttentionPatch": {
+        "title": "Patch de atenção Sage eficiente em memória LTX2 (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "Modelo"
+        },
+        "description": "Experimental! Ativa a Sage Attention customizada para reduzir o pico de VRAM, sobrescrevendo o modo de atenção. Requer a versão mais recente da Sage Attention."
+    },
+    "LTXVChunkFeedForward": {
+        "title": "LTX Vídeo: ativação de feed-forward em blocos (KJ)",
+        "inputs": {
+            "model": "Modelo"
+        },
+        "widgets": {
+            "chunks": "Blocos",
+            "dim_threshold": "Limiar de dimensão"
+        },
+        "outputs": {
+            "model": "Modelo"
+        },
+        "description": "Experimental e pode alterar a saída do modelo! As ativações de feed-forward em blocos (conceito de redes neurais) reduzem o uso de pico de memória."
+    },
+    "LTX2LoraLoaderAdvanced": {
+        "title": "Carregador de Lora avançado LTX2 (KJ)",
+        "inputs": {
+            "model": "Modelo",
+            "opt_lora_path": "Caminho do LoRA otimizado",
+            "blocks": "Bloco"
+        },
+        "widgets": {
+            "lora_name": "Nome do LoRA",
+            "strength_model": "Força do modelo",
+            "video": "Vídeo",
+            "video_to_audio": "Vídeo para áudio",
+            "audio": "Áudio",
+            "audio_to_video": "Áudio para vídeo",
+            "other": "Outros"
+        },
+        "outputs": {
+            "model": "Modelo",
+            "loaded_keys_info": "Carregar informações das chaves",
+            "rank": "Rank"
+        },
+        "description": "Carregador de LoRA avançado com controle de força por bloco para modelos LTX2"
+    },
+    "HDRPreviewKJ": {
+        "title": "Pré-visualização HDR (KJ)",
+        "inputs": {
+            "image": "Imagem"
+        },
+        "widgets": {
+            "exposure": "Exposição",
+            "saturation": "Saturação",
+            "fps": "Taxa de quadros",
+            "input_space": "Espaço de entrada"
+        },
+        "outputs": {
+            "image": "Imagem"
+        },
+        "description": "Pré-visualização de exposição em tempo real para imagens compactadas de alta faixa dinâmica (HDR).\nEntrada: lote de imagens/vídeo no intervalo [0,1] comprimido em LogC3 (por exemplo, a saída decodificada pelo VAE em workflows HDR IC-LoRA, ainda sem descompressão HDR).\nO feedback em tempo real dos controles deslizantes é implementado no fragment shader WebGL do navegador, passando por descompressão, exposição, saturação, tone mapping Reinhard e tratamento sRGB. A mesma matemática roda no servidor para gerar a saída de imagem sRGB finalizada. \nAs alterações dos controles deslizantes atualizam a pré-visualização imediatamente; a saída de imagem é atualizada somente quando o workflow é reenfileirado. "
+    },
+    "HunyuanVideoEncodeKeyframesToCond": {
+        "title": "Hunyuan Vídeo: codificar primeiros e últimos quadros na condição (KJ)",
+        "inputs": {
+            "model": "Modelo",
+            "positive": "Prompt positivo",
+            "vae": "VAE",
+            "start_frame": "Quadro inicial",
+            "end_frame": "Quadro final",
+            "negative": "Prompt negativo"
+        },
+        "widgets": {
+            "num_frames": "Número de quadros",
+            "tile_size": "Tamanho do bloco",
+            "overlap": "Sobreposição",
+            "temporal_size": "Dimensão temporal",
+            "temporal_overlap": "Sobreposição temporal"
+        },
+        "outputs": {
+            "model": "Modelo",
+            "positive": "Prompt positivo",
+            "negative": "Prompt negativo",
+            "latent": "Latent"
+        }
+    }
+}

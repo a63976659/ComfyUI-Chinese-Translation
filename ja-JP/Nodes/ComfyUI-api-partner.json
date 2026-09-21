@@ -1,0 +1,4810 @@
+{
+    "ClaudeNode": {
+        "title": "Anthropic Claude",
+        "inputs": {
+            "source": "ソースパス",
+            "image_1": "画像_1"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "model": "モデル",
+            "max_tokens": "最大トークン数",
+            "temperature": "温度",
+            "reasoning_effort": "推論パワー",
+            "seed": "シード"
+        },
+        "outputs": {
+            "String": "文字列"
+        },
+        "description": "AnthropicのClaudeモデルを使用してテキスト応答を生成します。テキストプロンプトを提供し、必要に応じて1枚以上の画像を添付してマルチモーダルコンテキストを構築できます。"
+    },
+    "ByteDanceSeedNode": {
+        "title": "ByteDance Seedance2.0",
+        "inputs": {
+            "video_1": "動画_1",
+            "image_1": "画像_1"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "model": "モデル",
+            "temperature": "温度",
+            "seed": "シード"
+        },
+        "outputs": {
+            "String": "文字列"
+        },
+        "description": "ByteDanceのSeed2.0モデルを使用してテキスト応答を生成します。テキストプロンプトを提供し、必要に応じて1枚以上の画像または動画を添付してマルチモーダルコンテキストを強化できます。"
+    },
+    "ByteDance2ReferenceNodeV2": {
+        "title": "ByteDance Seedance 2.5 動画参考",
+        "inputs": {
+            "image_1": "画像1",
+            "image_2": "画像2",
+            "image_3": "画像3",
+            "image_4": "画像4",
+            "image_5": "画像5",
+            "image_6": "画像6",
+            "image_7": "画像7",
+            "image_8": "画像8",
+            "image_9": "画像9",
+            "audio_1": "音声1",
+            "audio_2": "音声2",
+            "audio_3": "音声3",
+            "video_1": "動画1",
+            "video_2": "動画2",
+            "video_3": "動画3",
+            "asset_1": "アセット1",
+            "asset_2": "アセット2",
+            "asset_3": "アセット3"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "resolution": "解像度",
+            "ratio": "アスペクト比",
+            "generate_audio": "音声を生成",
+            "duration": "尺",
+            "task_type": "タスク種別",
+            "auto_downscale": "自動縮小",
+            "auto_upscale": "自動拡大",
+            "output_format": "出力形式",
+            "seed": "シード",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "String": "文字列"
+        },
+        "description": "Seedance2.5または2.0で動画の生成・編集・拡張。参考画像・動画・音声に対応。マルチモーダル参考、動画編集、動画拡張をサポート。"
+    },
+    "ByteDanceVideoEnhanceNode": {
+        "title": "ByteDance vCube 動画強化",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "tool_version": "ツールバージョン",
+            "scene": "シーン",
+            "enhance_style": "強化スタイル",
+            "resolution": "解像度",
+            "fps": "フレームレート",
+            "bitrate_level": "ビットレートレベル"
+        },
+        "outputs": {},
+        "description": "ByteDance vCubeで動画をアップスケール・修復：最大8Kのスーパーレゾリューションに対応し、圧縮・アーティファクト/ノイズ除去、色彩とシャープネスを向上、フレーム補間もオプションで利用可能。"
+    },
+    "GeminiNode": {
+        "title": "Google Gemini",
+        "inputs": {
+            "images": "画像グループ",
+            "audio": "音声",
+            "video": "動画",
+            "files": "Gemini入力ファイル",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "ratio": "アスペクト比",
+            "duration": "尺",
+            "model": "モデル"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "STRING": "文字列"
+        }
+    },
+    "GeminiNodeV2": {
+        "title": "Google Gemini V2",
+        "inputs": {
+            "image_1": "画像1",
+            "image_2": "画像2",
+            "image_3": "画像3",
+            "image_4": "画像4",
+            "image_5": "画像5",
+            "image_6": "画像6",
+            "image_7": "画像7",
+            "image_8": "画像8",
+            "image_9": "画像9",
+            "video_1": "動画1",
+            "audio_1": "音声1",
+            "files": "Gemini入力ファイル"
+        },
+        "widgets": {
+            "model": "モデル",
+            "thinking_level": "思考レベル",
+            "temperature": "温度",
+            "max_output_tokens": "最大出力トークン数",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "duration": "尺"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "STRING": "文字列"
+        }
+    },
+    "GeminiVideoOmniV2": {
+        "title": "Google動画 Gemini Omni",
+        "inputs": {
+            "image_1": "画像1",
+            "image_2": "画像2",
+            "image_3": "画像3",
+            "image_4": "画像4",
+            "image_5": "画像5",
+            "image_6": "画像6",
+            "image_7": "画像7",
+            "image_8": "画像8",
+            "image_9": "画像9",
+            "video_1": "動画1",
+            "video_2": "動画2",
+            "video_3": "動画3"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "aspect_ratio": "アスペクト比",
+            "duration": "尺",
+            "task_type": "タスク種別",
+            "seed": "シード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "STRING": "文字列"
+        }
+    },
+    "GeminiInputFiles": {
+        "title": "Google Gemini入力ファイル",
+        "inputs": {
+            "GEMINI_INPUT_FILES": "Gemini入力ファイル",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "file": "ファイル",
+            "model": "モデル"
+        },
+        "outputs": {
+            "GEMINI_INPUT_FILES": "Gemini入力ファイル",
+            "STRING": "文字列"
+        }
+    },
+    "OpenAIChatNode": {
+        "title": "OpenAIチャット",
+        "inputs": {
+            "images": "画像グループ",
+            "audio": "音声",
+            "advanced_options": "詳細オプション",
+            "files": "OpenAI入力ファイル",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "persist_context": "永続化コンテキスト",
+            "duration": "尺",
+            "model": "モデル"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "STRING": "文字列"
+        }
+    },
+    "OpenAIInputFiles": {
+        "title": "OpenAIチャット入力ファイル",
+        "inputs": {
+            "OPENAI_INPUT_FILES": "OpenAI入力ファイル",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "file": "ファイル",
+            "model": "モデル"
+        },
+        "outputs": {
+            "OPENAI_INPUT_FILES": "OpenAI入力ファイル",
+            "STRING": "文字列"
+        }
+    },
+    "OpenAIChatConfig": {
+        "title": "OpenAIチャット詳細オプション",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "truncation": "切り詰め",
+            "max_output_tokens": "最大出力トークン数",
+            "quality": "品質",
+            "n": "数量",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "auth_token": "認可トークン数"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "詳細オプション",
+            "string": "文字列"
+        }
+    },
+    "OpenRouterLLMNode": {
+        "title": "OpenRouter LLM",
+        "inputs": {
+            "image_1": "画像1",
+            "image_2": "画像2",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "reasoning_effort": "努力推論",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "auth_token": "認可トークン数"
+        },
+        "outputs": {
+            "OPENAI_CHAT_CONFIG": "詳細オプション",
+            "string": "文字列"
+        }
+    },
+    "BeebleSwitchXVideoEdit": {
+        "title": "Beeble SwitchX 動画編集",
+        "inputs": {
+            "video": "動画",
+            "reference_image": "参考画像"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "alpha_mode": "Alphaモード",
+            "max_resolution": "最大解像度",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "video": "動画",
+            "alpha": "Alpha"
+        },
+        "description": "BeebleSwitchXで動画を編集。元被写体のピクセルと動作を保ったまま、シーン内の任意の要素（背景・照明・衣装）を切替可能。新しいビジュアルを記述する参考画像やテキストプロンプトを指定してください。最大240フレーム、各フレーム最大約2.77MP。"
+    },
+    "BriaRemoveVideoBackground": {
+        "title": "Bria動画背景除去",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "background_color": "背景色",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        }
+    },
+    "BriaVideoGreenScreen": {
+        "title": "Bria 動画グリーンスクリーン",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "green_shade": "グリーンスクリーン色",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "Briaを使用して動画の背景を単色のクロマキー画面に置き換えます。"
+    },
+    "BriaTransparentVideoBackground": {
+        "title": "Bria 動画背景除去（透明）",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "images": "画像",
+            "mask": "マスク"
+        },
+        "description": "Briaで動画から背景を除去し、トリミングフレームとAlphaマスクを返します。合成ノードに接続するか、WEBM保存に渡して透明動画を生成。"
+    },
+    "ByteDanceTextToVideoNode": {
+        "title": "ByteDance テキスト→動画",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "aspect_ratio": "アスペクト比",
+            "duration": "尺",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "camera_fixed": "固定カメラ",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "video": "動画",
+            "VIDEO": "動画"
+        }
+    },
+    "ByteDanceImageToVideoNode": {
+        "title": "ByteDance 画像→動画",
+        "inputs": {
+            "image": "画像",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "aspect_ratio": "アスペクト比",
+            "duration": "尺",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "camera_fixed": "固定カメラ",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "video": "動画",
+            "VIDEO": "動画"
+        }
+    },
+    "ByteDanceFirstLastFrameNode": {
+        "title": "ByteDance 最初/最終フレーム→動画",
+        "inputs": {
+            "first_frame": "最初のフレーム画像",
+            "last_frame": "最後のフレーム画像",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "aspect_ratio": "アスペクト比",
+            "duration": "尺",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "camera_fixed": "固定カメラ",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "video": "動画",
+            "VIDEO": "動画"
+        }
+    },
+    "ByteDanceImageReferenceNode": {
+        "title": "ByteDance 参考画像→動画",
+        "inputs": {
+            "images": "画像グループ",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "aspect_ratio": "アスペクト比",
+            "duration": "尺",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "camera_fixed": "固定カメラ",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "video": "動画",
+            "VIDEO": "動画"
+        }
+    },
+    "ByteDance2TextToVideoNode": {
+        "title": "ByteDance2.0 テキスト→動画",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "ratio": "アスペクト比",
+            "generate_audio": "音声を生成",
+            "duration": "尺",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "camera_fixed": "固定カメラ",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "video": "動画",
+            "VIDEO": "動画"
+        }
+    },
+    "ByteDance2FirstLastFrameNode": {
+        "title": "ByteDance2.0 最初/最終フレーム→動画",
+        "inputs": {
+            "first_frame": "最初のフレーム画像",
+            "last_frame": "最後のフレーム画像",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "ratio": "アスペクト比",
+            "generate_audio": "音声を生成",
+            "duration": "尺",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "video": "動画",
+            "VIDEO": "動画"
+        }
+    },
+    "ByteDance2ReferenceNode": {
+        "title": "ByteDance2.0 参考→動画",
+        "inputs": {
+            "image_1": "画像1",
+            "image_2": "画像2",
+            "image_3": "画像3",
+            "image_4": "画像4",
+            "image_5": "画像5",
+            "image_6": "画像6",
+            "image_7": "画像7",
+            "image_8": "画像8",
+            "image_9": "画像9",
+            "video_1": "動画1",
+            "video_2": "動画2",
+            "video_3": "動画3",
+            "audio_1": "音声1",
+            "audio_2": "音声2",
+            "audio_3": "音声3",
+            "asset_1": "アセット1",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "ratio": "アスペクト比",
+            "generate_audio": "音声を生成",
+            "duration": "尺",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "camera_fixed": "固定カメラ",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "video": "動画",
+            "VIDEO": "動画"
+        }
+    },
+    "ByteDanceCreateVideoAsset": {
+        "title": "ByteDance 動画アセット作成",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "group_id": "グループID"
+        },
+        "outputs": {
+            "asset_id": "アセットID",
+            "group_id": "グループID"
+        },
+        "description": "Seedance2.0の個人動画アセットを作成します。入力動画をアップロードして指定アセットグループに登録します。\n アセットIDが空の場合、本人確認H5フローを実行して新しいグループを作成してからアセットを追加します。"
+    },
+    "GrokVideoNode": {
+        "title": "Grok 動画",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "duration": "尺"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        }
+    },
+    "GrokVideoReferenceNode": {
+        "title": "Grok 参考→動画",
+        "inputs": {
+            "reference_0": "参考0",
+            "reference_1": "参考1",
+            "reference_2": "参考2",
+            "reference_3": "参考3",
+            "reference_4": "参考4",
+            "reference_5": "参考5",
+            "reference_6": "参考6"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "aspect_ratio": "アスペクト比",
+            "duration": "尺",
+            "seed": "シード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        }
+    },
+    "GrokVideoEditNode": {
+        "title": "Grok 動画編集",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "model": "モデル",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "duration": "尺"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        }
+    },
+    "GrokVideoExtendNode": {
+        "title": "Grok 動画延長",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "model": "モデル",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "duration": "尺"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        }
+    },
+    "HitPawVideoEnhance": {
+        "title": "HitPaw 動画強化",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        }
+    },
+    "KlingCameraControls": {
+        "title": "Kling カメラ制御",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "camera_control_type": "カメラ制御タイプ",
+            "horizontal_movement": "水平移動",
+            "vertical_movement": "垂直移動",
+            "pan": "パン",
+            "tilt": "チルト",
+            "roll": "回転",
+            "zoom": "ズーム"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "camera_control": "カメラ制御パラメータ"
+        }
+    },
+    "KlingTextToVideoNode": {
+        "title": "Kling テキスト→動画",
+        "inputs": {},
+        "widgets": {
+            "cfg_scale": "CFGスケール",
+            "mode": "モード",
+            "aspect_ratio": "アスペクト比",
+            "task_id": "タスクID",
+            "auth_token": "認可トークン数",
+            "camera_control": "カメラ制御パラメータ",
+            "model_name": "モデル名",
+            "duration": "尺"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "KlingImage2VideoNode": {
+        "title": "Kling 画像→動画",
+        "inputs": {
+            "start_frame": "開始フレーム",
+            "end_frame": "終了フレーム",
+            "camera_control": "カメラ制御パラメータ",
+            "prompt": "プロンプト",
+            "negative_prompt": "ネガティブプロンプト"
+        },
+        "widgets": {
+            "cfg_scale": "CFGスケール",
+            "mode": "モード",
+            "aspect_ratio": "アスペクト比",
+            "task_id": "タスクID",
+            "auth_token": "認可トークン数",
+            "model_name": "モデル名",
+            "duration": "尺"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "KlingCameraControlI2VNode": {
+        "title": "Kling 画像→動画（カメラ制御）",
+        "inputs": {
+            "start_frame": "開始フレーム",
+            "end_frame": "終了フレーム",
+            "camera_control": "カメラ制御パラメータ",
+            "prompt": "プロンプト",
+            "negative_prompt": "ネガティブプロンプト"
+        },
+        "widgets": {
+            "cfg_scale": "CFGスケール",
+            "mode": "モード",
+            "aspect_ratio": "アスペクト比",
+            "task_id": "タスクID",
+            "auth_token": "認可トークン数",
+            "model_name": "モデル名",
+            "duration": "尺"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "KlingCameraControlT2VNode": {
+        "title": "Kling テキスト→動画（カメラ制御）",
+        "inputs": {
+            "camera_control": "カメラ制御パラメータ",
+            "prompt": "プロンプト",
+            "negative_prompt": "ネガティブプロンプト"
+        },
+        "widgets": {
+            "cfg_scale": "CFGスケール",
+            "mode": "モード",
+            "aspect_ratio": "アスペクト比",
+            "task_id": "タスクID",
+            "auth_token": "認可トークン数",
+            "model_name": "モデル名",
+            "duration": "尺"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "KlingStartEndFrameNode": {
+        "title": "Kling 最初/最終フレーム→動画",
+        "inputs": {
+            "start_frame": "開始フレーム",
+            "end_frame": "終了フレーム",
+            "camera_control": "カメラ制御パラメータ",
+            "prompt": "プロンプト",
+            "negative_prompt": "ネガティブプロンプト"
+        },
+        "widgets": {
+            "cfg_scale": "CFGスケール",
+            "mode": "モード",
+            "aspect_ratio": "アスペクト比",
+            "task_id": "タスクID",
+            "auth_token": "認可トークン数",
+            "model_name": "モデル名",
+            "duration": "尺"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "KlingVideoExtendNode": {
+        "title": "Kling 動画拡張",
+        "inputs": {
+            "start_frame": "開始フレーム",
+            "end_frame": "終了フレーム",
+            "video_id": "動画ID",
+            "prompt": "プロンプト",
+            "negative_prompt": "ネガティブプロンプト"
+        },
+        "widgets": {
+            "cfg_scale": "CFGスケール",
+            "mode": "モード",
+            "aspect_ratio": "アスペクト比",
+            "task_id": "タスクID",
+            "auth_token": "認可トークン数",
+            "model_name": "モデル名",
+            "duration": "尺"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "KlingLipSyncAudioToVideoNode": {
+        "title": "Kling 音声駆動動画リップシンク",
+        "inputs": {
+            "audio": "音声",
+            "text": "テキスト",
+            "video": "動画"
+        },
+        "widgets": {
+            "voice_language": "音声言語",
+            "voice_speed": "音声速度",
+            "mode": "モード",
+            "task_id": "タスクID",
+            "auth_token": "認可トークン数",
+            "model_name": "モデル名",
+            "voice_id": "音声ID"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "KlingLipSyncTextToVideoNode": {
+        "title": "Kling テキスト駆動リップシンク動画",
+        "inputs": {
+            "audio": "音声",
+            "text": "テキスト",
+            "video": "動画"
+        },
+        "widgets": {
+            "voice_language": "音声言語",
+            "voice_speed": "音声速度",
+            "mode": "モード",
+            "task_id": "タスクID",
+            "auth_token": "認可トークン数",
+            "voice": "音声",
+            "voice_id": "音声ID"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "KlingSingleImageVideoEffectNode": {
+        "title": "Kling 単一キャラクター動画エフェクト",
+        "inputs": {
+            "image": "画像",
+            "video_id": "動画ID"
+        },
+        "widgets": {
+            "dual_character": "二人のキャラクター",
+            "effect_scene": "エフェクトシーン",
+            "mode": "モード",
+            "aspect_ratio": "アスペクト比",
+            "task_id": "タスクID",
+            "auth_token": "認可トークン数",
+            "model_name": "モデル名",
+            "duration": "尺"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "KlingDualCharacterVideoEffectNode": {
+        "title": "Kling 二人キャラクター動画エフェクト",
+        "inputs": {
+            "image_1": "画像1",
+            "image_2": "画像2",
+            "video_id": "動画ID",
+            "image_left": "左画像",
+            "image_right": "右画像"
+        },
+        "widgets": {
+            "dual_character": "二人のキャラクター",
+            "effect_scene": "エフェクトシーン",
+            "mode": "モード",
+            "aspect_ratio": "アスペクト比",
+            "task_id": "タスクID",
+            "auth_token": "認可トークン数",
+            "model_name": "モデル名",
+            "duration": "尺"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "KlingOmniProTextToVideoNode": {
+        "title": "Kling Omniテキスト→動画ノード（プロ版）",
+        "inputs": {
+            "reference_images": "参考画像"
+        },
+        "widgets": {
+            "model_name": "モデル名",
+            "resolution": "解像度",
+            "auth_token": "認可トークン数",
+            "aspect_ratio": "アスペクト比",
+            "n": "数量"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "string": "文字列"
+        }
+    },
+    "KlingOmniProFirstLastFrameNode": {
+        "title": "Kling Omni最初/最終フレーム→動画（プロ版）",
+        "inputs": {
+            "first_frame": "最初のフレーム画像",
+            "end_frame": "最後のフレーム画像",
+            "reference_images": "参考画像"
+        },
+        "widgets": {
+            "model_name": "モデル名",
+            "resolution": "解像度",
+            "duration": "持続時間",
+            "aspect_ratio": "アスペクト比"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "string": "文字列"
+        }
+    },
+    "KlingOmniProImageToVideoNode": {
+        "title": "Kling Omni画像→動画（プロ版）",
+        "inputs": {
+            "reference_images": "参考画像"
+        },
+        "widgets": {
+            "model_name": "モデル名",
+            "resolution": "解像度",
+            "duration": "持続時間",
+            "aspect_ratio": "アスペクト比"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "string": "文字列"
+        }
+    },
+    "KlingOmniProVideoToVideoNode": {
+        "title": "Kling Omni動画→動画（プロ版）",
+        "inputs": {
+            "reference_video": "参考動画",
+            "reference_images": "参考画像"
+        },
+        "widgets": {
+            "model_name": "モデル名",
+            "keep_original_sound": "元音声を使用",
+            "duration": "持続時間",
+            "aspect_ratio": "アスペクト比"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "string": "文字列"
+        }
+    },
+    "KlingOmniProEditVideoNode": {
+        "title": "Kling Omni動画編集（プロ版）",
+        "inputs": {
+            "video": "動画",
+            "reference_images": "参考画像"
+        },
+        "widgets": {
+            "model_name": "モデル名",
+            "keep_original_sound": "元の音声を保持"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        }
+    },
+    "KlingTextToVideoWithAudio": {
+        "title": "Kling テキスト→動画（音声付き）",
+        "inputs": {},
+        "widgets": {
+            "model_name": "モデル名",
+            "mode": "モード",
+            "aspect_ratio": "アスペクト比",
+            "duration": "尺",
+            "auth_token": "認可トークン数",
+            "generate_audio": "音声を生成"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "KlingImageToVideoWithAudio": {
+        "title": "Kling 画像→動画（音声付き）",
+        "inputs": {
+            "start_frame": "開始フレーム"
+        },
+        "widgets": {
+            "model_name": "モデル名",
+            "mode": "モード",
+            "generate_audio": "音声を生成",
+            "duration": "尺"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "KlingMotionControl": {
+        "title": "Kling モーション制御",
+        "inputs": {
+            "reference_video": "参考動画",
+            "reference_image": "参考画像"
+        },
+        "widgets": {
+            "mode": "モード",
+            "character_orientation": "キャラクター配置",
+            "keep_original_sound": "元の音声を保持"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        }
+    },
+    "KlingAvatarNode": {
+        "title": "Kling Avatar 2",
+        "inputs": {
+            "image": "画像",
+            "sound_file": "音声ファイル"
+        },
+        "widgets": {
+            "mode": "モード",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        }
+    },
+    "LtxvApiTextToVideo": {
+        "title": "LTXVテキスト→動画",
+        "inputs": {
+            "positive": "ポジティブ条件",
+            "negative": "ネガティブ条件",
+            "vae": "VAEエンコーダー",
+            "image": "画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "resolution": "解像度",
+            "duration": "尺（秒）",
+            "fps": "フレームレート(fps)",
+            "control_after_generate": "生成後制御",
+            "generate_audio": "音声を生成"
+        },
+        "outputs": {
+            "video": "動画",
+            "VIDEO": "動画"
+        }
+    },
+    "LtxvApiImageToVideo": {
+        "title": "LTXV画像→動画",
+        "inputs": {
+            "positive": "ポジティブ条件",
+            "negative": "ネガティブ条件",
+            "vae": "VAEエンコーダー",
+            "image": "画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "resolution": "解像度",
+            "duration": "尺（秒）",
+            "fps": "フレームレート(fps)",
+            "control_after_generate": "生成後制御",
+            "generate_audio": "音声を生成"
+        },
+        "outputs": {
+            "video": "動画",
+            "VIDEO": "動画"
+        }
+    },
+    "LtxApi25TextToVideo": {
+        "title": "LTX 2.5 テキスト→動画",
+        "inputs": {},
+        "widgets": {
+            "model": "モデル",
+            "duration": "尺（秒）",
+            "resolution": "解像度",
+            "fps": "フレームレート(fps)",
+            "generate_audio": "音声を生成",
+            "prompt": "プロンプト",
+            "seed": "シード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        }
+    },
+    "LtxApi25ImageToVideo": {
+        "title": "LTX 2.5 画像→動画",
+        "inputs": {
+            "last_frame": "前フレーム",
+            "image": "画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "duration": "尺（秒）",
+            "resolution": "解像度",
+            "fps": "フレームレート(fps)",
+            "generate_audio": "音声を生成",
+            "prompt": "プロンプト",
+            "seed": "シード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        }
+    },
+    "LtxApi25AudioToVideo": {
+        "title": "LTX 2.5 音声→動画",
+        "inputs": {
+            "audio": "音声",
+            "image": "画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "prompt": "プロンプト",
+            "seed": "シード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        }
+    },
+    "LumaVideoNode": {
+        "title": "Lumaテキスト→動画",
+        "inputs": {
+            "luma_concepts": "Lumaコンセプト",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "duration": "尺",
+            "loop": "ループ",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "auth_token": "認可トークン数",
+            "weight": "重み"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "luma_concepts": "Lumaコンセプト",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "LumaImageToVideoNode": {
+        "title": "Luma画像→動画",
+        "inputs": {
+            "first_image": "最初のフレーム画像",
+            "last_image": "最後のフレーム画像",
+            "luma_concepts": "Lumaコンセプト",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "duration": "尺",
+            "loop": "ループ",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "auth_token": "認可トークン数",
+            "weight": "重み"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "luma_concepts": "Lumaコンセプト",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "LumaConceptsNode": {
+        "title": "Lumaコンセプト",
+        "inputs": {
+            "image": "画像",
+            "prompt": "プロンプト",
+            "luma_concepts": "Lumaコンセプト"
+        },
+        "widgets": {
+            "image_type": "画像タイプ",
+            "concept1": "コンセプト1",
+            "concept2": "コンセプト2",
+            "concept3": "コンセプト3",
+            "concept4": "コンセプト4",
+            "auth_token": "認可トークン数",
+            "aspect_ratio": "アスペクト比",
+            "n": "数量"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "luma_concepts": "Lumaコンセプト"
+        }
+    },
+    "MinimaxTextToVideoNode": {
+        "title": "MiniMaxテキスト→動画",
+        "inputs": {
+            "image": "画像",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "duration": "尺",
+            "subject": "被写体",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "auth_token": "認可トークン数",
+            "weight": "重み"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "luma_concepts": "Lumaコンセプト",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "MinimaxImageToVideoNode": {
+        "title": "MiniMax画像→動画",
+        "inputs": {
+            "image": "画像",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "duration": "尺",
+            "subject": "被写体",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "auth_token": "認可トークン数",
+            "weight": "重み"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "luma_concepts": "Lumaコンセプト",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "MinimaxHailuoVideoNode": {
+        "title": "MiniMax Hailuo動画",
+        "inputs": {
+            "first_frame_image": "最初のフレーム画像",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "prompt_optimizer": "プロンプト最適化",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "duration": "尺",
+            "subject": "被写体",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "auth_token": "認可トークン数",
+            "weight": "重み"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "luma_concepts": "Lumaコンセプト",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "PixverseTextToVideoNode": {
+        "title": "PixVerseテキスト→動画",
+        "inputs": {
+            "video": "動画",
+            "image": "画像",
+            "pixverse_template": "PixVerseテンプレート",
+            "prompt_text": "プロンプトテキスト",
+            "negative_prompt": "ネガティブプロンプト"
+        },
+        "widgets": {
+            "aspect_ratio": "アスペクト比",
+            "quality": "品質",
+            "duration_seconds": "尺（秒）",
+            "motion_mode": "モーションモード",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "auth_token": "認可トークン数"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "string": "文字列"
+        }
+    },
+    "PixverseImageToVideoNode": {
+        "title": "PixVerse画像→動画",
+        "inputs": {
+            "video": "動画",
+            "image": "画像",
+            "pixverse_template": "PixVerseテンプレート",
+            "prompt_text": "プロンプトテキスト",
+            "negative_prompt": "ネガティブプロンプト"
+        },
+        "widgets": {
+            "aspect_ratio": "アスペクト比",
+            "quality": "品質",
+            "duration_seconds": "尺（秒）",
+            "motion_mode": "モーションモード",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "auth_token": "認可トークン数"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "string": "文字列"
+        }
+    },
+    "PixverseTransitionVideoNode": {
+        "title": "PixVerseトランジション動画",
+        "inputs": {
+            "first_frame": "最初のフレーム",
+            "last_frame": "最後のフレーム",
+            "pixverse_template": "PixVerseテンプレート",
+            "prompt_text": "プロンプトテキスト",
+            "negative_prompt": "ネガティブプロンプト"
+        },
+        "widgets": {
+            "aspect_ratio": "アスペクト比",
+            "quality": "品質",
+            "duration_seconds": "尺（秒）",
+            "motion_mode": "モーションモード",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "auth_token": "認可トークン数"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "string": "文字列"
+        }
+    },
+    "PixverseTemplateNode": {
+        "title": "PixVerseテンプレート",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "template": "テンプレート"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "pixverse_template": "PixVerseテンプレート"
+        }
+    },
+    "RunwayFirstLastFrameNode": {
+        "title": "Runway最初/最終フレーム動画",
+        "inputs": {
+            "positive": "ポジティブ条件",
+            "negative": "ネガティブ条件",
+            "camera_conditions": "カメラ条件",
+            "start_frame": "開始フレーム",
+            "end_frame": "終了フレーム"
+        },
+        "widgets": {
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "ratio": "アスペクト比",
+            "duration": "尺",
+            "batch_size": "バッチサイズ"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "RunwayImageToVideoNodeGen3a": {
+        "title": "Runway画像→動画(Gen3a Turbo)",
+        "inputs": {
+            "positive": "ポジティブ条件",
+            "negative": "ネガティブ条件",
+            "camera_conditions": "カメラ条件",
+            "start_frame": "開始フレーム",
+            "end_frame": "終了フレーム"
+        },
+        "widgets": {
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "ratio": "アスペクト比",
+            "duration": "尺",
+            "batch_size": "バッチサイズ"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "RunwayImageToVideoNodeGen4": {
+        "title": "Runway画像→動画(Gen4 Turbo)",
+        "inputs": {
+            "positive": "ポジティブ条件",
+            "negative": "ネガティブ条件",
+            "camera_conditions": "カメラ条件",
+            "start_frame": "開始フレーム",
+            "end_frame": "終了フレーム"
+        },
+        "widgets": {
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "ratio": "アスペクト比",
+            "duration": "尺",
+            "batch_size": "バッチサイズ"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video_id": "動画ID",
+            "duration": "尺",
+            "string": "文字列"
+        }
+    },
+    "OpenAIVideoSora2": {
+        "title": "OpenAI Sora2 - 動画",
+        "inputs": {
+            "image": "画像",
+            "audio": "音声"
+        },
+        "widgets": {
+            "model": "モデル",
+            "size": "サイズ",
+            "resolution": "解像度",
+            "duration": "尺（秒）",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "generate_audio": "音声を生成",
+            "prompt_extend": "プロンプト拡張",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "TopazVideoEnhance": {
+        "title": "Topaz動画エンハンサー",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "upscaler_enabled": "エンハンサーを有効化",
+            "upscaler_model": "強化モデル",
+            "upscaler_resolution": "解像度を引き上げ",
+            "upscaler_creativity": "尺を引き上げ",
+            "interpolation_enabled": "補間を有効化",
+            "interpolation_model": "補間モデル",
+            "interpolation_slowmo": "補間スローモーション",
+            "interpolation_frame_rate": "補間フレームレート",
+            "interpolation_duplicate": "補間重複項目",
+            "interpolation_duplicate_threshold": "補間重複しきい値",
+            "dynamic_compression_level": "動的最適化レベル"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video": "動画"
+        }
+    },
+    "TopazVideoEnhanceV2": {
+        "title": "Topaz動画エンハンサーV2",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "upscaler_model": "強化モデル",
+            "upscaler_resolution": "解像度を引き上げ",
+            "creativity": "尺",
+            "sharp:": "シャープ",
+            "realism:": "写実",
+            "interpolation_model": "補間モデル",
+            "dynamic_compression_level": "動的最適化レベル"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video": "動画"
+        }
+    },
+    "VeoVideoGenerationNode": {
+        "title": "Google Veo2動画生成",
+        "inputs": {
+            "image": "画像",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "negative_prompt": "ネガティブプロンプト",
+            "aspect_ratio": "アスペクト比",
+            "duration_seconds": "動画尺（秒）",
+            "enhance_prompt": "プロンプト強化",
+            "person_generation": "人物生成モード",
+            "seed": "ランダムシード",
+            "model": "モデル",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "Veo3VideoGenerationNode": {
+        "title": "Google Veo3動画生成",
+        "inputs": {
+            "image": "画像",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "negative_prompt": "ネガティブプロンプト",
+            "aspect_ratio": "アスペクト比",
+            "duration_seconds": "動画尺（秒）",
+            "enhance_prompt": "プロンプト強化",
+            "person_generation": "人物生成モード",
+            "seed": "ランダムシード",
+            "model": "モデル",
+            "generate_audio": "音声を生成",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "Veo3FirstLastFrameNode": {
+        "title": "Google Veo3最初/最終フレーム動画生成",
+        "inputs": {
+            "first_frame": "最初のフレーム画像",
+            "last_frame": "最後のフレーム画像"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "negative_prompt": "ネガティブプロンプト",
+            "resolution": "解像度",
+            "aspect_ratio": "アスペクト比",
+            "duration": "尺（秒）",
+            "enhance_prompt": "プロンプト強化",
+            "person_generation": "人物生成モード",
+            "seed": "ランダムシード",
+            "model": "モデル",
+            "generate_audio": "音声を生成",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "ViduTextToVideoNode": {
+        "title": "Viduテキスト→動画",
+        "inputs": {
+            "image": "画像",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "duration": "尺（秒）",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "movement_amplitude": "モーション量"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "ViduImageToVideoNode": {
+        "title": "Vidu画像→動画",
+        "inputs": {
+            "image": "画像",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "duration": "尺（秒）",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "movement_amplitude": "モーション量"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "ViduReferenceVideoNode": {
+        "title": "Vidu参考→動画",
+        "inputs": {
+            "images": "画像グループ",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "duration": "尺（秒）",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "movement_amplitude": "モーション量"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "ViduStartEndToVideoNode": {
+        "title": "Vidu最初/最終フレーム→動画生成",
+        "inputs": {
+            "first_frame": "最初のフレーム画像",
+            "end_frame": "最後のフレーム画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "duration": "尺（秒）",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "movement_amplitude": "モーション量"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "ViduExtendVideoNode": {
+        "title": "Vidu動画延長",
+        "inputs": {
+            "video": "動画",
+            "end_frame": "終了フレーム"
+        },
+        "widgets": {
+            "model": "モデル",
+            "duration": "尺（秒）",
+            "resolution": "解像度",
+            "prompt": "プロンプト",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        }
+    },
+    "ViduMultiFrameVideoNode": {
+        "title": "Viduマルチフレーム動画生成",
+        "inputs": {
+            "start_image": "開始画像",
+            "end_image1": "終了画像1",
+            "end_image2": "終了画像2"
+        },
+        "widgets": {
+            "model": "モデル",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "resolution": "解像度",
+            "frames": "マルチフレーム",
+            "duration:": "尺（秒）",
+            "duration1:": "1尺（秒）",
+            "duration2:": "2尺（秒）"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "Vidu3TextToVideoNode": {
+        "title": "Vidu Q3テキスト→動画",
+        "inputs": {},
+        "widgets": {
+            "model": "モデル",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "duration:": "尺（秒）",
+            "duration": "尺（秒）",
+            "audio": "音声",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "Vidu3ImageToVideoNode": {
+        "title": "Vidu Q3画像→動画",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "duration": "尺（秒）",
+            "audio": "音声",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "Vidu3StartEndToVideoNode": {
+        "title": "Vidu3最初/最終フレーム→動画",
+        "inputs": {
+            "first_frame": "最初のフレーム画像",
+            "end_frame": "最後のフレーム画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "duration": "尺（秒）",
+            "audio": "音声",
+            "prompt": "プロンプト",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "movement_amplitude": "モーション量"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "WanTextToVideoApi": {
+        "title": "Wanテキスト→動画",
+        "inputs": {
+            "audio": "音声"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "size": "サイズ",
+            "resolution": "解像度",
+            "duration": "尺（秒）",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "generate_audio": "音声を生成",
+            "prompt_extend": "プロンプト拡張",
+            "watermark": "透かし",
+            "shot_type": "撮影タイプ"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "WanImageToVideoApi": {
+        "title": "Wan画像→動画",
+        "inputs": {
+            "image": "画像",
+            "audio": "音声"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "resolution": "解像度",
+            "duration": "尺（秒）",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "generate_audio": "音声を生成",
+            "prompt_extend": "プロンプト拡張",
+            "watermark": "透かし",
+            "shot_type": "撮影タイプ"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "WanReferenceVideoApi": {
+        "title": "Wan参考→動画",
+        "inputs": {
+            "character1": "特徴1",
+            "audio": "音声",
+            "VIDEO": "動画",
+            "video": "動画"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "size": "サイズ",
+            "duration": "尺（秒）",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "generate_audio": "音声を生成",
+            "prompt_extend": "プロンプト拡張",
+            "watermark": "透かし",
+            "shot_type": "撮影タイプ"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        }
+    },
+    "Wan2TextToVideoApi": {
+        "title": "Wan2.7テキスト→動画",
+        "inputs": {
+            "positive": "ポジティブ条件",
+            "negative": "ネガティブ条件",
+            "audio": "音声"
+        },
+        "widgets": {
+            "resolution": "解像度",
+            "ratio": "アスペクト比",
+            "seed": "ランダムシード",
+            "duration": "尺（秒）",
+            "prompt_extend": "プロンプト拡張",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "Wan2ImageToVideoApi": {
+        "title": "Wan2.7画像→動画",
+        "inputs": {
+            "first_frame": "最初のフレーム画像",
+            "last_frame": "最後のフレーム画像",
+            "audio": "音声"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "duration": "尺（秒）",
+            "ratio": "アスペクト比",
+            "seed": "ランダムシード",
+            "prompt_extend": "プロンプト拡張",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "Wan2VideoContinuationApi": {
+        "title": "Wan2.7動画延長",
+        "inputs": {
+            "first_clip": "最初のクリップ",
+            "last_frame": "最後のフレーム画像",
+            "audio": "音声"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "duration": "尺（秒）",
+            "ratio": "アスペクト比",
+            "seed": "ランダムシード",
+            "prompt_extend": "プロンプト拡張",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "Wan2VideoEditApi": {
+        "title": "Wan2.7動画編集",
+        "inputs": {
+            "video": "動画",
+            "image1": "画像1",
+            "image2": "画像2",
+            "image3": "画像3",
+            "image4": "画像4"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "ratio": "アスペクト比",
+            "duration": "尺（秒）",
+            "seed": "ランダムシード",
+            "audio_setting": "音声設定",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "Wan2ReferenceVideoApi": {
+        "title": "Wan2.7参考→動画",
+        "inputs": {
+            "video1": "動画1",
+            "video2": "動画2",
+            "video3": "動画3",
+            "image1": "画像1",
+            "image2": "画像2",
+            "image3": "画像3",
+            "image4": "画像4"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "ratio": "アスペクト比",
+            "duration": "尺（秒）",
+            "seed": "ランダムシード",
+            "audio_setting": "音声設定",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        }
+    },
+    "HappyHorseTextToVideoApi": {
+        "title": "HappyHorseテキスト→動画",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "ratio": "アスペクト比",
+            "duration": "尺（秒）",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "「HappyHorse」モデルでテキストプロンプトから動画を生成します。"
+    },
+    "HappyHorse Image to Video": {
+        "title": "HappyHorse画像→動画",
+        "inputs": {
+            "first_frame": "最初のフレーム画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "duration": "尺（秒）",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        },
+        "description": "「HappyHorse」モデルで最初のフレーム画像から動画を生成します。"
+    },
+    "HappyHorseVideoEditApi": {
+        "title": "HappyHorse動画編集",
+        "inputs": {
+            "video": "動画",
+            "image1": "画像1",
+            "image2": "画像2",
+            "image3": "画像3",
+            "image4": "画像4",
+            "image5": "画像5"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "ratio": "アスペクト比",
+            "duration": "尺（秒）",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        },
+        "description": "「HappyHorse」モデルでテキスト説明または参考画像により動画を編集します。/n 出力動画の尺は3〜15秒、入力動画の尺に一致します。入力が15秒を超える場合は切り詰められます。"
+    },
+    "HappyHorseReferenceVideoApi": {
+        "title": "HappyHorse参考→動画",
+        "inputs": {
+            "video": "動画",
+            "image1": "画像1",
+            "image2": "画像2",
+            "image3": "画像3",
+            "image4": "画像4",
+            "image5": "画像5",
+            "image6": "画像6",
+            "image7": "画像7",
+            "image8": "画像8",
+            "image9": "画像9"
+        },
+        "widgets": {
+            "model": "モデル",
+            "resolution": "解像度",
+            "ratio": "アスペクト比",
+            "duration": "尺（秒）",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "VIDEO": "動画を生成"
+        },
+        "description": "「HappyHorse」モデルで参考素材から人物または物体を含む動画を生成します。/n 単一キャラクターの表示、複数キャラクター間のインタラクションに対応。"
+    },
+    "WavespeedFlashVSRNode": {
+        "title": "WaveSpeed FlashVSR動画アップスケール",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "target_resolution": "目標解像度"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        }
+    },
+    "BeebleSwitchXImageEdit": {
+        "title": "Beeble SwitchX画像編集",
+        "inputs": {
+            "image": "画像",
+            "reference_image": "参考画像"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "alpha_mode": "Alphaモード",
+            "max_resolution": "最大解像度",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "image": "画像",
+            "alpha": "Alphaチャンネル"
+        },
+        "description": "BeebleSwitchXで単一画像を編集。元被写体のピクセルを保ったまま、シーン内の任意の要素（背景・照明・衣装）を切替可能。新しいビジュアルを記述する参考画像やテキストプロンプトを指定。最大解像度約2.77MP。"
+    },
+    "FluxProUltraImageNode": {
+        "title": "Flux 1.1 [pro] 超高精細画像",
+        "inputs": {
+            "image_prompt": "画像プロンプト",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "prompt_upsampling": "プロンプトアップスケール",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "aspect_ratio": "アスペクト比",
+            "raw": "元データ",
+            "auth_token": "認可トークン数",
+            "image_prompt_strength": "画像プロンプト強度"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "FluxKontextProImageNode": {
+        "title": "Flux.1画像コンテキスト[pro]",
+        "inputs": {
+            "input_image": "入力画像",
+            "mask": "マスク",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "prompt_upsampling": "プロンプトアップスケール",
+            "aspect_ratio": "アスペクト比",
+            "guidance": "ガイダンス強度",
+            "control_after_generate": "生成後制御",
+            "steps": "ステップ数",
+            "seed": "シード",
+            "raw": "元データ",
+            "auth_token": "認可トークン数"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "FluxKontextMaxImageNode": {
+        "title": "Flux.1画像コンテキスト[max] ",
+        "inputs": {
+            "input_image": "入力画像",
+            "mask": "マスク",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "prompt_upsampling": "プロンプトアップスケール",
+            "aspect_ratio": "アスペクト比",
+            "guidance": "ガイダンス強度",
+            "control_after_generate": "生成後制御",
+            "steps": "ステップ数",
+            "seed": "シード",
+            "raw": "元データ",
+            "auth_token": "認可トークン数"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "FluxProFillNode": {
+        "title": "Flux.1塗り画像",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "prompt_upsampling": "プロンプトアップスケール",
+            "top": "上方向に拡張",
+            "bottom": "下方向に拡張",
+            "left": "左方向に拡張",
+            "right": "右方向に拡張",
+            "guidance": "ガイダンス強度",
+            "control_after_generate": "生成後制御",
+            "steps": "ステップ数",
+            "seed": "シード",
+            "raw": "元データ",
+            "auth_token": "認可トークン数"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "FluxEraseNode": {
+        "title": "Flux消去画像",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク"
+        },
+        "widgets": {
+            "dilate_pixels": "インflateピクセル",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "画像からマスクされた対象を除去し背景を再構築します。消したい領域にマスクを描画してください。"
+    },
+    "FluxVTONode": {
+        "title": "Flux仮想試着",
+        "inputs": {
+            "person": "人物",
+            "garment": "衣装"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "仮想試着：人物を指定衣装で着せ替えます。"
+    },
+    "Flux2ProImageNode": {
+        "title": "Flux 2代超高精細画像[プロ版] ",
+        "inputs": {
+            "images": "画像グループ",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "prompt_upsampling": "プロンプトアップスケール",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "width": "幅",
+            "height": "高さ"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "Flux2MaxImageNode": {
+        "title": "Flux.2画像ノード(max)",
+        "inputs": {
+            "images": "画像",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "width": "幅",
+            "height": "高さ",
+            "prompt_upsampling": "プロンプトアップスケール",
+            "control_after_generate": "生成後制御",
+            "seed": "シード"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "Flux2ImageNode": {
+        "title": "Flux.2画像生成",
+        "inputs": {
+            "image_1": "画像入力"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "model": "モデル",
+            "width": "幅",
+            "height": "高さ",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        },
+        "description": "Flux.2モデルで画像を生成するノード"
+    },
+    "Flux3TextToVideoNode": {
+        "title": "Flux.3テキスト→動画",
+        "inputs": {},
+        "widgets": {
+            "prompt": "プロンプト",
+            "aspect_ratio": "アスペクト比",
+            "duration": "尺",
+            "resolution": "解像度",
+            "generate_audio": "音声を生成",
+            "safety_tolerance": "安全許容",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "FLUX3でテキストプロンプトから同期音声付き動画を生成します。"
+    },
+    "Flux3ImageToVideoNode": {
+        "title": "Flux.3画像→動画",
+        "inputs": {
+            "image_0": "画像0",
+            "image_1": "画像1",
+            "image_2": "画像2",
+            "image_3": "画像3",
+            "image_4": "画像4",
+            "image_5": "画像5"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "placement": "配置",
+            "aspect_ratio": "アスペクト比",
+            "duration": "尺",
+            "resolution": "解像度",
+            "generate_audio": "音声を生成",
+            "safety_tolerance": "安全許容",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "1〜10枚の画像でFLUX3アニメーションを生成します。各画像はクリップの1シーンとなり、1枚なら开场、2枚なら1枚目から2枚目へ遷移、3枚以上は選択したタイムポイントに分散または固定されます。"
+    },
+    "Flux3VideoContinuationNode": {
+        "title": "Flux.3動画延長",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "aspect_ratio": "アスペクト比",
+            "duration": "尺",
+            "resolution": "解像度",
+            "generate_audio": "音声を生成",
+            "safety_tolerance": "安全許容",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "FLUX3動画続編：新しいクリップは提供動画の最後の数フレームから継続します。"
+    },
+    "FluxVideoUpscaleNode": {
+        "title": "Flux.3動画アップスケール",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "upscale_factor": "アップスケール倍率",
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "auto_downscale": "自動スケール",
+            "safety_tolerance": "安全許容",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "FLUXスーパーレゾリューション技術で動画を1.5〜3倍にアップスケール。元画質を精密に保持しつつ、創造的にディテールを強化します。"
+    },
+    "BriaImageEditNode": {
+        "title": "Bria画像編集",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "guidance_scale": "ガイダンス強度",
+            "steps": "ステップ数",
+            "moderation": "審査",
+            "prompt_content_moderation": "プロンプト内容審査",
+            "visual_input_moderation": "視覚入力審査",
+            "visual_output_moderation": "視覚出力審査"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "structured_prompt": "構造化プロンプト"
+        }
+    },
+    "BriaRemoveImageBackground": {
+        "title": "Bria画像背景除去",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "moderation": "審査",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "images": "画像グループ"
+        }
+    },
+    "ByteDanceImageNode": {
+        "title": "ByteDance画像",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "size_preset": "サイズプリセット値",
+            "width": "幅",
+            "height": "高さ",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "guidance_scale": "ガイダンススケール",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "image": "画像",
+            "IMAGE": "画像"
+        }
+    },
+    "ByteDanceSeedreamNode": {
+        "title": "ByteDance Seedream 4.0",
+        "inputs": {
+            "image": "画像",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "size_preset": "サイズプリセット値",
+            "width": "幅",
+            "height": "高さ",
+            "sequential_image_generation": "連続画像生成",
+            "max_images": "最大画像数",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "guidance_scale": "ガイダンススケール",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "image": "画像",
+            "IMAGE": "画像"
+        }
+    },
+    "ByteDanceSeedreamNodeV2": {
+        "title": "ByteDance Seedream 4.5 および 5.0",
+        "inputs": {
+            "image_1": "画像 1"
+        },
+        "widgets": {
+            "model": "モデル",
+            "size_preset": "サイズプリセット",
+            "width": "幅",
+            "height": "高さ",
+            "max_images": "最大画像数",
+            "fail_on_partial": "一部失敗時に停止",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "image": "画像"
+        },
+        "description": "テキスト→画像生成を統合し、最大4K解像度で精密な一文編集を実現します。"
+    },
+    "ByteDanceCreateImageAsset": {
+        "title": "ByteDance画像アセット作成",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "group_id": "グループID"
+        },
+        "outputs": {
+            "asset_id": "アセットID",
+            "group_id": "グループID"
+        },
+        "description": "Seedance2.0の個人画像アセットを作成します。入力画像をアップロードして指定アセットグループに登録します。\n アセットIDが空の場合、本人確認H5フローを実行して新しいグループを作成してからアセットを追加します。"
+    },
+    "GeminiImageNode": {
+        "title": "Google Gemini画像",
+        "inputs": {
+            "images": "画像",
+            "files": "Gemini入力ファイル"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "aspect_ratio": "アスペクト比",
+            "seed": "ランダムシード",
+            "model": "モデル",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "STRING": "文字列"
+        }
+    },
+    "GeminiImage2Node": {
+        "title": "Nano Banana Pro（Google Gemini画像）",
+        "inputs": {
+            "images": "画像グループ",
+            "files": "ファイル"
+        },
+        "widgets": {
+            "model": "モデル",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "response_modalities": "応答方式"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "GeminiNanoBanana2": {
+        "title": "Nano Banana Pro（Google Gemini画像）",
+        "inputs": {
+            "images": "画像グループ",
+            "files": "ファイル"
+        },
+        "widgets": {
+            "model": "モデル",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "response_modalities": "応答方式",
+            "thinking_level": "思考レベル"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "STRING": "文字列"
+        },
+        "description": "Google Vertex API経由で画像を同期生成・編集します。"
+    },
+    "GeminiNanoBanana2V2": {
+        "title": "Nano Banana 2",
+        "inputs": {
+            "image_1": "画像1",
+            "files": "ファイル"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "model": "モデル",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "thinking_level": "思考レベル",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "response_modalities": "応答モダリティ",
+            "system_prompt": "システムプロンプト"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "STRING": "文字列",
+            "thought_image": "画像"
+        },
+        "description": "Nano Banana 2ノード、画像生成用。"
+    },
+    "GrokImageNode": {
+        "title": "Grok画像",
+        "inputs": {},
+        "widgets": {
+            "model": "モデル",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "aspect_ratio": "アスペクト比",
+            "number_of_images": "画像数"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "GrokImageEditNode": {
+        "title": "Grok画像編集",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "number_of_images": "画像数"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "GrokImageEditNodeV2": {
+        "title": "Grok画像編集",
+        "inputs": {
+            "image_1": "画像1",
+            "image_2": "画像2"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "model": "モデル",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "number_of_images": "画像数"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "HitPawGeneralImageEnhance": {
+        "title": "HitPaw画像全体の強化",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "upscale_factor": "アップスケール比率",
+            "auto_downscale": "自動スケール"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "IdeogramV1": {
+        "title": "Ideogramテキスト→画像V1",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "turbo": "高速化モード",
+            "aspect_ratio": "アスペクト比",
+            "magic_prompt_option": "マジックプロンプトオプション",
+            "control_after_generate": "生成後制御",
+            "negative_prompt": "ネガティブプロンプト",
+            "seed": "シード",
+            "num_images": "画像数",
+            "auth_token": "認可トークン数"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "IdeogramV2": {
+        "title": "Ideogramテキスト→画像V2",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "turbo": "高速化モード",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "magic_prompt_option": "マジックプロンプトオプション",
+            "control_after_generate": "生成後制御",
+            "negative_prompt": "ネガティブプロンプト",
+            "style_type": "スタイルタイプ",
+            "seed": "シード",
+            "num_images": "画像数",
+            "color_palette": "パレット",
+            "auth_token": "認可トークン数"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "IdeogramV3": {
+        "title": "Ideogramテキスト→画像V3",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク",
+            "prompt": "プロンプト",
+            "character_image": "キャラクター画像",
+            "character_mask": "キャラクターマスク"
+        },
+        "widgets": {
+            "turbo": "高速化モード",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "magic_prompt_option": "マジックプロンプトオプション",
+            "control_after_generate": "生成後制御",
+            "rendering_speed": "レンダリング速度",
+            "style_type": "スタイルタイプ",
+            "seed": "シード",
+            "num_images": "画像数",
+            "color_palette": "パレット",
+            "auth_token": "認可トークン数"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "IdeogramV4": {
+        "title": "Ideogramテキスト→画像V4",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "resolution": "解像度",
+            "rendering_speed": "レンダリング速度",
+            "seed": "シード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "KlingVirtualTryOnNode": {
+        "title": "Kling仮想試着",
+        "inputs": {
+            "image": "画像",
+            "human_image": "人物画像",
+            "cloth_image": "衣服画像"
+        },
+        "widgets": {
+            "image_type": "画像タイプ",
+            "image_fidelity": "画像忠実度",
+            "human_fidelity": "人物忠実度",
+            "model_name": "モデル名",
+            "task_id": "タスクID",
+            "auth_token": "認可トークン数",
+            "aspect_ratio": "アスペクト比",
+            "n": "数量"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "string": "文字列"
+        }
+    },
+    "KlingImageGenerationNode": {
+        "title": "Kling画像生成",
+        "inputs": {
+            "image": "画像",
+            "prompt": "プロンプト",
+            "negative_prompt": "ネガティブプロンプト"
+        },
+        "widgets": {
+            "image_type": "画像タイプ",
+            "image_fidelity": "画像忠実度",
+            "human_fidelity": "人物忠実度",
+            "model_name": "モデル名",
+            "task_id": "タスクID",
+            "auth_token": "認可トークン数",
+            "aspect_ratio": "アスペクト比",
+            "n": "数量"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "string": "文字列"
+        }
+    },
+    "KlingOmniProImageNode": {
+        "title": "Kling Omni画像（プロ版）",
+        "inputs": {
+            "reference_images": "参考画像"
+        },
+        "widgets": {
+            "model_name": "モデル名",
+            "resolution": "解像度",
+            "auth_token": "認可トークン数",
+            "aspect_ratio": "アスペクト比",
+            "n": "数量"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "string": "文字列"
+        }
+    },
+    "Krea2ImageNode": {
+        "title": "Krea 2画像",
+        "inputs": {
+            "style_reference": "スタイル参考",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "creativity": "創造性",
+            "moodboard_id": "ムードボードID",
+            "moodboard_strength": "ムードボード強度",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {},
+        "description": "Krea2で画像を生成。中型（表現的なイラスト）または大型（写実的スタイル）を選択可能。オプションのムードボードと最大10個のチェーン式スタイル参考画像に対応。"
+    },
+    "Krea2StyleReferenceNode": {
+        "title": "Krea 2スタイル参考",
+        "inputs": {
+            "image": "画像",
+            "style_reference": "スタイル参考"
+        },
+        "widgets": {
+            "strength": "強度"
+        },
+        "outputs": {
+            "style_reference": "スタイル参考"
+        },
+        "description": "画像スタイル参考をKrea2ジェネレーターに追加します。複数のKrea2スタイル参考ノード（最大10個）をチェーンし、最終の「スタイル参考」出力をKrea2画像に渡します。各画像はComfyAPIストレージにアップロードされ、URLとして受け渡されます。"
+    },
+    "LumaImageNode": {
+        "title": "Lumaテキスト→画像",
+        "inputs": {
+            "image_luma_ref": "Luma画像参考",
+            "style_image": "スタイル画像",
+            "prompt": "プロンプト",
+            "character_image": "人物画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "aspect_ratio": "アスペクト比",
+            "seed": "シード",
+            "style_image_weight": "スタイル画像重み",
+            "luma_ref": "Luma参考",
+            "auth_token": "認可トークン数",
+            "max_refs": "最大参考数",
+            "weight": "重み"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "luma_concepts": "Lumaコンセプト"
+        }
+    },
+    "LumaImageModifyNode": {
+        "title": "Luma画像→画像",
+        "inputs": {
+            "image": "画像",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "image_weight": "画像重み",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "auth_token": "認可トークン数",
+            "weight": "重み"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "LumaReferenceNode": {
+        "title": "Luma参考",
+        "inputs": {
+            "image": "画像",
+            "prompt": "プロンプト",
+            "luma_ref": "Luma参考"
+        },
+        "widgets": {
+            "image_type": "画像タイプ",
+            "weight": "重み",
+            "human_fidelity": "人物忠実度",
+            "model_name": "モデル名",
+            "task_id": "タスクID",
+            "auth_token": "認可トークン数",
+            "aspect_ratio": "アスペクト比",
+            "n": "数量"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "luma_ref": "Luma参考"
+        }
+    },
+    "LumaImageNode2": {
+        "title": "Luma UNI-1画像",
+        "inputs": {
+            "image_1": "画像 1"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "model": "モデル",
+            "aspect_ratio": "アスペクト比",
+            "style": "スタイル",
+            "web_search": "ウェブ検索",
+            "seed": "シード"
+        },
+        "outputs": {},
+        "description": "Luma UNI-1モデルでテキストから画像を生成します。"
+    },
+    "LumaImageEditNode2": {
+        "title": "Luma UNI-1画像編集",
+        "inputs": {
+            "source": "ソースパス",
+            "image_1": "画像 1"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "model": "モデル",
+            "style": "スタイル",
+            "web_search": "ウェブ検索",
+            "seed": "シード"
+        },
+        "outputs": {},
+        "description": "Luma UNI-1モデルでテキストプロンプトにより既存画像を編集します。"
+    },
+    "MagnificImageUpscalerCreativeNode": {
+        "title": "Magnific画像アップスケール（クリエイティブモード）",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "scale_factor": "スケール係数",
+            "optimized_for": "最適化目標",
+            "creativity": "創造性",
+            "hdr": "HDRハイダイナミックレンジ",
+            "resemblance": "類似度",
+            "fractality": "フラクタル度",
+            "engine": "エンジン",
+            "auto_downscale": "自動ダウンサンプリング"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "MagnificImageUpscalerPreciseV2Node": {
+        "title": "Magnific画像アップスケールV2",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "scale_factor": "スケール係数",
+            "flavor": "スタイル",
+            "sharpen": "シャープ化",
+            "smart_grain": "インテリジェント粒子",
+            "ultra_detail": "超高精細ディテール",
+            "auto_downscale": "自動ダウンサンプリング"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "MagnificImageStyleTransferNode": {
+        "title": "Magnific画像スタイル変換",
+        "inputs": {
+            "image": "画像",
+            "reference_image": "参考画像"
+        },
+        "widgets": {
+            "style_strength": "スタイル強度",
+            "structure_strength": "構造強度",
+            "flavor": "スタイル",
+            "engine": "エンジン",
+            "portrait_mode": "ポートレートモード",
+            "fixed_generation": "固定生成"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "MagnificImageRelightNode": {
+        "title": "Magnific画像リライティング",
+        "inputs": {
+            "image": "画像",
+            "reference_image": "参考画像"
+        },
+        "widgets": {
+            "light_transfer_strength": "光照強度",
+            "style": "スタイル",
+            "interpolate_from_original": "元データから補間",
+            "change_background": "背景を変更",
+            "preserve_details": "ディテール保持",
+            "advanced_settings": "詳細設定"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "MagnificImageSkinEnhancerNode": {
+        "title": "Magnific画像スキンエンハンサー",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "sharpen": "シャープ化",
+            "smart_grain": "インテリジェント粒子",
+            "mode": "モード"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "OpenAIDalle2": {
+        "title": "OpenAI DALL·E 2",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "size": "サイズ",
+            "n": "数量",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "auth_token": "認可トークン数"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "string": "文字列"
+        }
+    },
+    "OpenAIDalle3": {
+        "title": "OpenAI DALL·E 3",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "size": "サイズ",
+            "quality": "品質",
+            "style": "スタイル",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "auth_token": "認可トークン数"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "string": "文字列"
+        }
+    },
+    "OpenAIGPTImage1": {
+        "title": "OpenAI GPT画像 1",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "background": "背景",
+            "size": "サイズ",
+            "quality": "品質",
+            "n": "数量",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "auth_token": "認可トークン数"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "string": "文字列"
+        }
+    },
+    "OpenAIGPTImageNodeV2": {
+        "title": "OpenAI GPT画像 2",
+        "inputs": {
+            "image_1": "画像1",
+            "image_2": "画像2",
+            "image_3": "画像3",
+            "mask": "マスク",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "size": "サイズ",
+            "custom_width": "設定幅",
+            "custom_height": "設定高さ",
+            "background": "背景",
+            "quality": "品質",
+            "n": "数量",
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "auth_token": "認可トークン数"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "string": "文字列"
+        }
+    },
+    "QuiverTextToSVGNode": {
+        "title": "テキスト→SVGベクター画像",
+        "inputs": {
+            "ref_0": "参考",
+            "ref_1": "参考1",
+            "ref_2": "参考2",
+            "ref_3": "参考3"
+        },
+        "widgets": {
+            "model": "モデル",
+            "temperature": "温度",
+            "top_p": "最高確率比率",
+            "presence_penalty": "存在ペナルティ",
+            "control_after_generate": "生成後制御",
+            "seed": "シード"
+        },
+        "outputs": {
+            "SVG": "ベクター画像"
+        }
+    },
+    "QuiverImageToSVGNode": {
+        "title": "画像→SVGベクター画像",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "auto_crop": "自動トリミング",
+            "model": "モデル",
+            "target_size": "目標サイズ",
+            "temperature": "温度",
+            "top_p": "最高確率比率",
+            "presence_penalty": "存在ペナルティ",
+            "control_after_generate": "生成後制御",
+            "seed": "シード"
+        },
+        "outputs": {
+            "SVG": "ベクター画像"
+        }
+    },
+    "RecraftTextToImageNode": {
+        "title": "Recraftテキスト→画像",
+        "inputs": {
+            "recraft_style": "Recraftスタイル",
+            "negative_prompt": "ネガティブプロンプト",
+            "recraft_controls": "Recraft制御パラメータ"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "size": "サイズ",
+            "n": "数量",
+            "seed": "シード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "string": "文字列"
+        }
+    },
+    "RecraftImageToImageNode": {
+        "title": "Recraft画像→画像",
+        "inputs": {
+            "image": "入力画像",
+            "recraft_style": "Recraftスタイル",
+            "negative_prompt": "ネガティブプロンプト",
+            "recraft_controls": "Recraft制御パラメータ",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "n": "生成数",
+            "strength": "リペイント強度",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "RecraftImageInpaintingNode": {
+        "title": "Recraft画像インペイント",
+        "inputs": {
+            "image": "画像",
+            "mask": "マスク",
+            "recraft_style": "Recraftスタイル",
+            "negative_prompt": "ネガティブプロンプト",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "n": "生成数",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "RecraftTextToVectorNode": {
+        "title": "Recraftテキスト→ベクター画像",
+        "inputs": {
+            "recraft_controls": "Recraft制御パラメータ",
+            "negative_prompt": "ネガティブプロンプト",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "substyle": "サブスタイルタイプ",
+            "size": "出力サイズ",
+            "n": "生成数",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "VECTOR": "ベクターグラフィック"
+        }
+    },
+    "RecraftVectorizeImageNode": {
+        "title": "Recraft画像ベクター化",
+        "inputs": {
+            "image": "画像",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {},
+        "outputs": {
+            "VECTOR": "ベクターグラフィック"
+        }
+    },
+    "RecraftRemoveBackgroundNode": {
+        "title": "Recraft背景除去",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "画像",
+            "MASK": "マスク"
+        }
+    },
+    "RecraftReplaceBackgroundNode": {
+        "title": "Recraft背景交換",
+        "inputs": {
+            "image": "画像",
+            "recraft_style": "Recraftスタイル",
+            "negative_prompt": "ネガティブプロンプト",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {
+            "prompt": "背景説明",
+            "n": "生成数",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "RecraftCrispUpscaleNode": {
+        "title": "Recraft高解像度アップスケール",
+        "inputs": {
+            "image": "画像",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "RecraftCreativeUpscaleNode": {
+        "title": "Recraftクリエイティブアップスケール",
+        "inputs": {
+            "image": "画像",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "RecraftStyleV3RealisticImage": {
+        "title": "Recraftスタイル - 実写画像",
+        "inputs": {
+            "colors": "色",
+            "background_color": "背景色"
+        },
+        "widgets": {
+            "substyle": "サブスタイル"
+        },
+        "outputs": {
+            "recraft_style": "Recraftスタイル"
+        }
+    },
+    "RecraftStyleV3DigitalIllustration": {
+        "title": "Recraftスタイル - デジタルイラスト",
+        "inputs": {
+            "colors": "色",
+            "background_color": "背景色"
+        },
+        "widgets": {
+            "substyle": "サブスタイル"
+        },
+        "outputs": {
+            "recraft_style": "Recraftスタイル"
+        }
+    },
+    "RecraftStyleV3LogoRaster": {
+        "title": "Recraftスタイル - ラスターロゴ",
+        "inputs": {
+            "colors": "色",
+            "background_color": "背景色"
+        },
+        "widgets": {
+            "substyle": "サブスタイル"
+        },
+        "outputs": {
+            "recraft_style": "Recraftスタイル"
+        }
+    },
+    "RecraftStyleV3InfiniteStyleLibrary": {
+        "title": "Recraftスタイル - 無限スタイルライブラリ",
+        "inputs": {
+            "colors": "色",
+            "background_color": "背景色"
+        },
+        "widgets": {
+            "style_id": "スタイルID"
+        },
+        "outputs": {
+            "recraft_style": "Recraftスタイル"
+        }
+    },
+    "RecraftCreateStyleNode": {
+        "title": "Recraftデザインスタイル",
+        "inputs": {
+            "image0": "画像0",
+            "image1": "画像1"
+        },
+        "widgets": {
+            "style": "スタイル"
+        },
+        "outputs": {
+            "style": "スタイル",
+            "style_id": "スタイルID"
+        }
+    },
+    "RecraftColorRGB": {
+        "title": "Recraft色 RGB",
+        "inputs": {
+            "recraft_color": "Recraft色"
+        },
+        "widgets": {
+            "r": "赤値",
+            "g": "緑値",
+            "b": "青値"
+        },
+        "outputs": {
+            "recraft_color": "Recraft色",
+            "string": "文字列"
+        }
+    },
+    "RecraftControls": {
+        "title": "Recraft制御パラメータ",
+        "inputs": {
+            "colors": "色",
+            "background_color": "背景色"
+        },
+        "widgets": {
+            "r": "赤値",
+            "g": "緑値",
+            "b": "青値"
+        },
+        "outputs": {
+            "recraft_controls": "Recraft制御パラメータ",
+            "string": "文字列"
+        }
+    },
+    "RecraftV4TextToImageNode": {
+        "title": "Recraftテキスト→画像V4",
+        "inputs": {
+            "recraft_controls": "Recraft制御パラメータ"
+        },
+        "widgets": {
+            "model": "モデル",
+            "size": "サイズ",
+            "n": "数量",
+            "seed": "シード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "string": "文字列"
+        }
+    },
+    "RecraftV4TextToVectorNode": {
+        "title": "Recraftテキスト→ベクターV4",
+        "inputs": {
+            "recraft_controls": "Recraft制御パラメータ"
+        },
+        "widgets": {
+            "model": "モデル",
+            "size": "サイズ",
+            "n": "数量",
+            "seed": "シード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "SVG": "SVGベクター形式"
+        }
+    },
+    "ReveImageCreateNode": {
+        "title": "Reveテキスト→画像",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "aspect_ratio": "アスペクト比",
+            "test_time_scaling": "テストタイムスケール",
+            "upscale": "アップスケール",
+            "remove_background": "背景除去",
+            "seed": "シード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "string": "文字列"
+        }
+    },
+    "ReveImageEditNode": {
+        "title": "Reve画像編集",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "aspect_ratio": "アスペクト比",
+            "test_time_scaling": "テストタイムスケール",
+            "upscale": "アップスケール",
+            "remove_background": "背景除去",
+            "seed": "シード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "string": "文字列"
+        }
+    },
+    "ReveImageRemixNode": {
+        "title": "Reve画像二次創作",
+        "inputs": {
+            "image_0": "画像0",
+            "image_1": "画像1",
+            "image_2": "画像2",
+            "image_3": "画像3",
+            "image_4": "画像4",
+            "image_5": "画像5"
+        },
+        "widgets": {
+            "model": "モデル",
+            "aspect_ratio": "アスペクト比",
+            "test_time_scaling": "テストタイムスケール",
+            "upscale": "アップスケール",
+            "remove_background": "背景除去",
+            "seed": "シード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "string": "文字列"
+        }
+    },
+    "RunwayTextToImageNode": {
+        "title": "Runwayテキスト→画像",
+        "inputs": {
+            "positive": "ポジティブ条件",
+            "negative": "ネガティブ条件",
+            "reference_image": "参考画像",
+            "start_frame": "開始フレーム",
+            "end_frame": "終了フレーム"
+        },
+        "widgets": {
+            "seed": "シード",
+            "control_after_generate": "生成後制御",
+            "ratio": "アスペクト比",
+            "duration": "尺",
+            "batch_size": "バッチサイズ"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "string": "文字列"
+        }
+    },
+    "StabilityStableImageUltraNode": {
+        "title": "Stability AI超高精細画像",
+        "inputs": {
+            "image": "画像",
+            "negative_prompt": "ネガティブプロンプト",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "aspect_ratio": "アスペクト比",
+            "style_preset": "スタイルプリセット",
+            "seed": "ランダムシード",
+            "image_denoise": "ノイズ低減強度",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "StabilityStableImageSD_3_5Node": {
+        "title": "Stability AI SD 3.5画像",
+        "inputs": {
+            "image": "画像",
+            "negative_prompt": "ネガティブプロンプト",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "aspect_ratio": "アスペクト比",
+            "style_preset": "スタイルプリセット",
+            "cfg_scale": "CFGガイダンス係数",
+            "seed": "ランダムシード",
+            "image_denoise": "ノイズ低減強度",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "StabilityUpscaleConservativeNode": {
+        "title": "Stability AI保守的アップスケール",
+        "inputs": {
+            "image": "画像",
+            "negative_prompt": "ネガティブプロンプト",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "creativity": "クリエイティブ強度",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "StabilityUpscaleCreativeNode": {
+        "title": "Stability AIクリエイティブアップスケール",
+        "inputs": {
+            "image": "画像",
+            "negative_prompt": "ネガティブプロンプト",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "creativity": "クリエイティブ強度",
+            "style_preset": "スタイルプリセット",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "StabilityUpscaleFastNode": {
+        "title": "Stability AI高速アップスケール",
+        "inputs": {
+            "image": "画像",
+            "auth_token": "認可トークン数"
+        },
+        "widgets": {},
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "TopazImageEnhance": {
+        "title": "Topaz画像エンハンサー",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "subject_detection": "被写体検出",
+            "face_enhancement": "顔強化",
+            "face_enhancement_creativity": "顔強化クリエイティブ",
+            "face_enhancement_strength": "顔強化強度",
+            "crop_to_fill": "トリミングして充填",
+            "output_width": "出力幅",
+            "output_height": "出力高さ",
+            "creativity": "創造性",
+            "face_preservation": "顔保護",
+            "color_preservation": "色彩保護"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "video": "動画"
+        }
+    },
+    "WanTextToImageApi": {
+        "title": "Wanテキスト→画像",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "width": "幅",
+            "height": "高さ",
+            "resolution": "解像度",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "prompt_extend": "プロンプト拡張",
+            "watermark": "透かし",
+            "shot_type": "撮影タイプ"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "WanImageToImageApi": {
+        "title": "Wan画像→画像",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "width": "幅",
+            "height": "高さ",
+            "resolution": "解像度",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "prompt_extend": "プロンプト拡張",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "WavespeedImageUpscaleNode": {
+        "title": "WaveSpeed画像アップスケール",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "target_resolution": "目標解像度"
+        },
+        "outputs": {
+            "IMAGE": "画像"
+        }
+    },
+    "ElevenLabsSpeechToText": {
+        "title": "Eleven Labs音声→テキスト",
+        "inputs": {
+            "audio": "音声"
+        },
+        "widgets": {
+            "model": "モデル",
+            "tag_audio_events": "音声イベントをマーク",
+            "diarize": "話者認識",
+            "diarization_threshold": "話者認識しきい値",
+            "temperature": "温度",
+            "timestamps_granularity": "タイムスタンプ粒度",
+            "language_code": "言語コード",
+            "num_speakers": "話者数",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "language_code": "言語コード",
+            "text": "テキスト",
+            "seed": "単語JSONデータ"
+        }
+    },
+    "ElevenLabsVoiceSelector": {
+        "title": "Eleven Labs音声セレクター",
+        "inputs": {},
+        "widgets": {
+            "voice": "声"
+        },
+        "outputs": {
+            "voice": "声"
+        }
+    },
+    "ElevenLabsTextToSpeech": {
+        "title": "Eleven Labsテキスト→音声",
+        "inputs": {
+            "voice": "声"
+        },
+        "widgets": {
+            "stabillity": "安定性",
+            "apply_text_normalization": "テキスト正規化を適用",
+            "model": "モデル",
+            "speed": "速度",
+            "similarity_boost": "類似度強化",
+            "use_speaker_boost": "話者強化を使用",
+            "style": "スタイル",
+            "language_code": "言語コード",
+            "output_format": "出力形式",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "AUDIO": "音声"
+        }
+    },
+    "ElevenLabsAudioIsolation": {
+        "title": "Eleven Labs音声分離",
+        "inputs": {
+            "audio": "音声"
+        },
+        "widgets": {},
+        "outputs": {
+            "AUDIO": "音声"
+        }
+    },
+    "ElevenLabsTextToSoundEffects": {
+        "title": "Eleven Labsテキスト→効果音",
+        "inputs": {
+            "text": "テキスト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "duration": "尺（秒）",
+            "loop": "ループ",
+            "prompt_influence": "プロンプト影響度",
+            "output_format": "出力形式"
+        },
+        "outputs": {
+            "AUDIO": "音声"
+        }
+    },
+    "ElevenLabsInstantVoiceClone": {
+        "title": "Eleven Labsインスタントボイスクローン",
+        "inputs": {
+            "audio0": "音声0",
+            "audio1": "音声1",
+            "audio2": "音声2",
+            "audio3": "音声3",
+            "audio4": "音声4",
+            "audio5": "音声5",
+            "audio6": "音声6"
+        },
+        "widgets": {
+            "remove_background_noise": "背景ノイズ除去"
+        },
+        "outputs": {
+            "voice": "声"
+        }
+    },
+    "ElevenLabsSpeechToSpeech": {
+        "title": "Eleven Labs音声→音声",
+        "inputs": {
+            "voice": "声",
+            "audio": "音声"
+        },
+        "widgets": {
+            "stabillity": "安定性",
+            "model": "モデル",
+            "speed": "速度",
+            "similarity_boost": "類似度強化",
+            "use_speaker_boost": "話者強化を使用",
+            "style": "スタイル",
+            "output_format": "出力形式",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "remove_background_noise": "背景ノイズ除去"
+        },
+        "outputs": {
+            "AUDIO": "音声"
+        }
+    },
+    "ElevenLabsTextToDialogue": {
+        "title": "Eleven Labsテキスト→対話",
+        "inputs": {
+            "voice1": "声1",
+            "voice2": "声2",
+            "voice3": "声3",
+            "voice4": "声4",
+            "voice5": "声5",
+            "voice6": "声6",
+            "voice7": "声7",
+            "voice8": "声8",
+            "voice9": "声9",
+            "voice10": "声10"
+        },
+        "widgets": {
+            "stabillity": "安定性",
+            "apply_text_normalization": "テキスト正規化を適用",
+            "model": "モデル",
+            "inputs": "入力数",
+            "language_code": "言語コード",
+            "output_format": "出力形式",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "AUDIO": "音声"
+        }
+    },
+    "SoniloVideoToMusic": {
+        "title": "Sonilo動画→音楽",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "duration": "尺（秒）",
+            "model": "モデル",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "AIDEO": "音声"
+        }
+    },
+    "SoniloTextToMusic": {
+        "title": "Soniloテキスト→音楽",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "AIDEO": "音声"
+        }
+    },
+    "StabilityTextToAudio": {
+        "title": "Stability AIテキスト→音声",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "duration": "尺",
+            "steps": "ステップ数",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "audio": "音声",
+            "AUDIO": "音声"
+        }
+    },
+    "StabilityAudioToAudio": {
+        "title": "Stability AI音声→音声",
+        "inputs": {
+            "audio": "音声",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "duration": "尺",
+            "steps": "ステップ数",
+            "seed": "ランダムシード",
+            "strength": "強度",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "audio": "音声",
+            "AUDIO": "音声"
+        }
+    },
+    "StabilityAudioInpaint": {
+        "title": "Stability AI音声インペイント",
+        "inputs": {
+            "audio": "音声",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "duration": "尺",
+            "steps": "ステップ数",
+            "seed": "ランダムシード",
+            "mask_start": "開始マスク",
+            "mask_end": "終了マスク",
+            "control_after_generate": "生成後制御"
+        },
+        "outputs": {
+            "audio": "音声",
+            "AUDIO": "音声"
+        }
+    },
+    "TencentTextToModelNode": {
+        "title": "Hunyuan3D：テキスト→モデル（プロ版）",
+        "inputs": {},
+        "widgets": {
+            "model": "モデル",
+            "face_count": "面数",
+            "pbr": "PBRレンダリング",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "texture_image": "テクスチャ画像",
+            "GLB": "GLB形式",
+            "OBJ": "OBJ形式"
+        }
+    },
+    "TencentImageToModelNode": {
+        "title": "Hunyuan3D：画像→モデル（プロ版）",
+        "inputs": {
+            "image": "画像",
+            "image_left": "左画像",
+            "image_right": "右画像",
+            "image_back": "背面画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "face_count": "面数",
+            "generate_type": "生成タイプ",
+            "pbr": "PBRレンダリング",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "texture_image": "テクスチャ画像",
+            "GLB": "GLB形式",
+            "OBJ": "OBJ形式",
+            "optional_metallic": "メタル(オプション)",
+            "optional_normal": "ノーマル(オプション)",
+            "optional_roughness": "粗糙度(オプション)"
+        }
+    },
+    "TencentModelTo3DUVNode": {
+        "title": "Hunyuan3D：モデル→UVマップ",
+        "inputs": {
+            "model_3d": "3Dモデル"
+        },
+        "widgets": {
+            "model": "モデル",
+            "face_count": "面数",
+            "pbr": "PBRレンダリング",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "GLB": "GLB形式",
+            "OBJ": "OBJ形式"
+        }
+    },
+    "Tencent3DTextureEditNode": {
+        "title": "Hunyuan3D：3Dテクスチャ編集",
+        "inputs": {
+            "model_3d": "3Dモデル"
+        },
+        "widgets": {
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "texture_image": "テクスチャ画像",
+            "GLB": "GLB形式",
+            "OBJ": "OBJ形式",
+            "uv_image": "UV画像"
+        }
+    },
+    "Tencent3DPartNode": {
+        "title": "Hunyuan3D：3Dパーツ",
+        "inputs": {
+            "model_3d": "3Dモデル"
+        },
+        "widgets": {
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "FBX": "FBX形式"
+        }
+    },
+    "TencentSmartTopologyNode": {
+        "title": "Hunyuan3D：インテリジェントトポロジー",
+        "inputs": {
+            "model_3d": "3Dモデル"
+        },
+        "widgets": {
+            "model": "モデル",
+            "polygon_type": "ポリゴンタイプ",
+            "face_level": "面レベル",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "GLB": "GLB形式",
+            "OBJ": "OBJ形式"
+        }
+    },
+    "MeshyTextToModelNode": {
+        "title": "Meshy：テキスト→モデル",
+        "inputs": {},
+        "widgets": {
+            "model": "モデル",
+            "style": "スタイル",
+            "should_remesh": "リメッシュ",
+            "topology": "トポロジー",
+            "target_polycount": "目標ポリゴン数",
+            "symmetry_mode": "対称モード",
+            "pose_mode": "ポーズモード",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "meshy_task_id": "MeshyタスクID",
+            "GLB": "GLB形式",
+            "FBX": "FBX形式"
+        }
+    },
+    "MeshyRefineNode": {
+        "title": "Meshy：ラフモデル仕上げ",
+        "inputs": {
+            "meshy_task_id": "MeshyタスクID",
+            "texture_image": "テクスチャ画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "enable_pbr": "PBRを有効化",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "meshy_task_id": "MeshyタスクID",
+            "GLB": "GLB形式",
+            "FBX": "FBX形式"
+        }
+    },
+    "MeshyImageToModelNode": {
+        "title": "Meshy：画像→モデル",
+        "inputs": {
+            "image": "画像",
+            "texture_image": "テクスチャ画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "should_remesh": "リメッシュ",
+            "topology": "トポロジー",
+            "target_polycount": "目標ポリゴン数",
+            "symmetry_mode": "対称モード",
+            "should_texture": "テクスチャ適用",
+            "enable_pbr": "PBRを有効化",
+            "pose_mode": "ポーズモード",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "meshy_task_id": "MeshyタスクID",
+            "GLB": "GLB形式",
+            "FBX": "FBX形式"
+        }
+    },
+    "MeshyMultiImageToModelNode": {
+        "title": "Meshy：複数画像→モデル",
+        "inputs": {
+            "image": "画像",
+            "image0": "画像0",
+            "image1": "画像1",
+            "texture_image": "テクスチャ画像"
+        },
+        "widgets": {
+            "model": "モデル",
+            "should_remesh": "リメッシュ",
+            "topology": "トポロジー",
+            "target_polycount": "目標ポリゴン数",
+            "symmetry_mode": "対称モード",
+            "should_texture": "テクスチャ適用",
+            "enable_pbr": "PBRを有効化",
+            "pose_mode": "ポーズモード",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "meshy_task_id": "MeshyタスクID",
+            "GLB": "GLB形式",
+            "FBX": "FBX形式"
+        }
+    },
+    "MeshyRigModelNode": {
+        "title": "Meshy：スケルタルモデル",
+        "inputs": {
+            "meshy_task_id": "MeshyタスクID",
+            "texture_image": "テクスチャ画像"
+        },
+        "widgets": {
+            "height_meters": "高さ（メートル）"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "meshy_task_id": "MeshyタスクID",
+            "GLB": "GLB形式",
+            "FBX": "FBX形式"
+        }
+    },
+    "MeshyAnimateModelNode": {
+        "title": "Meshy：アニメーションモデル",
+        "inputs": {
+            "rig_task_id": "スケルトンタスクID",
+            "texture_image": "テクスチャ画像"
+        },
+        "widgets": {
+            "action_id": "アクションID"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "meshy_task_id": "MeshyタスクID",
+            "GLB": "GLB形式",
+            "FBX": "FBX形式"
+        }
+    },
+    "MeshyTextureNode": {
+        "title": "Meshy：テクスチャモデル",
+        "inputs": {
+            "meshy_task_id": "MeshyタスクID",
+            "image_style": "画像スタイル"
+        },
+        "widgets": {
+            "model": "モデル",
+            "enable_original_uv": "元UVを有効化",
+            "pbr": "PBRレンダリング"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "meshy_task_id": "MeshyタスクID",
+            "GLB": "GLB形式",
+            "FBX": "FBX形式"
+        }
+    },
+    "Rodin3D_Regular": {
+        "title": "Rodin 3D生成-通常生成",
+        "inputs": {
+            "images": "画像グループ"
+        },
+        "widgets": {
+            "Seed": "ランダムシード",
+            "Material_Type": "素材タイプ",
+            "Polygon_count": "ポリゴン数"
+        },
+        "outputs": {
+            "3D_Model_Path": "3Dモデルパス",
+            "3D Model Path": "3Dモデルパス"
+        }
+    },
+    "Rodin3D_Detail": {
+        "title": "Rodin 3D生成-ディテール生成",
+        "inputs": {
+            "images": "画像グループ"
+        },
+        "widgets": {
+            "Seed": "ランダムシード",
+            "Material_Type": "素材タイプ",
+            "Polygon_count": "ポリゴン数"
+        },
+        "outputs": {
+            "3D_Model_Path": "3Dモデルパス",
+            "3D Model Path": "3Dモデルパス"
+        }
+    },
+    "Rodin3D_Smooth": {
+        "title": "Rodin 3D生成-スムース生成",
+        "inputs": {
+            "images": "画像グループ"
+        },
+        "widgets": {
+            "Seed": "ランダムシード",
+            "Material_Type": "素材タイプ",
+            "Polygon_count": "ポリゴン数"
+        },
+        "outputs": {
+            "3D_Model_Path": "3Dモデルパス",
+            "3D Model Path": "3Dモデルパス"
+        }
+    },
+    "Rodin3D_Sketch": {
+        "title": "Rodin 3D生成-ラフスケッチ生成",
+        "inputs": {
+            "images": "画像グループ"
+        },
+        "widgets": {
+            "Seed": "ランダムシード",
+            "Material_Type": "素材タイプ",
+            "Polygon_count": "ポリゴン数"
+        },
+        "outputs": {
+            "3D_Model_Path": "3Dモデルパス",
+            "3D Model Path": "3Dモデルパス"
+        }
+    },
+    "Rodin3D_Gen2": {
+        "title": "Rodin 3D生成-Gen-2ジェネレーター",
+        "inputs": {
+            "images": "画像グループ",
+            "Images": "画像グループ"
+        },
+        "widgets": {
+            "Seed": "ランダムシード",
+            "Material_Type": "素材タイプ",
+            "Polygon_count": "ポリゴン数",
+            "TAPose": "TAポーズ"
+        },
+        "outputs": {
+            "3D_Model_Path": "3Dモデルパス",
+            "3D Model Path": "3Dモデルパス"
+        }
+    },
+    "Rodin3D_Gen25_Image": {
+        "title": "Rodin 3D Gen-2.5 - 画像→3D",
+        "inputs": {
+            "image0": "画像入力 0",
+            "image1": "画像入力 1"
+        },
+        "widgets": {
+            "mode": "モード",
+            "tier": "レベル",
+            "polygon_count": "ポリゴン数",
+            "creative": "クリエイティブ",
+            "material": "マテリアル",
+            "geometry_file_format": "ジオメトリファイル形式",
+            "texture_mode": "テクスチャモード",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "TAPose": "TAポーズ",
+            "hd_texture": "高精細テクスチャ",
+            "texture_delight": "テクスチャ美化",
+            "use_original_alpha": "元Alphaを使用",
+            "addon_highpack": "高容量プラグイン",
+            "bbox_width": "バウンディングボックス幅",
+            "bbox_height": "バウンディングボックス高さ",
+            "bbox_length": "バウンディングボックス長さ",
+            "height_cm": "高さ（cm）"
+        },
+        "outputs": {
+            "model_file": "モデルファイル"
+        },
+        "description": "2D画像を3Dモデルに変換"
+    },
+    "Rodin3D_Gen25_Text": {
+        "title": "Rodin 3D Gen-2.5 - テキスト→3D",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "mode": "モード",
+            "tier": "レベル",
+            "polygon_count": "ポリゴン数",
+            "creative": "クリエイティブ",
+            "material": "マテリアル",
+            "geometry_file_format": "ジオメトリファイル形式",
+            "texture_mode": "テクスチャモード",
+            "seed": "ランダムシード",
+            "control_after_generate": "生成後制御",
+            "TAPose": "TAポーズ",
+            "hd_texture": "高精細テクスチャ",
+            "texture_delight": "テクスチャ美化",
+            "addon_highpack": "高容量プラグイン",
+            "bbox_width": "バウンディングボックス幅",
+            "bbox_height": "バウンディングボックス高さ",
+            "bbox_length": "バウンディングボックス長さ",
+            "height_cm": "高さ（cm）"
+        },
+        "outputs": {
+            "model_file": "モデルファイル"
+        },
+        "description": "Rodin 3D Gen-2.5テキスト→3Dノード、テキストプロンプトから3Dモデルを生成します。"
+    },
+    "TripoTextToModelNode": {
+        "title": "Tripo：テキスト→モデル",
+        "inputs": {
+            "images": "画像グループ"
+        },
+        "widgets": {
+            "model_version": "モデルバージョン",
+            "style": "スタイル",
+            "texture": "マップ",
+            "pbr": "PBRマテリアル",
+            "image_seed": "画像シード",
+            "model_seed": "モデルシード",
+            "texture_seed": "マップシード",
+            "texture_quality": "マップ品質",
+            "face_limit": "面数制限",
+            "quad": "_quadメッシュ"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "model task_id": "モデルタスクID",
+            "model_task_id": "モデルタスクID"
+        }
+    },
+    "TripoImageToModelNode": {
+        "title": "Tripo：画像→モデル",
+        "inputs": {
+            "image": "画像",
+            "images": "画像グループ"
+        },
+        "widgets": {
+            "model_version": "モデルバージョン",
+            "style": "スタイル",
+            "texture": "マップ",
+            "pbr": "PBRマテリアル",
+            "image_seed": "画像シード",
+            "model_seed": "モデルシード",
+            "orientation": "向き",
+            "texture_seed": "マップシード",
+            "texture_quality": "マップ品質",
+            "texture_alignment": "テクスチャ整合",
+            "face_limit": "面数制限",
+            "quad": "_quadメッシュ"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "model task_id": "モデルタスクID",
+            "model_task_id": "モデルタスクID"
+        }
+    },
+    "TripoMultiviewToModelNode": {
+        "title": "Tripo：マルチビュー→モデル",
+        "inputs": {
+            "image": "画像",
+            "images": "画像グループ",
+            "image_left": "左ビュー",
+            "image_back": "後面ビュー",
+            "image_right": "右ビュー"
+        },
+        "widgets": {
+            "model_version": "モデルバージョン",
+            "orientation": "向き",
+            "style": "スタイル",
+            "texture": "マップ",
+            "pbr": "PBRマテリアル",
+            "image_seed": "画像シード",
+            "model_seed": "モデルシード",
+            "texture_seed": "マップシード",
+            "texture_quality": "マップ品質",
+            "texture_alignment": "テクスチャ整合",
+            "face_limit": "面数制限",
+            "quad": "_quadメッシュ"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "model task_id": "モデルタスクID",
+            "model_task_id": "モデルタスクID"
+        }
+    },
+    "TripoP1TextToModelNode": {
+        "title": "Tripo P1：テキスト→モデル",
+        "inputs": {
+            "prompt": "プロンプト",
+            "negative_prompt": "ネガティブプロンプト"
+        },
+        "widgets": {
+            "output_mode": "出力モード",
+            "image_seed": "画像ランダムシード",
+            "face_limit": "面数制限",
+            "model_seed": "モデルランダムシード",
+            "auto_size": "自動サイズ",
+            "export_uv": "UVを書き出す",
+            "compress_geometry": "ジオメトリ圧縮"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "model task_id": "モデルタスクID"
+        },
+        "description": "テキストプロンプトを3Dモデルに変換"
+    },
+    "TripoP1ImageToModelNode": {
+        "title": "Tripo P1：画像→モデル",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "output_mode": "出力モード",
+            "enable_image_autofix": "画像自動修復を有効化",
+            "face_limit": "面数制限",
+            "model_seed": "モデルランダムシード",
+            "auto_size": "自動サイズ",
+            "export_uv": "UVを書き出す",
+            "compress_geometry": "ジオメトリ圧縮"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "model_task_id": "モデルタスクID"
+        },
+        "description": "TripoP1画像→3D。低ポリゴン・ゲーム品質メッシュ向けに最適化。"
+    },
+    "TripoP1MultiviewToModelNode": {
+        "title": "Tripo P1：マルチビュー→モデル",
+        "inputs": {
+            "image": "画像",
+            "image_left": "左ビュー画像",
+            "image_back": "後面ビュー画像",
+            "image_right": "右ビュー画像"
+        },
+        "widgets": {
+            "output_mode": "出力モード",
+            "face_limit": "面数制限",
+            "model_seed": "モデルランダムシード",
+            "auto_size": "自動サイズ",
+            "export_uv": "UVを書き出す",
+            "compress_geometry": "ジオメトリ圧縮"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "model_task_id": "モデルタスクID"
+        },
+        "description": "TripoP1マルチビュー→3Dは2〜4枚の参考画像から変換、順序は[前・左・後・右]。正面画像は必須、その他3方向は任意の組合せで省略可。"
+    },
+    "TripoTextureNode": {
+        "title": "Tripo：テクスチャモデル",
+        "inputs": {
+            "model task_id": "モデルタスクID",
+            "model_task_id": "モデルタスクID"
+        },
+        "widgets": {
+            "model_version": "モデルバージョン",
+            "style": "スタイル",
+            "texture": "マップ",
+            "pbr": "PBRマテリアル",
+            "image_seed": "画像シード",
+            "model_seed": "モデルシード",
+            "orientation": "向き",
+            "texture_seed": "マップシード",
+            "texture_quality": "マップ品質",
+            "texture_alignment": "テクスチャ整合",
+            "face_limit": "面数制限",
+            "quad": "_quadメッシュ"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "model_task_id": "モデルタスクID"
+        }
+    },
+    "TripoRefineNode": {
+        "title": "Tripo：ラフモデル仕上げ",
+        "inputs": {
+            "model task_id": "モデルタスクID",
+            "model_task_id": "モデルタスクID"
+        },
+        "widgets": {
+            "format": "形式",
+            "face_limittexture_size": "面テクスチャサイズ制限",
+            "texture_format": "テクスチャ形式",
+            "quad": "_quadメッシュ"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "model task_id": "モデルタスクID",
+            "model_task_id": "モデルタスクID"
+        }
+    },
+    "TripoRigNode": {
+        "title": "Tripo：リグモデル",
+        "inputs": {
+            "original model task id": "元モデルタスクID",
+            "original_model_task_id": "元モデルタスクID"
+        },
+        "widgets": {
+            "format": "形式",
+            "face_limittexture_size": "面テクスチャサイズ制限",
+            "texture_format": "テクスチャ形式",
+            "quad": "_quadメッシュ"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "rig task_id": "リグタスクID",
+            "rig_task_id": "リグタスクID"
+        }
+    },
+    "TripoRetargetNode": {
+        "title": "Tripo：リターゲットアニメーションモデル",
+        "inputs": {
+            "original model task id": "元モデルタスクID",
+            "original_model_task_id": "元モデルタスクID"
+        },
+        "widgets": {
+            "animation": "アニメーション",
+            "face_limittexture_size": "面テクスチャサイズ制限",
+            "texture_format": "テクスチャ形式",
+            "quad": "_quadメッシュ"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "retarget task_id": "リターゲットタスクID",
+            "retarget_task_id": "リターゲットタスクID"
+        }
+    },
+    "BriaVideoReplaceBackground": {
+        "title": "Bria動画背景置換",
+        "inputs": {
+            "video": "動画",
+            "background_image": "背景画像",
+            "background_video": "背景動画"
+        },
+        "widgets": {
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "Briaで動画の背景を指定画像または動画に置き換えます。出力は前景の解像度とフレームレートを保持。背景のアスペクト比が異なる場合は拉伸されますので、比率を一致させると歪みなく使えます。"
+    },
+    "RunwayAleph2VideoToVideoNode": {
+        "title": "Runway Aleph2動画→動画",
+        "inputs": {
+            "video": "動画",
+            "keyframes": "キーフレーム",
+            "prompt_images": "プロンプト画像"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "seed": "ランダムシード",
+            "generate_control": "生成制御",
+            "public_figure_threshold": "公開人物しきい値"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "Runway Aleph2モデルでテキストプロンプト付き動画を編集します。Aleph2は元のモーションとリズムを保ったまま動画を変換（再スタイル・再ライティング・要素の追加/除去・視点変更）。出力解像度は入力と一致し、入力は2〜30秒、30fps以下。キーフレーム（入力動画に固定）またはプロンプト画像（出力動画に固定）で編集を誘導可能、同時使用は不可。"
+    },
+    "TripoImportModelNode": {
+        "title": "Tripo：モデルを読み込み",
+        "inputs": {
+            "model_3d": "3Dモデルファイルパス"
+        },
+        "widgets": {},
+        "outputs": {
+            "model task_id": "モデルタスクID"
+        },
+        "description": "外部3Dモデル（Rodin、Hunyuan3D、ローカルファイル等）をTripoに読み込み、ポストプロセッシングノード（テクスチャ・スケルタル・変換）で使用可能にします。GLB形式推奨：テクスチャがファイル内に埋め込みの場合も読み込み後も保持されます。読み込んだモデルにテクスチャを適用する際は、先にテクスチャプロンプトを設定してください。"
+    },
+    "GeminiVideoOmni": {
+        "title": "Google Gemini Omni（動画）",
+        "inputs": {
+            "image_1": "画像_1",
+            "video_1": "動画_1"
+        },
+        "widgets": {
+            "model": "モデル",
+            "model_prompt": "モデルプロンプト",
+            "temperature": "温度",
+            "seed": "シード",
+            "generate_after_control": "生成後制御"
+        },
+        "outputs": {},
+        "description": "Google GeminiOmniFlashモデルでテキストプロンプトから音声付き動画を生成します。参考画像や動画で生成結果を誘導・編集可能。必要尺（3〜10秒）とアスペクト比（16:9または9:16）をプロンプトに直接記載してください。"
+    },
+    "LumaRay32TextToVideoNode": {
+        "title": "Luma Ray 3.2テキスト→動画",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "duration": "尺",
+            "seed": "シード",
+            "loop": "ループ"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "generation_id": "生成ID"
+        },
+        "description": "Luma Ray3.2モデルでテキストプロンプトから動画を生成します。"
+    },
+    "LumaRay32ImageToVideoNode": {
+        "title": "Luma Ray 3.2画像→動画",
+        "inputs": {
+            "start_frame": "開始フレーム",
+            "end_frame": "終了フレーム",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "resolution": "解像度",
+            "loop": "ループ",
+            "seed": "ランダムシード",
+            "generate_after_control": "生成後制御"
+        },
+        "outputs": {
+            "video": "動画",
+            "generation_id": "生成ID"
+        },
+        "description": "Luma Ray3.2モデルで開始および/または終了フレームから動画を生成します。画像固定生成は常に5秒です。"
+    },
+    "LumaRay32KeyframesToVideoNode": {
+        "title": "Luma Ray 3.2キーフレーム→動画",
+        "inputs": {
+            "keyframes": "キーフレーム",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "resolution": "解像度",
+            "duration": "持続時間",
+            "seed": "シード",
+            "generate_after_control": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "generation_id": "生成ID"
+        },
+        "description": "キーフレームを動画に変換"
+    },
+    "LumaRay32VideoEditNode": {
+        "title": "Luma Ray 3.2動画編集",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "resolution": "解像度",
+            "strength": "強度",
+            "seed": "シード",
+            "generate_after_control": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "generation_id": "生成ID"
+        },
+        "description": "LumaRay3.2で既存動画を新しいプロンプトにより再レンダリング（再デザイン・再ライティング・要素追加/除去）しつつ、元モーションを保持します。元動画は最大18秒、編集後の動画は元動画と同じ尺です。"
+    },
+    "LumaRay32VideoReframeNode": {
+        "title": "Luma Ray 3.2動画リセット",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "strength": "強度",
+            "seed": "シード",
+            "generate_after_control": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "generation_id": "生成ID"
+        },
+        "description": "LumaRay3.2で既存動画のアスペクト比を変更し、新しく露出したキャンバス領域を充填します。元動画は最大30秒。出力1秒ごとに課金されます。"
+    },
+    "LumaRay32ExtendVideoNode": {
+        "title": "Luma Ray 3.2動画拡張",
+        "inputs": {},
+        "widgets": {
+            "source_generation_id": "元生成ID",
+            "direction": "方向",
+            "loop": "ループ",
+            "prompt": "プロンプト",
+            "resolution": "解像度",
+            "seed": "シード",
+            "generate_after_control": "生成後制御"
+        },
+        "outputs": {
+            "VIDEO": "動画",
+            "generation_id": "生成ID"
+        },
+        "description": "過去のRay3.2生成を前方に拡張（後方に続ける）または後方に拡張（前方に導入）。過去のLumaRay3.2ノードの「元生成ID」出力に接続します。拡張は常に5秒です。"
+    },
+    "HeyGenTalkingPhotoNode": {
+        "title": "HeyGen静止画トーク",
+        "inputs": {
+            "image": "画像",
+            "speech_source": "音声ソース",
+            "speech_text": "音声テキスト"
+        },
+        "widgets": {
+            "speech_source": "音声ソース",
+            "voice": "音声",
+            "custom_voice_id": "カスタム音声ID",
+            "voice_speed": "音声速度",
+            "resolution": "解像度",
+            "aspect_ratio": "アスペクト比",
+            "expressiveness": "表現力",
+            "seed": "シード",
+            "speech_text": "音声テキスト"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "任意の人物画像をリップシンク付き会話動画にアニメーション化（HeyGen Avatar IV）。テキストスクリプトまたはカスタム音声で駆動します。"
+    },
+    "HeyGenAvatarVideoNode": {
+        "title": "HeyGenアバター動画",
+        "inputs": {},
+        "widgets": {
+            "engine": "エンジン",
+            "avatar": "アバター",
+            "speech source": "音声ソース",
+            "voice": "音声",
+            "custom_voice_id": "カスタム音声ID",
+            "voice_speed": "音声速度",
+            "custom_avatar_id": "カスタムアバターID",
+            "resolution": "解像度",
+            "aspect_ratio": "アスペクト比",
+            "background_color": "背景色",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "HeyGenアバターから会話するプレゼンター動画を生成します。人気公開アバターを収録、任意の外観IDを上書き指定できます。"
+    },
+    "HeyGenCreateAvatarNode": {
+        "title": "HeyGenアバター作成",
+        "inputs": {
+            "ref_image_1": "参考画像1"
+        },
+        "widgets": {
+            "source": "元ファイル"
+        },
+        "outputs": {
+            "avatar_id": "アバターID",
+            "preview": "プレビュー画像"
+        },
+        "description": "元画像とプロンプトからアバターを作成します"
+    },
+    "HeyGenVideoTranslateNode": {
+        "title": "HeyGen動画翻訳",
+        "inputs": {
+            "video": "動画"
+        },
+        "widgets": {
+            "output_language": "出力言語",
+            "mode": "モード",
+            "translate_audio_only": "音声のみ翻訳",
+            "speaker_count": "話者数",
+            "seed": "ランダムシード"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "HeyGen動画翻訳ノード"
+    },
+    "MinimaxHailuo03TextToVideoNode": {
+        "title": "MiniMax Hailuo H3テキスト→動画",
+        "inputs": {},
+        "widgets": {
+            "model": "モデル",
+            "model_prompt": "モデルプロンプト",
+            "resolution": "解像度",
+            "ratio": "比率",
+            "seed": "シード",
+            "watermark": "透かし"
+        },
+        "outputs": {},
+        "description": "MiniMax H3モデルでテキストプロンプトから動画を生成します。"
+    },
+    "MinimaxHailuo03FirstLastFrameNode": {
+        "title": "MiniMax Hailuo H3最初/最終フレーム→動画",
+        "inputs": {
+            "first_frame": "最初のフレーム",
+            "last_frame": "最後のフレーム"
+        },
+        "widgets": {
+            "model": "モデル",
+            "model_prompt": "モデルプロンプト",
+            "resolution": "解像度",
+            "duration": "持続時間",
+            "seed": "ランダムシード",
+            "generate_control": "生成制御",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "最初のフレームと最後のフレームから動画を生成"
+    },
+    "MinimaxHailuo03ReferenceNode": {
+        "title": "MiniMax Hailuo H3参考→動画",
+        "inputs": {
+            "image_1": "画像1",
+            "video_1": "動画1",
+            "audio_1": "音声1"
+        },
+        "widgets": {
+            "model": "モデル",
+            "prompt": "プロンプト",
+            "resolution": "解像度",
+            "ratio": "比率",
+            "seed": "ランダムシード",
+            "watermark": "透かし"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "MiniMax H3モデルで画像・動画・音声を参考に新しい動画を生成します。"
+    },
+    "SyncLipSyncNode": {
+        "title": "sync.soリップシンク",
+        "inputs": {
+            "video": "動画",
+            "audio": "音声"
+        },
+        "widgets": {
+            "seed": "ランダムシード",
+            "generate_after_control": "生成後制御",
+            "model": "モデル",
+            "sync_mode": "同期モード",
+            "speaker_selection": "話者選択",
+            "speaker_frame": "話者フレーム",
+            "speaker_x": "話者X座標",
+            "speaker_y": "話者Y座標"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "音声と動画の口元モーションを同期"
+    },
+    "SyncTalkingImageNode": {
+        "title": "sync.so会話画像",
+        "inputs": {
+            "image": "画像",
+            "audio": "音声"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "seed": "シード",
+            "generate_after_control": "生成後制御",
+            "model": "モデル",
+            "speaker_selection": "話者選択",
+            "speaker_x": "話者X座標",
+            "speaker_y": "話者Y座標",
+            "auto_downscale": "自動ダウンサンプリング"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "画像と音声を組み合わせて会話画像を生成"
+    },
+    "IdeogramPImage": {
+        "title": "HiDream P画像",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "quality": "品質",
+            "resolution": "解像度",
+            "aspect_ratio": "アスペクト比",
+            "prompt_upsampling": "プロンプトアップサンプリング",
+            "seed": "シード",
+            "generate_after_control": "生成後制御"
+        },
+        "outputs": {
+            "IMAGE": "画像",
+            "final_prompt": "最終プロンプト"
+        },
+        "description": "画像を生成するノード"
+    },
+    "ByteDanceSeedAudio": {
+        "title": "ByteDance Seed Audio 1.0",
+        "inputs": {},
+        "widgets": {
+            "text_prompt": "テキストプロンプト",
+            "reference_mode": "参考モード",
+            "sample_rate": "サンプルレート",
+            "speech_rate": "話速",
+            "loudness_rate": "ラウドネス",
+            "pitch_rate": "ピッチ",
+            "seed": "シード",
+            "model": "モデル",
+            "generate_after_control": "生成後制御"
+        },
+        "outputs": {
+            "AUDIO": "動画"
+        },
+        "description": "ByteDance Seed Audio 1.0ノード"
+    },
+    "HeyGenTextToSpeechNode": {
+        "title": "HeyGenテキスト→音声",
+        "inputs": {},
+        "widgets": {
+            "text": "テキスト",
+            "voice": "音声",
+            "custom_voice_id": "カスタム音声ID",
+            "speed": "話速",
+            "ssml": "SSML制御タグ",
+            "seed": "シード",
+            "generate_after_control": "生成後制御"
+        },
+        "outputs": {},
+        "description": "テキストを音声に変換するノード"
+    },
+    "ComfyCloudMiniMaxH3TextToVideoNode": {
+        "title": "Comfyクラウド MiniMax H3テキスト→動画",
+        "inputs": {
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "seed": "ランダムシード",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "duration_seconds": "尺（秒）"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "Comfyクラウドノードセットは継続的に更新中です：オプションは追加・削除されることがあり、一部のワークフローは廃止される可能性があります。MiniMax H3でテキストプロンプトから音楽付き動画を生成します。画像と音声は同一パイプラインから生成され、後付けではありません。  \n Comfy Cloud GPU上で実行、実行時間で課金、GPU秒あたり$0.001295（0.27クレジット）。  \n クレジットで支払い、クラウドサブスクリプションは不要です。"
+    },
+    "ComfyCloudMiniMaxH3ImageToVideoNode": {
+        "title": "Comfyクラウド MiniMax H3画像→動画",
+        "inputs": {
+            "first_frame": "最初のフレーム",
+            "prompt": "プロンプト"
+        },
+        "widgets": {
+            "seed": "ランダムシード",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "duration_seconds": "持続時間"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "Comfyクラウドノードセットは継続的に更新中です：オプションは追加・削除されることがあり、一部のワークフローは廃止される可能性があります。MiniMax H3でテキストプロンプトから音楽付き動画を生成します。画像と音声は同一パイプラインから生成され、後付けではありません。  \n Comfy Cloud GPU上で実行、実行時間で課金、GPU秒あたり$0.001295（0.27クレジット）。  \n クレジットで支払い、クラウドサブスクリプションは不要です。"
+    },
+    "ComfyCloudMiniMaxH3FirstLastFrameToVideoNode": {
+        "title": "Comfyクラウド MiniMax H3最初/最終フレーム→動画",
+        "inputs": {
+            "first_frame": "最初のフレーム",
+            "last_frame": "最後のフレーム"
+        },
+        "widgets": {
+            "prompt": "プロンプト",
+            "seed": "ランダムシード",
+            "aspect_ratio": "アスペクト比",
+            "resolution": "解像度",
+            "duration_seconds": "持続時間（秒）"
+        },
+        "outputs": {
+            "VIDEO": "動画"
+        },
+        "description": "Comfyクラウドノードセットは継続的に更新中です：オプションは追加・削除されることがあり、一部のワークフローは廃止される可能性があります。MiniMax H3でテキストプロンプトから音楽付き動画を生成します。画像と音声は同一パイプラインから生成され、後付けではありません。  \n Comfy Cloud GPU上で実行、実行時間で課金、GPU秒あたり$0.001295（0.27クレジット）。  \n クレジットで支払い、クラウドサブスクリプションは不要です。"
+    },
+    "TripoConversionNode": {
+        "title": "Tripoモデル変換",
+        "inputs": {
+            "original model task id": "元モデルタスクID",
+            "original_model_task_id": "元モデルタスクID"
+        },
+        "widgets": {
+            "format": "形式",
+            "face_limittexture_size": "面テクスチャサイズ制限",
+            "face_limit": "面数制限",
+            "texture_size": "テクスチャサイズ",
+            "texture_format": "テクスチャ形式",
+            "quad": "_quadメッシュ"
+        },
+        "outputs": {
+            "model_file": "モデルファイル",
+            "model task_id": "モデルタスクID",
+            "model_task_id": "モデルタスクID"
+        }
+    }
+}

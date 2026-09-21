@@ -1,0 +1,79 @@
+{
+    "DownloadAndLoadFlorence2Model": {
+        "title": "DownloadAndLoadFlorence2Model",
+        "inputs": {},
+        "widgets": {
+            "model": "モデル",
+            "precision": "精度",
+            "attention": "注意",
+            "lora": "LoRA",
+            "convert_to_safetensors": "SAFETENSORSに変換"
+        },
+        "outputs": {
+            "florence2_model": "Florence2モデル",
+            "FL2MODEL": "FL2MODEL"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "DownloadAndLoadFlorence2Lora": {
+        "title": "DownloadAndLoadFlorence2Lora",
+        "inputs": {},
+        "widgets": {
+            "model": "モデル"
+        },
+        "outputs": {
+            "lora": "LoRA",
+            "PEFTLORA": "PEFTLORA"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Florence2ModelLoader": {
+        "title": "Florence2ModelLoader",
+        "inputs": {},
+        "widgets": {
+            "model": "モデル",
+            "precision": "精度",
+            "attention": "注意",
+            "lora": "LoRA",
+            "convert_to_safetensors": "SAFETENSORSに変換"
+        },
+        "outputs": {
+            "florence2_model": "Florence2モデル",
+            "FL2MODEL": "FL2MODEL"
+        },
+        "description": "",
+        "api_version": "V1"
+    },
+    "Florence2Run": {
+        "title": "Florence2Run",
+        "inputs": {
+            "image": "画像"
+        },
+        "widgets": {
+            "florence2_model": "Florence2モデル",
+            "text_input": "テキスト入力",
+            "task": "タスク",
+            "fill_mask": "マスク埋め込み",
+            "keep_model_loaded": "モデルを保持",
+            "max_new_tokens": "新規トークンの最大数",
+            "num_beams": "ビーム数",
+            "do_sample": "サンプリングを実行",
+            "output_mask_select": "マスク出力選択",
+            "seed": "シード"
+        },
+        "outputs": {
+            "image": "画像",
+            "mask": "マスク",
+            "caption": "キャプション",
+            "data": "データ",
+            "IMAGE": "IMAGE",
+            "MASK": "MASK",
+            "STRING": "STRING",
+            "JSON": "JSON"
+        },
+        "description": "",
+        "api_version": "V1"
+    }
+}

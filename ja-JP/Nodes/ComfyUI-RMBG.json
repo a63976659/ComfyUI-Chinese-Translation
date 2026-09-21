@@ -1,0 +1,986 @@
+{
+  "BiRefNetRMBG": {
+    "title": "BiRefNet 背景除去 (RMBG)",
+    "inputs": {
+      "image": "画像"
+    },
+    "widgets": {
+      "model": "モデル",
+      "mask_blur": "マスクぼかし",
+      "mask_offset": "マスク伸縮",
+      "background": "背景",
+      "invert_output": "出力を反転",
+      "refine_foreground": "精細前景最適化",
+      "background_color": "背景色"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "MASK_IMAGE": "マスク画像"
+    }
+  },
+  "BodySegment": {
+    "title": "身体部位セグメンテーション (RMBG)",
+    "inputs": {
+      "images": "画像"
+    },
+    "widgets": {
+      "Hair": "髪",
+      "Glasses": "眼鏡",
+      "Top-clothes": "上半身衣類",
+      "Bottom-clothes": "下半身衣類",
+      "Torso-skin": "体幹の肌",
+      "Face": "顔",
+      "Left-arm": "左腕",
+      "Right-arm": "右腕",
+      "Left-leg": "左脚",
+      "Right-leg": "右脚",
+      "Left-foot": "左手前",
+      "Right-foot": "右手前",
+      "mask_blur": "マスクぼかし",
+      "mask_offset": "マスク伸縮",
+      "background_color": "背景色",
+      "invert_output": "出力を反転"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "MASK_IMAGE": "マスク画像"
+    }
+  },
+  "ClothesSegment": {
+    "title": "衣類セグメンテーション (RMBG)",
+    "inputs": {
+      "images": "画像"
+    },
+    "widgets": {
+      "Hat": "帽子",
+      "Hair": "髪",
+      "Face": "顔",
+      "Sunglasses": "サングラス",
+      "Upper-clothes": "トップス",
+      "Skirt": "スカート",
+      "Dress": "ワンピース",
+      "Belt": "ベルト",
+      "Pants": "パンツ",
+      "Left-arm": "左腕",
+      "Right-arm": "右腕",
+      "Left-leg": "左脚",
+      "Right-leg": "右脚",
+      "Bag": "バックパック",
+      "Scarf": "マフラー",
+      "Left-shoe": "左靴",
+      "Right-shoe": "右靴",
+      "Background": "背景",
+      "process_res": "処理解像度",
+      "mask_blur": "マスクぼかし",
+      "mask_offset": "マスク伸縮",
+      "background_color": "背景色",
+      "invert_output": "出力を反転"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "MASK_IMAGE": "マスク画像"
+    }
+  },
+  "FaceSegment": {
+    "title": "顔部セグメンテーション (RMBG)",
+    "inputs": {
+      "images": "画像"
+    },
+    "widgets": {
+      "Skin": "肌",
+      "Nose": "鼻",
+      "Eyeglasses": "眼鏡",
+      "Left-eye": "左目",
+      "Right-eye": "右目",
+      "Left-eyebrow": "左眉",
+      "Right-eyebrow": "右眉",
+      "Left-ear": "左耳",
+      "Right-ear": "右耳",
+      "Mouth": "口",
+      "Upper-lip": "上唇",
+      "Lower-lip": "下唇",
+      "Hair": "髪",
+      "Earring": "イヤリング",
+      "Neck": "首",
+      "process_res": "処理解像度",
+      "mask_blur": "マスクぼかし",
+      "mask_offset": "マスク伸縮",
+      "background_color": "背景色",
+      "invert_output": "出力を反転"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "MASK_IMAGE": "マスク画像"
+    }
+  },
+  "FashionSegmentAccessories": {
+    "title": "ファッションアクセサリー分割 (RMBG)",
+    "inputs": {
+      "images": "画像"
+    },
+    "widgets": {
+      "hat": "帽子",
+      "glasses": "眼鏡",
+      "headband, head covering, hair accessory": "ヘアバンド/スカーフ/ヘアアクセ",
+      "scarf": "マフラー",
+      "tie": "ネクタイ",
+      "glove": "手袋",
+      "watch": "腕時計",
+      "belt": "ベルト",
+      "leg warmer": "レッグウォーマー",
+      "bag, wallet": "バッグ/財布",
+      "umbrella": "傘",
+      "collar": "襟",
+      "lapel": "ラペル",
+      "neckline": "襟元",
+      "epaulette": "エポーレット",
+      "pocket": "ポケット",
+      "buckle": "バックル",
+      "zipper": "ファスナー",
+      "applique": "刺繍",
+      "bow": "蝶結び",
+      "flower": "花",
+      "bead": "ビーズ",
+      "fringe": "フリンジ",
+      "ribbon": "リボン",
+      "rivet": "リベット",
+      "ruffle": "フリル",
+      "sequin": "スパングラ",
+      "tassel": "タッセル",
+      "background_color": "背景色"
+    },
+    "outputs": {
+      "accessories_options": "アクセサリーオプション"
+    }
+  },
+  "FashionSegmentClothing": {
+    "title": "ファッション衣類分割 (RMBG)",
+    "inputs": {
+      "images": "画像",
+      "accessories_options": "アクセサリーオプション"
+    },
+    "widgets": {
+      "coat": "コート",
+      "jacket": "ジャケット",
+      "cardigan": "カーディガン",
+      "vest": "ベスト",
+      "sweater": "セーター",
+      "hood": "帽子",
+      "shirt, blouse": "シャツ",
+      "top, t-shirt, sweatshirt": "トップス/Tシャツ/スウェット",
+      "sleeve": "袖",
+      "dress": "ワンピース",
+      "jumpsuit": "ジャンプスーツ",
+      "cape": "マント",
+      "pants": "パンツ",
+      "shorts": "ショートパンツ",
+      "skirt": "スカート",
+      "tights, stockings": "レギンス/ストッキング",
+      "sock": "靴下",
+      "shoe": "靴",
+      "process_res": "処理解像度",
+      "mask_blur": "マスクぼかし",
+      "mask_offset": "マスク伸縮",
+      "background_color": "背景色",
+      "invert_output": "出力を反転"
+    },
+    "outputs": {
+      "images": "画像",
+      "mask": "マスク",
+      "MASK_IMAGE": "マスク画像"
+    }
+  },
+  "AILab_Preview": {
+    "title": "画像/マスク プレビュー (RMBG)🖼️🎭",
+    "inputs": {
+      "image": "画像",
+      "mask": "マスク"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク"
+    }
+  },
+  "AILab_MaskOverlay": {
+    "title": "マスクオーバーレイ(RMBG)🖼️🎭",
+    "inputs": {
+      "image": "画像",
+      "mask": "マスク"
+    },
+    "widgets": {
+      "mask_opacity": "マスク不透明度",
+      "mask_color": "マスク色"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク"
+    }
+  },
+  "AILab_MaskPreview": {
+    "title": "マスクプレビュー (RMBG)🎭",
+    "inputs": {
+      "mask": "マスク"
+    },
+    "outputs": {
+      "MASK": "マスク"
+    }
+  },
+  "AILab_ImagePreview": {
+    "title": "画像プレビュー (RMBG)🖼️",
+    "inputs": {
+      "image": "画像"
+    },
+    "outputs": {
+      "IMAGE": "画像"
+    }
+  },
+  "AILab_ImageMaskConvert": {
+    "title": "画像/マスク コンバーター (RMBG) 🖼️🎭",
+    "inputs": {
+      "image": "画像",
+      "mask": "マスク"
+    },
+    "widgets": {
+      "mask_channel": "マスクチャンネル"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク"
+    }
+  },
+  "AILab_MaskEnhancer": {
+    "title": "マスク エンハンサー (RMBG) 🎭",
+    "inputs": {
+      "mask": "マスク"
+    },
+    "widgets": {
+      "sensitivity": "感度",
+      "mask_blur": "マスクぼかし",
+      "mask_offset": "マスク伸縮",
+      "smooth": "平滑",
+      "fill_region": "塗り領域",
+      "invert_output": "出力を反転",
+      "mask_pil": "PILマスク"
+    },
+    "outputs": {
+      "MASK": "マスク"
+    }
+  },
+  "AILab_MaskCombiner": {
+    "title": "マスク コンバイナー (RMBG) 🎭",
+    "inputs": {
+      "mask 1": "マスク1",
+      "mask 2": "マスク2",
+      "mask 3": "マスク3",
+      "mask 4": "マスク4",
+      "mask 5": "マスク5"
+    },
+    "widgets": {
+      "target_shape": "目標サイズ",
+      "mode": "モード"
+    },
+    "outputs": {
+      "MASK": "マスク"
+    }
+  },
+  "AILab_LoadImage": {
+    "title": "画像読込 (RMBG)🖼️",
+    "inputs": {},
+    "widgets": {
+      "Image": "画像",
+      "Image_Path_or_URL": "画像パスまたはURL",
+      "Mask_Channel": "マスクチャンネル",
+      "megapixels": "メガピクセル",
+      "Upscale_Method": "拡大手法",
+      "Scale_By": "スケール比率",
+      "Resize_Mode": "リサイズ モード",
+      "Size": "サイズ"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "MASK_IMAGE": "マスク画像",
+      "WIDTH": "幅",
+      "HEIGHT": "高さ",
+      "int": "整数"
+    }
+  },
+  "AILab_LoadImageSimple": {
+    "title": "画像読込 シンプル(RMBG)🖼️",
+    "inputs": {},
+    "widgets": {
+      "image": "画像",
+      "image_path_or_URL": "画像パスまたはURL",
+      "upscale_method": "拡大手法",
+      "scale_by": "スケール比率",
+      "resize_mode": "リサイズ モード",
+      "size": "サイズ"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "MASK_IMAGE": "マスク画像",
+      "WIDTH": "幅",
+      "HEIGHT": "高さ",
+      "int": "整数"
+    }
+  },
+  "AILab_LoadImageAdvanced": {
+    "title": "画像読込 詳細(RMBG)🖼️",
+    "inputs": {},
+    "widgets": {
+      "Image": "画像",
+      "Image_Path_or_URL": "画像パスまたはURL",
+      "Mask_Channel": "マスクチャンネル",
+      "megapixels": "メガピクセル",
+      "Upscale_Method": "拡大手法",
+      "Scale_By": "スケール比率",
+      "Resize_Mode": "リサイズ モード",
+      "Size": "サイズ"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "MASK_IMAGE": "マスク画像",
+      "WIDTH": "幅",
+      "HEIGHT": "高さ",
+      "METADATA": "メタデータ"
+    }
+  },
+  "AILab_LoadImageBatch": {
+    "title": "一括画像読込 (RMBG)🖼️",
+    "inputs": {},
+    "widgets": {
+      "Path to a directory, comma/new-line separated file paths, OR comma/new-line separated URLs": "ディレクトリへのパス、カンマ/改行で区切ったファイルパス、またはカンマ/改行で区切ったURL",
+      "image_path_or_URL": "画像パスまたはURL",
+      "upscale_method": "拡大手法",
+      "megapixels": "メガピクセル",
+      "scale_by": "スケール比率",
+      "resize_mode": "リサイズ モード",
+      "size": "サイズ",
+      "batch_size": "バッチサイズ",
+      "start_from": "開始位置",
+      "sort_method": "ソート方法"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "MASK_IMAGE": "マスク画像",
+      "WIDTH": "幅",
+      "HEIGHT": "高さ",
+      "int": "整数"
+    }
+  },
+  "AILab_ImageCombiner": {
+    "title": "画像コンバイナー (RMBG) 🖼️",
+    "inputs": {
+      "foreground": "前景",
+      "background": "背景",
+      "foreground mask": "前景マスク"
+    },
+    "widgets": {
+      "mode": "モード",
+      "foreground_opacity": "前景不透明度",
+      "foreground_scale": "前景スケール",
+      "position_x": "X軸位置",
+      "position_y": "Y軸位置",
+      "Mode": "モード",
+      "Foreground_Opacity": "前景不透明度",
+      "Foreground_Scale": "前景スケール",
+      "Position_X": "X軸位置",
+      "Position_Y": "Y軸位置",
+      "foreground_mask": "前景マスク",
+      "mask_pil": "PILマスク"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "WIDTH": "幅",
+      "HEIGHT": "高さ",
+      "MASK": "マスク"
+    }
+  },
+  "AILab_MaskExtractor": {
+    "title": "マスク エクストラクター (RMBG) 🎭",
+    "inputs": {
+      "image": "画像",
+      "mask": "マスク"
+    },
+    "widgets": {
+      "Mode": "モード",
+      "Background": "背景",
+      "mask_np": "NumPyマスク",
+      "image_shape": "画像サイズ",
+      "background_color": "背景色"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク"
+    }
+  },
+  "AILab_ImageStitch": {
+    "title": "画像ステッチ(RMBG) 🖼️",
+    "inputs": {
+      "image1": "画像1",
+      "image2": "画像2",
+      "image3": "画像3"
+    },
+    "widgets": {
+      "Direction": "方向",
+      "match_image_size": "画像サイズに合わせる",
+      "max_width": "最大幅",
+      "max_height": "最大高さ",
+      "spacing_width": "間隔幅",
+      "concat_direction": "結合方向",
+      "width": "幅",
+      "height": "高さ",
+      "image_shape": "画像サイズ"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク"
+    }
+  },
+  "AILab_ImageCrop": {
+    "title": "画像クロップ(RMBG) 🖼️",
+    "inputs": {
+      "image": "画像"
+    },
+    "widgets": {
+      "position": "位置",
+      "width": "幅",
+      "height": "高さ",
+      "x_offset": "xオフセット",
+      "y_offset": "yオフセット",
+      "split": "分割"
+    },
+    "outputs": {
+      "crop": "クロップ",
+      "rest": "残り"
+    }
+  },
+  "AILab_CropObject": {
+    "title": "物体へクロップ (RMBG) 🖼️🎭",
+    "inputs": {
+      "image": "画像",
+      "mask": "マスク"
+    },
+    "widgets": {
+      "padding": "パディング",
+      "width": "幅",
+      "height": "高さ",
+      "split": "分割"
+    },
+    "outputs": {
+      "image": "画像",
+      "mask": "マスク",
+      "IMAGE": "画像",
+      "MASK": "マスク"
+    }
+  },
+  "AILab_ICLoRAConcat": {
+    "title": "画像拼接(RMBG) 🖼️",
+    "inputs": {
+      "object_image": "対象画像",
+      "base_image": "元画像",
+      "object_mask": "対象マスク",
+      "base_mask": "元マスク"
+    },
+    "widgets": {
+      "layout": "レイアウト",
+      "custom_size": "カスタムサイズ"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "OBJECT_MASK": "対象マスク",
+      "BASE_MASK": "元画像",
+      "WIDTH": "幅",
+      "HEIGHT": "高さ",
+      "MASK": "マスク"
+    }
+  },
+  "AILab_ImageCompare": {
+    "title": "画像比較 (RMBG) 🖼️",
+    "inputs": {
+      "image1": "画像1",
+      "image2": "画像2"
+    },
+    "widgets": {
+      "text1": "テキスト1",
+      "text2": "テキスト2"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク"
+    }
+  },
+  "AILab_ReferenceLatentMask": {
+    "title": "Kontext 参考Latentマスク (RMBG) 🎭",
+    "inputs": {
+      "image1": "画像1",
+      "mask": "マスク",
+      "latent": "Latent"
+    },
+    "widgets": {
+      "Expansion": "拡張",
+      "Vague": "ぼかし",
+      "mask_only": "マスクのみ"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "latent": "Latent"
+    }
+  },
+  "RMBG": {
+    "title": "背景除去 (RMBG)",
+    "inputs": {
+      "image": "画像"
+    },
+    "widgets": {
+      "Model": "モデル",
+      "Mensitivity": "感度(0.0-1.0)",
+      "Processing Resolution": "処理解像度（512-2048）",
+      "Mask_Blur": "マスクぼかし（0-64）",
+      "Mask_Offset": "マスク伸縮(-20〜20)",
+      "Background": "背景",
+      "Invert_Output": "出力を反転",
+      "optimize": "最適化",
+      "Refine_Foreground": "精細前景最適化",
+      "background_color": "背景色"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "MASK_IMAGE": "マスク画像"
+    }
+  },
+  "AILab_ColorInput": {
+    "title": "色入力 (RMBG) 🎨",
+    "inputs": {
+      "image": "画像"
+    },
+    "widgets": {
+      "preset": "プリセット",
+      "color": "色",
+      "optimize": "最適化",
+      "refine_foreground": "精細前景最適化"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "COLOR": "色"
+    }
+  },
+  "AILab_LamaRemover": {
+    "title": "物体除去 (RMBG) 🖼️🎭",
+    "inputs": {
+      "Image": "画像",
+      "Masks": "マスク"
+    },
+    "widgets": {
+      "Removal_Strength": "除去強度",
+      "Edge_Smoothness": "エッジ平滑度"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "images": "画像"
+    }
+  },
+  "SAM2Segment": {
+    "title": "SAM2 セマンティックセグメンテーション  (RMBG)",
+    "inputs": {
+      "image": "画像"
+    },
+    "widgets": {
+      "prompt": "プロンプト",
+      "SAM_Model": "SAMモデル",
+      "Dino_Model": "DINOモデル",
+      "Device": "デバイス",
+      "threshold": "閾値",
+      "Mask Blur": "マスクぼかし",
+      "Mask Offset": "マスク伸縮",
+      "Background": "背景",
+      "background_color": "背景色",
+      "Invert Output": "出力を反転",
+      "sam2_model": "SAM2モデル",
+      "dino_model": "DINOモデル",
+      "device": "デバイス",
+      "mask_blur": "マスクぼかし",
+      "mask_offset": "マスク伸縮",
+      "background": "背景",
+      "invert_output": "出力を反転"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "MASK_IMAGE": "マスク画像"
+    }
+  },
+  "SAM3Segment": {
+    "title": "SAM3 セマンティックセグメンテーション (RMBG)",
+    "inputs": {
+      "image": "画像"
+    },
+    "widgets": {
+      "prompt": "プロンプト",
+      "sam3_model": "SAM3モデル",
+      "output_mode": "出力モード",
+      "device": "デバイス",
+      "confidence_threshold": "信頼度閾値",
+      "max_segments": "最大セグメント数",
+      "segment_pick": "セグメント選択",
+      "mask_blur": "マスクぼかし",
+      "mask_offset": "マスク伸縮",
+      "background": "背景",
+      "background_color": "背景色",
+      "unload_model": "モデルをアンロード",
+      "invert_output": "出力を反転"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "MASK_IMAGE": "マスク画像"
+    }
+  },
+  "SegmentV2": {
+    "title": "局部セグメンテーション  V2(RMBG)",
+    "inputs": {
+      "background_color": "背景色",
+      "image": "画像"
+    },
+    "widgets": {
+      "prompt": "プロンプト",
+      "SAM_Model": "SAMモデル",
+      "Dino_Model": "DINOモデル",
+      "Device": "デバイス",
+      "threshold": "閾値",
+      "Mask Blur": "マスクぼかし",
+      "Mask Offset": "マスク伸縮",
+      "Background": "背景",
+      "background_color": "背景色",
+      "Invert Output": "出力を反転"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "MASK_IMAGE": "マスク画像"
+    }
+  },
+  "AILab_SDMatte": {
+    "title": "SDM 背景切り抜き (RMBG) 🖼️🎭",
+    "inputs": {
+      "image": "画像",
+      "mask": "マスク"
+    },
+    "widgets": {
+      "model": "モデル",
+      "Device": "デバイス",
+      "Processing Resolution": "処理解像度",
+      "Transparent Object": "透明オブジェクト",
+      "Mask Refine": "マスク最適化",
+      "Sensitivity": "感度",
+      "threshold": "閾値",
+      "Mask Blur": "マスクぼかし",
+      "Mask Offset": "マスク伸縮",
+      "Background": "背景",
+      "background_color": "背景色",
+      "Invert Output": "出力を反転",
+      "sam2_model": "SAM2モデル",
+      "dino_model": "DINOモデル",
+      "device": "デバイス",
+      "mask_blur": "マスクぼかし",
+      "mask_offset": "マスク伸縮",
+      "invert_output": "出力を反転"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "MASK_IMAGE": "マスク画像"
+    }
+  },
+  "AILab_ImageMaskResize": {
+    "title": "画像マスク拡大縮小 (RMBG) 🖼️",
+    "inputs": {
+      "image": "画像",
+      "mask": "マスク"
+    },
+    "widgets": {
+      "width": "幅",
+      "height": "高さ",
+      "scale_by": "比率でスケール",
+      "upscale_method": "拡大手法",
+      "resize_mode": "スケール モード",
+      "pad_color": "塗り色",
+      "crop_position": "クロップ位置",
+      "divisible_by": "…で整除",
+      "device": "デバイス"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "WIDTH": "幅",
+      "HEIGHT": "高さ",
+      "MASK": "マスク"
+    }
+  },
+  "AILab_UnbatchImages": {
+    "title": "一括画像処理（RMBG）🖼️",
+    "inputs": {
+      "images": "画像バッチ"
+    },
+    "widgets": {
+      "images": "画像バッチ"
+    },
+    "outputs": {
+      "image_1": "画像1",
+      "image_2": "画像2",
+      "image_3": "画像3",
+      "image_4": "画像4",
+      "image_5": "画像5",
+      "image_6": "画像6",
+      "image_7": "画像7",
+      "image_8": "画像8",
+      "image": "画像"
+    }
+  },
+  "AILab_ImageResize": {
+    "title": "画像拡大縮小（RMBG）🖼️🎭",
+    "inputs": {
+      "image": "画像",
+      "mask": "マスク"
+    },
+    "widgets": {
+      "hex_color": "16進色",
+      "pad_left": "左パディング",
+      "pad_right": "右パディング",
+      "pad_top": "上パディング",
+      "pad_bottom": "下パディング",
+      "pad_color": "塗り色",
+      "pad_mode": "塗りモード",
+      "custom_width": "カスタム幅",
+      "custom_height": "カスタム高さ",
+      "megapixels": "メガピクセル",
+      "scale_by": "スケール比率",
+      "resize_mode": "リサイズ モード",
+      "resize_value": "リサイズ 値",
+      "upscale_method": "拡大手法",
+      "device": "デバイス",
+      "divisible_by": "整除可能値",
+      "output_mode": "出力モード",
+      "crop_position": "クロップ位置"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "WIDTH": "幅",
+      "HEIGHT": "高さ",
+      "MASK": "マスク"
+    }
+  },
+  "AILab_ImageToList": {
+    "title": "画像をリストへ（RMBG）🖼️",
+    "inputs": {
+      "image_1": "画像1",
+      "image_2": "画像2",
+      "image_3": "画像3",
+      "image_4": "画像4",
+      "image_5": "画像5",
+      "image_6": "画像6",
+      "img": "画像",
+      "target_h": "目標高さ",
+      "target_w": "目標幅"
+    },
+    "widgets": {
+      "resize_mode": "リサイズ モード",
+      "target_h": "目標高さ",
+      "target_w": "目標幅"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "WIDTH": "幅",
+      "HEIGHT": "高さ",
+      "MASK": "マスク",
+      "BATCH_SIZE": "バッチサイズ"
+    }
+  },
+  "AILab_MaskToList": {
+    "title": "マスクをリストへ（RMBG）🖼️",
+    "inputs": {
+      "mask_1": "マスク1",
+      "mask_2": "マスク2",
+      "mask_3": "マスク3",
+      "mask_4": "マスク4",
+      "mask_5": "マスク5",
+      "mask_6": "マスク6",
+      "mask": "マスク",
+      "target_h": "目標高さ",
+      "target_w": "目標幅"
+    },
+    "widgets": {
+      "resize_mode": "リサイズ モード",
+      "mask": "マスク",
+      "target_h": "目標高さ",
+      "target_w": "目標幅"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "WIDTH": "幅",
+      "HEIGHT": "高さ",
+      "MASK": "マスク",
+      "BATCH_SIZE": "バッチサイズ"
+    }
+  },
+  "AILab_ImageMaskToList": {
+    "title": "画像とマスクをリストへ（RMBG）🖼️",
+    "inputs": {
+      "image_1": "画像1",
+      "mask_1": "マスク1",
+      "image_2": "画像2",
+      "mask_2": "マスク2",
+      "image_3": "画像3",
+      "mask_3": "マスク3",
+      "image_4": "画像4",
+      "mask_4": "マスク4",
+      "image_5": "画像5",
+      "mask_5": "マスク5",
+      "image_6": "画像6",
+      "mask_6": "マスク6"
+    },
+    "widgets": {
+      "resize_mode": "リサイズ モード",
+      "target_h": "目標高さ",
+      "target_w": "目標幅",
+      "height": "高さ",
+      "width": "幅",
+      "batch_size": "バッチサイズ",
+      "device": "デバイス"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "WIDTH": "幅",
+      "HEIGHT": "高さ",
+      "MASK": "マスク",
+      "BATCH_SIZE": "バッチサイズ"
+    }
+  },
+  "AILab_Florence2": {
+    "title": "Florence2（RMBG）",
+    "inputs": {
+      "image": "画像"
+    },
+    "widgets": {
+      "model_name": "モデル名",
+      "task": "タスク",
+      "precision": "精度",
+      "attention": "注意機構",
+      "fill_mask": "マスク充填",
+      "output_mask_select": "出力マスク選択",
+      "keep_model_loaded": "モデルを保持",
+      "text_prompt": "テキストプロンプト",
+      "image_pil": "PIL画像",
+      "predictions": "予測結果",
+      "select_filter": "フィルター選択"
+    },
+    "outputs": {
+      "IMAGE": "画像",
+      "MASK": "マスク",
+      "DATA": "データ"
+    }
+  },
+  "AILab_Florence2ToCoordinates": {
+    "title": "Florence2境界ボックス座標（RMBG）",
+    "inputs": {
+      "data": "データ",
+      "image": "画像"
+    },
+    "widgets": {
+      "index": "インデックス",
+      "batch": "バッチ",
+      "default_count": "デフォルト数",
+      "selections": "選択項目",
+      "max_dims": "最大次元",
+      "batch_mode": "バッチ モード",
+      "record_count": "記録数"
+    },
+    "outputs": {
+      "CENTER_COORDINATES": "中心座標",
+      "BBOXES": "境界ボックス",
+      "MASK": "マスク"
+    }
+  },
+  "AILab_YoloV8Adv": {
+    "title": "YOLO検出 第8世代 詳細（RMBG）",
+    "inputs": {
+      "images": "画像バッチ"
+    },
+    "widgets": {
+      "yolo_model": "yolo モデル",
+      "mask_count": "マスク数",
+      "select_mask_index": "マスクインデックス選択",
+      "conf": "信頼度",
+      "iou": "IoU(交差面積比)",
+      "classes": "クラス",
+      "device": "デバイス",
+      "max_det": "最大検出",
+      "retina_masks": "レチナマスク",
+      "agnostic_nms": "クラス非依存NMS"
+    },
+    "outputs": {
+      "ANNOTATED_IMAGE": "アノテーション画像",
+      "MASK_LIST": "マスクリスト",
+      "MASK": "マスク"
+    }
+  },
+  "AILab_YoloV8": {
+    "title": "YOLO検出 第8世代（RMBG）",
+    "inputs": {
+      "images": "画像バッチ"
+    },
+    "widgets": {
+      "yolo_model": "yolo モデル",
+      "mask_count": "マスク数",
+      "select_mask_index": "マスクインデックス選択"
+    },
+    "outputs": {
+      "ANNOTATED_IMAGE": "アノテーション画像",
+      "MASK_LIST": "マスクリスト",
+      "MASK": "マスク"
+    }
+  },
+  "AILab_ColorToMask": {
+    "title": "色からマスク（RMBG） 🎭",
+    "inputs": {
+      "images": "画像バッチ"
+    },
+    "widgets": {
+      "invert": "反転",
+      "threshold": "閾値",
+      "mask_color": "マスク色"
+    },
+    "outputs": {
+      "MASK": "マスク"
+    }
+  },
+  "Segment": {
+    "title": "局部セグメンテーション (RMBG)🖼️",
+    "inputs": {
+      "image": "画像"
+    },
+    "widgets": {
+      "prompt": "プロンプト",
+      "sam_model": "SAMモデル",
+      "dino_model": "DINOモデル",
+      "threshold": "閾値",
+      "mask_blur": "マスクぼかし",
+      "mask_offset": "マスク伸縮",
+      "background_color": "背景色",
+      "invert_output": "出力を反転"
+    },
+    "outputs": {
+      "image": "画像",
+      "MASK": "マスク"
+    }
+  }
+}

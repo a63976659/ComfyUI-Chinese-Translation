@@ -634,7 +634,7 @@ export function addPanelButtons(app) {
 
 // ─── 插件翻译管理面板 ────────────────────────────────────
 
-const SELF_NAME = "ComfyUI-Chinese-Translation";
+const SELF_NAME = "ComfyUI-Global-Translation";
 const PANEL_ID = "tl-plugin-manager-panel";
 
 // 注入锁：防止并发调用导致重复注入面板
