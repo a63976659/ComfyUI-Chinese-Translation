@@ -92,18 +92,21 @@ ComfyUI-Global-Translation ist ein für ComfyUI entwickeltes Übersetzungs-Plugi
 ---
 
 ## Vorschau
+Nur die Darstellungen auf Chinesisch und Englisch werden gezeigt; prüfen Sie andere Sprachen selbst nach dem Umschalten. Der Umschalter folgt der ComfyUI-Spracheinstellung.
 
 ### Übersetzungs-Schaltflächen
 
-<img width="900" height="180" alt="neu-an" src="https://github.com/user-attachments/assets/0e6751fb-4196-4f09-9a64-818bda07f343" />
+<img width="150" height="100" alt="zh-schalter-1" src="https://github.com/user-attachments/assets/775bb652-3b66-404c-9531-e6147d1dbeff" />
+<img width="150" height="100" alt="en-schalter-1" src="https://github.com/user-attachments/assets/c1bdce29-fb07-4861-9f05-ba87049e4557" />
+<img width="150" height="100" alt="zh-schalter-2" src="https://github.com/user-attachments/assets/40c692c6-142b-4512-94a6-ba95800254d8" />
+<img width="150" height="100" alt="en-schalter-2" src="https://github.com/user-attachments/assets/18c970d0-a8f8-450d-894c-19aecbd2f80b" />
+<img width="150" height="100" alt="zh-schalter-3" src="https://github.com/user-attachments/assets/2e84be85-f06e-4bcd-9d58-bfb6f2ca6170" />
+<img width="150" height="100" alt="en-schalter-3" src="https://github.com/user-attachments/assets/bedb11e2-1e34-4558-8bdb-d11f6d3a18fe" />
 
-<img width="1000" height="180" alt="neu-aus" src="https://github.com/user-attachments/assets/13810712-12df-4bea-bdfd-5e86f3d7686e" />
+### Verwaltungsoberfläche
 
-### Oberflächen-Vorschau
-
-<img width="800" height="400" alt="vorschau1" src="https://github.com/user-attachments/assets/aa4e4889-33b0-4860-b973-61baf1e7f57e" />
-<img width="800" height="600" alt="vorschau2" src="https://github.com/user-attachments/assets/466e4509-af6a-4bb0-9e31-55b4cf7799e1" />
-<img width="800" height="800" alt="vorschau3" src="https://github.com/user-attachments/assets/332d471d-85b0-4aa5-8aef-e9a674bd179d" />
+<img width="2000" height="1500" alt="einstellungsoberfläche" src="https://github.com/user-attachments/assets/1c1607a1-9153-4f9a-aeec-cd49458dd5b4" />
+<img width="2000" height="1500" alt="einstellungsoberfläche-en" src="https://github.com/user-attachments/assets/71d1c68a-3e3f-41a7-867b-8d42543faba1" />
 
 ---
 
@@ -204,7 +207,7 @@ Unter den Optionen befindet sich zudem ein **Plugin-Übersetzungs-Manager**: Er 
 ### Struktur der Übersetzungsdateien
 
 ```
-zh-CN/
+de-DE/
 ├── Nodes/          # Knotenübersetzung (Titel, Eingaben, Ausgaben, Widgets, benutzerdefinierte Panels)
 │   └── internal.json
 ├── Categories/     # Übersetzung der Knotenkategorien
@@ -217,11 +220,11 @@ zh-CN/
     └── ...
 ```
 
-> Andere Sprachverzeichnisse (`zh-TW/`, `en-US/`, `ja-JP/`, `ko-KR/`, `ru-RU/`, `fr-FR/`, `de-DE/`, `es-ES/`, `it-IT/`, `pt-BR/`, `ar-SA/`, `tr-TR/`, `fa-IR/`, `he-IL/`) teilen dieselbe Struktur und laden je nach aktueller Sprache; `en-US/` dient dazu, Knoten anderer Plugins ins Englische zurückzuversetzen.
+> Andere Sprachverzeichnisse (`zh-CN/`, `zh-TW/`, `en-US/`, `ja-JP/`, `ko-KR/`, `ru-RU/`, `fr-FR/`, `es-ES/`, `it-IT/`, `pt-BR/`, `ar-SA/`, `tr-TR/`, `fa-IR/`, `he-IL/`) teilen dieselbe Struktur und laden je nach aktueller Sprache; `en-US/` dient dazu, Knoten anderer Plugins ins Englische zurückzuversetzen.
 
 ### Eigene Übersetzung hinzufügen
 
-Erstellen Sie eine JSON-Datei unter `zh-CN/Nodes/`:
+Erstellen Sie eine JSON-Datei unter `de-DE/Nodes/`:
 
 ```json
 {
@@ -250,7 +253,7 @@ Erstellen Sie eine JSON-Datei unter `zh-CN/Nodes/`:
 > - Fügen Sie keine „Identitätsübersetzungen" hinzu (Wert gleich Schlüssel, z. B. `"cfg": "cfg"`) — sie ergeben keinen Sinn
 > - Prüfen Sie die Schlüssel-Schreibweise; eine Abweichung vom Quellcode (z. B. ein zusätzliches `t` in `perturb_atttn`) führt dazu, dass das Widget stillschweigend nicht übersetzt wird
 
-Erstellen Sie eine JSON-Datei unter `zh-CN/Menus/`, um Menüübersetzungen hinzuzufügen:
+Erstellen Sie eine JSON-Datei unter `de-DE/Menus/`, um Menüübersetzungen hinzuzufügen:
 
 ```json
 {
@@ -277,7 +280,7 @@ Erstellen Sie eine JSON-Datei unter `zh-CN/Menus/`, um Menüübersetzungen hinzu
 │  └─ Einstellungs-Persistenz      └─ utils.js (Helfer)  │
 │         │                             │                │
 │         ▼                             ▼                │
-│   zh-CN/ Übersetzungsdaten       MutationObserver      │
+│   de-DE/ Übersetzungsdaten       MutationObserver      │
 │   ├─ Nodes/*.json              Echtzeit-DOM-Übersetzung │
 │   ├─ Categories/*.json                                 │
 │   └─ Menus/*.json                                      │

@@ -92,18 +92,21 @@ ComfyUI-Global-Translation은 ComfyUI를 위해 설계된 번역 플러그인입
 ---
 
 ## 효과 전시
+중국어/영어 효과만 전시합니다. 기타 언어는 직접 전환하여 확인해 주세요. 토글은 ComfyUI 언어 설정을 따릅니다.
 
 ### 번역 토글 버튼
 
-<img width="900" height="180" alt="신버전-켜기" src="https://github.com/user-attachments/assets/0e6751fb-4196-4f09-9a64-818bda07f343" />
+<img width="150" height="100" alt="중국어 토글1" src="https://github.com/user-attachments/assets/775bb652-3b66-404c-9531-e6147d1dbeff" />
+<img width="150" height="100" alt="영어 토글1" src="https://github.com/user-attachments/assets/c1bdce29-fb07-4861-9f05-ba87049e4557" />
+<img width="150" height="100" alt="중국어 토글2" src="https://github.com/user-attachments/assets/40c692c6-142b-4512-94a6-ba95800254d8" />
+<img width="150" height="100" alt="영어 토글2" src="https://github.com/user-attachments/assets/18c970d0-a8f8-450d-894c-19aecbd2f80b" />
+<img width="150" height="100" alt="중국어 토글3" src="https://github.com/user-attachments/assets/2e84be85-f06e-4bcd-9d58-bfb6f2ca6170" />
+<img width="150" height="100" alt="영어 토글3" src="https://github.com/user-attachments/assets/bedb11e2-1e34-4558-8bdb-d11f6d3a18fe" />
 
-<img width="1000" height="180" alt="신버전-끄기" src="https://github.com/user-attachments/assets/13810712-12df-4bea-bdfd-5e86f3d7686e" />
+### 관리 인터페이스
 
-### 인터페이스 효과
-
-<img width="800" height="400" alt="인터페이스1" src="https://github.com/user-attachments/assets/aa4e4889-33b0-4860-b973-61baf1e7f57e" />
-<img width="800" height="600" alt="인터페이스2" src="https://github.com/user-attachments/assets/466e4509-af6a-4bb0-9e31-55b4cf7799e1" />
-<img width="800" height="800" alt="인터페이스3" src="https://github.com/user-attachments/assets/332d471d-85b0-4aa5-8aef-e9a674bd179d" />
+<img width="2000" height="1500" alt="설정 인터페이스" src="https://github.com/user-attachments/assets/1c1607a1-9153-4f9a-aeec-cd49458dd5b4" />
+<img width="2000" height="1500" alt="영문 설정 인터페이스" src="https://github.com/user-attachments/assets/71d1c68a-3e3f-41a7-867b-8d42543faba1" />
 
 ---
 
@@ -204,7 +207,7 @@ ComfyUI 설정 → '🌐 번역 설정'에 두 개의 구성 항목이 있습니
 ### 번역 파일 구조
 
 ```
-zh-CN/
+ko-KR/
 ├── Nodes/          # 노드 번역(제목, 입력, 출력, 위젯, 사용자 정의 패널)
 │   └── internal.json
 ├── Categories/     # 노드 분류 번역
@@ -217,11 +220,11 @@ zh-CN/
     └── ...
 ```
 
-> 다른 언어 디렉터리(`zh-TW/`, `en-US/`, `ja-JP/`, `ko-KR/`, `ru-RU/`, `fr-FR/`, `de-DE/`, `es-ES/`, `it-IT/`, `pt-BR/`, `ar-SA/`, `tr-TR/`, `fa-IR/`, `he-IL/`)도 동일한 구조이며 현재 언어에 따라 자동 로드됩니다. 그중 `en-US/`는 다른 언어 플러그인의 노드를 영어로 복원하는 데 사용됩니다.
+> 다른 언어 디렉터리(`zh-CN/`, `zh-TW/`, `en-US/`, `ru-RU/`, `fr-FR/`, `de-DE/`, `es-ES/`, `it-IT/`, `pt-BR/`, `ar-SA/`, `tr-TR/`, `fa-IR/`, `he-IL/`)도 동일한 구조이며 현재 언어에 따라 자동 로드됩니다. 그중 `en-US/`는 다른 언어 플러그인의 노드를 영어로 복원하는 데 사용됩니다.
 
 ### 사용자 정의 번역 추가
 
-`zh-CN/Nodes/` 디렉터리에 JSON 파일을 생성하면 됩니다:
+`ko-KR/Nodes/` 디렉터리에 JSON 파일을 생성하면 됩니다:
 
 ```json
 {
@@ -250,7 +253,7 @@ zh-CN/
 > - '항등 번역'(키와 값이 동일한 항목, 예 `"cfg": "cfg"`)은 추가하지 마세요. 번역 의미가 없습니다
 > - 키 철자를 확인하세요. 소스와 불일치하면(예 `perturb_atttn`에 t를 오타) 해당 위젯은 번역되지 않습니다
 
-`zh-CN/Menus/` 디렉터리에 JSON 파일을 생성하면 메뉴 번역을 추가할 수 있습니다:
+`ko-KR/Menus/` 디렉터리에 JSON 파일을 생성하면 메뉴 번역을 추가할 수 있습니다:
 
 ```json
 {
@@ -277,7 +280,7 @@ zh-CN/
 │  └─ 설정 영속화                  └─ utils.js (유틸)     │
 │         │                             │                │
 │         ▼                             ▼                │
-│   zh-CN/ 번역 데이터              MutationObserver      │
+│   ko-KR/ 번역 데이터              MutationObserver      │
 │   ├─ Nodes/*.json              실시간 DOM 번역         │
 │   ├─ Categories/*.json                                 │
 │   └─ Menus/*.json                                      │

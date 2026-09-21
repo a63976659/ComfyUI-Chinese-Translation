@@ -92,18 +92,21 @@ ComfyUI-Global-Translation is a translation plugin designed for ComfyUI. Through
 ---
 
 ## Showcase
+Only the Chinese/English looks are shown; for other languages please switch and see for yourself. The toggle follows the ComfyUI language setting.
 
 ### Translation toggle buttons
 
-<img width="900" height="180" alt="new-on" src="https://github.com/user-attachments/assets/0e6751fb-4196-4f09-9a64-818bda07f343" />
+<img width="150" height="100" alt="zh-toggle-1" src="https://github.com/user-attachments/assets/775bb652-3b66-404c-9531-e6147d1dbeff" />
+<img width="150" height="100" alt="en-toggle-1" src="https://github.com/user-attachments/assets/c1bdce29-fb07-4861-9f05-ba87049e4557" />
+<img width="150" height="100" alt="zh-toggle-2" src="https://github.com/user-attachments/assets/40c692c6-142b-4512-94a6-ba95800254d8" />
+<img width="150" height="100" alt="en-toggle-2" src="https://github.com/user-attachments/assets/18c970d0-a8f8-450d-894c-19aecbd2f80b" />
+<img width="150" height="100" alt="zh-toggle-3" src="https://github.com/user-attachments/assets/2e84be85-f06e-4bcd-9d58-bfb6f2ca6170" />
+<img width="150" height="100" alt="en-toggle-3" src="https://github.com/user-attachments/assets/bedb11e2-1e34-4558-8bdb-d11f6d3a18fe" />
 
-<img width="1000" height="180" alt="new-off" src="https://github.com/user-attachments/assets/13810712-12df-4bea-bdfd-5e86f3d7686e" />
+### Management interface
 
-### Interface preview
-
-<img width="800" height="400" alt="preview1" src="https://github.com/user-attachments/assets/aa4e4889-33b0-4860-b973-61baf1e7f57e" />
-<img width="800" height="600" alt="preview2" src="https://github.com/user-attachments/assets/466e4509-af6a-4bb0-9e31-55b4cf7799e1" />
-<img width="800" height="800" alt="preview3" src="https://github.com/user-attachments/assets/332d471d-85b0-4aa5-8aef-e9a674bd179d" />
+<img width="2000" height="1500" alt="settings-ui" src="https://github.com/user-attachments/assets/1c1607a1-9153-4f9a-aeec-cd49458dd5b4" />
+<img width="2000" height="1500" alt="en-settings-ui" src="https://github.com/user-attachments/assets/71d1c68a-3e3f-41a7-867b-8d42543faba1" />
 
 ---
 
@@ -204,7 +207,7 @@ Below the options there is also a **Plugin Translation Manager**: it lists every
 ### Translation file structure
 
 ```
-zh-CN/
+en-US/
 ├── Nodes/          # Node translations (title, inputs, outputs, widgets, custom panels)
 │   └── internal.json
 ├── Categories/     # Node category translations
@@ -217,11 +220,11 @@ zh-CN/
     └── ...
 ```
 
-> The other language directories (`zh-TW/`, `en-US/`, `ja-JP/`, `ko-KR/`, `ru-RU/`, `fr-FR/`, `de-DE/`, `es-ES/`, `it-IT/`, `pt-BR/`, `ar-SA/`, `tr-TR/`, `fa-IR/`, `he-IL/`) share the same structure and load by the current language; `en-US/` is used to restore non-Chinese plugins' nodes to English.
+> The other language directories (`zh-CN/`, `zh-TW/`, `ja-JP/`, `ko-KR/`, `ru-RU/`, `fr-FR/`, `de-DE/`, `es-ES/`, `it-IT/`, `pt-BR/`, `ar-SA/`, `tr-TR/`, `fa-IR/`, `he-IL/`) share the same structure and load by the current language; `en-US/` is used to restore non-Chinese plugins' nodes to English.
 
 ### Adding custom translations
 
-Create a JSON file under `zh-CN/Nodes/`:
+Create a JSON file under `en-US/Nodes/`:
 
 ```json
 {
@@ -250,7 +253,7 @@ Create a JSON file under `zh-CN/Nodes/`:
 > - Do not add "identity translations" (value equal to key, e.g. `"cfg": "cfg"`) — they carry no meaning
 > - Double-check key spelling; a key that differs from the source (e.g. an extra `t` in `perturb_atttn`) will silently fail to translate
 
-Create a JSON file under `zh-CN/Menus/` to add menu translations:
+Create a JSON file under `en-US/Menus/` to add menu translations:
 
 ```json
 {
@@ -277,7 +280,7 @@ Create a JSON file under `zh-CN/Menus/` to add menu translations:
 │  └─ config persistence          └─ utils.js (helpers)  │
 │         │                             │                │
 │         ▼                             ▼                │
-│   zh-CN/ translation data       MutationObserver       │
+│   en-US/ translation data      MutationObserver       │
 │   ├─ Nodes/*.json               real-time DOM translate │
 │   ├─ Categories/*.json                                 │
 │   └─ Menus/*.json                                      │

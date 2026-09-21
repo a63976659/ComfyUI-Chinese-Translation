@@ -92,18 +92,20 @@ ComfyUI-Global-Translation یک افزونه‌ی ترجمه طراحی‌شده
 ---
 
 ## نمایش
-
+فقط جلوه‌های چینی و انگلیسی نمایش داده شده‌اند؛ برای سایر زبان‌ها خودتان تغییر زبان دهید. وضعیت ترجمه از تنظیم زبان ComfyUI پیروی می‌کند.
 ### دکمه‌های فعال‌سازی ترجمه
 
-<img width="900" height="180" alt="جدید-روشن" src="https://github.com/user-attachments/assets/0e6751fb-4196-4f09-9a64-818bda07f343" />
+<img width="150" height="100" alt="کلید-چینی-1" src="https://github.com/user-attachments/assets/775bb652-3b66-404c-9531-e6147d1dbeff" />
+<img width="150" height="100" alt="کلید-انگلیسی-1" src="https://github.com/user-attachments/assets/c1bdce29-fb07-4861-9f05-ba87049e4557" />
+<img width="150" height="100" alt="کلید-چینی-2" src="https://github.com/user-attachments/assets/40c692c6-142b-4512-94a6-ba95800254d8" />
+<img width="150" height="100" alt="کلید-انگلیسی-2" src="https://github.com/user-attachments/assets/18c970d0-a8f8-450d-894c-19aecbd2f80b" />
+<img width="150" height="100" alt="کلید-چینی-3" src="https://github.com/user-attachments/assets/2e84be85-f06e-4bcd-9d58-bfb6f2ca6170" />
+<img width="150" height="100" alt="کلید-انگلیسی-3" src="https://github.com/user-attachments/assets/bedb11e2-1e34-4558-8bdb-d11f6d3a18fe" />
 
-<img width="1000" height="180" alt="جدید-خاموش" src="https://github.com/user-attachments/assets/13810712-12df-4bea-bdfd-5e86f3d7686e" />
+### رابط مدیریت
 
-### پیش‌نمایش رابط
-
-<img width="800" height="400" alt="پیش‌نمایش1" src="https://github.com/user-attachments/assets/aa4e4889-33b0-4860-b973-61baf1e7f57e" />
-<img width="800" height="600" alt="پیش‌نمایش2" src="https://github.com/user-attachments/assets/466e4509-af6a-4bb0-9e31-55b4cf7799e1" />
-<img width="800" height="800" alt="پیش‌نمایش3" src="https://github.com/user-attachments/assets/332d471d-85b0-4aa5-8aef-e9a674bd179d" />
+<img width="2000" height="1500" alt="صفحه-تنظیمات" src="https://github.com/user-attachments/assets/1c1607a1-9153-4f9a-aeec-cd49458dd5b4" />
+<img width="2000" height="1500" alt="صفحه-تنظیمات-انگلیسی" src="https://github.com/user-attachments/assets/71d1c68a-3e3f-41a7-867b-8d42543faba1" />
 
 ---
 
@@ -204,7 +206,7 @@ git clone https://github.com/a63976659/ComfyUI-Global-Translation.git
 ### ساختار فایل‌های ترجمه
 
 ```
-zh-CN/
+fa-IR/
 ├── Nodes/          # ترجمه‌ی گره‌ها (عنوان، ورودی‌ها، خروجی‌ها، ویجت‌ها، پنل‌های سفارشی)
 │   └── internal.json
 ├── Categories/     # ترجمه‌ی دسته‌بندی گره‌ها
@@ -217,11 +219,11 @@ zh-CN/
     └── ...
 ```
 
-> سایر پوشه‌های زبانی (`zh-TW/`, `en-US/`, `ja-JP/`, `ko-KR/`, `ru-RU/`, `fr-FR/`, `de-DE/`, `es-ES/`, `it-IT/`, `pt-BR/`, `ar-SA/`, `tr-TR/`, `fa-IR/`, `he-IL/`) همین ساختار را دارند و بر اساس زبان فعلی بارگذاری می‌شوند؛ `en-US/` برای بازگرداندن گره‌های افزونه‌های غیرچینی به انگلیسی به کار می‌رود.
+> سایر پوشه‌های زبانی (`zh-CN/`, `zh-TW/`, `en-US/`, `ja-JP/`, `ko-KR/`, `ru-RU/`, `fr-FR/`, `de-DE/`, `es-ES/`, `it-IT/`, `pt-BR/`, `ar-SA/`, `tr-TR/`, `he-IL/`) همین ساختار را دارند و بر اساس زبان فعلی بارگذاری می‌شوند؛ `en-US/` برای بازگرداندن گره‌های افزونه‌های غیرچینی به انگلیسی به کار می‌رود.
 
 ### افزودن ترجمه‌ی سفارشی
 
-یک فایل JSON در `zh-CN/Nodes/` بسازید:
+یک فایل JSON در `fa-IR/Nodes/` بسازید:
 
 ```json
 {
@@ -250,7 +252,7 @@ zh-CN/
 > - «ترجمه‌های همانند» (مقداری برابر با کلید، مثلاً `"cfg": "cfg"`) اضافه نکنید — هیچ مفهومی ندارند
 > - املای کلیدها را دوباره بررسی کنید؛ کلیدی که با سورس تفاوت داشته باشد (مثلاً `t` اضافه در `perturb_atttn`) بی‌صدا باعث بی‌اثر شدن ترجمه می‌شود
 
-یک فایل JSON در `zh-CN/Menus/` بسازید تا ترجمه‌های منو اضافه کنید:
+یک فایل JSON در `fa-IR/Menus/` بسازید تا ترجمه‌های منو اضافه کنید:
 
 ```json
 {
@@ -277,7 +279,7 @@ zh-CN/
 │  └─ ماندگاری تنظیمات            └─ utils.js (کمکی)     │
 │         │                             │                │
 │         ▼                             ▼                │
-│   داده‌های ترجمه zh-CN/          MutationObserver       │
+│   داده‌های ترجمه fa-IR/          MutationObserver       │
 │   ├─ Nodes/*.json          ترجمه‌ی بلادرنگ DOM          │
 │   ├─ Categories/*.json                                  │
 │   └─ Menus/*.json                                       │

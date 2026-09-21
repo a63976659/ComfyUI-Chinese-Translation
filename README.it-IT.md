@@ -92,18 +92,21 @@ ComfyUI-Global-Translation è un plugin di traduzione progettato per ComfyUI. Gr
 ---
 
 ## Anteprima
+Sono mostrati solo i rendering in cinese e inglese; per le altre lingue cambia e verifica tu stesso. L'interruttore segue l'impostazione linguistica di ComfyUI.
 
 ### Pulsanti di attivazione della traduzione
 
-<img width="900" height="180" alt="nuovo-acceso" src="https://github.com/user-attachments/assets/0e6751fb-4196-4f09-9a64-818bda07f343" />
+<img width="150" height="100" alt="interruttore-zh-1" src="https://github.com/user-attachments/assets/775bb652-3b66-404c-9531-e6147d1dbeff" />
+<img width="150" height="100" alt="interruttore-en-1" src="https://github.com/user-attachments/assets/c1bdce29-fb07-4861-9f05-ba87049e4557" />
+<img width="150" height="100" alt="interruttore-zh-2" src="https://github.com/user-attachments/assets/40c692c6-142b-4512-94a6-ba95800254d8" />
+<img width="150" height="100" alt="interruttore-en-2" src="https://github.com/user-attachments/assets/18c970d0-a8f8-450d-894c-19aecbd2f80b" />
+<img width="150" height="100" alt="interruttore-zh-3" src="https://github.com/user-attachments/assets/2e84be85-f06e-4bcd-9d58-bfb6f2ca6170" />
+<img width="150" height="100" alt="interruttore-en-3" src="https://github.com/user-attachments/assets/bedb11e2-1e34-4558-8bdb-d11f6d3a18fe" />
 
-<img width="1000" height="180" alt="nuovo-spento" src="https://github.com/user-attachments/assets/13810712-12df-4bea-bdfd-5e86f3d7686e" />
+### Interfaccia di gestione
 
-### Anteprima dell'interfaccia
-
-<img width="800" height="400" alt="anteprima1" src="https://github.com/user-attachments/assets/aa4e4889-33b0-4860-b973-61baf1e7f57e" />
-<img width="800" height="600" alt="anteprima2" src="https://github.com/user-attachments/assets/466e4509-af6a-4bb0-9e31-55b4cf7799e1" />
-<img width="800" height="800" alt="anteprima3" src="https://github.com/user-attachments/assets/332d471d-85b0-4aa5-8aef-e9a674bd179d" />
+<img width="2000" height="1500" alt="schermata-impostazioni" src="https://github.com/user-attachments/assets/1c1607a1-9153-4f9a-aeec-cd49458dd5b4" />
+<img width="2000" height="1500" alt="schermata-impostazioni-en" src="https://github.com/user-attachments/assets/71d1c68a-3e3f-41a7-867b-8d42543faba1" />
 
 ---
 
@@ -204,7 +207,7 @@ Sotto le opzioni è presente anche il pannello **Gestore traduzioni dei plugin**
 ### Struttura dei file di traduzione
 
 ```
-zh-CN/
+it-IT/
 ├── Nodes/          # Traduzione dei nodi (titolo, ingressi, uscite, widget, pannelli personalizzati)
 │   └── internal.json
 ├── Categories/     # Traduzione delle categorie dei nodi
@@ -217,11 +220,11 @@ zh-CN/
     └── ...
 ```
 
-> Le altre cartelle linguistiche (`zh-TW/`, `en-US/`, `ja-JP/`, `ko-KR/`, `ru-RU/`, `fr-FR/`, `de-DE/`, `es-ES/`, `it-IT/`, `pt-BR/`, `ar-SA/`, `tr-TR/`, `fa-IR/`, `he-IL/`) condividono la stessa struttura e si caricano in base alla lingua corrente; `en-US/` serve a riportare in inglese i nodi dei plugin non cinesi.
+> Le altre cartelle linguistiche (`zh-CN/`, `zh-TW/`, `en-US/`, `ja-JP/`, `ko-KR/`, `ru-RU/`, `fr-FR/`, `de-DE/`, `es-ES/`, `pt-BR/`, `ar-SA/`, `tr-TR/`, `fa-IR/`, `he-IL/`) condividono la stessa struttura e si caricano in base alla lingua corrente; `en-US/` serve a riportare in inglese i nodi dei plugin non cinesi.
 
 ### Aggiungere traduzioni personalizzate
 
-Crea un file JSON sotto `zh-CN/Nodes/`:
+Crea un file JSON sotto `it-IT/Nodes/`:
 
 ```json
 {
@@ -250,7 +253,7 @@ Crea un file JSON sotto `zh-CN/Nodes/`:
 > - Non aggiungere "traduzioni identiche" (valore uguale alla chiave, ad es. `"cfg": "cfg"`) — non hanno senso
 > - Controlla l'ortografia delle chiavi; una chiave diversa dal codice sorgente (ad es. una `t` di troppo in `perturb_atttn`) farà sì che il widget non venga tradotto silenziosamente
 
-Crea un file JSON sotto `zh-CN/Menus/` per aggiungere traduzioni dei menu:
+Crea un file JSON sotto `it-IT/Menus/` per aggiungere traduzioni dei menu:
 
 ```json
 {
@@ -277,7 +280,7 @@ Crea un file JSON sotto `zh-CN/Menus/` per aggiungere traduzioni dei menu:
 │  └─ Persistenza impostazioni    └─ utils.js (ausili)   │
 │         │                             │                │
 │         ▼                             ▼                │
-│   Dati di traduzione zh-CN/       MutationObserver     │
+│   Dati di traduzione it-IT/       MutationObserver     │
 │   ├─ Nodes/*.json              traduzione DOM in vivo  │
 │   ├─ Categories/*.json                                 │
 │   └─ Menus/*.json                                      │

@@ -92,18 +92,21 @@ ComfyUI-Global-Translation, ComfyUI için tasarlanmış bir çeviri eklentisidir
 ---
 
 ## Vitrin
+Yalnızca Çince ve İngilizce görünümler gösterilmektedir; diğer diller için değiştirip kendiniz kontrol edin. Anahtar, ComfyUI dil ayarını izler.
 
 ### Çeviri etkinleştirme butonları
 
-<img width="900" height="180" alt="yeni-açık" src="https://github.com/user-attachments/assets/0e6751fb-4196-4f09-9a64-818bda07f343" />
+<img width="150" height="100" alt="çince-anahtar-1" src="https://github.com/user-attachments/assets/775bb652-3b66-404c-9531-e6147d1dbeff" />
+<img width="150" height="100" alt="ingilizce-anahtar-1" src="https://github.com/user-attachments/assets/c1bdce29-fb07-4861-9f05-ba87049e4557" />
+<img width="150" height="100" alt="çince-anahtar-2" src="https://github.com/user-attachments/assets/40c692c6-142b-4512-94a6-ba95800254d8" />
+<img width="150" height="100" alt="ingilizce-anahtar-2" src="https://github.com/user-attachments/assets/18c970d0-a8f8-450d-894c-19aecbd2f80b" />
+<img width="150" height="100" alt="çince-anahtar-3" src="https://github.com/user-attachments/assets/2e84be85-f06e-4bcd-9d58-bfb6f2ca6170" />
+<img width="150" height="100" alt="ingilizce-anahtar-3" src="https://github.com/user-attachments/assets/bedb11e2-1e34-4558-8bdb-d11f6d3a18fe" />
 
-<img width="1000" height="180" alt="yeni-kapalı" src="https://github.com/user-attachments/assets/13810712-12df-4bea-bdfd-5e86f3d7686e" />
+### Yönetim arayüzü
 
-### Arayüz önizlemesi
-
-<img width="800" height="400" alt="önizleme1" src="https://github.com/user-attachments/assets/aa4e4889-33b0-4860-b973-61baf1e7f57e" />
-<img width="800" height="600" alt="önizleme2" src="https://github.com/user-attachments/assets/466e4509-af6a-4bb0-9e31-55b4cf7799e1" />
-<img width="800" height="800" alt="önizleme3" src="https://github.com/user-attachments/assets/332d471d-85b0-4aa5-8aef-e9a674bd179d" />
+<img width="2000" height="1500" alt="ayar-ekranı" src="https://github.com/user-attachments/assets/1c1607a1-9153-4f9a-aeec-cd49458dd5b4" />
+<img width="2000" height="1500" alt="ayar-ekranı-ingilizce" src="https://github.com/user-attachments/assets/71d1c68a-3e3f-41a7-867b-8d42543faba1" />
 
 ---
 
@@ -204,7 +207,7 @@ Seçeneklerin altında ayrıca bir **Eklenti Çeviri Yöneticisi** paneli bulunu
 ### Çeviri dosyası yapısı
 
 ```
-zh-CN/
+tr-TR/
 ├── Nodes/          # Düğüm çevirileri (başlık, girişler, çıkışlar, widgetlar, özel paneller)
 │   └── internal.json
 ├── Categories/     # Düğüm kategorisi çevirileri
@@ -217,11 +220,11 @@ zh-CN/
     └── ...
 ```
 
-> Diğer dil klasörleri (`zh-TW/`, `en-US/`, `ja-JP/`, `ko-KR/`, `ru-RU/`, `fr-FR/`, `de-DE/`, `es-ES/`, `it-IT/`, `pt-BR/`, `ar-SA/`, `tr-TR/`, `fa-IR/`, `he-IL/`) aynı yapıyı paylaşır ve güncel dile göre yüklenir; `en-US/`, Çin dışı eklentilerin düğümlerini İngilizce'ye geri döndürmek için kullanılır.
+> Diğer dil klasörleri (`zh-CN/`, `zh-TW/`, `en-US/`, `ja-JP/`, `ko-KR/`, `ru-RU/`, `fr-FR/`, `de-DE/`, `es-ES/`, `it-IT/`, `pt-BR/`, `ar-SA/`, `fa-IR/`, `he-IL/`) aynı yapıyı paylaşır ve güncel dile göre yüklenir; `en-US/`, Çin dışı eklentilerin düğümlerini İngilizce'ye geri döndürmek için kullanılır.
 
 ### Özel çeviri ekleme
 
-`zh-CN/Nodes/` altında bir JSON dosyası oluşturun:
+`tr-TR/Nodes/` altında bir JSON dosyası oluşturun:
 
 ```json
 {
@@ -250,7 +253,7 @@ zh-CN/
 > - "Kimlik çevirileri" (değeri anahtarına eşit, örn. `"cfg": "cfg"`) eklemeyin — hiçbir anlam taşımazlar
 > - Anahtar yazımını iki kez kontrol edin; kaynakla farklı olan bir anahtar (örn. `perturb_atttn` içindeki fazladan `t`) sessizce çeviriyi başarısız kılar
 
-`zh-CN/Menus/` altında bir JSON dosyası oluşturun ve menü çevirileri ekleyin:
+`tr-TR/Menus/` altında bir JSON dosyası oluşturun ve menü çevirileri ekleyin:
 
 ```json
 {
@@ -277,7 +280,7 @@ zh-CN/
 │  └─ ayar kalıcılığı                └─ utils.js (yardımcı)│
 │         │                             │                │
 │         ▼                             ▼                │
-│   zh-CN/ çeviri verisi         MutationObserver        │
+│   tr-TR/ çeviri verisi         MutationObserver        │
 │   ├─ Nodes/*.json              gerçek zamanlı DOM çevirisi
 │   ├─ Categories/*.json                                 │
 │   └─ Menus/*.json                                      │

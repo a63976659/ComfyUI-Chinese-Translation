@@ -92,18 +92,21 @@ ComfyUI-Global-Translation 是一個專為 ComfyUI 設計的翻譯外掛。透�
 ---
 
 ## 效果展示
+僅展示中英雙語效果，其它語言請自行查看。切換跟隨 ComfyUI 語言設定。
 
 ### 翻譯開關按鈕
 
-<img width="900" height="180" alt="新版開" src="https://github.com/user-attachments/assets/0e6751fb-4196-4f09-9a64-818bda07f343" />
+<img width="150" height="100" alt="中文開關1" src="https://github.com/user-attachments/assets/775bb652-3b66-404c-9531-e6147d1dbeff" />
+<img width="150" height="100" alt="英文開關1" src="https://github.com/user-attachments/assets/c1bdce29-fb07-4861-9f05-ba87049e4557" />
+<img width="150" height="100" alt="中文開關2" src="https://github.com/user-attachments/assets/40c692c6-142b-4512-94a6-ba95800254d8" />
+<img width="150" height="100" alt="英文開關2" src="https://github.com/user-attachments/assets/18c970d0-a8f8-450d-894c-19aecbd2f80b" />
+<img width="150" height="100" alt="中文開關3" src="https://github.com/user-attachments/assets/2e84be85-f06e-4bcd-9d58-bfb6f2ca6170" />
+<img width="150" height="100" alt="英文開關3" src="https://github.com/user-attachments/assets/bedb11e2-1e34-4558-8bdb-d11f6d3a18fe" />
 
-<img width="1000" height="180" alt="新版-關" src="https://github.com/user-attachments/assets/13810712-12df-4bea-bdfd-5e86f3d7686e" />
+### 管理介面
 
-### 介面效果
-
-<img width="800" height="400" alt="介面效果1" src="https://github.com/user-attachments/assets/aa4e4889-33b0-4860-b973-61baf1e7f57e" />
-<img width="800" height="600" alt="介面效果2" src="https://github.com/user-attachments/assets/466e4509-af6a-4bb0-9e31-55b4cf7799e1" />
-<img width="800" height="800" alt="介面效果3" src="https://github.com/user-attachments/assets/332d471d-85b0-4aa5-8aef-e9a674bd179d" />
+<img width="2000" height="1500" alt="設定介面" src="https://github.com/user-attachments/assets/1c1607a1-9153-4f9a-aeec-cd49458dd5b4" />
+<img width="2000" height="1500" alt="英文設定介面" src="https://github.com/user-attachments/assets/71d1c68a-3e3f-41a7-867b-8d42543faba1" />
 
 ---
 
@@ -204,7 +207,7 @@ git clone https://github.com/a63976659/ComfyUI-Global-Translation.git
 ### 翻譯檔案結構
 
 ```
-zh-CN/
+zh-TW/
 ├── Nodes/          # 節點翻譯（標題、輸入、輸出、控件、自訂面板）
 │   └── internal.json
 ├── Categories/     # 節點分類翻譯
@@ -217,11 +220,11 @@ zh-CN/
     └── ...
 ```
 
-> 其他語言目錄（`zh-TW/`、`en-US/`、`ja-JP/`、`ko-KR/`、`ru-RU/`、`fr-FR/`、`de-DE/`、`es-ES/`、`it-IT/`、`pt-BR/`、`ar-SA/`、`tr-TR/`、`fa-IR/`、`he-IL/`）採用同樣結構，依目前語言自動載入；其中 `en-US/` 用於把其他語言外掛的節點還原為英文。
+> 其他語言目錄（`zh-CN/`、`en-US/`、`ja-JP/`、`ko-KR/`、`ru-RU/`、`fr-FR/`、`de-DE/`、`es-ES/`、`it-IT/`、`pt-BR/`、`ar-SA/`、`tr-TR/`、`fa-IR/`、`he-IL/`）採用同樣結構，依目前語言自動載入；其中 `en-US/` 用於把其他語言外掛的節點還原為英文。
 
 ### 新增自訂翻譯
 
-在 `zh-CN/Nodes/` 目錄下建立 JSON 檔案即可：
+在 `zh-TW/Nodes/` 目錄下建立 JSON 檔案即可：
 
 ```json
 {
@@ -250,7 +253,7 @@ zh-CN/
 > - 請勿新增「恆等翻譯」（值與鍵相同的條目，如 `"cfg": "cfg"`），此類條目沒有翻譯意義
 > - 注意核對鍵名拼寫，鍵名與原始碼不一致（如 `perturb_atttn` 多打一個 t）會導致該控件翻譯不生效
 
-在 `zh-CN/Menus/` 目錄下建立 JSON 檔案即可新增選單翻譯：
+在 `zh-TW/Menus/` 目錄下建立 JSON 檔案即可新增選單翻譯：
 
 ```json
 {
@@ -277,7 +280,7 @@ zh-CN/
 │  └─ 設定持久化                 └─ utils.js (工具函式)  │
 │         │                             │                │
 │         ▼                             ▼                │
-│   zh-CN/ 翻譯資料              MutationObserver        │
+│   zh-TW/ 翻譯資料              MutationObserver        │
 │   ├─ Nodes/*.json              即時 DOM 翻譯           │
 │   ├─ Categories/*.json                                 │
 │   └─ Menus/*.json                                      │

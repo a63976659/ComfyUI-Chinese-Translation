@@ -92,18 +92,21 @@ ComfyUI-Global-Translation は ComfyUI 用に設計された翻訳プラグイ�
 ---
 
 ## 効果の紹介
+中国語と英語の表示のみ掲載しています。それ以外の言語はご自身で切り替えてご確認ください。切り替えは ComfyUI の言語設定に従います。
 
 ### 翻訳トグルボタン
 
-<img width="900" height="180" alt="新版オン" src="https://github.com/user-attachments/assets/0e6751fb-4196-4f09-9a64-818bda07f343" />
+<img width="150" height="100" alt="中国語トグル1" src="https://github.com/user-attachments/assets/775bb652-3b66-404c-9531-e6147d1dbeff" />
+<img width="150" height="100" alt="英語トグル1" src="https://github.com/user-attachments/assets/c1bdce29-fb07-4861-9f05-ba87049e4557" />
+<img width="150" height="100" alt="中国語トグル2" src="https://github.com/user-attachments/assets/40c692c6-142b-4512-94a6-ba95800254d8" />
+<img width="150" height="100" alt="英語トグル2" src="https://github.com/user-attachments/assets/18c970d0-a8f8-450d-894c-19aecbd2f80b" />
+<img width="150" height="100" alt="中国語トグル3" src="https://github.com/user-attachments/assets/2e84be85-f06e-4bcd-9d58-bfb6f2ca6170" />
+<img width="150" height="100" alt="英語トグル3" src="https://github.com/user-attachments/assets/bedb11e2-1e34-4558-8bdb-d11f6d3a18fe" />
 
-<img width="1000" height="180" alt="新版-オフ" src="https://github.com/user-attachments/assets/13810712-12df-4bea-bdfd-5e86f3d7686e" />
+### 管理画面
 
-### インターフェースの見た目
-
-<img width="800" height="400" alt="効果1" src="https://github.com/user-attachments/assets/aa4e4889-33b0-4860-b973-61baf1e7f57e" />
-<img width="800" height="600" alt="効果2" src="https://github.com/user-attachments/assets/466e4509-af6a-4bb0-9e31-55b4cf7799e1" />
-<img width="800" height="800" alt="効果3" src="https://github.com/user-attachments/assets/332d471d-85b0-4aa5-8aef-e9a674bd179d" />
+<img width="2000" height="1500" alt="設定画面" src="https://github.com/user-attachments/assets/1c1607a1-9153-4f9a-aeec-cd49458dd5b4" />
+<img width="2000" height="1500" alt="英語設定画面" src="https://github.com/user-attachments/assets/71d1c68a-3e3f-41a7-867b-8d42543faba1" />
 
 ---
 
@@ -204,7 +207,7 @@ ComfyUI の設定 →「🌐 翻訳設定」に 2 つの項目があります。
 ### 翻訳ファイル構成
 
 ```
-zh-CN/
+ja-JP/
 ├── Nodes/          # ノード翻訳（タイトル、入力、出力、ウィジェット、カスタムパネル）
 │   └── internal.json
 ├── Categories/     # ノードカテゴリ翻訳
@@ -217,11 +220,11 @@ zh-CN/
     └── ...
 ```
 
-> 他の言語ディレクトリ（`zh-TW/`、`en-US/`、`ja-JP/`、`ko-KR/`、`ru-RU/`、`fr-FR/`、`de-DE/`、`es-ES/`、`it-IT/`、`pt-BR/`、`ar-SA/`、`tr-TR/`、`fa-IR/`、`he-IL/`）も同じ構成で、現在の言語に応じて自動ロードされます。`en-US/` は他言語プラグインのノードを英語へ復元するために使われます。
+> 他の言語ディレクトリ（`zh-CN/`、`zh-TW/`、`en-US/`、`ko-KR/`、`ru-RU/`、`fr-FR/`、`de-DE/`、`es-ES/`、`it-IT/`、`pt-BR/`、`ar-SA/`、`tr-TR/`、`fa-IR/`、`he-IL/`）も同じ構成で、現在の言語に応じて自動ロードされます。`en-US/` は他言語プラグインのノードを英語へ復元するために使われます。
 
 ### カスタム翻訳の追加
 
-`zh-CN/Nodes/` 配下に JSON ファイルを作成するだけです：
+`ja-JP/Nodes/` 配下に JSON ファイルを作成するだけです：
 
 ```json
 {
@@ -250,7 +253,7 @@ zh-CN/
 > - 「恒等翻訳」（キーと値が同一の項目、例 `"cfg": "cfg"`）は追加しないでください。翻訳として意味を持ちません
 > - キーのスペルを確認してください。ソースと一致しない（例 `perturb_atttn` に t が余分）とそのウィジェットは翻訳されません
 
-`zh-CN/Menus/` 配下に JSON ファイルを作成するとメニュー翻訳を追加できます：
+`ja-JP/Menus/` 配下に JSON ファイルを作成するとメニュー翻訳を追加できます：
 
 ```json
 {
@@ -277,7 +280,7 @@ zh-CN/
 │  └─ 設定の永続化                    └─ utils.js (ユーティリティ)
 │         │                             │                │
 │         ▼                             ▼                │
-│   zh-CN/ 翻訳データ              MutationObserver       │
+│   ja-JP/ 翻訳データ              MutationObserver       │
 │   ├─ Nodes/*.json              リアルタイム DOM 翻訳    │
 │   ├─ Categories/*.json                                 │
 │   └─ Menus/*.json                                      │

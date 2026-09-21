@@ -92,18 +92,21 @@ ComfyUI-Global-Translation هي إضافة ترجمة مصممة لـ ComfyUI. �
 ---
 
 ## معرض الصور
+تُعرض هنا تأثيرات اللغتين الصينية والإنجليزية فقط؛ للغات الأخرى يرجى التبديل والتحقق بنفسك. يتبع التبديل إعداد اللغة في ComfyUI.
 
 ### أزرار تفعيل الترجمة
 
-<img width="900" height="180" alt="جديد-مفعّل" src="https://github.com/user-attachments/assets/0e6751fb-4196-4f09-9a64-818bda07f343" />
+<img width="150" height="100" alt="مفتاح-صيني-1" src="https://github.com/user-attachments/assets/775bb652-3b66-404c-9531-e6147d1dbeff" />
+<img width="150" height="100" alt="مفتاح-إنجليزي-1" src="https://github.com/user-attachments/assets/c1bdce29-fb07-4861-9f05-ba87049e4557" />
+<img width="150" height="100" alt="مفتاح-صيني-2" src="https://github.com/user-attachments/assets/40c692c6-142b-4512-94a6-ba95800254d8" />
+<img width="150" height="100" alt="مفتاح-إنجليزي-2" src="https://github.com/user-attachments/assets/18c970d0-a8f8-450d-894c-19aecbd2f80b" />
+<img width="150" height="100" alt="مفتاح-صيني-3" src="https://github.com/user-attachments/assets/2e84be85-f06e-4bcd-9d58-bfb6f2ca6170" />
+<img width="150" height="100" alt="مفتاح-إنجليزي-3" src="https://github.com/user-attachments/assets/bedb11e2-1e34-4558-8bdb-d11f6d3a18fe" />
 
-<img width="1000" height="180" alt="جديد-معطّل" src="https://github.com/user-attachments/assets/13810712-12df-4bea-bdfd-5e86f3d7686e" />
+### واجهة الإدارة
 
-### معاينة الواجهة
-
-<img width="800" height="400" alt="معاينة1" src="https://github.com/user-attachments/assets/aa4e4889-33b0-4860-b973-61baf1e7f57e" />
-<img width="800" height="600" alt="معاينة2" src="https://github.com/user-attachments/assets/466e4509-af6a-4bb0-9e31-55b4cf7799e1" />
-<img width="800" height="800" alt="معاينة3" src="https://github.com/user-attachments/assets/332d471d-85b0-4aa5-8aef-e9a674bd179d" />
+<img width="2000" height="1500" alt="شاشة-الإعدادات" src="https://github.com/user-attachments/assets/1c1607a1-9153-4f9a-aeec-cd49458dd5b4" />
+<img width="2000" height="1500" alt="شاشة-الإعدادات-إنجليزي" src="https://github.com/user-attachments/assets/71d1c68a-3e3f-41a7-867b-8d42543faba1" />
 
 ---
 
@@ -204,7 +207,7 @@ git clone https://github.com/a63976659/ComfyUI-Global-Translation.git
 ### بنية ملفات الترجمة
 
 ```
-zh-CN/
+ar-SA/
 ├── Nodes/          # ترجمة العُقد (العنوان، المدخلات، المخرجات، عناصر التحكم، اللوحات المخصصة)
 │   └── internal.json
 ├── Categories/     # ترجمة فئات العُقد
@@ -217,11 +220,11 @@ zh-CN/
     └── ...
 ```
 
-> بقية مجلدات اللغات (`zh-TW/`, `en-US/`, `ja-JP/`, `ko-KR/`, `ru-RU/`, `fr-FR/`, `de-DE/`, `es-ES/`, `it-IT/`, `pt-BR/`, `ar-SA/`, `tr-TR/`, `fa-IR/`, `he-IL/`) تشترك في نفس البنية وتُحمَّل حسب اللغة الحالية؛ يُستخدم `en-US/` لإعادة عُقد الإضافات غير الصينية إلى الإنجليزية.
+> بقية مجلدات اللغات (`zh-CN/`, `zh-TW/`, `en-US/`, `ja-JP/`, `ko-KR/`, `ru-RU/`, `fr-FR/`, `de-DE/`, `es-ES/`, `it-IT/`, `pt-BR/`, `tr-TR/`, `fa-IR/`, `he-IL/`) تشترك في نفس البنية وتُحمَّل حسب اللغة الحالية؛ يُستخدم `en-US/` لإعادة عُقد الإضافات غير الصينية إلى الإنجليزية.
 
 ### إضافة ترجمات مخصصة
 
-أنشئ ملف JSON داخل `zh-CN/Nodes/`:
+أنشئ ملف JSON داخل `ar-SA/Nodes/`:
 
 ```json
 {
@@ -250,7 +253,7 @@ zh-CN/
 > - لا تُضف "ترجمات مطابقة" (القيمة تساوي المفتاح، مثل `"cfg": "cfg"`) — فهي لا تحمل أي معنى
 > - تحقق جيدًا من تهجئة المفاتيح؛ أي مفتاح يختلف عن المصدر (مثل حرف `t` زائد في `perturb_atttn`) سيفشل في الترجمة بصمت
 
-أنشئ ملف JSON داخل `zh-CN/Menus/` لإضافة ترجمات للقوائم:
+أنشئ ملف JSON داخل `ar-SA/Menus/` لإضافة ترجمات للقوائم:
 
 ```json
 {
@@ -277,7 +280,7 @@ zh-CN/
 │  └─ حفظ الإعدادات             └─ utils.js (أدوات)     │
 │         │                             │                │
 │         ▼                             ▼                │
-│   بيانات الترجمة zh-CN/         MutationObserver       │
+│   بيانات الترجمة ar-SA/         MutationObserver       │
 │   ├─ Nodes/*.json      ترجمة فورية لعناصر DOM          │
 │   ├─ Categories/*.json                                  │
 │   └─ Menus/*.json                                       │

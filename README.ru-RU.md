@@ -92,18 +92,21 @@ ComfyUI-Global-Translation — это плагин перевода, разра�
 ---
 
 ## Витрина
+Показаны только варианты на китайском и английском; для остальных языков переключайтесь и проверяйте сами. Переключение следует настройке языка ComfyUI.
 
 ### Кнопки переключателя перевода
 
-<img width="900" height="180" alt="новая-вкл" src="https://github.com/user-attachments/assets/0e6751fb-4196-4f09-9a64-818bda07f343" />
+<img width="150" height="100" alt="кит-переключатель-1" src="https://github.com/user-attachments/assets/775bb652-3b66-404c-9531-e6147d1dbeff" />
+<img width="150" height="100" alt="англ-переключатель-1" src="https://github.com/user-attachments/assets/c1bdce29-fb07-4861-9f05-ba87049e4557" />
+<img width="150" height="100" alt="кит-переключатель-2" src="https://github.com/user-attachments/assets/40c692c6-142b-4512-94a6-ba95800254d8" />
+<img width="150" height="100" alt="англ-переключатель-2" src="https://github.com/user-attachments/assets/18c970d0-a8f8-450d-894c-19aecbd2f80b" />
+<img width="150" height="100" alt="кит-переключатель-3" src="https://github.com/user-attachments/assets/2e84be85-f06e-4bcd-9d58-bfb6f2ca6170" />
+<img width="150" height="100" alt="англ-переключатель-3" src="https://github.com/user-attachments/assets/bedb11e2-1e34-4558-8bdb-d11f6d3a18fe" />
 
-<img width="1000" height="180" alt="новая-выкл" src="https://github.com/user-attachments/assets/13810712-12df-4bea-bdfd-5e86f3d7686e" />
+### Интерфейс управления
 
-### Вид интерфейса
-
-<img width="800" height="400" alt="вид1" src="https://github.com/user-attachments/assets/aa4e4889-33b0-4860-b973-61baf1e7f57e" />
-<img width="800" height="600" alt="вид2" src="https://github.com/user-attachments/assets/466e4509-af6a-4bb0-9e31-55b4cf7799e1" />
-<img width="800" height="800" alt="вид3" src="https://github.com/user-attachments/assets/332d471d-85b0-4aa5-8aef-e9a674bd179d" />
+<img width="2000" height="1500" alt="экран-настроек" src="https://github.com/user-attachments/assets/1c1607a1-9153-4f9a-aeec-cd49458dd5b4" />
+<img width="2000" height="1500" alt="экран-настроек-англ" src="https://github.com/user-attachments/assets/71d1c68a-3e3f-41a7-867b-8d42543faba1" />
 
 ---
 
@@ -204,7 +207,7 @@ git clone https://github.com/a63976659/ComfyUI-Global-Translation.git
 ### Структура файлов перевода
 
 ```
-zh-CN/
+ru-RU/
 ├── Nodes/          # Перевод узлов (заголовок, входы, выходы, виджеты, пользовательские панели)
 │   └── internal.json
 ├── Categories/     # Перевод категорий узлов
@@ -217,11 +220,11 @@ zh-CN/
     └── ...
 ```
 
-> Другие языковые каталоги (`zh-TW/`, `en-US/`, `ja-JP/`, `ko-KR/`, `ru-RU/`, `fr-FR/`, `de-DE/`, `es-ES/`, `it-IT/`, `pt-BR/`, `ar-SA/`, `tr-TR/`, `fa-IR/`, `he-IL/`) имеют ту же структуру и загружаются по текущему языку; каталог `en-US/` служит для возврата узлов не-KJ-плагинов на английский.
+> Другие языковые каталоги (`zh-CN/`, `zh-TW/`, `en-US/`, `ja-JP/`, `ko-KR/`, `fr-FR/`, `de-DE/`, `es-ES/`, `it-IT/`, `pt-BR/`, `ar-SA/`, `tr-TR/`, `fa-IR/`, `he-IL/`) имеют ту же структуру и загружаются по текущему языку; каталог `en-US/` служит для возврата на английский узлов не-китайских плагинов.
 
 ### Добавление собственного перевода
 
-Создайте JSON-файл в каталоге `zh-CN/Nodes/`:
+Создайте JSON-файл в каталоге `ru-RU/Nodes/`:
 
 ```json
 {
@@ -250,7 +253,7 @@ zh-CN/
 > - Не добавляйте «тождественные переводы» (значение равно ключу, например `"cfg": "cfg"`) — они не несут переводческого смысла
 > - Проверяйте орфографию ключей; несовпадение с исходным кодом (например лишняя `t` в `perturb_atttn`) приведёт к тому, что виджет не переведётся
 
-Создайте JSON-файл в каталоге `zh-CN/Menus/`, чтобы добавить переводы меню:
+Создайте JSON-файл в каталоге `ru-RU/Menus/`, чтобы добавить переводы меню:
 
 ```json
 {
@@ -277,7 +280,7 @@ zh-CN/
 │  └─ Сохранение настроек         └─ utils.js (утилиты)  │
 │         │                             │                │
 │         ▼                             ▼                │
-│   Данные перевода zh-CN/          MutationObserver      │
+│   Данные перевода ru-RU/          MutationObserver      │
 │   ├─ Nodes/*.json              перевод DOM в реальном  │
 │   ├─ Categories/*.json                                   │
 │   └─ Menus/*.json                                      │
