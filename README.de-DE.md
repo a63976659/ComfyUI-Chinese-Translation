@@ -322,6 +322,10 @@ Erstellen Sie eine JSON-Datei unter `de-DE/Menus/`, um Menüübersetzungen hinzu
 
 ## Änderungsverlauf
 
+### 2026-09-24
+
+- Sicherheitsproblem behoben: Über präparierte Anfragen konnten Dateien außerhalb des Plugin-Ordners gelesen werden; das Plugin liest jetzt ausschließlich Übersetzungsdateien im eigenen Ordner
+
 ### 2026-09-21
 
 **Arabisch (ar-SA), Persisch (fa-IR) und Hebräisch (he-IL) hinzugefügt**

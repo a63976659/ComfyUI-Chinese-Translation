@@ -322,6 +322,10 @@ Create a JSON file under `en-US/Menus/` to add menu translations:
 
 ## Changelog
 
+### 2026-09-24
+
+- Fixed a security issue where a crafted request could make the plugin read files outside its own folder; it now only reads translation files inside the plugin folder
+
 ### 2026-09-21
 
 **Added Arabic (ar-SA), Persian (fa-IR), Hebrew (he-IL) translations**

@@ -322,6 +322,10 @@ tr-TR/
 
 ## Değişiklik Günlüğü
 
+### 2026-09-24
+
+- Bir güvenlik sorunu giderildi: özenle hazırlanmış bir istekle eklentinin kendi klasörü dışındaki dosyalar okunabiliyordu; artık eklenti yalnızca kendi klasöründeki çeviri dosyalarını okuyor
+
 ### 2026-09-21
 
 **Arapça (ar-SA), Farsça (fa-IR) ve İbranice (he-IL) çevirileri eklendi**

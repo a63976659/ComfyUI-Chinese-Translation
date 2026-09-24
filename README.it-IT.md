@@ -322,6 +322,10 @@ Crea un file JSON sotto `it-IT/Menus/` per aggiungere traduzioni dei menu:
 
 ## Registro delle modifiche
 
+### 2026-09-24
+
+- Risolto un problema di sicurezza: una richiesta creata ad arte poteva portare il plugin a leggere file fuori dalla sua cartella; ora legge solo i file di traduzione nella propria cartella
+
 ### 2026-09-21
 
 **Aggiunti arabo (ar-SA), persiano (fa-IR) ed ebraico (he-IL)**

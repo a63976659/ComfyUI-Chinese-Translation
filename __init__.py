@@ -50,6 +50,27 @@ def try_get_json(path: Path):
     return {}
 
 
+def sanitize_locale(locale):
+    """校验调用方传入的语言代码，防止路径穿越出插件目录。
+    仅接受插件目录下的单层目录名：拒绝非字符串、绝对路径、含 .. 或分隔符的路径，
+    并用 realpath + commonpath 兜底确认解析结果仍在插件目录内。
+    通过校验返回原始 locale 字符串，否则返回 None。"""
+    if not isinstance(locale, str) or not locale:
+        return None
+    p = Path(locale)
+    if p.is_absolute() or ".." in p.parts or len(p.parts) != 1:
+        return None
+    base = os.path.realpath(CUR_PATH)
+    candidate = os.path.realpath(os.path.join(base, *p.parts))
+    try:
+        if os.path.commonpath([base, candidate]) != base:
+            return None
+    except ValueError:
+        # Windows 下不同盘符等场景 commonpath 会抛错，一律视为非法
+        return None
+    return locale
+
+
 # ============================================================
 # 【石头(Q:34720803)优化更新】翻译数据递归深合并
 # 解决不同翻译文件含同名节点类时子字典被整体覆盖的问题
@@ -148,6 +169,8 @@ async def get_locales(request: web.Request):
 async def get_translation(request: web.Request):
     post = await request.post()
     locale = post.get("locale", GLOBAL_CONFIG.get("locale", "zh-CN"))
+    if sanitize_locale(locale) is None:
+        return web.Response(status=400, body=json.dumps({"error": "invalid locale"}), headers={"Content-Type": "application/json"})
     accept_encoding = request.headers.get("Accept-Encoding", "")
     json_data = "{}"
     headers = {}
@@ -185,6 +208,8 @@ async def get_plugin_list(request: web.Request):
     # 优先用前端传入的实际翻译语言（与 get_translation 同源），回退磁盘配置，
     # 避免语言改为跟随 Comfy.Locale 后磁盘 locale 滞后导致列表与实际翻译语言不一致
     locale = request.query.get("locale") or GLOBAL_CONFIG.get("locale", "zh-CN")
+    if sanitize_locale(locale) is None:
+        return web.Response(status=400, body=json.dumps({"error": "invalid locale"}), headers={"Content-Type": "application/json"})
     path = CUR_PATH.joinpath(locale, "Nodes")
     plugins = sorted([f.stem for f in path.glob("*.json")]) if path.exists() else []
     return web.Response(status=200, body=json.dumps(plugins, ensure_ascii=False), headers={"Content-Type": "application/json"})
