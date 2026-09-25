@@ -8918,6 +8918,71 @@
         },
         "description": "将 MiniMax H3 Fun ControlNet 作为模型补丁应用于文本到视频模型。"
     },
+    "TextEncodeQwenImage21": {
+        "title": "文本编码 Qwen 图像 2.1",
+        "inputs": {
+            "clip": "CLIP",
+            "image_1": "图像1",
+            "image_2": "图像2",
+            "image_3": "图像3",
+            "image_4": "图像4",
+            "image_5": "图像5",
+            "image_6": "图像6",
+            "image_7": "图像7",
+            "image_8": "图像8",
+            "image_9": "图像9",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "prompt": "正面提示词",
+            "negative_prompt": "负面提示词",
+            "resolution": "分辨率"
+        },
+        "outputs": {
+            "positive": "正面提示词",
+            "negative": "负面提示词",
+            "latent": "Latent"
+        },
+        "description": "文本编码 Qwen 图像 2.1 节点"
+    },
+    "SheetSage2AudioToABC": {
+        "title": "SheetSage2 音频转 ABC",
+        "inputs": {
+            "audio_encoder": "音频编码器",
+            "audio": "音频"
+        },
+        "widgets": {
+            "mode": "模式"
+        },
+        "outputs": {
+            "abc": "ABC乐谱"
+        },
+        "description": "将音乐中的声乐和器乐旋律转录为ABC乐谱。将ABC输出连接到YuE2生成音乐节点，并使用匹配模式。"
+    },
+    "YuE2GenerateMusic": {
+        "title": "YuE2 生成音乐",
+        "inputs": {
+            "clip": "CLIP",
+            "style": "风格",
+            "lyrics": "歌词",
+            "abc": "ABC乐谱"
+        },
+        "widgets": {
+            "seed": "随机种子",
+            "mode": "模式",
+            "max_duration": "最大时长",
+            "temperature": "温度",
+            "top_p": "核采样概率",
+            "top_k": "Top K采样数",
+            "repetition_penalty": "重复惩罚",
+            "cfg_scale": "CFG缩放"
+        },
+        "outputs": {
+            "Conditioning": "条件",
+            "seconds": "秒数"
+        },
+        "description": "生成音乐节点"
+    },
     "SaveImageWebsocket": {
         "title": "保存图像到网络接口",
         "inputs": {

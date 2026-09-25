@@ -1,4 +1,238 @@
 {
+    "1hew_ImageColorMatch": {
+        "title": "图像色彩匹配",
+        "inputs": {
+            "source_image": "源图像",
+            "reference_image": "参考图像"
+        },
+        "widgets": {
+            "method": "方法"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "将参考图像的色彩转移到源图像上。支持批次处理；当参考图像数量与源批次不同时，会循环使用参考图像（i % ref_count）。wavelet/adain 原生运行；mkl/hm/reinhard/mvgd 及其混合版本使用 '颜色-matcher' 包。"
+    },
+    "1hew_ImageColorRestore": {
+        "title": "图像色彩恢复",
+        "inputs": {
+            "edit_image": "编辑图像",
+            "org_image": "原始图像"
+        },
+        "widgets": {
+            "background_threshold": "背景阈值",
+            "unchanged_threshold": "不变阈值",
+            "seam_max_distance": "接缝最大距离",
+            "seam_decay": "接缝衰减",
+            "seam_residual_blur": "接缝残差模糊",
+            "seam_color_sigma": "接缝色彩标准差",
+            "occlusion_residual_blur": "遮挡残差模糊",
+            "occlusion_bridge_width": "遮挡桥接宽度"
+        },
+        "outputs": {
+            "image": "图像",
+            "unchanged_mask": "不变遮罩"
+        },
+        "description": "在局部平滑对象移除产生的遮挡接缝的同时，将对齐后的AI编辑色彩恢复到原始参考。使用可靠的仿射色彩拟合和连续接缝场（结构不变遮罩清理已禁用）。当编辑图像存在Alpha通道时会保留。"
+    },
+    "1hew_ImageAlignChangeMask": {
+        "title": "图像对齐变更遮罩",
+        "inputs": {
+            "edit_image": "编辑图像",
+            "org_image": "原始图像"
+        },
+        "widgets": {
+            "mode": "模式",
+            "max_offset": "最大偏移",
+            "max_rotation": "最大旋转",
+            "max_scale": "最大缩放",
+            "min_align_score": "最小对齐分数",
+            "color_compensation": "颜色补偿",
+            "sensitivity": "灵敏度",
+            "min_component_area": "最小组件面积",
+            "expand": "扩展",
+            "feather": "羽化"
+        },
+        "outputs": {
+            "align_image": "对齐图像",
+            "clean_mask": "干净遮罩",
+            "raw_mask": "原始遮罩",
+            "change_score": "变更分数",
+            "overlay_image": "叠加图像"
+        },
+        "description": "将AI编辑后的图像与原始图像对齐，利用稳定的背景像素拒绝小范围全局颜色漂移，并输出原始/干净的变更遮罩。"
+    },
+    "1hew_ImageAlphaEdge": {
+        "title": "图像Alpha边缘处理",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "edge": "边缘",
+            "feather": "羽化"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "description": "调整带Alpha通道图像的不透明区域边缘：向内收边 / 向外扩边 + 羽化。\n\n典型场景：抠图（去背景）后元素边缘仍残留一圈被背景色污染的\n半透明“毛边 / 彩边”。本节点先用形态学向内收边，把被污染的\n边缘像素直接裁掉，再做高斯羽化得到干净的过渡；羽化前会固定把\n不透明区域的颜色向过渡带扩散（bleed），避免羽化后出现暗边 / 彩边。\n\n处理顺序：收边 / 扩边 → 颜色外扩 → 羽化。\n输出带Alpha的4通道图像，并同时给出处理后的Alpha遮罩。\n\n收边 / 扩边是灰度形态学（最小值 / 最大值 滤波），直接作用在Alpha上：\n对局部线性的软边，半径为r的滤波恰好等于把该斜坡平移r像素，\n因此Alpha的每一条等值线都被整体平移r，matte自带的抗锯齿完整\n保留，不会退化成1px台阶。填孔属于遮罩修补，交给别的节点处理。"
+    },
+    "1hew_ImageBlur": {
+        "title": "图像模糊",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "blur": "模糊度"
+        },
+        "outputs": {
+            "image": "图像"
+        },
+        "description": "对整张图像进行高斯模糊，行为与 LayerStyle 的 LayerFilter: Gaussian Blur V2 一致。\n\n- 模糊 参数支持小数（FLOAT），语义上更接近 V2 版本；\n- 当 模糊 为 0 时直接透传原图；\n- 按批次逐帧处理，保持通道数与 数据类型 不变。"
+    },
+    "1hew_ImageResizeDoubaoSeedream50Pro": {
+        "title": "图像缩放 豆包 Seedream 5.0 Pro",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "preset_size": "预设尺寸",
+            "fit": "适配",
+            "pad_color": "填充颜色"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "native_image": "原生图像",
+            "native_mask": "原生遮罩"
+        },
+        "description": ""
+    },
+    "1hew_ImageResizeQwenImage30": {
+        "title": "图像缩放 千问图像 3.0",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "preset_size": "预设尺寸",
+            "fit": "适配",
+            "pad_color": "填充颜色"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "native_image": "原生图像",
+            "native_mask": "原生遮罩"
+        },
+        "description": ""
+    },
+    "1hew_ImageResizeQwenImage30Pro": {
+        "title": "图像缩放 千问图像 3.0 Pro",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "preset_size": "预设尺寸",
+            "fit": "适配",
+            "pad_color": "填充颜色"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "native_image": "原生图像",
+            "native_mask": "原生遮罩"
+        },
+        "description": ""
+    },
+    "1hew_ImageMinimumArea": {
+        "title": "图像最小面积",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "length_to_sq_area": "参考边长",
+            "method": "方法",
+            "divisible_by": "可整除",
+            "fit": "适配",
+            "pad_color": "填充颜色"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "resize_bool": "是否缩放"
+        },
+        "description": "将图像放大，直到其面积达到最小平方参考面积。\n\n- ``length_to_sq_area`` 定义参考正方形边长（目标面积 = N²）。\n- ``适配`` 行为类似「通用图像缩放」：裁剪/填充/拉伸。\n- ``可整除`` 将最终尺寸向上取整为某个数的倍数。\n- ``resize_bool`` 报告是否实际发生了放大操作。"
+    },
+    "1hew_StringRandom": {
+        "title": "随机字符串",
+        "inputs": {},
+        "widgets": {
+            "custom_text": "自定义文本",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "string": "字符串"
+        },
+        "description": ""
+    },
+    "1hew_TextCompare": {
+        "title": "文本比较",
+        "inputs": {},
+        "widgets": {
+            "a": "a",
+            "operator": "运算符",
+            "b": "b"
+        },
+        "outputs": {
+            "bool": "布尔值"
+        },
+        "description": ""
+    },
+    "1hew_MultiMaskMathOps": {
+        "title": "多遮罩数学运算",
+        "inputs": {
+            "mask_1": "遮罩1",
+            "mask_2": "遮罩2"
+        },
+        "widgets": {
+            "operation": "运算"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        },
+        "description": ""
+    },
+    "1hew_StringRatioJimeng": {
+        "title": "Jimeng文本比例",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "selection": "选择项"
+        },
+        "outputs": {
+            "string": "字符串"
+        },
+        "description": ""
+    },
+    "1hew_MaskLevels": {
+        "title": "遮罩级别",
+        "inputs": {
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "black_point": "黑点",
+            "white_point": "白点"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        },
+        "description": "用于设置遮罩图像的黑点和白点阈值，以调整遮罩的对比度和范围。"
+    },
     "1hew_IntNumberCompare": {
         "title": "整数比较",
         "inputs": {
