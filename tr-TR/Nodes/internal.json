@@ -248,7 +248,7 @@
         "widgets": {
             "steps": "Yineleme adım sayısı",
             "beta_d": "Difüzyon katsayısı β_d",
-            "beta_min": "En küçük β değeri", 
+            "beta_min": "En küçük β değeri",
             "eps_s": "Gürültü faktörü ε_s"
         },
         "outputs": {
@@ -4228,7 +4228,6 @@
             "latent": "Latent"
         }
     },
-
     "WanFunControlToVideo": {
         "title": "Wan Fun kontrol ile videoya",
         "inputs": {
@@ -5162,7 +5161,6 @@
             "PREVIEW": "Animasyon önizleme"
         }
     },
-
     "WanCameraEmbedding": {
         "title": "Wan kamera gömmesi",
         "inputs": {},
@@ -5798,7 +5796,6 @@
             "LATENT_UPSCALE_MODEL": "Latent büyütme modeli"
         }
     },
-
     "ScaleROPE": {
         "title": "ROPE ölçekleme",
         "inputs": {
@@ -6559,7 +6556,7 @@
         "widgets": {
             "low_gain_dB": "Düşük frekans kazancı (dB)",
             "low_freq": "Düşük frekans",
-            "mid_gain_dB": "Orta frekans kazancı (dB)", 
+            "mid_gain_dB": "Orta frekans kazancı (dB)",
             "mid_freq": "Orta frekans",
             "mid_q": "Orta frekans Q değeri",
             "high_gain_dB": "Yüksek frekans kazancı (dB)",
@@ -8922,6 +8919,97 @@
         "title": "Görseli ağ arayüzüne kaydet",
         "inputs": {
             "images": "Görsel kümesi"
+        }
+    },
+    "TextEncodeQwenImage21": {
+        "title": "Qwen görsel 2.1 metin kodlama",
+        "inputs": {
+            "image_1": "Görsel 1",
+            "image_2": "Görsel 2",
+            "image_3": "Görsel 3",
+            "image_4": "Görsel 4",
+            "image_5": "Görsel 5",
+            "image_6": "Görsel 6",
+            "image_7": "Görsel 7",
+            "image_8": "Görsel 8",
+            "image_9": "Görsel 9"
+        },
+        "widgets": {
+            "prompt": "İstem",
+            "negative_prompt": "Negatif istem",
+            "resolution": "Çözünürlük"
+        },
+        "outputs": {
+            "positive": "Olumlu koşullandırma",
+            "negative": "Olumsuz koşullandırma"
+        },
+        "description": "Qwen görsel 2.1 metin kodlama düğümü."
+    },
+    "SheetSage2AudioToABC": {
+        "title": "SheetSage2 sesten ABC notasına",
+        "inputs": {
+            "audio_encoder": "Ses kodlayıcı",
+            "audio": "Ses"
+        },
+        "widgets": {
+            "mode": "Mod"
+        },
+        "outputs": {
+            "abc": "ABC notası"
+        },
+        "description": "Sesteki vokal ve enstrümantal melodileri ABC notasına aktarır. ABC çıkışını YuE2 müzik üretimi düğümüne bağlayın ve eşleşen modu kullanın."
+    },
+    "YuE2GenerateMusic": {
+        "title": "YuE2 müzik üretimi",
+        "inputs": {
+            "style": "Stil",
+            "lyrics": "Şarkı sözü",
+            "abc": "ABC notası"
+        },
+        "widgets": {
+            "seed": "Rastgele tohum",
+            "mode": "Mod",
+            "max_duration": "Maks süre",
+            "temperature": "Sıcaklık",
+            "top_p": "Top P örnekleme",
+            "top_k": "Top K örnekleme",
+            "repetition_penalty": "Tekrar cezası",
+            "cfg_scale": "CFG ölçekleme"
+        },
+        "outputs": {
+            "Conditioning": "Koşullandırma",
+            "seconds": "Saniye sayısı"
+        },
+        "description": "Stile, şarkı sözlerine ve ABC notasına göre müzik token'ları ve akustik koşullandırma üretir. Üretilen saniye sayısını Boş Latent YuE2 sesi düğümüne verin. Boş ABC notası girişi seçilen modu yok sayar."
+    },
+    "YuE2GenerateABC": {
+        "title": "YuE2 ABC notası üretimi",
+        "inputs": {
+            "style": "Stil",
+            "lyrics": "Şarkı sözü",
+            "abc": "ABC notası"
+        },
+        "widgets": {
+            "seed": "Rastgele tohum",
+            "randomize": "Üretim sonrası kontrol",
+            "mode": "Mod",
+            "max_abc_tokens": "Maks ABC nota token sayısı",
+            "temperature": "Sıcaklık",
+            "top_p": "Top P örnekleme",
+            "top_k": "Top K örnekleme",
+            "repetition_penalty": "Tekrar cezası katsayısı",
+            "penalty_window": "Ceza penceresi"
+        },
+        "outputs": {
+            "abc": "ABC notası"
+        },
+        "description": "Şarkının ABC notasını stile ve şarkı sözlerine göre üretir. ABC notasını YuE2 müzik üretimi düğümüne bağlayın."
+    },
+    "EmptyYuE2LatentAudio": {
+        "title": "Boş Latent YuE2 sesi",
+        "widgets": {
+            "seconds": "Saniye sayısı",
+            "batch_size": "Yığın sayısı"
         }
     }
 }

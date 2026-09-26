@@ -4228,7 +4228,6 @@
             "latent": "Latent"
         }
     },
-
     "WanFunControlToVideo": {
         "title": "Wan Fun 제어-투-비디오",
         "inputs": {
@@ -5162,7 +5161,6 @@
             "PREVIEW": "애니메이션 미리보기"
         }
     },
-
     "WanCameraEmbedding": {
         "title": "Wan 카메라 임베드",
         "inputs": {},
@@ -5798,7 +5796,6 @@
             "LATENT_UPSCALE_MODEL": "Latent 업스케일 모델"
         }
     },
-
     "ScaleROPE": {
         "title": "ROPE 스케일",
         "inputs": {
@@ -8922,6 +8919,97 @@
         "title": "브라우저에서 이미지 저장",
         "inputs": {
             "images": "이미지 배치"
+        }
+    },
+    "TextEncodeQwenImage21": {
+        "title": "Qwen 이미지 2.1 텍스트 인코딩",
+        "inputs": {
+            "image_1": "이미지1",
+            "image_2": "이미지2",
+            "image_3": "이미지3",
+            "image_4": "이미지4",
+            "image_5": "이미지5",
+            "image_6": "이미지6",
+            "image_7": "이미지7",
+            "image_8": "이미지8",
+            "image_9": "이미지9"
+        },
+        "widgets": {
+            "prompt": "긍정 프롬프트",
+            "negative_prompt": "부정 프롬프트",
+            "resolution": "해상도"
+        },
+        "outputs": {
+            "positive": "긍정 컨디셔닝",
+            "negative": "부정 컨디셔닝"
+        },
+        "description": "Qwen 이미지 2.1 텍스트 인코딩 노드"
+    },
+    "SheetSage2AudioToABC": {
+        "title": "SheetSage2 오디오를 ABC 악보로 변환",
+        "inputs": {
+            "audio_encoder": "오디오 인코더",
+            "audio": "오디오"
+        },
+        "widgets": {
+            "mode": "모드"
+        },
+        "outputs": {
+            "abc": "ABC 악보"
+        },
+        "description": "음악의 보컬과 기악 멜로디를 ABC 악보로 전사합니다. ABC 출력을 YuE2 음악 생성 노드에 연결하고 일치하는 모드를 사용하세요."
+    },
+    "YuE2GenerateMusic": {
+        "title": "YuE2 음악 생성",
+        "inputs": {
+            "style": "스타일",
+            "lyrics": "가사",
+            "abc": "ABC 악보"
+        },
+        "widgets": {
+            "seed": "랜덤 시드",
+            "mode": "모드",
+            "max_duration": "최대 길이",
+            "temperature": "온도",
+            "top_p": "Top P 샘플링",
+            "top_k": "Top K 샘플링",
+            "repetition_penalty": "반복 페널티",
+            "cfg_scale": "CFG 스케일"
+        },
+        "outputs": {
+            "Conditioning": "컨디셔닝",
+            "seconds": "초 수"
+        },
+        "description": "스타일, 가사, ABC 악보를 기반으로 음악 토큰과 음향 조건을 생성합니다. 생성된 초 수를 빈 Latent YuE2 오디오 노드에 입력하세요. ABC 악보 입력이 비어 있으면 선택한 모드가 무시됩니다."
+    },
+    "YuE2GenerateABC": {
+        "title": "YuE2 ABC 악보 생성",
+        "inputs": {
+            "style": "스타일",
+            "lyrics": "가사",
+            "abc": "ABC 악보"
+        },
+        "widgets": {
+            "seed": "랜덤 시드",
+            "randomize": "생성 후 제어",
+            "mode": "모드",
+            "max_abc_tokens": "최대 ABC 악보 토큰 수",
+            "temperature": "온도",
+            "top_p": "Top P 샘플링",
+            "top_k": "Top K 샘플링",
+            "repetition_penalty": "반복 페널티 계수",
+            "penalty_window": "페널티 윈도우"
+        },
+        "outputs": {
+            "abc": "ABC 악보"
+        },
+        "description": "스타일과 가사에 따라 곡의 ABC 악보를 생성합니다. ABC 악보를 YuE2 음악 생성 노드에 연결하세요."
+    },
+    "EmptyYuE2LatentAudio": {
+        "title": "빈 Latent YuE2 오디오",
+        "widgets": {
+            "seconds": "초 수",
+            "batch_size": "배치 크기"
         }
     }
 }
