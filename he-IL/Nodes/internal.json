@@ -8920,5 +8920,96 @@
         "inputs": {
             "images": "קבוצת תמונות"
         }
+    },
+    "TextEncodeQwenImage21": {
+        "title": "מקודד טקסט Qwen Image 2.1",
+        "inputs": {
+            "image_1": "תמונה 1",
+            "image_2": "תמונה 2",
+            "image_3": "תמונה 3",
+            "image_4": "תמונה 4",
+            "image_5": "תמונה 5",
+            "image_6": "תמונה 6",
+            "image_7": "תמונה 7",
+            "image_8": "תמונה 8",
+            "image_9": "תמונה 9"
+        },
+        "widgets": {
+            "prompt": "פרומפט חיובי",
+            "negative_prompt": "פרומפט שלילי",
+            "resolution": "רזולוציה"
+        },
+        "outputs": {
+            "positive": "תנאי חיובי",
+            "negative": "תנאי שלילי"
+        },
+        "description": "צומת הצפנת טקסט Qwen Image 2.1"
+    },
+    "SheetSage2AudioToABC": {
+        "title": "SheetSage2 – המרת אודיו ל-ABC",
+        "inputs": {
+            "audio_encoder": "מקודד אודיו",
+            "audio": "אודיו"
+        },
+        "widgets": {
+            "mode": "מצב"
+        },
+        "outputs": {
+            "abc": "תווי ABC"
+        },
+        "description": "מתעתיק מלודיות ווקליות ואינסטרומנטליות ממוזיקה לתווי ABC. יש לחבר את פלט ה-ABC לצומת YuE2 – יצירת מוזיקה ולהשתמש במצב התאמה."
+    },
+    "YuE2GenerateMusic": {
+        "title": "YuE2 – יצירת מוזיקה",
+        "inputs": {
+            "style": "סגנון",
+            "lyrics": "מילים",
+            "abc": "תווי ABC"
+        },
+        "widgets": {
+            "seed": "Seed אקראי",
+            "mode": "מצב",
+            "max_duration": "משך זמן מרבי",
+            "temperature": "טמפרטורה",
+            "top_p": "הסתברות דגימת גרעין (top-p)",
+            "top_k": "מספר דגימות Top-K",
+            "repetition_penalty": "קנס חזרתיות",
+            "cfg_scale": "קנה מידה CFG"
+        },
+        "outputs": {
+            "Conditioning": "תנאי",
+            "seconds": "שניות"
+        },
+        "description": "מייצר טוקנים מוזיקליים ותנאי אקוסטי לפי הסגנון, המילים ותווי ה-ABC. יש להעביר את מספר השניות שנוצר לצומת YuE2 – אודיו Latent ריק. קלט ABC ריק גורם להתעלמות מהמצב שנבחר."
+    },
+    "YuE2GenerateABC": {
+        "title": "YuE2 – יצירת תווי ABC",
+        "inputs": {
+            "style": "סגנון",
+            "lyrics": "מילים",
+            "abc": "תווי ABC"
+        },
+        "widgets": {
+            "seed": "Seed אקראי",
+            "randomize": "פעולה לאחר הרצה",
+            "mode": "מצב",
+            "max_abc_tokens": "מספר טוקני ABC מרבי",
+            "temperature": "טמפרטורה",
+            "top_p": "הסתברות דגימת גרעין (top-p)",
+            "top_k": "מספר דגימות Top-K",
+            "repetition_penalty": "מקדם קנס חזרתיות",
+            "penalty_window": "חלון קנס"
+        },
+        "outputs": {
+            "abc": "תווי ABC"
+        },
+        "description": "מייצר תווי ABC לשיר לפי הסגנון והמילים. יש לחבר את תווי ה-ABC לצומת YuE2 – יצירת מוזיקה."
+    },
+    "EmptyYuE2LatentAudio": {
+        "title": "YuE2 – אודיו Latent ריק",
+        "widgets": {
+            "seconds": "שניות",
+            "batch_size": "כמות אצוות"
+        }
     }
 }

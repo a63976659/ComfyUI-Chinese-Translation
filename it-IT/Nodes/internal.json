@@ -248,7 +248,7 @@
         "widgets": {
             "steps": "Passi di iterazione",
             "beta_d": "Coefficiente di diffusione β_d",
-            "beta_min": "Valore β minimo", 
+            "beta_min": "Valore β minimo",
             "eps_s": "Fattore di rumore ε_s"
         },
         "outputs": {
@@ -4228,7 +4228,6 @@
             "latent": "Latent"
         }
     },
-
     "WanFunControlToVideo": {
         "title": "Wan Fun da controllo a video",
         "inputs": {
@@ -5162,7 +5161,6 @@
             "PREVIEW": "Anteprima animazione"
         }
     },
-
     "WanCameraEmbedding": {
         "title": "Wan embedding camera",
         "inputs": {},
@@ -5798,7 +5796,6 @@
             "LATENT_UPSCALE_MODEL": "Modello di upscale Latent"
         }
     },
-
     "ScaleROPE": {
         "title": "Scala ROPE",
         "inputs": {
@@ -6559,7 +6556,7 @@
         "widgets": {
             "low_gain_dB": "Guadagno di bassa frequenza (dB)",
             "low_freq": "Frequenza bassa",
-            "mid_gain_dB": "Guadagno di media frequenza (dB)", 
+            "mid_gain_dB": "Guadagno di media frequenza (dB)",
             "mid_freq": "Frequenza media",
             "mid_q": "Valore Q di media frequenza",
             "high_gain_dB": "Guadagno di alta frequenza (dB)",
@@ -8922,6 +8919,96 @@
         "title": "Salva immagine su interfaccia di rete",
         "inputs": {
             "images": "Gruppo di immagini"
+        }
+    },
+    "TextEncodeQwenImage21": {
+        "title": "Codifica testo Qwen Image 2.1",
+        "inputs": {
+            "image_1": "Immagine1",
+            "image_2": "Immagine2",
+            "image_3": "Immagine3",
+            "image_4": "Immagine4",
+            "image_5": "Immagine5",
+            "image_6": "Immagine6",
+            "image_7": "Immagine7",
+            "image_8": "Immagine8",
+            "image_9": "Immagine9"
+        },
+        "widgets": {
+            "prompt": "Prompt positivo",
+            "negative_prompt": "Prompt negativo",
+            "resolution": "Risoluzione"
+        },
+        "outputs": {
+            "positive": "Prompt positivo",
+            "negative": "Prompt negativo"
+        },
+        "description": "Nodo di codifica testo Qwen Image 2.1."
+    },
+    "SheetSage2AudioToABC": {
+        "title": "SheetSage2 da audio ad ABC",
+        "inputs": {
+            "audio_encoder": "Codificatore audio"
+        },
+        "widgets": {
+            "mode": "Modalità"
+        },
+        "outputs": {
+            "abc": "Spartito ABC"
+        },
+        "description": "Trascrive le melodie vocali e strumentali di un brano in spartito ABC. Collega l'uscita ABC al nodo YuE2 Genera musica e usa la modalità di corrispondenza."
+    },
+    "YuE2GenerateMusic": {
+        "title": "YuE2 Genera musica",
+        "inputs": {
+            "style": "Stile",
+            "lyrics": "Testo del brano",
+            "abc": "Spartito ABC"
+        },
+        "widgets": {
+            "seed": "Seme casuale",
+            "mode": "Modalità",
+            "max_duration": "Durata massima",
+            "temperature": "Temperatura",
+            "top_p": "Probabilità di campionamento nucleus",
+            "top_k": "Numero di campioni Top K",
+            "repetition_penalty": "Penalità di ripetizione",
+            "cfg_scale": "Scala CFG"
+        },
+        "outputs": {
+            "Conditioning": "Condizione",
+            "seconds": "Numero di secondi"
+        },
+        "description": "Genera token musicali e condizioni acustiche in base a stile, testo e spartito ABC. Fornisci i secondi generati al nodo Latent audio vuoto YuE2. Uno spartito ABC vuoto ignora la modalità selezionata."
+    },
+    "YuE2GenerateABC": {
+        "title": "YuE2 Genera spartito ABC",
+        "inputs": {
+            "style": "Stile",
+            "lyrics": "Testo del brano",
+            "abc": "Spartito ABC"
+        },
+        "widgets": {
+            "seed": "Seme casuale",
+            "randomize": "Controllo post-generazione",
+            "mode": "Modalità",
+            "max_abc_tokens": "Numero massimo di token dello spartito ABC",
+            "temperature": "Temperatura",
+            "top_p": "Probabilità di campionamento nucleus",
+            "top_k": "Numero di campioni Top K",
+            "repetition_penalty": "Coefficiente di penalità di ripetizione",
+            "penalty_window": "Finestra di penalità"
+        },
+        "outputs": {
+            "abc": "Spartito ABC"
+        },
+        "description": "Genera lo spartito ABC di un brano in base a stile e testo. Collega lo spartito ABC al nodo YuE2 Genera musica."
+    },
+    "EmptyYuE2LatentAudio": {
+        "title": "Latent audio vuoto YuE2",
+        "widgets": {
+            "seconds": "Numero di secondi",
+            "batch_size": "Dimensione batch"
         }
     }
 }

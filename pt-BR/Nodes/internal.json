@@ -8920,5 +8920,96 @@
         "inputs": {
             "images": "Grupo de imagens"
         }
+    },
+    "TextEncodeQwenImage21": {
+        "title": "Codificação de texto Qwen Image 2.1",
+        "inputs": {
+            "image_1": "Imagem 1",
+            "image_2": "Imagem 2",
+            "image_3": "Imagem 3",
+            "image_4": "Imagem 4",
+            "image_5": "Imagem 5",
+            "image_6": "Imagem 6",
+            "image_7": "Imagem 7",
+            "image_8": "Imagem 8",
+            "image_9": "Imagem 9"
+        },
+        "widgets": {
+            "negative_prompt": "Prompt negativo",
+            "resolution": "Resolução"
+        },
+        "outputs": {
+            "positive": "Condição positiva",
+            "negative": "Condição negativa"
+        },
+        "description": "Codifica o texto de prompt para o modelo Qwen Image 2.1."
+    },
+    "SheetSage2AudioToABC": {
+        "title": "SheetSage2: áudio para ABC",
+        "inputs": {
+            "audio_encoder": "Codificador de áudio",
+            "audio": "Áudio"
+        },
+        "widgets": {
+            "mode": "Modo"
+        },
+        "outputs": {
+            "abc": "Partitura ABC"
+        },
+        "description": "Transcreve melodias vocais e instrumentais da música em partitura ABC. Conecte a saída ABC ao nó Gerar música YuE2 e use um modo correspondente."
+    },
+    "YuE2GenerateMusic": {
+        "title": "Gerar música YuE2",
+        "inputs": {
+            "style": "Estilo",
+            "lyrics": "Letra",
+            "abc": "Partitura ABC"
+        },
+        "widgets": {
+            "seed": "Semente aleatória",
+            "mode": "Modo",
+            "max_duration": "Duração máxima",
+            "temperature": "Temperatura",
+            "top_p": "Amostragem Top P",
+            "top_k": "Amostragem Top K",
+            "repetition_penalty": "Penalidade de repetição",
+            "cfg_scale": "Escala CFG"
+        },
+        "outputs": {
+            "Conditioning": "Condição",
+            "seconds": "Segundos"
+        },
+        "description": "Gera tokens de música e condição acústica a partir do estilo, da letra e da partitura ABC. Informe a duração em segundos no nó Latent de áudio YuE2 vazio. Uma partitura ABC vazia ignora o modo selecionado."
+    },
+    "YuE2GenerateABC": {
+        "title": "Gerar partitura ABC YuE2",
+        "inputs": {
+            "style": "Estilo",
+            "lyrics": "Letra",
+            "abc": "Partitura ABC"
+        },
+        "widgets": {
+            "seed": "Semente aleatória",
+            "randomize": "Ação após a execução",
+            "mode": "Modo",
+            "max_abc_tokens": "Máximo de tokens ABC",
+            "temperature": "Temperatura",
+            "top_p": "Amostragem Top P",
+            "top_k": "Amostragem Top K",
+            "repetition_penalty": "Penalidade de repetição",
+            "penalty_window": "Janela de penalidade"
+        },
+        "outputs": {
+            "abc": "Partitura ABC"
+        },
+        "description": "Gera a partitura ABC de uma música com base no estilo e na letra. Conecte a partitura ABC ao nó Gerar música YuE2."
+    },
+    "EmptyYuE2LatentAudio": {
+        "title": "Latent de áudio YuE2 vazio",
+        "widgets": {
+            "seconds": "Segundos",
+            "batch_size": "Tamanho do lote"
+        },
+        "description": ""
     }
 }
