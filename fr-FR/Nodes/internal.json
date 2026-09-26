@@ -8920,5 +8920,88 @@
         "inputs": {
             "images": "Groupe d'images"
         }
+    },
+    "TextEncodeQwenImage21": {
+        "title": "Encodeur de texte Qwen Image 2.1",
+        "inputs": {
+            "image_1": "Image 1",
+            "image_2": "Image 2",
+            "image_3": "Image 3",
+            "image_4": "Image 4",
+            "image_5": "Image 5",
+            "image_6": "Image 6",
+            "image_7": "Image 7",
+            "image_8": "Image 8",
+            "image_9": "Image 9"
+        },
+        "widgets": {
+            "prompt": "Prompt positif",
+            "negative_prompt": "Prompt négatif",
+            "resolution": "Résolution"
+        },
+        "outputs": {
+            "positive": "Condition positive",
+            "negative": "Condition négative"
+        },
+        "description": "Nœud d'encodage de texte Qwen Image 2.1"
+    },
+    "SheetSage2AudioToABC": {
+        "title": "SheetSage2 audio vers ABC",
+        "inputs": {
+            "audio_encoder": "Encodeur audio"
+        },
+        "outputs": {
+            "abc": "Partition ABC"
+        },
+        "description": "Transcrit les mélodies vocales et instrumentales d'un morceau en notation ABC. Connectez la sortie ABC au nœud YuE2 Générer de la musique et utilisez le mode correspondant."
+    },
+    "YuE2GenerateMusic": {
+        "title": "YuE2 Générer de la musique",
+        "inputs": {
+            "lyrics": "Paroles",
+            "abc": "Partition ABC"
+        },
+        "widgets": {
+            "seed": "Graine aléatoire",
+            "max_duration": "Durée maximale",
+            "temperature": "Température",
+            "top_p": "Échantillonnage Top P",
+            "top_k": "Échantillonnage Top K",
+            "repetition_penalty": "Pénalité de répétition",
+            "cfg_scale": "Échelle CFG"
+        },
+        "outputs": {
+            "Conditioning": "Condition",
+            "seconds": "Durée en secondes"
+        },
+        "description": "Génère les jetons musicaux et les conditions acoustiques à partir du style, des paroles et de la partition ABC. Transmettez la durée générée (en secondes) au nœud Latent vide audio YuE2. Une entrée de partition ABC vide ignore le mode sélectionné."
+    },
+    "YuE2GenerateABC": {
+        "title": "YuE2 Générer une partition ABC",
+        "inputs": {
+            "lyrics": "Paroles",
+            "abc": "Partition ABC"
+        },
+        "widgets": {
+            "seed": "Graine aléatoire",
+            "randomize": "Action après exécution",
+            "max_abc_tokens": "Nombre maximal de jetons ABC",
+            "temperature": "Température",
+            "top_p": "Échantillonnage Top P",
+            "top_k": "Échantillonnage Top K",
+            "repetition_penalty": "Pénalité de répétition",
+            "penalty_window": "Fenêtre de pénalité"
+        },
+        "outputs": {
+            "abc": "Partition ABC"
+        },
+        "description": "Génère la partition ABC d'un morceau à partir du style et des paroles. Connectez la partition ABC au nœud YuE2 Générer de la musique."
+    },
+    "EmptyYuE2LatentAudio": {
+        "title": "Latent vide audio YuE2",
+        "widgets": {
+            "seconds": "Durée en secondes",
+            "batch_size": "Taille du lot"
+        }
     }
 }

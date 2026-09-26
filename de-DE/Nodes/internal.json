@@ -4228,7 +4228,6 @@
             "latent": "Latent"
         }
     },
-
     "WanFunControlToVideo": {
         "title": "Wan Fun Control-zu-Video",
         "inputs": {
@@ -5162,7 +5161,6 @@
             "PREVIEW": "Animations-Vorschau"
         }
     },
-
     "WanCameraEmbedding": {
         "title": "Wan-Kamera-Einbettung",
         "inputs": {},
@@ -5798,7 +5796,6 @@
             "LATENT_UPSCALE_MODEL": "Latent-Upscaling-Modell"
         }
     },
-
     "ScaleROPE": {
         "title": "ROPE skalieren",
         "inputs": {
@@ -8922,6 +8919,96 @@
         "title": "Bild an Webschnittstelle speichern",
         "inputs": {
             "images": "Bildgruppe"
+        }
+    },
+    "TextEncodeQwenImage21": {
+        "title": "Textkodierung Qwen-Bild 2.1",
+        "inputs": {
+            "image_1": "Bild 1",
+            "image_2": "Bild 2",
+            "image_3": "Bild 3",
+            "image_4": "Bild 4",
+            "image_5": "Bild 5",
+            "image_6": "Bild 6",
+            "image_7": "Bild 7",
+            "image_8": "Bild 8",
+            "image_9": "Bild 9"
+        },
+        "widgets": {
+            "prompt": "Positiv-Prompt",
+            "negative_prompt": "Negativ-Prompt",
+            "resolution": "Auflösung"
+        },
+        "outputs": {
+            "positive": "Positive Bedingung",
+            "negative": "Negative Bedingung"
+        },
+        "description": "Knoten zur Textkodierung für Qwen-Bild 2.1"
+    },
+    "SheetSage2AudioToABC": {
+        "title": "SheetSage2 Audio zu ABC",
+        "inputs": {
+            "audio_encoder": "Audio-Encoder"
+        },
+        "widgets": {
+            "mode": "Modus"
+        },
+        "outputs": {
+            "abc": "ABC-Notation"
+        },
+        "description": "Transkribiert Gesangs- und Instrumentalmelodien aus Musik als ABC-Notation. Verbinden Sie die ABC-Ausgabe mit dem Knoten YuE2 Musik generieren und wählen Sie den passenden Modus."
+    },
+    "YuE2GenerateMusic": {
+        "title": "YuE2 Musik generieren",
+        "inputs": {
+            "style": "Stil",
+            "lyrics": "Liedtext",
+            "abc": "ABC-Notation"
+        },
+        "widgets": {
+            "seed": "Zufalls-Seed",
+            "mode": "Modus",
+            "max_duration": "Maximale Dauer",
+            "temperature": "Temperatur",
+            "top_p": "Top-P-Sampling",
+            "top_k": "Top-K-Sampling",
+            "repetition_penalty": "Wiederholungsstrafe",
+            "cfg_scale": "CFG-Guidance-Gewicht"
+        },
+        "outputs": {
+            "Conditioning": "Bedingung",
+            "seconds": "Sekunden"
+        },
+        "description": "Erzeugt Musiktokens und akustische Bedingungen anhand von Stil, Liedtext und ABC-Notation. Übergeben Sie die generierten Sekunden an den Knoten Leeres YuE2-Audio-Latent. Bei leerer ABC-Notation-Eingabe wird der gewählte Modus ignoriert."
+    },
+    "YuE2GenerateABC": {
+        "title": "YuE2 ABC-Notation generieren",
+        "inputs": {
+            "style": "Stil",
+            "lyrics": "Liedtext",
+            "abc": "ABC-Notation"
+        },
+        "widgets": {
+            "seed": "Zufalls-Seed",
+            "randomize": "Aktion nach der Ausführung",
+            "mode": "Modus",
+            "max_abc_tokens": "Maximale ABC-Tokenanzahl",
+            "temperature": "Temperatur",
+            "top_p": "Top-P-Sampling",
+            "top_k": "Top-K-Sampling",
+            "repetition_penalty": "Wiederholungsstrafe",
+            "penalty_window": "Wiederholungsstrafe-Fenster"
+        },
+        "outputs": {
+            "abc": "ABC-Notation"
+        },
+        "description": "Erzeugt die ABC-Notation eines Songs anhand von Stil und Liedtext. Verbinden Sie die ABC-Notation mit dem Knoten YuE2 Musik generieren."
+    },
+    "EmptyYuE2LatentAudio": {
+        "title": "Leeres YuE2-Audio-Latent",
+        "widgets": {
+            "seconds": "Sekunden",
+            "batch_size": "Stapelanzahl"
         }
     }
 }

@@ -4228,7 +4228,6 @@
             "latent": "Latent"
         }
     },
-
     "WanFunControlToVideo": {
         "title": "Wan Fun control a vídeo",
         "inputs": {
@@ -5162,7 +5161,6 @@
             "PREVIEW": "Vista previa de la animación"
         }
     },
-
     "WanCameraEmbedding": {
         "title": "Incrustación de cámara Wan",
         "inputs": {},
@@ -5798,7 +5796,6 @@
             "LATENT_UPSCALE_MODEL": "Modelo de ampliación de latentes"
         }
     },
-
     "ScaleROPE": {
         "title": "Escalar ROPE",
         "inputs": {
@@ -8922,6 +8919,96 @@
         "title": "Guardar imagen por websocket",
         "inputs": {
             "images": "Imágenes"
+        }
+    },
+    "TextEncodeQwenImage21": {
+        "title": "Codificación de texto Qwen Image 2.1",
+        "inputs": {
+            "image_1": "Imagen 1",
+            "image_2": "Imagen 2",
+            "image_3": "Imagen 3",
+            "image_4": "Imagen 4",
+            "image_5": "Imagen 5",
+            "image_6": "Imagen 6",
+            "image_7": "Imagen 7",
+            "image_8": "Imagen 8",
+            "image_9": "Imagen 9"
+        },
+        "widgets": {
+            "prompt": "Prompt positivo",
+            "negative_prompt": "Prompt negativo",
+            "resolution": "Resolución"
+        },
+        "outputs": {
+            "positive": "Condición positiva",
+            "negative": "Condición negativa"
+        },
+        "description": "Nodo de codificación de texto Qwen Image 2.1."
+    },
+    "SheetSage2AudioToABC": {
+        "title": "SheetSage2 de audio a ABC",
+        "inputs": {
+            "audio_encoder": "Codificador de audio"
+        },
+        "widgets": {
+            "mode": "Modo"
+        },
+        "outputs": {
+            "abc": "Partitura ABC"
+        },
+        "description": "Transcribe las melodías vocales e instrumentales de la música a una partitura ABC. Conecta la salida ABC al nodo Generar música YuE2 y usa el modo coincidente."
+    },
+    "YuE2GenerateMusic": {
+        "title": "Generar música YuE2",
+        "inputs": {
+            "style": "Estilo",
+            "lyrics": "Letra",
+            "abc": "Partitura ABC"
+        },
+        "widgets": {
+            "seed": "Semilla",
+            "mode": "Modo",
+            "max_duration": "Duración máxima",
+            "temperature": "Temperatura",
+            "top_p": "Muestreo Top P",
+            "top_k": "Muestreo Top K",
+            "repetition_penalty": "Penalización por repetición",
+            "cfg_scale": "Escala CFG"
+        },
+        "outputs": {
+            "Conditioning": "Condición",
+            "seconds": "Segundos"
+        },
+        "description": "Genera tokens musicales y condición acústica a partir del estilo, la letra y la partitura ABC. Pasa los segundos generados al nodo Latent de audio YuE2 vacío. Una entrada de partitura ABC vacía ignora el modo seleccionado."
+    },
+    "YuE2GenerateABC": {
+        "title": "Generar partitura ABC YuE2",
+        "inputs": {
+            "style": "Estilo",
+            "lyrics": "Letra",
+            "abc": "Partitura ABC"
+        },
+        "widgets": {
+            "seed": "Semilla",
+            "randomize": "Acción tras ejecutar",
+            "mode": "Modo",
+            "max_abc_tokens": "Máximo de tokens de la partitura ABC",
+            "temperature": "Temperatura",
+            "top_p": "Muestreo Top P",
+            "top_k": "Muestreo Top K",
+            "repetition_penalty": "Penalización por repetición",
+            "penalty_window": "Ventana de penalización"
+        },
+        "outputs": {
+            "abc": "Partitura ABC"
+        },
+        "description": "Genera la partitura ABC de una canción a partir del estilo y la letra. Conecta la partitura ABC al nodo Generar música YuE2."
+    },
+    "EmptyYuE2LatentAudio": {
+        "title": "Latent de audio YuE2 vacío",
+        "widgets": {
+            "seconds": "Segundos",
+            "batch_size": "Tamaño del lote"
         }
     }
 }

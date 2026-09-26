@@ -8920,5 +8920,96 @@
         "inputs": {
             "images": "مجموعة صور"
         }
+    },
+    "TextEncodeQwenImage21": {
+        "title": "ترميز النص لصورة Qwen 2.1",
+        "inputs": {
+            "image_1": "صورة 1",
+            "image_2": "صورة 2",
+            "image_3": "صورة 3",
+            "image_4": "صورة 4",
+            "image_5": "صورة 5",
+            "image_6": "صورة 6",
+            "image_7": "صورة 7",
+            "image_8": "صورة 8",
+            "image_9": "صورة 9"
+        },
+        "widgets": {
+            "prompt": "الموجّه",
+            "negative_prompt": "الموجّه السالب",
+            "resolution": "الدقة"
+        },
+        "outputs": {
+            "positive": "شرط موجب",
+            "negative": "شرط سالب"
+        },
+        "description": "عقدة ترميز النص لصورة Qwen 2.1"
+    },
+    "SheetSage2AudioToABC": {
+        "title": "تحويل الصوت إلى نوتة ABC (SheetSage2)",
+        "inputs": {
+            "audio_encoder": "مُرمِّز الصوت",
+            "audio": "الصوت"
+        },
+        "widgets": {
+            "mode": "الوضع"
+        },
+        "outputs": {
+            "abc": "نوتة ABC الموسيقية"
+        },
+        "description": "ينقل الألحان الغنائية والآلية في المقطوعة الموسيقية إلى نوتة ABC الموسيقية. وصِّل مخرج ABC بعقدة «توليد الموسيقى (YuE2)» واستخدم الوضع المطابق."
+    },
+    "YuE2GenerateMusic": {
+        "title": "توليد الموسيقى (YuE2)",
+        "inputs": {
+            "style": "النمط",
+            "lyrics": "كلمات الأغنية",
+            "abc": "نوتة ABC الموسيقية"
+        },
+        "widgets": {
+            "seed": "البذرة العشوائية",
+            "mode": "الوضع",
+            "max_duration": "أقصى مدة",
+            "temperature": "الحرارة",
+            "top_p": "عيّنة Top P",
+            "top_k": "عيّنة Top K",
+            "repetition_penalty": "عقوبة التكرار",
+            "cfg_scale": "نسبة CFG"
+        },
+        "outputs": {
+            "Conditioning": "شرط",
+            "seconds": "عدد الثواني"
+        },
+        "description": "ينشئ الرموز الموسيقية والشرط الصوتي وفق النمط وكلمات الأغنية ونوتة ABC الموسيقية. مرِّر عدد الثواني الناتج إلى عقدة «صوت Latent فارغ (YuE2)». مدخل نوتة ABC الفارغ يتجاهل الوضع المحدد."
+    },
+    "YuE2GenerateABC": {
+        "title": "توليد نوتة ABC (YuE2)",
+        "inputs": {
+            "style": "النمط",
+            "lyrics": "كلمات الأغنية",
+            "abc": "نوتة ABC الموسيقية"
+        },
+        "widgets": {
+            "seed": "البذرة العشوائية",
+            "randomize": "التحكم بعد التشغيل",
+            "mode": "الوضع",
+            "max_abc_tokens": "أقصى عدد رموز لنوتة ABC",
+            "temperature": "الحرارة",
+            "top_p": "عيّنة Top P",
+            "top_k": "عيّنة Top K",
+            "repetition_penalty": "معامل عقوبة التكرار",
+            "penalty_window": "نافذة العقوبة"
+        },
+        "outputs": {
+            "abc": "نوتة ABC الموسيقية"
+        },
+        "description": "ينشئ نوتة ABC الموسيقية للأغنية وفق النمط وكلمات الأغنية. وصِّل نوتة ABC بعقدة «توليد الموسيقى (YuE2)»."
+    },
+    "EmptyYuE2LatentAudio": {
+        "title": "صوت Latent فارغ (YuE2)",
+        "widgets": {
+            "seconds": "عدد الثواني",
+            "batch_size": "حجم الدفعة"
+        }
     }
 }

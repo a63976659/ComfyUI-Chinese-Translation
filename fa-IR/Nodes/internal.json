@@ -8920,5 +8920,96 @@
         "inputs": {
             "images": "دسته تصاویر"
         }
+    },
+    "TextEncodeQwenImage21": {
+        "title": "رمزگذاری متن تصویر Qwen 2.1",
+        "inputs": {
+            "image_1": "تصویر_1",
+            "image_2": "تصویر_2",
+            "image_3": "تصویر_3",
+            "image_4": "تصویر_4",
+            "image_5": "تصویر_5",
+            "image_6": "تصویر_6",
+            "image_7": "تصویر_7",
+            "image_8": "تصویر_8",
+            "image_9": "تصویر_9"
+        },
+        "widgets": {
+            "prompt": "پرامپت مثبت",
+            "negative_prompt": "پرامپت منفی",
+            "resolution": "وضوح"
+        },
+        "outputs": {
+            "positive": "پرامپت مثبت",
+            "negative": "پرامپت منفی"
+        },
+        "description": "گره رمزگذاری متن تصویر Qwen 2.1"
+    },
+    "SheetSage2AudioToABC": {
+        "title": "تبدیل صدای SheetSage2 به پارتیتور ABC",
+        "inputs": {
+            "audio_encoder": "رمزگذار صدا",
+            "audio": "صدا"
+        },
+        "widgets": {
+            "mode": "حالت"
+        },
+        "outputs": {
+            "abc": "پارتیتور ABC"
+        },
+        "description": "ملودی‌های آوازی و سازی موسیقی را به پارتیتور ABC پیاده‌سازی می‌کند. خروجی ABC را به گره تولید موسیقی YuE2 وصل کنید و حالت تطبیق (Match) را انتخاب کنید."
+    },
+    "YuE2GenerateMusic": {
+        "title": "تولید موسیقی YuE2",
+        "inputs": {
+            "style": "سبک",
+            "lyrics": "متن ترانه",
+            "abc": "پارتیتور ABC"
+        },
+        "widgets": {
+            "seed": "بذر تصادفی",
+            "mode": "حالت",
+            "max_duration": "بیشینه مدت",
+            "temperature": "دما",
+            "top_p": "نمونه‌گیری Top P",
+            "top_k": "نمونه‌گیری Top K",
+            "repetition_penalty": "جریمه تکرار",
+            "cfg_scale": "مقیاس CFG"
+        },
+        "outputs": {
+            "Conditioning": "شرط",
+            "seconds": "تعداد ثانیه"
+        },
+        "description": "توکن‌های موسیقی و شرط‌های آکوستیک را بر پایه سبک، متن ترانه و پارتیتور ABC تولید می‌کند. مقدار ثانیه‌های تولیدشده را به گره Latent خالی صدای YuE2 بدهید. اگر ورودی پارتیتور ABC خالی باشد، حالت انتخابی نادیده گرفته می‌شود."
+    },
+    "YuE2GenerateABC": {
+        "title": "تولید پارتیتور ABC YuE2",
+        "inputs": {
+            "style": "سبک",
+            "lyrics": "متن ترانه",
+            "abc": "پارتیتور ABC"
+        },
+        "widgets": {
+            "seed": "بذر تصادفی",
+            "randomize": "کنترل پس از تولید",
+            "mode": "حالت",
+            "max_abc_tokens": "بیشینه توکن پارتیتور ABC",
+            "temperature": "دما",
+            "top_p": "نمونه‌گیری Top P",
+            "top_k": "نمونه‌گیری Top K",
+            "repetition_penalty": "ضریب جریمه تکرار",
+            "penalty_window": "پنجره جریمه"
+        },
+        "outputs": {
+            "abc": "پارتیتور ABC"
+        },
+        "description": "پارتیتور ABC آهنگ را بر پایه سبک و متن ترانه تولید می‌کند. پارتیتور ABC را به گره تولید موسیقی YuE2 وصل کنید."
+    },
+    "EmptyYuE2LatentAudio": {
+        "title": "Latent خالی صدای YuE2",
+        "widgets": {
+            "seconds": "تعداد ثانیه",
+            "batch_size": "اندازه دسته"
+        }
     }
 }
